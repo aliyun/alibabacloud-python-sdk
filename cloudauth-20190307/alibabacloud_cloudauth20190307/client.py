@@ -1,31 +1,32 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
-import time
+from __future__ import annotations
 
-from Tea.request import TeaRequest
-from Tea.exceptions import TeaException, UnretryableException
-from Tea.core import TeaCore
 from typing import Dict
 
+from alibabacloud_cloudauth20190307 import models as main_models
+from alibabacloud_tea_openapi import exceptions as open_api_exceptions
+from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
-from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_tea_util import models as util_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_tea_fileform.client import Client as FileFormClient
-from alibabacloud_tea_xml.client import Client as XMLClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_cloudauth20190307 import models as cloudauth_20190307_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
-from alibabacloud_tea_fileform import models as file_form_models
+from alibabacloud_tea_openapi.utils import Utils
+from darabonba.core import DaraCore
+from darabonba.core import DaraCore as DaraCore
+from darabonba.exceptions import UnretryableException
+from darabonba.policy.retry import RetryPolicyContext
+from darabonba.request import DaraRequest
+from darabonba.runtime import RuntimeOptions
+from darabonba.utils.form import FileField
+from darabonba.utils.form import Form as DaraForm
+from darabonba.utils.stream import Stream as DaraStream
+from darabonba.utils.xml import XML as DaraXML
 
-
+"""
+"""
 class Client(OpenApiClient):
-    """
-    *\
-    """
+
     def __init__(
-        self, 
-        config: open_api_models.Config,
+        self,
+        config: open_api_util_models.Config,
     ):
         super().__init__(config)
         self._endpoint_rule = 'central'
@@ -35,164 +36,154 @@ class Client(OpenApiClient):
     def _post_ossobject(
         self,
         bucket_name: str,
-        data: dict,
-        runtime: util_models.RuntimeOptions,
+        form: dict,
+        runtime: RuntimeOptions,
     ) -> dict:
-        runtime.validate()
         _runtime = {
-            'timeouted': 'retry',
-            'key': UtilClient.default_string(runtime.key, self._key),
-            'cert': UtilClient.default_string(runtime.cert, self._cert),
-            'ca': UtilClient.default_string(runtime.ca, self._ca),
-            'readTimeout': UtilClient.default_number(runtime.read_timeout, self._read_timeout),
-            'connectTimeout': UtilClient.default_number(runtime.connect_timeout, self._connect_timeout),
-            'httpProxy': UtilClient.default_string(runtime.http_proxy, self._http_proxy),
-            'httpsProxy': UtilClient.default_string(runtime.https_proxy, self._https_proxy),
-            'noProxy': UtilClient.default_string(runtime.no_proxy, self._no_proxy),
-            'socks5Proxy': UtilClient.default_string(runtime.socks_5proxy, self._socks_5proxy),
-            'socks5NetWork': UtilClient.default_string(runtime.socks_5net_work, self._socks_5net_work),
-            'maxIdleConns': UtilClient.default_number(runtime.max_idle_conns, self._max_idle_conns),
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': OpenApiClient.default_any(runtime.ignore_ssl, False),
-            'tlsMinVersion': self._tls_min_version
+            'key': runtime.key or self._key,
+            'cert': runtime.cert or self._cert,
+            'ca': runtime.ca or self._ca,
+            'readTimeout': DaraCore.to_number(runtime.read_timeout or self._read_timeout),
+            'connectTimeout': DaraCore.to_number(runtime.connect_timeout or self._connect_timeout),
+            'httpProxy': runtime.http_proxy or self._http_proxy,
+            'httpsProxy': runtime.https_proxy or self._https_proxy,
+            'noProxy': runtime.no_proxy or self._no_proxy,
+            'socks5Proxy': runtime.socks_5proxy or self._socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work or self._socks_5net_work,
+            'maxIdleConns': DaraCore.to_number(runtime.max_idle_conns or self._max_idle_conns),
+            'retryOptions': self._retry_options,
+            'ignoreSSL': bool(runtime.ignore_ssl or False),
+            'tlsMinVersion': self._tls_min_version,
         }
         _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+        _last_response = None
+        _retries_attempted = 0
+        _context = RetryPolicyContext(
+            retries_attempted= _retries_attempted
+        )
+        while DaraCore.should_retry(_runtime.get('retryOptions'), _context):
+            if _retries_attempted > 0:
+                _backoff_time = DaraCore.get_backoff_time(_runtime.get('retryOptions'), _context)
                 if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
+                    DaraCore.sleep(_backoff_time)
+            _retries_attempted = _retries_attempted + 1
             try:
-                _request = TeaRequest()
-                form = UtilClient.assert_as_map(data)
-                boundary = FileFormClient.get_boundary()
-                host = UtilClient.assert_as_string(form.get('host'))
+                _request = DaraRequest()
+                boundary = DaraForm.get_boundary()
                 _request.protocol = 'HTTPS'
                 _request.method = 'POST'
                 _request.pathname = f'/'
                 _request.headers = {
-                    'host': host,
-                    'date': UtilClient.get_date_utcstring(),
-                    'user-agent': UtilClient.get_user_agent('')
+                    'host': str(form.get("host")),
+                    'date': Utils.get_date_utcstring(),
+                    'user-agent': Utils.get_user_agent('')
                 }
-                _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
-                _request.body = FileFormClient.to_file_form(form, boundary)
+                _request.headers["content-type"] = f'multipart/form-data; boundary={boundary}'
+                _request.body = DaraForm.to_file_form(form, boundary)
                 _last_request = _request
-                _response = TeaCore.do_action(_request, _runtime)
+                _response = DaraCore.do_action(_request, _runtime)
+                _last_response = _response
                 resp_map = None
-                body_str = UtilClient.read_as_string(_response.body)
-                if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
-                    resp_map = XMLClient.parse_xml(body_str, None)
-                    err = UtilClient.assert_as_map(resp_map.get('Error'))
-                    raise TeaException({
-                        'code': err.get('Code'),
-                        'message': err.get('Message'),
-                        'data': {
+                body_str = DaraStream.read_as_string(_response.body)
+                if (_response.status_code >= 400) and (_response.status_code < 600):
+                    resp_map = DaraXML.parse_xml(body_str, None)
+                    err = resp_map.get("Error")
+                    raise open_api_exceptions.ClientException(
+                        code = str(err.get("Code")),
+                        message = str(err.get("Message")),
+                        data = {
                             'httpCode': _response.status_code,
-                            'requestId': err.get('RequestId'),
-                            'hostId': err.get('HostId')
+                            'requestId': str(err.get("RequestId")),
+                            'hostId': str(err.get("HostId"))
                         }
-                    })
-                resp_map = XMLClient.parse_xml(body_str, None)
-                return TeaCore.merge(resp_map)
+                    )
+                resp_map = DaraXML.parse_xml(body_str, None)
+                return DaraCore.merge({}, resp_map)
             except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
+                _context = RetryPolicyContext(
+                    retries_attempted= _retries_attempted,
+                    http_request = _last_request,
+                    http_response = _last_response,
+                    exception = e
+                )
+                continue
+        raise UnretryableException(_context)
 
     async def _post_ossobject_async(
         self,
         bucket_name: str,
-        data: dict,
-        runtime: util_models.RuntimeOptions,
+        form: dict,
+        runtime: RuntimeOptions,
     ) -> dict:
-        runtime.validate()
         _runtime = {
-            'timeouted': 'retry',
-            'key': UtilClient.default_string(runtime.key, self._key),
-            'cert': UtilClient.default_string(runtime.cert, self._cert),
-            'ca': UtilClient.default_string(runtime.ca, self._ca),
-            'readTimeout': UtilClient.default_number(runtime.read_timeout, self._read_timeout),
-            'connectTimeout': UtilClient.default_number(runtime.connect_timeout, self._connect_timeout),
-            'httpProxy': UtilClient.default_string(runtime.http_proxy, self._http_proxy),
-            'httpsProxy': UtilClient.default_string(runtime.https_proxy, self._https_proxy),
-            'noProxy': UtilClient.default_string(runtime.no_proxy, self._no_proxy),
-            'socks5Proxy': UtilClient.default_string(runtime.socks_5proxy, self._socks_5proxy),
-            'socks5NetWork': UtilClient.default_string(runtime.socks_5net_work, self._socks_5net_work),
-            'maxIdleConns': UtilClient.default_number(runtime.max_idle_conns, self._max_idle_conns),
-            'retry': {
-                'retryable': runtime.autoretry,
-                'maxAttempts': UtilClient.default_number(runtime.max_attempts, 3)
-            },
-            'backoff': {
-                'policy': UtilClient.default_string(runtime.backoff_policy, 'no'),
-                'period': UtilClient.default_number(runtime.backoff_period, 1)
-            },
-            'ignoreSSL': OpenApiClient.default_any(runtime.ignore_ssl, False),
-            'tlsMinVersion': self._tls_min_version
+            'key': runtime.key or self._key,
+            'cert': runtime.cert or self._cert,
+            'ca': runtime.ca or self._ca,
+            'readTimeout': DaraCore.to_number(runtime.read_timeout or self._read_timeout),
+            'connectTimeout': DaraCore.to_number(runtime.connect_timeout or self._connect_timeout),
+            'httpProxy': runtime.http_proxy or self._http_proxy,
+            'httpsProxy': runtime.https_proxy or self._https_proxy,
+            'noProxy': runtime.no_proxy or self._no_proxy,
+            'socks5Proxy': runtime.socks_5proxy or self._socks_5proxy,
+            'socks5NetWork': runtime.socks_5net_work or self._socks_5net_work,
+            'maxIdleConns': DaraCore.to_number(runtime.max_idle_conns or self._max_idle_conns),
+            'retryOptions': self._retry_options,
+            'ignoreSSL': bool(runtime.ignore_ssl or False),
+            'tlsMinVersion': self._tls_min_version,
         }
         _last_request = None
-        _last_exception = None
-        _now = time.time()
-        _retry_times = 0
-        while TeaCore.allow_retry(_runtime.get('retry'), _retry_times, _now):
-            if _retry_times > 0:
-                _backoff_time = TeaCore.get_backoff_time(_runtime.get('backoff'), _retry_times)
+        _last_response = None
+        _retries_attempted = 0
+        _context = RetryPolicyContext(
+            retries_attempted= _retries_attempted
+        )
+        while DaraCore.should_retry(_runtime.get('retryOptions'), _context):
+            if _retries_attempted > 0:
+                _backoff_time = DaraCore.get_backoff_time(_runtime.get('retryOptions'), _context)
                 if _backoff_time > 0:
-                    TeaCore.sleep(_backoff_time)
-            _retry_times = _retry_times + 1
+                    DaraCore.sleep(_backoff_time)
+            _retries_attempted = _retries_attempted + 1
             try:
-                _request = TeaRequest()
-                form = UtilClient.assert_as_map(data)
-                boundary = FileFormClient.get_boundary()
-                host = UtilClient.assert_as_string(form.get('host'))
+                _request = DaraRequest()
+                boundary = DaraForm.get_boundary()
                 _request.protocol = 'HTTPS'
                 _request.method = 'POST'
                 _request.pathname = f'/'
                 _request.headers = {
-                    'host': host,
-                    'date': UtilClient.get_date_utcstring(),
-                    'user-agent': UtilClient.get_user_agent('')
+                    'host': str(form.get("host")),
+                    'date': Utils.get_date_utcstring(),
+                    'user-agent': Utils.get_user_agent('')
                 }
-                _request.headers['content-type'] = f'multipart/form-data; boundary={boundary}'
-                _request.body = FileFormClient.to_file_form(form, boundary)
+                _request.headers["content-type"] = f'multipart/form-data; boundary={boundary}'
+                _request.body = DaraForm.to_file_form(form, boundary)
                 _last_request = _request
-                _response = await TeaCore.async_do_action(_request, _runtime)
+                _response = await DaraCore.async_do_action(_request, _runtime)
+                _last_response = _response
                 resp_map = None
-                body_str = await UtilClient.read_as_string_async(_response.body)
-                if UtilClient.is_4xx(_response.status_code) or UtilClient.is_5xx(_response.status_code):
-                    resp_map = XMLClient.parse_xml(body_str, None)
-                    err = UtilClient.assert_as_map(resp_map.get('Error'))
-                    raise TeaException({
-                        'code': err.get('Code'),
-                        'message': err.get('Message'),
-                        'data': {
+                body_str = await DaraStream.read_as_string_async(_response.body)
+                if (_response.status_code >= 400) and (_response.status_code < 600):
+                    resp_map = DaraXML.parse_xml(body_str, None)
+                    err = resp_map.get("Error")
+                    raise open_api_exceptions.ClientException(
+                        code = str(err.get("Code")),
+                        message = str(err.get("Message")),
+                        data = {
                             'httpCode': _response.status_code,
-                            'requestId': err.get('RequestId'),
-                            'hostId': err.get('HostId')
+                            'requestId': str(err.get("RequestId")),
+                            'hostId': str(err.get("HostId"))
                         }
-                    })
-                resp_map = XMLClient.parse_xml(body_str, None)
-                return TeaCore.merge(resp_map)
+                    )
+                resp_map = DaraXML.parse_xml(body_str, None)
+                return DaraCore.merge({}, resp_map)
             except Exception as e:
-                if TeaCore.is_retryable(e):
-                    _last_exception = e
-                    continue
-                raise e
-        raise UnretryableException(_last_request, _last_exception)
+                _context = RetryPolicyContext(
+                    retries_attempted= _retries_attempted,
+                    http_request = _last_request,
+                    http_response = _last_response,
+                    exception = e
+                )
+                continue
+        raise UnretryableException(_context)
 
     def get_endpoint(
         self,
@@ -204,939 +195,627 @@ class Client(OpenApiClient):
         endpoint_map: Dict[str, str],
         endpoint: str,
     ) -> str:
-        if not UtilClient.empty(endpoint):
+        if not DaraCore.is_null(endpoint):
             return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+        if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
     def a_igcface_verify_with_options(
         self,
-        request: cloudauth_20190307_models.AIGCFaceVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.AIGCFaceVerifyResponse:
-        """
-        @summary Add AIGC Face Detection Capability
-        
-        @param request: AIGCFaceVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AIGCFaceVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AIGCFaceVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AIGCFaceVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.face_contrast_picture_url):
+        if not DaraCore.is_null(request.face_contrast_picture_url):
             query['FaceContrastPictureUrl'] = request.face_contrast_picture_url
-        if not UtilClient.is_unset(request.oss_bucket_name):
+        if not DaraCore.is_null(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
-        if not UtilClient.is_unset(request.oss_object_name):
+        if not DaraCore.is_null(request.oss_object_name):
             query['OssObjectName'] = request.oss_object_name
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             query['OuterOrderNo'] = request.outer_order_no
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
         body = {}
-        if not UtilClient.is_unset(request.face_contrast_picture):
+        if not DaraCore.is_null(request.face_contrast_picture):
             body['FaceContrastPicture'] = request.face_contrast_picture
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='AIGCFaceVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AIGCFaceVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.AIGCFaceVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.AIGCFaceVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def a_igcface_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.AIGCFaceVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.AIGCFaceVerifyResponse:
-        """
-        @summary Add AIGC Face Detection Capability
-        
-        @param request: AIGCFaceVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AIGCFaceVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AIGCFaceVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AIGCFaceVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.face_contrast_picture_url):
+        if not DaraCore.is_null(request.face_contrast_picture_url):
             query['FaceContrastPictureUrl'] = request.face_contrast_picture_url
-        if not UtilClient.is_unset(request.oss_bucket_name):
+        if not DaraCore.is_null(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
-        if not UtilClient.is_unset(request.oss_object_name):
+        if not DaraCore.is_null(request.oss_object_name):
             query['OssObjectName'] = request.oss_object_name
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             query['OuterOrderNo'] = request.outer_order_no
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
         body = {}
-        if not UtilClient.is_unset(request.face_contrast_picture):
+        if not DaraCore.is_null(request.face_contrast_picture):
             body['FaceContrastPicture'] = request.face_contrast_picture
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='AIGCFaceVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AIGCFaceVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.AIGCFaceVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.AIGCFaceVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def a_igcface_verify(
         self,
-        request: cloudauth_20190307_models.AIGCFaceVerifyRequest,
-    ) -> cloudauth_20190307_models.AIGCFaceVerifyResponse:
-        """
-        @summary Add AIGC Face Detection Capability
-        
-        @param request: AIGCFaceVerifyRequest
-        @return: AIGCFaceVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AIGCFaceVerifyRequest,
+    ) -> main_models.AIGCFaceVerifyResponse:
+        runtime = RuntimeOptions()
         return self.a_igcface_verify_with_options(request, runtime)
 
     async def a_igcface_verify_async(
         self,
-        request: cloudauth_20190307_models.AIGCFaceVerifyRequest,
-    ) -> cloudauth_20190307_models.AIGCFaceVerifyResponse:
-        """
-        @summary Add AIGC Face Detection Capability
-        
-        @param request: AIGCFaceVerifyRequest
-        @return: AIGCFaceVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AIGCFaceVerifyRequest,
+    ) -> main_models.AIGCFaceVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.a_igcface_verify_with_options_async(request, runtime)
 
     def bank_meta_verify_with_options(
         self,
-        request: cloudauth_20190307_models.BankMetaVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.BankMetaVerifyResponse:
-        """
-        @summary Bank Card Element Verification Interface
-        
-        @description Bank card verification, including: two elements (name + bank card number), three elements (name + ID number + bank card number), and four elements (name + ID number + mobile phone number + bank card number) consistency verification.
-        - Service address:
-        - Beijing region: cloudauth.cn-beijing.aliyuncs.com (IPv4) or cloudauth-dualstack.cn-beijing.aliyuncs.com (IPv6).
-        - Shanghai region: cloudauth.cn-shanghai.aliyuncs.com (IPv4) or cloudauth-dualstack.cn-shanghai.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: BankMetaVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BankMetaVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BankMetaVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BankMetaVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bank_card):
+        if not DaraCore.is_null(request.bank_card):
             query['BankCard'] = request.bank_card
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             query['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.identity_type):
+        if not DaraCore.is_null(request.identity_type):
             query['IdentityType'] = request.identity_type
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             query['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             query['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             query['UserName'] = request.user_name
-        if not UtilClient.is_unset(request.verify_mode):
+        if not DaraCore.is_null(request.verify_mode):
             query['VerifyMode'] = request.verify_mode
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='BankMetaVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BankMetaVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.BankMetaVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.BankMetaVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def bank_meta_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.BankMetaVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.BankMetaVerifyResponse:
-        """
-        @summary Bank Card Element Verification Interface
-        
-        @description Bank card verification, including: two elements (name + bank card number), three elements (name + ID number + bank card number), and four elements (name + ID number + mobile phone number + bank card number) consistency verification.
-        - Service address:
-        - Beijing region: cloudauth.cn-beijing.aliyuncs.com (IPv4) or cloudauth-dualstack.cn-beijing.aliyuncs.com (IPv6).
-        - Shanghai region: cloudauth.cn-shanghai.aliyuncs.com (IPv4) or cloudauth-dualstack.cn-shanghai.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: BankMetaVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BankMetaVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BankMetaVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BankMetaVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bank_card):
+        if not DaraCore.is_null(request.bank_card):
             query['BankCard'] = request.bank_card
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             query['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.identity_type):
+        if not DaraCore.is_null(request.identity_type):
             query['IdentityType'] = request.identity_type
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             query['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             query['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             query['UserName'] = request.user_name
-        if not UtilClient.is_unset(request.verify_mode):
+        if not DaraCore.is_null(request.verify_mode):
             query['VerifyMode'] = request.verify_mode
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='BankMetaVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BankMetaVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.BankMetaVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.BankMetaVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def bank_meta_verify(
         self,
-        request: cloudauth_20190307_models.BankMetaVerifyRequest,
-    ) -> cloudauth_20190307_models.BankMetaVerifyResponse:
-        """
-        @summary Bank Card Element Verification Interface
-        
-        @description Bank card verification, including: two elements (name + bank card number), three elements (name + ID number + bank card number), and four elements (name + ID number + mobile phone number + bank card number) consistency verification.
-        - Service address:
-        - Beijing region: cloudauth.cn-beijing.aliyuncs.com (IPv4) or cloudauth-dualstack.cn-beijing.aliyuncs.com (IPv6).
-        - Shanghai region: cloudauth.cn-shanghai.aliyuncs.com (IPv4) or cloudauth-dualstack.cn-shanghai.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: BankMetaVerifyRequest
-        @return: BankMetaVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BankMetaVerifyRequest,
+    ) -> main_models.BankMetaVerifyResponse:
+        runtime = RuntimeOptions()
         return self.bank_meta_verify_with_options(request, runtime)
 
     async def bank_meta_verify_async(
         self,
-        request: cloudauth_20190307_models.BankMetaVerifyRequest,
-    ) -> cloudauth_20190307_models.BankMetaVerifyResponse:
-        """
-        @summary Bank Card Element Verification Interface
-        
-        @description Bank card verification, including: two elements (name + bank card number), three elements (name + ID number + bank card number), and four elements (name + ID number + mobile phone number + bank card number) consistency verification.
-        - Service address:
-        - Beijing region: cloudauth.cn-beijing.aliyuncs.com (IPv4) or cloudauth-dualstack.cn-beijing.aliyuncs.com (IPv6).
-        - Shanghai region: cloudauth.cn-shanghai.aliyuncs.com (IPv4) or cloudauth-dualstack.cn-shanghai.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: BankMetaVerifyRequest
-        @return: BankMetaVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BankMetaVerifyRequest,
+    ) -> main_models.BankMetaVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.bank_meta_verify_with_options_async(request, runtime)
 
     def compare_face_verify_with_options(
         self,
-        request: cloudauth_20190307_models.CompareFaceVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CompareFaceVerifyResponse:
-        """
-        @summary Financial-grade Pure Server-Side API for Face Comparison.
-        
-        @description - API Name: CompareFaceVerify.
-        - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        - API Description: An interface to achieve real-person authentication through server-side integration.
-        #### Photo Format Requirements
-        When performing face comparison, please upload 2 facial photos that meet all the following conditions:
-        - Recent photo/recent database photo, with a complete, clear, unobstructed face, natural expression, and facing the camera directly.
-        - Clear photo with normal exposure, no overly dark, overly bright, or halo effects on the face, and no significant angle deviation.
-        - Resolution not exceeding 19201080, at least 640*480, recommended to scale the shorter side to 720 pixels, with a compression ratio greater than 0.9.
-        - Photo size: <1MB.
-        - Supports 90, 180, and 270-degree photos; in cases of multiple faces, the largest face will be selected.
-        
-        @param request: CompareFaceVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CompareFaceVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CompareFaceVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CompareFaceVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.crop):
+        if not DaraCore.is_null(request.crop):
             body['Crop'] = request.crop
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             body['OuterOrderNo'] = request.outer_order_no
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             body['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             body['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.source_certify_id):
+        if not DaraCore.is_null(request.source_certify_id):
             body['SourceCertifyId'] = request.source_certify_id
-        if not UtilClient.is_unset(request.source_face_contrast_picture):
+        if not DaraCore.is_null(request.source_face_contrast_picture):
             body['SourceFaceContrastPicture'] = request.source_face_contrast_picture
-        if not UtilClient.is_unset(request.source_face_contrast_picture_url):
+        if not DaraCore.is_null(request.source_face_contrast_picture_url):
             body['SourceFaceContrastPictureUrl'] = request.source_face_contrast_picture_url
-        if not UtilClient.is_unset(request.source_oss_bucket_name):
+        if not DaraCore.is_null(request.source_oss_bucket_name):
             body['SourceOssBucketName'] = request.source_oss_bucket_name
-        if not UtilClient.is_unset(request.source_oss_object_name):
+        if not DaraCore.is_null(request.source_oss_object_name):
             body['SourceOssObjectName'] = request.source_oss_object_name
-        if not UtilClient.is_unset(request.target_certify_id):
+        if not DaraCore.is_null(request.target_certify_id):
             body['TargetCertifyId'] = request.target_certify_id
-        if not UtilClient.is_unset(request.target_face_contrast_picture):
+        if not DaraCore.is_null(request.target_face_contrast_picture):
             body['TargetFaceContrastPicture'] = request.target_face_contrast_picture
-        if not UtilClient.is_unset(request.target_face_contrast_picture_url):
+        if not DaraCore.is_null(request.target_face_contrast_picture_url):
             body['TargetFaceContrastPictureUrl'] = request.target_face_contrast_picture_url
-        if not UtilClient.is_unset(request.target_oss_bucket_name):
+        if not DaraCore.is_null(request.target_oss_bucket_name):
             body['TargetOssBucketName'] = request.target_oss_bucket_name
-        if not UtilClient.is_unset(request.target_oss_object_name):
+        if not DaraCore.is_null(request.target_oss_object_name):
             body['TargetOssObjectName'] = request.target_oss_object_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CompareFaceVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CompareFaceVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CompareFaceVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.CompareFaceVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def compare_face_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.CompareFaceVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CompareFaceVerifyResponse:
-        """
-        @summary Financial-grade Pure Server-Side API for Face Comparison.
-        
-        @description - API Name: CompareFaceVerify.
-        - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        - API Description: An interface to achieve real-person authentication through server-side integration.
-        #### Photo Format Requirements
-        When performing face comparison, please upload 2 facial photos that meet all the following conditions:
-        - Recent photo/recent database photo, with a complete, clear, unobstructed face, natural expression, and facing the camera directly.
-        - Clear photo with normal exposure, no overly dark, overly bright, or halo effects on the face, and no significant angle deviation.
-        - Resolution not exceeding 19201080, at least 640*480, recommended to scale the shorter side to 720 pixels, with a compression ratio greater than 0.9.
-        - Photo size: <1MB.
-        - Supports 90, 180, and 270-degree photos; in cases of multiple faces, the largest face will be selected.
-        
-        @param request: CompareFaceVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CompareFaceVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CompareFaceVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CompareFaceVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.crop):
+        if not DaraCore.is_null(request.crop):
             body['Crop'] = request.crop
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             body['OuterOrderNo'] = request.outer_order_no
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             body['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             body['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.source_certify_id):
+        if not DaraCore.is_null(request.source_certify_id):
             body['SourceCertifyId'] = request.source_certify_id
-        if not UtilClient.is_unset(request.source_face_contrast_picture):
+        if not DaraCore.is_null(request.source_face_contrast_picture):
             body['SourceFaceContrastPicture'] = request.source_face_contrast_picture
-        if not UtilClient.is_unset(request.source_face_contrast_picture_url):
+        if not DaraCore.is_null(request.source_face_contrast_picture_url):
             body['SourceFaceContrastPictureUrl'] = request.source_face_contrast_picture_url
-        if not UtilClient.is_unset(request.source_oss_bucket_name):
+        if not DaraCore.is_null(request.source_oss_bucket_name):
             body['SourceOssBucketName'] = request.source_oss_bucket_name
-        if not UtilClient.is_unset(request.source_oss_object_name):
+        if not DaraCore.is_null(request.source_oss_object_name):
             body['SourceOssObjectName'] = request.source_oss_object_name
-        if not UtilClient.is_unset(request.target_certify_id):
+        if not DaraCore.is_null(request.target_certify_id):
             body['TargetCertifyId'] = request.target_certify_id
-        if not UtilClient.is_unset(request.target_face_contrast_picture):
+        if not DaraCore.is_null(request.target_face_contrast_picture):
             body['TargetFaceContrastPicture'] = request.target_face_contrast_picture
-        if not UtilClient.is_unset(request.target_face_contrast_picture_url):
+        if not DaraCore.is_null(request.target_face_contrast_picture_url):
             body['TargetFaceContrastPictureUrl'] = request.target_face_contrast_picture_url
-        if not UtilClient.is_unset(request.target_oss_bucket_name):
+        if not DaraCore.is_null(request.target_oss_bucket_name):
             body['TargetOssBucketName'] = request.target_oss_bucket_name
-        if not UtilClient.is_unset(request.target_oss_object_name):
+        if not DaraCore.is_null(request.target_oss_object_name):
             body['TargetOssObjectName'] = request.target_oss_object_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CompareFaceVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CompareFaceVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CompareFaceVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.CompareFaceVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def compare_face_verify(
         self,
-        request: cloudauth_20190307_models.CompareFaceVerifyRequest,
-    ) -> cloudauth_20190307_models.CompareFaceVerifyResponse:
-        """
-        @summary Financial-grade Pure Server-Side API for Face Comparison.
-        
-        @description - API Name: CompareFaceVerify.
-        - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        - API Description: An interface to achieve real-person authentication through server-side integration.
-        #### Photo Format Requirements
-        When performing face comparison, please upload 2 facial photos that meet all the following conditions:
-        - Recent photo/recent database photo, with a complete, clear, unobstructed face, natural expression, and facing the camera directly.
-        - Clear photo with normal exposure, no overly dark, overly bright, or halo effects on the face, and no significant angle deviation.
-        - Resolution not exceeding 19201080, at least 640*480, recommended to scale the shorter side to 720 pixels, with a compression ratio greater than 0.9.
-        - Photo size: <1MB.
-        - Supports 90, 180, and 270-degree photos; in cases of multiple faces, the largest face will be selected.
-        
-        @param request: CompareFaceVerifyRequest
-        @return: CompareFaceVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CompareFaceVerifyRequest,
+    ) -> main_models.CompareFaceVerifyResponse:
+        runtime = RuntimeOptions()
         return self.compare_face_verify_with_options(request, runtime)
 
     async def compare_face_verify_async(
         self,
-        request: cloudauth_20190307_models.CompareFaceVerifyRequest,
-    ) -> cloudauth_20190307_models.CompareFaceVerifyResponse:
-        """
-        @summary Financial-grade Pure Server-Side API for Face Comparison.
-        
-        @description - API Name: CompareFaceVerify.
-        - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        - API Description: An interface to achieve real-person authentication through server-side integration.
-        #### Photo Format Requirements
-        When performing face comparison, please upload 2 facial photos that meet all the following conditions:
-        - Recent photo/recent database photo, with a complete, clear, unobstructed face, natural expression, and facing the camera directly.
-        - Clear photo with normal exposure, no overly dark, overly bright, or halo effects on the face, and no significant angle deviation.
-        - Resolution not exceeding 19201080, at least 640*480, recommended to scale the shorter side to 720 pixels, with a compression ratio greater than 0.9.
-        - Photo size: <1MB.
-        - Supports 90, 180, and 270-degree photos; in cases of multiple faces, the largest face will be selected.
-        
-        @param request: CompareFaceVerifyRequest
-        @return: CompareFaceVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CompareFaceVerifyRequest,
+    ) -> main_models.CompareFaceVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.compare_face_verify_with_options_async(request, runtime)
 
     def compare_faces_with_options(
         self,
-        request: cloudauth_20190307_models.CompareFacesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CompareFacesResponse:
-        """
-        @summary Invoke CompareFaces for face comparison.
-        
-        @description Request Method: Only supports sending requests via HTTPS POST.
-        Interface Description: Compares two face images and outputs the similarity score of the faces in the two images as the result.
-        - At least one of the specified comparison images should be a face photo (FacePic).
-        - If an image contains multiple faces, the algorithm will automatically select the largest face in the image.
-        - If one of the two comparison images does not detect a face, the system will return an error message stating \\"No face detected\\".
-        When uploading images, you need to provide the HTTP address or base64 encoding of the image.
-        - HTTP Address: A publicly accessible HTTP address. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
-        - Base64 Encoding: An image encoded in base64, formatted as `base64://<base64 string of the image>`.
-        Image Restrictions
-        - Does not support relative or absolute paths for local images.
-        - Please keep the size of a single image within 2MB to avoid timeout during retrieval by the algorithm.
-        - The body of a single request has a size limit of 8MB; please calculate the total size of all images and other information in the request to ensure it does not exceed this limit.
-        - When using base64 to transmit images, the request method must be changed to POST; the header description such as `data:image/png;base64,` should be removed from the base64 string of the image.
-        
-        @param request: CompareFacesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CompareFacesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CompareFacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CompareFacesResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.source_image_type):
+        if not DaraCore.is_null(request.source_image_type):
             body['SourceImageType'] = request.source_image_type
-        if not UtilClient.is_unset(request.source_image_value):
+        if not DaraCore.is_null(request.source_image_value):
             body['SourceImageValue'] = request.source_image_value
-        if not UtilClient.is_unset(request.target_image_type):
+        if not DaraCore.is_null(request.target_image_type):
             body['TargetImageType'] = request.target_image_type
-        if not UtilClient.is_unset(request.target_image_value):
+        if not DaraCore.is_null(request.target_image_value):
             body['TargetImageValue'] = request.target_image_value
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CompareFaces',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CompareFaces',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CompareFacesResponse(),
+        return DaraCore.from_map(
+            main_models.CompareFacesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def compare_faces_with_options_async(
         self,
-        request: cloudauth_20190307_models.CompareFacesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CompareFacesResponse:
-        """
-        @summary Invoke CompareFaces for face comparison.
-        
-        @description Request Method: Only supports sending requests via HTTPS POST.
-        Interface Description: Compares two face images and outputs the similarity score of the faces in the two images as the result.
-        - At least one of the specified comparison images should be a face photo (FacePic).
-        - If an image contains multiple faces, the algorithm will automatically select the largest face in the image.
-        - If one of the two comparison images does not detect a face, the system will return an error message stating \\"No face detected\\".
-        When uploading images, you need to provide the HTTP address or base64 encoding of the image.
-        - HTTP Address: A publicly accessible HTTP address. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
-        - Base64 Encoding: An image encoded in base64, formatted as `base64://<base64 string of the image>`.
-        Image Restrictions
-        - Does not support relative or absolute paths for local images.
-        - Please keep the size of a single image within 2MB to avoid timeout during retrieval by the algorithm.
-        - The body of a single request has a size limit of 8MB; please calculate the total size of all images and other information in the request to ensure it does not exceed this limit.
-        - When using base64 to transmit images, the request method must be changed to POST; the header description such as `data:image/png;base64,` should be removed from the base64 string of the image.
-        
-        @param request: CompareFacesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CompareFacesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CompareFacesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CompareFacesResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.source_image_type):
+        if not DaraCore.is_null(request.source_image_type):
             body['SourceImageType'] = request.source_image_type
-        if not UtilClient.is_unset(request.source_image_value):
+        if not DaraCore.is_null(request.source_image_value):
             body['SourceImageValue'] = request.source_image_value
-        if not UtilClient.is_unset(request.target_image_type):
+        if not DaraCore.is_null(request.target_image_type):
             body['TargetImageType'] = request.target_image_type
-        if not UtilClient.is_unset(request.target_image_value):
+        if not DaraCore.is_null(request.target_image_value):
             body['TargetImageValue'] = request.target_image_value
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CompareFaces',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CompareFaces',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CompareFacesResponse(),
+        return DaraCore.from_map(
+            main_models.CompareFacesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def compare_faces(
         self,
-        request: cloudauth_20190307_models.CompareFacesRequest,
-    ) -> cloudauth_20190307_models.CompareFacesResponse:
-        """
-        @summary Invoke CompareFaces for face comparison.
-        
-        @description Request Method: Only supports sending requests via HTTPS POST.
-        Interface Description: Compares two face images and outputs the similarity score of the faces in the two images as the result.
-        - At least one of the specified comparison images should be a face photo (FacePic).
-        - If an image contains multiple faces, the algorithm will automatically select the largest face in the image.
-        - If one of the two comparison images does not detect a face, the system will return an error message stating \\"No face detected\\".
-        When uploading images, you need to provide the HTTP address or base64 encoding of the image.
-        - HTTP Address: A publicly accessible HTTP address. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
-        - Base64 Encoding: An image encoded in base64, formatted as `base64://<base64 string of the image>`.
-        Image Restrictions
-        - Does not support relative or absolute paths for local images.
-        - Please keep the size of a single image within 2MB to avoid timeout during retrieval by the algorithm.
-        - The body of a single request has a size limit of 8MB; please calculate the total size of all images and other information in the request to ensure it does not exceed this limit.
-        - When using base64 to transmit images, the request method must be changed to POST; the header description such as `data:image/png;base64,` should be removed from the base64 string of the image.
-        
-        @param request: CompareFacesRequest
-        @return: CompareFacesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CompareFacesRequest,
+    ) -> main_models.CompareFacesResponse:
+        runtime = RuntimeOptions()
         return self.compare_faces_with_options(request, runtime)
 
     async def compare_faces_async(
         self,
-        request: cloudauth_20190307_models.CompareFacesRequest,
-    ) -> cloudauth_20190307_models.CompareFacesResponse:
-        """
-        @summary Invoke CompareFaces for face comparison.
-        
-        @description Request Method: Only supports sending requests via HTTPS POST.
-        Interface Description: Compares two face images and outputs the similarity score of the faces in the two images as the result.
-        - At least one of the specified comparison images should be a face photo (FacePic).
-        - If an image contains multiple faces, the algorithm will automatically select the largest face in the image.
-        - If one of the two comparison images does not detect a face, the system will return an error message stating \\"No face detected\\".
-        When uploading images, you need to provide the HTTP address or base64 encoding of the image.
-        - HTTP Address: A publicly accessible HTTP address. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
-        - Base64 Encoding: An image encoded in base64, formatted as `base64://<base64 string of the image>`.
-        Image Restrictions
-        - Does not support relative or absolute paths for local images.
-        - Please keep the size of a single image within 2MB to avoid timeout during retrieval by the algorithm.
-        - The body of a single request has a size limit of 8MB; please calculate the total size of all images and other information in the request to ensure it does not exceed this limit.
-        - When using base64 to transmit images, the request method must be changed to POST; the header description such as `data:image/png;base64,` should be removed from the base64 string of the image.
-        
-        @param request: CompareFacesRequest
-        @return: CompareFacesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CompareFacesRequest,
+    ) -> main_models.CompareFacesResponse:
+        runtime = RuntimeOptions()
         return await self.compare_faces_with_options_async(request, runtime)
 
     def contrast_face_verify_with_options(
         self,
-        request: cloudauth_20190307_models.ContrastFaceVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.ContrastFaceVerifyResponse:
-        """
-        @summary This interface is used to submit authentication materials for verification and comparison, and it synchronously returns the authentication result.
-        
-        @description - Interface Name: ContrastFaceVerify.
-        - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        - Interface Description: An interface for real person authentication through server-side integration.
-        #### Image Format Requirements
-        When performing real person authentication, please ensure that the images you upload meet all of the following conditions:
-        - Recent photo with a clear, unobstructed, and natural expression, facing the camera directly.
-        - Clear and properly exposed photo, without overly dark, bright, or haloed faces, and with minimal angle deviation.
-        - Resolution not exceeding 19201080, at least 640*480, with the shorter side recommended to be resized to 720 pixels, and a compression ratio greater than 0.9.
-        - Photo size: <1MB.
-        - Supports 90, 180, and 270-degree photos; in cases of multiple faces, the largest face will be selected.
-        
-        @param request: ContrastFaceVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ContrastFaceVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ContrastFaceVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ContrastFaceVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.model):
+        if not DaraCore.is_null(request.model):
             query['Model'] = request.model
         body = {}
-        if not UtilClient.is_unset(request.cert_name):
+        if not DaraCore.is_null(request.cert_name):
             body['CertName'] = request.cert_name
-        if not UtilClient.is_unset(request.cert_no):
+        if not DaraCore.is_null(request.cert_no):
             body['CertNo'] = request.cert_no
-        if not UtilClient.is_unset(request.cert_type):
+        if not DaraCore.is_null(request.cert_type):
             body['CertType'] = request.cert_type
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             body['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.crop):
+        if not DaraCore.is_null(request.crop):
             body['Crop'] = request.crop
-        if not UtilClient.is_unset(request.device_token):
+        if not DaraCore.is_null(request.device_token):
             body['DeviceToken'] = request.device_token
-        if not UtilClient.is_unset(request.encrypt_type):
+        if not DaraCore.is_null(request.encrypt_type):
             body['EncryptType'] = request.encrypt_type
-        if not UtilClient.is_unset(request.face_contrast_file):
+        if not DaraCore.is_null(request.face_contrast_file):
             body['FaceContrastFile'] = request.face_contrast_file
-        if not UtilClient.is_unset(request.face_contrast_picture):
+        if not DaraCore.is_null(request.face_contrast_picture):
             body['FaceContrastPicture'] = request.face_contrast_picture
-        if not UtilClient.is_unset(request.face_contrast_picture_url):
+        if not DaraCore.is_null(request.face_contrast_picture_url):
             body['FaceContrastPictureUrl'] = request.face_contrast_picture_url
-        if not UtilClient.is_unset(request.ip):
+        if not DaraCore.is_null(request.ip):
             body['Ip'] = request.ip
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.oss_bucket_name):
+        if not DaraCore.is_null(request.oss_bucket_name):
             body['OssBucketName'] = request.oss_bucket_name
-        if not UtilClient.is_unset(request.oss_object_name):
+        if not DaraCore.is_null(request.oss_object_name):
             body['OssObjectName'] = request.oss_object_name
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             body['OuterOrderNo'] = request.outer_order_no
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             body['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             body['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             body['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ContrastFaceVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ContrastFaceVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.ContrastFaceVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.ContrastFaceVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def contrast_face_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.ContrastFaceVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.ContrastFaceVerifyResponse:
-        """
-        @summary This interface is used to submit authentication materials for verification and comparison, and it synchronously returns the authentication result.
-        
-        @description - Interface Name: ContrastFaceVerify.
-        - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        - Interface Description: An interface for real person authentication through server-side integration.
-        #### Image Format Requirements
-        When performing real person authentication, please ensure that the images you upload meet all of the following conditions:
-        - Recent photo with a clear, unobstructed, and natural expression, facing the camera directly.
-        - Clear and properly exposed photo, without overly dark, bright, or haloed faces, and with minimal angle deviation.
-        - Resolution not exceeding 19201080, at least 640*480, with the shorter side recommended to be resized to 720 pixels, and a compression ratio greater than 0.9.
-        - Photo size: <1MB.
-        - Supports 90, 180, and 270-degree photos; in cases of multiple faces, the largest face will be selected.
-        
-        @param request: ContrastFaceVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ContrastFaceVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ContrastFaceVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ContrastFaceVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.model):
+        if not DaraCore.is_null(request.model):
             query['Model'] = request.model
         body = {}
-        if not UtilClient.is_unset(request.cert_name):
+        if not DaraCore.is_null(request.cert_name):
             body['CertName'] = request.cert_name
-        if not UtilClient.is_unset(request.cert_no):
+        if not DaraCore.is_null(request.cert_no):
             body['CertNo'] = request.cert_no
-        if not UtilClient.is_unset(request.cert_type):
+        if not DaraCore.is_null(request.cert_type):
             body['CertType'] = request.cert_type
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             body['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.crop):
+        if not DaraCore.is_null(request.crop):
             body['Crop'] = request.crop
-        if not UtilClient.is_unset(request.device_token):
+        if not DaraCore.is_null(request.device_token):
             body['DeviceToken'] = request.device_token
-        if not UtilClient.is_unset(request.encrypt_type):
+        if not DaraCore.is_null(request.encrypt_type):
             body['EncryptType'] = request.encrypt_type
-        if not UtilClient.is_unset(request.face_contrast_file):
+        if not DaraCore.is_null(request.face_contrast_file):
             body['FaceContrastFile'] = request.face_contrast_file
-        if not UtilClient.is_unset(request.face_contrast_picture):
+        if not DaraCore.is_null(request.face_contrast_picture):
             body['FaceContrastPicture'] = request.face_contrast_picture
-        if not UtilClient.is_unset(request.face_contrast_picture_url):
+        if not DaraCore.is_null(request.face_contrast_picture_url):
             body['FaceContrastPictureUrl'] = request.face_contrast_picture_url
-        if not UtilClient.is_unset(request.ip):
+        if not DaraCore.is_null(request.ip):
             body['Ip'] = request.ip
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.oss_bucket_name):
+        if not DaraCore.is_null(request.oss_bucket_name):
             body['OssBucketName'] = request.oss_bucket_name
-        if not UtilClient.is_unset(request.oss_object_name):
+        if not DaraCore.is_null(request.oss_object_name):
             body['OssObjectName'] = request.oss_object_name
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             body['OuterOrderNo'] = request.outer_order_no
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             body['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             body['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             body['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ContrastFaceVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ContrastFaceVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.ContrastFaceVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.ContrastFaceVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def contrast_face_verify(
         self,
-        request: cloudauth_20190307_models.ContrastFaceVerifyRequest,
-    ) -> cloudauth_20190307_models.ContrastFaceVerifyResponse:
-        """
-        @summary This interface is used to submit authentication materials for verification and comparison, and it synchronously returns the authentication result.
-        
-        @description - Interface Name: ContrastFaceVerify.
-        - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        - Interface Description: An interface for real person authentication through server-side integration.
-        #### Image Format Requirements
-        When performing real person authentication, please ensure that the images you upload meet all of the following conditions:
-        - Recent photo with a clear, unobstructed, and natural expression, facing the camera directly.
-        - Clear and properly exposed photo, without overly dark, bright, or haloed faces, and with minimal angle deviation.
-        - Resolution not exceeding 19201080, at least 640*480, with the shorter side recommended to be resized to 720 pixels, and a compression ratio greater than 0.9.
-        - Photo size: <1MB.
-        - Supports 90, 180, and 270-degree photos; in cases of multiple faces, the largest face will be selected.
-        
-        @param request: ContrastFaceVerifyRequest
-        @return: ContrastFaceVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ContrastFaceVerifyRequest,
+    ) -> main_models.ContrastFaceVerifyResponse:
+        runtime = RuntimeOptions()
         return self.contrast_face_verify_with_options(request, runtime)
 
     async def contrast_face_verify_async(
         self,
-        request: cloudauth_20190307_models.ContrastFaceVerifyRequest,
-    ) -> cloudauth_20190307_models.ContrastFaceVerifyResponse:
-        """
-        @summary This interface is used to submit authentication materials for verification and comparison, and it synchronously returns the authentication result.
-        
-        @description - Interface Name: ContrastFaceVerify.
-        - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        - Interface Description: An interface for real person authentication through server-side integration.
-        #### Image Format Requirements
-        When performing real person authentication, please ensure that the images you upload meet all of the following conditions:
-        - Recent photo with a clear, unobstructed, and natural expression, facing the camera directly.
-        - Clear and properly exposed photo, without overly dark, bright, or haloed faces, and with minimal angle deviation.
-        - Resolution not exceeding 19201080, at least 640*480, with the shorter side recommended to be resized to 720 pixels, and a compression ratio greater than 0.9.
-        - Photo size: <1MB.
-        - Supports 90, 180, and 270-degree photos; in cases of multiple faces, the largest face will be selected.
-        
-        @param request: ContrastFaceVerifyRequest
-        @return: ContrastFaceVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ContrastFaceVerifyRequest,
+    ) -> main_models.ContrastFaceVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.contrast_face_verify_with_options_async(request, runtime)
 
     def contrast_face_verify_advance(
         self,
-        request: cloudauth_20190307_models.ContrastFaceVerifyAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.ContrastFaceVerifyResponse:
+        request: main_models.ContrastFaceVerifyAdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ContrastFaceVerifyResponse:
         # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
         credential_model = self._credential.get_credential()
         access_key_id = credential_model.access_key_id
         access_key_secret = credential_model.access_key_secret
         security_token = credential_model.security_token
         credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
             open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
+        if DaraCore.is_null(credential_type):
             credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
         )
         auth_client = OpenApiClient(auth_config)
         auth_request = {
             'Product': 'Cloudauth',
             'RegionId': self._region_id
         }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
         )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
         auth_response = {}
-        file_obj = file_form_models.FileField()
+        file_obj = FileField()
         oss_header = {}
         tmp_body = {}
         use_accelerate = False
         auth_response_body = {}
-        contrast_face_verify_req = cloudauth_20190307_models.ContrastFaceVerifyRequest()
-        OpenApiUtilClient.convert(request, contrast_face_verify_req)
-        if not UtilClient.is_unset(request.face_contrast_file_object):
-            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.face_contrast_file_object,
-                content_type=''
+        contrast_face_verify_req = main_models.ContrastFaceVerifyRequest()
+        Utils.convert(request, contrast_face_verify_req)
+        if not DaraCore.is_null(request.face_contrast_file_object):
+            auth_response = auth_client.call_api(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.face_contrast_file_object,
+                content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -1151,75 +830,73 @@ class Client(OpenApiClient):
 
     async def contrast_face_verify_advance_async(
         self,
-        request: cloudauth_20190307_models.ContrastFaceVerifyAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.ContrastFaceVerifyResponse:
+        request: main_models.ContrastFaceVerifyAdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ContrastFaceVerifyResponse:
         # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
         credential_model = await self._credential.get_credential_async()
         access_key_id = credential_model.access_key_id
         access_key_secret = credential_model.access_key_secret
         security_token = credential_model.security_token
         credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
             open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
+        if DaraCore.is_null(credential_type):
             credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
         )
         auth_client = OpenApiClient(auth_config)
         auth_request = {
             'Product': 'Cloudauth',
             'RegionId': self._region_id
         }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
         )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
         auth_response = {}
-        file_obj = file_form_models.FileField()
+        file_obj = FileField()
         oss_header = {}
         tmp_body = {}
         use_accelerate = False
         auth_response_body = {}
-        contrast_face_verify_req = cloudauth_20190307_models.ContrastFaceVerifyRequest()
-        OpenApiUtilClient.convert(request, contrast_face_verify_req)
-        if not UtilClient.is_unset(request.face_contrast_file_object):
-            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.face_contrast_file_object,
-                content_type=''
+        contrast_face_verify_req = main_models.ContrastFaceVerifyRequest()
+        Utils.convert(request, contrast_face_verify_req)
+        if not DaraCore.is_null(request.face_contrast_file_object):
+            auth_response = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.face_contrast_file_object,
+                content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -1234,955 +911,695 @@ class Client(OpenApiClient):
 
     def create_ant_cloud_auth_scene_with_options(
         self,
-        request: cloudauth_20190307_models.CreateAntCloudAuthSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CreateAntCloudAuthSceneResponse:
-        """
-        @summary Create a financial-grade authentication scenario
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: CreateAntCloudAuthSceneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAntCloudAuthSceneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateAntCloudAuthSceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAntCloudAuthSceneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bind_mini_program):
+        if not DaraCore.is_null(request.bind_mini_program):
             query['BindMiniProgram'] = request.bind_mini_program
-        if not UtilClient.is_unset(request.check_file_body):
+        if not DaraCore.is_null(request.check_file_body):
             query['CheckFileBody'] = request.check_file_body
-        if not UtilClient.is_unset(request.check_file_name):
+        if not DaraCore.is_null(request.check_file_name):
             query['CheckFileName'] = request.check_file_name
-        if not UtilClient.is_unset(request.mini_program_name):
+        if not DaraCore.is_null(request.mini_program_name):
             query['MiniProgramName'] = request.mini_program_name
-        if not UtilClient.is_unset(request.platform):
+        if not DaraCore.is_null(request.platform):
             query['Platform'] = request.platform
-        if not UtilClient.is_unset(request.return_pic_count):
+        if not DaraCore.is_null(request.return_pic_count):
             query['ReturnPicCount'] = request.return_pic_count
-        if not UtilClient.is_unset(request.return_video_length):
+        if not DaraCore.is_null(request.return_video_length):
             query['ReturnVideoLength'] = request.return_video_length
-        if not UtilClient.is_unset(request.scene_name):
+        if not DaraCore.is_null(request.scene_name):
             query['SceneName'] = request.scene_name
-        if not UtilClient.is_unset(request.store_image):
+        if not DaraCore.is_null(request.store_image):
             query['StoreImage'] = request.store_image
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateAntCloudAuthScene',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateAntCloudAuthScene',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CreateAntCloudAuthSceneResponse(),
+        return DaraCore.from_map(
+            main_models.CreateAntCloudAuthSceneResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_ant_cloud_auth_scene_with_options_async(
         self,
-        request: cloudauth_20190307_models.CreateAntCloudAuthSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CreateAntCloudAuthSceneResponse:
-        """
-        @summary Create a financial-grade authentication scenario
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: CreateAntCloudAuthSceneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAntCloudAuthSceneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateAntCloudAuthSceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAntCloudAuthSceneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bind_mini_program):
+        if not DaraCore.is_null(request.bind_mini_program):
             query['BindMiniProgram'] = request.bind_mini_program
-        if not UtilClient.is_unset(request.check_file_body):
+        if not DaraCore.is_null(request.check_file_body):
             query['CheckFileBody'] = request.check_file_body
-        if not UtilClient.is_unset(request.check_file_name):
+        if not DaraCore.is_null(request.check_file_name):
             query['CheckFileName'] = request.check_file_name
-        if not UtilClient.is_unset(request.mini_program_name):
+        if not DaraCore.is_null(request.mini_program_name):
             query['MiniProgramName'] = request.mini_program_name
-        if not UtilClient.is_unset(request.platform):
+        if not DaraCore.is_null(request.platform):
             query['Platform'] = request.platform
-        if not UtilClient.is_unset(request.return_pic_count):
+        if not DaraCore.is_null(request.return_pic_count):
             query['ReturnPicCount'] = request.return_pic_count
-        if not UtilClient.is_unset(request.return_video_length):
+        if not DaraCore.is_null(request.return_video_length):
             query['ReturnVideoLength'] = request.return_video_length
-        if not UtilClient.is_unset(request.scene_name):
+        if not DaraCore.is_null(request.scene_name):
             query['SceneName'] = request.scene_name
-        if not UtilClient.is_unset(request.store_image):
+        if not DaraCore.is_null(request.store_image):
             query['StoreImage'] = request.store_image
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateAntCloudAuthScene',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateAntCloudAuthScene',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CreateAntCloudAuthSceneResponse(),
+        return DaraCore.from_map(
+            main_models.CreateAntCloudAuthSceneResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_ant_cloud_auth_scene(
         self,
-        request: cloudauth_20190307_models.CreateAntCloudAuthSceneRequest,
-    ) -> cloudauth_20190307_models.CreateAntCloudAuthSceneResponse:
-        """
-        @summary Create a financial-grade authentication scenario
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: CreateAntCloudAuthSceneRequest
-        @return: CreateAntCloudAuthSceneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateAntCloudAuthSceneRequest,
+    ) -> main_models.CreateAntCloudAuthSceneResponse:
+        runtime = RuntimeOptions()
         return self.create_ant_cloud_auth_scene_with_options(request, runtime)
 
     async def create_ant_cloud_auth_scene_async(
         self,
-        request: cloudauth_20190307_models.CreateAntCloudAuthSceneRequest,
-    ) -> cloudauth_20190307_models.CreateAntCloudAuthSceneResponse:
-        """
-        @summary Create a financial-grade authentication scenario
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: CreateAntCloudAuthSceneRequest
-        @return: CreateAntCloudAuthSceneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateAntCloudAuthSceneRequest,
+    ) -> main_models.CreateAntCloudAuthSceneResponse:
+        runtime = RuntimeOptions()
         return await self.create_ant_cloud_auth_scene_with_options_async(request, runtime)
 
     def create_auth_key_with_options(
         self,
-        request: cloudauth_20190307_models.CreateAuthKeyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CreateAuthKeyResponse:
-        """
-        @summary Call CreateAuthKey to get the authorization key, which is used for offline face recognition SDK activation.
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: CreateAuthKeyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAuthKeyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateAuthKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAuthKeyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.auth_years):
+        if not DaraCore.is_null(request.auth_years):
             query['AuthYears'] = request.auth_years
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.test):
+        if not DaraCore.is_null(request.test):
             query['Test'] = request.test
-        if not UtilClient.is_unset(request.user_device_id):
+        if not DaraCore.is_null(request.user_device_id):
             query['UserDeviceId'] = request.user_device_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateAuthKey',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateAuthKey',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CreateAuthKeyResponse(),
+        return DaraCore.from_map(
+            main_models.CreateAuthKeyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_auth_key_with_options_async(
         self,
-        request: cloudauth_20190307_models.CreateAuthKeyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CreateAuthKeyResponse:
-        """
-        @summary Call CreateAuthKey to get the authorization key, which is used for offline face recognition SDK activation.
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: CreateAuthKeyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAuthKeyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateAuthKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAuthKeyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.auth_years):
+        if not DaraCore.is_null(request.auth_years):
             query['AuthYears'] = request.auth_years
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.test):
+        if not DaraCore.is_null(request.test):
             query['Test'] = request.test
-        if not UtilClient.is_unset(request.user_device_id):
+        if not DaraCore.is_null(request.user_device_id):
             query['UserDeviceId'] = request.user_device_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateAuthKey',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateAuthKey',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CreateAuthKeyResponse(),
+        return DaraCore.from_map(
+            main_models.CreateAuthKeyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_auth_key(
         self,
-        request: cloudauth_20190307_models.CreateAuthKeyRequest,
-    ) -> cloudauth_20190307_models.CreateAuthKeyResponse:
-        """
-        @summary Call CreateAuthKey to get the authorization key, which is used for offline face recognition SDK activation.
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: CreateAuthKeyRequest
-        @return: CreateAuthKeyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateAuthKeyRequest,
+    ) -> main_models.CreateAuthKeyResponse:
+        runtime = RuntimeOptions()
         return self.create_auth_key_with_options(request, runtime)
 
     async def create_auth_key_async(
         self,
-        request: cloudauth_20190307_models.CreateAuthKeyRequest,
-    ) -> cloudauth_20190307_models.CreateAuthKeyResponse:
-        """
-        @summary Call CreateAuthKey to get the authorization key, which is used for offline face recognition SDK activation.
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: CreateAuthKeyRequest
-        @return: CreateAuthKeyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateAuthKeyRequest,
+    ) -> main_models.CreateAuthKeyResponse:
+        runtime = RuntimeOptions()
         return await self.create_auth_key_with_options_async(request, runtime)
 
     def create_cloudauthst_scene_with_options(
         self,
-        request: cloudauth_20190307_models.CreateCloudauthstSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CreateCloudauthstSceneResponse:
-        """
-        @summary Create Cloud Scene
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: CreateCloudauthstSceneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateCloudauthstSceneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateCloudauthstSceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCloudauthstSceneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_name):
+        if not DaraCore.is_null(request.scene_name):
             query['SceneName'] = request.scene_name
-        if not UtilClient.is_unset(request.store_image):
+        if not DaraCore.is_null(request.store_image):
             query['StoreImage'] = request.store_image
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateCloudauthstScene',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateCloudauthstScene',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CreateCloudauthstSceneResponse(),
+        return DaraCore.from_map(
+            main_models.CreateCloudauthstSceneResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_cloudauthst_scene_with_options_async(
         self,
-        request: cloudauth_20190307_models.CreateCloudauthstSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CreateCloudauthstSceneResponse:
-        """
-        @summary Create Cloud Scene
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: CreateCloudauthstSceneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateCloudauthstSceneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateCloudauthstSceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCloudauthstSceneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_name):
+        if not DaraCore.is_null(request.scene_name):
             query['SceneName'] = request.scene_name
-        if not UtilClient.is_unset(request.store_image):
+        if not DaraCore.is_null(request.store_image):
             query['StoreImage'] = request.store_image
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateCloudauthstScene',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateCloudauthstScene',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CreateCloudauthstSceneResponse(),
+        return DaraCore.from_map(
+            main_models.CreateCloudauthstSceneResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_cloudauthst_scene(
         self,
-        request: cloudauth_20190307_models.CreateCloudauthstSceneRequest,
-    ) -> cloudauth_20190307_models.CreateCloudauthstSceneResponse:
-        """
-        @summary Create Cloud Scene
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: CreateCloudauthstSceneRequest
-        @return: CreateCloudauthstSceneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateCloudauthstSceneRequest,
+    ) -> main_models.CreateCloudauthstSceneResponse:
+        runtime = RuntimeOptions()
         return self.create_cloudauthst_scene_with_options(request, runtime)
 
     async def create_cloudauthst_scene_async(
         self,
-        request: cloudauth_20190307_models.CreateCloudauthstSceneRequest,
-    ) -> cloudauth_20190307_models.CreateCloudauthstSceneResponse:
-        """
-        @summary Create Cloud Scene
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: CreateCloudauthstSceneRequest
-        @return: CreateCloudauthstSceneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateCloudauthstSceneRequest,
+    ) -> main_models.CreateCloudauthstSceneResponse:
+        runtime = RuntimeOptions()
         return await self.create_cloudauthst_scene_with_options_async(request, runtime)
 
     def create_scene_config_with_options(
         self,
-        request: cloudauth_20190307_models.CreateSceneConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CreateSceneConfigResponse:
-        """
-        @summary Create Scene Configuration
-        
-        @description Request Method: Supports sending requests via HTTPS POST.
-        Request Address: cloudauth.aliyuncs.com.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: CreateSceneConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateSceneConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateSceneConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSceneConfigResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.config):
+        if not DaraCore.is_null(request.config):
             body['config'] = request.config
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             body['sceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             body['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateSceneConfig',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateSceneConfig',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CreateSceneConfigResponse(),
+        return DaraCore.from_map(
+            main_models.CreateSceneConfigResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_scene_config_with_options_async(
         self,
-        request: cloudauth_20190307_models.CreateSceneConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CreateSceneConfigResponse:
-        """
-        @summary Create Scene Configuration
-        
-        @description Request Method: Supports sending requests via HTTPS POST.
-        Request Address: cloudauth.aliyuncs.com.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: CreateSceneConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateSceneConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateSceneConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSceneConfigResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.config):
+        if not DaraCore.is_null(request.config):
             body['config'] = request.config
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             body['sceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             body['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateSceneConfig',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateSceneConfig',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CreateSceneConfigResponse(),
+        return DaraCore.from_map(
+            main_models.CreateSceneConfigResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_scene_config(
         self,
-        request: cloudauth_20190307_models.CreateSceneConfigRequest,
-    ) -> cloudauth_20190307_models.CreateSceneConfigResponse:
-        """
-        @summary Create Scene Configuration
-        
-        @description Request Method: Supports sending requests via HTTPS POST.
-        Request Address: cloudauth.aliyuncs.com.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: CreateSceneConfigRequest
-        @return: CreateSceneConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateSceneConfigRequest,
+    ) -> main_models.CreateSceneConfigResponse:
+        runtime = RuntimeOptions()
         return self.create_scene_config_with_options(request, runtime)
 
     async def create_scene_config_async(
         self,
-        request: cloudauth_20190307_models.CreateSceneConfigRequest,
-    ) -> cloudauth_20190307_models.CreateSceneConfigResponse:
-        """
-        @summary Create Scene Configuration
-        
-        @description Request Method: Supports sending requests via HTTPS POST.
-        Request Address: cloudauth.aliyuncs.com.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: CreateSceneConfigRequest
-        @return: CreateSceneConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateSceneConfigRequest,
+    ) -> main_models.CreateSceneConfigResponse:
+        runtime = RuntimeOptions()
         return await self.create_scene_config_with_options_async(request, runtime)
 
     def create_verify_setting_with_options(
         self,
-        request: cloudauth_20190307_models.CreateVerifySettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CreateVerifySettingResponse:
-        """
-        @summary Call CreateVerifySetting to create a verification scenario configuration. This operation is equivalent to creating a new verification scenario on the console.
-        
-        @description Request Method: Only supports sending requests via HTTPS POST.
-        
-        @param request: CreateVerifySettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateVerifySettingResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateVerifySettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVerifySettingResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_name):
+        if not DaraCore.is_null(request.biz_name):
             query['BizName'] = request.biz_name
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.guide_step):
+        if not DaraCore.is_null(request.guide_step):
             query['GuideStep'] = request.guide_step
-        if not UtilClient.is_unset(request.privacy_step):
+        if not DaraCore.is_null(request.privacy_step):
             query['PrivacyStep'] = request.privacy_step
-        if not UtilClient.is_unset(request.result_step):
+        if not DaraCore.is_null(request.result_step):
             query['ResultStep'] = request.result_step
-        if not UtilClient.is_unset(request.solution):
+        if not DaraCore.is_null(request.solution):
             query['Solution'] = request.solution
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateVerifySetting',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateVerifySetting',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CreateVerifySettingResponse(),
+        return DaraCore.from_map(
+            main_models.CreateVerifySettingResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_verify_setting_with_options_async(
         self,
-        request: cloudauth_20190307_models.CreateVerifySettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CreateVerifySettingResponse:
-        """
-        @summary Call CreateVerifySetting to create a verification scenario configuration. This operation is equivalent to creating a new verification scenario on the console.
-        
-        @description Request Method: Only supports sending requests via HTTPS POST.
-        
-        @param request: CreateVerifySettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateVerifySettingResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateVerifySettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVerifySettingResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_name):
+        if not DaraCore.is_null(request.biz_name):
             query['BizName'] = request.biz_name
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.guide_step):
+        if not DaraCore.is_null(request.guide_step):
             query['GuideStep'] = request.guide_step
-        if not UtilClient.is_unset(request.privacy_step):
+        if not DaraCore.is_null(request.privacy_step):
             query['PrivacyStep'] = request.privacy_step
-        if not UtilClient.is_unset(request.result_step):
+        if not DaraCore.is_null(request.result_step):
             query['ResultStep'] = request.result_step
-        if not UtilClient.is_unset(request.solution):
+        if not DaraCore.is_null(request.solution):
             query['Solution'] = request.solution
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateVerifySetting',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateVerifySetting',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CreateVerifySettingResponse(),
+        return DaraCore.from_map(
+            main_models.CreateVerifySettingResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_verify_setting(
         self,
-        request: cloudauth_20190307_models.CreateVerifySettingRequest,
-    ) -> cloudauth_20190307_models.CreateVerifySettingResponse:
-        """
-        @summary Call CreateVerifySetting to create a verification scenario configuration. This operation is equivalent to creating a new verification scenario on the console.
-        
-        @description Request Method: Only supports sending requests via HTTPS POST.
-        
-        @param request: CreateVerifySettingRequest
-        @return: CreateVerifySettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateVerifySettingRequest,
+    ) -> main_models.CreateVerifySettingResponse:
+        runtime = RuntimeOptions()
         return self.create_verify_setting_with_options(request, runtime)
 
     async def create_verify_setting_async(
         self,
-        request: cloudauth_20190307_models.CreateVerifySettingRequest,
-    ) -> cloudauth_20190307_models.CreateVerifySettingResponse:
-        """
-        @summary Call CreateVerifySetting to create a verification scenario configuration. This operation is equivalent to creating a new verification scenario on the console.
-        
-        @description Request Method: Only supports sending requests via HTTPS POST.
-        
-        @param request: CreateVerifySettingRequest
-        @return: CreateVerifySettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateVerifySettingRequest,
+    ) -> main_models.CreateVerifySettingResponse:
+        runtime = RuntimeOptions()
         return await self.create_verify_setting_with_options_async(request, runtime)
 
     def create_whitelist_setting_with_options(
         self,
-        request: cloudauth_20190307_models.CreateWhitelistSettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CreateWhitelistSettingResponse:
-        """
-        @summary Create Whitelist
-        
-        @description Request Method: Only supports sending requests via HTTPS POST.
-        
-        @param request: CreateWhitelistSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateWhitelistSettingResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateWhitelistSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWhitelistSettingResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cert_no):
+        if not DaraCore.is_null(request.cert_no):
             query['CertNo'] = request.cert_no
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.remark):
+        if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.source_ip):
+        if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
-        if not UtilClient.is_unset(request.valid_day):
+        if not DaraCore.is_null(request.valid_day):
             query['ValidDay'] = request.valid_day
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateWhitelistSetting',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateWhitelistSetting',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CreateWhitelistSettingResponse(),
+        return DaraCore.from_map(
+            main_models.CreateWhitelistSettingResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_whitelist_setting_with_options_async(
         self,
-        request: cloudauth_20190307_models.CreateWhitelistSettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CreateWhitelistSettingResponse:
-        """
-        @summary Create Whitelist
-        
-        @description Request Method: Only supports sending requests via HTTPS POST.
-        
-        @param request: CreateWhitelistSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateWhitelistSettingResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateWhitelistSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateWhitelistSettingResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cert_no):
+        if not DaraCore.is_null(request.cert_no):
             query['CertNo'] = request.cert_no
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.remark):
+        if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.source_ip):
+        if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
-        if not UtilClient.is_unset(request.valid_day):
+        if not DaraCore.is_null(request.valid_day):
             query['ValidDay'] = request.valid_day
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateWhitelistSetting',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateWhitelistSetting',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CreateWhitelistSettingResponse(),
+        return DaraCore.from_map(
+            main_models.CreateWhitelistSettingResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_whitelist_setting(
         self,
-        request: cloudauth_20190307_models.CreateWhitelistSettingRequest,
-    ) -> cloudauth_20190307_models.CreateWhitelistSettingResponse:
-        """
-        @summary Create Whitelist
-        
-        @description Request Method: Only supports sending requests via HTTPS POST.
-        
-        @param request: CreateWhitelistSettingRequest
-        @return: CreateWhitelistSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateWhitelistSettingRequest,
+    ) -> main_models.CreateWhitelistSettingResponse:
+        runtime = RuntimeOptions()
         return self.create_whitelist_setting_with_options(request, runtime)
 
     async def create_whitelist_setting_async(
         self,
-        request: cloudauth_20190307_models.CreateWhitelistSettingRequest,
-    ) -> cloudauth_20190307_models.CreateWhitelistSettingResponse:
-        """
-        @summary Create Whitelist
-        
-        @description Request Method: Only supports sending requests via HTTPS POST.
-        
-        @param request: CreateWhitelistSettingRequest
-        @return: CreateWhitelistSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateWhitelistSettingRequest,
+    ) -> main_models.CreateWhitelistSettingResponse:
+        runtime = RuntimeOptions()
         return await self.create_whitelist_setting_with_options_async(request, runtime)
 
     def credential_product_verify_v2with_options(
         self,
-        request: cloudauth_20190307_models.CredentialProductVerifyV2Request,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CredentialProductVerifyV2Response:
-        """
-        @summary Product Credential Verification
-        
-        @description Upload e-commerce product images to perform tampering, quality (clarity), and similar image detection, returning risk labels and scores.
-        
-        @param request: CredentialProductVerifyV2Request
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CredentialProductVerifyV2Response
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CredentialProductVerifyV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.CredentialProductVerifyV2Response:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cred_name):
+        if not DaraCore.is_null(request.cred_name):
             query['CredName'] = request.cred_name
-        if not UtilClient.is_unset(request.cred_type):
+        if not DaraCore.is_null(request.cred_type):
             query['CredType'] = request.cred_type
-        if not UtilClient.is_unset(request.image_url):
+        if not DaraCore.is_null(request.image_url):
             query['ImageUrl'] = request.image_url
-        if not UtilClient.is_unset(request.merchant_id):
+        if not DaraCore.is_null(request.merchant_id):
             query['MerchantId'] = request.merchant_id
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
         body = {}
-        if not UtilClient.is_unset(request.image_file):
+        if not DaraCore.is_null(request.image_file):
             body['ImageFile'] = request.image_file
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CredentialProductVerifyV2',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CredentialProductVerifyV2',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CredentialProductVerifyV2Response(),
+        return DaraCore.from_map(
+            main_models.CredentialProductVerifyV2Response(),
             self.call_api(params, req, runtime)
         )
 
     async def credential_product_verify_v2with_options_async(
         self,
-        request: cloudauth_20190307_models.CredentialProductVerifyV2Request,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CredentialProductVerifyV2Response:
-        """
-        @summary Product Credential Verification
-        
-        @description Upload e-commerce product images to perform tampering, quality (clarity), and similar image detection, returning risk labels and scores.
-        
-        @param request: CredentialProductVerifyV2Request
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CredentialProductVerifyV2Response
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CredentialProductVerifyV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.CredentialProductVerifyV2Response:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cred_name):
+        if not DaraCore.is_null(request.cred_name):
             query['CredName'] = request.cred_name
-        if not UtilClient.is_unset(request.cred_type):
+        if not DaraCore.is_null(request.cred_type):
             query['CredType'] = request.cred_type
-        if not UtilClient.is_unset(request.image_url):
+        if not DaraCore.is_null(request.image_url):
             query['ImageUrl'] = request.image_url
-        if not UtilClient.is_unset(request.merchant_id):
+        if not DaraCore.is_null(request.merchant_id):
             query['MerchantId'] = request.merchant_id
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
         body = {}
-        if not UtilClient.is_unset(request.image_file):
+        if not DaraCore.is_null(request.image_file):
             body['ImageFile'] = request.image_file
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CredentialProductVerifyV2',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CredentialProductVerifyV2',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CredentialProductVerifyV2Response(),
+        return DaraCore.from_map(
+            main_models.CredentialProductVerifyV2Response(),
             await self.call_api_async(params, req, runtime)
         )
 
     def credential_product_verify_v2(
         self,
-        request: cloudauth_20190307_models.CredentialProductVerifyV2Request,
-    ) -> cloudauth_20190307_models.CredentialProductVerifyV2Response:
-        """
-        @summary Product Credential Verification
-        
-        @description Upload e-commerce product images to perform tampering, quality (clarity), and similar image detection, returning risk labels and scores.
-        
-        @param request: CredentialProductVerifyV2Request
-        @return: CredentialProductVerifyV2Response
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CredentialProductVerifyV2Request,
+    ) -> main_models.CredentialProductVerifyV2Response:
+        runtime = RuntimeOptions()
         return self.credential_product_verify_v2with_options(request, runtime)
 
     async def credential_product_verify_v2_async(
         self,
-        request: cloudauth_20190307_models.CredentialProductVerifyV2Request,
-    ) -> cloudauth_20190307_models.CredentialProductVerifyV2Response:
-        """
-        @summary Product Credential Verification
-        
-        @description Upload e-commerce product images to perform tampering, quality (clarity), and similar image detection, returning risk labels and scores.
-        
-        @param request: CredentialProductVerifyV2Request
-        @return: CredentialProductVerifyV2Response
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CredentialProductVerifyV2Request,
+    ) -> main_models.CredentialProductVerifyV2Response:
+        runtime = RuntimeOptions()
         return await self.credential_product_verify_v2with_options_async(request, runtime)
 
     def credential_product_verify_v2advance(
         self,
-        request: cloudauth_20190307_models.CredentialProductVerifyV2AdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CredentialProductVerifyV2Response:
+        request: main_models.CredentialProductVerifyV2AdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CredentialProductVerifyV2Response:
         # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
         credential_model = self._credential.get_credential()
         access_key_id = credential_model.access_key_id
         access_key_secret = credential_model.access_key_secret
         security_token = credential_model.security_token
         credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
             open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
+        if DaraCore.is_null(credential_type):
             credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
         )
         auth_client = OpenApiClient(auth_config)
         auth_request = {
             'Product': 'Cloudauth',
             'RegionId': self._region_id
         }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
         )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
         auth_response = {}
-        file_obj = file_form_models.FileField()
+        file_obj = FileField()
         oss_header = {}
         tmp_body = {}
         use_accelerate = False
         auth_response_body = {}
-        credential_product_verify_v2req = cloudauth_20190307_models.CredentialProductVerifyV2Request()
-        OpenApiUtilClient.convert(request, credential_product_verify_v2req)
-        if not UtilClient.is_unset(request.image_file_object):
-            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.image_file_object,
-                content_type=''
+        credential_product_verify_v2req = main_models.CredentialProductVerifyV2Request()
+        Utils.convert(request, credential_product_verify_v2req)
+        if not DaraCore.is_null(request.image_file_object):
+            auth_response = auth_client.call_api(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.image_file_object,
+                content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -2197,75 +1614,73 @@ class Client(OpenApiClient):
 
     async def credential_product_verify_v2advance_async(
         self,
-        request: cloudauth_20190307_models.CredentialProductVerifyV2AdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CredentialProductVerifyV2Response:
+        request: main_models.CredentialProductVerifyV2AdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CredentialProductVerifyV2Response:
         # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
         credential_model = await self._credential.get_credential_async()
         access_key_id = credential_model.access_key_id
         access_key_secret = credential_model.access_key_secret
         security_token = credential_model.security_token
         credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
             open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
+        if DaraCore.is_null(credential_type):
             credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
         )
         auth_client = OpenApiClient(auth_config)
         auth_request = {
             'Product': 'Cloudauth',
             'RegionId': self._region_id
         }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
         )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
         auth_response = {}
-        file_obj = file_form_models.FileField()
+        file_obj = FileField()
         oss_header = {}
         tmp_body = {}
         use_accelerate = False
         auth_response_body = {}
-        credential_product_verify_v2req = cloudauth_20190307_models.CredentialProductVerifyV2Request()
-        OpenApiUtilClient.convert(request, credential_product_verify_v2req)
-        if not UtilClient.is_unset(request.image_file_object):
-            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.image_file_object,
-                content_type=''
+        credential_product_verify_v2req = main_models.CredentialProductVerifyV2Request()
+        Utils.convert(request, credential_product_verify_v2req)
+        if not DaraCore.is_null(request.image_file_object):
+            auth_response = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.image_file_object,
+                content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -2280,407 +1695,345 @@ class Client(OpenApiClient):
 
     def credential_verify_with_options(
         self,
-        tmp_req: cloudauth_20190307_models.CredentialVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CredentialVerifyResponse:
-        """
-        @summary Credential verification
-        
-        @param tmp_req: CredentialVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CredentialVerifyResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cloudauth_20190307_models.CredentialVerifyShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.merchant_detail):
-            request.merchant_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.merchant_detail, 'MerchantDetail', 'json')
+        tmp_req: main_models.CredentialVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CredentialVerifyResponse:
+        tmp_req.validate()
+        request = main_models.CredentialVerifyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.merchant_detail):
+            request.merchant_detail_shrink = Utils.array_to_string_with_specified_style(tmp_req.merchant_detail, 'MerchantDetail', 'json')
         query = {}
-        if not UtilClient.is_unset(request.cert_num):
+        if not DaraCore.is_null(request.cert_num):
             query['CertNum'] = request.cert_num
-        if not UtilClient.is_unset(request.cred_name):
+        if not DaraCore.is_null(request.cred_name):
             query['CredName'] = request.cred_name
-        if not UtilClient.is_unset(request.cred_type):
+        if not DaraCore.is_null(request.cred_type):
             query['CredType'] = request.cred_type
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             query['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.image_url):
+        if not DaraCore.is_null(request.image_url):
             query['ImageUrl'] = request.image_url
-        if not UtilClient.is_unset(request.is_check):
+        if not DaraCore.is_null(request.is_check):
             query['IsCheck'] = request.is_check
-        if not UtilClient.is_unset(request.is_ocr):
+        if not DaraCore.is_null(request.is_ocr):
             query['IsOCR'] = request.is_ocr
-        if not UtilClient.is_unset(request.merchant_detail_shrink):
+        if not DaraCore.is_null(request.merchant_detail_shrink):
             query['MerchantDetail'] = request.merchant_detail_shrink
-        if not UtilClient.is_unset(request.merchant_id):
+        if not DaraCore.is_null(request.merchant_id):
             query['MerchantId'] = request.merchant_id
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.prompt):
+        if not DaraCore.is_null(request.prompt):
             query['Prompt'] = request.prompt
-        if not UtilClient.is_unset(request.prompt_model):
+        if not DaraCore.is_null(request.prompt_model):
             query['PromptModel'] = request.prompt_model
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             query['UserName'] = request.user_name
         body = {}
-        if not UtilClient.is_unset(request.image_context):
+        if not DaraCore.is_null(request.image_context):
             body['ImageContext'] = request.image_context
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CredentialVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CredentialVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CredentialVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.CredentialVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def credential_verify_with_options_async(
         self,
-        tmp_req: cloudauth_20190307_models.CredentialVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CredentialVerifyResponse:
-        """
-        @summary Credential verification
-        
-        @param tmp_req: CredentialVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CredentialVerifyResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cloudauth_20190307_models.CredentialVerifyShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.merchant_detail):
-            request.merchant_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.merchant_detail, 'MerchantDetail', 'json')
+        tmp_req: main_models.CredentialVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CredentialVerifyResponse:
+        tmp_req.validate()
+        request = main_models.CredentialVerifyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.merchant_detail):
+            request.merchant_detail_shrink = Utils.array_to_string_with_specified_style(tmp_req.merchant_detail, 'MerchantDetail', 'json')
         query = {}
-        if not UtilClient.is_unset(request.cert_num):
+        if not DaraCore.is_null(request.cert_num):
             query['CertNum'] = request.cert_num
-        if not UtilClient.is_unset(request.cred_name):
+        if not DaraCore.is_null(request.cred_name):
             query['CredName'] = request.cred_name
-        if not UtilClient.is_unset(request.cred_type):
+        if not DaraCore.is_null(request.cred_type):
             query['CredType'] = request.cred_type
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             query['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.image_url):
+        if not DaraCore.is_null(request.image_url):
             query['ImageUrl'] = request.image_url
-        if not UtilClient.is_unset(request.is_check):
+        if not DaraCore.is_null(request.is_check):
             query['IsCheck'] = request.is_check
-        if not UtilClient.is_unset(request.is_ocr):
+        if not DaraCore.is_null(request.is_ocr):
             query['IsOCR'] = request.is_ocr
-        if not UtilClient.is_unset(request.merchant_detail_shrink):
+        if not DaraCore.is_null(request.merchant_detail_shrink):
             query['MerchantDetail'] = request.merchant_detail_shrink
-        if not UtilClient.is_unset(request.merchant_id):
+        if not DaraCore.is_null(request.merchant_id):
             query['MerchantId'] = request.merchant_id
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.prompt):
+        if not DaraCore.is_null(request.prompt):
             query['Prompt'] = request.prompt
-        if not UtilClient.is_unset(request.prompt_model):
+        if not DaraCore.is_null(request.prompt_model):
             query['PromptModel'] = request.prompt_model
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             query['UserName'] = request.user_name
         body = {}
-        if not UtilClient.is_unset(request.image_context):
+        if not DaraCore.is_null(request.image_context):
             body['ImageContext'] = request.image_context
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CredentialVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CredentialVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CredentialVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.CredentialVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def credential_verify(
         self,
-        request: cloudauth_20190307_models.CredentialVerifyRequest,
-    ) -> cloudauth_20190307_models.CredentialVerifyResponse:
-        """
-        @summary Credential verification
-        
-        @param request: CredentialVerifyRequest
-        @return: CredentialVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CredentialVerifyRequest,
+    ) -> main_models.CredentialVerifyResponse:
+        runtime = RuntimeOptions()
         return self.credential_verify_with_options(request, runtime)
 
     async def credential_verify_async(
         self,
-        request: cloudauth_20190307_models.CredentialVerifyRequest,
-    ) -> cloudauth_20190307_models.CredentialVerifyResponse:
-        """
-        @summary Credential verification
-        
-        @param request: CredentialVerifyRequest
-        @return: CredentialVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CredentialVerifyRequest,
+    ) -> main_models.CredentialVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.credential_verify_with_options_async(request, runtime)
 
     def credential_verify_v2with_options(
         self,
-        tmp_req: cloudauth_20190307_models.CredentialVerifyV2Request,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CredentialVerifyV2Response:
-        """
-        @summary Credential Verification
-        
-        @description Input credential image information, perform image tampering and forgery detection, and image semantic understanding. Return the risk detection results.
-        
-        @param tmp_req: CredentialVerifyV2Request
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CredentialVerifyV2Response
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cloudauth_20190307_models.CredentialVerifyV2ShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.merchant_detail):
-            request.merchant_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.merchant_detail, 'MerchantDetail', 'json')
+        tmp_req: main_models.CredentialVerifyV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.CredentialVerifyV2Response:
+        tmp_req.validate()
+        request = main_models.CredentialVerifyV2ShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.merchant_detail):
+            request.merchant_detail_shrink = Utils.array_to_string_with_specified_style(tmp_req.merchant_detail, 'MerchantDetail', 'json')
         query = {}
-        if not UtilClient.is_unset(request.cert_num):
+        if not DaraCore.is_null(request.cert_num):
             query['CertNum'] = request.cert_num
-        if not UtilClient.is_unset(request.cred_name):
+        if not DaraCore.is_null(request.cred_name):
             query['CredName'] = request.cred_name
-        if not UtilClient.is_unset(request.cred_type):
+        if not DaraCore.is_null(request.cred_type):
             query['CredType'] = request.cred_type
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             query['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.image_url):
+        if not DaraCore.is_null(request.image_url):
             query['ImageUrl'] = request.image_url
-        if not UtilClient.is_unset(request.is_check):
+        if not DaraCore.is_null(request.is_check):
             query['IsCheck'] = request.is_check
-        if not UtilClient.is_unset(request.is_ocr):
+        if not DaraCore.is_null(request.is_ocr):
             query['IsOcr'] = request.is_ocr
-        if not UtilClient.is_unset(request.merchant_detail_shrink):
+        if not DaraCore.is_null(request.merchant_detail_shrink):
             query['MerchantDetail'] = request.merchant_detail_shrink
-        if not UtilClient.is_unset(request.merchant_id):
+        if not DaraCore.is_null(request.merchant_id):
             query['MerchantId'] = request.merchant_id
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.prompt):
+        if not DaraCore.is_null(request.prompt):
             query['Prompt'] = request.prompt
-        if not UtilClient.is_unset(request.prompt_model):
+        if not DaraCore.is_null(request.prompt_model):
             query['PromptModel'] = request.prompt_model
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             query['UserName'] = request.user_name
         body = {}
-        if not UtilClient.is_unset(request.image_context):
+        if not DaraCore.is_null(request.image_context):
             body['ImageContext'] = request.image_context
-        if not UtilClient.is_unset(request.image_file):
+        if not DaraCore.is_null(request.image_file):
             body['ImageFile'] = request.image_file
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CredentialVerifyV2',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CredentialVerifyV2',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CredentialVerifyV2Response(),
+        return DaraCore.from_map(
+            main_models.CredentialVerifyV2Response(),
             self.call_api(params, req, runtime)
         )
 
     async def credential_verify_v2with_options_async(
         self,
-        tmp_req: cloudauth_20190307_models.CredentialVerifyV2Request,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CredentialVerifyV2Response:
-        """
-        @summary Credential Verification
-        
-        @description Input credential image information, perform image tampering and forgery detection, and image semantic understanding. Return the risk detection results.
-        
-        @param tmp_req: CredentialVerifyV2Request
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CredentialVerifyV2Response
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cloudauth_20190307_models.CredentialVerifyV2ShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.merchant_detail):
-            request.merchant_detail_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.merchant_detail, 'MerchantDetail', 'json')
+        tmp_req: main_models.CredentialVerifyV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.CredentialVerifyV2Response:
+        tmp_req.validate()
+        request = main_models.CredentialVerifyV2ShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.merchant_detail):
+            request.merchant_detail_shrink = Utils.array_to_string_with_specified_style(tmp_req.merchant_detail, 'MerchantDetail', 'json')
         query = {}
-        if not UtilClient.is_unset(request.cert_num):
+        if not DaraCore.is_null(request.cert_num):
             query['CertNum'] = request.cert_num
-        if not UtilClient.is_unset(request.cred_name):
+        if not DaraCore.is_null(request.cred_name):
             query['CredName'] = request.cred_name
-        if not UtilClient.is_unset(request.cred_type):
+        if not DaraCore.is_null(request.cred_type):
             query['CredType'] = request.cred_type
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             query['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.image_url):
+        if not DaraCore.is_null(request.image_url):
             query['ImageUrl'] = request.image_url
-        if not UtilClient.is_unset(request.is_check):
+        if not DaraCore.is_null(request.is_check):
             query['IsCheck'] = request.is_check
-        if not UtilClient.is_unset(request.is_ocr):
+        if not DaraCore.is_null(request.is_ocr):
             query['IsOcr'] = request.is_ocr
-        if not UtilClient.is_unset(request.merchant_detail_shrink):
+        if not DaraCore.is_null(request.merchant_detail_shrink):
             query['MerchantDetail'] = request.merchant_detail_shrink
-        if not UtilClient.is_unset(request.merchant_id):
+        if not DaraCore.is_null(request.merchant_id):
             query['MerchantId'] = request.merchant_id
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.prompt):
+        if not DaraCore.is_null(request.prompt):
             query['Prompt'] = request.prompt
-        if not UtilClient.is_unset(request.prompt_model):
+        if not DaraCore.is_null(request.prompt_model):
             query['PromptModel'] = request.prompt_model
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             query['UserName'] = request.user_name
         body = {}
-        if not UtilClient.is_unset(request.image_context):
+        if not DaraCore.is_null(request.image_context):
             body['ImageContext'] = request.image_context
-        if not UtilClient.is_unset(request.image_file):
+        if not DaraCore.is_null(request.image_file):
             body['ImageFile'] = request.image_file
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CredentialVerifyV2',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CredentialVerifyV2',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.CredentialVerifyV2Response(),
+        return DaraCore.from_map(
+            main_models.CredentialVerifyV2Response(),
             await self.call_api_async(params, req, runtime)
         )
 
     def credential_verify_v2(
         self,
-        request: cloudauth_20190307_models.CredentialVerifyV2Request,
-    ) -> cloudauth_20190307_models.CredentialVerifyV2Response:
-        """
-        @summary Credential Verification
-        
-        @description Input credential image information, perform image tampering and forgery detection, and image semantic understanding. Return the risk detection results.
-        
-        @param request: CredentialVerifyV2Request
-        @return: CredentialVerifyV2Response
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CredentialVerifyV2Request,
+    ) -> main_models.CredentialVerifyV2Response:
+        runtime = RuntimeOptions()
         return self.credential_verify_v2with_options(request, runtime)
 
     async def credential_verify_v2_async(
         self,
-        request: cloudauth_20190307_models.CredentialVerifyV2Request,
-    ) -> cloudauth_20190307_models.CredentialVerifyV2Response:
-        """
-        @summary Credential Verification
-        
-        @description Input credential image information, perform image tampering and forgery detection, and image semantic understanding. Return the risk detection results.
-        
-        @param request: CredentialVerifyV2Request
-        @return: CredentialVerifyV2Response
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CredentialVerifyV2Request,
+    ) -> main_models.CredentialVerifyV2Response:
+        runtime = RuntimeOptions()
         return await self.credential_verify_v2with_options_async(request, runtime)
 
     def credential_verify_v2advance(
         self,
-        request: cloudauth_20190307_models.CredentialVerifyV2AdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CredentialVerifyV2Response:
+        request: main_models.CredentialVerifyV2AdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CredentialVerifyV2Response:
         # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
         credential_model = self._credential.get_credential()
         access_key_id = credential_model.access_key_id
         access_key_secret = credential_model.access_key_secret
         security_token = credential_model.security_token
         credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
             open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
+        if DaraCore.is_null(credential_type):
             credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
         )
         auth_client = OpenApiClient(auth_config)
         auth_request = {
             'Product': 'Cloudauth',
             'RegionId': self._region_id
         }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
         )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
         auth_response = {}
-        file_obj = file_form_models.FileField()
+        file_obj = FileField()
         oss_header = {}
         tmp_body = {}
         use_accelerate = False
         auth_response_body = {}
-        credential_verify_v2req = cloudauth_20190307_models.CredentialVerifyV2Request()
-        OpenApiUtilClient.convert(request, credential_verify_v2req)
-        if not UtilClient.is_unset(request.image_file_object):
-            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.image_file_object,
-                content_type=''
+        credential_verify_v2req = main_models.CredentialVerifyV2Request()
+        Utils.convert(request, credential_verify_v2req)
+        if not DaraCore.is_null(request.image_file_object):
+            auth_response = auth_client.call_api(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.image_file_object,
+                content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -2695,75 +2048,73 @@ class Client(OpenApiClient):
 
     async def credential_verify_v2advance_async(
         self,
-        request: cloudauth_20190307_models.CredentialVerifyV2AdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.CredentialVerifyV2Response:
+        request: main_models.CredentialVerifyV2AdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CredentialVerifyV2Response:
         # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
         credential_model = await self._credential.get_credential_async()
         access_key_id = credential_model.access_key_id
         access_key_secret = credential_model.access_key_secret
         security_token = credential_model.security_token
         credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
             open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
+        if DaraCore.is_null(credential_type):
             credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
         )
         auth_client = OpenApiClient(auth_config)
         auth_request = {
             'Product': 'Cloudauth',
             'RegionId': self._region_id
         }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
         )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
         auth_response = {}
-        file_obj = file_form_models.FileField()
+        file_obj = FileField()
         oss_header = {}
         tmp_body = {}
         use_accelerate = False
         auth_response_body = {}
-        credential_verify_v2req = cloudauth_20190307_models.CredentialVerifyV2Request()
-        OpenApiUtilClient.convert(request, credential_verify_v2req)
-        if not UtilClient.is_unset(request.image_file_object):
-            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.image_file_object,
-                content_type=''
+        credential_verify_v2req = main_models.CredentialVerifyV2Request()
+        Utils.convert(request, credential_verify_v2req)
+        if not DaraCore.is_null(request.image_file_object):
+            auth_response = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.image_file_object,
+                content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -2778,5823 +2129,4035 @@ class Client(OpenApiClient):
 
     def deepfake_detect_with_options(
         self,
-        request: cloudauth_20190307_models.DeepfakeDetectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeepfakeDetectResponse:
-        """
-        @summary Face Credential Verification Service
-        
-        @description > The Face Deepfake Detection API is currently in the free public beta stage, which will end on August 30, 2024, at 23:59:59. During the public beta, the QPS (Queries Per Second) cannot exceed 3 times/second.
-        - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: DeepfakeDetectRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeepfakeDetectResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeepfakeDetectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeepfakeDetectResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.face_input_type):
+        if not DaraCore.is_null(request.face_input_type):
             query['FaceInputType'] = request.face_input_type
-        if not UtilClient.is_unset(request.face_url):
+        if not DaraCore.is_null(request.face_url):
             query['FaceUrl'] = request.face_url
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             query['OuterOrderNo'] = request.outer_order_no
         body = {}
-        if not UtilClient.is_unset(request.face_base_64):
+        if not DaraCore.is_null(request.face_base_64):
             body['FaceBase64'] = request.face_base_64
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DeepfakeDetect',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeepfakeDetect',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeepfakeDetectResponse(),
+        return DaraCore.from_map(
+            main_models.DeepfakeDetectResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def deepfake_detect_with_options_async(
         self,
-        request: cloudauth_20190307_models.DeepfakeDetectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeepfakeDetectResponse:
-        """
-        @summary Face Credential Verification Service
-        
-        @description > The Face Deepfake Detection API is currently in the free public beta stage, which will end on August 30, 2024, at 23:59:59. During the public beta, the QPS (Queries Per Second) cannot exceed 3 times/second.
-        - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: DeepfakeDetectRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeepfakeDetectResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeepfakeDetectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeepfakeDetectResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.face_input_type):
+        if not DaraCore.is_null(request.face_input_type):
             query['FaceInputType'] = request.face_input_type
-        if not UtilClient.is_unset(request.face_url):
+        if not DaraCore.is_null(request.face_url):
             query['FaceUrl'] = request.face_url
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             query['OuterOrderNo'] = request.outer_order_no
         body = {}
-        if not UtilClient.is_unset(request.face_base_64):
+        if not DaraCore.is_null(request.face_base_64):
             body['FaceBase64'] = request.face_base_64
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DeepfakeDetect',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeepfakeDetect',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeepfakeDetectResponse(),
+        return DaraCore.from_map(
+            main_models.DeepfakeDetectResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def deepfake_detect(
         self,
-        request: cloudauth_20190307_models.DeepfakeDetectRequest,
-    ) -> cloudauth_20190307_models.DeepfakeDetectResponse:
-        """
-        @summary Face Credential Verification Service
-        
-        @description > The Face Deepfake Detection API is currently in the free public beta stage, which will end on August 30, 2024, at 23:59:59. During the public beta, the QPS (Queries Per Second) cannot exceed 3 times/second.
-        - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: DeepfakeDetectRequest
-        @return: DeepfakeDetectResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeepfakeDetectRequest,
+    ) -> main_models.DeepfakeDetectResponse:
+        runtime = RuntimeOptions()
         return self.deepfake_detect_with_options(request, runtime)
 
     async def deepfake_detect_async(
         self,
-        request: cloudauth_20190307_models.DeepfakeDetectRequest,
-    ) -> cloudauth_20190307_models.DeepfakeDetectResponse:
-        """
-        @summary Face Credential Verification Service
-        
-        @description > The Face Deepfake Detection API is currently in the free public beta stage, which will end on August 30, 2024, at 23:59:59. During the public beta, the QPS (Queries Per Second) cannot exceed 3 times/second.
-        - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: DeepfakeDetectRequest
-        @return: DeepfakeDetectResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeepfakeDetectRequest,
+    ) -> main_models.DeepfakeDetectResponse:
+        runtime = RuntimeOptions()
         return await self.deepfake_detect_with_options_async(request, runtime)
 
     def delete_all_customize_flow_strategy_with_options(
         self,
-        request: cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyResponse:
-        """
-        @summary Delete All Custom Flow Control Strategies
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: DeleteAllCustomizeFlowStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAllCustomizeFlowStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteAllCustomizeFlowStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAllCustomizeFlowStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteAllCustomizeFlowStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteAllCustomizeFlowStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteAllCustomizeFlowStrategyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_all_customize_flow_strategy_with_options_async(
         self,
-        request: cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyResponse:
-        """
-        @summary Delete All Custom Flow Control Strategies
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: DeleteAllCustomizeFlowStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAllCustomizeFlowStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteAllCustomizeFlowStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAllCustomizeFlowStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteAllCustomizeFlowStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteAllCustomizeFlowStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteAllCustomizeFlowStrategyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_all_customize_flow_strategy(
         self,
-        request: cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyRequest,
-    ) -> cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyResponse:
-        """
-        @summary Delete All Custom Flow Control Strategies
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: DeleteAllCustomizeFlowStrategyRequest
-        @return: DeleteAllCustomizeFlowStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteAllCustomizeFlowStrategyRequest,
+    ) -> main_models.DeleteAllCustomizeFlowStrategyResponse:
+        runtime = RuntimeOptions()
         return self.delete_all_customize_flow_strategy_with_options(request, runtime)
 
     async def delete_all_customize_flow_strategy_async(
         self,
-        request: cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyRequest,
-    ) -> cloudauth_20190307_models.DeleteAllCustomizeFlowStrategyResponse:
-        """
-        @summary Delete All Custom Flow Control Strategies
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: DeleteAllCustomizeFlowStrategyRequest
-        @return: DeleteAllCustomizeFlowStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteAllCustomizeFlowStrategyRequest,
+    ) -> main_models.DeleteAllCustomizeFlowStrategyResponse:
+        runtime = RuntimeOptions()
         return await self.delete_all_customize_flow_strategy_with_options_async(request, runtime)
 
     def delete_ant_cloud_auth_scene_with_options(
         self,
-        request: cloudauth_20190307_models.DeleteAntCloudAuthSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteAntCloudAuthSceneResponse:
-        """
-        @summary Delete Watermark Scene
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DeleteAntCloudAuthSceneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAntCloudAuthSceneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteAntCloudAuthSceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAntCloudAuthSceneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteAntCloudAuthScene',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteAntCloudAuthScene',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteAntCloudAuthSceneResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteAntCloudAuthSceneResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_ant_cloud_auth_scene_with_options_async(
         self,
-        request: cloudauth_20190307_models.DeleteAntCloudAuthSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteAntCloudAuthSceneResponse:
-        """
-        @summary Delete Watermark Scene
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DeleteAntCloudAuthSceneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAntCloudAuthSceneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteAntCloudAuthSceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAntCloudAuthSceneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteAntCloudAuthScene',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteAntCloudAuthScene',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteAntCloudAuthSceneResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteAntCloudAuthSceneResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_ant_cloud_auth_scene(
         self,
-        request: cloudauth_20190307_models.DeleteAntCloudAuthSceneRequest,
-    ) -> cloudauth_20190307_models.DeleteAntCloudAuthSceneResponse:
-        """
-        @summary Delete Watermark Scene
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DeleteAntCloudAuthSceneRequest
-        @return: DeleteAntCloudAuthSceneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteAntCloudAuthSceneRequest,
+    ) -> main_models.DeleteAntCloudAuthSceneResponse:
+        runtime = RuntimeOptions()
         return self.delete_ant_cloud_auth_scene_with_options(request, runtime)
 
     async def delete_ant_cloud_auth_scene_async(
         self,
-        request: cloudauth_20190307_models.DeleteAntCloudAuthSceneRequest,
-    ) -> cloudauth_20190307_models.DeleteAntCloudAuthSceneResponse:
-        """
-        @summary Delete Watermark Scene
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DeleteAntCloudAuthSceneRequest
-        @return: DeleteAntCloudAuthSceneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteAntCloudAuthSceneRequest,
+    ) -> main_models.DeleteAntCloudAuthSceneResponse:
+        runtime = RuntimeOptions()
         return await self.delete_ant_cloud_auth_scene_with_options_async(request, runtime)
 
     def delete_black_list_strategy_with_options(
         self,
-        request: cloudauth_20190307_models.DeleteBlackListStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteBlackListStrategyResponse:
-        """
-        @summary Delete Black and White List Policy
-        
-        @description Request Method: Only supports sending requests via HTTPS POST method.
-        
-        @param request: DeleteBlackListStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteBlackListStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteBlackListStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteBlackListStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.product_name):
+        if not DaraCore.is_null(request.product_name):
             query['ProductName'] = request.product_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteBlackListStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteBlackListStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteBlackListStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteBlackListStrategyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_black_list_strategy_with_options_async(
         self,
-        request: cloudauth_20190307_models.DeleteBlackListStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteBlackListStrategyResponse:
-        """
-        @summary Delete Black and White List Policy
-        
-        @description Request Method: Only supports sending requests via HTTPS POST method.
-        
-        @param request: DeleteBlackListStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteBlackListStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteBlackListStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteBlackListStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.product_name):
+        if not DaraCore.is_null(request.product_name):
             query['ProductName'] = request.product_name
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteBlackListStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteBlackListStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteBlackListStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteBlackListStrategyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_black_list_strategy(
         self,
-        request: cloudauth_20190307_models.DeleteBlackListStrategyRequest,
-    ) -> cloudauth_20190307_models.DeleteBlackListStrategyResponse:
-        """
-        @summary Delete Black and White List Policy
-        
-        @description Request Method: Only supports sending requests via HTTPS POST method.
-        
-        @param request: DeleteBlackListStrategyRequest
-        @return: DeleteBlackListStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteBlackListStrategyRequest,
+    ) -> main_models.DeleteBlackListStrategyResponse:
+        runtime = RuntimeOptions()
         return self.delete_black_list_strategy_with_options(request, runtime)
 
     async def delete_black_list_strategy_async(
         self,
-        request: cloudauth_20190307_models.DeleteBlackListStrategyRequest,
-    ) -> cloudauth_20190307_models.DeleteBlackListStrategyResponse:
-        """
-        @summary Delete Black and White List Policy
-        
-        @description Request Method: Only supports sending requests via HTTPS POST method.
-        
-        @param request: DeleteBlackListStrategyRequest
-        @return: DeleteBlackListStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteBlackListStrategyRequest,
+    ) -> main_models.DeleteBlackListStrategyResponse:
+        runtime = RuntimeOptions()
         return await self.delete_black_list_strategy_with_options_async(request, runtime)
 
     def delete_cloudauthst_scene_with_options(
         self,
-        request: cloudauth_20190307_models.DeleteCloudauthstSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteCloudauthstSceneResponse:
-        """
-        @summary Delete Cloud Scene
-        
-        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: DeleteCloudauthstSceneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteCloudauthstSceneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteCloudauthstSceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCloudauthstSceneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteCloudauthstScene',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteCloudauthstScene',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteCloudauthstSceneResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteCloudauthstSceneResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_cloudauthst_scene_with_options_async(
         self,
-        request: cloudauth_20190307_models.DeleteCloudauthstSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteCloudauthstSceneResponse:
-        """
-        @summary Delete Cloud Scene
-        
-        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: DeleteCloudauthstSceneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteCloudauthstSceneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteCloudauthstSceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCloudauthstSceneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteCloudauthstScene',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteCloudauthstScene',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteCloudauthstSceneResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteCloudauthstSceneResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_cloudauthst_scene(
         self,
-        request: cloudauth_20190307_models.DeleteCloudauthstSceneRequest,
-    ) -> cloudauth_20190307_models.DeleteCloudauthstSceneResponse:
-        """
-        @summary Delete Cloud Scene
-        
-        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: DeleteCloudauthstSceneRequest
-        @return: DeleteCloudauthstSceneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteCloudauthstSceneRequest,
+    ) -> main_models.DeleteCloudauthstSceneResponse:
+        runtime = RuntimeOptions()
         return self.delete_cloudauthst_scene_with_options(request, runtime)
 
     async def delete_cloudauthst_scene_async(
         self,
-        request: cloudauth_20190307_models.DeleteCloudauthstSceneRequest,
-    ) -> cloudauth_20190307_models.DeleteCloudauthstSceneResponse:
-        """
-        @summary Delete Cloud Scene
-        
-        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: DeleteCloudauthstSceneRequest
-        @return: DeleteCloudauthstSceneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteCloudauthstSceneRequest,
+    ) -> main_models.DeleteCloudauthstSceneResponse:
+        runtime = RuntimeOptions()
         return await self.delete_cloudauthst_scene_with_options_async(request, runtime)
 
     def delete_control_strategy_with_options(
         self,
-        request: cloudauth_20190307_models.DeleteControlStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteControlStrategyResponse:
-        """
-        @summary Delete Security Control Strategy
-        
-        @description Request Method: Supports sending requests via HTTPS POST.
-        Request URL: cloudauth.aliyuncs.com.
-        
-        @param request: DeleteControlStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteControlStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteControlStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteControlStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.api_name):
+        if not DaraCore.is_null(request.api_name):
             query['ApiName'] = request.api_name
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteControlStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteControlStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteControlStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteControlStrategyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_control_strategy_with_options_async(
         self,
-        request: cloudauth_20190307_models.DeleteControlStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteControlStrategyResponse:
-        """
-        @summary Delete Security Control Strategy
-        
-        @description Request Method: Supports sending requests via HTTPS POST.
-        Request URL: cloudauth.aliyuncs.com.
-        
-        @param request: DeleteControlStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteControlStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteControlStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteControlStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.api_name):
+        if not DaraCore.is_null(request.api_name):
             query['ApiName'] = request.api_name
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteControlStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteControlStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteControlStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteControlStrategyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_control_strategy(
         self,
-        request: cloudauth_20190307_models.DeleteControlStrategyRequest,
-    ) -> cloudauth_20190307_models.DeleteControlStrategyResponse:
-        """
-        @summary Delete Security Control Strategy
-        
-        @description Request Method: Supports sending requests via HTTPS POST.
-        Request URL: cloudauth.aliyuncs.com.
-        
-        @param request: DeleteControlStrategyRequest
-        @return: DeleteControlStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteControlStrategyRequest,
+    ) -> main_models.DeleteControlStrategyResponse:
+        runtime = RuntimeOptions()
         return self.delete_control_strategy_with_options(request, runtime)
 
     async def delete_control_strategy_async(
         self,
-        request: cloudauth_20190307_models.DeleteControlStrategyRequest,
-    ) -> cloudauth_20190307_models.DeleteControlStrategyResponse:
-        """
-        @summary Delete Security Control Strategy
-        
-        @description Request Method: Supports sending requests via HTTPS POST.
-        Request URL: cloudauth.aliyuncs.com.
-        
-        @param request: DeleteControlStrategyRequest
-        @return: DeleteControlStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteControlStrategyRequest,
+    ) -> main_models.DeleteControlStrategyResponse:
+        runtime = RuntimeOptions()
         return await self.delete_control_strategy_with_options_async(request, runtime)
 
     def delete_customize_flow_strategy_with_options(
         self,
-        request: cloudauth_20190307_models.DeleteCustomizeFlowStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteCustomizeFlowStrategyResponse:
-        """
-        @summary Delete Customized Flow Control Strategy
-        
-        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: DeleteCustomizeFlowStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteCustomizeFlowStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteCustomizeFlowStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomizeFlowStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.api_name):
+        if not DaraCore.is_null(request.api_name):
             query['ApiName'] = request.api_name
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteCustomizeFlowStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomizeFlowStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteCustomizeFlowStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteCustomizeFlowStrategyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_customize_flow_strategy_with_options_async(
         self,
-        request: cloudauth_20190307_models.DeleteCustomizeFlowStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteCustomizeFlowStrategyResponse:
-        """
-        @summary Delete Customized Flow Control Strategy
-        
-        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: DeleteCustomizeFlowStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteCustomizeFlowStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteCustomizeFlowStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomizeFlowStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.api_name):
+        if not DaraCore.is_null(request.api_name):
             query['ApiName'] = request.api_name
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteCustomizeFlowStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomizeFlowStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteCustomizeFlowStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteCustomizeFlowStrategyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_customize_flow_strategy(
         self,
-        request: cloudauth_20190307_models.DeleteCustomizeFlowStrategyRequest,
-    ) -> cloudauth_20190307_models.DeleteCustomizeFlowStrategyResponse:
-        """
-        @summary Delete Customized Flow Control Strategy
-        
-        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: DeleteCustomizeFlowStrategyRequest
-        @return: DeleteCustomizeFlowStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteCustomizeFlowStrategyRequest,
+    ) -> main_models.DeleteCustomizeFlowStrategyResponse:
+        runtime = RuntimeOptions()
         return self.delete_customize_flow_strategy_with_options(request, runtime)
 
     async def delete_customize_flow_strategy_async(
         self,
-        request: cloudauth_20190307_models.DeleteCustomizeFlowStrategyRequest,
-    ) -> cloudauth_20190307_models.DeleteCustomizeFlowStrategyResponse:
-        """
-        @summary Delete Customized Flow Control Strategy
-        
-        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: DeleteCustomizeFlowStrategyRequest
-        @return: DeleteCustomizeFlowStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteCustomizeFlowStrategyRequest,
+    ) -> main_models.DeleteCustomizeFlowStrategyResponse:
+        runtime = RuntimeOptions()
         return await self.delete_customize_flow_strategy_with_options_async(request, runtime)
 
     def delete_face_verify_result_with_options(
         self,
-        request: cloudauth_20190307_models.DeleteFaceVerifyResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteFaceVerifyResultResponse:
-        """
-        @summary Financial Level Sensitive Data Deletion Interface
-        
-        @description Deletes all personal information fields in the request, including name, ID number, phone number, IP, images, videos, and device information, etc.
-        
-        @param request: DeleteFaceVerifyResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteFaceVerifyResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteFaceVerifyResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFaceVerifyResultResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.delete_after_query):
+        if not DaraCore.is_null(request.delete_after_query):
             query['DeleteAfterQuery'] = request.delete_after_query
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteFaceVerifyResult',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteFaceVerifyResult',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteFaceVerifyResultResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteFaceVerifyResultResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_face_verify_result_with_options_async(
         self,
-        request: cloudauth_20190307_models.DeleteFaceVerifyResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteFaceVerifyResultResponse:
-        """
-        @summary Financial Level Sensitive Data Deletion Interface
-        
-        @description Deletes all personal information fields in the request, including name, ID number, phone number, IP, images, videos, and device information, etc.
-        
-        @param request: DeleteFaceVerifyResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteFaceVerifyResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteFaceVerifyResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFaceVerifyResultResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.delete_after_query):
+        if not DaraCore.is_null(request.delete_after_query):
             query['DeleteAfterQuery'] = request.delete_after_query
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteFaceVerifyResult',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteFaceVerifyResult',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteFaceVerifyResultResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteFaceVerifyResultResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_face_verify_result(
         self,
-        request: cloudauth_20190307_models.DeleteFaceVerifyResultRequest,
-    ) -> cloudauth_20190307_models.DeleteFaceVerifyResultResponse:
-        """
-        @summary Financial Level Sensitive Data Deletion Interface
-        
-        @description Deletes all personal information fields in the request, including name, ID number, phone number, IP, images, videos, and device information, etc.
-        
-        @param request: DeleteFaceVerifyResultRequest
-        @return: DeleteFaceVerifyResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteFaceVerifyResultRequest,
+    ) -> main_models.DeleteFaceVerifyResultResponse:
+        runtime = RuntimeOptions()
         return self.delete_face_verify_result_with_options(request, runtime)
 
     async def delete_face_verify_result_async(
         self,
-        request: cloudauth_20190307_models.DeleteFaceVerifyResultRequest,
-    ) -> cloudauth_20190307_models.DeleteFaceVerifyResultResponse:
-        """
-        @summary Financial Level Sensitive Data Deletion Interface
-        
-        @description Deletes all personal information fields in the request, including name, ID number, phone number, IP, images, videos, and device information, etc.
-        
-        @param request: DeleteFaceVerifyResultRequest
-        @return: DeleteFaceVerifyResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteFaceVerifyResultRequest,
+    ) -> main_models.DeleteFaceVerifyResultResponse:
+        runtime = RuntimeOptions()
         return await self.delete_face_verify_result_with_options_async(request, runtime)
 
     def delete_scene_config_with_options(
         self,
-        request: cloudauth_20190307_models.DeleteSceneConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteSceneConfigResponse:
-        """
-        @summary Delete Scene Configuration
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Request URL: cloudauth.aliyuncs.com.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: DeleteSceneConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteSceneConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteSceneConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSceneConfigResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.scene_config_id):
+        if not DaraCore.is_null(request.scene_config_id):
             body['sceneConfigId'] = request.scene_config_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DeleteSceneConfig',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteSceneConfig',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteSceneConfigResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteSceneConfigResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_scene_config_with_options_async(
         self,
-        request: cloudauth_20190307_models.DeleteSceneConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteSceneConfigResponse:
-        """
-        @summary Delete Scene Configuration
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Request URL: cloudauth.aliyuncs.com.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: DeleteSceneConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteSceneConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteSceneConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSceneConfigResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.scene_config_id):
+        if not DaraCore.is_null(request.scene_config_id):
             body['sceneConfigId'] = request.scene_config_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DeleteSceneConfig',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteSceneConfig',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteSceneConfigResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteSceneConfigResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_scene_config(
         self,
-        request: cloudauth_20190307_models.DeleteSceneConfigRequest,
-    ) -> cloudauth_20190307_models.DeleteSceneConfigResponse:
-        """
-        @summary Delete Scene Configuration
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Request URL: cloudauth.aliyuncs.com.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: DeleteSceneConfigRequest
-        @return: DeleteSceneConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteSceneConfigRequest,
+    ) -> main_models.DeleteSceneConfigResponse:
+        runtime = RuntimeOptions()
         return self.delete_scene_config_with_options(request, runtime)
 
     async def delete_scene_config_async(
         self,
-        request: cloudauth_20190307_models.DeleteSceneConfigRequest,
-    ) -> cloudauth_20190307_models.DeleteSceneConfigResponse:
-        """
-        @summary Delete Scene Configuration
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Request URL: cloudauth.aliyuncs.com.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: DeleteSceneConfigRequest
-        @return: DeleteSceneConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteSceneConfigRequest,
+    ) -> main_models.DeleteSceneConfigResponse:
+        runtime = RuntimeOptions()
         return await self.delete_scene_config_with_options_async(request, runtime)
 
     def delete_whitelist_setting_with_options(
         self,
-        request: cloudauth_20190307_models.DeleteWhitelistSettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteWhitelistSettingResponse:
-        """
-        @summary Delete Whitelist Configuration
-        
-        @description Request Method: Only supports sending requests via HTTPS POST method.
-        
-        @param request: DeleteWhitelistSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteWhitelistSettingResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteWhitelistSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWhitelistSettingResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.ids):
+        if not DaraCore.is_null(request.ids):
             query['Ids'] = request.ids
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.source_ip):
+        if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteWhitelistSetting',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteWhitelistSetting',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteWhitelistSettingResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteWhitelistSettingResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_whitelist_setting_with_options_async(
         self,
-        request: cloudauth_20190307_models.DeleteWhitelistSettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DeleteWhitelistSettingResponse:
-        """
-        @summary Delete Whitelist Configuration
-        
-        @description Request Method: Only supports sending requests via HTTPS POST method.
-        
-        @param request: DeleteWhitelistSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteWhitelistSettingResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteWhitelistSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteWhitelistSettingResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.ids):
+        if not DaraCore.is_null(request.ids):
             query['Ids'] = request.ids
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.source_ip):
+        if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteWhitelistSetting',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteWhitelistSetting',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DeleteWhitelistSettingResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteWhitelistSettingResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_whitelist_setting(
         self,
-        request: cloudauth_20190307_models.DeleteWhitelistSettingRequest,
-    ) -> cloudauth_20190307_models.DeleteWhitelistSettingResponse:
-        """
-        @summary Delete Whitelist Configuration
-        
-        @description Request Method: Only supports sending requests via HTTPS POST method.
-        
-        @param request: DeleteWhitelistSettingRequest
-        @return: DeleteWhitelistSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteWhitelistSettingRequest,
+    ) -> main_models.DeleteWhitelistSettingResponse:
+        runtime = RuntimeOptions()
         return self.delete_whitelist_setting_with_options(request, runtime)
 
     async def delete_whitelist_setting_async(
         self,
-        request: cloudauth_20190307_models.DeleteWhitelistSettingRequest,
-    ) -> cloudauth_20190307_models.DeleteWhitelistSettingResponse:
-        """
-        @summary Delete Whitelist Configuration
-        
-        @description Request Method: Only supports sending requests via HTTPS POST method.
-        
-        @param request: DeleteWhitelistSettingRequest
-        @return: DeleteWhitelistSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteWhitelistSettingRequest,
+    ) -> main_models.DeleteWhitelistSettingResponse:
+        runtime = RuntimeOptions()
         return await self.delete_whitelist_setting_with_options_async(request, runtime)
 
     def describe_ant_and_cloud_auth_user_status_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeAntAndCloudAuthUserStatusResponse:
-        """
-        @summary Query the User Status of Ant Blockchain
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: DescribeAntAndCloudAuthUserStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeAntAndCloudAuthUserStatusResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribeAntAndCloudAuthUserStatus',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAntAndCloudAuthUserStatusResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeAntAndCloudAuthUserStatus',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeAntAndCloudAuthUserStatusResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeAntAndCloudAuthUserStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_ant_and_cloud_auth_user_status_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeAntAndCloudAuthUserStatusResponse:
-        """
-        @summary Query the User Status of Ant Blockchain
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: DescribeAntAndCloudAuthUserStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeAntAndCloudAuthUserStatusResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribeAntAndCloudAuthUserStatus',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAntAndCloudAuthUserStatusResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeAntAndCloudAuthUserStatus',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeAntAndCloudAuthUserStatusResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeAntAndCloudAuthUserStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_ant_and_cloud_auth_user_status(self) -> cloudauth_20190307_models.DescribeAntAndCloudAuthUserStatusResponse:
-        """
-        @summary Query the User Status of Ant Blockchain
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @return: DescribeAntAndCloudAuthUserStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def describe_ant_and_cloud_auth_user_status(self) -> main_models.DescribeAntAndCloudAuthUserStatusResponse:
+        runtime = RuntimeOptions()
         return self.describe_ant_and_cloud_auth_user_status_with_options(runtime)
 
-    async def describe_ant_and_cloud_auth_user_status_async(self) -> cloudauth_20190307_models.DescribeAntAndCloudAuthUserStatusResponse:
-        """
-        @summary Query the User Status of Ant Blockchain
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @return: DescribeAntAndCloudAuthUserStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def describe_ant_and_cloud_auth_user_status_async(self) -> main_models.DescribeAntAndCloudAuthUserStatusResponse:
+        runtime = RuntimeOptions()
         return await self.describe_ant_and_cloud_auth_user_status_with_options_async(runtime)
 
     def describe_auth_verify_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeAuthVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeAuthVerifyResponse:
-        """
-        @summary 获取结果
-        
-        @param request: DescribeAuthVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeAuthVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeAuthVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAuthVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             body['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             body['SceneId'] = request.scene_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DescribeAuthVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeAuthVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeAuthVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeAuthVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_auth_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeAuthVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeAuthVerifyResponse:
-        """
-        @summary 获取结果
-        
-        @param request: DescribeAuthVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeAuthVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeAuthVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAuthVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             body['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             body['SceneId'] = request.scene_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DescribeAuthVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeAuthVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeAuthVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeAuthVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_auth_verify(
         self,
-        request: cloudauth_20190307_models.DescribeAuthVerifyRequest,
-    ) -> cloudauth_20190307_models.DescribeAuthVerifyResponse:
-        """
-        @summary 获取结果
-        
-        @param request: DescribeAuthVerifyRequest
-        @return: DescribeAuthVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeAuthVerifyRequest,
+    ) -> main_models.DescribeAuthVerifyResponse:
+        runtime = RuntimeOptions()
         return self.describe_auth_verify_with_options(request, runtime)
 
     async def describe_auth_verify_async(
         self,
-        request: cloudauth_20190307_models.DescribeAuthVerifyRequest,
-    ) -> cloudauth_20190307_models.DescribeAuthVerifyResponse:
-        """
-        @summary 获取结果
-        
-        @param request: DescribeAuthVerifyRequest
-        @return: DescribeAuthVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeAuthVerifyRequest,
+    ) -> main_models.DescribeAuthVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.describe_auth_verify_with_options_async(request, runtime)
 
     def describe_card_verify_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeCardVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeCardVerifyResponse:
-        """
-        @summary Obtain Authentication Results from Image Element Verification
-        
-        @description After receiving the callback notification, you can use this interface on the server side to obtain the corresponding authentication status and information.
-        
-        @param request: DescribeCardVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCardVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeCardVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCardVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeCardVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeCardVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeCardVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeCardVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_card_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeCardVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeCardVerifyResponse:
-        """
-        @summary Obtain Authentication Results from Image Element Verification
-        
-        @description After receiving the callback notification, you can use this interface on the server side to obtain the corresponding authentication status and information.
-        
-        @param request: DescribeCardVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCardVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeCardVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCardVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeCardVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeCardVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeCardVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeCardVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_card_verify(
         self,
-        request: cloudauth_20190307_models.DescribeCardVerifyRequest,
-    ) -> cloudauth_20190307_models.DescribeCardVerifyResponse:
-        """
-        @summary Obtain Authentication Results from Image Element Verification
-        
-        @description After receiving the callback notification, you can use this interface on the server side to obtain the corresponding authentication status and information.
-        
-        @param request: DescribeCardVerifyRequest
-        @return: DescribeCardVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeCardVerifyRequest,
+    ) -> main_models.DescribeCardVerifyResponse:
+        runtime = RuntimeOptions()
         return self.describe_card_verify_with_options(request, runtime)
 
     async def describe_card_verify_async(
         self,
-        request: cloudauth_20190307_models.DescribeCardVerifyRequest,
-    ) -> cloudauth_20190307_models.DescribeCardVerifyResponse:
-        """
-        @summary Obtain Authentication Results from Image Element Verification
-        
-        @description After receiving the callback notification, you can use this interface on the server side to obtain the corresponding authentication status and information.
-        
-        @param request: DescribeCardVerifyRequest
-        @return: DescribeCardVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeCardVerifyRequest,
+    ) -> main_models.DescribeCardVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.describe_card_verify_with_options_async(request, runtime)
 
     def describe_cloudauthst_scene_list_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeCloudauthstSceneListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeCloudauthstSceneListResponse:
-        """
-        @summary Query Dashboard Data
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: DescribeCloudauthstSceneListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCloudauthstSceneListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeCloudauthstSceneListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCloudauthstSceneListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeCloudauthstSceneList',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeCloudauthstSceneList',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeCloudauthstSceneListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeCloudauthstSceneListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_cloudauthst_scene_list_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeCloudauthstSceneListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeCloudauthstSceneListResponse:
-        """
-        @summary Query Dashboard Data
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: DescribeCloudauthstSceneListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCloudauthstSceneListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeCloudauthstSceneListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCloudauthstSceneListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeCloudauthstSceneList',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeCloudauthstSceneList',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeCloudauthstSceneListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeCloudauthstSceneListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_cloudauthst_scene_list(
         self,
-        request: cloudauth_20190307_models.DescribeCloudauthstSceneListRequest,
-    ) -> cloudauth_20190307_models.DescribeCloudauthstSceneListResponse:
-        """
-        @summary Query Dashboard Data
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: DescribeCloudauthstSceneListRequest
-        @return: DescribeCloudauthstSceneListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeCloudauthstSceneListRequest,
+    ) -> main_models.DescribeCloudauthstSceneListResponse:
+        runtime = RuntimeOptions()
         return self.describe_cloudauthst_scene_list_with_options(request, runtime)
 
     async def describe_cloudauthst_scene_list_async(
         self,
-        request: cloudauth_20190307_models.DescribeCloudauthstSceneListRequest,
-    ) -> cloudauth_20190307_models.DescribeCloudauthstSceneListResponse:
-        """
-        @summary Query Dashboard Data
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to reacquire it before each activation.
-        
-        @param request: DescribeCloudauthstSceneListRequest
-        @return: DescribeCloudauthstSceneListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeCloudauthstSceneListRequest,
+    ) -> main_models.DescribeCloudauthstSceneListResponse:
+        runtime = RuntimeOptions()
         return await self.describe_cloudauthst_scene_list_with_options_async(request, runtime)
 
     def describe_device_info_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeDeviceInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeDeviceInfoResponse:
-        """
-        @summary Call DescribeDeviceInfo to query device-related information, such as the validity period of authorization, business identifiers customized by the access party, and device ID, etc.
-        
-        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
-        
-        @param request: DescribeDeviceInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDeviceInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeDeviceInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDeviceInfoResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.device_id):
+        if not DaraCore.is_null(request.device_id):
             query['DeviceId'] = request.device_id
-        if not UtilClient.is_unset(request.expired_end_day):
+        if not DaraCore.is_null(request.expired_end_day):
             query['ExpiredEndDay'] = request.expired_end_day
-        if not UtilClient.is_unset(request.expired_start_day):
+        if not DaraCore.is_null(request.expired_start_day):
             query['ExpiredStartDay'] = request.expired_start_day
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.user_device_id):
+        if not DaraCore.is_null(request.user_device_id):
             query['UserDeviceId'] = request.user_device_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeDeviceInfo',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeDeviceInfo',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeDeviceInfoResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeDeviceInfoResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_device_info_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeDeviceInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeDeviceInfoResponse:
-        """
-        @summary Call DescribeDeviceInfo to query device-related information, such as the validity period of authorization, business identifiers customized by the access party, and device ID, etc.
-        
-        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
-        
-        @param request: DescribeDeviceInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeDeviceInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeDeviceInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDeviceInfoResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.device_id):
+        if not DaraCore.is_null(request.device_id):
             query['DeviceId'] = request.device_id
-        if not UtilClient.is_unset(request.expired_end_day):
+        if not DaraCore.is_null(request.expired_end_day):
             query['ExpiredEndDay'] = request.expired_end_day
-        if not UtilClient.is_unset(request.expired_start_day):
+        if not DaraCore.is_null(request.expired_start_day):
             query['ExpiredStartDay'] = request.expired_start_day
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.user_device_id):
+        if not DaraCore.is_null(request.user_device_id):
             query['UserDeviceId'] = request.user_device_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeDeviceInfo',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeDeviceInfo',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeDeviceInfoResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeDeviceInfoResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_device_info(
         self,
-        request: cloudauth_20190307_models.DescribeDeviceInfoRequest,
-    ) -> cloudauth_20190307_models.DescribeDeviceInfoResponse:
-        """
-        @summary Call DescribeDeviceInfo to query device-related information, such as the validity period of authorization, business identifiers customized by the access party, and device ID, etc.
-        
-        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
-        
-        @param request: DescribeDeviceInfoRequest
-        @return: DescribeDeviceInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeDeviceInfoRequest,
+    ) -> main_models.DescribeDeviceInfoResponse:
+        runtime = RuntimeOptions()
         return self.describe_device_info_with_options(request, runtime)
 
     async def describe_device_info_async(
         self,
-        request: cloudauth_20190307_models.DescribeDeviceInfoRequest,
-    ) -> cloudauth_20190307_models.DescribeDeviceInfoResponse:
-        """
-        @summary Call DescribeDeviceInfo to query device-related information, such as the validity period of authorization, business identifiers customized by the access party, and device ID, etc.
-        
-        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
-        
-        @param request: DescribeDeviceInfoRequest
-        @return: DescribeDeviceInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeDeviceInfoRequest,
+    ) -> main_models.DescribeDeviceInfoResponse:
+        runtime = RuntimeOptions()
         return await self.describe_device_info_with_options_async(request, runtime)
 
     def describe_face_guard_risk_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeFaceGuardRiskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeFaceGuardRiskResponse:
-        """
-        @summary Financial-Grade Face Guard Service
-        
-        @param request: DescribeFaceGuardRiskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeFaceGuardRiskResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeFaceGuardRiskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFaceGuardRiskResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.device_token):
+        if not DaraCore.is_null(request.device_token):
             query['DeviceToken'] = request.device_token
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             query['OuterOrderNo'] = request.outer_order_no
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeFaceGuardRisk',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeFaceGuardRisk',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeFaceGuardRiskResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeFaceGuardRiskResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_face_guard_risk_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeFaceGuardRiskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeFaceGuardRiskResponse:
-        """
-        @summary Financial-Grade Face Guard Service
-        
-        @param request: DescribeFaceGuardRiskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeFaceGuardRiskResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeFaceGuardRiskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFaceGuardRiskResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.device_token):
+        if not DaraCore.is_null(request.device_token):
             query['DeviceToken'] = request.device_token
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             query['OuterOrderNo'] = request.outer_order_no
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeFaceGuardRisk',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeFaceGuardRisk',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeFaceGuardRiskResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeFaceGuardRiskResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_face_guard_risk(
         self,
-        request: cloudauth_20190307_models.DescribeFaceGuardRiskRequest,
-    ) -> cloudauth_20190307_models.DescribeFaceGuardRiskResponse:
-        """
-        @summary Financial-Grade Face Guard Service
-        
-        @param request: DescribeFaceGuardRiskRequest
-        @return: DescribeFaceGuardRiskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeFaceGuardRiskRequest,
+    ) -> main_models.DescribeFaceGuardRiskResponse:
+        runtime = RuntimeOptions()
         return self.describe_face_guard_risk_with_options(request, runtime)
 
     async def describe_face_guard_risk_async(
         self,
-        request: cloudauth_20190307_models.DescribeFaceGuardRiskRequest,
-    ) -> cloudauth_20190307_models.DescribeFaceGuardRiskResponse:
-        """
-        @summary Financial-Grade Face Guard Service
-        
-        @param request: DescribeFaceGuardRiskRequest
-        @return: DescribeFaceGuardRiskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeFaceGuardRiskRequest,
+    ) -> main_models.DescribeFaceGuardRiskResponse:
+        runtime = RuntimeOptions()
         return await self.describe_face_guard_risk_with_options_async(request, runtime)
 
     def describe_face_verify_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeFaceVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeFaceVerifyResponse:
-        """
-        @summary After the mobile end of the integrator receives the callback, its server can call this interface to obtain the corresponding authentication status and authentication information.
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeFaceVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeFaceVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeFaceVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFaceVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.picture_return_type):
+        if not DaraCore.is_null(request.picture_return_type):
             query['PictureReturnType'] = request.picture_return_type
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeFaceVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeFaceVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeFaceVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeFaceVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_face_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeFaceVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeFaceVerifyResponse:
-        """
-        @summary After the mobile end of the integrator receives the callback, its server can call this interface to obtain the corresponding authentication status and authentication information.
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeFaceVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeFaceVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeFaceVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFaceVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.picture_return_type):
+        if not DaraCore.is_null(request.picture_return_type):
             query['PictureReturnType'] = request.picture_return_type
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeFaceVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeFaceVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeFaceVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeFaceVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_face_verify(
         self,
-        request: cloudauth_20190307_models.DescribeFaceVerifyRequest,
-    ) -> cloudauth_20190307_models.DescribeFaceVerifyResponse:
-        """
-        @summary After the mobile end of the integrator receives the callback, its server can call this interface to obtain the corresponding authentication status and authentication information.
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeFaceVerifyRequest
-        @return: DescribeFaceVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeFaceVerifyRequest,
+    ) -> main_models.DescribeFaceVerifyResponse:
+        runtime = RuntimeOptions()
         return self.describe_face_verify_with_options(request, runtime)
 
     async def describe_face_verify_async(
         self,
-        request: cloudauth_20190307_models.DescribeFaceVerifyRequest,
-    ) -> cloudauth_20190307_models.DescribeFaceVerifyResponse:
-        """
-        @summary After the mobile end of the integrator receives the callback, its server can call this interface to obtain the corresponding authentication status and authentication information.
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeFaceVerifyRequest
-        @return: DescribeFaceVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeFaceVerifyRequest,
+    ) -> main_models.DescribeFaceVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.describe_face_verify_with_options_async(request, runtime)
 
     def describe_info_check_export_record_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeInfoCheckExportRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeInfoCheckExportRecordResponse:
-        """
-        @summary 查询任务导出记录
-        
-        @param request: DescribeInfoCheckExportRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeInfoCheckExportRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeInfoCheckExportRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInfoCheckExportRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeInfoCheckExportRecord',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeInfoCheckExportRecord',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeInfoCheckExportRecordResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeInfoCheckExportRecordResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_info_check_export_record_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeInfoCheckExportRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeInfoCheckExportRecordResponse:
-        """
-        @summary 查询任务导出记录
-        
-        @param request: DescribeInfoCheckExportRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeInfoCheckExportRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeInfoCheckExportRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeInfoCheckExportRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeInfoCheckExportRecord',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeInfoCheckExportRecord',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeInfoCheckExportRecordResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeInfoCheckExportRecordResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_info_check_export_record(
         self,
-        request: cloudauth_20190307_models.DescribeInfoCheckExportRecordRequest,
-    ) -> cloudauth_20190307_models.DescribeInfoCheckExportRecordResponse:
-        """
-        @summary 查询任务导出记录
-        
-        @param request: DescribeInfoCheckExportRecordRequest
-        @return: DescribeInfoCheckExportRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeInfoCheckExportRecordRequest,
+    ) -> main_models.DescribeInfoCheckExportRecordResponse:
+        runtime = RuntimeOptions()
         return self.describe_info_check_export_record_with_options(request, runtime)
 
     async def describe_info_check_export_record_async(
         self,
-        request: cloudauth_20190307_models.DescribeInfoCheckExportRecordRequest,
-    ) -> cloudauth_20190307_models.DescribeInfoCheckExportRecordResponse:
-        """
-        @summary 查询任务导出记录
-        
-        @param request: DescribeInfoCheckExportRecordRequest
-        @return: DescribeInfoCheckExportRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeInfoCheckExportRecordRequest,
+    ) -> main_models.DescribeInfoCheckExportRecordResponse:
+        runtime = RuntimeOptions()
         return await self.describe_info_check_export_record_with_options_async(request, runtime)
 
     def describe_list_ant_cloud_auth_scenes_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeListAntCloudAuthScenesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeListAntCloudAuthScenesResponse:
-        """
-        @summary Query the cloud scenario authentication records of a specific region
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: DescribeListAntCloudAuthScenesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeListAntCloudAuthScenesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeListAntCloudAuthScenesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeListAntCloudAuthScenesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeListAntCloudAuthScenes',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeListAntCloudAuthScenes',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeListAntCloudAuthScenesResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeListAntCloudAuthScenesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_list_ant_cloud_auth_scenes_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeListAntCloudAuthScenesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeListAntCloudAuthScenesResponse:
-        """
-        @summary Query the cloud scenario authentication records of a specific region
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: DescribeListAntCloudAuthScenesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeListAntCloudAuthScenesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeListAntCloudAuthScenesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeListAntCloudAuthScenesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeListAntCloudAuthScenes',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeListAntCloudAuthScenes',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeListAntCloudAuthScenesResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeListAntCloudAuthScenesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_list_ant_cloud_auth_scenes(
         self,
-        request: cloudauth_20190307_models.DescribeListAntCloudAuthScenesRequest,
-    ) -> cloudauth_20190307_models.DescribeListAntCloudAuthScenesResponse:
-        """
-        @summary Query the cloud scenario authentication records of a specific region
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: DescribeListAntCloudAuthScenesRequest
-        @return: DescribeListAntCloudAuthScenesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeListAntCloudAuthScenesRequest,
+    ) -> main_models.DescribeListAntCloudAuthScenesResponse:
+        runtime = RuntimeOptions()
         return self.describe_list_ant_cloud_auth_scenes_with_options(request, runtime)
 
     async def describe_list_ant_cloud_auth_scenes_async(
         self,
-        request: cloudauth_20190307_models.DescribeListAntCloudAuthScenesRequest,
-    ) -> cloudauth_20190307_models.DescribeListAntCloudAuthScenesResponse:
-        """
-        @summary Query the cloud scenario authentication records of a specific region
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        > The authorization key is valid for 30 minutes and cannot be reused. It is recommended to re-obtain it before each activation.
-        
-        @param request: DescribeListAntCloudAuthScenesRequest
-        @return: DescribeListAntCloudAuthScenesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeListAntCloudAuthScenesRequest,
+    ) -> main_models.DescribeListAntCloudAuthScenesResponse:
+        runtime = RuntimeOptions()
         return await self.describe_list_ant_cloud_auth_scenes_with_options_async(request, runtime)
 
     def describe_list_face_verify_data_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeListFaceVerifyDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeListFaceVerifyDataResponse:
-        """
-        @summary Query Face Verification Data
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeListFaceVerifyDataRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeListFaceVerifyDataResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeListFaceVerifyDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeListFaceVerifyDataResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.gmt_end):
+        if not DaraCore.is_null(request.gmt_end):
             query['GmtEnd'] = request.gmt_end
-        if not UtilClient.is_unset(request.gmt_start):
+        if not DaraCore.is_null(request.gmt_start):
             query['GmtStart'] = request.gmt_start
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeListFaceVerifyData',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeListFaceVerifyData',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeListFaceVerifyDataResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeListFaceVerifyDataResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_list_face_verify_data_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeListFaceVerifyDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeListFaceVerifyDataResponse:
-        """
-        @summary Query Face Verification Data
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeListFaceVerifyDataRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeListFaceVerifyDataResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeListFaceVerifyDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeListFaceVerifyDataResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.gmt_end):
+        if not DaraCore.is_null(request.gmt_end):
             query['GmtEnd'] = request.gmt_end
-        if not UtilClient.is_unset(request.gmt_start):
+        if not DaraCore.is_null(request.gmt_start):
             query['GmtStart'] = request.gmt_start
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeListFaceVerifyData',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeListFaceVerifyData',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeListFaceVerifyDataResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeListFaceVerifyDataResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_list_face_verify_data(
         self,
-        request: cloudauth_20190307_models.DescribeListFaceVerifyDataRequest,
-    ) -> cloudauth_20190307_models.DescribeListFaceVerifyDataResponse:
-        """
-        @summary Query Face Verification Data
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeListFaceVerifyDataRequest
-        @return: DescribeListFaceVerifyDataResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeListFaceVerifyDataRequest,
+    ) -> main_models.DescribeListFaceVerifyDataResponse:
+        runtime = RuntimeOptions()
         return self.describe_list_face_verify_data_with_options(request, runtime)
 
     async def describe_list_face_verify_data_async(
         self,
-        request: cloudauth_20190307_models.DescribeListFaceVerifyDataRequest,
-    ) -> cloudauth_20190307_models.DescribeListFaceVerifyDataResponse:
-        """
-        @summary Query Face Verification Data
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeListFaceVerifyDataRequest
-        @return: DescribeListFaceVerifyDataResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeListFaceVerifyDataRequest,
+    ) -> main_models.DescribeListFaceVerifyDataResponse:
+        runtime = RuntimeOptions()
         return await self.describe_list_face_verify_data_with_options_async(request, runtime)
 
     def describe_list_face_verify_infos_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeListFaceVerifyInfosRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeListFaceVerifyInfosResponse:
-        """
-        @summary Get Face Verification Information
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeListFaceVerifyInfosRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeListFaceVerifyInfosResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeListFaceVerifyInfosRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeListFaceVerifyInfosResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.gmt_end):
+        if not DaraCore.is_null(request.gmt_end):
             query['GmtEnd'] = request.gmt_end
-        if not UtilClient.is_unset(request.gmt_start):
+        if not DaraCore.is_null(request.gmt_start):
             query['GmtStart'] = request.gmt_start
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeListFaceVerifyInfos',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeListFaceVerifyInfos',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeListFaceVerifyInfosResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeListFaceVerifyInfosResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_list_face_verify_infos_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeListFaceVerifyInfosRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeListFaceVerifyInfosResponse:
-        """
-        @summary Get Face Verification Information
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeListFaceVerifyInfosRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeListFaceVerifyInfosResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeListFaceVerifyInfosRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeListFaceVerifyInfosResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.gmt_end):
+        if not DaraCore.is_null(request.gmt_end):
             query['GmtEnd'] = request.gmt_end
-        if not UtilClient.is_unset(request.gmt_start):
+        if not DaraCore.is_null(request.gmt_start):
             query['GmtStart'] = request.gmt_start
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeListFaceVerifyInfos',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeListFaceVerifyInfos',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeListFaceVerifyInfosResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeListFaceVerifyInfosResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_list_face_verify_infos(
         self,
-        request: cloudauth_20190307_models.DescribeListFaceVerifyInfosRequest,
-    ) -> cloudauth_20190307_models.DescribeListFaceVerifyInfosResponse:
-        """
-        @summary Get Face Verification Information
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeListFaceVerifyInfosRequest
-        @return: DescribeListFaceVerifyInfosResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeListFaceVerifyInfosRequest,
+    ) -> main_models.DescribeListFaceVerifyInfosResponse:
+        runtime = RuntimeOptions()
         return self.describe_list_face_verify_infos_with_options(request, runtime)
 
     async def describe_list_face_verify_infos_async(
         self,
-        request: cloudauth_20190307_models.DescribeListFaceVerifyInfosRequest,
-    ) -> cloudauth_20190307_models.DescribeListFaceVerifyInfosResponse:
-        """
-        @summary Get Face Verification Information
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeListFaceVerifyInfosRequest
-        @return: DescribeListFaceVerifyInfosResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeListFaceVerifyInfosRequest,
+    ) -> main_models.DescribeListFaceVerifyInfosResponse:
+        runtime = RuntimeOptions()
         return await self.describe_list_face_verify_infos_with_options_async(request, runtime)
 
     def describe_meta_search_page_list_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeMetaSearchPageListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeMetaSearchPageListResponse:
-        """
-        @summary 查询页面元数据
-        
-        @param request: DescribeMetaSearchPageListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeMetaSearchPageListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeMetaSearchPageListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMetaSearchPageListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.api):
+        if not DaraCore.is_null(request.api):
             query['Api'] = request.api
-        if not UtilClient.is_unset(request.bank_card):
+        if not DaraCore.is_null(request.bank_card):
             query['BankCard'] = request.bank_card
-        if not UtilClient.is_unset(request.biz_code):
+        if not DaraCore.is_null(request.biz_code):
             query['BizCode'] = request.biz_code
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             query['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.isp_name):
+        if not DaraCore.is_null(request.isp_name):
             query['IspName'] = request.isp_name
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             query['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.req_id):
+        if not DaraCore.is_null(request.req_id):
             query['ReqId'] = request.req_id
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        if not UtilClient.is_unset(request.sub_code):
+        if not DaraCore.is_null(request.sub_code):
             query['SubCode'] = request.sub_code
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             query['UserName'] = request.user_name
-        if not UtilClient.is_unset(request.vehicle_num):
+        if not DaraCore.is_null(request.vehicle_num):
             query['VehicleNum'] = request.vehicle_num
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeMetaSearchPageList',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeMetaSearchPageList',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeMetaSearchPageListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeMetaSearchPageListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_meta_search_page_list_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeMetaSearchPageListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeMetaSearchPageListResponse:
-        """
-        @summary 查询页面元数据
-        
-        @param request: DescribeMetaSearchPageListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeMetaSearchPageListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeMetaSearchPageListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMetaSearchPageListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.api):
+        if not DaraCore.is_null(request.api):
             query['Api'] = request.api
-        if not UtilClient.is_unset(request.bank_card):
+        if not DaraCore.is_null(request.bank_card):
             query['BankCard'] = request.bank_card
-        if not UtilClient.is_unset(request.biz_code):
+        if not DaraCore.is_null(request.biz_code):
             query['BizCode'] = request.biz_code
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             query['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.isp_name):
+        if not DaraCore.is_null(request.isp_name):
             query['IspName'] = request.isp_name
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             query['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.req_id):
+        if not DaraCore.is_null(request.req_id):
             query['ReqId'] = request.req_id
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        if not UtilClient.is_unset(request.sub_code):
+        if not DaraCore.is_null(request.sub_code):
             query['SubCode'] = request.sub_code
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             query['UserName'] = request.user_name
-        if not UtilClient.is_unset(request.vehicle_num):
+        if not DaraCore.is_null(request.vehicle_num):
             query['VehicleNum'] = request.vehicle_num
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeMetaSearchPageList',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeMetaSearchPageList',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeMetaSearchPageListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeMetaSearchPageListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_meta_search_page_list(
         self,
-        request: cloudauth_20190307_models.DescribeMetaSearchPageListRequest,
-    ) -> cloudauth_20190307_models.DescribeMetaSearchPageListResponse:
-        """
-        @summary 查询页面元数据
-        
-        @param request: DescribeMetaSearchPageListRequest
-        @return: DescribeMetaSearchPageListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeMetaSearchPageListRequest,
+    ) -> main_models.DescribeMetaSearchPageListResponse:
+        runtime = RuntimeOptions()
         return self.describe_meta_search_page_list_with_options(request, runtime)
 
     async def describe_meta_search_page_list_async(
         self,
-        request: cloudauth_20190307_models.DescribeMetaSearchPageListRequest,
-    ) -> cloudauth_20190307_models.DescribeMetaSearchPageListResponse:
-        """
-        @summary 查询页面元数据
-        
-        @param request: DescribeMetaSearchPageListRequest
-        @return: DescribeMetaSearchPageListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeMetaSearchPageListRequest,
+    ) -> main_models.DescribeMetaSearchPageListResponse:
+        runtime = RuntimeOptions()
         return await self.describe_meta_search_page_list_with_options_async(request, runtime)
 
     def describe_meta_statistics_list_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeMetaStatisticsListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeMetaStatisticsListResponse:
-        """
-        @summary 查询认证统计信息
-        
-        @param request: DescribeMetaStatisticsListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeMetaStatisticsListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeMetaStatisticsListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMetaStatisticsListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.api):
+        if not DaraCore.is_null(request.api):
             query['Api'] = request.api
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeMetaStatisticsList',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeMetaStatisticsList',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeMetaStatisticsListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeMetaStatisticsListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_meta_statistics_list_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeMetaStatisticsListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeMetaStatisticsListResponse:
-        """
-        @summary 查询认证统计信息
-        
-        @param request: DescribeMetaStatisticsListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeMetaStatisticsListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeMetaStatisticsListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMetaStatisticsListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.api):
+        if not DaraCore.is_null(request.api):
             query['Api'] = request.api
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeMetaStatisticsList',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeMetaStatisticsList',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeMetaStatisticsListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeMetaStatisticsListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_meta_statistics_list(
         self,
-        request: cloudauth_20190307_models.DescribeMetaStatisticsListRequest,
-    ) -> cloudauth_20190307_models.DescribeMetaStatisticsListResponse:
-        """
-        @summary 查询认证统计信息
-        
-        @param request: DescribeMetaStatisticsListRequest
-        @return: DescribeMetaStatisticsListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeMetaStatisticsListRequest,
+    ) -> main_models.DescribeMetaStatisticsListResponse:
+        runtime = RuntimeOptions()
         return self.describe_meta_statistics_list_with_options(request, runtime)
 
     async def describe_meta_statistics_list_async(
         self,
-        request: cloudauth_20190307_models.DescribeMetaStatisticsListRequest,
-    ) -> cloudauth_20190307_models.DescribeMetaStatisticsListResponse:
-        """
-        @summary 查询认证统计信息
-        
-        @param request: DescribeMetaStatisticsListRequest
-        @return: DescribeMetaStatisticsListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeMetaStatisticsListRequest,
+    ) -> main_models.DescribeMetaStatisticsListResponse:
+        runtime = RuntimeOptions()
         return await self.describe_meta_statistics_list_with_options_async(request, runtime)
 
     def describe_meta_statistics_page_list_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeMetaStatisticsPageListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeMetaStatisticsPageListResponse:
-        """
-        @summary 查询认证统计页面
-        
-        @param request: DescribeMetaStatisticsPageListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeMetaStatisticsPageListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeMetaStatisticsPageListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMetaStatisticsPageListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.api):
+        if not DaraCore.is_null(request.api):
             query['Api'] = request.api
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeMetaStatisticsPageList',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeMetaStatisticsPageList',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeMetaStatisticsPageListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeMetaStatisticsPageListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_meta_statistics_page_list_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeMetaStatisticsPageListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeMetaStatisticsPageListResponse:
-        """
-        @summary 查询认证统计页面
-        
-        @param request: DescribeMetaStatisticsPageListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeMetaStatisticsPageListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeMetaStatisticsPageListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMetaStatisticsPageListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.api):
+        if not DaraCore.is_null(request.api):
             query['Api'] = request.api
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeMetaStatisticsPageList',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeMetaStatisticsPageList',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeMetaStatisticsPageListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeMetaStatisticsPageListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_meta_statistics_page_list(
         self,
-        request: cloudauth_20190307_models.DescribeMetaStatisticsPageListRequest,
-    ) -> cloudauth_20190307_models.DescribeMetaStatisticsPageListResponse:
-        """
-        @summary 查询认证统计页面
-        
-        @param request: DescribeMetaStatisticsPageListRequest
-        @return: DescribeMetaStatisticsPageListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeMetaStatisticsPageListRequest,
+    ) -> main_models.DescribeMetaStatisticsPageListResponse:
+        runtime = RuntimeOptions()
         return self.describe_meta_statistics_page_list_with_options(request, runtime)
 
     async def describe_meta_statistics_page_list_async(
         self,
-        request: cloudauth_20190307_models.DescribeMetaStatisticsPageListRequest,
-    ) -> cloudauth_20190307_models.DescribeMetaStatisticsPageListResponse:
-        """
-        @summary 查询认证统计页面
-        
-        @param request: DescribeMetaStatisticsPageListRequest
-        @return: DescribeMetaStatisticsPageListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeMetaStatisticsPageListRequest,
+    ) -> main_models.DescribeMetaStatisticsPageListResponse:
+        runtime = RuntimeOptions()
         return await self.describe_meta_statistics_page_list_with_options_async(request, runtime)
 
     def describe_oss_status_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeOssStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeOssStatusResponse:
-        """
-        @summary Query OSS status
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Service Address: cloudauth.aliyuncs.com.
-        
-        @param request: DescribeOssStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeOssStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeOssStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOssStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeOssStatus',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeOssStatus',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeOssStatusResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeOssStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_oss_status_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeOssStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeOssStatusResponse:
-        """
-        @summary Query OSS status
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Service Address: cloudauth.aliyuncs.com.
-        
-        @param request: DescribeOssStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeOssStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeOssStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOssStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeOssStatus',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeOssStatus',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeOssStatusResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeOssStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_oss_status(
         self,
-        request: cloudauth_20190307_models.DescribeOssStatusRequest,
-    ) -> cloudauth_20190307_models.DescribeOssStatusResponse:
-        """
-        @summary Query OSS status
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Service Address: cloudauth.aliyuncs.com.
-        
-        @param request: DescribeOssStatusRequest
-        @return: DescribeOssStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeOssStatusRequest,
+    ) -> main_models.DescribeOssStatusResponse:
+        runtime = RuntimeOptions()
         return self.describe_oss_status_with_options(request, runtime)
 
     async def describe_oss_status_async(
         self,
-        request: cloudauth_20190307_models.DescribeOssStatusRequest,
-    ) -> cloudauth_20190307_models.DescribeOssStatusResponse:
-        """
-        @summary Query OSS status
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Service Address: cloudauth.aliyuncs.com.
-        
-        @param request: DescribeOssStatusRequest
-        @return: DescribeOssStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeOssStatusRequest,
+    ) -> main_models.DescribeOssStatusResponse:
+        runtime = RuntimeOptions()
         return await self.describe_oss_status_with_options_async(request, runtime)
 
     def describe_oss_status_v2with_options(
         self,
-        request: cloudauth_20190307_models.DescribeOssStatusV2Request,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeOssStatusV2Response:
-        """
-        @summary Get OSS Activation Status
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Service Address: cloudauth.aliyuncs.com.
-        
-        @param request: DescribeOssStatusV2Request
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeOssStatusV2Response
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeOssStatusV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOssStatusV2Response:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.source_ip):
+        if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeOssStatusV2',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeOssStatusV2',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeOssStatusV2Response(),
+        return DaraCore.from_map(
+            main_models.DescribeOssStatusV2Response(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_oss_status_v2with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeOssStatusV2Request,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeOssStatusV2Response:
-        """
-        @summary Get OSS Activation Status
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Service Address: cloudauth.aliyuncs.com.
-        
-        @param request: DescribeOssStatusV2Request
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeOssStatusV2Response
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeOssStatusV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOssStatusV2Response:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.source_ip):
+        if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeOssStatusV2',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeOssStatusV2',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeOssStatusV2Response(),
+        return DaraCore.from_map(
+            main_models.DescribeOssStatusV2Response(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_oss_status_v2(
         self,
-        request: cloudauth_20190307_models.DescribeOssStatusV2Request,
-    ) -> cloudauth_20190307_models.DescribeOssStatusV2Response:
-        """
-        @summary Get OSS Activation Status
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Service Address: cloudauth.aliyuncs.com.
-        
-        @param request: DescribeOssStatusV2Request
-        @return: DescribeOssStatusV2Response
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeOssStatusV2Request,
+    ) -> main_models.DescribeOssStatusV2Response:
+        runtime = RuntimeOptions()
         return self.describe_oss_status_v2with_options(request, runtime)
 
     async def describe_oss_status_v2_async(
         self,
-        request: cloudauth_20190307_models.DescribeOssStatusV2Request,
-    ) -> cloudauth_20190307_models.DescribeOssStatusV2Response:
-        """
-        @summary Get OSS Activation Status
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Service Address: cloudauth.aliyuncs.com.
-        
-        @param request: DescribeOssStatusV2Request
-        @return: DescribeOssStatusV2Response
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeOssStatusV2Request,
+    ) -> main_models.DescribeOssStatusV2Response:
+        runtime = RuntimeOptions()
         return await self.describe_oss_status_v2with_options_async(request, runtime)
 
     def describe_oss_upload_token_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeOssUploadTokenResponse:
-        """
-        @summary Call DescribeOssUploadToken to get the Token required for uploading photos to OSS.
-        
-        @param request: DescribeOssUploadTokenRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeOssUploadTokenResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribeOssUploadToken',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOssUploadTokenResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeOssUploadToken',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeOssUploadTokenResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeOssUploadTokenResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_oss_upload_token_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeOssUploadTokenResponse:
-        """
-        @summary Call DescribeOssUploadToken to get the Token required for uploading photos to OSS.
-        
-        @param request: DescribeOssUploadTokenRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeOssUploadTokenResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribeOssUploadToken',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeOssUploadTokenResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeOssUploadToken',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeOssUploadTokenResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeOssUploadTokenResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_oss_upload_token(self) -> cloudauth_20190307_models.DescribeOssUploadTokenResponse:
-        """
-        @summary Call DescribeOssUploadToken to get the Token required for uploading photos to OSS.
-        
-        @return: DescribeOssUploadTokenResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def describe_oss_upload_token(self) -> main_models.DescribeOssUploadTokenResponse:
+        runtime = RuntimeOptions()
         return self.describe_oss_upload_token_with_options(runtime)
 
-    async def describe_oss_upload_token_async(self) -> cloudauth_20190307_models.DescribeOssUploadTokenResponse:
-        """
-        @summary Call DescribeOssUploadToken to get the Token required for uploading photos to OSS.
-        
-        @return: DescribeOssUploadTokenResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def describe_oss_upload_token_async(self) -> main_models.DescribeOssUploadTokenResponse:
+        runtime = RuntimeOptions()
         return await self.describe_oss_upload_token_with_options_async(runtime)
 
     def describe_page_face_verify_data_with_options(
         self,
-        request: cloudauth_20190307_models.DescribePageFaceVerifyDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribePageFaceVerifyDataResponse:
-        """
-        @summary Open API adds financial-grade data statistics API
-        
-        @param request: DescribePageFaceVerifyDataRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePageFaceVerifyDataResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribePageFaceVerifyDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePageFaceVerifyDataResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribePageFaceVerifyData',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribePageFaceVerifyData',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribePageFaceVerifyDataResponse(),
+        return DaraCore.from_map(
+            main_models.DescribePageFaceVerifyDataResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_page_face_verify_data_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribePageFaceVerifyDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribePageFaceVerifyDataResponse:
-        """
-        @summary Open API adds financial-grade data statistics API
-        
-        @param request: DescribePageFaceVerifyDataRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePageFaceVerifyDataResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribePageFaceVerifyDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePageFaceVerifyDataResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribePageFaceVerifyData',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribePageFaceVerifyData',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribePageFaceVerifyDataResponse(),
+        return DaraCore.from_map(
+            main_models.DescribePageFaceVerifyDataResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_page_face_verify_data(
         self,
-        request: cloudauth_20190307_models.DescribePageFaceVerifyDataRequest,
-    ) -> cloudauth_20190307_models.DescribePageFaceVerifyDataResponse:
-        """
-        @summary Open API adds financial-grade data statistics API
-        
-        @param request: DescribePageFaceVerifyDataRequest
-        @return: DescribePageFaceVerifyDataResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribePageFaceVerifyDataRequest,
+    ) -> main_models.DescribePageFaceVerifyDataResponse:
+        runtime = RuntimeOptions()
         return self.describe_page_face_verify_data_with_options(request, runtime)
 
     async def describe_page_face_verify_data_async(
         self,
-        request: cloudauth_20190307_models.DescribePageFaceVerifyDataRequest,
-    ) -> cloudauth_20190307_models.DescribePageFaceVerifyDataResponse:
-        """
-        @summary Open API adds financial-grade data statistics API
-        
-        @param request: DescribePageFaceVerifyDataRequest
-        @return: DescribePageFaceVerifyDataResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribePageFaceVerifyDataRequest,
+    ) -> main_models.DescribePageFaceVerifyDataResponse:
+        runtime = RuntimeOptions()
         return await self.describe_page_face_verify_data_with_options_async(request, runtime)
 
     def describe_page_setting_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribePageSettingResponse:
-        """
-        @summary Query Page Settings
-        
-        @description Request Method: Only supports sending requests via HTTPS POST method.
-        
-        @param request: DescribePageSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePageSettingResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribePageSetting',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePageSettingResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribePageSetting',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribePageSettingResponse(),
+        return DaraCore.from_map(
+            main_models.DescribePageSettingResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_page_setting_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribePageSettingResponse:
-        """
-        @summary Query Page Settings
-        
-        @description Request Method: Only supports sending requests via HTTPS POST method.
-        
-        @param request: DescribePageSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePageSettingResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribePageSetting',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePageSettingResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribePageSetting',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribePageSettingResponse(),
+        return DaraCore.from_map(
+            main_models.DescribePageSettingResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_page_setting(self) -> cloudauth_20190307_models.DescribePageSettingResponse:
-        """
-        @summary Query Page Settings
-        
-        @description Request Method: Only supports sending requests via HTTPS POST method.
-        
-        @return: DescribePageSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def describe_page_setting(self) -> main_models.DescribePageSettingResponse:
+        runtime = RuntimeOptions()
         return self.describe_page_setting_with_options(runtime)
 
-    async def describe_page_setting_async(self) -> cloudauth_20190307_models.DescribePageSettingResponse:
-        """
-        @summary Query Page Settings
-        
-        @description Request Method: Only supports sending requests via HTTPS POST method.
-        
-        @return: DescribePageSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def describe_page_setting_async(self) -> main_models.DescribePageSettingResponse:
+        runtime = RuntimeOptions()
         return await self.describe_page_setting_with_options_async(runtime)
 
     def describe_product_code_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeProductCodeResponse:
-        """
-        @summary Get Product Code
-        
-        @description Request Method: Supports sending requests via HTTPS GET/POST methods.
-        
-        @param request: DescribeProductCodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeProductCodeResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribeProductCode',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeProductCodeResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeProductCode',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeProductCodeResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeProductCodeResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_product_code_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeProductCodeResponse:
-        """
-        @summary Get Product Code
-        
-        @description Request Method: Supports sending requests via HTTPS GET/POST methods.
-        
-        @param request: DescribeProductCodeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeProductCodeResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribeProductCode',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeProductCodeResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeProductCode',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeProductCodeResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeProductCodeResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_product_code(self) -> cloudauth_20190307_models.DescribeProductCodeResponse:
-        """
-        @summary Get Product Code
-        
-        @description Request Method: Supports sending requests via HTTPS GET/POST methods.
-        
-        @return: DescribeProductCodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def describe_product_code(self) -> main_models.DescribeProductCodeResponse:
+        runtime = RuntimeOptions()
         return self.describe_product_code_with_options(runtime)
 
-    async def describe_product_code_async(self) -> cloudauth_20190307_models.DescribeProductCodeResponse:
-        """
-        @summary Get Product Code
-        
-        @description Request Method: Supports sending requests via HTTPS GET/POST methods.
-        
-        @return: DescribeProductCodeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def describe_product_code_async(self) -> main_models.DescribeProductCodeResponse:
+        runtime = RuntimeOptions()
         return await self.describe_product_code_with_options_async(runtime)
 
     def describe_smart_statistics_page_list_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeSmartStatisticsPageListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeSmartStatisticsPageListResponse:
-        """
-        @summary Enhanced Real Person Authentication Call Statistics Pagination Query Interface
-        
-        @param request: DescribeSmartStatisticsPageListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeSmartStatisticsPageListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeSmartStatisticsPageListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSmartStatisticsPageListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeSmartStatisticsPageList',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeSmartStatisticsPageList',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeSmartStatisticsPageListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeSmartStatisticsPageListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_smart_statistics_page_list_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeSmartStatisticsPageListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeSmartStatisticsPageListResponse:
-        """
-        @summary Enhanced Real Person Authentication Call Statistics Pagination Query Interface
-        
-        @param request: DescribeSmartStatisticsPageListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeSmartStatisticsPageListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeSmartStatisticsPageListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSmartStatisticsPageListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeSmartStatisticsPageList',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeSmartStatisticsPageList',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeSmartStatisticsPageListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeSmartStatisticsPageListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_smart_statistics_page_list(
         self,
-        request: cloudauth_20190307_models.DescribeSmartStatisticsPageListRequest,
-    ) -> cloudauth_20190307_models.DescribeSmartStatisticsPageListResponse:
-        """
-        @summary Enhanced Real Person Authentication Call Statistics Pagination Query Interface
-        
-        @param request: DescribeSmartStatisticsPageListRequest
-        @return: DescribeSmartStatisticsPageListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeSmartStatisticsPageListRequest,
+    ) -> main_models.DescribeSmartStatisticsPageListResponse:
+        runtime = RuntimeOptions()
         return self.describe_smart_statistics_page_list_with_options(request, runtime)
 
     async def describe_smart_statistics_page_list_async(
         self,
-        request: cloudauth_20190307_models.DescribeSmartStatisticsPageListRequest,
-    ) -> cloudauth_20190307_models.DescribeSmartStatisticsPageListResponse:
-        """
-        @summary Enhanced Real Person Authentication Call Statistics Pagination Query Interface
-        
-        @param request: DescribeSmartStatisticsPageListRequest
-        @return: DescribeSmartStatisticsPageListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeSmartStatisticsPageListRequest,
+    ) -> main_models.DescribeSmartStatisticsPageListResponse:
+        runtime = RuntimeOptions()
         return await self.describe_smart_statistics_page_list_with_options_async(request, runtime)
 
     def describe_verify_device_risk_statistics_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsResponse:
-        """
-        @summary Get Verification Device Statistics
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyDeviceRiskStatisticsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyDeviceRiskStatisticsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyDeviceRiskStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyDeviceRiskStatisticsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyDeviceRiskStatistics',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyDeviceRiskStatistics',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyDeviceRiskStatisticsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_verify_device_risk_statistics_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsResponse:
-        """
-        @summary Get Verification Device Statistics
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyDeviceRiskStatisticsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyDeviceRiskStatisticsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyDeviceRiskStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyDeviceRiskStatisticsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyDeviceRiskStatistics',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyDeviceRiskStatistics',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyDeviceRiskStatisticsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_device_risk_statistics(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsResponse:
-        """
-        @summary Get Verification Device Statistics
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyDeviceRiskStatisticsRequest
-        @return: DescribeVerifyDeviceRiskStatisticsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyDeviceRiskStatisticsRequest,
+    ) -> main_models.DescribeVerifyDeviceRiskStatisticsResponse:
+        runtime = RuntimeOptions()
         return self.describe_verify_device_risk_statistics_with_options(request, runtime)
 
     async def describe_verify_device_risk_statistics_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyDeviceRiskStatisticsResponse:
-        """
-        @summary Get Verification Device Statistics
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyDeviceRiskStatisticsRequest
-        @return: DescribeVerifyDeviceRiskStatisticsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyDeviceRiskStatisticsRequest,
+    ) -> main_models.DescribeVerifyDeviceRiskStatisticsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_verify_device_risk_statistics_with_options_async(request, runtime)
 
     def describe_verify_fail_statistics_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyFailStatisticsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyFailStatisticsResponse:
-        """
-        @summary Overview of authentication request statistics
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyFailStatisticsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyFailStatisticsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyFailStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyFailStatisticsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.age_gt):
+        if not DaraCore.is_null(request.age_gt):
             query['AgeGt'] = request.age_gt
-        if not UtilClient.is_unset(request.api):
+        if not DaraCore.is_null(request.api):
             query['Api'] = request.api
-        if not UtilClient.is_unset(request.device_type):
+        if not DaraCore.is_null(request.device_type):
             query['DeviceType'] = request.device_type
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyFailStatistics',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyFailStatistics',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyFailStatisticsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyFailStatisticsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_verify_fail_statistics_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyFailStatisticsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyFailStatisticsResponse:
-        """
-        @summary Overview of authentication request statistics
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyFailStatisticsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyFailStatisticsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyFailStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyFailStatisticsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.age_gt):
+        if not DaraCore.is_null(request.age_gt):
             query['AgeGt'] = request.age_gt
-        if not UtilClient.is_unset(request.api):
+        if not DaraCore.is_null(request.api):
             query['Api'] = request.api
-        if not UtilClient.is_unset(request.device_type):
+        if not DaraCore.is_null(request.device_type):
             query['DeviceType'] = request.device_type
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyFailStatistics',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyFailStatistics',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyFailStatisticsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyFailStatisticsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_fail_statistics(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyFailStatisticsRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyFailStatisticsResponse:
-        """
-        @summary Overview of authentication request statistics
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyFailStatisticsRequest
-        @return: DescribeVerifyFailStatisticsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyFailStatisticsRequest,
+    ) -> main_models.DescribeVerifyFailStatisticsResponse:
+        runtime = RuntimeOptions()
         return self.describe_verify_fail_statistics_with_options(request, runtime)
 
     async def describe_verify_fail_statistics_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyFailStatisticsRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyFailStatisticsResponse:
-        """
-        @summary Overview of authentication request statistics
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyFailStatisticsRequest
-        @return: DescribeVerifyFailStatisticsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyFailStatisticsRequest,
+    ) -> main_models.DescribeVerifyFailStatisticsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_verify_fail_statistics_with_options_async(request, runtime)
 
     def describe_verify_personas_device_model_statistics_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsResponse:
-        """
-        @summary Query Statistics on Device Face Comparison
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyPersonasDeviceModelStatisticsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyPersonasDeviceModelStatisticsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyPersonasDeviceModelStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyPersonasDeviceModelStatisticsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.time_range):
+        if not DaraCore.is_null(request.time_range):
             query['TimeRange'] = request.time_range
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyPersonasDeviceModelStatistics',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyPersonasDeviceModelStatistics',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyPersonasDeviceModelStatisticsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_verify_personas_device_model_statistics_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsResponse:
-        """
-        @summary Query Statistics on Device Face Comparison
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyPersonasDeviceModelStatisticsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyPersonasDeviceModelStatisticsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyPersonasDeviceModelStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyPersonasDeviceModelStatisticsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.time_range):
+        if not DaraCore.is_null(request.time_range):
             query['TimeRange'] = request.time_range
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyPersonasDeviceModelStatistics',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyPersonasDeviceModelStatistics',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyPersonasDeviceModelStatisticsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_personas_device_model_statistics(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsResponse:
-        """
-        @summary Query Statistics on Device Face Comparison
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyPersonasDeviceModelStatisticsRequest
-        @return: DescribeVerifyPersonasDeviceModelStatisticsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyPersonasDeviceModelStatisticsRequest,
+    ) -> main_models.DescribeVerifyPersonasDeviceModelStatisticsResponse:
+        runtime = RuntimeOptions()
         return self.describe_verify_personas_device_model_statistics_with_options(request, runtime)
 
     async def describe_verify_personas_device_model_statistics_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyPersonasDeviceModelStatisticsResponse:
-        """
-        @summary Query Statistics on Device Face Comparison
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyPersonasDeviceModelStatisticsRequest
-        @return: DescribeVerifyPersonasDeviceModelStatisticsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyPersonasDeviceModelStatisticsRequest,
+    ) -> main_models.DescribeVerifyPersonasDeviceModelStatisticsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_verify_personas_device_model_statistics_with_options_async(request, runtime)
 
     def describe_verify_personas_os_statistics_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsResponse:
-        """
-        @summary Query Authentication Personnel Statistics
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyPersonasOsStatisticsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyPersonasOsStatisticsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyPersonasOsStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyPersonasOsStatisticsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.time_range):
+        if not DaraCore.is_null(request.time_range):
             query['TimeRange'] = request.time_range
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyPersonasOsStatistics',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyPersonasOsStatistics',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyPersonasOsStatisticsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_verify_personas_os_statistics_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsResponse:
-        """
-        @summary Query Authentication Personnel Statistics
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyPersonasOsStatisticsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyPersonasOsStatisticsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyPersonasOsStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyPersonasOsStatisticsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.time_range):
+        if not DaraCore.is_null(request.time_range):
             query['TimeRange'] = request.time_range
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyPersonasOsStatistics',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyPersonasOsStatistics',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyPersonasOsStatisticsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_personas_os_statistics(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsResponse:
-        """
-        @summary Query Authentication Personnel Statistics
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyPersonasOsStatisticsRequest
-        @return: DescribeVerifyPersonasOsStatisticsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyPersonasOsStatisticsRequest,
+    ) -> main_models.DescribeVerifyPersonasOsStatisticsResponse:
+        runtime = RuntimeOptions()
         return self.describe_verify_personas_os_statistics_with_options(request, runtime)
 
     async def describe_verify_personas_os_statistics_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyPersonasOsStatisticsResponse:
-        """
-        @summary Query Authentication Personnel Statistics
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyPersonasOsStatisticsRequest
-        @return: DescribeVerifyPersonasOsStatisticsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyPersonasOsStatisticsRequest,
+    ) -> main_models.DescribeVerifyPersonasOsStatisticsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_verify_personas_os_statistics_with_options_async(request, runtime)
 
     def describe_verify_personas_province_statistics_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsResponse:
-        """
-        @summary Obtain statistical information on the location of authenticated individuals
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyPersonasProvinceStatisticsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyPersonasProvinceStatisticsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyPersonasProvinceStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyPersonasProvinceStatisticsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.time_range):
+        if not DaraCore.is_null(request.time_range):
             query['TimeRange'] = request.time_range
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyPersonasProvinceStatistics',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyPersonasProvinceStatistics',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyPersonasProvinceStatisticsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_verify_personas_province_statistics_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsResponse:
-        """
-        @summary Obtain statistical information on the location of authenticated individuals
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyPersonasProvinceStatisticsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyPersonasProvinceStatisticsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyPersonasProvinceStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyPersonasProvinceStatisticsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.time_range):
+        if not DaraCore.is_null(request.time_range):
             query['TimeRange'] = request.time_range
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyPersonasProvinceStatistics',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyPersonasProvinceStatistics',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyPersonasProvinceStatisticsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_personas_province_statistics(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsResponse:
-        """
-        @summary Obtain statistical information on the location of authenticated individuals
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyPersonasProvinceStatisticsRequest
-        @return: DescribeVerifyPersonasProvinceStatisticsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyPersonasProvinceStatisticsRequest,
+    ) -> main_models.DescribeVerifyPersonasProvinceStatisticsResponse:
+        runtime = RuntimeOptions()
         return self.describe_verify_personas_province_statistics_with_options(request, runtime)
 
     async def describe_verify_personas_province_statistics_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyPersonasProvinceStatisticsResponse:
-        """
-        @summary Obtain statistical information on the location of authenticated individuals
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyPersonasProvinceStatisticsRequest
-        @return: DescribeVerifyPersonasProvinceStatisticsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyPersonasProvinceStatisticsRequest,
+    ) -> main_models.DescribeVerifyPersonasProvinceStatisticsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_verify_personas_province_statistics_with_options_async(request, runtime)
 
     def describe_verify_personas_sex_statistics_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsResponse:
-        """
-        @summary Query gender statistics of authentication
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyPersonasSexStatisticsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyPersonasSexStatisticsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyPersonasSexStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyPersonasSexStatisticsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.time_range):
+        if not DaraCore.is_null(request.time_range):
             query['TimeRange'] = request.time_range
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyPersonasSexStatistics',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyPersonasSexStatistics',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyPersonasSexStatisticsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_verify_personas_sex_statistics_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsResponse:
-        """
-        @summary Query gender statistics of authentication
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyPersonasSexStatisticsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyPersonasSexStatisticsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyPersonasSexStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyPersonasSexStatisticsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.time_range):
+        if not DaraCore.is_null(request.time_range):
             query['TimeRange'] = request.time_range
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyPersonasSexStatistics',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyPersonasSexStatistics',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyPersonasSexStatisticsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_personas_sex_statistics(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsResponse:
-        """
-        @summary Query gender statistics of authentication
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyPersonasSexStatisticsRequest
-        @return: DescribeVerifyPersonasSexStatisticsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyPersonasSexStatisticsRequest,
+    ) -> main_models.DescribeVerifyPersonasSexStatisticsResponse:
+        runtime = RuntimeOptions()
         return self.describe_verify_personas_sex_statistics_with_options(request, runtime)
 
     async def describe_verify_personas_sex_statistics_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyPersonasSexStatisticsResponse:
-        """
-        @summary Query gender statistics of authentication
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifyPersonasSexStatisticsRequest
-        @return: DescribeVerifyPersonasSexStatisticsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyPersonasSexStatisticsRequest,
+    ) -> main_models.DescribeVerifyPersonasSexStatisticsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_verify_personas_sex_statistics_with_options_async(request, runtime)
 
     def describe_verify_result_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyResultResponse:
-        """
-        @summary Query the result of real-person authentication.
-        
-        @description Prerequisites: Before accessing this API, please ensure that you have completed the necessary preparations. For more details, see [Real Person Authentication Server-side Preparation](https://help.aliyun.com/document_detail/127471.html) and [Liveness Face Verification Server-side Preparation](https://help.aliyun.com/document_detail/127717.html).
-        > Alibaba Cloud Real Person Authentication only stores authentication data for the last 180 days. For any subsequent business use, please call this interface in a timely manner to retrieve and store the data yourself to avoid any impact on usage.
-        Request Method: HTTPS POST and GET.
-        Interface Description: After the mobile end of the access party receives the callback, its server can call this interface to obtain the corresponding authentication status and authentication information.
-        Applicable Scope: This interface is applicable to the authentication solution with SDK + server-side integration.
-        
-        @param request: DescribeVerifyResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyResultResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyResult',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyResult',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyResultResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyResultResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_verify_result_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyResultResponse:
-        """
-        @summary Query the result of real-person authentication.
-        
-        @description Prerequisites: Before accessing this API, please ensure that you have completed the necessary preparations. For more details, see [Real Person Authentication Server-side Preparation](https://help.aliyun.com/document_detail/127471.html) and [Liveness Face Verification Server-side Preparation](https://help.aliyun.com/document_detail/127717.html).
-        > Alibaba Cloud Real Person Authentication only stores authentication data for the last 180 days. For any subsequent business use, please call this interface in a timely manner to retrieve and store the data yourself to avoid any impact on usage.
-        Request Method: HTTPS POST and GET.
-        Interface Description: After the mobile end of the access party receives the callback, its server can call this interface to obtain the corresponding authentication status and authentication information.
-        Applicable Scope: This interface is applicable to the authentication solution with SDK + server-side integration.
-        
-        @param request: DescribeVerifyResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyResultResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyResult',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyResult',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyResultResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyResultResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_result(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyResultRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyResultResponse:
-        """
-        @summary Query the result of real-person authentication.
-        
-        @description Prerequisites: Before accessing this API, please ensure that you have completed the necessary preparations. For more details, see [Real Person Authentication Server-side Preparation](https://help.aliyun.com/document_detail/127471.html) and [Liveness Face Verification Server-side Preparation](https://help.aliyun.com/document_detail/127717.html).
-        > Alibaba Cloud Real Person Authentication only stores authentication data for the last 180 days. For any subsequent business use, please call this interface in a timely manner to retrieve and store the data yourself to avoid any impact on usage.
-        Request Method: HTTPS POST and GET.
-        Interface Description: After the mobile end of the access party receives the callback, its server can call this interface to obtain the corresponding authentication status and authentication information.
-        Applicable Scope: This interface is applicable to the authentication solution with SDK + server-side integration.
-        
-        @param request: DescribeVerifyResultRequest
-        @return: DescribeVerifyResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyResultRequest,
+    ) -> main_models.DescribeVerifyResultResponse:
+        runtime = RuntimeOptions()
         return self.describe_verify_result_with_options(request, runtime)
 
     async def describe_verify_result_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyResultRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyResultResponse:
-        """
-        @summary Query the result of real-person authentication.
-        
-        @description Prerequisites: Before accessing this API, please ensure that you have completed the necessary preparations. For more details, see [Real Person Authentication Server-side Preparation](https://help.aliyun.com/document_detail/127471.html) and [Liveness Face Verification Server-side Preparation](https://help.aliyun.com/document_detail/127717.html).
-        > Alibaba Cloud Real Person Authentication only stores authentication data for the last 180 days. For any subsequent business use, please call this interface in a timely manner to retrieve and store the data yourself to avoid any impact on usage.
-        Request Method: HTTPS POST and GET.
-        Interface Description: After the mobile end of the access party receives the callback, its server can call this interface to obtain the corresponding authentication status and authentication information.
-        Applicable Scope: This interface is applicable to the authentication solution with SDK + server-side integration.
-        
-        @param request: DescribeVerifyResultRequest
-        @return: DescribeVerifyResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyResultRequest,
+    ) -> main_models.DescribeVerifyResultResponse:
+        runtime = RuntimeOptions()
         return await self.describe_verify_result_with_options_async(request, runtime)
 
     def describe_verify_sdkwith_options(
         self,
-        request: cloudauth_20190307_models.DescribeVerifySDKRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifySDKResponse:
-        """
-        @summary Call DescribeVerifySDK to get the offline SDK download address.
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        Interface Description: Obtain the SDK generation result based on the task ID for generating an offline facial recognition SDK.
-        
-        @param request: DescribeVerifySDKRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifySDKResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifySDKRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifySDKResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.task_id):
+        if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifySDK',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifySDK',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifySDKResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifySDKResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_verify_sdkwith_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifySDKRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifySDKResponse:
-        """
-        @summary Call DescribeVerifySDK to get the offline SDK download address.
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        Interface Description: Obtain the SDK generation result based on the task ID for generating an offline facial recognition SDK.
-        
-        @param request: DescribeVerifySDKRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifySDKResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifySDKRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifySDKResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.task_id):
+        if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifySDK',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifySDK',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifySDKResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifySDKResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_sdk(
         self,
-        request: cloudauth_20190307_models.DescribeVerifySDKRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifySDKResponse:
-        """
-        @summary Call DescribeVerifySDK to get the offline SDK download address.
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        Interface Description: Obtain the SDK generation result based on the task ID for generating an offline facial recognition SDK.
-        
-        @param request: DescribeVerifySDKRequest
-        @return: DescribeVerifySDKResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifySDKRequest,
+    ) -> main_models.DescribeVerifySDKResponse:
+        runtime = RuntimeOptions()
         return self.describe_verify_sdkwith_options(request, runtime)
 
     async def describe_verify_sdk_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifySDKRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifySDKResponse:
-        """
-        @summary Call DescribeVerifySDK to get the offline SDK download address.
-        
-        @description Request Method: Supports sending requests via HTTPS POST and GET methods.
-        Interface Description: Obtain the SDK generation result based on the task ID for generating an offline facial recognition SDK.
-        
-        @param request: DescribeVerifySDKRequest
-        @return: DescribeVerifySDKResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifySDKRequest,
+    ) -> main_models.DescribeVerifySDKResponse:
+        runtime = RuntimeOptions()
         return await self.describe_verify_sdkwith_options_async(request, runtime)
 
     def describe_verify_search_page_list_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeVerifySearchPageListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifySearchPageListResponse:
-        """
-        @summary Query the list of authentication schemes
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifySearchPageListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifySearchPageListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifySearchPageListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifySearchPageListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cert_no):
+        if not DaraCore.is_null(request.cert_no):
             query['CertNo'] = request.cert_no
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.has_device_risk):
+        if not DaraCore.is_null(request.has_device_risk):
             query['HasDeviceRisk'] = request.has_device_risk
-        if not UtilClient.is_unset(request.model):
+        if not DaraCore.is_null(request.model):
             query['Model'] = request.model
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             query['OuterOrderNo'] = request.outer_order_no
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.passed):
+        if not DaraCore.is_null(request.passed):
             query['Passed'] = request.passed
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.root):
+        if not DaraCore.is_null(request.root):
             query['Root'] = request.root
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.simulator):
+        if not DaraCore.is_null(request.simulator):
             query['Simulator'] = request.simulator
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        if not UtilClient.is_unset(request.sub_code):
+        if not DaraCore.is_null(request.sub_code):
             query['SubCode'] = request.sub_code
-        if not UtilClient.is_unset(request.sub_codes):
+        if not DaraCore.is_null(request.sub_codes):
             query['SubCodes'] = request.sub_codes
-        if not UtilClient.is_unset(request.virtual_video):
+        if not DaraCore.is_null(request.virtual_video):
             query['VirtualVideo'] = request.virtual_video
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifySearchPageList',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifySearchPageList',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifySearchPageListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifySearchPageListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_verify_search_page_list_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifySearchPageListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifySearchPageListResponse:
-        """
-        @summary Query the list of authentication schemes
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifySearchPageListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifySearchPageListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifySearchPageListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifySearchPageListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cert_no):
+        if not DaraCore.is_null(request.cert_no):
             query['CertNo'] = request.cert_no
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.has_device_risk):
+        if not DaraCore.is_null(request.has_device_risk):
             query['HasDeviceRisk'] = request.has_device_risk
-        if not UtilClient.is_unset(request.model):
+        if not DaraCore.is_null(request.model):
             query['Model'] = request.model
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             query['OuterOrderNo'] = request.outer_order_no
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.passed):
+        if not DaraCore.is_null(request.passed):
             query['Passed'] = request.passed
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.root):
+        if not DaraCore.is_null(request.root):
             query['Root'] = request.root
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.simulator):
+        if not DaraCore.is_null(request.simulator):
             query['Simulator'] = request.simulator
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        if not UtilClient.is_unset(request.sub_code):
+        if not DaraCore.is_null(request.sub_code):
             query['SubCode'] = request.sub_code
-        if not UtilClient.is_unset(request.sub_codes):
+        if not DaraCore.is_null(request.sub_codes):
             query['SubCodes'] = request.sub_codes
-        if not UtilClient.is_unset(request.virtual_video):
+        if not DaraCore.is_null(request.virtual_video):
             query['VirtualVideo'] = request.virtual_video
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifySearchPageList',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifySearchPageList',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifySearchPageListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifySearchPageListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_search_page_list(
         self,
-        request: cloudauth_20190307_models.DescribeVerifySearchPageListRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifySearchPageListResponse:
-        """
-        @summary Query the list of authentication schemes
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifySearchPageListRequest
-        @return: DescribeVerifySearchPageListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifySearchPageListRequest,
+    ) -> main_models.DescribeVerifySearchPageListResponse:
+        runtime = RuntimeOptions()
         return self.describe_verify_search_page_list_with_options(request, runtime)
 
     async def describe_verify_search_page_list_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifySearchPageListRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifySearchPageListResponse:
-        """
-        @summary Query the list of authentication schemes
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        
-        @param request: DescribeVerifySearchPageListRequest
-        @return: DescribeVerifySearchPageListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifySearchPageListRequest,
+    ) -> main_models.DescribeVerifySearchPageListResponse:
+        runtime = RuntimeOptions()
         return await self.describe_verify_search_page_list_with_options_async(request, runtime)
 
     def describe_verify_statistics_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyStatisticsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyStatisticsResponse:
-        """
-        @summary Query Authentication Statistics
-        
-        @description - Request Method: Supports sending requests using HTTPS POST and GET methods.
-        - Service Address: cloudauth.aliyuncs.com.
-        
-        @param request: DescribeVerifyStatisticsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyStatisticsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyStatisticsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.age_gt):
+        if not DaraCore.is_null(request.age_gt):
             query['AgeGt'] = request.age_gt
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyStatistics',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyStatistics',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyStatisticsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyStatisticsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_verify_statistics_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyStatisticsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyStatisticsResponse:
-        """
-        @summary Query Authentication Statistics
-        
-        @description - Request Method: Supports sending requests using HTTPS POST and GET methods.
-        - Service Address: cloudauth.aliyuncs.com.
-        
-        @param request: DescribeVerifyStatisticsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyStatisticsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyStatisticsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyStatisticsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.age_gt):
+        if not DaraCore.is_null(request.age_gt):
             query['AgeGt'] = request.age_gt
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyStatistics',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyStatistics',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyStatisticsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyStatisticsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_statistics(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyStatisticsRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyStatisticsResponse:
-        """
-        @summary Query Authentication Statistics
-        
-        @description - Request Method: Supports sending requests using HTTPS POST and GET methods.
-        - Service Address: cloudauth.aliyuncs.com.
-        
-        @param request: DescribeVerifyStatisticsRequest
-        @return: DescribeVerifyStatisticsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyStatisticsRequest,
+    ) -> main_models.DescribeVerifyStatisticsResponse:
+        runtime = RuntimeOptions()
         return self.describe_verify_statistics_with_options(request, runtime)
 
     async def describe_verify_statistics_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyStatisticsRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyStatisticsResponse:
-        """
-        @summary Query Authentication Statistics
-        
-        @description - Request Method: Supports sending requests using HTTPS POST and GET methods.
-        - Service Address: cloudauth.aliyuncs.com.
-        
-        @param request: DescribeVerifyStatisticsRequest
-        @return: DescribeVerifyStatisticsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyStatisticsRequest,
+    ) -> main_models.DescribeVerifyStatisticsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_verify_statistics_with_options_async(request, runtime)
 
     def describe_verify_token_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyTokenRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyTokenResponse:
-        """
-        @summary Call DescribeVerifyToken to initiate an authentication request and obtain an authentication Token. This interface is suitable for authentication solutions using SDK + server-side integration.
-        
-        @description Preparation for Access: When integrating this API, please ensure that the corresponding preparations have been completed. For details, see [Overview of Real Person Authentication Solution Integration Process](https://help.aliyun.com/document_detail/127536.html) and [Overview of Live Face Verification Solution (Liveness Detection Solution) Integration Process](https://help.aliyun.com/document_detail/127687.html).
-        Request Method: HTTPS POST and GET
-        API Description: Before each authentication, use this interface to obtain an authentication Token (VerifyToken), which is used to link various interfaces in the authentication request.
-        Applicable Scope: This interface is suitable for wireless SDK integration.
-        Image Address: Use HTTP or HTTPS addresses that are publicly accessible over the Internet. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
-        Image Restrictions:
-        - Relative or absolute paths of local images are not supported.
-        - The size of a single image should be controlled within 2 MB to avoid algorithm retrieval timeout.
-        - The face area in the image must be at least 6464 pixels (px).
-        - There is an 8 MB size limit for the Body of a single request. Please calculate the total size of all images and other information in the request to ensure it does not exceed the limit.
-        
-        @param request: DescribeVerifyTokenRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyTokenResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyTokenResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.callback_seed):
+        if not DaraCore.is_null(request.callback_seed):
             query['CallbackSeed'] = request.callback_seed
-        if not UtilClient.is_unset(request.callback_url):
+        if not DaraCore.is_null(request.callback_url):
             query['CallbackUrl'] = request.callback_url
-        if not UtilClient.is_unset(request.face_retained_image_url):
+        if not DaraCore.is_null(request.face_retained_image_url):
             query['FaceRetainedImageUrl'] = request.face_retained_image_url
-        if not UtilClient.is_unset(request.failed_redirect_url):
+        if not DaraCore.is_null(request.failed_redirect_url):
             query['FailedRedirectUrl'] = request.failed_redirect_url
-        if not UtilClient.is_unset(request.id_card_back_image_url):
+        if not DaraCore.is_null(request.id_card_back_image_url):
             query['IdCardBackImageUrl'] = request.id_card_back_image_url
-        if not UtilClient.is_unset(request.id_card_front_image_url):
+        if not DaraCore.is_null(request.id_card_front_image_url):
             query['IdCardFrontImageUrl'] = request.id_card_front_image_url
-        if not UtilClient.is_unset(request.id_card_number):
+        if not DaraCore.is_null(request.id_card_number):
             query['IdCardNumber'] = request.id_card_number
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.passed_redirect_url):
+        if not DaraCore.is_null(request.passed_redirect_url):
             query['PassedRedirectUrl'] = request.passed_redirect_url
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        if not UtilClient.is_unset(request.user_ip):
+        if not DaraCore.is_null(request.user_ip):
             query['UserIp'] = request.user_ip
-        if not UtilClient.is_unset(request.user_phone_number):
+        if not DaraCore.is_null(request.user_phone_number):
             query['UserPhoneNumber'] = request.user_phone_number
-        if not UtilClient.is_unset(request.user_regist_time):
+        if not DaraCore.is_null(request.user_regist_time):
             query['UserRegistTime'] = request.user_regist_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyToken',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyToken',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyTokenResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyTokenResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_verify_token_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyTokenRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeVerifyTokenResponse:
-        """
-        @summary Call DescribeVerifyToken to initiate an authentication request and obtain an authentication Token. This interface is suitable for authentication solutions using SDK + server-side integration.
-        
-        @description Preparation for Access: When integrating this API, please ensure that the corresponding preparations have been completed. For details, see [Overview of Real Person Authentication Solution Integration Process](https://help.aliyun.com/document_detail/127536.html) and [Overview of Live Face Verification Solution (Liveness Detection Solution) Integration Process](https://help.aliyun.com/document_detail/127687.html).
-        Request Method: HTTPS POST and GET
-        API Description: Before each authentication, use this interface to obtain an authentication Token (VerifyToken), which is used to link various interfaces in the authentication request.
-        Applicable Scope: This interface is suitable for wireless SDK integration.
-        Image Address: Use HTTP or HTTPS addresses that are publicly accessible over the Internet. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
-        Image Restrictions:
-        - Relative or absolute paths of local images are not supported.
-        - The size of a single image should be controlled within 2 MB to avoid algorithm retrieval timeout.
-        - The face area in the image must be at least 6464 pixels (px).
-        - There is an 8 MB size limit for the Body of a single request. Please calculate the total size of all images and other information in the request to ensure it does not exceed the limit.
-        
-        @param request: DescribeVerifyTokenRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeVerifyTokenResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeVerifyTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVerifyTokenResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.callback_seed):
+        if not DaraCore.is_null(request.callback_seed):
             query['CallbackSeed'] = request.callback_seed
-        if not UtilClient.is_unset(request.callback_url):
+        if not DaraCore.is_null(request.callback_url):
             query['CallbackUrl'] = request.callback_url
-        if not UtilClient.is_unset(request.face_retained_image_url):
+        if not DaraCore.is_null(request.face_retained_image_url):
             query['FaceRetainedImageUrl'] = request.face_retained_image_url
-        if not UtilClient.is_unset(request.failed_redirect_url):
+        if not DaraCore.is_null(request.failed_redirect_url):
             query['FailedRedirectUrl'] = request.failed_redirect_url
-        if not UtilClient.is_unset(request.id_card_back_image_url):
+        if not DaraCore.is_null(request.id_card_back_image_url):
             query['IdCardBackImageUrl'] = request.id_card_back_image_url
-        if not UtilClient.is_unset(request.id_card_front_image_url):
+        if not DaraCore.is_null(request.id_card_front_image_url):
             query['IdCardFrontImageUrl'] = request.id_card_front_image_url
-        if not UtilClient.is_unset(request.id_card_number):
+        if not DaraCore.is_null(request.id_card_number):
             query['IdCardNumber'] = request.id_card_number
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.passed_redirect_url):
+        if not DaraCore.is_null(request.passed_redirect_url):
             query['PassedRedirectUrl'] = request.passed_redirect_url
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        if not UtilClient.is_unset(request.user_ip):
+        if not DaraCore.is_null(request.user_ip):
             query['UserIp'] = request.user_ip
-        if not UtilClient.is_unset(request.user_phone_number):
+        if not DaraCore.is_null(request.user_phone_number):
             query['UserPhoneNumber'] = request.user_phone_number
-        if not UtilClient.is_unset(request.user_regist_time):
+        if not DaraCore.is_null(request.user_regist_time):
             query['UserRegistTime'] = request.user_regist_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeVerifyToken',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeVerifyToken',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeVerifyTokenResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeVerifyTokenResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_verify_token(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyTokenRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyTokenResponse:
-        """
-        @summary Call DescribeVerifyToken to initiate an authentication request and obtain an authentication Token. This interface is suitable for authentication solutions using SDK + server-side integration.
-        
-        @description Preparation for Access: When integrating this API, please ensure that the corresponding preparations have been completed. For details, see [Overview of Real Person Authentication Solution Integration Process](https://help.aliyun.com/document_detail/127536.html) and [Overview of Live Face Verification Solution (Liveness Detection Solution) Integration Process](https://help.aliyun.com/document_detail/127687.html).
-        Request Method: HTTPS POST and GET
-        API Description: Before each authentication, use this interface to obtain an authentication Token (VerifyToken), which is used to link various interfaces in the authentication request.
-        Applicable Scope: This interface is suitable for wireless SDK integration.
-        Image Address: Use HTTP or HTTPS addresses that are publicly accessible over the Internet. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
-        Image Restrictions:
-        - Relative or absolute paths of local images are not supported.
-        - The size of a single image should be controlled within 2 MB to avoid algorithm retrieval timeout.
-        - The face area in the image must be at least 6464 pixels (px).
-        - There is an 8 MB size limit for the Body of a single request. Please calculate the total size of all images and other information in the request to ensure it does not exceed the limit.
-        
-        @param request: DescribeVerifyTokenRequest
-        @return: DescribeVerifyTokenResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyTokenRequest,
+    ) -> main_models.DescribeVerifyTokenResponse:
+        runtime = RuntimeOptions()
         return self.describe_verify_token_with_options(request, runtime)
 
     async def describe_verify_token_async(
         self,
-        request: cloudauth_20190307_models.DescribeVerifyTokenRequest,
-    ) -> cloudauth_20190307_models.DescribeVerifyTokenResponse:
-        """
-        @summary Call DescribeVerifyToken to initiate an authentication request and obtain an authentication Token. This interface is suitable for authentication solutions using SDK + server-side integration.
-        
-        @description Preparation for Access: When integrating this API, please ensure that the corresponding preparations have been completed. For details, see [Overview of Real Person Authentication Solution Integration Process](https://help.aliyun.com/document_detail/127536.html) and [Overview of Live Face Verification Solution (Liveness Detection Solution) Integration Process](https://help.aliyun.com/document_detail/127687.html).
-        Request Method: HTTPS POST and GET
-        API Description: Before each authentication, use this interface to obtain an authentication Token (VerifyToken), which is used to link various interfaces in the authentication request.
-        Applicable Scope: This interface is suitable for wireless SDK integration.
-        Image Address: Use HTTP or HTTPS addresses that are publicly accessible over the Internet. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
-        Image Restrictions:
-        - Relative or absolute paths of local images are not supported.
-        - The size of a single image should be controlled within 2 MB to avoid algorithm retrieval timeout.
-        - The face area in the image must be at least 6464 pixels (px).
-        - There is an 8 MB size limit for the Body of a single request. Please calculate the total size of all images and other information in the request to ensure it does not exceed the limit.
-        
-        @param request: DescribeVerifyTokenRequest
-        @return: DescribeVerifyTokenResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeVerifyTokenRequest,
+    ) -> main_models.DescribeVerifyTokenResponse:
+        runtime = RuntimeOptions()
         return await self.describe_verify_token_with_options_async(request, runtime)
 
     def describe_whitelist_setting_with_options(
         self,
-        request: cloudauth_20190307_models.DescribeWhitelistSettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeWhitelistSettingResponse:
-        """
-        @summary Get Whitelist Collection Get Whitelist Collection
-        
-        @description Request Method: Only supports sending requests via HTTPS POST method.
-        
-        @param request: DescribeWhitelistSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeWhitelistSettingResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeWhitelistSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeWhitelistSettingResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cert_no):
+        if not DaraCore.is_null(request.cert_no):
             query['CertNo'] = request.cert_no
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.source_ip):
+        if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.valid_end_date):
+        if not DaraCore.is_null(request.valid_end_date):
             query['ValidEndDate'] = request.valid_end_date
-        if not UtilClient.is_unset(request.valid_start_date):
+        if not DaraCore.is_null(request.valid_start_date):
             query['ValidStartDate'] = request.valid_start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeWhitelistSetting',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeWhitelistSetting',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeWhitelistSettingResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeWhitelistSettingResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_whitelist_setting_with_options_async(
         self,
-        request: cloudauth_20190307_models.DescribeWhitelistSettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DescribeWhitelistSettingResponse:
-        """
-        @summary Get Whitelist Collection Get Whitelist Collection
-        
-        @description Request Method: Only supports sending requests via HTTPS POST method.
-        
-        @param request: DescribeWhitelistSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeWhitelistSettingResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeWhitelistSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeWhitelistSettingResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cert_no):
+        if not DaraCore.is_null(request.cert_no):
             query['CertNo'] = request.cert_no
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.source_ip):
+        if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.valid_end_date):
+        if not DaraCore.is_null(request.valid_end_date):
             query['ValidEndDate'] = request.valid_end_date
-        if not UtilClient.is_unset(request.valid_start_date):
+        if not DaraCore.is_null(request.valid_start_date):
             query['ValidStartDate'] = request.valid_start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeWhitelistSetting',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeWhitelistSetting',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DescribeWhitelistSettingResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeWhitelistSettingResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_whitelist_setting(
         self,
-        request: cloudauth_20190307_models.DescribeWhitelistSettingRequest,
-    ) -> cloudauth_20190307_models.DescribeWhitelistSettingResponse:
-        """
-        @summary Get Whitelist Collection Get Whitelist Collection
-        
-        @description Request Method: Only supports sending requests via HTTPS POST method.
-        
-        @param request: DescribeWhitelistSettingRequest
-        @return: DescribeWhitelistSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeWhitelistSettingRequest,
+    ) -> main_models.DescribeWhitelistSettingResponse:
+        runtime = RuntimeOptions()
         return self.describe_whitelist_setting_with_options(request, runtime)
 
     async def describe_whitelist_setting_async(
         self,
-        request: cloudauth_20190307_models.DescribeWhitelistSettingRequest,
-    ) -> cloudauth_20190307_models.DescribeWhitelistSettingResponse:
-        """
-        @summary Get Whitelist Collection Get Whitelist Collection
-        
-        @description Request Method: Only supports sending requests via HTTPS POST method.
-        
-        @param request: DescribeWhitelistSettingRequest
-        @return: DescribeWhitelistSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeWhitelistSettingRequest,
+    ) -> main_models.DescribeWhitelistSettingResponse:
+        runtime = RuntimeOptions()
         return await self.describe_whitelist_setting_with_options_async(request, runtime)
 
     def detect_face_attributes_with_options(
         self,
-        request: cloudauth_20190307_models.DetectFaceAttributesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DetectFaceAttributesResponse:
-        """
-        @summary Detect Validity Attributes in Face Photos
-        
-        @description Request Method: Only supports sending requests via HTTPS POST.
-        Interface Description: Detects the validity-related attributes of faces in the input photo, which helps the business side to determine whether the photo meets their own business retention or comparison requirements. The currently supported face validity-related attributes include: whether it is a face, whether it is blurry, whether glasses are worn, face pose, whether it is a smile, etc.
-        Instructions for Uploading Image Addresses: When passing in images, you need to upload their corresponding HTTP, OSS addresses, or Base64 encoding.
-        - HTTP Address: A publicly accessible HTTP address. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
-        - Base64 Encoding: An image encoded through base64, with the format being `base64://<image base64 string>`.
-        Image Limitations:
-        - Does not support relative or absolute paths of local images.
-        - Please keep the size of a single image within 2 MB to avoid algorithm timeout.
-        - There is an 8 MB size limit for the Body of a single request; please calculate the total size of all images and other information in the request and do not exceed the limit.
-        - When using Base64 to pass images, the request method needs to be changed to POST; the header description of the image Base64 string, such as `data:image/png;base64`, should be removed.
-        
-        @param request: DetectFaceAttributesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetectFaceAttributesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DetectFaceAttributesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetectFaceAttributesResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             body['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.material_value):
+        if not DaraCore.is_null(request.material_value):
             body['MaterialValue'] = request.material_value
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DetectFaceAttributes',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DetectFaceAttributes',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DetectFaceAttributesResponse(),
+        return DaraCore.from_map(
+            main_models.DetectFaceAttributesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def detect_face_attributes_with_options_async(
         self,
-        request: cloudauth_20190307_models.DetectFaceAttributesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DetectFaceAttributesResponse:
-        """
-        @summary Detect Validity Attributes in Face Photos
-        
-        @description Request Method: Only supports sending requests via HTTPS POST.
-        Interface Description: Detects the validity-related attributes of faces in the input photo, which helps the business side to determine whether the photo meets their own business retention or comparison requirements. The currently supported face validity-related attributes include: whether it is a face, whether it is blurry, whether glasses are worn, face pose, whether it is a smile, etc.
-        Instructions for Uploading Image Addresses: When passing in images, you need to upload their corresponding HTTP, OSS addresses, or Base64 encoding.
-        - HTTP Address: A publicly accessible HTTP address. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
-        - Base64 Encoding: An image encoded through base64, with the format being `base64://<image base64 string>`.
-        Image Limitations:
-        - Does not support relative or absolute paths of local images.
-        - Please keep the size of a single image within 2 MB to avoid algorithm timeout.
-        - There is an 8 MB size limit for the Body of a single request; please calculate the total size of all images and other information in the request and do not exceed the limit.
-        - When using Base64 to pass images, the request method needs to be changed to POST; the header description of the image Base64 string, such as `data:image/png;base64`, should be removed.
-        
-        @param request: DetectFaceAttributesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetectFaceAttributesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DetectFaceAttributesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetectFaceAttributesResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             body['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.material_value):
+        if not DaraCore.is_null(request.material_value):
             body['MaterialValue'] = request.material_value
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DetectFaceAttributes',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DetectFaceAttributes',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DetectFaceAttributesResponse(),
+        return DaraCore.from_map(
+            main_models.DetectFaceAttributesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def detect_face_attributes(
         self,
-        request: cloudauth_20190307_models.DetectFaceAttributesRequest,
-    ) -> cloudauth_20190307_models.DetectFaceAttributesResponse:
-        """
-        @summary Detect Validity Attributes in Face Photos
-        
-        @description Request Method: Only supports sending requests via HTTPS POST.
-        Interface Description: Detects the validity-related attributes of faces in the input photo, which helps the business side to determine whether the photo meets their own business retention or comparison requirements. The currently supported face validity-related attributes include: whether it is a face, whether it is blurry, whether glasses are worn, face pose, whether it is a smile, etc.
-        Instructions for Uploading Image Addresses: When passing in images, you need to upload their corresponding HTTP, OSS addresses, or Base64 encoding.
-        - HTTP Address: A publicly accessible HTTP address. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
-        - Base64 Encoding: An image encoded through base64, with the format being `base64://<image base64 string>`.
-        Image Limitations:
-        - Does not support relative or absolute paths of local images.
-        - Please keep the size of a single image within 2 MB to avoid algorithm timeout.
-        - There is an 8 MB size limit for the Body of a single request; please calculate the total size of all images and other information in the request and do not exceed the limit.
-        - When using Base64 to pass images, the request method needs to be changed to POST; the header description of the image Base64 string, such as `data:image/png;base64`, should be removed.
-        
-        @param request: DetectFaceAttributesRequest
-        @return: DetectFaceAttributesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DetectFaceAttributesRequest,
+    ) -> main_models.DetectFaceAttributesResponse:
+        runtime = RuntimeOptions()
         return self.detect_face_attributes_with_options(request, runtime)
 
     async def detect_face_attributes_async(
         self,
-        request: cloudauth_20190307_models.DetectFaceAttributesRequest,
-    ) -> cloudauth_20190307_models.DetectFaceAttributesResponse:
-        """
-        @summary Detect Validity Attributes in Face Photos
-        
-        @description Request Method: Only supports sending requests via HTTPS POST.
-        Interface Description: Detects the validity-related attributes of faces in the input photo, which helps the business side to determine whether the photo meets their own business retention or comparison requirements. The currently supported face validity-related attributes include: whether it is a face, whether it is blurry, whether glasses are worn, face pose, whether it is a smile, etc.
-        Instructions for Uploading Image Addresses: When passing in images, you need to upload their corresponding HTTP, OSS addresses, or Base64 encoding.
-        - HTTP Address: A publicly accessible HTTP address. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
-        - Base64 Encoding: An image encoded through base64, with the format being `base64://<image base64 string>`.
-        Image Limitations:
-        - Does not support relative or absolute paths of local images.
-        - Please keep the size of a single image within 2 MB to avoid algorithm timeout.
-        - There is an 8 MB size limit for the Body of a single request; please calculate the total size of all images and other information in the request and do not exceed the limit.
-        - When using Base64 to pass images, the request method needs to be changed to POST; the header description of the image Base64 string, such as `data:image/png;base64`, should be removed.
-        
-        @param request: DetectFaceAttributesRequest
-        @return: DetectFaceAttributesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DetectFaceAttributesRequest,
+    ) -> main_models.DetectFaceAttributesResponse:
+        runtime = RuntimeOptions()
         return await self.detect_face_attributes_with_options_async(request, runtime)
 
     def download_verify_records_with_options(
         self,
-        request: cloudauth_20190307_models.DownloadVerifyRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DownloadVerifyRecordsResponse:
-        """
-        @summary Real-person Authentication Record Download
-        
-        @description Obtain the download link for statistical call data files under the product plan based on query conditions.
-        - Method: HTTPS POST
-        - Service Address: cloudauth.aliyuncs.com
-        > Real-person authentication products use CertifyId to count call volumes. For ease of reconciliation, please retain the CertifyId field in your system.
-        
-        @param request: DownloadVerifyRecordsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DownloadVerifyRecordsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DownloadVerifyRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DownloadVerifyRecordsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_param):
+        if not DaraCore.is_null(request.biz_param):
             query['BizParam'] = request.biz_param
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DownloadVerifyRecords',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DownloadVerifyRecords',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DownloadVerifyRecordsResponse(),
+        return DaraCore.from_map(
+            main_models.DownloadVerifyRecordsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def download_verify_records_with_options_async(
         self,
-        request: cloudauth_20190307_models.DownloadVerifyRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.DownloadVerifyRecordsResponse:
-        """
-        @summary Real-person Authentication Record Download
-        
-        @description Obtain the download link for statistical call data files under the product plan based on query conditions.
-        - Method: HTTPS POST
-        - Service Address: cloudauth.aliyuncs.com
-        > Real-person authentication products use CertifyId to count call volumes. For ease of reconciliation, please retain the CertifyId field in your system.
-        
-        @param request: DownloadVerifyRecordsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DownloadVerifyRecordsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DownloadVerifyRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DownloadVerifyRecordsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_param):
+        if not DaraCore.is_null(request.biz_param):
             query['BizParam'] = request.biz_param
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DownloadVerifyRecords',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DownloadVerifyRecords',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.DownloadVerifyRecordsResponse(),
+        return DaraCore.from_map(
+            main_models.DownloadVerifyRecordsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def download_verify_records(
         self,
-        request: cloudauth_20190307_models.DownloadVerifyRecordsRequest,
-    ) -> cloudauth_20190307_models.DownloadVerifyRecordsResponse:
-        """
-        @summary Real-person Authentication Record Download
-        
-        @description Obtain the download link for statistical call data files under the product plan based on query conditions.
-        - Method: HTTPS POST
-        - Service Address: cloudauth.aliyuncs.com
-        > Real-person authentication products use CertifyId to count call volumes. For ease of reconciliation, please retain the CertifyId field in your system.
-        
-        @param request: DownloadVerifyRecordsRequest
-        @return: DownloadVerifyRecordsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DownloadVerifyRecordsRequest,
+    ) -> main_models.DownloadVerifyRecordsResponse:
+        runtime = RuntimeOptions()
         return self.download_verify_records_with_options(request, runtime)
 
     async def download_verify_records_async(
         self,
-        request: cloudauth_20190307_models.DownloadVerifyRecordsRequest,
-    ) -> cloudauth_20190307_models.DownloadVerifyRecordsResponse:
-        """
-        @summary Real-person Authentication Record Download
-        
-        @description Obtain the download link for statistical call data files under the product plan based on query conditions.
-        - Method: HTTPS POST
-        - Service Address: cloudauth.aliyuncs.com
-        > Real-person authentication products use CertifyId to count call volumes. For ease of reconciliation, please retain the CertifyId field in your system.
-        
-        @param request: DownloadVerifyRecordsRequest
-        @return: DownloadVerifyRecordsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DownloadVerifyRecordsRequest,
+    ) -> main_models.DownloadVerifyRecordsResponse:
+        runtime = RuntimeOptions()
         return await self.download_verify_records_with_options_async(request, runtime)
 
     def id_2meta_period_verify_with_options(
         self,
-        request: cloudauth_20190307_models.Id2MetaPeriodVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id2MetaPeriodVerifyResponse:
-        """
-        @summary Two-Factor Validity Verification API
-        
-        @param request: Id2MetaPeriodVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Id2MetaPeriodVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Id2MetaPeriodVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id2MetaPeriodVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             body['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        if not UtilClient.is_unset(request.validity_end_date):
+        if not DaraCore.is_null(request.validity_end_date):
             body['ValidityEndDate'] = request.validity_end_date
-        if not UtilClient.is_unset(request.validity_start_date):
+        if not DaraCore.is_null(request.validity_start_date):
             body['ValidityStartDate'] = request.validity_start_date
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Id2MetaPeriodVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Id2MetaPeriodVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Id2MetaPeriodVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Id2MetaPeriodVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def id_2meta_period_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.Id2MetaPeriodVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id2MetaPeriodVerifyResponse:
-        """
-        @summary Two-Factor Validity Verification API
-        
-        @param request: Id2MetaPeriodVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Id2MetaPeriodVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Id2MetaPeriodVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id2MetaPeriodVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             body['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        if not UtilClient.is_unset(request.validity_end_date):
+        if not DaraCore.is_null(request.validity_end_date):
             body['ValidityEndDate'] = request.validity_end_date
-        if not UtilClient.is_unset(request.validity_start_date):
+        if not DaraCore.is_null(request.validity_start_date):
             body['ValidityStartDate'] = request.validity_start_date
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Id2MetaPeriodVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Id2MetaPeriodVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Id2MetaPeriodVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Id2MetaPeriodVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def id_2meta_period_verify(
         self,
-        request: cloudauth_20190307_models.Id2MetaPeriodVerifyRequest,
-    ) -> cloudauth_20190307_models.Id2MetaPeriodVerifyResponse:
-        """
-        @summary Two-Factor Validity Verification API
-        
-        @param request: Id2MetaPeriodVerifyRequest
-        @return: Id2MetaPeriodVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Id2MetaPeriodVerifyRequest,
+    ) -> main_models.Id2MetaPeriodVerifyResponse:
+        runtime = RuntimeOptions()
         return self.id_2meta_period_verify_with_options(request, runtime)
 
     async def id_2meta_period_verify_async(
         self,
-        request: cloudauth_20190307_models.Id2MetaPeriodVerifyRequest,
-    ) -> cloudauth_20190307_models.Id2MetaPeriodVerifyResponse:
-        """
-        @summary Two-Factor Validity Verification API
-        
-        @param request: Id2MetaPeriodVerifyRequest
-        @return: Id2MetaPeriodVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Id2MetaPeriodVerifyRequest,
+    ) -> main_models.Id2MetaPeriodVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.id_2meta_period_verify_with_options_async(request, runtime)
 
     def id_2meta_standard_verify_with_options(
         self,
-        request: cloudauth_20190307_models.Id2MetaStandardVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id2MetaStandardVerifyResponse:
-        """
-        @summary Identity Two-Factor Standard
-        
-        @param request: Id2MetaStandardVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Id2MetaStandardVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Id2MetaStandardVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id2MetaStandardVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             body['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Id2MetaStandardVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Id2MetaStandardVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Id2MetaStandardVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Id2MetaStandardVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def id_2meta_standard_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.Id2MetaStandardVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id2MetaStandardVerifyResponse:
-        """
-        @summary Identity Two-Factor Standard
-        
-        @param request: Id2MetaStandardVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Id2MetaStandardVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Id2MetaStandardVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id2MetaStandardVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             body['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Id2MetaStandardVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Id2MetaStandardVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Id2MetaStandardVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Id2MetaStandardVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def id_2meta_standard_verify(
         self,
-        request: cloudauth_20190307_models.Id2MetaStandardVerifyRequest,
-    ) -> cloudauth_20190307_models.Id2MetaStandardVerifyResponse:
-        """
-        @summary Identity Two-Factor Standard
-        
-        @param request: Id2MetaStandardVerifyRequest
-        @return: Id2MetaStandardVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Id2MetaStandardVerifyRequest,
+    ) -> main_models.Id2MetaStandardVerifyResponse:
+        runtime = RuntimeOptions()
         return self.id_2meta_standard_verify_with_options(request, runtime)
 
     async def id_2meta_standard_verify_async(
         self,
-        request: cloudauth_20190307_models.Id2MetaStandardVerifyRequest,
-    ) -> cloudauth_20190307_models.Id2MetaStandardVerifyResponse:
-        """
-        @summary Identity Two-Factor Standard
-        
-        @param request: Id2MetaStandardVerifyRequest
-        @return: Id2MetaStandardVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Id2MetaStandardVerifyRequest,
+    ) -> main_models.Id2MetaStandardVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.id_2meta_standard_verify_with_options_async(request, runtime)
 
     def id_2meta_verify_with_options(
         self,
-        request: cloudauth_20190307_models.Id2MetaVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id2MetaVerifyResponse:
-        """
-        @summary Identity Two-Factor Interface
-        
-        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: Id2MetaVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Id2MetaVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Id2MetaVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id2MetaVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             body['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Id2MetaVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Id2MetaVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Id2MetaVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Id2MetaVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def id_2meta_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.Id2MetaVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id2MetaVerifyResponse:
-        """
-        @summary Identity Two-Factor Interface
-        
-        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: Id2MetaVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Id2MetaVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Id2MetaVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id2MetaVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             body['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Id2MetaVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Id2MetaVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Id2MetaVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Id2MetaVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def id_2meta_verify(
         self,
-        request: cloudauth_20190307_models.Id2MetaVerifyRequest,
-    ) -> cloudauth_20190307_models.Id2MetaVerifyResponse:
-        """
-        @summary Identity Two-Factor Interface
-        
-        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: Id2MetaVerifyRequest
-        @return: Id2MetaVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Id2MetaVerifyRequest,
+    ) -> main_models.Id2MetaVerifyResponse:
+        runtime = RuntimeOptions()
         return self.id_2meta_verify_with_options(request, runtime)
 
     async def id_2meta_verify_async(
         self,
-        request: cloudauth_20190307_models.Id2MetaVerifyRequest,
-    ) -> cloudauth_20190307_models.Id2MetaVerifyResponse:
-        """
-        @summary Identity Two-Factor Interface
-        
-        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: Id2MetaVerifyRequest
-        @return: Id2MetaVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Id2MetaVerifyRequest,
+    ) -> main_models.Id2MetaVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.id_2meta_verify_with_options_async(request, runtime)
 
     def id_2meta_verify_with_ocrwith_options(
         self,
-        request: cloudauth_20190307_models.Id2MetaVerifyWithOCRRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id2MetaVerifyWithOCRResponse:
-        """
-        @summary ID Two-Factor Image Verification
-        
-        @description Upload both sides of the ID card, and get the verification result of the two factors from an authoritative data source.
-        
-        @param request: Id2MetaVerifyWithOCRRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Id2MetaVerifyWithOCRResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Id2MetaVerifyWithOCRRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id2MetaVerifyWithOCRResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.cert_file):
+        if not DaraCore.is_null(request.cert_file):
             body['CertFile'] = request.cert_file
-        if not UtilClient.is_unset(request.cert_national_file):
+        if not DaraCore.is_null(request.cert_national_file):
             body['CertNationalFile'] = request.cert_national_file
-        if not UtilClient.is_unset(request.cert_national_url):
+        if not DaraCore.is_null(request.cert_national_url):
             body['CertNationalUrl'] = request.cert_national_url
-        if not UtilClient.is_unset(request.cert_url):
+        if not DaraCore.is_null(request.cert_url):
             body['CertUrl'] = request.cert_url
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Id2MetaVerifyWithOCR',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Id2MetaVerifyWithOCR',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Id2MetaVerifyWithOCRResponse(),
+        return DaraCore.from_map(
+            main_models.Id2MetaVerifyWithOCRResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def id_2meta_verify_with_ocrwith_options_async(
         self,
-        request: cloudauth_20190307_models.Id2MetaVerifyWithOCRRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id2MetaVerifyWithOCRResponse:
-        """
-        @summary ID Two-Factor Image Verification
-        
-        @description Upload both sides of the ID card, and get the verification result of the two factors from an authoritative data source.
-        
-        @param request: Id2MetaVerifyWithOCRRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Id2MetaVerifyWithOCRResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Id2MetaVerifyWithOCRRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id2MetaVerifyWithOCRResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.cert_file):
+        if not DaraCore.is_null(request.cert_file):
             body['CertFile'] = request.cert_file
-        if not UtilClient.is_unset(request.cert_national_file):
+        if not DaraCore.is_null(request.cert_national_file):
             body['CertNationalFile'] = request.cert_national_file
-        if not UtilClient.is_unset(request.cert_national_url):
+        if not DaraCore.is_null(request.cert_national_url):
             body['CertNationalUrl'] = request.cert_national_url
-        if not UtilClient.is_unset(request.cert_url):
+        if not DaraCore.is_null(request.cert_url):
             body['CertUrl'] = request.cert_url
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Id2MetaVerifyWithOCR',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Id2MetaVerifyWithOCR',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Id2MetaVerifyWithOCRResponse(),
+        return DaraCore.from_map(
+            main_models.Id2MetaVerifyWithOCRResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def id_2meta_verify_with_ocr(
         self,
-        request: cloudauth_20190307_models.Id2MetaVerifyWithOCRRequest,
-    ) -> cloudauth_20190307_models.Id2MetaVerifyWithOCRResponse:
-        """
-        @summary ID Two-Factor Image Verification
-        
-        @description Upload both sides of the ID card, and get the verification result of the two factors from an authoritative data source.
-        
-        @param request: Id2MetaVerifyWithOCRRequest
-        @return: Id2MetaVerifyWithOCRResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Id2MetaVerifyWithOCRRequest,
+    ) -> main_models.Id2MetaVerifyWithOCRResponse:
+        runtime = RuntimeOptions()
         return self.id_2meta_verify_with_ocrwith_options(request, runtime)
 
     async def id_2meta_verify_with_ocr_async(
         self,
-        request: cloudauth_20190307_models.Id2MetaVerifyWithOCRRequest,
-    ) -> cloudauth_20190307_models.Id2MetaVerifyWithOCRResponse:
-        """
-        @summary ID Two-Factor Image Verification
-        
-        @description Upload both sides of the ID card, and get the verification result of the two factors from an authoritative data source.
-        
-        @param request: Id2MetaVerifyWithOCRRequest
-        @return: Id2MetaVerifyWithOCRResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Id2MetaVerifyWithOCRRequest,
+    ) -> main_models.Id2MetaVerifyWithOCRResponse:
+        runtime = RuntimeOptions()
         return await self.id_2meta_verify_with_ocrwith_options_async(request, runtime)
 
     def id_2meta_verify_with_ocradvance(
         self,
-        request: cloudauth_20190307_models.Id2MetaVerifyWithOCRAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id2MetaVerifyWithOCRResponse:
+        request: main_models.Id2MetaVerifyWithOCRAdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id2MetaVerifyWithOCRResponse:
         # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
         credential_model = self._credential.get_credential()
         access_key_id = credential_model.access_key_id
         access_key_secret = credential_model.access_key_secret
         security_token = credential_model.security_token
         credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
             open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
+        if DaraCore.is_null(credential_type):
             credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
         )
         auth_client = OpenApiClient(auth_config)
         auth_request = {
             'Product': 'Cloudauth',
             'RegionId': self._region_id
         }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
         )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
         auth_response = {}
-        file_obj = file_form_models.FileField()
+        file_obj = FileField()
         oss_header = {}
         tmp_body = {}
         use_accelerate = False
         auth_response_body = {}
-        id_2meta_verify_with_ocrreq = cloudauth_20190307_models.Id2MetaVerifyWithOCRRequest()
-        OpenApiUtilClient.convert(request, id_2meta_verify_with_ocrreq)
-        if not UtilClient.is_unset(request.cert_file_object):
-            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.cert_file_object,
-                content_type=''
+        id_2meta_verify_with_ocrreq = main_models.Id2MetaVerifyWithOCRRequest()
+        Utils.convert(request, id_2meta_verify_with_ocrreq)
+        if not DaraCore.is_null(request.cert_file_object):
+            auth_response = auth_client.call_api(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.cert_file_object,
+                content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -8604,19 +6167,18 @@ class Client(OpenApiClient):
             }
             self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             id_2meta_verify_with_ocrreq.cert_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        if not UtilClient.is_unset(request.cert_national_file_object):
-            tmp_resp_1 = auth_client.call_api(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_1)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.cert_national_file_object,
-                content_type=''
+        if not DaraCore.is_null(request.cert_national_file_object):
+            auth_response = auth_client.call_api(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.cert_national_file_object,
+                content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -8631,75 +6193,73 @@ class Client(OpenApiClient):
 
     async def id_2meta_verify_with_ocradvance_async(
         self,
-        request: cloudauth_20190307_models.Id2MetaVerifyWithOCRAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id2MetaVerifyWithOCRResponse:
+        request: main_models.Id2MetaVerifyWithOCRAdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id2MetaVerifyWithOCRResponse:
         # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
         credential_model = await self._credential.get_credential_async()
         access_key_id = credential_model.access_key_id
         access_key_secret = credential_model.access_key_secret
         security_token = credential_model.security_token
         credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
             open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
+        if DaraCore.is_null(credential_type):
             credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
         )
         auth_client = OpenApiClient(auth_config)
         auth_request = {
             'Product': 'Cloudauth',
             'RegionId': self._region_id
         }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
         )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
         auth_response = {}
-        file_obj = file_form_models.FileField()
+        file_obj = FileField()
         oss_header = {}
         tmp_body = {}
         use_accelerate = False
         auth_response_body = {}
-        id_2meta_verify_with_ocrreq = cloudauth_20190307_models.Id2MetaVerifyWithOCRRequest()
-        OpenApiUtilClient.convert(request, id_2meta_verify_with_ocrreq)
-        if not UtilClient.is_unset(request.cert_file_object):
-            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.cert_file_object,
-                content_type=''
+        id_2meta_verify_with_ocrreq = main_models.Id2MetaVerifyWithOCRRequest()
+        Utils.convert(request, id_2meta_verify_with_ocrreq)
+        if not DaraCore.is_null(request.cert_file_object):
+            auth_response = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.cert_file_object,
+                content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -8709,19 +6269,18 @@ class Client(OpenApiClient):
             }
             await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             id_2meta_verify_with_ocrreq.cert_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        if not UtilClient.is_unset(request.cert_national_file_object):
-            tmp_resp_1 = await auth_client.call_api_async(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_1)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.cert_national_file_object,
-                content_type=''
+        if not DaraCore.is_null(request.cert_national_file_object):
+            auth_response = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.cert_national_file_object,
+                content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -8736,199 +6295,163 @@ class Client(OpenApiClient):
 
     def id_3meta_verify_with_options(
         self,
-        request: cloudauth_20190307_models.Id3MetaVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id3MetaVerifyResponse:
-        """
-        @summary Identity Three Elements Verification
-        
-        @description Input name, ID number, and face photo to verify their authenticity and consistency through authoritative sources.
-        
-        @param request: Id3MetaVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Id3MetaVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Id3MetaVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id3MetaVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.crop):
+        if not DaraCore.is_null(request.crop):
             body['Crop'] = request.crop
-        if not UtilClient.is_unset(request.face_file):
+        if not DaraCore.is_null(request.face_file):
             body['FaceFile'] = request.face_file
-        if not UtilClient.is_unset(request.face_url):
+        if not DaraCore.is_null(request.face_url):
             body['FaceUrl'] = request.face_url
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             body['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Id3MetaVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Id3MetaVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Id3MetaVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Id3MetaVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def id_3meta_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.Id3MetaVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id3MetaVerifyResponse:
-        """
-        @summary Identity Three Elements Verification
-        
-        @description Input name, ID number, and face photo to verify their authenticity and consistency through authoritative sources.
-        
-        @param request: Id3MetaVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Id3MetaVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Id3MetaVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id3MetaVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.crop):
+        if not DaraCore.is_null(request.crop):
             body['Crop'] = request.crop
-        if not UtilClient.is_unset(request.face_file):
+        if not DaraCore.is_null(request.face_file):
             body['FaceFile'] = request.face_file
-        if not UtilClient.is_unset(request.face_url):
+        if not DaraCore.is_null(request.face_url):
             body['FaceUrl'] = request.face_url
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             body['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Id3MetaVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Id3MetaVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Id3MetaVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Id3MetaVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def id_3meta_verify(
         self,
-        request: cloudauth_20190307_models.Id3MetaVerifyRequest,
-    ) -> cloudauth_20190307_models.Id3MetaVerifyResponse:
-        """
-        @summary Identity Three Elements Verification
-        
-        @description Input name, ID number, and face photo to verify their authenticity and consistency through authoritative sources.
-        
-        @param request: Id3MetaVerifyRequest
-        @return: Id3MetaVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Id3MetaVerifyRequest,
+    ) -> main_models.Id3MetaVerifyResponse:
+        runtime = RuntimeOptions()
         return self.id_3meta_verify_with_options(request, runtime)
 
     async def id_3meta_verify_async(
         self,
-        request: cloudauth_20190307_models.Id3MetaVerifyRequest,
-    ) -> cloudauth_20190307_models.Id3MetaVerifyResponse:
-        """
-        @summary Identity Three Elements Verification
-        
-        @description Input name, ID number, and face photo to verify their authenticity and consistency through authoritative sources.
-        
-        @param request: Id3MetaVerifyRequest
-        @return: Id3MetaVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Id3MetaVerifyRequest,
+    ) -> main_models.Id3MetaVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.id_3meta_verify_with_options_async(request, runtime)
 
     def id_3meta_verify_advance(
         self,
-        request: cloudauth_20190307_models.Id3MetaVerifyAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id3MetaVerifyResponse:
+        request: main_models.Id3MetaVerifyAdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id3MetaVerifyResponse:
         # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
         credential_model = self._credential.get_credential()
         access_key_id = credential_model.access_key_id
         access_key_secret = credential_model.access_key_secret
         security_token = credential_model.security_token
         credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
             open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
+        if DaraCore.is_null(credential_type):
             credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
         )
         auth_client = OpenApiClient(auth_config)
         auth_request = {
             'Product': 'Cloudauth',
             'RegionId': self._region_id
         }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
         )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
         auth_response = {}
-        file_obj = file_form_models.FileField()
+        file_obj = FileField()
         oss_header = {}
         tmp_body = {}
         use_accelerate = False
         auth_response_body = {}
-        id_3meta_verify_req = cloudauth_20190307_models.Id3MetaVerifyRequest()
-        OpenApiUtilClient.convert(request, id_3meta_verify_req)
-        if not UtilClient.is_unset(request.face_file_object):
-            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.face_file_object,
-                content_type=''
+        id_3meta_verify_req = main_models.Id3MetaVerifyRequest()
+        Utils.convert(request, id_3meta_verify_req)
+        if not DaraCore.is_null(request.face_file_object):
+            auth_response = auth_client.call_api(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.face_file_object,
+                content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -8943,75 +6466,73 @@ class Client(OpenApiClient):
 
     async def id_3meta_verify_advance_async(
         self,
-        request: cloudauth_20190307_models.Id3MetaVerifyAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id3MetaVerifyResponse:
+        request: main_models.Id3MetaVerifyAdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id3MetaVerifyResponse:
         # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
         credential_model = await self._credential.get_credential_async()
         access_key_id = credential_model.access_key_id
         access_key_secret = credential_model.access_key_secret
         security_token = credential_model.security_token
         credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
             open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
+        if DaraCore.is_null(credential_type):
             credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
         )
         auth_client = OpenApiClient(auth_config)
         auth_request = {
             'Product': 'Cloudauth',
             'RegionId': self._region_id
         }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
         )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
         auth_response = {}
-        file_obj = file_form_models.FileField()
+        file_obj = FileField()
         oss_header = {}
         tmp_body = {}
         use_accelerate = False
         auth_response_body = {}
-        id_3meta_verify_req = cloudauth_20190307_models.Id3MetaVerifyRequest()
-        OpenApiUtilClient.convert(request, id_3meta_verify_req)
-        if not UtilClient.is_unset(request.face_file_object):
-            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.face_file_object,
-                content_type=''
+        id_3meta_verify_req = main_models.Id3MetaVerifyRequest()
+        Utils.convert(request, id_3meta_verify_req)
+        if not DaraCore.is_null(request.face_file_object):
+            auth_response = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.face_file_object,
+                content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -9026,191 +6547,155 @@ class Client(OpenApiClient):
 
     def id_3meta_verify_with_ocrwith_options(
         self,
-        request: cloudauth_20190307_models.Id3MetaVerifyWithOCRRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id3MetaVerifyWithOCRResponse:
-        """
-        @summary Identity Three Elements Image Verification
-        
-        @description Upload both sides of the ID card to get the verification result of the three identity elements from an authoritative data source.
-        
-        @param request: Id3MetaVerifyWithOCRRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Id3MetaVerifyWithOCRResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Id3MetaVerifyWithOCRRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id3MetaVerifyWithOCRResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.cert_file):
+        if not DaraCore.is_null(request.cert_file):
             body['CertFile'] = request.cert_file
-        if not UtilClient.is_unset(request.cert_national_file):
+        if not DaraCore.is_null(request.cert_national_file):
             body['CertNationalFile'] = request.cert_national_file
-        if not UtilClient.is_unset(request.cert_national_url):
+        if not DaraCore.is_null(request.cert_national_url):
             body['CertNationalUrl'] = request.cert_national_url
-        if not UtilClient.is_unset(request.cert_url):
+        if not DaraCore.is_null(request.cert_url):
             body['CertUrl'] = request.cert_url
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Id3MetaVerifyWithOCR',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Id3MetaVerifyWithOCR',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Id3MetaVerifyWithOCRResponse(),
+        return DaraCore.from_map(
+            main_models.Id3MetaVerifyWithOCRResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def id_3meta_verify_with_ocrwith_options_async(
         self,
-        request: cloudauth_20190307_models.Id3MetaVerifyWithOCRRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id3MetaVerifyWithOCRResponse:
-        """
-        @summary Identity Three Elements Image Verification
-        
-        @description Upload both sides of the ID card to get the verification result of the three identity elements from an authoritative data source.
-        
-        @param request: Id3MetaVerifyWithOCRRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Id3MetaVerifyWithOCRResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Id3MetaVerifyWithOCRRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id3MetaVerifyWithOCRResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.cert_file):
+        if not DaraCore.is_null(request.cert_file):
             body['CertFile'] = request.cert_file
-        if not UtilClient.is_unset(request.cert_national_file):
+        if not DaraCore.is_null(request.cert_national_file):
             body['CertNationalFile'] = request.cert_national_file
-        if not UtilClient.is_unset(request.cert_national_url):
+        if not DaraCore.is_null(request.cert_national_url):
             body['CertNationalUrl'] = request.cert_national_url
-        if not UtilClient.is_unset(request.cert_url):
+        if not DaraCore.is_null(request.cert_url):
             body['CertUrl'] = request.cert_url
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Id3MetaVerifyWithOCR',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Id3MetaVerifyWithOCR',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Id3MetaVerifyWithOCRResponse(),
+        return DaraCore.from_map(
+            main_models.Id3MetaVerifyWithOCRResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def id_3meta_verify_with_ocr(
         self,
-        request: cloudauth_20190307_models.Id3MetaVerifyWithOCRRequest,
-    ) -> cloudauth_20190307_models.Id3MetaVerifyWithOCRResponse:
-        """
-        @summary Identity Three Elements Image Verification
-        
-        @description Upload both sides of the ID card to get the verification result of the three identity elements from an authoritative data source.
-        
-        @param request: Id3MetaVerifyWithOCRRequest
-        @return: Id3MetaVerifyWithOCRResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Id3MetaVerifyWithOCRRequest,
+    ) -> main_models.Id3MetaVerifyWithOCRResponse:
+        runtime = RuntimeOptions()
         return self.id_3meta_verify_with_ocrwith_options(request, runtime)
 
     async def id_3meta_verify_with_ocr_async(
         self,
-        request: cloudauth_20190307_models.Id3MetaVerifyWithOCRRequest,
-    ) -> cloudauth_20190307_models.Id3MetaVerifyWithOCRResponse:
-        """
-        @summary Identity Three Elements Image Verification
-        
-        @description Upload both sides of the ID card to get the verification result of the three identity elements from an authoritative data source.
-        
-        @param request: Id3MetaVerifyWithOCRRequest
-        @return: Id3MetaVerifyWithOCRResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Id3MetaVerifyWithOCRRequest,
+    ) -> main_models.Id3MetaVerifyWithOCRResponse:
+        runtime = RuntimeOptions()
         return await self.id_3meta_verify_with_ocrwith_options_async(request, runtime)
 
     def id_3meta_verify_with_ocradvance(
         self,
-        request: cloudauth_20190307_models.Id3MetaVerifyWithOCRAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id3MetaVerifyWithOCRResponse:
+        request: main_models.Id3MetaVerifyWithOCRAdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id3MetaVerifyWithOCRResponse:
         # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
         credential_model = self._credential.get_credential()
         access_key_id = credential_model.access_key_id
         access_key_secret = credential_model.access_key_secret
         security_token = credential_model.security_token
         credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
             open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
+        if DaraCore.is_null(credential_type):
             credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
         )
         auth_client = OpenApiClient(auth_config)
         auth_request = {
             'Product': 'Cloudauth',
             'RegionId': self._region_id
         }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
         )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
         auth_response = {}
-        file_obj = file_form_models.FileField()
+        file_obj = FileField()
         oss_header = {}
         tmp_body = {}
         use_accelerate = False
         auth_response_body = {}
-        id_3meta_verify_with_ocrreq = cloudauth_20190307_models.Id3MetaVerifyWithOCRRequest()
-        OpenApiUtilClient.convert(request, id_3meta_verify_with_ocrreq)
-        if not UtilClient.is_unset(request.cert_file_object):
-            tmp_resp_0 = auth_client.call_api(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.cert_file_object,
-                content_type=''
+        id_3meta_verify_with_ocrreq = main_models.Id3MetaVerifyWithOCRRequest()
+        Utils.convert(request, id_3meta_verify_with_ocrreq)
+        if not DaraCore.is_null(request.cert_file_object):
+            auth_response = auth_client.call_api(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.cert_file_object,
+                content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -9220,19 +6705,18 @@ class Client(OpenApiClient):
             }
             self._post_ossobject(auth_response_body.get('Bucket'), oss_header, runtime)
             id_3meta_verify_with_ocrreq.cert_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        if not UtilClient.is_unset(request.cert_national_file_object):
-            tmp_resp_1 = auth_client.call_api(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_1)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.cert_national_file_object,
-                content_type=''
+        if not DaraCore.is_null(request.cert_national_file_object):
+            auth_response = auth_client.call_api(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.cert_national_file_object,
+                content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -9247,75 +6731,73 @@ class Client(OpenApiClient):
 
     async def id_3meta_verify_with_ocradvance_async(
         self,
-        request: cloudauth_20190307_models.Id3MetaVerifyWithOCRAdvanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Id3MetaVerifyWithOCRResponse:
+        request: main_models.Id3MetaVerifyWithOCRAdvanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Id3MetaVerifyWithOCRResponse:
         # Step 0: init client
-        credential_model = None
-        if UtilClient.is_unset(self._credential):
-            raise TeaException({
-                'code': 'InvalidCredentials',
-                'message': 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
-            })
+        if DaraCore.is_null(self._credential):
+            raise open_api_exceptions.ClientException(
+                code = 'InvalidCredentials',
+                message = 'Please set up the credentials correctly. If you are setting them through environment variables, please ensure that ALIBABA_CLOUD_ACCESS_KEY_ID and ALIBABA_CLOUD_ACCESS_KEY_SECRET are set correctly. See https://help.aliyun.com/zh/sdk/developer-reference/configure-the-alibaba-cloud-accesskey-environment-variable-on-linux-macos-and-windows-systems for more details.'
+            )
         credential_model = await self._credential.get_credential_async()
         access_key_id = credential_model.access_key_id
         access_key_secret = credential_model.access_key_secret
         security_token = credential_model.security_token
         credential_type = credential_model.type
         open_platform_endpoint = self._open_platform_endpoint
-        if UtilClient.empty(open_platform_endpoint):
+        if DaraCore.is_null(open_platform_endpoint) or open_platform_endpoint == '':
             open_platform_endpoint = 'openplatform.aliyuncs.com'
-        if UtilClient.is_unset(credential_type):
+        if DaraCore.is_null(credential_type):
             credential_type = 'access_key'
-        auth_config = open_api_models.Config(
-            access_key_id=access_key_id,
-            access_key_secret=access_key_secret,
-            security_token=security_token,
-            type=credential_type,
-            endpoint=open_platform_endpoint,
-            protocol=self._protocol,
-            region_id=self._region_id
+        auth_config = open_api_util_models.Config(
+            access_key_id = access_key_id,
+            access_key_secret = access_key_secret,
+            security_token = security_token,
+            type = credential_type,
+            endpoint = open_platform_endpoint,
+            protocol = self._protocol,
+            region_id = self._region_id
         )
         auth_client = OpenApiClient(auth_config)
         auth_request = {
             'Product': 'Cloudauth',
             'RegionId': self._region_id
         }
-        auth_req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(auth_request)
+        auth_req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(auth_request)
         )
-        auth_params = open_api_models.Params(
-            action='AuthorizeFileUpload',
-            version='2019-12-19',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        auth_params = open_api_util_models.Params(
+            action = 'AuthorizeFileUpload',
+            version = '2019-12-19',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
         auth_response = {}
-        file_obj = file_form_models.FileField()
+        file_obj = FileField()
         oss_header = {}
         tmp_body = {}
         use_accelerate = False
         auth_response_body = {}
-        id_3meta_verify_with_ocrreq = cloudauth_20190307_models.Id3MetaVerifyWithOCRRequest()
-        OpenApiUtilClient.convert(request, id_3meta_verify_with_ocrreq)
-        if not UtilClient.is_unset(request.cert_file_object):
-            tmp_resp_0 = await auth_client.call_api_async(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_0)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.cert_file_object,
-                content_type=''
+        id_3meta_verify_with_ocrreq = main_models.Id3MetaVerifyWithOCRRequest()
+        Utils.convert(request, id_3meta_verify_with_ocrreq)
+        if not DaraCore.is_null(request.cert_file_object):
+            auth_response = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.cert_file_object,
+                content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -9325,19 +6807,18 @@ class Client(OpenApiClient):
             }
             await self._post_ossobject_async(auth_response_body.get('Bucket'), oss_header, runtime)
             id_3meta_verify_with_ocrreq.cert_file = f"http://{auth_response_body.get('Bucket')}.{auth_response_body.get('Endpoint')}/{auth_response_body.get('ObjectKey')}"
-        if not UtilClient.is_unset(request.cert_national_file_object):
-            tmp_resp_1 = await auth_client.call_api_async(auth_params, auth_req, runtime)
-            auth_response = UtilClient.assert_as_map(tmp_resp_1)
-            tmp_body = UtilClient.assert_as_map(auth_response.get('body'))
-            use_accelerate = UtilClient.assert_as_boolean(tmp_body.get('UseAccelerate'))
-            auth_response_body = UtilClient.stringify_map_value(tmp_body)
-            file_obj = file_form_models.FileField(
-                filename=auth_response_body.get('ObjectKey'),
-                content=request.cert_national_file_object,
-                content_type=''
+        if not DaraCore.is_null(request.cert_national_file_object):
+            auth_response = await auth_client.call_api_async(auth_params, auth_req, runtime)
+            tmp_body = auth_response.get('body')
+            use_accelerate = bool(tmp_body.get('UseAccelerate'))
+            auth_response_body = Utils.stringify_map_value(tmp_body)
+            file_obj = FileField(
+                filename = auth_response_body.get('ObjectKey'),
+                content = request.cert_national_file_object,
+                content_type = ''
             )
             oss_header = {
-                'host': f"{auth_response_body.get('Bucket')}.{OpenApiUtilClient.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
+                'host': f"{auth_response_body.get('Bucket')}.{Utils.get_endpoint(auth_response_body.get('Endpoint'), use_accelerate, self._endpoint_type)}",
                 'OSSAccessKeyId': auth_response_body.get('AccessKeyId'),
                 'policy': auth_response_body.get('EncodedPolicy'),
                 'Signature': auth_response_body.get('Signature'),
@@ -9352,4312 +6833,3032 @@ class Client(OpenApiClient):
 
     def init_auth_verify_with_options(
         self,
-        request: cloudauth_20190307_models.InitAuthVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.InitAuthVerifyResponse:
-        """
-        @summary 服务端初始化
-        
-        @param request: InitAuthVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InitAuthVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.InitAuthVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InitAuthVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.callback_token):
+        if not DaraCore.is_null(request.callback_token):
             body['CallbackToken'] = request.callback_token
-        if not UtilClient.is_unset(request.callback_url):
+        if not DaraCore.is_null(request.callback_url):
             body['CallbackUrl'] = request.callback_url
-        if not UtilClient.is_unset(request.card_page_number):
+        if not DaraCore.is_null(request.card_page_number):
             body['CardPageNumber'] = request.card_page_number
-        if not UtilClient.is_unset(request.card_type):
+        if not DaraCore.is_null(request.card_type):
             body['CardType'] = request.card_type
-        if not UtilClient.is_unset(request.doc_scan_mode):
+        if not DaraCore.is_null(request.doc_scan_mode):
             body['DocScanMode'] = request.doc_scan_mode
-        if not UtilClient.is_unset(request.id_spoof):
+        if not DaraCore.is_null(request.id_spoof):
             body['IdSpoof'] = request.id_spoof
-        if not UtilClient.is_unset(request.meta_info):
+        if not DaraCore.is_null(request.meta_info):
             body['MetaInfo'] = request.meta_info
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             body['OuterOrderNo'] = request.outer_order_no
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             body['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             body['SceneId'] = request.scene_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='InitAuthVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InitAuthVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.InitAuthVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.InitAuthVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def init_auth_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.InitAuthVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.InitAuthVerifyResponse:
-        """
-        @summary 服务端初始化
-        
-        @param request: InitAuthVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InitAuthVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.InitAuthVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InitAuthVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.callback_token):
+        if not DaraCore.is_null(request.callback_token):
             body['CallbackToken'] = request.callback_token
-        if not UtilClient.is_unset(request.callback_url):
+        if not DaraCore.is_null(request.callback_url):
             body['CallbackUrl'] = request.callback_url
-        if not UtilClient.is_unset(request.card_page_number):
+        if not DaraCore.is_null(request.card_page_number):
             body['CardPageNumber'] = request.card_page_number
-        if not UtilClient.is_unset(request.card_type):
+        if not DaraCore.is_null(request.card_type):
             body['CardType'] = request.card_type
-        if not UtilClient.is_unset(request.doc_scan_mode):
+        if not DaraCore.is_null(request.doc_scan_mode):
             body['DocScanMode'] = request.doc_scan_mode
-        if not UtilClient.is_unset(request.id_spoof):
+        if not DaraCore.is_null(request.id_spoof):
             body['IdSpoof'] = request.id_spoof
-        if not UtilClient.is_unset(request.meta_info):
+        if not DaraCore.is_null(request.meta_info):
             body['MetaInfo'] = request.meta_info
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             body['OuterOrderNo'] = request.outer_order_no
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             body['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             body['SceneId'] = request.scene_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='InitAuthVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InitAuthVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.InitAuthVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.InitAuthVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def init_auth_verify(
         self,
-        request: cloudauth_20190307_models.InitAuthVerifyRequest,
-    ) -> cloudauth_20190307_models.InitAuthVerifyResponse:
-        """
-        @summary 服务端初始化
-        
-        @param request: InitAuthVerifyRequest
-        @return: InitAuthVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InitAuthVerifyRequest,
+    ) -> main_models.InitAuthVerifyResponse:
+        runtime = RuntimeOptions()
         return self.init_auth_verify_with_options(request, runtime)
 
     async def init_auth_verify_async(
         self,
-        request: cloudauth_20190307_models.InitAuthVerifyRequest,
-    ) -> cloudauth_20190307_models.InitAuthVerifyResponse:
-        """
-        @summary 服务端初始化
-        
-        @param request: InitAuthVerifyRequest
-        @return: InitAuthVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InitAuthVerifyRequest,
+    ) -> main_models.InitAuthVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.init_auth_verify_with_options_async(request, runtime)
 
     def init_card_verify_with_options(
         self,
-        request: cloudauth_20190307_models.InitCardVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.InitCardVerifyResponse:
-        """
-        @summary Initiate an authentication request for image verification
-        
-        @description Before each authentication, use this interface to obtain the CertifyId, which is used to link various interfaces in the authentication request.
-        
-        @param request: InitCardVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InitCardVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.InitCardVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InitCardVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.callback_token):
+        if not DaraCore.is_null(request.callback_token):
             query['CallbackToken'] = request.callback_token
-        if not UtilClient.is_unset(request.callback_url):
+        if not DaraCore.is_null(request.callback_url):
             query['CallbackUrl'] = request.callback_url
-        if not UtilClient.is_unset(request.card_page_number):
+        if not DaraCore.is_null(request.card_page_number):
             query['CardPageNumber'] = request.card_page_number
-        if not UtilClient.is_unset(request.card_type):
+        if not DaraCore.is_null(request.card_type):
             query['CardType'] = request.card_type
-        if not UtilClient.is_unset(request.doc_scan_mode):
+        if not DaraCore.is_null(request.doc_scan_mode):
             query['DocScanMode'] = request.doc_scan_mode
-        if not UtilClient.is_unset(request.merchant_biz_id):
+        if not DaraCore.is_null(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
-        if not UtilClient.is_unset(request.meta_info):
+        if not DaraCore.is_null(request.meta_info):
             query['MetaInfo'] = request.meta_info
-        if not UtilClient.is_unset(request.model):
+        if not DaraCore.is_null(request.model):
             query['Model'] = request.model
-        if not UtilClient.is_unset(request.picture_save):
+        if not DaraCore.is_null(request.picture_save):
             query['PictureSave'] = request.picture_save
-        if not UtilClient.is_unset(request.verify_meta):
+        if not DaraCore.is_null(request.verify_meta):
             query['VerifyMeta'] = request.verify_meta
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='InitCardVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InitCardVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.InitCardVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.InitCardVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def init_card_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.InitCardVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.InitCardVerifyResponse:
-        """
-        @summary Initiate an authentication request for image verification
-        
-        @description Before each authentication, use this interface to obtain the CertifyId, which is used to link various interfaces in the authentication request.
-        
-        @param request: InitCardVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InitCardVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.InitCardVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InitCardVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.callback_token):
+        if not DaraCore.is_null(request.callback_token):
             query['CallbackToken'] = request.callback_token
-        if not UtilClient.is_unset(request.callback_url):
+        if not DaraCore.is_null(request.callback_url):
             query['CallbackUrl'] = request.callback_url
-        if not UtilClient.is_unset(request.card_page_number):
+        if not DaraCore.is_null(request.card_page_number):
             query['CardPageNumber'] = request.card_page_number
-        if not UtilClient.is_unset(request.card_type):
+        if not DaraCore.is_null(request.card_type):
             query['CardType'] = request.card_type
-        if not UtilClient.is_unset(request.doc_scan_mode):
+        if not DaraCore.is_null(request.doc_scan_mode):
             query['DocScanMode'] = request.doc_scan_mode
-        if not UtilClient.is_unset(request.merchant_biz_id):
+        if not DaraCore.is_null(request.merchant_biz_id):
             query['MerchantBizId'] = request.merchant_biz_id
-        if not UtilClient.is_unset(request.meta_info):
+        if not DaraCore.is_null(request.meta_info):
             query['MetaInfo'] = request.meta_info
-        if not UtilClient.is_unset(request.model):
+        if not DaraCore.is_null(request.model):
             query['Model'] = request.model
-        if not UtilClient.is_unset(request.picture_save):
+        if not DaraCore.is_null(request.picture_save):
             query['PictureSave'] = request.picture_save
-        if not UtilClient.is_unset(request.verify_meta):
+        if not DaraCore.is_null(request.verify_meta):
             query['VerifyMeta'] = request.verify_meta
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='InitCardVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InitCardVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.InitCardVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.InitCardVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def init_card_verify(
         self,
-        request: cloudauth_20190307_models.InitCardVerifyRequest,
-    ) -> cloudauth_20190307_models.InitCardVerifyResponse:
-        """
-        @summary Initiate an authentication request for image verification
-        
-        @description Before each authentication, use this interface to obtain the CertifyId, which is used to link various interfaces in the authentication request.
-        
-        @param request: InitCardVerifyRequest
-        @return: InitCardVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InitCardVerifyRequest,
+    ) -> main_models.InitCardVerifyResponse:
+        runtime = RuntimeOptions()
         return self.init_card_verify_with_options(request, runtime)
 
     async def init_card_verify_async(
         self,
-        request: cloudauth_20190307_models.InitCardVerifyRequest,
-    ) -> cloudauth_20190307_models.InitCardVerifyResponse:
-        """
-        @summary Initiate an authentication request for image verification
-        
-        @description Before each authentication, use this interface to obtain the CertifyId, which is used to link various interfaces in the authentication request.
-        
-        @param request: InitCardVerifyRequest
-        @return: InitCardVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InitCardVerifyRequest,
+    ) -> main_models.InitCardVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.init_card_verify_with_options_async(request, runtime)
 
     def init_face_verify_with_options(
         self,
-        request: cloudauth_20190307_models.InitFaceVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.InitFaceVerifyResponse:
-        """
-        @summary Real-Person Server Initialization Interface
-        
-        @description - Service Address: cloudauth.aliyuncs.com
-        - Request Method: HTTPS POST and GET.
-        - This interface uses different parameters for different product solutions. For details, please refer to the [official documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/product-overview/introduction/?spm=a2c4g.11186623.help-menu-2401581.d_0_0.13f644ecRzFHfm&scm=20140722.H_99169._.OR_help-T_cn~zh-V_1).
-        #### Image Format Requirements
-        When performing real-person authentication, please provide images that meet all of the following conditions:
-        - Recent photo with a clear, unobstructed face, natural expression, and facing the camera directly.
-        - Clear photo with normal exposure, no overexposure, underexposure, or halo effects, and no significant angle deviation.
-        - Resolution not exceeding 19201080, at least 640*480, recommended short side scaled to 720 pixels, compression ratio greater than 0.9.
-        - Photo size: <1MB.
-        - Supports 90, 180, and 270-degree photos; in the case of multiple faces, the largest face will be selected.
-        
-        @param request: InitFaceVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InitFaceVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.InitFaceVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InitFaceVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.app_quality_check):
+        if not DaraCore.is_null(request.app_quality_check):
             query['AppQualityCheck'] = request.app_quality_check
-        if not UtilClient.is_unset(request.birthday):
+        if not DaraCore.is_null(request.birthday):
             query['Birthday'] = request.birthday
-        if not UtilClient.is_unset(request.callback_token):
+        if not DaraCore.is_null(request.callback_token):
             query['CallbackToken'] = request.callback_token
-        if not UtilClient.is_unset(request.callback_url):
+        if not DaraCore.is_null(request.callback_url):
             query['CallbackUrl'] = request.callback_url
-        if not UtilClient.is_unset(request.camera_selection):
+        if not DaraCore.is_null(request.camera_selection):
             query['CameraSelection'] = request.camera_selection
-        if not UtilClient.is_unset(request.cert_name):
+        if not DaraCore.is_null(request.cert_name):
             query['CertName'] = request.cert_name
-        if not UtilClient.is_unset(request.cert_no):
+        if not DaraCore.is_null(request.cert_no):
             query['CertNo'] = request.cert_no
-        if not UtilClient.is_unset(request.cert_type):
+        if not DaraCore.is_null(request.cert_type):
             query['CertType'] = request.cert_type
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.certify_url_style):
+        if not DaraCore.is_null(request.certify_url_style):
             query['CertifyUrlStyle'] = request.certify_url_style
-        if not UtilClient.is_unset(request.certify_url_type):
+        if not DaraCore.is_null(request.certify_url_type):
             query['CertifyUrlType'] = request.certify_url_type
-        if not UtilClient.is_unset(request.encrypt_type):
+        if not DaraCore.is_null(request.encrypt_type):
             query['EncryptType'] = request.encrypt_type
-        if not UtilClient.is_unset(request.face_contrast_picture_url):
+        if not DaraCore.is_null(request.face_contrast_picture_url):
             query['FaceContrastPictureUrl'] = request.face_contrast_picture_url
-        if not UtilClient.is_unset(request.face_guard_output):
+        if not DaraCore.is_null(request.face_guard_output):
             query['FaceGuardOutput'] = request.face_guard_output
-        if not UtilClient.is_unset(request.h_5degrade_confirm_btn):
+        if not DaraCore.is_null(request.h_5degrade_confirm_btn):
             query['H5DegradeConfirmBtn'] = request.h_5degrade_confirm_btn
-        if not UtilClient.is_unset(request.ip):
+        if not DaraCore.is_null(request.ip):
             query['Ip'] = request.ip
-        if not UtilClient.is_unset(request.meta_info):
+        if not DaraCore.is_null(request.meta_info):
             query['MetaInfo'] = request.meta_info
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             query['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.mode):
+        if not DaraCore.is_null(request.mode):
             query['Mode'] = request.mode
-        if not UtilClient.is_unset(request.need_multi_face_check):
+        if not DaraCore.is_null(request.need_multi_face_check):
             query['NeedMultiFaceCheck'] = request.need_multi_face_check
-        if not UtilClient.is_unset(request.oss_bucket_name):
+        if not DaraCore.is_null(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
-        if not UtilClient.is_unset(request.oss_object_name):
+        if not DaraCore.is_null(request.oss_object_name):
             query['OssObjectName'] = request.oss_object_name
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             query['OuterOrderNo'] = request.outer_order_no
-        if not UtilClient.is_unset(request.procedure_priority):
+        if not DaraCore.is_null(request.procedure_priority):
             query['ProcedurePriority'] = request.procedure_priority
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.rarely_characters):
+        if not DaraCore.is_null(request.rarely_characters):
             query['RarelyCharacters'] = request.rarely_characters
-        if not UtilClient.is_unset(request.read_img):
+        if not DaraCore.is_null(request.read_img):
             query['ReadImg'] = request.read_img
-        if not UtilClient.is_unset(request.return_url):
+        if not DaraCore.is_null(request.return_url):
             query['ReturnUrl'] = request.return_url
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.suitable_type):
+        if not DaraCore.is_null(request.suitable_type):
             query['SuitableType'] = request.suitable_type
-        if not UtilClient.is_unset(request.ui_custom_url):
+        if not DaraCore.is_null(request.ui_custom_url):
             query['UiCustomUrl'] = request.ui_custom_url
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        if not UtilClient.is_unset(request.validity_date):
+        if not DaraCore.is_null(request.validity_date):
             query['ValidityDate'] = request.validity_date
-        if not UtilClient.is_unset(request.video_evidence):
+        if not DaraCore.is_null(request.video_evidence):
             query['VideoEvidence'] = request.video_evidence
-        if not UtilClient.is_unset(request.voluntary_customized_content):
+        if not DaraCore.is_null(request.voluntary_customized_content):
             query['VoluntaryCustomizedContent'] = request.voluntary_customized_content
         body = {}
-        if not UtilClient.is_unset(request.auth_id):
+        if not DaraCore.is_null(request.auth_id):
             body['AuthId'] = request.auth_id
-        if not UtilClient.is_unset(request.crop):
+        if not DaraCore.is_null(request.crop):
             body['Crop'] = request.crop
-        if not UtilClient.is_unset(request.face_contrast_picture):
+        if not DaraCore.is_null(request.face_contrast_picture):
             body['FaceContrastPicture'] = request.face_contrast_picture
-        if not UtilClient.is_unset(request.model):
+        if not DaraCore.is_null(request.model):
             body['Model'] = request.model
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='InitFaceVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InitFaceVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.InitFaceVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.InitFaceVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def init_face_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.InitFaceVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.InitFaceVerifyResponse:
-        """
-        @summary Real-Person Server Initialization Interface
-        
-        @description - Service Address: cloudauth.aliyuncs.com
-        - Request Method: HTTPS POST and GET.
-        - This interface uses different parameters for different product solutions. For details, please refer to the [official documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/product-overview/introduction/?spm=a2c4g.11186623.help-menu-2401581.d_0_0.13f644ecRzFHfm&scm=20140722.H_99169._.OR_help-T_cn~zh-V_1).
-        #### Image Format Requirements
-        When performing real-person authentication, please provide images that meet all of the following conditions:
-        - Recent photo with a clear, unobstructed face, natural expression, and facing the camera directly.
-        - Clear photo with normal exposure, no overexposure, underexposure, or halo effects, and no significant angle deviation.
-        - Resolution not exceeding 19201080, at least 640*480, recommended short side scaled to 720 pixels, compression ratio greater than 0.9.
-        - Photo size: <1MB.
-        - Supports 90, 180, and 270-degree photos; in the case of multiple faces, the largest face will be selected.
-        
-        @param request: InitFaceVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InitFaceVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.InitFaceVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InitFaceVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.app_quality_check):
+        if not DaraCore.is_null(request.app_quality_check):
             query['AppQualityCheck'] = request.app_quality_check
-        if not UtilClient.is_unset(request.birthday):
+        if not DaraCore.is_null(request.birthday):
             query['Birthday'] = request.birthday
-        if not UtilClient.is_unset(request.callback_token):
+        if not DaraCore.is_null(request.callback_token):
             query['CallbackToken'] = request.callback_token
-        if not UtilClient.is_unset(request.callback_url):
+        if not DaraCore.is_null(request.callback_url):
             query['CallbackUrl'] = request.callback_url
-        if not UtilClient.is_unset(request.camera_selection):
+        if not DaraCore.is_null(request.camera_selection):
             query['CameraSelection'] = request.camera_selection
-        if not UtilClient.is_unset(request.cert_name):
+        if not DaraCore.is_null(request.cert_name):
             query['CertName'] = request.cert_name
-        if not UtilClient.is_unset(request.cert_no):
+        if not DaraCore.is_null(request.cert_no):
             query['CertNo'] = request.cert_no
-        if not UtilClient.is_unset(request.cert_type):
+        if not DaraCore.is_null(request.cert_type):
             query['CertType'] = request.cert_type
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.certify_url_style):
+        if not DaraCore.is_null(request.certify_url_style):
             query['CertifyUrlStyle'] = request.certify_url_style
-        if not UtilClient.is_unset(request.certify_url_type):
+        if not DaraCore.is_null(request.certify_url_type):
             query['CertifyUrlType'] = request.certify_url_type
-        if not UtilClient.is_unset(request.encrypt_type):
+        if not DaraCore.is_null(request.encrypt_type):
             query['EncryptType'] = request.encrypt_type
-        if not UtilClient.is_unset(request.face_contrast_picture_url):
+        if not DaraCore.is_null(request.face_contrast_picture_url):
             query['FaceContrastPictureUrl'] = request.face_contrast_picture_url
-        if not UtilClient.is_unset(request.face_guard_output):
+        if not DaraCore.is_null(request.face_guard_output):
             query['FaceGuardOutput'] = request.face_guard_output
-        if not UtilClient.is_unset(request.h_5degrade_confirm_btn):
+        if not DaraCore.is_null(request.h_5degrade_confirm_btn):
             query['H5DegradeConfirmBtn'] = request.h_5degrade_confirm_btn
-        if not UtilClient.is_unset(request.ip):
+        if not DaraCore.is_null(request.ip):
             query['Ip'] = request.ip
-        if not UtilClient.is_unset(request.meta_info):
+        if not DaraCore.is_null(request.meta_info):
             query['MetaInfo'] = request.meta_info
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             query['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.mode):
+        if not DaraCore.is_null(request.mode):
             query['Mode'] = request.mode
-        if not UtilClient.is_unset(request.need_multi_face_check):
+        if not DaraCore.is_null(request.need_multi_face_check):
             query['NeedMultiFaceCheck'] = request.need_multi_face_check
-        if not UtilClient.is_unset(request.oss_bucket_name):
+        if not DaraCore.is_null(request.oss_bucket_name):
             query['OssBucketName'] = request.oss_bucket_name
-        if not UtilClient.is_unset(request.oss_object_name):
+        if not DaraCore.is_null(request.oss_object_name):
             query['OssObjectName'] = request.oss_object_name
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             query['OuterOrderNo'] = request.outer_order_no
-        if not UtilClient.is_unset(request.procedure_priority):
+        if not DaraCore.is_null(request.procedure_priority):
             query['ProcedurePriority'] = request.procedure_priority
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.rarely_characters):
+        if not DaraCore.is_null(request.rarely_characters):
             query['RarelyCharacters'] = request.rarely_characters
-        if not UtilClient.is_unset(request.read_img):
+        if not DaraCore.is_null(request.read_img):
             query['ReadImg'] = request.read_img
-        if not UtilClient.is_unset(request.return_url):
+        if not DaraCore.is_null(request.return_url):
             query['ReturnUrl'] = request.return_url
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.suitable_type):
+        if not DaraCore.is_null(request.suitable_type):
             query['SuitableType'] = request.suitable_type
-        if not UtilClient.is_unset(request.ui_custom_url):
+        if not DaraCore.is_null(request.ui_custom_url):
             query['UiCustomUrl'] = request.ui_custom_url
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        if not UtilClient.is_unset(request.validity_date):
+        if not DaraCore.is_null(request.validity_date):
             query['ValidityDate'] = request.validity_date
-        if not UtilClient.is_unset(request.video_evidence):
+        if not DaraCore.is_null(request.video_evidence):
             query['VideoEvidence'] = request.video_evidence
-        if not UtilClient.is_unset(request.voluntary_customized_content):
+        if not DaraCore.is_null(request.voluntary_customized_content):
             query['VoluntaryCustomizedContent'] = request.voluntary_customized_content
         body = {}
-        if not UtilClient.is_unset(request.auth_id):
+        if not DaraCore.is_null(request.auth_id):
             body['AuthId'] = request.auth_id
-        if not UtilClient.is_unset(request.crop):
+        if not DaraCore.is_null(request.crop):
             body['Crop'] = request.crop
-        if not UtilClient.is_unset(request.face_contrast_picture):
+        if not DaraCore.is_null(request.face_contrast_picture):
             body['FaceContrastPicture'] = request.face_contrast_picture
-        if not UtilClient.is_unset(request.model):
+        if not DaraCore.is_null(request.model):
             body['Model'] = request.model
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='InitFaceVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InitFaceVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.InitFaceVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.InitFaceVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def init_face_verify(
         self,
-        request: cloudauth_20190307_models.InitFaceVerifyRequest,
-    ) -> cloudauth_20190307_models.InitFaceVerifyResponse:
-        """
-        @summary Real-Person Server Initialization Interface
-        
-        @description - Service Address: cloudauth.aliyuncs.com
-        - Request Method: HTTPS POST and GET.
-        - This interface uses different parameters for different product solutions. For details, please refer to the [official documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/product-overview/introduction/?spm=a2c4g.11186623.help-menu-2401581.d_0_0.13f644ecRzFHfm&scm=20140722.H_99169._.OR_help-T_cn~zh-V_1).
-        #### Image Format Requirements
-        When performing real-person authentication, please provide images that meet all of the following conditions:
-        - Recent photo with a clear, unobstructed face, natural expression, and facing the camera directly.
-        - Clear photo with normal exposure, no overexposure, underexposure, or halo effects, and no significant angle deviation.
-        - Resolution not exceeding 19201080, at least 640*480, recommended short side scaled to 720 pixels, compression ratio greater than 0.9.
-        - Photo size: <1MB.
-        - Supports 90, 180, and 270-degree photos; in the case of multiple faces, the largest face will be selected.
-        
-        @param request: InitFaceVerifyRequest
-        @return: InitFaceVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InitFaceVerifyRequest,
+    ) -> main_models.InitFaceVerifyResponse:
+        runtime = RuntimeOptions()
         return self.init_face_verify_with_options(request, runtime)
 
     async def init_face_verify_async(
         self,
-        request: cloudauth_20190307_models.InitFaceVerifyRequest,
-    ) -> cloudauth_20190307_models.InitFaceVerifyResponse:
-        """
-        @summary Real-Person Server Initialization Interface
-        
-        @description - Service Address: cloudauth.aliyuncs.com
-        - Request Method: HTTPS POST and GET.
-        - This interface uses different parameters for different product solutions. For details, please refer to the [official documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/product-overview/introduction/?spm=a2c4g.11186623.help-menu-2401581.d_0_0.13f644ecRzFHfm&scm=20140722.H_99169._.OR_help-T_cn~zh-V_1).
-        #### Image Format Requirements
-        When performing real-person authentication, please provide images that meet all of the following conditions:
-        - Recent photo with a clear, unobstructed face, natural expression, and facing the camera directly.
-        - Clear photo with normal exposure, no overexposure, underexposure, or halo effects, and no significant angle deviation.
-        - Resolution not exceeding 19201080, at least 640*480, recommended short side scaled to 720 pixels, compression ratio greater than 0.9.
-        - Photo size: <1MB.
-        - Supports 90, 180, and 270-degree photos; in the case of multiple faces, the largest face will be selected.
-        
-        @param request: InitFaceVerifyRequest
-        @return: InitFaceVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InitFaceVerifyRequest,
+    ) -> main_models.InitFaceVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.init_face_verify_with_options_async(request, runtime)
 
     def insert_white_list_setting_with_options(
         self,
-        request: cloudauth_20190307_models.InsertWhiteListSettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.InsertWhiteListSettingResponse:
-        """
-        @summary Add Real Person Whitelist
-        
-        @param request: InsertWhiteListSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InsertWhiteListSettingResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.InsertWhiteListSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InsertWhiteListSettingResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cert_no):
+        if not DaraCore.is_null(request.cert_no):
             query['CertNo'] = request.cert_no
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.remark):
+        if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.valid_day):
+        if not DaraCore.is_null(request.valid_day):
             query['ValidDay'] = request.valid_day
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='InsertWhiteListSetting',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InsertWhiteListSetting',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.InsertWhiteListSettingResponse(),
+        return DaraCore.from_map(
+            main_models.InsertWhiteListSettingResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def insert_white_list_setting_with_options_async(
         self,
-        request: cloudauth_20190307_models.InsertWhiteListSettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.InsertWhiteListSettingResponse:
-        """
-        @summary Add Real Person Whitelist
-        
-        @param request: InsertWhiteListSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InsertWhiteListSettingResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.InsertWhiteListSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InsertWhiteListSettingResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cert_no):
+        if not DaraCore.is_null(request.cert_no):
             query['CertNo'] = request.cert_no
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.remark):
+        if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.valid_day):
+        if not DaraCore.is_null(request.valid_day):
             query['ValidDay'] = request.valid_day
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='InsertWhiteListSetting',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InsertWhiteListSetting',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.InsertWhiteListSettingResponse(),
+        return DaraCore.from_map(
+            main_models.InsertWhiteListSettingResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def insert_white_list_setting(
         self,
-        request: cloudauth_20190307_models.InsertWhiteListSettingRequest,
-    ) -> cloudauth_20190307_models.InsertWhiteListSettingResponse:
-        """
-        @summary Add Real Person Whitelist
-        
-        @param request: InsertWhiteListSettingRequest
-        @return: InsertWhiteListSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InsertWhiteListSettingRequest,
+    ) -> main_models.InsertWhiteListSettingResponse:
+        runtime = RuntimeOptions()
         return self.insert_white_list_setting_with_options(request, runtime)
 
     async def insert_white_list_setting_async(
         self,
-        request: cloudauth_20190307_models.InsertWhiteListSettingRequest,
-    ) -> cloudauth_20190307_models.InsertWhiteListSettingResponse:
-        """
-        @summary Add Real Person Whitelist
-        
-        @param request: InsertWhiteListSettingRequest
-        @return: InsertWhiteListSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InsertWhiteListSettingRequest,
+    ) -> main_models.InsertWhiteListSettingResponse:
+        runtime = RuntimeOptions()
         return await self.insert_white_list_setting_with_options_async(request, runtime)
 
     def liveness_face_verify_with_options(
         self,
-        request: cloudauth_20190307_models.LivenessFaceVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.LivenessFaceVerifyResponse:
-        """
-        @summary Silent Liveness Face (LivenessFaceVerify) refers to a service that performs real face detection by inputting pre-obtained face images through an API. The algorithm primarily identifies whether the face is from a screen recording, printed picture, or other types of liveness attacks. This service is suitable for low-risk business scenarios or in conjunction with offline facial recognition SDKs. If your business has higher requirements for real face security, it is recommended to integrate App or WebSDK mode, or integrate with Deepfake face detection services to assist in identifying more dimensions of face forgery risks.
-        
-        @description Invoke the LivenessFaceVerify interface to perform liveness detection on a face image.
-        
-        @param request: LivenessFaceVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: LivenessFaceVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.LivenessFaceVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LivenessFaceVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.model):
+        if not DaraCore.is_null(request.model):
             query['Model'] = request.model
         body = {}
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             body['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.crop):
+        if not DaraCore.is_null(request.crop):
             body['Crop'] = request.crop
-        if not UtilClient.is_unset(request.device_token):
+        if not DaraCore.is_null(request.device_token):
             body['DeviceToken'] = request.device_token
-        if not UtilClient.is_unset(request.face_contrast_picture):
+        if not DaraCore.is_null(request.face_contrast_picture):
             body['FaceContrastPicture'] = request.face_contrast_picture
-        if not UtilClient.is_unset(request.face_contrast_picture_url):
+        if not DaraCore.is_null(request.face_contrast_picture_url):
             body['FaceContrastPictureUrl'] = request.face_contrast_picture_url
-        if not UtilClient.is_unset(request.ip):
+        if not DaraCore.is_null(request.ip):
             body['Ip'] = request.ip
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.oss_bucket_name):
+        if not DaraCore.is_null(request.oss_bucket_name):
             body['OssBucketName'] = request.oss_bucket_name
-        if not UtilClient.is_unset(request.oss_object_name):
+        if not DaraCore.is_null(request.oss_object_name):
             body['OssObjectName'] = request.oss_object_name
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             body['OuterOrderNo'] = request.outer_order_no
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             body['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             body['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             body['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='LivenessFaceVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'LivenessFaceVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.LivenessFaceVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.LivenessFaceVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def liveness_face_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.LivenessFaceVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.LivenessFaceVerifyResponse:
-        """
-        @summary Silent Liveness Face (LivenessFaceVerify) refers to a service that performs real face detection by inputting pre-obtained face images through an API. The algorithm primarily identifies whether the face is from a screen recording, printed picture, or other types of liveness attacks. This service is suitable for low-risk business scenarios or in conjunction with offline facial recognition SDKs. If your business has higher requirements for real face security, it is recommended to integrate App or WebSDK mode, or integrate with Deepfake face detection services to assist in identifying more dimensions of face forgery risks.
-        
-        @description Invoke the LivenessFaceVerify interface to perform liveness detection on a face image.
-        
-        @param request: LivenessFaceVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: LivenessFaceVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.LivenessFaceVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LivenessFaceVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.model):
+        if not DaraCore.is_null(request.model):
             query['Model'] = request.model
         body = {}
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             body['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.crop):
+        if not DaraCore.is_null(request.crop):
             body['Crop'] = request.crop
-        if not UtilClient.is_unset(request.device_token):
+        if not DaraCore.is_null(request.device_token):
             body['DeviceToken'] = request.device_token
-        if not UtilClient.is_unset(request.face_contrast_picture):
+        if not DaraCore.is_null(request.face_contrast_picture):
             body['FaceContrastPicture'] = request.face_contrast_picture
-        if not UtilClient.is_unset(request.face_contrast_picture_url):
+        if not DaraCore.is_null(request.face_contrast_picture_url):
             body['FaceContrastPictureUrl'] = request.face_contrast_picture_url
-        if not UtilClient.is_unset(request.ip):
+        if not DaraCore.is_null(request.ip):
             body['Ip'] = request.ip
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.oss_bucket_name):
+        if not DaraCore.is_null(request.oss_bucket_name):
             body['OssBucketName'] = request.oss_bucket_name
-        if not UtilClient.is_unset(request.oss_object_name):
+        if not DaraCore.is_null(request.oss_object_name):
             body['OssObjectName'] = request.oss_object_name
-        if not UtilClient.is_unset(request.outer_order_no):
+        if not DaraCore.is_null(request.outer_order_no):
             body['OuterOrderNo'] = request.outer_order_no
-        if not UtilClient.is_unset(request.product_code):
+        if not DaraCore.is_null(request.product_code):
             body['ProductCode'] = request.product_code
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             body['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             body['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='LivenessFaceVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'LivenessFaceVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.LivenessFaceVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.LivenessFaceVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def liveness_face_verify(
         self,
-        request: cloudauth_20190307_models.LivenessFaceVerifyRequest,
-    ) -> cloudauth_20190307_models.LivenessFaceVerifyResponse:
-        """
-        @summary Silent Liveness Face (LivenessFaceVerify) refers to a service that performs real face detection by inputting pre-obtained face images through an API. The algorithm primarily identifies whether the face is from a screen recording, printed picture, or other types of liveness attacks. This service is suitable for low-risk business scenarios or in conjunction with offline facial recognition SDKs. If your business has higher requirements for real face security, it is recommended to integrate App or WebSDK mode, or integrate with Deepfake face detection services to assist in identifying more dimensions of face forgery risks.
-        
-        @description Invoke the LivenessFaceVerify interface to perform liveness detection on a face image.
-        
-        @param request: LivenessFaceVerifyRequest
-        @return: LivenessFaceVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.LivenessFaceVerifyRequest,
+    ) -> main_models.LivenessFaceVerifyResponse:
+        runtime = RuntimeOptions()
         return self.liveness_face_verify_with_options(request, runtime)
 
     async def liveness_face_verify_async(
         self,
-        request: cloudauth_20190307_models.LivenessFaceVerifyRequest,
-    ) -> cloudauth_20190307_models.LivenessFaceVerifyResponse:
-        """
-        @summary Silent Liveness Face (LivenessFaceVerify) refers to a service that performs real face detection by inputting pre-obtained face images through an API. The algorithm primarily identifies whether the face is from a screen recording, printed picture, or other types of liveness attacks. This service is suitable for low-risk business scenarios or in conjunction with offline facial recognition SDKs. If your business has higher requirements for real face security, it is recommended to integrate App or WebSDK mode, or integrate with Deepfake face detection services to assist in identifying more dimensions of face forgery risks.
-        
-        @description Invoke the LivenessFaceVerify interface to perform liveness detection on a face image.
-        
-        @param request: LivenessFaceVerifyRequest
-        @return: LivenessFaceVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.LivenessFaceVerifyRequest,
+    ) -> main_models.LivenessFaceVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.liveness_face_verify_with_options_async(request, runtime)
 
     def mobile_2meta_verify_with_options(
         self,
-        request: cloudauth_20190307_models.Mobile2MetaVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Mobile2MetaVerifyResponse:
-        """
-        @summary Mobile Two-Factor Verification
-        
-        @description Input the phone number and name, verify their authenticity and consistency through authoritative data sources.
-        
-        @param request: Mobile2MetaVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Mobile2MetaVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Mobile2MetaVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Mobile2MetaVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Mobile2MetaVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Mobile2MetaVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Mobile2MetaVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Mobile2MetaVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def mobile_2meta_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.Mobile2MetaVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Mobile2MetaVerifyResponse:
-        """
-        @summary Mobile Two-Factor Verification
-        
-        @description Input the phone number and name, verify their authenticity and consistency through authoritative data sources.
-        
-        @param request: Mobile2MetaVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Mobile2MetaVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Mobile2MetaVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Mobile2MetaVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Mobile2MetaVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Mobile2MetaVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Mobile2MetaVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Mobile2MetaVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def mobile_2meta_verify(
         self,
-        request: cloudauth_20190307_models.Mobile2MetaVerifyRequest,
-    ) -> cloudauth_20190307_models.Mobile2MetaVerifyResponse:
-        """
-        @summary Mobile Two-Factor Verification
-        
-        @description Input the phone number and name, verify their authenticity and consistency through authoritative data sources.
-        
-        @param request: Mobile2MetaVerifyRequest
-        @return: Mobile2MetaVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Mobile2MetaVerifyRequest,
+    ) -> main_models.Mobile2MetaVerifyResponse:
+        runtime = RuntimeOptions()
         return self.mobile_2meta_verify_with_options(request, runtime)
 
     async def mobile_2meta_verify_async(
         self,
-        request: cloudauth_20190307_models.Mobile2MetaVerifyRequest,
-    ) -> cloudauth_20190307_models.Mobile2MetaVerifyResponse:
-        """
-        @summary Mobile Two-Factor Verification
-        
-        @description Input the phone number and name, verify their authenticity and consistency through authoritative data sources.
-        
-        @param request: Mobile2MetaVerifyRequest
-        @return: Mobile2MetaVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Mobile2MetaVerifyRequest,
+    ) -> main_models.Mobile2MetaVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.mobile_2meta_verify_with_options_async(request, runtime)
 
     def mobile_3meta_detail_standard_verify_with_options(
         self,
-        request: cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyResponse:
-        """
-        @summary Detailed Three-Element Verification for Phone Number_Standard Version
-        
-        @description Input the phone number, name, and ID number to verify their authenticity and consistency through authoritative data sources. If they do not match, the reason for the mismatch is returned.
-        
-        @param request: Mobile3MetaDetailStandardVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Mobile3MetaDetailStandardVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Mobile3MetaDetailStandardVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Mobile3MetaDetailStandardVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             body['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Mobile3MetaDetailStandardVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Mobile3MetaDetailStandardVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Mobile3MetaDetailStandardVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def mobile_3meta_detail_standard_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyResponse:
-        """
-        @summary Detailed Three-Element Verification for Phone Number_Standard Version
-        
-        @description Input the phone number, name, and ID number to verify their authenticity and consistency through authoritative data sources. If they do not match, the reason for the mismatch is returned.
-        
-        @param request: Mobile3MetaDetailStandardVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Mobile3MetaDetailStandardVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Mobile3MetaDetailStandardVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Mobile3MetaDetailStandardVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             body['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Mobile3MetaDetailStandardVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Mobile3MetaDetailStandardVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Mobile3MetaDetailStandardVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def mobile_3meta_detail_standard_verify(
         self,
-        request: cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyRequest,
-    ) -> cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyResponse:
-        """
-        @summary Detailed Three-Element Verification for Phone Number_Standard Version
-        
-        @description Input the phone number, name, and ID number to verify their authenticity and consistency through authoritative data sources. If they do not match, the reason for the mismatch is returned.
-        
-        @param request: Mobile3MetaDetailStandardVerifyRequest
-        @return: Mobile3MetaDetailStandardVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Mobile3MetaDetailStandardVerifyRequest,
+    ) -> main_models.Mobile3MetaDetailStandardVerifyResponse:
+        runtime = RuntimeOptions()
         return self.mobile_3meta_detail_standard_verify_with_options(request, runtime)
 
     async def mobile_3meta_detail_standard_verify_async(
         self,
-        request: cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyRequest,
-    ) -> cloudauth_20190307_models.Mobile3MetaDetailStandardVerifyResponse:
-        """
-        @summary Detailed Three-Element Verification for Phone Number_Standard Version
-        
-        @description Input the phone number, name, and ID number to verify their authenticity and consistency through authoritative data sources. If they do not match, the reason for the mismatch is returned.
-        
-        @param request: Mobile3MetaDetailStandardVerifyRequest
-        @return: Mobile3MetaDetailStandardVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Mobile3MetaDetailStandardVerifyRequest,
+    ) -> main_models.Mobile3MetaDetailStandardVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.mobile_3meta_detail_standard_verify_with_options_async(request, runtime)
 
     def mobile_3meta_detail_verify_with_options(
         self,
-        request: cloudauth_20190307_models.Mobile3MetaDetailVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Mobile3MetaDetailVerifyResponse:
-        """
-        @summary Detailed Mobile Three-Element Verification Interface
-        
-        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: Mobile3MetaDetailVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Mobile3MetaDetailVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Mobile3MetaDetailVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Mobile3MetaDetailVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             body['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Mobile3MetaDetailVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Mobile3MetaDetailVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Mobile3MetaDetailVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Mobile3MetaDetailVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def mobile_3meta_detail_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.Mobile3MetaDetailVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Mobile3MetaDetailVerifyResponse:
-        """
-        @summary Detailed Mobile Three-Element Verification Interface
-        
-        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: Mobile3MetaDetailVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Mobile3MetaDetailVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Mobile3MetaDetailVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Mobile3MetaDetailVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             body['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Mobile3MetaDetailVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Mobile3MetaDetailVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Mobile3MetaDetailVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Mobile3MetaDetailVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def mobile_3meta_detail_verify(
         self,
-        request: cloudauth_20190307_models.Mobile3MetaDetailVerifyRequest,
-    ) -> cloudauth_20190307_models.Mobile3MetaDetailVerifyResponse:
-        """
-        @summary Detailed Mobile Three-Element Verification Interface
-        
-        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: Mobile3MetaDetailVerifyRequest
-        @return: Mobile3MetaDetailVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Mobile3MetaDetailVerifyRequest,
+    ) -> main_models.Mobile3MetaDetailVerifyResponse:
+        runtime = RuntimeOptions()
         return self.mobile_3meta_detail_verify_with_options(request, runtime)
 
     async def mobile_3meta_detail_verify_async(
         self,
-        request: cloudauth_20190307_models.Mobile3MetaDetailVerifyRequest,
-    ) -> cloudauth_20190307_models.Mobile3MetaDetailVerifyResponse:
-        """
-        @summary Detailed Mobile Three-Element Verification Interface
-        
-        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: Mobile3MetaDetailVerifyRequest
-        @return: Mobile3MetaDetailVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Mobile3MetaDetailVerifyRequest,
+    ) -> main_models.Mobile3MetaDetailVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.mobile_3meta_detail_verify_with_options_async(request, runtime)
 
     def mobile_3meta_simple_standard_verify_with_options(
         self,
-        request: cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyResponse:
-        """
-        @summary Simplified Three-Element Verification for Phone Number_Standard Version
-        
-        @description Input the phone number, name, and ID number to verify their authenticity and consistency through authoritative data sources.
-        
-        @param request: Mobile3MetaSimpleStandardVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Mobile3MetaSimpleStandardVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Mobile3MetaSimpleStandardVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Mobile3MetaSimpleStandardVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             body['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Mobile3MetaSimpleStandardVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Mobile3MetaSimpleStandardVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Mobile3MetaSimpleStandardVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def mobile_3meta_simple_standard_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyResponse:
-        """
-        @summary Simplified Three-Element Verification for Phone Number_Standard Version
-        
-        @description Input the phone number, name, and ID number to verify their authenticity and consistency through authoritative data sources.
-        
-        @param request: Mobile3MetaSimpleStandardVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Mobile3MetaSimpleStandardVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Mobile3MetaSimpleStandardVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Mobile3MetaSimpleStandardVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             body['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Mobile3MetaSimpleStandardVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Mobile3MetaSimpleStandardVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Mobile3MetaSimpleStandardVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def mobile_3meta_simple_standard_verify(
         self,
-        request: cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyRequest,
-    ) -> cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyResponse:
-        """
-        @summary Simplified Three-Element Verification for Phone Number_Standard Version
-        
-        @description Input the phone number, name, and ID number to verify their authenticity and consistency through authoritative data sources.
-        
-        @param request: Mobile3MetaSimpleStandardVerifyRequest
-        @return: Mobile3MetaSimpleStandardVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Mobile3MetaSimpleStandardVerifyRequest,
+    ) -> main_models.Mobile3MetaSimpleStandardVerifyResponse:
+        runtime = RuntimeOptions()
         return self.mobile_3meta_simple_standard_verify_with_options(request, runtime)
 
     async def mobile_3meta_simple_standard_verify_async(
         self,
-        request: cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyRequest,
-    ) -> cloudauth_20190307_models.Mobile3MetaSimpleStandardVerifyResponse:
-        """
-        @summary Simplified Three-Element Verification for Phone Number_Standard Version
-        
-        @description Input the phone number, name, and ID number to verify their authenticity and consistency through authoritative data sources.
-        
-        @param request: Mobile3MetaSimpleStandardVerifyRequest
-        @return: Mobile3MetaSimpleStandardVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Mobile3MetaSimpleStandardVerifyRequest,
+    ) -> main_models.Mobile3MetaSimpleStandardVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.mobile_3meta_simple_standard_verify_with_options_async(request, runtime)
 
     def mobile_3meta_simple_verify_with_options(
         self,
-        request: cloudauth_20190307_models.Mobile3MetaSimpleVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Mobile3MetaSimpleVerifyResponse:
-        """
-        @summary Mobile Three Elements Simplified Interface
-        
-        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: Mobile3MetaSimpleVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Mobile3MetaSimpleVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Mobile3MetaSimpleVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Mobile3MetaSimpleVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             body['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Mobile3MetaSimpleVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Mobile3MetaSimpleVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Mobile3MetaSimpleVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Mobile3MetaSimpleVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def mobile_3meta_simple_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.Mobile3MetaSimpleVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Mobile3MetaSimpleVerifyResponse:
-        """
-        @summary Mobile Three Elements Simplified Interface
-        
-        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: Mobile3MetaSimpleVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Mobile3MetaSimpleVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Mobile3MetaSimpleVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Mobile3MetaSimpleVerifyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             body['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             body['UserName'] = request.user_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='Mobile3MetaSimpleVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Mobile3MetaSimpleVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Mobile3MetaSimpleVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.Mobile3MetaSimpleVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def mobile_3meta_simple_verify(
         self,
-        request: cloudauth_20190307_models.Mobile3MetaSimpleVerifyRequest,
-    ) -> cloudauth_20190307_models.Mobile3MetaSimpleVerifyResponse:
-        """
-        @summary Mobile Three Elements Simplified Interface
-        
-        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: Mobile3MetaSimpleVerifyRequest
-        @return: Mobile3MetaSimpleVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Mobile3MetaSimpleVerifyRequest,
+    ) -> main_models.Mobile3MetaSimpleVerifyResponse:
+        runtime = RuntimeOptions()
         return self.mobile_3meta_simple_verify_with_options(request, runtime)
 
     async def mobile_3meta_simple_verify_async(
         self,
-        request: cloudauth_20190307_models.Mobile3MetaSimpleVerifyRequest,
-    ) -> cloudauth_20190307_models.Mobile3MetaSimpleVerifyResponse:
-        """
-        @summary Mobile Three Elements Simplified Interface
-        
-        @description - Service address: cloudauth.aliyuncs.com (IPv4) or cloudauth-dualstack.aliyuncs.com (IPv6).
-        - Request method: POST and GET.
-        - Transfer protocol: HTTPS.
-        
-        @param request: Mobile3MetaSimpleVerifyRequest
-        @return: Mobile3MetaSimpleVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Mobile3MetaSimpleVerifyRequest,
+    ) -> main_models.Mobile3MetaSimpleVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.mobile_3meta_simple_verify_with_options_async(request, runtime)
 
     def mobile_detect_with_options(
         self,
-        request: cloudauth_20190307_models.MobileDetectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.MobileDetectResponse:
-        """
-        @summary Number Detection
-        
-        @param request: MobileDetectRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MobileDetectResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MobileDetectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MobileDetectResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.mobiles):
+        if not DaraCore.is_null(request.mobiles):
             body['Mobiles'] = request.mobiles
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='MobileDetect',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MobileDetect',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.MobileDetectResponse(),
+        return DaraCore.from_map(
+            main_models.MobileDetectResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def mobile_detect_with_options_async(
         self,
-        request: cloudauth_20190307_models.MobileDetectRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.MobileDetectResponse:
-        """
-        @summary Number Detection
-        
-        @param request: MobileDetectRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MobileDetectResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MobileDetectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MobileDetectResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.mobiles):
+        if not DaraCore.is_null(request.mobiles):
             body['Mobiles'] = request.mobiles
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='MobileDetect',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MobileDetect',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.MobileDetectResponse(),
+        return DaraCore.from_map(
+            main_models.MobileDetectResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def mobile_detect(
         self,
-        request: cloudauth_20190307_models.MobileDetectRequest,
-    ) -> cloudauth_20190307_models.MobileDetectResponse:
-        """
-        @summary Number Detection
-        
-        @param request: MobileDetectRequest
-        @return: MobileDetectResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MobileDetectRequest,
+    ) -> main_models.MobileDetectResponse:
+        runtime = RuntimeOptions()
         return self.mobile_detect_with_options(request, runtime)
 
     async def mobile_detect_async(
         self,
-        request: cloudauth_20190307_models.MobileDetectRequest,
-    ) -> cloudauth_20190307_models.MobileDetectResponse:
-        """
-        @summary Number Detection
-        
-        @param request: MobileDetectRequest
-        @return: MobileDetectResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MobileDetectRequest,
+    ) -> main_models.MobileDetectResponse:
+        runtime = RuntimeOptions()
         return await self.mobile_detect_with_options_async(request, runtime)
 
     def mobile_online_status_with_options(
         self,
-        request: cloudauth_20190307_models.MobileOnlineStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.MobileOnlineStatusResponse:
-        """
-        @summary Query the online status of a mobile number
-        
-        @param request: MobileOnlineStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MobileOnlineStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MobileOnlineStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MobileOnlineStatusResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='MobileOnlineStatus',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MobileOnlineStatus',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.MobileOnlineStatusResponse(),
+        return DaraCore.from_map(
+            main_models.MobileOnlineStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def mobile_online_status_with_options_async(
         self,
-        request: cloudauth_20190307_models.MobileOnlineStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.MobileOnlineStatusResponse:
-        """
-        @summary Query the online status of a mobile number
-        
-        @param request: MobileOnlineStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MobileOnlineStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MobileOnlineStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MobileOnlineStatusResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='MobileOnlineStatus',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MobileOnlineStatus',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.MobileOnlineStatusResponse(),
+        return DaraCore.from_map(
+            main_models.MobileOnlineStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def mobile_online_status(
         self,
-        request: cloudauth_20190307_models.MobileOnlineStatusRequest,
-    ) -> cloudauth_20190307_models.MobileOnlineStatusResponse:
-        """
-        @summary Query the online status of a mobile number
-        
-        @param request: MobileOnlineStatusRequest
-        @return: MobileOnlineStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MobileOnlineStatusRequest,
+    ) -> main_models.MobileOnlineStatusResponse:
+        runtime = RuntimeOptions()
         return self.mobile_online_status_with_options(request, runtime)
 
     async def mobile_online_status_async(
         self,
-        request: cloudauth_20190307_models.MobileOnlineStatusRequest,
-    ) -> cloudauth_20190307_models.MobileOnlineStatusResponse:
-        """
-        @summary Query the online status of a mobile number
-        
-        @param request: MobileOnlineStatusRequest
-        @return: MobileOnlineStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MobileOnlineStatusRequest,
+    ) -> main_models.MobileOnlineStatusResponse:
+        runtime = RuntimeOptions()
         return await self.mobile_online_status_with_options_async(request, runtime)
 
     def mobile_online_time_with_options(
         self,
-        request: cloudauth_20190307_models.MobileOnlineTimeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.MobileOnlineTimeResponse:
-        """
-        @summary Query the online duration of a mobile number
-        
-        @param request: MobileOnlineTimeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MobileOnlineTimeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MobileOnlineTimeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MobileOnlineTimeResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='MobileOnlineTime',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MobileOnlineTime',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.MobileOnlineTimeResponse(),
+        return DaraCore.from_map(
+            main_models.MobileOnlineTimeResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def mobile_online_time_with_options_async(
         self,
-        request: cloudauth_20190307_models.MobileOnlineTimeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.MobileOnlineTimeResponse:
-        """
-        @summary Query the online duration of a mobile number
-        
-        @param request: MobileOnlineTimeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MobileOnlineTimeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MobileOnlineTimeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MobileOnlineTimeResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             body['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             body['ParamType'] = request.param_type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='MobileOnlineTime',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MobileOnlineTime',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.MobileOnlineTimeResponse(),
+        return DaraCore.from_map(
+            main_models.MobileOnlineTimeResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def mobile_online_time(
         self,
-        request: cloudauth_20190307_models.MobileOnlineTimeRequest,
-    ) -> cloudauth_20190307_models.MobileOnlineTimeResponse:
-        """
-        @summary Query the online duration of a mobile number
-        
-        @param request: MobileOnlineTimeRequest
-        @return: MobileOnlineTimeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MobileOnlineTimeRequest,
+    ) -> main_models.MobileOnlineTimeResponse:
+        runtime = RuntimeOptions()
         return self.mobile_online_time_with_options(request, runtime)
 
     async def mobile_online_time_async(
         self,
-        request: cloudauth_20190307_models.MobileOnlineTimeRequest,
-    ) -> cloudauth_20190307_models.MobileOnlineTimeResponse:
-        """
-        @summary Query the online duration of a mobile number
-        
-        @param request: MobileOnlineTimeRequest
-        @return: MobileOnlineTimeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MobileOnlineTimeRequest,
+    ) -> main_models.MobileOnlineTimeResponse:
+        runtime = RuntimeOptions()
         return await self.mobile_online_time_with_options_async(request, runtime)
 
     def modify_black_list_strategy_with_options(
         self,
-        tmp_req: cloudauth_20190307_models.ModifyBlackListStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.ModifyBlackListStrategyResponse:
-        """
-        @summary Modify Black and White List Policy
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        - Interface Description: Add or modify blacklist rule.
-        
-        @param tmp_req: ModifyBlackListStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyBlackListStrategyResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cloudauth_20190307_models.ModifyBlackListStrategyShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.black_list_strategy):
-            request.black_list_strategy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.black_list_strategy, 'BlackListStrategy', 'json')
+        tmp_req: main_models.ModifyBlackListStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyBlackListStrategyResponse:
+        tmp_req.validate()
+        request = main_models.ModifyBlackListStrategyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.black_list_strategy):
+            request.black_list_strategy_shrink = Utils.array_to_string_with_specified_style(tmp_req.black_list_strategy, 'BlackListStrategy', 'json')
         query = {}
-        if not UtilClient.is_unset(request.black_list_strategy_shrink):
+        if not DaraCore.is_null(request.black_list_strategy_shrink):
             query['BlackListStrategy'] = request.black_list_strategy_shrink
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyBlackListStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyBlackListStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.ModifyBlackListStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyBlackListStrategyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def modify_black_list_strategy_with_options_async(
         self,
-        tmp_req: cloudauth_20190307_models.ModifyBlackListStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.ModifyBlackListStrategyResponse:
-        """
-        @summary Modify Black and White List Policy
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        - Interface Description: Add or modify blacklist rule.
-        
-        @param tmp_req: ModifyBlackListStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyBlackListStrategyResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cloudauth_20190307_models.ModifyBlackListStrategyShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.black_list_strategy):
-            request.black_list_strategy_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.black_list_strategy, 'BlackListStrategy', 'json')
+        tmp_req: main_models.ModifyBlackListStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyBlackListStrategyResponse:
+        tmp_req.validate()
+        request = main_models.ModifyBlackListStrategyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.black_list_strategy):
+            request.black_list_strategy_shrink = Utils.array_to_string_with_specified_style(tmp_req.black_list_strategy, 'BlackListStrategy', 'json')
         query = {}
-        if not UtilClient.is_unset(request.black_list_strategy_shrink):
+        if not DaraCore.is_null(request.black_list_strategy_shrink):
             query['BlackListStrategy'] = request.black_list_strategy_shrink
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyBlackListStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyBlackListStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.ModifyBlackListStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyBlackListStrategyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def modify_black_list_strategy(
         self,
-        request: cloudauth_20190307_models.ModifyBlackListStrategyRequest,
-    ) -> cloudauth_20190307_models.ModifyBlackListStrategyResponse:
-        """
-        @summary Modify Black and White List Policy
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        - Interface Description: Add or modify blacklist rule.
-        
-        @param request: ModifyBlackListStrategyRequest
-        @return: ModifyBlackListStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyBlackListStrategyRequest,
+    ) -> main_models.ModifyBlackListStrategyResponse:
+        runtime = RuntimeOptions()
         return self.modify_black_list_strategy_with_options(request, runtime)
 
     async def modify_black_list_strategy_async(
         self,
-        request: cloudauth_20190307_models.ModifyBlackListStrategyRequest,
-    ) -> cloudauth_20190307_models.ModifyBlackListStrategyResponse:
-        """
-        @summary Modify Black and White List Policy
-        
-        @description - Service Address: cloudauth.aliyuncs.com.
-        - Request Method: HTTPS POST and GET.
-        - Interface Description: Add or modify blacklist rule.
-        
-        @param request: ModifyBlackListStrategyRequest
-        @return: ModifyBlackListStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyBlackListStrategyRequest,
+    ) -> main_models.ModifyBlackListStrategyResponse:
+        runtime = RuntimeOptions()
         return await self.modify_black_list_strategy_with_options_async(request, runtime)
 
     def modify_control_strategy_with_options(
         self,
-        tmp_req: cloudauth_20190307_models.ModifyControlStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.ModifyControlStrategyResponse:
-        """
-        @summary Modify Security Control Strategy
-        
-        @description - Request Method: Supports sending requests via HTTPS POST method.
-        - Request Address: cloudauth.aliyuncs.com.
-        
-        @param tmp_req: ModifyControlStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyControlStrategyResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cloudauth_20190307_models.ModifyControlStrategyShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.control_strategy_list):
-            request.control_strategy_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.control_strategy_list, 'ControlStrategyList', 'json')
+        tmp_req: main_models.ModifyControlStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyControlStrategyResponse:
+        tmp_req.validate()
+        request = main_models.ModifyControlStrategyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.control_strategy_list):
+            request.control_strategy_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.control_strategy_list, 'ControlStrategyList', 'json')
         query = {}
-        if not UtilClient.is_unset(request.control_strategy_list_shrink):
+        if not DaraCore.is_null(request.control_strategy_list_shrink):
             query['ControlStrategyList'] = request.control_strategy_list_shrink
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyControlStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyControlStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.ModifyControlStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyControlStrategyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def modify_control_strategy_with_options_async(
         self,
-        tmp_req: cloudauth_20190307_models.ModifyControlStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.ModifyControlStrategyResponse:
-        """
-        @summary Modify Security Control Strategy
-        
-        @description - Request Method: Supports sending requests via HTTPS POST method.
-        - Request Address: cloudauth.aliyuncs.com.
-        
-        @param tmp_req: ModifyControlStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyControlStrategyResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cloudauth_20190307_models.ModifyControlStrategyShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.control_strategy_list):
-            request.control_strategy_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.control_strategy_list, 'ControlStrategyList', 'json')
+        tmp_req: main_models.ModifyControlStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyControlStrategyResponse:
+        tmp_req.validate()
+        request = main_models.ModifyControlStrategyShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.control_strategy_list):
+            request.control_strategy_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.control_strategy_list, 'ControlStrategyList', 'json')
         query = {}
-        if not UtilClient.is_unset(request.control_strategy_list_shrink):
+        if not DaraCore.is_null(request.control_strategy_list_shrink):
             query['ControlStrategyList'] = request.control_strategy_list_shrink
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyControlStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyControlStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.ModifyControlStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyControlStrategyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def modify_control_strategy(
         self,
-        request: cloudauth_20190307_models.ModifyControlStrategyRequest,
-    ) -> cloudauth_20190307_models.ModifyControlStrategyResponse:
-        """
-        @summary Modify Security Control Strategy
-        
-        @description - Request Method: Supports sending requests via HTTPS POST method.
-        - Request Address: cloudauth.aliyuncs.com.
-        
-        @param request: ModifyControlStrategyRequest
-        @return: ModifyControlStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyControlStrategyRequest,
+    ) -> main_models.ModifyControlStrategyResponse:
+        runtime = RuntimeOptions()
         return self.modify_control_strategy_with_options(request, runtime)
 
     async def modify_control_strategy_async(
         self,
-        request: cloudauth_20190307_models.ModifyControlStrategyRequest,
-    ) -> cloudauth_20190307_models.ModifyControlStrategyResponse:
-        """
-        @summary Modify Security Control Strategy
-        
-        @description - Request Method: Supports sending requests via HTTPS POST method.
-        - Request Address: cloudauth.aliyuncs.com.
-        
-        @param request: ModifyControlStrategyRequest
-        @return: ModifyControlStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyControlStrategyRequest,
+    ) -> main_models.ModifyControlStrategyResponse:
+        runtime = RuntimeOptions()
         return await self.modify_control_strategy_with_options_async(request, runtime)
 
     def modify_customize_flow_strategy_list_with_options(
         self,
-        tmp_req: cloudauth_20190307_models.ModifyCustomizeFlowStrategyListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.ModifyCustomizeFlowStrategyListResponse:
-        """
-        @summary Information Verification Security Management
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Service Address: cloudauth.aliyuncs.com.
-        
-        @param tmp_req: ModifyCustomizeFlowStrategyListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyCustomizeFlowStrategyListResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cloudauth_20190307_models.ModifyCustomizeFlowStrategyListShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.strategy_object):
-            request.strategy_object_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.strategy_object, 'StrategyObject', 'json')
+        tmp_req: main_models.ModifyCustomizeFlowStrategyListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyCustomizeFlowStrategyListResponse:
+        tmp_req.validate()
+        request = main_models.ModifyCustomizeFlowStrategyListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.strategy_object):
+            request.strategy_object_shrink = Utils.array_to_string_with_specified_style(tmp_req.strategy_object, 'StrategyObject', 'json')
         query = {}
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.strategy_object_shrink):
+        if not DaraCore.is_null(request.strategy_object_shrink):
             query['StrategyObject'] = request.strategy_object_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyCustomizeFlowStrategyList',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyCustomizeFlowStrategyList',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.ModifyCustomizeFlowStrategyListResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyCustomizeFlowStrategyListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def modify_customize_flow_strategy_list_with_options_async(
         self,
-        tmp_req: cloudauth_20190307_models.ModifyCustomizeFlowStrategyListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.ModifyCustomizeFlowStrategyListResponse:
-        """
-        @summary Information Verification Security Management
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Service Address: cloudauth.aliyuncs.com.
-        
-        @param tmp_req: ModifyCustomizeFlowStrategyListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyCustomizeFlowStrategyListResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cloudauth_20190307_models.ModifyCustomizeFlowStrategyListShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.strategy_object):
-            request.strategy_object_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.strategy_object, 'StrategyObject', 'json')
+        tmp_req: main_models.ModifyCustomizeFlowStrategyListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyCustomizeFlowStrategyListResponse:
+        tmp_req.validate()
+        request = main_models.ModifyCustomizeFlowStrategyListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.strategy_object):
+            request.strategy_object_shrink = Utils.array_to_string_with_specified_style(tmp_req.strategy_object, 'StrategyObject', 'json')
         query = {}
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.strategy_object_shrink):
+        if not DaraCore.is_null(request.strategy_object_shrink):
             query['StrategyObject'] = request.strategy_object_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyCustomizeFlowStrategyList',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyCustomizeFlowStrategyList',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.ModifyCustomizeFlowStrategyListResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyCustomizeFlowStrategyListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def modify_customize_flow_strategy_list(
         self,
-        request: cloudauth_20190307_models.ModifyCustomizeFlowStrategyListRequest,
-    ) -> cloudauth_20190307_models.ModifyCustomizeFlowStrategyListResponse:
-        """
-        @summary Information Verification Security Management
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Service Address: cloudauth.aliyuncs.com.
-        
-        @param request: ModifyCustomizeFlowStrategyListRequest
-        @return: ModifyCustomizeFlowStrategyListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyCustomizeFlowStrategyListRequest,
+    ) -> main_models.ModifyCustomizeFlowStrategyListResponse:
+        runtime = RuntimeOptions()
         return self.modify_customize_flow_strategy_list_with_options(request, runtime)
 
     async def modify_customize_flow_strategy_list_async(
         self,
-        request: cloudauth_20190307_models.ModifyCustomizeFlowStrategyListRequest,
-    ) -> cloudauth_20190307_models.ModifyCustomizeFlowStrategyListResponse:
-        """
-        @summary Information Verification Security Management
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Service Address: cloudauth.aliyuncs.com.
-        
-        @param request: ModifyCustomizeFlowStrategyListRequest
-        @return: ModifyCustomizeFlowStrategyListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyCustomizeFlowStrategyListRequest,
+    ) -> main_models.ModifyCustomizeFlowStrategyListResponse:
+        runtime = RuntimeOptions()
         return await self.modify_customize_flow_strategy_list_with_options_async(request, runtime)
 
     def modify_device_info_with_options(
         self,
-        request: cloudauth_20190307_models.ModifyDeviceInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.ModifyDeviceInfoResponse:
-        """
-        @summary Call ModifyDeviceInfo to update device-related information, such as extending the device authorization validity period, updating the business party\\"s custom business identifier, and device ID. Suitable for scenarios like renewing the device validity period.
-        
-        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
-        
-        @param request: ModifyDeviceInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDeviceInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifyDeviceInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDeviceInfoResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.device_id):
+        if not DaraCore.is_null(request.device_id):
             query['DeviceId'] = request.device_id
-        if not UtilClient.is_unset(request.duration):
+        if not DaraCore.is_null(request.duration):
             query['Duration'] = request.duration
-        if not UtilClient.is_unset(request.expired_day):
+        if not DaraCore.is_null(request.expired_day):
             query['ExpiredDay'] = request.expired_day
-        if not UtilClient.is_unset(request.user_device_id):
+        if not DaraCore.is_null(request.user_device_id):
             query['UserDeviceId'] = request.user_device_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyDeviceInfo',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyDeviceInfo',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.ModifyDeviceInfoResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyDeviceInfoResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def modify_device_info_with_options_async(
         self,
-        request: cloudauth_20190307_models.ModifyDeviceInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.ModifyDeviceInfoResponse:
-        """
-        @summary Call ModifyDeviceInfo to update device-related information, such as extending the device authorization validity period, updating the business party\\"s custom business identifier, and device ID. Suitable for scenarios like renewing the device validity period.
-        
-        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
-        
-        @param request: ModifyDeviceInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ModifyDeviceInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ModifyDeviceInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDeviceInfoResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.device_id):
+        if not DaraCore.is_null(request.device_id):
             query['DeviceId'] = request.device_id
-        if not UtilClient.is_unset(request.duration):
+        if not DaraCore.is_null(request.duration):
             query['Duration'] = request.duration
-        if not UtilClient.is_unset(request.expired_day):
+        if not DaraCore.is_null(request.expired_day):
             query['ExpiredDay'] = request.expired_day
-        if not UtilClient.is_unset(request.user_device_id):
+        if not DaraCore.is_null(request.user_device_id):
             query['UserDeviceId'] = request.user_device_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ModifyDeviceInfo',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ModifyDeviceInfo',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.ModifyDeviceInfoResponse(),
+        return DaraCore.from_map(
+            main_models.ModifyDeviceInfoResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def modify_device_info(
         self,
-        request: cloudauth_20190307_models.ModifyDeviceInfoRequest,
-    ) -> cloudauth_20190307_models.ModifyDeviceInfoResponse:
-        """
-        @summary Call ModifyDeviceInfo to update device-related information, such as extending the device authorization validity period, updating the business party\\"s custom business identifier, and device ID. Suitable for scenarios like renewing the device validity period.
-        
-        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
-        
-        @param request: ModifyDeviceInfoRequest
-        @return: ModifyDeviceInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyDeviceInfoRequest,
+    ) -> main_models.ModifyDeviceInfoResponse:
+        runtime = RuntimeOptions()
         return self.modify_device_info_with_options(request, runtime)
 
     async def modify_device_info_async(
         self,
-        request: cloudauth_20190307_models.ModifyDeviceInfoRequest,
-    ) -> cloudauth_20190307_models.ModifyDeviceInfoResponse:
-        """
-        @summary Call ModifyDeviceInfo to update device-related information, such as extending the device authorization validity period, updating the business party\\"s custom business identifier, and device ID. Suitable for scenarios like renewing the device validity period.
-        
-        @description Request Method: Supports sending requests using HTTPS POST and GET methods.
-        
-        @param request: ModifyDeviceInfoRequest
-        @return: ModifyDeviceInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ModifyDeviceInfoRequest,
+    ) -> main_models.ModifyDeviceInfoResponse:
+        runtime = RuntimeOptions()
         return await self.modify_device_info_with_options_async(request, runtime)
 
     def page_query_white_list_setting_with_options(
         self,
-        request: cloudauth_20190307_models.PageQueryWhiteListSettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.PageQueryWhiteListSettingResponse:
-        """
-        @summary Paging Query for Real Person Whitelist Configuration
-        
-        @param request: PageQueryWhiteListSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PageQueryWhiteListSettingResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.PageQueryWhiteListSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PageQueryWhiteListSettingResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cert_no):
+        if not DaraCore.is_null(request.cert_no):
             query['CertNo'] = request.cert_no
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.valid_end_date):
+        if not DaraCore.is_null(request.valid_end_date):
             query['ValidEndDate'] = request.valid_end_date
-        if not UtilClient.is_unset(request.valid_start_date):
+        if not DaraCore.is_null(request.valid_start_date):
             query['ValidStartDate'] = request.valid_start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='PageQueryWhiteListSetting',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'PageQueryWhiteListSetting',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.PageQueryWhiteListSettingResponse(),
+        return DaraCore.from_map(
+            main_models.PageQueryWhiteListSettingResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def page_query_white_list_setting_with_options_async(
         self,
-        request: cloudauth_20190307_models.PageQueryWhiteListSettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.PageQueryWhiteListSettingResponse:
-        """
-        @summary Paging Query for Real Person Whitelist Configuration
-        
-        @param request: PageQueryWhiteListSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PageQueryWhiteListSettingResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.PageQueryWhiteListSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PageQueryWhiteListSettingResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cert_no):
+        if not DaraCore.is_null(request.cert_no):
             query['CertNo'] = request.cert_no
-        if not UtilClient.is_unset(request.certify_id):
+        if not DaraCore.is_null(request.certify_id):
             query['CertifyId'] = request.certify_id
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.valid_end_date):
+        if not DaraCore.is_null(request.valid_end_date):
             query['ValidEndDate'] = request.valid_end_date
-        if not UtilClient.is_unset(request.valid_start_date):
+        if not DaraCore.is_null(request.valid_start_date):
             query['ValidStartDate'] = request.valid_start_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='PageQueryWhiteListSetting',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'PageQueryWhiteListSetting',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.PageQueryWhiteListSettingResponse(),
+        return DaraCore.from_map(
+            main_models.PageQueryWhiteListSettingResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def page_query_white_list_setting(
         self,
-        request: cloudauth_20190307_models.PageQueryWhiteListSettingRequest,
-    ) -> cloudauth_20190307_models.PageQueryWhiteListSettingResponse:
-        """
-        @summary Paging Query for Real Person Whitelist Configuration
-        
-        @param request: PageQueryWhiteListSettingRequest
-        @return: PageQueryWhiteListSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.PageQueryWhiteListSettingRequest,
+    ) -> main_models.PageQueryWhiteListSettingResponse:
+        runtime = RuntimeOptions()
         return self.page_query_white_list_setting_with_options(request, runtime)
 
     async def page_query_white_list_setting_async(
         self,
-        request: cloudauth_20190307_models.PageQueryWhiteListSettingRequest,
-    ) -> cloudauth_20190307_models.PageQueryWhiteListSettingResponse:
-        """
-        @summary Paging Query for Real Person Whitelist Configuration
-        
-        @param request: PageQueryWhiteListSettingRequest
-        @return: PageQueryWhiteListSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.PageQueryWhiteListSettingRequest,
+    ) -> main_models.PageQueryWhiteListSettingResponse:
+        runtime = RuntimeOptions()
         return await self.page_query_white_list_setting_with_options_async(request, runtime)
 
     def query_black_list_strategy_with_options(
         self,
-        request: cloudauth_20190307_models.QueryBlackListStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.QueryBlackListStrategyResponse:
-        """
-        @summary Query Blacklist and Whitelist Policies
-        
-        @description - Request URL: cloudauth.aliyuncs.com
-        - Request Method: HTTPS POST and GET.
-        > Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
-        Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
-        
-        @param request: QueryBlackListStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryBlackListStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryBlackListStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryBlackListStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryBlackListStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryBlackListStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.QueryBlackListStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.QueryBlackListStrategyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_black_list_strategy_with_options_async(
         self,
-        request: cloudauth_20190307_models.QueryBlackListStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.QueryBlackListStrategyResponse:
-        """
-        @summary Query Blacklist and Whitelist Policies
-        
-        @description - Request URL: cloudauth.aliyuncs.com
-        - Request Method: HTTPS POST and GET.
-        > Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
-        Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
-        
-        @param request: QueryBlackListStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryBlackListStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryBlackListStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryBlackListStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryBlackListStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryBlackListStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.QueryBlackListStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.QueryBlackListStrategyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_black_list_strategy(
         self,
-        request: cloudauth_20190307_models.QueryBlackListStrategyRequest,
-    ) -> cloudauth_20190307_models.QueryBlackListStrategyResponse:
-        """
-        @summary Query Blacklist and Whitelist Policies
-        
-        @description - Request URL: cloudauth.aliyuncs.com
-        - Request Method: HTTPS POST and GET.
-        > Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
-        Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
-        
-        @param request: QueryBlackListStrategyRequest
-        @return: QueryBlackListStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryBlackListStrategyRequest,
+    ) -> main_models.QueryBlackListStrategyResponse:
+        runtime = RuntimeOptions()
         return self.query_black_list_strategy_with_options(request, runtime)
 
     async def query_black_list_strategy_async(
         self,
-        request: cloudauth_20190307_models.QueryBlackListStrategyRequest,
-    ) -> cloudauth_20190307_models.QueryBlackListStrategyResponse:
-        """
-        @summary Query Blacklist and Whitelist Policies
-        
-        @description - Request URL: cloudauth.aliyuncs.com
-        - Request Method: HTTPS POST and GET.
-        > Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
-        Supports setting blacklists for IP, ID number, phone number, bank card number, etc. When a blacklist is hit, the system rejects the request and returns a fixed error code.
-        
-        @param request: QueryBlackListStrategyRequest
-        @return: QueryBlackListStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryBlackListStrategyRequest,
+    ) -> main_models.QueryBlackListStrategyResponse:
+        runtime = RuntimeOptions()
         return await self.query_black_list_strategy_with_options_async(request, runtime)
 
     def query_control_strategy_with_options(
         self,
-        request: cloudauth_20190307_models.QueryControlStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.QueryControlStrategyResponse:
-        """
-        @summary Query Security Control Strategy
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Request Address: cloudauth.aliyuncs.com.
-        
-        @param request: QueryControlStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryControlStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryControlStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryControlStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryControlStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryControlStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.QueryControlStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.QueryControlStrategyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_control_strategy_with_options_async(
         self,
-        request: cloudauth_20190307_models.QueryControlStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.QueryControlStrategyResponse:
-        """
-        @summary Query Security Control Strategy
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Request Address: cloudauth.aliyuncs.com.
-        
-        @param request: QueryControlStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryControlStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryControlStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryControlStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryControlStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryControlStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.QueryControlStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.QueryControlStrategyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_control_strategy(
         self,
-        request: cloudauth_20190307_models.QueryControlStrategyRequest,
-    ) -> cloudauth_20190307_models.QueryControlStrategyResponse:
-        """
-        @summary Query Security Control Strategy
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Request Address: cloudauth.aliyuncs.com.
-        
-        @param request: QueryControlStrategyRequest
-        @return: QueryControlStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryControlStrategyRequest,
+    ) -> main_models.QueryControlStrategyResponse:
+        runtime = RuntimeOptions()
         return self.query_control_strategy_with_options(request, runtime)
 
     async def query_control_strategy_async(
         self,
-        request: cloudauth_20190307_models.QueryControlStrategyRequest,
-    ) -> cloudauth_20190307_models.QueryControlStrategyResponse:
-        """
-        @summary Query Security Control Strategy
-        
-        @description - Request Method: Supports sending requests via HTTPS POST and GET methods.
-        - Request Address: cloudauth.aliyuncs.com.
-        
-        @param request: QueryControlStrategyRequest
-        @return: QueryControlStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryControlStrategyRequest,
+    ) -> main_models.QueryControlStrategyResponse:
+        runtime = RuntimeOptions()
         return await self.query_control_strategy_with_options_async(request, runtime)
 
     def query_customize_flow_strategy_with_options(
         self,
-        request: cloudauth_20190307_models.QueryCustomizeFlowStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.QueryCustomizeFlowStrategyResponse:
-        """
-        @summary Query Custom Flow Control Strategy
-        
-        @description - Service Address: cloudauth.aliyuncs.com
-        - Request Method: HTTPS POST and GET.
-        - Security Rules: These are rules to ensure system security, such as monitoring for API abuse, account theft, etc. When a threshold is triggered, the system supports alerting.
-        
-        @param request: QueryCustomizeFlowStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryCustomizeFlowStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryCustomizeFlowStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryCustomizeFlowStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryCustomizeFlowStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryCustomizeFlowStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.QueryCustomizeFlowStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.QueryCustomizeFlowStrategyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_customize_flow_strategy_with_options_async(
         self,
-        request: cloudauth_20190307_models.QueryCustomizeFlowStrategyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.QueryCustomizeFlowStrategyResponse:
-        """
-        @summary Query Custom Flow Control Strategy
-        
-        @description - Service Address: cloudauth.aliyuncs.com
-        - Request Method: HTTPS POST and GET.
-        - Security Rules: These are rules to ensure system security, such as monitoring for API abuse, account theft, etc. When a threshold is triggered, the system supports alerting.
-        
-        @param request: QueryCustomizeFlowStrategyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryCustomizeFlowStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryCustomizeFlowStrategyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryCustomizeFlowStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryCustomizeFlowStrategy',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryCustomizeFlowStrategy',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.QueryCustomizeFlowStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.QueryCustomizeFlowStrategyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_customize_flow_strategy(
         self,
-        request: cloudauth_20190307_models.QueryCustomizeFlowStrategyRequest,
-    ) -> cloudauth_20190307_models.QueryCustomizeFlowStrategyResponse:
-        """
-        @summary Query Custom Flow Control Strategy
-        
-        @description - Service Address: cloudauth.aliyuncs.com
-        - Request Method: HTTPS POST and GET.
-        - Security Rules: These are rules to ensure system security, such as monitoring for API abuse, account theft, etc. When a threshold is triggered, the system supports alerting.
-        
-        @param request: QueryCustomizeFlowStrategyRequest
-        @return: QueryCustomizeFlowStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryCustomizeFlowStrategyRequest,
+    ) -> main_models.QueryCustomizeFlowStrategyResponse:
+        runtime = RuntimeOptions()
         return self.query_customize_flow_strategy_with_options(request, runtime)
 
     async def query_customize_flow_strategy_async(
         self,
-        request: cloudauth_20190307_models.QueryCustomizeFlowStrategyRequest,
-    ) -> cloudauth_20190307_models.QueryCustomizeFlowStrategyResponse:
-        """
-        @summary Query Custom Flow Control Strategy
-        
-        @description - Service Address: cloudauth.aliyuncs.com
-        - Request Method: HTTPS POST and GET.
-        - Security Rules: These are rules to ensure system security, such as monitoring for API abuse, account theft, etc. When a threshold is triggered, the system supports alerting.
-        
-        @param request: QueryCustomizeFlowStrategyRequest
-        @return: QueryCustomizeFlowStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryCustomizeFlowStrategyRequest,
+    ) -> main_models.QueryCustomizeFlowStrategyResponse:
+        runtime = RuntimeOptions()
         return await self.query_customize_flow_strategy_with_options_async(request, runtime)
 
     def query_scene_configs_with_options(
         self,
-        request: cloudauth_20190307_models.QuerySceneConfigsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.QuerySceneConfigsResponse:
-        """
-        @summary Query Scene Configuration
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: QuerySceneConfigsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QuerySceneConfigsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QuerySceneConfigsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QuerySceneConfigsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QuerySceneConfigs',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QuerySceneConfigs',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.QuerySceneConfigsResponse(),
+        return DaraCore.from_map(
+            main_models.QuerySceneConfigsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_scene_configs_with_options_async(
         self,
-        request: cloudauth_20190307_models.QuerySceneConfigsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.QuerySceneConfigsResponse:
-        """
-        @summary Query Scene Configuration
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: QuerySceneConfigsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QuerySceneConfigsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QuerySceneConfigsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QuerySceneConfigsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QuerySceneConfigs',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QuerySceneConfigs',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.QuerySceneConfigsResponse(),
+        return DaraCore.from_map(
+            main_models.QuerySceneConfigsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_scene_configs(
         self,
-        request: cloudauth_20190307_models.QuerySceneConfigsRequest,
-    ) -> cloudauth_20190307_models.QuerySceneConfigsResponse:
-        """
-        @summary Query Scene Configuration
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: QuerySceneConfigsRequest
-        @return: QuerySceneConfigsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QuerySceneConfigsRequest,
+    ) -> main_models.QuerySceneConfigsResponse:
+        runtime = RuntimeOptions()
         return self.query_scene_configs_with_options(request, runtime)
 
     async def query_scene_configs_async(
         self,
-        request: cloudauth_20190307_models.QuerySceneConfigsRequest,
-    ) -> cloudauth_20190307_models.QuerySceneConfigsResponse:
-        """
-        @summary Query Scene Configuration
-        
-        @description - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST and GET.
-        
-        @param request: QuerySceneConfigsRequest
-        @return: QuerySceneConfigsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QuerySceneConfigsRequest,
+    ) -> main_models.QuerySceneConfigsResponse:
+        runtime = RuntimeOptions()
         return await self.query_scene_configs_with_options_async(request, runtime)
 
     def query_verify_download_task_with_options(
         self,
-        request: cloudauth_20190307_models.QueryVerifyDownloadTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.QueryVerifyDownloadTaskResponse:
-        """
-        @summary Query Real-Person Download Task
-        
-        @description Obtain the download link for statistical call data files under the product plan based on query conditions.
-        - Method: HTTPS POST
-        - Service Address: cloudauth.aliyuncs.com
-        > The real-person authentication product uses CertifyId to count the number of calls. For ease of reconciliation, please retain the CertifyId field in your system.
-        
-        @param request: QueryVerifyDownloadTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryVerifyDownloadTaskResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.QueryVerifyDownloadTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryVerifyDownloadTaskResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryVerifyDownloadTask',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryVerifyDownloadTask',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.QueryVerifyDownloadTaskResponse(),
+        return DaraCore.from_map(
+            main_models.QueryVerifyDownloadTaskResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_verify_download_task_with_options_async(
         self,
-        request: cloudauth_20190307_models.QueryVerifyDownloadTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.QueryVerifyDownloadTaskResponse:
-        """
-        @summary Query Real-Person Download Task
-        
-        @description Obtain the download link for statistical call data files under the product plan based on query conditions.
-        - Method: HTTPS POST
-        - Service Address: cloudauth.aliyuncs.com
-        > The real-person authentication product uses CertifyId to count the number of calls. For ease of reconciliation, please retain the CertifyId field in your system.
-        
-        @param request: QueryVerifyDownloadTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryVerifyDownloadTaskResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.QueryVerifyDownloadTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryVerifyDownloadTaskResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryVerifyDownloadTask',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryVerifyDownloadTask',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.QueryVerifyDownloadTaskResponse(),
+        return DaraCore.from_map(
+            main_models.QueryVerifyDownloadTaskResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_verify_download_task(
         self,
-        request: cloudauth_20190307_models.QueryVerifyDownloadTaskRequest,
-    ) -> cloudauth_20190307_models.QueryVerifyDownloadTaskResponse:
-        """
-        @summary Query Real-Person Download Task
-        
-        @description Obtain the download link for statistical call data files under the product plan based on query conditions.
-        - Method: HTTPS POST
-        - Service Address: cloudauth.aliyuncs.com
-        > The real-person authentication product uses CertifyId to count the number of calls. For ease of reconciliation, please retain the CertifyId field in your system.
-        
-        @param request: QueryVerifyDownloadTaskRequest
-        @return: QueryVerifyDownloadTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryVerifyDownloadTaskRequest,
+    ) -> main_models.QueryVerifyDownloadTaskResponse:
+        runtime = RuntimeOptions()
         return self.query_verify_download_task_with_options(request, runtime)
 
     async def query_verify_download_task_async(
         self,
-        request: cloudauth_20190307_models.QueryVerifyDownloadTaskRequest,
-    ) -> cloudauth_20190307_models.QueryVerifyDownloadTaskResponse:
-        """
-        @summary Query Real-Person Download Task
-        
-        @description Obtain the download link for statistical call data files under the product plan based on query conditions.
-        - Method: HTTPS POST
-        - Service Address: cloudauth.aliyuncs.com
-        > The real-person authentication product uses CertifyId to count the number of calls. For ease of reconciliation, please retain the CertifyId field in your system.
-        
-        @param request: QueryVerifyDownloadTaskRequest
-        @return: QueryVerifyDownloadTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryVerifyDownloadTaskRequest,
+    ) -> main_models.QueryVerifyDownloadTaskResponse:
+        runtime = RuntimeOptions()
         return await self.query_verify_download_task_with_options_async(request, runtime)
 
     def query_verify_flow_package_with_options(
         self,
-        request: cloudauth_20190307_models.QueryVerifyFlowPackageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.QueryVerifyFlowPackageResponse:
-        """
-        @summary Query Flow Package
-        
-        @description - Service address: cloudauth.aliyuncs.com
-        - Request method: HTTPS POST and GET.
-        - This interface uses different parameters for different product solutions. For details, please refer to the [official documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/product-overview/introduction/?spm=a2c4g.11186623.help-menu-2401581.d_0_0.13f644ecRzFHfm&scm=20140722.H_99169._.OR_help-T_cn~zh-V_1).
-        
-        @param request: QueryVerifyFlowPackageRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryVerifyFlowPackageResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryVerifyFlowPackageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryVerifyFlowPackageResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryVerifyFlowPackage',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryVerifyFlowPackage',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.QueryVerifyFlowPackageResponse(),
+        return DaraCore.from_map(
+            main_models.QueryVerifyFlowPackageResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_verify_flow_package_with_options_async(
         self,
-        request: cloudauth_20190307_models.QueryVerifyFlowPackageRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.QueryVerifyFlowPackageResponse:
-        """
-        @summary Query Flow Package
-        
-        @description - Service address: cloudauth.aliyuncs.com
-        - Request method: HTTPS POST and GET.
-        - This interface uses different parameters for different product solutions. For details, please refer to the [official documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/product-overview/introduction/?spm=a2c4g.11186623.help-menu-2401581.d_0_0.13f644ecRzFHfm&scm=20140722.H_99169._.OR_help-T_cn~zh-V_1).
-        
-        @param request: QueryVerifyFlowPackageRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryVerifyFlowPackageResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryVerifyFlowPackageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryVerifyFlowPackageResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryVerifyFlowPackage',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryVerifyFlowPackage',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.QueryVerifyFlowPackageResponse(),
+        return DaraCore.from_map(
+            main_models.QueryVerifyFlowPackageResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_verify_flow_package(
         self,
-        request: cloudauth_20190307_models.QueryVerifyFlowPackageRequest,
-    ) -> cloudauth_20190307_models.QueryVerifyFlowPackageResponse:
-        """
-        @summary Query Flow Package
-        
-        @description - Service address: cloudauth.aliyuncs.com
-        - Request method: HTTPS POST and GET.
-        - This interface uses different parameters for different product solutions. For details, please refer to the [official documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/product-overview/introduction/?spm=a2c4g.11186623.help-menu-2401581.d_0_0.13f644ecRzFHfm&scm=20140722.H_99169._.OR_help-T_cn~zh-V_1).
-        
-        @param request: QueryVerifyFlowPackageRequest
-        @return: QueryVerifyFlowPackageResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryVerifyFlowPackageRequest,
+    ) -> main_models.QueryVerifyFlowPackageResponse:
+        runtime = RuntimeOptions()
         return self.query_verify_flow_package_with_options(request, runtime)
 
     async def query_verify_flow_package_async(
         self,
-        request: cloudauth_20190307_models.QueryVerifyFlowPackageRequest,
-    ) -> cloudauth_20190307_models.QueryVerifyFlowPackageResponse:
-        """
-        @summary Query Flow Package
-        
-        @description - Service address: cloudauth.aliyuncs.com
-        - Request method: HTTPS POST and GET.
-        - This interface uses different parameters for different product solutions. For details, please refer to the [official documentation](https://help.aliyun.com/zh/id-verification/financial-grade-id-verification/product-overview/introduction/?spm=a2c4g.11186623.help-menu-2401581.d_0_0.13f644ecRzFHfm&scm=20140722.H_99169._.OR_help-T_cn~zh-V_1).
-        
-        @param request: QueryVerifyFlowPackageRequest
-        @return: QueryVerifyFlowPackageResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryVerifyFlowPackageRequest,
+    ) -> main_models.QueryVerifyFlowPackageResponse:
+        runtime = RuntimeOptions()
         return await self.query_verify_flow_package_with_options_async(request, runtime)
 
     def query_verify_invoke_satistic_with_options(
         self,
-        request: cloudauth_20190307_models.QueryVerifyInvokeSatisticRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.QueryVerifyInvokeSatisticResponse:
-        """
-        @summary Call Volume Statistics
-        
-        @description - Request URL: cloudauth.aliyuncs.com
-        - Request Method: HTTPS POST and GET.
-        > Real-person authentication products use CertifyId to count call volume. For ease of reconciliation, please retain the CertifyId field in your system.
-        
-        @param request: QueryVerifyInvokeSatisticRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryVerifyInvokeSatisticResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryVerifyInvokeSatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryVerifyInvokeSatisticResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.product_program_list):
+        if not DaraCore.is_null(request.product_program_list):
             query['ProductProgramList'] = request.product_program_list
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.scene_id_list):
+        if not DaraCore.is_null(request.scene_id_list):
             query['SceneIdList'] = request.scene_id_list
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        if not UtilClient.is_unset(request.statistics_type):
+        if not DaraCore.is_null(request.statistics_type):
             query['StatisticsType'] = request.statistics_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryVerifyInvokeSatistic',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryVerifyInvokeSatistic',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.QueryVerifyInvokeSatisticResponse(),
+        return DaraCore.from_map(
+            main_models.QueryVerifyInvokeSatisticResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_verify_invoke_satistic_with_options_async(
         self,
-        request: cloudauth_20190307_models.QueryVerifyInvokeSatisticRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.QueryVerifyInvokeSatisticResponse:
-        """
-        @summary Call Volume Statistics
-        
-        @description - Request URL: cloudauth.aliyuncs.com
-        - Request Method: HTTPS POST and GET.
-        > Real-person authentication products use CertifyId to count call volume. For ease of reconciliation, please retain the CertifyId field in your system.
-        
-        @param request: QueryVerifyInvokeSatisticRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryVerifyInvokeSatisticResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryVerifyInvokeSatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryVerifyInvokeSatisticResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.product_program_list):
+        if not DaraCore.is_null(request.product_program_list):
             query['ProductProgramList'] = request.product_program_list
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             query['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.scene_id_list):
+        if not DaraCore.is_null(request.scene_id_list):
             query['SceneIdList'] = request.scene_id_list
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        if not UtilClient.is_unset(request.statistics_type):
+        if not DaraCore.is_null(request.statistics_type):
             query['StatisticsType'] = request.statistics_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryVerifyInvokeSatistic',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryVerifyInvokeSatistic',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.QueryVerifyInvokeSatisticResponse(),
+        return DaraCore.from_map(
+            main_models.QueryVerifyInvokeSatisticResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_verify_invoke_satistic(
         self,
-        request: cloudauth_20190307_models.QueryVerifyInvokeSatisticRequest,
-    ) -> cloudauth_20190307_models.QueryVerifyInvokeSatisticResponse:
-        """
-        @summary Call Volume Statistics
-        
-        @description - Request URL: cloudauth.aliyuncs.com
-        - Request Method: HTTPS POST and GET.
-        > Real-person authentication products use CertifyId to count call volume. For ease of reconciliation, please retain the CertifyId field in your system.
-        
-        @param request: QueryVerifyInvokeSatisticRequest
-        @return: QueryVerifyInvokeSatisticResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryVerifyInvokeSatisticRequest,
+    ) -> main_models.QueryVerifyInvokeSatisticResponse:
+        runtime = RuntimeOptions()
         return self.query_verify_invoke_satistic_with_options(request, runtime)
 
     async def query_verify_invoke_satistic_async(
         self,
-        request: cloudauth_20190307_models.QueryVerifyInvokeSatisticRequest,
-    ) -> cloudauth_20190307_models.QueryVerifyInvokeSatisticResponse:
-        """
-        @summary Call Volume Statistics
-        
-        @description - Request URL: cloudauth.aliyuncs.com
-        - Request Method: HTTPS POST and GET.
-        > Real-person authentication products use CertifyId to count call volume. For ease of reconciliation, please retain the CertifyId field in your system.
-        
-        @param request: QueryVerifyInvokeSatisticRequest
-        @return: QueryVerifyInvokeSatisticResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryVerifyInvokeSatisticRequest,
+    ) -> main_models.QueryVerifyInvokeSatisticResponse:
+        runtime = RuntimeOptions()
         return await self.query_verify_invoke_satistic_with_options_async(request, runtime)
 
     def remove_white_list_setting_with_options(
         self,
-        tmp_req: cloudauth_20190307_models.RemoveWhiteListSettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.RemoveWhiteListSettingResponse:
-        """
-        @summary Delete Real Person Whitelist
-        
-        @param tmp_req: RemoveWhiteListSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RemoveWhiteListSettingResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cloudauth_20190307_models.RemoveWhiteListSettingShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.ids):
-            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        tmp_req: main_models.RemoveWhiteListSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveWhiteListSettingResponse:
+        tmp_req.validate()
+        request = main_models.RemoveWhiteListSettingShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ids):
+            request.ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
         query = {}
-        if not UtilClient.is_unset(request.ids_shrink):
+        if not DaraCore.is_null(request.ids_shrink):
             query['Ids'] = request.ids_shrink
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RemoveWhiteListSetting',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RemoveWhiteListSetting',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.RemoveWhiteListSettingResponse(),
+        return DaraCore.from_map(
+            main_models.RemoveWhiteListSettingResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def remove_white_list_setting_with_options_async(
         self,
-        tmp_req: cloudauth_20190307_models.RemoveWhiteListSettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.RemoveWhiteListSettingResponse:
-        """
-        @summary Delete Real Person Whitelist
-        
-        @param tmp_req: RemoveWhiteListSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RemoveWhiteListSettingResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cloudauth_20190307_models.RemoveWhiteListSettingShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.ids):
-            request.ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
+        tmp_req: main_models.RemoveWhiteListSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveWhiteListSettingResponse:
+        tmp_req.validate()
+        request = main_models.RemoveWhiteListSettingShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ids):
+            request.ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ids, 'Ids', 'json')
         query = {}
-        if not UtilClient.is_unset(request.ids_shrink):
+        if not DaraCore.is_null(request.ids_shrink):
             query['Ids'] = request.ids_shrink
-        if not UtilClient.is_unset(request.service_code):
+        if not DaraCore.is_null(request.service_code):
             query['ServiceCode'] = request.service_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RemoveWhiteListSetting',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RemoveWhiteListSetting',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.RemoveWhiteListSettingResponse(),
+        return DaraCore.from_map(
+            main_models.RemoveWhiteListSettingResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def remove_white_list_setting(
         self,
-        request: cloudauth_20190307_models.RemoveWhiteListSettingRequest,
-    ) -> cloudauth_20190307_models.RemoveWhiteListSettingResponse:
-        """
-        @summary Delete Real Person Whitelist
-        
-        @param request: RemoveWhiteListSettingRequest
-        @return: RemoveWhiteListSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RemoveWhiteListSettingRequest,
+    ) -> main_models.RemoveWhiteListSettingResponse:
+        runtime = RuntimeOptions()
         return self.remove_white_list_setting_with_options(request, runtime)
 
     async def remove_white_list_setting_async(
         self,
-        request: cloudauth_20190307_models.RemoveWhiteListSettingRequest,
-    ) -> cloudauth_20190307_models.RemoveWhiteListSettingResponse:
-        """
-        @summary Delete Real Person Whitelist
-        
-        @param request: RemoveWhiteListSettingRequest
-        @return: RemoveWhiteListSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RemoveWhiteListSettingRequest,
+    ) -> main_models.RemoveWhiteListSettingResponse:
+        runtime = RuntimeOptions()
         return await self.remove_white_list_setting_with_options_async(request, runtime)
 
     def update_ant_cloud_auth_scene_with_options(
         self,
-        request: cloudauth_20190307_models.UpdateAntCloudAuthSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.UpdateAntCloudAuthSceneResponse:
-        """
-        @summary Update Ant Blockchain Transaction Scenario
-        
-        @description Update the information of a financial-level authentication scenario based on the scenario ID.
-        - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST.
-        
-        @param request: UpdateAntCloudAuthSceneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAntCloudAuthSceneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateAntCloudAuthSceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAntCloudAuthSceneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bind_mini_program):
+        if not DaraCore.is_null(request.bind_mini_program):
             query['BindMiniProgram'] = request.bind_mini_program
-        if not UtilClient.is_unset(request.check_file_body):
+        if not DaraCore.is_null(request.check_file_body):
             query['CheckFileBody'] = request.check_file_body
-        if not UtilClient.is_unset(request.check_file_name):
+        if not DaraCore.is_null(request.check_file_name):
             query['CheckFileName'] = request.check_file_name
-        if not UtilClient.is_unset(request.mini_program_name):
+        if not DaraCore.is_null(request.mini_program_name):
             query['MiniProgramName'] = request.mini_program_name
-        if not UtilClient.is_unset(request.platform):
+        if not DaraCore.is_null(request.platform):
             query['Platform'] = request.platform
-        if not UtilClient.is_unset(request.return_pic_count):
+        if not DaraCore.is_null(request.return_pic_count):
             query['ReturnPicCount'] = request.return_pic_count
-        if not UtilClient.is_unset(request.return_video_length):
+        if not DaraCore.is_null(request.return_video_length):
             query['ReturnVideoLength'] = request.return_video_length
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.scene_name):
+        if not DaraCore.is_null(request.scene_name):
             query['SceneName'] = request.scene_name
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.store_image):
+        if not DaraCore.is_null(request.store_image):
             query['StoreImage'] = request.store_image
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAntCloudAuthScene',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateAntCloudAuthScene',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.UpdateAntCloudAuthSceneResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateAntCloudAuthSceneResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_ant_cloud_auth_scene_with_options_async(
         self,
-        request: cloudauth_20190307_models.UpdateAntCloudAuthSceneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.UpdateAntCloudAuthSceneResponse:
-        """
-        @summary Update Ant Blockchain Transaction Scenario
-        
-        @description Update the information of a financial-level authentication scenario based on the scenario ID.
-        - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST.
-        
-        @param request: UpdateAntCloudAuthSceneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAntCloudAuthSceneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateAntCloudAuthSceneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAntCloudAuthSceneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bind_mini_program):
+        if not DaraCore.is_null(request.bind_mini_program):
             query['BindMiniProgram'] = request.bind_mini_program
-        if not UtilClient.is_unset(request.check_file_body):
+        if not DaraCore.is_null(request.check_file_body):
             query['CheckFileBody'] = request.check_file_body
-        if not UtilClient.is_unset(request.check_file_name):
+        if not DaraCore.is_null(request.check_file_name):
             query['CheckFileName'] = request.check_file_name
-        if not UtilClient.is_unset(request.mini_program_name):
+        if not DaraCore.is_null(request.mini_program_name):
             query['MiniProgramName'] = request.mini_program_name
-        if not UtilClient.is_unset(request.platform):
+        if not DaraCore.is_null(request.platform):
             query['Platform'] = request.platform
-        if not UtilClient.is_unset(request.return_pic_count):
+        if not DaraCore.is_null(request.return_pic_count):
             query['ReturnPicCount'] = request.return_pic_count
-        if not UtilClient.is_unset(request.return_video_length):
+        if not DaraCore.is_null(request.return_video_length):
             query['ReturnVideoLength'] = request.return_video_length
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             query['SceneId'] = request.scene_id
-        if not UtilClient.is_unset(request.scene_name):
+        if not DaraCore.is_null(request.scene_name):
             query['SceneName'] = request.scene_name
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.store_image):
+        if not DaraCore.is_null(request.store_image):
             query['StoreImage'] = request.store_image
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAntCloudAuthScene',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateAntCloudAuthScene',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.UpdateAntCloudAuthSceneResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateAntCloudAuthSceneResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_ant_cloud_auth_scene(
         self,
-        request: cloudauth_20190307_models.UpdateAntCloudAuthSceneRequest,
-    ) -> cloudauth_20190307_models.UpdateAntCloudAuthSceneResponse:
-        """
-        @summary Update Ant Blockchain Transaction Scenario
-        
-        @description Update the information of a financial-level authentication scenario based on the scenario ID.
-        - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST.
-        
-        @param request: UpdateAntCloudAuthSceneRequest
-        @return: UpdateAntCloudAuthSceneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateAntCloudAuthSceneRequest,
+    ) -> main_models.UpdateAntCloudAuthSceneResponse:
+        runtime = RuntimeOptions()
         return self.update_ant_cloud_auth_scene_with_options(request, runtime)
 
     async def update_ant_cloud_auth_scene_async(
         self,
-        request: cloudauth_20190307_models.UpdateAntCloudAuthSceneRequest,
-    ) -> cloudauth_20190307_models.UpdateAntCloudAuthSceneResponse:
-        """
-        @summary Update Ant Blockchain Transaction Scenario
-        
-        @description Update the information of a financial-level authentication scenario based on the scenario ID.
-        - Service address: cloudauth.aliyuncs.com.
-        - Request method: HTTPS POST.
-        
-        @param request: UpdateAntCloudAuthSceneRequest
-        @return: UpdateAntCloudAuthSceneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateAntCloudAuthSceneRequest,
+    ) -> main_models.UpdateAntCloudAuthSceneResponse:
+        runtime = RuntimeOptions()
         return await self.update_ant_cloud_auth_scene_with_options_async(request, runtime)
 
     def update_scene_config_with_options(
         self,
-        request: cloudauth_20190307_models.UpdateSceneConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.UpdateSceneConfigResponse:
-        """
-        @summary Update Scene Configuration
-        
-        @description - Request Method: Supports sending requests via HTTPS POST.
-        - Request URL: cloudauth.aliyuncs.com.
-        
-        @param request: UpdateSceneConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateSceneConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateSceneConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSceneConfigResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.config):
+        if not DaraCore.is_null(request.config):
             body['config'] = request.config
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             body['id'] = request.id
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             body['sceneId'] = request.scene_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateSceneConfig',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateSceneConfig',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.UpdateSceneConfigResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateSceneConfigResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_scene_config_with_options_async(
         self,
-        request: cloudauth_20190307_models.UpdateSceneConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.UpdateSceneConfigResponse:
-        """
-        @summary Update Scene Configuration
-        
-        @description - Request Method: Supports sending requests via HTTPS POST.
-        - Request URL: cloudauth.aliyuncs.com.
-        
-        @param request: UpdateSceneConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateSceneConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateSceneConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSceneConfigResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.config):
+        if not DaraCore.is_null(request.config):
             body['config'] = request.config
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             body['id'] = request.id
-        if not UtilClient.is_unset(request.scene_id):
+        if not DaraCore.is_null(request.scene_id):
             body['sceneId'] = request.scene_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateSceneConfig',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateSceneConfig',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.UpdateSceneConfigResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateSceneConfigResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_scene_config(
         self,
-        request: cloudauth_20190307_models.UpdateSceneConfigRequest,
-    ) -> cloudauth_20190307_models.UpdateSceneConfigResponse:
-        """
-        @summary Update Scene Configuration
-        
-        @description - Request Method: Supports sending requests via HTTPS POST.
-        - Request URL: cloudauth.aliyuncs.com.
-        
-        @param request: UpdateSceneConfigRequest
-        @return: UpdateSceneConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateSceneConfigRequest,
+    ) -> main_models.UpdateSceneConfigResponse:
+        runtime = RuntimeOptions()
         return self.update_scene_config_with_options(request, runtime)
 
     async def update_scene_config_async(
         self,
-        request: cloudauth_20190307_models.UpdateSceneConfigRequest,
-    ) -> cloudauth_20190307_models.UpdateSceneConfigResponse:
-        """
-        @summary Update Scene Configuration
-        
-        @description - Request Method: Supports sending requests via HTTPS POST.
-        - Request URL: cloudauth.aliyuncs.com.
-        
-        @param request: UpdateSceneConfigRequest
-        @return: UpdateSceneConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateSceneConfigRequest,
+    ) -> main_models.UpdateSceneConfigResponse:
+        runtime = RuntimeOptions()
         return await self.update_scene_config_with_options_async(request, runtime)
 
     def vehicle_5item_query_with_options(
         self,
-        request: cloudauth_20190307_models.Vehicle5ItemQueryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Vehicle5ItemQueryResponse:
-        """
-        @summary Five-Item Vehicle Information Recognition
-        
-        @description Query basic vehicle information through the license plate number and vehicle type.
-        
-        @param request: Vehicle5ItemQueryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Vehicle5ItemQueryResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Vehicle5ItemQueryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Vehicle5ItemQueryResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             query['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.vehicle_num):
+        if not DaraCore.is_null(request.vehicle_num):
             query['VehicleNum'] = request.vehicle_num
-        if not UtilClient.is_unset(request.vehicle_type):
+        if not DaraCore.is_null(request.vehicle_type):
             query['VehicleType'] = request.vehicle_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='Vehicle5ItemQuery',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Vehicle5ItemQuery',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Vehicle5ItemQueryResponse(),
+        return DaraCore.from_map(
+            main_models.Vehicle5ItemQueryResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def vehicle_5item_query_with_options_async(
         self,
-        request: cloudauth_20190307_models.Vehicle5ItemQueryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.Vehicle5ItemQueryResponse:
-        """
-        @summary Five-Item Vehicle Information Recognition
-        
-        @description Query basic vehicle information through the license plate number and vehicle type.
-        
-        @param request: Vehicle5ItemQueryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: Vehicle5ItemQueryResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.Vehicle5ItemQueryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.Vehicle5ItemQueryResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             query['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.vehicle_num):
+        if not DaraCore.is_null(request.vehicle_num):
             query['VehicleNum'] = request.vehicle_num
-        if not UtilClient.is_unset(request.vehicle_type):
+        if not DaraCore.is_null(request.vehicle_type):
             query['VehicleType'] = request.vehicle_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='Vehicle5ItemQuery',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'Vehicle5ItemQuery',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.Vehicle5ItemQueryResponse(),
+        return DaraCore.from_map(
+            main_models.Vehicle5ItemQueryResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def vehicle_5item_query(
         self,
-        request: cloudauth_20190307_models.Vehicle5ItemQueryRequest,
-    ) -> cloudauth_20190307_models.Vehicle5ItemQueryResponse:
-        """
-        @summary Five-Item Vehicle Information Recognition
-        
-        @description Query basic vehicle information through the license plate number and vehicle type.
-        
-        @param request: Vehicle5ItemQueryRequest
-        @return: Vehicle5ItemQueryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Vehicle5ItemQueryRequest,
+    ) -> main_models.Vehicle5ItemQueryResponse:
+        runtime = RuntimeOptions()
         return self.vehicle_5item_query_with_options(request, runtime)
 
     async def vehicle_5item_query_async(
         self,
-        request: cloudauth_20190307_models.Vehicle5ItemQueryRequest,
-    ) -> cloudauth_20190307_models.Vehicle5ItemQueryResponse:
-        """
-        @summary Five-Item Vehicle Information Recognition
-        
-        @description Query basic vehicle information through the license plate number and vehicle type.
-        
-        @param request: Vehicle5ItemQueryRequest
-        @return: Vehicle5ItemQueryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.Vehicle5ItemQueryRequest,
+    ) -> main_models.Vehicle5ItemQueryResponse:
+        runtime = RuntimeOptions()
         return await self.vehicle_5item_query_with_options_async(request, runtime)
 
     def vehicle_insure_query_with_options(
         self,
-        request: cloudauth_20190307_models.VehicleInsureQueryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.VehicleInsureQueryResponse:
-        """
-        @summary Vehicle Insurance Date Inquiry
-        
-        @description Query the vehicle insurance date through the license plate number, vehicle type, and vehicle identification number (VIN).
-        
-        @param request: VehicleInsureQueryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VehicleInsureQueryResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VehicleInsureQueryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VehicleInsureQueryResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             query['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.vehicle_num):
+        if not DaraCore.is_null(request.vehicle_num):
             query['VehicleNum'] = request.vehicle_num
-        if not UtilClient.is_unset(request.vehicle_type):
+        if not DaraCore.is_null(request.vehicle_type):
             query['VehicleType'] = request.vehicle_type
-        if not UtilClient.is_unset(request.vin):
+        if not DaraCore.is_null(request.vin):
             query['Vin'] = request.vin
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='VehicleInsureQuery',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VehicleInsureQuery',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.VehicleInsureQueryResponse(),
+        return DaraCore.from_map(
+            main_models.VehicleInsureQueryResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def vehicle_insure_query_with_options_async(
         self,
-        request: cloudauth_20190307_models.VehicleInsureQueryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.VehicleInsureQueryResponse:
-        """
-        @summary Vehicle Insurance Date Inquiry
-        
-        @description Query the vehicle insurance date through the license plate number, vehicle type, and vehicle identification number (VIN).
-        
-        @param request: VehicleInsureQueryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VehicleInsureQueryResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VehicleInsureQueryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VehicleInsureQueryResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             query['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.vehicle_num):
+        if not DaraCore.is_null(request.vehicle_num):
             query['VehicleNum'] = request.vehicle_num
-        if not UtilClient.is_unset(request.vehicle_type):
+        if not DaraCore.is_null(request.vehicle_type):
             query['VehicleType'] = request.vehicle_type
-        if not UtilClient.is_unset(request.vin):
+        if not DaraCore.is_null(request.vin):
             query['Vin'] = request.vin
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='VehicleInsureQuery',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VehicleInsureQuery',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.VehicleInsureQueryResponse(),
+        return DaraCore.from_map(
+            main_models.VehicleInsureQueryResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def vehicle_insure_query(
         self,
-        request: cloudauth_20190307_models.VehicleInsureQueryRequest,
-    ) -> cloudauth_20190307_models.VehicleInsureQueryResponse:
-        """
-        @summary Vehicle Insurance Date Inquiry
-        
-        @description Query the vehicle insurance date through the license plate number, vehicle type, and vehicle identification number (VIN).
-        
-        @param request: VehicleInsureQueryRequest
-        @return: VehicleInsureQueryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VehicleInsureQueryRequest,
+    ) -> main_models.VehicleInsureQueryResponse:
+        runtime = RuntimeOptions()
         return self.vehicle_insure_query_with_options(request, runtime)
 
     async def vehicle_insure_query_async(
         self,
-        request: cloudauth_20190307_models.VehicleInsureQueryRequest,
-    ) -> cloudauth_20190307_models.VehicleInsureQueryResponse:
-        """
-        @summary Vehicle Insurance Date Inquiry
-        
-        @description Query the vehicle insurance date through the license plate number, vehicle type, and vehicle identification number (VIN).
-        
-        @param request: VehicleInsureQueryRequest
-        @return: VehicleInsureQueryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VehicleInsureQueryRequest,
+    ) -> main_models.VehicleInsureQueryResponse:
+        runtime = RuntimeOptions()
         return await self.vehicle_insure_query_with_options_async(request, runtime)
 
     def vehicle_meta_verify_with_options(
         self,
-        request: cloudauth_20190307_models.VehicleMetaVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.VehicleMetaVerifyResponse:
-        """
-        @summary Vehicle Element Verification
-        
-        @description Verifies the consistency of name, ID number, vehicle license plate, and vehicle type.
-        
-        @param request: VehicleMetaVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VehicleMetaVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VehicleMetaVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VehicleMetaVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             query['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             query['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             query['UserName'] = request.user_name
-        if not UtilClient.is_unset(request.vehicle_num):
+        if not DaraCore.is_null(request.vehicle_num):
             query['VehicleNum'] = request.vehicle_num
-        if not UtilClient.is_unset(request.vehicle_type):
+        if not DaraCore.is_null(request.vehicle_type):
             query['VehicleType'] = request.vehicle_type
-        if not UtilClient.is_unset(request.verify_meta_type):
+        if not DaraCore.is_null(request.verify_meta_type):
             query['VerifyMetaType'] = request.verify_meta_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='VehicleMetaVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VehicleMetaVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.VehicleMetaVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.VehicleMetaVerifyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def vehicle_meta_verify_with_options_async(
         self,
-        request: cloudauth_20190307_models.VehicleMetaVerifyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.VehicleMetaVerifyResponse:
-        """
-        @summary Vehicle Element Verification
-        
-        @description Verifies the consistency of name, ID number, vehicle license plate, and vehicle type.
-        
-        @param request: VehicleMetaVerifyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VehicleMetaVerifyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VehicleMetaVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VehicleMetaVerifyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             query['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             query['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             query['UserName'] = request.user_name
-        if not UtilClient.is_unset(request.vehicle_num):
+        if not DaraCore.is_null(request.vehicle_num):
             query['VehicleNum'] = request.vehicle_num
-        if not UtilClient.is_unset(request.vehicle_type):
+        if not DaraCore.is_null(request.vehicle_type):
             query['VehicleType'] = request.vehicle_type
-        if not UtilClient.is_unset(request.verify_meta_type):
+        if not DaraCore.is_null(request.verify_meta_type):
             query['VerifyMetaType'] = request.verify_meta_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='VehicleMetaVerify',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VehicleMetaVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.VehicleMetaVerifyResponse(),
+        return DaraCore.from_map(
+            main_models.VehicleMetaVerifyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def vehicle_meta_verify(
         self,
-        request: cloudauth_20190307_models.VehicleMetaVerifyRequest,
-    ) -> cloudauth_20190307_models.VehicleMetaVerifyResponse:
-        """
-        @summary Vehicle Element Verification
-        
-        @description Verifies the consistency of name, ID number, vehicle license plate, and vehicle type.
-        
-        @param request: VehicleMetaVerifyRequest
-        @return: VehicleMetaVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VehicleMetaVerifyRequest,
+    ) -> main_models.VehicleMetaVerifyResponse:
+        runtime = RuntimeOptions()
         return self.vehicle_meta_verify_with_options(request, runtime)
 
     async def vehicle_meta_verify_async(
         self,
-        request: cloudauth_20190307_models.VehicleMetaVerifyRequest,
-    ) -> cloudauth_20190307_models.VehicleMetaVerifyResponse:
-        """
-        @summary Vehicle Element Verification
-        
-        @description Verifies the consistency of name, ID number, vehicle license plate, and vehicle type.
-        
-        @param request: VehicleMetaVerifyRequest
-        @return: VehicleMetaVerifyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VehicleMetaVerifyRequest,
+    ) -> main_models.VehicleMetaVerifyResponse:
+        runtime = RuntimeOptions()
         return await self.vehicle_meta_verify_with_options_async(request, runtime)
 
     def vehicle_meta_verify_v2with_options(
         self,
-        request: cloudauth_20190307_models.VehicleMetaVerifyV2Request,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.VehicleMetaVerifyV2Response:
-        """
-        @summary Enhanced Vehicle Element Verification
-        
-        @description Verifies the consistency of name, ID number, license plate number, and vehicle type, and supports returning detailed vehicle information.
-        
-        @param request: VehicleMetaVerifyV2Request
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VehicleMetaVerifyV2Response
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VehicleMetaVerifyV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.VehicleMetaVerifyV2Response:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             query['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             query['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             query['UserName'] = request.user_name
-        if not UtilClient.is_unset(request.vehicle_num):
+        if not DaraCore.is_null(request.vehicle_num):
             query['VehicleNum'] = request.vehicle_num
-        if not UtilClient.is_unset(request.vehicle_type):
+        if not DaraCore.is_null(request.vehicle_type):
             query['VehicleType'] = request.vehicle_type
-        if not UtilClient.is_unset(request.verify_meta_type):
+        if not DaraCore.is_null(request.verify_meta_type):
             query['VerifyMetaType'] = request.verify_meta_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='VehicleMetaVerifyV2',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VehicleMetaVerifyV2',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.VehicleMetaVerifyV2Response(),
+        return DaraCore.from_map(
+            main_models.VehicleMetaVerifyV2Response(),
             self.call_api(params, req, runtime)
         )
 
     async def vehicle_meta_verify_v2with_options_async(
         self,
-        request: cloudauth_20190307_models.VehicleMetaVerifyV2Request,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.VehicleMetaVerifyV2Response:
-        """
-        @summary Enhanced Vehicle Element Verification
-        
-        @description Verifies the consistency of name, ID number, license plate number, and vehicle type, and supports returning detailed vehicle information.
-        
-        @param request: VehicleMetaVerifyV2Request
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VehicleMetaVerifyV2Response
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VehicleMetaVerifyV2Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.VehicleMetaVerifyV2Response:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identify_num):
+        if not DaraCore.is_null(request.identify_num):
             query['IdentifyNum'] = request.identify_num
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             query['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.user_name):
+        if not DaraCore.is_null(request.user_name):
             query['UserName'] = request.user_name
-        if not UtilClient.is_unset(request.vehicle_num):
+        if not DaraCore.is_null(request.vehicle_num):
             query['VehicleNum'] = request.vehicle_num
-        if not UtilClient.is_unset(request.vehicle_type):
+        if not DaraCore.is_null(request.vehicle_type):
             query['VehicleType'] = request.vehicle_type
-        if not UtilClient.is_unset(request.verify_meta_type):
+        if not DaraCore.is_null(request.verify_meta_type):
             query['VerifyMetaType'] = request.verify_meta_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='VehicleMetaVerifyV2',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VehicleMetaVerifyV2',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.VehicleMetaVerifyV2Response(),
+        return DaraCore.from_map(
+            main_models.VehicleMetaVerifyV2Response(),
             await self.call_api_async(params, req, runtime)
         )
 
     def vehicle_meta_verify_v2(
         self,
-        request: cloudauth_20190307_models.VehicleMetaVerifyV2Request,
-    ) -> cloudauth_20190307_models.VehicleMetaVerifyV2Response:
-        """
-        @summary Enhanced Vehicle Element Verification
-        
-        @description Verifies the consistency of name, ID number, license plate number, and vehicle type, and supports returning detailed vehicle information.
-        
-        @param request: VehicleMetaVerifyV2Request
-        @return: VehicleMetaVerifyV2Response
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VehicleMetaVerifyV2Request,
+    ) -> main_models.VehicleMetaVerifyV2Response:
+        runtime = RuntimeOptions()
         return self.vehicle_meta_verify_v2with_options(request, runtime)
 
     async def vehicle_meta_verify_v2_async(
         self,
-        request: cloudauth_20190307_models.VehicleMetaVerifyV2Request,
-    ) -> cloudauth_20190307_models.VehicleMetaVerifyV2Response:
-        """
-        @summary Enhanced Vehicle Element Verification
-        
-        @description Verifies the consistency of name, ID number, license plate number, and vehicle type, and supports returning detailed vehicle information.
-        
-        @param request: VehicleMetaVerifyV2Request
-        @return: VehicleMetaVerifyV2Response
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VehicleMetaVerifyV2Request,
+    ) -> main_models.VehicleMetaVerifyV2Response:
+        runtime = RuntimeOptions()
         return await self.vehicle_meta_verify_v2with_options_async(request, runtime)
 
     def vehicle_query_with_options(
         self,
-        request: cloudauth_20190307_models.VehicleQueryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.VehicleQueryResponse:
-        """
-        @summary Vehicle Information Recognition
-        
-        @description Query detailed vehicle information through the license plate number and vehicle type.
-        
-        @param request: VehicleQueryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VehicleQueryResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VehicleQueryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VehicleQueryResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             query['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.vehicle_num):
+        if not DaraCore.is_null(request.vehicle_num):
             query['VehicleNum'] = request.vehicle_num
-        if not UtilClient.is_unset(request.vehicle_type):
+        if not DaraCore.is_null(request.vehicle_type):
             query['VehicleType'] = request.vehicle_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='VehicleQuery',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VehicleQuery',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.VehicleQueryResponse(),
+        return DaraCore.from_map(
+            main_models.VehicleQueryResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def vehicle_query_with_options_async(
         self,
-        request: cloudauth_20190307_models.VehicleQueryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.VehicleQueryResponse:
-        """
-        @summary Vehicle Information Recognition
-        
-        @description Query detailed vehicle information through the license plate number and vehicle type.
-        
-        @param request: VehicleQueryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VehicleQueryResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VehicleQueryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VehicleQueryResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.param_type):
+        if not DaraCore.is_null(request.param_type):
             query['ParamType'] = request.param_type
-        if not UtilClient.is_unset(request.vehicle_num):
+        if not DaraCore.is_null(request.vehicle_num):
             query['VehicleNum'] = request.vehicle_num
-        if not UtilClient.is_unset(request.vehicle_type):
+        if not DaraCore.is_null(request.vehicle_type):
             query['VehicleType'] = request.vehicle_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='VehicleQuery',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VehicleQuery',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.VehicleQueryResponse(),
+        return DaraCore.from_map(
+            main_models.VehicleQueryResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def vehicle_query(
         self,
-        request: cloudauth_20190307_models.VehicleQueryRequest,
-    ) -> cloudauth_20190307_models.VehicleQueryResponse:
-        """
-        @summary Vehicle Information Recognition
-        
-        @description Query detailed vehicle information through the license plate number and vehicle type.
-        
-        @param request: VehicleQueryRequest
-        @return: VehicleQueryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VehicleQueryRequest,
+    ) -> main_models.VehicleQueryResponse:
+        runtime = RuntimeOptions()
         return self.vehicle_query_with_options(request, runtime)
 
     async def vehicle_query_async(
         self,
-        request: cloudauth_20190307_models.VehicleQueryRequest,
-    ) -> cloudauth_20190307_models.VehicleQueryResponse:
-        """
-        @summary Vehicle Information Recognition
-        
-        @description Query detailed vehicle information through the license plate number and vehicle type.
-        
-        @param request: VehicleQueryRequest
-        @return: VehicleQueryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VehicleQueryRequest,
+    ) -> main_models.VehicleQueryResponse:
+        runtime = RuntimeOptions()
         return await self.vehicle_query_with_options_async(request, runtime)
 
     def verify_material_with_options(
         self,
-        request: cloudauth_20190307_models.VerifyMaterialRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.VerifyMaterialResponse:
-        """
-        @summary Call VerifyMaterial, in a pure server-side access authentication solution, input name, ID number, portrait photo, and front and back photos of the ID card (optional) for real-person authentication, and return the authentication result synchronously.
-        
-        @description Preparation for Access: When integrating this API, please ensure that the corresponding preparatory work has been completed. For details, please refer to [Server-side Access Preparation](https://help.aliyun.com/document_detail/127471.html).
-        Request Method: HTTPS POST and GET.
-        API Description: The server of the access party submits the authentication materials to the real-person authentication service for verification and comparison, with the results returned synchronously.
-        Applicable Scope: This interface is only applicable to pure server-side access authentication solutions.
-        Image Upload Address Explanation:
-        - HTTP or HTTPS address: Supports publicly accessible HTTP or HTTPS addresses. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
-        - OSS address: If the images from the access party are local files, Alibaba Cloud also provides an upload SDK, supporting the business party to upload the images to the specified OSS bucket of the real-person authentication service, and use the obtained OSS address as the image address parameter in the interface. If your business needs to use the upload SDK, please submit a [ticket](https://selfservice.console.aliyun.com/ticket/category/cloudauth/today) to contact us for acquisition.
-        Image Limitations:
-        - Does not support relative or absolute paths of local images.
-        - Please keep the size of a single image within 2 MB to avoid algorithm retrieval timeout.
-        - The face area in the image should be at least 6464 pixels.
-        - There is an 8 MB size limit for the Body of a single request. Please calculate the total size of all images and other information in the request, and do not exceed the limit.
-        
-        @param request: VerifyMaterialRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VerifyMaterialResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VerifyMaterialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyMaterialResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.face_image_url):
+        if not DaraCore.is_null(request.face_image_url):
             query['FaceImageUrl'] = request.face_image_url
-        if not UtilClient.is_unset(request.id_card_back_image_url):
+        if not DaraCore.is_null(request.id_card_back_image_url):
             query['IdCardBackImageUrl'] = request.id_card_back_image_url
-        if not UtilClient.is_unset(request.id_card_front_image_url):
+        if not DaraCore.is_null(request.id_card_front_image_url):
             query['IdCardFrontImageUrl'] = request.id_card_front_image_url
-        if not UtilClient.is_unset(request.id_card_number):
+        if not DaraCore.is_null(request.id_card_number):
             query['IdCardNumber'] = request.id_card_number
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='VerifyMaterial',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VerifyMaterial',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.VerifyMaterialResponse(),
+        return DaraCore.from_map(
+            main_models.VerifyMaterialResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def verify_material_with_options_async(
         self,
-        request: cloudauth_20190307_models.VerifyMaterialRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cloudauth_20190307_models.VerifyMaterialResponse:
-        """
-        @summary Call VerifyMaterial, in a pure server-side access authentication solution, input name, ID number, portrait photo, and front and back photos of the ID card (optional) for real-person authentication, and return the authentication result synchronously.
-        
-        @description Preparation for Access: When integrating this API, please ensure that the corresponding preparatory work has been completed. For details, please refer to [Server-side Access Preparation](https://help.aliyun.com/document_detail/127471.html).
-        Request Method: HTTPS POST and GET.
-        API Description: The server of the access party submits the authentication materials to the real-person authentication service for verification and comparison, with the results returned synchronously.
-        Applicable Scope: This interface is only applicable to pure server-side access authentication solutions.
-        Image Upload Address Explanation:
-        - HTTP or HTTPS address: Supports publicly accessible HTTP or HTTPS addresses. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
-        - OSS address: If the images from the access party are local files, Alibaba Cloud also provides an upload SDK, supporting the business party to upload the images to the specified OSS bucket of the real-person authentication service, and use the obtained OSS address as the image address parameter in the interface. If your business needs to use the upload SDK, please submit a [ticket](https://selfservice.console.aliyun.com/ticket/category/cloudauth/today) to contact us for acquisition.
-        Image Limitations:
-        - Does not support relative or absolute paths of local images.
-        - Please keep the size of a single image within 2 MB to avoid algorithm retrieval timeout.
-        - The face area in the image should be at least 6464 pixels.
-        - There is an 8 MB size limit for the Body of a single request. Please calculate the total size of all images and other information in the request, and do not exceed the limit.
-        
-        @param request: VerifyMaterialRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VerifyMaterialResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VerifyMaterialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyMaterialResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.face_image_url):
+        if not DaraCore.is_null(request.face_image_url):
             query['FaceImageUrl'] = request.face_image_url
-        if not UtilClient.is_unset(request.id_card_back_image_url):
+        if not DaraCore.is_null(request.id_card_back_image_url):
             query['IdCardBackImageUrl'] = request.id_card_back_image_url
-        if not UtilClient.is_unset(request.id_card_front_image_url):
+        if not DaraCore.is_null(request.id_card_front_image_url):
             query['IdCardFrontImageUrl'] = request.id_card_front_image_url
-        if not UtilClient.is_unset(request.id_card_number):
+        if not DaraCore.is_null(request.id_card_number):
             query['IdCardNumber'] = request.id_card_number
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='VerifyMaterial',
-            version='2019-03-07',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VerifyMaterial',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cloudauth_20190307_models.VerifyMaterialResponse(),
+        return DaraCore.from_map(
+            main_models.VerifyMaterialResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def verify_material(
         self,
-        request: cloudauth_20190307_models.VerifyMaterialRequest,
-    ) -> cloudauth_20190307_models.VerifyMaterialResponse:
-        """
-        @summary Call VerifyMaterial, in a pure server-side access authentication solution, input name, ID number, portrait photo, and front and back photos of the ID card (optional) for real-person authentication, and return the authentication result synchronously.
-        
-        @description Preparation for Access: When integrating this API, please ensure that the corresponding preparatory work has been completed. For details, please refer to [Server-side Access Preparation](https://help.aliyun.com/document_detail/127471.html).
-        Request Method: HTTPS POST and GET.
-        API Description: The server of the access party submits the authentication materials to the real-person authentication service for verification and comparison, with the results returned synchronously.
-        Applicable Scope: This interface is only applicable to pure server-side access authentication solutions.
-        Image Upload Address Explanation:
-        - HTTP or HTTPS address: Supports publicly accessible HTTP or HTTPS addresses. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
-        - OSS address: If the images from the access party are local files, Alibaba Cloud also provides an upload SDK, supporting the business party to upload the images to the specified OSS bucket of the real-person authentication service, and use the obtained OSS address as the image address parameter in the interface. If your business needs to use the upload SDK, please submit a [ticket](https://selfservice.console.aliyun.com/ticket/category/cloudauth/today) to contact us for acquisition.
-        Image Limitations:
-        - Does not support relative or absolute paths of local images.
-        - Please keep the size of a single image within 2 MB to avoid algorithm retrieval timeout.
-        - The face area in the image should be at least 6464 pixels.
-        - There is an 8 MB size limit for the Body of a single request. Please calculate the total size of all images and other information in the request, and do not exceed the limit.
-        
-        @param request: VerifyMaterialRequest
-        @return: VerifyMaterialResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VerifyMaterialRequest,
+    ) -> main_models.VerifyMaterialResponse:
+        runtime = RuntimeOptions()
         return self.verify_material_with_options(request, runtime)
 
     async def verify_material_async(
         self,
-        request: cloudauth_20190307_models.VerifyMaterialRequest,
-    ) -> cloudauth_20190307_models.VerifyMaterialResponse:
-        """
-        @summary Call VerifyMaterial, in a pure server-side access authentication solution, input name, ID number, portrait photo, and front and back photos of the ID card (optional) for real-person authentication, and return the authentication result synchronously.
-        
-        @description Preparation for Access: When integrating this API, please ensure that the corresponding preparatory work has been completed. For details, please refer to [Server-side Access Preparation](https://help.aliyun.com/document_detail/127471.html).
-        Request Method: HTTPS POST and GET.
-        API Description: The server of the access party submits the authentication materials to the real-person authentication service for verification and comparison, with the results returned synchronously.
-        Applicable Scope: This interface is only applicable to pure server-side access authentication solutions.
-        Image Upload Address Explanation:
-        - HTTP or HTTPS address: Supports publicly accessible HTTP or HTTPS addresses. For example, `http://image-demo.img-cn-hangzhou.aliyuncs.com/example.jpg`.
-        - OSS address: If the images from the access party are local files, Alibaba Cloud also provides an upload SDK, supporting the business party to upload the images to the specified OSS bucket of the real-person authentication service, and use the obtained OSS address as the image address parameter in the interface. If your business needs to use the upload SDK, please submit a [ticket](https://selfservice.console.aliyun.com/ticket/category/cloudauth/today) to contact us for acquisition.
-        Image Limitations:
-        - Does not support relative or absolute paths of local images.
-        - Please keep the size of a single image within 2 MB to avoid algorithm retrieval timeout.
-        - The face area in the image should be at least 6464 pixels.
-        - There is an 8 MB size limit for the Body of a single request. Please calculate the total size of all images and other information in the request, and do not exceed the limit.
-        
-        @param request: VerifyMaterialRequest
-        @return: VerifyMaterialResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VerifyMaterialRequest,
+    ) -> main_models.VerifyMaterialResponse:
+        runtime = RuntimeOptions()
         return await self.verify_material_with_options_async(request, runtime)

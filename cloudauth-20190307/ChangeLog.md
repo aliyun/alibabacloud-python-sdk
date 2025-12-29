@@ -1,3 +1,6 @@
+2025-12-29 Version: 3.12.1
+- Generated python 2019-03-07 for Cloudauth.
+
 2025-12-16 Version: 3.12.0
 - Support API DescribeAuthVerify.
 - Support API InitAuthVerify.
