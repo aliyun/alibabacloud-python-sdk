@@ -1,0 +1,166 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class CreateAirflowRequest(DaraModel):
+    def __init__(
+        self,
+        airflow_name: str = None,
+        app_spec: str = None,
+        client_token: str = None,
+        dags_dir: str = None,
+        description: str = None,
+        oss_bucket_name: str = None,
+        oss_path: str = None,
+        plugins_dir: str = None,
+        requirement_file: str = None,
+        security_group_id: str = None,
+        startup_file: str = None,
+        v_switch_id: str = None,
+        vpc_id: str = None,
+        worker_serverless_replicas: int = None,
+        workspace_id: str = None,
+        zone_id: str = None,
+    ):
+        # This parameter is required.
+        self.airflow_name = airflow_name
+        # This parameter is required.
+        self.app_spec = app_spec
+        self.client_token = client_token
+        self.dags_dir = dags_dir
+        # This parameter is required.
+        self.description = description
+        # This parameter is required.
+        self.oss_bucket_name = oss_bucket_name
+        # This parameter is required.
+        self.oss_path = oss_path
+        self.plugins_dir = plugins_dir
+        self.requirement_file = requirement_file
+        # This parameter is required.
+        self.security_group_id = security_group_id
+        self.startup_file = startup_file
+        # This parameter is required.
+        self.v_switch_id = v_switch_id
+        # VPC ID。
+        # 
+        # This parameter is required.
+        self.vpc_id = vpc_id
+        # This parameter is required.
+        self.worker_serverless_replicas = worker_serverless_replicas
+        # This parameter is required.
+        self.workspace_id = workspace_id
+        # This parameter is required.
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.airflow_name is not None:
+            result['AirflowName'] = self.airflow_name
+
+        if self.app_spec is not None:
+            result['AppSpec'] = self.app_spec
+
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
+        if self.dags_dir is not None:
+            result['DagsDir'] = self.dags_dir
+
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.oss_bucket_name is not None:
+            result['OssBucketName'] = self.oss_bucket_name
+
+        if self.oss_path is not None:
+            result['OssPath'] = self.oss_path
+
+        if self.plugins_dir is not None:
+            result['PluginsDir'] = self.plugins_dir
+
+        if self.requirement_file is not None:
+            result['RequirementFile'] = self.requirement_file
+
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
+
+        if self.startup_file is not None:
+            result['StartupFile'] = self.startup_file
+
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+
+        if self.vpc_id is not None:
+            result['VpcId'] = self.vpc_id
+
+        if self.worker_serverless_replicas is not None:
+            result['WorkerServerlessReplicas'] = self.worker_serverless_replicas
+
+        if self.workspace_id is not None:
+            result['WorkspaceId'] = self.workspace_id
+
+        if self.zone_id is not None:
+            result['ZoneId'] = self.zone_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AirflowName') is not None:
+            self.airflow_name = m.get('AirflowName')
+
+        if m.get('AppSpec') is not None:
+            self.app_spec = m.get('AppSpec')
+
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
+        if m.get('DagsDir') is not None:
+            self.dags_dir = m.get('DagsDir')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('OssBucketName') is not None:
+            self.oss_bucket_name = m.get('OssBucketName')
+
+        if m.get('OssPath') is not None:
+            self.oss_path = m.get('OssPath')
+
+        if m.get('PluginsDir') is not None:
+            self.plugins_dir = m.get('PluginsDir')
+
+        if m.get('RequirementFile') is not None:
+            self.requirement_file = m.get('RequirementFile')
+
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+
+        if m.get('StartupFile') is not None:
+            self.startup_file = m.get('StartupFile')
+
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
+
+        if m.get('VpcId') is not None:
+            self.vpc_id = m.get('VpcId')
+
+        if m.get('WorkerServerlessReplicas') is not None:
+            self.worker_serverless_replicas = m.get('WorkerServerlessReplicas')
+
+        if m.get('WorkspaceId') is not None:
+            self.workspace_id = m.get('WorkspaceId')
+
+        if m.get('ZoneId') is not None:
+            self.zone_id = m.get('ZoneId')
+
+        return self
+

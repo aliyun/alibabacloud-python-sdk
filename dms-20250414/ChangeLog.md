@@ -1,3 +1,8 @@
+2025-12-29 Version: 1.6.0
+- Support API DescribeCustomAgent.
+- Support API ListCustomAgent.
+
+
 2025-12-17 Version: 1.5.0
 - Support API ListFileUpload.
 
