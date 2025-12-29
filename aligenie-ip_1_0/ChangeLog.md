@@ -1,3 +1,7 @@
+2025-12-29 Version: 2.8.4
+- Update API ImportRoomControlDevices: add request parameters EnableMeshDeviceImport.
+
+
 2025-03-27 Version: 2.8.3
 - Update API ListHotelOrder: add response parameters Body.Result.$.Amt.
 - Update API ListHotelOrder: add response parameters Body.Result.$.DeliveryMethod.
