@@ -7,10 +7,8 @@ from darabonba.model import DaraModel
 class DeleteThreadResponseBody(DaraModel):
     def __init__(
         self,
-        deleted: bool = None,
         request_id: str = None,
     ):
-        self.deleted = deleted
         # Id of the request
         self.request_id = request_id
 
@@ -22,9 +20,6 @@ class DeleteThreadResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.deleted is not None:
-            result['deleted'] = self.deleted
-
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
@@ -32,9 +27,6 @@ class DeleteThreadResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('deleted') is not None:
-            self.deleted = m.get('deleted')
-
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
 

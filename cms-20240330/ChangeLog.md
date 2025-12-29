@@ -1,3 +1,7 @@
+2025-12-29 Version: 4.0.0
+- Update API DeleteThread: delete response parameters Body.deleted.
+
+
 2025-12-26 Version: 3.6.1
 - Update API CreateService: add request parameters body.resourceGroupId.
 - Update API CreateService: add request parameters body.tags.
