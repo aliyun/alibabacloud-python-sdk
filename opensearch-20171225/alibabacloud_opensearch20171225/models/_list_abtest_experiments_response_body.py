@@ -1,0 +1,142 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List, Dict, Any
+
+from alibabacloud_opensearch20171225 import models as main_models
+from darabonba.model import DaraModel
+
+class ListABTestExperimentsResponseBody(DaraModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: List[main_models.ListABTestExperimentsResponseBodyResult] = None,
+    ):
+        # The request ID.
+        self.request_id = request_id
+        # The experiment details.\\
+        # For more information, see [ABTestExperiment](https://help.aliyun.com/document_detail/173617.html).
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            for v1 in self.result:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+
+        result['result'] = []
+        if self.result is not None:
+            for k1 in self.result:
+                result['result'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+
+        self.result = []
+        if m.get('result') is not None:
+            for k1 in m.get('result'):
+                temp_model = main_models.ListABTestExperimentsResponseBodyResult()
+                self.result.append(temp_model.from_map(k1))
+
+        return self
+
+class ListABTestExperimentsResponseBodyResult(DaraModel):
+    def __init__(
+        self,
+        created: int = None,
+        id: str = None,
+        name: str = None,
+        online: bool = None,
+        params: Dict[str, Any] = None,
+        traffic: int = None,
+        updated: int = None,
+    ):
+        # The time when the experiment was created.
+        self.created = created
+        # The experiment ID.
+        self.id = id
+        # The group alias.
+        self.name = name
+        # Indicates whether the experiment is in effect. Valid values:
+        # 
+        # *   true
+        # *   false
+        self.online = online
+        # The experiment parameters.
+        self.params = params
+        # The percentage of traffic that is routed to the experiment.
+        # 
+        # Valid values: [0,100]
+        self.traffic = traffic
+        # The time when the experiment was last modified.
+        self.updated = updated
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.created is not None:
+            result['created'] = self.created
+
+        if self.id is not None:
+            result['id'] = self.id
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.online is not None:
+            result['online'] = self.online
+
+        if self.params is not None:
+            result['params'] = self.params
+
+        if self.traffic is not None:
+            result['traffic'] = self.traffic
+
+        if self.updated is not None:
+            result['updated'] = self.updated
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('created') is not None:
+            self.created = m.get('created')
+
+        if m.get('id') is not None:
+            self.id = m.get('id')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('online') is not None:
+            self.online = m.get('online')
+
+        if m.get('params') is not None:
+            self.params = m.get('params')
+
+        if m.get('traffic') is not None:
+            self.traffic = m.get('traffic')
+
+        if m.get('updated') is not None:
+            self.updated = m.get('updated')
+
+        return self
+

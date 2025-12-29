@@ -1,3 +1,11 @@
+2025-12-29 Version: 5.0.0
+- Update API CreateSortScript: add request parameters body.description.
+- Update API GetSortScript: add response parameters Body.result.description.
+- Update API ReleaseSortScript: add response parameters Body.result.
+- Update API UpdateSortScript: add request parameters body.
+- Update API UpdateSortScript: add request The number of query or body parameters has changed from zero to many.
+
+
 2025-12-23 Version: 4.0.0
 - Update API CreateApp: add request parameters body.configItems.
 - Update API CreateApp: add request parameters body.interpretations.
