@@ -1,0 +1,66 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class SingleCallByTtsResponseBody(DaraModel):
+    def __init__(
+        self,
+        call_id: str = None,
+        code: str = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The unique receipt ID of the call.
+        # 
+        # You can call the [QueryCallDetailByCallId](https://help.aliyun.com/document_detail/393529.html) operation to query the details of the call based on the receipt ID.
+        self.call_id = call_id
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   For more information about other response codes, see [API error codes](https://help.aliyun.com/document_detail/112502.html).
+        self.code = code
+        # The returned message.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.call_id is not None:
+            result['CallId'] = self.call_id
+
+        if self.code is not None:
+            result['Code'] = self.code
+
+        if self.message is not None:
+            result['Message'] = self.message
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CallId') is not None:
+            self.call_id = m.get('CallId')
+
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        return self
+

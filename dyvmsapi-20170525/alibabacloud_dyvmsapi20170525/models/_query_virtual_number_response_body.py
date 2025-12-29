@@ -1,0 +1,66 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class QueryVirtualNumberResponseBody(DaraModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: str = None,
+        request_id: str = None,
+    ):
+        # The response code. The value 200 indicates that the request was successful.
+        self.code = code
+        # The details of the numbers associated with the virtual numbers. The following fields are returned:
+        # 
+        # *   createTime: the time when the number was activated.
+        # *   qualificationCount: the number of qualifications.
+        # *   cityCount: the number of cities.
+        # *   phoneNumCount: the number of virtual numbers.
+        # *   remark: the additional information.
+        # *   phoneNum: the virtual number.
+        # *   routeType: the route type.
+        # *   canCancel: indicates whether the number can be deactivated.
+        # *   specCount: the number of Internet service providers (ISPs).
+        # *   status: the number state. Valid values: **1**, **0**, and **-1**. The value 1 indicates that the number is valid. The value 0 indicates that the number is invalid. The value -1 indicates that the number was deactivated.
+        # *   pageNo: the page number.
+        # *   pageSize: the number of entries per page.
+        # *   total: the total number of virtual numbers.
+        self.data = data
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['Code'] = self.code
+
+        if self.data is not None:
+            result['Data'] = self.data
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        if m.get('Data') is not None:
+            self.data = m.get('Data')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        return self
+

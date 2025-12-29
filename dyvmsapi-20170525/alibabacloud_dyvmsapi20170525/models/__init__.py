@@ -1,0 +1,389 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._add_virtual_number_relation_request import AddVirtualNumberRelationRequest
+from ._add_virtual_number_relation_response_body import AddVirtualNumberRelationResponseBody
+from ._add_virtual_number_relation_response import AddVirtualNumberRelationResponse
+from ._batch_robot_smart_call_request import BatchRobotSmartCallRequest
+from ._batch_robot_smart_call_response_body import BatchRobotSmartCallResponseBody
+from ._batch_robot_smart_call_response import BatchRobotSmartCallResponse
+from ._cancel_call_request import CancelCallRequest
+from ._cancel_call_response_body import CancelCallResponseBody
+from ._cancel_call_response import CancelCallResponse
+from ._cancel_order_robot_task_request import CancelOrderRobotTaskRequest
+from ._cancel_order_robot_task_response_body import CancelOrderRobotTaskResponseBody
+from ._cancel_order_robot_task_response import CancelOrderRobotTaskResponse
+from ._cancel_robot_task_request import CancelRobotTaskRequest
+from ._cancel_robot_task_response_body import CancelRobotTaskResponseBody
+from ._cancel_robot_task_response import CancelRobotTaskResponse
+from ._change_media_type_request import ChangeMediaTypeRequest
+from ._change_media_type_response_body import ChangeMediaTypeResponseBody
+from ._change_media_type_response import ChangeMediaTypeResponse
+from ._create_call_task_request import CreateCallTaskRequest
+from ._create_call_task_response_body import CreateCallTaskResponseBody
+from ._create_call_task_response import CreateCallTaskResponse
+from ._create_robot_task_request import CreateRobotTaskRequest
+from ._create_robot_task_response_body import CreateRobotTaskResponseBody
+from ._create_robot_task_response import CreateRobotTaskResponse
+from ._degrade_video_file_request import DegradeVideoFileRequest
+from ._degrade_video_file_response_body import DegradeVideoFileResponseBody
+from ._degrade_video_file_response import DegradeVideoFileResponse
+from ._delete_robot_task_request import DeleteRobotTaskRequest
+from ._delete_robot_task_response_body import DeleteRobotTaskResponseBody
+from ._delete_robot_task_response import DeleteRobotTaskResponse
+from ._execute_call_task_request import ExecuteCallTaskRequest
+from ._execute_call_task_response_body import ExecuteCallTaskResponseBody
+from ._execute_call_task_response import ExecuteCallTaskResponse
+from ._get_call_media_type_request import GetCallMediaTypeRequest
+from ._get_call_media_type_response_body import GetCallMediaTypeResponseBody
+from ._get_call_media_type_response import GetCallMediaTypeResponse
+from ._get_call_progress_request import GetCallProgressRequest
+from ._get_call_progress_response_body import GetCallProgressResponseBody
+from ._get_call_progress_response import GetCallProgressResponse
+from ._get_hotline_qualification_by_order_request import GetHotlineQualificationByOrderRequest
+from ._get_hotline_qualification_by_order_response_body import GetHotlineQualificationByOrderResponseBody
+from ._get_hotline_qualification_by_order_response import GetHotlineQualificationByOrderResponse
+from ._get_temporary_file_url_request import GetTemporaryFileUrlRequest
+from ._get_temporary_file_url_response_body import GetTemporaryFileUrlResponseBody
+from ._get_temporary_file_url_response import GetTemporaryFileUrlResponse
+from ._get_token_request import GetTokenRequest
+from ._get_token_response_body import GetTokenResponseBody
+from ._get_token_response import GetTokenResponse
+from ._get_video_field_url_request import GetVideoFieldUrlRequest
+from ._get_video_field_url_response_body import GetVideoFieldUrlResponseBody
+from ._get_video_field_url_response import GetVideoFieldUrlResponse
+from ._ivr_call_request import IvrCallRequest
+from ._ivr_call_response_body import IvrCallResponseBody
+from ._ivr_call_response import IvrCallResponse
+from ._list_call_task_request import ListCallTaskRequest
+from ._list_call_task_response_body import ListCallTaskResponseBody
+from ._list_call_task_response import ListCallTaskResponse
+from ._list_call_task_detail_request import ListCallTaskDetailRequest
+from ._list_call_task_detail_response_body import ListCallTaskDetailResponseBody
+from ._list_call_task_detail_response import ListCallTaskDetailResponse
+from ._list_hotline_transfer_register_file_request import ListHotlineTransferRegisterFileRequest
+from ._list_hotline_transfer_register_file_response_body import ListHotlineTransferRegisterFileResponseBody
+from ._list_hotline_transfer_register_file_response import ListHotlineTransferRegisterFileResponse
+from ._list_service_instance_for_page_request import ListServiceInstanceForPageRequest
+from ._list_service_instance_for_page_shrink_request import ListServiceInstanceForPageShrinkRequest
+from ._list_service_instance_for_page_response_body import ListServiceInstanceForPageResponseBody
+from ._list_service_instance_for_page_response import ListServiceInstanceForPageResponse
+from ._pause_video_file_request import PauseVideoFileRequest
+from ._pause_video_file_response_body import PauseVideoFileResponseBody
+from ._pause_video_file_response import PauseVideoFileResponse
+from ._play_video_file_request import PlayVideoFileRequest
+from ._play_video_file_response_body import PlayVideoFileResponseBody
+from ._play_video_file_response import PlayVideoFileResponse
+from ._query_call_detail_by_call_id_request import QueryCallDetailByCallIdRequest
+from ._query_call_detail_by_call_id_response_body import QueryCallDetailByCallIdResponseBody
+from ._query_call_detail_by_call_id_response import QueryCallDetailByCallIdResponse
+from ._query_call_detail_by_task_id_request import QueryCallDetailByTaskIdRequest
+from ._query_call_detail_by_task_id_response_body import QueryCallDetailByTaskIdResponseBody
+from ._query_call_detail_by_task_id_response import QueryCallDetailByTaskIdResponse
+from ._query_call_in_pool_transfer_config_request import QueryCallInPoolTransferConfigRequest
+from ._query_call_in_pool_transfer_config_response_body import QueryCallInPoolTransferConfigResponseBody
+from ._query_call_in_pool_transfer_config_response import QueryCallInPoolTransferConfigResponse
+from ._query_call_in_transfer_record_request import QueryCallInTransferRecordRequest
+from ._query_call_in_transfer_record_response_body import QueryCallInTransferRecordResponseBody
+from ._query_call_in_transfer_record_response import QueryCallInTransferRecordResponse
+from ._query_robot_info_list_request import QueryRobotInfoListRequest
+from ._query_robot_info_list_response_body import QueryRobotInfoListResponseBody
+from ._query_robot_info_list_response import QueryRobotInfoListResponse
+from ._query_robot_task_call_detail_request import QueryRobotTaskCallDetailRequest
+from ._query_robot_task_call_detail_response_body import QueryRobotTaskCallDetailResponseBody
+from ._query_robot_task_call_detail_response import QueryRobotTaskCallDetailResponse
+from ._query_robot_task_call_list_request import QueryRobotTaskCallListRequest
+from ._query_robot_task_call_list_response_body import QueryRobotTaskCallListResponseBody
+from ._query_robot_task_call_list_response import QueryRobotTaskCallListResponse
+from ._query_robot_task_detail_request import QueryRobotTaskDetailRequest
+from ._query_robot_task_detail_response_body import QueryRobotTaskDetailResponseBody
+from ._query_robot_task_detail_response import QueryRobotTaskDetailResponse
+from ._query_robot_task_list_request import QueryRobotTaskListRequest
+from ._query_robot_task_list_response_body import QueryRobotTaskListResponseBody
+from ._query_robot_task_list_response import QueryRobotTaskListResponse
+from ._query_robotv_2all_list_request import QueryRobotv2AllListRequest
+from ._query_robotv_2all_list_response_body import QueryRobotv2AllListResponseBody
+from ._query_robotv_2all_list_response import QueryRobotv2AllListResponse
+from ._query_video_play_progress_request import QueryVideoPlayProgressRequest
+from ._query_video_play_progress_response_body import QueryVideoPlayProgressResponseBody
+from ._query_video_play_progress_response import QueryVideoPlayProgressResponse
+from ._query_virtual_number_request import QueryVirtualNumberRequest
+from ._query_virtual_number_response_body import QueryVirtualNumberResponseBody
+from ._query_virtual_number_response import QueryVirtualNumberResponse
+from ._query_virtual_number_relation_request import QueryVirtualNumberRelationRequest
+from ._query_virtual_number_relation_response_body import QueryVirtualNumberRelationResponseBody
+from ._query_virtual_number_relation_response import QueryVirtualNumberRelationResponse
+from ._query_vms_real_number_call_connection_rate_info_request import QueryVmsRealNumberCallConnectionRateInfoRequest
+from ._query_vms_real_number_call_connection_rate_info_response_body import QueryVmsRealNumberCallConnectionRateInfoResponseBody
+from ._query_vms_real_number_call_connection_rate_info_response import QueryVmsRealNumberCallConnectionRateInfoResponse
+from ._query_vms_virtual_number_relation_by_page_request import QueryVmsVirtualNumberRelationByPageRequest
+from ._query_vms_virtual_number_relation_by_page_response_body import QueryVmsVirtualNumberRelationByPageResponseBody
+from ._query_vms_virtual_number_relation_by_page_response import QueryVmsVirtualNumberRelationByPageResponse
+from ._query_voice_file_audit_info_request import QueryVoiceFileAuditInfoRequest
+from ._query_voice_file_audit_info_response_body import QueryVoiceFileAuditInfoResponseBody
+from ._query_voice_file_audit_info_response import QueryVoiceFileAuditInfoResponse
+from ._recover_call_in_config_request import RecoverCallInConfigRequest
+from ._recover_call_in_config_response_body import RecoverCallInConfigResponseBody
+from ._recover_call_in_config_response import RecoverCallInConfigResponse
+from ._resume_video_file_request import ResumeVideoFileRequest
+from ._resume_video_file_response_body import ResumeVideoFileResponseBody
+from ._resume_video_file_response import ResumeVideoFileResponse
+from ._seek_video_file_request import SeekVideoFileRequest
+from ._seek_video_file_response_body import SeekVideoFileResponseBody
+from ._seek_video_file_response import SeekVideoFileResponse
+from ._send_verification_request import SendVerificationRequest
+from ._send_verification_response_body import SendVerificationResponseBody
+from ._send_verification_response import SendVerificationResponse
+from ._set_transfer_callee_pool_config_request import SetTransferCalleePoolConfigRequest
+from ._set_transfer_callee_pool_config_response_body import SetTransferCalleePoolConfigResponseBody
+from ._set_transfer_callee_pool_config_response import SetTransferCalleePoolConfigResponse
+from ._single_call_by_tts_request import SingleCallByTtsRequest
+from ._single_call_by_tts_response_body import SingleCallByTtsResponseBody
+from ._single_call_by_tts_response import SingleCallByTtsResponse
+from ._single_call_by_video_request import SingleCallByVideoRequest
+from ._single_call_by_video_response_body import SingleCallByVideoResponseBody
+from ._single_call_by_video_response import SingleCallByVideoResponse
+from ._single_call_by_voice_request import SingleCallByVoiceRequest
+from ._single_call_by_voice_response_body import SingleCallByVoiceResponseBody
+from ._single_call_by_voice_response import SingleCallByVoiceResponse
+from ._skip_video_file_request import SkipVideoFileRequest
+from ._skip_video_file_response_body import SkipVideoFileResponseBody
+from ._skip_video_file_response import SkipVideoFileResponse
+from ._smart_call_request import SmartCallRequest
+from ._smart_call_response_body import SmartCallResponseBody
+from ._smart_call_response import SmartCallResponse
+from ._smart_call_operate_request import SmartCallOperateRequest
+from ._smart_call_operate_response_body import SmartCallOperateResponseBody
+from ._smart_call_operate_response import SmartCallOperateResponse
+from ._start_robot_task_request import StartRobotTaskRequest
+from ._start_robot_task_response_body import StartRobotTaskResponseBody
+from ._start_robot_task_response import StartRobotTaskResponse
+from ._stop_call_in_config_request import StopCallInConfigRequest
+from ._stop_call_in_config_response_body import StopCallInConfigResponseBody
+from ._stop_call_in_config_response import StopCallInConfigResponse
+from ._stop_robot_task_request import StopRobotTaskRequest
+from ._stop_robot_task_response_body import StopRobotTaskResponseBody
+from ._stop_robot_task_response import StopRobotTaskResponse
+from ._submit_hotline_transfer_register_request import SubmitHotlineTransferRegisterRequest
+from ._submit_hotline_transfer_register_response_body import SubmitHotlineTransferRegisterResponseBody
+from ._submit_hotline_transfer_register_response import SubmitHotlineTransferRegisterResponse
+from ._upgrade_video_file_request import UpgradeVideoFileRequest
+from ._upgrade_video_file_response_body import UpgradeVideoFileResponseBody
+from ._upgrade_video_file_response import UpgradeVideoFileResponse
+from ._upload_robot_task_called_file_request import UploadRobotTaskCalledFileRequest
+from ._upload_robot_task_called_file_response_body import UploadRobotTaskCalledFileResponseBody
+from ._upload_robot_task_called_file_response import UploadRobotTaskCalledFileResponse
+from ._get_hotline_qualification_by_order_response_body import GetHotlineQualificationByOrderResponseBodyData
+from ._ivr_call_request import IvrCallRequestMenuKeyMap
+from ._list_call_task_response_body import ListCallTaskResponseBodyData
+from ._list_call_task_detail_response_body import ListCallTaskDetailResponseBodyData
+from ._list_hotline_transfer_register_file_response_body import ListHotlineTransferRegisterFileResponseBodyDataValues
+from ._list_hotline_transfer_register_file_response_body import ListHotlineTransferRegisterFileResponseBodyData
+from ._list_service_instance_for_page_request import ListServiceInstanceForPageRequestPager
+from ._list_service_instance_for_page_response_body import ListServiceInstanceForPageResponseBodyModelRecords
+from ._list_service_instance_for_page_response_body import ListServiceInstanceForPageResponseBodyModel
+from ._query_call_in_pool_transfer_config_response_body import QueryCallInPoolTransferConfigResponseBodyDataDetails
+from ._query_call_in_pool_transfer_config_response_body import QueryCallInPoolTransferConfigResponseBodyData
+from ._query_call_in_transfer_record_response_body import QueryCallInTransferRecordResponseBodyDataValues
+from ._query_call_in_transfer_record_response_body import QueryCallInTransferRecordResponseBodyData
+from ._query_vms_real_number_call_connection_rate_info_response_body import QueryVmsRealNumberCallConnectionRateInfoResponseBodyModel
+from ._query_vms_virtual_number_relation_by_page_response_body import QueryVmsVirtualNumberRelationByPageResponseBodyModelData
+from ._query_vms_virtual_number_relation_by_page_response_body import QueryVmsVirtualNumberRelationByPageResponseBodyModel
+from ._query_voice_file_audit_info_response_body import QueryVoiceFileAuditInfoResponseBodyData
+from ._set_transfer_callee_pool_config_request import SetTransferCalleePoolConfigRequestDetails
+from ._submit_hotline_transfer_register_request import SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos
+
+__all__ = [
+    AddVirtualNumberRelationRequest,
+    AddVirtualNumberRelationResponseBody,
+    AddVirtualNumberRelationResponse,
+    BatchRobotSmartCallRequest,
+    BatchRobotSmartCallResponseBody,
+    BatchRobotSmartCallResponse,
+    CancelCallRequest,
+    CancelCallResponseBody,
+    CancelCallResponse,
+    CancelOrderRobotTaskRequest,
+    CancelOrderRobotTaskResponseBody,
+    CancelOrderRobotTaskResponse,
+    CancelRobotTaskRequest,
+    CancelRobotTaskResponseBody,
+    CancelRobotTaskResponse,
+    ChangeMediaTypeRequest,
+    ChangeMediaTypeResponseBody,
+    ChangeMediaTypeResponse,
+    CreateCallTaskRequest,
+    CreateCallTaskResponseBody,
+    CreateCallTaskResponse,
+    CreateRobotTaskRequest,
+    CreateRobotTaskResponseBody,
+    CreateRobotTaskResponse,
+    DegradeVideoFileRequest,
+    DegradeVideoFileResponseBody,
+    DegradeVideoFileResponse,
+    DeleteRobotTaskRequest,
+    DeleteRobotTaskResponseBody,
+    DeleteRobotTaskResponse,
+    ExecuteCallTaskRequest,
+    ExecuteCallTaskResponseBody,
+    ExecuteCallTaskResponse,
+    GetCallMediaTypeRequest,
+    GetCallMediaTypeResponseBody,
+    GetCallMediaTypeResponse,
+    GetCallProgressRequest,
+    GetCallProgressResponseBody,
+    GetCallProgressResponse,
+    GetHotlineQualificationByOrderRequest,
+    GetHotlineQualificationByOrderResponseBody,
+    GetHotlineQualificationByOrderResponse,
+    GetTemporaryFileUrlRequest,
+    GetTemporaryFileUrlResponseBody,
+    GetTemporaryFileUrlResponse,
+    GetTokenRequest,
+    GetTokenResponseBody,
+    GetTokenResponse,
+    GetVideoFieldUrlRequest,
+    GetVideoFieldUrlResponseBody,
+    GetVideoFieldUrlResponse,
+    IvrCallRequest,
+    IvrCallResponseBody,
+    IvrCallResponse,
+    ListCallTaskRequest,
+    ListCallTaskResponseBody,
+    ListCallTaskResponse,
+    ListCallTaskDetailRequest,
+    ListCallTaskDetailResponseBody,
+    ListCallTaskDetailResponse,
+    ListHotlineTransferRegisterFileRequest,
+    ListHotlineTransferRegisterFileResponseBody,
+    ListHotlineTransferRegisterFileResponse,
+    ListServiceInstanceForPageRequest,
+    ListServiceInstanceForPageShrinkRequest,
+    ListServiceInstanceForPageResponseBody,
+    ListServiceInstanceForPageResponse,
+    PauseVideoFileRequest,
+    PauseVideoFileResponseBody,
+    PauseVideoFileResponse,
+    PlayVideoFileRequest,
+    PlayVideoFileResponseBody,
+    PlayVideoFileResponse,
+    QueryCallDetailByCallIdRequest,
+    QueryCallDetailByCallIdResponseBody,
+    QueryCallDetailByCallIdResponse,
+    QueryCallDetailByTaskIdRequest,
+    QueryCallDetailByTaskIdResponseBody,
+    QueryCallDetailByTaskIdResponse,
+    QueryCallInPoolTransferConfigRequest,
+    QueryCallInPoolTransferConfigResponseBody,
+    QueryCallInPoolTransferConfigResponse,
+    QueryCallInTransferRecordRequest,
+    QueryCallInTransferRecordResponseBody,
+    QueryCallInTransferRecordResponse,
+    QueryRobotInfoListRequest,
+    QueryRobotInfoListResponseBody,
+    QueryRobotInfoListResponse,
+    QueryRobotTaskCallDetailRequest,
+    QueryRobotTaskCallDetailResponseBody,
+    QueryRobotTaskCallDetailResponse,
+    QueryRobotTaskCallListRequest,
+    QueryRobotTaskCallListResponseBody,
+    QueryRobotTaskCallListResponse,
+    QueryRobotTaskDetailRequest,
+    QueryRobotTaskDetailResponseBody,
+    QueryRobotTaskDetailResponse,
+    QueryRobotTaskListRequest,
+    QueryRobotTaskListResponseBody,
+    QueryRobotTaskListResponse,
+    QueryRobotv2AllListRequest,
+    QueryRobotv2AllListResponseBody,
+    QueryRobotv2AllListResponse,
+    QueryVideoPlayProgressRequest,
+    QueryVideoPlayProgressResponseBody,
+    QueryVideoPlayProgressResponse,
+    QueryVirtualNumberRequest,
+    QueryVirtualNumberResponseBody,
+    QueryVirtualNumberResponse,
+    QueryVirtualNumberRelationRequest,
+    QueryVirtualNumberRelationResponseBody,
+    QueryVirtualNumberRelationResponse,
+    QueryVmsRealNumberCallConnectionRateInfoRequest,
+    QueryVmsRealNumberCallConnectionRateInfoResponseBody,
+    QueryVmsRealNumberCallConnectionRateInfoResponse,
+    QueryVmsVirtualNumberRelationByPageRequest,
+    QueryVmsVirtualNumberRelationByPageResponseBody,
+    QueryVmsVirtualNumberRelationByPageResponse,
+    QueryVoiceFileAuditInfoRequest,
+    QueryVoiceFileAuditInfoResponseBody,
+    QueryVoiceFileAuditInfoResponse,
+    RecoverCallInConfigRequest,
+    RecoverCallInConfigResponseBody,
+    RecoverCallInConfigResponse,
+    ResumeVideoFileRequest,
+    ResumeVideoFileResponseBody,
+    ResumeVideoFileResponse,
+    SeekVideoFileRequest,
+    SeekVideoFileResponseBody,
+    SeekVideoFileResponse,
+    SendVerificationRequest,
+    SendVerificationResponseBody,
+    SendVerificationResponse,
+    SetTransferCalleePoolConfigRequest,
+    SetTransferCalleePoolConfigResponseBody,
+    SetTransferCalleePoolConfigResponse,
+    SingleCallByTtsRequest,
+    SingleCallByTtsResponseBody,
+    SingleCallByTtsResponse,
+    SingleCallByVideoRequest,
+    SingleCallByVideoResponseBody,
+    SingleCallByVideoResponse,
+    SingleCallByVoiceRequest,
+    SingleCallByVoiceResponseBody,
+    SingleCallByVoiceResponse,
+    SkipVideoFileRequest,
+    SkipVideoFileResponseBody,
+    SkipVideoFileResponse,
+    SmartCallRequest,
+    SmartCallResponseBody,
+    SmartCallResponse,
+    SmartCallOperateRequest,
+    SmartCallOperateResponseBody,
+    SmartCallOperateResponse,
+    StartRobotTaskRequest,
+    StartRobotTaskResponseBody,
+    StartRobotTaskResponse,
+    StopCallInConfigRequest,
+    StopCallInConfigResponseBody,
+    StopCallInConfigResponse,
+    StopRobotTaskRequest,
+    StopRobotTaskResponseBody,
+    StopRobotTaskResponse,
+    SubmitHotlineTransferRegisterRequest,
+    SubmitHotlineTransferRegisterResponseBody,
+    SubmitHotlineTransferRegisterResponse,
+    UpgradeVideoFileRequest,
+    UpgradeVideoFileResponseBody,
+    UpgradeVideoFileResponse,
+    UploadRobotTaskCalledFileRequest,
+    UploadRobotTaskCalledFileResponseBody,
+    UploadRobotTaskCalledFileResponse,
+    GetHotlineQualificationByOrderResponseBodyData,
+    IvrCallRequestMenuKeyMap,
+    ListCallTaskResponseBodyData,
+    ListCallTaskDetailResponseBodyData,
+    ListHotlineTransferRegisterFileResponseBodyDataValues,
+    ListHotlineTransferRegisterFileResponseBodyData,
+    ListServiceInstanceForPageRequestPager,
+    ListServiceInstanceForPageResponseBodyModelRecords,
+    ListServiceInstanceForPageResponseBodyModel,
+    QueryCallInPoolTransferConfigResponseBodyDataDetails,
+    QueryCallInPoolTransferConfigResponseBodyData,
+    QueryCallInTransferRecordResponseBodyDataValues,
+    QueryCallInTransferRecordResponseBodyData,
+    QueryVmsRealNumberCallConnectionRateInfoResponseBodyModel,
+    QueryVmsVirtualNumberRelationByPageResponseBodyModelData,
+    QueryVmsVirtualNumberRelationByPageResponseBodyModel,
+    QueryVoiceFileAuditInfoResponseBodyData,
+    SetTransferCalleePoolConfigRequestDetails,
+    SubmitHotlineTransferRegisterRequestTransferPhoneNumberInfos
+]
