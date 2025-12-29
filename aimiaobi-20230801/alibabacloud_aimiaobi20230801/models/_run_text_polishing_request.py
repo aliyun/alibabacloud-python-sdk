@@ -10,12 +10,14 @@ class RunTextPolishingRequest(DaraModel):
         content: str = None,
         origin_content: str = None,
         prompt: str = None,
+        task_id: str = None,
         workspace_id: str = None,
     ):
         # This parameter is required.
         self.content = content
         self.origin_content = origin_content
         self.prompt = prompt
+        self.task_id = task_id
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -36,6 +38,9 @@ class RunTextPolishingRequest(DaraModel):
         if self.prompt is not None:
             result['Prompt'] = self.prompt
 
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -51,6 +56,9 @@ class RunTextPolishingRequest(DaraModel):
 
         if m.get('Prompt') is not None:
             self.prompt = m.get('Prompt')
+
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

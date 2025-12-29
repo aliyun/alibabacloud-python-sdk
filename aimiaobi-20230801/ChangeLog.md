@@ -1,3 +1,7 @@
+2025-12-29 Version: 1.38.3
+- Update API RunTextPolishing: add request parameters TaskId.
+
+
 2025-12-25 Version: 1.38.2
 - Update API RunTextPolishing: add request parameters OriginContent.
 

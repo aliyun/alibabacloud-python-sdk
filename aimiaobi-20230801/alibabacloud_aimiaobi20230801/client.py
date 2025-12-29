@@ -16908,6 +16908,8 @@ class Client(OpenApiClient):
             body['OriginContent'] = request.origin_content
         if not DaraCore.is_null(request.prompt):
             body['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -16951,6 +16953,8 @@ class Client(OpenApiClient):
             body['OriginContent'] = request.origin_content
         if not DaraCore.is_null(request.prompt):
             body['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -16994,6 +16998,8 @@ class Client(OpenApiClient):
             body['OriginContent'] = request.origin_content
         if not DaraCore.is_null(request.prompt):
             body['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -17028,6 +17034,8 @@ class Client(OpenApiClient):
             body['OriginContent'] = request.origin_content
         if not DaraCore.is_null(request.prompt):
             body['Prompt'] = request.prompt
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
