@@ -1,3 +1,8 @@
+2025-12-29 Version: 6.3.0
+- Support API InstallNodePoolComponents.
+- Support API UpdateNodePoolComponent.
+
+
 2025-12-22 Version: 6.2.0
 - Support API ListClusterAddonInstanceResources.
 
