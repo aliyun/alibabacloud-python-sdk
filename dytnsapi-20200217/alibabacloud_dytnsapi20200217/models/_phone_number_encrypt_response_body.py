@@ -1,0 +1,129 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_dytnsapi20200217 import models as main_models
+from darabonba.model import DaraModel
+
+class PhoneNumberEncryptResponseBody(DaraModel):
+    def __init__(
+        self,
+        code: str = None,
+        data: List[main_models.PhoneNumberEncryptResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+    ):
+        # The response code.
+        # 
+        # *   The value OK indicates that the request was successful.
+        # *   Other values indicate that the request failed. For more information, see [Error codes](https://help.aliyun.com/document_detail/109196.html).
+        self.code = code
+        # Details about the returned entries.
+        self.data = data
+        # The returned message.
+        self.message = message
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            for v1 in self.data:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['Code'] = self.code
+
+        result['Data'] = []
+        if self.data is not None:
+            for k1 in self.data:
+                result['Data'].append(k1.to_map() if k1 else None)
+
+        if self.message is not None:
+            result['Message'] = self.message
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        self.data = []
+        if m.get('Data') is not None:
+            for k1 in m.get('Data'):
+                temp_model = main_models.PhoneNumberEncryptResponseBodyData()
+                self.data.append(temp_model.from_map(k1))
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        return self
+
+class PhoneNumberEncryptResponseBodyData(DaraModel):
+    def __init__(
+        self,
+        encrypted_number: str = None,
+        expire_time: str = None,
+        original_number: str = None,
+        out_id: str = None,
+    ):
+        # The encrypted phone number.
+        self.encrypted_number = encrypted_number
+        # The time when the phone number expires.
+        self.expire_time = expire_time
+        # The original phone number.
+        self.original_number = original_number
+        self.out_id = out_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.encrypted_number is not None:
+            result['EncryptedNumber'] = self.encrypted_number
+
+        if self.expire_time is not None:
+            result['ExpireTime'] = self.expire_time
+
+        if self.original_number is not None:
+            result['OriginalNumber'] = self.original_number
+
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EncryptedNumber') is not None:
+            self.encrypted_number = m.get('EncryptedNumber')
+
+        if m.get('ExpireTime') is not None:
+            self.expire_time = m.get('ExpireTime')
+
+        if m.get('OriginalNumber') is not None:
+            self.original_number = m.get('OriginalNumber')
+
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
+
+        return self
+

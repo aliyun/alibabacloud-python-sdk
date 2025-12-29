@@ -1,3 +1,11 @@
+2025-12-29 Version: 3.1.0
+- Support API DeleteContacts.
+- Support API ListContacts.
+- Support API QueryPackageTypeInfo.
+- Support API QueryTaskList.
+- Support API UpdateContacts.
+
+
 2025-04-29 Version: 3.0.0
 - Delete API PhoneNumberStatusForVirtual.
 - Update API PhoneNumberEncrypt: add request parameters OutId.
