@@ -1,3 +1,7 @@
+2025-12-29 Version: 1.6.1
+- Update API SendChatMessage: add request parameters SessionConfig.ReportWaterMark.
+
+
 2025-12-29 Version: 1.6.0
 - Support API DescribeCustomAgent.
 - Support API ListCustomAgent.

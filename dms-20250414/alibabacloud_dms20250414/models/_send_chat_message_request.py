@@ -120,10 +120,12 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         custom_agent_id: str = None,
         custom_agent_stage: str = None,
         language: str = None,
+        report_water_mark: str = None,
     ):
         self.custom_agent_id = custom_agent_id
         self.custom_agent_stage = custom_agent_stage
         self.language = language
+        self.report_water_mark = report_water_mark
 
     def validate(self):
         pass
@@ -142,6 +144,9 @@ class SendChatMessageRequestSessionConfig(DaraModel):
         if self.language is not None:
             result['Language'] = self.language
 
+        if self.report_water_mark is not None:
+            result['ReportWaterMark'] = self.report_water_mark
+
         return result
 
     def from_map(self, m: dict = None):
@@ -154,6 +159,9 @@ class SendChatMessageRequestSessionConfig(DaraModel):
 
         if m.get('Language') is not None:
             self.language = m.get('Language')
+
+        if m.get('ReportWaterMark') is not None:
+            self.report_water_mark = m.get('ReportWaterMark')
 
         return self
 
