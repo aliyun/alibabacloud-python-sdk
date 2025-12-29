@@ -1,3 +1,9 @@
+2025-12-29 Version: 3.6.0
+- Support API StartDebugExecution.
+- Update API ListGitAccounts: add request parameters BindType.
+- Update API ListGitOrganizations: add request parameters BindType.
+
+
 2025-11-07 Version: 3.5.0
 - Support API CheckGitRepoFileExists.
 - Support API CheckGitRepositoryExists.

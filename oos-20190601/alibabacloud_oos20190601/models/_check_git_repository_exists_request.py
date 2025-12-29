@@ -1,0 +1,84 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class CheckGitRepositoryExistsRequest(DaraModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        org_id: str = None,
+        owner: str = None,
+        platform: str = None,
+        region_id: str = None,
+        repo_full_name: str = None,
+        repo_id: int = None,
+    ):
+        self.client_token = client_token
+        self.org_id = org_id
+        # This parameter is required.
+        self.owner = owner
+        # This parameter is required.
+        self.platform = platform
+        self.region_id = region_id
+        # This parameter is required.
+        self.repo_full_name = repo_full_name
+        self.repo_id = repo_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
+        if self.org_id is not None:
+            result['OrgId'] = self.org_id
+
+        if self.owner is not None:
+            result['Owner'] = self.owner
+
+        if self.platform is not None:
+            result['Platform'] = self.platform
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        if self.repo_full_name is not None:
+            result['RepoFullName'] = self.repo_full_name
+
+        if self.repo_id is not None:
+            result['RepoId'] = self.repo_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
+        if m.get('OrgId') is not None:
+            self.org_id = m.get('OrgId')
+
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
+
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        if m.get('RepoFullName') is not None:
+            self.repo_full_name = m.get('RepoFullName')
+
+        if m.get('RepoId') is not None:
+            self.repo_id = m.get('RepoId')
+
+        return self
+
