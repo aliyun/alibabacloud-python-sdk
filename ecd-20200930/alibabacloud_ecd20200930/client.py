@@ -18539,6 +18539,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
+    def list_transfer_file_download_url_with_options(
+        self,
+        request: main_models.ListTransferFileDownloadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTransferFileDownloadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_ids):
+            query['FileIds'] = request.file_ids
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTransferFileDownloadUrl',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTransferFileDownloadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_transfer_file_download_url_with_options_async(
+        self,
+        request: main_models.ListTransferFileDownloadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTransferFileDownloadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_ids):
+            query['FileIds'] = request.file_ids
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTransferFileDownloadUrl',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTransferFileDownloadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_transfer_file_download_url(
+        self,
+        request: main_models.ListTransferFileDownloadUrlRequest,
+    ) -> main_models.ListTransferFileDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        return self.list_transfer_file_download_url_with_options(request, runtime)
+
+    async def list_transfer_file_download_url_async(
+        self,
+        request: main_models.ListTransferFileDownloadUrlRequest,
+    ) -> main_models.ListTransferFileDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        return await self.list_transfer_file_download_url_with_options_async(request, runtime)
+
     def list_transfer_files_with_options(
         self,
         request: main_models.ListTransferFilesRequest,

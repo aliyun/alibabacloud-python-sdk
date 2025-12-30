@@ -575,6 +575,9 @@ from ._list_office_site_users_response import ListOfficeSiteUsersResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
+from ._list_transfer_file_download_url_request import ListTransferFileDownloadUrlRequest
+from ._list_transfer_file_download_url_response_body import ListTransferFileDownloadUrlResponseBody
+from ._list_transfer_file_download_url_response import ListTransferFileDownloadUrlResponse
 from ._list_transfer_files_request import ListTransferFilesRequest
 from ._list_transfer_files_response_body import ListTransferFilesResponseBody
 from ._list_transfer_files_response import ListTransferFilesResponse
@@ -1055,6 +1058,7 @@ from ._list_office_site_overview_response_body import ListOfficeSiteOverviewResp
 from ._list_office_site_users_response_body import ListOfficeSiteUsersResponseBodyUsers
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._list_transfer_file_download_url_response_body import ListTransferFileDownloadUrlResponseBodyUrls
 from ._list_transfer_files_response_body import ListTransferFilesResponseBodyFiles
 from ._list_user_ad_organization_units_response_body import ListUserAdOrganizationUnitsResponseBodyOUNames
 from ._modify_center_policy_request import ModifyCenterPolicyRequestAuthorizeAccessPolicyRule
@@ -1683,6 +1687,9 @@ __all__ = [
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
+    ListTransferFileDownloadUrlRequest,
+    ListTransferFileDownloadUrlResponseBody,
+    ListTransferFileDownloadUrlResponse,
     ListTransferFilesRequest,
     ListTransferFilesResponseBody,
     ListTransferFilesResponse,
@@ -2163,6 +2170,7 @@ __all__ = [
     ListOfficeSiteUsersResponseBodyUsers,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResources,
+    ListTransferFileDownloadUrlResponseBodyUrls,
     ListTransferFilesResponseBodyFiles,
     ListUserAdOrganizationUnitsResponseBodyOUNames,
     ModifyCenterPolicyRequestAuthorizeAccessPolicyRule,
