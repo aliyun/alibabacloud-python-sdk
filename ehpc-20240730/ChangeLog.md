@@ -1,3 +1,8 @@
+2025-12-30 Version: 2.2.2
+- Update API CreateNodes: add request parameters Hostnames.
+- Update API GetCluster: add response parameters Body.SchedulerSpec.EnablePowerSaving.
+
+
 2025-12-17 Version: 2.2.1
 - Update API GetQueue: add response parameters Body.Queue.CreateTime.
 - Update API GetQueue: add response parameters Body.Queue.UpdateTime.
