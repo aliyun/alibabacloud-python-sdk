@@ -1,24 +1,23 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
 from typing import Dict
-from Tea.core import TeaCore
 
+from alibabacloud_domain20180208 import models as main_models
+from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
-from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_domain20180208 import models as domain_20180208_models
-from alibabacloud_tea_util import models as util_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_tea_openapi.utils import Utils
+from darabonba.core import DaraCore as DaraCore
+from darabonba.runtime import RuntimeOptions
 
-
+"""
+"""
 class Client(OpenApiClient):
-    """
-    *\
-    """
+
     def __init__(
-        self, 
-        config: open_api_models.Config,
+        self,
+        config: open_api_util_models.Config,
     ):
         super().__init__(config)
         self._endpoint_rule = 'central'
@@ -35,3928 +34,3070 @@ class Client(OpenApiClient):
         endpoint_map: Dict[str, str],
         endpoint: str,
     ) -> str:
-        if not UtilClient.empty(endpoint):
+        if not DaraCore.is_null(endpoint):
             return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+        if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
     def accept_demand_with_options(
         self,
-        request: domain_20180208_models.AcceptDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.AcceptDemandResponse:
-        """
-        @param request: AcceptDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AcceptDemandResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AcceptDemandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AcceptDemandResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.message):
+        if not DaraCore.is_null(request.message):
             query['Message'] = request.message
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AcceptDemand',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AcceptDemand',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.AcceptDemandResponse(),
+        return DaraCore.from_map(
+            main_models.AcceptDemandResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def accept_demand_with_options_async(
         self,
-        request: domain_20180208_models.AcceptDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.AcceptDemandResponse:
-        """
-        @param request: AcceptDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AcceptDemandResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AcceptDemandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AcceptDemandResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.message):
+        if not DaraCore.is_null(request.message):
             query['Message'] = request.message
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AcceptDemand',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AcceptDemand',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.AcceptDemandResponse(),
+        return DaraCore.from_map(
+            main_models.AcceptDemandResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def accept_demand(
         self,
-        request: domain_20180208_models.AcceptDemandRequest,
-    ) -> domain_20180208_models.AcceptDemandResponse:
-        """
-        @param request: AcceptDemandRequest
-        @return: AcceptDemandResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AcceptDemandRequest,
+    ) -> main_models.AcceptDemandResponse:
+        runtime = RuntimeOptions()
         return self.accept_demand_with_options(request, runtime)
 
     async def accept_demand_async(
         self,
-        request: domain_20180208_models.AcceptDemandRequest,
-    ) -> domain_20180208_models.AcceptDemandResponse:
-        """
-        @param request: AcceptDemandRequest
-        @return: AcceptDemandResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AcceptDemandRequest,
+    ) -> main_models.AcceptDemandResponse:
+        runtime = RuntimeOptions()
         return await self.accept_demand_with_options_async(request, runtime)
 
     def batch_intrude_domains_with_options(
         self,
-        tmp_req: domain_20180208_models.BatchIntrudeDomainsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.BatchIntrudeDomainsResponse:
-        """
-        @summary 闯入接口
-        
-        @param tmp_req: BatchIntrudeDomainsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchIntrudeDomainsResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = domain_20180208_models.BatchIntrudeDomainsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.domain_names):
-            request.domain_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domain_names, 'DomainNames', 'json')
+        tmp_req: main_models.BatchIntrudeDomainsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchIntrudeDomainsResponse:
+        tmp_req.validate()
+        request = main_models.BatchIntrudeDomainsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.domain_names):
+            request.domain_names_shrink = Utils.array_to_string_with_specified_style(tmp_req.domain_names, 'DomainNames', 'json')
         query = {}
-        if not UtilClient.is_unset(request.domain_names_shrink):
+        if not DaraCore.is_null(request.domain_names_shrink):
             query['DomainNames'] = request.domain_names_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='BatchIntrudeDomains',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BatchIntrudeDomains',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.BatchIntrudeDomainsResponse(),
+        return DaraCore.from_map(
+            main_models.BatchIntrudeDomainsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def batch_intrude_domains_with_options_async(
         self,
-        tmp_req: domain_20180208_models.BatchIntrudeDomainsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.BatchIntrudeDomainsResponse:
-        """
-        @summary 闯入接口
-        
-        @param tmp_req: BatchIntrudeDomainsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchIntrudeDomainsResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = domain_20180208_models.BatchIntrudeDomainsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.domain_names):
-            request.domain_names_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domain_names, 'DomainNames', 'json')
+        tmp_req: main_models.BatchIntrudeDomainsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchIntrudeDomainsResponse:
+        tmp_req.validate()
+        request = main_models.BatchIntrudeDomainsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.domain_names):
+            request.domain_names_shrink = Utils.array_to_string_with_specified_style(tmp_req.domain_names, 'DomainNames', 'json')
         query = {}
-        if not UtilClient.is_unset(request.domain_names_shrink):
+        if not DaraCore.is_null(request.domain_names_shrink):
             query['DomainNames'] = request.domain_names_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='BatchIntrudeDomains',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BatchIntrudeDomains',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.BatchIntrudeDomainsResponse(),
+        return DaraCore.from_map(
+            main_models.BatchIntrudeDomainsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def batch_intrude_domains(
         self,
-        request: domain_20180208_models.BatchIntrudeDomainsRequest,
-    ) -> domain_20180208_models.BatchIntrudeDomainsResponse:
-        """
-        @summary 闯入接口
-        
-        @param request: BatchIntrudeDomainsRequest
-        @return: BatchIntrudeDomainsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BatchIntrudeDomainsRequest,
+    ) -> main_models.BatchIntrudeDomainsResponse:
+        runtime = RuntimeOptions()
         return self.batch_intrude_domains_with_options(request, runtime)
 
     async def batch_intrude_domains_async(
         self,
-        request: domain_20180208_models.BatchIntrudeDomainsRequest,
-    ) -> domain_20180208_models.BatchIntrudeDomainsResponse:
-        """
-        @summary 闯入接口
-        
-        @param request: BatchIntrudeDomainsRequest
-        @return: BatchIntrudeDomainsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BatchIntrudeDomainsRequest,
+    ) -> main_models.BatchIntrudeDomainsResponse:
+        runtime = RuntimeOptions()
         return await self.batch_intrude_domains_with_options_async(request, runtime)
 
     def batch_query_push_status_with_options(
         self,
-        tmp_req: domain_20180208_models.BatchQueryPushStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.BatchQueryPushStatusResponse:
-        """
-        @summary 根据OutBizId（批量）查看带价PUSH状态，通常用于超时场景补偿
-        
-        @param tmp_req: BatchQueryPushStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchQueryPushStatusResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = domain_20180208_models.BatchQueryPushStatusShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.out_biz_ids):
-            request.out_biz_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_biz_ids, 'OutBizIds', 'json')
+        tmp_req: main_models.BatchQueryPushStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchQueryPushStatusResponse:
+        tmp_req.validate()
+        request = main_models.BatchQueryPushStatusShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.out_biz_ids):
+            request.out_biz_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.out_biz_ids, 'OutBizIds', 'json')
         query = {}
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.out_biz_ids_shrink):
+        if not DaraCore.is_null(request.out_biz_ids_shrink):
             query['OutBizIds'] = request.out_biz_ids_shrink
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='BatchQueryPushStatus',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BatchQueryPushStatus',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.BatchQueryPushStatusResponse(),
+        return DaraCore.from_map(
+            main_models.BatchQueryPushStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def batch_query_push_status_with_options_async(
         self,
-        tmp_req: domain_20180208_models.BatchQueryPushStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.BatchQueryPushStatusResponse:
-        """
-        @summary 根据OutBizId（批量）查看带价PUSH状态，通常用于超时场景补偿
-        
-        @param tmp_req: BatchQueryPushStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchQueryPushStatusResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = domain_20180208_models.BatchQueryPushStatusShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.out_biz_ids):
-            request.out_biz_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_biz_ids, 'OutBizIds', 'json')
+        tmp_req: main_models.BatchQueryPushStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchQueryPushStatusResponse:
+        tmp_req.validate()
+        request = main_models.BatchQueryPushStatusShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.out_biz_ids):
+            request.out_biz_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.out_biz_ids, 'OutBizIds', 'json')
         query = {}
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.out_biz_ids_shrink):
+        if not DaraCore.is_null(request.out_biz_ids_shrink):
             query['OutBizIds'] = request.out_biz_ids_shrink
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='BatchQueryPushStatus',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BatchQueryPushStatus',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.BatchQueryPushStatusResponse(),
+        return DaraCore.from_map(
+            main_models.BatchQueryPushStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def batch_query_push_status(
         self,
-        request: domain_20180208_models.BatchQueryPushStatusRequest,
-    ) -> domain_20180208_models.BatchQueryPushStatusResponse:
-        """
-        @summary 根据OutBizId（批量）查看带价PUSH状态，通常用于超时场景补偿
-        
-        @param request: BatchQueryPushStatusRequest
-        @return: BatchQueryPushStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BatchQueryPushStatusRequest,
+    ) -> main_models.BatchQueryPushStatusResponse:
+        runtime = RuntimeOptions()
         return self.batch_query_push_status_with_options(request, runtime)
 
     async def batch_query_push_status_async(
         self,
-        request: domain_20180208_models.BatchQueryPushStatusRequest,
-    ) -> domain_20180208_models.BatchQueryPushStatusResponse:
-        """
-        @summary 根据OutBizId（批量）查看带价PUSH状态，通常用于超时场景补偿
-        
-        @param request: BatchQueryPushStatusRequest
-        @return: BatchQueryPushStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BatchQueryPushStatusRequest,
+    ) -> main_models.BatchQueryPushStatusResponse:
+        runtime = RuntimeOptions()
         return await self.batch_query_push_status_with_options_async(request, runtime)
 
     def batch_recall_push_with_options(
         self,
-        tmp_req: domain_20180208_models.BatchRecallPushRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.BatchRecallPushResponse:
-        """
-        @summary 批量撤回带价PUSH
-        
-        @param tmp_req: BatchRecallPushRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchRecallPushResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = domain_20180208_models.BatchRecallPushShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.out_biz_ids):
-            request.out_biz_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_biz_ids, 'OutBizIds', 'json')
+        tmp_req: main_models.BatchRecallPushRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchRecallPushResponse:
+        tmp_req.validate()
+        request = main_models.BatchRecallPushShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.out_biz_ids):
+            request.out_biz_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.out_biz_ids, 'OutBizIds', 'json')
         query = {}
-        if not UtilClient.is_unset(request.out_biz_ids_shrink):
+        if not DaraCore.is_null(request.out_biz_ids_shrink):
             query['OutBizIds'] = request.out_biz_ids_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='BatchRecallPush',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BatchRecallPush',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.BatchRecallPushResponse(),
+        return DaraCore.from_map(
+            main_models.BatchRecallPushResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def batch_recall_push_with_options_async(
         self,
-        tmp_req: domain_20180208_models.BatchRecallPushRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.BatchRecallPushResponse:
-        """
-        @summary 批量撤回带价PUSH
-        
-        @param tmp_req: BatchRecallPushRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BatchRecallPushResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = domain_20180208_models.BatchRecallPushShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.out_biz_ids):
-            request.out_biz_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.out_biz_ids, 'OutBizIds', 'json')
+        tmp_req: main_models.BatchRecallPushRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchRecallPushResponse:
+        tmp_req.validate()
+        request = main_models.BatchRecallPushShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.out_biz_ids):
+            request.out_biz_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.out_biz_ids, 'OutBizIds', 'json')
         query = {}
-        if not UtilClient.is_unset(request.out_biz_ids_shrink):
+        if not DaraCore.is_null(request.out_biz_ids_shrink):
             query['OutBizIds'] = request.out_biz_ids_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='BatchRecallPush',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BatchRecallPush',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.BatchRecallPushResponse(),
+        return DaraCore.from_map(
+            main_models.BatchRecallPushResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def batch_recall_push(
         self,
-        request: domain_20180208_models.BatchRecallPushRequest,
-    ) -> domain_20180208_models.BatchRecallPushResponse:
-        """
-        @summary 批量撤回带价PUSH
-        
-        @param request: BatchRecallPushRequest
-        @return: BatchRecallPushResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BatchRecallPushRequest,
+    ) -> main_models.BatchRecallPushResponse:
+        runtime = RuntimeOptions()
         return self.batch_recall_push_with_options(request, runtime)
 
     async def batch_recall_push_async(
         self,
-        request: domain_20180208_models.BatchRecallPushRequest,
-    ) -> domain_20180208_models.BatchRecallPushResponse:
-        """
-        @summary 批量撤回带价PUSH
-        
-        @param request: BatchRecallPushRequest
-        @return: BatchRecallPushResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BatchRecallPushRequest,
+    ) -> main_models.BatchRecallPushResponse:
+        runtime = RuntimeOptions()
         return await self.batch_recall_push_with_options_async(request, runtime)
 
     def bid_domain_with_options(
         self,
-        request: domain_20180208_models.BidDomainRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.BidDomainResponse:
-        """
-        @param request: BidDomainRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BidDomainResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BidDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BidDomainResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.auction_id):
+        if not DaraCore.is_null(request.auction_id):
             body['AuctionId'] = request.auction_id
-        if not UtilClient.is_unset(request.currency):
+        if not DaraCore.is_null(request.currency):
             body['Currency'] = request.currency
-        if not UtilClient.is_unset(request.max_bid):
+        if not DaraCore.is_null(request.max_bid):
             body['MaxBid'] = request.max_bid
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='BidDomain',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BidDomain',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.BidDomainResponse(),
+        return DaraCore.from_map(
+            main_models.BidDomainResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def bid_domain_with_options_async(
         self,
-        request: domain_20180208_models.BidDomainRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.BidDomainResponse:
-        """
-        @param request: BidDomainRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BidDomainResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BidDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BidDomainResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.auction_id):
+        if not DaraCore.is_null(request.auction_id):
             body['AuctionId'] = request.auction_id
-        if not UtilClient.is_unset(request.currency):
+        if not DaraCore.is_null(request.currency):
             body['Currency'] = request.currency
-        if not UtilClient.is_unset(request.max_bid):
+        if not DaraCore.is_null(request.max_bid):
             body['MaxBid'] = request.max_bid
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='BidDomain',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BidDomain',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.BidDomainResponse(),
+        return DaraCore.from_map(
+            main_models.BidDomainResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def bid_domain(
         self,
-        request: domain_20180208_models.BidDomainRequest,
-    ) -> domain_20180208_models.BidDomainResponse:
-        """
-        @param request: BidDomainRequest
-        @return: BidDomainResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BidDomainRequest,
+    ) -> main_models.BidDomainResponse:
+        runtime = RuntimeOptions()
         return self.bid_domain_with_options(request, runtime)
 
     async def bid_domain_async(
         self,
-        request: domain_20180208_models.BidDomainRequest,
-    ) -> domain_20180208_models.BidDomainResponse:
-        """
-        @param request: BidDomainRequest
-        @return: BidDomainResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BidDomainRequest,
+    ) -> main_models.BidDomainResponse:
+        runtime = RuntimeOptions()
         return await self.bid_domain_with_options_async(request, runtime)
 
     def change_auction_with_options(
         self,
-        request: domain_20180208_models.ChangeAuctionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.ChangeAuctionResponse:
-        """
-        @param request: ChangeAuctionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ChangeAuctionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ChangeAuctionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ChangeAuctionResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.auction_list):
+        if not DaraCore.is_null(request.auction_list):
             body['AuctionList'] = request.auction_list
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ChangeAuction',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ChangeAuction',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.ChangeAuctionResponse(),
+        return DaraCore.from_map(
+            main_models.ChangeAuctionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def change_auction_with_options_async(
         self,
-        request: domain_20180208_models.ChangeAuctionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.ChangeAuctionResponse:
-        """
-        @param request: ChangeAuctionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ChangeAuctionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ChangeAuctionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ChangeAuctionResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.auction_list):
+        if not DaraCore.is_null(request.auction_list):
             body['AuctionList'] = request.auction_list
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ChangeAuction',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ChangeAuction',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.ChangeAuctionResponse(),
+        return DaraCore.from_map(
+            main_models.ChangeAuctionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def change_auction(
         self,
-        request: domain_20180208_models.ChangeAuctionRequest,
-    ) -> domain_20180208_models.ChangeAuctionResponse:
-        """
-        @param request: ChangeAuctionRequest
-        @return: ChangeAuctionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ChangeAuctionRequest,
+    ) -> main_models.ChangeAuctionResponse:
+        runtime = RuntimeOptions()
         return self.change_auction_with_options(request, runtime)
 
     async def change_auction_async(
         self,
-        request: domain_20180208_models.ChangeAuctionRequest,
-    ) -> domain_20180208_models.ChangeAuctionResponse:
-        """
-        @param request: ChangeAuctionRequest
-        @return: ChangeAuctionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ChangeAuctionRequest,
+    ) -> main_models.ChangeAuctionResponse:
+        runtime = RuntimeOptions()
         return await self.change_auction_with_options_async(request, runtime)
 
     def check_domain_status_with_options(
         self,
-        request: domain_20180208_models.CheckDomainStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.CheckDomainStatusResponse:
-        """
-        @summary 校验域名在售状态
-        
-        @param request: CheckDomainStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckDomainStatusResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.CheckDomainStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckDomainStatusResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CheckDomainStatus',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CheckDomainStatus',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.CheckDomainStatusResponse(),
+        return DaraCore.from_map(
+            main_models.CheckDomainStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def check_domain_status_with_options_async(
         self,
-        request: domain_20180208_models.CheckDomainStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.CheckDomainStatusResponse:
-        """
-        @summary 校验域名在售状态
-        
-        @param request: CheckDomainStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckDomainStatusResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.CheckDomainStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckDomainStatusResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CheckDomainStatus',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CheckDomainStatus',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.CheckDomainStatusResponse(),
+        return DaraCore.from_map(
+            main_models.CheckDomainStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def check_domain_status(
         self,
-        request: domain_20180208_models.CheckDomainStatusRequest,
-    ) -> domain_20180208_models.CheckDomainStatusResponse:
-        """
-        @summary 校验域名在售状态
-        
-        @param request: CheckDomainStatusRequest
-        @return: CheckDomainStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CheckDomainStatusRequest,
+    ) -> main_models.CheckDomainStatusResponse:
+        runtime = RuntimeOptions()
         return self.check_domain_status_with_options(request, runtime)
 
     async def check_domain_status_async(
         self,
-        request: domain_20180208_models.CheckDomainStatusRequest,
-    ) -> domain_20180208_models.CheckDomainStatusResponse:
-        """
-        @summary 校验域名在售状态
-        
-        @param request: CheckDomainStatusRequest
-        @return: CheckDomainStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CheckDomainStatusRequest,
+    ) -> main_models.CheckDomainStatusResponse:
+        runtime = RuntimeOptions()
         return await self.check_domain_status_with_options_async(request, runtime)
 
     def check_push_receiver_with_options(
         self,
-        request: domain_20180208_models.CheckPushReceiverRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.CheckPushReceiverResponse:
-        """
-        @summary 校验域名带价PUSH接收方可接收
-        
-        @param request: CheckPushReceiverRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckPushReceiverResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CheckPushReceiverRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckPushReceiverResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.receiver_account):
+        if not DaraCore.is_null(request.receiver_account):
             query['ReceiverAccount'] = request.receiver_account
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CheckPushReceiver',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CheckPushReceiver',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.CheckPushReceiverResponse(),
+        return DaraCore.from_map(
+            main_models.CheckPushReceiverResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def check_push_receiver_with_options_async(
         self,
-        request: domain_20180208_models.CheckPushReceiverRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.CheckPushReceiverResponse:
-        """
-        @summary 校验域名带价PUSH接收方可接收
-        
-        @param request: CheckPushReceiverRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckPushReceiverResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CheckPushReceiverRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckPushReceiverResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.receiver_account):
+        if not DaraCore.is_null(request.receiver_account):
             query['ReceiverAccount'] = request.receiver_account
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CheckPushReceiver',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CheckPushReceiver',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.CheckPushReceiverResponse(),
+        return DaraCore.from_map(
+            main_models.CheckPushReceiverResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def check_push_receiver(
         self,
-        request: domain_20180208_models.CheckPushReceiverRequest,
-    ) -> domain_20180208_models.CheckPushReceiverResponse:
-        """
-        @summary 校验域名带价PUSH接收方可接收
-        
-        @param request: CheckPushReceiverRequest
-        @return: CheckPushReceiverResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CheckPushReceiverRequest,
+    ) -> main_models.CheckPushReceiverResponse:
+        runtime = RuntimeOptions()
         return self.check_push_receiver_with_options(request, runtime)
 
     async def check_push_receiver_async(
         self,
-        request: domain_20180208_models.CheckPushReceiverRequest,
-    ) -> domain_20180208_models.CheckPushReceiverResponse:
-        """
-        @summary 校验域名带价PUSH接收方可接收
-        
-        @param request: CheckPushReceiverRequest
-        @return: CheckPushReceiverResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CheckPushReceiverRequest,
+    ) -> main_models.CheckPushReceiverResponse:
+        runtime = RuntimeOptions()
         return await self.check_push_receiver_with_options_async(request, runtime)
 
     def check_selected_domain_status_with_options(
         self,
-        request: domain_20180208_models.CheckSelectedDomainStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.CheckSelectedDomainStatusResponse:
-        """
-        @summary 一口价严选询价接口
-        
-        @param request: CheckSelectedDomainStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckSelectedDomainStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CheckSelectedDomainStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckSelectedDomainStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.domain):
+        if not DaraCore.is_null(request.domain):
             query['Domain'] = request.domain
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CheckSelectedDomainStatus',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CheckSelectedDomainStatus',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.CheckSelectedDomainStatusResponse(),
+        return DaraCore.from_map(
+            main_models.CheckSelectedDomainStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def check_selected_domain_status_with_options_async(
         self,
-        request: domain_20180208_models.CheckSelectedDomainStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.CheckSelectedDomainStatusResponse:
-        """
-        @summary 一口价严选询价接口
-        
-        @param request: CheckSelectedDomainStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckSelectedDomainStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CheckSelectedDomainStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckSelectedDomainStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.domain):
+        if not DaraCore.is_null(request.domain):
             query['Domain'] = request.domain
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CheckSelectedDomainStatus',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CheckSelectedDomainStatus',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.CheckSelectedDomainStatusResponse(),
+        return DaraCore.from_map(
+            main_models.CheckSelectedDomainStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def check_selected_domain_status(
         self,
-        request: domain_20180208_models.CheckSelectedDomainStatusRequest,
-    ) -> domain_20180208_models.CheckSelectedDomainStatusResponse:
-        """
-        @summary 一口价严选询价接口
-        
-        @param request: CheckSelectedDomainStatusRequest
-        @return: CheckSelectedDomainStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CheckSelectedDomainStatusRequest,
+    ) -> main_models.CheckSelectedDomainStatusResponse:
+        runtime = RuntimeOptions()
         return self.check_selected_domain_status_with_options(request, runtime)
 
     async def check_selected_domain_status_async(
         self,
-        request: domain_20180208_models.CheckSelectedDomainStatusRequest,
-    ) -> domain_20180208_models.CheckSelectedDomainStatusResponse:
-        """
-        @summary 一口价严选询价接口
-        
-        @param request: CheckSelectedDomainStatusRequest
-        @return: CheckSelectedDomainStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CheckSelectedDomainStatusRequest,
+    ) -> main_models.CheckSelectedDomainStatusResponse:
+        runtime = RuntimeOptions()
         return await self.check_selected_domain_status_with_options_async(request, runtime)
 
     def create_fixed_price_demand_order_with_options(
         self,
-        request: domain_20180208_models.CreateFixedPriceDemandOrderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.CreateFixedPriceDemandOrderResponse:
-        """
-        @summary 创建一口价需求单
-        
-        @param request: CreateFixedPriceDemandOrderRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateFixedPriceDemandOrderResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateFixedPriceDemandOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateFixedPriceDemandOrderResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.code):
+        if not DaraCore.is_null(request.code):
             query['Code'] = request.code
-        if not UtilClient.is_unset(request.contact_id):
+        if not DaraCore.is_null(request.contact_id):
             query['ContactId'] = request.contact_id
-        if not UtilClient.is_unset(request.domain):
+        if not DaraCore.is_null(request.domain):
             query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.source):
+        if not DaraCore.is_null(request.source):
             query['Source'] = request.source
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateFixedPriceDemandOrder',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateFixedPriceDemandOrder',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.CreateFixedPriceDemandOrderResponse(),
+        return DaraCore.from_map(
+            main_models.CreateFixedPriceDemandOrderResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_fixed_price_demand_order_with_options_async(
         self,
-        request: domain_20180208_models.CreateFixedPriceDemandOrderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.CreateFixedPriceDemandOrderResponse:
-        """
-        @summary 创建一口价需求单
-        
-        @param request: CreateFixedPriceDemandOrderRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateFixedPriceDemandOrderResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateFixedPriceDemandOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateFixedPriceDemandOrderResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.code):
+        if not DaraCore.is_null(request.code):
             query['Code'] = request.code
-        if not UtilClient.is_unset(request.contact_id):
+        if not DaraCore.is_null(request.contact_id):
             query['ContactId'] = request.contact_id
-        if not UtilClient.is_unset(request.domain):
+        if not DaraCore.is_null(request.domain):
             query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.source):
+        if not DaraCore.is_null(request.source):
             query['Source'] = request.source
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateFixedPriceDemandOrder',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateFixedPriceDemandOrder',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.CreateFixedPriceDemandOrderResponse(),
+        return DaraCore.from_map(
+            main_models.CreateFixedPriceDemandOrderResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_fixed_price_demand_order(
         self,
-        request: domain_20180208_models.CreateFixedPriceDemandOrderRequest,
-    ) -> domain_20180208_models.CreateFixedPriceDemandOrderResponse:
-        """
-        @summary 创建一口价需求单
-        
-        @param request: CreateFixedPriceDemandOrderRequest
-        @return: CreateFixedPriceDemandOrderResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateFixedPriceDemandOrderRequest,
+    ) -> main_models.CreateFixedPriceDemandOrderResponse:
+        runtime = RuntimeOptions()
         return self.create_fixed_price_demand_order_with_options(request, runtime)
 
     async def create_fixed_price_demand_order_async(
         self,
-        request: domain_20180208_models.CreateFixedPriceDemandOrderRequest,
-    ) -> domain_20180208_models.CreateFixedPriceDemandOrderResponse:
-        """
-        @summary 创建一口价需求单
-        
-        @param request: CreateFixedPriceDemandOrderRequest
-        @return: CreateFixedPriceDemandOrderResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateFixedPriceDemandOrderRequest,
+    ) -> main_models.CreateFixedPriceDemandOrderResponse:
+        runtime = RuntimeOptions()
         return await self.create_fixed_price_demand_order_with_options_async(request, runtime)
 
     def create_fixed_price_selected_order_with_options(
         self,
-        request: domain_20180208_models.CreateFixedPriceSelectedOrderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.CreateFixedPriceSelectedOrderResponse:
-        """
-        @summary 一口价严选下单购买接口，阿里云账户余额直接扣费
-        
-        @param request: CreateFixedPriceSelectedOrderRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateFixedPriceSelectedOrderResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateFixedPriceSelectedOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateFixedPriceSelectedOrderResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.code):
+        if not DaraCore.is_null(request.code):
             query['Code'] = request.code
-        if not UtilClient.is_unset(request.contact_id):
+        if not DaraCore.is_null(request.contact_id):
             query['ContactId'] = request.contact_id
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.expected_price):
+        if not DaraCore.is_null(request.expected_price):
             query['ExpectedPrice'] = request.expected_price
-        if not UtilClient.is_unset(request.source):
+        if not DaraCore.is_null(request.source):
             query['Source'] = request.source
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateFixedPriceSelectedOrder',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateFixedPriceSelectedOrder',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.CreateFixedPriceSelectedOrderResponse(),
+        return DaraCore.from_map(
+            main_models.CreateFixedPriceSelectedOrderResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_fixed_price_selected_order_with_options_async(
         self,
-        request: domain_20180208_models.CreateFixedPriceSelectedOrderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.CreateFixedPriceSelectedOrderResponse:
-        """
-        @summary 一口价严选下单购买接口，阿里云账户余额直接扣费
-        
-        @param request: CreateFixedPriceSelectedOrderRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateFixedPriceSelectedOrderResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateFixedPriceSelectedOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateFixedPriceSelectedOrderResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.code):
+        if not DaraCore.is_null(request.code):
             query['Code'] = request.code
-        if not UtilClient.is_unset(request.contact_id):
+        if not DaraCore.is_null(request.contact_id):
             query['ContactId'] = request.contact_id
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.expected_price):
+        if not DaraCore.is_null(request.expected_price):
             query['ExpectedPrice'] = request.expected_price
-        if not UtilClient.is_unset(request.source):
+        if not DaraCore.is_null(request.source):
             query['Source'] = request.source
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateFixedPriceSelectedOrder',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateFixedPriceSelectedOrder',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.CreateFixedPriceSelectedOrderResponse(),
+        return DaraCore.from_map(
+            main_models.CreateFixedPriceSelectedOrderResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_fixed_price_selected_order(
         self,
-        request: domain_20180208_models.CreateFixedPriceSelectedOrderRequest,
-    ) -> domain_20180208_models.CreateFixedPriceSelectedOrderResponse:
-        """
-        @summary 一口价严选下单购买接口，阿里云账户余额直接扣费
-        
-        @param request: CreateFixedPriceSelectedOrderRequest
-        @return: CreateFixedPriceSelectedOrderResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateFixedPriceSelectedOrderRequest,
+    ) -> main_models.CreateFixedPriceSelectedOrderResponse:
+        runtime = RuntimeOptions()
         return self.create_fixed_price_selected_order_with_options(request, runtime)
 
     async def create_fixed_price_selected_order_async(
         self,
-        request: domain_20180208_models.CreateFixedPriceSelectedOrderRequest,
-    ) -> domain_20180208_models.CreateFixedPriceSelectedOrderResponse:
-        """
-        @summary 一口价严选下单购买接口，阿里云账户余额直接扣费
-        
-        @param request: CreateFixedPriceSelectedOrderRequest
-        @return: CreateFixedPriceSelectedOrderResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateFixedPriceSelectedOrderRequest,
+    ) -> main_models.CreateFixedPriceSelectedOrderResponse:
+        runtime = RuntimeOptions()
         return await self.create_fixed_price_selected_order_with_options_async(request, runtime)
 
     def fail_demand_with_options(
         self,
-        request: domain_20180208_models.FailDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.FailDemandResponse:
-        """
-        @param request: FailDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: FailDemandResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.FailDemandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.FailDemandResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.message):
+        if not DaraCore.is_null(request.message):
             query['Message'] = request.message
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='FailDemand',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'FailDemand',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.FailDemandResponse(),
+        return DaraCore.from_map(
+            main_models.FailDemandResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def fail_demand_with_options_async(
         self,
-        request: domain_20180208_models.FailDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.FailDemandResponse:
-        """
-        @param request: FailDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: FailDemandResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.FailDemandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.FailDemandResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.message):
+        if not DaraCore.is_null(request.message):
             query['Message'] = request.message
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='FailDemand',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'FailDemand',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.FailDemandResponse(),
+        return DaraCore.from_map(
+            main_models.FailDemandResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def fail_demand(
         self,
-        request: domain_20180208_models.FailDemandRequest,
-    ) -> domain_20180208_models.FailDemandResponse:
-        """
-        @param request: FailDemandRequest
-        @return: FailDemandResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.FailDemandRequest,
+    ) -> main_models.FailDemandResponse:
+        runtime = RuntimeOptions()
         return self.fail_demand_with_options(request, runtime)
 
     async def fail_demand_async(
         self,
-        request: domain_20180208_models.FailDemandRequest,
-    ) -> domain_20180208_models.FailDemandResponse:
-        """
-        @param request: FailDemandRequest
-        @return: FailDemandResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.FailDemandRequest,
+    ) -> main_models.FailDemandResponse:
+        runtime = RuntimeOptions()
         return await self.fail_demand_with_options_async(request, runtime)
 
     def finish_demand_with_options(
         self,
-        request: domain_20180208_models.FinishDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.FinishDemandResponse:
-        """
-        @param request: FinishDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: FinishDemandResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.FinishDemandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.FinishDemandResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.message):
+        if not DaraCore.is_null(request.message):
             query['Message'] = request.message
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='FinishDemand',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'FinishDemand',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.FinishDemandResponse(),
+        return DaraCore.from_map(
+            main_models.FinishDemandResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def finish_demand_with_options_async(
         self,
-        request: domain_20180208_models.FinishDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.FinishDemandResponse:
-        """
-        @param request: FinishDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: FinishDemandResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.FinishDemandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.FinishDemandResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.message):
+        if not DaraCore.is_null(request.message):
             query['Message'] = request.message
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='FinishDemand',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'FinishDemand',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.FinishDemandResponse(),
+        return DaraCore.from_map(
+            main_models.FinishDemandResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def finish_demand(
         self,
-        request: domain_20180208_models.FinishDemandRequest,
-    ) -> domain_20180208_models.FinishDemandResponse:
-        """
-        @param request: FinishDemandRequest
-        @return: FinishDemandResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.FinishDemandRequest,
+    ) -> main_models.FinishDemandResponse:
+        runtime = RuntimeOptions()
         return self.finish_demand_with_options(request, runtime)
 
     async def finish_demand_async(
         self,
-        request: domain_20180208_models.FinishDemandRequest,
-    ) -> domain_20180208_models.FinishDemandResponse:
-        """
-        @param request: FinishDemandRequest
-        @return: FinishDemandResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.FinishDemandRequest,
+    ) -> main_models.FinishDemandResponse:
+        runtime = RuntimeOptions()
         return await self.finish_demand_with_options_async(request, runtime)
 
     def get_intl_domain_download_url_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.GetIntlDomainDownloadUrlResponse:
-        """
-        @param request: GetIntlDomainDownloadUrlRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetIntlDomainDownloadUrlResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetIntlDomainDownloadUrl',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIntlDomainDownloadUrlResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetIntlDomainDownloadUrl',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.GetIntlDomainDownloadUrlResponse(),
+        return DaraCore.from_map(
+            main_models.GetIntlDomainDownloadUrlResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_intl_domain_download_url_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.GetIntlDomainDownloadUrlResponse:
-        """
-        @param request: GetIntlDomainDownloadUrlRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetIntlDomainDownloadUrlResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetIntlDomainDownloadUrl',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIntlDomainDownloadUrlResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetIntlDomainDownloadUrl',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.GetIntlDomainDownloadUrlResponse(),
+        return DaraCore.from_map(
+            main_models.GetIntlDomainDownloadUrlResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_intl_domain_download_url(self) -> domain_20180208_models.GetIntlDomainDownloadUrlResponse:
-        """
-        @return: GetIntlDomainDownloadUrlResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def get_intl_domain_download_url(self) -> main_models.GetIntlDomainDownloadUrlResponse:
+        runtime = RuntimeOptions()
         return self.get_intl_domain_download_url_with_options(runtime)
 
-    async def get_intl_domain_download_url_async(self) -> domain_20180208_models.GetIntlDomainDownloadUrlResponse:
-        """
-        @return: GetIntlDomainDownloadUrlResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def get_intl_domain_download_url_async(self) -> main_models.GetIntlDomainDownloadUrlResponse:
+        runtime = RuntimeOptions()
         return await self.get_intl_domain_download_url_with_options_async(runtime)
 
     def get_reserve_domain_url_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.GetReserveDomainUrlResponse:
-        """
-        @param request: GetReserveDomainUrlRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetReserveDomainUrlResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetReserveDomainUrl',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.GetReserveDomainUrlResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetReserveDomainUrl',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.GetReserveDomainUrlResponse(),
+        return DaraCore.from_map(
+            main_models.GetReserveDomainUrlResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_reserve_domain_url_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.GetReserveDomainUrlResponse:
-        """
-        @param request: GetReserveDomainUrlRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetReserveDomainUrlResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetReserveDomainUrl',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.GetReserveDomainUrlResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetReserveDomainUrl',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.GetReserveDomainUrlResponse(),
+        return DaraCore.from_map(
+            main_models.GetReserveDomainUrlResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_reserve_domain_url(self) -> domain_20180208_models.GetReserveDomainUrlResponse:
-        """
-        @return: GetReserveDomainUrlResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def get_reserve_domain_url(self) -> main_models.GetReserveDomainUrlResponse:
+        runtime = RuntimeOptions()
         return self.get_reserve_domain_url_with_options(runtime)
 
-    async def get_reserve_domain_url_async(self) -> domain_20180208_models.GetReserveDomainUrlResponse:
-        """
-        @return: GetReserveDomainUrlResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def get_reserve_domain_url_async(self) -> main_models.GetReserveDomainUrlResponse:
+        runtime = RuntimeOptions()
         return await self.get_reserve_domain_url_with_options_async(runtime)
 
     def purchase_intl_domain_with_options(
         self,
-        request: domain_20180208_models.PurchaseIntlDomainRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.PurchaseIntlDomainResponse:
-        """
-        @summary 购买国际站预释放域名
-        
-        @param request: PurchaseIntlDomainRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PurchaseIntlDomainResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.PurchaseIntlDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PurchaseIntlDomainResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.auction_id):
+        if not DaraCore.is_null(request.auction_id):
             body['AuctionId'] = request.auction_id
-        if not UtilClient.is_unset(request.currency):
+        if not DaraCore.is_null(request.currency):
             body['Currency'] = request.currency
-        if not UtilClient.is_unset(request.price):
+        if not DaraCore.is_null(request.price):
             body['Price'] = request.price
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='PurchaseIntlDomain',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'PurchaseIntlDomain',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.PurchaseIntlDomainResponse(),
+        return DaraCore.from_map(
+            main_models.PurchaseIntlDomainResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def purchase_intl_domain_with_options_async(
         self,
-        request: domain_20180208_models.PurchaseIntlDomainRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.PurchaseIntlDomainResponse:
-        """
-        @summary 购买国际站预释放域名
-        
-        @param request: PurchaseIntlDomainRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PurchaseIntlDomainResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.PurchaseIntlDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PurchaseIntlDomainResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.auction_id):
+        if not DaraCore.is_null(request.auction_id):
             body['AuctionId'] = request.auction_id
-        if not UtilClient.is_unset(request.currency):
+        if not DaraCore.is_null(request.currency):
             body['Currency'] = request.currency
-        if not UtilClient.is_unset(request.price):
+        if not DaraCore.is_null(request.price):
             body['Price'] = request.price
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='PurchaseIntlDomain',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'PurchaseIntlDomain',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.PurchaseIntlDomainResponse(),
+        return DaraCore.from_map(
+            main_models.PurchaseIntlDomainResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def purchase_intl_domain(
         self,
-        request: domain_20180208_models.PurchaseIntlDomainRequest,
-    ) -> domain_20180208_models.PurchaseIntlDomainResponse:
-        """
-        @summary 购买国际站预释放域名
-        
-        @param request: PurchaseIntlDomainRequest
-        @return: PurchaseIntlDomainResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.PurchaseIntlDomainRequest,
+    ) -> main_models.PurchaseIntlDomainResponse:
+        runtime = RuntimeOptions()
         return self.purchase_intl_domain_with_options(request, runtime)
 
     async def purchase_intl_domain_async(
         self,
-        request: domain_20180208_models.PurchaseIntlDomainRequest,
-    ) -> domain_20180208_models.PurchaseIntlDomainResponse:
-        """
-        @summary 购买国际站预释放域名
-        
-        @param request: PurchaseIntlDomainRequest
-        @return: PurchaseIntlDomainResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.PurchaseIntlDomainRequest,
+    ) -> main_models.PurchaseIntlDomainResponse:
+        runtime = RuntimeOptions()
         return await self.purchase_intl_domain_with_options_async(request, runtime)
 
     def push_domains_with_options(
         self,
-        tmp_req: domain_20180208_models.PushDomainsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.PushDomainsResponse:
-        """
-        @summary 发布域名PUSH，目前只支持0元PUSH
-        
-        @param tmp_req: PushDomainsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PushDomainsResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = domain_20180208_models.PushDomainsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.domain_list):
-            request.domain_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domain_list, 'DomainList', 'json')
+        tmp_req: main_models.PushDomainsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PushDomainsResponse:
+        tmp_req.validate()
+        request = main_models.PushDomainsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.domain_list):
+            request.domain_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.domain_list, 'DomainList', 'json')
         query = {}
-        if not UtilClient.is_unset(request.domain_list_shrink):
+        if not DaraCore.is_null(request.domain_list_shrink):
             query['DomainList'] = request.domain_list_shrink
-        if not UtilClient.is_unset(request.out_biz_id):
+        if not DaraCore.is_null(request.out_biz_id):
             query['OutBizId'] = request.out_biz_id
-        if not UtilClient.is_unset(request.publish_remark):
+        if not DaraCore.is_null(request.publish_remark):
             query['PublishRemark'] = request.publish_remark
-        if not UtilClient.is_unset(request.receiver_account):
+        if not DaraCore.is_null(request.receiver_account):
             query['ReceiverAccount'] = request.receiver_account
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='PushDomains',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'PushDomains',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.PushDomainsResponse(),
+        return DaraCore.from_map(
+            main_models.PushDomainsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def push_domains_with_options_async(
         self,
-        tmp_req: domain_20180208_models.PushDomainsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.PushDomainsResponse:
-        """
-        @summary 发布域名PUSH，目前只支持0元PUSH
-        
-        @param tmp_req: PushDomainsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PushDomainsResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = domain_20180208_models.PushDomainsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.domain_list):
-            request.domain_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domain_list, 'DomainList', 'json')
+        tmp_req: main_models.PushDomainsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PushDomainsResponse:
+        tmp_req.validate()
+        request = main_models.PushDomainsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.domain_list):
+            request.domain_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.domain_list, 'DomainList', 'json')
         query = {}
-        if not UtilClient.is_unset(request.domain_list_shrink):
+        if not DaraCore.is_null(request.domain_list_shrink):
             query['DomainList'] = request.domain_list_shrink
-        if not UtilClient.is_unset(request.out_biz_id):
+        if not DaraCore.is_null(request.out_biz_id):
             query['OutBizId'] = request.out_biz_id
-        if not UtilClient.is_unset(request.publish_remark):
+        if not DaraCore.is_null(request.publish_remark):
             query['PublishRemark'] = request.publish_remark
-        if not UtilClient.is_unset(request.receiver_account):
+        if not DaraCore.is_null(request.receiver_account):
             query['ReceiverAccount'] = request.receiver_account
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='PushDomains',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'PushDomains',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.PushDomainsResponse(),
+        return DaraCore.from_map(
+            main_models.PushDomainsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def push_domains(
         self,
-        request: domain_20180208_models.PushDomainsRequest,
-    ) -> domain_20180208_models.PushDomainsResponse:
-        """
-        @summary 发布域名PUSH，目前只支持0元PUSH
-        
-        @param request: PushDomainsRequest
-        @return: PushDomainsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.PushDomainsRequest,
+    ) -> main_models.PushDomainsResponse:
+        runtime = RuntimeOptions()
         return self.push_domains_with_options(request, runtime)
 
     async def push_domains_async(
         self,
-        request: domain_20180208_models.PushDomainsRequest,
-    ) -> domain_20180208_models.PushDomainsResponse:
-        """
-        @summary 发布域名PUSH，目前只支持0元PUSH
-        
-        @param request: PushDomainsRequest
-        @return: PushDomainsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.PushDomainsRequest,
+    ) -> main_models.PushDomainsResponse:
+        runtime = RuntimeOptions()
         return await self.push_domains_with_options_async(request, runtime)
 
     def query_auction_detail_with_options(
         self,
-        request: domain_20180208_models.QueryAuctionDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryAuctionDetailResponse:
-        """
-        @param request: QueryAuctionDetailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryAuctionDetailResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryAuctionDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAuctionDetailResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.auction_id):
+        if not DaraCore.is_null(request.auction_id):
             body['AuctionId'] = request.auction_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='QueryAuctionDetail',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryAuctionDetail',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryAuctionDetailResponse(),
+        return DaraCore.from_map(
+            main_models.QueryAuctionDetailResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_auction_detail_with_options_async(
         self,
-        request: domain_20180208_models.QueryAuctionDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryAuctionDetailResponse:
-        """
-        @param request: QueryAuctionDetailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryAuctionDetailResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryAuctionDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAuctionDetailResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.auction_id):
+        if not DaraCore.is_null(request.auction_id):
             body['AuctionId'] = request.auction_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='QueryAuctionDetail',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryAuctionDetail',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryAuctionDetailResponse(),
+        return DaraCore.from_map(
+            main_models.QueryAuctionDetailResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_auction_detail(
         self,
-        request: domain_20180208_models.QueryAuctionDetailRequest,
-    ) -> domain_20180208_models.QueryAuctionDetailResponse:
-        """
-        @param request: QueryAuctionDetailRequest
-        @return: QueryAuctionDetailResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryAuctionDetailRequest,
+    ) -> main_models.QueryAuctionDetailResponse:
+        runtime = RuntimeOptions()
         return self.query_auction_detail_with_options(request, runtime)
 
     async def query_auction_detail_async(
         self,
-        request: domain_20180208_models.QueryAuctionDetailRequest,
-    ) -> domain_20180208_models.QueryAuctionDetailResponse:
-        """
-        @param request: QueryAuctionDetailRequest
-        @return: QueryAuctionDetailResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryAuctionDetailRequest,
+    ) -> main_models.QueryAuctionDetailResponse:
+        runtime = RuntimeOptions()
         return await self.query_auction_detail_with_options_async(request, runtime)
 
     def query_auctions_with_options(
         self,
-        request: domain_20180208_models.QueryAuctionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryAuctionsResponse:
-        """
-        @param request: QueryAuctionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryAuctionsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryAuctionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAuctionsResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.auction_end_time_order):
+        if not DaraCore.is_null(request.auction_end_time_order):
             body['AuctionEndTimeOrder'] = request.auction_end_time_order
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             body['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             body['Status'] = request.status
-        if not UtilClient.is_unset(request.statuses):
+        if not DaraCore.is_null(request.statuses):
             body['Statuses'] = request.statuses
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='QueryAuctions',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryAuctions',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryAuctionsResponse(),
+        return DaraCore.from_map(
+            main_models.QueryAuctionsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_auctions_with_options_async(
         self,
-        request: domain_20180208_models.QueryAuctionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryAuctionsResponse:
-        """
-        @param request: QueryAuctionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryAuctionsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryAuctionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAuctionsResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.auction_end_time_order):
+        if not DaraCore.is_null(request.auction_end_time_order):
             body['AuctionEndTimeOrder'] = request.auction_end_time_order
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             body['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             body['Status'] = request.status
-        if not UtilClient.is_unset(request.statuses):
+        if not DaraCore.is_null(request.statuses):
             body['Statuses'] = request.statuses
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='QueryAuctions',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryAuctions',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryAuctionsResponse(),
+        return DaraCore.from_map(
+            main_models.QueryAuctionsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_auctions(
         self,
-        request: domain_20180208_models.QueryAuctionsRequest,
-    ) -> domain_20180208_models.QueryAuctionsResponse:
-        """
-        @param request: QueryAuctionsRequest
-        @return: QueryAuctionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryAuctionsRequest,
+    ) -> main_models.QueryAuctionsResponse:
+        runtime = RuntimeOptions()
         return self.query_auctions_with_options(request, runtime)
 
     async def query_auctions_async(
         self,
-        request: domain_20180208_models.QueryAuctionsRequest,
-    ) -> domain_20180208_models.QueryAuctionsResponse:
-        """
-        @param request: QueryAuctionsRequest
-        @return: QueryAuctionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryAuctionsRequest,
+    ) -> main_models.QueryAuctionsResponse:
+        runtime = RuntimeOptions()
         return await self.query_auctions_with_options_async(request, runtime)
 
     def query_bid_records_with_options(
         self,
-        request: domain_20180208_models.QueryBidRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryBidRecordsResponse:
-        """
-        @param request: QueryBidRecordsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryBidRecordsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryBidRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryBidRecordsResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.auction_id):
+        if not DaraCore.is_null(request.auction_id):
             body['AuctionId'] = request.auction_id
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             body['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             body['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='QueryBidRecords',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryBidRecords',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryBidRecordsResponse(),
+        return DaraCore.from_map(
+            main_models.QueryBidRecordsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_bid_records_with_options_async(
         self,
-        request: domain_20180208_models.QueryBidRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryBidRecordsResponse:
-        """
-        @param request: QueryBidRecordsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryBidRecordsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryBidRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryBidRecordsResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.auction_id):
+        if not DaraCore.is_null(request.auction_id):
             body['AuctionId'] = request.auction_id
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             body['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             body['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='QueryBidRecords',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryBidRecords',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryBidRecordsResponse(),
+        return DaraCore.from_map(
+            main_models.QueryBidRecordsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_bid_records(
         self,
-        request: domain_20180208_models.QueryBidRecordsRequest,
-    ) -> domain_20180208_models.QueryBidRecordsResponse:
-        """
-        @param request: QueryBidRecordsRequest
-        @return: QueryBidRecordsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryBidRecordsRequest,
+    ) -> main_models.QueryBidRecordsResponse:
+        runtime = RuntimeOptions()
         return self.query_bid_records_with_options(request, runtime)
 
     async def query_bid_records_async(
         self,
-        request: domain_20180208_models.QueryBidRecordsRequest,
-    ) -> domain_20180208_models.QueryBidRecordsResponse:
-        """
-        @param request: QueryBidRecordsRequest
-        @return: QueryBidRecordsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryBidRecordsRequest,
+    ) -> main_models.QueryBidRecordsResponse:
+        runtime = RuntimeOptions()
         return await self.query_bid_records_with_options_async(request, runtime)
 
     def query_booking_domain_info_with_options(
         self,
-        request: domain_20180208_models.QueryBookingDomainInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryBookingDomainInfoResponse:
-        """
-        @param request: QueryBookingDomainInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryBookingDomainInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryBookingDomainInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryBookingDomainInfoResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             body['DomainName'] = request.domain_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='QueryBookingDomainInfo',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryBookingDomainInfo',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryBookingDomainInfoResponse(),
+        return DaraCore.from_map(
+            main_models.QueryBookingDomainInfoResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_booking_domain_info_with_options_async(
         self,
-        request: domain_20180208_models.QueryBookingDomainInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryBookingDomainInfoResponse:
-        """
-        @param request: QueryBookingDomainInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryBookingDomainInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryBookingDomainInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryBookingDomainInfoResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             body['DomainName'] = request.domain_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='QueryBookingDomainInfo',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryBookingDomainInfo',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryBookingDomainInfoResponse(),
+        return DaraCore.from_map(
+            main_models.QueryBookingDomainInfoResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_booking_domain_info(
         self,
-        request: domain_20180208_models.QueryBookingDomainInfoRequest,
-    ) -> domain_20180208_models.QueryBookingDomainInfoResponse:
-        """
-        @param request: QueryBookingDomainInfoRequest
-        @return: QueryBookingDomainInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryBookingDomainInfoRequest,
+    ) -> main_models.QueryBookingDomainInfoResponse:
+        runtime = RuntimeOptions()
         return self.query_booking_domain_info_with_options(request, runtime)
 
     async def query_booking_domain_info_async(
         self,
-        request: domain_20180208_models.QueryBookingDomainInfoRequest,
-    ) -> domain_20180208_models.QueryBookingDomainInfoResponse:
-        """
-        @param request: QueryBookingDomainInfoRequest
-        @return: QueryBookingDomainInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryBookingDomainInfoRequest,
+    ) -> main_models.QueryBookingDomainInfoResponse:
+        runtime = RuntimeOptions()
         return await self.query_booking_domain_info_with_options_async(request, runtime)
 
     def query_broker_demand_with_options(
         self,
-        request: domain_20180208_models.QueryBrokerDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryBrokerDemandResponse:
-        """
-        @summary 查询回购订单列表
-        
-        @param request: QueryBrokerDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryBrokerDemandResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryBrokerDemandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryBrokerDemandResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryBrokerDemand',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryBrokerDemand',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryBrokerDemandResponse(),
+        return DaraCore.from_map(
+            main_models.QueryBrokerDemandResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_broker_demand_with_options_async(
         self,
-        request: domain_20180208_models.QueryBrokerDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryBrokerDemandResponse:
-        """
-        @summary 查询回购订单列表
-        
-        @param request: QueryBrokerDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryBrokerDemandResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryBrokerDemandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryBrokerDemandResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryBrokerDemand',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryBrokerDemand',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryBrokerDemandResponse(),
+        return DaraCore.from_map(
+            main_models.QueryBrokerDemandResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_broker_demand(
         self,
-        request: domain_20180208_models.QueryBrokerDemandRequest,
-    ) -> domain_20180208_models.QueryBrokerDemandResponse:
-        """
-        @summary 查询回购订单列表
-        
-        @param request: QueryBrokerDemandRequest
-        @return: QueryBrokerDemandResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryBrokerDemandRequest,
+    ) -> main_models.QueryBrokerDemandResponse:
+        runtime = RuntimeOptions()
         return self.query_broker_demand_with_options(request, runtime)
 
     async def query_broker_demand_async(
         self,
-        request: domain_20180208_models.QueryBrokerDemandRequest,
-    ) -> domain_20180208_models.QueryBrokerDemandResponse:
-        """
-        @summary 查询回购订单列表
-        
-        @param request: QueryBrokerDemandRequest
-        @return: QueryBrokerDemandResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryBrokerDemandRequest,
+    ) -> main_models.QueryBrokerDemandResponse:
+        runtime = RuntimeOptions()
         return await self.query_broker_demand_with_options_async(request, runtime)
 
     def query_broker_demand_record_with_options(
         self,
-        request: domain_20180208_models.QueryBrokerDemandRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryBrokerDemandRecordResponse:
-        """
-        @param request: QueryBrokerDemandRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryBrokerDemandRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryBrokerDemandRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryBrokerDemandRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryBrokerDemandRecord',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryBrokerDemandRecord',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryBrokerDemandRecordResponse(),
+        return DaraCore.from_map(
+            main_models.QueryBrokerDemandRecordResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_broker_demand_record_with_options_async(
         self,
-        request: domain_20180208_models.QueryBrokerDemandRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryBrokerDemandRecordResponse:
-        """
-        @param request: QueryBrokerDemandRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryBrokerDemandRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryBrokerDemandRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryBrokerDemandRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryBrokerDemandRecord',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryBrokerDemandRecord',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryBrokerDemandRecordResponse(),
+        return DaraCore.from_map(
+            main_models.QueryBrokerDemandRecordResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_broker_demand_record(
         self,
-        request: domain_20180208_models.QueryBrokerDemandRecordRequest,
-    ) -> domain_20180208_models.QueryBrokerDemandRecordResponse:
-        """
-        @param request: QueryBrokerDemandRecordRequest
-        @return: QueryBrokerDemandRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryBrokerDemandRecordRequest,
+    ) -> main_models.QueryBrokerDemandRecordResponse:
+        runtime = RuntimeOptions()
         return self.query_broker_demand_record_with_options(request, runtime)
 
     async def query_broker_demand_record_async(
         self,
-        request: domain_20180208_models.QueryBrokerDemandRecordRequest,
-    ) -> domain_20180208_models.QueryBrokerDemandRecordResponse:
-        """
-        @param request: QueryBrokerDemandRecordRequest
-        @return: QueryBrokerDemandRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryBrokerDemandRecordRequest,
+    ) -> main_models.QueryBrokerDemandRecordResponse:
+        runtime = RuntimeOptions()
         return await self.query_broker_demand_record_with_options_async(request, runtime)
 
     def query_buyer_domain_trade_records_with_options(
         self,
-        tmp_req: domain_20180208_models.QueryBuyerDomainTradeRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryBuyerDomainTradeRecordsResponse:
-        """
-        @summary 查询买家交易记录列表
-        
-        @param tmp_req: QueryBuyerDomainTradeRecordsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryBuyerDomainTradeRecordsResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = domain_20180208_models.QueryBuyerDomainTradeRecordsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.biz_id_list):
-            request.biz_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_id_list, 'BizIdList', 'json')
-        if not UtilClient.is_unset(tmp_req.domain_name_list):
-            request.domain_name_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domain_name_list, 'DomainNameList', 'json')
-        if not UtilClient.is_unset(tmp_req.status_list):
-            request.status_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
-        if not UtilClient.is_unset(tmp_req.suffix_list):
-            request.suffix_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.suffix_list, 'SuffixList', 'json')
-        if not UtilClient.is_unset(tmp_req.trade_type_list):
-            request.trade_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trade_type_list, 'TradeTypeList', 'json')
+        tmp_req: main_models.QueryBuyerDomainTradeRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryBuyerDomainTradeRecordsResponse:
+        tmp_req.validate()
+        request = main_models.QueryBuyerDomainTradeRecordsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.biz_id_list):
+            request.biz_id_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.biz_id_list, 'BizIdList', 'json')
+        if not DaraCore.is_null(tmp_req.domain_name_list):
+            request.domain_name_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.domain_name_list, 'DomainNameList', 'json')
+        if not DaraCore.is_null(tmp_req.status_list):
+            request.status_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
+        if not DaraCore.is_null(tmp_req.suffix_list):
+            request.suffix_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.suffix_list, 'SuffixList', 'json')
+        if not DaraCore.is_null(tmp_req.trade_type_list):
+            request.trade_type_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.trade_type_list, 'TradeTypeList', 'json')
         query = {}
-        if not UtilClient.is_unset(request.biz_id_list_shrink):
+        if not DaraCore.is_null(request.biz_id_list_shrink):
             query['BizIdList'] = request.biz_id_list_shrink
-        if not UtilClient.is_unset(request.domain_name_list_shrink):
+        if not DaraCore.is_null(request.domain_name_list_shrink):
             query['DomainNameList'] = request.domain_name_list_shrink
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.end_price):
+        if not DaraCore.is_null(request.end_price):
             query['EndPrice'] = request.end_price
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.sorter):
+        if not DaraCore.is_null(request.sorter):
             query['Sorter'] = request.sorter
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        if not UtilClient.is_unset(request.start_price):
+        if not DaraCore.is_null(request.start_price):
             query['StartPrice'] = request.start_price
-        if not UtilClient.is_unset(request.status_list_shrink):
+        if not DaraCore.is_null(request.status_list_shrink):
             query['StatusList'] = request.status_list_shrink
-        if not UtilClient.is_unset(request.suffix_list_shrink):
+        if not DaraCore.is_null(request.suffix_list_shrink):
             query['SuffixList'] = request.suffix_list_shrink
-        if not UtilClient.is_unset(request.trade_type_list_shrink):
+        if not DaraCore.is_null(request.trade_type_list_shrink):
             query['TradeTypeList'] = request.trade_type_list_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryBuyerDomainTradeRecords',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryBuyerDomainTradeRecords',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryBuyerDomainTradeRecordsResponse(),
+        return DaraCore.from_map(
+            main_models.QueryBuyerDomainTradeRecordsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_buyer_domain_trade_records_with_options_async(
         self,
-        tmp_req: domain_20180208_models.QueryBuyerDomainTradeRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryBuyerDomainTradeRecordsResponse:
-        """
-        @summary 查询买家交易记录列表
-        
-        @param tmp_req: QueryBuyerDomainTradeRecordsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryBuyerDomainTradeRecordsResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = domain_20180208_models.QueryBuyerDomainTradeRecordsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.biz_id_list):
-            request.biz_id_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.biz_id_list, 'BizIdList', 'json')
-        if not UtilClient.is_unset(tmp_req.domain_name_list):
-            request.domain_name_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.domain_name_list, 'DomainNameList', 'json')
-        if not UtilClient.is_unset(tmp_req.status_list):
-            request.status_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
-        if not UtilClient.is_unset(tmp_req.suffix_list):
-            request.suffix_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.suffix_list, 'SuffixList', 'json')
-        if not UtilClient.is_unset(tmp_req.trade_type_list):
-            request.trade_type_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.trade_type_list, 'TradeTypeList', 'json')
+        tmp_req: main_models.QueryBuyerDomainTradeRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryBuyerDomainTradeRecordsResponse:
+        tmp_req.validate()
+        request = main_models.QueryBuyerDomainTradeRecordsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.biz_id_list):
+            request.biz_id_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.biz_id_list, 'BizIdList', 'json')
+        if not DaraCore.is_null(tmp_req.domain_name_list):
+            request.domain_name_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.domain_name_list, 'DomainNameList', 'json')
+        if not DaraCore.is_null(tmp_req.status_list):
+            request.status_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
+        if not DaraCore.is_null(tmp_req.suffix_list):
+            request.suffix_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.suffix_list, 'SuffixList', 'json')
+        if not DaraCore.is_null(tmp_req.trade_type_list):
+            request.trade_type_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.trade_type_list, 'TradeTypeList', 'json')
         query = {}
-        if not UtilClient.is_unset(request.biz_id_list_shrink):
+        if not DaraCore.is_null(request.biz_id_list_shrink):
             query['BizIdList'] = request.biz_id_list_shrink
-        if not UtilClient.is_unset(request.domain_name_list_shrink):
+        if not DaraCore.is_null(request.domain_name_list_shrink):
             query['DomainNameList'] = request.domain_name_list_shrink
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.end_date):
             query['EndDate'] = request.end_date
-        if not UtilClient.is_unset(request.end_price):
+        if not DaraCore.is_null(request.end_price):
             query['EndPrice'] = request.end_price
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.sorter):
+        if not DaraCore.is_null(request.sorter):
             query['Sorter'] = request.sorter
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['StartDate'] = request.start_date
-        if not UtilClient.is_unset(request.start_price):
+        if not DaraCore.is_null(request.start_price):
             query['StartPrice'] = request.start_price
-        if not UtilClient.is_unset(request.status_list_shrink):
+        if not DaraCore.is_null(request.status_list_shrink):
             query['StatusList'] = request.status_list_shrink
-        if not UtilClient.is_unset(request.suffix_list_shrink):
+        if not DaraCore.is_null(request.suffix_list_shrink):
             query['SuffixList'] = request.suffix_list_shrink
-        if not UtilClient.is_unset(request.trade_type_list_shrink):
+        if not DaraCore.is_null(request.trade_type_list_shrink):
             query['TradeTypeList'] = request.trade_type_list_shrink
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryBuyerDomainTradeRecords',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryBuyerDomainTradeRecords',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryBuyerDomainTradeRecordsResponse(),
+        return DaraCore.from_map(
+            main_models.QueryBuyerDomainTradeRecordsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_buyer_domain_trade_records(
         self,
-        request: domain_20180208_models.QueryBuyerDomainTradeRecordsRequest,
-    ) -> domain_20180208_models.QueryBuyerDomainTradeRecordsResponse:
-        """
-        @summary 查询买家交易记录列表
-        
-        @param request: QueryBuyerDomainTradeRecordsRequest
-        @return: QueryBuyerDomainTradeRecordsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryBuyerDomainTradeRecordsRequest,
+    ) -> main_models.QueryBuyerDomainTradeRecordsResponse:
+        runtime = RuntimeOptions()
         return self.query_buyer_domain_trade_records_with_options(request, runtime)
 
     async def query_buyer_domain_trade_records_async(
         self,
-        request: domain_20180208_models.QueryBuyerDomainTradeRecordsRequest,
-    ) -> domain_20180208_models.QueryBuyerDomainTradeRecordsResponse:
-        """
-        @summary 查询买家交易记录列表
-        
-        @param request: QueryBuyerDomainTradeRecordsRequest
-        @return: QueryBuyerDomainTradeRecordsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryBuyerDomainTradeRecordsRequest,
+    ) -> main_models.QueryBuyerDomainTradeRecordsResponse:
+        runtime = RuntimeOptions()
         return await self.query_buyer_domain_trade_records_with_options_async(request, runtime)
 
     def query_domain_transfer_status_with_options(
         self,
-        request: domain_20180208_models.QueryDomainTransferStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryDomainTransferStatusResponse:
-        """
-        @param request: QueryDomainTransferStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryDomainTransferStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryDomainTransferStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryDomainTransferStatusResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             body['DomainName'] = request.domain_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='QueryDomainTransferStatus',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryDomainTransferStatus',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryDomainTransferStatusResponse(),
+        return DaraCore.from_map(
+            main_models.QueryDomainTransferStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_domain_transfer_status_with_options_async(
         self,
-        request: domain_20180208_models.QueryDomainTransferStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryDomainTransferStatusResponse:
-        """
-        @param request: QueryDomainTransferStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryDomainTransferStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryDomainTransferStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryDomainTransferStatusResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             body['DomainName'] = request.domain_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='QueryDomainTransferStatus',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryDomainTransferStatus',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryDomainTransferStatusResponse(),
+        return DaraCore.from_map(
+            main_models.QueryDomainTransferStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_domain_transfer_status(
         self,
-        request: domain_20180208_models.QueryDomainTransferStatusRequest,
-    ) -> domain_20180208_models.QueryDomainTransferStatusResponse:
-        """
-        @param request: QueryDomainTransferStatusRequest
-        @return: QueryDomainTransferStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryDomainTransferStatusRequest,
+    ) -> main_models.QueryDomainTransferStatusResponse:
+        runtime = RuntimeOptions()
         return self.query_domain_transfer_status_with_options(request, runtime)
 
     async def query_domain_transfer_status_async(
         self,
-        request: domain_20180208_models.QueryDomainTransferStatusRequest,
-    ) -> domain_20180208_models.QueryDomainTransferStatusResponse:
-        """
-        @param request: QueryDomainTransferStatusRequest
-        @return: QueryDomainTransferStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryDomainTransferStatusRequest,
+    ) -> main_models.QueryDomainTransferStatusResponse:
+        runtime = RuntimeOptions()
         return await self.query_domain_transfer_status_with_options_async(request, runtime)
 
     def query_exchange_rate_with_options(
         self,
-        request: domain_20180208_models.QueryExchangeRateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryExchangeRateResponse:
-        """
-        @summary 查询汇率
-        
-        @param request: QueryExchangeRateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryExchangeRateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryExchangeRateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryExchangeRateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.from_currency):
+        if not DaraCore.is_null(request.from_currency):
             query['FromCurrency'] = request.from_currency
-        if not UtilClient.is_unset(request.to_currency):
+        if not DaraCore.is_null(request.to_currency):
             query['ToCurrency'] = request.to_currency
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryExchangeRate',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryExchangeRate',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryExchangeRateResponse(),
+        return DaraCore.from_map(
+            main_models.QueryExchangeRateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_exchange_rate_with_options_async(
         self,
-        request: domain_20180208_models.QueryExchangeRateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryExchangeRateResponse:
-        """
-        @summary 查询汇率
-        
-        @param request: QueryExchangeRateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryExchangeRateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryExchangeRateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryExchangeRateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.from_currency):
+        if not DaraCore.is_null(request.from_currency):
             query['FromCurrency'] = request.from_currency
-        if not UtilClient.is_unset(request.to_currency):
+        if not DaraCore.is_null(request.to_currency):
             query['ToCurrency'] = request.to_currency
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryExchangeRate',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryExchangeRate',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryExchangeRateResponse(),
+        return DaraCore.from_map(
+            main_models.QueryExchangeRateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_exchange_rate(
         self,
-        request: domain_20180208_models.QueryExchangeRateRequest,
-    ) -> domain_20180208_models.QueryExchangeRateResponse:
-        """
-        @summary 查询汇率
-        
-        @param request: QueryExchangeRateRequest
-        @return: QueryExchangeRateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryExchangeRateRequest,
+    ) -> main_models.QueryExchangeRateResponse:
+        runtime = RuntimeOptions()
         return self.query_exchange_rate_with_options(request, runtime)
 
     async def query_exchange_rate_async(
         self,
-        request: domain_20180208_models.QueryExchangeRateRequest,
-    ) -> domain_20180208_models.QueryExchangeRateResponse:
-        """
-        @summary 查询汇率
-        
-        @param request: QueryExchangeRateRequest
-        @return: QueryExchangeRateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryExchangeRateRequest,
+    ) -> main_models.QueryExchangeRateResponse:
+        runtime = RuntimeOptions()
         return await self.query_exchange_rate_with_options_async(request, runtime)
 
     def query_export_auction_detail_with_options(
         self,
-        request: domain_20180208_models.QueryExportAuctionDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryExportAuctionDetailResponse:
-        """
-        @summary 查询竞价商品详情
-        
-        @param request: QueryExportAuctionDetailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryExportAuctionDetailResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryExportAuctionDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryExportAuctionDetailResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.auction_id):
+        if not DaraCore.is_null(request.auction_id):
             query['AuctionId'] = request.auction_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryExportAuctionDetail',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryExportAuctionDetail',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryExportAuctionDetailResponse(),
+        return DaraCore.from_map(
+            main_models.QueryExportAuctionDetailResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_export_auction_detail_with_options_async(
         self,
-        request: domain_20180208_models.QueryExportAuctionDetailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryExportAuctionDetailResponse:
-        """
-        @summary 查询竞价商品详情
-        
-        @param request: QueryExportAuctionDetailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryExportAuctionDetailResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryExportAuctionDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryExportAuctionDetailResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.auction_id):
+        if not DaraCore.is_null(request.auction_id):
             query['AuctionId'] = request.auction_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryExportAuctionDetail',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryExportAuctionDetail',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryExportAuctionDetailResponse(),
+        return DaraCore.from_map(
+            main_models.QueryExportAuctionDetailResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_export_auction_detail(
         self,
-        request: domain_20180208_models.QueryExportAuctionDetailRequest,
-    ) -> domain_20180208_models.QueryExportAuctionDetailResponse:
-        """
-        @summary 查询竞价商品详情
-        
-        @param request: QueryExportAuctionDetailRequest
-        @return: QueryExportAuctionDetailResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryExportAuctionDetailRequest,
+    ) -> main_models.QueryExportAuctionDetailResponse:
+        runtime = RuntimeOptions()
         return self.query_export_auction_detail_with_options(request, runtime)
 
     async def query_export_auction_detail_async(
         self,
-        request: domain_20180208_models.QueryExportAuctionDetailRequest,
-    ) -> domain_20180208_models.QueryExportAuctionDetailResponse:
-        """
-        @summary 查询竞价商品详情
-        
-        @param request: QueryExportAuctionDetailRequest
-        @return: QueryExportAuctionDetailResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryExportAuctionDetailRequest,
+    ) -> main_models.QueryExportAuctionDetailResponse:
+        runtime = RuntimeOptions()
         return await self.query_export_auction_detail_with_options_async(request, runtime)
 
     def query_export_domain_expire_snatchs_with_options(
         self,
-        request: domain_20180208_models.QueryExportDomainExpireSnatchsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryExportDomainExpireSnatchsResponse:
-        """
-        @summary 查询导出的抢注域名
-        
-        @param request: QueryExportDomainExpireSnatchsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryExportDomainExpireSnatchsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryExportDomainExpireSnatchsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryExportDomainExpireSnatchsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_id):
+        if not DaraCore.is_null(request.current_id):
             query['CurrentId'] = request.current_id
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryExportDomainExpireSnatchs',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryExportDomainExpireSnatchs',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryExportDomainExpireSnatchsResponse(),
+        return DaraCore.from_map(
+            main_models.QueryExportDomainExpireSnatchsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_export_domain_expire_snatchs_with_options_async(
         self,
-        request: domain_20180208_models.QueryExportDomainExpireSnatchsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryExportDomainExpireSnatchsResponse:
-        """
-        @summary 查询导出的抢注域名
-        
-        @param request: QueryExportDomainExpireSnatchsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryExportDomainExpireSnatchsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryExportDomainExpireSnatchsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryExportDomainExpireSnatchsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_id):
+        if not DaraCore.is_null(request.current_id):
             query['CurrentId'] = request.current_id
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryExportDomainExpireSnatchs',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryExportDomainExpireSnatchs',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryExportDomainExpireSnatchsResponse(),
+        return DaraCore.from_map(
+            main_models.QueryExportDomainExpireSnatchsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_export_domain_expire_snatchs(
         self,
-        request: domain_20180208_models.QueryExportDomainExpireSnatchsRequest,
-    ) -> domain_20180208_models.QueryExportDomainExpireSnatchsResponse:
-        """
-        @summary 查询导出的抢注域名
-        
-        @param request: QueryExportDomainExpireSnatchsRequest
-        @return: QueryExportDomainExpireSnatchsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryExportDomainExpireSnatchsRequest,
+    ) -> main_models.QueryExportDomainExpireSnatchsResponse:
+        runtime = RuntimeOptions()
         return self.query_export_domain_expire_snatchs_with_options(request, runtime)
 
     async def query_export_domain_expire_snatchs_async(
         self,
-        request: domain_20180208_models.QueryExportDomainExpireSnatchsRequest,
-    ) -> domain_20180208_models.QueryExportDomainExpireSnatchsResponse:
-        """
-        @summary 查询导出的抢注域名
-        
-        @param request: QueryExportDomainExpireSnatchsRequest
-        @return: QueryExportDomainExpireSnatchsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryExportDomainExpireSnatchsRequest,
+    ) -> main_models.QueryExportDomainExpireSnatchsResponse:
+        runtime = RuntimeOptions()
         return await self.query_export_domain_expire_snatchs_with_options_async(request, runtime)
 
     def query_purchased_domains_with_options(
         self,
-        request: domain_20180208_models.QueryPurchasedDomainsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryPurchasedDomainsResponse:
-        """
-        @param request: QueryPurchasedDomainsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryPurchasedDomainsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryPurchasedDomainsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryPurchasedDomainsResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             body['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             body['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.end_operation_time):
+        if not DaraCore.is_null(request.end_operation_time):
             body['EndOperationTime'] = request.end_operation_time
-        if not UtilClient.is_unset(request.op_time_order):
+        if not DaraCore.is_null(request.op_time_order):
             body['OpTimeOrder'] = request.op_time_order
-        if not UtilClient.is_unset(request.operation_status):
+        if not DaraCore.is_null(request.operation_status):
             body['OperationStatus'] = request.operation_status
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             body['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.start_operation_time):
+        if not DaraCore.is_null(request.start_operation_time):
             body['StartOperationTime'] = request.start_operation_time
-        if not UtilClient.is_unset(request.update_time_order):
+        if not DaraCore.is_null(request.update_time_order):
             body['UpdateTimeOrder'] = request.update_time_order
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='QueryPurchasedDomains',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryPurchasedDomains',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryPurchasedDomainsResponse(),
+        return DaraCore.from_map(
+            main_models.QueryPurchasedDomainsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_purchased_domains_with_options_async(
         self,
-        request: domain_20180208_models.QueryPurchasedDomainsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.QueryPurchasedDomainsResponse:
-        """
-        @param request: QueryPurchasedDomainsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryPurchasedDomainsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryPurchasedDomainsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryPurchasedDomainsResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             body['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             body['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.end_operation_time):
+        if not DaraCore.is_null(request.end_operation_time):
             body['EndOperationTime'] = request.end_operation_time
-        if not UtilClient.is_unset(request.op_time_order):
+        if not DaraCore.is_null(request.op_time_order):
             body['OpTimeOrder'] = request.op_time_order
-        if not UtilClient.is_unset(request.operation_status):
+        if not DaraCore.is_null(request.operation_status):
             body['OperationStatus'] = request.operation_status
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             body['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.product_type):
+        if not DaraCore.is_null(request.product_type):
             body['ProductType'] = request.product_type
-        if not UtilClient.is_unset(request.start_operation_time):
+        if not DaraCore.is_null(request.start_operation_time):
             body['StartOperationTime'] = request.start_operation_time
-        if not UtilClient.is_unset(request.update_time_order):
+        if not DaraCore.is_null(request.update_time_order):
             body['UpdateTimeOrder'] = request.update_time_order
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='QueryPurchasedDomains',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryPurchasedDomains',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.QueryPurchasedDomainsResponse(),
+        return DaraCore.from_map(
+            main_models.QueryPurchasedDomainsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_purchased_domains(
         self,
-        request: domain_20180208_models.QueryPurchasedDomainsRequest,
-    ) -> domain_20180208_models.QueryPurchasedDomainsResponse:
-        """
-        @param request: QueryPurchasedDomainsRequest
-        @return: QueryPurchasedDomainsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryPurchasedDomainsRequest,
+    ) -> main_models.QueryPurchasedDomainsResponse:
+        runtime = RuntimeOptions()
         return self.query_purchased_domains_with_options(request, runtime)
 
     async def query_purchased_domains_async(
         self,
-        request: domain_20180208_models.QueryPurchasedDomainsRequest,
-    ) -> domain_20180208_models.QueryPurchasedDomainsResponse:
-        """
-        @param request: QueryPurchasedDomainsRequest
-        @return: QueryPurchasedDomainsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryPurchasedDomainsRequest,
+    ) -> main_models.QueryPurchasedDomainsResponse:
+        runtime = RuntimeOptions()
         return await self.query_purchased_domains_with_options_async(request, runtime)
 
     def record_demand_with_options(
         self,
-        request: domain_20180208_models.RecordDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.RecordDemandResponse:
-        """
-        @param request: RecordDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RecordDemandResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RecordDemandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RecordDemandResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.message):
+        if not DaraCore.is_null(request.message):
             query['Message'] = request.message
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RecordDemand',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RecordDemand',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.RecordDemandResponse(),
+        return DaraCore.from_map(
+            main_models.RecordDemandResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def record_demand_with_options_async(
         self,
-        request: domain_20180208_models.RecordDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.RecordDemandResponse:
-        """
-        @param request: RecordDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RecordDemandResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RecordDemandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RecordDemandResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.message):
+        if not DaraCore.is_null(request.message):
             query['Message'] = request.message
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RecordDemand',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RecordDemand',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.RecordDemandResponse(),
+        return DaraCore.from_map(
+            main_models.RecordDemandResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def record_demand(
         self,
-        request: domain_20180208_models.RecordDemandRequest,
-    ) -> domain_20180208_models.RecordDemandResponse:
-        """
-        @param request: RecordDemandRequest
-        @return: RecordDemandResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RecordDemandRequest,
+    ) -> main_models.RecordDemandResponse:
+        runtime = RuntimeOptions()
         return self.record_demand_with_options(request, runtime)
 
     async def record_demand_async(
         self,
-        request: domain_20180208_models.RecordDemandRequest,
-    ) -> domain_20180208_models.RecordDemandResponse:
-        """
-        @param request: RecordDemandRequest
-        @return: RecordDemandResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RecordDemandRequest,
+    ) -> main_models.RecordDemandResponse:
+        runtime = RuntimeOptions()
         return await self.record_demand_with_options_async(request, runtime)
 
     def refuse_demand_with_options(
         self,
-        request: domain_20180208_models.RefuseDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.RefuseDemandResponse:
-        """
-        @param request: RefuseDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RefuseDemandResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RefuseDemandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RefuseDemandResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.message):
+        if not DaraCore.is_null(request.message):
             query['Message'] = request.message
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RefuseDemand',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RefuseDemand',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.RefuseDemandResponse(),
+        return DaraCore.from_map(
+            main_models.RefuseDemandResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def refuse_demand_with_options_async(
         self,
-        request: domain_20180208_models.RefuseDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.RefuseDemandResponse:
-        """
-        @param request: RefuseDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RefuseDemandResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RefuseDemandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RefuseDemandResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.message):
+        if not DaraCore.is_null(request.message):
             query['Message'] = request.message
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RefuseDemand',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RefuseDemand',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.RefuseDemandResponse(),
+        return DaraCore.from_map(
+            main_models.RefuseDemandResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def refuse_demand(
         self,
-        request: domain_20180208_models.RefuseDemandRequest,
-    ) -> domain_20180208_models.RefuseDemandResponse:
-        """
-        @param request: RefuseDemandRequest
-        @return: RefuseDemandResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RefuseDemandRequest,
+    ) -> main_models.RefuseDemandResponse:
+        runtime = RuntimeOptions()
         return self.refuse_demand_with_options(request, runtime)
 
     async def refuse_demand_async(
         self,
-        request: domain_20180208_models.RefuseDemandRequest,
-    ) -> domain_20180208_models.RefuseDemandResponse:
-        """
-        @param request: RefuseDemandRequest
-        @return: RefuseDemandResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RefuseDemandRequest,
+    ) -> main_models.RefuseDemandResponse:
+        runtime = RuntimeOptions()
         return await self.refuse_demand_with_options_async(request, runtime)
 
     def request_pay_demand_with_options(
         self,
-        request: domain_20180208_models.RequestPayDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.RequestPayDemandResponse:
-        """
-        @param request: RequestPayDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RequestPayDemandResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RequestPayDemandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RequestPayDemandResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.message):
+        if not DaraCore.is_null(request.message):
             query['Message'] = request.message
-        if not UtilClient.is_unset(request.price):
+        if not DaraCore.is_null(request.price):
             query['Price'] = request.price
-        if not UtilClient.is_unset(request.produce_type):
+        if not DaraCore.is_null(request.produce_type):
             query['ProduceType'] = request.produce_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RequestPayDemand',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RequestPayDemand',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.RequestPayDemandResponse(),
+        return DaraCore.from_map(
+            main_models.RequestPayDemandResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def request_pay_demand_with_options_async(
         self,
-        request: domain_20180208_models.RequestPayDemandRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.RequestPayDemandResponse:
-        """
-        @param request: RequestPayDemandRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RequestPayDemandResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RequestPayDemandRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RequestPayDemandResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.message):
+        if not DaraCore.is_null(request.message):
             query['Message'] = request.message
-        if not UtilClient.is_unset(request.price):
+        if not DaraCore.is_null(request.price):
             query['Price'] = request.price
-        if not UtilClient.is_unset(request.produce_type):
+        if not DaraCore.is_null(request.produce_type):
             query['ProduceType'] = request.produce_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RequestPayDemand',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RequestPayDemand',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.RequestPayDemandResponse(),
+        return DaraCore.from_map(
+            main_models.RequestPayDemandResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def request_pay_demand(
         self,
-        request: domain_20180208_models.RequestPayDemandRequest,
-    ) -> domain_20180208_models.RequestPayDemandResponse:
-        """
-        @param request: RequestPayDemandRequest
-        @return: RequestPayDemandResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RequestPayDemandRequest,
+    ) -> main_models.RequestPayDemandResponse:
+        runtime = RuntimeOptions()
         return self.request_pay_demand_with_options(request, runtime)
 
     async def request_pay_demand_async(
         self,
-        request: domain_20180208_models.RequestPayDemandRequest,
-    ) -> domain_20180208_models.RequestPayDemandResponse:
-        """
-        @param request: RequestPayDemandRequest
-        @return: RequestPayDemandResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RequestPayDemandRequest,
+    ) -> main_models.RequestPayDemandResponse:
+        runtime = RuntimeOptions()
         return await self.request_pay_demand_with_options_async(request, runtime)
 
     def reserve_domain_with_options(
         self,
-        request: domain_20180208_models.ReserveDomainRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.ReserveDomainResponse:
-        """
-        @param request: ReserveDomainRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReserveDomainResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ReserveDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReserveDomainResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.channels):
+        if not DaraCore.is_null(request.channels):
             body['Channels'] = request.channels
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             body['DomainName'] = request.domain_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ReserveDomain',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReserveDomain',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.ReserveDomainResponse(),
+        return DaraCore.from_map(
+            main_models.ReserveDomainResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def reserve_domain_with_options_async(
         self,
-        request: domain_20180208_models.ReserveDomainRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.ReserveDomainResponse:
-        """
-        @param request: ReserveDomainRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReserveDomainResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ReserveDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReserveDomainResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.channels):
+        if not DaraCore.is_null(request.channels):
             body['Channels'] = request.channels
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             body['DomainName'] = request.domain_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ReserveDomain',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReserveDomain',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.ReserveDomainResponse(),
+        return DaraCore.from_map(
+            main_models.ReserveDomainResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def reserve_domain(
         self,
-        request: domain_20180208_models.ReserveDomainRequest,
-    ) -> domain_20180208_models.ReserveDomainResponse:
-        """
-        @param request: ReserveDomainRequest
-        @return: ReserveDomainResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReserveDomainRequest,
+    ) -> main_models.ReserveDomainResponse:
+        runtime = RuntimeOptions()
         return self.reserve_domain_with_options(request, runtime)
 
     async def reserve_domain_async(
         self,
-        request: domain_20180208_models.ReserveDomainRequest,
-    ) -> domain_20180208_models.ReserveDomainResponse:
-        """
-        @param request: ReserveDomainRequest
-        @return: ReserveDomainResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReserveDomainRequest,
+    ) -> main_models.ReserveDomainResponse:
+        runtime = RuntimeOptions()
         return await self.reserve_domain_with_options_async(request, runtime)
 
     def reserve_intl_domain_with_options(
         self,
-        request: domain_20180208_models.ReserveIntlDomainRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.ReserveIntlDomainResponse:
-        """
-        @param request: ReserveIntlDomainRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReserveIntlDomainResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ReserveIntlDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReserveIntlDomainResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             body['DomainName'] = request.domain_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ReserveIntlDomain',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReserveIntlDomain',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.ReserveIntlDomainResponse(),
+        return DaraCore.from_map(
+            main_models.ReserveIntlDomainResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def reserve_intl_domain_with_options_async(
         self,
-        request: domain_20180208_models.ReserveIntlDomainRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.ReserveIntlDomainResponse:
-        """
-        @param request: ReserveIntlDomainRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReserveIntlDomainResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ReserveIntlDomainRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReserveIntlDomainResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             body['DomainName'] = request.domain_name
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ReserveIntlDomain',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReserveIntlDomain',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.ReserveIntlDomainResponse(),
+        return DaraCore.from_map(
+            main_models.ReserveIntlDomainResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def reserve_intl_domain(
         self,
-        request: domain_20180208_models.ReserveIntlDomainRequest,
-    ) -> domain_20180208_models.ReserveIntlDomainResponse:
-        """
-        @param request: ReserveIntlDomainRequest
-        @return: ReserveIntlDomainResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReserveIntlDomainRequest,
+    ) -> main_models.ReserveIntlDomainResponse:
+        runtime = RuntimeOptions()
         return self.reserve_intl_domain_with_options(request, runtime)
 
     async def reserve_intl_domain_async(
         self,
-        request: domain_20180208_models.ReserveIntlDomainRequest,
-    ) -> domain_20180208_models.ReserveIntlDomainResponse:
-        """
-        @param request: ReserveIntlDomainRequest
-        @return: ReserveIntlDomainResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReserveIntlDomainRequest,
+    ) -> main_models.ReserveIntlDomainResponse:
+        runtime = RuntimeOptions()
         return await self.reserve_intl_domain_with_options_async(request, runtime)
 
     def selected_domain_list_with_options(
         self,
-        request: domain_20180208_models.SelectedDomainListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.SelectedDomainListResponse:
-        """
-        @summary 严选列表导出，明日凌晨2点前生成文件，导出凌晨1点前所有在售严选域名
-        
-        @param request: SelectedDomainListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SelectedDomainListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SelectedDomainListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SelectedDomainListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.list_date):
+        if not DaraCore.is_null(request.list_date):
             query['ListDate'] = request.list_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SelectedDomainList',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SelectedDomainList',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.SelectedDomainListResponse(),
+        return DaraCore.from_map(
+            main_models.SelectedDomainListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def selected_domain_list_with_options_async(
         self,
-        request: domain_20180208_models.SelectedDomainListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.SelectedDomainListResponse:
-        """
-        @summary 严选列表导出，明日凌晨2点前生成文件，导出凌晨1点前所有在售严选域名
-        
-        @param request: SelectedDomainListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SelectedDomainListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SelectedDomainListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SelectedDomainListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.list_date):
+        if not DaraCore.is_null(request.list_date):
             query['ListDate'] = request.list_date
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SelectedDomainList',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SelectedDomainList',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.SelectedDomainListResponse(),
+        return DaraCore.from_map(
+            main_models.SelectedDomainListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def selected_domain_list(
         self,
-        request: domain_20180208_models.SelectedDomainListRequest,
-    ) -> domain_20180208_models.SelectedDomainListResponse:
-        """
-        @summary 严选列表导出，明日凌晨2点前生成文件，导出凌晨1点前所有在售严选域名
-        
-        @param request: SelectedDomainListRequest
-        @return: SelectedDomainListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SelectedDomainListRequest,
+    ) -> main_models.SelectedDomainListResponse:
+        runtime = RuntimeOptions()
         return self.selected_domain_list_with_options(request, runtime)
 
     async def selected_domain_list_async(
         self,
-        request: domain_20180208_models.SelectedDomainListRequest,
-    ) -> domain_20180208_models.SelectedDomainListResponse:
-        """
-        @summary 严选列表导出，明日凌晨2点前生成文件，导出凌晨1点前所有在售严选域名
-        
-        @param request: SelectedDomainListRequest
-        @return: SelectedDomainListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SelectedDomainListRequest,
+    ) -> main_models.SelectedDomainListResponse:
+        runtime = RuntimeOptions()
         return await self.selected_domain_list_with_options_async(request, runtime)
 
     def submit_purchase_info_with_options(
         self,
-        request: domain_20180208_models.SubmitPurchaseInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.SubmitPurchaseInfoResponse:
-        """
-        @summary 提交采购信息
-        
-        @param request: SubmitPurchaseInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SubmitPurchaseInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SubmitPurchaseInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitPurchaseInfoResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             body['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.purchase_currency):
+        if not DaraCore.is_null(request.purchase_currency):
             body['PurchaseCurrency'] = request.purchase_currency
-        if not UtilClient.is_unset(request.purchase_price):
+        if not DaraCore.is_null(request.purchase_price):
             body['PurchasePrice'] = request.purchase_price
-        if not UtilClient.is_unset(request.purchase_proofs):
+        if not DaraCore.is_null(request.purchase_proofs):
             body['PurchaseProofs'] = request.purchase_proofs
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='SubmitPurchaseInfo',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SubmitPurchaseInfo',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.SubmitPurchaseInfoResponse(),
+        return DaraCore.from_map(
+            main_models.SubmitPurchaseInfoResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def submit_purchase_info_with_options_async(
         self,
-        request: domain_20180208_models.SubmitPurchaseInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.SubmitPurchaseInfoResponse:
-        """
-        @summary 提交采购信息
-        
-        @param request: SubmitPurchaseInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SubmitPurchaseInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SubmitPurchaseInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitPurchaseInfoResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             body['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.purchase_currency):
+        if not DaraCore.is_null(request.purchase_currency):
             body['PurchaseCurrency'] = request.purchase_currency
-        if not UtilClient.is_unset(request.purchase_price):
+        if not DaraCore.is_null(request.purchase_price):
             body['PurchasePrice'] = request.purchase_price
-        if not UtilClient.is_unset(request.purchase_proofs):
+        if not DaraCore.is_null(request.purchase_proofs):
             body['PurchaseProofs'] = request.purchase_proofs
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='SubmitPurchaseInfo',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SubmitPurchaseInfo',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.SubmitPurchaseInfoResponse(),
+        return DaraCore.from_map(
+            main_models.SubmitPurchaseInfoResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def submit_purchase_info(
         self,
-        request: domain_20180208_models.SubmitPurchaseInfoRequest,
-    ) -> domain_20180208_models.SubmitPurchaseInfoResponse:
-        """
-        @summary 提交采购信息
-        
-        @param request: SubmitPurchaseInfoRequest
-        @return: SubmitPurchaseInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SubmitPurchaseInfoRequest,
+    ) -> main_models.SubmitPurchaseInfoResponse:
+        runtime = RuntimeOptions()
         return self.submit_purchase_info_with_options(request, runtime)
 
     async def submit_purchase_info_async(
         self,
-        request: domain_20180208_models.SubmitPurchaseInfoRequest,
-    ) -> domain_20180208_models.SubmitPurchaseInfoResponse:
-        """
-        @summary 提交采购信息
-        
-        @param request: SubmitPurchaseInfoRequest
-        @return: SubmitPurchaseInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SubmitPurchaseInfoRequest,
+    ) -> main_models.SubmitPurchaseInfoResponse:
+        runtime = RuntimeOptions()
         return await self.submit_purchase_info_with_options_async(request, runtime)
 
     def update_partner_reserve_price_with_options(
         self,
-        request: domain_20180208_models.UpdatePartnerReservePriceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.UpdatePartnerReservePriceResponse:
-        """
-        @summary 合作方同步报价
-        
-        @param request: UpdatePartnerReservePriceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdatePartnerReservePriceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdatePartnerReservePriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePartnerReservePriceResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.bidding_id):
+        if not DaraCore.is_null(request.bidding_id):
             body['BiddingId'] = request.bidding_id
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             body['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.partner_type):
+        if not DaraCore.is_null(request.partner_type):
             body['PartnerType'] = request.partner_type
-        if not UtilClient.is_unset(request.reserve_price):
+        if not DaraCore.is_null(request.reserve_price):
             body['ReservePrice'] = request.reserve_price
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdatePartnerReservePrice',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdatePartnerReservePrice',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.UpdatePartnerReservePriceResponse(),
+        return DaraCore.from_map(
+            main_models.UpdatePartnerReservePriceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_partner_reserve_price_with_options_async(
         self,
-        request: domain_20180208_models.UpdatePartnerReservePriceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.UpdatePartnerReservePriceResponse:
-        """
-        @summary 合作方同步报价
-        
-        @param request: UpdatePartnerReservePriceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdatePartnerReservePriceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdatePartnerReservePriceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePartnerReservePriceResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.bidding_id):
+        if not DaraCore.is_null(request.bidding_id):
             body['BiddingId'] = request.bidding_id
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             body['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.partner_type):
+        if not DaraCore.is_null(request.partner_type):
             body['PartnerType'] = request.partner_type
-        if not UtilClient.is_unset(request.reserve_price):
+        if not DaraCore.is_null(request.reserve_price):
             body['ReservePrice'] = request.reserve_price
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdatePartnerReservePrice',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdatePartnerReservePrice',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.UpdatePartnerReservePriceResponse(),
+        return DaraCore.from_map(
+            main_models.UpdatePartnerReservePriceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_partner_reserve_price(
         self,
-        request: domain_20180208_models.UpdatePartnerReservePriceRequest,
-    ) -> domain_20180208_models.UpdatePartnerReservePriceResponse:
-        """
-        @summary 合作方同步报价
-        
-        @param request: UpdatePartnerReservePriceRequest
-        @return: UpdatePartnerReservePriceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdatePartnerReservePriceRequest,
+    ) -> main_models.UpdatePartnerReservePriceResponse:
+        runtime = RuntimeOptions()
         return self.update_partner_reserve_price_with_options(request, runtime)
 
     async def update_partner_reserve_price_async(
         self,
-        request: domain_20180208_models.UpdatePartnerReservePriceRequest,
-    ) -> domain_20180208_models.UpdatePartnerReservePriceResponse:
-        """
-        @summary 合作方同步报价
-        
-        @param request: UpdatePartnerReservePriceRequest
-        @return: UpdatePartnerReservePriceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdatePartnerReservePriceRequest,
+    ) -> main_models.UpdatePartnerReservePriceResponse:
+        runtime = RuntimeOptions()
         return await self.update_partner_reserve_price_with_options_async(request, runtime)
 
     def website_add_dns_record_with_options(
         self,
-        request: domain_20180208_models.WebsiteAddDnsRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.WebsiteAddDnsRecordResponse:
-        """
-        @summary 域名建站添加DNS记录
-        
-        @param request: WebsiteAddDnsRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: WebsiteAddDnsRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.WebsiteAddDnsRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.WebsiteAddDnsRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.rr):
+        if not DaraCore.is_null(request.rr):
             query['Rr'] = request.rr
-        if not UtilClient.is_unset(request.source):
+        if not DaraCore.is_null(request.source):
             query['Source'] = request.source
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['Type'] = request.type
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        if not UtilClient.is_unset(request.value):
+        if not DaraCore.is_null(request.value):
             query['Value'] = request.value
-        if not UtilClient.is_unset(request.website_no):
+        if not DaraCore.is_null(request.website_no):
             query['WebsiteNo'] = request.website_no
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='WebsiteAddDnsRecord',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'WebsiteAddDnsRecord',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.WebsiteAddDnsRecordResponse(),
+        return DaraCore.from_map(
+            main_models.WebsiteAddDnsRecordResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def website_add_dns_record_with_options_async(
         self,
-        request: domain_20180208_models.WebsiteAddDnsRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.WebsiteAddDnsRecordResponse:
-        """
-        @summary 域名建站添加DNS记录
-        
-        @param request: WebsiteAddDnsRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: WebsiteAddDnsRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.WebsiteAddDnsRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.WebsiteAddDnsRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.rr):
+        if not DaraCore.is_null(request.rr):
             query['Rr'] = request.rr
-        if not UtilClient.is_unset(request.source):
+        if not DaraCore.is_null(request.source):
             query['Source'] = request.source
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['Type'] = request.type
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        if not UtilClient.is_unset(request.value):
+        if not DaraCore.is_null(request.value):
             query['Value'] = request.value
-        if not UtilClient.is_unset(request.website_no):
+        if not DaraCore.is_null(request.website_no):
             query['WebsiteNo'] = request.website_no
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='WebsiteAddDnsRecord',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'WebsiteAddDnsRecord',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.WebsiteAddDnsRecordResponse(),
+        return DaraCore.from_map(
+            main_models.WebsiteAddDnsRecordResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def website_add_dns_record(
         self,
-        request: domain_20180208_models.WebsiteAddDnsRecordRequest,
-    ) -> domain_20180208_models.WebsiteAddDnsRecordResponse:
-        """
-        @summary 域名建站添加DNS记录
-        
-        @param request: WebsiteAddDnsRecordRequest
-        @return: WebsiteAddDnsRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.WebsiteAddDnsRecordRequest,
+    ) -> main_models.WebsiteAddDnsRecordResponse:
+        runtime = RuntimeOptions()
         return self.website_add_dns_record_with_options(request, runtime)
 
     async def website_add_dns_record_async(
         self,
-        request: domain_20180208_models.WebsiteAddDnsRecordRequest,
-    ) -> domain_20180208_models.WebsiteAddDnsRecordResponse:
-        """
-        @summary 域名建站添加DNS记录
-        
-        @param request: WebsiteAddDnsRecordRequest
-        @return: WebsiteAddDnsRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.WebsiteAddDnsRecordRequest,
+    ) -> main_models.WebsiteAddDnsRecordResponse:
+        runtime = RuntimeOptions()
         return await self.website_add_dns_record_with_options_async(request, runtime)
 
     def website_delete_dns_record_with_options(
         self,
-        request: domain_20180208_models.WebsiteDeleteDnsRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.WebsiteDeleteDnsRecordResponse:
-        """
-        @summary 域名建站删除DNS记录
-        
-        @param request: WebsiteDeleteDnsRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: WebsiteDeleteDnsRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.WebsiteDeleteDnsRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.WebsiteDeleteDnsRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.rr):
+        if not DaraCore.is_null(request.rr):
             query['Rr'] = request.rr
-        if not UtilClient.is_unset(request.source):
+        if not DaraCore.is_null(request.source):
             query['Source'] = request.source
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['Type'] = request.type
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        if not UtilClient.is_unset(request.value):
+        if not DaraCore.is_null(request.value):
             query['Value'] = request.value
-        if not UtilClient.is_unset(request.website_no):
+        if not DaraCore.is_null(request.website_no):
             query['WebsiteNo'] = request.website_no
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='WebsiteDeleteDnsRecord',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'WebsiteDeleteDnsRecord',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.WebsiteDeleteDnsRecordResponse(),
+        return DaraCore.from_map(
+            main_models.WebsiteDeleteDnsRecordResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def website_delete_dns_record_with_options_async(
         self,
-        request: domain_20180208_models.WebsiteDeleteDnsRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> domain_20180208_models.WebsiteDeleteDnsRecordResponse:
-        """
-        @summary 域名建站删除DNS记录
-        
-        @param request: WebsiteDeleteDnsRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: WebsiteDeleteDnsRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.WebsiteDeleteDnsRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.WebsiteDeleteDnsRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.domain_name):
+        if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
-        if not UtilClient.is_unset(request.rr):
+        if not DaraCore.is_null(request.rr):
             query['Rr'] = request.rr
-        if not UtilClient.is_unset(request.source):
+        if not DaraCore.is_null(request.source):
             query['Source'] = request.source
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['Type'] = request.type
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        if not UtilClient.is_unset(request.value):
+        if not DaraCore.is_null(request.value):
             query['Value'] = request.value
-        if not UtilClient.is_unset(request.website_no):
+        if not DaraCore.is_null(request.website_no):
             query['WebsiteNo'] = request.website_no
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='WebsiteDeleteDnsRecord',
-            version='2018-02-08',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'WebsiteDeleteDnsRecord',
+            version = '2018-02-08',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            domain_20180208_models.WebsiteDeleteDnsRecordResponse(),
+        return DaraCore.from_map(
+            main_models.WebsiteDeleteDnsRecordResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def website_delete_dns_record(
         self,
-        request: domain_20180208_models.WebsiteDeleteDnsRecordRequest,
-    ) -> domain_20180208_models.WebsiteDeleteDnsRecordResponse:
-        """
-        @summary 域名建站删除DNS记录
-        
-        @param request: WebsiteDeleteDnsRecordRequest
-        @return: WebsiteDeleteDnsRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.WebsiteDeleteDnsRecordRequest,
+    ) -> main_models.WebsiteDeleteDnsRecordResponse:
+        runtime = RuntimeOptions()
         return self.website_delete_dns_record_with_options(request, runtime)
 
     async def website_delete_dns_record_async(
         self,
-        request: domain_20180208_models.WebsiteDeleteDnsRecordRequest,
-    ) -> domain_20180208_models.WebsiteDeleteDnsRecordResponse:
-        """
-        @summary 域名建站删除DNS记录
-        
-        @param request: WebsiteDeleteDnsRecordRequest
-        @return: WebsiteDeleteDnsRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.WebsiteDeleteDnsRecordRequest,
+    ) -> main_models.WebsiteDeleteDnsRecordResponse:
+        runtime = RuntimeOptions()
         return await self.website_delete_dns_record_with_options_async(request, runtime)

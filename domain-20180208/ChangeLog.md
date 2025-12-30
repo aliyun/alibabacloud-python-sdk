@@ -1,3 +1,8 @@
+2025-12-30 Version: 1.8.1
+- Update API QueryExportDomainExpireSnatchs: add response parameters Body.Data.$.IcpNumber.
+- Update API QueryExportDomainExpireSnatchs: add response parameters Body.Data.$.IcpStatus.
+
+
 2025-12-01 Version: 1.8.0
 - Support API QueryBuyerDomainTradeRecords.
 - Update API CreateFixedPriceSelectedOrder: add response parameters Body.Module.BizIds.
