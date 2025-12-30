@@ -1,0 +1,161 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List, Dict
+
+from alibabacloud_dianjin20240628 import models as main_models
+from darabonba.model import DaraModel
+
+class GetAppConfigResponseBody(DaraModel):
+    def __init__(
+        self,
+        cost: int = None,
+        data: main_models.GetAppConfigResponseBodyData = None,
+        data_type: str = None,
+        err_code: str = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+        time: str = None,
+    ):
+        self.cost = cost
+        self.data = data
+        self.data_type = data_type
+        self.err_code = err_code
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+        self.time = time
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cost is not None:
+            result['cost'] = self.cost
+
+        if self.data is not None:
+            result['data'] = self.data.to_map()
+
+        if self.data_type is not None:
+            result['dataType'] = self.data_type
+
+        if self.err_code is not None:
+            result['errCode'] = self.err_code
+
+        if self.message is not None:
+            result['message'] = self.message
+
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+
+        if self.success is not None:
+            result['success'] = self.success
+
+        if self.time is not None:
+            result['time'] = self.time
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('cost') is not None:
+            self.cost = m.get('cost')
+
+        if m.get('data') is not None:
+            temp_model = main_models.GetAppConfigResponseBodyData()
+            self.data = temp_model.from_map(m.get('data'))
+
+        if m.get('dataType') is not None:
+            self.data_type = m.get('dataType')
+
+        if m.get('errCode') is not None:
+            self.err_code = m.get('errCode')
+
+        if m.get('message') is not None:
+            self.message = m.get('message')
+
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+
+        if m.get('success') is not None:
+            self.success = m.get('success')
+
+        if m.get('time') is not None:
+            self.time = m.get('time')
+
+        return self
+
+class GetAppConfigResponseBodyData(DaraModel):
+    def __init__(
+        self,
+        embedding_type_list: List[Dict[str, str]] = None,
+        frontend_config: Dict[str, bool] = None,
+        library_document_status_list: List[Dict[str, str]] = None,
+        llm_helper_type_list: List[Dict[str, str]] = None,
+        text_index_category_list: List[str] = None,
+        vector_index_category_list: List[str] = None,
+    ):
+        self.embedding_type_list = embedding_type_list
+        self.frontend_config = frontend_config
+        self.library_document_status_list = library_document_status_list
+        self.llm_helper_type_list = llm_helper_type_list
+        self.text_index_category_list = text_index_category_list
+        self.vector_index_category_list = vector_index_category_list
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.embedding_type_list is not None:
+            result['embeddingTypeList'] = self.embedding_type_list
+
+        if self.frontend_config is not None:
+            result['frontendConfig'] = self.frontend_config
+
+        if self.library_document_status_list is not None:
+            result['libraryDocumentStatusList'] = self.library_document_status_list
+
+        if self.llm_helper_type_list is not None:
+            result['llmHelperTypeList'] = self.llm_helper_type_list
+
+        if self.text_index_category_list is not None:
+            result['textIndexCategoryList'] = self.text_index_category_list
+
+        if self.vector_index_category_list is not None:
+            result['vectorIndexCategoryList'] = self.vector_index_category_list
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('embeddingTypeList') is not None:
+            self.embedding_type_list = m.get('embeddingTypeList')
+
+        if m.get('frontendConfig') is not None:
+            self.frontend_config = m.get('frontendConfig')
+
+        if m.get('libraryDocumentStatusList') is not None:
+            self.library_document_status_list = m.get('libraryDocumentStatusList')
+
+        if m.get('llmHelperTypeList') is not None:
+            self.llm_helper_type_list = m.get('llmHelperTypeList')
+
+        if m.get('textIndexCategoryList') is not None:
+            self.text_index_category_list = m.get('textIndexCategoryList')
+
+        if m.get('vectorIndexCategoryList') is not None:
+            self.vector_index_category_list = m.get('vectorIndexCategoryList')
+
+        return self
+
