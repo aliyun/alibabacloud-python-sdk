@@ -167,6 +167,7 @@ class ListPrivateTTSVoicesCustomResponseBodyDataData(DaraModel):
         common: bool = None,
         create_time: str = None,
         description: str = None,
+        error_code: str = None,
         error_detail: str = None,
         gender: str = None,
         id: str = None,
@@ -183,6 +184,7 @@ class ListPrivateTTSVoicesCustomResponseBodyDataData(DaraModel):
         self.common = common
         self.create_time = create_time
         self.description = description
+        self.error_code = error_code
         self.error_detail = error_detail
         self.gender = gender
         self.id = id
@@ -216,6 +218,9 @@ class ListPrivateTTSVoicesCustomResponseBodyDataData(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
+
+        if self.error_code is not None:
+            result['errorCode'] = self.error_code
 
         if self.error_detail is not None:
             result['errorDetail'] = self.error_detail
@@ -265,6 +270,9 @@ class ListPrivateTTSVoicesCustomResponseBodyDataData(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('errorCode') is not None:
+            self.error_code = m.get('errorCode')
 
         if m.get('errorDetail') is not None:
             self.error_detail = m.get('errorDetail')

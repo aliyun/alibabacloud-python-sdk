@@ -1,3 +1,8 @@
+2025-12-30 Version: 1.5.1
+- Update API GetTTSVoiceByIdCustom: add response parameters Body.data.errorCode.
+- Update API ListPrivateTTSVoicesCustom: add response parameters Body.data.data.$.errorCode.
+
+
 2025-12-26 Version: 1.5.0
 - Support API GetTTSVoiceByIdCustom.
 
