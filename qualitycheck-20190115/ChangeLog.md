@@ -1,3 +1,7 @@
+2025-12-30 Version: 8.5.1
+- Update API GetResultToReview: add response parameters Body.Data.HitRuleReviewInfoList.$.ReviewInfo.Comment.
+
+
 2025-12-25 Version: 8.5.0
 - Support API CreateUser.
 - Support API SubmitReviewInfoV4.

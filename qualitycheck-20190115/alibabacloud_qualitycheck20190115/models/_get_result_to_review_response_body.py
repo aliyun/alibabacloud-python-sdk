@@ -893,6 +893,7 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfo(Da
 class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfo(DaraModel):
     def __init__(
         self,
+        comment: str = None,
         hit_id: str = None,
         review_result: int = None,
         review_time: str = None,
@@ -900,6 +901,7 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoRev
         rid: int = None,
         sentence_review_results: main_models.GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoReviewInfoSentenceReviewResults = None,
     ):
+        self.comment = comment
         self.hit_id = hit_id
         self.review_result = review_result
         self.review_time = review_time
@@ -916,6 +918,9 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoRev
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.comment is not None:
+            result['Comment'] = self.comment
+
         if self.hit_id is not None:
             result['HitId'] = self.hit_id
 
@@ -938,6 +943,9 @@ class GetResultToReviewResponseBodyDataHitRuleReviewInfoListHitRuleReviewInfoRev
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Comment') is not None:
+            self.comment = m.get('Comment')
+
         if m.get('HitId') is not None:
             self.hit_id = m.get('HitId')
 
