@@ -1,24 +1,23 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
 from typing import Dict
-from Tea.core import TeaCore
 
+from alibabacloud_companyreg20200306 import models as main_models
+from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
-from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_companyreg20200306 import models as companyreg_20200306_models
-from alibabacloud_tea_util import models as util_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_tea_openapi.utils import Utils
+from darabonba.core import DaraCore as DaraCore
+from darabonba.runtime import RuntimeOptions
 
-
+"""
+"""
 class Client(OpenApiClient):
-    """
-    *\
-    """
+
     def __init__(
-        self, 
-        config: open_api_models.Config,
+        self,
+        config: open_api_util_models.Config,
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
@@ -93,3822 +92,3038 @@ class Client(OpenApiClient):
         endpoint_map: Dict[str, str],
         endpoint: str,
     ) -> str:
-        if not UtilClient.empty(endpoint):
+        if not DaraCore.is_null(endpoint):
             return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+        if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
     def bind_produce_authorization_with_options(
         self,
-        request: companyreg_20200306_models.BindProduceAuthorizationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.BindProduceAuthorizationResponse:
-        """
-        @summary 服务单授权
-        
-        @param request: BindProduceAuthorizationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BindProduceAuthorizationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BindProduceAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BindProduceAuthorizationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.authorized_user_ids):
+        if not DaraCore.is_null(request.authorized_user_ids):
             body['AuthorizedUserIds'] = request.authorized_user_ids
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             body['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             body['BizType'] = request.biz_type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='BindProduceAuthorization',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BindProduceAuthorization',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.BindProduceAuthorizationResponse(),
+        return DaraCore.from_map(
+            main_models.BindProduceAuthorizationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def bind_produce_authorization_with_options_async(
         self,
-        request: companyreg_20200306_models.BindProduceAuthorizationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.BindProduceAuthorizationResponse:
-        """
-        @summary 服务单授权
-        
-        @param request: BindProduceAuthorizationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BindProduceAuthorizationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BindProduceAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BindProduceAuthorizationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.authorized_user_ids):
+        if not DaraCore.is_null(request.authorized_user_ids):
             body['AuthorizedUserIds'] = request.authorized_user_ids
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             body['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             body['BizType'] = request.biz_type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='BindProduceAuthorization',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BindProduceAuthorization',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.BindProduceAuthorizationResponse(),
+        return DaraCore.from_map(
+            main_models.BindProduceAuthorizationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def bind_produce_authorization(
         self,
-        request: companyreg_20200306_models.BindProduceAuthorizationRequest,
-    ) -> companyreg_20200306_models.BindProduceAuthorizationResponse:
-        """
-        @summary 服务单授权
-        
-        @param request: BindProduceAuthorizationRequest
-        @return: BindProduceAuthorizationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BindProduceAuthorizationRequest,
+    ) -> main_models.BindProduceAuthorizationResponse:
+        runtime = RuntimeOptions()
         return self.bind_produce_authorization_with_options(request, runtime)
 
     async def bind_produce_authorization_async(
         self,
-        request: companyreg_20200306_models.BindProduceAuthorizationRequest,
-    ) -> companyreg_20200306_models.BindProduceAuthorizationResponse:
-        """
-        @summary 服务单授权
-        
-        @param request: BindProduceAuthorizationRequest
-        @return: BindProduceAuthorizationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BindProduceAuthorizationRequest,
+    ) -> main_models.BindProduceAuthorizationResponse:
+        runtime = RuntimeOptions()
         return await self.bind_produce_authorization_with_options_async(request, runtime)
 
     def close_intention_for_partner_with_options(
         self,
-        request: companyreg_20200306_models.CloseIntentionForPartnerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.CloseIntentionForPartnerResponse:
-        """
-        @param request: CloseIntentionForPartnerRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CloseIntentionForPartnerResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CloseIntentionForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloseIntentionForPartnerResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.note):
+        if not DaraCore.is_null(request.note):
             query['Note'] = request.note
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CloseIntentionForPartner',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CloseIntentionForPartner',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.CloseIntentionForPartnerResponse(),
+        return DaraCore.from_map(
+            main_models.CloseIntentionForPartnerResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def close_intention_for_partner_with_options_async(
         self,
-        request: companyreg_20200306_models.CloseIntentionForPartnerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.CloseIntentionForPartnerResponse:
-        """
-        @param request: CloseIntentionForPartnerRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CloseIntentionForPartnerResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CloseIntentionForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloseIntentionForPartnerResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.note):
+        if not DaraCore.is_null(request.note):
             query['Note'] = request.note
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CloseIntentionForPartner',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CloseIntentionForPartner',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.CloseIntentionForPartnerResponse(),
+        return DaraCore.from_map(
+            main_models.CloseIntentionForPartnerResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def close_intention_for_partner(
         self,
-        request: companyreg_20200306_models.CloseIntentionForPartnerRequest,
-    ) -> companyreg_20200306_models.CloseIntentionForPartnerResponse:
-        """
-        @param request: CloseIntentionForPartnerRequest
-        @return: CloseIntentionForPartnerResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CloseIntentionForPartnerRequest,
+    ) -> main_models.CloseIntentionForPartnerResponse:
+        runtime = RuntimeOptions()
         return self.close_intention_for_partner_with_options(request, runtime)
 
     async def close_intention_for_partner_async(
         self,
-        request: companyreg_20200306_models.CloseIntentionForPartnerRequest,
-    ) -> companyreg_20200306_models.CloseIntentionForPartnerResponse:
-        """
-        @param request: CloseIntentionForPartnerRequest
-        @return: CloseIntentionForPartnerResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CloseIntentionForPartnerRequest,
+    ) -> main_models.CloseIntentionForPartnerResponse:
+        runtime = RuntimeOptions()
         return await self.close_intention_for_partner_with_options_async(request, runtime)
 
     def close_user_intention_with_options(
         self,
-        request: companyreg_20200306_models.CloseUserIntentionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.CloseUserIntentionResponse:
-        """
-        @param request: CloseUserIntentionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CloseUserIntentionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CloseUserIntentionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloseUserIntentionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.note):
+        if not DaraCore.is_null(request.note):
             query['Note'] = request.note
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CloseUserIntention',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CloseUserIntention',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.CloseUserIntentionResponse(),
+        return DaraCore.from_map(
+            main_models.CloseUserIntentionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def close_user_intention_with_options_async(
         self,
-        request: companyreg_20200306_models.CloseUserIntentionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.CloseUserIntentionResponse:
-        """
-        @param request: CloseUserIntentionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CloseUserIntentionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CloseUserIntentionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CloseUserIntentionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.note):
+        if not DaraCore.is_null(request.note):
             query['Note'] = request.note
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CloseUserIntention',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CloseUserIntention',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.CloseUserIntentionResponse(),
+        return DaraCore.from_map(
+            main_models.CloseUserIntentionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def close_user_intention(
         self,
-        request: companyreg_20200306_models.CloseUserIntentionRequest,
-    ) -> companyreg_20200306_models.CloseUserIntentionResponse:
-        """
-        @param request: CloseUserIntentionRequest
-        @return: CloseUserIntentionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CloseUserIntentionRequest,
+    ) -> main_models.CloseUserIntentionResponse:
+        runtime = RuntimeOptions()
         return self.close_user_intention_with_options(request, runtime)
 
     async def close_user_intention_async(
         self,
-        request: companyreg_20200306_models.CloseUserIntentionRequest,
-    ) -> companyreg_20200306_models.CloseUserIntentionResponse:
-        """
-        @param request: CloseUserIntentionRequest
-        @return: CloseUserIntentionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CloseUserIntentionRequest,
+    ) -> main_models.CloseUserIntentionResponse:
+        runtime = RuntimeOptions()
         return await self.close_user_intention_with_options_async(request, runtime)
 
     def create_business_opportunity_with_options(
         self,
-        request: companyreg_20200306_models.CreateBusinessOpportunityRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.CreateBusinessOpportunityResponse:
-        """
-        @summary CreateBusinessOpportunity
-        
-        @param request: CreateBusinessOpportunityRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateBusinessOpportunityResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateBusinessOpportunityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBusinessOpportunityResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.contact_name):
+        if not DaraCore.is_null(request.contact_name):
             query['ContactName'] = request.contact_name
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             query['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.source):
+        if not DaraCore.is_null(request.source):
             query['Source'] = request.source
-        if not UtilClient.is_unset(request.vcode):
+        if not DaraCore.is_null(request.vcode):
             query['VCode'] = request.vcode
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateBusinessOpportunity',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateBusinessOpportunity',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.CreateBusinessOpportunityResponse(),
+        return DaraCore.from_map(
+            main_models.CreateBusinessOpportunityResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_business_opportunity_with_options_async(
         self,
-        request: companyreg_20200306_models.CreateBusinessOpportunityRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.CreateBusinessOpportunityResponse:
-        """
-        @summary CreateBusinessOpportunity
-        
-        @param request: CreateBusinessOpportunityRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateBusinessOpportunityResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateBusinessOpportunityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBusinessOpportunityResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.contact_name):
+        if not DaraCore.is_null(request.contact_name):
             query['ContactName'] = request.contact_name
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             query['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.source):
+        if not DaraCore.is_null(request.source):
             query['Source'] = request.source
-        if not UtilClient.is_unset(request.vcode):
+        if not DaraCore.is_null(request.vcode):
             query['VCode'] = request.vcode
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateBusinessOpportunity',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateBusinessOpportunity',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.CreateBusinessOpportunityResponse(),
+        return DaraCore.from_map(
+            main_models.CreateBusinessOpportunityResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_business_opportunity(
         self,
-        request: companyreg_20200306_models.CreateBusinessOpportunityRequest,
-    ) -> companyreg_20200306_models.CreateBusinessOpportunityResponse:
-        """
-        @summary CreateBusinessOpportunity
-        
-        @param request: CreateBusinessOpportunityRequest
-        @return: CreateBusinessOpportunityResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateBusinessOpportunityRequest,
+    ) -> main_models.CreateBusinessOpportunityResponse:
+        runtime = RuntimeOptions()
         return self.create_business_opportunity_with_options(request, runtime)
 
     async def create_business_opportunity_async(
         self,
-        request: companyreg_20200306_models.CreateBusinessOpportunityRequest,
-    ) -> companyreg_20200306_models.CreateBusinessOpportunityResponse:
-        """
-        @summary CreateBusinessOpportunity
-        
-        @param request: CreateBusinessOpportunityRequest
-        @return: CreateBusinessOpportunityResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateBusinessOpportunityRequest,
+    ) -> main_models.CreateBusinessOpportunityResponse:
+        runtime = RuntimeOptions()
         return await self.create_business_opportunity_with_options_async(request, runtime)
 
     def create_produce_for_partner_with_options(
         self,
-        request: companyreg_20200306_models.CreateProduceForPartnerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.CreateProduceForPartnerResponse:
-        """
-        @param request: CreateProduceForPartnerRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateProduceForPartnerResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateProduceForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProduceForPartnerResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.ext_info):
+        if not DaraCore.is_null(request.ext_info):
             query['ExtInfo'] = request.ext_info
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateProduceForPartner',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateProduceForPartner',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.CreateProduceForPartnerResponse(),
+        return DaraCore.from_map(
+            main_models.CreateProduceForPartnerResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_produce_for_partner_with_options_async(
         self,
-        request: companyreg_20200306_models.CreateProduceForPartnerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.CreateProduceForPartnerResponse:
-        """
-        @param request: CreateProduceForPartnerRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateProduceForPartnerResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateProduceForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateProduceForPartnerResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.ext_info):
+        if not DaraCore.is_null(request.ext_info):
             query['ExtInfo'] = request.ext_info
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateProduceForPartner',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateProduceForPartner',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.CreateProduceForPartnerResponse(),
+        return DaraCore.from_map(
+            main_models.CreateProduceForPartnerResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_produce_for_partner(
         self,
-        request: companyreg_20200306_models.CreateProduceForPartnerRequest,
-    ) -> companyreg_20200306_models.CreateProduceForPartnerResponse:
-        """
-        @param request: CreateProduceForPartnerRequest
-        @return: CreateProduceForPartnerResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateProduceForPartnerRequest,
+    ) -> main_models.CreateProduceForPartnerResponse:
+        runtime = RuntimeOptions()
         return self.create_produce_for_partner_with_options(request, runtime)
 
     async def create_produce_for_partner_async(
         self,
-        request: companyreg_20200306_models.CreateProduceForPartnerRequest,
-    ) -> companyreg_20200306_models.CreateProduceForPartnerResponse:
-        """
-        @param request: CreateProduceForPartnerRequest
-        @return: CreateProduceForPartnerResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateProduceForPartnerRequest,
+    ) -> main_models.CreateProduceForPartnerResponse:
+        runtime = RuntimeOptions()
         return await self.create_produce_for_partner_with_options_async(request, runtime)
 
     def describe_partner_config_with_options(
         self,
-        request: companyreg_20200306_models.DescribePartnerConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.DescribePartnerConfigResponse:
-        """
-        @param request: DescribePartnerConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePartnerConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribePartnerConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePartnerConfigResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.partner_code):
+        if not DaraCore.is_null(request.partner_code):
             query['PartnerCode'] = request.partner_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribePartnerConfig',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribePartnerConfig',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.DescribePartnerConfigResponse(),
+        return DaraCore.from_map(
+            main_models.DescribePartnerConfigResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_partner_config_with_options_async(
         self,
-        request: companyreg_20200306_models.DescribePartnerConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.DescribePartnerConfigResponse:
-        """
-        @param request: DescribePartnerConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePartnerConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribePartnerConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePartnerConfigResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.partner_code):
+        if not DaraCore.is_null(request.partner_code):
             query['PartnerCode'] = request.partner_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribePartnerConfig',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribePartnerConfig',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.DescribePartnerConfigResponse(),
+        return DaraCore.from_map(
+            main_models.DescribePartnerConfigResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_partner_config(
         self,
-        request: companyreg_20200306_models.DescribePartnerConfigRequest,
-    ) -> companyreg_20200306_models.DescribePartnerConfigResponse:
-        """
-        @param request: DescribePartnerConfigRequest
-        @return: DescribePartnerConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribePartnerConfigRequest,
+    ) -> main_models.DescribePartnerConfigResponse:
+        runtime = RuntimeOptions()
         return self.describe_partner_config_with_options(request, runtime)
 
     async def describe_partner_config_async(
         self,
-        request: companyreg_20200306_models.DescribePartnerConfigRequest,
-    ) -> companyreg_20200306_models.DescribePartnerConfigResponse:
-        """
-        @param request: DescribePartnerConfigRequest
-        @return: DescribePartnerConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribePartnerConfigRequest,
+    ) -> main_models.DescribePartnerConfigResponse:
+        runtime = RuntimeOptions()
         return await self.describe_partner_config_with_options_async(request, runtime)
 
     def generate_upload_file_policy_with_options(
         self,
-        request: companyreg_20200306_models.GenerateUploadFilePolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.GenerateUploadFilePolicyResponse:
-        """
-        @summary GenerateUploadFilePolicy
-        
-        @param request: GenerateUploadFilePolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GenerateUploadFilePolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GenerateUploadFilePolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateUploadFilePolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.file_name):
+        if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
-        if not UtilClient.is_unset(request.file_type):
+        if not DaraCore.is_null(request.file_type):
             query['FileType'] = request.file_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GenerateUploadFilePolicy',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GenerateUploadFilePolicy',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.GenerateUploadFilePolicyResponse(),
+        return DaraCore.from_map(
+            main_models.GenerateUploadFilePolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def generate_upload_file_policy_with_options_async(
         self,
-        request: companyreg_20200306_models.GenerateUploadFilePolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.GenerateUploadFilePolicyResponse:
-        """
-        @summary GenerateUploadFilePolicy
-        
-        @param request: GenerateUploadFilePolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GenerateUploadFilePolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GenerateUploadFilePolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateUploadFilePolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.file_name):
+        if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
-        if not UtilClient.is_unset(request.file_type):
+        if not DaraCore.is_null(request.file_type):
             query['FileType'] = request.file_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GenerateUploadFilePolicy',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GenerateUploadFilePolicy',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.GenerateUploadFilePolicyResponse(),
+        return DaraCore.from_map(
+            main_models.GenerateUploadFilePolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def generate_upload_file_policy(
         self,
-        request: companyreg_20200306_models.GenerateUploadFilePolicyRequest,
-    ) -> companyreg_20200306_models.GenerateUploadFilePolicyResponse:
-        """
-        @summary GenerateUploadFilePolicy
-        
-        @param request: GenerateUploadFilePolicyRequest
-        @return: GenerateUploadFilePolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GenerateUploadFilePolicyRequest,
+    ) -> main_models.GenerateUploadFilePolicyResponse:
+        runtime = RuntimeOptions()
         return self.generate_upload_file_policy_with_options(request, runtime)
 
     async def generate_upload_file_policy_async(
         self,
-        request: companyreg_20200306_models.GenerateUploadFilePolicyRequest,
-    ) -> companyreg_20200306_models.GenerateUploadFilePolicyResponse:
-        """
-        @summary GenerateUploadFilePolicy
-        
-        @param request: GenerateUploadFilePolicyRequest
-        @return: GenerateUploadFilePolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GenerateUploadFilePolicyRequest,
+    ) -> main_models.GenerateUploadFilePolicyResponse:
+        runtime = RuntimeOptions()
         return await self.generate_upload_file_policy_with_options_async(request, runtime)
 
     def get_alipay_url_with_options(
         self,
-        request: companyreg_20200306_models.GetAlipayUrlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.GetAlipayUrlResponse:
-        """
-        @param request: GetAlipayUrlRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAlipayUrlResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.GetAlipayUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAlipayUrlResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAlipayUrl',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAlipayUrl',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.GetAlipayUrlResponse(),
+        return DaraCore.from_map(
+            main_models.GetAlipayUrlResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_alipay_url_with_options_async(
         self,
-        request: companyreg_20200306_models.GetAlipayUrlRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.GetAlipayUrlResponse:
-        """
-        @param request: GetAlipayUrlRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAlipayUrlResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.GetAlipayUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAlipayUrlResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAlipayUrl',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAlipayUrl',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.GetAlipayUrlResponse(),
+        return DaraCore.from_map(
+            main_models.GetAlipayUrlResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_alipay_url(
         self,
-        request: companyreg_20200306_models.GetAlipayUrlRequest,
-    ) -> companyreg_20200306_models.GetAlipayUrlResponse:
-        """
-        @param request: GetAlipayUrlRequest
-        @return: GetAlipayUrlResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAlipayUrlRequest,
+    ) -> main_models.GetAlipayUrlResponse:
+        runtime = RuntimeOptions()
         return self.get_alipay_url_with_options(request, runtime)
 
     async def get_alipay_url_async(
         self,
-        request: companyreg_20200306_models.GetAlipayUrlRequest,
-    ) -> companyreg_20200306_models.GetAlipayUrlResponse:
-        """
-        @param request: GetAlipayUrlRequest
-        @return: GetAlipayUrlResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAlipayUrlRequest,
+    ) -> main_models.GetAlipayUrlResponse:
+        runtime = RuntimeOptions()
         return await self.get_alipay_url_with_options_async(request, runtime)
 
     def list_intention_note_with_options(
         self,
-        request: companyreg_20200306_models.ListIntentionNoteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.ListIntentionNoteResponse:
-        """
-        @param request: ListIntentionNoteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListIntentionNoteResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListIntentionNoteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListIntentionNoteResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.begin_time):
+        if not DaraCore.is_null(request.begin_time):
             query['BeginTime'] = request.begin_time
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListIntentionNote',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListIntentionNote',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.ListIntentionNoteResponse(),
+        return DaraCore.from_map(
+            main_models.ListIntentionNoteResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_intention_note_with_options_async(
         self,
-        request: companyreg_20200306_models.ListIntentionNoteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.ListIntentionNoteResponse:
-        """
-        @param request: ListIntentionNoteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListIntentionNoteResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListIntentionNoteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListIntentionNoteResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.begin_time):
+        if not DaraCore.is_null(request.begin_time):
             query['BeginTime'] = request.begin_time
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListIntentionNote',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListIntentionNote',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.ListIntentionNoteResponse(),
+        return DaraCore.from_map(
+            main_models.ListIntentionNoteResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_intention_note(
         self,
-        request: companyreg_20200306_models.ListIntentionNoteRequest,
-    ) -> companyreg_20200306_models.ListIntentionNoteResponse:
-        """
-        @param request: ListIntentionNoteRequest
-        @return: ListIntentionNoteResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListIntentionNoteRequest,
+    ) -> main_models.ListIntentionNoteResponse:
+        runtime = RuntimeOptions()
         return self.list_intention_note_with_options(request, runtime)
 
     async def list_intention_note_async(
         self,
-        request: companyreg_20200306_models.ListIntentionNoteRequest,
-    ) -> companyreg_20200306_models.ListIntentionNoteResponse:
-        """
-        @param request: ListIntentionNoteRequest
-        @return: ListIntentionNoteResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListIntentionNoteRequest,
+    ) -> main_models.ListIntentionNoteResponse:
+        runtime = RuntimeOptions()
         return await self.list_intention_note_with_options_async(request, runtime)
 
     def list_produce_authorization_with_options(
         self,
-        request: companyreg_20200306_models.ListProduceAuthorizationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.ListProduceAuthorizationResponse:
-        """
-        @param request: ListProduceAuthorizationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListProduceAuthorizationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListProduceAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProduceAuthorizationResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListProduceAuthorization',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListProduceAuthorization',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.ListProduceAuthorizationResponse(),
+        return DaraCore.from_map(
+            main_models.ListProduceAuthorizationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_produce_authorization_with_options_async(
         self,
-        request: companyreg_20200306_models.ListProduceAuthorizationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.ListProduceAuthorizationResponse:
-        """
-        @param request: ListProduceAuthorizationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListProduceAuthorizationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListProduceAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListProduceAuthorizationResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListProduceAuthorization',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListProduceAuthorization',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.ListProduceAuthorizationResponse(),
+        return DaraCore.from_map(
+            main_models.ListProduceAuthorizationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_produce_authorization(
         self,
-        request: companyreg_20200306_models.ListProduceAuthorizationRequest,
-    ) -> companyreg_20200306_models.ListProduceAuthorizationResponse:
-        """
-        @param request: ListProduceAuthorizationRequest
-        @return: ListProduceAuthorizationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListProduceAuthorizationRequest,
+    ) -> main_models.ListProduceAuthorizationResponse:
+        runtime = RuntimeOptions()
         return self.list_produce_authorization_with_options(request, runtime)
 
     async def list_produce_authorization_async(
         self,
-        request: companyreg_20200306_models.ListProduceAuthorizationRequest,
-    ) -> companyreg_20200306_models.ListProduceAuthorizationResponse:
-        """
-        @param request: ListProduceAuthorizationRequest
-        @return: ListProduceAuthorizationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListProduceAuthorizationRequest,
+    ) -> main_models.ListProduceAuthorizationResponse:
+        runtime = RuntimeOptions()
         return await self.list_produce_authorization_with_options_async(request, runtime)
 
     def list_user_detail_solutions_with_options(
         self,
-        request: companyreg_20200306_models.ListUserDetailSolutionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.ListUserDetailSolutionsResponse:
-        """
-        @param request: ListUserDetailSolutionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListUserDetailSolutionsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListUserDetailSolutionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserDetailSolutionsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListUserDetailSolutions',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListUserDetailSolutions',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.ListUserDetailSolutionsResponse(),
+        return DaraCore.from_map(
+            main_models.ListUserDetailSolutionsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_user_detail_solutions_with_options_async(
         self,
-        request: companyreg_20200306_models.ListUserDetailSolutionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.ListUserDetailSolutionsResponse:
-        """
-        @param request: ListUserDetailSolutionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListUserDetailSolutionsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListUserDetailSolutionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserDetailSolutionsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListUserDetailSolutions',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListUserDetailSolutions',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.ListUserDetailSolutionsResponse(),
+        return DaraCore.from_map(
+            main_models.ListUserDetailSolutionsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_user_detail_solutions(
         self,
-        request: companyreg_20200306_models.ListUserDetailSolutionsRequest,
-    ) -> companyreg_20200306_models.ListUserDetailSolutionsResponse:
-        """
-        @param request: ListUserDetailSolutionsRequest
-        @return: ListUserDetailSolutionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListUserDetailSolutionsRequest,
+    ) -> main_models.ListUserDetailSolutionsResponse:
+        runtime = RuntimeOptions()
         return self.list_user_detail_solutions_with_options(request, runtime)
 
     async def list_user_detail_solutions_async(
         self,
-        request: companyreg_20200306_models.ListUserDetailSolutionsRequest,
-    ) -> companyreg_20200306_models.ListUserDetailSolutionsResponse:
-        """
-        @param request: ListUserDetailSolutionsRequest
-        @return: ListUserDetailSolutionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListUserDetailSolutionsRequest,
+    ) -> main_models.ListUserDetailSolutionsResponse:
+        runtime = RuntimeOptions()
         return await self.list_user_detail_solutions_with_options_async(request, runtime)
 
     def list_user_intention_notes_with_options(
         self,
-        request: companyreg_20200306_models.ListUserIntentionNotesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.ListUserIntentionNotesResponse:
-        """
-        @param request: ListUserIntentionNotesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListUserIntentionNotesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListUserIntentionNotesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserIntentionNotesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListUserIntentionNotes',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListUserIntentionNotes',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.ListUserIntentionNotesResponse(),
+        return DaraCore.from_map(
+            main_models.ListUserIntentionNotesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_user_intention_notes_with_options_async(
         self,
-        request: companyreg_20200306_models.ListUserIntentionNotesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.ListUserIntentionNotesResponse:
-        """
-        @param request: ListUserIntentionNotesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListUserIntentionNotesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListUserIntentionNotesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserIntentionNotesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListUserIntentionNotes',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListUserIntentionNotes',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.ListUserIntentionNotesResponse(),
+        return DaraCore.from_map(
+            main_models.ListUserIntentionNotesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_user_intention_notes(
         self,
-        request: companyreg_20200306_models.ListUserIntentionNotesRequest,
-    ) -> companyreg_20200306_models.ListUserIntentionNotesResponse:
-        """
-        @param request: ListUserIntentionNotesRequest
-        @return: ListUserIntentionNotesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListUserIntentionNotesRequest,
+    ) -> main_models.ListUserIntentionNotesResponse:
+        runtime = RuntimeOptions()
         return self.list_user_intention_notes_with_options(request, runtime)
 
     async def list_user_intention_notes_async(
         self,
-        request: companyreg_20200306_models.ListUserIntentionNotesRequest,
-    ) -> companyreg_20200306_models.ListUserIntentionNotesResponse:
-        """
-        @param request: ListUserIntentionNotesRequest
-        @return: ListUserIntentionNotesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListUserIntentionNotesRequest,
+    ) -> main_models.ListUserIntentionNotesResponse:
+        runtime = RuntimeOptions()
         return await self.list_user_intention_notes_with_options_async(request, runtime)
 
     def list_user_intentions_with_options(
         self,
-        request: companyreg_20200306_models.ListUserIntentionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.ListUserIntentionsResponse:
-        """
-        @summary 用户控制天需求列表查询
-        
-        @param request: ListUserIntentionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListUserIntentionsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListUserIntentionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserIntentionsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.area):
+        if not DaraCore.is_null(request.area):
             query['Area'] = request.area
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.biz_types):
+        if not DaraCore.is_null(request.biz_types):
             query['BizTypes'] = request.biz_types
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.sort_filed):
+        if not DaraCore.is_null(request.sort_filed):
             query['SortFiled'] = request.sort_filed
-        if not UtilClient.is_unset(request.sort_order):
+        if not DaraCore.is_null(request.sort_order):
             query['SortOrder'] = request.sort_order
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.with_ext_info):
+        if not DaraCore.is_null(request.with_ext_info):
             query['WithExtInfo'] = request.with_ext_info
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListUserIntentions',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListUserIntentions',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.ListUserIntentionsResponse(),
+        return DaraCore.from_map(
+            main_models.ListUserIntentionsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_user_intentions_with_options_async(
         self,
-        request: companyreg_20200306_models.ListUserIntentionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.ListUserIntentionsResponse:
-        """
-        @summary 用户控制天需求列表查询
-        
-        @param request: ListUserIntentionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListUserIntentionsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListUserIntentionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserIntentionsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.area):
+        if not DaraCore.is_null(request.area):
             query['Area'] = request.area
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.biz_types):
+        if not DaraCore.is_null(request.biz_types):
             query['BizTypes'] = request.biz_types
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.sort_filed):
+        if not DaraCore.is_null(request.sort_filed):
             query['SortFiled'] = request.sort_filed
-        if not UtilClient.is_unset(request.sort_order):
+        if not DaraCore.is_null(request.sort_order):
             query['SortOrder'] = request.sort_order
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.with_ext_info):
+        if not DaraCore.is_null(request.with_ext_info):
             query['WithExtInfo'] = request.with_ext_info
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListUserIntentions',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListUserIntentions',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.ListUserIntentionsResponse(),
+        return DaraCore.from_map(
+            main_models.ListUserIntentionsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_user_intentions(
         self,
-        request: companyreg_20200306_models.ListUserIntentionsRequest,
-    ) -> companyreg_20200306_models.ListUserIntentionsResponse:
-        """
-        @summary 用户控制天需求列表查询
-        
-        @param request: ListUserIntentionsRequest
-        @return: ListUserIntentionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListUserIntentionsRequest,
+    ) -> main_models.ListUserIntentionsResponse:
+        runtime = RuntimeOptions()
         return self.list_user_intentions_with_options(request, runtime)
 
     async def list_user_intentions_async(
         self,
-        request: companyreg_20200306_models.ListUserIntentionsRequest,
-    ) -> companyreg_20200306_models.ListUserIntentionsResponse:
-        """
-        @summary 用户控制天需求列表查询
-        
-        @param request: ListUserIntentionsRequest
-        @return: ListUserIntentionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListUserIntentionsRequest,
+    ) -> main_models.ListUserIntentionsResponse:
+        runtime = RuntimeOptions()
         return await self.list_user_intentions_with_options_async(request, runtime)
 
     def list_user_produce_operate_logs_with_options(
         self,
-        request: companyreg_20200306_models.ListUserProduceOperateLogsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.ListUserProduceOperateLogsResponse:
-        """
-        @param request: ListUserProduceOperateLogsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListUserProduceOperateLogsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListUserProduceOperateLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserProduceOperateLogsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListUserProduceOperateLogs',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListUserProduceOperateLogs',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.ListUserProduceOperateLogsResponse(),
+        return DaraCore.from_map(
+            main_models.ListUserProduceOperateLogsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_user_produce_operate_logs_with_options_async(
         self,
-        request: companyreg_20200306_models.ListUserProduceOperateLogsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.ListUserProduceOperateLogsResponse:
-        """
-        @param request: ListUserProduceOperateLogsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListUserProduceOperateLogsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListUserProduceOperateLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserProduceOperateLogsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListUserProduceOperateLogs',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListUserProduceOperateLogs',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.ListUserProduceOperateLogsResponse(),
+        return DaraCore.from_map(
+            main_models.ListUserProduceOperateLogsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_user_produce_operate_logs(
         self,
-        request: companyreg_20200306_models.ListUserProduceOperateLogsRequest,
-    ) -> companyreg_20200306_models.ListUserProduceOperateLogsResponse:
-        """
-        @param request: ListUserProduceOperateLogsRequest
-        @return: ListUserProduceOperateLogsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListUserProduceOperateLogsRequest,
+    ) -> main_models.ListUserProduceOperateLogsResponse:
+        runtime = RuntimeOptions()
         return self.list_user_produce_operate_logs_with_options(request, runtime)
 
     async def list_user_produce_operate_logs_async(
         self,
-        request: companyreg_20200306_models.ListUserProduceOperateLogsRequest,
-    ) -> companyreg_20200306_models.ListUserProduceOperateLogsResponse:
-        """
-        @param request: ListUserProduceOperateLogsRequest
-        @return: ListUserProduceOperateLogsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListUserProduceOperateLogsRequest,
+    ) -> main_models.ListUserProduceOperateLogsResponse:
+        runtime = RuntimeOptions()
         return await self.list_user_produce_operate_logs_with_options_async(request, runtime)
 
     def list_user_solutions_with_options(
         self,
-        tmp_req: companyreg_20200306_models.ListUserSolutionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.ListUserSolutionsResponse:
-        """
-        @param tmp_req: ListUserSolutionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListUserSolutionsResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = companyreg_20200306_models.ListUserSolutionsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.exist_status):
-            request.exist_status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exist_status, 'ExistStatus', 'json')
+        tmp_req: main_models.ListUserSolutionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserSolutionsResponse:
+        tmp_req.validate()
+        request = main_models.ListUserSolutionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.exist_status):
+            request.exist_status_shrink = Utils.array_to_string_with_specified_style(tmp_req.exist_status, 'ExistStatus', 'json')
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.exist_status_shrink):
+        if not DaraCore.is_null(request.exist_status_shrink):
             query['ExistStatus'] = request.exist_status_shrink
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListUserSolutions',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListUserSolutions',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.ListUserSolutionsResponse(),
+        return DaraCore.from_map(
+            main_models.ListUserSolutionsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_user_solutions_with_options_async(
         self,
-        tmp_req: companyreg_20200306_models.ListUserSolutionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.ListUserSolutionsResponse:
-        """
-        @param tmp_req: ListUserSolutionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListUserSolutionsResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = companyreg_20200306_models.ListUserSolutionsShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.exist_status):
-            request.exist_status_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.exist_status, 'ExistStatus', 'json')
+        tmp_req: main_models.ListUserSolutionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUserSolutionsResponse:
+        tmp_req.validate()
+        request = main_models.ListUserSolutionsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.exist_status):
+            request.exist_status_shrink = Utils.array_to_string_with_specified_style(tmp_req.exist_status, 'ExistStatus', 'json')
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.exist_status_shrink):
+        if not DaraCore.is_null(request.exist_status_shrink):
             query['ExistStatus'] = request.exist_status_shrink
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListUserSolutions',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListUserSolutions',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.ListUserSolutionsResponse(),
+        return DaraCore.from_map(
+            main_models.ListUserSolutionsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_user_solutions(
         self,
-        request: companyreg_20200306_models.ListUserSolutionsRequest,
-    ) -> companyreg_20200306_models.ListUserSolutionsResponse:
-        """
-        @param request: ListUserSolutionsRequest
-        @return: ListUserSolutionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListUserSolutionsRequest,
+    ) -> main_models.ListUserSolutionsResponse:
+        runtime = RuntimeOptions()
         return self.list_user_solutions_with_options(request, runtime)
 
     async def list_user_solutions_async(
         self,
-        request: companyreg_20200306_models.ListUserSolutionsRequest,
-    ) -> companyreg_20200306_models.ListUserSolutionsResponse:
-        """
-        @param request: ListUserSolutionsRequest
-        @return: ListUserSolutionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListUserSolutionsRequest,
+    ) -> main_models.ListUserSolutionsResponse:
+        runtime = RuntimeOptions()
         return await self.list_user_solutions_with_options_async(request, runtime)
 
     def operate_call_center_for_partner_with_options(
         self,
-        request: companyreg_20200306_models.OperateCallCenterForPartnerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.OperateCallCenterForPartnerResponse:
-        """
-        @summary 服务商玄坛呼叫中心操作
-        
-        @param request: OperateCallCenterForPartnerRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OperateCallCenterForPartnerResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.OperateCallCenterForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateCallCenterForPartnerResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.call_action):
+        if not DaraCore.is_null(request.call_action):
             query['CallAction'] = request.call_action
-        if not UtilClient.is_unset(request.employee_code):
+        if not DaraCore.is_null(request.employee_code):
             query['EmployeeCode'] = request.employee_code
-        if not UtilClient.is_unset(request.request):
+        if not DaraCore.is_null(request.request):
             query['Request'] = request.request
-        if not UtilClient.is_unset(request.tenant_id):
+        if not DaraCore.is_null(request.tenant_id):
             query['TenantId'] = request.tenant_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='OperateCallCenterForPartner',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'OperateCallCenterForPartner',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.OperateCallCenterForPartnerResponse(),
+        return DaraCore.from_map(
+            main_models.OperateCallCenterForPartnerResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def operate_call_center_for_partner_with_options_async(
         self,
-        request: companyreg_20200306_models.OperateCallCenterForPartnerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.OperateCallCenterForPartnerResponse:
-        """
-        @summary 服务商玄坛呼叫中心操作
-        
-        @param request: OperateCallCenterForPartnerRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OperateCallCenterForPartnerResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.OperateCallCenterForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateCallCenterForPartnerResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.call_action):
+        if not DaraCore.is_null(request.call_action):
             query['CallAction'] = request.call_action
-        if not UtilClient.is_unset(request.employee_code):
+        if not DaraCore.is_null(request.employee_code):
             query['EmployeeCode'] = request.employee_code
-        if not UtilClient.is_unset(request.request):
+        if not DaraCore.is_null(request.request):
             query['Request'] = request.request
-        if not UtilClient.is_unset(request.tenant_id):
+        if not DaraCore.is_null(request.tenant_id):
             query['TenantId'] = request.tenant_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='OperateCallCenterForPartner',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'OperateCallCenterForPartner',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.OperateCallCenterForPartnerResponse(),
+        return DaraCore.from_map(
+            main_models.OperateCallCenterForPartnerResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def operate_call_center_for_partner(
         self,
-        request: companyreg_20200306_models.OperateCallCenterForPartnerRequest,
-    ) -> companyreg_20200306_models.OperateCallCenterForPartnerResponse:
-        """
-        @summary 服务商玄坛呼叫中心操作
-        
-        @param request: OperateCallCenterForPartnerRequest
-        @return: OperateCallCenterForPartnerResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.OperateCallCenterForPartnerRequest,
+    ) -> main_models.OperateCallCenterForPartnerResponse:
+        runtime = RuntimeOptions()
         return self.operate_call_center_for_partner_with_options(request, runtime)
 
     async def operate_call_center_for_partner_async(
         self,
-        request: companyreg_20200306_models.OperateCallCenterForPartnerRequest,
-    ) -> companyreg_20200306_models.OperateCallCenterForPartnerResponse:
-        """
-        @summary 服务商玄坛呼叫中心操作
-        
-        @param request: OperateCallCenterForPartnerRequest
-        @return: OperateCallCenterForPartnerResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.OperateCallCenterForPartnerRequest,
+    ) -> main_models.OperateCallCenterForPartnerResponse:
+        runtime = RuntimeOptions()
         return await self.operate_call_center_for_partner_with_options_async(request, runtime)
 
     def operate_produce_for_partner_with_options(
         self,
-        request: companyreg_20200306_models.OperateProduceForPartnerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.OperateProduceForPartnerResponse:
-        """
-        @param request: OperateProduceForPartnerRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OperateProduceForPartnerResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.OperateProduceForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateProduceForPartnerResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.ext_info):
+        if not DaraCore.is_null(request.ext_info):
             query['ExtInfo'] = request.ext_info
-        if not UtilClient.is_unset(request.operate_type):
+        if not DaraCore.is_null(request.operate_type):
             query['OperateType'] = request.operate_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='OperateProduceForPartner',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'OperateProduceForPartner',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.OperateProduceForPartnerResponse(),
+        return DaraCore.from_map(
+            main_models.OperateProduceForPartnerResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def operate_produce_for_partner_with_options_async(
         self,
-        request: companyreg_20200306_models.OperateProduceForPartnerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.OperateProduceForPartnerResponse:
-        """
-        @param request: OperateProduceForPartnerRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OperateProduceForPartnerResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.OperateProduceForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateProduceForPartnerResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.ext_info):
+        if not DaraCore.is_null(request.ext_info):
             query['ExtInfo'] = request.ext_info
-        if not UtilClient.is_unset(request.operate_type):
+        if not DaraCore.is_null(request.operate_type):
             query['OperateType'] = request.operate_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='OperateProduceForPartner',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'OperateProduceForPartner',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.OperateProduceForPartnerResponse(),
+        return DaraCore.from_map(
+            main_models.OperateProduceForPartnerResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def operate_produce_for_partner(
         self,
-        request: companyreg_20200306_models.OperateProduceForPartnerRequest,
-    ) -> companyreg_20200306_models.OperateProduceForPartnerResponse:
-        """
-        @param request: OperateProduceForPartnerRequest
-        @return: OperateProduceForPartnerResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.OperateProduceForPartnerRequest,
+    ) -> main_models.OperateProduceForPartnerResponse:
+        runtime = RuntimeOptions()
         return self.operate_produce_for_partner_with_options(request, runtime)
 
     async def operate_produce_for_partner_async(
         self,
-        request: companyreg_20200306_models.OperateProduceForPartnerRequest,
-    ) -> companyreg_20200306_models.OperateProduceForPartnerResponse:
-        """
-        @param request: OperateProduceForPartnerRequest
-        @return: OperateProduceForPartnerResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.OperateProduceForPartnerRequest,
+    ) -> main_models.OperateProduceForPartnerResponse:
+        runtime = RuntimeOptions()
         return await self.operate_produce_for_partner_with_options_async(request, runtime)
 
     def put_measure_data_with_options(
         self,
-        request: companyreg_20200306_models.PutMeasureDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.PutMeasureDataResponse:
-        """
-        @param request: PutMeasureDataRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PutMeasureDataResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.PutMeasureDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PutMeasureDataResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             body['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.data):
+        if not DaraCore.is_null(request.data):
             body['Data'] = request.data
-        if not UtilClient.is_unset(request.data_type):
+        if not DaraCore.is_null(request.data_type):
             body['DataType'] = request.data_type
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             body['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             body['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='PutMeasureData',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'PutMeasureData',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.PutMeasureDataResponse(),
+        return DaraCore.from_map(
+            main_models.PutMeasureDataResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def put_measure_data_with_options_async(
         self,
-        request: companyreg_20200306_models.PutMeasureDataRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.PutMeasureDataResponse:
-        """
-        @param request: PutMeasureDataRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PutMeasureDataResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.PutMeasureDataRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PutMeasureDataResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             body['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.data):
+        if not DaraCore.is_null(request.data):
             body['Data'] = request.data
-        if not UtilClient.is_unset(request.data_type):
+        if not DaraCore.is_null(request.data_type):
             body['DataType'] = request.data_type
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             body['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             body['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='PutMeasureData',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'PutMeasureData',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.PutMeasureDataResponse(),
+        return DaraCore.from_map(
+            main_models.PutMeasureDataResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def put_measure_data(
         self,
-        request: companyreg_20200306_models.PutMeasureDataRequest,
-    ) -> companyreg_20200306_models.PutMeasureDataResponse:
-        """
-        @param request: PutMeasureDataRequest
-        @return: PutMeasureDataResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.PutMeasureDataRequest,
+    ) -> main_models.PutMeasureDataResponse:
+        runtime = RuntimeOptions()
         return self.put_measure_data_with_options(request, runtime)
 
     async def put_measure_data_async(
         self,
-        request: companyreg_20200306_models.PutMeasureDataRequest,
-    ) -> companyreg_20200306_models.PutMeasureDataResponse:
-        """
-        @param request: PutMeasureDataRequest
-        @return: PutMeasureDataResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.PutMeasureDataRequest,
+    ) -> main_models.PutMeasureDataResponse:
+        runtime = RuntimeOptions()
         return await self.put_measure_data_with_options_async(request, runtime)
 
     def put_measure_ready_flag_with_options(
         self,
-        request: companyreg_20200306_models.PutMeasureReadyFlagRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.PutMeasureReadyFlagResponse:
-        """
-        @param request: PutMeasureReadyFlagRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PutMeasureReadyFlagResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.PutMeasureReadyFlagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PutMeasureReadyFlagResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.data_type):
+        if not DaraCore.is_null(request.data_type):
             query['DataType'] = request.data_type
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.ready_flag):
+        if not DaraCore.is_null(request.ready_flag):
             query['ReadyFlag'] = request.ready_flag
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='PutMeasureReadyFlag',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'PutMeasureReadyFlag',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.PutMeasureReadyFlagResponse(),
+        return DaraCore.from_map(
+            main_models.PutMeasureReadyFlagResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def put_measure_ready_flag_with_options_async(
         self,
-        request: companyreg_20200306_models.PutMeasureReadyFlagRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.PutMeasureReadyFlagResponse:
-        """
-        @param request: PutMeasureReadyFlagRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PutMeasureReadyFlagResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.PutMeasureReadyFlagRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PutMeasureReadyFlagResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.data_type):
+        if not DaraCore.is_null(request.data_type):
             query['DataType'] = request.data_type
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.ready_flag):
+        if not DaraCore.is_null(request.ready_flag):
             query['ReadyFlag'] = request.ready_flag
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='PutMeasureReadyFlag',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'PutMeasureReadyFlag',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.PutMeasureReadyFlagResponse(),
+        return DaraCore.from_map(
+            main_models.PutMeasureReadyFlagResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def put_measure_ready_flag(
         self,
-        request: companyreg_20200306_models.PutMeasureReadyFlagRequest,
-    ) -> companyreg_20200306_models.PutMeasureReadyFlagResponse:
-        """
-        @param request: PutMeasureReadyFlagRequest
-        @return: PutMeasureReadyFlagResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.PutMeasureReadyFlagRequest,
+    ) -> main_models.PutMeasureReadyFlagResponse:
+        runtime = RuntimeOptions()
         return self.put_measure_ready_flag_with_options(request, runtime)
 
     async def put_measure_ready_flag_async(
         self,
-        request: companyreg_20200306_models.PutMeasureReadyFlagRequest,
-    ) -> companyreg_20200306_models.PutMeasureReadyFlagResponse:
-        """
-        @param request: PutMeasureReadyFlagRequest
-        @return: PutMeasureReadyFlagResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.PutMeasureReadyFlagRequest,
+    ) -> main_models.PutMeasureReadyFlagResponse:
+        runtime = RuntimeOptions()
         return await self.put_measure_ready_flag_with_options_async(request, runtime)
 
     def query_available_numbers_with_options(
         self,
-        request: companyreg_20200306_models.QueryAvailableNumbersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.QueryAvailableNumbersResponse:
-        """
-        @summary 获取玄坛合作伙伴双呼时可用外呼号码
-        
-        @param request: QueryAvailableNumbersRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryAvailableNumbersResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryAvailableNumbersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAvailableNumbersResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryAvailableNumbers',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryAvailableNumbers',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.QueryAvailableNumbersResponse(),
+        return DaraCore.from_map(
+            main_models.QueryAvailableNumbersResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_available_numbers_with_options_async(
         self,
-        request: companyreg_20200306_models.QueryAvailableNumbersRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.QueryAvailableNumbersResponse:
-        """
-        @summary 获取玄坛合作伙伴双呼时可用外呼号码
-        
-        @param request: QueryAvailableNumbersRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryAvailableNumbersResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryAvailableNumbersRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryAvailableNumbersResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryAvailableNumbers',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryAvailableNumbers',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.QueryAvailableNumbersResponse(),
+        return DaraCore.from_map(
+            main_models.QueryAvailableNumbersResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_available_numbers(
         self,
-        request: companyreg_20200306_models.QueryAvailableNumbersRequest,
-    ) -> companyreg_20200306_models.QueryAvailableNumbersResponse:
-        """
-        @summary 获取玄坛合作伙伴双呼时可用外呼号码
-        
-        @param request: QueryAvailableNumbersRequest
-        @return: QueryAvailableNumbersResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryAvailableNumbersRequest,
+    ) -> main_models.QueryAvailableNumbersResponse:
+        runtime = RuntimeOptions()
         return self.query_available_numbers_with_options(request, runtime)
 
     async def query_available_numbers_async(
         self,
-        request: companyreg_20200306_models.QueryAvailableNumbersRequest,
-    ) -> companyreg_20200306_models.QueryAvailableNumbersResponse:
-        """
-        @summary 获取玄坛合作伙伴双呼时可用外呼号码
-        
-        @param request: QueryAvailableNumbersRequest
-        @return: QueryAvailableNumbersResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryAvailableNumbersRequest,
+    ) -> main_models.QueryAvailableNumbersResponse:
+        runtime = RuntimeOptions()
         return await self.query_available_numbers_with_options_async(request, runtime)
 
     def query_bag_remaining_with_options(
         self,
-        request: companyreg_20200306_models.QueryBagRemainingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.QueryBagRemainingResponse:
-        """
-        @param request: QueryBagRemainingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryBagRemainingResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.QueryBagRemainingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryBagRemainingResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryBagRemaining',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryBagRemaining',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.QueryBagRemainingResponse(),
+        return DaraCore.from_map(
+            main_models.QueryBagRemainingResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_bag_remaining_with_options_async(
         self,
-        request: companyreg_20200306_models.QueryBagRemainingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.QueryBagRemainingResponse:
-        """
-        @param request: QueryBagRemainingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryBagRemainingResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.QueryBagRemainingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryBagRemainingResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryBagRemaining',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryBagRemaining',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.QueryBagRemainingResponse(),
+        return DaraCore.from_map(
+            main_models.QueryBagRemainingResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_bag_remaining(
         self,
-        request: companyreg_20200306_models.QueryBagRemainingRequest,
-    ) -> companyreg_20200306_models.QueryBagRemainingResponse:
-        """
-        @param request: QueryBagRemainingRequest
-        @return: QueryBagRemainingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryBagRemainingRequest,
+    ) -> main_models.QueryBagRemainingResponse:
+        runtime = RuntimeOptions()
         return self.query_bag_remaining_with_options(request, runtime)
 
     async def query_bag_remaining_async(
         self,
-        request: companyreg_20200306_models.QueryBagRemainingRequest,
-    ) -> companyreg_20200306_models.QueryBagRemainingResponse:
-        """
-        @param request: QueryBagRemainingRequest
-        @return: QueryBagRemainingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryBagRemainingRequest,
+    ) -> main_models.QueryBagRemainingResponse:
+        runtime = RuntimeOptions()
         return await self.query_bag_remaining_with_options_async(request, runtime)
 
     def query_call_record_list_with_options(
         self,
-        request: companyreg_20200306_models.QueryCallRecordListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.QueryCallRecordListResponse:
-        """
-        @summary 查询玄坛外呼语音文件
-        
-        @param request: QueryCallRecordListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryCallRecordListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryCallRecordListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryCallRecordListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.skill_type):
+        if not DaraCore.is_null(request.skill_type):
             query['SkillType'] = request.skill_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryCallRecordList',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryCallRecordList',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.QueryCallRecordListResponse(),
+        return DaraCore.from_map(
+            main_models.QueryCallRecordListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_call_record_list_with_options_async(
         self,
-        request: companyreg_20200306_models.QueryCallRecordListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.QueryCallRecordListResponse:
-        """
-        @summary 查询玄坛外呼语音文件
-        
-        @param request: QueryCallRecordListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryCallRecordListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryCallRecordListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryCallRecordListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.skill_type):
+        if not DaraCore.is_null(request.skill_type):
             query['SkillType'] = request.skill_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryCallRecordList',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryCallRecordList',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.QueryCallRecordListResponse(),
+        return DaraCore.from_map(
+            main_models.QueryCallRecordListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_call_record_list(
         self,
-        request: companyreg_20200306_models.QueryCallRecordListRequest,
-    ) -> companyreg_20200306_models.QueryCallRecordListResponse:
-        """
-        @summary 查询玄坛外呼语音文件
-        
-        @param request: QueryCallRecordListRequest
-        @return: QueryCallRecordListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryCallRecordListRequest,
+    ) -> main_models.QueryCallRecordListResponse:
+        runtime = RuntimeOptions()
         return self.query_call_record_list_with_options(request, runtime)
 
     async def query_call_record_list_async(
         self,
-        request: companyreg_20200306_models.QueryCallRecordListRequest,
-    ) -> companyreg_20200306_models.QueryCallRecordListResponse:
-        """
-        @summary 查询玄坛外呼语音文件
-        
-        @param request: QueryCallRecordListRequest
-        @return: QueryCallRecordListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryCallRecordListRequest,
+    ) -> main_models.QueryCallRecordListResponse:
+        runtime = RuntimeOptions()
         return await self.query_call_record_list_with_options_async(request, runtime)
 
     def query_instance_with_options(
         self,
-        request: companyreg_20200306_models.QueryInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.QueryInstanceResponse:
-        """
-        @param request: QueryInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryInstance',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryInstance',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.QueryInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.QueryInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_instance_with_options_async(
         self,
-        request: companyreg_20200306_models.QueryInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.QueryInstanceResponse:
-        """
-        @param request: QueryInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryInstance',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryInstance',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.QueryInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.QueryInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_instance(
         self,
-        request: companyreg_20200306_models.QueryInstanceRequest,
-    ) -> companyreg_20200306_models.QueryInstanceResponse:
-        """
-        @param request: QueryInstanceRequest
-        @return: QueryInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryInstanceRequest,
+    ) -> main_models.QueryInstanceResponse:
+        runtime = RuntimeOptions()
         return self.query_instance_with_options(request, runtime)
 
     async def query_instance_async(
         self,
-        request: companyreg_20200306_models.QueryInstanceRequest,
-    ) -> companyreg_20200306_models.QueryInstanceResponse:
-        """
-        @param request: QueryInstanceRequest
-        @return: QueryInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryInstanceRequest,
+    ) -> main_models.QueryInstanceResponse:
+        runtime = RuntimeOptions()
         return await self.query_instance_with_options_async(request, runtime)
 
     def query_partner_intention_list_with_options(
         self,
-        request: companyreg_20200306_models.QueryPartnerIntentionListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.QueryPartnerIntentionListResponse:
-        """
-        @summary QueryPartnerIntentionList
-        
-        @param request: QueryPartnerIntentionListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryPartnerIntentionListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryPartnerIntentionListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryPartnerIntentionListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryPartnerIntentionList',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryPartnerIntentionList',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.QueryPartnerIntentionListResponse(),
+        return DaraCore.from_map(
+            main_models.QueryPartnerIntentionListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_partner_intention_list_with_options_async(
         self,
-        request: companyreg_20200306_models.QueryPartnerIntentionListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.QueryPartnerIntentionListResponse:
-        """
-        @summary QueryPartnerIntentionList
-        
-        @param request: QueryPartnerIntentionListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryPartnerIntentionListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.QueryPartnerIntentionListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryPartnerIntentionListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.page_num):
+        if not DaraCore.is_null(request.page_num):
             query['PageNum'] = request.page_num
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryPartnerIntentionList',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryPartnerIntentionList',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.QueryPartnerIntentionListResponse(),
+        return DaraCore.from_map(
+            main_models.QueryPartnerIntentionListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_partner_intention_list(
         self,
-        request: companyreg_20200306_models.QueryPartnerIntentionListRequest,
-    ) -> companyreg_20200306_models.QueryPartnerIntentionListResponse:
-        """
-        @summary QueryPartnerIntentionList
-        
-        @param request: QueryPartnerIntentionListRequest
-        @return: QueryPartnerIntentionListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryPartnerIntentionListRequest,
+    ) -> main_models.QueryPartnerIntentionListResponse:
+        runtime = RuntimeOptions()
         return self.query_partner_intention_list_with_options(request, runtime)
 
     async def query_partner_intention_list_async(
         self,
-        request: companyreg_20200306_models.QueryPartnerIntentionListRequest,
-    ) -> companyreg_20200306_models.QueryPartnerIntentionListResponse:
-        """
-        @summary QueryPartnerIntentionList
-        
-        @param request: QueryPartnerIntentionListRequest
-        @return: QueryPartnerIntentionListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryPartnerIntentionListRequest,
+    ) -> main_models.QueryPartnerIntentionListResponse:
+        runtime = RuntimeOptions()
         return await self.query_partner_intention_list_with_options_async(request, runtime)
 
     def query_partner_produce_list_with_options(
         self,
-        request: companyreg_20200306_models.QueryPartnerProduceListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.QueryPartnerProduceListResponse:
-        """
-        @summary QueryPartnerProduceList
-        
-        @param request: QueryPartnerProduceListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryPartnerProduceListResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.QueryPartnerProduceListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryPartnerProduceListResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryPartnerProduceList',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryPartnerProduceList',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.QueryPartnerProduceListResponse(),
+        return DaraCore.from_map(
+            main_models.QueryPartnerProduceListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_partner_produce_list_with_options_async(
         self,
-        request: companyreg_20200306_models.QueryPartnerProduceListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.QueryPartnerProduceListResponse:
-        """
-        @summary QueryPartnerProduceList
-        
-        @param request: QueryPartnerProduceListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryPartnerProduceListResponse
-        """
-        UtilClient.validate_model(request)
-        query = OpenApiUtilClient.query(UtilClient.to_map(request))
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        request: main_models.QueryPartnerProduceListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryPartnerProduceListResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='QueryPartnerProduceList',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='GET',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'QueryPartnerProduceList',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.QueryPartnerProduceListResponse(),
+        return DaraCore.from_map(
+            main_models.QueryPartnerProduceListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def query_partner_produce_list(
         self,
-        request: companyreg_20200306_models.QueryPartnerProduceListRequest,
-    ) -> companyreg_20200306_models.QueryPartnerProduceListResponse:
-        """
-        @summary QueryPartnerProduceList
-        
-        @param request: QueryPartnerProduceListRequest
-        @return: QueryPartnerProduceListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryPartnerProduceListRequest,
+    ) -> main_models.QueryPartnerProduceListResponse:
+        runtime = RuntimeOptions()
         return self.query_partner_produce_list_with_options(request, runtime)
 
     async def query_partner_produce_list_async(
         self,
-        request: companyreg_20200306_models.QueryPartnerProduceListRequest,
-    ) -> companyreg_20200306_models.QueryPartnerProduceListResponse:
-        """
-        @summary QueryPartnerProduceList
-        
-        @param request: QueryPartnerProduceListRequest
-        @return: QueryPartnerProduceListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.QueryPartnerProduceListRequest,
+    ) -> main_models.QueryPartnerProduceListResponse:
+        runtime = RuntimeOptions()
         return await self.query_partner_produce_list_with_options_async(request, runtime)
 
     def query_user_need_auth_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.QueryUserNeedAuthResponse:
-        """
-        @param request: QueryUserNeedAuthRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryUserNeedAuthResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='QueryUserNeedAuth',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryUserNeedAuthResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'QueryUserNeedAuth',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.QueryUserNeedAuthResponse(),
+        return DaraCore.from_map(
+            main_models.QueryUserNeedAuthResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def query_user_need_auth_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.QueryUserNeedAuthResponse:
-        """
-        @param request: QueryUserNeedAuthRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: QueryUserNeedAuthResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='QueryUserNeedAuth',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryUserNeedAuthResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'QueryUserNeedAuth',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.QueryUserNeedAuthResponse(),
+        return DaraCore.from_map(
+            main_models.QueryUserNeedAuthResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def query_user_need_auth(self) -> companyreg_20200306_models.QueryUserNeedAuthResponse:
-        """
-        @return: QueryUserNeedAuthResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def query_user_need_auth(self) -> main_models.QueryUserNeedAuthResponse:
+        runtime = RuntimeOptions()
         return self.query_user_need_auth_with_options(runtime)
 
-    async def query_user_need_auth_async(self) -> companyreg_20200306_models.QueryUserNeedAuthResponse:
-        """
-        @return: QueryUserNeedAuthResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def query_user_need_auth_async(self) -> main_models.QueryUserNeedAuthResponse:
+        runtime = RuntimeOptions()
         return await self.query_user_need_auth_with_options_async(runtime)
 
     def record_call_center_event_for_partner_with_options(
         self,
-        request: companyreg_20200306_models.RecordCallCenterEventForPartnerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.RecordCallCenterEventForPartnerResponse:
-        """
-        @summary 服务商玄坛外呼呼叫中心事件回传
-        
-        @param request: RecordCallCenterEventForPartnerRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RecordCallCenterEventForPartnerResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RecordCallCenterEventForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RecordCallCenterEventForPartnerResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.call_action):
+        if not DaraCore.is_null(request.call_action):
             query['CallAction'] = request.call_action
-        if not UtilClient.is_unset(request.callee):
+        if not DaraCore.is_null(request.callee):
             query['Callee'] = request.callee
-        if not UtilClient.is_unset(request.caller):
+        if not DaraCore.is_null(request.caller):
             query['Caller'] = request.caller
-        if not UtilClient.is_unset(request.conn_id):
+        if not DaraCore.is_null(request.conn_id):
             query['ConnId'] = request.conn_id
-        if not UtilClient.is_unset(request.contact_id):
+        if not DaraCore.is_null(request.contact_id):
             query['ContactId'] = request.contact_id
-        if not UtilClient.is_unset(request.employee_code):
+        if not DaraCore.is_null(request.employee_code):
             query['EmployeeCode'] = request.employee_code
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.related_id):
+        if not DaraCore.is_null(request.related_id):
             query['RelatedId'] = request.related_id
-        if not UtilClient.is_unset(request.secret_mobile):
+        if not DaraCore.is_null(request.secret_mobile):
             query['SecretMobile'] = request.secret_mobile
-        if not UtilClient.is_unset(request.skill_type):
+        if not DaraCore.is_null(request.skill_type):
             query['SkillType'] = request.skill_type
-        if not UtilClient.is_unset(request.tenant_id):
+        if not DaraCore.is_null(request.tenant_id):
             query['TenantId'] = request.tenant_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RecordCallCenterEventForPartner',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RecordCallCenterEventForPartner',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.RecordCallCenterEventForPartnerResponse(),
+        return DaraCore.from_map(
+            main_models.RecordCallCenterEventForPartnerResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def record_call_center_event_for_partner_with_options_async(
         self,
-        request: companyreg_20200306_models.RecordCallCenterEventForPartnerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.RecordCallCenterEventForPartnerResponse:
-        """
-        @summary 服务商玄坛外呼呼叫中心事件回传
-        
-        @param request: RecordCallCenterEventForPartnerRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RecordCallCenterEventForPartnerResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RecordCallCenterEventForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RecordCallCenterEventForPartnerResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.call_action):
+        if not DaraCore.is_null(request.call_action):
             query['CallAction'] = request.call_action
-        if not UtilClient.is_unset(request.callee):
+        if not DaraCore.is_null(request.callee):
             query['Callee'] = request.callee
-        if not UtilClient.is_unset(request.caller):
+        if not DaraCore.is_null(request.caller):
             query['Caller'] = request.caller
-        if not UtilClient.is_unset(request.conn_id):
+        if not DaraCore.is_null(request.conn_id):
             query['ConnId'] = request.conn_id
-        if not UtilClient.is_unset(request.contact_id):
+        if not DaraCore.is_null(request.contact_id):
             query['ContactId'] = request.contact_id
-        if not UtilClient.is_unset(request.employee_code):
+        if not DaraCore.is_null(request.employee_code):
             query['EmployeeCode'] = request.employee_code
-        if not UtilClient.is_unset(request.job_id):
+        if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
-        if not UtilClient.is_unset(request.related_id):
+        if not DaraCore.is_null(request.related_id):
             query['RelatedId'] = request.related_id
-        if not UtilClient.is_unset(request.secret_mobile):
+        if not DaraCore.is_null(request.secret_mobile):
             query['SecretMobile'] = request.secret_mobile
-        if not UtilClient.is_unset(request.skill_type):
+        if not DaraCore.is_null(request.skill_type):
             query['SkillType'] = request.skill_type
-        if not UtilClient.is_unset(request.tenant_id):
+        if not DaraCore.is_null(request.tenant_id):
             query['TenantId'] = request.tenant_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RecordCallCenterEventForPartner',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RecordCallCenterEventForPartner',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.RecordCallCenterEventForPartnerResponse(),
+        return DaraCore.from_map(
+            main_models.RecordCallCenterEventForPartnerResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def record_call_center_event_for_partner(
         self,
-        request: companyreg_20200306_models.RecordCallCenterEventForPartnerRequest,
-    ) -> companyreg_20200306_models.RecordCallCenterEventForPartnerResponse:
-        """
-        @summary 服务商玄坛外呼呼叫中心事件回传
-        
-        @param request: RecordCallCenterEventForPartnerRequest
-        @return: RecordCallCenterEventForPartnerResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RecordCallCenterEventForPartnerRequest,
+    ) -> main_models.RecordCallCenterEventForPartnerResponse:
+        runtime = RuntimeOptions()
         return self.record_call_center_event_for_partner_with_options(request, runtime)
 
     async def record_call_center_event_for_partner_async(
         self,
-        request: companyreg_20200306_models.RecordCallCenterEventForPartnerRequest,
-    ) -> companyreg_20200306_models.RecordCallCenterEventForPartnerResponse:
-        """
-        @summary 服务商玄坛外呼呼叫中心事件回传
-        
-        @param request: RecordCallCenterEventForPartnerRequest
-        @return: RecordCallCenterEventForPartnerResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RecordCallCenterEventForPartnerRequest,
+    ) -> main_models.RecordCallCenterEventForPartnerResponse:
+        runtime = RuntimeOptions()
         return await self.record_call_center_event_for_partner_with_options_async(request, runtime)
 
     def record_post_back_with_options(
         self,
-        request: companyreg_20200306_models.RecordPostBackRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.RecordPostBackResponse:
-        """
-        @summary RecordPostBack
-        
-        @param request: RecordPostBackRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RecordPostBackResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RecordPostBackRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RecordPostBackResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['bizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['bizType'] = request.biz_type
-        if not UtilClient.is_unset(request.contactor):
+        if not DaraCore.is_null(request.contactor):
             query['contactor'] = request.contactor
-        if not UtilClient.is_unset(request.content):
+        if not DaraCore.is_null(request.content):
             query['content'] = request.content
-        if not UtilClient.is_unset(request.entity_key):
+        if not DaraCore.is_null(request.entity_key):
             query['entityKey'] = request.entity_key
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RecordPostBack',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RecordPostBack',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.RecordPostBackResponse(),
+        return DaraCore.from_map(
+            main_models.RecordPostBackResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def record_post_back_with_options_async(
         self,
-        request: companyreg_20200306_models.RecordPostBackRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.RecordPostBackResponse:
-        """
-        @summary RecordPostBack
-        
-        @param request: RecordPostBackRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RecordPostBackResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RecordPostBackRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RecordPostBackResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['bizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['bizType'] = request.biz_type
-        if not UtilClient.is_unset(request.contactor):
+        if not DaraCore.is_null(request.contactor):
             query['contactor'] = request.contactor
-        if not UtilClient.is_unset(request.content):
+        if not DaraCore.is_null(request.content):
             query['content'] = request.content
-        if not UtilClient.is_unset(request.entity_key):
+        if not DaraCore.is_null(request.entity_key):
             query['entityKey'] = request.entity_key
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RecordPostBack',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RecordPostBack',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.RecordPostBackResponse(),
+        return DaraCore.from_map(
+            main_models.RecordPostBackResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def record_post_back(
         self,
-        request: companyreg_20200306_models.RecordPostBackRequest,
-    ) -> companyreg_20200306_models.RecordPostBackResponse:
-        """
-        @summary RecordPostBack
-        
-        @param request: RecordPostBackRequest
-        @return: RecordPostBackResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RecordPostBackRequest,
+    ) -> main_models.RecordPostBackResponse:
+        runtime = RuntimeOptions()
         return self.record_post_back_with_options(request, runtime)
 
     async def record_post_back_async(
         self,
-        request: companyreg_20200306_models.RecordPostBackRequest,
-    ) -> companyreg_20200306_models.RecordPostBackResponse:
-        """
-        @summary RecordPostBack
-        
-        @param request: RecordPostBackRequest
-        @return: RecordPostBackResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RecordPostBackRequest,
+    ) -> main_models.RecordPostBackResponse:
+        runtime = RuntimeOptions()
         return await self.record_post_back_with_options_async(request, runtime)
 
     def reject_solution_with_options(
         self,
-        request: companyreg_20200306_models.RejectSolutionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.RejectSolutionResponse:
-        """
-        @param request: RejectSolutionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RejectSolutionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RejectSolutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RejectSolutionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.note):
+        if not DaraCore.is_null(request.note):
             query['Note'] = request.note
-        if not UtilClient.is_unset(request.solution_biz_id):
+        if not DaraCore.is_null(request.solution_biz_id):
             query['SolutionBizId'] = request.solution_biz_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RejectSolution',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RejectSolution',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.RejectSolutionResponse(),
+        return DaraCore.from_map(
+            main_models.RejectSolutionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def reject_solution_with_options_async(
         self,
-        request: companyreg_20200306_models.RejectSolutionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.RejectSolutionResponse:
-        """
-        @param request: RejectSolutionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RejectSolutionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RejectSolutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RejectSolutionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.note):
+        if not DaraCore.is_null(request.note):
             query['Note'] = request.note
-        if not UtilClient.is_unset(request.solution_biz_id):
+        if not DaraCore.is_null(request.solution_biz_id):
             query['SolutionBizId'] = request.solution_biz_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RejectSolution',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RejectSolution',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.RejectSolutionResponse(),
+        return DaraCore.from_map(
+            main_models.RejectSolutionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def reject_solution(
         self,
-        request: companyreg_20200306_models.RejectSolutionRequest,
-    ) -> companyreg_20200306_models.RejectSolutionResponse:
-        """
-        @param request: RejectSolutionRequest
-        @return: RejectSolutionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RejectSolutionRequest,
+    ) -> main_models.RejectSolutionResponse:
+        runtime = RuntimeOptions()
         return self.reject_solution_with_options(request, runtime)
 
     async def reject_solution_async(
         self,
-        request: companyreg_20200306_models.RejectSolutionRequest,
-    ) -> companyreg_20200306_models.RejectSolutionResponse:
-        """
-        @param request: RejectSolutionRequest
-        @return: RejectSolutionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RejectSolutionRequest,
+    ) -> main_models.RejectSolutionResponse:
+        runtime = RuntimeOptions()
         return await self.reject_solution_with_options_async(request, runtime)
 
     def reject_user_solution_with_options(
         self,
-        request: companyreg_20200306_models.RejectUserSolutionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.RejectUserSolutionResponse:
-        """
-        @param request: RejectUserSolutionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RejectUserSolutionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RejectUserSolutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RejectUserSolutionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.note):
+        if not DaraCore.is_null(request.note):
             query['Note'] = request.note
-        if not UtilClient.is_unset(request.solution_biz_id):
+        if not DaraCore.is_null(request.solution_biz_id):
             query['SolutionBizId'] = request.solution_biz_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RejectUserSolution',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RejectUserSolution',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.RejectUserSolutionResponse(),
+        return DaraCore.from_map(
+            main_models.RejectUserSolutionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def reject_user_solution_with_options_async(
         self,
-        request: companyreg_20200306_models.RejectUserSolutionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.RejectUserSolutionResponse:
-        """
-        @param request: RejectUserSolutionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RejectUserSolutionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RejectUserSolutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RejectUserSolutionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.note):
+        if not DaraCore.is_null(request.note):
             query['Note'] = request.note
-        if not UtilClient.is_unset(request.solution_biz_id):
+        if not DaraCore.is_null(request.solution_biz_id):
             query['SolutionBizId'] = request.solution_biz_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RejectUserSolution',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RejectUserSolution',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.RejectUserSolutionResponse(),
+        return DaraCore.from_map(
+            main_models.RejectUserSolutionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def reject_user_solution(
         self,
-        request: companyreg_20200306_models.RejectUserSolutionRequest,
-    ) -> companyreg_20200306_models.RejectUserSolutionResponse:
-        """
-        @param request: RejectUserSolutionRequest
-        @return: RejectUserSolutionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RejectUserSolutionRequest,
+    ) -> main_models.RejectUserSolutionResponse:
+        runtime = RuntimeOptions()
         return self.reject_user_solution_with_options(request, runtime)
 
     async def reject_user_solution_async(
         self,
-        request: companyreg_20200306_models.RejectUserSolutionRequest,
-    ) -> companyreg_20200306_models.RejectUserSolutionResponse:
-        """
-        @param request: RejectUserSolutionRequest
-        @return: RejectUserSolutionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RejectUserSolutionRequest,
+    ) -> main_models.RejectUserSolutionResponse:
+        runtime = RuntimeOptions()
         return await self.reject_user_solution_with_options_async(request, runtime)
 
     def release_produce_authorization_with_options(
         self,
-        request: companyreg_20200306_models.ReleaseProduceAuthorizationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.ReleaseProduceAuthorizationResponse:
-        """
-        @param request: ReleaseProduceAuthorizationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReleaseProduceAuthorizationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ReleaseProduceAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReleaseProduceAuthorizationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.authorized_user_id):
+        if not DaraCore.is_null(request.authorized_user_id):
             body['AuthorizedUserId'] = request.authorized_user_id
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             body['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             body['BizType'] = request.biz_type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ReleaseProduceAuthorization',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReleaseProduceAuthorization',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.ReleaseProduceAuthorizationResponse(),
+        return DaraCore.from_map(
+            main_models.ReleaseProduceAuthorizationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def release_produce_authorization_with_options_async(
         self,
-        request: companyreg_20200306_models.ReleaseProduceAuthorizationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.ReleaseProduceAuthorizationResponse:
-        """
-        @param request: ReleaseProduceAuthorizationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReleaseProduceAuthorizationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ReleaseProduceAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ReleaseProduceAuthorizationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.authorized_user_id):
+        if not DaraCore.is_null(request.authorized_user_id):
             body['AuthorizedUserId'] = request.authorized_user_id
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             body['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             body['BizType'] = request.biz_type
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ReleaseProduceAuthorization',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReleaseProduceAuthorization',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.ReleaseProduceAuthorizationResponse(),
+        return DaraCore.from_map(
+            main_models.ReleaseProduceAuthorizationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def release_produce_authorization(
         self,
-        request: companyreg_20200306_models.ReleaseProduceAuthorizationRequest,
-    ) -> companyreg_20200306_models.ReleaseProduceAuthorizationResponse:
-        """
-        @param request: ReleaseProduceAuthorizationRequest
-        @return: ReleaseProduceAuthorizationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReleaseProduceAuthorizationRequest,
+    ) -> main_models.ReleaseProduceAuthorizationResponse:
+        runtime = RuntimeOptions()
         return self.release_produce_authorization_with_options(request, runtime)
 
     async def release_produce_authorization_async(
         self,
-        request: companyreg_20200306_models.ReleaseProduceAuthorizationRequest,
-    ) -> companyreg_20200306_models.ReleaseProduceAuthorizationResponse:
-        """
-        @param request: ReleaseProduceAuthorizationRequest
-        @return: ReleaseProduceAuthorizationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReleaseProduceAuthorizationRequest,
+    ) -> main_models.ReleaseProduceAuthorizationResponse:
+        runtime = RuntimeOptions()
         return await self.release_produce_authorization_with_options_async(request, runtime)
 
     def start_back_to_back_call_with_options(
         self,
-        request: companyreg_20200306_models.StartBackToBackCallRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.StartBackToBackCallResponse:
-        """
-        @summary 玄坛双呼外呼发起
-        
-        @param request: StartBackToBackCallRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StartBackToBackCallResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.StartBackToBackCallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartBackToBackCallResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.call_center_number):
+        if not DaraCore.is_null(request.call_center_number):
             query['CallCenterNumber'] = request.call_center_number
-        if not UtilClient.is_unset(request.caller):
+        if not DaraCore.is_null(request.caller):
             query['Caller'] = request.caller
-        if not UtilClient.is_unset(request.mobile_key):
+        if not DaraCore.is_null(request.mobile_key):
             query['MobileKey'] = request.mobile_key
-        if not UtilClient.is_unset(request.skill_type):
+        if not DaraCore.is_null(request.skill_type):
             query['SkillType'] = request.skill_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='StartBackToBackCall',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'StartBackToBackCall',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.StartBackToBackCallResponse(),
+        return DaraCore.from_map(
+            main_models.StartBackToBackCallResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def start_back_to_back_call_with_options_async(
         self,
-        request: companyreg_20200306_models.StartBackToBackCallRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.StartBackToBackCallResponse:
-        """
-        @summary 玄坛双呼外呼发起
-        
-        @param request: StartBackToBackCallRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StartBackToBackCallResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.StartBackToBackCallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartBackToBackCallResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.call_center_number):
+        if not DaraCore.is_null(request.call_center_number):
             query['CallCenterNumber'] = request.call_center_number
-        if not UtilClient.is_unset(request.caller):
+        if not DaraCore.is_null(request.caller):
             query['Caller'] = request.caller
-        if not UtilClient.is_unset(request.mobile_key):
+        if not DaraCore.is_null(request.mobile_key):
             query['MobileKey'] = request.mobile_key
-        if not UtilClient.is_unset(request.skill_type):
+        if not DaraCore.is_null(request.skill_type):
             query['SkillType'] = request.skill_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='StartBackToBackCall',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'StartBackToBackCall',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.StartBackToBackCallResponse(),
+        return DaraCore.from_map(
+            main_models.StartBackToBackCallResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def start_back_to_back_call(
         self,
-        request: companyreg_20200306_models.StartBackToBackCallRequest,
-    ) -> companyreg_20200306_models.StartBackToBackCallResponse:
-        """
-        @summary 玄坛双呼外呼发起
-        
-        @param request: StartBackToBackCallRequest
-        @return: StartBackToBackCallResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.StartBackToBackCallRequest,
+    ) -> main_models.StartBackToBackCallResponse:
+        runtime = RuntimeOptions()
         return self.start_back_to_back_call_with_options(request, runtime)
 
     async def start_back_to_back_call_async(
         self,
-        request: companyreg_20200306_models.StartBackToBackCallRequest,
-    ) -> companyreg_20200306_models.StartBackToBackCallResponse:
-        """
-        @summary 玄坛双呼外呼发起
-        
-        @param request: StartBackToBackCallRequest
-        @return: StartBackToBackCallResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.StartBackToBackCallRequest,
+    ) -> main_models.StartBackToBackCallResponse:
+        runtime = RuntimeOptions()
         return await self.start_back_to_back_call_with_options_async(request, runtime)
 
     def submit_intention_for_partner_with_options(
         self,
-        request: companyreg_20200306_models.SubmitIntentionForPartnerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.SubmitIntentionForPartnerResponse:
-        """
-        @summary 合作伙伴提交需求单
-        
-        @param request: SubmitIntentionForPartnerRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SubmitIntentionForPartnerResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SubmitIntentionForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitIntentionForPartnerResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.area):
+        if not DaraCore.is_null(request.area):
             query['Area'] = request.area
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.channel):
+        if not DaraCore.is_null(request.channel):
             query['Channel'] = request.channel
-        if not UtilClient.is_unset(request.commodity_type):
+        if not DaraCore.is_null(request.commodity_type):
             query['CommodityType'] = request.commodity_type
-        if not UtilClient.is_unset(request.contact_name):
+        if not DaraCore.is_null(request.contact_name):
             query['ContactName'] = request.contact_name
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.ext_info):
+        if not DaraCore.is_null(request.ext_info):
             query['ExtInfo'] = request.ext_info
-        if not UtilClient.is_unset(request.grade):
+        if not DaraCore.is_null(request.grade):
             query['Grade'] = request.grade
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             query['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SubmitIntentionForPartner',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SubmitIntentionForPartner',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.SubmitIntentionForPartnerResponse(),
+        return DaraCore.from_map(
+            main_models.SubmitIntentionForPartnerResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def submit_intention_for_partner_with_options_async(
         self,
-        request: companyreg_20200306_models.SubmitIntentionForPartnerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.SubmitIntentionForPartnerResponse:
-        """
-        @summary 合作伙伴提交需求单
-        
-        @param request: SubmitIntentionForPartnerRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SubmitIntentionForPartnerResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SubmitIntentionForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitIntentionForPartnerResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.area):
+        if not DaraCore.is_null(request.area):
             query['Area'] = request.area
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.channel):
+        if not DaraCore.is_null(request.channel):
             query['Channel'] = request.channel
-        if not UtilClient.is_unset(request.commodity_type):
+        if not DaraCore.is_null(request.commodity_type):
             query['CommodityType'] = request.commodity_type
-        if not UtilClient.is_unset(request.contact_name):
+        if not DaraCore.is_null(request.contact_name):
             query['ContactName'] = request.contact_name
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.ext_info):
+        if not DaraCore.is_null(request.ext_info):
             query['ExtInfo'] = request.ext_info
-        if not UtilClient.is_unset(request.grade):
+        if not DaraCore.is_null(request.grade):
             query['Grade'] = request.grade
-        if not UtilClient.is_unset(request.mobile):
+        if not DaraCore.is_null(request.mobile):
             query['Mobile'] = request.mobile
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SubmitIntentionForPartner',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SubmitIntentionForPartner',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.SubmitIntentionForPartnerResponse(),
+        return DaraCore.from_map(
+            main_models.SubmitIntentionForPartnerResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def submit_intention_for_partner(
         self,
-        request: companyreg_20200306_models.SubmitIntentionForPartnerRequest,
-    ) -> companyreg_20200306_models.SubmitIntentionForPartnerResponse:
-        """
-        @summary 合作伙伴提交需求单
-        
-        @param request: SubmitIntentionForPartnerRequest
-        @return: SubmitIntentionForPartnerResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SubmitIntentionForPartnerRequest,
+    ) -> main_models.SubmitIntentionForPartnerResponse:
+        runtime = RuntimeOptions()
         return self.submit_intention_for_partner_with_options(request, runtime)
 
     async def submit_intention_for_partner_async(
         self,
-        request: companyreg_20200306_models.SubmitIntentionForPartnerRequest,
-    ) -> companyreg_20200306_models.SubmitIntentionForPartnerResponse:
-        """
-        @summary 合作伙伴提交需求单
-        
-        @param request: SubmitIntentionForPartnerRequest
-        @return: SubmitIntentionForPartnerResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SubmitIntentionForPartnerRequest,
+    ) -> main_models.SubmitIntentionForPartnerResponse:
+        runtime = RuntimeOptions()
         return await self.submit_intention_for_partner_with_options_async(request, runtime)
 
     def submit_intention_note_with_options(
         self,
-        request: companyreg_20200306_models.SubmitIntentionNoteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.SubmitIntentionNoteResponse:
-        """
-        @param request: SubmitIntentionNoteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SubmitIntentionNoteResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SubmitIntentionNoteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitIntentionNoteResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.note):
+        if not DaraCore.is_null(request.note):
             query['Note'] = request.note
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SubmitIntentionNote',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SubmitIntentionNote',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.SubmitIntentionNoteResponse(),
+        return DaraCore.from_map(
+            main_models.SubmitIntentionNoteResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def submit_intention_note_with_options_async(
         self,
-        request: companyreg_20200306_models.SubmitIntentionNoteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.SubmitIntentionNoteResponse:
-        """
-        @param request: SubmitIntentionNoteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SubmitIntentionNoteResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SubmitIntentionNoteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitIntentionNoteResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.note):
+        if not DaraCore.is_null(request.note):
             query['Note'] = request.note
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SubmitIntentionNote',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SubmitIntentionNote',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.SubmitIntentionNoteResponse(),
+        return DaraCore.from_map(
+            main_models.SubmitIntentionNoteResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def submit_intention_note(
         self,
-        request: companyreg_20200306_models.SubmitIntentionNoteRequest,
-    ) -> companyreg_20200306_models.SubmitIntentionNoteResponse:
-        """
-        @param request: SubmitIntentionNoteRequest
-        @return: SubmitIntentionNoteResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SubmitIntentionNoteRequest,
+    ) -> main_models.SubmitIntentionNoteResponse:
+        runtime = RuntimeOptions()
         return self.submit_intention_note_with_options(request, runtime)
 
     async def submit_intention_note_async(
         self,
-        request: companyreg_20200306_models.SubmitIntentionNoteRequest,
-    ) -> companyreg_20200306_models.SubmitIntentionNoteResponse:
-        """
-        @param request: SubmitIntentionNoteRequest
-        @return: SubmitIntentionNoteResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SubmitIntentionNoteRequest,
+    ) -> main_models.SubmitIntentionNoteResponse:
+        runtime = RuntimeOptions()
         return await self.submit_intention_note_with_options_async(request, runtime)
 
     def submit_solution_with_options(
         self,
-        request: companyreg_20200306_models.SubmitSolutionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.SubmitSolutionResponse:
-        """
-        @param request: SubmitSolutionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SubmitSolutionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SubmitSolutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitSolutionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.operate_type):
+        if not DaraCore.is_null(request.operate_type):
             query['OperateType'] = request.operate_type
-        if not UtilClient.is_unset(request.solution):
+        if not DaraCore.is_null(request.solution):
             query['Solution'] = request.solution
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SubmitSolution',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SubmitSolution',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.SubmitSolutionResponse(),
+        return DaraCore.from_map(
+            main_models.SubmitSolutionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def submit_solution_with_options_async(
         self,
-        request: companyreg_20200306_models.SubmitSolutionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.SubmitSolutionResponse:
-        """
-        @param request: SubmitSolutionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SubmitSolutionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SubmitSolutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitSolutionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.intention_biz_id):
+        if not DaraCore.is_null(request.intention_biz_id):
             query['IntentionBizId'] = request.intention_biz_id
-        if not UtilClient.is_unset(request.operate_type):
+        if not DaraCore.is_null(request.operate_type):
             query['OperateType'] = request.operate_type
-        if not UtilClient.is_unset(request.solution):
+        if not DaraCore.is_null(request.solution):
             query['Solution'] = request.solution
-        if not UtilClient.is_unset(request.user_id):
+        if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SubmitSolution',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SubmitSolution',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.SubmitSolutionResponse(),
+        return DaraCore.from_map(
+            main_models.SubmitSolutionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def submit_solution(
         self,
-        request: companyreg_20200306_models.SubmitSolutionRequest,
-    ) -> companyreg_20200306_models.SubmitSolutionResponse:
-        """
-        @param request: SubmitSolutionRequest
-        @return: SubmitSolutionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SubmitSolutionRequest,
+    ) -> main_models.SubmitSolutionResponse:
+        runtime = RuntimeOptions()
         return self.submit_solution_with_options(request, runtime)
 
     async def submit_solution_async(
         self,
-        request: companyreg_20200306_models.SubmitSolutionRequest,
-    ) -> companyreg_20200306_models.SubmitSolutionResponse:
-        """
-        @param request: SubmitSolutionRequest
-        @return: SubmitSolutionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SubmitSolutionRequest,
+    ) -> main_models.SubmitSolutionResponse:
+        runtime = RuntimeOptions()
         return await self.submit_solution_with_options_async(request, runtime)
 
     def transfer_intention_owner_with_options(
         self,
-        request: companyreg_20200306_models.TransferIntentionOwnerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.TransferIntentionOwnerResponse:
-        """
-        @summary 玄坛需求单转派小二
-        
-        @param request: TransferIntentionOwnerRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TransferIntentionOwnerResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.TransferIntentionOwnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TransferIntentionOwnerResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.employee_code):
+        if not DaraCore.is_null(request.employee_code):
             query['EmployeeCode'] = request.employee_code
-        if not UtilClient.is_unset(request.person_id):
+        if not DaraCore.is_null(request.person_id):
             query['PersonId'] = request.person_id
-        if not UtilClient.is_unset(request.remark):
+        if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='TransferIntentionOwner',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TransferIntentionOwner',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.TransferIntentionOwnerResponse(),
+        return DaraCore.from_map(
+            main_models.TransferIntentionOwnerResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def transfer_intention_owner_with_options_async(
         self,
-        request: companyreg_20200306_models.TransferIntentionOwnerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.TransferIntentionOwnerResponse:
-        """
-        @summary 玄坛需求单转派小二
-        
-        @param request: TransferIntentionOwnerRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TransferIntentionOwnerResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.TransferIntentionOwnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TransferIntentionOwnerResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.employee_code):
+        if not DaraCore.is_null(request.employee_code):
             query['EmployeeCode'] = request.employee_code
-        if not UtilClient.is_unset(request.person_id):
+        if not DaraCore.is_null(request.person_id):
             query['PersonId'] = request.person_id
-        if not UtilClient.is_unset(request.remark):
+        if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='TransferIntentionOwner',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TransferIntentionOwner',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.TransferIntentionOwnerResponse(),
+        return DaraCore.from_map(
+            main_models.TransferIntentionOwnerResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def transfer_intention_owner(
         self,
-        request: companyreg_20200306_models.TransferIntentionOwnerRequest,
-    ) -> companyreg_20200306_models.TransferIntentionOwnerResponse:
-        """
-        @summary 玄坛需求单转派小二
-        
-        @param request: TransferIntentionOwnerRequest
-        @return: TransferIntentionOwnerResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TransferIntentionOwnerRequest,
+    ) -> main_models.TransferIntentionOwnerResponse:
+        runtime = RuntimeOptions()
         return self.transfer_intention_owner_with_options(request, runtime)
 
     async def transfer_intention_owner_async(
         self,
-        request: companyreg_20200306_models.TransferIntentionOwnerRequest,
-    ) -> companyreg_20200306_models.TransferIntentionOwnerResponse:
-        """
-        @summary 玄坛需求单转派小二
-        
-        @param request: TransferIntentionOwnerRequest
-        @return: TransferIntentionOwnerResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TransferIntentionOwnerRequest,
+    ) -> main_models.TransferIntentionOwnerResponse:
+        runtime = RuntimeOptions()
         return await self.transfer_intention_owner_with_options_async(request, runtime)
 
     def transfer_produce_owner_with_options(
         self,
-        request: companyreg_20200306_models.TransferProduceOwnerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.TransferProduceOwnerResponse:
-        """
-        @summary 玄坛服务单转派小二
-        
-        @param request: TransferProduceOwnerRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TransferProduceOwnerResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.TransferProduceOwnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TransferProduceOwnerResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.employee_code):
+        if not DaraCore.is_null(request.employee_code):
             query['EmployeeCode'] = request.employee_code
-        if not UtilClient.is_unset(request.person_id):
+        if not DaraCore.is_null(request.person_id):
             query['PersonId'] = request.person_id
-        if not UtilClient.is_unset(request.remark):
+        if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='TransferProduceOwner',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TransferProduceOwner',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.TransferProduceOwnerResponse(),
+        return DaraCore.from_map(
+            main_models.TransferProduceOwnerResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def transfer_produce_owner_with_options_async(
         self,
-        request: companyreg_20200306_models.TransferProduceOwnerRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> companyreg_20200306_models.TransferProduceOwnerResponse:
-        """
-        @summary 玄坛服务单转派小二
-        
-        @param request: TransferProduceOwnerRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TransferProduceOwnerResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.TransferProduceOwnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TransferProduceOwnerResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.employee_code):
+        if not DaraCore.is_null(request.employee_code):
             query['EmployeeCode'] = request.employee_code
-        if not UtilClient.is_unset(request.person_id):
+        if not DaraCore.is_null(request.person_id):
             query['PersonId'] = request.person_id
-        if not UtilClient.is_unset(request.remark):
+        if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='TransferProduceOwner',
-            version='2020-03-06',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TransferProduceOwner',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            companyreg_20200306_models.TransferProduceOwnerResponse(),
+        return DaraCore.from_map(
+            main_models.TransferProduceOwnerResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def transfer_produce_owner(
         self,
-        request: companyreg_20200306_models.TransferProduceOwnerRequest,
-    ) -> companyreg_20200306_models.TransferProduceOwnerResponse:
-        """
-        @summary 玄坛服务单转派小二
-        
-        @param request: TransferProduceOwnerRequest
-        @return: TransferProduceOwnerResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TransferProduceOwnerRequest,
+    ) -> main_models.TransferProduceOwnerResponse:
+        runtime = RuntimeOptions()
         return self.transfer_produce_owner_with_options(request, runtime)
 
     async def transfer_produce_owner_async(
         self,
-        request: companyreg_20200306_models.TransferProduceOwnerRequest,
-    ) -> companyreg_20200306_models.TransferProduceOwnerResponse:
-        """
-        @summary 玄坛服务单转派小二
-        
-        @param request: TransferProduceOwnerRequest
-        @return: TransferProduceOwnerResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TransferProduceOwnerRequest,
+    ) -> main_models.TransferProduceOwnerResponse:
+        runtime = RuntimeOptions()
         return await self.transfer_produce_owner_with_options_async(request, runtime)

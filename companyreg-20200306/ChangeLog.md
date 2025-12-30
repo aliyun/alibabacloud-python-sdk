@@ -1,3 +1,7 @@
+2025-12-30 Version: 2.2.5
+- Update API SubmitIntentionForPartner: add response parameters Body.ExtInfo.
+
+
 2025-12-16 Version: 2.2.4
 - Update API TransferIntentionOwner: add request parameters EmployeeCode.
 - Update API TransferProduceOwner: add request parameters EmployeeCode.
