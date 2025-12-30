@@ -1,0 +1,1041 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_ice20201109 import models as main_models
+from darabonba.model import DaraModel
+
+class UpdateMediaLiveChannelRequest(DaraModel):
+    def __init__(
+        self,
+        audio_settings: List[main_models.UpdateMediaLiveChannelRequestAudioSettings] = None,
+        channel_id: str = None,
+        input_attachments: List[main_models.UpdateMediaLiveChannelRequestInputAttachments] = None,
+        name: str = None,
+        output_groups: List[main_models.UpdateMediaLiveChannelRequestOutputGroups] = None,
+        video_settings: List[main_models.UpdateMediaLiveChannelRequestVideoSettings] = None,
+    ):
+        # The audio settings.
+        self.audio_settings = audio_settings
+        # The ID of the channel.
+        # 
+        # This parameter is required.
+        self.channel_id = channel_id
+        # The inputs associated with the channel.
+        # 
+        # This parameter is required.
+        self.input_attachments = input_attachments
+        # The name of the channel. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The output groups.
+        # 
+        # This parameter is required.
+        self.output_groups = output_groups
+        # The video settings.
+        self.video_settings = video_settings
+
+    def validate(self):
+        if self.audio_settings:
+            for v1 in self.audio_settings:
+                 if v1:
+                    v1.validate()
+        if self.input_attachments:
+            for v1 in self.input_attachments:
+                 if v1:
+                    v1.validate()
+        if self.output_groups:
+            for v1 in self.output_groups:
+                 if v1:
+                    v1.validate()
+        if self.video_settings:
+            for v1 in self.video_settings:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['AudioSettings'] = []
+        if self.audio_settings is not None:
+            for k1 in self.audio_settings:
+                result['AudioSettings'].append(k1.to_map() if k1 else None)
+
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+
+        result['InputAttachments'] = []
+        if self.input_attachments is not None:
+            for k1 in self.input_attachments:
+                result['InputAttachments'].append(k1.to_map() if k1 else None)
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        result['OutputGroups'] = []
+        if self.output_groups is not None:
+            for k1 in self.output_groups:
+                result['OutputGroups'].append(k1.to_map() if k1 else None)
+
+        result['VideoSettings'] = []
+        if self.video_settings is not None:
+            for k1 in self.video_settings:
+                result['VideoSettings'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.audio_settings = []
+        if m.get('AudioSettings') is not None:
+            for k1 in m.get('AudioSettings'):
+                temp_model = main_models.UpdateMediaLiveChannelRequestAudioSettings()
+                self.audio_settings.append(temp_model.from_map(k1))
+
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
+
+        self.input_attachments = []
+        if m.get('InputAttachments') is not None:
+            for k1 in m.get('InputAttachments'):
+                temp_model = main_models.UpdateMediaLiveChannelRequestInputAttachments()
+                self.input_attachments.append(temp_model.from_map(k1))
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        self.output_groups = []
+        if m.get('OutputGroups') is not None:
+            for k1 in m.get('OutputGroups'):
+                temp_model = main_models.UpdateMediaLiveChannelRequestOutputGroups()
+                self.output_groups.append(temp_model.from_map(k1))
+
+        self.video_settings = []
+        if m.get('VideoSettings') is not None:
+            for k1 in m.get('VideoSettings'):
+                temp_model = main_models.UpdateMediaLiveChannelRequestVideoSettings()
+                self.video_settings.append(temp_model.from_map(k1))
+
+        return self
+
+class UpdateMediaLiveChannelRequestVideoSettings(DaraModel):
+    def __init__(
+        self,
+        height: int = None,
+        name: str = None,
+        video_codec: str = None,
+        video_codec_setting: main_models.UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting = None,
+        video_codec_type: str = None,
+        width: int = None,
+    ):
+        # The height of the output. If you set it to 0 or leave it empty, the height automatically adapts to the specified width to maintain the original aspect ratio.
+        # 
+        # Valid values:
+        # 
+        # *   For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
+        # *   For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
+        self.height = height
+        # The name of the video settings. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The video codec. Valid values: H264 and H265.
+        self.video_codec = video_codec
+        # The video encoding settings.
+        self.video_codec_setting = video_codec_setting
+        # The video transcoding method. Valid values:
+        # 
+        # *   NORMAL: regular transcoding
+        # *   NBHD: Narrowband HD™ transcoding
+        # 
+        # If not specified, regular transcoding is used by default.
+        self.video_codec_type = video_codec_type
+        # The width of the output. If you set it to 0 or leave it empty, the width automatically adapts to the specified height to maintain the original aspect ratio.
+        # 
+        # Valid values:
+        # 
+        # *   For regular transcoding, the larger dimension cannot exceed 3840 px, and the smaller one cannot exceed 2160 px.
+        # *   For Narrowband HD™ transcoding, the larger dimension cannot exceed 1920 px, and the smaller one cannot exceed 1080 px.
+        self.width = width
+
+    def validate(self):
+        if self.video_codec_setting:
+            self.video_codec_setting.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.height is not None:
+            result['Height'] = self.height
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.video_codec is not None:
+            result['VideoCodec'] = self.video_codec
+
+        if self.video_codec_setting is not None:
+            result['VideoCodecSetting'] = self.video_codec_setting.to_map()
+
+        if self.video_codec_type is not None:
+            result['VideoCodecType'] = self.video_codec_type
+
+        if self.width is not None:
+            result['Width'] = self.width
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Height') is not None:
+            self.height = m.get('Height')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('VideoCodec') is not None:
+            self.video_codec = m.get('VideoCodec')
+
+        if m.get('VideoCodecSetting') is not None:
+            temp_model = main_models.UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting()
+            self.video_codec_setting = temp_model.from_map(m.get('VideoCodecSetting'))
+
+        if m.get('VideoCodecType') is not None:
+            self.video_codec_type = m.get('VideoCodecType')
+
+        if m.get('Width') is not None:
+            self.width = m.get('Width')
+
+        return self
+
+class UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSetting(DaraModel):
+    def __init__(
+        self,
+        codec_detail: main_models.UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail = None,
+        framerate: main_models.UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate = None,
+        gop: main_models.UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop = None,
+        rate: main_models.UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate = None,
+    ):
+        # The video encoding settings.
+        self.codec_detail = codec_detail
+        # The frame rate. If it is not specified, the source specification is used.
+        self.framerate = framerate
+        # The GOP setting. If it is not specified, the source specification is used.
+        self.gop = gop
+        # The video encoding rate. If it is not specified, the source specification is used.
+        self.rate = rate
+
+    def validate(self):
+        if self.codec_detail:
+            self.codec_detail.validate()
+        if self.framerate:
+            self.framerate.validate()
+        if self.gop:
+            self.gop.validate()
+        if self.rate:
+            self.rate.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.codec_detail is not None:
+            result['CodecDetail'] = self.codec_detail.to_map()
+
+        if self.framerate is not None:
+            result['Framerate'] = self.framerate.to_map()
+
+        if self.gop is not None:
+            result['Gop'] = self.gop.to_map()
+
+        if self.rate is not None:
+            result['Rate'] = self.rate.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CodecDetail') is not None:
+            temp_model = main_models.UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail()
+            self.codec_detail = temp_model.from_map(m.get('CodecDetail'))
+
+        if m.get('Framerate') is not None:
+            temp_model = main_models.UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate()
+            self.framerate = temp_model.from_map(m.get('Framerate'))
+
+        if m.get('Gop') is not None:
+            temp_model = main_models.UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop()
+            self.gop = temp_model.from_map(m.get('Gop'))
+
+        if m.get('Rate') is not None:
+            temp_model = main_models.UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate()
+            self.rate = temp_model.from_map(m.get('Rate'))
+
+        return self
+
+class UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingRate(DaraModel):
+    def __init__(
+        self,
+        bitrate: int = None,
+        buffer_size: int = None,
+        max_bitrate: int = None,
+        rate_control_mode: str = None,
+    ):
+        # The video bitrate. Unit: bit/s. If you set it to 0 or leave it empty, the source specification is used. Valid values: 50000 to 6000000. The value must be divisible by 1000.
+        self.bitrate = bitrate
+        # The video buffer size. Unit: bit/s. Valid values: 100000 to 6000000. The value must be divisible by 1000.
+        self.buffer_size = buffer_size
+        # The maximum bitrate. Unit: bit/s. Valid values: 100000 to 6000000. The value must be divisible by 1000.
+        self.max_bitrate = max_bitrate
+        # The bitrate control mode. Valid values: CBR, ABR, and VBR.
+        self.rate_control_mode = rate_control_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+
+        if self.buffer_size is not None:
+            result['BufferSize'] = self.buffer_size
+
+        if self.max_bitrate is not None:
+            result['MaxBitrate'] = self.max_bitrate
+
+        if self.rate_control_mode is not None:
+            result['RateControlMode'] = self.rate_control_mode
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+
+        if m.get('BufferSize') is not None:
+            self.buffer_size = m.get('BufferSize')
+
+        if m.get('MaxBitrate') is not None:
+            self.max_bitrate = m.get('MaxBitrate')
+
+        if m.get('RateControlMode') is not None:
+            self.rate_control_mode = m.get('RateControlMode')
+
+        return self
+
+class UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingGop(DaraModel):
+    def __init__(
+        self,
+        bframes_num: int = None,
+        gop_size: int = None,
+        gop_size_units: str = None,
+    ):
+        # The number of B frames. Valid values: 1 to 3.
+        self.bframes_num = bframes_num
+        # The GOP size. When GopSizeUnits is set to SECONDS, the value range is from 1 to 20. When GopSizeUnits is set to FRAMES, the value range is from 1 to 3000.
+        self.gop_size = gop_size
+        # The GOP size unit. Valid values: FRAMES and SECONDS.
+        self.gop_size_units = gop_size_units
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.bframes_num is not None:
+            result['BframesNum'] = self.bframes_num
+
+        if self.gop_size is not None:
+            result['GopSize'] = self.gop_size
+
+        if self.gop_size_units is not None:
+            result['GopSizeUnits'] = self.gop_size_units
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BframesNum') is not None:
+            self.bframes_num = m.get('BframesNum')
+
+        if m.get('GopSize') is not None:
+            self.gop_size = m.get('GopSize')
+
+        if m.get('GopSizeUnits') is not None:
+            self.gop_size_units = m.get('GopSizeUnits')
+
+        return self
+
+class UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingFramerate(DaraModel):
+    def __init__(
+        self,
+        framerate_control: str = None,
+        framerate_denominator: int = None,
+        framerate_numerator: int = None,
+    ):
+        # The frame rate mode. Valid values: SPECIFIED (fixed frame rate) and FROM_SOURCE (use source specification).
+        self.framerate_control = framerate_control
+        # The denominator of the fixed frame rate. The parameter is required when FramerateControl is set to SPECIFIED. Valid values: 1 to 60. The numerator must be divisible by the denominator.
+        self.framerate_denominator = framerate_denominator
+        # The numerator of the fixed frame rate. The parameter is required when FramerateControl is set to SPECIFIED. Valid values: 1 to 60. The numerator must be divisible by the denominator.
+        self.framerate_numerator = framerate_numerator
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.framerate_control is not None:
+            result['FramerateControl'] = self.framerate_control
+
+        if self.framerate_denominator is not None:
+            result['FramerateDenominator'] = self.framerate_denominator
+
+        if self.framerate_numerator is not None:
+            result['FramerateNumerator'] = self.framerate_numerator
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FramerateControl') is not None:
+            self.framerate_control = m.get('FramerateControl')
+
+        if m.get('FramerateDenominator') is not None:
+            self.framerate_denominator = m.get('FramerateDenominator')
+
+        if m.get('FramerateNumerator') is not None:
+            self.framerate_numerator = m.get('FramerateNumerator')
+
+        return self
+
+class UpdateMediaLiveChannelRequestVideoSettingsVideoCodecSettingCodecDetail(DaraModel):
+    def __init__(
+        self,
+        level: str = None,
+        profile: str = None,
+    ):
+        # The video encoding level. It is not supported yet.
+        self.level = level
+        # The H.264 profile. Valid values: BASELINE, HIGH, and MAIN. Default value: MAIN. The parameter takes effect only when the codec is H.264.
+        self.profile = profile
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.level is not None:
+            result['Level'] = self.level
+
+        if self.profile is not None:
+            result['Profile'] = self.profile
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Level') is not None:
+            self.level = m.get('Level')
+
+        if m.get('Profile') is not None:
+            self.profile = m.get('Profile')
+
+        return self
+
+class UpdateMediaLiveChannelRequestOutputGroups(DaraModel):
+    def __init__(
+        self,
+        media_package_group_setting: main_models.UpdateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting = None,
+        name: str = None,
+        outputs: List[main_models.UpdateMediaLiveChannelRequestOutputGroupsOutputs] = None,
+        type: str = None,
+    ):
+        # The MediaPackage destination.
+        self.media_package_group_setting = media_package_group_setting
+        # The name of the output group. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The outputs in the output group.
+        # 
+        # This parameter is required.
+        self.outputs = outputs
+        # The output group type. Only MediaPackage is supported.
+        # 
+        # This parameter is required.
+        self.type = type
+
+    def validate(self):
+        if self.media_package_group_setting:
+            self.media_package_group_setting.validate()
+        if self.outputs:
+            for v1 in self.outputs:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.media_package_group_setting is not None:
+            result['MediaPackageGroupSetting'] = self.media_package_group_setting.to_map()
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        result['Outputs'] = []
+        if self.outputs is not None:
+            for k1 in self.outputs:
+                result['Outputs'].append(k1.to_map() if k1 else None)
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaPackageGroupSetting') is not None:
+            temp_model = main_models.UpdateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting()
+            self.media_package_group_setting = temp_model.from_map(m.get('MediaPackageGroupSetting'))
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        self.outputs = []
+        if m.get('Outputs') is not None:
+            for k1 in m.get('Outputs'):
+                temp_model = main_models.UpdateMediaLiveChannelRequestOutputGroupsOutputs()
+                self.outputs.append(temp_model.from_map(k1))
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+
+        return self
+
+class UpdateMediaLiveChannelRequestOutputGroupsOutputs(DaraModel):
+    def __init__(
+        self,
+        audio_setting_names: List[str] = None,
+        media_package_output_setting: main_models.UpdateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting = None,
+        media_type: int = None,
+        name: str = None,
+        video_setting_name: str = None,
+    ):
+        # The referenced AudioSettings.
+        self.audio_setting_names = audio_setting_names
+        # The settings of the output delivered to MediaPackage.
+        self.media_package_output_setting = media_package_output_setting
+        # The media type of the output. Valid values:
+        # 
+        # *   0: Audio and Video
+        # *   1: Audio If you set the value to 1, you cannot reference VideoSettings.
+        # *   2: Video. If you set the value to 2, you cannot reference AudioSettings.
+        self.media_type = media_type
+        # The name of the output. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The name of the referenced VideoSettings.
+        self.video_setting_name = video_setting_name
+
+    def validate(self):
+        if self.media_package_output_setting:
+            self.media_package_output_setting.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.audio_setting_names is not None:
+            result['AudioSettingNames'] = self.audio_setting_names
+
+        if self.media_package_output_setting is not None:
+            result['MediaPackageOutputSetting'] = self.media_package_output_setting.to_map()
+
+        if self.media_type is not None:
+            result['MediaType'] = self.media_type
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.video_setting_name is not None:
+            result['VideoSettingName'] = self.video_setting_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioSettingNames') is not None:
+            self.audio_setting_names = m.get('AudioSettingNames')
+
+        if m.get('MediaPackageOutputSetting') is not None:
+            temp_model = main_models.UpdateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting()
+            self.media_package_output_setting = temp_model.from_map(m.get('MediaPackageOutputSetting'))
+
+        if m.get('MediaType') is not None:
+            self.media_type = m.get('MediaType')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('VideoSettingName') is not None:
+            self.video_setting_name = m.get('VideoSettingName')
+
+        return self
+
+class UpdateMediaLiveChannelRequestOutputGroupsOutputsMediaPackageOutputSetting(DaraModel):
+    def __init__(
+        self,
+        audio_group_id: str = None,
+        name_modifier: str = None,
+    ):
+        # The manifest audio group ID. To associate several audio tracks into one group, assign the same audio group ID. Viewers can select a track as needed. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 40 characters in length.
+        self.audio_group_id = audio_group_id
+        # The manifest name modifier. The child manifests include this modifier in their M3U8 file names. Letters, digits, hyphens (-), and underscores (_) are supported. The maximum length is 40 characters.
+        self.name_modifier = name_modifier
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.audio_group_id is not None:
+            result['AudioGroupId'] = self.audio_group_id
+
+        if self.name_modifier is not None:
+            result['NameModifier'] = self.name_modifier
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioGroupId') is not None:
+            self.audio_group_id = m.get('AudioGroupId')
+
+        if m.get('NameModifier') is not None:
+            self.name_modifier = m.get('NameModifier')
+
+        return self
+
+class UpdateMediaLiveChannelRequestOutputGroupsMediaPackageGroupSetting(DaraModel):
+    def __init__(
+        self,
+        channel_name: str = None,
+        group_name: str = None,
+    ):
+        # ChannelName in MediaPackage.
+        # 
+        # This parameter is required.
+        self.channel_name = channel_name
+        # GroupName in MediaPackage.
+        # 
+        # This parameter is required.
+        self.group_name = group_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.channel_name is not None:
+            result['ChannelName'] = self.channel_name
+
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ChannelName') is not None:
+            self.channel_name = m.get('ChannelName')
+
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+
+        return self
+
+class UpdateMediaLiveChannelRequestInputAttachments(DaraModel):
+    def __init__(
+        self,
+        audio_selectors: List[main_models.UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors] = None,
+        input_id: str = None,
+        language_name: str = None,
+    ):
+        # The audio selectors.
+        self.audio_selectors = audio_selectors
+        # The ID of the associated input.
+        # 
+        # This parameter is required.
+        self.input_id = input_id
+        # The tag that identifies the language of the RTMP input. It can be referenced by the output. The maximum length is 32 characters. Supported characters:
+        # 
+        # *   Unicode letters
+        # *   Digits (0-9)
+        # *   Underscore (_)
+        # *   Hyphen (-)
+        # *   Space (a space cannot be at the beginning or end)
+        self.language_name = language_name
+
+    def validate(self):
+        if self.audio_selectors:
+            for v1 in self.audio_selectors:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['AudioSelectors'] = []
+        if self.audio_selectors is not None:
+            for k1 in self.audio_selectors:
+                result['AudioSelectors'].append(k1.to_map() if k1 else None)
+
+        if self.input_id is not None:
+            result['InputId'] = self.input_id
+
+        if self.language_name is not None:
+            result['LanguageName'] = self.language_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.audio_selectors = []
+        if m.get('AudioSelectors') is not None:
+            for k1 in m.get('AudioSelectors'):
+                temp_model = main_models.UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors()
+                self.audio_selectors.append(temp_model.from_map(k1))
+
+        if m.get('InputId') is not None:
+            self.input_id = m.get('InputId')
+
+        if m.get('LanguageName') is not None:
+            self.language_name = m.get('LanguageName')
+
+        return self
+
+class UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectors(DaraModel):
+    def __init__(
+        self,
+        audio_language_selection: main_models.UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection = None,
+        audio_pid_selection: main_models.UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection = None,
+        audio_track_selection: List[main_models.UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection] = None,
+        name: str = None,
+    ):
+        # The audio language selection.
+        self.audio_language_selection = audio_language_selection
+        # The audio PID selection.
+        self.audio_pid_selection = audio_pid_selection
+        # The audio track selection.
+        self.audio_track_selection = audio_track_selection
+        # The name of the audio selector. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        if self.audio_language_selection:
+            self.audio_language_selection.validate()
+        if self.audio_pid_selection:
+            self.audio_pid_selection.validate()
+        if self.audio_track_selection:
+            for v1 in self.audio_track_selection:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.audio_language_selection is not None:
+            result['AudioLanguageSelection'] = self.audio_language_selection.to_map()
+
+        if self.audio_pid_selection is not None:
+            result['AudioPidSelection'] = self.audio_pid_selection.to_map()
+
+        result['AudioTrackSelection'] = []
+        if self.audio_track_selection is not None:
+            for k1 in self.audio_track_selection:
+                result['AudioTrackSelection'].append(k1.to_map() if k1 else None)
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioLanguageSelection') is not None:
+            temp_model = main_models.UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection()
+            self.audio_language_selection = temp_model.from_map(m.get('AudioLanguageSelection'))
+
+        if m.get('AudioPidSelection') is not None:
+            temp_model = main_models.UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection()
+            self.audio_pid_selection = temp_model.from_map(m.get('AudioPidSelection'))
+
+        self.audio_track_selection = []
+        if m.get('AudioTrackSelection') is not None:
+            for k1 in m.get('AudioTrackSelection'):
+                temp_model = main_models.UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection()
+                self.audio_track_selection.append(temp_model.from_map(k1))
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        return self
+
+class UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioTrackSelection(DaraModel):
+    def __init__(
+        self,
+        track_id: int = None,
+    ):
+        # Specify one or more audio tracks from within a source using Track ID.
+        # 
+        # This parameter is required.
+        self.track_id = track_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.track_id is not None:
+            result['TrackId'] = self.track_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TrackId') is not None:
+            self.track_id = m.get('TrackId')
+
+        return self
+
+class UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioPidSelection(DaraModel):
+    def __init__(
+        self,
+        pid: int = None,
+    ):
+        # Enter a specific PID from within a source.
+        # 
+        # This parameter is required.
+        self.pid = pid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.pid is not None:
+            result['Pid'] = self.pid
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Pid') is not None:
+            self.pid = m.get('Pid')
+
+        return self
+
+class UpdateMediaLiveChannelRequestInputAttachmentsAudioSelectorsAudioLanguageSelection(DaraModel):
+    def __init__(
+        self,
+        language_code: str = None,
+    ):
+        # Enter a three-letter ISO 639-2 language code from within an audio source.
+        # 
+        # This parameter is required.
+        self.language_code = language_code
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.language_code is not None:
+            result['LanguageCode'] = self.language_code
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('LanguageCode') is not None:
+            self.language_code = m.get('LanguageCode')
+
+        return self
+
+class UpdateMediaLiveChannelRequestAudioSettings(DaraModel):
+    def __init__(
+        self,
+        audio_codec: str = None,
+        audio_codec_setting: main_models.UpdateMediaLiveChannelRequestAudioSettingsAudioCodecSetting = None,
+        audio_selector_name: str = None,
+        language_code: str = None,
+        language_name: str = None,
+        name: str = None,
+    ):
+        # The audio codec. If it is not specified, the source specification is used. Valid values: aac and libfdk_aac.
+        self.audio_codec = audio_codec
+        # The audio encoding settings.
+        self.audio_codec_setting = audio_codec_setting
+        # The name of the audio selector.
+        self.audio_selector_name = audio_selector_name
+        # Enter a three-letter ISO 639-2 language code. If the audio track selected by the audio selector has a language code, the language code specified in the audio selector is used. If the selected audio track does not have a language code, or if the audio selector cannot find a track that matches its criteria, this language code is used.
+        self.language_code = language_code
+        # The tag that identifies the language of the RTMP input. It can be referenced by the output. The maximum length is 32 characters. Supported characters:
+        # 
+        # *   Unicode letters
+        # *   Digits (0-9)
+        # *   Underscore (_)
+        # *   Hyphen (-)
+        # *   Space (a space cannot be at the beginning or end)
+        self.language_name = language_name
+        # The name of the audio settings. Letters, digits, hyphens (-), and underscores (_) are supported. It can be up to 64 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+
+    def validate(self):
+        if self.audio_codec_setting:
+            self.audio_codec_setting.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.audio_codec is not None:
+            result['AudioCodec'] = self.audio_codec
+
+        if self.audio_codec_setting is not None:
+            result['AudioCodecSetting'] = self.audio_codec_setting.to_map()
+
+        if self.audio_selector_name is not None:
+            result['AudioSelectorName'] = self.audio_selector_name
+
+        if self.language_code is not None:
+            result['LanguageCode'] = self.language_code
+
+        if self.language_name is not None:
+            result['LanguageName'] = self.language_name
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AudioCodec') is not None:
+            self.audio_codec = m.get('AudioCodec')
+
+        if m.get('AudioCodecSetting') is not None:
+            temp_model = main_models.UpdateMediaLiveChannelRequestAudioSettingsAudioCodecSetting()
+            self.audio_codec_setting = temp_model.from_map(m.get('AudioCodecSetting'))
+
+        if m.get('AudioSelectorName') is not None:
+            self.audio_selector_name = m.get('AudioSelectorName')
+
+        if m.get('LanguageCode') is not None:
+            self.language_code = m.get('LanguageCode')
+
+        if m.get('LanguageName') is not None:
+            self.language_name = m.get('LanguageName')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        return self
+
+class UpdateMediaLiveChannelRequestAudioSettingsAudioCodecSetting(DaraModel):
+    def __init__(
+        self,
+        bitrate: int = None,
+        profile: str = None,
+        sample_rate: int = None,
+    ):
+        # The audio bitrate. Unit: bit/s. Valid values: 8000 to 1000000. The value must be divisible by 1000.
+        self.bitrate = bitrate
+        # The audio codec profile. When AudioCodec is set to aac, AAC-LOW and AAC-MAIN are supported. When AudioCodec is set to libfdk_aac, AAC-LOW, AAC-HE, and AAC-HEV2 are supported.
+        self.profile = profile
+        # The audio sample rate. Unit: Hz. Valid values: 22050, 32000, 44100, 48000, and 96000.
+        self.sample_rate = sample_rate
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.bitrate is not None:
+            result['Bitrate'] = self.bitrate
+
+        if self.profile is not None:
+            result['Profile'] = self.profile
+
+        if self.sample_rate is not None:
+            result['SampleRate'] = self.sample_rate
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Bitrate') is not None:
+            self.bitrate = m.get('Bitrate')
+
+        if m.get('Profile') is not None:
+            self.profile = m.get('Profile')
+
+        if m.get('SampleRate') is not None:
+            self.sample_rate = m.get('SampleRate')
+
+        return self
+

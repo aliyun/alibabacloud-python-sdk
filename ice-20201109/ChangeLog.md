@@ -1,3 +1,10 @@
+2025-12-30 Version: 6.10.0
+- Support API AlterSearchLib.
+- Update API CreateSearchLib: add request parameters SearchLibConfig.
+- Update API ListSearchLib: add response parameters Body.SearchLibInfoList.$.SearchLibConfig.
+- Update API QuerySearchLib: add response parameters Body.SearchLibConfig.
+
+
 2025-12-23 Version: 6.9.0
 - Support API CreateIpcOrder.
 - Support API GetIpcDeviceInfo.
