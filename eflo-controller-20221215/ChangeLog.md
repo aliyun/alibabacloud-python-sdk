@@ -1,3 +1,8 @@
+2025-12-30 Version: 3.0.2
+- Update API ListHyperNodes: add request parameters CommodityCode.
+- Update API ListHyperNodes: add request parameters OperatingStates.
+
+
 2025-11-19 Version: 3.0.1
 - Update API ListClusterNodes: add response parameters Body.Nodes.$.NodeType.
 

@@ -1,0 +1,629 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._approve_operation_request import ApproveOperationRequest
+from ._approve_operation_response_body import ApproveOperationResponseBody
+from ._approve_operation_response import ApproveOperationResponse
+from ._change_node_group_request import ChangeNodeGroupRequest
+from ._change_node_group_shrink_request import ChangeNodeGroupShrinkRequest
+from ._change_node_group_response_body import ChangeNodeGroupResponseBody
+from ._change_node_group_response import ChangeNodeGroupResponse
+from ._change_node_types_request import ChangeNodeTypesRequest
+from ._change_node_types_shrink_request import ChangeNodeTypesShrinkRequest
+from ._change_node_types_response_body import ChangeNodeTypesResponseBody
+from ._change_node_types_response import ChangeNodeTypesResponse
+from ._change_resource_group_request import ChangeResourceGroupRequest
+from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
+from ._change_resource_group_response import ChangeResourceGroupResponse
+from ._close_session_request import CloseSessionRequest
+from ._close_session_response_body import CloseSessionResponseBody
+from ._close_session_response import CloseSessionResponse
+from ._create_cluster_request import CreateClusterRequest
+from ._create_cluster_shrink_request import CreateClusterShrinkRequest
+from ._create_cluster_response_body import CreateClusterResponseBody
+from ._create_cluster_response import CreateClusterResponse
+from ._create_diagnostic_task_request import CreateDiagnosticTaskRequest
+from ._create_diagnostic_task_shrink_request import CreateDiagnosticTaskShrinkRequest
+from ._create_diagnostic_task_response_body import CreateDiagnosticTaskResponseBody
+from ._create_diagnostic_task_response import CreateDiagnosticTaskResponse
+from ._create_net_test_task_request import CreateNetTestTaskRequest
+from ._create_net_test_task_shrink_request import CreateNetTestTaskShrinkRequest
+from ._create_net_test_task_response_body import CreateNetTestTaskResponseBody
+from ._create_net_test_task_response import CreateNetTestTaskResponse
+from ._create_node_group_request import CreateNodeGroupRequest
+from ._create_node_group_shrink_request import CreateNodeGroupShrinkRequest
+from ._create_node_group_response_body import CreateNodeGroupResponseBody
+from ._create_node_group_response import CreateNodeGroupResponse
+from ._create_session_request import CreateSessionRequest
+from ._create_session_response_body import CreateSessionResponseBody
+from ._create_session_response import CreateSessionResponse
+from ._create_vsc_request import CreateVscRequest
+from ._create_vsc_response_body import CreateVscResponseBody
+from ._create_vsc_response import CreateVscResponse
+from ._delete_cluster_request import DeleteClusterRequest
+from ._delete_cluster_response_body import DeleteClusterResponseBody
+from ._delete_cluster_response import DeleteClusterResponse
+from ._delete_hyper_node_request import DeleteHyperNodeRequest
+from ._delete_hyper_node_response_body import DeleteHyperNodeResponseBody
+from ._delete_hyper_node_response import DeleteHyperNodeResponse
+from ._delete_node_request import DeleteNodeRequest
+from ._delete_node_response_body import DeleteNodeResponseBody
+from ._delete_node_response import DeleteNodeResponse
+from ._delete_node_group_request import DeleteNodeGroupRequest
+from ._delete_node_group_response_body import DeleteNodeGroupResponseBody
+from ._delete_node_group_response import DeleteNodeGroupResponse
+from ._delete_vsc_request import DeleteVscRequest
+from ._delete_vsc_response_body import DeleteVscResponseBody
+from ._delete_vsc_response import DeleteVscResponse
+from ._describe_cluster_request import DescribeClusterRequest
+from ._describe_cluster_response_body import DescribeClusterResponseBody
+from ._describe_cluster_response import DescribeClusterResponse
+from ._describe_diagnostic_result_request import DescribeDiagnosticResultRequest
+from ._describe_diagnostic_result_response_body import DescribeDiagnosticResultResponseBody
+from ._describe_diagnostic_result_response import DescribeDiagnosticResultResponse
+from ._describe_hyper_node_request import DescribeHyperNodeRequest
+from ._describe_hyper_node_response_body import DescribeHyperNodeResponseBody
+from ._describe_hyper_node_response import DescribeHyperNodeResponse
+from ._describe_invocations_request import DescribeInvocationsRequest
+from ._describe_invocations_response_body import DescribeInvocationsResponseBody
+from ._describe_invocations_response import DescribeInvocationsResponse
+from ._describe_net_test_result_request import DescribeNetTestResultRequest
+from ._describe_net_test_result_response_body import DescribeNetTestResultResponseBody
+from ._describe_net_test_result_response import DescribeNetTestResultResponse
+from ._describe_node_request import DescribeNodeRequest
+from ._describe_node_response_body import DescribeNodeResponseBody
+from ._describe_node_response import DescribeNodeResponse
+from ._describe_node_group_request import DescribeNodeGroupRequest
+from ._describe_node_group_response_body import DescribeNodeGroupResponseBody
+from ._describe_node_group_response import DescribeNodeGroupResponse
+from ._describe_node_type_request import DescribeNodeTypeRequest
+from ._describe_node_type_response_body import DescribeNodeTypeResponseBody
+from ._describe_node_type_response import DescribeNodeTypeResponse
+from ._describe_regions_request import DescribeRegionsRequest
+from ._describe_regions_response_body import DescribeRegionsResponseBody
+from ._describe_regions_response import DescribeRegionsResponse
+from ._describe_send_file_results_request import DescribeSendFileResultsRequest
+from ._describe_send_file_results_response_body import DescribeSendFileResultsResponseBody
+from ._describe_send_file_results_response import DescribeSendFileResultsResponse
+from ._describe_task_request import DescribeTaskRequest
+from ._describe_task_response_body import DescribeTaskResponseBody
+from ._describe_task_response import DescribeTaskResponse
+from ._describe_vsc_request import DescribeVscRequest
+from ._describe_vsc_response_body import DescribeVscResponseBody
+from ._describe_vsc_response import DescribeVscResponse
+from ._describe_zones_request import DescribeZonesRequest
+from ._describe_zones_response_body import DescribeZonesResponseBody
+from ._describe_zones_response import DescribeZonesResponse
+from ._extend_cluster_request import ExtendClusterRequest
+from ._extend_cluster_shrink_request import ExtendClusterShrinkRequest
+from ._extend_cluster_response_body import ExtendClusterResponseBody
+from ._extend_cluster_response import ExtendClusterResponse
+from ._list_cluster_hyper_nodes_request import ListClusterHyperNodesRequest
+from ._list_cluster_hyper_nodes_response_body import ListClusterHyperNodesResponseBody
+from ._list_cluster_hyper_nodes_response import ListClusterHyperNodesResponse
+from ._list_cluster_nodes_request import ListClusterNodesRequest
+from ._list_cluster_nodes_response_body import ListClusterNodesResponseBody
+from ._list_cluster_nodes_response import ListClusterNodesResponse
+from ._list_clusters_request import ListClustersRequest
+from ._list_clusters_response_body import ListClustersResponseBody
+from ._list_clusters_response import ListClustersResponse
+from ._list_diagnostic_results_request import ListDiagnosticResultsRequest
+from ._list_diagnostic_results_response_body import ListDiagnosticResultsResponseBody
+from ._list_diagnostic_results_response import ListDiagnosticResultsResponse
+from ._list_free_hyper_nodes_request import ListFreeHyperNodesRequest
+from ._list_free_hyper_nodes_response_body import ListFreeHyperNodesResponseBody
+from ._list_free_hyper_nodes_response import ListFreeHyperNodesResponse
+from ._list_free_nodes_request import ListFreeNodesRequest
+from ._list_free_nodes_response_body import ListFreeNodesResponseBody
+from ._list_free_nodes_response import ListFreeNodesResponse
+from ._list_hyper_nodes_request import ListHyperNodesRequest
+from ._list_hyper_nodes_shrink_request import ListHyperNodesShrinkRequest
+from ._list_hyper_nodes_response_body import ListHyperNodesResponseBody
+from ._list_hyper_nodes_response import ListHyperNodesResponse
+from ._list_images_request import ListImagesRequest
+from ._list_images_response_body import ListImagesResponseBody
+from ._list_images_response import ListImagesResponse
+from ._list_machine_network_info_request import ListMachineNetworkInfoRequest
+from ._list_machine_network_info_shrink_request import ListMachineNetworkInfoShrinkRequest
+from ._list_machine_network_info_response_body import ListMachineNetworkInfoResponseBody
+from ._list_machine_network_info_response import ListMachineNetworkInfoResponse
+from ._list_machine_types_request import ListMachineTypesRequest
+from ._list_machine_types_response_body import ListMachineTypesResponseBody
+from ._list_machine_types_response import ListMachineTypesResponse
+from ._list_net_test_results_request import ListNetTestResultsRequest
+from ._list_net_test_results_response_body import ListNetTestResultsResponseBody
+from ._list_net_test_results_response import ListNetTestResultsResponse
+from ._list_node_groups_request import ListNodeGroupsRequest
+from ._list_node_groups_response_body import ListNodeGroupsResponseBody
+from ._list_node_groups_response import ListNodeGroupsResponse
+from ._list_syslogs_request import ListSyslogsRequest
+from ._list_syslogs_response_body import ListSyslogsResponseBody
+from ._list_syslogs_response import ListSyslogsResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
+from ._list_user_cluster_types_response_body import ListUserClusterTypesResponseBody
+from ._list_user_cluster_types_response import ListUserClusterTypesResponse
+from ._list_vscs_request import ListVscsRequest
+from ._list_vscs_shrink_request import ListVscsShrinkRequest
+from ._list_vscs_response_body import ListVscsResponseBody
+from ._list_vscs_response import ListVscsResponse
+from ._reboot_nodes_request import RebootNodesRequest
+from ._reboot_nodes_shrink_request import RebootNodesShrinkRequest
+from ._reboot_nodes_response_body import RebootNodesResponseBody
+from ._reboot_nodes_response import RebootNodesResponse
+from ._reimage_nodes_request import ReimageNodesRequest
+from ._reimage_nodes_shrink_request import ReimageNodesShrinkRequest
+from ._reimage_nodes_response_body import ReimageNodesResponseBody
+from ._reimage_nodes_response import ReimageNodesResponse
+from ._report_nodes_status_request import ReportNodesStatusRequest
+from ._report_nodes_status_shrink_request import ReportNodesStatusShrinkRequest
+from ._report_nodes_status_response_body import ReportNodesStatusResponseBody
+from ._report_nodes_status_response import ReportNodesStatusResponse
+from ._run_command_request import RunCommandRequest
+from ._run_command_shrink_request import RunCommandShrinkRequest
+from ._run_command_response_body import RunCommandResponseBody
+from ._run_command_response import RunCommandResponse
+from ._send_file_request import SendFileRequest
+from ._send_file_shrink_request import SendFileShrinkRequest
+from ._send_file_response_body import SendFileResponseBody
+from ._send_file_response import SendFileResponse
+from ._shrink_cluster_request import ShrinkClusterRequest
+from ._shrink_cluster_shrink_request import ShrinkClusterShrinkRequest
+from ._shrink_cluster_response_body import ShrinkClusterResponseBody
+from ._shrink_cluster_response import ShrinkClusterResponse
+from ._stop_invocation_request import StopInvocationRequest
+from ._stop_invocation_shrink_request import StopInvocationShrinkRequest
+from ._stop_invocation_response_body import StopInvocationResponseBody
+from ._stop_invocation_response import StopInvocationResponse
+from ._stop_nodes_request import StopNodesRequest
+from ._stop_nodes_shrink_request import StopNodesShrinkRequest
+from ._stop_nodes_response_body import StopNodesResponseBody
+from ._stop_nodes_response import StopNodesResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
+from ._update_node_group_request import UpdateNodeGroupRequest
+from ._update_node_group_response_body import UpdateNodeGroupResponseBody
+from ._update_node_group_response import UpdateNodeGroupResponse
+from ._change_node_types_response_body import ChangeNodeTypesResponseBodyNodeResponse
+from ._create_cluster_request import CreateClusterRequestComponentsComponentConfig
+from ._create_cluster_request import CreateClusterRequestComponents
+from ._create_cluster_request import CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds
+from ._create_cluster_request import CreateClusterRequestNetworksIpAllocationPolicyBondPolicy
+from ._create_cluster_request import CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds
+from ._create_cluster_request import CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy
+from ._create_cluster_request import CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds
+from ._create_cluster_request import CreateClusterRequestNetworksIpAllocationPolicyNodePolicy
+from ._create_cluster_request import CreateClusterRequestNetworksIpAllocationPolicy
+from ._create_cluster_request import CreateClusterRequestNetworksNewVpdInfoVpdSubnets
+from ._create_cluster_request import CreateClusterRequestNetworksNewVpdInfo
+from ._create_cluster_request import CreateClusterRequestNetworksVpdInfo
+from ._create_cluster_request import CreateClusterRequestNetworks
+from ._create_cluster_request import CreateClusterRequestNodeGroupsHyperNodesDataDisk
+from ._create_cluster_request import CreateClusterRequestNodeGroupsHyperNodes
+from ._create_cluster_request import CreateClusterRequestNodeGroupsNodesDataDisk
+from ._create_cluster_request import CreateClusterRequestNodeGroupsNodes
+from ._create_cluster_request import CreateClusterRequestNodeGroupsSystemDisk
+from ._create_cluster_request import CreateClusterRequestNodeGroups
+from ._create_cluster_request import CreateClusterRequestTag
+from ._create_cluster_shrink_request import CreateClusterShrinkRequestTag
+from ._create_diagnostic_task_request import CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs
+from ._create_diagnostic_task_request import CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs
+from ._create_diagnostic_task_request import CreateDiagnosticTaskRequestAiJobLogInfo
+from ._create_net_test_task_request import CreateNetTestTaskRequestCommTestHosts
+from ._create_net_test_task_request import CreateNetTestTaskRequestCommTest
+from ._create_net_test_task_request import CreateNetTestTaskRequestDelayTestHosts
+from ._create_net_test_task_request import CreateNetTestTaskRequestDelayTest
+from ._create_net_test_task_request import CreateNetTestTaskRequestTrafficTestClients
+from ._create_net_test_task_request import CreateNetTestTaskRequestTrafficTestServers
+from ._create_net_test_task_request import CreateNetTestTaskRequestTrafficTest
+from ._create_node_group_request import CreateNodeGroupRequestNodeGroupSystemDisk
+from ._create_node_group_request import CreateNodeGroupRequestNodeGroup
+from ._create_vsc_request import CreateVscRequestTag
+from ._describe_cluster_response_body import DescribeClusterResponseBodyComponents
+from ._describe_cluster_response_body import DescribeClusterResponseBodyNetworks
+from ._describe_hyper_node_response_body import DescribeHyperNodeResponseBodyNodesDisks
+from ._describe_hyper_node_response_body import DescribeHyperNodeResponseBodyNodesNetworks
+from ._describe_hyper_node_response_body import DescribeHyperNodeResponseBodyNodes
+from ._describe_invocations_response_body import DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode
+from ._describe_invocations_response_body import DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes
+from ._describe_invocations_response_body import DescribeInvocationsResponseBodyInvocationsInvocation
+from ._describe_invocations_response_body import DescribeInvocationsResponseBodyInvocations
+from ._describe_net_test_result_response_body import DescribeNetTestResultResponseBodyCommTestHosts
+from ._describe_net_test_result_response_body import DescribeNetTestResultResponseBodyCommTest
+from ._describe_net_test_result_response_body import DescribeNetTestResultResponseBodyDelayTestHosts
+from ._describe_net_test_result_response_body import DescribeNetTestResultResponseBodyDelayTest
+from ._describe_net_test_result_response_body import DescribeNetTestResultResponseBodyTrafficTestClients
+from ._describe_net_test_result_response_body import DescribeNetTestResultResponseBodyTrafficTestServers
+from ._describe_net_test_result_response_body import DescribeNetTestResultResponseBodyTrafficTest
+from ._describe_node_response_body import DescribeNodeResponseBodyDisks
+from ._describe_node_response_body import DescribeNodeResponseBodyNetworks
+from ._describe_node_group_response_body import DescribeNodeGroupResponseBodySystemDisk
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
+from ._describe_send_file_results_response_body import DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode
+from ._describe_send_file_results_response_body import DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes
+from ._describe_send_file_results_response_body import DescribeSendFileResultsResponseBodyInvocationsInvocation
+from ._describe_send_file_results_response_body import DescribeSendFileResultsResponseBodyInvocations
+from ._describe_task_response_body import DescribeTaskResponseBodyStepsSubTasks
+from ._describe_task_response_body import DescribeTaskResponseBodySteps
+from ._describe_zones_response_body import DescribeZonesResponseBodyZones
+from ._extend_cluster_request import ExtendClusterRequestIpAllocationPolicyBondPolicyBonds
+from ._extend_cluster_request import ExtendClusterRequestIpAllocationPolicyBondPolicy
+from ._extend_cluster_request import ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds
+from ._extend_cluster_request import ExtendClusterRequestIpAllocationPolicyMachineTypePolicy
+from ._extend_cluster_request import ExtendClusterRequestIpAllocationPolicyNodePolicyBonds
+from ._extend_cluster_request import ExtendClusterRequestIpAllocationPolicyNodePolicy
+from ._extend_cluster_request import ExtendClusterRequestIpAllocationPolicy
+from ._extend_cluster_request import ExtendClusterRequestNodeGroupsHyperNodesDataDisk
+from ._extend_cluster_request import ExtendClusterRequestNodeGroupsHyperNodes
+from ._extend_cluster_request import ExtendClusterRequestNodeGroupsNodeTag
+from ._extend_cluster_request import ExtendClusterRequestNodeGroupsNodesDataDisk
+from ._extend_cluster_request import ExtendClusterRequestNodeGroupsNodes
+from ._extend_cluster_request import ExtendClusterRequestNodeGroups
+from ._list_cluster_hyper_nodes_request import ListClusterHyperNodesRequestTags
+from ._list_cluster_hyper_nodes_response_body import ListClusterHyperNodesResponseBodyHyperNodesTags
+from ._list_cluster_hyper_nodes_response_body import ListClusterHyperNodesResponseBodyHyperNodes
+from ._list_cluster_nodes_request import ListClusterNodesRequestTags
+from ._list_cluster_nodes_response_body import ListClusterNodesResponseBodyNodesNetworks
+from ._list_cluster_nodes_response_body import ListClusterNodesResponseBodyNodesTags
+from ._list_cluster_nodes_response_body import ListClusterNodesResponseBodyNodes
+from ._list_clusters_request import ListClustersRequestTags
+from ._list_clusters_response_body import ListClustersResponseBodyClustersTags
+from ._list_clusters_response_body import ListClustersResponseBodyClusters
+from ._list_diagnostic_results_response_body import ListDiagnosticResultsResponseBodyDiagnosticResults
+from ._list_free_hyper_nodes_request import ListFreeHyperNodesRequestTags
+from ._list_free_hyper_nodes_response_body import ListFreeHyperNodesResponseBodyHyperNodesTags
+from ._list_free_hyper_nodes_response_body import ListFreeHyperNodesResponseBodyHyperNodes
+from ._list_free_nodes_request import ListFreeNodesRequestTags
+from ._list_free_nodes_response_body import ListFreeNodesResponseBodyNodesTags
+from ._list_free_nodes_response_body import ListFreeNodesResponseBodyNodes
+from ._list_hyper_nodes_request import ListHyperNodesRequestTags
+from ._list_hyper_nodes_shrink_request import ListHyperNodesShrinkRequestTags
+from ._list_hyper_nodes_response_body import ListHyperNodesResponseBodyHyperNodesTags
+from ._list_hyper_nodes_response_body import ListHyperNodesResponseBodyHyperNodes
+from ._list_images_response_body import ListImagesResponseBodyImages
+from ._list_machine_network_info_request import ListMachineNetworkInfoRequestMachineHpnInfo
+from ._list_machine_network_info_response_body import ListMachineNetworkInfoResponseBodyMachineNetworkInfo
+from ._list_machine_types_response_body import ListMachineTypesResponseBodyMachineTypes
+from ._list_net_test_results_response_body import ListNetTestResultsResponseBodyNetTestResultsCommTestHosts
+from ._list_net_test_results_response_body import ListNetTestResultsResponseBodyNetTestResultsCommTest
+from ._list_net_test_results_response_body import ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts
+from ._list_net_test_results_response_body import ListNetTestResultsResponseBodyNetTestResultsDelayTest
+from ._list_net_test_results_response_body import ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients
+from ._list_net_test_results_response_body import ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers
+from ._list_net_test_results_response_body import ListNetTestResultsResponseBodyNetTestResultsTrafficTest
+from ._list_net_test_results_response_body import ListNetTestResultsResponseBodyNetTestResults
+from ._list_node_groups_response_body import ListNodeGroupsResponseBodyGroups
+from ._list_syslogs_response_body import ListSyslogsResponseBodyLogs
+from ._list_tag_resources_request import ListTagResourcesRequestTag
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._list_user_cluster_types_response_body import ListUserClusterTypesResponseBodyClusterTypes
+from ._list_vscs_request import ListVscsRequestTag
+from ._list_vscs_shrink_request import ListVscsShrinkRequestTag
+from ._list_vscs_response_body import ListVscsResponseBodyVscsTags
+from ._list_vscs_response_body import ListVscsResponseBodyVscs
+from ._reimage_nodes_request import ReimageNodesRequestNodes
+from ._shrink_cluster_request import ShrinkClusterRequestNodeGroupsHyperNodes
+from ._shrink_cluster_request import ShrinkClusterRequestNodeGroupsNodes
+from ._shrink_cluster_request import ShrinkClusterRequestNodeGroups
+from ._tag_resources_request import TagResourcesRequestTag
+
+__all__ = [
+    ApproveOperationRequest,
+    ApproveOperationResponseBody,
+    ApproveOperationResponse,
+    ChangeNodeGroupRequest,
+    ChangeNodeGroupShrinkRequest,
+    ChangeNodeGroupResponseBody,
+    ChangeNodeGroupResponse,
+    ChangeNodeTypesRequest,
+    ChangeNodeTypesShrinkRequest,
+    ChangeNodeTypesResponseBody,
+    ChangeNodeTypesResponse,
+    ChangeResourceGroupRequest,
+    ChangeResourceGroupResponseBody,
+    ChangeResourceGroupResponse,
+    CloseSessionRequest,
+    CloseSessionResponseBody,
+    CloseSessionResponse,
+    CreateClusterRequest,
+    CreateClusterShrinkRequest,
+    CreateClusterResponseBody,
+    CreateClusterResponse,
+    CreateDiagnosticTaskRequest,
+    CreateDiagnosticTaskShrinkRequest,
+    CreateDiagnosticTaskResponseBody,
+    CreateDiagnosticTaskResponse,
+    CreateNetTestTaskRequest,
+    CreateNetTestTaskShrinkRequest,
+    CreateNetTestTaskResponseBody,
+    CreateNetTestTaskResponse,
+    CreateNodeGroupRequest,
+    CreateNodeGroupShrinkRequest,
+    CreateNodeGroupResponseBody,
+    CreateNodeGroupResponse,
+    CreateSessionRequest,
+    CreateSessionResponseBody,
+    CreateSessionResponse,
+    CreateVscRequest,
+    CreateVscResponseBody,
+    CreateVscResponse,
+    DeleteClusterRequest,
+    DeleteClusterResponseBody,
+    DeleteClusterResponse,
+    DeleteHyperNodeRequest,
+    DeleteHyperNodeResponseBody,
+    DeleteHyperNodeResponse,
+    DeleteNodeRequest,
+    DeleteNodeResponseBody,
+    DeleteNodeResponse,
+    DeleteNodeGroupRequest,
+    DeleteNodeGroupResponseBody,
+    DeleteNodeGroupResponse,
+    DeleteVscRequest,
+    DeleteVscResponseBody,
+    DeleteVscResponse,
+    DescribeClusterRequest,
+    DescribeClusterResponseBody,
+    DescribeClusterResponse,
+    DescribeDiagnosticResultRequest,
+    DescribeDiagnosticResultResponseBody,
+    DescribeDiagnosticResultResponse,
+    DescribeHyperNodeRequest,
+    DescribeHyperNodeResponseBody,
+    DescribeHyperNodeResponse,
+    DescribeInvocationsRequest,
+    DescribeInvocationsResponseBody,
+    DescribeInvocationsResponse,
+    DescribeNetTestResultRequest,
+    DescribeNetTestResultResponseBody,
+    DescribeNetTestResultResponse,
+    DescribeNodeRequest,
+    DescribeNodeResponseBody,
+    DescribeNodeResponse,
+    DescribeNodeGroupRequest,
+    DescribeNodeGroupResponseBody,
+    DescribeNodeGroupResponse,
+    DescribeNodeTypeRequest,
+    DescribeNodeTypeResponseBody,
+    DescribeNodeTypeResponse,
+    DescribeRegionsRequest,
+    DescribeRegionsResponseBody,
+    DescribeRegionsResponse,
+    DescribeSendFileResultsRequest,
+    DescribeSendFileResultsResponseBody,
+    DescribeSendFileResultsResponse,
+    DescribeTaskRequest,
+    DescribeTaskResponseBody,
+    DescribeTaskResponse,
+    DescribeVscRequest,
+    DescribeVscResponseBody,
+    DescribeVscResponse,
+    DescribeZonesRequest,
+    DescribeZonesResponseBody,
+    DescribeZonesResponse,
+    ExtendClusterRequest,
+    ExtendClusterShrinkRequest,
+    ExtendClusterResponseBody,
+    ExtendClusterResponse,
+    ListClusterHyperNodesRequest,
+    ListClusterHyperNodesResponseBody,
+    ListClusterHyperNodesResponse,
+    ListClusterNodesRequest,
+    ListClusterNodesResponseBody,
+    ListClusterNodesResponse,
+    ListClustersRequest,
+    ListClustersResponseBody,
+    ListClustersResponse,
+    ListDiagnosticResultsRequest,
+    ListDiagnosticResultsResponseBody,
+    ListDiagnosticResultsResponse,
+    ListFreeHyperNodesRequest,
+    ListFreeHyperNodesResponseBody,
+    ListFreeHyperNodesResponse,
+    ListFreeNodesRequest,
+    ListFreeNodesResponseBody,
+    ListFreeNodesResponse,
+    ListHyperNodesRequest,
+    ListHyperNodesShrinkRequest,
+    ListHyperNodesResponseBody,
+    ListHyperNodesResponse,
+    ListImagesRequest,
+    ListImagesResponseBody,
+    ListImagesResponse,
+    ListMachineNetworkInfoRequest,
+    ListMachineNetworkInfoShrinkRequest,
+    ListMachineNetworkInfoResponseBody,
+    ListMachineNetworkInfoResponse,
+    ListMachineTypesRequest,
+    ListMachineTypesResponseBody,
+    ListMachineTypesResponse,
+    ListNetTestResultsRequest,
+    ListNetTestResultsResponseBody,
+    ListNetTestResultsResponse,
+    ListNodeGroupsRequest,
+    ListNodeGroupsResponseBody,
+    ListNodeGroupsResponse,
+    ListSyslogsRequest,
+    ListSyslogsResponseBody,
+    ListSyslogsResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
+    ListUserClusterTypesResponseBody,
+    ListUserClusterTypesResponse,
+    ListVscsRequest,
+    ListVscsShrinkRequest,
+    ListVscsResponseBody,
+    ListVscsResponse,
+    RebootNodesRequest,
+    RebootNodesShrinkRequest,
+    RebootNodesResponseBody,
+    RebootNodesResponse,
+    ReimageNodesRequest,
+    ReimageNodesShrinkRequest,
+    ReimageNodesResponseBody,
+    ReimageNodesResponse,
+    ReportNodesStatusRequest,
+    ReportNodesStatusShrinkRequest,
+    ReportNodesStatusResponseBody,
+    ReportNodesStatusResponse,
+    RunCommandRequest,
+    RunCommandShrinkRequest,
+    RunCommandResponseBody,
+    RunCommandResponse,
+    SendFileRequest,
+    SendFileShrinkRequest,
+    SendFileResponseBody,
+    SendFileResponse,
+    ShrinkClusterRequest,
+    ShrinkClusterShrinkRequest,
+    ShrinkClusterResponseBody,
+    ShrinkClusterResponse,
+    StopInvocationRequest,
+    StopInvocationShrinkRequest,
+    StopInvocationResponseBody,
+    StopInvocationResponse,
+    StopNodesRequest,
+    StopNodesShrinkRequest,
+    StopNodesResponseBody,
+    StopNodesResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UntagResourcesRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
+    UpdateNodeGroupRequest,
+    UpdateNodeGroupResponseBody,
+    UpdateNodeGroupResponse,
+    ChangeNodeTypesResponseBodyNodeResponse,
+    CreateClusterRequestComponentsComponentConfig,
+    CreateClusterRequestComponents,
+    CreateClusterRequestNetworksIpAllocationPolicyBondPolicyBonds,
+    CreateClusterRequestNetworksIpAllocationPolicyBondPolicy,
+    CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicyBonds,
+    CreateClusterRequestNetworksIpAllocationPolicyMachineTypePolicy,
+    CreateClusterRequestNetworksIpAllocationPolicyNodePolicyBonds,
+    CreateClusterRequestNetworksIpAllocationPolicyNodePolicy,
+    CreateClusterRequestNetworksIpAllocationPolicy,
+    CreateClusterRequestNetworksNewVpdInfoVpdSubnets,
+    CreateClusterRequestNetworksNewVpdInfo,
+    CreateClusterRequestNetworksVpdInfo,
+    CreateClusterRequestNetworks,
+    CreateClusterRequestNodeGroupsHyperNodesDataDisk,
+    CreateClusterRequestNodeGroupsHyperNodes,
+    CreateClusterRequestNodeGroupsNodesDataDisk,
+    CreateClusterRequestNodeGroupsNodes,
+    CreateClusterRequestNodeGroupsSystemDisk,
+    CreateClusterRequestNodeGroups,
+    CreateClusterRequestTag,
+    CreateClusterShrinkRequestTag,
+    CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogsLogs,
+    CreateDiagnosticTaskRequestAiJobLogInfoAiJobLogs,
+    CreateDiagnosticTaskRequestAiJobLogInfo,
+    CreateNetTestTaskRequestCommTestHosts,
+    CreateNetTestTaskRequestCommTest,
+    CreateNetTestTaskRequestDelayTestHosts,
+    CreateNetTestTaskRequestDelayTest,
+    CreateNetTestTaskRequestTrafficTestClients,
+    CreateNetTestTaskRequestTrafficTestServers,
+    CreateNetTestTaskRequestTrafficTest,
+    CreateNodeGroupRequestNodeGroupSystemDisk,
+    CreateNodeGroupRequestNodeGroup,
+    CreateVscRequestTag,
+    DescribeClusterResponseBodyComponents,
+    DescribeClusterResponseBodyNetworks,
+    DescribeHyperNodeResponseBodyNodesDisks,
+    DescribeHyperNodeResponseBodyNodesNetworks,
+    DescribeHyperNodeResponseBodyNodes,
+    DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodesInvokeNode,
+    DescribeInvocationsResponseBodyInvocationsInvocationInvokeNodes,
+    DescribeInvocationsResponseBodyInvocationsInvocation,
+    DescribeInvocationsResponseBodyInvocations,
+    DescribeNetTestResultResponseBodyCommTestHosts,
+    DescribeNetTestResultResponseBodyCommTest,
+    DescribeNetTestResultResponseBodyDelayTestHosts,
+    DescribeNetTestResultResponseBodyDelayTest,
+    DescribeNetTestResultResponseBodyTrafficTestClients,
+    DescribeNetTestResultResponseBodyTrafficTestServers,
+    DescribeNetTestResultResponseBodyTrafficTest,
+    DescribeNodeResponseBodyDisks,
+    DescribeNodeResponseBodyNetworks,
+    DescribeNodeGroupResponseBodySystemDisk,
+    DescribeRegionsResponseBodyRegions,
+    DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodesInvokeNode,
+    DescribeSendFileResultsResponseBodyInvocationsInvocationInvokeNodes,
+    DescribeSendFileResultsResponseBodyInvocationsInvocation,
+    DescribeSendFileResultsResponseBodyInvocations,
+    DescribeTaskResponseBodyStepsSubTasks,
+    DescribeTaskResponseBodySteps,
+    DescribeZonesResponseBodyZones,
+    ExtendClusterRequestIpAllocationPolicyBondPolicyBonds,
+    ExtendClusterRequestIpAllocationPolicyBondPolicy,
+    ExtendClusterRequestIpAllocationPolicyMachineTypePolicyBonds,
+    ExtendClusterRequestIpAllocationPolicyMachineTypePolicy,
+    ExtendClusterRequestIpAllocationPolicyNodePolicyBonds,
+    ExtendClusterRequestIpAllocationPolicyNodePolicy,
+    ExtendClusterRequestIpAllocationPolicy,
+    ExtendClusterRequestNodeGroupsHyperNodesDataDisk,
+    ExtendClusterRequestNodeGroupsHyperNodes,
+    ExtendClusterRequestNodeGroupsNodeTag,
+    ExtendClusterRequestNodeGroupsNodesDataDisk,
+    ExtendClusterRequestNodeGroupsNodes,
+    ExtendClusterRequestNodeGroups,
+    ListClusterHyperNodesRequestTags,
+    ListClusterHyperNodesResponseBodyHyperNodesTags,
+    ListClusterHyperNodesResponseBodyHyperNodes,
+    ListClusterNodesRequestTags,
+    ListClusterNodesResponseBodyNodesNetworks,
+    ListClusterNodesResponseBodyNodesTags,
+    ListClusterNodesResponseBodyNodes,
+    ListClustersRequestTags,
+    ListClustersResponseBodyClustersTags,
+    ListClustersResponseBodyClusters,
+    ListDiagnosticResultsResponseBodyDiagnosticResults,
+    ListFreeHyperNodesRequestTags,
+    ListFreeHyperNodesResponseBodyHyperNodesTags,
+    ListFreeHyperNodesResponseBodyHyperNodes,
+    ListFreeNodesRequestTags,
+    ListFreeNodesResponseBodyNodesTags,
+    ListFreeNodesResponseBodyNodes,
+    ListHyperNodesRequestTags,
+    ListHyperNodesShrinkRequestTags,
+    ListHyperNodesResponseBodyHyperNodesTags,
+    ListHyperNodesResponseBodyHyperNodes,
+    ListImagesResponseBodyImages,
+    ListMachineNetworkInfoRequestMachineHpnInfo,
+    ListMachineNetworkInfoResponseBodyMachineNetworkInfo,
+    ListMachineTypesResponseBodyMachineTypes,
+    ListNetTestResultsResponseBodyNetTestResultsCommTestHosts,
+    ListNetTestResultsResponseBodyNetTestResultsCommTest,
+    ListNetTestResultsResponseBodyNetTestResultsDelayTestHosts,
+    ListNetTestResultsResponseBodyNetTestResultsDelayTest,
+    ListNetTestResultsResponseBodyNetTestResultsTrafficTestClients,
+    ListNetTestResultsResponseBodyNetTestResultsTrafficTestServers,
+    ListNetTestResultsResponseBodyNetTestResultsTrafficTest,
+    ListNetTestResultsResponseBodyNetTestResults,
+    ListNodeGroupsResponseBodyGroups,
+    ListSyslogsResponseBodyLogs,
+    ListTagResourcesRequestTag,
+    ListTagResourcesResponseBodyTagResourcesTagResource,
+    ListTagResourcesResponseBodyTagResources,
+    ListUserClusterTypesResponseBodyClusterTypes,
+    ListVscsRequestTag,
+    ListVscsShrinkRequestTag,
+    ListVscsResponseBodyVscsTags,
+    ListVscsResponseBodyVscs,
+    ReimageNodesRequestNodes,
+    ShrinkClusterRequestNodeGroupsHyperNodes,
+    ShrinkClusterRequestNodeGroupsNodes,
+    ShrinkClusterRequestNodeGroups,
+    TagResourcesRequestTag
+]
