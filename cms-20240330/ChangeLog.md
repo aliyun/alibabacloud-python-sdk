@@ -1,3 +1,10 @@
+2025-12-30 Version: 4.1.0
+- Support API ChangeResourceGroup.
+- Support API ListTagResources.
+- Support API TagResources.
+- Support API UntagResources.
+
+
 2025-12-29 Version: 4.0.0
 - Update API DeleteThread: delete response parameters Body.deleted.
 

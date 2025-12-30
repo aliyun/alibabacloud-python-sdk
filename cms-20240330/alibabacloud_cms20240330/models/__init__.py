@@ -70,6 +70,9 @@ from ._transform_action import TransformAction
 from ._transformer_for_modify import TransformerForModify
 from ._transformer_for_view import TransformerForView
 from ._workspace_filter_setting import WorkspaceFilterSetting
+from ._change_resource_group_request import ChangeResourceGroupRequest
+from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
+from ._change_resource_group_response import ChangeResourceGroupResponse
 from ._create_addon_release_request import CreateAddonReleaseRequest
 from ._create_addon_release_response_body import CreateAddonReleaseResponseBody
 from ._create_addon_release_response import CreateAddonReleaseResponse
@@ -275,6 +278,10 @@ from ._list_services_request import ListServicesRequest
 from ._list_services_shrink_request import ListServicesShrinkRequest
 from ._list_services_response_body import ListServicesResponseBody
 from ._list_services_response import ListServicesResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_shrink_request import ListTagResourcesShrinkRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
 from ._list_threads_request import ListThreadsRequest
 from ._list_threads_shrink_request import ListThreadsShrinkRequest
 from ._list_threads_response_body import ListThreadsResponseBody
@@ -286,6 +293,13 @@ from ._list_workspaces_response import ListWorkspacesResponse
 from ._put_workspace_request import PutWorkspaceRequest
 from ._put_workspace_response_body import PutWorkspaceResponseBody
 from ._put_workspace_response import PutWorkspaceResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_shrink_request import UntagResourcesShrinkRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
 from ._update_addon_release_request import UpdateAddonReleaseRequest
 from ._update_addon_release_response_body import UpdateAddonReleaseResponseBody
 from ._update_addon_release_response import UpdateAddonReleaseResponse
@@ -527,6 +541,7 @@ from ._list_prometheus_views_response_body import ListPrometheusViewsResponseBod
 from ._list_prometheus_virtual_instances_response_body import ListPrometheusVirtualInstancesResponseBodyInstances
 from ._list_services_request import ListServicesRequestTags
 from ._list_services_response_body import ListServicesResponseBodyServices
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._list_threads_request import ListThreadsRequestFilter
 from ._list_threads_response_body import ListThreadsResponseBodyThreadsVariables
 from ._list_threads_response_body import ListThreadsResponseBodyThreads
@@ -606,6 +621,9 @@ __all__ = [
     TransformerForModify,
     TransformerForView,
     WorkspaceFilterSetting,
+    ChangeResourceGroupRequest,
+    ChangeResourceGroupResponseBody,
+    ChangeResourceGroupResponse,
     CreateAddonReleaseRequest,
     CreateAddonReleaseResponseBody,
     CreateAddonReleaseResponse,
@@ -811,6 +829,10 @@ __all__ = [
     ListServicesShrinkRequest,
     ListServicesResponseBody,
     ListServicesResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesShrinkRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
     ListThreadsRequest,
     ListThreadsShrinkRequest,
     ListThreadsResponseBody,
@@ -822,6 +844,13 @@ __all__ = [
     PutWorkspaceRequest,
     PutWorkspaceResponseBody,
     PutWorkspaceResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UntagResourcesRequest,
+    UntagResourcesShrinkRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
     UpdateAddonReleaseRequest,
     UpdateAddonReleaseResponseBody,
     UpdateAddonReleaseResponse,
@@ -1063,6 +1092,7 @@ __all__ = [
     ListPrometheusVirtualInstancesResponseBodyInstances,
     ListServicesRequestTags,
     ListServicesResponseBodyServices,
+    ListTagResourcesResponseBodyTagResources,
     ListThreadsRequestFilter,
     ListThreadsResponseBodyThreadsVariables,
     ListThreadsResponseBodyThreads,
