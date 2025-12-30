@@ -1,3 +1,11 @@
+2025-12-30 Version: 2.4.0
+- Support API CreateBizMetric.
+- Support API DeleteBizMetric.
+- Support API GetBizMetricByName.
+- Support API GetCheckConnectivityJobs.
+- Support API UpdateBizMetric.
+
+
 2025-12-18 Version: 2.3.0
 - Support API SyncDepartment.
 - Support API SyncDepartmentUser.

@@ -1,0 +1,343 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_dataphin_public20230630 import models as main_models
+from darabonba.model import DaraModel
+
+class ListTenantMembersResponseBody(DaraModel):
+    def __init__(
+        self,
+        code: str = None,
+        http_status_code: int = None,
+        message: str = None,
+        page_result: main_models.ListTenantMembersResponseBodyPageResult = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.http_status_code = http_status_code
+        self.message = message
+        self.page_result = page_result
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.page_result:
+            self.page_result.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['Code'] = self.code
+
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+
+        if self.message is not None:
+            result['Message'] = self.message
+
+        if self.page_result is not None:
+            result['PageResult'] = self.page_result.to_map()
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.success is not None:
+            result['Success'] = self.success
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
+        if m.get('PageResult') is not None:
+            temp_model = main_models.ListTenantMembersResponseBodyPageResult()
+            self.page_result = temp_model.from_map(m.get('PageResult'))
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+
+        return self
+
+class ListTenantMembersResponseBodyPageResult(DaraModel):
+    def __init__(
+        self,
+        total_count: int = None,
+        user_list: List[main_models.ListTenantMembersResponseBodyPageResultUserList] = None,
+    ):
+        self.total_count = total_count
+        self.user_list = user_list
+
+    def validate(self):
+        if self.user_list:
+            for v1 in self.user_list:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+
+        result['UserList'] = []
+        if self.user_list is not None:
+            for k1 in self.user_list:
+                result['UserList'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+
+        self.user_list = []
+        if m.get('UserList') is not None:
+            for k1 in m.get('UserList'):
+                temp_model = main_models.ListTenantMembersResponseBodyPageResultUserList()
+                self.user_list.append(temp_model.from_map(k1))
+
+        return self
+
+class ListTenantMembersResponseBodyPageResultUserList(DaraModel):
+    def __init__(
+        self,
+        account_name: str = None,
+        ding_number: str = None,
+        display_name: str = None,
+        display_name_without_status: str = None,
+        enable_white_ip: str = None,
+        gmt_create: int = None,
+        gmt_modified: int = None,
+        id: str = None,
+        mail: str = None,
+        mobile_phone: str = None,
+        name: str = None,
+        nick_name: str = None,
+        real_name: str = None,
+        role_list: List[str] = None,
+        source_id: str = None,
+        source_type: str = None,
+        user_group_list: List[main_models.ListTenantMembersResponseBodyPageResultUserListUserGroupList] = None,
+        white_ip: str = None,
+    ):
+        self.account_name = account_name
+        self.ding_number = ding_number
+        self.display_name = display_name
+        self.display_name_without_status = display_name_without_status
+        self.enable_white_ip = enable_white_ip
+        self.gmt_create = gmt_create
+        self.gmt_modified = gmt_modified
+        self.id = id
+        self.mail = mail
+        self.mobile_phone = mobile_phone
+        self.name = name
+        self.nick_name = nick_name
+        self.real_name = real_name
+        self.role_list = role_list
+        self.source_id = source_id
+        self.source_type = source_type
+        self.user_group_list = user_group_list
+        self.white_ip = white_ip
+
+    def validate(self):
+        if self.user_group_list:
+            for v1 in self.user_group_list:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+
+        if self.ding_number is not None:
+            result['DingNumber'] = self.ding_number
+
+        if self.display_name is not None:
+            result['DisplayName'] = self.display_name
+
+        if self.display_name_without_status is not None:
+            result['DisplayNameWithoutStatus'] = self.display_name_without_status
+
+        if self.enable_white_ip is not None:
+            result['EnableWhiteIp'] = self.enable_white_ip
+
+        if self.gmt_create is not None:
+            result['GmtCreate'] = self.gmt_create
+
+        if self.gmt_modified is not None:
+            result['GmtModified'] = self.gmt_modified
+
+        if self.id is not None:
+            result['Id'] = self.id
+
+        if self.mail is not None:
+            result['Mail'] = self.mail
+
+        if self.mobile_phone is not None:
+            result['MobilePhone'] = self.mobile_phone
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.nick_name is not None:
+            result['NickName'] = self.nick_name
+
+        if self.real_name is not None:
+            result['RealName'] = self.real_name
+
+        if self.role_list is not None:
+            result['RoleList'] = self.role_list
+
+        if self.source_id is not None:
+            result['SourceId'] = self.source_id
+
+        if self.source_type is not None:
+            result['SourceType'] = self.source_type
+
+        result['UserGroupList'] = []
+        if self.user_group_list is not None:
+            for k1 in self.user_group_list:
+                result['UserGroupList'].append(k1.to_map() if k1 else None)
+
+        if self.white_ip is not None:
+            result['WhiteIp'] = self.white_ip
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+
+        if m.get('DingNumber') is not None:
+            self.ding_number = m.get('DingNumber')
+
+        if m.get('DisplayName') is not None:
+            self.display_name = m.get('DisplayName')
+
+        if m.get('DisplayNameWithoutStatus') is not None:
+            self.display_name_without_status = m.get('DisplayNameWithoutStatus')
+
+        if m.get('EnableWhiteIp') is not None:
+            self.enable_white_ip = m.get('EnableWhiteIp')
+
+        if m.get('GmtCreate') is not None:
+            self.gmt_create = m.get('GmtCreate')
+
+        if m.get('GmtModified') is not None:
+            self.gmt_modified = m.get('GmtModified')
+
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+
+        if m.get('Mail') is not None:
+            self.mail = m.get('Mail')
+
+        if m.get('MobilePhone') is not None:
+            self.mobile_phone = m.get('MobilePhone')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('NickName') is not None:
+            self.nick_name = m.get('NickName')
+
+        if m.get('RealName') is not None:
+            self.real_name = m.get('RealName')
+
+        if m.get('RoleList') is not None:
+            self.role_list = m.get('RoleList')
+
+        if m.get('SourceId') is not None:
+            self.source_id = m.get('SourceId')
+
+        if m.get('SourceType') is not None:
+            self.source_type = m.get('SourceType')
+
+        self.user_group_list = []
+        if m.get('UserGroupList') is not None:
+            for k1 in m.get('UserGroupList'):
+                temp_model = main_models.ListTenantMembersResponseBodyPageResultUserListUserGroupList()
+                self.user_group_list.append(temp_model.from_map(k1))
+
+        if m.get('WhiteIp') is not None:
+            self.white_ip = m.get('WhiteIp')
+
+        return self
+
+class ListTenantMembersResponseBodyPageResultUserListUserGroupList(DaraModel):
+    def __init__(
+        self,
+        active: bool = None,
+        description: str = None,
+        id: str = None,
+        name: str = None,
+    ):
+        self.active = active
+        self.description = description
+        self.id = id
+        self.name = name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.active is not None:
+            result['Active'] = self.active
+
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.id is not None:
+            result['Id'] = self.id
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Active') is not None:
+            self.active = m.get('Active')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        return self
+
