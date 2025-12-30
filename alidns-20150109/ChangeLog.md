@@ -1,3 +1,8 @@
+2025-12-30 Version: 4.1.0
+- Support API AddRspDomainServerHoldStatusForGateway.
+- Update API DescribePdnsAppKeys: add response parameters Body.AppKeys.$.BindEdgeDnsClusters.
+
+
 2025-12-04 Version: 4.0.0
 - Support API RemoveRspDomainServerHoldStatusForGateway.
 - Support API UpdateRspDomainServerProhibitStatusForGateway.
