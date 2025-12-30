@@ -7,7 +7,7 @@ from darabonba.model import DaraModel
 class AssumeRoleForWorkloadIdentityRequest(DaraModel):
     def __init__(
         self,
-        duration_seconds: str = None,
+        duration_seconds: int = None,
         policy: str = None,
         role_session_name: str = None,
         workload_access_token: str = None,
