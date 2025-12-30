@@ -1,0 +1,50 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class DescribeResolverEndpointRequest(DaraModel):
+    def __init__(
+        self,
+        endpoint_id: str = None,
+        lang: str = None,
+    ):
+        # The endpoint ID. This ID uniquely identifies the endpoint.
+        # 
+        # This parameter is required.
+        self.endpoint_id = endpoint_id
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        # 
+        # Default value: en.
+        self.lang = lang
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.endpoint_id is not None:
+            result['EndpointId'] = self.endpoint_id
+
+        if self.lang is not None:
+            result['Lang'] = self.lang
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndpointId') is not None:
+            self.endpoint_id = m.get('EndpointId')
+
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+
+        return self
+

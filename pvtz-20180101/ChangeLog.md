@@ -1,3 +1,8 @@
+2025-12-30 Version: 1.3.3
+- Update API DescribeResolverRules: add response parameters Body.Rules.$.PriorityForwardConfigs.
+- Update API UpdateResolverRule: add request parameters PriorityForwardConfigs.
+
+
 2025-07-28 Version: 1.3.2
 - Update API DescribeCustomLineInfo: add response parameters Body.Dnscategory.
 - Update API DescribeCustomLines: add response parameters Body.CustomLines.$.DnsCategory.

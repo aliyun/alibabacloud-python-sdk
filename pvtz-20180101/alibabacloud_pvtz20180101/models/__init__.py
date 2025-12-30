@@ -1,0 +1,431 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._add_custom_line_request import AddCustomLineRequest
+from ._add_custom_line_response_body import AddCustomLineResponseBody
+from ._add_custom_line_response import AddCustomLineResponse
+from ._add_resolver_endpoint_request import AddResolverEndpointRequest
+from ._add_resolver_endpoint_response_body import AddResolverEndpointResponseBody
+from ._add_resolver_endpoint_response import AddResolverEndpointResponse
+from ._add_resolver_rule_request import AddResolverRuleRequest
+from ._add_resolver_rule_response_body import AddResolverRuleResponseBody
+from ._add_resolver_rule_response import AddResolverRuleResponse
+from ._add_user_vpc_authorization_request import AddUserVpcAuthorizationRequest
+from ._add_user_vpc_authorization_response_body import AddUserVpcAuthorizationResponseBody
+from ._add_user_vpc_authorization_response import AddUserVpcAuthorizationResponse
+from ._add_zone_request import AddZoneRequest
+from ._add_zone_response_body import AddZoneResponseBody
+from ._add_zone_response import AddZoneResponse
+from ._add_zone_record_request import AddZoneRecordRequest
+from ._add_zone_record_response_body import AddZoneRecordResponseBody
+from ._add_zone_record_response import AddZoneRecordResponse
+from ._bind_resolver_rule_vpc_request import BindResolverRuleVpcRequest
+from ._bind_resolver_rule_vpc_response_body import BindResolverRuleVpcResponseBody
+from ._bind_resolver_rule_vpc_response import BindResolverRuleVpcResponse
+from ._bind_zone_vpc_request import BindZoneVpcRequest
+from ._bind_zone_vpc_response_body import BindZoneVpcResponseBody
+from ._bind_zone_vpc_response import BindZoneVpcResponse
+from ._change_zone_dns_group_request import ChangeZoneDnsGroupRequest
+from ._change_zone_dns_group_response_body import ChangeZoneDnsGroupResponseBody
+from ._change_zone_dns_group_response import ChangeZoneDnsGroupResponse
+from ._check_zone_name_request import CheckZoneNameRequest
+from ._check_zone_name_response_body import CheckZoneNameResponseBody
+from ._check_zone_name_response import CheckZoneNameResponse
+from ._delete_custom_line_request import DeleteCustomLineRequest
+from ._delete_custom_line_response_body import DeleteCustomLineResponseBody
+from ._delete_custom_line_response import DeleteCustomLineResponse
+from ._delete_resolver_endpoint_request import DeleteResolverEndpointRequest
+from ._delete_resolver_endpoint_response_body import DeleteResolverEndpointResponseBody
+from ._delete_resolver_endpoint_response import DeleteResolverEndpointResponse
+from ._delete_resolver_rule_request import DeleteResolverRuleRequest
+from ._delete_resolver_rule_response_body import DeleteResolverRuleResponseBody
+from ._delete_resolver_rule_response import DeleteResolverRuleResponse
+from ._delete_user_vpc_authorization_request import DeleteUserVpcAuthorizationRequest
+from ._delete_user_vpc_authorization_response_body import DeleteUserVpcAuthorizationResponseBody
+from ._delete_user_vpc_authorization_response import DeleteUserVpcAuthorizationResponse
+from ._delete_zone_request import DeleteZoneRequest
+from ._delete_zone_response_body import DeleteZoneResponseBody
+from ._delete_zone_response import DeleteZoneResponse
+from ._delete_zone_record_request import DeleteZoneRecordRequest
+from ._delete_zone_record_response_body import DeleteZoneRecordResponseBody
+from ._delete_zone_record_response import DeleteZoneRecordResponse
+from ._describe_change_logs_request import DescribeChangeLogsRequest
+from ._describe_change_logs_response_body import DescribeChangeLogsResponseBody
+from ._describe_change_logs_response import DescribeChangeLogsResponse
+from ._describe_custom_line_info_request import DescribeCustomLineInfoRequest
+from ._describe_custom_line_info_response_body import DescribeCustomLineInfoResponseBody
+from ._describe_custom_line_info_response import DescribeCustomLineInfoResponse
+from ._describe_custom_lines_request import DescribeCustomLinesRequest
+from ._describe_custom_lines_response_body import DescribeCustomLinesResponseBody
+from ._describe_custom_lines_response import DescribeCustomLinesResponse
+from ._describe_regions_request import DescribeRegionsRequest
+from ._describe_regions_response_body import DescribeRegionsResponseBody
+from ._describe_regions_response import DescribeRegionsResponse
+from ._describe_request_graph_request import DescribeRequestGraphRequest
+from ._describe_request_graph_response_body import DescribeRequestGraphResponseBody
+from ._describe_request_graph_response import DescribeRequestGraphResponse
+from ._describe_resolver_available_zones_request import DescribeResolverAvailableZonesRequest
+from ._describe_resolver_available_zones_response_body import DescribeResolverAvailableZonesResponseBody
+from ._describe_resolver_available_zones_response import DescribeResolverAvailableZonesResponse
+from ._describe_resolver_endpoint_request import DescribeResolverEndpointRequest
+from ._describe_resolver_endpoint_response_body import DescribeResolverEndpointResponseBody
+from ._describe_resolver_endpoint_response import DescribeResolverEndpointResponse
+from ._describe_resolver_endpoints_request import DescribeResolverEndpointsRequest
+from ._describe_resolver_endpoints_response_body import DescribeResolverEndpointsResponseBody
+from ._describe_resolver_endpoints_response import DescribeResolverEndpointsResponse
+from ._describe_resolver_rule_request import DescribeResolverRuleRequest
+from ._describe_resolver_rule_response_body import DescribeResolverRuleResponseBody
+from ._describe_resolver_rule_response import DescribeResolverRuleResponse
+from ._describe_resolver_rules_request import DescribeResolverRulesRequest
+from ._describe_resolver_rules_response_body import DescribeResolverRulesResponseBody
+from ._describe_resolver_rules_response import DescribeResolverRulesResponse
+from ._describe_statistic_summary_request import DescribeStatisticSummaryRequest
+from ._describe_statistic_summary_response_body import DescribeStatisticSummaryResponseBody
+from ._describe_statistic_summary_response import DescribeStatisticSummaryResponse
+from ._describe_sync_ecs_host_task_request import DescribeSyncEcsHostTaskRequest
+from ._describe_sync_ecs_host_task_response_body import DescribeSyncEcsHostTaskResponseBody
+from ._describe_sync_ecs_host_task_response import DescribeSyncEcsHostTaskResponse
+from ._describe_tags_request import DescribeTagsRequest
+from ._describe_tags_response_body import DescribeTagsResponseBody
+from ._describe_tags_response import DescribeTagsResponse
+from ._describe_user_service_status_request import DescribeUserServiceStatusRequest
+from ._describe_user_service_status_response_body import DescribeUserServiceStatusResponseBody
+from ._describe_user_service_status_response import DescribeUserServiceStatusResponse
+from ._describe_user_vpc_authorizations_request import DescribeUserVpcAuthorizationsRequest
+from ._describe_user_vpc_authorizations_response_body import DescribeUserVpcAuthorizationsResponseBody
+from ._describe_user_vpc_authorizations_response import DescribeUserVpcAuthorizationsResponse
+from ._describe_zone_info_request import DescribeZoneInfoRequest
+from ._describe_zone_info_response_body import DescribeZoneInfoResponseBody
+from ._describe_zone_info_response import DescribeZoneInfoResponse
+from ._describe_zone_record_request import DescribeZoneRecordRequest
+from ._describe_zone_record_response_body import DescribeZoneRecordResponseBody
+from ._describe_zone_record_response import DescribeZoneRecordResponse
+from ._describe_zone_records_request import DescribeZoneRecordsRequest
+from ._describe_zone_records_response_body import DescribeZoneRecordsResponseBody
+from ._describe_zone_records_response import DescribeZoneRecordsResponse
+from ._describe_zone_vpc_tree_request import DescribeZoneVpcTreeRequest
+from ._describe_zone_vpc_tree_response_body import DescribeZoneVpcTreeResponseBody
+from ._describe_zone_vpc_tree_response import DescribeZoneVpcTreeResponse
+from ._describe_zones_request import DescribeZonesRequest
+from ._describe_zones_response_body import DescribeZonesResponseBody
+from ._describe_zones_response import DescribeZonesResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
+from ._move_resource_group_request import MoveResourceGroupRequest
+from ._move_resource_group_response_body import MoveResourceGroupResponseBody
+from ._move_resource_group_response import MoveResourceGroupResponse
+from ._search_custom_lines_request import SearchCustomLinesRequest
+from ._search_custom_lines_response_body import SearchCustomLinesResponseBody
+from ._search_custom_lines_response import SearchCustomLinesResponse
+from ._set_proxy_pattern_request import SetProxyPatternRequest
+from ._set_proxy_pattern_response_body import SetProxyPatternResponseBody
+from ._set_proxy_pattern_response import SetProxyPatternResponse
+from ._set_zone_record_status_request import SetZoneRecordStatusRequest
+from ._set_zone_record_status_response_body import SetZoneRecordStatusResponseBody
+from ._set_zone_record_status_response import SetZoneRecordStatusResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
+from ._update_custom_line_request import UpdateCustomLineRequest
+from ._update_custom_line_response_body import UpdateCustomLineResponseBody
+from ._update_custom_line_response import UpdateCustomLineResponse
+from ._update_record_remark_request import UpdateRecordRemarkRequest
+from ._update_record_remark_response_body import UpdateRecordRemarkResponseBody
+from ._update_record_remark_response import UpdateRecordRemarkResponse
+from ._update_resolver_endpoint_request import UpdateResolverEndpointRequest
+from ._update_resolver_endpoint_response_body import UpdateResolverEndpointResponseBody
+from ._update_resolver_endpoint_response import UpdateResolverEndpointResponse
+from ._update_resolver_rule_request import UpdateResolverRuleRequest
+from ._update_resolver_rule_response_body import UpdateResolverRuleResponseBody
+from ._update_resolver_rule_response import UpdateResolverRuleResponse
+from ._update_sync_ecs_host_task_request import UpdateSyncEcsHostTaskRequest
+from ._update_sync_ecs_host_task_response_body import UpdateSyncEcsHostTaskResponseBody
+from ._update_sync_ecs_host_task_response import UpdateSyncEcsHostTaskResponse
+from ._update_zone_record_request import UpdateZoneRecordRequest
+from ._update_zone_record_response_body import UpdateZoneRecordResponseBody
+from ._update_zone_record_response import UpdateZoneRecordResponse
+from ._update_zone_remark_request import UpdateZoneRemarkRequest
+from ._update_zone_remark_response_body import UpdateZoneRemarkResponseBody
+from ._update_zone_remark_response import UpdateZoneRemarkResponse
+from ._add_resolver_endpoint_request import AddResolverEndpointRequestIpConfig
+from ._add_resolver_rule_request import AddResolverRuleRequestEdgeDnsClusters
+from ._add_resolver_rule_request import AddResolverRuleRequestForwardIp
+from ._add_resolver_rule_request import AddResolverRuleRequestVpcs
+from ._bind_resolver_rule_vpc_request import BindResolverRuleVpcRequestVpc
+from ._bind_zone_vpc_request import BindZoneVpcRequestVpcs
+from ._describe_change_logs_response_body import DescribeChangeLogsResponseBodyChangeLogsChangeLog
+from ._describe_change_logs_response_body import DescribeChangeLogsResponseBodyChangeLogs
+from ._describe_custom_lines_response_body import DescribeCustomLinesResponseBodyCustomLinesCustomLineIpv4s
+from ._describe_custom_lines_response_body import DescribeCustomLinesResponseBodyCustomLinesCustomLine
+from ._describe_custom_lines_response_body import DescribeCustomLinesResponseBodyCustomLines
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionsRegion
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
+from ._describe_request_graph_response_body import DescribeRequestGraphResponseBodyRequestDetailsZoneRequestTop
+from ._describe_request_graph_response_body import DescribeRequestGraphResponseBodyRequestDetails
+from ._describe_resolver_available_zones_response_body import DescribeResolverAvailableZonesResponseBodyAvailableZones
+from ._describe_resolver_endpoint_response_body import DescribeResolverEndpointResponseBodyIpConfigs
+from ._describe_resolver_endpoints_response_body import DescribeResolverEndpointsResponseBodyEndpointsIpConfigs
+from ._describe_resolver_endpoints_response_body import DescribeResolverEndpointsResponseBodyEndpoints
+from ._describe_resolver_rule_response_body import DescribeResolverRuleResponseBodyBindEdgeDnsClusters
+from ._describe_resolver_rule_response_body import DescribeResolverRuleResponseBodyBindVpcs
+from ._describe_resolver_rule_response_body import DescribeResolverRuleResponseBodyForwardIps
+from ._describe_resolver_rules_response_body import DescribeResolverRulesResponseBodyRulesBindEdgeDnsClusters
+from ._describe_resolver_rules_response_body import DescribeResolverRulesResponseBodyRulesBindVpcs
+from ._describe_resolver_rules_response_body import DescribeResolverRulesResponseBodyRulesForwardIps
+from ._describe_resolver_rules_response_body import DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs
+from ._describe_resolver_rules_response_body import DescribeResolverRulesResponseBodyRules
+from ._describe_statistic_summary_response_body import DescribeStatisticSummaryResponseBodyVpcRequestTopsVpcRequestTop
+from ._describe_statistic_summary_response_body import DescribeStatisticSummaryResponseBodyVpcRequestTops
+from ._describe_statistic_summary_response_body import DescribeStatisticSummaryResponseBodyZoneRequestTopsZoneRequestTop
+from ._describe_statistic_summary_response_body import DescribeStatisticSummaryResponseBodyZoneRequestTops
+from ._describe_sync_ecs_host_task_response_body import DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegionRegionIds
+from ._describe_sync_ecs_host_task_response_body import DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegion
+from ._describe_sync_ecs_host_task_response_body import DescribeSyncEcsHostTaskResponseBodyEcsRegions
+from ._describe_sync_ecs_host_task_response_body import DescribeSyncEcsHostTaskResponseBodyRegions
+from ._describe_tags_response_body import DescribeTagsResponseBodyTags
+from ._describe_user_vpc_authorizations_response_body import DescribeUserVpcAuthorizationsResponseBodyUsers
+from ._describe_zone_info_response_body import DescribeZoneInfoResponseBodyBindEdgeDnsClustersEdgeDnsCluster
+from ._describe_zone_info_response_body import DescribeZoneInfoResponseBodyBindEdgeDnsClusters
+from ._describe_zone_info_response_body import DescribeZoneInfoResponseBodyBindVpcsVpc
+from ._describe_zone_info_response_body import DescribeZoneInfoResponseBodyBindVpcs
+from ._describe_zone_records_response_body import DescribeZoneRecordsResponseBodyRecordsRecord
+from ._describe_zone_records_response_body import DescribeZoneRecordsResponseBodyRecords
+from ._describe_zone_vpc_tree_response_body import DescribeZoneVpcTreeResponseBodyZonesZoneVpcsVpc
+from ._describe_zone_vpc_tree_response_body import DescribeZoneVpcTreeResponseBodyZonesZoneVpcs
+from ._describe_zone_vpc_tree_response_body import DescribeZoneVpcTreeResponseBodyZonesZone
+from ._describe_zone_vpc_tree_response_body import DescribeZoneVpcTreeResponseBodyZones
+from ._describe_zones_request import DescribeZonesRequestResourceTag
+from ._describe_zones_response_body import DescribeZonesResponseBodyZonesZoneResourceTagsResourceTag
+from ._describe_zones_response_body import DescribeZonesResponseBodyZonesZoneResourceTags
+from ._describe_zones_response_body import DescribeZonesResponseBodyZonesZone
+from ._describe_zones_response_body import DescribeZonesResponseBodyZones
+from ._list_tag_resources_request import ListTagResourcesRequestTag
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._search_custom_lines_response_body import SearchCustomLinesResponseBodyCustomLinesCustomLineIpv4s
+from ._search_custom_lines_response_body import SearchCustomLinesResponseBodyCustomLinesCustomLine
+from ._search_custom_lines_response_body import SearchCustomLinesResponseBodyCustomLines
+from ._tag_resources_request import TagResourcesRequestTag
+from ._update_resolver_endpoint_request import UpdateResolverEndpointRequestIpConfig
+from ._update_resolver_rule_request import UpdateResolverRuleRequestForwardIp
+from ._update_resolver_rule_request import UpdateResolverRuleRequestPriorityForwardConfigs
+from ._update_sync_ecs_host_task_request import UpdateSyncEcsHostTaskRequestRegion
+
+__all__ = [
+    AddCustomLineRequest,
+    AddCustomLineResponseBody,
+    AddCustomLineResponse,
+    AddResolverEndpointRequest,
+    AddResolverEndpointResponseBody,
+    AddResolverEndpointResponse,
+    AddResolverRuleRequest,
+    AddResolverRuleResponseBody,
+    AddResolverRuleResponse,
+    AddUserVpcAuthorizationRequest,
+    AddUserVpcAuthorizationResponseBody,
+    AddUserVpcAuthorizationResponse,
+    AddZoneRequest,
+    AddZoneResponseBody,
+    AddZoneResponse,
+    AddZoneRecordRequest,
+    AddZoneRecordResponseBody,
+    AddZoneRecordResponse,
+    BindResolverRuleVpcRequest,
+    BindResolverRuleVpcResponseBody,
+    BindResolverRuleVpcResponse,
+    BindZoneVpcRequest,
+    BindZoneVpcResponseBody,
+    BindZoneVpcResponse,
+    ChangeZoneDnsGroupRequest,
+    ChangeZoneDnsGroupResponseBody,
+    ChangeZoneDnsGroupResponse,
+    CheckZoneNameRequest,
+    CheckZoneNameResponseBody,
+    CheckZoneNameResponse,
+    DeleteCustomLineRequest,
+    DeleteCustomLineResponseBody,
+    DeleteCustomLineResponse,
+    DeleteResolverEndpointRequest,
+    DeleteResolverEndpointResponseBody,
+    DeleteResolverEndpointResponse,
+    DeleteResolverRuleRequest,
+    DeleteResolverRuleResponseBody,
+    DeleteResolverRuleResponse,
+    DeleteUserVpcAuthorizationRequest,
+    DeleteUserVpcAuthorizationResponseBody,
+    DeleteUserVpcAuthorizationResponse,
+    DeleteZoneRequest,
+    DeleteZoneResponseBody,
+    DeleteZoneResponse,
+    DeleteZoneRecordRequest,
+    DeleteZoneRecordResponseBody,
+    DeleteZoneRecordResponse,
+    DescribeChangeLogsRequest,
+    DescribeChangeLogsResponseBody,
+    DescribeChangeLogsResponse,
+    DescribeCustomLineInfoRequest,
+    DescribeCustomLineInfoResponseBody,
+    DescribeCustomLineInfoResponse,
+    DescribeCustomLinesRequest,
+    DescribeCustomLinesResponseBody,
+    DescribeCustomLinesResponse,
+    DescribeRegionsRequest,
+    DescribeRegionsResponseBody,
+    DescribeRegionsResponse,
+    DescribeRequestGraphRequest,
+    DescribeRequestGraphResponseBody,
+    DescribeRequestGraphResponse,
+    DescribeResolverAvailableZonesRequest,
+    DescribeResolverAvailableZonesResponseBody,
+    DescribeResolverAvailableZonesResponse,
+    DescribeResolverEndpointRequest,
+    DescribeResolverEndpointResponseBody,
+    DescribeResolverEndpointResponse,
+    DescribeResolverEndpointsRequest,
+    DescribeResolverEndpointsResponseBody,
+    DescribeResolverEndpointsResponse,
+    DescribeResolverRuleRequest,
+    DescribeResolverRuleResponseBody,
+    DescribeResolverRuleResponse,
+    DescribeResolverRulesRequest,
+    DescribeResolverRulesResponseBody,
+    DescribeResolverRulesResponse,
+    DescribeStatisticSummaryRequest,
+    DescribeStatisticSummaryResponseBody,
+    DescribeStatisticSummaryResponse,
+    DescribeSyncEcsHostTaskRequest,
+    DescribeSyncEcsHostTaskResponseBody,
+    DescribeSyncEcsHostTaskResponse,
+    DescribeTagsRequest,
+    DescribeTagsResponseBody,
+    DescribeTagsResponse,
+    DescribeUserServiceStatusRequest,
+    DescribeUserServiceStatusResponseBody,
+    DescribeUserServiceStatusResponse,
+    DescribeUserVpcAuthorizationsRequest,
+    DescribeUserVpcAuthorizationsResponseBody,
+    DescribeUserVpcAuthorizationsResponse,
+    DescribeZoneInfoRequest,
+    DescribeZoneInfoResponseBody,
+    DescribeZoneInfoResponse,
+    DescribeZoneRecordRequest,
+    DescribeZoneRecordResponseBody,
+    DescribeZoneRecordResponse,
+    DescribeZoneRecordsRequest,
+    DescribeZoneRecordsResponseBody,
+    DescribeZoneRecordsResponse,
+    DescribeZoneVpcTreeRequest,
+    DescribeZoneVpcTreeResponseBody,
+    DescribeZoneVpcTreeResponse,
+    DescribeZonesRequest,
+    DescribeZonesResponseBody,
+    DescribeZonesResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
+    MoveResourceGroupRequest,
+    MoveResourceGroupResponseBody,
+    MoveResourceGroupResponse,
+    SearchCustomLinesRequest,
+    SearchCustomLinesResponseBody,
+    SearchCustomLinesResponse,
+    SetProxyPatternRequest,
+    SetProxyPatternResponseBody,
+    SetProxyPatternResponse,
+    SetZoneRecordStatusRequest,
+    SetZoneRecordStatusResponseBody,
+    SetZoneRecordStatusResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UntagResourcesRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
+    UpdateCustomLineRequest,
+    UpdateCustomLineResponseBody,
+    UpdateCustomLineResponse,
+    UpdateRecordRemarkRequest,
+    UpdateRecordRemarkResponseBody,
+    UpdateRecordRemarkResponse,
+    UpdateResolverEndpointRequest,
+    UpdateResolverEndpointResponseBody,
+    UpdateResolverEndpointResponse,
+    UpdateResolverRuleRequest,
+    UpdateResolverRuleResponseBody,
+    UpdateResolverRuleResponse,
+    UpdateSyncEcsHostTaskRequest,
+    UpdateSyncEcsHostTaskResponseBody,
+    UpdateSyncEcsHostTaskResponse,
+    UpdateZoneRecordRequest,
+    UpdateZoneRecordResponseBody,
+    UpdateZoneRecordResponse,
+    UpdateZoneRemarkRequest,
+    UpdateZoneRemarkResponseBody,
+    UpdateZoneRemarkResponse,
+    AddResolverEndpointRequestIpConfig,
+    AddResolverRuleRequestEdgeDnsClusters,
+    AddResolverRuleRequestForwardIp,
+    AddResolverRuleRequestVpcs,
+    BindResolverRuleVpcRequestVpc,
+    BindZoneVpcRequestVpcs,
+    DescribeChangeLogsResponseBodyChangeLogsChangeLog,
+    DescribeChangeLogsResponseBodyChangeLogs,
+    DescribeCustomLinesResponseBodyCustomLinesCustomLineIpv4s,
+    DescribeCustomLinesResponseBodyCustomLinesCustomLine,
+    DescribeCustomLinesResponseBodyCustomLines,
+    DescribeRegionsResponseBodyRegionsRegion,
+    DescribeRegionsResponseBodyRegions,
+    DescribeRequestGraphResponseBodyRequestDetailsZoneRequestTop,
+    DescribeRequestGraphResponseBodyRequestDetails,
+    DescribeResolverAvailableZonesResponseBodyAvailableZones,
+    DescribeResolverEndpointResponseBodyIpConfigs,
+    DescribeResolverEndpointsResponseBodyEndpointsIpConfigs,
+    DescribeResolverEndpointsResponseBodyEndpoints,
+    DescribeResolverRuleResponseBodyBindEdgeDnsClusters,
+    DescribeResolverRuleResponseBodyBindVpcs,
+    DescribeResolverRuleResponseBodyForwardIps,
+    DescribeResolverRulesResponseBodyRulesBindEdgeDnsClusters,
+    DescribeResolverRulesResponseBodyRulesBindVpcs,
+    DescribeResolverRulesResponseBodyRulesForwardIps,
+    DescribeResolverRulesResponseBodyRulesPriorityForwardConfigs,
+    DescribeResolverRulesResponseBodyRules,
+    DescribeStatisticSummaryResponseBodyVpcRequestTopsVpcRequestTop,
+    DescribeStatisticSummaryResponseBodyVpcRequestTops,
+    DescribeStatisticSummaryResponseBodyZoneRequestTopsZoneRequestTop,
+    DescribeStatisticSummaryResponseBodyZoneRequestTops,
+    DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegionRegionIds,
+    DescribeSyncEcsHostTaskResponseBodyEcsRegionsEcsRegion,
+    DescribeSyncEcsHostTaskResponseBodyEcsRegions,
+    DescribeSyncEcsHostTaskResponseBodyRegions,
+    DescribeTagsResponseBodyTags,
+    DescribeUserVpcAuthorizationsResponseBodyUsers,
+    DescribeZoneInfoResponseBodyBindEdgeDnsClustersEdgeDnsCluster,
+    DescribeZoneInfoResponseBodyBindEdgeDnsClusters,
+    DescribeZoneInfoResponseBodyBindVpcsVpc,
+    DescribeZoneInfoResponseBodyBindVpcs,
+    DescribeZoneRecordsResponseBodyRecordsRecord,
+    DescribeZoneRecordsResponseBodyRecords,
+    DescribeZoneVpcTreeResponseBodyZonesZoneVpcsVpc,
+    DescribeZoneVpcTreeResponseBodyZonesZoneVpcs,
+    DescribeZoneVpcTreeResponseBodyZonesZone,
+    DescribeZoneVpcTreeResponseBodyZones,
+    DescribeZonesRequestResourceTag,
+    DescribeZonesResponseBodyZonesZoneResourceTagsResourceTag,
+    DescribeZonesResponseBodyZonesZoneResourceTags,
+    DescribeZonesResponseBodyZonesZone,
+    DescribeZonesResponseBodyZones,
+    ListTagResourcesRequestTag,
+    ListTagResourcesResponseBodyTagResources,
+    SearchCustomLinesResponseBodyCustomLinesCustomLineIpv4s,
+    SearchCustomLinesResponseBodyCustomLinesCustomLine,
+    SearchCustomLinesResponseBodyCustomLines,
+    TagResourcesRequestTag,
+    UpdateResolverEndpointRequestIpConfig,
+    UpdateResolverRuleRequestForwardIp,
+    UpdateResolverRuleRequestPriorityForwardConfigs,
+    UpdateSyncEcsHostTaskRequestRegion
+]

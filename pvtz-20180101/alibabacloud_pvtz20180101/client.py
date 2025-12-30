@@ -1,24 +1,23 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
 from typing import Dict
-from Tea.core import TeaCore
 
+from alibabacloud_pvtz20180101 import models as main_models
+from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
-from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_pvtz20180101 import models as pvtz_20180101_models
-from alibabacloud_tea_util import models as util_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_tea_openapi.utils import Utils
+from darabonba.core import DaraCore as DaraCore
+from darabonba.runtime import RuntimeOptions
 
-
+"""
+"""
 class Client(OpenApiClient):
-    """
-    *\
-    """
+
     def __init__(
-        self, 
-        config: open_api_models.Config,
+        self,
+        config: open_api_util_models.Config,
     ):
         super().__init__(config)
         self._endpoint_rule = 'central'
@@ -35,5720 +34,4252 @@ class Client(OpenApiClient):
         endpoint_map: Dict[str, str],
         endpoint: str,
     ) -> str:
-        if not UtilClient.empty(endpoint):
+        if not DaraCore.is_null(endpoint):
             return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+        if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
     def add_custom_line_with_options(
         self,
-        request: pvtz_20180101_models.AddCustomLineRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.AddCustomLineResponse:
-        """
-        @summary Creates a custom line.
-        
-        @param request: AddCustomLineRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddCustomLineResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AddCustomLineRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddCustomLineResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dns_category):
+        if not DaraCore.is_null(request.dns_category):
             query['DnsCategory'] = request.dns_category
-        if not UtilClient.is_unset(request.ipv_4s):
+        if not DaraCore.is_null(request.ipv_4s):
             query['Ipv4s'] = request.ipv_4s
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.share_scope):
+        if not DaraCore.is_null(request.share_scope):
             query['ShareScope'] = request.share_scope
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AddCustomLine',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AddCustomLine',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.AddCustomLineResponse(),
+        return DaraCore.from_map(
+            main_models.AddCustomLineResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def add_custom_line_with_options_async(
         self,
-        request: pvtz_20180101_models.AddCustomLineRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.AddCustomLineResponse:
-        """
-        @summary Creates a custom line.
-        
-        @param request: AddCustomLineRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddCustomLineResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AddCustomLineRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddCustomLineResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dns_category):
+        if not DaraCore.is_null(request.dns_category):
             query['DnsCategory'] = request.dns_category
-        if not UtilClient.is_unset(request.ipv_4s):
+        if not DaraCore.is_null(request.ipv_4s):
             query['Ipv4s'] = request.ipv_4s
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.share_scope):
+        if not DaraCore.is_null(request.share_scope):
             query['ShareScope'] = request.share_scope
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AddCustomLine',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AddCustomLine',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.AddCustomLineResponse(),
+        return DaraCore.from_map(
+            main_models.AddCustomLineResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def add_custom_line(
         self,
-        request: pvtz_20180101_models.AddCustomLineRequest,
-    ) -> pvtz_20180101_models.AddCustomLineResponse:
-        """
-        @summary Creates a custom line.
-        
-        @param request: AddCustomLineRequest
-        @return: AddCustomLineResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AddCustomLineRequest,
+    ) -> main_models.AddCustomLineResponse:
+        runtime = RuntimeOptions()
         return self.add_custom_line_with_options(request, runtime)
 
     async def add_custom_line_async(
         self,
-        request: pvtz_20180101_models.AddCustomLineRequest,
-    ) -> pvtz_20180101_models.AddCustomLineResponse:
-        """
-        @summary Creates a custom line.
-        
-        @param request: AddCustomLineRequest
-        @return: AddCustomLineResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AddCustomLineRequest,
+    ) -> main_models.AddCustomLineResponse:
+        runtime = RuntimeOptions()
         return await self.add_custom_line_with_options_async(request, runtime)
 
     def add_resolver_endpoint_with_options(
         self,
-        request: pvtz_20180101_models.AddResolverEndpointRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.AddResolverEndpointResponse:
-        """
-        @summary Creates an endpoint.
-        
-        @param request: AddResolverEndpointRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddResolverEndpointResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AddResolverEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddResolverEndpointResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.ip_config):
+        if not DaraCore.is_null(request.ip_config):
             query['IpConfig'] = request.ip_config
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.security_group_id):
+        if not DaraCore.is_null(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
-        if not UtilClient.is_unset(request.vpc_id):
+        if not DaraCore.is_null(request.vpc_id):
             query['VpcId'] = request.vpc_id
-        if not UtilClient.is_unset(request.vpc_region_id):
+        if not DaraCore.is_null(request.vpc_region_id):
             query['VpcRegionId'] = request.vpc_region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AddResolverEndpoint',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AddResolverEndpoint',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.AddResolverEndpointResponse(),
+        return DaraCore.from_map(
+            main_models.AddResolverEndpointResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def add_resolver_endpoint_with_options_async(
         self,
-        request: pvtz_20180101_models.AddResolverEndpointRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.AddResolverEndpointResponse:
-        """
-        @summary Creates an endpoint.
-        
-        @param request: AddResolverEndpointRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddResolverEndpointResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AddResolverEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddResolverEndpointResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.ip_config):
+        if not DaraCore.is_null(request.ip_config):
             query['IpConfig'] = request.ip_config
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.security_group_id):
+        if not DaraCore.is_null(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
-        if not UtilClient.is_unset(request.vpc_id):
+        if not DaraCore.is_null(request.vpc_id):
             query['VpcId'] = request.vpc_id
-        if not UtilClient.is_unset(request.vpc_region_id):
+        if not DaraCore.is_null(request.vpc_region_id):
             query['VpcRegionId'] = request.vpc_region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AddResolverEndpoint',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AddResolverEndpoint',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.AddResolverEndpointResponse(),
+        return DaraCore.from_map(
+            main_models.AddResolverEndpointResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def add_resolver_endpoint(
         self,
-        request: pvtz_20180101_models.AddResolverEndpointRequest,
-    ) -> pvtz_20180101_models.AddResolverEndpointResponse:
-        """
-        @summary Creates an endpoint.
-        
-        @param request: AddResolverEndpointRequest
-        @return: AddResolverEndpointResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AddResolverEndpointRequest,
+    ) -> main_models.AddResolverEndpointResponse:
+        runtime = RuntimeOptions()
         return self.add_resolver_endpoint_with_options(request, runtime)
 
     async def add_resolver_endpoint_async(
         self,
-        request: pvtz_20180101_models.AddResolverEndpointRequest,
-    ) -> pvtz_20180101_models.AddResolverEndpointResponse:
-        """
-        @summary Creates an endpoint.
-        
-        @param request: AddResolverEndpointRequest
-        @return: AddResolverEndpointResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AddResolverEndpointRequest,
+    ) -> main_models.AddResolverEndpointResponse:
+        runtime = RuntimeOptions()
         return await self.add_resolver_endpoint_with_options_async(request, runtime)
 
     def add_resolver_rule_with_options(
         self,
-        request: pvtz_20180101_models.AddResolverRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.AddResolverRuleResponse:
-        """
-        @summary Creates a forwarding rule.
-        
-        @description #### [](#)*Precautions**\
-        If a virtual private cloud (VPC) serves as both an inbound VPC and an outbound VPC, the IP addresses of external Domain Name System (DNS) servers cannot be the same as the IP addresses of the inbound endpoint in the VPC. The IP addresses of the external DNS servers are specified in the forwarding rule associated with the outbound endpoint in the same VPC. If the IP addresses are the same, the DNS requests sent from the IP addresses of the inbound endpoint are returned to the VPC. This results in resolution failures.
-        
-        @param request: AddResolverRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddResolverRuleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AddResolverRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddResolverRuleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.edge_dns_clusters):
+        if not DaraCore.is_null(request.edge_dns_clusters):
             query['EdgeDnsClusters'] = request.edge_dns_clusters
-        if not UtilClient.is_unset(request.endpoint_id):
+        if not DaraCore.is_null(request.endpoint_id):
             query['EndpointId'] = request.endpoint_id
-        if not UtilClient.is_unset(request.forward_ip):
+        if not DaraCore.is_null(request.forward_ip):
             query['ForwardIp'] = request.forward_ip
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['Type'] = request.type
-        if not UtilClient.is_unset(request.vpcs):
+        if not DaraCore.is_null(request.vpcs):
             query['Vpcs'] = request.vpcs
-        if not UtilClient.is_unset(request.zone_name):
+        if not DaraCore.is_null(request.zone_name):
             query['ZoneName'] = request.zone_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AddResolverRule',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AddResolverRule',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.AddResolverRuleResponse(),
+        return DaraCore.from_map(
+            main_models.AddResolverRuleResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def add_resolver_rule_with_options_async(
         self,
-        request: pvtz_20180101_models.AddResolverRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.AddResolverRuleResponse:
-        """
-        @summary Creates a forwarding rule.
-        
-        @description #### [](#)*Precautions**\
-        If a virtual private cloud (VPC) serves as both an inbound VPC and an outbound VPC, the IP addresses of external Domain Name System (DNS) servers cannot be the same as the IP addresses of the inbound endpoint in the VPC. The IP addresses of the external DNS servers are specified in the forwarding rule associated with the outbound endpoint in the same VPC. If the IP addresses are the same, the DNS requests sent from the IP addresses of the inbound endpoint are returned to the VPC. This results in resolution failures.
-        
-        @param request: AddResolverRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddResolverRuleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AddResolverRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddResolverRuleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.edge_dns_clusters):
+        if not DaraCore.is_null(request.edge_dns_clusters):
             query['EdgeDnsClusters'] = request.edge_dns_clusters
-        if not UtilClient.is_unset(request.endpoint_id):
+        if not DaraCore.is_null(request.endpoint_id):
             query['EndpointId'] = request.endpoint_id
-        if not UtilClient.is_unset(request.forward_ip):
+        if not DaraCore.is_null(request.forward_ip):
             query['ForwardIp'] = request.forward_ip
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['Type'] = request.type
-        if not UtilClient.is_unset(request.vpcs):
+        if not DaraCore.is_null(request.vpcs):
             query['Vpcs'] = request.vpcs
-        if not UtilClient.is_unset(request.zone_name):
+        if not DaraCore.is_null(request.zone_name):
             query['ZoneName'] = request.zone_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AddResolverRule',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AddResolverRule',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.AddResolverRuleResponse(),
+        return DaraCore.from_map(
+            main_models.AddResolverRuleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def add_resolver_rule(
         self,
-        request: pvtz_20180101_models.AddResolverRuleRequest,
-    ) -> pvtz_20180101_models.AddResolverRuleResponse:
-        """
-        @summary Creates a forwarding rule.
-        
-        @description #### [](#)*Precautions**\
-        If a virtual private cloud (VPC) serves as both an inbound VPC and an outbound VPC, the IP addresses of external Domain Name System (DNS) servers cannot be the same as the IP addresses of the inbound endpoint in the VPC. The IP addresses of the external DNS servers are specified in the forwarding rule associated with the outbound endpoint in the same VPC. If the IP addresses are the same, the DNS requests sent from the IP addresses of the inbound endpoint are returned to the VPC. This results in resolution failures.
-        
-        @param request: AddResolverRuleRequest
-        @return: AddResolverRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AddResolverRuleRequest,
+    ) -> main_models.AddResolverRuleResponse:
+        runtime = RuntimeOptions()
         return self.add_resolver_rule_with_options(request, runtime)
 
     async def add_resolver_rule_async(
         self,
-        request: pvtz_20180101_models.AddResolverRuleRequest,
-    ) -> pvtz_20180101_models.AddResolverRuleResponse:
-        """
-        @summary Creates a forwarding rule.
-        
-        @description #### [](#)*Precautions**\
-        If a virtual private cloud (VPC) serves as both an inbound VPC and an outbound VPC, the IP addresses of external Domain Name System (DNS) servers cannot be the same as the IP addresses of the inbound endpoint in the VPC. The IP addresses of the external DNS servers are specified in the forwarding rule associated with the outbound endpoint in the same VPC. If the IP addresses are the same, the DNS requests sent from the IP addresses of the inbound endpoint are returned to the VPC. This results in resolution failures.
-        
-        @param request: AddResolverRuleRequest
-        @return: AddResolverRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AddResolverRuleRequest,
+    ) -> main_models.AddResolverRuleResponse:
+        runtime = RuntimeOptions()
         return await self.add_resolver_rule_with_options_async(request, runtime)
 
     def add_user_vpc_authorization_with_options(
         self,
-        request: pvtz_20180101_models.AddUserVpcAuthorizationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.AddUserVpcAuthorizationResponse:
-        """
-        @summary Adds another account to associate one or more virtual private clouds (VPCs) of the current account with a private zone.
-        
-        @description #### *Limits**\
-        You can set an effective scope across accounts only by using an Alibaba Cloud account instead of a RAM user. You can set an effective scope across accounts registered on the same site. For example, you can perform the operation across accounts that are both registered on the Alibaba Cloud China site or Alibaba Cloud international site. You cannot set an effective scope across accounts registered on different sites. For example, you cannot perform the operation across accounts that are separately registered on the Alibaba Cloud China site and Alibaba Cloud international site.
-        No API operation is provided for sending the verification codes that are required for authorization.
-        #### *Precautions**\
-        If you set an effective scope across accounts, bills are settled within the account that is used to perform routine management on built-in authoritative zones.
-        
-        @param request: AddUserVpcAuthorizationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddUserVpcAuthorizationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AddUserVpcAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddUserVpcAuthorizationResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.auth_channel):
+        if not DaraCore.is_null(request.auth_channel):
             query['AuthChannel'] = request.auth_channel
-        if not UtilClient.is_unset(request.auth_code):
+        if not DaraCore.is_null(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.auth_type):
+        if not DaraCore.is_null(request.auth_type):
             query['AuthType'] = request.auth_type
-        if not UtilClient.is_unset(request.authorized_user_id):
+        if not DaraCore.is_null(request.authorized_user_id):
             query['AuthorizedUserId'] = request.authorized_user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AddUserVpcAuthorization',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AddUserVpcAuthorization',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.AddUserVpcAuthorizationResponse(),
+        return DaraCore.from_map(
+            main_models.AddUserVpcAuthorizationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def add_user_vpc_authorization_with_options_async(
         self,
-        request: pvtz_20180101_models.AddUserVpcAuthorizationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.AddUserVpcAuthorizationResponse:
-        """
-        @summary Adds another account to associate one or more virtual private clouds (VPCs) of the current account with a private zone.
-        
-        @description #### *Limits**\
-        You can set an effective scope across accounts only by using an Alibaba Cloud account instead of a RAM user. You can set an effective scope across accounts registered on the same site. For example, you can perform the operation across accounts that are both registered on the Alibaba Cloud China site or Alibaba Cloud international site. You cannot set an effective scope across accounts registered on different sites. For example, you cannot perform the operation across accounts that are separately registered on the Alibaba Cloud China site and Alibaba Cloud international site.
-        No API operation is provided for sending the verification codes that are required for authorization.
-        #### *Precautions**\
-        If you set an effective scope across accounts, bills are settled within the account that is used to perform routine management on built-in authoritative zones.
-        
-        @param request: AddUserVpcAuthorizationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddUserVpcAuthorizationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AddUserVpcAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddUserVpcAuthorizationResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.auth_channel):
+        if not DaraCore.is_null(request.auth_channel):
             query['AuthChannel'] = request.auth_channel
-        if not UtilClient.is_unset(request.auth_code):
+        if not DaraCore.is_null(request.auth_code):
             query['AuthCode'] = request.auth_code
-        if not UtilClient.is_unset(request.auth_type):
+        if not DaraCore.is_null(request.auth_type):
             query['AuthType'] = request.auth_type
-        if not UtilClient.is_unset(request.authorized_user_id):
+        if not DaraCore.is_null(request.authorized_user_id):
             query['AuthorizedUserId'] = request.authorized_user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AddUserVpcAuthorization',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AddUserVpcAuthorization',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.AddUserVpcAuthorizationResponse(),
+        return DaraCore.from_map(
+            main_models.AddUserVpcAuthorizationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def add_user_vpc_authorization(
         self,
-        request: pvtz_20180101_models.AddUserVpcAuthorizationRequest,
-    ) -> pvtz_20180101_models.AddUserVpcAuthorizationResponse:
-        """
-        @summary Adds another account to associate one or more virtual private clouds (VPCs) of the current account with a private zone.
-        
-        @description #### *Limits**\
-        You can set an effective scope across accounts only by using an Alibaba Cloud account instead of a RAM user. You can set an effective scope across accounts registered on the same site. For example, you can perform the operation across accounts that are both registered on the Alibaba Cloud China site or Alibaba Cloud international site. You cannot set an effective scope across accounts registered on different sites. For example, you cannot perform the operation across accounts that are separately registered on the Alibaba Cloud China site and Alibaba Cloud international site.
-        No API operation is provided for sending the verification codes that are required for authorization.
-        #### *Precautions**\
-        If you set an effective scope across accounts, bills are settled within the account that is used to perform routine management on built-in authoritative zones.
-        
-        @param request: AddUserVpcAuthorizationRequest
-        @return: AddUserVpcAuthorizationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AddUserVpcAuthorizationRequest,
+    ) -> main_models.AddUserVpcAuthorizationResponse:
+        runtime = RuntimeOptions()
         return self.add_user_vpc_authorization_with_options(request, runtime)
 
     async def add_user_vpc_authorization_async(
         self,
-        request: pvtz_20180101_models.AddUserVpcAuthorizationRequest,
-    ) -> pvtz_20180101_models.AddUserVpcAuthorizationResponse:
-        """
-        @summary Adds another account to associate one or more virtual private clouds (VPCs) of the current account with a private zone.
-        
-        @description #### *Limits**\
-        You can set an effective scope across accounts only by using an Alibaba Cloud account instead of a RAM user. You can set an effective scope across accounts registered on the same site. For example, you can perform the operation across accounts that are both registered on the Alibaba Cloud China site or Alibaba Cloud international site. You cannot set an effective scope across accounts registered on different sites. For example, you cannot perform the operation across accounts that are separately registered on the Alibaba Cloud China site and Alibaba Cloud international site.
-        No API operation is provided for sending the verification codes that are required for authorization.
-        #### *Precautions**\
-        If you set an effective scope across accounts, bills are settled within the account that is used to perform routine management on built-in authoritative zones.
-        
-        @param request: AddUserVpcAuthorizationRequest
-        @return: AddUserVpcAuthorizationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AddUserVpcAuthorizationRequest,
+    ) -> main_models.AddUserVpcAuthorizationResponse:
+        runtime = RuntimeOptions()
         return await self.add_user_vpc_authorization_with_options_async(request, runtime)
 
     def add_zone_with_options(
         self,
-        request: pvtz_20180101_models.AddZoneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.AddZoneResponse:
-        """
-        @summary Creates a built-in authoritative zone in the regular module or acceleration module.
-        
-        @param request: AddZoneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddZoneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AddZoneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddZoneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.dns_group):
+        if not DaraCore.is_null(request.dns_group):
             query['DnsGroup'] = request.dns_group
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.proxy_pattern):
+        if not DaraCore.is_null(request.proxy_pattern):
             query['ProxyPattern'] = request.proxy_pattern
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.zone_name):
+        if not DaraCore.is_null(request.zone_name):
             query['ZoneName'] = request.zone_name
-        if not UtilClient.is_unset(request.zone_tag):
+        if not DaraCore.is_null(request.zone_tag):
             query['ZoneTag'] = request.zone_tag
-        if not UtilClient.is_unset(request.zone_type):
+        if not DaraCore.is_null(request.zone_type):
             query['ZoneType'] = request.zone_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AddZone',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AddZone',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.AddZoneResponse(),
+        return DaraCore.from_map(
+            main_models.AddZoneResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def add_zone_with_options_async(
         self,
-        request: pvtz_20180101_models.AddZoneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.AddZoneResponse:
-        """
-        @summary Creates a built-in authoritative zone in the regular module or acceleration module.
-        
-        @param request: AddZoneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddZoneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AddZoneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddZoneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.dns_group):
+        if not DaraCore.is_null(request.dns_group):
             query['DnsGroup'] = request.dns_group
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.proxy_pattern):
+        if not DaraCore.is_null(request.proxy_pattern):
             query['ProxyPattern'] = request.proxy_pattern
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.zone_name):
+        if not DaraCore.is_null(request.zone_name):
             query['ZoneName'] = request.zone_name
-        if not UtilClient.is_unset(request.zone_tag):
+        if not DaraCore.is_null(request.zone_tag):
             query['ZoneTag'] = request.zone_tag
-        if not UtilClient.is_unset(request.zone_type):
+        if not DaraCore.is_null(request.zone_type):
             query['ZoneType'] = request.zone_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AddZone',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AddZone',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.AddZoneResponse(),
+        return DaraCore.from_map(
+            main_models.AddZoneResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def add_zone(
         self,
-        request: pvtz_20180101_models.AddZoneRequest,
-    ) -> pvtz_20180101_models.AddZoneResponse:
-        """
-        @summary Creates a built-in authoritative zone in the regular module or acceleration module.
-        
-        @param request: AddZoneRequest
-        @return: AddZoneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AddZoneRequest,
+    ) -> main_models.AddZoneResponse:
+        runtime = RuntimeOptions()
         return self.add_zone_with_options(request, runtime)
 
     async def add_zone_async(
         self,
-        request: pvtz_20180101_models.AddZoneRequest,
-    ) -> pvtz_20180101_models.AddZoneResponse:
-        """
-        @summary Creates a built-in authoritative zone in the regular module or acceleration module.
-        
-        @param request: AddZoneRequest
-        @return: AddZoneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AddZoneRequest,
+    ) -> main_models.AddZoneResponse:
+        runtime = RuntimeOptions()
         return await self.add_zone_with_options_async(request, runtime)
 
     def add_zone_record_with_options(
         self,
-        request: pvtz_20180101_models.AddZoneRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.AddZoneRecordResponse:
-        """
-        @summary Adds a Domain Name System (DNS) record for a built-in authoritative zone. Within the effective scope, the intranet DNS records rather than the Internet DNS records take effect for the zone.
-        
-        @param request: AddZoneRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddZoneRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AddZoneRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddZoneRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.line):
+        if not DaraCore.is_null(request.line):
             query['Line'] = request.line
-        if not UtilClient.is_unset(request.priority):
+        if not DaraCore.is_null(request.priority):
             query['Priority'] = request.priority
-        if not UtilClient.is_unset(request.remark):
+        if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        if not UtilClient.is_unset(request.rr):
+        if not DaraCore.is_null(request.rr):
             query['Rr'] = request.rr
-        if not UtilClient.is_unset(request.ttl):
+        if not DaraCore.is_null(request.ttl):
             query['Ttl'] = request.ttl
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['Type'] = request.type
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.value):
+        if not DaraCore.is_null(request.value):
             query['Value'] = request.value
-        if not UtilClient.is_unset(request.weight):
+        if not DaraCore.is_null(request.weight):
             query['Weight'] = request.weight
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AddZoneRecord',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AddZoneRecord',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.AddZoneRecordResponse(),
+        return DaraCore.from_map(
+            main_models.AddZoneRecordResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def add_zone_record_with_options_async(
         self,
-        request: pvtz_20180101_models.AddZoneRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.AddZoneRecordResponse:
-        """
-        @summary Adds a Domain Name System (DNS) record for a built-in authoritative zone. Within the effective scope, the intranet DNS records rather than the Internet DNS records take effect for the zone.
-        
-        @param request: AddZoneRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AddZoneRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AddZoneRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddZoneRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.line):
+        if not DaraCore.is_null(request.line):
             query['Line'] = request.line
-        if not UtilClient.is_unset(request.priority):
+        if not DaraCore.is_null(request.priority):
             query['Priority'] = request.priority
-        if not UtilClient.is_unset(request.remark):
+        if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        if not UtilClient.is_unset(request.rr):
+        if not DaraCore.is_null(request.rr):
             query['Rr'] = request.rr
-        if not UtilClient.is_unset(request.ttl):
+        if not DaraCore.is_null(request.ttl):
             query['Ttl'] = request.ttl
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['Type'] = request.type
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.value):
+        if not DaraCore.is_null(request.value):
             query['Value'] = request.value
-        if not UtilClient.is_unset(request.weight):
+        if not DaraCore.is_null(request.weight):
             query['Weight'] = request.weight
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AddZoneRecord',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AddZoneRecord',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.AddZoneRecordResponse(),
+        return DaraCore.from_map(
+            main_models.AddZoneRecordResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def add_zone_record(
         self,
-        request: pvtz_20180101_models.AddZoneRecordRequest,
-    ) -> pvtz_20180101_models.AddZoneRecordResponse:
-        """
-        @summary Adds a Domain Name System (DNS) record for a built-in authoritative zone. Within the effective scope, the intranet DNS records rather than the Internet DNS records take effect for the zone.
-        
-        @param request: AddZoneRecordRequest
-        @return: AddZoneRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AddZoneRecordRequest,
+    ) -> main_models.AddZoneRecordResponse:
+        runtime = RuntimeOptions()
         return self.add_zone_record_with_options(request, runtime)
 
     async def add_zone_record_async(
         self,
-        request: pvtz_20180101_models.AddZoneRecordRequest,
-    ) -> pvtz_20180101_models.AddZoneRecordResponse:
-        """
-        @summary Adds a Domain Name System (DNS) record for a built-in authoritative zone. Within the effective scope, the intranet DNS records rather than the Internet DNS records take effect for the zone.
-        
-        @param request: AddZoneRecordRequest
-        @return: AddZoneRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AddZoneRecordRequest,
+    ) -> main_models.AddZoneRecordResponse:
+        runtime = RuntimeOptions()
         return await self.add_zone_record_with_options_async(request, runtime)
 
     def bind_resolver_rule_vpc_with_options(
         self,
-        request: pvtz_20180101_models.BindResolverRuleVpcRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.BindResolverRuleVpcResponse:
-        """
-        @summary Associates a forwarding rule with virtual private clouds (VPCs).
-        
-        @param request: BindResolverRuleVpcRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BindResolverRuleVpcResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BindResolverRuleVpcRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BindResolverRuleVpcResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        if not UtilClient.is_unset(request.vpc):
+        if not DaraCore.is_null(request.vpc):
             query['Vpc'] = request.vpc
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='BindResolverRuleVpc',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BindResolverRuleVpc',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.BindResolverRuleVpcResponse(),
+        return DaraCore.from_map(
+            main_models.BindResolverRuleVpcResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def bind_resolver_rule_vpc_with_options_async(
         self,
-        request: pvtz_20180101_models.BindResolverRuleVpcRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.BindResolverRuleVpcResponse:
-        """
-        @summary Associates a forwarding rule with virtual private clouds (VPCs).
-        
-        @param request: BindResolverRuleVpcRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BindResolverRuleVpcResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BindResolverRuleVpcRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BindResolverRuleVpcResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        if not UtilClient.is_unset(request.vpc):
+        if not DaraCore.is_null(request.vpc):
             query['Vpc'] = request.vpc
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='BindResolverRuleVpc',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BindResolverRuleVpc',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.BindResolverRuleVpcResponse(),
+        return DaraCore.from_map(
+            main_models.BindResolverRuleVpcResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def bind_resolver_rule_vpc(
         self,
-        request: pvtz_20180101_models.BindResolverRuleVpcRequest,
-    ) -> pvtz_20180101_models.BindResolverRuleVpcResponse:
-        """
-        @summary Associates a forwarding rule with virtual private clouds (VPCs).
-        
-        @param request: BindResolverRuleVpcRequest
-        @return: BindResolverRuleVpcResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BindResolverRuleVpcRequest,
+    ) -> main_models.BindResolverRuleVpcResponse:
+        runtime = RuntimeOptions()
         return self.bind_resolver_rule_vpc_with_options(request, runtime)
 
     async def bind_resolver_rule_vpc_async(
         self,
-        request: pvtz_20180101_models.BindResolverRuleVpcRequest,
-    ) -> pvtz_20180101_models.BindResolverRuleVpcResponse:
-        """
-        @summary Associates a forwarding rule with virtual private clouds (VPCs).
-        
-        @param request: BindResolverRuleVpcRequest
-        @return: BindResolverRuleVpcResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BindResolverRuleVpcRequest,
+    ) -> main_models.BindResolverRuleVpcResponse:
+        runtime = RuntimeOptions()
         return await self.bind_resolver_rule_vpc_with_options_async(request, runtime)
 
     def bind_zone_vpc_with_options(
         self,
-        request: pvtz_20180101_models.BindZoneVpcRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.BindZoneVpcResponse:
-        """
-        @summary Associates or dissociates virtual private clouds (VPCs) from a zone to set the effective scope of the zone.
-        
-        @description ##### [](#)Precautions:
-        We recommend that you set the effective scope of a zone after you configure all Domain Name System (DNS) records. If you set an effective scope before you configure DNS records, the DNS resolution for the zone within the effective scope will fail unless you enable the recursive resolution proxy for subdomain names.
-        
-        @param request: BindZoneVpcRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BindZoneVpcResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BindZoneVpcRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BindZoneVpcResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.vpcs):
+        if not DaraCore.is_null(request.vpcs):
             query['Vpcs'] = request.vpcs
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='BindZoneVpc',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BindZoneVpc',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.BindZoneVpcResponse(),
+        return DaraCore.from_map(
+            main_models.BindZoneVpcResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def bind_zone_vpc_with_options_async(
         self,
-        request: pvtz_20180101_models.BindZoneVpcRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.BindZoneVpcResponse:
-        """
-        @summary Associates or dissociates virtual private clouds (VPCs) from a zone to set the effective scope of the zone.
-        
-        @description ##### [](#)Precautions:
-        We recommend that you set the effective scope of a zone after you configure all Domain Name System (DNS) records. If you set an effective scope before you configure DNS records, the DNS resolution for the zone within the effective scope will fail unless you enable the recursive resolution proxy for subdomain names.
-        
-        @param request: BindZoneVpcRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BindZoneVpcResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BindZoneVpcRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BindZoneVpcResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.vpcs):
+        if not DaraCore.is_null(request.vpcs):
             query['Vpcs'] = request.vpcs
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='BindZoneVpc',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BindZoneVpc',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.BindZoneVpcResponse(),
+        return DaraCore.from_map(
+            main_models.BindZoneVpcResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def bind_zone_vpc(
         self,
-        request: pvtz_20180101_models.BindZoneVpcRequest,
-    ) -> pvtz_20180101_models.BindZoneVpcResponse:
-        """
-        @summary Associates or dissociates virtual private clouds (VPCs) from a zone to set the effective scope of the zone.
-        
-        @description ##### [](#)Precautions:
-        We recommend that you set the effective scope of a zone after you configure all Domain Name System (DNS) records. If you set an effective scope before you configure DNS records, the DNS resolution for the zone within the effective scope will fail unless you enable the recursive resolution proxy for subdomain names.
-        
-        @param request: BindZoneVpcRequest
-        @return: BindZoneVpcResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BindZoneVpcRequest,
+    ) -> main_models.BindZoneVpcResponse:
+        runtime = RuntimeOptions()
         return self.bind_zone_vpc_with_options(request, runtime)
 
     async def bind_zone_vpc_async(
         self,
-        request: pvtz_20180101_models.BindZoneVpcRequest,
-    ) -> pvtz_20180101_models.BindZoneVpcResponse:
-        """
-        @summary Associates or dissociates virtual private clouds (VPCs) from a zone to set the effective scope of the zone.
-        
-        @description ##### [](#)Precautions:
-        We recommend that you set the effective scope of a zone after you configure all Domain Name System (DNS) records. If you set an effective scope before you configure DNS records, the DNS resolution for the zone within the effective scope will fail unless you enable the recursive resolution proxy for subdomain names.
-        
-        @param request: BindZoneVpcRequest
-        @return: BindZoneVpcResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BindZoneVpcRequest,
+    ) -> main_models.BindZoneVpcResponse:
+        runtime = RuntimeOptions()
         return await self.bind_zone_vpc_with_options_async(request, runtime)
 
     def change_zone_dns_group_with_options(
         self,
-        request: pvtz_20180101_models.ChangeZoneDnsGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.ChangeZoneDnsGroupResponse:
-        """
-        @summary Changes the logical location of a zone.
-        
-        @param request: ChangeZoneDnsGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ChangeZoneDnsGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ChangeZoneDnsGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ChangeZoneDnsGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.dns_group):
+        if not DaraCore.is_null(request.dns_group):
             query['DnsGroup'] = request.dns_group
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ChangeZoneDnsGroup',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ChangeZoneDnsGroup',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.ChangeZoneDnsGroupResponse(),
+        return DaraCore.from_map(
+            main_models.ChangeZoneDnsGroupResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def change_zone_dns_group_with_options_async(
         self,
-        request: pvtz_20180101_models.ChangeZoneDnsGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.ChangeZoneDnsGroupResponse:
-        """
-        @summary Changes the logical location of a zone.
-        
-        @param request: ChangeZoneDnsGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ChangeZoneDnsGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ChangeZoneDnsGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ChangeZoneDnsGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.dns_group):
+        if not DaraCore.is_null(request.dns_group):
             query['DnsGroup'] = request.dns_group
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ChangeZoneDnsGroup',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ChangeZoneDnsGroup',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.ChangeZoneDnsGroupResponse(),
+        return DaraCore.from_map(
+            main_models.ChangeZoneDnsGroupResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def change_zone_dns_group(
         self,
-        request: pvtz_20180101_models.ChangeZoneDnsGroupRequest,
-    ) -> pvtz_20180101_models.ChangeZoneDnsGroupResponse:
-        """
-        @summary Changes the logical location of a zone.
-        
-        @param request: ChangeZoneDnsGroupRequest
-        @return: ChangeZoneDnsGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ChangeZoneDnsGroupRequest,
+    ) -> main_models.ChangeZoneDnsGroupResponse:
+        runtime = RuntimeOptions()
         return self.change_zone_dns_group_with_options(request, runtime)
 
     async def change_zone_dns_group_async(
         self,
-        request: pvtz_20180101_models.ChangeZoneDnsGroupRequest,
-    ) -> pvtz_20180101_models.ChangeZoneDnsGroupResponse:
-        """
-        @summary Changes the logical location of a zone.
-        
-        @param request: ChangeZoneDnsGroupRequest
-        @return: ChangeZoneDnsGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ChangeZoneDnsGroupRequest,
+    ) -> main_models.ChangeZoneDnsGroupResponse:
+        runtime = RuntimeOptions()
         return await self.change_zone_dns_group_with_options_async(request, runtime)
 
     def check_zone_name_with_options(
         self,
-        request: pvtz_20180101_models.CheckZoneNameRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.CheckZoneNameResponse:
-        """
-        @summary Checks whether a zone name can be added based on a rule.
-        
-        @param request: CheckZoneNameRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckZoneNameResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CheckZoneNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckZoneNameResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.zone_name):
+        if not DaraCore.is_null(request.zone_name):
             query['ZoneName'] = request.zone_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CheckZoneName',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CheckZoneName',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.CheckZoneNameResponse(),
+        return DaraCore.from_map(
+            main_models.CheckZoneNameResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def check_zone_name_with_options_async(
         self,
-        request: pvtz_20180101_models.CheckZoneNameRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.CheckZoneNameResponse:
-        """
-        @summary Checks whether a zone name can be added based on a rule.
-        
-        @param request: CheckZoneNameRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckZoneNameResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CheckZoneNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckZoneNameResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.zone_name):
+        if not DaraCore.is_null(request.zone_name):
             query['ZoneName'] = request.zone_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CheckZoneName',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CheckZoneName',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.CheckZoneNameResponse(),
+        return DaraCore.from_map(
+            main_models.CheckZoneNameResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def check_zone_name(
         self,
-        request: pvtz_20180101_models.CheckZoneNameRequest,
-    ) -> pvtz_20180101_models.CheckZoneNameResponse:
-        """
-        @summary Checks whether a zone name can be added based on a rule.
-        
-        @param request: CheckZoneNameRequest
-        @return: CheckZoneNameResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CheckZoneNameRequest,
+    ) -> main_models.CheckZoneNameResponse:
+        runtime = RuntimeOptions()
         return self.check_zone_name_with_options(request, runtime)
 
     async def check_zone_name_async(
         self,
-        request: pvtz_20180101_models.CheckZoneNameRequest,
-    ) -> pvtz_20180101_models.CheckZoneNameResponse:
-        """
-        @summary Checks whether a zone name can be added based on a rule.
-        
-        @param request: CheckZoneNameRequest
-        @return: CheckZoneNameResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CheckZoneNameRequest,
+    ) -> main_models.CheckZoneNameResponse:
+        runtime = RuntimeOptions()
         return await self.check_zone_name_with_options_async(request, runtime)
 
     def delete_custom_line_with_options(
         self,
-        request: pvtz_20180101_models.DeleteCustomLineRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DeleteCustomLineResponse:
-        """
-        @summary Deletes a custom line.
-        
-        @param request: DeleteCustomLineRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteCustomLineResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteCustomLineRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomLineResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.line_id):
+        if not DaraCore.is_null(request.line_id):
             query['LineId'] = request.line_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteCustomLine',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomLine',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DeleteCustomLineResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteCustomLineResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_custom_line_with_options_async(
         self,
-        request: pvtz_20180101_models.DeleteCustomLineRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DeleteCustomLineResponse:
-        """
-        @summary Deletes a custom line.
-        
-        @param request: DeleteCustomLineRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteCustomLineResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteCustomLineRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomLineResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.line_id):
+        if not DaraCore.is_null(request.line_id):
             query['LineId'] = request.line_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteCustomLine',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomLine',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DeleteCustomLineResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteCustomLineResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_custom_line(
         self,
-        request: pvtz_20180101_models.DeleteCustomLineRequest,
-    ) -> pvtz_20180101_models.DeleteCustomLineResponse:
-        """
-        @summary Deletes a custom line.
-        
-        @param request: DeleteCustomLineRequest
-        @return: DeleteCustomLineResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteCustomLineRequest,
+    ) -> main_models.DeleteCustomLineResponse:
+        runtime = RuntimeOptions()
         return self.delete_custom_line_with_options(request, runtime)
 
     async def delete_custom_line_async(
         self,
-        request: pvtz_20180101_models.DeleteCustomLineRequest,
-    ) -> pvtz_20180101_models.DeleteCustomLineResponse:
-        """
-        @summary Deletes a custom line.
-        
-        @param request: DeleteCustomLineRequest
-        @return: DeleteCustomLineResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteCustomLineRequest,
+    ) -> main_models.DeleteCustomLineResponse:
+        runtime = RuntimeOptions()
         return await self.delete_custom_line_with_options_async(request, runtime)
 
     def delete_resolver_endpoint_with_options(
         self,
-        request: pvtz_20180101_models.DeleteResolverEndpointRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DeleteResolverEndpointResponse:
-        """
-        @summary Deletes an endpoint based on the endpoint ID.
-        
-        @param request: DeleteResolverEndpointRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteResolverEndpointResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteResolverEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteResolverEndpointResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.endpoint_id):
+        if not DaraCore.is_null(request.endpoint_id):
             query['EndpointId'] = request.endpoint_id
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteResolverEndpoint',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteResolverEndpoint',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DeleteResolverEndpointResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteResolverEndpointResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_resolver_endpoint_with_options_async(
         self,
-        request: pvtz_20180101_models.DeleteResolverEndpointRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DeleteResolverEndpointResponse:
-        """
-        @summary Deletes an endpoint based on the endpoint ID.
-        
-        @param request: DeleteResolverEndpointRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteResolverEndpointResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteResolverEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteResolverEndpointResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.endpoint_id):
+        if not DaraCore.is_null(request.endpoint_id):
             query['EndpointId'] = request.endpoint_id
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteResolverEndpoint',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteResolverEndpoint',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DeleteResolverEndpointResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteResolverEndpointResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_resolver_endpoint(
         self,
-        request: pvtz_20180101_models.DeleteResolverEndpointRequest,
-    ) -> pvtz_20180101_models.DeleteResolverEndpointResponse:
-        """
-        @summary Deletes an endpoint based on the endpoint ID.
-        
-        @param request: DeleteResolverEndpointRequest
-        @return: DeleteResolverEndpointResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteResolverEndpointRequest,
+    ) -> main_models.DeleteResolverEndpointResponse:
+        runtime = RuntimeOptions()
         return self.delete_resolver_endpoint_with_options(request, runtime)
 
     async def delete_resolver_endpoint_async(
         self,
-        request: pvtz_20180101_models.DeleteResolverEndpointRequest,
-    ) -> pvtz_20180101_models.DeleteResolverEndpointResponse:
-        """
-        @summary Deletes an endpoint based on the endpoint ID.
-        
-        @param request: DeleteResolverEndpointRequest
-        @return: DeleteResolverEndpointResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteResolverEndpointRequest,
+    ) -> main_models.DeleteResolverEndpointResponse:
+        runtime = RuntimeOptions()
         return await self.delete_resolver_endpoint_with_options_async(request, runtime)
 
     def delete_resolver_rule_with_options(
         self,
-        request: pvtz_20180101_models.DeleteResolverRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DeleteResolverRuleResponse:
-        """
-        @summary Deletes a forwarding rule based on the rule ID.
-        
-        @param request: DeleteResolverRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteResolverRuleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteResolverRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteResolverRuleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteResolverRule',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteResolverRule',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DeleteResolverRuleResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteResolverRuleResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_resolver_rule_with_options_async(
         self,
-        request: pvtz_20180101_models.DeleteResolverRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DeleteResolverRuleResponse:
-        """
-        @summary Deletes a forwarding rule based on the rule ID.
-        
-        @param request: DeleteResolverRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteResolverRuleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteResolverRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteResolverRuleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteResolverRule',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteResolverRule',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DeleteResolverRuleResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteResolverRuleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_resolver_rule(
         self,
-        request: pvtz_20180101_models.DeleteResolverRuleRequest,
-    ) -> pvtz_20180101_models.DeleteResolverRuleResponse:
-        """
-        @summary Deletes a forwarding rule based on the rule ID.
-        
-        @param request: DeleteResolverRuleRequest
-        @return: DeleteResolverRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteResolverRuleRequest,
+    ) -> main_models.DeleteResolverRuleResponse:
+        runtime = RuntimeOptions()
         return self.delete_resolver_rule_with_options(request, runtime)
 
     async def delete_resolver_rule_async(
         self,
-        request: pvtz_20180101_models.DeleteResolverRuleRequest,
-    ) -> pvtz_20180101_models.DeleteResolverRuleResponse:
-        """
-        @summary Deletes a forwarding rule based on the rule ID.
-        
-        @param request: DeleteResolverRuleRequest
-        @return: DeleteResolverRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteResolverRuleRequest,
+    ) -> main_models.DeleteResolverRuleResponse:
+        runtime = RuntimeOptions()
         return await self.delete_resolver_rule_with_options_async(request, runtime)
 
     def delete_user_vpc_authorization_with_options(
         self,
-        request: pvtz_20180101_models.DeleteUserVpcAuthorizationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DeleteUserVpcAuthorizationResponse:
-        """
-        @summary Removes an account from the central management of private Domain Name System (DNS) resolution based on the account ID and authorization type.
-        
-        @param request: DeleteUserVpcAuthorizationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteUserVpcAuthorizationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteUserVpcAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteUserVpcAuthorizationResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.auth_type):
+        if not DaraCore.is_null(request.auth_type):
             query['AuthType'] = request.auth_type
-        if not UtilClient.is_unset(request.authorized_user_id):
+        if not DaraCore.is_null(request.authorized_user_id):
             query['AuthorizedUserId'] = request.authorized_user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteUserVpcAuthorization',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteUserVpcAuthorization',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DeleteUserVpcAuthorizationResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteUserVpcAuthorizationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_user_vpc_authorization_with_options_async(
         self,
-        request: pvtz_20180101_models.DeleteUserVpcAuthorizationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DeleteUserVpcAuthorizationResponse:
-        """
-        @summary Removes an account from the central management of private Domain Name System (DNS) resolution based on the account ID and authorization type.
-        
-        @param request: DeleteUserVpcAuthorizationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteUserVpcAuthorizationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteUserVpcAuthorizationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteUserVpcAuthorizationResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.auth_type):
+        if not DaraCore.is_null(request.auth_type):
             query['AuthType'] = request.auth_type
-        if not UtilClient.is_unset(request.authorized_user_id):
+        if not DaraCore.is_null(request.authorized_user_id):
             query['AuthorizedUserId'] = request.authorized_user_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteUserVpcAuthorization',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteUserVpcAuthorization',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DeleteUserVpcAuthorizationResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteUserVpcAuthorizationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_user_vpc_authorization(
         self,
-        request: pvtz_20180101_models.DeleteUserVpcAuthorizationRequest,
-    ) -> pvtz_20180101_models.DeleteUserVpcAuthorizationResponse:
-        """
-        @summary Removes an account from the central management of private Domain Name System (DNS) resolution based on the account ID and authorization type.
-        
-        @param request: DeleteUserVpcAuthorizationRequest
-        @return: DeleteUserVpcAuthorizationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteUserVpcAuthorizationRequest,
+    ) -> main_models.DeleteUserVpcAuthorizationResponse:
+        runtime = RuntimeOptions()
         return self.delete_user_vpc_authorization_with_options(request, runtime)
 
     async def delete_user_vpc_authorization_async(
         self,
-        request: pvtz_20180101_models.DeleteUserVpcAuthorizationRequest,
-    ) -> pvtz_20180101_models.DeleteUserVpcAuthorizationResponse:
-        """
-        @summary Removes an account from the central management of private Domain Name System (DNS) resolution based on the account ID and authorization type.
-        
-        @param request: DeleteUserVpcAuthorizationRequest
-        @return: DeleteUserVpcAuthorizationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteUserVpcAuthorizationRequest,
+    ) -> main_models.DeleteUserVpcAuthorizationResponse:
+        runtime = RuntimeOptions()
         return await self.delete_user_vpc_authorization_with_options_async(request, runtime)
 
     def delete_zone_with_options(
         self,
-        request: pvtz_20180101_models.DeleteZoneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DeleteZoneResponse:
-        """
-        @summary Deletes an idle built-in authoritative zone.
-        
-        @description #### [](#)Precautions
-        If you want to delete a built-in authoritative zone whose effective scope is configured, you must disassociate the zone from the effective scope first.
-        
-        @param request: DeleteZoneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteZoneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteZoneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteZoneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteZone',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteZone',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DeleteZoneResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteZoneResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_zone_with_options_async(
         self,
-        request: pvtz_20180101_models.DeleteZoneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DeleteZoneResponse:
-        """
-        @summary Deletes an idle built-in authoritative zone.
-        
-        @description #### [](#)Precautions
-        If you want to delete a built-in authoritative zone whose effective scope is configured, you must disassociate the zone from the effective scope first.
-        
-        @param request: DeleteZoneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteZoneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteZoneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteZoneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteZone',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteZone',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DeleteZoneResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteZoneResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_zone(
         self,
-        request: pvtz_20180101_models.DeleteZoneRequest,
-    ) -> pvtz_20180101_models.DeleteZoneResponse:
-        """
-        @summary Deletes an idle built-in authoritative zone.
-        
-        @description #### [](#)Precautions
-        If you want to delete a built-in authoritative zone whose effective scope is configured, you must disassociate the zone from the effective scope first.
-        
-        @param request: DeleteZoneRequest
-        @return: DeleteZoneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteZoneRequest,
+    ) -> main_models.DeleteZoneResponse:
+        runtime = RuntimeOptions()
         return self.delete_zone_with_options(request, runtime)
 
     async def delete_zone_async(
         self,
-        request: pvtz_20180101_models.DeleteZoneRequest,
-    ) -> pvtz_20180101_models.DeleteZoneResponse:
-        """
-        @summary Deletes an idle built-in authoritative zone.
-        
-        @description #### [](#)Precautions
-        If you want to delete a built-in authoritative zone whose effective scope is configured, you must disassociate the zone from the effective scope first.
-        
-        @param request: DeleteZoneRequest
-        @return: DeleteZoneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteZoneRequest,
+    ) -> main_models.DeleteZoneResponse:
+        runtime = RuntimeOptions()
         return await self.delete_zone_with_options_async(request, runtime)
 
     def delete_zone_record_with_options(
         self,
-        request: pvtz_20180101_models.DeleteZoneRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DeleteZoneRecordResponse:
-        """
-        @summary Deletes a Domain Name System (DNS) record based on the ID of the DNS record.
-        
-        @description #### *Precautions**\
-        Deleted DNS records cannot be restored. Exercise caution when you perform this operation.
-        
-        @param request: DeleteZoneRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteZoneRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteZoneRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteZoneRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteZoneRecord',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteZoneRecord',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DeleteZoneRecordResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteZoneRecordResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_zone_record_with_options_async(
         self,
-        request: pvtz_20180101_models.DeleteZoneRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DeleteZoneRecordResponse:
-        """
-        @summary Deletes a Domain Name System (DNS) record based on the ID of the DNS record.
-        
-        @description #### *Precautions**\
-        Deleted DNS records cannot be restored. Exercise caution when you perform this operation.
-        
-        @param request: DeleteZoneRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteZoneRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteZoneRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteZoneRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteZoneRecord',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteZoneRecord',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DeleteZoneRecordResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteZoneRecordResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_zone_record(
         self,
-        request: pvtz_20180101_models.DeleteZoneRecordRequest,
-    ) -> pvtz_20180101_models.DeleteZoneRecordResponse:
-        """
-        @summary Deletes a Domain Name System (DNS) record based on the ID of the DNS record.
-        
-        @description #### *Precautions**\
-        Deleted DNS records cannot be restored. Exercise caution when you perform this operation.
-        
-        @param request: DeleteZoneRecordRequest
-        @return: DeleteZoneRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteZoneRecordRequest,
+    ) -> main_models.DeleteZoneRecordResponse:
+        runtime = RuntimeOptions()
         return self.delete_zone_record_with_options(request, runtime)
 
     async def delete_zone_record_async(
         self,
-        request: pvtz_20180101_models.DeleteZoneRecordRequest,
-    ) -> pvtz_20180101_models.DeleteZoneRecordResponse:
-        """
-        @summary Deletes a Domain Name System (DNS) record based on the ID of the DNS record.
-        
-        @description #### *Precautions**\
-        Deleted DNS records cannot be restored. Exercise caution when you perform this operation.
-        
-        @param request: DeleteZoneRecordRequest
-        @return: DeleteZoneRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteZoneRecordRequest,
+    ) -> main_models.DeleteZoneRecordResponse:
+        runtime = RuntimeOptions()
         return await self.delete_zone_record_with_options_async(request, runtime)
 
     def describe_change_logs_with_options(
         self,
-        request: pvtz_20180101_models.DescribeChangeLogsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeChangeLogsResponse:
-        """
-        @summary Queries the operation logs of Private DNS. Operation logs record operations in modules such as the built-in authoritative module, cache module, forward module, and service address module and record the queries for Domain Name System (DNS) records. You can query operation logs by operation or operation content.
-        
-        @description #### *Precautions**\
-        You can query the operation logs of Private DNS that are generated within the last six months.
-        
-        @param request: DescribeChangeLogsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeChangeLogsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeChangeLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeChangeLogsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.end_timestamp):
+        if not DaraCore.is_null(request.end_timestamp):
             query['EndTimestamp'] = request.end_timestamp
-        if not UtilClient.is_unset(request.entity_type):
+        if not DaraCore.is_null(request.entity_type):
             query['EntityType'] = request.entity_type
-        if not UtilClient.is_unset(request.keyword):
+        if not DaraCore.is_null(request.keyword):
             query['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.start_timestamp):
+        if not DaraCore.is_null(request.start_timestamp):
             query['StartTimestamp'] = request.start_timestamp
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeChangeLogs',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeChangeLogs',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeChangeLogsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeChangeLogsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_change_logs_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeChangeLogsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeChangeLogsResponse:
-        """
-        @summary Queries the operation logs of Private DNS. Operation logs record operations in modules such as the built-in authoritative module, cache module, forward module, and service address module and record the queries for Domain Name System (DNS) records. You can query operation logs by operation or operation content.
-        
-        @description #### *Precautions**\
-        You can query the operation logs of Private DNS that are generated within the last six months.
-        
-        @param request: DescribeChangeLogsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeChangeLogsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeChangeLogsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeChangeLogsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.end_timestamp):
+        if not DaraCore.is_null(request.end_timestamp):
             query['EndTimestamp'] = request.end_timestamp
-        if not UtilClient.is_unset(request.entity_type):
+        if not DaraCore.is_null(request.entity_type):
             query['EntityType'] = request.entity_type
-        if not UtilClient.is_unset(request.keyword):
+        if not DaraCore.is_null(request.keyword):
             query['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.start_timestamp):
+        if not DaraCore.is_null(request.start_timestamp):
             query['StartTimestamp'] = request.start_timestamp
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeChangeLogs',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeChangeLogs',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeChangeLogsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeChangeLogsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_change_logs(
         self,
-        request: pvtz_20180101_models.DescribeChangeLogsRequest,
-    ) -> pvtz_20180101_models.DescribeChangeLogsResponse:
-        """
-        @summary Queries the operation logs of Private DNS. Operation logs record operations in modules such as the built-in authoritative module, cache module, forward module, and service address module and record the queries for Domain Name System (DNS) records. You can query operation logs by operation or operation content.
-        
-        @description #### *Precautions**\
-        You can query the operation logs of Private DNS that are generated within the last six months.
-        
-        @param request: DescribeChangeLogsRequest
-        @return: DescribeChangeLogsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeChangeLogsRequest,
+    ) -> main_models.DescribeChangeLogsResponse:
+        runtime = RuntimeOptions()
         return self.describe_change_logs_with_options(request, runtime)
 
     async def describe_change_logs_async(
         self,
-        request: pvtz_20180101_models.DescribeChangeLogsRequest,
-    ) -> pvtz_20180101_models.DescribeChangeLogsResponse:
-        """
-        @summary Queries the operation logs of Private DNS. Operation logs record operations in modules such as the built-in authoritative module, cache module, forward module, and service address module and record the queries for Domain Name System (DNS) records. You can query operation logs by operation or operation content.
-        
-        @description #### *Precautions**\
-        You can query the operation logs of Private DNS that are generated within the last six months.
-        
-        @param request: DescribeChangeLogsRequest
-        @return: DescribeChangeLogsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeChangeLogsRequest,
+    ) -> main_models.DescribeChangeLogsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_change_logs_with_options_async(request, runtime)
 
     def describe_custom_line_info_with_options(
         self,
-        request: pvtz_20180101_models.DescribeCustomLineInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeCustomLineInfoResponse:
-        """
-        @summary Queries the information about a custom line.
-        
-        @param request: DescribeCustomLineInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCustomLineInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeCustomLineInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCustomLineInfoResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.line_id):
+        if not DaraCore.is_null(request.line_id):
             query['LineId'] = request.line_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeCustomLineInfo',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeCustomLineInfo',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeCustomLineInfoResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeCustomLineInfoResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_custom_line_info_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeCustomLineInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeCustomLineInfoResponse:
-        """
-        @summary Queries the information about a custom line.
-        
-        @param request: DescribeCustomLineInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCustomLineInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeCustomLineInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCustomLineInfoResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.line_id):
+        if not DaraCore.is_null(request.line_id):
             query['LineId'] = request.line_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeCustomLineInfo',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeCustomLineInfo',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeCustomLineInfoResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeCustomLineInfoResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_custom_line_info(
         self,
-        request: pvtz_20180101_models.DescribeCustomLineInfoRequest,
-    ) -> pvtz_20180101_models.DescribeCustomLineInfoResponse:
-        """
-        @summary Queries the information about a custom line.
-        
-        @param request: DescribeCustomLineInfoRequest
-        @return: DescribeCustomLineInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeCustomLineInfoRequest,
+    ) -> main_models.DescribeCustomLineInfoResponse:
+        runtime = RuntimeOptions()
         return self.describe_custom_line_info_with_options(request, runtime)
 
     async def describe_custom_line_info_async(
         self,
-        request: pvtz_20180101_models.DescribeCustomLineInfoRequest,
-    ) -> pvtz_20180101_models.DescribeCustomLineInfoResponse:
-        """
-        @summary Queries the information about a custom line.
-        
-        @param request: DescribeCustomLineInfoRequest
-        @return: DescribeCustomLineInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeCustomLineInfoRequest,
+    ) -> main_models.DescribeCustomLineInfoResponse:
+        runtime = RuntimeOptions()
         return await self.describe_custom_line_info_with_options_async(request, runtime)
 
     def describe_custom_lines_with_options(
         self,
-        request: pvtz_20180101_models.DescribeCustomLinesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeCustomLinesResponse:
-        """
-        @summary Queries a list of custom lines.
-        
-        @param request: DescribeCustomLinesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCustomLinesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeCustomLinesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCustomLinesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeCustomLines',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeCustomLines',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeCustomLinesResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeCustomLinesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_custom_lines_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeCustomLinesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeCustomLinesResponse:
-        """
-        @summary Queries a list of custom lines.
-        
-        @param request: DescribeCustomLinesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCustomLinesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeCustomLinesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCustomLinesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeCustomLines',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeCustomLines',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeCustomLinesResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeCustomLinesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_custom_lines(
         self,
-        request: pvtz_20180101_models.DescribeCustomLinesRequest,
-    ) -> pvtz_20180101_models.DescribeCustomLinesResponse:
-        """
-        @summary Queries a list of custom lines.
-        
-        @param request: DescribeCustomLinesRequest
-        @return: DescribeCustomLinesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeCustomLinesRequest,
+    ) -> main_models.DescribeCustomLinesResponse:
+        runtime = RuntimeOptions()
         return self.describe_custom_lines_with_options(request, runtime)
 
     async def describe_custom_lines_async(
         self,
-        request: pvtz_20180101_models.DescribeCustomLinesRequest,
-    ) -> pvtz_20180101_models.DescribeCustomLinesResponse:
-        """
-        @summary Queries a list of custom lines.
-        
-        @param request: DescribeCustomLinesRequest
-        @return: DescribeCustomLinesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeCustomLinesRequest,
+    ) -> main_models.DescribeCustomLinesResponse:
+        runtime = RuntimeOptions()
         return await self.describe_custom_lines_with_options_async(request, runtime)
 
     def describe_regions_with_options(
         self,
-        request: pvtz_20180101_models.DescribeRegionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeRegionsResponse:
-        """
-        @summary Queries a list of regions for selection based on the scenario and virtual private cloud (VPC) type.
-        
-        @param request: DescribeRegionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeRegionsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeRegionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRegionsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.accept_language):
+        if not DaraCore.is_null(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.authorized_user_id):
+        if not DaraCore.is_null(request.authorized_user_id):
             query['AuthorizedUserId'] = request.authorized_user_id
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.scene):
+        if not DaraCore.is_null(request.scene):
             query['Scene'] = request.scene
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.vpc_type):
+        if not DaraCore.is_null(request.vpc_type):
             query['VpcType'] = request.vpc_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeRegions',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeRegions',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeRegionsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeRegionsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_regions_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeRegionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeRegionsResponse:
-        """
-        @summary Queries a list of regions for selection based on the scenario and virtual private cloud (VPC) type.
-        
-        @param request: DescribeRegionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeRegionsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeRegionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRegionsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.accept_language):
+        if not DaraCore.is_null(request.accept_language):
             query['AcceptLanguage'] = request.accept_language
-        if not UtilClient.is_unset(request.authorized_user_id):
+        if not DaraCore.is_null(request.authorized_user_id):
             query['AuthorizedUserId'] = request.authorized_user_id
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.scene):
+        if not DaraCore.is_null(request.scene):
             query['Scene'] = request.scene
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.vpc_type):
+        if not DaraCore.is_null(request.vpc_type):
             query['VpcType'] = request.vpc_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeRegions',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeRegions',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeRegionsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeRegionsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_regions(
         self,
-        request: pvtz_20180101_models.DescribeRegionsRequest,
-    ) -> pvtz_20180101_models.DescribeRegionsResponse:
-        """
-        @summary Queries a list of regions for selection based on the scenario and virtual private cloud (VPC) type.
-        
-        @param request: DescribeRegionsRequest
-        @return: DescribeRegionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeRegionsRequest,
+    ) -> main_models.DescribeRegionsResponse:
+        runtime = RuntimeOptions()
         return self.describe_regions_with_options(request, runtime)
 
     async def describe_regions_async(
         self,
-        request: pvtz_20180101_models.DescribeRegionsRequest,
-    ) -> pvtz_20180101_models.DescribeRegionsResponse:
-        """
-        @summary Queries a list of regions for selection based on the scenario and virtual private cloud (VPC) type.
-        
-        @param request: DescribeRegionsRequest
-        @return: DescribeRegionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeRegionsRequest,
+    ) -> main_models.DescribeRegionsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_regions_with_options_async(request, runtime)
 
     def describe_request_graph_with_options(
         self,
-        request: pvtz_20180101_models.DescribeRequestGraphRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeRequestGraphResponse:
-        """
-        @summary Queries the information about Domain Name System (DNS) requests based on conditions such as the time range.
-        
-        @param request: DescribeRequestGraphRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeRequestGraphResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeRequestGraphRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRequestGraphResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.end_timestamp):
+        if not DaraCore.is_null(request.end_timestamp):
             query['EndTimestamp'] = request.end_timestamp
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.start_timestamp):
+        if not DaraCore.is_null(request.start_timestamp):
             query['StartTimestamp'] = request.start_timestamp
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.vpc_id):
+        if not DaraCore.is_null(request.vpc_id):
             query['VpcId'] = request.vpc_id
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeRequestGraph',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeRequestGraph',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeRequestGraphResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeRequestGraphResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_request_graph_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeRequestGraphRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeRequestGraphResponse:
-        """
-        @summary Queries the information about Domain Name System (DNS) requests based on conditions such as the time range.
-        
-        @param request: DescribeRequestGraphRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeRequestGraphResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeRequestGraphRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRequestGraphResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.biz_id):
+        if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
-        if not UtilClient.is_unset(request.biz_type):
+        if not DaraCore.is_null(request.biz_type):
             query['BizType'] = request.biz_type
-        if not UtilClient.is_unset(request.end_timestamp):
+        if not DaraCore.is_null(request.end_timestamp):
             query['EndTimestamp'] = request.end_timestamp
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.start_timestamp):
+        if not DaraCore.is_null(request.start_timestamp):
             query['StartTimestamp'] = request.start_timestamp
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.vpc_id):
+        if not DaraCore.is_null(request.vpc_id):
             query['VpcId'] = request.vpc_id
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeRequestGraph',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeRequestGraph',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeRequestGraphResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeRequestGraphResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_request_graph(
         self,
-        request: pvtz_20180101_models.DescribeRequestGraphRequest,
-    ) -> pvtz_20180101_models.DescribeRequestGraphResponse:
-        """
-        @summary Queries the information about Domain Name System (DNS) requests based on conditions such as the time range.
-        
-        @param request: DescribeRequestGraphRequest
-        @return: DescribeRequestGraphResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeRequestGraphRequest,
+    ) -> main_models.DescribeRequestGraphResponse:
+        runtime = RuntimeOptions()
         return self.describe_request_graph_with_options(request, runtime)
 
     async def describe_request_graph_async(
         self,
-        request: pvtz_20180101_models.DescribeRequestGraphRequest,
-    ) -> pvtz_20180101_models.DescribeRequestGraphResponse:
-        """
-        @summary Queries the information about Domain Name System (DNS) requests based on conditions such as the time range.
-        
-        @param request: DescribeRequestGraphRequest
-        @return: DescribeRequestGraphResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeRequestGraphRequest,
+    ) -> main_models.DescribeRequestGraphResponse:
+        runtime = RuntimeOptions()
         return await self.describe_request_graph_with_options_async(request, runtime)
 
     def describe_resolver_available_zones_with_options(
         self,
-        request: pvtz_20180101_models.DescribeResolverAvailableZonesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeResolverAvailableZonesResponse:
-        """
-        @summary Queries a list of available zones.
-        
-        @param request: DescribeResolverAvailableZonesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeResolverAvailableZonesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeResolverAvailableZonesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeResolverAvailableZonesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.az_id):
+        if not DaraCore.is_null(request.az_id):
             query['AzId'] = request.az_id
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.resolver_region_id):
+        if not DaraCore.is_null(request.resolver_region_id):
             query['ResolverRegionId'] = request.resolver_region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeResolverAvailableZones',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeResolverAvailableZones',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeResolverAvailableZonesResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeResolverAvailableZonesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_resolver_available_zones_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeResolverAvailableZonesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeResolverAvailableZonesResponse:
-        """
-        @summary Queries a list of available zones.
-        
-        @param request: DescribeResolverAvailableZonesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeResolverAvailableZonesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeResolverAvailableZonesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeResolverAvailableZonesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.az_id):
+        if not DaraCore.is_null(request.az_id):
             query['AzId'] = request.az_id
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.resolver_region_id):
+        if not DaraCore.is_null(request.resolver_region_id):
             query['ResolverRegionId'] = request.resolver_region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeResolverAvailableZones',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeResolverAvailableZones',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeResolverAvailableZonesResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeResolverAvailableZonesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_resolver_available_zones(
         self,
-        request: pvtz_20180101_models.DescribeResolverAvailableZonesRequest,
-    ) -> pvtz_20180101_models.DescribeResolverAvailableZonesResponse:
-        """
-        @summary Queries a list of available zones.
-        
-        @param request: DescribeResolverAvailableZonesRequest
-        @return: DescribeResolverAvailableZonesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeResolverAvailableZonesRequest,
+    ) -> main_models.DescribeResolverAvailableZonesResponse:
+        runtime = RuntimeOptions()
         return self.describe_resolver_available_zones_with_options(request, runtime)
 
     async def describe_resolver_available_zones_async(
         self,
-        request: pvtz_20180101_models.DescribeResolverAvailableZonesRequest,
-    ) -> pvtz_20180101_models.DescribeResolverAvailableZonesResponse:
-        """
-        @summary Queries a list of available zones.
-        
-        @param request: DescribeResolverAvailableZonesRequest
-        @return: DescribeResolverAvailableZonesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeResolverAvailableZonesRequest,
+    ) -> main_models.DescribeResolverAvailableZonesResponse:
+        runtime = RuntimeOptions()
         return await self.describe_resolver_available_zones_with_options_async(request, runtime)
 
     def describe_resolver_endpoint_with_options(
         self,
-        request: pvtz_20180101_models.DescribeResolverEndpointRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeResolverEndpointResponse:
-        """
-        @summary Queries the information about an endpoint based on the endpoint ID.
-        
-        @param request: DescribeResolverEndpointRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeResolverEndpointResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeResolverEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeResolverEndpointResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.endpoint_id):
+        if not DaraCore.is_null(request.endpoint_id):
             query['EndpointId'] = request.endpoint_id
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeResolverEndpoint',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeResolverEndpoint',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeResolverEndpointResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeResolverEndpointResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_resolver_endpoint_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeResolverEndpointRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeResolverEndpointResponse:
-        """
-        @summary Queries the information about an endpoint based on the endpoint ID.
-        
-        @param request: DescribeResolverEndpointRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeResolverEndpointResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeResolverEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeResolverEndpointResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.endpoint_id):
+        if not DaraCore.is_null(request.endpoint_id):
             query['EndpointId'] = request.endpoint_id
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeResolverEndpoint',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeResolverEndpoint',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeResolverEndpointResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeResolverEndpointResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_resolver_endpoint(
         self,
-        request: pvtz_20180101_models.DescribeResolverEndpointRequest,
-    ) -> pvtz_20180101_models.DescribeResolverEndpointResponse:
-        """
-        @summary Queries the information about an endpoint based on the endpoint ID.
-        
-        @param request: DescribeResolverEndpointRequest
-        @return: DescribeResolverEndpointResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeResolverEndpointRequest,
+    ) -> main_models.DescribeResolverEndpointResponse:
+        runtime = RuntimeOptions()
         return self.describe_resolver_endpoint_with_options(request, runtime)
 
     async def describe_resolver_endpoint_async(
         self,
-        request: pvtz_20180101_models.DescribeResolverEndpointRequest,
-    ) -> pvtz_20180101_models.DescribeResolverEndpointResponse:
-        """
-        @summary Queries the information about an endpoint based on the endpoint ID.
-        
-        @param request: DescribeResolverEndpointRequest
-        @return: DescribeResolverEndpointResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeResolverEndpointRequest,
+    ) -> main_models.DescribeResolverEndpointResponse:
+        runtime = RuntimeOptions()
         return await self.describe_resolver_endpoint_with_options_async(request, runtime)
 
     def describe_resolver_endpoints_with_options(
         self,
-        request: pvtz_20180101_models.DescribeResolverEndpointsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeResolverEndpointsResponse:
-        """
-        @summary Queries a list of endpoints.
-        
-        @param request: DescribeResolverEndpointsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeResolverEndpointsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeResolverEndpointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeResolverEndpointsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.keyword):
+        if not DaraCore.is_null(request.keyword):
             query['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.vpc_region_id):
+        if not DaraCore.is_null(request.vpc_region_id):
             query['VpcRegionId'] = request.vpc_region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeResolverEndpoints',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeResolverEndpoints',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeResolverEndpointsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeResolverEndpointsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_resolver_endpoints_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeResolverEndpointsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeResolverEndpointsResponse:
-        """
-        @summary Queries a list of endpoints.
-        
-        @param request: DescribeResolverEndpointsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeResolverEndpointsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeResolverEndpointsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeResolverEndpointsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.keyword):
+        if not DaraCore.is_null(request.keyword):
             query['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.vpc_region_id):
+        if not DaraCore.is_null(request.vpc_region_id):
             query['VpcRegionId'] = request.vpc_region_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeResolverEndpoints',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeResolverEndpoints',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeResolverEndpointsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeResolverEndpointsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_resolver_endpoints(
         self,
-        request: pvtz_20180101_models.DescribeResolverEndpointsRequest,
-    ) -> pvtz_20180101_models.DescribeResolverEndpointsResponse:
-        """
-        @summary Queries a list of endpoints.
-        
-        @param request: DescribeResolverEndpointsRequest
-        @return: DescribeResolverEndpointsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeResolverEndpointsRequest,
+    ) -> main_models.DescribeResolverEndpointsResponse:
+        runtime = RuntimeOptions()
         return self.describe_resolver_endpoints_with_options(request, runtime)
 
     async def describe_resolver_endpoints_async(
         self,
-        request: pvtz_20180101_models.DescribeResolverEndpointsRequest,
-    ) -> pvtz_20180101_models.DescribeResolverEndpointsResponse:
-        """
-        @summary Queries a list of endpoints.
-        
-        @param request: DescribeResolverEndpointsRequest
-        @return: DescribeResolverEndpointsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeResolverEndpointsRequest,
+    ) -> main_models.DescribeResolverEndpointsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_resolver_endpoints_with_options_async(request, runtime)
 
     def describe_resolver_rule_with_options(
         self,
-        request: pvtz_20180101_models.DescribeResolverRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeResolverRuleResponse:
-        """
-        @summary Queries the information about a forwarding rule based on the ID of the forwarding rule.
-        
-        @param request: DescribeResolverRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeResolverRuleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeResolverRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeResolverRuleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeResolverRule',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeResolverRule',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeResolverRuleResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeResolverRuleResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_resolver_rule_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeResolverRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeResolverRuleResponse:
-        """
-        @summary Queries the information about a forwarding rule based on the ID of the forwarding rule.
-        
-        @param request: DescribeResolverRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeResolverRuleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeResolverRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeResolverRuleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeResolverRule',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeResolverRule',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeResolverRuleResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeResolverRuleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_resolver_rule(
         self,
-        request: pvtz_20180101_models.DescribeResolverRuleRequest,
-    ) -> pvtz_20180101_models.DescribeResolverRuleResponse:
-        """
-        @summary Queries the information about a forwarding rule based on the ID of the forwarding rule.
-        
-        @param request: DescribeResolverRuleRequest
-        @return: DescribeResolverRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeResolverRuleRequest,
+    ) -> main_models.DescribeResolverRuleResponse:
+        runtime = RuntimeOptions()
         return self.describe_resolver_rule_with_options(request, runtime)
 
     async def describe_resolver_rule_async(
         self,
-        request: pvtz_20180101_models.DescribeResolverRuleRequest,
-    ) -> pvtz_20180101_models.DescribeResolverRuleResponse:
-        """
-        @summary Queries the information about a forwarding rule based on the ID of the forwarding rule.
-        
-        @param request: DescribeResolverRuleRequest
-        @return: DescribeResolverRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeResolverRuleRequest,
+    ) -> main_models.DescribeResolverRuleResponse:
+        runtime = RuntimeOptions()
         return await self.describe_resolver_rule_with_options_async(request, runtime)
 
     def describe_resolver_rules_with_options(
         self,
-        request: pvtz_20180101_models.DescribeResolverRulesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeResolverRulesResponse:
-        """
-        @summary Queries a list of forwarding rules.
-        
-        @param request: DescribeResolverRulesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeResolverRulesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeResolverRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeResolverRulesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.endpoint_id):
+        if not DaraCore.is_null(request.endpoint_id):
             query['EndpointId'] = request.endpoint_id
-        if not UtilClient.is_unset(request.keyword):
+        if not DaraCore.is_null(request.keyword):
             query['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.need_detail_attributes):
+        if not DaraCore.is_null(request.need_detail_attributes):
             query['NeedDetailAttributes'] = request.need_detail_attributes
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeResolverRules',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeResolverRules',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeResolverRulesResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeResolverRulesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_resolver_rules_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeResolverRulesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeResolverRulesResponse:
-        """
-        @summary Queries a list of forwarding rules.
-        
-        @param request: DescribeResolverRulesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeResolverRulesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeResolverRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeResolverRulesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.endpoint_id):
+        if not DaraCore.is_null(request.endpoint_id):
             query['EndpointId'] = request.endpoint_id
-        if not UtilClient.is_unset(request.keyword):
+        if not DaraCore.is_null(request.keyword):
             query['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.need_detail_attributes):
+        if not DaraCore.is_null(request.need_detail_attributes):
             query['NeedDetailAttributes'] = request.need_detail_attributes
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeResolverRules',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeResolverRules',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeResolverRulesResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeResolverRulesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_resolver_rules(
         self,
-        request: pvtz_20180101_models.DescribeResolverRulesRequest,
-    ) -> pvtz_20180101_models.DescribeResolverRulesResponse:
-        """
-        @summary Queries a list of forwarding rules.
-        
-        @param request: DescribeResolverRulesRequest
-        @return: DescribeResolverRulesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeResolverRulesRequest,
+    ) -> main_models.DescribeResolverRulesResponse:
+        runtime = RuntimeOptions()
         return self.describe_resolver_rules_with_options(request, runtime)
 
     async def describe_resolver_rules_async(
         self,
-        request: pvtz_20180101_models.DescribeResolverRulesRequest,
-    ) -> pvtz_20180101_models.DescribeResolverRulesResponse:
-        """
-        @summary Queries a list of forwarding rules.
-        
-        @param request: DescribeResolverRulesRequest
-        @return: DescribeResolverRulesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeResolverRulesRequest,
+    ) -> main_models.DescribeResolverRulesResponse:
+        runtime = RuntimeOptions()
         return await self.describe_resolver_rules_with_options_async(request, runtime)
 
     def describe_statistic_summary_with_options(
         self,
-        request: pvtz_20180101_models.DescribeStatisticSummaryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeStatisticSummaryResponse:
-        """
-        @summary Queries the statistics on Domain Name System (DNS) requests received on the previous day, including the top three zones and virtual private clouds (VPCs) with the largest number of DNS requests.
-        
-        @param request: DescribeStatisticSummaryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeStatisticSummaryResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeStatisticSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeStatisticSummaryResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeStatisticSummary',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeStatisticSummary',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeStatisticSummaryResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeStatisticSummaryResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_statistic_summary_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeStatisticSummaryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeStatisticSummaryResponse:
-        """
-        @summary Queries the statistics on Domain Name System (DNS) requests received on the previous day, including the top three zones and virtual private clouds (VPCs) with the largest number of DNS requests.
-        
-        @param request: DescribeStatisticSummaryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeStatisticSummaryResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeStatisticSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeStatisticSummaryResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeStatisticSummary',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeStatisticSummary',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeStatisticSummaryResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeStatisticSummaryResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_statistic_summary(
         self,
-        request: pvtz_20180101_models.DescribeStatisticSummaryRequest,
-    ) -> pvtz_20180101_models.DescribeStatisticSummaryResponse:
-        """
-        @summary Queries the statistics on Domain Name System (DNS) requests received on the previous day, including the top three zones and virtual private clouds (VPCs) with the largest number of DNS requests.
-        
-        @param request: DescribeStatisticSummaryRequest
-        @return: DescribeStatisticSummaryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeStatisticSummaryRequest,
+    ) -> main_models.DescribeStatisticSummaryResponse:
+        runtime = RuntimeOptions()
         return self.describe_statistic_summary_with_options(request, runtime)
 
     async def describe_statistic_summary_async(
         self,
-        request: pvtz_20180101_models.DescribeStatisticSummaryRequest,
-    ) -> pvtz_20180101_models.DescribeStatisticSummaryResponse:
-        """
-        @summary Queries the statistics on Domain Name System (DNS) requests received on the previous day, including the top three zones and virtual private clouds (VPCs) with the largest number of DNS requests.
-        
-        @param request: DescribeStatisticSummaryRequest
-        @return: DescribeStatisticSummaryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeStatisticSummaryRequest,
+    ) -> main_models.DescribeStatisticSummaryResponse:
+        runtime = RuntimeOptions()
         return await self.describe_statistic_summary_with_options_async(request, runtime)
 
     def describe_sync_ecs_host_task_with_options(
         self,
-        request: pvtz_20180101_models.DescribeSyncEcsHostTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeSyncEcsHostTaskResponse:
-        """
-        @summary Queries the information about a hostname synchronization task based on a zone ID.
-        
-        @description You can call the DescribeSyncEcsHostTask operation to query the information about a hostname synchronization task based on a zone ID.
-        
-        @param request: DescribeSyncEcsHostTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeSyncEcsHostTaskResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeSyncEcsHostTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSyncEcsHostTaskResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeSyncEcsHostTask',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeSyncEcsHostTask',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeSyncEcsHostTaskResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeSyncEcsHostTaskResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_sync_ecs_host_task_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeSyncEcsHostTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeSyncEcsHostTaskResponse:
-        """
-        @summary Queries the information about a hostname synchronization task based on a zone ID.
-        
-        @description You can call the DescribeSyncEcsHostTask operation to query the information about a hostname synchronization task based on a zone ID.
-        
-        @param request: DescribeSyncEcsHostTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeSyncEcsHostTaskResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeSyncEcsHostTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSyncEcsHostTaskResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeSyncEcsHostTask',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeSyncEcsHostTask',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeSyncEcsHostTaskResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeSyncEcsHostTaskResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_sync_ecs_host_task(
         self,
-        request: pvtz_20180101_models.DescribeSyncEcsHostTaskRequest,
-    ) -> pvtz_20180101_models.DescribeSyncEcsHostTaskResponse:
-        """
-        @summary Queries the information about a hostname synchronization task based on a zone ID.
-        
-        @description You can call the DescribeSyncEcsHostTask operation to query the information about a hostname synchronization task based on a zone ID.
-        
-        @param request: DescribeSyncEcsHostTaskRequest
-        @return: DescribeSyncEcsHostTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeSyncEcsHostTaskRequest,
+    ) -> main_models.DescribeSyncEcsHostTaskResponse:
+        runtime = RuntimeOptions()
         return self.describe_sync_ecs_host_task_with_options(request, runtime)
 
     async def describe_sync_ecs_host_task_async(
         self,
-        request: pvtz_20180101_models.DescribeSyncEcsHostTaskRequest,
-    ) -> pvtz_20180101_models.DescribeSyncEcsHostTaskResponse:
-        """
-        @summary Queries the information about a hostname synchronization task based on a zone ID.
-        
-        @description You can call the DescribeSyncEcsHostTask operation to query the information about a hostname synchronization task based on a zone ID.
-        
-        @param request: DescribeSyncEcsHostTaskRequest
-        @return: DescribeSyncEcsHostTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeSyncEcsHostTaskRequest,
+    ) -> main_models.DescribeSyncEcsHostTaskResponse:
+        runtime = RuntimeOptions()
         return await self.describe_sync_ecs_host_task_with_options_async(request, runtime)
 
     def describe_tags_with_options(
         self,
-        request: pvtz_20180101_models.DescribeTagsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeTagsResponse:
-        """
-        @summary Queries a list of tags added to zones.
-        
-        @description #### *Precautions**\
-        You can call this API operation to query the information about tags added only to zones.
-        
-        @param request: DescribeTagsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeTagsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTagsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeTags',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeTags',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeTagsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeTagsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_tags_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeTagsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeTagsResponse:
-        """
-        @summary Queries a list of tags added to zones.
-        
-        @description #### *Precautions**\
-        You can call this API operation to query the information about tags added only to zones.
-        
-        @param request: DescribeTagsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeTagsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeTagsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeTagsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeTags',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeTags',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeTagsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeTagsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_tags(
         self,
-        request: pvtz_20180101_models.DescribeTagsRequest,
-    ) -> pvtz_20180101_models.DescribeTagsResponse:
-        """
-        @summary Queries a list of tags added to zones.
-        
-        @description #### *Precautions**\
-        You can call this API operation to query the information about tags added only to zones.
-        
-        @param request: DescribeTagsRequest
-        @return: DescribeTagsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeTagsRequest,
+    ) -> main_models.DescribeTagsResponse:
+        runtime = RuntimeOptions()
         return self.describe_tags_with_options(request, runtime)
 
     async def describe_tags_async(
         self,
-        request: pvtz_20180101_models.DescribeTagsRequest,
-    ) -> pvtz_20180101_models.DescribeTagsResponse:
-        """
-        @summary Queries a list of tags added to zones.
-        
-        @description #### *Precautions**\
-        You can call this API operation to query the information about tags added only to zones.
-        
-        @param request: DescribeTagsRequest
-        @return: DescribeTagsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeTagsRequest,
+    ) -> main_models.DescribeTagsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_tags_with_options_async(request, runtime)
 
     def describe_user_service_status_with_options(
         self,
-        request: pvtz_20180101_models.DescribeUserServiceStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeUserServiceStatusResponse:
-        """
-        @summary Query the current user\\"s service status, such as whether the service is activated, whether there are any unpaid fees, etc.
-        
-        @param request: DescribeUserServiceStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeUserServiceStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeUserServiceStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUserServiceStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeUserServiceStatus',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeUserServiceStatus',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeUserServiceStatusResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeUserServiceStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_user_service_status_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeUserServiceStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeUserServiceStatusResponse:
-        """
-        @summary Query the current user\\"s service status, such as whether the service is activated, whether there are any unpaid fees, etc.
-        
-        @param request: DescribeUserServiceStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeUserServiceStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeUserServiceStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUserServiceStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeUserServiceStatus',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeUserServiceStatus',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeUserServiceStatusResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeUserServiceStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_user_service_status(
         self,
-        request: pvtz_20180101_models.DescribeUserServiceStatusRequest,
-    ) -> pvtz_20180101_models.DescribeUserServiceStatusResponse:
-        """
-        @summary Query the current user\\"s service status, such as whether the service is activated, whether there are any unpaid fees, etc.
-        
-        @param request: DescribeUserServiceStatusRequest
-        @return: DescribeUserServiceStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeUserServiceStatusRequest,
+    ) -> main_models.DescribeUserServiceStatusResponse:
+        runtime = RuntimeOptions()
         return self.describe_user_service_status_with_options(request, runtime)
 
     async def describe_user_service_status_async(
         self,
-        request: pvtz_20180101_models.DescribeUserServiceStatusRequest,
-    ) -> pvtz_20180101_models.DescribeUserServiceStatusResponse:
-        """
-        @summary Query the current user\\"s service status, such as whether the service is activated, whether there are any unpaid fees, etc.
-        
-        @param request: DescribeUserServiceStatusRequest
-        @return: DescribeUserServiceStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeUserServiceStatusRequest,
+    ) -> main_models.DescribeUserServiceStatusResponse:
+        runtime = RuntimeOptions()
         return await self.describe_user_service_status_with_options_async(request, runtime)
 
     def describe_user_vpc_authorizations_with_options(
         self,
-        request: pvtz_20180101_models.DescribeUserVpcAuthorizationsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeUserVpcAuthorizationsResponse:
-        """
-        @summary Queries a list of accounts whose virtual private clouds (VPCs) are associated with a private zone.
-        
-        @param request: DescribeUserVpcAuthorizationsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeUserVpcAuthorizationsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeUserVpcAuthorizationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUserVpcAuthorizationsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.auth_type):
+        if not DaraCore.is_null(request.auth_type):
             query['AuthType'] = request.auth_type
-        if not UtilClient.is_unset(request.authorized_user_id):
+        if not DaraCore.is_null(request.authorized_user_id):
             query['AuthorizedUserId'] = request.authorized_user_id
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeUserVpcAuthorizations',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeUserVpcAuthorizations',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeUserVpcAuthorizationsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeUserVpcAuthorizationsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_user_vpc_authorizations_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeUserVpcAuthorizationsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeUserVpcAuthorizationsResponse:
-        """
-        @summary Queries a list of accounts whose virtual private clouds (VPCs) are associated with a private zone.
-        
-        @param request: DescribeUserVpcAuthorizationsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeUserVpcAuthorizationsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeUserVpcAuthorizationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUserVpcAuthorizationsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.auth_type):
+        if not DaraCore.is_null(request.auth_type):
             query['AuthType'] = request.auth_type
-        if not UtilClient.is_unset(request.authorized_user_id):
+        if not DaraCore.is_null(request.authorized_user_id):
             query['AuthorizedUserId'] = request.authorized_user_id
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeUserVpcAuthorizations',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeUserVpcAuthorizations',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeUserVpcAuthorizationsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeUserVpcAuthorizationsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_user_vpc_authorizations(
         self,
-        request: pvtz_20180101_models.DescribeUserVpcAuthorizationsRequest,
-    ) -> pvtz_20180101_models.DescribeUserVpcAuthorizationsResponse:
-        """
-        @summary Queries a list of accounts whose virtual private clouds (VPCs) are associated with a private zone.
-        
-        @param request: DescribeUserVpcAuthorizationsRequest
-        @return: DescribeUserVpcAuthorizationsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeUserVpcAuthorizationsRequest,
+    ) -> main_models.DescribeUserVpcAuthorizationsResponse:
+        runtime = RuntimeOptions()
         return self.describe_user_vpc_authorizations_with_options(request, runtime)
 
     async def describe_user_vpc_authorizations_async(
         self,
-        request: pvtz_20180101_models.DescribeUserVpcAuthorizationsRequest,
-    ) -> pvtz_20180101_models.DescribeUserVpcAuthorizationsResponse:
-        """
-        @summary Queries a list of accounts whose virtual private clouds (VPCs) are associated with a private zone.
-        
-        @param request: DescribeUserVpcAuthorizationsRequest
-        @return: DescribeUserVpcAuthorizationsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeUserVpcAuthorizationsRequest,
+    ) -> main_models.DescribeUserVpcAuthorizationsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_user_vpc_authorizations_with_options_async(request, runtime)
 
     def describe_zone_info_with_options(
         self,
-        request: pvtz_20180101_models.DescribeZoneInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeZoneInfoResponse:
-        """
-        @summary Queries the information about a built-in authoritative zone, such as the virtual private clouds (VPCs) that are associated with the zone.
-        
-        @param request: DescribeZoneInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeZoneInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeZoneInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeZoneInfoResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeZoneInfo',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeZoneInfo',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeZoneInfoResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeZoneInfoResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_zone_info_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeZoneInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeZoneInfoResponse:
-        """
-        @summary Queries the information about a built-in authoritative zone, such as the virtual private clouds (VPCs) that are associated with the zone.
-        
-        @param request: DescribeZoneInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeZoneInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeZoneInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeZoneInfoResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeZoneInfo',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeZoneInfo',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeZoneInfoResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeZoneInfoResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_zone_info(
         self,
-        request: pvtz_20180101_models.DescribeZoneInfoRequest,
-    ) -> pvtz_20180101_models.DescribeZoneInfoResponse:
-        """
-        @summary Queries the information about a built-in authoritative zone, such as the virtual private clouds (VPCs) that are associated with the zone.
-        
-        @param request: DescribeZoneInfoRequest
-        @return: DescribeZoneInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeZoneInfoRequest,
+    ) -> main_models.DescribeZoneInfoResponse:
+        runtime = RuntimeOptions()
         return self.describe_zone_info_with_options(request, runtime)
 
     async def describe_zone_info_async(
         self,
-        request: pvtz_20180101_models.DescribeZoneInfoRequest,
-    ) -> pvtz_20180101_models.DescribeZoneInfoResponse:
-        """
-        @summary Queries the information about a built-in authoritative zone, such as the virtual private clouds (VPCs) that are associated with the zone.
-        
-        @param request: DescribeZoneInfoRequest
-        @return: DescribeZoneInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeZoneInfoRequest,
+    ) -> main_models.DescribeZoneInfoResponse:
+        runtime = RuntimeOptions()
         return await self.describe_zone_info_with_options_async(request, runtime)
 
     def describe_zone_record_with_options(
         self,
-        request: pvtz_20180101_models.DescribeZoneRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeZoneRecordResponse:
-        """
-        @summary Queries the information about a Domain Name System (DNS) record.
-        
-        @param request: DescribeZoneRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeZoneRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeZoneRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeZoneRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeZoneRecord',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeZoneRecord',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeZoneRecordResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeZoneRecordResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_zone_record_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeZoneRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeZoneRecordResponse:
-        """
-        @summary Queries the information about a Domain Name System (DNS) record.
-        
-        @param request: DescribeZoneRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeZoneRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeZoneRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeZoneRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeZoneRecord',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeZoneRecord',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeZoneRecordResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeZoneRecordResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_zone_record(
         self,
-        request: pvtz_20180101_models.DescribeZoneRecordRequest,
-    ) -> pvtz_20180101_models.DescribeZoneRecordResponse:
-        """
-        @summary Queries the information about a Domain Name System (DNS) record.
-        
-        @param request: DescribeZoneRecordRequest
-        @return: DescribeZoneRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeZoneRecordRequest,
+    ) -> main_models.DescribeZoneRecordResponse:
+        runtime = RuntimeOptions()
         return self.describe_zone_record_with_options(request, runtime)
 
     async def describe_zone_record_async(
         self,
-        request: pvtz_20180101_models.DescribeZoneRecordRequest,
-    ) -> pvtz_20180101_models.DescribeZoneRecordResponse:
-        """
-        @summary Queries the information about a Domain Name System (DNS) record.
-        
-        @param request: DescribeZoneRecordRequest
-        @return: DescribeZoneRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeZoneRecordRequest,
+    ) -> main_models.DescribeZoneRecordResponse:
+        runtime = RuntimeOptions()
         return await self.describe_zone_record_with_options_async(request, runtime)
 
     def describe_zone_records_with_options(
         self,
-        request: pvtz_20180101_models.DescribeZoneRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeZoneRecordsResponse:
-        """
-        @summary Queries a list of Domain Name System (DNS) records.
-        
-        @param request: DescribeZoneRecordsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeZoneRecordsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeZoneRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeZoneRecordsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.keyword):
+        if not DaraCore.is_null(request.keyword):
             query['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.search_mode):
+        if not DaraCore.is_null(request.search_mode):
             query['SearchMode'] = request.search_mode
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeZoneRecords',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeZoneRecords',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeZoneRecordsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeZoneRecordsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_zone_records_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeZoneRecordsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeZoneRecordsResponse:
-        """
-        @summary Queries a list of Domain Name System (DNS) records.
-        
-        @param request: DescribeZoneRecordsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeZoneRecordsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeZoneRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeZoneRecordsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.keyword):
+        if not DaraCore.is_null(request.keyword):
             query['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.search_mode):
+        if not DaraCore.is_null(request.search_mode):
             query['SearchMode'] = request.search_mode
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeZoneRecords',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeZoneRecords',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeZoneRecordsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeZoneRecordsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_zone_records(
         self,
-        request: pvtz_20180101_models.DescribeZoneRecordsRequest,
-    ) -> pvtz_20180101_models.DescribeZoneRecordsResponse:
-        """
-        @summary Queries a list of Domain Name System (DNS) records.
-        
-        @param request: DescribeZoneRecordsRequest
-        @return: DescribeZoneRecordsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeZoneRecordsRequest,
+    ) -> main_models.DescribeZoneRecordsResponse:
+        runtime = RuntimeOptions()
         return self.describe_zone_records_with_options(request, runtime)
 
     async def describe_zone_records_async(
         self,
-        request: pvtz_20180101_models.DescribeZoneRecordsRequest,
-    ) -> pvtz_20180101_models.DescribeZoneRecordsResponse:
-        """
-        @summary Queries a list of Domain Name System (DNS) records.
-        
-        @param request: DescribeZoneRecordsRequest
-        @return: DescribeZoneRecordsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeZoneRecordsRequest,
+    ) -> main_models.DescribeZoneRecordsResponse:
+        runtime = RuntimeOptions()
         return await self.describe_zone_records_with_options_async(request, runtime)
 
     def describe_zone_vpc_tree_with_options(
         self,
-        request: pvtz_20180101_models.DescribeZoneVpcTreeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeZoneVpcTreeResponse:
-        """
-        @summary Queries a list of zones within the current account and a list of virtual private clouds (VPCs) associated with the zones.
-        
-        @description We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs with which a zone is associated, you can call the DescribeZoneInfo operation based on the zone ID.
-        
-        @param request: DescribeZoneVpcTreeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeZoneVpcTreeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeZoneVpcTreeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeZoneVpcTreeResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeZoneVpcTree',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeZoneVpcTree',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeZoneVpcTreeResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeZoneVpcTreeResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_zone_vpc_tree_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeZoneVpcTreeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeZoneVpcTreeResponse:
-        """
-        @summary Queries a list of zones within the current account and a list of virtual private clouds (VPCs) associated with the zones.
-        
-        @description We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs with which a zone is associated, you can call the DescribeZoneInfo operation based on the zone ID.
-        
-        @param request: DescribeZoneVpcTreeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeZoneVpcTreeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeZoneVpcTreeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeZoneVpcTreeResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeZoneVpcTree',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeZoneVpcTree',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeZoneVpcTreeResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeZoneVpcTreeResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_zone_vpc_tree(
         self,
-        request: pvtz_20180101_models.DescribeZoneVpcTreeRequest,
-    ) -> pvtz_20180101_models.DescribeZoneVpcTreeResponse:
-        """
-        @summary Queries a list of zones within the current account and a list of virtual private clouds (VPCs) associated with the zones.
-        
-        @description We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs with which a zone is associated, you can call the DescribeZoneInfo operation based on the zone ID.
-        
-        @param request: DescribeZoneVpcTreeRequest
-        @return: DescribeZoneVpcTreeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeZoneVpcTreeRequest,
+    ) -> main_models.DescribeZoneVpcTreeResponse:
+        runtime = RuntimeOptions()
         return self.describe_zone_vpc_tree_with_options(request, runtime)
 
     async def describe_zone_vpc_tree_async(
         self,
-        request: pvtz_20180101_models.DescribeZoneVpcTreeRequest,
-    ) -> pvtz_20180101_models.DescribeZoneVpcTreeResponse:
-        """
-        @summary Queries a list of zones within the current account and a list of virtual private clouds (VPCs) associated with the zones.
-        
-        @description We recommend that you do not call this API operation due to its poor performance. Instead, you can call the DescribeZones operation to query a list of zones. If you want to query the information about VPCs with which a zone is associated, you can call the DescribeZoneInfo operation based on the zone ID.
-        
-        @param request: DescribeZoneVpcTreeRequest
-        @return: DescribeZoneVpcTreeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeZoneVpcTreeRequest,
+    ) -> main_models.DescribeZoneVpcTreeResponse:
+        runtime = RuntimeOptions()
         return await self.describe_zone_vpc_tree_with_options_async(request, runtime)
 
     def describe_zones_with_options(
         self,
-        request: pvtz_20180101_models.DescribeZonesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeZonesResponse:
-        """
-        @summary Queries a list of zones within the current account.
-        
-        @param request: DescribeZonesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeZonesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeZonesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeZonesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.keyword):
+        if not DaraCore.is_null(request.keyword):
             query['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.query_region_id):
+        if not DaraCore.is_null(request.query_region_id):
             query['QueryRegionId'] = request.query_region_id
-        if not UtilClient.is_unset(request.query_vpc_id):
+        if not DaraCore.is_null(request.query_vpc_id):
             query['QueryVpcId'] = request.query_vpc_id
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_tag):
+        if not DaraCore.is_null(request.resource_tag):
             query['ResourceTag'] = request.resource_tag
-        if not UtilClient.is_unset(request.search_mode):
+        if not DaraCore.is_null(request.search_mode):
             query['SearchMode'] = request.search_mode
-        if not UtilClient.is_unset(request.zone_tag):
+        if not DaraCore.is_null(request.zone_tag):
             query['ZoneTag'] = request.zone_tag
-        if not UtilClient.is_unset(request.zone_type):
+        if not DaraCore.is_null(request.zone_type):
             query['ZoneType'] = request.zone_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeZones',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeZones',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeZonesResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeZonesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_zones_with_options_async(
         self,
-        request: pvtz_20180101_models.DescribeZonesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.DescribeZonesResponse:
-        """
-        @summary Queries a list of zones within the current account.
-        
-        @param request: DescribeZonesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeZonesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeZonesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeZonesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.keyword):
+        if not DaraCore.is_null(request.keyword):
             query['Keyword'] = request.keyword
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.query_region_id):
+        if not DaraCore.is_null(request.query_region_id):
             query['QueryRegionId'] = request.query_region_id
-        if not UtilClient.is_unset(request.query_vpc_id):
+        if not DaraCore.is_null(request.query_vpc_id):
             query['QueryVpcId'] = request.query_vpc_id
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_tag):
+        if not DaraCore.is_null(request.resource_tag):
             query['ResourceTag'] = request.resource_tag
-        if not UtilClient.is_unset(request.search_mode):
+        if not DaraCore.is_null(request.search_mode):
             query['SearchMode'] = request.search_mode
-        if not UtilClient.is_unset(request.zone_tag):
+        if not DaraCore.is_null(request.zone_tag):
             query['ZoneTag'] = request.zone_tag
-        if not UtilClient.is_unset(request.zone_type):
+        if not DaraCore.is_null(request.zone_type):
             query['ZoneType'] = request.zone_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeZones',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeZones',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.DescribeZonesResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeZonesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_zones(
         self,
-        request: pvtz_20180101_models.DescribeZonesRequest,
-    ) -> pvtz_20180101_models.DescribeZonesResponse:
-        """
-        @summary Queries a list of zones within the current account.
-        
-        @param request: DescribeZonesRequest
-        @return: DescribeZonesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeZonesRequest,
+    ) -> main_models.DescribeZonesResponse:
+        runtime = RuntimeOptions()
         return self.describe_zones_with_options(request, runtime)
 
     async def describe_zones_async(
         self,
-        request: pvtz_20180101_models.DescribeZonesRequest,
-    ) -> pvtz_20180101_models.DescribeZonesResponse:
-        """
-        @summary Queries a list of zones within the current account.
-        
-        @param request: DescribeZonesRequest
-        @return: DescribeZonesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeZonesRequest,
+    ) -> main_models.DescribeZonesResponse:
+        runtime = RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
-        request: pvtz_20180101_models.ListTagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.ListTagResourcesResponse:
-        """
-        @summary Queries a list of tags added to zones.
-        
-        @description #### [](#)*Precautions**\
-        You can call this API operation to query tags added only to zones.
-        
-        @param request: ListTagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListTagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.size):
+        if not DaraCore.is_null(request.size):
             query['Size'] = request.size
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTagResources',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTagResources',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.ListTagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.ListTagResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
         self,
-        request: pvtz_20180101_models.ListTagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.ListTagResourcesResponse:
-        """
-        @summary Queries a list of tags added to zones.
-        
-        @description #### [](#)*Precautions**\
-        You can call this API operation to query tags added only to zones.
-        
-        @param request: ListTagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListTagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.size):
+        if not DaraCore.is_null(request.size):
             query['Size'] = request.size
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTagResources',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTagResources',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.ListTagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.ListTagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_resources(
         self,
-        request: pvtz_20180101_models.ListTagResourcesRequest,
-    ) -> pvtz_20180101_models.ListTagResourcesResponse:
-        """
-        @summary Queries a list of tags added to zones.
-        
-        @description #### [](#)*Precautions**\
-        You can call this API operation to query tags added only to zones.
-        
-        @param request: ListTagResourcesRequest
-        @return: ListTagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTagResourcesRequest,
+    ) -> main_models.ListTagResourcesResponse:
+        runtime = RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
     async def list_tag_resources_async(
         self,
-        request: pvtz_20180101_models.ListTagResourcesRequest,
-    ) -> pvtz_20180101_models.ListTagResourcesResponse:
-        """
-        @summary Queries a list of tags added to zones.
-        
-        @description #### [](#)*Precautions**\
-        You can call this API operation to query tags added only to zones.
-        
-        @param request: ListTagResourcesRequest
-        @return: ListTagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTagResourcesRequest,
+    ) -> main_models.ListTagResourcesResponse:
+        runtime = RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
     def move_resource_group_with_options(
         self,
-        request: pvtz_20180101_models.MoveResourceGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.MoveResourceGroupResponse:
-        """
-        @summary Changes a resource group.
-        
-        @description #### [](#)Precautions
-        You can call this API operation to change a resource group only for a zone.
-        
-        @param request: MoveResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MoveResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MoveResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveResourceGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.new_resource_group_id):
+        if not DaraCore.is_null(request.new_resource_group_id):
             query['NewResourceGroupId'] = request.new_resource_group_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='MoveResourceGroup',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MoveResourceGroup',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.MoveResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.MoveResourceGroupResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def move_resource_group_with_options_async(
         self,
-        request: pvtz_20180101_models.MoveResourceGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.MoveResourceGroupResponse:
-        """
-        @summary Changes a resource group.
-        
-        @description #### [](#)Precautions
-        You can call this API operation to change a resource group only for a zone.
-        
-        @param request: MoveResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MoveResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MoveResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveResourceGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.new_resource_group_id):
+        if not DaraCore.is_null(request.new_resource_group_id):
             query['NewResourceGroupId'] = request.new_resource_group_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='MoveResourceGroup',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MoveResourceGroup',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.MoveResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.MoveResourceGroupResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def move_resource_group(
         self,
-        request: pvtz_20180101_models.MoveResourceGroupRequest,
-    ) -> pvtz_20180101_models.MoveResourceGroupResponse:
-        """
-        @summary Changes a resource group.
-        
-        @description #### [](#)Precautions
-        You can call this API operation to change a resource group only for a zone.
-        
-        @param request: MoveResourceGroupRequest
-        @return: MoveResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MoveResourceGroupRequest,
+    ) -> main_models.MoveResourceGroupResponse:
+        runtime = RuntimeOptions()
         return self.move_resource_group_with_options(request, runtime)
 
     async def move_resource_group_async(
         self,
-        request: pvtz_20180101_models.MoveResourceGroupRequest,
-    ) -> pvtz_20180101_models.MoveResourceGroupResponse:
-        """
-        @summary Changes a resource group.
-        
-        @description #### [](#)Precautions
-        You can call this API operation to change a resource group only for a zone.
-        
-        @param request: MoveResourceGroupRequest
-        @return: MoveResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MoveResourceGroupRequest,
+    ) -> main_models.MoveResourceGroupResponse:
+        runtime = RuntimeOptions()
         return await self.move_resource_group_with_options_async(request, runtime)
 
     def search_custom_lines_with_options(
         self,
-        request: pvtz_20180101_models.SearchCustomLinesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.SearchCustomLinesResponse:
-        """
-        @summary Queries a list of custom lines.
-        
-        @param request: SearchCustomLinesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SearchCustomLinesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SearchCustomLinesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchCustomLinesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.create_timestamp_end):
+        if not DaraCore.is_null(request.create_timestamp_end):
             query['CreateTimestampEnd'] = request.create_timestamp_end
-        if not UtilClient.is_unset(request.create_timestamp_start):
+        if not DaraCore.is_null(request.create_timestamp_start):
             query['CreateTimestampStart'] = request.create_timestamp_start
-        if not UtilClient.is_unset(request.creator):
+        if not DaraCore.is_null(request.creator):
             query['Creator'] = request.creator
-        if not UtilClient.is_unset(request.ipv_4):
+        if not DaraCore.is_null(request.ipv_4):
             query['Ipv4'] = request.ipv_4
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.update_timestamp_end):
+        if not DaraCore.is_null(request.update_timestamp_end):
             query['UpdateTimestampEnd'] = request.update_timestamp_end
-        if not UtilClient.is_unset(request.update_timestamp_start):
+        if not DaraCore.is_null(request.update_timestamp_start):
             query['UpdateTimestampStart'] = request.update_timestamp_start
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SearchCustomLines',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SearchCustomLines',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.SearchCustomLinesResponse(),
+        return DaraCore.from_map(
+            main_models.SearchCustomLinesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def search_custom_lines_with_options_async(
         self,
-        request: pvtz_20180101_models.SearchCustomLinesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.SearchCustomLinesResponse:
-        """
-        @summary Queries a list of custom lines.
-        
-        @param request: SearchCustomLinesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SearchCustomLinesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SearchCustomLinesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchCustomLinesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.create_timestamp_end):
+        if not DaraCore.is_null(request.create_timestamp_end):
             query['CreateTimestampEnd'] = request.create_timestamp_end
-        if not UtilClient.is_unset(request.create_timestamp_start):
+        if not DaraCore.is_null(request.create_timestamp_start):
             query['CreateTimestampStart'] = request.create_timestamp_start
-        if not UtilClient.is_unset(request.creator):
+        if not DaraCore.is_null(request.creator):
             query['Creator'] = request.creator
-        if not UtilClient.is_unset(request.ipv_4):
+        if not DaraCore.is_null(request.ipv_4):
             query['Ipv4'] = request.ipv_4
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.update_timestamp_end):
+        if not DaraCore.is_null(request.update_timestamp_end):
             query['UpdateTimestampEnd'] = request.update_timestamp_end
-        if not UtilClient.is_unset(request.update_timestamp_start):
+        if not DaraCore.is_null(request.update_timestamp_start):
             query['UpdateTimestampStart'] = request.update_timestamp_start
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SearchCustomLines',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SearchCustomLines',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.SearchCustomLinesResponse(),
+        return DaraCore.from_map(
+            main_models.SearchCustomLinesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def search_custom_lines(
         self,
-        request: pvtz_20180101_models.SearchCustomLinesRequest,
-    ) -> pvtz_20180101_models.SearchCustomLinesResponse:
-        """
-        @summary Queries a list of custom lines.
-        
-        @param request: SearchCustomLinesRequest
-        @return: SearchCustomLinesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SearchCustomLinesRequest,
+    ) -> main_models.SearchCustomLinesResponse:
+        runtime = RuntimeOptions()
         return self.search_custom_lines_with_options(request, runtime)
 
     async def search_custom_lines_async(
         self,
-        request: pvtz_20180101_models.SearchCustomLinesRequest,
-    ) -> pvtz_20180101_models.SearchCustomLinesResponse:
-        """
-        @summary Queries a list of custom lines.
-        
-        @param request: SearchCustomLinesRequest
-        @return: SearchCustomLinesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SearchCustomLinesRequest,
+    ) -> main_models.SearchCustomLinesResponse:
+        runtime = RuntimeOptions()
         return await self.search_custom_lines_with_options_async(request, runtime)
 
     def set_proxy_pattern_with_options(
         self,
-        request: pvtz_20180101_models.SetProxyPatternRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.SetProxyPatternResponse:
-        """
-        @summary Enables the recursive resolution proxy for subdomain names.
-        
-        @param request: SetProxyPatternRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetProxyPatternResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SetProxyPatternRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetProxyPatternResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.proxy_pattern):
+        if not DaraCore.is_null(request.proxy_pattern):
             query['ProxyPattern'] = request.proxy_pattern
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SetProxyPattern',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SetProxyPattern',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.SetProxyPatternResponse(),
+        return DaraCore.from_map(
+            main_models.SetProxyPatternResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def set_proxy_pattern_with_options_async(
         self,
-        request: pvtz_20180101_models.SetProxyPatternRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.SetProxyPatternResponse:
-        """
-        @summary Enables the recursive resolution proxy for subdomain names.
-        
-        @param request: SetProxyPatternRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetProxyPatternResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SetProxyPatternRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetProxyPatternResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.proxy_pattern):
+        if not DaraCore.is_null(request.proxy_pattern):
             query['ProxyPattern'] = request.proxy_pattern
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SetProxyPattern',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SetProxyPattern',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.SetProxyPatternResponse(),
+        return DaraCore.from_map(
+            main_models.SetProxyPatternResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def set_proxy_pattern(
         self,
-        request: pvtz_20180101_models.SetProxyPatternRequest,
-    ) -> pvtz_20180101_models.SetProxyPatternResponse:
-        """
-        @summary Enables the recursive resolution proxy for subdomain names.
-        
-        @param request: SetProxyPatternRequest
-        @return: SetProxyPatternResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SetProxyPatternRequest,
+    ) -> main_models.SetProxyPatternResponse:
+        runtime = RuntimeOptions()
         return self.set_proxy_pattern_with_options(request, runtime)
 
     async def set_proxy_pattern_async(
         self,
-        request: pvtz_20180101_models.SetProxyPatternRequest,
-    ) -> pvtz_20180101_models.SetProxyPatternResponse:
-        """
-        @summary Enables the recursive resolution proxy for subdomain names.
-        
-        @param request: SetProxyPatternRequest
-        @return: SetProxyPatternResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SetProxyPatternRequest,
+    ) -> main_models.SetProxyPatternResponse:
+        runtime = RuntimeOptions()
         return await self.set_proxy_pattern_with_options_async(request, runtime)
 
     def set_zone_record_status_with_options(
         self,
-        request: pvtz_20180101_models.SetZoneRecordStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.SetZoneRecordStatusResponse:
-        """
-        @summary Enables or disables a Domain Name System (DNS) record.
-        
-        @param request: SetZoneRecordStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetZoneRecordStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SetZoneRecordStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetZoneRecordStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SetZoneRecordStatus',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SetZoneRecordStatus',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.SetZoneRecordStatusResponse(),
+        return DaraCore.from_map(
+            main_models.SetZoneRecordStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def set_zone_record_status_with_options_async(
         self,
-        request: pvtz_20180101_models.SetZoneRecordStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.SetZoneRecordStatusResponse:
-        """
-        @summary Enables or disables a Domain Name System (DNS) record.
-        
-        @param request: SetZoneRecordStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetZoneRecordStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SetZoneRecordStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetZoneRecordStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SetZoneRecordStatus',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SetZoneRecordStatus',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.SetZoneRecordStatusResponse(),
+        return DaraCore.from_map(
+            main_models.SetZoneRecordStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def set_zone_record_status(
         self,
-        request: pvtz_20180101_models.SetZoneRecordStatusRequest,
-    ) -> pvtz_20180101_models.SetZoneRecordStatusResponse:
-        """
-        @summary Enables or disables a Domain Name System (DNS) record.
-        
-        @param request: SetZoneRecordStatusRequest
-        @return: SetZoneRecordStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SetZoneRecordStatusRequest,
+    ) -> main_models.SetZoneRecordStatusResponse:
+        runtime = RuntimeOptions()
         return self.set_zone_record_status_with_options(request, runtime)
 
     async def set_zone_record_status_async(
         self,
-        request: pvtz_20180101_models.SetZoneRecordStatusRequest,
-    ) -> pvtz_20180101_models.SetZoneRecordStatusResponse:
-        """
-        @summary Enables or disables a Domain Name System (DNS) record.
-        
-        @param request: SetZoneRecordStatusRequest
-        @return: SetZoneRecordStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SetZoneRecordStatusRequest,
+    ) -> main_models.SetZoneRecordStatusResponse:
+        runtime = RuntimeOptions()
         return await self.set_zone_record_status_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,
-        request: pvtz_20180101_models.TagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.TagResourcesResponse:
-        """
-        @summary Adds or modifies tags for zones.
-        
-        @description ##### [](#)Precautions
-        You can configure tags only for zones.
-        
-        @param request: TagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.TagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.over_write):
+        if not DaraCore.is_null(request.over_write):
             query['OverWrite'] = request.over_write
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.TagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
         self,
-        request: pvtz_20180101_models.TagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.TagResourcesResponse:
-        """
-        @summary Adds or modifies tags for zones.
-        
-        @description ##### [](#)Precautions
-        You can configure tags only for zones.
-        
-        @param request: TagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.TagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.over_write):
+        if not DaraCore.is_null(request.over_write):
             query['OverWrite'] = request.over_write
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.TagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
         self,
-        request: pvtz_20180101_models.TagResourcesRequest,
-    ) -> pvtz_20180101_models.TagResourcesResponse:
-        """
-        @summary Adds or modifies tags for zones.
-        
-        @description ##### [](#)Precautions
-        You can configure tags only for zones.
-        
-        @param request: TagResourcesRequest
-        @return: TagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
     async def tag_resources_async(
         self,
-        request: pvtz_20180101_models.TagResourcesRequest,
-    ) -> pvtz_20180101_models.TagResourcesResponse:
-        """
-        @summary Adds or modifies tags for zones.
-        
-        @description ##### [](#)Precautions
-        You can configure tags only for zones.
-        
-        @param request: TagResourcesRequest
-        @return: TagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
     def untag_resources_with_options(
         self,
-        request: pvtz_20180101_models.UntagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.UntagResourcesResponse:
-        """
-        @summary Removes the tags of multiple zones at a time.
-        
-        @description #### [](#)*Precautions**\
-        You can call this API operation to remove tags added only to zones.
-        
-        @param request: UntagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UntagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UntagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.all):
+        if not DaraCore.is_null(request.all):
             query['All'] = request.all
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag_key):
+        if not DaraCore.is_null(request.tag_key):
             query['TagKey'] = request.tag_key
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UntagResources',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.UntagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def untag_resources_with_options_async(
         self,
-        request: pvtz_20180101_models.UntagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.UntagResourcesResponse:
-        """
-        @summary Removes the tags of multiple zones at a time.
-        
-        @description #### [](#)*Precautions**\
-        You can call this API operation to remove tags added only to zones.
-        
-        @param request: UntagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UntagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UntagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.all):
+        if not DaraCore.is_null(request.all):
             query['All'] = request.all
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag_key):
+        if not DaraCore.is_null(request.tag_key):
             query['TagKey'] = request.tag_key
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UntagResources',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.UntagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def untag_resources(
         self,
-        request: pvtz_20180101_models.UntagResourcesRequest,
-    ) -> pvtz_20180101_models.UntagResourcesResponse:
-        """
-        @summary Removes the tags of multiple zones at a time.
-        
-        @description #### [](#)*Precautions**\
-        You can call this API operation to remove tags added only to zones.
-        
-        @param request: UntagResourcesRequest
-        @return: UntagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
     async def untag_resources_async(
         self,
-        request: pvtz_20180101_models.UntagResourcesRequest,
-    ) -> pvtz_20180101_models.UntagResourcesResponse:
-        """
-        @summary Removes the tags of multiple zones at a time.
-        
-        @description #### [](#)*Precautions**\
-        You can call this API operation to remove tags added only to zones.
-        
-        @param request: UntagResourcesRequest
-        @return: UntagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
     def update_custom_line_with_options(
         self,
-        request: pvtz_20180101_models.UpdateCustomLineRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.UpdateCustomLineResponse:
-        """
-        @summary Modifies a custom line.
-        
-        @param request: UpdateCustomLineRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateCustomLineResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateCustomLineRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCustomLineResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dns_category):
+        if not DaraCore.is_null(request.dns_category):
             query['DnsCategory'] = request.dns_category
-        if not UtilClient.is_unset(request.ipv_4s):
+        if not DaraCore.is_null(request.ipv_4s):
             query['Ipv4s'] = request.ipv_4s
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.line_id):
+        if not DaraCore.is_null(request.line_id):
             query['LineId'] = request.line_id
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateCustomLine',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateCustomLine',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.UpdateCustomLineResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateCustomLineResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_custom_line_with_options_async(
         self,
-        request: pvtz_20180101_models.UpdateCustomLineRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.UpdateCustomLineResponse:
-        """
-        @summary Modifies a custom line.
-        
-        @param request: UpdateCustomLineRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateCustomLineResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateCustomLineRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCustomLineResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.dns_category):
+        if not DaraCore.is_null(request.dns_category):
             query['DnsCategory'] = request.dns_category
-        if not UtilClient.is_unset(request.ipv_4s):
+        if not DaraCore.is_null(request.ipv_4s):
             query['Ipv4s'] = request.ipv_4s
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.line_id):
+        if not DaraCore.is_null(request.line_id):
             query['LineId'] = request.line_id
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateCustomLine',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateCustomLine',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.UpdateCustomLineResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateCustomLineResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_custom_line(
         self,
-        request: pvtz_20180101_models.UpdateCustomLineRequest,
-    ) -> pvtz_20180101_models.UpdateCustomLineResponse:
-        """
-        @summary Modifies a custom line.
-        
-        @param request: UpdateCustomLineRequest
-        @return: UpdateCustomLineResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateCustomLineRequest,
+    ) -> main_models.UpdateCustomLineResponse:
+        runtime = RuntimeOptions()
         return self.update_custom_line_with_options(request, runtime)
 
     async def update_custom_line_async(
         self,
-        request: pvtz_20180101_models.UpdateCustomLineRequest,
-    ) -> pvtz_20180101_models.UpdateCustomLineResponse:
-        """
-        @summary Modifies a custom line.
-        
-        @param request: UpdateCustomLineRequest
-        @return: UpdateCustomLineResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateCustomLineRequest,
+    ) -> main_models.UpdateCustomLineResponse:
+        runtime = RuntimeOptions()
         return await self.update_custom_line_with_options_async(request, runtime)
 
     def update_record_remark_with_options(
         self,
-        request: pvtz_20180101_models.UpdateRecordRemarkRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.UpdateRecordRemarkResponse:
-        """
-        @summary Modifies the description of a Domain Name System (DNS) record based on the record ID.
-        
-        @param request: UpdateRecordRemarkRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateRecordRemarkResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateRecordRemarkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRecordRemarkResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        if not UtilClient.is_unset(request.remark):
+        if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateRecordRemark',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateRecordRemark',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.UpdateRecordRemarkResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateRecordRemarkResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_record_remark_with_options_async(
         self,
-        request: pvtz_20180101_models.UpdateRecordRemarkRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.UpdateRecordRemarkResponse:
-        """
-        @summary Modifies the description of a Domain Name System (DNS) record based on the record ID.
-        
-        @param request: UpdateRecordRemarkRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateRecordRemarkResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateRecordRemarkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRecordRemarkResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        if not UtilClient.is_unset(request.remark):
+        if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateRecordRemark',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateRecordRemark',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.UpdateRecordRemarkResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateRecordRemarkResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_record_remark(
         self,
-        request: pvtz_20180101_models.UpdateRecordRemarkRequest,
-    ) -> pvtz_20180101_models.UpdateRecordRemarkResponse:
-        """
-        @summary Modifies the description of a Domain Name System (DNS) record based on the record ID.
-        
-        @param request: UpdateRecordRemarkRequest
-        @return: UpdateRecordRemarkResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateRecordRemarkRequest,
+    ) -> main_models.UpdateRecordRemarkResponse:
+        runtime = RuntimeOptions()
         return self.update_record_remark_with_options(request, runtime)
 
     async def update_record_remark_async(
         self,
-        request: pvtz_20180101_models.UpdateRecordRemarkRequest,
-    ) -> pvtz_20180101_models.UpdateRecordRemarkResponse:
-        """
-        @summary Modifies the description of a Domain Name System (DNS) record based on the record ID.
-        
-        @param request: UpdateRecordRemarkRequest
-        @return: UpdateRecordRemarkResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateRecordRemarkRequest,
+    ) -> main_models.UpdateRecordRemarkResponse:
+        runtime = RuntimeOptions()
         return await self.update_record_remark_with_options_async(request, runtime)
 
     def update_resolver_endpoint_with_options(
         self,
-        request: pvtz_20180101_models.UpdateResolverEndpointRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.UpdateResolverEndpointResponse:
-        """
-        @summary Modifies an endpoint.
-        
-        @param request: UpdateResolverEndpointRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateResolverEndpointResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateResolverEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateResolverEndpointResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.endpoint_id):
+        if not DaraCore.is_null(request.endpoint_id):
             query['EndpointId'] = request.endpoint_id
-        if not UtilClient.is_unset(request.ip_config):
+        if not DaraCore.is_null(request.ip_config):
             query['IpConfig'] = request.ip_config
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateResolverEndpoint',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateResolverEndpoint',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.UpdateResolverEndpointResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateResolverEndpointResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_resolver_endpoint_with_options_async(
         self,
-        request: pvtz_20180101_models.UpdateResolverEndpointRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.UpdateResolverEndpointResponse:
-        """
-        @summary Modifies an endpoint.
-        
-        @param request: UpdateResolverEndpointRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateResolverEndpointResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateResolverEndpointRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateResolverEndpointResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.endpoint_id):
+        if not DaraCore.is_null(request.endpoint_id):
             query['EndpointId'] = request.endpoint_id
-        if not UtilClient.is_unset(request.ip_config):
+        if not DaraCore.is_null(request.ip_config):
             query['IpConfig'] = request.ip_config
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateResolverEndpoint',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateResolverEndpoint',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.UpdateResolverEndpointResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateResolverEndpointResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_resolver_endpoint(
         self,
-        request: pvtz_20180101_models.UpdateResolverEndpointRequest,
-    ) -> pvtz_20180101_models.UpdateResolverEndpointResponse:
-        """
-        @summary Modifies an endpoint.
-        
-        @param request: UpdateResolverEndpointRequest
-        @return: UpdateResolverEndpointResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateResolverEndpointRequest,
+    ) -> main_models.UpdateResolverEndpointResponse:
+        runtime = RuntimeOptions()
         return self.update_resolver_endpoint_with_options(request, runtime)
 
     async def update_resolver_endpoint_async(
         self,
-        request: pvtz_20180101_models.UpdateResolverEndpointRequest,
-    ) -> pvtz_20180101_models.UpdateResolverEndpointResponse:
-        """
-        @summary Modifies an endpoint.
-        
-        @param request: UpdateResolverEndpointRequest
-        @return: UpdateResolverEndpointResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateResolverEndpointRequest,
+    ) -> main_models.UpdateResolverEndpointResponse:
+        runtime = RuntimeOptions()
         return await self.update_resolver_endpoint_with_options_async(request, runtime)
 
     def update_resolver_rule_with_options(
         self,
-        request: pvtz_20180101_models.UpdateResolverRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.UpdateResolverRuleResponse:
-        """
-        @summary Modifies a forwarding rule.
-        
-        @param request: UpdateResolverRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateResolverRuleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateResolverRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateResolverRuleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.endpoint_id):
+        if not DaraCore.is_null(request.endpoint_id):
             query['EndpointId'] = request.endpoint_id
-        if not UtilClient.is_unset(request.forward_ip):
+        if not DaraCore.is_null(request.forward_ip):
             query['ForwardIp'] = request.forward_ip
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.priority_forward_configs):
+            query['PriorityForwardConfigs'] = request.priority_forward_configs
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateResolverRule',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateResolverRule',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.UpdateResolverRuleResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateResolverRuleResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_resolver_rule_with_options_async(
         self,
-        request: pvtz_20180101_models.UpdateResolverRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.UpdateResolverRuleResponse:
-        """
-        @summary Modifies a forwarding rule.
-        
-        @param request: UpdateResolverRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateResolverRuleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateResolverRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateResolverRuleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.endpoint_id):
+        if not DaraCore.is_null(request.endpoint_id):
             query['EndpointId'] = request.endpoint_id
-        if not UtilClient.is_unset(request.forward_ip):
+        if not DaraCore.is_null(request.forward_ip):
             query['ForwardIp'] = request.forward_ip
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.priority_forward_configs):
+            query['PriorityForwardConfigs'] = request.priority_forward_configs
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateResolverRule',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateResolverRule',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.UpdateResolverRuleResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateResolverRuleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_resolver_rule(
         self,
-        request: pvtz_20180101_models.UpdateResolverRuleRequest,
-    ) -> pvtz_20180101_models.UpdateResolverRuleResponse:
-        """
-        @summary Modifies a forwarding rule.
-        
-        @param request: UpdateResolverRuleRequest
-        @return: UpdateResolverRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateResolverRuleRequest,
+    ) -> main_models.UpdateResolverRuleResponse:
+        runtime = RuntimeOptions()
         return self.update_resolver_rule_with_options(request, runtime)
 
     async def update_resolver_rule_async(
         self,
-        request: pvtz_20180101_models.UpdateResolverRuleRequest,
-    ) -> pvtz_20180101_models.UpdateResolverRuleResponse:
-        """
-        @summary Modifies a forwarding rule.
-        
-        @param request: UpdateResolverRuleRequest
-        @return: UpdateResolverRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateResolverRuleRequest,
+    ) -> main_models.UpdateResolverRuleResponse:
+        runtime = RuntimeOptions()
         return await self.update_resolver_rule_with_options_async(request, runtime)
 
     def update_sync_ecs_host_task_with_options(
         self,
-        request: pvtz_20180101_models.UpdateSyncEcsHostTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.UpdateSyncEcsHostTaskResponse:
-        """
-        @summary Adds or updates a hostname synchronization task.
-        
-        @param request: UpdateSyncEcsHostTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateSyncEcsHostTaskResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateSyncEcsHostTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSyncEcsHostTaskResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['Region'] = request.region
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateSyncEcsHostTask',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateSyncEcsHostTask',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.UpdateSyncEcsHostTaskResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateSyncEcsHostTaskResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_sync_ecs_host_task_with_options_async(
         self,
-        request: pvtz_20180101_models.UpdateSyncEcsHostTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.UpdateSyncEcsHostTaskResponse:
-        """
-        @summary Adds or updates a hostname synchronization task.
-        
-        @param request: UpdateSyncEcsHostTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateSyncEcsHostTaskResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateSyncEcsHostTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSyncEcsHostTaskResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['Region'] = request.region
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateSyncEcsHostTask',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateSyncEcsHostTask',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.UpdateSyncEcsHostTaskResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateSyncEcsHostTaskResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_sync_ecs_host_task(
         self,
-        request: pvtz_20180101_models.UpdateSyncEcsHostTaskRequest,
-    ) -> pvtz_20180101_models.UpdateSyncEcsHostTaskResponse:
-        """
-        @summary Adds or updates a hostname synchronization task.
-        
-        @param request: UpdateSyncEcsHostTaskRequest
-        @return: UpdateSyncEcsHostTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateSyncEcsHostTaskRequest,
+    ) -> main_models.UpdateSyncEcsHostTaskResponse:
+        runtime = RuntimeOptions()
         return self.update_sync_ecs_host_task_with_options(request, runtime)
 
     async def update_sync_ecs_host_task_async(
         self,
-        request: pvtz_20180101_models.UpdateSyncEcsHostTaskRequest,
-    ) -> pvtz_20180101_models.UpdateSyncEcsHostTaskResponse:
-        """
-        @summary Adds or updates a hostname synchronization task.
-        
-        @param request: UpdateSyncEcsHostTaskRequest
-        @return: UpdateSyncEcsHostTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateSyncEcsHostTaskRequest,
+    ) -> main_models.UpdateSyncEcsHostTaskResponse:
+        runtime = RuntimeOptions()
         return await self.update_sync_ecs_host_task_with_options_async(request, runtime)
 
     def update_zone_record_with_options(
         self,
-        request: pvtz_20180101_models.UpdateZoneRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.UpdateZoneRecordResponse:
-        """
-        @summary Modifies a Domain Name System (DNS) record of a zone, including the hostname, record value, and weight value of the DNS record.
-        
-        @description #### *Precautions**\
-        The DNS record modification for a zone in the regular module takes effect only after the time to live (TTL) expires. The DNS record modification for a zone in the acceleration module takes effect immediately.
-        
-        @param request: UpdateZoneRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateZoneRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateZoneRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateZoneRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.line):
+        if not DaraCore.is_null(request.line):
             query['Line'] = request.line
-        if not UtilClient.is_unset(request.priority):
+        if not DaraCore.is_null(request.priority):
             query['Priority'] = request.priority
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        if not UtilClient.is_unset(request.rr):
+        if not DaraCore.is_null(request.rr):
             query['Rr'] = request.rr
-        if not UtilClient.is_unset(request.ttl):
+        if not DaraCore.is_null(request.ttl):
             query['Ttl'] = request.ttl
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['Type'] = request.type
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.value):
+        if not DaraCore.is_null(request.value):
             query['Value'] = request.value
-        if not UtilClient.is_unset(request.weight):
+        if not DaraCore.is_null(request.weight):
             query['Weight'] = request.weight
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateZoneRecord',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateZoneRecord',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.UpdateZoneRecordResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateZoneRecordResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_zone_record_with_options_async(
         self,
-        request: pvtz_20180101_models.UpdateZoneRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.UpdateZoneRecordResponse:
-        """
-        @summary Modifies a Domain Name System (DNS) record of a zone, including the hostname, record value, and weight value of the DNS record.
-        
-        @description #### *Precautions**\
-        The DNS record modification for a zone in the regular module takes effect only after the time to live (TTL) expires. The DNS record modification for a zone in the acceleration module takes effect immediately.
-        
-        @param request: UpdateZoneRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateZoneRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateZoneRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateZoneRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.line):
+        if not DaraCore.is_null(request.line):
             query['Line'] = request.line
-        if not UtilClient.is_unset(request.priority):
+        if not DaraCore.is_null(request.priority):
             query['Priority'] = request.priority
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        if not UtilClient.is_unset(request.rr):
+        if not DaraCore.is_null(request.rr):
             query['Rr'] = request.rr
-        if not UtilClient.is_unset(request.ttl):
+        if not DaraCore.is_null(request.ttl):
             query['Ttl'] = request.ttl
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['Type'] = request.type
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.value):
+        if not DaraCore.is_null(request.value):
             query['Value'] = request.value
-        if not UtilClient.is_unset(request.weight):
+        if not DaraCore.is_null(request.weight):
             query['Weight'] = request.weight
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateZoneRecord',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateZoneRecord',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.UpdateZoneRecordResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateZoneRecordResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_zone_record(
         self,
-        request: pvtz_20180101_models.UpdateZoneRecordRequest,
-    ) -> pvtz_20180101_models.UpdateZoneRecordResponse:
-        """
-        @summary Modifies a Domain Name System (DNS) record of a zone, including the hostname, record value, and weight value of the DNS record.
-        
-        @description #### *Precautions**\
-        The DNS record modification for a zone in the regular module takes effect only after the time to live (TTL) expires. The DNS record modification for a zone in the acceleration module takes effect immediately.
-        
-        @param request: UpdateZoneRecordRequest
-        @return: UpdateZoneRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateZoneRecordRequest,
+    ) -> main_models.UpdateZoneRecordResponse:
+        runtime = RuntimeOptions()
         return self.update_zone_record_with_options(request, runtime)
 
     async def update_zone_record_async(
         self,
-        request: pvtz_20180101_models.UpdateZoneRecordRequest,
-    ) -> pvtz_20180101_models.UpdateZoneRecordResponse:
-        """
-        @summary Modifies a Domain Name System (DNS) record of a zone, including the hostname, record value, and weight value of the DNS record.
-        
-        @description #### *Precautions**\
-        The DNS record modification for a zone in the regular module takes effect only after the time to live (TTL) expires. The DNS record modification for a zone in the acceleration module takes effect immediately.
-        
-        @param request: UpdateZoneRecordRequest
-        @return: UpdateZoneRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateZoneRecordRequest,
+    ) -> main_models.UpdateZoneRecordResponse:
+        runtime = RuntimeOptions()
         return await self.update_zone_record_with_options_async(request, runtime)
 
     def update_zone_remark_with_options(
         self,
-        request: pvtz_20180101_models.UpdateZoneRemarkRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.UpdateZoneRemarkResponse:
-        """
-        @summary Modifies the description of a built-in authoritative zone.
-        
-        @param request: UpdateZoneRemarkRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateZoneRemarkResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateZoneRemarkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateZoneRemarkResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.remark):
+        if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateZoneRemark',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateZoneRemark',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.UpdateZoneRemarkResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateZoneRemarkResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_zone_remark_with_options_async(
         self,
-        request: pvtz_20180101_models.UpdateZoneRemarkRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> pvtz_20180101_models.UpdateZoneRemarkResponse:
-        """
-        @summary Modifies the description of a built-in authoritative zone.
-        
-        @param request: UpdateZoneRemarkRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateZoneRemarkResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateZoneRemarkRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateZoneRemarkResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.remark):
+        if not DaraCore.is_null(request.remark):
             query['Remark'] = request.remark
-        if not UtilClient.is_unset(request.user_client_ip):
+        if not DaraCore.is_null(request.user_client_ip):
             query['UserClientIp'] = request.user_client_ip
-        if not UtilClient.is_unset(request.zone_id):
+        if not DaraCore.is_null(request.zone_id):
             query['ZoneId'] = request.zone_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateZoneRemark',
-            version='2018-01-01',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateZoneRemark',
+            version = '2018-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            pvtz_20180101_models.UpdateZoneRemarkResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateZoneRemarkResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_zone_remark(
         self,
-        request: pvtz_20180101_models.UpdateZoneRemarkRequest,
-    ) -> pvtz_20180101_models.UpdateZoneRemarkResponse:
-        """
-        @summary Modifies the description of a built-in authoritative zone.
-        
-        @param request: UpdateZoneRemarkRequest
-        @return: UpdateZoneRemarkResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateZoneRemarkRequest,
+    ) -> main_models.UpdateZoneRemarkResponse:
+        runtime = RuntimeOptions()
         return self.update_zone_remark_with_options(request, runtime)
 
     async def update_zone_remark_async(
         self,
-        request: pvtz_20180101_models.UpdateZoneRemarkRequest,
-    ) -> pvtz_20180101_models.UpdateZoneRemarkResponse:
-        """
-        @summary Modifies the description of a built-in authoritative zone.
-        
-        @param request: UpdateZoneRemarkRequest
-        @return: UpdateZoneRemarkResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateZoneRemarkRequest,
+    ) -> main_models.UpdateZoneRemarkResponse:
+        runtime = RuntimeOptions()
         return await self.update_zone_remark_with_options_async(request, runtime)
