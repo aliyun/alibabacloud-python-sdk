@@ -3618,6 +3618,116 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_usage_statistics_by_tag_id_with_options_async(request, runtime)
 
+    def save_contacts_with_options(
+        self,
+        request: main_models.SaveContactsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveContactsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.contact_email):
+            query['ContactEmail'] = request.contact_email
+        if not DaraCore.is_null(request.contact_name):
+            query['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.contact_phone):
+            query['ContactPhone'] = request.contact_phone
+        if not DaraCore.is_null(request.mail_status):
+            query['MailStatus'] = request.mail_status
+        if not DaraCore.is_null(request.open_status_warning):
+            query['OpenStatusWarning'] = request.open_status_warning
+        if not DaraCore.is_null(request.opent_attribution_warning):
+            query['OpentAttributionWarning'] = request.opent_attribution_warning
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.phone_status):
+            query['PhoneStatus'] = request.phone_status
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveContacts',
+            version = '2020-02-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveContactsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def save_contacts_with_options_async(
+        self,
+        request: main_models.SaveContactsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SaveContactsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.contact_email):
+            query['ContactEmail'] = request.contact_email
+        if not DaraCore.is_null(request.contact_name):
+            query['ContactName'] = request.contact_name
+        if not DaraCore.is_null(request.contact_phone):
+            query['ContactPhone'] = request.contact_phone
+        if not DaraCore.is_null(request.mail_status):
+            query['MailStatus'] = request.mail_status
+        if not DaraCore.is_null(request.open_status_warning):
+            query['OpenStatusWarning'] = request.open_status_warning
+        if not DaraCore.is_null(request.opent_attribution_warning):
+            query['OpentAttributionWarning'] = request.opent_attribution_warning
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.phone_status):
+            query['PhoneStatus'] = request.phone_status
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SaveContacts',
+            version = '2020-02-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SaveContactsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def save_contacts(
+        self,
+        request: main_models.SaveContactsRequest,
+    ) -> main_models.SaveContactsResponse:
+        runtime = RuntimeOptions()
+        return self.save_contacts_with_options(request, runtime)
+
+    async def save_contacts_async(
+        self,
+        request: main_models.SaveContactsRequest,
+    ) -> main_models.SaveContactsResponse:
+        runtime = RuntimeOptions()
+        return await self.save_contacts_with_options_async(request, runtime)
+
     def three_elements_verification_with_options(
         self,
         request: main_models.ThreeElementsVerificationRequest,

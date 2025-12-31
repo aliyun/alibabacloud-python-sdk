@@ -120,6 +120,9 @@ from ._query_task_list_response import QueryTaskListResponse
 from ._query_usage_statistics_by_tag_id_request import QueryUsageStatisticsByTagIdRequest
 from ._query_usage_statistics_by_tag_id_response_body import QueryUsageStatisticsByTagIdResponseBody
 from ._query_usage_statistics_by_tag_id_response import QueryUsageStatisticsByTagIdResponse
+from ._save_contacts_request import SaveContactsRequest
+from ._save_contacts_response_body import SaveContactsResponseBody
+from ._save_contacts_response import SaveContactsResponse
 from ._three_elements_verification_request import ThreeElementsVerificationRequest
 from ._three_elements_verification_response_body import ThreeElementsVerificationResponseBody
 from ._three_elements_verification_response import ThreeElementsVerificationResponse
@@ -305,6 +308,9 @@ __all__ = [
     QueryUsageStatisticsByTagIdRequest,
     QueryUsageStatisticsByTagIdResponseBody,
     QueryUsageStatisticsByTagIdResponse,
+    SaveContactsRequest,
+    SaveContactsResponseBody,
+    SaveContactsResponse,
     ThreeElementsVerificationRequest,
     ThreeElementsVerificationResponseBody,
     ThreeElementsVerificationResponse,

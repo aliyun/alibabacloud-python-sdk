@@ -1,3 +1,7 @@
+2025-12-31 Version: 3.2.0
+- Support API SaveContacts.
+
+
 2025-12-29 Version: 3.1.0
 - Support API DeleteContacts.
 - Support API ListContacts.
