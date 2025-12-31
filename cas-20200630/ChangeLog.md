@@ -1,3 +1,6 @@
+2025-12-31 Version: 1.5.2
+- Generated python 2020-06-30 for cas.
+
 2025-12-22 Version: 1.5.1
 - Update API CreateClientCertificate: add request parameters CustomIdentifier.
 - Update API CreateClientCertificateWithCsr: add request parameters CustomIdentifier.

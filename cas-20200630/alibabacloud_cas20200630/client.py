@@ -1,24 +1,23 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
 from typing import Dict
-from Tea.core import TeaCore
 
+from alibabacloud_cas20200630 import models as main_models
+from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
-from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_cas20200630 import models as cas_20200630_models
-from alibabacloud_tea_util import models as util_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_tea_openapi.utils import Utils
+from darabonba.core import DaraCore as DaraCore
+from darabonba.runtime import RuntimeOptions
 
-
+"""
+"""
 class Client(OpenApiClient):
-    """
-    *\
-    """
+
     def __init__(
-        self, 
-        config: open_api_models.Config,
+        self,
+        config: open_api_util_models.Config,
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
@@ -88,4378 +87,3044 @@ class Client(OpenApiClient):
         endpoint_map: Dict[str, str],
         endpoint: str,
     ) -> str:
-        if not UtilClient.empty(endpoint):
+        if not DaraCore.is_null(endpoint):
             return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+        if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
     def assign_certificate_count_with_options(
         self,
-        request: cas_20200630_models.AssignCertificateCountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.AssignCertificateCountResponse:
-        """
-        @summary 分配证书使用数量
-        
-        @param request: AssignCertificateCountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AssignCertificateCountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AssignCertificateCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AssignCertificateCountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cert_total_count):
+        if not DaraCore.is_null(request.cert_total_count):
             query['CertTotalCount'] = request.cert_total_count
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             query['Id'] = request.id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AssignCertificateCount',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AssignCertificateCount',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.AssignCertificateCountResponse(),
+        return DaraCore.from_map(
+            main_models.AssignCertificateCountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def assign_certificate_count_with_options_async(
         self,
-        request: cas_20200630_models.AssignCertificateCountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.AssignCertificateCountResponse:
-        """
-        @summary 分配证书使用数量
-        
-        @param request: AssignCertificateCountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AssignCertificateCountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AssignCertificateCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AssignCertificateCountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cert_total_count):
+        if not DaraCore.is_null(request.cert_total_count):
             query['CertTotalCount'] = request.cert_total_count
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             query['Id'] = request.id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AssignCertificateCount',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AssignCertificateCount',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.AssignCertificateCountResponse(),
+        return DaraCore.from_map(
+            main_models.AssignCertificateCountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def assign_certificate_count(
         self,
-        request: cas_20200630_models.AssignCertificateCountRequest,
-    ) -> cas_20200630_models.AssignCertificateCountResponse:
-        """
-        @summary 分配证书使用数量
-        
-        @param request: AssignCertificateCountRequest
-        @return: AssignCertificateCountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AssignCertificateCountRequest,
+    ) -> main_models.AssignCertificateCountResponse:
+        runtime = RuntimeOptions()
         return self.assign_certificate_count_with_options(request, runtime)
 
     async def assign_certificate_count_async(
         self,
-        request: cas_20200630_models.AssignCertificateCountRequest,
-    ) -> cas_20200630_models.AssignCertificateCountResponse:
-        """
-        @summary 分配证书使用数量
-        
-        @param request: AssignCertificateCountRequest
-        @return: AssignCertificateCountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AssignCertificateCountRequest,
+    ) -> main_models.AssignCertificateCountResponse:
+        runtime = RuntimeOptions()
         return await self.assign_certificate_count_with_options_async(request, runtime)
 
     def create_client_certificate_with_options(
         self,
-        request: cas_20200630_models.CreateClientCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateClientCertificateResponse:
-        """
-        @summary Issues a client certificate by using a system-generated certificate signing request (CSR) file.
-        
-        @description Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](~~CreateRootCACertificate~~) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](~~CreateRootCACertificate~~) operation. Only intermediate CA certificates can issue client certificates.
-        ## QPS limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateClientCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateClientCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateClientCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateClientCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.after_time):
+        if not DaraCore.is_null(request.after_time):
             query['AfterTime'] = request.after_time
-        if not UtilClient.is_unset(request.algorithm):
+        if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
-        if not UtilClient.is_unset(request.before_time):
+        if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
-        if not UtilClient.is_unset(request.common_name):
+        if not DaraCore.is_null(request.common_name):
             query['CommonName'] = request.common_name
-        if not UtilClient.is_unset(request.country):
+        if not DaraCore.is_null(request.country):
             query['Country'] = request.country
-        if not UtilClient.is_unset(request.custom_identifier):
+        if not DaraCore.is_null(request.custom_identifier):
             query['CustomIdentifier'] = request.custom_identifier
-        if not UtilClient.is_unset(request.days):
+        if not DaraCore.is_null(request.days):
             query['Days'] = request.days
-        if not UtilClient.is_unset(request.enable_crl):
+        if not DaraCore.is_null(request.enable_crl):
             query['EnableCrl'] = request.enable_crl
-        if not UtilClient.is_unset(request.immediately):
+        if not DaraCore.is_null(request.immediately):
             query['Immediately'] = request.immediately
-        if not UtilClient.is_unset(request.locality):
+        if not DaraCore.is_null(request.locality):
             query['Locality'] = request.locality
-        if not UtilClient.is_unset(request.months):
+        if not DaraCore.is_null(request.months):
             query['Months'] = request.months
-        if not UtilClient.is_unset(request.organization):
+        if not DaraCore.is_null(request.organization):
             query['Organization'] = request.organization
-        if not UtilClient.is_unset(request.organization_unit):
+        if not DaraCore.is_null(request.organization_unit):
             query['OrganizationUnit'] = request.organization_unit
-        if not UtilClient.is_unset(request.parent_identifier):
+        if not DaraCore.is_null(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.san_type):
+        if not DaraCore.is_null(request.san_type):
             query['SanType'] = request.san_type
-        if not UtilClient.is_unset(request.san_value):
+        if not DaraCore.is_null(request.san_value):
             query['SanValue'] = request.san_value
-        if not UtilClient.is_unset(request.state):
+        if not DaraCore.is_null(request.state):
             query['State'] = request.state
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.years):
+        if not DaraCore.is_null(request.years):
             query['Years'] = request.years
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateClientCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateClientCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateClientCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.CreateClientCertificateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_client_certificate_with_options_async(
         self,
-        request: cas_20200630_models.CreateClientCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateClientCertificateResponse:
-        """
-        @summary Issues a client certificate by using a system-generated certificate signing request (CSR) file.
-        
-        @description Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](~~CreateRootCACertificate~~) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](~~CreateRootCACertificate~~) operation. Only intermediate CA certificates can issue client certificates.
-        ## QPS limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateClientCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateClientCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateClientCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateClientCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.after_time):
+        if not DaraCore.is_null(request.after_time):
             query['AfterTime'] = request.after_time
-        if not UtilClient.is_unset(request.algorithm):
+        if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
-        if not UtilClient.is_unset(request.before_time):
+        if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
-        if not UtilClient.is_unset(request.common_name):
+        if not DaraCore.is_null(request.common_name):
             query['CommonName'] = request.common_name
-        if not UtilClient.is_unset(request.country):
+        if not DaraCore.is_null(request.country):
             query['Country'] = request.country
-        if not UtilClient.is_unset(request.custom_identifier):
+        if not DaraCore.is_null(request.custom_identifier):
             query['CustomIdentifier'] = request.custom_identifier
-        if not UtilClient.is_unset(request.days):
+        if not DaraCore.is_null(request.days):
             query['Days'] = request.days
-        if not UtilClient.is_unset(request.enable_crl):
+        if not DaraCore.is_null(request.enable_crl):
             query['EnableCrl'] = request.enable_crl
-        if not UtilClient.is_unset(request.immediately):
+        if not DaraCore.is_null(request.immediately):
             query['Immediately'] = request.immediately
-        if not UtilClient.is_unset(request.locality):
+        if not DaraCore.is_null(request.locality):
             query['Locality'] = request.locality
-        if not UtilClient.is_unset(request.months):
+        if not DaraCore.is_null(request.months):
             query['Months'] = request.months
-        if not UtilClient.is_unset(request.organization):
+        if not DaraCore.is_null(request.organization):
             query['Organization'] = request.organization
-        if not UtilClient.is_unset(request.organization_unit):
+        if not DaraCore.is_null(request.organization_unit):
             query['OrganizationUnit'] = request.organization_unit
-        if not UtilClient.is_unset(request.parent_identifier):
+        if not DaraCore.is_null(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.san_type):
+        if not DaraCore.is_null(request.san_type):
             query['SanType'] = request.san_type
-        if not UtilClient.is_unset(request.san_value):
+        if not DaraCore.is_null(request.san_value):
             query['SanValue'] = request.san_value
-        if not UtilClient.is_unset(request.state):
+        if not DaraCore.is_null(request.state):
             query['State'] = request.state
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.years):
+        if not DaraCore.is_null(request.years):
             query['Years'] = request.years
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateClientCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateClientCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateClientCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.CreateClientCertificateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_client_certificate(
         self,
-        request: cas_20200630_models.CreateClientCertificateRequest,
-    ) -> cas_20200630_models.CreateClientCertificateResponse:
-        """
-        @summary Issues a client certificate by using a system-generated certificate signing request (CSR) file.
-        
-        @description Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](~~CreateRootCACertificate~~) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](~~CreateRootCACertificate~~) operation. Only intermediate CA certificates can issue client certificates.
-        ## QPS limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateClientCertificateRequest
-        @return: CreateClientCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateClientCertificateRequest,
+    ) -> main_models.CreateClientCertificateResponse:
+        runtime = RuntimeOptions()
         return self.create_client_certificate_with_options(request, runtime)
 
     async def create_client_certificate_async(
         self,
-        request: cas_20200630_models.CreateClientCertificateRequest,
-    ) -> cas_20200630_models.CreateClientCertificateResponse:
-        """
-        @summary Issues a client certificate by using a system-generated certificate signing request (CSR) file.
-        
-        @description Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](~~CreateRootCACertificate~~) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](~~CreateRootCACertificate~~) operation. Only intermediate CA certificates can issue client certificates.
-        ## QPS limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateClientCertificateRequest
-        @return: CreateClientCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateClientCertificateRequest,
+    ) -> main_models.CreateClientCertificateResponse:
+        runtime = RuntimeOptions()
         return await self.create_client_certificate_with_options_async(request, runtime)
 
     def create_client_certificate_with_csr_with_options(
         self,
-        request: cas_20200630_models.CreateClientCertificateWithCsrRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateClientCertificateWithCsrResponse:
-        """
-        @summary Issues a client certificate by using a custom certificate signing request (CSR) file.
-        
-        @description Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](https://help.aliyun.com/document_detail/328093.html) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](https://help.aliyun.com/document_detail/328094.html) operation. Only intermediate CA certificates can be used to issue client certificates.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateClientCertificateWithCsrRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateClientCertificateWithCsrResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateClientCertificateWithCsrRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateClientCertificateWithCsrResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.after_time):
+        if not DaraCore.is_null(request.after_time):
             query['AfterTime'] = request.after_time
-        if not UtilClient.is_unset(request.algorithm):
+        if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
-        if not UtilClient.is_unset(request.before_time):
+        if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
-        if not UtilClient.is_unset(request.common_name):
+        if not DaraCore.is_null(request.common_name):
             query['CommonName'] = request.common_name
-        if not UtilClient.is_unset(request.country):
+        if not DaraCore.is_null(request.country):
             query['Country'] = request.country
-        if not UtilClient.is_unset(request.csr):
+        if not DaraCore.is_null(request.csr):
             query['Csr'] = request.csr
-        if not UtilClient.is_unset(request.custom_identifier):
+        if not DaraCore.is_null(request.custom_identifier):
             query['CustomIdentifier'] = request.custom_identifier
-        if not UtilClient.is_unset(request.days):
+        if not DaraCore.is_null(request.days):
             query['Days'] = request.days
-        if not UtilClient.is_unset(request.enable_crl):
+        if not DaraCore.is_null(request.enable_crl):
             query['EnableCrl'] = request.enable_crl
-        if not UtilClient.is_unset(request.immediately):
+        if not DaraCore.is_null(request.immediately):
             query['Immediately'] = request.immediately
-        if not UtilClient.is_unset(request.locality):
+        if not DaraCore.is_null(request.locality):
             query['Locality'] = request.locality
-        if not UtilClient.is_unset(request.months):
+        if not DaraCore.is_null(request.months):
             query['Months'] = request.months
-        if not UtilClient.is_unset(request.organization):
+        if not DaraCore.is_null(request.organization):
             query['Organization'] = request.organization
-        if not UtilClient.is_unset(request.organization_unit):
+        if not DaraCore.is_null(request.organization_unit):
             query['OrganizationUnit'] = request.organization_unit
-        if not UtilClient.is_unset(request.parent_identifier):
+        if not DaraCore.is_null(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.san_type):
+        if not DaraCore.is_null(request.san_type):
             query['SanType'] = request.san_type
-        if not UtilClient.is_unset(request.san_value):
+        if not DaraCore.is_null(request.san_value):
             query['SanValue'] = request.san_value
-        if not UtilClient.is_unset(request.state):
+        if not DaraCore.is_null(request.state):
             query['State'] = request.state
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.years):
+        if not DaraCore.is_null(request.years):
             query['Years'] = request.years
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateClientCertificateWithCsr',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateClientCertificateWithCsr',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateClientCertificateWithCsrResponse(),
+        return DaraCore.from_map(
+            main_models.CreateClientCertificateWithCsrResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_client_certificate_with_csr_with_options_async(
         self,
-        request: cas_20200630_models.CreateClientCertificateWithCsrRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateClientCertificateWithCsrResponse:
-        """
-        @summary Issues a client certificate by using a custom certificate signing request (CSR) file.
-        
-        @description Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](https://help.aliyun.com/document_detail/328093.html) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](https://help.aliyun.com/document_detail/328094.html) operation. Only intermediate CA certificates can be used to issue client certificates.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateClientCertificateWithCsrRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateClientCertificateWithCsrResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateClientCertificateWithCsrRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateClientCertificateWithCsrResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.after_time):
+        if not DaraCore.is_null(request.after_time):
             query['AfterTime'] = request.after_time
-        if not UtilClient.is_unset(request.algorithm):
+        if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
-        if not UtilClient.is_unset(request.before_time):
+        if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
-        if not UtilClient.is_unset(request.common_name):
+        if not DaraCore.is_null(request.common_name):
             query['CommonName'] = request.common_name
-        if not UtilClient.is_unset(request.country):
+        if not DaraCore.is_null(request.country):
             query['Country'] = request.country
-        if not UtilClient.is_unset(request.csr):
+        if not DaraCore.is_null(request.csr):
             query['Csr'] = request.csr
-        if not UtilClient.is_unset(request.custom_identifier):
+        if not DaraCore.is_null(request.custom_identifier):
             query['CustomIdentifier'] = request.custom_identifier
-        if not UtilClient.is_unset(request.days):
+        if not DaraCore.is_null(request.days):
             query['Days'] = request.days
-        if not UtilClient.is_unset(request.enable_crl):
+        if not DaraCore.is_null(request.enable_crl):
             query['EnableCrl'] = request.enable_crl
-        if not UtilClient.is_unset(request.immediately):
+        if not DaraCore.is_null(request.immediately):
             query['Immediately'] = request.immediately
-        if not UtilClient.is_unset(request.locality):
+        if not DaraCore.is_null(request.locality):
             query['Locality'] = request.locality
-        if not UtilClient.is_unset(request.months):
+        if not DaraCore.is_null(request.months):
             query['Months'] = request.months
-        if not UtilClient.is_unset(request.organization):
+        if not DaraCore.is_null(request.organization):
             query['Organization'] = request.organization
-        if not UtilClient.is_unset(request.organization_unit):
+        if not DaraCore.is_null(request.organization_unit):
             query['OrganizationUnit'] = request.organization_unit
-        if not UtilClient.is_unset(request.parent_identifier):
+        if not DaraCore.is_null(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.san_type):
+        if not DaraCore.is_null(request.san_type):
             query['SanType'] = request.san_type
-        if not UtilClient.is_unset(request.san_value):
+        if not DaraCore.is_null(request.san_value):
             query['SanValue'] = request.san_value
-        if not UtilClient.is_unset(request.state):
+        if not DaraCore.is_null(request.state):
             query['State'] = request.state
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.years):
+        if not DaraCore.is_null(request.years):
             query['Years'] = request.years
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateClientCertificateWithCsr',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateClientCertificateWithCsr',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateClientCertificateWithCsrResponse(),
+        return DaraCore.from_map(
+            main_models.CreateClientCertificateWithCsrResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_client_certificate_with_csr(
         self,
-        request: cas_20200630_models.CreateClientCertificateWithCsrRequest,
-    ) -> cas_20200630_models.CreateClientCertificateWithCsrResponse:
-        """
-        @summary Issues a client certificate by using a custom certificate signing request (CSR) file.
-        
-        @description Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](https://help.aliyun.com/document_detail/328093.html) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](https://help.aliyun.com/document_detail/328094.html) operation. Only intermediate CA certificates can be used to issue client certificates.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateClientCertificateWithCsrRequest
-        @return: CreateClientCertificateWithCsrResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateClientCertificateWithCsrRequest,
+    ) -> main_models.CreateClientCertificateWithCsrResponse:
+        runtime = RuntimeOptions()
         return self.create_client_certificate_with_csr_with_options(request, runtime)
 
     async def create_client_certificate_with_csr_async(
         self,
-        request: cas_20200630_models.CreateClientCertificateWithCsrRequest,
-    ) -> cas_20200630_models.CreateClientCertificateWithCsrResponse:
-        """
-        @summary Issues a client certificate by using a custom certificate signing request (CSR) file.
-        
-        @description Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](https://help.aliyun.com/document_detail/328093.html) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](https://help.aliyun.com/document_detail/328094.html) operation. Only intermediate CA certificates can be used to issue client certificates.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateClientCertificateWithCsrRequest
-        @return: CreateClientCertificateWithCsrResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateClientCertificateWithCsrRequest,
+    ) -> main_models.CreateClientCertificateWithCsrResponse:
+        runtime = RuntimeOptions()
         return await self.create_client_certificate_with_csr_with_options_async(request, runtime)
 
     def create_custom_certificate_with_options(
         self,
-        request: cas_20200630_models.CreateCustomCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateCustomCertificateResponse:
-        """
-        @summary Issues a certificate based on the specified key usage, extended key usage, and name and alias of the entity that uses the certificate.
-        
-        @description By default, the name of the entity is obtained from the certificate signing request (CSR) of the certificate that you want to issue. If you specify a different name for the entity, the name of the entity in the CSR becomes invalid. The specified name is used to issue the certificate.
-        You must specify the key usage and extended key usage based on the certificate type. The following list describes common certificate types:
-        Server certificate
-        Key usage: digitalSignature or keyEncipherment
-        Extended key usage: serverAuth
-        Client certificate
-        Key usage: digitalSignature or keyEncipherment
-        Extended key usage: clientAuth
-        Mutual Transport Layer Security (TLS) authentication certificate
-        Key usage: digitalSignature or keyEncipherment
-        Extended key usage: serverAuth or clientAuth
-        Email certificate
-        Key usage: digitalSignature or contentCommitment
-        Extended key usage: emailProtection
-        Note: Compliant certificate authorities (CAs) are managed by third-party authorities. This operation is not supported for compliant CAs.
-        
-        @param request: CreateCustomCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateCustomCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateCustomCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.api_passthrough):
+        if not DaraCore.is_null(request.api_passthrough):
             query['ApiPassthrough'] = request.api_passthrough
-        if not UtilClient.is_unset(request.csr):
+        if not DaraCore.is_null(request.csr):
             query['Csr'] = request.csr
-        if not UtilClient.is_unset(request.enable_crl):
+        if not DaraCore.is_null(request.enable_crl):
             query['EnableCrl'] = request.enable_crl
-        if not UtilClient.is_unset(request.immediately):
+        if not DaraCore.is_null(request.immediately):
             query['Immediately'] = request.immediately
-        if not UtilClient.is_unset(request.parent_identifier):
+        if not DaraCore.is_null(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.validity):
+        if not DaraCore.is_null(request.validity):
             query['Validity'] = request.validity
-        if not UtilClient.is_unset(request.custom_identifier):
+        if not DaraCore.is_null(request.custom_identifier):
             query['customIdentifier'] = request.custom_identifier
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateCustomCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateCustomCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateCustomCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.CreateCustomCertificateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_custom_certificate_with_options_async(
         self,
-        request: cas_20200630_models.CreateCustomCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateCustomCertificateResponse:
-        """
-        @summary Issues a certificate based on the specified key usage, extended key usage, and name and alias of the entity that uses the certificate.
-        
-        @description By default, the name of the entity is obtained from the certificate signing request (CSR) of the certificate that you want to issue. If you specify a different name for the entity, the name of the entity in the CSR becomes invalid. The specified name is used to issue the certificate.
-        You must specify the key usage and extended key usage based on the certificate type. The following list describes common certificate types:
-        Server certificate
-        Key usage: digitalSignature or keyEncipherment
-        Extended key usage: serverAuth
-        Client certificate
-        Key usage: digitalSignature or keyEncipherment
-        Extended key usage: clientAuth
-        Mutual Transport Layer Security (TLS) authentication certificate
-        Key usage: digitalSignature or keyEncipherment
-        Extended key usage: serverAuth or clientAuth
-        Email certificate
-        Key usage: digitalSignature or contentCommitment
-        Extended key usage: emailProtection
-        Note: Compliant certificate authorities (CAs) are managed by third-party authorities. This operation is not supported for compliant CAs.
-        
-        @param request: CreateCustomCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateCustomCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateCustomCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.api_passthrough):
+        if not DaraCore.is_null(request.api_passthrough):
             query['ApiPassthrough'] = request.api_passthrough
-        if not UtilClient.is_unset(request.csr):
+        if not DaraCore.is_null(request.csr):
             query['Csr'] = request.csr
-        if not UtilClient.is_unset(request.enable_crl):
+        if not DaraCore.is_null(request.enable_crl):
             query['EnableCrl'] = request.enable_crl
-        if not UtilClient.is_unset(request.immediately):
+        if not DaraCore.is_null(request.immediately):
             query['Immediately'] = request.immediately
-        if not UtilClient.is_unset(request.parent_identifier):
+        if not DaraCore.is_null(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.validity):
+        if not DaraCore.is_null(request.validity):
             query['Validity'] = request.validity
-        if not UtilClient.is_unset(request.custom_identifier):
+        if not DaraCore.is_null(request.custom_identifier):
             query['customIdentifier'] = request.custom_identifier
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateCustomCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateCustomCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateCustomCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.CreateCustomCertificateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_custom_certificate(
         self,
-        request: cas_20200630_models.CreateCustomCertificateRequest,
-    ) -> cas_20200630_models.CreateCustomCertificateResponse:
-        """
-        @summary Issues a certificate based on the specified key usage, extended key usage, and name and alias of the entity that uses the certificate.
-        
-        @description By default, the name of the entity is obtained from the certificate signing request (CSR) of the certificate that you want to issue. If you specify a different name for the entity, the name of the entity in the CSR becomes invalid. The specified name is used to issue the certificate.
-        You must specify the key usage and extended key usage based on the certificate type. The following list describes common certificate types:
-        Server certificate
-        Key usage: digitalSignature or keyEncipherment
-        Extended key usage: serverAuth
-        Client certificate
-        Key usage: digitalSignature or keyEncipherment
-        Extended key usage: clientAuth
-        Mutual Transport Layer Security (TLS) authentication certificate
-        Key usage: digitalSignature or keyEncipherment
-        Extended key usage: serverAuth or clientAuth
-        Email certificate
-        Key usage: digitalSignature or contentCommitment
-        Extended key usage: emailProtection
-        Note: Compliant certificate authorities (CAs) are managed by third-party authorities. This operation is not supported for compliant CAs.
-        
-        @param request: CreateCustomCertificateRequest
-        @return: CreateCustomCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateCustomCertificateRequest,
+    ) -> main_models.CreateCustomCertificateResponse:
+        runtime = RuntimeOptions()
         return self.create_custom_certificate_with_options(request, runtime)
 
     async def create_custom_certificate_async(
         self,
-        request: cas_20200630_models.CreateCustomCertificateRequest,
-    ) -> cas_20200630_models.CreateCustomCertificateResponse:
-        """
-        @summary Issues a certificate based on the specified key usage, extended key usage, and name and alias of the entity that uses the certificate.
-        
-        @description By default, the name of the entity is obtained from the certificate signing request (CSR) of the certificate that you want to issue. If you specify a different name for the entity, the name of the entity in the CSR becomes invalid. The specified name is used to issue the certificate.
-        You must specify the key usage and extended key usage based on the certificate type. The following list describes common certificate types:
-        Server certificate
-        Key usage: digitalSignature or keyEncipherment
-        Extended key usage: serverAuth
-        Client certificate
-        Key usage: digitalSignature or keyEncipherment
-        Extended key usage: clientAuth
-        Mutual Transport Layer Security (TLS) authentication certificate
-        Key usage: digitalSignature or keyEncipherment
-        Extended key usage: serverAuth or clientAuth
-        Email certificate
-        Key usage: digitalSignature or contentCommitment
-        Extended key usage: emailProtection
-        Note: Compliant certificate authorities (CAs) are managed by third-party authorities. This operation is not supported for compliant CAs.
-        
-        @param request: CreateCustomCertificateRequest
-        @return: CreateCustomCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateCustomCertificateRequest,
+    ) -> main_models.CreateCustomCertificateResponse:
+        runtime = RuntimeOptions()
         return await self.create_custom_certificate_with_options_async(request, runtime)
 
     def create_external_cacertificate_with_options(
         self,
-        tmp_req: cas_20200630_models.CreateExternalCACertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateExternalCACertificateResponse:
-        """
-        @summary 创建外部子CA证书
-        
-        @param tmp_req: CreateExternalCACertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateExternalCACertificateResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cas_20200630_models.CreateExternalCACertificateShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.api_passthrough):
-            request.api_passthrough_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.api_passthrough, 'ApiPassthrough', 'json')
+        tmp_req: main_models.CreateExternalCACertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateExternalCACertificateResponse:
+        tmp_req.validate()
+        request = main_models.CreateExternalCACertificateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.api_passthrough):
+            request.api_passthrough_shrink = Utils.array_to_string_with_specified_style(tmp_req.api_passthrough, 'ApiPassthrough', 'json')
         query = {}
-        if not UtilClient.is_unset(request.api_passthrough_shrink):
+        if not DaraCore.is_null(request.api_passthrough_shrink):
             query['ApiPassthrough'] = request.api_passthrough_shrink
-        if not UtilClient.is_unset(request.csr):
+        if not DaraCore.is_null(request.csr):
             query['Csr'] = request.csr
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.validity):
+        if not DaraCore.is_null(request.validity):
             query['Validity'] = request.validity
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateExternalCACertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateExternalCACertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateExternalCACertificateResponse(),
+        return DaraCore.from_map(
+            main_models.CreateExternalCACertificateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_external_cacertificate_with_options_async(
         self,
-        tmp_req: cas_20200630_models.CreateExternalCACertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateExternalCACertificateResponse:
-        """
-        @summary 创建外部子CA证书
-        
-        @param tmp_req: CreateExternalCACertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateExternalCACertificateResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = cas_20200630_models.CreateExternalCACertificateShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.api_passthrough):
-            request.api_passthrough_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.api_passthrough, 'ApiPassthrough', 'json')
+        tmp_req: main_models.CreateExternalCACertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateExternalCACertificateResponse:
+        tmp_req.validate()
+        request = main_models.CreateExternalCACertificateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.api_passthrough):
+            request.api_passthrough_shrink = Utils.array_to_string_with_specified_style(tmp_req.api_passthrough, 'ApiPassthrough', 'json')
         query = {}
-        if not UtilClient.is_unset(request.api_passthrough_shrink):
+        if not DaraCore.is_null(request.api_passthrough_shrink):
             query['ApiPassthrough'] = request.api_passthrough_shrink
-        if not UtilClient.is_unset(request.csr):
+        if not DaraCore.is_null(request.csr):
             query['Csr'] = request.csr
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.validity):
+        if not DaraCore.is_null(request.validity):
             query['Validity'] = request.validity
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateExternalCACertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateExternalCACertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateExternalCACertificateResponse(),
+        return DaraCore.from_map(
+            main_models.CreateExternalCACertificateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_external_cacertificate(
         self,
-        request: cas_20200630_models.CreateExternalCACertificateRequest,
-    ) -> cas_20200630_models.CreateExternalCACertificateResponse:
-        """
-        @summary 创建外部子CA证书
-        
-        @param request: CreateExternalCACertificateRequest
-        @return: CreateExternalCACertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateExternalCACertificateRequest,
+    ) -> main_models.CreateExternalCACertificateResponse:
+        runtime = RuntimeOptions()
         return self.create_external_cacertificate_with_options(request, runtime)
 
     async def create_external_cacertificate_async(
         self,
-        request: cas_20200630_models.CreateExternalCACertificateRequest,
-    ) -> cas_20200630_models.CreateExternalCACertificateResponse:
-        """
-        @summary 创建外部子CA证书
-        
-        @param request: CreateExternalCACertificateRequest
-        @return: CreateExternalCACertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateExternalCACertificateRequest,
+    ) -> main_models.CreateExternalCACertificateResponse:
+        runtime = RuntimeOptions()
         return await self.create_external_cacertificate_with_options_async(request, runtime)
 
     def create_revoke_client_certificate_with_options(
         self,
-        request: cas_20200630_models.CreateRevokeClientCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateRevokeClientCertificateResponse:
-        """
-        @summary Revokes a client certificate or a server certificate.
-        
-        @description After a client certificate or a server certificate is revoked, the client or the server on which the certificate is installed cannot establish HTTPS connections with other devices.
-        After a client certificate or a server certificate is revoked, you can call the [DeleteClientCertificate](https://help.aliyun.com/document_detail/330880.html) operation to permanently delete the certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateRevokeClientCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateRevokeClientCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateRevokeClientCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRevokeClientCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateRevokeClientCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateRevokeClientCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateRevokeClientCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.CreateRevokeClientCertificateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_revoke_client_certificate_with_options_async(
         self,
-        request: cas_20200630_models.CreateRevokeClientCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateRevokeClientCertificateResponse:
-        """
-        @summary Revokes a client certificate or a server certificate.
-        
-        @description After a client certificate or a server certificate is revoked, the client or the server on which the certificate is installed cannot establish HTTPS connections with other devices.
-        After a client certificate or a server certificate is revoked, you can call the [DeleteClientCertificate](https://help.aliyun.com/document_detail/330880.html) operation to permanently delete the certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateRevokeClientCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateRevokeClientCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateRevokeClientCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRevokeClientCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateRevokeClientCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateRevokeClientCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateRevokeClientCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.CreateRevokeClientCertificateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_revoke_client_certificate(
         self,
-        request: cas_20200630_models.CreateRevokeClientCertificateRequest,
-    ) -> cas_20200630_models.CreateRevokeClientCertificateResponse:
-        """
-        @summary Revokes a client certificate or a server certificate.
-        
-        @description After a client certificate or a server certificate is revoked, the client or the server on which the certificate is installed cannot establish HTTPS connections with other devices.
-        After a client certificate or a server certificate is revoked, you can call the [DeleteClientCertificate](https://help.aliyun.com/document_detail/330880.html) operation to permanently delete the certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateRevokeClientCertificateRequest
-        @return: CreateRevokeClientCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateRevokeClientCertificateRequest,
+    ) -> main_models.CreateRevokeClientCertificateResponse:
+        runtime = RuntimeOptions()
         return self.create_revoke_client_certificate_with_options(request, runtime)
 
     async def create_revoke_client_certificate_async(
         self,
-        request: cas_20200630_models.CreateRevokeClientCertificateRequest,
-    ) -> cas_20200630_models.CreateRevokeClientCertificateResponse:
-        """
-        @summary Revokes a client certificate or a server certificate.
-        
-        @description After a client certificate or a server certificate is revoked, the client or the server on which the certificate is installed cannot establish HTTPS connections with other devices.
-        After a client certificate or a server certificate is revoked, you can call the [DeleteClientCertificate](https://help.aliyun.com/document_detail/330880.html) operation to permanently delete the certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateRevokeClientCertificateRequest
-        @return: CreateRevokeClientCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateRevokeClientCertificateRequest,
+    ) -> main_models.CreateRevokeClientCertificateResponse:
+        runtime = RuntimeOptions()
         return await self.create_revoke_client_certificate_with_options_async(request, runtime)
 
     def create_root_cacertificate_with_options(
         self,
-        request: cas_20200630_models.CreateRootCACertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateRootCACertificateResponse:
-        """
-        @summary Creates a root certificate authority (CA) certificate.
-        
-        @description You can call the CreateRootCACertificate operation to create a self-signed root CA certificate. A root CA certificate is the trust anchor in a chain of trust for private certificates that are used within an enterprise. You must create a root CA certificate before you can use the root CA certificate to issue intermediate CA certificates. Then, you can use the intermediate CA certificates to issue client certificates and server certificates.
-        Before you call this operation, make sure that you have purchased a private root CA instance by using the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Create a private CA](https://help.aliyun.com/document_detail/208553.html).
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateRootCACertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateRootCACertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateRootCACertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRootCACertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.algorithm):
+        if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.common_name):
+        if not DaraCore.is_null(request.common_name):
             query['CommonName'] = request.common_name
-        if not UtilClient.is_unset(request.country_code):
+        if not DaraCore.is_null(request.country_code):
             query['CountryCode'] = request.country_code
-        if not UtilClient.is_unset(request.locality):
+        if not DaraCore.is_null(request.locality):
             query['Locality'] = request.locality
-        if not UtilClient.is_unset(request.organization):
+        if not DaraCore.is_null(request.organization):
             query['Organization'] = request.organization
-        if not UtilClient.is_unset(request.organization_unit):
+        if not DaraCore.is_null(request.organization_unit):
             query['OrganizationUnit'] = request.organization_unit
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.state):
+        if not DaraCore.is_null(request.state):
             query['State'] = request.state
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.years):
+        if not DaraCore.is_null(request.years):
             query['Years'] = request.years
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateRootCACertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateRootCACertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateRootCACertificateResponse(),
+        return DaraCore.from_map(
+            main_models.CreateRootCACertificateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_root_cacertificate_with_options_async(
         self,
-        request: cas_20200630_models.CreateRootCACertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateRootCACertificateResponse:
-        """
-        @summary Creates a root certificate authority (CA) certificate.
-        
-        @description You can call the CreateRootCACertificate operation to create a self-signed root CA certificate. A root CA certificate is the trust anchor in a chain of trust for private certificates that are used within an enterprise. You must create a root CA certificate before you can use the root CA certificate to issue intermediate CA certificates. Then, you can use the intermediate CA certificates to issue client certificates and server certificates.
-        Before you call this operation, make sure that you have purchased a private root CA instance by using the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Create a private CA](https://help.aliyun.com/document_detail/208553.html).
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateRootCACertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateRootCACertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateRootCACertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRootCACertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.algorithm):
+        if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.common_name):
+        if not DaraCore.is_null(request.common_name):
             query['CommonName'] = request.common_name
-        if not UtilClient.is_unset(request.country_code):
+        if not DaraCore.is_null(request.country_code):
             query['CountryCode'] = request.country_code
-        if not UtilClient.is_unset(request.locality):
+        if not DaraCore.is_null(request.locality):
             query['Locality'] = request.locality
-        if not UtilClient.is_unset(request.organization):
+        if not DaraCore.is_null(request.organization):
             query['Organization'] = request.organization
-        if not UtilClient.is_unset(request.organization_unit):
+        if not DaraCore.is_null(request.organization_unit):
             query['OrganizationUnit'] = request.organization_unit
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.state):
+        if not DaraCore.is_null(request.state):
             query['State'] = request.state
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.years):
+        if not DaraCore.is_null(request.years):
             query['Years'] = request.years
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateRootCACertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateRootCACertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateRootCACertificateResponse(),
+        return DaraCore.from_map(
+            main_models.CreateRootCACertificateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_root_cacertificate(
         self,
-        request: cas_20200630_models.CreateRootCACertificateRequest,
-    ) -> cas_20200630_models.CreateRootCACertificateResponse:
-        """
-        @summary Creates a root certificate authority (CA) certificate.
-        
-        @description You can call the CreateRootCACertificate operation to create a self-signed root CA certificate. A root CA certificate is the trust anchor in a chain of trust for private certificates that are used within an enterprise. You must create a root CA certificate before you can use the root CA certificate to issue intermediate CA certificates. Then, you can use the intermediate CA certificates to issue client certificates and server certificates.
-        Before you call this operation, make sure that you have purchased a private root CA instance by using the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Create a private CA](https://help.aliyun.com/document_detail/208553.html).
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateRootCACertificateRequest
-        @return: CreateRootCACertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateRootCACertificateRequest,
+    ) -> main_models.CreateRootCACertificateResponse:
+        runtime = RuntimeOptions()
         return self.create_root_cacertificate_with_options(request, runtime)
 
     async def create_root_cacertificate_async(
         self,
-        request: cas_20200630_models.CreateRootCACertificateRequest,
-    ) -> cas_20200630_models.CreateRootCACertificateResponse:
-        """
-        @summary Creates a root certificate authority (CA) certificate.
-        
-        @description You can call the CreateRootCACertificate operation to create a self-signed root CA certificate. A root CA certificate is the trust anchor in a chain of trust for private certificates that are used within an enterprise. You must create a root CA certificate before you can use the root CA certificate to issue intermediate CA certificates. Then, you can use the intermediate CA certificates to issue client certificates and server certificates.
-        Before you call this operation, make sure that you have purchased a private root CA instance by using the [Certificate Management Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Create a private CA](https://help.aliyun.com/document_detail/208553.html).
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateRootCACertificateRequest
-        @return: CreateRootCACertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateRootCACertificateRequest,
+    ) -> main_models.CreateRootCACertificateResponse:
+        runtime = RuntimeOptions()
         return await self.create_root_cacertificate_with_options_async(request, runtime)
 
     def create_server_certificate_with_options(
         self,
-        request: cas_20200630_models.CreateServerCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateServerCertificateResponse:
-        """
-        @summary Issues a server certificate by using a system-generated certificate signing request (CSR) file.
-        
-        @description Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](https://help.aliyun.com/document_detail/328093.html) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](https://help.aliyun.com/document_detail/328094.html) operation. Only intermediate CA certificates can be used to issue server certificates.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateServerCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateServerCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateServerCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServerCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.after_time):
+        if not DaraCore.is_null(request.after_time):
             query['AfterTime'] = request.after_time
-        if not UtilClient.is_unset(request.algorithm):
+        if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
-        if not UtilClient.is_unset(request.before_time):
+        if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
-        if not UtilClient.is_unset(request.common_name):
+        if not DaraCore.is_null(request.common_name):
             query['CommonName'] = request.common_name
-        if not UtilClient.is_unset(request.country):
+        if not DaraCore.is_null(request.country):
             query['Country'] = request.country
-        if not UtilClient.is_unset(request.custom_identifier):
+        if not DaraCore.is_null(request.custom_identifier):
             query['CustomIdentifier'] = request.custom_identifier
-        if not UtilClient.is_unset(request.days):
+        if not DaraCore.is_null(request.days):
             query['Days'] = request.days
-        if not UtilClient.is_unset(request.domain):
+        if not DaraCore.is_null(request.domain):
             query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.enable_crl):
+        if not DaraCore.is_null(request.enable_crl):
             query['EnableCrl'] = request.enable_crl
-        if not UtilClient.is_unset(request.immediately):
+        if not DaraCore.is_null(request.immediately):
             query['Immediately'] = request.immediately
-        if not UtilClient.is_unset(request.locality):
+        if not DaraCore.is_null(request.locality):
             query['Locality'] = request.locality
-        if not UtilClient.is_unset(request.months):
+        if not DaraCore.is_null(request.months):
             query['Months'] = request.months
-        if not UtilClient.is_unset(request.organization):
+        if not DaraCore.is_null(request.organization):
             query['Organization'] = request.organization
-        if not UtilClient.is_unset(request.organization_unit):
+        if not DaraCore.is_null(request.organization_unit):
             query['OrganizationUnit'] = request.organization_unit
-        if not UtilClient.is_unset(request.parent_identifier):
+        if not DaraCore.is_null(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.state):
+        if not DaraCore.is_null(request.state):
             query['State'] = request.state
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.years):
+        if not DaraCore.is_null(request.years):
             query['Years'] = request.years
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateServerCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateServerCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateServerCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.CreateServerCertificateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_server_certificate_with_options_async(
         self,
-        request: cas_20200630_models.CreateServerCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateServerCertificateResponse:
-        """
-        @summary Issues a server certificate by using a system-generated certificate signing request (CSR) file.
-        
-        @description Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](https://help.aliyun.com/document_detail/328093.html) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](https://help.aliyun.com/document_detail/328094.html) operation. Only intermediate CA certificates can be used to issue server certificates.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateServerCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateServerCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateServerCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServerCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.after_time):
+        if not DaraCore.is_null(request.after_time):
             query['AfterTime'] = request.after_time
-        if not UtilClient.is_unset(request.algorithm):
+        if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
-        if not UtilClient.is_unset(request.before_time):
+        if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
-        if not UtilClient.is_unset(request.common_name):
+        if not DaraCore.is_null(request.common_name):
             query['CommonName'] = request.common_name
-        if not UtilClient.is_unset(request.country):
+        if not DaraCore.is_null(request.country):
             query['Country'] = request.country
-        if not UtilClient.is_unset(request.custom_identifier):
+        if not DaraCore.is_null(request.custom_identifier):
             query['CustomIdentifier'] = request.custom_identifier
-        if not UtilClient.is_unset(request.days):
+        if not DaraCore.is_null(request.days):
             query['Days'] = request.days
-        if not UtilClient.is_unset(request.domain):
+        if not DaraCore.is_null(request.domain):
             query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.enable_crl):
+        if not DaraCore.is_null(request.enable_crl):
             query['EnableCrl'] = request.enable_crl
-        if not UtilClient.is_unset(request.immediately):
+        if not DaraCore.is_null(request.immediately):
             query['Immediately'] = request.immediately
-        if not UtilClient.is_unset(request.locality):
+        if not DaraCore.is_null(request.locality):
             query['Locality'] = request.locality
-        if not UtilClient.is_unset(request.months):
+        if not DaraCore.is_null(request.months):
             query['Months'] = request.months
-        if not UtilClient.is_unset(request.organization):
+        if not DaraCore.is_null(request.organization):
             query['Organization'] = request.organization
-        if not UtilClient.is_unset(request.organization_unit):
+        if not DaraCore.is_null(request.organization_unit):
             query['OrganizationUnit'] = request.organization_unit
-        if not UtilClient.is_unset(request.parent_identifier):
+        if not DaraCore.is_null(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.state):
+        if not DaraCore.is_null(request.state):
             query['State'] = request.state
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.years):
+        if not DaraCore.is_null(request.years):
             query['Years'] = request.years
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateServerCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateServerCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateServerCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.CreateServerCertificateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_server_certificate(
         self,
-        request: cas_20200630_models.CreateServerCertificateRequest,
-    ) -> cas_20200630_models.CreateServerCertificateResponse:
-        """
-        @summary Issues a server certificate by using a system-generated certificate signing request (CSR) file.
-        
-        @description Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](https://help.aliyun.com/document_detail/328093.html) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](https://help.aliyun.com/document_detail/328094.html) operation. Only intermediate CA certificates can be used to issue server certificates.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateServerCertificateRequest
-        @return: CreateServerCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateServerCertificateRequest,
+    ) -> main_models.CreateServerCertificateResponse:
+        runtime = RuntimeOptions()
         return self.create_server_certificate_with_options(request, runtime)
 
     async def create_server_certificate_async(
         self,
-        request: cas_20200630_models.CreateServerCertificateRequest,
-    ) -> cas_20200630_models.CreateServerCertificateResponse:
-        """
-        @summary Issues a server certificate by using a system-generated certificate signing request (CSR) file.
-        
-        @description Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](https://help.aliyun.com/document_detail/328093.html) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](https://help.aliyun.com/document_detail/328094.html) operation. Only intermediate CA certificates can be used to issue server certificates.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateServerCertificateRequest
-        @return: CreateServerCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateServerCertificateRequest,
+    ) -> main_models.CreateServerCertificateResponse:
+        runtime = RuntimeOptions()
         return await self.create_server_certificate_with_options_async(request, runtime)
 
     def create_server_certificate_with_csr_with_options(
         self,
-        request: cas_20200630_models.CreateServerCertificateWithCsrRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateServerCertificateWithCsrResponse:
-        """
-        @summary Issues a server certificate by using a custom certificate signing request (CSR) file.
-        
-        @description ## Usage notes
-        Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](https://help.aliyun.com/document_detail/328093.html) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](https://help.aliyun.com/document_detail/328094.html) operation. Only intermediate CA certificates can be used to issue server certificates.
-        
-        @param request: CreateServerCertificateWithCsrRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateServerCertificateWithCsrResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateServerCertificateWithCsrRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServerCertificateWithCsrResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.after_time):
+        if not DaraCore.is_null(request.after_time):
             query['AfterTime'] = request.after_time
-        if not UtilClient.is_unset(request.algorithm):
+        if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
-        if not UtilClient.is_unset(request.before_time):
+        if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
-        if not UtilClient.is_unset(request.common_name):
+        if not DaraCore.is_null(request.common_name):
             query['CommonName'] = request.common_name
-        if not UtilClient.is_unset(request.country):
+        if not DaraCore.is_null(request.country):
             query['Country'] = request.country
-        if not UtilClient.is_unset(request.csr):
+        if not DaraCore.is_null(request.csr):
             query['Csr'] = request.csr
-        if not UtilClient.is_unset(request.custom_identifier):
+        if not DaraCore.is_null(request.custom_identifier):
             query['CustomIdentifier'] = request.custom_identifier
-        if not UtilClient.is_unset(request.days):
+        if not DaraCore.is_null(request.days):
             query['Days'] = request.days
-        if not UtilClient.is_unset(request.domain):
+        if not DaraCore.is_null(request.domain):
             query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.enable_crl):
+        if not DaraCore.is_null(request.enable_crl):
             query['EnableCrl'] = request.enable_crl
-        if not UtilClient.is_unset(request.immediately):
+        if not DaraCore.is_null(request.immediately):
             query['Immediately'] = request.immediately
-        if not UtilClient.is_unset(request.locality):
+        if not DaraCore.is_null(request.locality):
             query['Locality'] = request.locality
-        if not UtilClient.is_unset(request.months):
+        if not DaraCore.is_null(request.months):
             query['Months'] = request.months
-        if not UtilClient.is_unset(request.organization):
+        if not DaraCore.is_null(request.organization):
             query['Organization'] = request.organization
-        if not UtilClient.is_unset(request.organization_unit):
+        if not DaraCore.is_null(request.organization_unit):
             query['OrganizationUnit'] = request.organization_unit
-        if not UtilClient.is_unset(request.parent_identifier):
+        if not DaraCore.is_null(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.state):
+        if not DaraCore.is_null(request.state):
             query['State'] = request.state
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.years):
+        if not DaraCore.is_null(request.years):
             query['Years'] = request.years
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateServerCertificateWithCsr',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateServerCertificateWithCsr',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateServerCertificateWithCsrResponse(),
+        return DaraCore.from_map(
+            main_models.CreateServerCertificateWithCsrResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_server_certificate_with_csr_with_options_async(
         self,
-        request: cas_20200630_models.CreateServerCertificateWithCsrRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateServerCertificateWithCsrResponse:
-        """
-        @summary Issues a server certificate by using a custom certificate signing request (CSR) file.
-        
-        @description ## Usage notes
-        Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](https://help.aliyun.com/document_detail/328093.html) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](https://help.aliyun.com/document_detail/328094.html) operation. Only intermediate CA certificates can be used to issue server certificates.
-        
-        @param request: CreateServerCertificateWithCsrRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateServerCertificateWithCsrResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateServerCertificateWithCsrRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServerCertificateWithCsrResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.after_time):
+        if not DaraCore.is_null(request.after_time):
             query['AfterTime'] = request.after_time
-        if not UtilClient.is_unset(request.algorithm):
+        if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
-        if not UtilClient.is_unset(request.before_time):
+        if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
-        if not UtilClient.is_unset(request.common_name):
+        if not DaraCore.is_null(request.common_name):
             query['CommonName'] = request.common_name
-        if not UtilClient.is_unset(request.country):
+        if not DaraCore.is_null(request.country):
             query['Country'] = request.country
-        if not UtilClient.is_unset(request.csr):
+        if not DaraCore.is_null(request.csr):
             query['Csr'] = request.csr
-        if not UtilClient.is_unset(request.custom_identifier):
+        if not DaraCore.is_null(request.custom_identifier):
             query['CustomIdentifier'] = request.custom_identifier
-        if not UtilClient.is_unset(request.days):
+        if not DaraCore.is_null(request.days):
             query['Days'] = request.days
-        if not UtilClient.is_unset(request.domain):
+        if not DaraCore.is_null(request.domain):
             query['Domain'] = request.domain
-        if not UtilClient.is_unset(request.enable_crl):
+        if not DaraCore.is_null(request.enable_crl):
             query['EnableCrl'] = request.enable_crl
-        if not UtilClient.is_unset(request.immediately):
+        if not DaraCore.is_null(request.immediately):
             query['Immediately'] = request.immediately
-        if not UtilClient.is_unset(request.locality):
+        if not DaraCore.is_null(request.locality):
             query['Locality'] = request.locality
-        if not UtilClient.is_unset(request.months):
+        if not DaraCore.is_null(request.months):
             query['Months'] = request.months
-        if not UtilClient.is_unset(request.organization):
+        if not DaraCore.is_null(request.organization):
             query['Organization'] = request.organization
-        if not UtilClient.is_unset(request.organization_unit):
+        if not DaraCore.is_null(request.organization_unit):
             query['OrganizationUnit'] = request.organization_unit
-        if not UtilClient.is_unset(request.parent_identifier):
+        if not DaraCore.is_null(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.state):
+        if not DaraCore.is_null(request.state):
             query['State'] = request.state
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.years):
+        if not DaraCore.is_null(request.years):
             query['Years'] = request.years
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateServerCertificateWithCsr',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateServerCertificateWithCsr',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateServerCertificateWithCsrResponse(),
+        return DaraCore.from_map(
+            main_models.CreateServerCertificateWithCsrResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_server_certificate_with_csr(
         self,
-        request: cas_20200630_models.CreateServerCertificateWithCsrRequest,
-    ) -> cas_20200630_models.CreateServerCertificateWithCsrResponse:
-        """
-        @summary Issues a server certificate by using a custom certificate signing request (CSR) file.
-        
-        @description ## Usage notes
-        Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](https://help.aliyun.com/document_detail/328093.html) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](https://help.aliyun.com/document_detail/328094.html) operation. Only intermediate CA certificates can be used to issue server certificates.
-        
-        @param request: CreateServerCertificateWithCsrRequest
-        @return: CreateServerCertificateWithCsrResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateServerCertificateWithCsrRequest,
+    ) -> main_models.CreateServerCertificateWithCsrResponse:
+        runtime = RuntimeOptions()
         return self.create_server_certificate_with_csr_with_options(request, runtime)
 
     async def create_server_certificate_with_csr_async(
         self,
-        request: cas_20200630_models.CreateServerCertificateWithCsrRequest,
-    ) -> cas_20200630_models.CreateServerCertificateWithCsrResponse:
-        """
-        @summary Issues a server certificate by using a custom certificate signing request (CSR) file.
-        
-        @description ## Usage notes
-        Before you call this operation, make sure that you have created a root certificate authority (CA) certificate by calling the [CreateRootCACertificate](https://help.aliyun.com/document_detail/328093.html) operation and an intermediate CA certificate by calling the [CreateSubCACertificate](https://help.aliyun.com/document_detail/328094.html) operation. Only intermediate CA certificates can be used to issue server certificates.
-        
-        @param request: CreateServerCertificateWithCsrRequest
-        @return: CreateServerCertificateWithCsrResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateServerCertificateWithCsrRequest,
+    ) -> main_models.CreateServerCertificateWithCsrResponse:
+        runtime = RuntimeOptions()
         return await self.create_server_certificate_with_csr_with_options_async(request, runtime)
 
     def create_sub_cacertificate_with_options(
         self,
-        request: cas_20200630_models.CreateSubCACertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateSubCACertificateResponse:
-        """
-        @summary Creates an intermediate certificate authority (CA) certificate.
-        
-        @description You can call this operation to issue an intermediate certificate authority (CA) certificate by using an existing root CA certificate. Intermediate CA certificates can be used to issue client certificates and server certificates.
-        Before you call this operation, make sure that you have issued a root CA certificate by calling the [CreateRootCACertificate] operation.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateSubCACertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateSubCACertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateSubCACertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSubCACertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.algorithm):
+        if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
-        if not UtilClient.is_unset(request.common_name):
+        if not DaraCore.is_null(request.common_name):
             query['CommonName'] = request.common_name
-        if not UtilClient.is_unset(request.country_code):
+        if not DaraCore.is_null(request.country_code):
             query['CountryCode'] = request.country_code
-        if not UtilClient.is_unset(request.crl_day):
+        if not DaraCore.is_null(request.crl_day):
             query['CrlDay'] = request.crl_day
-        if not UtilClient.is_unset(request.enable_crl):
+        if not DaraCore.is_null(request.enable_crl):
             query['EnableCrl'] = request.enable_crl
-        if not UtilClient.is_unset(request.extended_key_usages):
+        if not DaraCore.is_null(request.extended_key_usages):
             query['ExtendedKeyUsages'] = request.extended_key_usages
-        if not UtilClient.is_unset(request.locality):
+        if not DaraCore.is_null(request.locality):
             query['Locality'] = request.locality
-        if not UtilClient.is_unset(request.organization):
+        if not DaraCore.is_null(request.organization):
             query['Organization'] = request.organization
-        if not UtilClient.is_unset(request.organization_unit):
+        if not DaraCore.is_null(request.organization_unit):
             query['OrganizationUnit'] = request.organization_unit
-        if not UtilClient.is_unset(request.parent_identifier):
+        if not DaraCore.is_null(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
-        if not UtilClient.is_unset(request.path_len_constraint):
+        if not DaraCore.is_null(request.path_len_constraint):
             query['PathLenConstraint'] = request.path_len_constraint
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.state):
+        if not DaraCore.is_null(request.state):
             query['State'] = request.state
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.years):
+        if not DaraCore.is_null(request.years):
             query['Years'] = request.years
         body = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateSubCACertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateSubCACertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateSubCACertificateResponse(),
+        return DaraCore.from_map(
+            main_models.CreateSubCACertificateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_sub_cacertificate_with_options_async(
         self,
-        request: cas_20200630_models.CreateSubCACertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.CreateSubCACertificateResponse:
-        """
-        @summary Creates an intermediate certificate authority (CA) certificate.
-        
-        @description You can call this operation to issue an intermediate certificate authority (CA) certificate by using an existing root CA certificate. Intermediate CA certificates can be used to issue client certificates and server certificates.
-        Before you call this operation, make sure that you have issued a root CA certificate by calling the [CreateRootCACertificate] operation.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateSubCACertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateSubCACertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateSubCACertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSubCACertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.algorithm):
+        if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
-        if not UtilClient.is_unset(request.common_name):
+        if not DaraCore.is_null(request.common_name):
             query['CommonName'] = request.common_name
-        if not UtilClient.is_unset(request.country_code):
+        if not DaraCore.is_null(request.country_code):
             query['CountryCode'] = request.country_code
-        if not UtilClient.is_unset(request.crl_day):
+        if not DaraCore.is_null(request.crl_day):
             query['CrlDay'] = request.crl_day
-        if not UtilClient.is_unset(request.enable_crl):
+        if not DaraCore.is_null(request.enable_crl):
             query['EnableCrl'] = request.enable_crl
-        if not UtilClient.is_unset(request.extended_key_usages):
+        if not DaraCore.is_null(request.extended_key_usages):
             query['ExtendedKeyUsages'] = request.extended_key_usages
-        if not UtilClient.is_unset(request.locality):
+        if not DaraCore.is_null(request.locality):
             query['Locality'] = request.locality
-        if not UtilClient.is_unset(request.organization):
+        if not DaraCore.is_null(request.organization):
             query['Organization'] = request.organization
-        if not UtilClient.is_unset(request.organization_unit):
+        if not DaraCore.is_null(request.organization_unit):
             query['OrganizationUnit'] = request.organization_unit
-        if not UtilClient.is_unset(request.parent_identifier):
+        if not DaraCore.is_null(request.parent_identifier):
             query['ParentIdentifier'] = request.parent_identifier
-        if not UtilClient.is_unset(request.path_len_constraint):
+        if not DaraCore.is_null(request.path_len_constraint):
             query['PathLenConstraint'] = request.path_len_constraint
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.state):
+        if not DaraCore.is_null(request.state):
             query['State'] = request.state
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
-        if not UtilClient.is_unset(request.years):
+        if not DaraCore.is_null(request.years):
             query['Years'] = request.years
         body = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateSubCACertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateSubCACertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.CreateSubCACertificateResponse(),
+        return DaraCore.from_map(
+            main_models.CreateSubCACertificateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_sub_cacertificate(
         self,
-        request: cas_20200630_models.CreateSubCACertificateRequest,
-    ) -> cas_20200630_models.CreateSubCACertificateResponse:
-        """
-        @summary Creates an intermediate certificate authority (CA) certificate.
-        
-        @description You can call this operation to issue an intermediate certificate authority (CA) certificate by using an existing root CA certificate. Intermediate CA certificates can be used to issue client certificates and server certificates.
-        Before you call this operation, make sure that you have issued a root CA certificate by calling the [CreateRootCACertificate] operation.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateSubCACertificateRequest
-        @return: CreateSubCACertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateSubCACertificateRequest,
+    ) -> main_models.CreateSubCACertificateResponse:
+        runtime = RuntimeOptions()
         return self.create_sub_cacertificate_with_options(request, runtime)
 
     async def create_sub_cacertificate_async(
         self,
-        request: cas_20200630_models.CreateSubCACertificateRequest,
-    ) -> cas_20200630_models.CreateSubCACertificateResponse:
-        """
-        @summary Creates an intermediate certificate authority (CA) certificate.
-        
-        @description You can call this operation to issue an intermediate certificate authority (CA) certificate by using an existing root CA certificate. Intermediate CA certificates can be used to issue client certificates and server certificates.
-        Before you call this operation, make sure that you have issued a root CA certificate by calling the [CreateRootCACertificate] operation.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: CreateSubCACertificateRequest
-        @return: CreateSubCACertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateSubCACertificateRequest,
+    ) -> main_models.CreateSubCACertificateResponse:
+        runtime = RuntimeOptions()
         return await self.create_sub_cacertificate_with_options_async(request, runtime)
 
     def delete_client_certificate_with_options(
         self,
-        request: cas_20200630_models.DeleteClientCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DeleteClientCertificateResponse:
-        """
-        @summary Deletes a client certificate or a server certificate that is revoked.
-        
-        @description Before you call this operation, you must call the [CreateRevokeClientCertificate](https://help.aliyun.com/document_detail/330876.html) operation to revoke a client certificate or a server certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DeleteClientCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteClientCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteClientCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteClientCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteClientCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteClientCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DeleteClientCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteClientCertificateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_client_certificate_with_options_async(
         self,
-        request: cas_20200630_models.DeleteClientCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DeleteClientCertificateResponse:
-        """
-        @summary Deletes a client certificate or a server certificate that is revoked.
-        
-        @description Before you call this operation, you must call the [CreateRevokeClientCertificate](https://help.aliyun.com/document_detail/330876.html) operation to revoke a client certificate or a server certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DeleteClientCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteClientCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteClientCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteClientCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteClientCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteClientCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DeleteClientCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteClientCertificateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_client_certificate(
         self,
-        request: cas_20200630_models.DeleteClientCertificateRequest,
-    ) -> cas_20200630_models.DeleteClientCertificateResponse:
-        """
-        @summary Deletes a client certificate or a server certificate that is revoked.
-        
-        @description Before you call this operation, you must call the [CreateRevokeClientCertificate](https://help.aliyun.com/document_detail/330876.html) operation to revoke a client certificate or a server certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DeleteClientCertificateRequest
-        @return: DeleteClientCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteClientCertificateRequest,
+    ) -> main_models.DeleteClientCertificateResponse:
+        runtime = RuntimeOptions()
         return self.delete_client_certificate_with_options(request, runtime)
 
     async def delete_client_certificate_async(
         self,
-        request: cas_20200630_models.DeleteClientCertificateRequest,
-    ) -> cas_20200630_models.DeleteClientCertificateResponse:
-        """
-        @summary Deletes a client certificate or a server certificate that is revoked.
-        
-        @description Before you call this operation, you must call the [CreateRevokeClientCertificate](https://help.aliyun.com/document_detail/330876.html) operation to revoke a client certificate or a server certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DeleteClientCertificateRequest
-        @return: DeleteClientCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteClientCertificateRequest,
+    ) -> main_models.DeleteClientCertificateResponse:
+        runtime = RuntimeOptions()
         return await self.delete_client_certificate_with_options_async(request, runtime)
 
     def describe_cacertificate_with_options(
         self,
-        request: cas_20200630_models.DescribeCACertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeCACertificateResponse:
-        """
-        @summary Queries the details about a root certificate authority (CA) certificate or an intermediate CA certificate.
-        
-        @description You can call the DescribeCACertificate operation to query the details about a root CA certificate or an intermediate CA certificate by using the unique identifier of the root CA certificate or intermediate CA certificate. The details include the serial number, user information, and content of a CA certificate.
-        Before you call this operation, make sure that you have created a root CA by calling the [CreateRootCACertificate] operation or an intermediate CA certificate by calling the [CreateSubCACertificate] operation.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeCACertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCACertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeCACertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCACertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeCACertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeCACertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeCACertificateResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeCACertificateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_cacertificate_with_options_async(
         self,
-        request: cas_20200630_models.DescribeCACertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeCACertificateResponse:
-        """
-        @summary Queries the details about a root certificate authority (CA) certificate or an intermediate CA certificate.
-        
-        @description You can call the DescribeCACertificate operation to query the details about a root CA certificate or an intermediate CA certificate by using the unique identifier of the root CA certificate or intermediate CA certificate. The details include the serial number, user information, and content of a CA certificate.
-        Before you call this operation, make sure that you have created a root CA by calling the [CreateRootCACertificate] operation or an intermediate CA certificate by calling the [CreateSubCACertificate] operation.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeCACertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCACertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeCACertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCACertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeCACertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeCACertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeCACertificateResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeCACertificateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_cacertificate(
         self,
-        request: cas_20200630_models.DescribeCACertificateRequest,
-    ) -> cas_20200630_models.DescribeCACertificateResponse:
-        """
-        @summary Queries the details about a root certificate authority (CA) certificate or an intermediate CA certificate.
-        
-        @description You can call the DescribeCACertificate operation to query the details about a root CA certificate or an intermediate CA certificate by using the unique identifier of the root CA certificate or intermediate CA certificate. The details include the serial number, user information, and content of a CA certificate.
-        Before you call this operation, make sure that you have created a root CA by calling the [CreateRootCACertificate] operation or an intermediate CA certificate by calling the [CreateSubCACertificate] operation.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeCACertificateRequest
-        @return: DescribeCACertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeCACertificateRequest,
+    ) -> main_models.DescribeCACertificateResponse:
+        runtime = RuntimeOptions()
         return self.describe_cacertificate_with_options(request, runtime)
 
     async def describe_cacertificate_async(
         self,
-        request: cas_20200630_models.DescribeCACertificateRequest,
-    ) -> cas_20200630_models.DescribeCACertificateResponse:
-        """
-        @summary Queries the details about a root certificate authority (CA) certificate or an intermediate CA certificate.
-        
-        @description You can call the DescribeCACertificate operation to query the details about a root CA certificate or an intermediate CA certificate by using the unique identifier of the root CA certificate or intermediate CA certificate. The details include the serial number, user information, and content of a CA certificate.
-        Before you call this operation, make sure that you have created a root CA by calling the [CreateRootCACertificate] operation or an intermediate CA certificate by calling the [CreateSubCACertificate] operation.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeCACertificateRequest
-        @return: DescribeCACertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeCACertificateRequest,
+    ) -> main_models.DescribeCACertificateResponse:
+        runtime = RuntimeOptions()
         return await self.describe_cacertificate_with_options_async(request, runtime)
 
     def describe_cacertificate_count_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeCACertificateCountResponse:
-        """
-        @summary Queries the number of certificate authority (CA) certificates that you create.
-        
-        @description You can call the DescribeCACertificateCount operation to query the number of created CA certificates, which includes root CA certificates and intermediate CA certificates.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeCACertificateCountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCACertificateCountResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribeCACertificateCount',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCACertificateCountResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeCACertificateCount',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeCACertificateCountResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeCACertificateCountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_cacertificate_count_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeCACertificateCountResponse:
-        """
-        @summary Queries the number of certificate authority (CA) certificates that you create.
-        
-        @description You can call the DescribeCACertificateCount operation to query the number of created CA certificates, which includes root CA certificates and intermediate CA certificates.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeCACertificateCountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCACertificateCountResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribeCACertificateCount',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCACertificateCountResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeCACertificateCount',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeCACertificateCountResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeCACertificateCountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_cacertificate_count(self) -> cas_20200630_models.DescribeCACertificateCountResponse:
-        """
-        @summary Queries the number of certificate authority (CA) certificates that you create.
-        
-        @description You can call the DescribeCACertificateCount operation to query the number of created CA certificates, which includes root CA certificates and intermediate CA certificates.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @return: DescribeCACertificateCountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def describe_cacertificate_count(self) -> main_models.DescribeCACertificateCountResponse:
+        runtime = RuntimeOptions()
         return self.describe_cacertificate_count_with_options(runtime)
 
-    async def describe_cacertificate_count_async(self) -> cas_20200630_models.DescribeCACertificateCountResponse:
-        """
-        @summary Queries the number of certificate authority (CA) certificates that you create.
-        
-        @description You can call the DescribeCACertificateCount operation to query the number of created CA certificates, which includes root CA certificates and intermediate CA certificates.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @return: DescribeCACertificateCountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def describe_cacertificate_count_async(self) -> main_models.DescribeCACertificateCountResponse:
+        runtime = RuntimeOptions()
         return await self.describe_cacertificate_count_with_options_async(runtime)
 
     def describe_cacertificate_list_with_options(
         self,
-        request: cas_20200630_models.DescribeCACertificateListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeCACertificateListResponse:
-        """
-        @summary Queries the details about all root certificate authority (CA) certificates and intermediate CA certificates.
-        
-        @description You can call the DescribeCACertificateList operation to perform a paged query of the details about all CA certificates that you create. The details include the unique identifier, serial number, user information, and content of each root CA certificate or intermediate CA certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeCACertificateListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCACertificateListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeCACertificateListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCACertificateListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.ca_status):
+        if not DaraCore.is_null(request.ca_status):
             query['CaStatus'] = request.ca_status
-        if not UtilClient.is_unset(request.cert_type):
+        if not DaraCore.is_null(request.cert_type):
             query['CertType'] = request.cert_type
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        if not UtilClient.is_unset(request.issuer_type):
+        if not DaraCore.is_null(request.issuer_type):
             query['IssuerType'] = request.issuer_type
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.show_size):
+        if not DaraCore.is_null(request.show_size):
             query['ShowSize'] = request.show_size
-        if not UtilClient.is_unset(request.valid_status):
+        if not DaraCore.is_null(request.valid_status):
             query['ValidStatus'] = request.valid_status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeCACertificateList',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeCACertificateList',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeCACertificateListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeCACertificateListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_cacertificate_list_with_options_async(
         self,
-        request: cas_20200630_models.DescribeCACertificateListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeCACertificateListResponse:
-        """
-        @summary Queries the details about all root certificate authority (CA) certificates and intermediate CA certificates.
-        
-        @description You can call the DescribeCACertificateList operation to perform a paged query of the details about all CA certificates that you create. The details include the unique identifier, serial number, user information, and content of each root CA certificate or intermediate CA certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeCACertificateListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCACertificateListResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeCACertificateListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCACertificateListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.ca_status):
+        if not DaraCore.is_null(request.ca_status):
             query['CaStatus'] = request.ca_status
-        if not UtilClient.is_unset(request.cert_type):
+        if not DaraCore.is_null(request.cert_type):
             query['CertType'] = request.cert_type
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        if not UtilClient.is_unset(request.issuer_type):
+        if not DaraCore.is_null(request.issuer_type):
             query['IssuerType'] = request.issuer_type
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.show_size):
+        if not DaraCore.is_null(request.show_size):
             query['ShowSize'] = request.show_size
-        if not UtilClient.is_unset(request.valid_status):
+        if not DaraCore.is_null(request.valid_status):
             query['ValidStatus'] = request.valid_status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeCACertificateList',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeCACertificateList',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeCACertificateListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeCACertificateListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_cacertificate_list(
         self,
-        request: cas_20200630_models.DescribeCACertificateListRequest,
-    ) -> cas_20200630_models.DescribeCACertificateListResponse:
-        """
-        @summary Queries the details about all root certificate authority (CA) certificates and intermediate CA certificates.
-        
-        @description You can call the DescribeCACertificateList operation to perform a paged query of the details about all CA certificates that you create. The details include the unique identifier, serial number, user information, and content of each root CA certificate or intermediate CA certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeCACertificateListRequest
-        @return: DescribeCACertificateListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeCACertificateListRequest,
+    ) -> main_models.DescribeCACertificateListResponse:
+        runtime = RuntimeOptions()
         return self.describe_cacertificate_list_with_options(request, runtime)
 
     async def describe_cacertificate_list_async(
         self,
-        request: cas_20200630_models.DescribeCACertificateListRequest,
-    ) -> cas_20200630_models.DescribeCACertificateListResponse:
-        """
-        @summary Queries the details about all root certificate authority (CA) certificates and intermediate CA certificates.
-        
-        @description You can call the DescribeCACertificateList operation to perform a paged query of the details about all CA certificates that you create. The details include the unique identifier, serial number, user information, and content of each root CA certificate or intermediate CA certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeCACertificateListRequest
-        @return: DescribeCACertificateListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeCACertificateListRequest,
+    ) -> main_models.DescribeCACertificateListResponse:
+        runtime = RuntimeOptions()
         return await self.describe_cacertificate_list_with_options_async(request, runtime)
 
     def describe_certificate_private_key_with_options(
         self,
-        request: cas_20200630_models.DescribeCertificatePrivateKeyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeCertificatePrivateKeyResponse:
-        """
-        @summary Queries the encrypted private key of a client certificate or a server certificate.
-        
-        @description ## Usage notes
-        You can call the DescribeCertificatePrivateKey operation to obtain the encrypted private key of a client certificate or a server certificate. The certificate is issued based on a system-generated certificate signing request (CSR). Before you call this operation, make sure that you have issued a client certificate or a server certificate by calling the following operation:
-        [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
-        [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
-        To ensure the security of private key transmission, the DescribeCertificatePrivateKey operation encrypts the private key by using the private key password that you specify and returns the encrypted private key. The private key password is a string that is used to encrypt the private key. After you obtain the encrypted private key of the certificate, you can use the following methods to decrypt the private key:
-        If the encryption algorithm of the certificate is RSA, you must run the `openssl rsa -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
-        If the encryption algorithm of the certificate is ECC, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
-        If the encryption algorithm of the certificate is SM2, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
-        >  You can call the [DescribeClientCertificate] operation to query the encryption algorithm type of a client certificate or a server certificate.
-        ## Limits
-        You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeCertificatePrivateKeyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCertificatePrivateKeyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeCertificatePrivateKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCertificatePrivateKeyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.encrypted_code):
+        if not DaraCore.is_null(request.encrypted_code):
             query['EncryptedCode'] = request.encrypted_code
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeCertificatePrivateKey',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeCertificatePrivateKey',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeCertificatePrivateKeyResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeCertificatePrivateKeyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_certificate_private_key_with_options_async(
         self,
-        request: cas_20200630_models.DescribeCertificatePrivateKeyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeCertificatePrivateKeyResponse:
-        """
-        @summary Queries the encrypted private key of a client certificate or a server certificate.
-        
-        @description ## Usage notes
-        You can call the DescribeCertificatePrivateKey operation to obtain the encrypted private key of a client certificate or a server certificate. The certificate is issued based on a system-generated certificate signing request (CSR). Before you call this operation, make sure that you have issued a client certificate or a server certificate by calling the following operation:
-        [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
-        [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
-        To ensure the security of private key transmission, the DescribeCertificatePrivateKey operation encrypts the private key by using the private key password that you specify and returns the encrypted private key. The private key password is a string that is used to encrypt the private key. After you obtain the encrypted private key of the certificate, you can use the following methods to decrypt the private key:
-        If the encryption algorithm of the certificate is RSA, you must run the `openssl rsa -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
-        If the encryption algorithm of the certificate is ECC, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
-        If the encryption algorithm of the certificate is SM2, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
-        >  You can call the [DescribeClientCertificate] operation to query the encryption algorithm type of a client certificate or a server certificate.
-        ## Limits
-        You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeCertificatePrivateKeyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeCertificatePrivateKeyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeCertificatePrivateKeyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCertificatePrivateKeyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.encrypted_code):
+        if not DaraCore.is_null(request.encrypted_code):
             query['EncryptedCode'] = request.encrypted_code
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeCertificatePrivateKey',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeCertificatePrivateKey',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeCertificatePrivateKeyResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeCertificatePrivateKeyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_certificate_private_key(
         self,
-        request: cas_20200630_models.DescribeCertificatePrivateKeyRequest,
-    ) -> cas_20200630_models.DescribeCertificatePrivateKeyResponse:
-        """
-        @summary Queries the encrypted private key of a client certificate or a server certificate.
-        
-        @description ## Usage notes
-        You can call the DescribeCertificatePrivateKey operation to obtain the encrypted private key of a client certificate or a server certificate. The certificate is issued based on a system-generated certificate signing request (CSR). Before you call this operation, make sure that you have issued a client certificate or a server certificate by calling the following operation:
-        [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
-        [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
-        To ensure the security of private key transmission, the DescribeCertificatePrivateKey operation encrypts the private key by using the private key password that you specify and returns the encrypted private key. The private key password is a string that is used to encrypt the private key. After you obtain the encrypted private key of the certificate, you can use the following methods to decrypt the private key:
-        If the encryption algorithm of the certificate is RSA, you must run the `openssl rsa -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
-        If the encryption algorithm of the certificate is ECC, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
-        If the encryption algorithm of the certificate is SM2, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
-        >  You can call the [DescribeClientCertificate] operation to query the encryption algorithm type of a client certificate or a server certificate.
-        ## Limits
-        You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeCertificatePrivateKeyRequest
-        @return: DescribeCertificatePrivateKeyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeCertificatePrivateKeyRequest,
+    ) -> main_models.DescribeCertificatePrivateKeyResponse:
+        runtime = RuntimeOptions()
         return self.describe_certificate_private_key_with_options(request, runtime)
 
     async def describe_certificate_private_key_async(
         self,
-        request: cas_20200630_models.DescribeCertificatePrivateKeyRequest,
-    ) -> cas_20200630_models.DescribeCertificatePrivateKeyResponse:
-        """
-        @summary Queries the encrypted private key of a client certificate or a server certificate.
-        
-        @description ## Usage notes
-        You can call the DescribeCertificatePrivateKey operation to obtain the encrypted private key of a client certificate or a server certificate. The certificate is issued based on a system-generated certificate signing request (CSR). Before you call this operation, make sure that you have issued a client certificate or a server certificate by calling the following operation:
-        [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
-        [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
-        To ensure the security of private key transmission, the DescribeCertificatePrivateKey operation encrypts the private key by using the private key password that you specify and returns the encrypted private key. The private key password is a string that is used to encrypt the private key. After you obtain the encrypted private key of the certificate, you can use the following methods to decrypt the private key:
-        If the encryption algorithm of the certificate is RSA, you must run the `openssl rsa -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
-        If the encryption algorithm of the certificate is ECC, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [OpenSSL](https://www.openssl.org/source/) or [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
-        If the encryption algorithm of the certificate is SM2, you must run the `openssl ec -in <Encrypted private key file> -passin pass:<Private key password> -out <Decrypted private key file>` command in the computer on which [BabaSSL](https://github.com/BabaSSL/BabaSSL) is installed.
-        >  You can call the [DescribeClientCertificate] operation to query the encryption algorithm type of a client certificate or a server certificate.
-        ## Limits
-        You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeCertificatePrivateKeyRequest
-        @return: DescribeCertificatePrivateKeyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeCertificatePrivateKeyRequest,
+    ) -> main_models.DescribeCertificatePrivateKeyResponse:
+        runtime = RuntimeOptions()
         return await self.describe_certificate_private_key_with_options_async(request, runtime)
 
     def describe_client_certificate_with_options(
         self,
-        request: cas_20200630_models.DescribeClientCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeClientCertificateResponse:
-        """
-        @summary Queries the details about a client certificate or a server certificate by using the unique identifier of the certificate.
-        
-        @description You can call the DescribeClientCertificate operation to query the details about a client certificate or a server certificate by using the unique identifier of the certificate. The details include the serial number, user information, content, and status of each certificate.
-        Before you call this operation, make sure that you have created a client certificate or a server certificate.
-        For more information about how to call an operation to create a client certificate, see the following topics:
-        [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
-        [CreateClientCertificateWithCsr](https://help.aliyun.com/document_detail/330875.html)
-        For more information about how to call an operation to create a server certificate, see the following topics:
-        [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
-        [CreateServerCertificateWithCsr](https://help.aliyun.com/document_detail/330878.html)
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeClientCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeClientCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeClientCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClientCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeClientCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeClientCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeClientCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeClientCertificateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_client_certificate_with_options_async(
         self,
-        request: cas_20200630_models.DescribeClientCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeClientCertificateResponse:
-        """
-        @summary Queries the details about a client certificate or a server certificate by using the unique identifier of the certificate.
-        
-        @description You can call the DescribeClientCertificate operation to query the details about a client certificate or a server certificate by using the unique identifier of the certificate. The details include the serial number, user information, content, and status of each certificate.
-        Before you call this operation, make sure that you have created a client certificate or a server certificate.
-        For more information about how to call an operation to create a client certificate, see the following topics:
-        [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
-        [CreateClientCertificateWithCsr](https://help.aliyun.com/document_detail/330875.html)
-        For more information about how to call an operation to create a server certificate, see the following topics:
-        [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
-        [CreateServerCertificateWithCsr](https://help.aliyun.com/document_detail/330878.html)
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeClientCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeClientCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeClientCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClientCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeClientCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeClientCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeClientCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeClientCertificateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_client_certificate(
         self,
-        request: cas_20200630_models.DescribeClientCertificateRequest,
-    ) -> cas_20200630_models.DescribeClientCertificateResponse:
-        """
-        @summary Queries the details about a client certificate or a server certificate by using the unique identifier of the certificate.
-        
-        @description You can call the DescribeClientCertificate operation to query the details about a client certificate or a server certificate by using the unique identifier of the certificate. The details include the serial number, user information, content, and status of each certificate.
-        Before you call this operation, make sure that you have created a client certificate or a server certificate.
-        For more information about how to call an operation to create a client certificate, see the following topics:
-        [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
-        [CreateClientCertificateWithCsr](https://help.aliyun.com/document_detail/330875.html)
-        For more information about how to call an operation to create a server certificate, see the following topics:
-        [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
-        [CreateServerCertificateWithCsr](https://help.aliyun.com/document_detail/330878.html)
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeClientCertificateRequest
-        @return: DescribeClientCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeClientCertificateRequest,
+    ) -> main_models.DescribeClientCertificateResponse:
+        runtime = RuntimeOptions()
         return self.describe_client_certificate_with_options(request, runtime)
 
     async def describe_client_certificate_async(
         self,
-        request: cas_20200630_models.DescribeClientCertificateRequest,
-    ) -> cas_20200630_models.DescribeClientCertificateResponse:
-        """
-        @summary Queries the details about a client certificate or a server certificate by using the unique identifier of the certificate.
-        
-        @description You can call the DescribeClientCertificate operation to query the details about a client certificate or a server certificate by using the unique identifier of the certificate. The details include the serial number, user information, content, and status of each certificate.
-        Before you call this operation, make sure that you have created a client certificate or a server certificate.
-        For more information about how to call an operation to create a client certificate, see the following topics:
-        [CreateClientCertificate](https://help.aliyun.com/document_detail/330873.html)
-        [CreateClientCertificateWithCsr](https://help.aliyun.com/document_detail/330875.html)
-        For more information about how to call an operation to create a server certificate, see the following topics:
-        [CreateServerCertificate](https://help.aliyun.com/document_detail/330877.html)
-        [CreateServerCertificateWithCsr](https://help.aliyun.com/document_detail/330878.html)
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeClientCertificateRequest
-        @return: DescribeClientCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeClientCertificateRequest,
+    ) -> main_models.DescribeClientCertificateResponse:
+        runtime = RuntimeOptions()
         return await self.describe_client_certificate_with_options_async(request, runtime)
 
     def describe_client_certificate_for_serial_number_with_options(
         self,
-        request: cas_20200630_models.DescribeClientCertificateForSerialNumberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeClientCertificateForSerialNumberResponse:
-        """
-        @deprecated OpenAPI DescribeClientCertificateForSerialNumber is deprecated, please use cas::2020-06-30::DescribeClientCertificate instead.
-        
-        @summary 获取客户端证书
-        
-        @param request: DescribeClientCertificateForSerialNumberRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeClientCertificateForSerialNumberResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeClientCertificateForSerialNumberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClientCertificateForSerialNumberResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.serial_number):
+        if not DaraCore.is_null(request.serial_number):
             query['SerialNumber'] = request.serial_number
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeClientCertificateForSerialNumber',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeClientCertificateForSerialNumber',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeClientCertificateForSerialNumberResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeClientCertificateForSerialNumberResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_client_certificate_for_serial_number_with_options_async(
         self,
-        request: cas_20200630_models.DescribeClientCertificateForSerialNumberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeClientCertificateForSerialNumberResponse:
-        """
-        @deprecated OpenAPI DescribeClientCertificateForSerialNumber is deprecated, please use cas::2020-06-30::DescribeClientCertificate instead.
-        
-        @summary 获取客户端证书
-        
-        @param request: DescribeClientCertificateForSerialNumberRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeClientCertificateForSerialNumberResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeClientCertificateForSerialNumberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClientCertificateForSerialNumberResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.serial_number):
+        if not DaraCore.is_null(request.serial_number):
             query['SerialNumber'] = request.serial_number
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeClientCertificateForSerialNumber',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeClientCertificateForSerialNumber',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeClientCertificateForSerialNumberResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeClientCertificateForSerialNumberResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_client_certificate_for_serial_number(
         self,
-        request: cas_20200630_models.DescribeClientCertificateForSerialNumberRequest,
-    ) -> cas_20200630_models.DescribeClientCertificateForSerialNumberResponse:
-        """
-        @deprecated OpenAPI DescribeClientCertificateForSerialNumber is deprecated, please use cas::2020-06-30::DescribeClientCertificate instead.
-        
-        @summary 获取客户端证书
-        
-        @param request: DescribeClientCertificateForSerialNumberRequest
-        @return: DescribeClientCertificateForSerialNumberResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeClientCertificateForSerialNumberRequest,
+    ) -> main_models.DescribeClientCertificateForSerialNumberResponse:
+        runtime = RuntimeOptions()
         return self.describe_client_certificate_for_serial_number_with_options(request, runtime)
 
     async def describe_client_certificate_for_serial_number_async(
         self,
-        request: cas_20200630_models.DescribeClientCertificateForSerialNumberRequest,
-    ) -> cas_20200630_models.DescribeClientCertificateForSerialNumberResponse:
-        """
-        @deprecated OpenAPI DescribeClientCertificateForSerialNumber is deprecated, please use cas::2020-06-30::DescribeClientCertificate instead.
-        
-        @summary 获取客户端证书
-        
-        @param request: DescribeClientCertificateForSerialNumberRequest
-        @return: DescribeClientCertificateForSerialNumberResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeClientCertificateForSerialNumberRequest,
+    ) -> main_models.DescribeClientCertificateForSerialNumberResponse:
+        runtime = RuntimeOptions()
         return await self.describe_client_certificate_for_serial_number_with_options_async(request, runtime)
 
     def describe_client_certificate_status_with_options(
         self,
-        request: cas_20200630_models.DescribeClientCertificateStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeClientCertificateStatusResponse:
-        """
-        @summary Queries the status information about client certificates and server certificates by using the unique identifiers of the certificates.
-        
-        @description You can call the DescribeClientCertificateStatus operation to query the status information about multiple client certificates or server certificates at a time by using the unique identifiers of the certificates. For example, you can check whether a certificate is revoked.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeClientCertificateStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeClientCertificateStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeClientCertificateStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClientCertificateStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeClientCertificateStatus',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeClientCertificateStatus',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeClientCertificateStatusResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeClientCertificateStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_client_certificate_status_with_options_async(
         self,
-        request: cas_20200630_models.DescribeClientCertificateStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeClientCertificateStatusResponse:
-        """
-        @summary Queries the status information about client certificates and server certificates by using the unique identifiers of the certificates.
-        
-        @description You can call the DescribeClientCertificateStatus operation to query the status information about multiple client certificates or server certificates at a time by using the unique identifiers of the certificates. For example, you can check whether a certificate is revoked.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeClientCertificateStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeClientCertificateStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeClientCertificateStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClientCertificateStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeClientCertificateStatus',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeClientCertificateStatus',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeClientCertificateStatusResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeClientCertificateStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_client_certificate_status(
         self,
-        request: cas_20200630_models.DescribeClientCertificateStatusRequest,
-    ) -> cas_20200630_models.DescribeClientCertificateStatusResponse:
-        """
-        @summary Queries the status information about client certificates and server certificates by using the unique identifiers of the certificates.
-        
-        @description You can call the DescribeClientCertificateStatus operation to query the status information about multiple client certificates or server certificates at a time by using the unique identifiers of the certificates. For example, you can check whether a certificate is revoked.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeClientCertificateStatusRequest
-        @return: DescribeClientCertificateStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeClientCertificateStatusRequest,
+    ) -> main_models.DescribeClientCertificateStatusResponse:
+        runtime = RuntimeOptions()
         return self.describe_client_certificate_status_with_options(request, runtime)
 
     async def describe_client_certificate_status_async(
         self,
-        request: cas_20200630_models.DescribeClientCertificateStatusRequest,
-    ) -> cas_20200630_models.DescribeClientCertificateStatusResponse:
-        """
-        @summary Queries the status information about client certificates and server certificates by using the unique identifiers of the certificates.
-        
-        @description You can call the DescribeClientCertificateStatus operation to query the status information about multiple client certificates or server certificates at a time by using the unique identifiers of the certificates. For example, you can check whether a certificate is revoked.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeClientCertificateStatusRequest
-        @return: DescribeClientCertificateStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeClientCertificateStatusRequest,
+    ) -> main_models.DescribeClientCertificateStatusResponse:
+        runtime = RuntimeOptions()
         return await self.describe_client_certificate_status_with_options_async(request, runtime)
 
     def describe_client_certificate_status_for_serial_number_with_options(
         self,
-        request: cas_20200630_models.DescribeClientCertificateStatusForSerialNumberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse:
-        """
-        @summary 获取客户端证书状态
-        
-        @param request: DescribeClientCertificateStatusForSerialNumberRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeClientCertificateStatusForSerialNumberResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeClientCertificateStatusForSerialNumberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClientCertificateStatusForSerialNumberResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.serial_number):
+        if not DaraCore.is_null(request.serial_number):
             query['SerialNumber'] = request.serial_number
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeClientCertificateStatusForSerialNumber',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeClientCertificateStatusForSerialNumber',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeClientCertificateStatusForSerialNumberResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_client_certificate_status_for_serial_number_with_options_async(
         self,
-        request: cas_20200630_models.DescribeClientCertificateStatusForSerialNumberRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse:
-        """
-        @summary 获取客户端证书状态
-        
-        @param request: DescribeClientCertificateStatusForSerialNumberRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeClientCertificateStatusForSerialNumberResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeClientCertificateStatusForSerialNumberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClientCertificateStatusForSerialNumberResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.serial_number):
+        if not DaraCore.is_null(request.serial_number):
             query['SerialNumber'] = request.serial_number
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeClientCertificateStatusForSerialNumber',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeClientCertificateStatusForSerialNumber',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeClientCertificateStatusForSerialNumberResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_client_certificate_status_for_serial_number(
         self,
-        request: cas_20200630_models.DescribeClientCertificateStatusForSerialNumberRequest,
-    ) -> cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse:
-        """
-        @summary 获取客户端证书状态
-        
-        @param request: DescribeClientCertificateStatusForSerialNumberRequest
-        @return: DescribeClientCertificateStatusForSerialNumberResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeClientCertificateStatusForSerialNumberRequest,
+    ) -> main_models.DescribeClientCertificateStatusForSerialNumberResponse:
+        runtime = RuntimeOptions()
         return self.describe_client_certificate_status_for_serial_number_with_options(request, runtime)
 
     async def describe_client_certificate_status_for_serial_number_async(
         self,
-        request: cas_20200630_models.DescribeClientCertificateStatusForSerialNumberRequest,
-    ) -> cas_20200630_models.DescribeClientCertificateStatusForSerialNumberResponse:
-        """
-        @summary 获取客户端证书状态
-        
-        @param request: DescribeClientCertificateStatusForSerialNumberRequest
-        @return: DescribeClientCertificateStatusForSerialNumberResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeClientCertificateStatusForSerialNumberRequest,
+    ) -> main_models.DescribeClientCertificateStatusForSerialNumberResponse:
+        runtime = RuntimeOptions()
         return await self.describe_client_certificate_status_for_serial_number_with_options_async(request, runtime)
 
     def describe_pca_and_external_cacertificate_list_with_options(
         self,
-        request: cas_20200630_models.DescribePcaAndExternalCACertificateListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribePcaAndExternalCACertificateListResponse:
-        """
-        @deprecated OpenAPI DescribePcaAndExternalCACertificateList is deprecated, please use cas::2020-06-30::ListAllEndEntityInstance instead.
-        
-        @summary 返回用户所有CaCertificate，包括PCA内部产生的与导入的外部证书
-        
-        @param request: DescribePcaAndExternalCACertificateListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePcaAndExternalCACertificateListResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribePcaAndExternalCACertificateListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePcaAndExternalCACertificateListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.show_size):
+        if not DaraCore.is_null(request.show_size):
             query['ShowSize'] = request.show_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribePcaAndExternalCACertificateList',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribePcaAndExternalCACertificateList',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribePcaAndExternalCACertificateListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribePcaAndExternalCACertificateListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_pca_and_external_cacertificate_list_with_options_async(
         self,
-        request: cas_20200630_models.DescribePcaAndExternalCACertificateListRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.DescribePcaAndExternalCACertificateListResponse:
-        """
-        @deprecated OpenAPI DescribePcaAndExternalCACertificateList is deprecated, please use cas::2020-06-30::ListAllEndEntityInstance instead.
-        
-        @summary 返回用户所有CaCertificate，包括PCA内部产生的与导入的外部证书
-        
-        @param request: DescribePcaAndExternalCACertificateListRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribePcaAndExternalCACertificateListResponse
-        Deprecated
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribePcaAndExternalCACertificateListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePcaAndExternalCACertificateListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.show_size):
+        if not DaraCore.is_null(request.show_size):
             query['ShowSize'] = request.show_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribePcaAndExternalCACertificateList',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribePcaAndExternalCACertificateList',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.DescribePcaAndExternalCACertificateListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribePcaAndExternalCACertificateListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_pca_and_external_cacertificate_list(
         self,
-        request: cas_20200630_models.DescribePcaAndExternalCACertificateListRequest,
-    ) -> cas_20200630_models.DescribePcaAndExternalCACertificateListResponse:
-        """
-        @deprecated OpenAPI DescribePcaAndExternalCACertificateList is deprecated, please use cas::2020-06-30::ListAllEndEntityInstance instead.
-        
-        @summary 返回用户所有CaCertificate，包括PCA内部产生的与导入的外部证书
-        
-        @param request: DescribePcaAndExternalCACertificateListRequest
-        @return: DescribePcaAndExternalCACertificateListResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribePcaAndExternalCACertificateListRequest,
+    ) -> main_models.DescribePcaAndExternalCACertificateListResponse:
+        runtime = RuntimeOptions()
         return self.describe_pca_and_external_cacertificate_list_with_options(request, runtime)
 
     async def describe_pca_and_external_cacertificate_list_async(
         self,
-        request: cas_20200630_models.DescribePcaAndExternalCACertificateListRequest,
-    ) -> cas_20200630_models.DescribePcaAndExternalCACertificateListResponse:
-        """
-        @deprecated OpenAPI DescribePcaAndExternalCACertificateList is deprecated, please use cas::2020-06-30::ListAllEndEntityInstance instead.
-        
-        @summary 返回用户所有CaCertificate，包括PCA内部产生的与导入的外部证书
-        
-        @param request: DescribePcaAndExternalCACertificateListRequest
-        @return: DescribePcaAndExternalCACertificateListResponse
-        Deprecated
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribePcaAndExternalCACertificateListRequest,
+    ) -> main_models.DescribePcaAndExternalCACertificateListResponse:
+        runtime = RuntimeOptions()
         return await self.describe_pca_and_external_cacertificate_list_with_options_async(request, runtime)
 
     def get_cainstance_status_with_options(
         self,
-        request: cas_20200630_models.GetCAInstanceStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.GetCAInstanceStatusResponse:
-        """
-        @summary Queries the status information about a private root certificate authority (CA) instance or a private intermediate CA instance that you purchase by using the Certificate Management Service console.
-        
-        @description ## Usage notes
-        You can call the GetCAInstanceStatus operation to query the status information of a private CA instance by using the ID of the instance. The instance is purchased by using the SSL Certificates Service console. The status information includes the status of the private CA instance, the number of certificates that can be issued by using the private CA instance, and the number of issued certificates.
-        Before you call this operation, make sure that you have purchased a private CA by using the [SSL Certificates Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Create a private CA](https://help.aliyun.com/document_detail/208553.html).
-        
-        @param request: GetCAInstanceStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetCAInstanceStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetCAInstanceStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCAInstanceStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetCAInstanceStatus',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetCAInstanceStatus',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.GetCAInstanceStatusResponse(),
+        return DaraCore.from_map(
+            main_models.GetCAInstanceStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_cainstance_status_with_options_async(
         self,
-        request: cas_20200630_models.GetCAInstanceStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.GetCAInstanceStatusResponse:
-        """
-        @summary Queries the status information about a private root certificate authority (CA) instance or a private intermediate CA instance that you purchase by using the Certificate Management Service console.
-        
-        @description ## Usage notes
-        You can call the GetCAInstanceStatus operation to query the status information of a private CA instance by using the ID of the instance. The instance is purchased by using the SSL Certificates Service console. The status information includes the status of the private CA instance, the number of certificates that can be issued by using the private CA instance, and the number of issued certificates.
-        Before you call this operation, make sure that you have purchased a private CA by using the [SSL Certificates Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Create a private CA](https://help.aliyun.com/document_detail/208553.html).
-        
-        @param request: GetCAInstanceStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetCAInstanceStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetCAInstanceStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCAInstanceStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetCAInstanceStatus',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetCAInstanceStatus',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.GetCAInstanceStatusResponse(),
+        return DaraCore.from_map(
+            main_models.GetCAInstanceStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_cainstance_status(
         self,
-        request: cas_20200630_models.GetCAInstanceStatusRequest,
-    ) -> cas_20200630_models.GetCAInstanceStatusResponse:
-        """
-        @summary Queries the status information about a private root certificate authority (CA) instance or a private intermediate CA instance that you purchase by using the Certificate Management Service console.
-        
-        @description ## Usage notes
-        You can call the GetCAInstanceStatus operation to query the status information of a private CA instance by using the ID of the instance. The instance is purchased by using the SSL Certificates Service console. The status information includes the status of the private CA instance, the number of certificates that can be issued by using the private CA instance, and the number of issued certificates.
-        Before you call this operation, make sure that you have purchased a private CA by using the [SSL Certificates Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Create a private CA](https://help.aliyun.com/document_detail/208553.html).
-        
-        @param request: GetCAInstanceStatusRequest
-        @return: GetCAInstanceStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetCAInstanceStatusRequest,
+    ) -> main_models.GetCAInstanceStatusResponse:
+        runtime = RuntimeOptions()
         return self.get_cainstance_status_with_options(request, runtime)
 
     async def get_cainstance_status_async(
         self,
-        request: cas_20200630_models.GetCAInstanceStatusRequest,
-    ) -> cas_20200630_models.GetCAInstanceStatusResponse:
-        """
-        @summary Queries the status information about a private root certificate authority (CA) instance or a private intermediate CA instance that you purchase by using the Certificate Management Service console.
-        
-        @description ## Usage notes
-        You can call the GetCAInstanceStatus operation to query the status information of a private CA instance by using the ID of the instance. The instance is purchased by using the SSL Certificates Service console. The status information includes the status of the private CA instance, the number of certificates that can be issued by using the private CA instance, and the number of issued certificates.
-        Before you call this operation, make sure that you have purchased a private CA by using the [SSL Certificates Service console](https://yundun.console.aliyun.com/?p=cas#/pca/rootlist). For more information, see [Create a private CA](https://help.aliyun.com/document_detail/208553.html).
-        
-        @param request: GetCAInstanceStatusRequest
-        @return: GetCAInstanceStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetCAInstanceStatusRequest,
+    ) -> main_models.GetCAInstanceStatusResponse:
+        runtime = RuntimeOptions()
         return await self.get_cainstance_status_with_options_async(request, runtime)
 
     def list_all_end_entity_instance_with_options(
         self,
-        request: cas_20200630_models.ListAllEndEntityInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.ListAllEndEntityInstanceResponse:
-        """
-        @summary 查询终端实例
-        
-        @param request: ListAllEndEntityInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAllEndEntityInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListAllEndEntityInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAllEndEntityInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.parent_id):
+        if not DaraCore.is_null(request.parent_id):
             query['ParentId'] = request.parent_id
-        if not UtilClient.is_unset(request.recursive_children):
+        if not DaraCore.is_null(request.recursive_children):
             query['RecursiveChildren'] = request.recursive_children
-        if not UtilClient.is_unset(request.show_size):
+        if not DaraCore.is_null(request.show_size):
             query['ShowSize'] = request.show_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAllEndEntityInstance',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAllEndEntityInstance',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.ListAllEndEntityInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.ListAllEndEntityInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_all_end_entity_instance_with_options_async(
         self,
-        request: cas_20200630_models.ListAllEndEntityInstanceRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.ListAllEndEntityInstanceResponse:
-        """
-        @summary 查询终端实例
-        
-        @param request: ListAllEndEntityInstanceRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAllEndEntityInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListAllEndEntityInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAllEndEntityInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.parent_id):
+        if not DaraCore.is_null(request.parent_id):
             query['ParentId'] = request.parent_id
-        if not UtilClient.is_unset(request.recursive_children):
+        if not DaraCore.is_null(request.recursive_children):
             query['RecursiveChildren'] = request.recursive_children
-        if not UtilClient.is_unset(request.show_size):
+        if not DaraCore.is_null(request.show_size):
             query['ShowSize'] = request.show_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAllEndEntityInstance',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAllEndEntityInstance',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.ListAllEndEntityInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.ListAllEndEntityInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_all_end_entity_instance(
         self,
-        request: cas_20200630_models.ListAllEndEntityInstanceRequest,
-    ) -> cas_20200630_models.ListAllEndEntityInstanceResponse:
-        """
-        @summary 查询终端实例
-        
-        @param request: ListAllEndEntityInstanceRequest
-        @return: ListAllEndEntityInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAllEndEntityInstanceRequest,
+    ) -> main_models.ListAllEndEntityInstanceResponse:
+        runtime = RuntimeOptions()
         return self.list_all_end_entity_instance_with_options(request, runtime)
 
     async def list_all_end_entity_instance_async(
         self,
-        request: cas_20200630_models.ListAllEndEntityInstanceRequest,
-    ) -> cas_20200630_models.ListAllEndEntityInstanceResponse:
-        """
-        @summary 查询终端实例
-        
-        @param request: ListAllEndEntityInstanceRequest
-        @return: ListAllEndEntityInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAllEndEntityInstanceRequest,
+    ) -> main_models.ListAllEndEntityInstanceResponse:
+        runtime = RuntimeOptions()
         return await self.list_all_end_entity_instance_with_options_async(request, runtime)
 
     def list_cacertificate_log_with_options(
         self,
-        request: cas_20200630_models.ListCACertificateLogRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.ListCACertificateLogResponse:
-        """
-        @summary 获取证书日志
-        
-        @param request: ListCACertificateLogRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListCACertificateLogResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListCACertificateLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCACertificateLogResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListCACertificateLog',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListCACertificateLog',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.ListCACertificateLogResponse(),
+        return DaraCore.from_map(
+            main_models.ListCACertificateLogResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_cacertificate_log_with_options_async(
         self,
-        request: cas_20200630_models.ListCACertificateLogRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.ListCACertificateLogResponse:
-        """
-        @summary 获取证书日志
-        
-        @param request: ListCACertificateLogRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListCACertificateLogResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListCACertificateLogRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCACertificateLogResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListCACertificateLog',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListCACertificateLog',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.ListCACertificateLogResponse(),
+        return DaraCore.from_map(
+            main_models.ListCACertificateLogResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_cacertificate_log(
         self,
-        request: cas_20200630_models.ListCACertificateLogRequest,
-    ) -> cas_20200630_models.ListCACertificateLogResponse:
-        """
-        @summary 获取证书日志
-        
-        @param request: ListCACertificateLogRequest
-        @return: ListCACertificateLogResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListCACertificateLogRequest,
+    ) -> main_models.ListCACertificateLogResponse:
+        runtime = RuntimeOptions()
         return self.list_cacertificate_log_with_options(request, runtime)
 
     async def list_cacertificate_log_async(
         self,
-        request: cas_20200630_models.ListCACertificateLogRequest,
-    ) -> cas_20200630_models.ListCACertificateLogResponse:
-        """
-        @summary 获取证书日志
-        
-        @param request: ListCACertificateLogRequest
-        @return: ListCACertificateLogResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListCACertificateLogRequest,
+    ) -> main_models.ListCACertificateLogResponse:
+        runtime = RuntimeOptions()
         return await self.list_cacertificate_log_with_options_async(request, runtime)
 
     def list_cert_with_options(
         self,
-        request: cas_20200630_models.ListCertRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.ListCertResponse:
-        """
-        @summary 获取证书列表
-        
-        @param request: ListCertRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListCertResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListCertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCertResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.after_date):
+        if not DaraCore.is_null(request.after_date):
             query['AfterDate'] = request.after_date
-        if not UtilClient.is_unset(request.before_date):
+        if not DaraCore.is_null(request.before_date):
             query['BeforeDate'] = request.before_date
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.instance_uuid):
+        if not DaraCore.is_null(request.instance_uuid):
             query['InstanceUuid'] = request.instance_uuid
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.show_size):
+        if not DaraCore.is_null(request.show_size):
             query['ShowSize'] = request.show_size
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['Type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListCert',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListCert',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.ListCertResponse(),
+        return DaraCore.from_map(
+            main_models.ListCertResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_cert_with_options_async(
         self,
-        request: cas_20200630_models.ListCertRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.ListCertResponse:
-        """
-        @summary 获取证书列表
-        
-        @param request: ListCertRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListCertResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListCertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCertResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.after_date):
+        if not DaraCore.is_null(request.after_date):
             query['AfterDate'] = request.after_date
-        if not UtilClient.is_unset(request.before_date):
+        if not DaraCore.is_null(request.before_date):
             query['BeforeDate'] = request.before_date
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.instance_uuid):
+        if not DaraCore.is_null(request.instance_uuid):
             query['InstanceUuid'] = request.instance_uuid
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.show_size):
+        if not DaraCore.is_null(request.show_size):
             query['ShowSize'] = request.show_size
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['Type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListCert',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListCert',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.ListCertResponse(),
+        return DaraCore.from_map(
+            main_models.ListCertResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_cert(
         self,
-        request: cas_20200630_models.ListCertRequest,
-    ) -> cas_20200630_models.ListCertResponse:
-        """
-        @summary 获取证书列表
-        
-        @param request: ListCertRequest
-        @return: ListCertResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListCertRequest,
+    ) -> main_models.ListCertResponse:
+        runtime = RuntimeOptions()
         return self.list_cert_with_options(request, runtime)
 
     async def list_cert_async(
         self,
-        request: cas_20200630_models.ListCertRequest,
-    ) -> cas_20200630_models.ListCertResponse:
-        """
-        @summary 获取证书列表
-        
-        @param request: ListCertRequest
-        @return: ListCertResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListCertRequest,
+    ) -> main_models.ListCertResponse:
+        runtime = RuntimeOptions()
         return await self.list_cert_with_options_async(request, runtime)
 
     def list_client_certificate_with_options(
         self,
-        request: cas_20200630_models.ListClientCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.ListClientCertificateResponse:
-        """
-        @summary Queries the details about all client certificates and server certificates.
-        
-        @description You can call the ListClientCertificate operation to perform a paged query of the details about all client certificates and server certificates that you create. The details include the unique identifier, serial number, user information, content, and status of each certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: ListClientCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListClientCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListClientCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListClientCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.show_size):
+        if not DaraCore.is_null(request.show_size):
             query['ShowSize'] = request.show_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListClientCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListClientCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.ListClientCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.ListClientCertificateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_client_certificate_with_options_async(
         self,
-        request: cas_20200630_models.ListClientCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.ListClientCertificateResponse:
-        """
-        @summary Queries the details about all client certificates and server certificates.
-        
-        @description You can call the ListClientCertificate operation to perform a paged query of the details about all client certificates and server certificates that you create. The details include the unique identifier, serial number, user information, content, and status of each certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: ListClientCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListClientCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListClientCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListClientCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.show_size):
+        if not DaraCore.is_null(request.show_size):
             query['ShowSize'] = request.show_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListClientCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListClientCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.ListClientCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.ListClientCertificateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_client_certificate(
         self,
-        request: cas_20200630_models.ListClientCertificateRequest,
-    ) -> cas_20200630_models.ListClientCertificateResponse:
-        """
-        @summary Queries the details about all client certificates and server certificates.
-        
-        @description You can call the ListClientCertificate operation to perform a paged query of the details about all client certificates and server certificates that you create. The details include the unique identifier, serial number, user information, content, and status of each certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: ListClientCertificateRequest
-        @return: ListClientCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListClientCertificateRequest,
+    ) -> main_models.ListClientCertificateResponse:
+        runtime = RuntimeOptions()
         return self.list_client_certificate_with_options(request, runtime)
 
     async def list_client_certificate_async(
         self,
-        request: cas_20200630_models.ListClientCertificateRequest,
-    ) -> cas_20200630_models.ListClientCertificateResponse:
-        """
-        @summary Queries the details about all client certificates and server certificates.
-        
-        @description You can call the ListClientCertificate operation to perform a paged query of the details about all client certificates and server certificates that you create. The details include the unique identifier, serial number, user information, content, and status of each certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: ListClientCertificateRequest
-        @return: ListClientCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListClientCertificateRequest,
+    ) -> main_models.ListClientCertificateResponse:
+        runtime = RuntimeOptions()
         return await self.list_client_certificate_with_options_async(request, runtime)
 
     def list_pca_ca_certificate_with_options(
         self,
-        request: cas_20200630_models.ListPcaCaCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.ListPcaCaCertificateResponse:
-        """
-        @summary 查询私有CA机构证书
-        
-        @param request: ListPcaCaCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListPcaCaCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListPcaCaCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPcaCaCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListPcaCaCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListPcaCaCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.ListPcaCaCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.ListPcaCaCertificateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_pca_ca_certificate_with_options_async(
         self,
-        request: cas_20200630_models.ListPcaCaCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.ListPcaCaCertificateResponse:
-        """
-        @summary 查询私有CA机构证书
-        
-        @param request: ListPcaCaCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListPcaCaCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListPcaCaCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPcaCaCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListPcaCaCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListPcaCaCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.ListPcaCaCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.ListPcaCaCertificateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_pca_ca_certificate(
         self,
-        request: cas_20200630_models.ListPcaCaCertificateRequest,
-    ) -> cas_20200630_models.ListPcaCaCertificateResponse:
-        """
-        @summary 查询私有CA机构证书
-        
-        @param request: ListPcaCaCertificateRequest
-        @return: ListPcaCaCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListPcaCaCertificateRequest,
+    ) -> main_models.ListPcaCaCertificateResponse:
+        runtime = RuntimeOptions()
         return self.list_pca_ca_certificate_with_options(request, runtime)
 
     async def list_pca_ca_certificate_async(
         self,
-        request: cas_20200630_models.ListPcaCaCertificateRequest,
-    ) -> cas_20200630_models.ListPcaCaCertificateResponse:
-        """
-        @summary 查询私有CA机构证书
-        
-        @param request: ListPcaCaCertificateRequest
-        @return: ListPcaCaCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListPcaCaCertificateRequest,
+    ) -> main_models.ListPcaCaCertificateResponse:
+        runtime = RuntimeOptions()
         return await self.list_pca_ca_certificate_with_options_async(request, runtime)
 
     def list_revoke_certificate_with_options(
         self,
-        request: cas_20200630_models.ListRevokeCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.ListRevokeCertificateResponse:
-        """
-        @summary Queries the details about all client certificates and server certificates that are revoked.
-        
-        @description You can call the ListRevokeCertificate operation to perform a paged query of the details about all revoked client certificates and server certificates. The details include the unique identifier, serial number, and revocation date of each certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: ListRevokeCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListRevokeCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListRevokeCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRevokeCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.show_size):
+        if not DaraCore.is_null(request.show_size):
             query['ShowSize'] = request.show_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListRevokeCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListRevokeCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.ListRevokeCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.ListRevokeCertificateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_revoke_certificate_with_options_async(
         self,
-        request: cas_20200630_models.ListRevokeCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.ListRevokeCertificateResponse:
-        """
-        @summary Queries the details about all client certificates and server certificates that are revoked.
-        
-        @description You can call the ListRevokeCertificate operation to perform a paged query of the details about all revoked client certificates and server certificates. The details include the unique identifier, serial number, and revocation date of each certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: ListRevokeCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListRevokeCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListRevokeCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRevokeCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.show_size):
+        if not DaraCore.is_null(request.show_size):
             query['ShowSize'] = request.show_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListRevokeCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListRevokeCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.ListRevokeCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.ListRevokeCertificateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_revoke_certificate(
         self,
-        request: cas_20200630_models.ListRevokeCertificateRequest,
-    ) -> cas_20200630_models.ListRevokeCertificateResponse:
-        """
-        @summary Queries the details about all client certificates and server certificates that are revoked.
-        
-        @description You can call the ListRevokeCertificate operation to perform a paged query of the details about all revoked client certificates and server certificates. The details include the unique identifier, serial number, and revocation date of each certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: ListRevokeCertificateRequest
-        @return: ListRevokeCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListRevokeCertificateRequest,
+    ) -> main_models.ListRevokeCertificateResponse:
+        runtime = RuntimeOptions()
         return self.list_revoke_certificate_with_options(request, runtime)
 
     async def list_revoke_certificate_async(
         self,
-        request: cas_20200630_models.ListRevokeCertificateRequest,
-    ) -> cas_20200630_models.ListRevokeCertificateResponse:
-        """
-        @summary Queries the details about all client certificates and server certificates that are revoked.
-        
-        @description You can call the ListRevokeCertificate operation to perform a paged query of the details about all revoked client certificates and server certificates. The details include the unique identifier, serial number, and revocation date of each certificate.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: ListRevokeCertificateRequest
-        @return: ListRevokeCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListRevokeCertificateRequest,
+    ) -> main_models.ListRevokeCertificateResponse:
+        runtime = RuntimeOptions()
         return await self.list_revoke_certificate_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
-        request: cas_20200630_models.ListTagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.ListTagResourcesResponse:
-        """
-        @summary 获取资源对应的标签
-        
-        @param request: ListTagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListTagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTagResources',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTagResources',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.ListTagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.ListTagResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
         self,
-        request: cas_20200630_models.ListTagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.ListTagResourcesResponse:
-        """
-        @summary 获取资源对应的标签
-        
-        @param request: ListTagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListTagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTagResources',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTagResources',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.ListTagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.ListTagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_resources(
         self,
-        request: cas_20200630_models.ListTagResourcesRequest,
-    ) -> cas_20200630_models.ListTagResourcesResponse:
-        """
-        @summary 获取资源对应的标签
-        
-        @param request: ListTagResourcesRequest
-        @return: ListTagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTagResourcesRequest,
+    ) -> main_models.ListTagResourcesResponse:
+        runtime = RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
     async def list_tag_resources_async(
         self,
-        request: cas_20200630_models.ListTagResourcesRequest,
-    ) -> cas_20200630_models.ListTagResourcesResponse:
-        """
-        @summary 获取资源对应的标签
-        
-        @param request: ListTagResourcesRequest
-        @return: ListTagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTagResourcesRequest,
+    ) -> main_models.ListTagResourcesResponse:
+        runtime = RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
     def move_resource_group_with_options(
         self,
-        request: cas_20200630_models.MoveResourceGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.MoveResourceGroupResponse:
-        """
-        @summary 变更资源的资源组
-        
-        @param request: MoveResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MoveResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MoveResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveResourceGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='MoveResourceGroup',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MoveResourceGroup',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.MoveResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.MoveResourceGroupResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def move_resource_group_with_options_async(
         self,
-        request: cas_20200630_models.MoveResourceGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.MoveResourceGroupResponse:
-        """
-        @summary 变更资源的资源组
-        
-        @param request: MoveResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MoveResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MoveResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveResourceGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='MoveResourceGroup',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MoveResourceGroup',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.MoveResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.MoveResourceGroupResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def move_resource_group(
         self,
-        request: cas_20200630_models.MoveResourceGroupRequest,
-    ) -> cas_20200630_models.MoveResourceGroupResponse:
-        """
-        @summary 变更资源的资源组
-        
-        @param request: MoveResourceGroupRequest
-        @return: MoveResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MoveResourceGroupRequest,
+    ) -> main_models.MoveResourceGroupResponse:
+        runtime = RuntimeOptions()
         return self.move_resource_group_with_options(request, runtime)
 
     async def move_resource_group_async(
         self,
-        request: cas_20200630_models.MoveResourceGroupRequest,
-    ) -> cas_20200630_models.MoveResourceGroupResponse:
-        """
-        @summary 变更资源的资源组
-        
-        @param request: MoveResourceGroupRequest
-        @return: MoveResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MoveResourceGroupRequest,
+    ) -> main_models.MoveResourceGroupResponse:
+        runtime = RuntimeOptions()
         return await self.move_resource_group_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,
-        request: cas_20200630_models.TagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.TagResourcesResponse:
-        """
-        @summary 新增资源标签
-        
-        @param request: TagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.TagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.TagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
         self,
-        request: cas_20200630_models.TagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.TagResourcesResponse:
-        """
-        @summary 新增资源标签
-        
-        @param request: TagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.TagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.TagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
         self,
-        request: cas_20200630_models.TagResourcesRequest,
-    ) -> cas_20200630_models.TagResourcesResponse:
-        """
-        @summary 新增资源标签
-        
-        @param request: TagResourcesRequest
-        @return: TagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
     async def tag_resources_async(
         self,
-        request: cas_20200630_models.TagResourcesRequest,
-    ) -> cas_20200630_models.TagResourcesResponse:
-        """
-        @summary 新增资源标签
-        
-        @param request: TagResourcesRequest
-        @return: TagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
     def untag_resources_with_options(
         self,
-        request: cas_20200630_models.UntagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.UntagResourcesResponse:
-        """
-        @summary 移除标签
-        
-        @param request: UntagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UntagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UntagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.all):
+        if not DaraCore.is_null(request.all):
             query['All'] = request.all
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag_key):
+        if not DaraCore.is_null(request.tag_key):
             query['TagKey'] = request.tag_key
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UntagResources',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.UntagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def untag_resources_with_options_async(
         self,
-        request: cas_20200630_models.UntagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.UntagResourcesResponse:
-        """
-        @summary 移除标签
-        
-        @param request: UntagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UntagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UntagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.all):
+        if not DaraCore.is_null(request.all):
             query['All'] = request.all
-        if not UtilClient.is_unset(request.region_id):
+        if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag_key):
+        if not DaraCore.is_null(request.tag_key):
             query['TagKey'] = request.tag_key
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UntagResources',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.UntagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def untag_resources(
         self,
-        request: cas_20200630_models.UntagResourcesRequest,
-    ) -> cas_20200630_models.UntagResourcesResponse:
-        """
-        @summary 移除标签
-        
-        @param request: UntagResourcesRequest
-        @return: UntagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
     async def untag_resources_async(
         self,
-        request: cas_20200630_models.UntagResourcesRequest,
-    ) -> cas_20200630_models.UntagResourcesResponse:
-        """
-        @summary 移除标签
-        
-        @param request: UntagResourcesRequest
-        @return: UntagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
     def update_cacertificate_status_with_options(
         self,
-        request: cas_20200630_models.UpdateCACertificateStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.UpdateCACertificateStatusResponse:
-        """
-        @summary Changes the status of a root certificate authority (CA) certificate or an intermediate CA certificate from ISSUE to REVOKE.
-        
-        @description After a CA certificate is created, the CA certificate is in the ISSUE state by default. You can call the UpdateCACertificateStatus operation to change the status of a CA certificate from ISSUE to REVOKE. If a CA certificate is in the ISSUE state, the CA certificate can be used to issue certificates. If a CA certificate is in the REVOKE state, the CA certificate cannot be used to issue certificates, and the certificates that are issued from the CA certificate become invalid.
-        Before you call this operation, make sure that you have created a root CA by calling the [CreateRootCACertificate] operation or an intermediate CA certificate by calling the [CreateSubCACertificate] operation.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: UpdateCACertificateStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateCACertificateStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateCACertificateStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCACertificateStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateCACertificateStatus',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateCACertificateStatus',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.UpdateCACertificateStatusResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateCACertificateStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_cacertificate_status_with_options_async(
         self,
-        request: cas_20200630_models.UpdateCACertificateStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.UpdateCACertificateStatusResponse:
-        """
-        @summary Changes the status of a root certificate authority (CA) certificate or an intermediate CA certificate from ISSUE to REVOKE.
-        
-        @description After a CA certificate is created, the CA certificate is in the ISSUE state by default. You can call the UpdateCACertificateStatus operation to change the status of a CA certificate from ISSUE to REVOKE. If a CA certificate is in the ISSUE state, the CA certificate can be used to issue certificates. If a CA certificate is in the REVOKE state, the CA certificate cannot be used to issue certificates, and the certificates that are issued from the CA certificate become invalid.
-        Before you call this operation, make sure that you have created a root CA by calling the [CreateRootCACertificate] operation or an intermediate CA certificate by calling the [CreateSubCACertificate] operation.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: UpdateCACertificateStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateCACertificateStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateCACertificateStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCACertificateStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateCACertificateStatus',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateCACertificateStatus',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.UpdateCACertificateStatusResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateCACertificateStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_cacertificate_status(
         self,
-        request: cas_20200630_models.UpdateCACertificateStatusRequest,
-    ) -> cas_20200630_models.UpdateCACertificateStatusResponse:
-        """
-        @summary Changes the status of a root certificate authority (CA) certificate or an intermediate CA certificate from ISSUE to REVOKE.
-        
-        @description After a CA certificate is created, the CA certificate is in the ISSUE state by default. You can call the UpdateCACertificateStatus operation to change the status of a CA certificate from ISSUE to REVOKE. If a CA certificate is in the ISSUE state, the CA certificate can be used to issue certificates. If a CA certificate is in the REVOKE state, the CA certificate cannot be used to issue certificates, and the certificates that are issued from the CA certificate become invalid.
-        Before you call this operation, make sure that you have created a root CA by calling the [CreateRootCACertificate] operation or an intermediate CA certificate by calling the [CreateSubCACertificate] operation.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: UpdateCACertificateStatusRequest
-        @return: UpdateCACertificateStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateCACertificateStatusRequest,
+    ) -> main_models.UpdateCACertificateStatusResponse:
+        runtime = RuntimeOptions()
         return self.update_cacertificate_status_with_options(request, runtime)
 
     async def update_cacertificate_status_async(
         self,
-        request: cas_20200630_models.UpdateCACertificateStatusRequest,
-    ) -> cas_20200630_models.UpdateCACertificateStatusResponse:
-        """
-        @summary Changes the status of a root certificate authority (CA) certificate or an intermediate CA certificate from ISSUE to REVOKE.
-        
-        @description After a CA certificate is created, the CA certificate is in the ISSUE state by default. You can call the UpdateCACertificateStatus operation to change the status of a CA certificate from ISSUE to REVOKE. If a CA certificate is in the ISSUE state, the CA certificate can be used to issue certificates. If a CA certificate is in the REVOKE state, the CA certificate cannot be used to issue certificates, and the certificates that are issued from the CA certificate become invalid.
-        Before you call this operation, make sure that you have created a root CA by calling the [CreateRootCACertificate] operation or an intermediate CA certificate by calling the [CreateSubCACertificate] operation.
-        ## Limits
-        You can call this operation up to 10 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: UpdateCACertificateStatusRequest
-        @return: UpdateCACertificateStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateCACertificateStatusRequest,
+    ) -> main_models.UpdateCACertificateStatusResponse:
+        runtime = RuntimeOptions()
         return await self.update_cacertificate_status_with_options_async(request, runtime)
 
     def update_pca_certificate_with_options(
         self,
-        request: cas_20200630_models.UpdatePcaCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.UpdatePcaCertificateResponse:
-        """
-        @summary 更新证书属性
-        
-        @param request: UpdatePcaCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdatePcaCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdatePcaCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePcaCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.alias_name):
+        if not DaraCore.is_null(request.alias_name):
             query['AliasName'] = request.alias_name
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
         body = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdatePcaCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdatePcaCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.UpdatePcaCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.UpdatePcaCertificateResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_pca_certificate_with_options_async(
         self,
-        request: cas_20200630_models.UpdatePcaCertificateRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.UpdatePcaCertificateResponse:
-        """
-        @summary 更新证书属性
-        
-        @param request: UpdatePcaCertificateRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdatePcaCertificateResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdatePcaCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdatePcaCertificateResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.alias_name):
+        if not DaraCore.is_null(request.alias_name):
             query['AliasName'] = request.alias_name
-        if not UtilClient.is_unset(request.identifier):
+        if not DaraCore.is_null(request.identifier):
             query['Identifier'] = request.identifier
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             query['Tags'] = request.tags
         body = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdatePcaCertificate',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdatePcaCertificate',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.UpdatePcaCertificateResponse(),
+        return DaraCore.from_map(
+            main_models.UpdatePcaCertificateResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_pca_certificate(
         self,
-        request: cas_20200630_models.UpdatePcaCertificateRequest,
-    ) -> cas_20200630_models.UpdatePcaCertificateResponse:
-        """
-        @summary 更新证书属性
-        
-        @param request: UpdatePcaCertificateRequest
-        @return: UpdatePcaCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdatePcaCertificateRequest,
+    ) -> main_models.UpdatePcaCertificateResponse:
+        runtime = RuntimeOptions()
         return self.update_pca_certificate_with_options(request, runtime)
 
     async def update_pca_certificate_async(
         self,
-        request: cas_20200630_models.UpdatePcaCertificateRequest,
-    ) -> cas_20200630_models.UpdatePcaCertificateResponse:
-        """
-        @summary 更新证书属性
-        
-        @param request: UpdatePcaCertificateRequest
-        @return: UpdatePcaCertificateResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdatePcaCertificateRequest,
+    ) -> main_models.UpdatePcaCertificateResponse:
+        runtime = RuntimeOptions()
         return await self.update_pca_certificate_with_options_async(request, runtime)
 
     def upload_pca_cert_to_cas_with_options(
         self,
-        request: cas_20200630_models.UploadPcaCertToCasRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.UploadPcaCertToCasResponse:
-        """
-        @summary 上传pca证书到SSL上传证书
-        
-        @param request: UploadPcaCertToCasRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UploadPcaCertToCasResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UploadPcaCertToCasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadPcaCertToCasResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.ids):
+        if not DaraCore.is_null(request.ids):
             query['Ids'] = request.ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UploadPcaCertToCas',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UploadPcaCertToCas',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.UploadPcaCertToCasResponse(),
+        return DaraCore.from_map(
+            main_models.UploadPcaCertToCasResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def upload_pca_cert_to_cas_with_options_async(
         self,
-        request: cas_20200630_models.UploadPcaCertToCasRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> cas_20200630_models.UploadPcaCertToCasResponse:
-        """
-        @summary 上传pca证书到SSL上传证书
-        
-        @param request: UploadPcaCertToCasRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UploadPcaCertToCasResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UploadPcaCertToCasRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadPcaCertToCasResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.ids):
+        if not DaraCore.is_null(request.ids):
             query['Ids'] = request.ids
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UploadPcaCertToCas',
-            version='2020-06-30',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UploadPcaCertToCas',
+            version = '2020-06-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            cas_20200630_models.UploadPcaCertToCasResponse(),
+        return DaraCore.from_map(
+            main_models.UploadPcaCertToCasResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def upload_pca_cert_to_cas(
         self,
-        request: cas_20200630_models.UploadPcaCertToCasRequest,
-    ) -> cas_20200630_models.UploadPcaCertToCasResponse:
-        """
-        @summary 上传pca证书到SSL上传证书
-        
-        @param request: UploadPcaCertToCasRequest
-        @return: UploadPcaCertToCasResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UploadPcaCertToCasRequest,
+    ) -> main_models.UploadPcaCertToCasResponse:
+        runtime = RuntimeOptions()
         return self.upload_pca_cert_to_cas_with_options(request, runtime)
 
     async def upload_pca_cert_to_cas_async(
         self,
-        request: cas_20200630_models.UploadPcaCertToCasRequest,
-    ) -> cas_20200630_models.UploadPcaCertToCasResponse:
-        """
-        @summary 上传pca证书到SSL上传证书
-        
-        @param request: UploadPcaCertToCasRequest
-        @return: UploadPcaCertToCasResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UploadPcaCertToCasRequest,
+    ) -> main_models.UploadPcaCertToCasResponse:
+        runtime = RuntimeOptions()
         return await self.upload_pca_cert_to_cas_with_options_async(request, runtime)

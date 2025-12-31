@@ -1,0 +1,61 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class CreateRootCACertificateResponseBody(DaraModel):
+    def __init__(
+        self,
+        certificate: str = None,
+        certificate_chain: str = None,
+        identifier: str = None,
+        request_id: str = None,
+    ):
+        # The root CA certificate in the PEM format.
+        self.certificate = certificate
+        # The certificate chain of the root CA certificate.
+        self.certificate_chain = certificate_chain
+        # The unique identifier of the root CA certificate.
+        self.identifier = identifier
+        # The ID of the request, which is used to locate and troubleshoot issues.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.certificate is not None:
+            result['Certificate'] = self.certificate
+
+        if self.certificate_chain is not None:
+            result['CertificateChain'] = self.certificate_chain
+
+        if self.identifier is not None:
+            result['Identifier'] = self.identifier
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Certificate') is not None:
+            self.certificate = m.get('Certificate')
+
+        if m.get('CertificateChain') is not None:
+            self.certificate_chain = m.get('CertificateChain')
+
+        if m.get('Identifier') is not None:
+            self.identifier = m.get('Identifier')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        return self
+
