@@ -1,0 +1,175 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class UpdateIpsecServerRequest(DaraModel):
+    def __init__(
+        self,
+        client_ip_pool: str = None,
+        client_token: str = None,
+        dry_run: str = None,
+        effect_immediately: bool = None,
+        ike_config: str = None,
+        ipsec_config: str = None,
+        ipsec_server_id: str = None,
+        ipsec_server_name: str = None,
+        local_subnet: str = None,
+        psk: str = None,
+        psk_enabled: bool = None,
+        region_id: str = None,
+    ):
+        # The client CIDR block from which an IP address is allocated to the virtual network interface controller (NIC) of the client.
+        # 
+        # >  The client CIDR block must not overlap with the CIDR blocks of the VPC.
+        self.client_ip_pool = client_ip_pool
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate a value, and you must make sure that each request has a unique token value. The client token can contain only ASCII characters.
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the value of **RequestId** as the value of **ClientToken**. The **request ID** may be different for each request.
+        self.client_token = client_token
+        # Specifies whether to only precheck this request. Valid values:
+        # 
+        # *   **true**: prechecks the request without modifying the configurations of the IPsec server. The system checks the required parameters, request format, and service limits. If the request fails to pass the precheck, an error code is returned. If the request passes the precheck, the `DryRunOperation` error code is returned.
+        # *   **false**: sends the request. This is the default value. If the request passes the precheck, the system modifies the configurations of the IPsec server.
+        self.dry_run = dry_run
+        # Specifies whether to delete the negotiated IPsec tunnel and initiate the negotiation again. Valid values:
+        # 
+        # *   **true**: immediately initiates negotiations after the configuration is complete.
+        # *   **false**: initiates negotiations when inbound traffic is detected.
+        self.effect_immediately = effect_immediately
+        # The configuration of Phase 1 negotiations. Valid values:
+        # 
+        # *   **IkeVersion**: The IKE version. Valid values: **ikev1** and **ikev2**.
+        # *   **IkeMode**: The IKE negotiation mode. Default value: **main**.
+        # *   **IkeEncAlg**: the encryption algorithm that is used in Phase 1 negotiation. Default value: **aes**.
+        # *   **IkeAuthAlg**: the authentication algorithm that is used in Phase 1 negotiation. Default value: **sha1**.
+        # *   **IkePfs**: The Diffie-Hellman key exchange algorithm that is used in Phase 1 negotiations. Default value: **group2**.
+        # *   **IkeLifetime**: The SA lifetime determined by Phase 1 negotiations. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
+        # *   **LocalId**: The identifier of the IPsec server. Only FQDN and IP address formats are supported.
+        # *   **RemoteId**: the peer identifier. Only FQDN and IP address formats are supported.
+        self.ike_config = ike_config
+        # The configuration of Phase 2 negotiation. Valid values:
+        # 
+        # *   **IpsecEncAlg**: the encryption algorithm that is used in Phase 2 negotiation. Default value: **aes**.
+        # *   **IpsecAuthAlg**: the authentication algorithm that is used in Phase 2 negotiation. Default value: **sha1**.
+        # *   **IpsecPfs**: forwards packets of all protocols. The Diffie-Hellman key exchange algorithm that is used in Phase 2 negotiation. Default value: **group2**.
+        # *   **IpsecLifetime**: the SA lifetime determined by Phase 2 negotiation. Unit: seconds. Valid values: **0** to **86400**. Default value: **86400**.
+        self.ipsec_config = ipsec_config
+        # The IPsec server ID.
+        # 
+        # This parameter is required.
+        self.ipsec_server_id = ipsec_server_id
+        # The name of the IPsec server.
+        # 
+        # It must be 1 to 100 characters in length.
+        self.ipsec_server_name = ipsec_server_name
+        # The local CIDR blocks, which are the CIDR blocks of the virtual private cloud (VPC) for the client to access.
+        # 
+        # Multiple CIDR blocks are separated with commas (,). Example: 192.168.1.0/24,192.168.2.0/24.
+        self.local_subnet = local_subnet
+        # The pre-shared key.
+        # 
+        # The pre-shared key that is used for authentication between the IPsec server and the client. The key must be 1 to 100 characters in length.
+        # 
+        # You can call [ListIpsecServers](https://help.aliyun.com/document_detail/2794120.html) to query keys generated by the system.
+        # 
+        # > The pre-shared key of the IPsec server key must be the same as that of the client. Otherwise, the connection between the IPsec server and the client cannot be established.
+        self.psk = psk
+        # Specifies whether to enable pre-shared key authentication. If you set the value to **true**, pre-shared key authentication is enabled.
+        self.psk_enabled = psk_enabled
+        # The ID of the region where the IPsec server is created.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.client_ip_pool is not None:
+            result['ClientIpPool'] = self.client_ip_pool
+
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
+        if self.dry_run is not None:
+            result['DryRun'] = self.dry_run
+
+        if self.effect_immediately is not None:
+            result['EffectImmediately'] = self.effect_immediately
+
+        if self.ike_config is not None:
+            result['IkeConfig'] = self.ike_config
+
+        if self.ipsec_config is not None:
+            result['IpsecConfig'] = self.ipsec_config
+
+        if self.ipsec_server_id is not None:
+            result['IpsecServerId'] = self.ipsec_server_id
+
+        if self.ipsec_server_name is not None:
+            result['IpsecServerName'] = self.ipsec_server_name
+
+        if self.local_subnet is not None:
+            result['LocalSubnet'] = self.local_subnet
+
+        if self.psk is not None:
+            result['Psk'] = self.psk
+
+        if self.psk_enabled is not None:
+            result['PskEnabled'] = self.psk_enabled
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientIpPool') is not None:
+            self.client_ip_pool = m.get('ClientIpPool')
+
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
+        if m.get('DryRun') is not None:
+            self.dry_run = m.get('DryRun')
+
+        if m.get('EffectImmediately') is not None:
+            self.effect_immediately = m.get('EffectImmediately')
+
+        if m.get('IkeConfig') is not None:
+            self.ike_config = m.get('IkeConfig')
+
+        if m.get('IpsecConfig') is not None:
+            self.ipsec_config = m.get('IpsecConfig')
+
+        if m.get('IpsecServerId') is not None:
+            self.ipsec_server_id = m.get('IpsecServerId')
+
+        if m.get('IpsecServerName') is not None:
+            self.ipsec_server_name = m.get('IpsecServerName')
+
+        if m.get('LocalSubnet') is not None:
+            self.local_subnet = m.get('LocalSubnet')
+
+        if m.get('Psk') is not None:
+            self.psk = m.get('Psk')
+
+        if m.get('PskEnabled') is not None:
+            self.psk_enabled = m.get('PskEnabled')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        return self
+

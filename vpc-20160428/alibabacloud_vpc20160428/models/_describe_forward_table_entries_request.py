@@ -1,0 +1,194 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class DescribeForwardTableEntriesRequest(DaraModel):
+    def __init__(
+        self,
+        external_ip: str = None,
+        external_port: str = None,
+        forward_entry_id: str = None,
+        forward_entry_name: str = None,
+        forward_table_id: str = None,
+        internal_ip: str = None,
+        internal_port: str = None,
+        ip_protocol: str = None,
+        nat_gateway_id: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+    ):
+        # *   The elastic IP addresses (EIPs) that can be accessed over the Internet when you query DNAT entries of Internet NAT gateways.
+        # *   The NAT IP addresses that can be accessed by external networks when you query DNAT entries of Virtual Private Cloud (VPC) NAT gateways.
+        self.external_ip = external_ip
+        # *   The external port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways.
+        # 
+        #     *   Valid values: **1** to **65535**.
+        #     *   If you want to query a port range, separate the first port and last port with a forward slash (/), such as `10/20`.
+        #     *   If you set **ExternalPort** to a port range, you must also set **InternalPort** to a port range, and the number of ports specified by these parameters must be the same. For example, if you set **ExternalPort** to `10/20`, you can set **InternalPort** to `80/90`.
+        # 
+        # *   The port that is used when the NAT IP address can be accessed by external networks when you query DNAT entries of VPC NAT gateways. Valid values: **1** to **65535**.
+        self.external_port = external_port
+        # The ID of the DNAT entry.
+        self.forward_entry_id = forward_entry_id
+        # The name of the DNAT entry.
+        # 
+        # The name must be 2 to 128 characters in length, and can contain digits, periods (.), underscores (_), and hyphens (-). It must start with a letter.
+        self.forward_entry_name = forward_entry_name
+        # The ID of the DNAT table.
+        # 
+        # **
+        # 
+        # **Description** You must specify at least one of **ForwardTableId** and **NatGatewayId**.
+        self.forward_table_id = forward_table_id
+        # The private IP address.
+        # 
+        # *   The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you query DNAT entries of Internet NAT gateways.
+        # *   The private IP address that uses DNAT entries for communication when you query DNAT entries of VPC NAT gateways.
+        self.internal_ip = internal_ip
+        # *   The internal port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways. Valid values: **1** to **65535**.
+        # *   The port of the destination ECS instance to be mapped when you query DNAT entries of VPC NAT gateways. Valid values: **1** to **65535**.
+        self.internal_port = internal_port
+        # The protocol. Valid values:
+        # 
+        # *   **TCP**
+        # *   **UDP**
+        # *   **Any**
+        self.ip_protocol = ip_protocol
+        # The ID of the NAT gateway.
+        # 
+        # **
+        # 
+        # **Description** You must specify at least one of **ForwardTableId** and **NatGatewayId**.
+        self.nat_gateway_id = nat_gateway_id
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The page number. Default value: **1**.
+        self.page_number = page_number
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        self.page_size = page_size
+        # The ID of the region where you want to create the NAT gateway.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.external_ip is not None:
+            result['ExternalIp'] = self.external_ip
+
+        if self.external_port is not None:
+            result['ExternalPort'] = self.external_port
+
+        if self.forward_entry_id is not None:
+            result['ForwardEntryId'] = self.forward_entry_id
+
+        if self.forward_entry_name is not None:
+            result['ForwardEntryName'] = self.forward_entry_name
+
+        if self.forward_table_id is not None:
+            result['ForwardTableId'] = self.forward_table_id
+
+        if self.internal_ip is not None:
+            result['InternalIp'] = self.internal_ip
+
+        if self.internal_port is not None:
+            result['InternalPort'] = self.internal_port
+
+        if self.ip_protocol is not None:
+            result['IpProtocol'] = self.ip_protocol
+
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ExternalIp') is not None:
+            self.external_ip = m.get('ExternalIp')
+
+        if m.get('ExternalPort') is not None:
+            self.external_port = m.get('ExternalPort')
+
+        if m.get('ForwardEntryId') is not None:
+            self.forward_entry_id = m.get('ForwardEntryId')
+
+        if m.get('ForwardEntryName') is not None:
+            self.forward_entry_name = m.get('ForwardEntryName')
+
+        if m.get('ForwardTableId') is not None:
+            self.forward_table_id = m.get('ForwardTableId')
+
+        if m.get('InternalIp') is not None:
+            self.internal_ip = m.get('InternalIp')
+
+        if m.get('InternalPort') is not None:
+            self.internal_port = m.get('InternalPort')
+
+        if m.get('IpProtocol') is not None:
+            self.ip_protocol = m.get('IpProtocol')
+
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+
+        return self
+

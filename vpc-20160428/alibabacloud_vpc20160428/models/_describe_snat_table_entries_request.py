@@ -1,0 +1,171 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from darabonba.model import DaraModel
+
+class DescribeSnatTableEntriesRequest(DaraModel):
+    def __init__(
+        self,
+        nat_gateway_id: str = None,
+        network_interface_ids: List[str] = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
+        region_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        snat_entry_id: str = None,
+        snat_entry_name: str = None,
+        snat_ip: str = None,
+        snat_table_id: str = None,
+        source_cidr: str = None,
+        source_vswitch_id: str = None,
+    ):
+        # The ID of the NAT gateway.
+        # 
+        # >  You must specify at least one of **SnatTableId** and **NatGatewayId**.
+        self.nat_gateway_id = nat_gateway_id
+        self.network_interface_ids = network_interface_ids
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The page number. Default value: **1**.
+        self.page_number = page_number
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
+        self.page_size = page_size
+        # The ID of the region where you want to create the NAT gateway.
+        # 
+        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # 
+        # This parameter is required.
+        self.region_id = region_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The ID of the SNAT entry.
+        self.snat_entry_id = snat_entry_id
+        # The name of the SNAT entry.
+        # 
+        # The name must be 2 to 128 characters in length, and can contain digits, underscores (_), and hyphens (-). The name must start with a letter.
+        self.snat_entry_name = snat_entry_name
+        # *   When you query SNAT entries of Internet NAT gateways, this parameter specifies the EIP in an SNAT entry.
+        # *   When you query SNAT entries of VPC NAT gateways, this parameter specifies the NAT IP address in an SNAT entry.
+        self.snat_ip = snat_ip
+        # The ID of the SNAT table.
+        # 
+        # >  You must specify at least one of **SnatTableId** and **NatGatewayId**.
+        self.snat_table_id = snat_table_id
+        # The source CIDR block specified in the SNAT entry.
+        self.source_cidr = source_cidr
+        # The ID of the vSwitch.
+        # 
+        # *   When you query SNAT entries of Internet NAT gateways, this parameter specifies that Elastic Compute Service (ECS) instances in the vSwitch can use SNAT entries to access the Internet.
+        # *   When you query SNAT entries of virtual private cloud (VPC) NAT gateways, this parameter specifies that ECS instances in the vSwitch can use SNAT entries to access external networks.
+        self.source_vswitch_id = source_vswitch_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
+
+        if self.network_interface_ids is not None:
+            result['NetworkInterfaceIds'] = self.network_interface_ids
+
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+
+        if self.snat_entry_id is not None:
+            result['SnatEntryId'] = self.snat_entry_id
+
+        if self.snat_entry_name is not None:
+            result['SnatEntryName'] = self.snat_entry_name
+
+        if self.snat_ip is not None:
+            result['SnatIp'] = self.snat_ip
+
+        if self.snat_table_id is not None:
+            result['SnatTableId'] = self.snat_table_id
+
+        if self.source_cidr is not None:
+            result['SourceCIDR'] = self.source_cidr
+
+        if self.source_vswitch_id is not None:
+            result['SourceVSwitchId'] = self.source_vswitch_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
+
+        if m.get('NetworkInterfaceIds') is not None:
+            self.network_interface_ids = m.get('NetworkInterfaceIds')
+
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+
+        if m.get('SnatEntryId') is not None:
+            self.snat_entry_id = m.get('SnatEntryId')
+
+        if m.get('SnatEntryName') is not None:
+            self.snat_entry_name = m.get('SnatEntryName')
+
+        if m.get('SnatIp') is not None:
+            self.snat_ip = m.get('SnatIp')
+
+        if m.get('SnatTableId') is not None:
+            self.snat_table_id = m.get('SnatTableId')
+
+        if m.get('SourceCIDR') is not None:
+            self.source_cidr = m.get('SourceCIDR')
+
+        if m.get('SourceVSwitchId') is not None:
+            self.source_vswitch_id = m.get('SourceVSwitchId')
+
+        return self
+
