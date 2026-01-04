@@ -1,0 +1,117 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from darabonba.model import DaraModel
+
+class ModifyWebRuleRequest(DaraModel):
+    def __init__(
+        self,
+        domain: str = None,
+        https_ext: str = None,
+        instance_ids: List[str] = None,
+        proxy_types: str = None,
+        real_servers: List[str] = None,
+        resource_group_id: str = None,
+        rs_type: int = None,
+    ):
+        # The domain name of the website.
+        # 
+        # >  A forwarding rule must be configured for the domain name. You can call the [DescribeDomains](https://help.aliyun.com/document_detail/91724.html) operation to query the domain names for which forwarding rules are configured.
+        # 
+        # This parameter is required.
+        self.domain = domain
+        # The advanced HTTPS settings. This parameter takes effect only when the value of **ProxyType** includes **https**. The value is a string that consists of a JSON struct. The JSON struct contains the following fields:
+        # 
+        # *   **Http2https**: specifies whether to turn on Enforce HTTPS Routing. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enforce HTTPS Routing is turned off. The value 1 indicates that Enforce HTTPS Routing is turned on. The default value is 0.
+        # 
+        #     If your website supports both HTTP and HTTPS, this feature suits your needs. If you turn on the switch, all HTTP requests are redirected to HTTPS requests on port 443 by default.
+        # 
+        # *   **Https2http**: specifies whether to turn on Enable HTTP. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP is turned off. The value 1 indicates that Enable HTTP is turned on. The default value is 0.
+        # 
+        #     If your website does not support HTTPS, this feature suits your needs. If you turn on the switch, all HTTPS requests are redirected to HTTP requests and forwarded to origin servers. The feature can also redirect WebSockets requests to WebSocket requests. All requests are redirected over port 80.
+        # 
+        # *   **Http2**: specifies whether to turn on Enable HTTP/2. This field is optional and must be an integer. Valid values: **0** and **1**. The value 0 indicates that Enable HTTP/2 is turned off. The value 1 indicates that Enable HTTP/2 is turned on. The default value is 0.
+        # 
+        #     After you turn on the switch, the protocol type is HTTP/2.
+        self.https_ext = https_ext
+        self.instance_ids = instance_ids
+        # The protocol of the forwarding rule. The value is a string that consists of JSON arrays. Each element in a JSON array is a JSON struct that contains the following fields:
+        # 
+        # *   **ProxyType**: the protocol type. This field is required and must be a string. Valid values: **http**, **https**, **websocket**, and **websockets**.
+        # *   **ProxyPort**: the port number. This field is required and must be an array.
+        # 
+        # This parameter is required.
+        self.proxy_types = proxy_types
+        # This parameter is required.
+        self.real_servers = real_servers
+        # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
+        # 
+        # For more information about resource groups, see [Create a resource group](https://help.aliyun.com/document_detail/94485.html).
+        self.resource_group_id = resource_group_id
+        # The address type of the origin server. Valid values:
+        # 
+        # *   **0**: IP address.
+        # *   **1**: domain name. Use the domain name of the origin server if you deploy proxies, such as Web Application Firewall (WAF), between the origin server and the Anti-DDoS Pro or Anti-DDoS Premium instance. If you use the domain name, you must enter the address of the proxy, such as the CNAME of WAF.
+        # 
+        # This parameter is required.
+        self.rs_type = rs_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.domain is not None:
+            result['Domain'] = self.domain
+
+        if self.https_ext is not None:
+            result['HttpsExt'] = self.https_ext
+
+        if self.instance_ids is not None:
+            result['InstanceIds'] = self.instance_ids
+
+        if self.proxy_types is not None:
+            result['ProxyTypes'] = self.proxy_types
+
+        if self.real_servers is not None:
+            result['RealServers'] = self.real_servers
+
+        if self.resource_group_id is not None:
+            result['ResourceGroupId'] = self.resource_group_id
+
+        if self.rs_type is not None:
+            result['RsType'] = self.rs_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Domain') is not None:
+            self.domain = m.get('Domain')
+
+        if m.get('HttpsExt') is not None:
+            self.https_ext = m.get('HttpsExt')
+
+        if m.get('InstanceIds') is not None:
+            self.instance_ids = m.get('InstanceIds')
+
+        if m.get('ProxyTypes') is not None:
+            self.proxy_types = m.get('ProxyTypes')
+
+        if m.get('RealServers') is not None:
+            self.real_servers = m.get('RealServers')
+
+        if m.get('ResourceGroupId') is not None:
+            self.resource_group_id = m.get('ResourceGroupId')
+
+        if m.get('RsType') is not None:
+            self.rs_type = m.get('RsType')
+
+        return self
+
