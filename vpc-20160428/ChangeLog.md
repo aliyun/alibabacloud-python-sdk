@@ -7,6 +7,15 @@
 - Support API UpdateRouteTargetGroup.
 
 
+2026-01-04 Version: 6.14.0
+- Support API CreateRouteTargetGroup.
+- Support API DeleteRouteTargetGroup.
+- Support API GetRouteTargetGroup.
+- Support API ListRouteTargetGroups.
+- Support API SwitchActiveRouteTarget.
+- Support API UpdateRouteTargetGroup.
+
+
 2025-12-18 Version: 6.13.2
 - Update API CreateHighReliablePhysicalConnection: add request parameters ApList.$.OpticalModuleModel.
 - Update API CreatePhysicalConnection: add request parameters OpticalModuleModel.
