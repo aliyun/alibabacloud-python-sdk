@@ -1,0 +1,47 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class SetBackendServersShrinkRequest(DaraModel):
+    def __init__(
+        self,
+        backend_servers_shrink: str = None,
+        load_balancer_id: str = None,
+    ):
+        # The list of backend servers that you added. You can modify the weights of up to 20 backend servers in each request.
+        # 
+        # This parameter is required.
+        self.backend_servers_shrink = backend_servers_shrink
+        # The ID of the Edge Load Balancer (ELB) instance.
+        # 
+        # This parameter is required.
+        self.load_balancer_id = load_balancer_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.backend_servers_shrink is not None:
+            result['BackendServers'] = self.backend_servers_shrink
+
+        if self.load_balancer_id is not None:
+            result['LoadBalancerId'] = self.load_balancer_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BackendServers') is not None:
+            self.backend_servers_shrink = m.get('BackendServers')
+
+        if m.get('LoadBalancerId') is not None:
+            self.load_balancer_id = m.get('LoadBalancerId')
+
+        return self
+

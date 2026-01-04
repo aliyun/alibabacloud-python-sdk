@@ -1,3 +1,8 @@
+2026-01-04 Version: 9.6.0
+- Support API ListAddons.
+- Support API ListClusterAddonInstances.
+
+
 2025-12-10 Version: 9.5.3
 - Update API CreateCluster: add request parameters ControlPlaneConfig.LoginPassword.
 - Update API CreateEipInstance: add request parameters InstanceId.

@@ -1,0 +1,190 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_ens20171110 import models as main_models
+from darabonba.model import DaraModel
+
+class DeploySDGResponseBody(DaraModel):
+    def __init__(
+        self,
+        data: main_models.DeploySDGResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # The returned data object.
+        self.data = data
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = main_models.DeploySDGResponseBodyData()
+            self.data = temp_model.from_map(m.get('Data'))
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        return self
+
+class DeploySDGResponseBodyData(DaraModel):
+    def __init__(
+        self,
+        message: str = None,
+        result: main_models.DeploySDGResponseBodyDataResult = None,
+        success: bool = None,
+    ):
+        # The response message. Success is returned for a successful request.
+        self.message = message
+        # The task result.
+        self.result = result
+        # Indicates whether all tasks are successful. Valid values:
+        # 
+        # *   true: All tasks are successful.
+        # *   false: Failed tasks exist.
+        self.success = success
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.message is not None:
+            result['Message'] = self.message
+
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+
+        if self.success is not None:
+            result['Success'] = self.success
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
+        if m.get('Result') is not None:
+            temp_model = main_models.DeploySDGResponseBodyDataResult()
+            self.result = temp_model.from_map(m.get('Result'))
+
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+
+        return self
+
+class DeploySDGResponseBodyDataResult(DaraModel):
+    def __init__(
+        self,
+        failed_count: int = None,
+        failed_items: List[main_models.DeploySDGResponseBodyDataResultFailedItems] = None,
+        success_count: int = None,
+    ):
+        # The number of failed tasks.
+        self.failed_count = failed_count
+        # Details of failed tasks.
+        self.failed_items = failed_items
+        # The number of successful tasks.
+        self.success_count = success_count
+
+    def validate(self):
+        if self.failed_items:
+            for v1 in self.failed_items:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.failed_count is not None:
+            result['FailedCount'] = self.failed_count
+
+        result['FailedItems'] = []
+        if self.failed_items is not None:
+            for k1 in self.failed_items:
+                result['FailedItems'].append(k1.to_map() if k1 else None)
+
+        if self.success_count is not None:
+            result['SuccessCount'] = self.success_count
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FailedCount') is not None:
+            self.failed_count = m.get('FailedCount')
+
+        self.failed_items = []
+        if m.get('FailedItems') is not None:
+            for k1 in m.get('FailedItems'):
+                temp_model = main_models.DeploySDGResponseBodyDataResultFailedItems()
+                self.failed_items.append(temp_model.from_map(k1))
+
+        if m.get('SuccessCount') is not None:
+            self.success_count = m.get('SuccessCount')
+
+        return self
+
+class DeploySDGResponseBodyDataResultFailedItems(DaraModel):
+    def __init__(
+        self,
+        err_message: str = None,
+        instance_id: str = None,
+    ):
+        # The error message.
+        self.err_message = err_message
+        # The ID of the instance.
+        self.instance_id = instance_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        return self
+
