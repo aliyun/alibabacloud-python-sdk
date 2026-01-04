@@ -7,10 +7,10 @@ from typing import List
 from alibabacloud_datahub20240620 import models as main_models
 from darabonba.model import DaraModel
 
-class ListProjectsResponseBody(DaraModel):
+class ListSubscriptionsResponseBody(DaraModel):
     def __init__(
         self,
-        list: main_models.ListProjectsResponseBodyList = None,
+        list: main_models.ListSubscriptionsResponseBodyList = None,
         max_results: int = None,
         next_token: str = None,
         request_id: str = None,
@@ -56,7 +56,7 @@ class ListProjectsResponseBody(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('List') is not None:
-            temp_model = main_models.ListProjectsResponseBodyList()
+            temp_model = main_models.ListSubscriptionsResponseBodyList()
             self.list = temp_model.from_map(m.get('List'))
 
         if m.get('MaxResults') is not None:
@@ -76,16 +76,16 @@ class ListProjectsResponseBody(DaraModel):
 
         return self
 
-class ListProjectsResponseBodyList(DaraModel):
+class ListSubscriptionsResponseBodyList(DaraModel):
     def __init__(
         self,
-        project: List[main_models.ListProjectsResponseBodyListProject] = None,
+        subscription: List[main_models.ListSubscriptionsResponseBodyListSubscription] = None,
     ):
-        self.project = project
+        self.subscription = subscription
 
     def validate(self):
-        if self.project:
-            for v1 in self.project:
+        if self.subscription:
+            for v1 in self.subscription:
                  if v1:
                     v1.validate()
 
@@ -94,36 +94,46 @@ class ListProjectsResponseBodyList(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        result['Project'] = []
-        if self.project is not None:
-            for k1 in self.project:
-                result['Project'].append(k1.to_map() if k1 else None)
+        result['Subscription'] = []
+        if self.subscription is not None:
+            for k1 in self.subscription:
+                result['Subscription'].append(k1.to_map() if k1 else None)
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.project = []
-        if m.get('Project') is not None:
-            for k1 in m.get('Project'):
-                temp_model = main_models.ListProjectsResponseBodyListProject()
-                self.project.append(temp_model.from_map(k1))
+        self.subscription = []
+        if m.get('Subscription') is not None:
+            for k1 in m.get('Subscription'):
+                temp_model = main_models.ListSubscriptionsResponseBodyListSubscription()
+                self.subscription.append(temp_model.from_map(k1))
 
         return self
 
-class ListProjectsResponseBodyListProject(DaraModel):
+class ListSubscriptionsResponseBodyListSubscription(DaraModel):
     def __init__(
         self,
+        application: str = None,
         comment: str = None,
         create_time: int = None,
         creator: str = None,
         project_name: str = None,
+        state: int = None,
+        subscription_id: str = None,
+        topic_name: str = None,
+        type: str = None,
         update_time: int = None,
     ):
+        self.application = application
         self.comment = comment
         self.create_time = create_time
         self.creator = creator
         self.project_name = project_name
+        self.state = state
+        self.subscription_id = subscription_id
+        self.topic_name = topic_name
+        self.type = type
         self.update_time = update_time
 
     def validate(self):
@@ -134,6 +144,9 @@ class ListProjectsResponseBodyListProject(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.application is not None:
+            result['Application'] = self.application
+
         if self.comment is not None:
             result['Comment'] = self.comment
 
@@ -146,6 +159,18 @@ class ListProjectsResponseBodyListProject(DaraModel):
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
 
+        if self.state is not None:
+            result['State'] = self.state
+
+        if self.subscription_id is not None:
+            result['SubscriptionId'] = self.subscription_id
+
+        if self.topic_name is not None:
+            result['TopicName'] = self.topic_name
+
+        if self.type is not None:
+            result['Type'] = self.type
+
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
 
@@ -153,6 +178,9 @@ class ListProjectsResponseBodyListProject(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Application') is not None:
+            self.application = m.get('Application')
+
         if m.get('Comment') is not None:
             self.comment = m.get('Comment')
 
@@ -164,6 +192,18 @@ class ListProjectsResponseBodyListProject(DaraModel):
 
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
+
+        if m.get('State') is not None:
+            self.state = m.get('State')
+
+        if m.get('SubscriptionId') is not None:
+            self.subscription_id = m.get('SubscriptionId')
+
+        if m.get('TopicName') is not None:
+            self.topic_name = m.get('TopicName')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
