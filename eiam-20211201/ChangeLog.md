@@ -1,3 +1,13 @@
+2026-01-04 Version: 2.8.1
+- Update API GetApplication: add response parameters Body.Application.ApplicationCreationType.
+- Update API GetApplication: add response parameters Body.Application.ResourceServerSourceType.
+- Update API ListApplications: add request parameters ApplicationCreationType.
+- Update API ListApplications: add response parameters Body.Applications.$.ApplicationCreationType.
+- Update API ListApplications: add response parameters Body.Applications.$.ResourceServerIdentifier.
+- Update API ListApplications: add response parameters Body.Applications.$.ResourceServerSourceType.
+- Update API ListApplications: add response parameters Body.Applications.$.ResourceServerStatus.
+
+
 2025-12-24 Version: 2.8.0
 - Support API CreateIdentityProviderStatusCheckJob.
 - Support API DeleteUsers.
