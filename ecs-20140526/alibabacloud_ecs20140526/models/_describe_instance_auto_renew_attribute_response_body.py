@@ -113,6 +113,7 @@ class DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInsta
         self,
         auto_renew_enabled: bool = None,
         duration: int = None,
+        enable_expected_renew_day: bool = None,
         instance_id: str = None,
         period_unit: str = None,
         renewal_status: str = None,
@@ -121,6 +122,7 @@ class DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInsta
         self.auto_renew_enabled = auto_renew_enabled
         # The auto-renewal duration.
         self.duration = duration
+        self.enable_expected_renew_day = enable_expected_renew_day
         # The ID of the instance.
         self.instance_id = instance_id
         # The unit of the auto-renewal duration.
@@ -146,6 +148,9 @@ class DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInsta
         if self.duration is not None:
             result['Duration'] = self.duration
 
+        if self.enable_expected_renew_day is not None:
+            result['EnableExpectedRenewDay'] = self.enable_expected_renew_day
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -164,6 +169,9 @@ class DescribeInstanceAutoRenewAttributeResponseBodyInstanceRenewAttributesInsta
 
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
+
+        if m.get('EnableExpectedRenewDay') is not None:
+            self.enable_expected_renew_day = m.get('EnableExpectedRenewDay')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

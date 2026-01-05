@@ -70,10 +70,10 @@ class ResizeDiskRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
-        # The method that you want to use to resize the disk. Specifies whether to check the image used by the instance supports hot migration. Valid values:
+        # The method that you want to use to resize the disk. Valid values:
         # 
-        # *   offline (default): resizes the disk offline. After you resize a disk offline, you must [restart the associated instance](https://help.aliyun.com/document_detail/25440.html) in the ECS console or by calling the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation for the resizing operation to take effect.
-        # *   online: resizes the disk online. After you resize a disk online, the resizing operation immediately takes effect. You do not need to restart the associated instance. You can resize ultra disks, standard SSDs, ESSDs, and elastic ephemeral disks online.
+        # *   offline (default): resizes the disk offline. After resizing a disk offline, you must [restart the instance](https://help.aliyun.com/document_detail/25440.html) in the console or call an API operation [RebootInstance](https://help.aliyun.com/document_detail/25502.html) make the operation take effect.
+        # *   online: resizes the disk online without the need to restart the instance. You can resize ultra disks, standard SSDs, ESSDs, and elastic ephemeral disks online.
         self.type = type
 
     def validate(self):

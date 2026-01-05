@@ -528,6 +528,9 @@ from ._describe_launch_templates_response import DescribeLaunchTemplatesResponse
 from ._describe_limitation_request import DescribeLimitationRequest
 from ._describe_limitation_response_body import DescribeLimitationResponseBody
 from ._describe_limitation_response import DescribeLimitationResponse
+from ._describe_locked_snapshots_request import DescribeLockedSnapshotsRequest
+from ._describe_locked_snapshots_response_body import DescribeLockedSnapshotsResponseBody
+from ._describe_locked_snapshots_response import DescribeLockedSnapshotsResponse
 from ._describe_managed_instances_request import DescribeManagedInstancesRequest
 from ._describe_managed_instances_response_body import DescribeManagedInstancesResponseBody
 from ._describe_managed_instances_response import DescribeManagedInstancesResponse
@@ -760,6 +763,9 @@ from ._list_plugin_status_response import ListPluginStatusResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
+from ._lock_snapshot_request import LockSnapshotRequest
+from ._lock_snapshot_response_body import LockSnapshotResponseBody
+from ._lock_snapshot_response import LockSnapshotResponse
 from ._modify_auto_provisioning_group_request import ModifyAutoProvisioningGroupRequest
 from ._modify_auto_provisioning_group_response_body import ModifyAutoProvisioningGroupResponseBody
 from ._modify_auto_provisioning_group_response import ModifyAutoProvisioningGroupResponse
@@ -1106,6 +1112,9 @@ from ._unassociate_eip_address_response import UnassociateEipAddressResponse
 from ._unassociate_ha_vip_request import UnassociateHaVipRequest
 from ._unassociate_ha_vip_response_body import UnassociateHaVipResponseBody
 from ._unassociate_ha_vip_response import UnassociateHaVipResponse
+from ._unlock_snapshot_request import UnlockSnapshotRequest
+from ._unlock_snapshot_response_body import UnlockSnapshotResponseBody
+from ._unlock_snapshot_response import UnlockSnapshotResponse
 from ._untag_resources_request import UntagResourcesRequest
 from ._untag_resources_response_body import UntagResourcesResponseBody
 from ._untag_resources_response import UntagResourcesResponse
@@ -1645,6 +1654,7 @@ from ._describe_launch_templates_response_body import DescribeLaunchTemplatesRes
 from ._describe_launch_templates_response_body import DescribeLaunchTemplatesResponseBodyLaunchTemplateSetsLaunchTemplateSetTags
 from ._describe_launch_templates_response_body import DescribeLaunchTemplatesResponseBodyLaunchTemplateSetsLaunchTemplateSet
 from ._describe_launch_templates_response_body import DescribeLaunchTemplatesResponseBodyLaunchTemplateSets
+from ._describe_locked_snapshots_response_body import DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo
 from ._describe_managed_instances_request import DescribeManagedInstancesRequestTag
 from ._describe_managed_instances_response_body import DescribeManagedInstancesResponseBodyInstancesTags
 from ._describe_managed_instances_response_body import DescribeManagedInstancesResponseBodyInstances
@@ -1906,6 +1916,7 @@ from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_request import ListTagResourcesRequestTagFilter
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._lock_snapshot_response_body import LockSnapshotResponseBodyLockedSnapshotInfo
 from ._modify_auto_provisioning_group_request import ModifyAutoProvisioningGroupRequestLaunchTemplateConfig
 from ._modify_auto_snapshot_policy_ex_request import ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfigurationArn
 from ._modify_auto_snapshot_policy_ex_request import ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration
@@ -2521,6 +2532,9 @@ __all__ = [
     DescribeLimitationRequest,
     DescribeLimitationResponseBody,
     DescribeLimitationResponse,
+    DescribeLockedSnapshotsRequest,
+    DescribeLockedSnapshotsResponseBody,
+    DescribeLockedSnapshotsResponse,
     DescribeManagedInstancesRequest,
     DescribeManagedInstancesResponseBody,
     DescribeManagedInstancesResponse,
@@ -2753,6 +2767,9 @@ __all__ = [
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
+    LockSnapshotRequest,
+    LockSnapshotResponseBody,
+    LockSnapshotResponse,
     ModifyAutoProvisioningGroupRequest,
     ModifyAutoProvisioningGroupResponseBody,
     ModifyAutoProvisioningGroupResponse,
@@ -3099,6 +3116,9 @@ __all__ = [
     UnassociateHaVipRequest,
     UnassociateHaVipResponseBody,
     UnassociateHaVipResponse,
+    UnlockSnapshotRequest,
+    UnlockSnapshotResponseBody,
+    UnlockSnapshotResponse,
     UntagResourcesRequest,
     UntagResourcesResponseBody,
     UntagResourcesResponse,
@@ -3638,6 +3658,7 @@ __all__ = [
     DescribeLaunchTemplatesResponseBodyLaunchTemplateSetsLaunchTemplateSetTags,
     DescribeLaunchTemplatesResponseBodyLaunchTemplateSetsLaunchTemplateSet,
     DescribeLaunchTemplatesResponseBodyLaunchTemplateSets,
+    DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo,
     DescribeManagedInstancesRequestTag,
     DescribeManagedInstancesResponseBodyInstancesTags,
     DescribeManagedInstancesResponseBodyInstances,
@@ -3899,6 +3920,7 @@ __all__ = [
     ListTagResourcesRequestTagFilter,
     ListTagResourcesResponseBodyTagResourcesTagResource,
     ListTagResourcesResponseBodyTagResources,
+    LockSnapshotResponseBodyLockedSnapshotInfo,
     ModifyAutoProvisioningGroupRequestLaunchTemplateConfig,
     ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfigurationArn,
     ModifyAutoSnapshotPolicyExRequestCopyEncryptionConfiguration,

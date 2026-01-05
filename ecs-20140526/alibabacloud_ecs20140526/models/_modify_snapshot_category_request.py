@@ -15,7 +15,7 @@ class ModifySnapshotCategoryRequest(DaraModel):
         retention_days: int = None,
         snapshot_id: str = None,
     ):
-        # The type of the snapshot. Valid value:
+        # The type of the snapshot.
         # 
         # *   Archive: archive snapshot
         self.category = category

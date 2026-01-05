@@ -19903,6 +19903,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_limitation_with_options_async(request, runtime)
 
+    def describe_locked_snapshots_with_options(
+        self,
+        request: main_models.DescribeLockedSnapshotsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLockedSnapshotsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.lock_status):
+            query['LockStatus'] = request.lock_status
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.snapshot_ids):
+            query['SnapshotIds'] = request.snapshot_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLockedSnapshots',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLockedSnapshotsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_locked_snapshots_with_options_async(
+        self,
+        request: main_models.DescribeLockedSnapshotsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLockedSnapshotsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.lock_status):
+            query['LockStatus'] = request.lock_status
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.snapshot_ids):
+            query['SnapshotIds'] = request.snapshot_ids
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLockedSnapshots',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLockedSnapshotsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_locked_snapshots(
+        self,
+        request: main_models.DescribeLockedSnapshotsRequest,
+    ) -> main_models.DescribeLockedSnapshotsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_locked_snapshots_with_options(request, runtime)
+
+    async def describe_locked_snapshots_async(
+        self,
+        request: main_models.DescribeLockedSnapshotsRequest,
+    ) -> main_models.DescribeLockedSnapshotsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_locked_snapshots_with_options_async(request, runtime)
+
     def describe_managed_instances_with_options(
         self,
         request: main_models.DescribeManagedInstancesRequest,
@@ -28236,6 +28342,116 @@ class Client(OpenApiClient):
     ) -> main_models.ListTagResourcesResponse:
         runtime = RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
+
+    def lock_snapshot_with_options(
+        self,
+        request: main_models.LockSnapshotRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LockSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cool_off_period):
+            query['CoolOffPeriod'] = request.cool_off_period
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.lock_duration):
+            query['LockDuration'] = request.lock_duration
+        if not DaraCore.is_null(request.lock_mode):
+            query['LockMode'] = request.lock_mode
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'LockSnapshot',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LockSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def lock_snapshot_with_options_async(
+        self,
+        request: main_models.LockSnapshotRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LockSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.cool_off_period):
+            query['CoolOffPeriod'] = request.cool_off_period
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.lock_duration):
+            query['LockDuration'] = request.lock_duration
+        if not DaraCore.is_null(request.lock_mode):
+            query['LockMode'] = request.lock_mode
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'LockSnapshot',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LockSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def lock_snapshot(
+        self,
+        request: main_models.LockSnapshotRequest,
+    ) -> main_models.LockSnapshotResponse:
+        runtime = RuntimeOptions()
+        return self.lock_snapshot_with_options(request, runtime)
+
+    async def lock_snapshot_async(
+        self,
+        request: main_models.LockSnapshotRequest,
+    ) -> main_models.LockSnapshotResponse:
+        runtime = RuntimeOptions()
+        return await self.lock_snapshot_with_options_async(request, runtime)
 
     def modify_auto_provisioning_group_with_options(
         self,
@@ -40928,6 +41144,104 @@ class Client(OpenApiClient):
     ) -> main_models.UnassociateHaVipResponse:
         runtime = RuntimeOptions()
         return await self.unassociate_ha_vip_with_options_async(request, runtime)
+
+    def unlock_snapshot_with_options(
+        self,
+        request: main_models.UnlockSnapshotRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnlockSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnlockSnapshot',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnlockSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unlock_snapshot_with_options_async(
+        self,
+        request: main_models.UnlockSnapshotRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnlockSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dry_run):
+            query['DryRun'] = request.dry_run
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnlockSnapshot',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnlockSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unlock_snapshot(
+        self,
+        request: main_models.UnlockSnapshotRequest,
+    ) -> main_models.UnlockSnapshotResponse:
+        runtime = RuntimeOptions()
+        return self.unlock_snapshot_with_options(request, runtime)
+
+    async def unlock_snapshot_async(
+        self,
+        request: main_models.UnlockSnapshotRequest,
+    ) -> main_models.UnlockSnapshotResponse:
+        runtime = RuntimeOptions()
+        return await self.unlock_snapshot_with_options_async(request, runtime)
 
     def untag_resources_with_options(
         self,

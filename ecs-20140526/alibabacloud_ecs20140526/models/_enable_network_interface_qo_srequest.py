@@ -20,6 +20,7 @@ class EnableNetworkInterfaceQoSRequest(DaraModel):
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        # QoS Speed Limit Settings
         self.qo_s = qo_s
         # This parameter is required.
         self.region_id = region_id
@@ -93,10 +94,25 @@ class EnableNetworkInterfaceQoSRequestQoS(DaraModel):
         pps_rx: int = None,
         pps_tx: int = None,
     ):
+        # The maximum inbound internal bandwidth.
+        # 
+        # Unit: kbit/s, step size: 1000 (1Mbps), value range: [50000, +♾️)
         self.bandwidth_rx = bandwidth_rx
+        # The maximum outbound internal bandwidth.
+        # 
+        # Unit: kbit/s, step size: 1000 (1Mbps), value range: [50000, +♾️)
         self.bandwidth_tx = bandwidth_tx
+        # Maximum Number of Sessions
+        # 
+        # Step size: 10000, value range: [10000, +♾️)
         self.concurrent_connections = concurrent_connections
+        # The inbound packet forwarding rate over the internal network.
+        # 
+        # Unit: pps, step size: 10000, value range: [10000, +♾️)
         self.pps_rx = pps_rx
+        # The outbound packet forwarding rate over the internal network.
+        # 
+        # Unit: pps, step size: 10000, value range: [10000, +♾️)
         self.pps_tx = pps_tx
 
     def validate(self):

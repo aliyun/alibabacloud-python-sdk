@@ -102,6 +102,7 @@ class DescribeNetworkInterfaceAttributeResponseBody(DaraModel):
         self.private_ip_address = private_ip_address
         # The private IP addresses of the ENI.
         self.private_ip_sets = private_ip_sets
+        # QoS Speed Limit Settings
         self.qo_sconfig = qo_sconfig
         # The number of queues supported by the ENI.
         # 
@@ -591,7 +592,9 @@ class DescribeNetworkInterfaceAttributeResponseBodyQoSConfig(DaraModel):
         enable_qo_s: bool = None,
         qo_s: main_models.DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS = None,
     ):
+        # Whether to enable QoS speed limit settings
         self.enable_qo_s = enable_qo_s
+        # QoS Speed Limit Settings
         self.qo_s = qo_s
 
     def validate(self):
@@ -631,10 +634,15 @@ class DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS(DaraModel):
         pps_rx: int = None,
         pps_tx: int = None,
     ):
+        # maximum inbound internal bandwidth
         self.bandwidth_rx = bandwidth_rx
+        # Maximum outbound internal bandwidth
         self.bandwidth_tx = bandwidth_tx
+        # Maximum number of sessions
         self.concurrent_connections = concurrent_connections
+        # Inbound packet forwarding rate over the internal network
         self.pps_rx = pps_rx
+        # Outbound packet forwarding rate over the internal network
         self.pps_tx = pps_tx
 
     def validate(self):

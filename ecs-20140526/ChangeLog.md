@@ -1,3 +1,10 @@
+2026-01-05 Version: 7.5.0
+- Support API DescribeLockedSnapshots.
+- Support API LockSnapshot.
+- Support API UnlockSnapshot.
+- Update API DescribeInstanceAutoRenewAttribute: add response parameters Body.InstanceRenewAttributes.$.EnableExpectedRenewDay.
+
+
 2025-12-24 Version: 7.4.2
 - Update API CreateAutoProvisioningGroup: add request parameters ExecutionMode.
 

@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DisableNetworkInterfaceQoSResponseBody(DaraModel):
+class UnlockSnapshotResponseBody(DaraModel):
     def __init__(
         self,
         request_id: str = None,
