@@ -1,0 +1,547 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._add_ext_code_sign_request import AddExtCodeSignRequest
+from ._add_ext_code_sign_response_body import AddExtCodeSignResponseBody
+from ._add_ext_code_sign_response import AddExtCodeSignResponse
+from ._add_short_url_request import AddShortUrlRequest
+from ._add_short_url_response_body import AddShortUrlResponseBody
+from ._add_short_url_response import AddShortUrlResponse
+from ._add_sms_sign_request import AddSmsSignRequest
+from ._add_sms_sign_response_body import AddSmsSignResponseBody
+from ._add_sms_sign_response import AddSmsSignResponse
+from ._add_sms_template_request import AddSmsTemplateRequest
+from ._add_sms_template_response_body import AddSmsTemplateResponseBody
+from ._add_sms_template_response import AddSmsTemplateResponse
+from ._change_signature_qualification_request import ChangeSignatureQualificationRequest
+from ._change_signature_qualification_response_body import ChangeSignatureQualificationResponseBody
+from ._change_signature_qualification_response import ChangeSignatureQualificationResponse
+from ._check_mobiles_card_support_request import CheckMobilesCardSupportRequest
+from ._check_mobiles_card_support_response_body import CheckMobilesCardSupportResponseBody
+from ._check_mobiles_card_support_response import CheckMobilesCardSupportResponse
+from ._conversion_data_intl_request import ConversionDataIntlRequest
+from ._conversion_data_intl_response_body import ConversionDataIntlResponseBody
+from ._conversion_data_intl_response import ConversionDataIntlResponse
+from ._create_card_sms_template_request import CreateCardSmsTemplateRequest
+from ._create_card_sms_template_shrink_request import CreateCardSmsTemplateShrinkRequest
+from ._create_card_sms_template_response_body import CreateCardSmsTemplateResponseBody
+from ._create_card_sms_template_response import CreateCardSmsTemplateResponse
+from ._create_smart_short_url_request import CreateSmartShortUrlRequest
+from ._create_smart_short_url_response_body import CreateSmartShortUrlResponseBody
+from ._create_smart_short_url_response import CreateSmartShortUrlResponse
+from ._create_sms_app_icp_record_request import CreateSmsAppIcpRecordRequest
+from ._create_sms_app_icp_record_response_body import CreateSmsAppIcpRecordResponseBody
+from ._create_sms_app_icp_record_response import CreateSmsAppIcpRecordResponse
+from ._create_sms_authorization_letter_request import CreateSmsAuthorizationLetterRequest
+from ._create_sms_authorization_letter_shrink_request import CreateSmsAuthorizationLetterShrinkRequest
+from ._create_sms_authorization_letter_response_body import CreateSmsAuthorizationLetterResponseBody
+from ._create_sms_authorization_letter_response import CreateSmsAuthorizationLetterResponse
+from ._create_sms_sign_request import CreateSmsSignRequest
+from ._create_sms_sign_shrink_request import CreateSmsSignShrinkRequest
+from ._create_sms_sign_response_body import CreateSmsSignResponseBody
+from ._create_sms_sign_response import CreateSmsSignResponse
+from ._create_sms_template_request import CreateSmsTemplateRequest
+from ._create_sms_template_shrink_request import CreateSmsTemplateShrinkRequest
+from ._create_sms_template_response_body import CreateSmsTemplateResponseBody
+from ._create_sms_template_response import CreateSmsTemplateResponse
+from ._create_sms_trademark_request import CreateSmsTrademarkRequest
+from ._create_sms_trademark_response_body import CreateSmsTrademarkResponseBody
+from ._create_sms_trademark_response import CreateSmsTrademarkResponse
+from ._delete_ext_code_sign_request import DeleteExtCodeSignRequest
+from ._delete_ext_code_sign_response_body import DeleteExtCodeSignResponseBody
+from ._delete_ext_code_sign_response import DeleteExtCodeSignResponse
+from ._delete_short_url_request import DeleteShortUrlRequest
+from ._delete_short_url_response_body import DeleteShortUrlResponseBody
+from ._delete_short_url_response import DeleteShortUrlResponse
+from ._delete_sms_qualification_request import DeleteSmsQualificationRequest
+from ._delete_sms_qualification_response_body import DeleteSmsQualificationResponseBody
+from ._delete_sms_qualification_response import DeleteSmsQualificationResponse
+from ._delete_sms_sign_request import DeleteSmsSignRequest
+from ._delete_sms_sign_response_body import DeleteSmsSignResponseBody
+from ._delete_sms_sign_response import DeleteSmsSignResponse
+from ._delete_sms_template_request import DeleteSmsTemplateRequest
+from ._delete_sms_template_response_body import DeleteSmsTemplateResponseBody
+from ._delete_sms_template_response import DeleteSmsTemplateResponse
+from ._get_card_sms_details_request import GetCardSmsDetailsRequest
+from ._get_card_sms_details_response_body import GetCardSmsDetailsResponseBody
+from ._get_card_sms_details_response import GetCardSmsDetailsResponse
+from ._get_card_sms_link_request import GetCardSmsLinkRequest
+from ._get_card_sms_link_response_body import GetCardSmsLinkResponseBody
+from ._get_card_sms_link_response import GetCardSmsLinkResponse
+from ._get_media_resource_id_request import GetMediaResourceIdRequest
+from ._get_media_resource_id_response_body import GetMediaResourceIdResponseBody
+from ._get_media_resource_id_response import GetMediaResourceIdResponse
+from ._get_ossinfo_for_card_template_response_body import GetOSSInfoForCardTemplateResponseBody
+from ._get_ossinfo_for_card_template_response import GetOSSInfoForCardTemplateResponse
+from ._get_ossinfo_for_upload_file_request import GetOSSInfoForUploadFileRequest
+from ._get_ossinfo_for_upload_file_response_body import GetOSSInfoForUploadFileResponseBody
+from ._get_ossinfo_for_upload_file_response import GetOSSInfoForUploadFileResponse
+from ._get_qualification_oss_info_request import GetQualificationOssInfoRequest
+from ._get_qualification_oss_info_response_body import GetQualificationOssInfoResponseBody
+from ._get_qualification_oss_info_response import GetQualificationOssInfoResponse
+from ._get_sms_ocr_oss_info_request import GetSmsOcrOssInfoRequest
+from ._get_sms_ocr_oss_info_response_body import GetSmsOcrOssInfoResponseBody
+from ._get_sms_ocr_oss_info_response import GetSmsOcrOssInfoResponse
+from ._get_sms_sign_request import GetSmsSignRequest
+from ._get_sms_sign_response_body import GetSmsSignResponseBody
+from ._get_sms_sign_response import GetSmsSignResponse
+from ._get_sms_template_request import GetSmsTemplateRequest
+from ._get_sms_template_response_body import GetSmsTemplateResponseBody
+from ._get_sms_template_response import GetSmsTemplateResponse
+from ._get_sms_template_list_request import GetSmsTemplateListRequest
+from ._get_sms_template_list_shrink_request import GetSmsTemplateListShrinkRequest
+from ._get_sms_template_list_response_body import GetSmsTemplateListResponseBody
+from ._get_sms_template_list_response import GetSmsTemplateListResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
+from ._modify_sms_sign_request import ModifySmsSignRequest
+from ._modify_sms_sign_response_body import ModifySmsSignResponseBody
+from ._modify_sms_sign_response import ModifySmsSignResponse
+from ._modify_sms_template_request import ModifySmsTemplateRequest
+from ._modify_sms_template_response_body import ModifySmsTemplateResponseBody
+from ._modify_sms_template_response import ModifySmsTemplateResponse
+from ._query_card_sms_template_request import QueryCardSmsTemplateRequest
+from ._query_card_sms_template_response_body import QueryCardSmsTemplateResponseBody
+from ._query_card_sms_template_response import QueryCardSmsTemplateResponse
+from ._query_card_sms_template_report_request import QueryCardSmsTemplateReportRequest
+from ._query_card_sms_template_report_response_body import QueryCardSmsTemplateReportResponseBody
+from ._query_card_sms_template_report_response import QueryCardSmsTemplateReportResponse
+from ._query_ext_code_sign_request import QueryExtCodeSignRequest
+from ._query_ext_code_sign_response_body import QueryExtCodeSignResponseBody
+from ._query_ext_code_sign_response import QueryExtCodeSignResponse
+from ._query_mobiles_card_support_request import QueryMobilesCardSupportRequest
+from ._query_mobiles_card_support_shrink_request import QueryMobilesCardSupportShrinkRequest
+from ._query_mobiles_card_support_response_body import QueryMobilesCardSupportResponseBody
+from ._query_mobiles_card_support_response import QueryMobilesCardSupportResponse
+from ._query_page_smart_short_url_log_request import QueryPageSmartShortUrlLogRequest
+from ._query_page_smart_short_url_log_response_body import QueryPageSmartShortUrlLogResponseBody
+from ._query_page_smart_short_url_log_response import QueryPageSmartShortUrlLogResponse
+from ._query_send_details_request import QuerySendDetailsRequest
+from ._query_send_details_response_body import QuerySendDetailsResponseBody
+from ._query_send_details_response import QuerySendDetailsResponse
+from ._query_send_statistics_request import QuerySendStatisticsRequest
+from ._query_send_statistics_response_body import QuerySendStatisticsResponseBody
+from ._query_send_statistics_response import QuerySendStatisticsResponse
+from ._query_short_url_request import QueryShortUrlRequest
+from ._query_short_url_response_body import QueryShortUrlResponseBody
+from ._query_short_url_response import QueryShortUrlResponse
+from ._query_single_sms_qualification_request import QuerySingleSmsQualificationRequest
+from ._query_single_sms_qualification_response_body import QuerySingleSmsQualificationResponseBody
+from ._query_single_sms_qualification_response import QuerySingleSmsQualificationResponse
+from ._query_sms_app_icp_record_request import QuerySmsAppIcpRecordRequest
+from ._query_sms_app_icp_record_shrink_request import QuerySmsAppIcpRecordShrinkRequest
+from ._query_sms_app_icp_record_response_body import QuerySmsAppIcpRecordResponseBody
+from ._query_sms_app_icp_record_response import QuerySmsAppIcpRecordResponse
+from ._query_sms_authorization_letter_request import QuerySmsAuthorizationLetterRequest
+from ._query_sms_authorization_letter_shrink_request import QuerySmsAuthorizationLetterShrinkRequest
+from ._query_sms_authorization_letter_response_body import QuerySmsAuthorizationLetterResponseBody
+from ._query_sms_authorization_letter_response import QuerySmsAuthorizationLetterResponse
+from ._query_sms_qualification_record_request import QuerySmsQualificationRecordRequest
+from ._query_sms_qualification_record_response_body import QuerySmsQualificationRecordResponseBody
+from ._query_sms_qualification_record_response import QuerySmsQualificationRecordResponse
+from ._query_sms_sign_request import QuerySmsSignRequest
+from ._query_sms_sign_response_body import QuerySmsSignResponseBody
+from ._query_sms_sign_response import QuerySmsSignResponse
+from ._query_sms_sign_list_request import QuerySmsSignListRequest
+from ._query_sms_sign_list_response_body import QuerySmsSignListResponseBody
+from ._query_sms_sign_list_response import QuerySmsSignListResponse
+from ._query_sms_template_request import QuerySmsTemplateRequest
+from ._query_sms_template_response_body import QuerySmsTemplateResponseBody
+from ._query_sms_template_response import QuerySmsTemplateResponse
+from ._query_sms_template_list_request import QuerySmsTemplateListRequest
+from ._query_sms_template_list_response_body import QuerySmsTemplateListResponseBody
+from ._query_sms_template_list_response import QuerySmsTemplateListResponse
+from ._query_sms_trademark_request import QuerySmsTrademarkRequest
+from ._query_sms_trademark_shrink_request import QuerySmsTrademarkShrinkRequest
+from ._query_sms_trademark_response_body import QuerySmsTrademarkResponseBody
+from ._query_sms_trademark_response import QuerySmsTrademarkResponse
+from ._required_phone_code_request import RequiredPhoneCodeRequest
+from ._required_phone_code_response_body import RequiredPhoneCodeResponseBody
+from ._required_phone_code_response import RequiredPhoneCodeResponse
+from ._send_batch_card_sms_request import SendBatchCardSmsRequest
+from ._send_batch_card_sms_response_body import SendBatchCardSmsResponseBody
+from ._send_batch_card_sms_response import SendBatchCardSmsResponse
+from ._send_batch_sms_request import SendBatchSmsRequest
+from ._send_batch_sms_response_body import SendBatchSmsResponseBody
+from ._send_batch_sms_response import SendBatchSmsResponse
+from ._send_card_sms_request import SendCardSmsRequest
+from ._send_card_sms_response_body import SendCardSmsResponseBody
+from ._send_card_sms_response import SendCardSmsResponse
+from ._send_logistics_sms_request import SendLogisticsSmsRequest
+from ._send_logistics_sms_response_body import SendLogisticsSmsResponseBody
+from ._send_logistics_sms_response import SendLogisticsSmsResponse
+from ._send_sms_request import SendSmsRequest
+from ._send_sms_response_body import SendSmsResponseBody
+from ._send_sms_response import SendSmsResponse
+from ._sms_conversion_intl_request import SmsConversionIntlRequest
+from ._sms_conversion_intl_response_body import SmsConversionIntlResponseBody
+from ._sms_conversion_intl_response import SmsConversionIntlResponse
+from ._submit_sms_qualification_request import SubmitSmsQualificationRequest
+from ._submit_sms_qualification_shrink_request import SubmitSmsQualificationShrinkRequest
+from ._submit_sms_qualification_response_body import SubmitSmsQualificationResponseBody
+from ._submit_sms_qualification_response import SubmitSmsQualificationResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
+from ._update_ext_code_sign_request import UpdateExtCodeSignRequest
+from ._update_ext_code_sign_response_body import UpdateExtCodeSignResponseBody
+from ._update_ext_code_sign_response import UpdateExtCodeSignResponse
+from ._update_sms_qualification_request import UpdateSmsQualificationRequest
+from ._update_sms_qualification_shrink_request import UpdateSmsQualificationShrinkRequest
+from ._update_sms_qualification_response_body import UpdateSmsQualificationResponseBody
+from ._update_sms_qualification_response import UpdateSmsQualificationResponse
+from ._update_sms_sign_request import UpdateSmsSignRequest
+from ._update_sms_sign_shrink_request import UpdateSmsSignShrinkRequest
+from ._update_sms_sign_response_body import UpdateSmsSignResponseBody
+from ._update_sms_sign_response import UpdateSmsSignResponse
+from ._update_sms_template_request import UpdateSmsTemplateRequest
+from ._update_sms_template_shrink_request import UpdateSmsTemplateShrinkRequest
+from ._update_sms_template_response_body import UpdateSmsTemplateResponseBody
+from ._update_sms_template_response import UpdateSmsTemplateResponse
+from ._valid_phone_code_request import ValidPhoneCodeRequest
+from ._valid_phone_code_response_body import ValidPhoneCodeResponseBody
+from ._valid_phone_code_response import ValidPhoneCodeResponse
+from ._verify_logistics_sms_mail_no_request import VerifyLogisticsSmsMailNoRequest
+from ._verify_logistics_sms_mail_no_response_body import VerifyLogisticsSmsMailNoResponseBody
+from ._verify_logistics_sms_mail_no_response import VerifyLogisticsSmsMailNoResponse
+from ._add_short_url_response_body import AddShortUrlResponseBodyData
+from ._add_sms_sign_request import AddSmsSignRequestSignFileList
+from ._change_signature_qualification_response_body import ChangeSignatureQualificationResponseBodyData
+from ._check_mobiles_card_support_response_body import CheckMobilesCardSupportResponseBodyDataQueryResult
+from ._check_mobiles_card_support_response_body import CheckMobilesCardSupportResponseBodyData
+from ._create_card_sms_template_response_body import CreateCardSmsTemplateResponseBodyData
+from ._create_smart_short_url_response_body import CreateSmartShortUrlResponseBodyModel
+from ._get_card_sms_details_response_body import GetCardSmsDetailsResponseBodyCardSendDetailDTORecords
+from ._get_card_sms_details_response_body import GetCardSmsDetailsResponseBodyCardSendDetailDTO
+from ._get_card_sms_link_response_body import GetCardSmsLinkResponseBodyData
+from ._get_media_resource_id_response_body import GetMediaResourceIdResponseBodyData
+from ._get_ossinfo_for_card_template_response_body import GetOSSInfoForCardTemplateResponseBodyData
+from ._get_ossinfo_for_upload_file_response_body import GetOSSInfoForUploadFileResponseBodyModel
+from ._get_qualification_oss_info_response_body import GetQualificationOssInfoResponseBodyData
+from ._get_sms_ocr_oss_info_response_body import GetSmsOcrOssInfoResponseBodyModel
+from ._get_sms_sign_response_body import GetSmsSignResponseBodyAuditInfo
+from ._get_sms_sign_response_body import GetSmsSignResponseBodySignIspRegisterDetailListRegisterStatusReasons
+from ._get_sms_sign_response_body import GetSmsSignResponseBodySignIspRegisterDetailList
+from ._get_sms_template_response_body import GetSmsTemplateResponseBodyAuditInfo
+from ._get_sms_template_response_body import GetSmsTemplateResponseBodyFileUrlList
+from ._get_sms_template_response_body import GetSmsTemplateResponseBodyMoreDataFileUrlList
+from ._get_sms_template_list_response_body import GetSmsTemplateListResponseBodyDataListTemplateTag
+from ._get_sms_template_list_response_body import GetSmsTemplateListResponseBodyDataList
+from ._get_sms_template_list_response_body import GetSmsTemplateListResponseBodyData
+from ._list_tag_resources_request import ListTagResourcesRequestTag
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._modify_sms_sign_request import ModifySmsSignRequestSignFileList
+from ._query_card_sms_template_response_body import QueryCardSmsTemplateResponseBodyData
+from ._query_card_sms_template_report_response_body import QueryCardSmsTemplateReportResponseBodyData
+from ._query_ext_code_sign_response_body import QueryExtCodeSignResponseBodyDataList
+from ._query_ext_code_sign_response_body import QueryExtCodeSignResponseBodyData
+from ._query_mobiles_card_support_response_body import QueryMobilesCardSupportResponseBodyDataQueryResult
+from ._query_mobiles_card_support_response_body import QueryMobilesCardSupportResponseBodyData
+from ._query_page_smart_short_url_log_response_body import QueryPageSmartShortUrlLogResponseBodyModelList
+from ._query_page_smart_short_url_log_response_body import QueryPageSmartShortUrlLogResponseBodyModel
+from ._query_send_details_response_body import QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO
+from ._query_send_details_response_body import QuerySendDetailsResponseBodySmsSendDetailDTOs
+from ._query_send_statistics_response_body import QuerySendStatisticsResponseBodyDataTargetList
+from ._query_send_statistics_response_body import QuerySendStatisticsResponseBodyData
+from ._query_short_url_response_body import QueryShortUrlResponseBodyData
+from ._query_single_sms_qualification_response_body import QuerySingleSmsQualificationResponseBodyDataBusinessLicensePics
+from ._query_single_sms_qualification_response_body import QuerySingleSmsQualificationResponseBodyDataOtherFiles
+from ._query_single_sms_qualification_response_body import QuerySingleSmsQualificationResponseBodyData
+from ._query_sms_app_icp_record_response_body import QuerySmsAppIcpRecordResponseBodyData
+from ._query_sms_authorization_letter_response_body import QuerySmsAuthorizationLetterResponseBodyData
+from ._query_sms_qualification_record_response_body import QuerySmsQualificationRecordResponseBodyDataList
+from ._query_sms_qualification_record_response_body import QuerySmsQualificationRecordResponseBodyData
+from ._query_sms_sign_list_response_body import QuerySmsSignListResponseBodySmsSignListReason
+from ._query_sms_sign_list_response_body import QuerySmsSignListResponseBodySmsSignList
+from ._query_sms_template_list_response_body import QuerySmsTemplateListResponseBodySmsTemplateListReason
+from ._query_sms_template_list_response_body import QuerySmsTemplateListResponseBodySmsTemplateList
+from ._query_sms_trademark_response_body import QuerySmsTrademarkResponseBodyData
+from ._send_batch_card_sms_response_body import SendBatchCardSmsResponseBodyData
+from ._send_card_sms_request import SendCardSmsRequestCardObjects
+from ._send_card_sms_response_body import SendCardSmsResponseBodyData
+from ._send_logistics_sms_response_body import SendLogisticsSmsResponseBodyData
+from ._submit_sms_qualification_request import SubmitSmsQualificationRequestBusinessLicensePics
+from ._submit_sms_qualification_request import SubmitSmsQualificationRequestOtherFiles
+from ._tag_resources_request import TagResourcesRequestTag
+from ._update_sms_qualification_request import UpdateSmsQualificationRequestBusinessLicensePics
+from ._update_sms_qualification_request import UpdateSmsQualificationRequestOtherFiles
+from ._verify_logistics_sms_mail_no_response_body import VerifyLogisticsSmsMailNoResponseBodyData
+
+__all__ = [
+    AddExtCodeSignRequest,
+    AddExtCodeSignResponseBody,
+    AddExtCodeSignResponse,
+    AddShortUrlRequest,
+    AddShortUrlResponseBody,
+    AddShortUrlResponse,
+    AddSmsSignRequest,
+    AddSmsSignResponseBody,
+    AddSmsSignResponse,
+    AddSmsTemplateRequest,
+    AddSmsTemplateResponseBody,
+    AddSmsTemplateResponse,
+    ChangeSignatureQualificationRequest,
+    ChangeSignatureQualificationResponseBody,
+    ChangeSignatureQualificationResponse,
+    CheckMobilesCardSupportRequest,
+    CheckMobilesCardSupportResponseBody,
+    CheckMobilesCardSupportResponse,
+    ConversionDataIntlRequest,
+    ConversionDataIntlResponseBody,
+    ConversionDataIntlResponse,
+    CreateCardSmsTemplateRequest,
+    CreateCardSmsTemplateShrinkRequest,
+    CreateCardSmsTemplateResponseBody,
+    CreateCardSmsTemplateResponse,
+    CreateSmartShortUrlRequest,
+    CreateSmartShortUrlResponseBody,
+    CreateSmartShortUrlResponse,
+    CreateSmsAppIcpRecordRequest,
+    CreateSmsAppIcpRecordResponseBody,
+    CreateSmsAppIcpRecordResponse,
+    CreateSmsAuthorizationLetterRequest,
+    CreateSmsAuthorizationLetterShrinkRequest,
+    CreateSmsAuthorizationLetterResponseBody,
+    CreateSmsAuthorizationLetterResponse,
+    CreateSmsSignRequest,
+    CreateSmsSignShrinkRequest,
+    CreateSmsSignResponseBody,
+    CreateSmsSignResponse,
+    CreateSmsTemplateRequest,
+    CreateSmsTemplateShrinkRequest,
+    CreateSmsTemplateResponseBody,
+    CreateSmsTemplateResponse,
+    CreateSmsTrademarkRequest,
+    CreateSmsTrademarkResponseBody,
+    CreateSmsTrademarkResponse,
+    DeleteExtCodeSignRequest,
+    DeleteExtCodeSignResponseBody,
+    DeleteExtCodeSignResponse,
+    DeleteShortUrlRequest,
+    DeleteShortUrlResponseBody,
+    DeleteShortUrlResponse,
+    DeleteSmsQualificationRequest,
+    DeleteSmsQualificationResponseBody,
+    DeleteSmsQualificationResponse,
+    DeleteSmsSignRequest,
+    DeleteSmsSignResponseBody,
+    DeleteSmsSignResponse,
+    DeleteSmsTemplateRequest,
+    DeleteSmsTemplateResponseBody,
+    DeleteSmsTemplateResponse,
+    GetCardSmsDetailsRequest,
+    GetCardSmsDetailsResponseBody,
+    GetCardSmsDetailsResponse,
+    GetCardSmsLinkRequest,
+    GetCardSmsLinkResponseBody,
+    GetCardSmsLinkResponse,
+    GetMediaResourceIdRequest,
+    GetMediaResourceIdResponseBody,
+    GetMediaResourceIdResponse,
+    GetOSSInfoForCardTemplateResponseBody,
+    GetOSSInfoForCardTemplateResponse,
+    GetOSSInfoForUploadFileRequest,
+    GetOSSInfoForUploadFileResponseBody,
+    GetOSSInfoForUploadFileResponse,
+    GetQualificationOssInfoRequest,
+    GetQualificationOssInfoResponseBody,
+    GetQualificationOssInfoResponse,
+    GetSmsOcrOssInfoRequest,
+    GetSmsOcrOssInfoResponseBody,
+    GetSmsOcrOssInfoResponse,
+    GetSmsSignRequest,
+    GetSmsSignResponseBody,
+    GetSmsSignResponse,
+    GetSmsTemplateRequest,
+    GetSmsTemplateResponseBody,
+    GetSmsTemplateResponse,
+    GetSmsTemplateListRequest,
+    GetSmsTemplateListShrinkRequest,
+    GetSmsTemplateListResponseBody,
+    GetSmsTemplateListResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
+    ModifySmsSignRequest,
+    ModifySmsSignResponseBody,
+    ModifySmsSignResponse,
+    ModifySmsTemplateRequest,
+    ModifySmsTemplateResponseBody,
+    ModifySmsTemplateResponse,
+    QueryCardSmsTemplateRequest,
+    QueryCardSmsTemplateResponseBody,
+    QueryCardSmsTemplateResponse,
+    QueryCardSmsTemplateReportRequest,
+    QueryCardSmsTemplateReportResponseBody,
+    QueryCardSmsTemplateReportResponse,
+    QueryExtCodeSignRequest,
+    QueryExtCodeSignResponseBody,
+    QueryExtCodeSignResponse,
+    QueryMobilesCardSupportRequest,
+    QueryMobilesCardSupportShrinkRequest,
+    QueryMobilesCardSupportResponseBody,
+    QueryMobilesCardSupportResponse,
+    QueryPageSmartShortUrlLogRequest,
+    QueryPageSmartShortUrlLogResponseBody,
+    QueryPageSmartShortUrlLogResponse,
+    QuerySendDetailsRequest,
+    QuerySendDetailsResponseBody,
+    QuerySendDetailsResponse,
+    QuerySendStatisticsRequest,
+    QuerySendStatisticsResponseBody,
+    QuerySendStatisticsResponse,
+    QueryShortUrlRequest,
+    QueryShortUrlResponseBody,
+    QueryShortUrlResponse,
+    QuerySingleSmsQualificationRequest,
+    QuerySingleSmsQualificationResponseBody,
+    QuerySingleSmsQualificationResponse,
+    QuerySmsAppIcpRecordRequest,
+    QuerySmsAppIcpRecordShrinkRequest,
+    QuerySmsAppIcpRecordResponseBody,
+    QuerySmsAppIcpRecordResponse,
+    QuerySmsAuthorizationLetterRequest,
+    QuerySmsAuthorizationLetterShrinkRequest,
+    QuerySmsAuthorizationLetterResponseBody,
+    QuerySmsAuthorizationLetterResponse,
+    QuerySmsQualificationRecordRequest,
+    QuerySmsQualificationRecordResponseBody,
+    QuerySmsQualificationRecordResponse,
+    QuerySmsSignRequest,
+    QuerySmsSignResponseBody,
+    QuerySmsSignResponse,
+    QuerySmsSignListRequest,
+    QuerySmsSignListResponseBody,
+    QuerySmsSignListResponse,
+    QuerySmsTemplateRequest,
+    QuerySmsTemplateResponseBody,
+    QuerySmsTemplateResponse,
+    QuerySmsTemplateListRequest,
+    QuerySmsTemplateListResponseBody,
+    QuerySmsTemplateListResponse,
+    QuerySmsTrademarkRequest,
+    QuerySmsTrademarkShrinkRequest,
+    QuerySmsTrademarkResponseBody,
+    QuerySmsTrademarkResponse,
+    RequiredPhoneCodeRequest,
+    RequiredPhoneCodeResponseBody,
+    RequiredPhoneCodeResponse,
+    SendBatchCardSmsRequest,
+    SendBatchCardSmsResponseBody,
+    SendBatchCardSmsResponse,
+    SendBatchSmsRequest,
+    SendBatchSmsResponseBody,
+    SendBatchSmsResponse,
+    SendCardSmsRequest,
+    SendCardSmsResponseBody,
+    SendCardSmsResponse,
+    SendLogisticsSmsRequest,
+    SendLogisticsSmsResponseBody,
+    SendLogisticsSmsResponse,
+    SendSmsRequest,
+    SendSmsResponseBody,
+    SendSmsResponse,
+    SmsConversionIntlRequest,
+    SmsConversionIntlResponseBody,
+    SmsConversionIntlResponse,
+    SubmitSmsQualificationRequest,
+    SubmitSmsQualificationShrinkRequest,
+    SubmitSmsQualificationResponseBody,
+    SubmitSmsQualificationResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UntagResourcesRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
+    UpdateExtCodeSignRequest,
+    UpdateExtCodeSignResponseBody,
+    UpdateExtCodeSignResponse,
+    UpdateSmsQualificationRequest,
+    UpdateSmsQualificationShrinkRequest,
+    UpdateSmsQualificationResponseBody,
+    UpdateSmsQualificationResponse,
+    UpdateSmsSignRequest,
+    UpdateSmsSignShrinkRequest,
+    UpdateSmsSignResponseBody,
+    UpdateSmsSignResponse,
+    UpdateSmsTemplateRequest,
+    UpdateSmsTemplateShrinkRequest,
+    UpdateSmsTemplateResponseBody,
+    UpdateSmsTemplateResponse,
+    ValidPhoneCodeRequest,
+    ValidPhoneCodeResponseBody,
+    ValidPhoneCodeResponse,
+    VerifyLogisticsSmsMailNoRequest,
+    VerifyLogisticsSmsMailNoResponseBody,
+    VerifyLogisticsSmsMailNoResponse,
+    AddShortUrlResponseBodyData,
+    AddSmsSignRequestSignFileList,
+    ChangeSignatureQualificationResponseBodyData,
+    CheckMobilesCardSupportResponseBodyDataQueryResult,
+    CheckMobilesCardSupportResponseBodyData,
+    CreateCardSmsTemplateResponseBodyData,
+    CreateSmartShortUrlResponseBodyModel,
+    GetCardSmsDetailsResponseBodyCardSendDetailDTORecords,
+    GetCardSmsDetailsResponseBodyCardSendDetailDTO,
+    GetCardSmsLinkResponseBodyData,
+    GetMediaResourceIdResponseBodyData,
+    GetOSSInfoForCardTemplateResponseBodyData,
+    GetOSSInfoForUploadFileResponseBodyModel,
+    GetQualificationOssInfoResponseBodyData,
+    GetSmsOcrOssInfoResponseBodyModel,
+    GetSmsSignResponseBodyAuditInfo,
+    GetSmsSignResponseBodySignIspRegisterDetailListRegisterStatusReasons,
+    GetSmsSignResponseBodySignIspRegisterDetailList,
+    GetSmsTemplateResponseBodyAuditInfo,
+    GetSmsTemplateResponseBodyFileUrlList,
+    GetSmsTemplateResponseBodyMoreDataFileUrlList,
+    GetSmsTemplateListResponseBodyDataListTemplateTag,
+    GetSmsTemplateListResponseBodyDataList,
+    GetSmsTemplateListResponseBodyData,
+    ListTagResourcesRequestTag,
+    ListTagResourcesResponseBodyTagResourcesTagResource,
+    ListTagResourcesResponseBodyTagResources,
+    ModifySmsSignRequestSignFileList,
+    QueryCardSmsTemplateResponseBodyData,
+    QueryCardSmsTemplateReportResponseBodyData,
+    QueryExtCodeSignResponseBodyDataList,
+    QueryExtCodeSignResponseBodyData,
+    QueryMobilesCardSupportResponseBodyDataQueryResult,
+    QueryMobilesCardSupportResponseBodyData,
+    QueryPageSmartShortUrlLogResponseBodyModelList,
+    QueryPageSmartShortUrlLogResponseBodyModel,
+    QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO,
+    QuerySendDetailsResponseBodySmsSendDetailDTOs,
+    QuerySendStatisticsResponseBodyDataTargetList,
+    QuerySendStatisticsResponseBodyData,
+    QueryShortUrlResponseBodyData,
+    QuerySingleSmsQualificationResponseBodyDataBusinessLicensePics,
+    QuerySingleSmsQualificationResponseBodyDataOtherFiles,
+    QuerySingleSmsQualificationResponseBodyData,
+    QuerySmsAppIcpRecordResponseBodyData,
+    QuerySmsAuthorizationLetterResponseBodyData,
+    QuerySmsQualificationRecordResponseBodyDataList,
+    QuerySmsQualificationRecordResponseBodyData,
+    QuerySmsSignListResponseBodySmsSignListReason,
+    QuerySmsSignListResponseBodySmsSignList,
+    QuerySmsTemplateListResponseBodySmsTemplateListReason,
+    QuerySmsTemplateListResponseBodySmsTemplateList,
+    QuerySmsTrademarkResponseBodyData,
+    SendBatchCardSmsResponseBodyData,
+    SendCardSmsRequestCardObjects,
+    SendCardSmsResponseBodyData,
+    SendLogisticsSmsResponseBodyData,
+    SubmitSmsQualificationRequestBusinessLicensePics,
+    SubmitSmsQualificationRequestOtherFiles,
+    TagResourcesRequestTag,
+    UpdateSmsQualificationRequestBusinessLicensePics,
+    UpdateSmsQualificationRequestOtherFiles,
+    VerifyLogisticsSmsMailNoResponseBodyData
+]

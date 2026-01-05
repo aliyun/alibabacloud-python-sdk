@@ -1,3 +1,11 @@
+2026-01-05 Version: 4.4.0
+- Support API CreateSmsAppIcpRecord.
+- Support API CreateSmsTrademark.
+- Support API GetSmsTemplateList.
+- Support API QuerySmsAppIcpRecord.
+- Support API QuerySmsTrademark.
+
+
 2025-12-11 Version: 4.3.1
 - Update API CreateSmsSign: add request parameters AppIcpRecordId.
 - Update API CreateSmsSign: add request parameters TrademarkId.
