@@ -1,0 +1,749 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._data_image_region_distribute_map_value import DataImageRegionDistributeMapValue
+from ._attach_key_pair_request import AttachKeyPairRequest
+from ._attach_key_pair_response_body import AttachKeyPairResponseBody
+from ._attach_key_pair_response import AttachKeyPairResponse
+from ._authorize_android_instance_request import AuthorizeAndroidInstanceRequest
+from ._authorize_android_instance_response_body import AuthorizeAndroidInstanceResponseBody
+from ._authorize_android_instance_response import AuthorizeAndroidInstanceResponse
+from ._backup_file_request import BackupFileRequest
+from ._backup_file_response_body import BackupFileResponseBody
+from ._backup_file_response import BackupFileResponse
+from ._batch_get_acp_connection_ticket_request import BatchGetAcpConnectionTicketRequest
+from ._batch_get_acp_connection_ticket_response_body import BatchGetAcpConnectionTicketResponseBody
+from ._batch_get_acp_connection_ticket_response import BatchGetAcpConnectionTicketResponse
+from ._change_cloud_phone_node_request import ChangeCloudPhoneNodeRequest
+from ._change_cloud_phone_node_response_body import ChangeCloudPhoneNodeResponseBody
+from ._change_cloud_phone_node_response import ChangeCloudPhoneNodeResponse
+from ._check_resource_stock_request import CheckResourceStockRequest
+from ._check_resource_stock_response_body import CheckResourceStockResponseBody
+from ._check_resource_stock_response import CheckResourceStockResponse
+from ._create_android_instance_group_request import CreateAndroidInstanceGroupRequest
+from ._create_android_instance_group_shrink_request import CreateAndroidInstanceGroupShrinkRequest
+from ._create_android_instance_group_response_body import CreateAndroidInstanceGroupResponseBody
+from ._create_android_instance_group_response import CreateAndroidInstanceGroupResponse
+from ._create_app_request import CreateAppRequest
+from ._create_app_shrink_request import CreateAppShrinkRequest
+from ._create_app_response_body import CreateAppResponseBody
+from ._create_app_response import CreateAppResponse
+from ._create_cloud_phone_node_request import CreateCloudPhoneNodeRequest
+from ._create_cloud_phone_node_shrink_request import CreateCloudPhoneNodeShrinkRequest
+from ._create_cloud_phone_node_response_body import CreateCloudPhoneNodeResponseBody
+from ._create_cloud_phone_node_response import CreateCloudPhoneNodeResponse
+from ._create_custom_image_request import CreateCustomImageRequest
+from ._create_custom_image_response_body import CreateCustomImageResponseBody
+from ._create_custom_image_response import CreateCustomImageResponse
+from ._create_key_pair_request import CreateKeyPairRequest
+from ._create_key_pair_response_body import CreateKeyPairResponseBody
+from ._create_key_pair_response import CreateKeyPairResponse
+from ._create_policy_group_request import CreatePolicyGroupRequest
+from ._create_policy_group_shrink_request import CreatePolicyGroupShrinkRequest
+from ._create_policy_group_response_body import CreatePolicyGroupResponseBody
+from ._create_policy_group_response import CreatePolicyGroupResponse
+from ._create_screenshot_request import CreateScreenshotRequest
+from ._create_screenshot_response_body import CreateScreenshotResponseBody
+from ._create_screenshot_response import CreateScreenshotResponse
+from ._create_system_property_template_request import CreateSystemPropertyTemplateRequest
+from ._create_system_property_template_shrink_request import CreateSystemPropertyTemplateShrinkRequest
+from ._create_system_property_template_response_body import CreateSystemPropertyTemplateResponseBody
+from ._create_system_property_template_response import CreateSystemPropertyTemplateResponse
+from ._delete_android_instance_group_request import DeleteAndroidInstanceGroupRequest
+from ._delete_android_instance_group_response_body import DeleteAndroidInstanceGroupResponseBody
+from ._delete_android_instance_group_response import DeleteAndroidInstanceGroupResponse
+from ._delete_apps_request import DeleteAppsRequest
+from ._delete_apps_response_body import DeleteAppsResponseBody
+from ._delete_apps_response import DeleteAppsResponse
+from ._delete_backup_file_request import DeleteBackupFileRequest
+from ._delete_backup_file_response_body import DeleteBackupFileResponseBody
+from ._delete_backup_file_response import DeleteBackupFileResponse
+from ._delete_cloud_phone_nodes_request import DeleteCloudPhoneNodesRequest
+from ._delete_cloud_phone_nodes_response_body import DeleteCloudPhoneNodesResponseBody
+from ._delete_cloud_phone_nodes_response import DeleteCloudPhoneNodesResponse
+from ._delete_images_request import DeleteImagesRequest
+from ._delete_images_shrink_request import DeleteImagesShrinkRequest
+from ._delete_images_response_body import DeleteImagesResponseBody
+from ._delete_images_response import DeleteImagesResponse
+from ._delete_key_pairs_request import DeleteKeyPairsRequest
+from ._delete_key_pairs_response_body import DeleteKeyPairsResponseBody
+from ._delete_key_pairs_response import DeleteKeyPairsResponse
+from ._delete_policy_group_request import DeletePolicyGroupRequest
+from ._delete_policy_group_response_body import DeletePolicyGroupResponseBody
+from ._delete_policy_group_response import DeletePolicyGroupResponse
+from ._delete_system_property_templates_request import DeleteSystemPropertyTemplatesRequest
+from ._delete_system_property_templates_response_body import DeleteSystemPropertyTemplatesResponseBody
+from ._delete_system_property_templates_response import DeleteSystemPropertyTemplatesResponse
+from ._describe_android_instance_groups_request import DescribeAndroidInstanceGroupsRequest
+from ._describe_android_instance_groups_response_body import DescribeAndroidInstanceGroupsResponseBody
+from ._describe_android_instance_groups_response import DescribeAndroidInstanceGroupsResponse
+from ._describe_android_instances_request import DescribeAndroidInstancesRequest
+from ._describe_android_instances_response_body import DescribeAndroidInstancesResponseBody
+from ._describe_android_instances_response import DescribeAndroidInstancesResponse
+from ._describe_apps_request import DescribeAppsRequest
+from ._describe_apps_response_body import DescribeAppsResponseBody
+from ._describe_apps_response import DescribeAppsResponse
+from ._describe_backup_files_request import DescribeBackupFilesRequest
+from ._describe_backup_files_response_body import DescribeBackupFilesResponseBody
+from ._describe_backup_files_response import DescribeBackupFilesResponse
+from ._describe_buckets_request import DescribeBucketsRequest
+from ._describe_buckets_response_body import DescribeBucketsResponseBody
+from ._describe_buckets_response import DescribeBucketsResponse
+from ._describe_cloud_phone_nodes_request import DescribeCloudPhoneNodesRequest
+from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesResponseBody
+from ._describe_cloud_phone_nodes_response import DescribeCloudPhoneNodesResponse
+from ._describe_display_config_request import DescribeDisplayConfigRequest
+from ._describe_display_config_response_body import DescribeDisplayConfigResponseBody
+from ._describe_display_config_response import DescribeDisplayConfigResponse
+from ._describe_image_list_request import DescribeImageListRequest
+from ._describe_image_list_response_body import DescribeImageListResponseBody
+from ._describe_image_list_response import DescribeImageListResponse
+from ._describe_invocations_request import DescribeInvocationsRequest
+from ._describe_invocations_response_body import DescribeInvocationsResponseBody
+from ._describe_invocations_response import DescribeInvocationsResponse
+from ._describe_key_pairs_request import DescribeKeyPairsRequest
+from ._describe_key_pairs_response_body import DescribeKeyPairsResponseBody
+from ._describe_key_pairs_response import DescribeKeyPairsResponse
+from ._describe_metric_last_request import DescribeMetricLastRequest
+from ._describe_metric_last_response_body import DescribeMetricLastResponseBody
+from ._describe_metric_last_response import DescribeMetricLastResponse
+from ._describe_metric_list_request import DescribeMetricListRequest
+from ._describe_metric_list_response_body import DescribeMetricListResponseBody
+from ._describe_metric_list_response import DescribeMetricListResponse
+from ._describe_metric_top_request import DescribeMetricTopRequest
+from ._describe_metric_top_response_body import DescribeMetricTopResponseBody
+from ._describe_metric_top_response import DescribeMetricTopResponse
+from ._describe_regions_request import DescribeRegionsRequest
+from ._describe_regions_response_body import DescribeRegionsResponseBody
+from ._describe_regions_response import DescribeRegionsResponse
+from ._describe_spec_request import DescribeSpecRequest
+from ._describe_spec_response_body import DescribeSpecResponseBody
+from ._describe_spec_response import DescribeSpecResponse
+from ._describe_system_property_templates_request import DescribeSystemPropertyTemplatesRequest
+from ._describe_system_property_templates_response_body import DescribeSystemPropertyTemplatesResponseBody
+from ._describe_system_property_templates_response import DescribeSystemPropertyTemplatesResponse
+from ._describe_tasks_request import DescribeTasksRequest
+from ._describe_tasks_response_body import DescribeTasksResponseBody
+from ._describe_tasks_response import DescribeTasksResponse
+from ._detach_key_pair_request import DetachKeyPairRequest
+from ._detach_key_pair_response_body import DetachKeyPairResponseBody
+from ._detach_key_pair_response import DetachKeyPairResponse
+from ._disconnect_android_instance_request import DisconnectAndroidInstanceRequest
+from ._disconnect_android_instance_response_body import DisconnectAndroidInstanceResponseBody
+from ._disconnect_android_instance_response import DisconnectAndroidInstanceResponse
+from ._distribute_image_request import DistributeImageRequest
+from ._distribute_image_response_body import DistributeImageResponseBody
+from ._distribute_image_response import DistributeImageResponse
+from ._downgrade_android_instance_group_request import DowngradeAndroidInstanceGroupRequest
+from ._downgrade_android_instance_group_response_body import DowngradeAndroidInstanceGroupResponseBody
+from ._downgrade_android_instance_group_response import DowngradeAndroidInstanceGroupResponse
+from ._end_coordination_request import EndCoordinationRequest
+from ._end_coordination_response_body import EndCoordinationResponseBody
+from ._end_coordination_response import EndCoordinationResponse
+from ._expand_data_volume_request import ExpandDataVolumeRequest
+from ._expand_data_volume_response_body import ExpandDataVolumeResponseBody
+from ._expand_data_volume_response import ExpandDataVolumeResponse
+from ._expand_phone_data_volume_request import ExpandPhoneDataVolumeRequest
+from ._expand_phone_data_volume_response_body import ExpandPhoneDataVolumeResponseBody
+from ._expand_phone_data_volume_response import ExpandPhoneDataVolumeResponse
+from ._fetch_file_request import FetchFileRequest
+from ._fetch_file_response_body import FetchFileResponseBody
+from ._fetch_file_response import FetchFileResponse
+from ._generate_coordination_code_request import GenerateCoordinationCodeRequest
+from ._generate_coordination_code_response_body import GenerateCoordinationCodeResponseBody
+from ._generate_coordination_code_response import GenerateCoordinationCodeResponse
+from ._get_instance_properties_request import GetInstancePropertiesRequest
+from ._get_instance_properties_response_body import GetInstancePropertiesResponseBody
+from ._get_instance_properties_response import GetInstancePropertiesResponse
+from ._import_image_request import ImportImageRequest
+from ._import_image_response_body import ImportImageResponseBody
+from ._import_image_response import ImportImageResponse
+from ._import_key_pair_request import ImportKeyPairRequest
+from ._import_key_pair_response_body import ImportKeyPairResponseBody
+from ._import_key_pair_response import ImportKeyPairResponse
+from ._install_app_request import InstallAppRequest
+from ._install_app_response_body import InstallAppResponseBody
+from ._install_app_response import InstallAppResponse
+from ._install_monitor_agent_request import InstallMonitorAgentRequest
+from ._install_monitor_agent_response_body import InstallMonitorAgentResponseBody
+from ._install_monitor_agent_response import InstallMonitorAgentResponse
+from ._instance_healer_request import InstanceHealerRequest
+from ._instance_healer_response_body import InstanceHealerResponseBody
+from ._instance_healer_response import InstanceHealerResponse
+from ._list_instance_adb_attributes_request import ListInstanceAdbAttributesRequest
+from ._list_instance_adb_attributes_response_body import ListInstanceAdbAttributesResponseBody
+from ._list_instance_adb_attributes_response import ListInstanceAdbAttributesResponse
+from ._list_policy_groups_request import ListPolicyGroupsRequest
+from ._list_policy_groups_response_body import ListPolicyGroupsResponseBody
+from ._list_policy_groups_response import ListPolicyGroupsResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
+from ._modify_android_instance_request import ModifyAndroidInstanceRequest
+from ._modify_android_instance_response_body import ModifyAndroidInstanceResponseBody
+from ._modify_android_instance_response import ModifyAndroidInstanceResponse
+from ._modify_android_instance_group_request import ModifyAndroidInstanceGroupRequest
+from ._modify_android_instance_group_response_body import ModifyAndroidInstanceGroupResponseBody
+from ._modify_android_instance_group_response import ModifyAndroidInstanceGroupResponse
+from ._modify_app_request import ModifyAppRequest
+from ._modify_app_response_body import ModifyAppResponseBody
+from ._modify_app_response import ModifyAppResponse
+from ._modify_cloud_phone_node_request import ModifyCloudPhoneNodeRequest
+from ._modify_cloud_phone_node_response_body import ModifyCloudPhoneNodeResponseBody
+from ._modify_cloud_phone_node_response import ModifyCloudPhoneNodeResponse
+from ._modify_display_config_request import ModifyDisplayConfigRequest
+from ._modify_display_config_shrink_request import ModifyDisplayConfigShrinkRequest
+from ._modify_display_config_response_body import ModifyDisplayConfigResponseBody
+from ._modify_display_config_response import ModifyDisplayConfigResponse
+from ._modify_instance_charge_type_request import ModifyInstanceChargeTypeRequest
+from ._modify_instance_charge_type_response_body import ModifyInstanceChargeTypeResponseBody
+from ._modify_instance_charge_type_response import ModifyInstanceChargeTypeResponse
+from ._modify_key_pair_name_request import ModifyKeyPairNameRequest
+from ._modify_key_pair_name_response_body import ModifyKeyPairNameResponseBody
+from ._modify_key_pair_name_response import ModifyKeyPairNameResponse
+from ._modify_policy_group_request import ModifyPolicyGroupRequest
+from ._modify_policy_group_shrink_request import ModifyPolicyGroupShrinkRequest
+from ._modify_policy_group_response_body import ModifyPolicyGroupResponseBody
+from ._modify_policy_group_response import ModifyPolicyGroupResponse
+from ._modify_system_property_template_request import ModifySystemPropertyTemplateRequest
+from ._modify_system_property_template_shrink_request import ModifySystemPropertyTemplateShrinkRequest
+from ._modify_system_property_template_response_body import ModifySystemPropertyTemplateResponseBody
+from ._modify_system_property_template_response import ModifySystemPropertyTemplateResponse
+from ._operate_app_request import OperateAppRequest
+from ._operate_app_response_body import OperateAppResponseBody
+from ._operate_app_response import OperateAppResponse
+from ._reboot_android_instances_in_group_request import RebootAndroidInstancesInGroupRequest
+from ._reboot_android_instances_in_group_response_body import RebootAndroidInstancesInGroupResponseBody
+from ._reboot_android_instances_in_group_response import RebootAndroidInstancesInGroupResponse
+from ._recovery_file_request import RecoveryFileRequest
+from ._recovery_file_response_body import RecoveryFileResponseBody
+from ._recovery_file_response import RecoveryFileResponse
+from ._renew_android_instance_groups_request import RenewAndroidInstanceGroupsRequest
+from ._renew_android_instance_groups_response_body import RenewAndroidInstanceGroupsResponseBody
+from ._renew_android_instance_groups_response import RenewAndroidInstanceGroupsResponse
+from ._renew_cloud_phone_nodes_request import RenewCloudPhoneNodesRequest
+from ._renew_cloud_phone_nodes_response_body import RenewCloudPhoneNodesResponseBody
+from ._renew_cloud_phone_nodes_response import RenewCloudPhoneNodesResponse
+from ._reset_android_instances_in_group_request import ResetAndroidInstancesInGroupRequest
+from ._reset_android_instances_in_group_response_body import ResetAndroidInstancesInGroupResponseBody
+from ._reset_android_instances_in_group_response import ResetAndroidInstancesInGroupResponse
+from ._run_command_request import RunCommandRequest
+from ._run_command_response_body import RunCommandResponseBody
+from ._run_command_response import RunCommandResponse
+from ._send_file_request import SendFileRequest
+from ._send_file_response_body import SendFileResponseBody
+from ._send_file_response import SendFileResponse
+from ._send_system_property_template_request import SendSystemPropertyTemplateRequest
+from ._send_system_property_template_response_body import SendSystemPropertyTemplateResponseBody
+from ._send_system_property_template_response import SendSystemPropertyTemplateResponse
+from ._set_adb_secure_request import SetAdbSecureRequest
+from ._set_adb_secure_response_body import SetAdbSecureResponseBody
+from ._set_adb_secure_response import SetAdbSecureResponse
+from ._start_android_instance_request import StartAndroidInstanceRequest
+from ._start_android_instance_response_body import StartAndroidInstanceResponseBody
+from ._start_android_instance_response import StartAndroidInstanceResponse
+from ._start_instance_adb_request import StartInstanceAdbRequest
+from ._start_instance_adb_response_body import StartInstanceAdbResponseBody
+from ._start_instance_adb_response import StartInstanceAdbResponse
+from ._stop_android_instance_request import StopAndroidInstanceRequest
+from ._stop_android_instance_response_body import StopAndroidInstanceResponseBody
+from ._stop_android_instance_response import StopAndroidInstanceResponse
+from ._stop_instance_adb_request import StopInstanceAdbRequest
+from ._stop_instance_adb_response_body import StopInstanceAdbResponseBody
+from ._stop_instance_adb_response import StopInstanceAdbResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._uninstall_app_request import UninstallAppRequest
+from ._uninstall_app_response_body import UninstallAppResponseBody
+from ._uninstall_app_response import UninstallAppResponse
+from ._uninstall_monitor_agent_request import UninstallMonitorAgentRequest
+from ._uninstall_monitor_agent_response_body import UninstallMonitorAgentResponseBody
+from ._uninstall_monitor_agent_response import UninstallMonitorAgentResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
+from ._update_custom_image_name_request import UpdateCustomImageNameRequest
+from ._update_custom_image_name_response_body import UpdateCustomImageNameResponseBody
+from ._update_custom_image_name_response import UpdateCustomImageNameResponse
+from ._update_instance_group_image_request import UpdateInstanceGroupImageRequest
+from ._update_instance_group_image_response_body import UpdateInstanceGroupImageResponseBody
+from ._update_instance_group_image_response import UpdateInstanceGroupImageResponse
+from ._update_instance_image_request import UpdateInstanceImageRequest
+from ._update_instance_image_response_body import UpdateInstanceImageResponseBody
+from ._update_instance_image_response import UpdateInstanceImageResponse
+from ._upgrade_android_instance_group_request import UpgradeAndroidInstanceGroupRequest
+from ._upgrade_android_instance_group_response_body import UpgradeAndroidInstanceGroupResponseBody
+from ._upgrade_android_instance_group_response import UpgradeAndroidInstanceGroupResponse
+from ._attach_key_pair_response_body import AttachKeyPairResponseBodyData
+from ._backup_file_response_body import BackupFileResponseBodyData
+from ._batch_get_acp_connection_ticket_request import BatchGetAcpConnectionTicketRequestInstanceTasks
+from ._batch_get_acp_connection_ticket_response_body import BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels
+from ._change_cloud_phone_node_response_body import ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos
+from ._change_cloud_phone_node_response_body import ChangeCloudPhoneNodeResponseBodyNodeInfos
+from ._check_resource_stock_response_body import CheckResourceStockResponseBodyResourceStockModels
+from ._create_android_instance_group_request import CreateAndroidInstanceGroupRequestNetworkInfo
+from ._create_android_instance_group_request import CreateAndroidInstanceGroupRequestTag
+from ._create_android_instance_group_shrink_request import CreateAndroidInstanceGroupShrinkRequestTag
+from ._create_android_instance_group_response_body import CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos
+from ._create_android_instance_group_response_body import CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel
+from ._create_app_request import CreateAppRequestCustomAppInfo
+from ._create_cloud_phone_node_request import CreateCloudPhoneNodeRequestDisplayConfig
+from ._create_cloud_phone_node_request import CreateCloudPhoneNodeRequestNetworkInfo
+from ._create_cloud_phone_node_request import CreateCloudPhoneNodeRequestTag
+from ._create_cloud_phone_node_shrink_request import CreateCloudPhoneNodeShrinkRequestTag
+from ._create_cloud_phone_node_response_body import CreateCloudPhoneNodeResponseBodyNetworkPackageOrderModel
+from ._create_cloud_phone_node_response_body import CreateCloudPhoneNodeResponseBodyNodeInfos
+from ._create_key_pair_response_body import CreateKeyPairResponseBodyData
+from ._create_policy_group_request import CreatePolicyGroupRequestNetRedirectPolicyRules
+from ._create_policy_group_request import CreatePolicyGroupRequestNetRedirectPolicy
+from ._create_policy_group_request import CreatePolicyGroupRequestWatermark
+from ._create_screenshot_response_body import CreateScreenshotResponseBodyTasks
+from ._create_system_property_template_request import CreateSystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos
+from ._create_system_property_template_request import CreateSystemPropertyTemplateRequestSystemPropertyInfo
+from ._delete_images_response_body import DeleteImagesResponseBodyData
+from ._describe_android_instance_groups_request import DescribeAndroidInstanceGroupsRequestTags
+from ._describe_android_instance_groups_response_body import DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule
+from ._describe_android_instance_groups_response_body import DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules
+from ._describe_android_instance_groups_response_body import DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks
+from ._describe_android_instance_groups_response_body import DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags
+from ._describe_android_instance_groups_response_body import DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel
+from ._describe_android_instances_request import DescribeAndroidInstancesRequestTag
+from ._describe_android_instances_response_body import DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy
+from ._describe_android_instances_response_body import DescribeAndroidInstancesResponseBodyInstanceModelBizTags
+from ._describe_android_instances_response_body import DescribeAndroidInstancesResponseBodyInstanceModelDisks
+from ._describe_android_instances_response_body import DescribeAndroidInstancesResponseBodyInstanceModelDisplayConfig
+from ._describe_android_instances_response_body import DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo
+from ._describe_android_instances_response_body import DescribeAndroidInstancesResponseBodyInstanceModelTags
+from ._describe_android_instances_response_body import DescribeAndroidInstancesResponseBodyInstanceModel
+from ._describe_apps_response_body import DescribeAppsResponseBodyData
+from ._describe_backup_files_response_body import DescribeBackupFilesResponseBodyData
+from ._describe_buckets_response_body import DescribeBucketsResponseBodyDataOssObjectListOwner
+from ._describe_buckets_response_body import DescribeBucketsResponseBodyDataOssObjectList
+from ._describe_buckets_response_body import DescribeBucketsResponseBodyData
+from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesResponseBodyNodeModelBizTags
+from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos
+from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo
+from ._describe_cloud_phone_nodes_response_body import DescribeCloudPhoneNodesResponseBodyNodeModel
+from ._describe_display_config_response_body import DescribeDisplayConfigResponseBodyDisplayConfigModel
+from ._describe_image_list_request import DescribeImageListRequestImageBizTags
+from ._describe_image_list_response_body import DescribeImageListResponseBodyDataImageBizTags
+from ._describe_image_list_response_body import DescribeImageListResponseBodyData
+from ._describe_invocations_response_body import DescribeInvocationsResponseBodyData
+from ._describe_key_pairs_response_body import DescribeKeyPairsResponseBodyData
+from ._describe_metric_last_response_body import DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints
+from ._describe_metric_last_response_body import DescribeMetricLastResponseBodyMetricTotalModelMetricModelListProcessLastInfos
+from ._describe_metric_last_response_body import DescribeMetricLastResponseBodyMetricTotalModelMetricModelList
+from ._describe_metric_last_response_body import DescribeMetricLastResponseBodyMetricTotalModel
+from ._describe_metric_list_request import DescribeMetricListRequestProcessInfos
+from ._describe_metric_list_response_body import DescribeMetricListResponseBodyMetricTotalModelMetricModelListDataPoints
+from ._describe_metric_list_response_body import DescribeMetricListResponseBodyMetricTotalModelMetricModelList
+from ._describe_metric_list_response_body import DescribeMetricListResponseBodyMetricTotalModel
+from ._describe_metric_top_response_body import DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints
+from ._describe_metric_top_response_body import DescribeMetricTopResponseBodyMetricTotalModelMetricModelList
+from ._describe_metric_top_response_body import DescribeMetricTopResponseBodyMetricTotalModel
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionModels
+from ._describe_spec_response_body import DescribeSpecResponseBodySpecInfoModel
+from ._describe_system_property_templates_response_body import DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfoCustomPropertyInfos
+from ._describe_system_property_templates_response_body import DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfo
+from ._describe_system_property_templates_response_body import DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModel
+from ._describe_tasks_response_body import DescribeTasksResponseBodyData
+from ._detach_key_pair_response_body import DetachKeyPairResponseBodyData
+from ._fetch_file_response_body import FetchFileResponseBodyData
+from ._get_instance_properties_response_body import GetInstancePropertiesResponseBodyPropertyTemplateModel
+from ._import_key_pair_response_body import ImportKeyPairResponseBodyData
+from ._instance_healer_response_body import InstanceHealerResponseBodyInstanceHealerModel
+from ._list_instance_adb_attributes_response_body import ListInstanceAdbAttributesResponseBodyData
+from ._list_policy_groups_response_body import ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules
+from ._list_policy_groups_response_body import ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy
+from ._list_policy_groups_response_body import ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources
+from ._list_policy_groups_response_body import ListPolicyGroupsResponseBodyPolicyGroupModelWatermark
+from ._list_policy_groups_response_body import ListPolicyGroupsResponseBodyPolicyGroupModel
+from ._list_tag_resources_request import ListTagResourcesRequestTag
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._modify_display_config_request import ModifyDisplayConfigRequestDisplayConfig
+from ._modify_policy_group_request import ModifyPolicyGroupRequestNetRedirectPolicyRules
+from ._modify_policy_group_request import ModifyPolicyGroupRequestNetRedirectPolicy
+from ._modify_policy_group_request import ModifyPolicyGroupRequestWatermark
+from ._modify_system_property_template_request import ModifySystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos
+from ._modify_system_property_template_request import ModifySystemPropertyTemplateRequestSystemPropertyInfo
+from ._recovery_file_response_body import RecoveryFileResponseBodyData
+from ._run_command_response_body import RunCommandResponseBodyRunCommandInfos
+from ._send_file_response_body import SendFileResponseBodyData
+from ._set_adb_secure_response_body import SetAdbSecureResponseBodyData
+from ._tag_resources_request import TagResourcesRequestTag
+
+__all__ = [
+    DataImageRegionDistributeMapValue,
+    AttachKeyPairRequest,
+    AttachKeyPairResponseBody,
+    AttachKeyPairResponse,
+    AuthorizeAndroidInstanceRequest,
+    AuthorizeAndroidInstanceResponseBody,
+    AuthorizeAndroidInstanceResponse,
+    BackupFileRequest,
+    BackupFileResponseBody,
+    BackupFileResponse,
+    BatchGetAcpConnectionTicketRequest,
+    BatchGetAcpConnectionTicketResponseBody,
+    BatchGetAcpConnectionTicketResponse,
+    ChangeCloudPhoneNodeRequest,
+    ChangeCloudPhoneNodeResponseBody,
+    ChangeCloudPhoneNodeResponse,
+    CheckResourceStockRequest,
+    CheckResourceStockResponseBody,
+    CheckResourceStockResponse,
+    CreateAndroidInstanceGroupRequest,
+    CreateAndroidInstanceGroupShrinkRequest,
+    CreateAndroidInstanceGroupResponseBody,
+    CreateAndroidInstanceGroupResponse,
+    CreateAppRequest,
+    CreateAppShrinkRequest,
+    CreateAppResponseBody,
+    CreateAppResponse,
+    CreateCloudPhoneNodeRequest,
+    CreateCloudPhoneNodeShrinkRequest,
+    CreateCloudPhoneNodeResponseBody,
+    CreateCloudPhoneNodeResponse,
+    CreateCustomImageRequest,
+    CreateCustomImageResponseBody,
+    CreateCustomImageResponse,
+    CreateKeyPairRequest,
+    CreateKeyPairResponseBody,
+    CreateKeyPairResponse,
+    CreatePolicyGroupRequest,
+    CreatePolicyGroupShrinkRequest,
+    CreatePolicyGroupResponseBody,
+    CreatePolicyGroupResponse,
+    CreateScreenshotRequest,
+    CreateScreenshotResponseBody,
+    CreateScreenshotResponse,
+    CreateSystemPropertyTemplateRequest,
+    CreateSystemPropertyTemplateShrinkRequest,
+    CreateSystemPropertyTemplateResponseBody,
+    CreateSystemPropertyTemplateResponse,
+    DeleteAndroidInstanceGroupRequest,
+    DeleteAndroidInstanceGroupResponseBody,
+    DeleteAndroidInstanceGroupResponse,
+    DeleteAppsRequest,
+    DeleteAppsResponseBody,
+    DeleteAppsResponse,
+    DeleteBackupFileRequest,
+    DeleteBackupFileResponseBody,
+    DeleteBackupFileResponse,
+    DeleteCloudPhoneNodesRequest,
+    DeleteCloudPhoneNodesResponseBody,
+    DeleteCloudPhoneNodesResponse,
+    DeleteImagesRequest,
+    DeleteImagesShrinkRequest,
+    DeleteImagesResponseBody,
+    DeleteImagesResponse,
+    DeleteKeyPairsRequest,
+    DeleteKeyPairsResponseBody,
+    DeleteKeyPairsResponse,
+    DeletePolicyGroupRequest,
+    DeletePolicyGroupResponseBody,
+    DeletePolicyGroupResponse,
+    DeleteSystemPropertyTemplatesRequest,
+    DeleteSystemPropertyTemplatesResponseBody,
+    DeleteSystemPropertyTemplatesResponse,
+    DescribeAndroidInstanceGroupsRequest,
+    DescribeAndroidInstanceGroupsResponseBody,
+    DescribeAndroidInstanceGroupsResponse,
+    DescribeAndroidInstancesRequest,
+    DescribeAndroidInstancesResponseBody,
+    DescribeAndroidInstancesResponse,
+    DescribeAppsRequest,
+    DescribeAppsResponseBody,
+    DescribeAppsResponse,
+    DescribeBackupFilesRequest,
+    DescribeBackupFilesResponseBody,
+    DescribeBackupFilesResponse,
+    DescribeBucketsRequest,
+    DescribeBucketsResponseBody,
+    DescribeBucketsResponse,
+    DescribeCloudPhoneNodesRequest,
+    DescribeCloudPhoneNodesResponseBody,
+    DescribeCloudPhoneNodesResponse,
+    DescribeDisplayConfigRequest,
+    DescribeDisplayConfigResponseBody,
+    DescribeDisplayConfigResponse,
+    DescribeImageListRequest,
+    DescribeImageListResponseBody,
+    DescribeImageListResponse,
+    DescribeInvocationsRequest,
+    DescribeInvocationsResponseBody,
+    DescribeInvocationsResponse,
+    DescribeKeyPairsRequest,
+    DescribeKeyPairsResponseBody,
+    DescribeKeyPairsResponse,
+    DescribeMetricLastRequest,
+    DescribeMetricLastResponseBody,
+    DescribeMetricLastResponse,
+    DescribeMetricListRequest,
+    DescribeMetricListResponseBody,
+    DescribeMetricListResponse,
+    DescribeMetricTopRequest,
+    DescribeMetricTopResponseBody,
+    DescribeMetricTopResponse,
+    DescribeRegionsRequest,
+    DescribeRegionsResponseBody,
+    DescribeRegionsResponse,
+    DescribeSpecRequest,
+    DescribeSpecResponseBody,
+    DescribeSpecResponse,
+    DescribeSystemPropertyTemplatesRequest,
+    DescribeSystemPropertyTemplatesResponseBody,
+    DescribeSystemPropertyTemplatesResponse,
+    DescribeTasksRequest,
+    DescribeTasksResponseBody,
+    DescribeTasksResponse,
+    DetachKeyPairRequest,
+    DetachKeyPairResponseBody,
+    DetachKeyPairResponse,
+    DisconnectAndroidInstanceRequest,
+    DisconnectAndroidInstanceResponseBody,
+    DisconnectAndroidInstanceResponse,
+    DistributeImageRequest,
+    DistributeImageResponseBody,
+    DistributeImageResponse,
+    DowngradeAndroidInstanceGroupRequest,
+    DowngradeAndroidInstanceGroupResponseBody,
+    DowngradeAndroidInstanceGroupResponse,
+    EndCoordinationRequest,
+    EndCoordinationResponseBody,
+    EndCoordinationResponse,
+    ExpandDataVolumeRequest,
+    ExpandDataVolumeResponseBody,
+    ExpandDataVolumeResponse,
+    ExpandPhoneDataVolumeRequest,
+    ExpandPhoneDataVolumeResponseBody,
+    ExpandPhoneDataVolumeResponse,
+    FetchFileRequest,
+    FetchFileResponseBody,
+    FetchFileResponse,
+    GenerateCoordinationCodeRequest,
+    GenerateCoordinationCodeResponseBody,
+    GenerateCoordinationCodeResponse,
+    GetInstancePropertiesRequest,
+    GetInstancePropertiesResponseBody,
+    GetInstancePropertiesResponse,
+    ImportImageRequest,
+    ImportImageResponseBody,
+    ImportImageResponse,
+    ImportKeyPairRequest,
+    ImportKeyPairResponseBody,
+    ImportKeyPairResponse,
+    InstallAppRequest,
+    InstallAppResponseBody,
+    InstallAppResponse,
+    InstallMonitorAgentRequest,
+    InstallMonitorAgentResponseBody,
+    InstallMonitorAgentResponse,
+    InstanceHealerRequest,
+    InstanceHealerResponseBody,
+    InstanceHealerResponse,
+    ListInstanceAdbAttributesRequest,
+    ListInstanceAdbAttributesResponseBody,
+    ListInstanceAdbAttributesResponse,
+    ListPolicyGroupsRequest,
+    ListPolicyGroupsResponseBody,
+    ListPolicyGroupsResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
+    ModifyAndroidInstanceRequest,
+    ModifyAndroidInstanceResponseBody,
+    ModifyAndroidInstanceResponse,
+    ModifyAndroidInstanceGroupRequest,
+    ModifyAndroidInstanceGroupResponseBody,
+    ModifyAndroidInstanceGroupResponse,
+    ModifyAppRequest,
+    ModifyAppResponseBody,
+    ModifyAppResponse,
+    ModifyCloudPhoneNodeRequest,
+    ModifyCloudPhoneNodeResponseBody,
+    ModifyCloudPhoneNodeResponse,
+    ModifyDisplayConfigRequest,
+    ModifyDisplayConfigShrinkRequest,
+    ModifyDisplayConfigResponseBody,
+    ModifyDisplayConfigResponse,
+    ModifyInstanceChargeTypeRequest,
+    ModifyInstanceChargeTypeResponseBody,
+    ModifyInstanceChargeTypeResponse,
+    ModifyKeyPairNameRequest,
+    ModifyKeyPairNameResponseBody,
+    ModifyKeyPairNameResponse,
+    ModifyPolicyGroupRequest,
+    ModifyPolicyGroupShrinkRequest,
+    ModifyPolicyGroupResponseBody,
+    ModifyPolicyGroupResponse,
+    ModifySystemPropertyTemplateRequest,
+    ModifySystemPropertyTemplateShrinkRequest,
+    ModifySystemPropertyTemplateResponseBody,
+    ModifySystemPropertyTemplateResponse,
+    OperateAppRequest,
+    OperateAppResponseBody,
+    OperateAppResponse,
+    RebootAndroidInstancesInGroupRequest,
+    RebootAndroidInstancesInGroupResponseBody,
+    RebootAndroidInstancesInGroupResponse,
+    RecoveryFileRequest,
+    RecoveryFileResponseBody,
+    RecoveryFileResponse,
+    RenewAndroidInstanceGroupsRequest,
+    RenewAndroidInstanceGroupsResponseBody,
+    RenewAndroidInstanceGroupsResponse,
+    RenewCloudPhoneNodesRequest,
+    RenewCloudPhoneNodesResponseBody,
+    RenewCloudPhoneNodesResponse,
+    ResetAndroidInstancesInGroupRequest,
+    ResetAndroidInstancesInGroupResponseBody,
+    ResetAndroidInstancesInGroupResponse,
+    RunCommandRequest,
+    RunCommandResponseBody,
+    RunCommandResponse,
+    SendFileRequest,
+    SendFileResponseBody,
+    SendFileResponse,
+    SendSystemPropertyTemplateRequest,
+    SendSystemPropertyTemplateResponseBody,
+    SendSystemPropertyTemplateResponse,
+    SetAdbSecureRequest,
+    SetAdbSecureResponseBody,
+    SetAdbSecureResponse,
+    StartAndroidInstanceRequest,
+    StartAndroidInstanceResponseBody,
+    StartAndroidInstanceResponse,
+    StartInstanceAdbRequest,
+    StartInstanceAdbResponseBody,
+    StartInstanceAdbResponse,
+    StopAndroidInstanceRequest,
+    StopAndroidInstanceResponseBody,
+    StopAndroidInstanceResponse,
+    StopInstanceAdbRequest,
+    StopInstanceAdbResponseBody,
+    StopInstanceAdbResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UninstallAppRequest,
+    UninstallAppResponseBody,
+    UninstallAppResponse,
+    UninstallMonitorAgentRequest,
+    UninstallMonitorAgentResponseBody,
+    UninstallMonitorAgentResponse,
+    UntagResourcesRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
+    UpdateCustomImageNameRequest,
+    UpdateCustomImageNameResponseBody,
+    UpdateCustomImageNameResponse,
+    UpdateInstanceGroupImageRequest,
+    UpdateInstanceGroupImageResponseBody,
+    UpdateInstanceGroupImageResponse,
+    UpdateInstanceImageRequest,
+    UpdateInstanceImageResponseBody,
+    UpdateInstanceImageResponse,
+    UpgradeAndroidInstanceGroupRequest,
+    UpgradeAndroidInstanceGroupResponseBody,
+    UpgradeAndroidInstanceGroupResponse,
+    AttachKeyPairResponseBodyData,
+    BackupFileResponseBodyData,
+    BatchGetAcpConnectionTicketRequestInstanceTasks,
+    BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels,
+    ChangeCloudPhoneNodeResponseBodyNodeInfosInstanceInfos,
+    ChangeCloudPhoneNodeResponseBodyNodeInfos,
+    CheckResourceStockResponseBodyResourceStockModels,
+    CreateAndroidInstanceGroupRequestNetworkInfo,
+    CreateAndroidInstanceGroupRequestTag,
+    CreateAndroidInstanceGroupShrinkRequestTag,
+    CreateAndroidInstanceGroupResponseBodyInstanceGroupInfos,
+    CreateAndroidInstanceGroupResponseBodyNetworkPackageOrderModel,
+    CreateAppRequestCustomAppInfo,
+    CreateCloudPhoneNodeRequestDisplayConfig,
+    CreateCloudPhoneNodeRequestNetworkInfo,
+    CreateCloudPhoneNodeRequestTag,
+    CreateCloudPhoneNodeShrinkRequestTag,
+    CreateCloudPhoneNodeResponseBodyNetworkPackageOrderModel,
+    CreateCloudPhoneNodeResponseBodyNodeInfos,
+    CreateKeyPairResponseBodyData,
+    CreatePolicyGroupRequestNetRedirectPolicyRules,
+    CreatePolicyGroupRequestNetRedirectPolicy,
+    CreatePolicyGroupRequestWatermark,
+    CreateScreenshotResponseBodyTasks,
+    CreateSystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos,
+    CreateSystemPropertyTemplateRequestSystemPropertyInfo,
+    DeleteImagesResponseBodyData,
+    DescribeAndroidInstanceGroupsRequestTags,
+    DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRulesInstanceQosRule,
+    DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelBindQosRules,
+    DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelDisks,
+    DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModelTags,
+    DescribeAndroidInstanceGroupsResponseBodyInstanceGroupModel,
+    DescribeAndroidInstancesRequestTag,
+    DescribeAndroidInstancesResponseBodyInstanceModelAppManagePolicy,
+    DescribeAndroidInstancesResponseBodyInstanceModelBizTags,
+    DescribeAndroidInstancesResponseBodyInstanceModelDisks,
+    DescribeAndroidInstancesResponseBodyInstanceModelDisplayConfig,
+    DescribeAndroidInstancesResponseBodyInstanceModelPhoneDataInfo,
+    DescribeAndroidInstancesResponseBodyInstanceModelTags,
+    DescribeAndroidInstancesResponseBodyInstanceModel,
+    DescribeAppsResponseBodyData,
+    DescribeBackupFilesResponseBodyData,
+    DescribeBucketsResponseBodyDataOssObjectListOwner,
+    DescribeBucketsResponseBodyDataOssObjectList,
+    DescribeBucketsResponseBodyData,
+    DescribeCloudPhoneNodesResponseBodyNodeModelBizTags,
+    DescribeCloudPhoneNodesResponseBodyNodeModelNetworkInfos,
+    DescribeCloudPhoneNodesResponseBodyNodeModelPhoneDataInfo,
+    DescribeCloudPhoneNodesResponseBodyNodeModel,
+    DescribeDisplayConfigResponseBodyDisplayConfigModel,
+    DescribeImageListRequestImageBizTags,
+    DescribeImageListResponseBodyDataImageBizTags,
+    DescribeImageListResponseBodyData,
+    DescribeInvocationsResponseBodyData,
+    DescribeKeyPairsResponseBodyData,
+    DescribeMetricLastResponseBodyMetricTotalModelMetricModelListDataPoints,
+    DescribeMetricLastResponseBodyMetricTotalModelMetricModelListProcessLastInfos,
+    DescribeMetricLastResponseBodyMetricTotalModelMetricModelList,
+    DescribeMetricLastResponseBodyMetricTotalModel,
+    DescribeMetricListRequestProcessInfos,
+    DescribeMetricListResponseBodyMetricTotalModelMetricModelListDataPoints,
+    DescribeMetricListResponseBodyMetricTotalModelMetricModelList,
+    DescribeMetricListResponseBodyMetricTotalModel,
+    DescribeMetricTopResponseBodyMetricTotalModelMetricModelListDataPoints,
+    DescribeMetricTopResponseBodyMetricTotalModelMetricModelList,
+    DescribeMetricTopResponseBodyMetricTotalModel,
+    DescribeRegionsResponseBodyRegionModels,
+    DescribeSpecResponseBodySpecInfoModel,
+    DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfoCustomPropertyInfos,
+    DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModelSystemPropertyInfo,
+    DescribeSystemPropertyTemplatesResponseBodySystemPropertyTemplateModel,
+    DescribeTasksResponseBodyData,
+    DetachKeyPairResponseBodyData,
+    FetchFileResponseBodyData,
+    GetInstancePropertiesResponseBodyPropertyTemplateModel,
+    ImportKeyPairResponseBodyData,
+    InstanceHealerResponseBodyInstanceHealerModel,
+    ListInstanceAdbAttributesResponseBodyData,
+    ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicyRules,
+    ListPolicyGroupsResponseBodyPolicyGroupModelNetRedirectPolicy,
+    ListPolicyGroupsResponseBodyPolicyGroupModelPolicyRelatedResources,
+    ListPolicyGroupsResponseBodyPolicyGroupModelWatermark,
+    ListPolicyGroupsResponseBodyPolicyGroupModel,
+    ListTagResourcesRequestTag,
+    ListTagResourcesResponseBodyTagResources,
+    ModifyDisplayConfigRequestDisplayConfig,
+    ModifyPolicyGroupRequestNetRedirectPolicyRules,
+    ModifyPolicyGroupRequestNetRedirectPolicy,
+    ModifyPolicyGroupRequestWatermark,
+    ModifySystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos,
+    ModifySystemPropertyTemplateRequestSystemPropertyInfo,
+    RecoveryFileResponseBodyData,
+    RunCommandResponseBodyRunCommandInfos,
+    SendFileResponseBodyData,
+    SetAdbSecureResponseBodyData,
+    TagResourcesRequestTag
+]

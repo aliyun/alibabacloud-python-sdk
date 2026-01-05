@@ -1,3 +1,6 @@
+2026-01-05 Version: 4.19.2
+- Generated python 2023-09-30 for eds-aic.
+
 2025-12-11 Version: 4.19.1
 - Update API CreateCloudPhoneNode: add request parameters IsSingleImgDisk.
 
