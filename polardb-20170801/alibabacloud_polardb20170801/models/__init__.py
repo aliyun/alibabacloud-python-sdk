@@ -53,6 +53,9 @@ from ._check_kmsauthorized_response import CheckKMSAuthorizedResponse
 from ._check_service_linked_role_request import CheckServiceLinkedRoleRequest
 from ._check_service_linked_role_response_body import CheckServiceLinkedRoleResponseBody
 from ._check_service_linked_role_response import CheckServiceLinkedRoleResponse
+from ._clone_polar_fs_basic_snapshot_request import ClonePolarFsBasicSnapshotRequest
+from ._clone_polar_fs_basic_snapshot_response_body import ClonePolarFsBasicSnapshotResponseBody
+from ._clone_polar_fs_basic_snapshot_response import ClonePolarFsBasicSnapshotResponse
 from ._close_aitask_request import CloseAITaskRequest
 from ._close_aitask_response_body import CloseAITaskResponseBody
 from ._close_aitask_response import CloseAITaskResponse
@@ -1134,6 +1137,9 @@ __all__ = [
     CheckServiceLinkedRoleRequest,
     CheckServiceLinkedRoleResponseBody,
     CheckServiceLinkedRoleResponse,
+    ClonePolarFsBasicSnapshotRequest,
+    ClonePolarFsBasicSnapshotResponseBody,
+    ClonePolarFsBasicSnapshotResponse,
     CloseAITaskRequest,
     CloseAITaskResponseBody,
     CloseAITaskResponse,

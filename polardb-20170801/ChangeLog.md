@@ -1,3 +1,7 @@
+2026-01-05 Version: 6.3.0
+- Support API ClonePolarFsBasicSnapshot.
+
+
 2026-01-05 Version: 6.2.2
 - Update API CreateApplication: add request parameters AutoCreatePolarFs.
 

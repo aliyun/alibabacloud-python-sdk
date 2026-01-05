@@ -1607,6 +1607,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.check_service_linked_role_with_options_async(request, runtime)
 
+    def clone_polar_fs_basic_snapshot_with_options(
+        self,
+        request: main_models.ClonePolarFsBasicSnapshotRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ClonePolarFsBasicSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.source_path):
+            query['SourcePath'] = request.source_path
+        if not DaraCore.is_null(request.target_path):
+            query['TargetPath'] = request.target_path
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ClonePolarFsBasicSnapshot',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ClonePolarFsBasicSnapshotResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def clone_polar_fs_basic_snapshot_with_options_async(
+        self,
+        request: main_models.ClonePolarFsBasicSnapshotRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ClonePolarFsBasicSnapshotResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.polar_fs_instance_id):
+            query['PolarFsInstanceId'] = request.polar_fs_instance_id
+        if not DaraCore.is_null(request.source_path):
+            query['SourcePath'] = request.source_path
+        if not DaraCore.is_null(request.target_path):
+            query['TargetPath'] = request.target_path
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ClonePolarFsBasicSnapshot',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ClonePolarFsBasicSnapshotResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def clone_polar_fs_basic_snapshot(
+        self,
+        request: main_models.ClonePolarFsBasicSnapshotRequest,
+    ) -> main_models.ClonePolarFsBasicSnapshotResponse:
+        runtime = RuntimeOptions()
+        return self.clone_polar_fs_basic_snapshot_with_options(request, runtime)
+
+    async def clone_polar_fs_basic_snapshot_async(
+        self,
+        request: main_models.ClonePolarFsBasicSnapshotRequest,
+    ) -> main_models.ClonePolarFsBasicSnapshotResponse:
+        runtime = RuntimeOptions()
+        return await self.clone_polar_fs_basic_snapshot_with_options_async(request, runtime)
+
     def close_aitask_with_options(
         self,
         request: main_models.CloseAITaskRequest,
