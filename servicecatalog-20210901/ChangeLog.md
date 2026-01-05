@@ -1,3 +1,6 @@
+2026-01-05 Version: 1.2.3
+- Generated python 2021-09-01 for servicecatalog.
+
 2024-02-27 Version: 1.2.2
 - Update API CreateProduct: add param TemplateType.
 - Update API GetProductAsAdmin: update response param.
