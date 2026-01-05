@@ -12,6 +12,7 @@ class DescribeDomainsRequest(DaraModel):
         self,
         backend: str = None,
         domain: str = None,
+        domain_id: str = None,
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
@@ -23,6 +24,7 @@ class DescribeDomainsRequest(DaraModel):
         self.backend = backend
         # The ID of the request.
         self.domain = domain
+        self.domain_id = domain_id
         # The page number of the page to return. Default value: 1.
         # 
         # This parameter is required.
@@ -58,6 +60,9 @@ class DescribeDomainsRequest(DaraModel):
         if self.domain is not None:
             result['Domain'] = self.domain
 
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -87,6 +92,9 @@ class DescribeDomainsRequest(DaraModel):
 
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
+
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

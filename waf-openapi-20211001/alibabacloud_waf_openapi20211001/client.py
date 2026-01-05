@@ -9115,6 +9115,8 @@ class Client(OpenApiClient):
             query['Backend'] = request.backend
         if not DaraCore.is_null(request.domain):
             query['Domain'] = request.domain
+        if not DaraCore.is_null(request.domain_id):
+            query['DomainId'] = request.domain_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.page_number):
@@ -9157,6 +9159,8 @@ class Client(OpenApiClient):
             query['Backend'] = request.backend
         if not DaraCore.is_null(request.domain):
             query['Domain'] = request.domain
+        if not DaraCore.is_null(request.domain_id):
+            query['DomainId'] = request.domain_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.page_number):

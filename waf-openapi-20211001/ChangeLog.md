@@ -1,3 +1,7 @@
+2026-01-05 Version: 7.3.1
+- Update API DescribeDomains: add request parameters DomainId.
+
+
 2025-12-26 Version: 7.3.0
 - Support API AddAddress.
 - Support API ClearAddress.
