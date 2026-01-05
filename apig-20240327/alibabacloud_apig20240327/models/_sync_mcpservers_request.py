@@ -16,10 +16,15 @@ class SyncMCPServersRequest(DaraModel):
         namespace: str = None,
         source_id: str = None,
     ):
+        # The domain ID.
         self.domain_ids = domain_ids
+        # The ID of the gateway.
         self.gateway_id = gateway_id
+        # The synchronized Nacos MCP server list. If the synchronized MCP server is included, add the mcpServerId parameter.
         self.nacos_mcp_servers = nacos_mcp_servers
+        # The Nacos namespace.
         self.namespace = namespace
+        # The source ID.
         self.source_id = source_id
 
     def validate(self):
@@ -83,11 +88,15 @@ class SyncMCPServersRequestNacosMcpServers(DaraModel):
         mcp_server_name: str = None,
         protocols: List[str] = None,
     ):
+        # The exposed URI path. This parameter is required when the protocol parameter is set to SSE or StreamableHTTP and the type parameter is set to RealMCP.
         self.exposed_uri_path = exposed_uri_path
+        # The Nacos instance ID.
         self.instance_id = instance_id
-        # MCP Server ID
+        # The MCP server ID.
         self.mcp_server_id = mcp_server_id
+        # The name of the MCP server.
         self.mcp_server_name = mcp_server_name
+        # The protocol.
         self.protocols = protocols
 
     def validate(self):

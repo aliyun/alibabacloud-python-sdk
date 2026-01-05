@@ -202,6 +202,9 @@ from ._import_http_api_response import ImportHttpApiResponse
 from ._install_plugin_request import InstallPluginRequest
 from ._install_plugin_response_body import InstallPluginResponseBody
 from ._install_plugin_response import InstallPluginResponse
+from ._list_consumer_authorization_rules_request import ListConsumerAuthorizationRulesRequest
+from ._list_consumer_authorization_rules_response_body import ListConsumerAuthorizationRulesResponseBody
+from ._list_consumer_authorization_rules_response import ListConsumerAuthorizationRulesResponse
 from ._list_consumers_request import ListConsumersRequest
 from ._list_consumers_response_body import ListConsumersResponseBody
 from ._list_consumers_response import ListConsumersResponse
@@ -232,6 +235,9 @@ from ._list_mcp_servers_response import ListMcpServersResponse
 from ._list_plugin_attachments_request import ListPluginAttachmentsRequest
 from ._list_plugin_attachments_response_body import ListPluginAttachmentsResponseBody
 from ._list_plugin_attachments_response import ListPluginAttachmentsResponse
+from ._list_plugin_classes_request import ListPluginClassesRequest
+from ._list_plugin_classes_response_body import ListPluginClassesResponseBody
+from ._list_plugin_classes_response import ListPluginClassesResponse
 from ._list_plugins_request import ListPluginsRequest
 from ._list_plugins_response_body import ListPluginsResponseBody
 from ._list_plugins_response import ListPluginsResponse
@@ -464,6 +470,8 @@ from ._import_http_api_response_body import ImportHttpApiResponseBodyDataDryRunI
 from ._import_http_api_response_body import ImportHttpApiResponseBodyData
 from ._install_plugin_response_body import InstallPluginResponseBodyDataInstallPluginResults
 from ._install_plugin_response_body import InstallPluginResponseBodyData
+from ._list_consumer_authorization_rules_response_body import ListConsumerAuthorizationRulesResponseBodyDataItems
+from ._list_consumer_authorization_rules_response_body import ListConsumerAuthorizationRulesResponseBodyData
 from ._list_consumers_response_body import ListConsumersResponseBodyDataItems
 from ._list_consumers_response_body import ListConsumersResponseBodyData
 from ._list_domains_response_body import ListDomainsResponseBodyData
@@ -492,6 +500,8 @@ from ._list_mcp_servers_response_body import ListMcpServersResponseBodyDataItems
 from ._list_mcp_servers_response_body import ListMcpServersResponseBodyData
 from ._list_plugin_attachments_response_body import ListPluginAttachmentsResponseBodyDataItems
 from ._list_plugin_attachments_response_body import ListPluginAttachmentsResponseBodyData
+from ._list_plugin_classes_response_body import ListPluginClassesResponseBodyDataItems
+from ._list_plugin_classes_response_body import ListPluginClassesResponseBodyData
 from ._list_plugins_response_body import ListPluginsResponseBodyDataItemsAttachmentInfo
 from ._list_plugins_response_body import ListPluginsResponseBodyDataItemsGatewayInfo
 from ._list_plugins_response_body import ListPluginsResponseBodyDataItemsPluginClassInfo
@@ -727,6 +737,9 @@ __all__ = [
     InstallPluginRequest,
     InstallPluginResponseBody,
     InstallPluginResponse,
+    ListConsumerAuthorizationRulesRequest,
+    ListConsumerAuthorizationRulesResponseBody,
+    ListConsumerAuthorizationRulesResponse,
     ListConsumersRequest,
     ListConsumersResponseBody,
     ListConsumersResponse,
@@ -757,6 +770,9 @@ __all__ = [
     ListPluginAttachmentsRequest,
     ListPluginAttachmentsResponseBody,
     ListPluginAttachmentsResponse,
+    ListPluginClassesRequest,
+    ListPluginClassesResponseBody,
+    ListPluginClassesResponse,
     ListPluginsRequest,
     ListPluginsResponseBody,
     ListPluginsResponse,
@@ -989,6 +1005,8 @@ __all__ = [
     ImportHttpApiResponseBodyData,
     InstallPluginResponseBodyDataInstallPluginResults,
     InstallPluginResponseBodyData,
+    ListConsumerAuthorizationRulesResponseBodyDataItems,
+    ListConsumerAuthorizationRulesResponseBodyData,
     ListConsumersResponseBodyDataItems,
     ListConsumersResponseBodyData,
     ListDomainsResponseBodyData,
@@ -1017,6 +1035,8 @@ __all__ = [
     ListMcpServersResponseBodyData,
     ListPluginAttachmentsResponseBodyDataItems,
     ListPluginAttachmentsResponseBodyData,
+    ListPluginClassesResponseBodyDataItems,
+    ListPluginClassesResponseBodyData,
     ListPluginsResponseBodyDataItemsAttachmentInfo,
     ListPluginsResponseBodyDataItemsGatewayInfo,
     ListPluginsResponseBodyDataItemsPluginClassInfo,

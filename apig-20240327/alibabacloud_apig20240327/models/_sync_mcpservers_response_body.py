@@ -15,10 +15,13 @@ class SyncMCPServersResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # The status code.
         self.code = code
+        # The response data.
         self.data = data
+        # The response message.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,7 +70,9 @@ class SyncMCPServersResponseBodyData(DaraModel):
         failed_mcp_servers: List[main_models.SyncMCPServersResponseBodyDataFailedMcpServers] = None,
         succeed_mcp_servers: List[main_models.SyncMCPServersResponseBodyDataSucceedMcpServers] = None,
     ):
+        # The list of MCP servers that failed to synchronize.
         self.failed_mcp_servers = failed_mcp_servers
+        # The list of MCP servers successfully synchronized.
         self.succeed_mcp_servers = succeed_mcp_servers
 
     def validate(self):
@@ -119,7 +124,9 @@ class SyncMCPServersResponseBodyDataSucceedMcpServers(DaraModel):
         mcp_server_name: str = None,
         protocols: List[str] = None,
     ):
+        # The name of the MCP server.
         self.mcp_server_name = mcp_server_name
+        # The protocol.
         self.protocols = protocols
 
     def validate(self):
@@ -154,7 +161,9 @@ class SyncMCPServersResponseBodyDataFailedMcpServers(DaraModel):
         mcp_server_name: str = None,
         protocols: List[str] = None,
     ):
+        # The name of the MCP server.
         self.mcp_server_name = mcp_server_name
+        # The protocol.
         self.protocols = protocols
 
     def validate(self):

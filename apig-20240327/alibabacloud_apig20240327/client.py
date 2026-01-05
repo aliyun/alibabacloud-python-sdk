@@ -4751,6 +4751,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.install_plugin_with_options_async(request, headers, runtime)
 
+    def list_consumer_authorization_rules_with_options(
+        self,
+        consumer_id: str,
+        request: main_models.ListConsumerAuthorizationRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConsumerAuthorizationRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_name_like):
+            query['apiNameLike'] = request.api_name_like
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConsumerAuthorizationRules',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumers/{DaraURL.percent_encode(consumer_id)}/authorization-rules',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConsumerAuthorizationRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_consumer_authorization_rules_with_options_async(
+        self,
+        consumer_id: str,
+        request: main_models.ListConsumerAuthorizationRulesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListConsumerAuthorizationRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.api_name_like):
+            query['apiNameLike'] = request.api_name_like
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListConsumerAuthorizationRules',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/consumers/{DaraURL.percent_encode(consumer_id)}/authorization-rules',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListConsumerAuthorizationRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_consumer_authorization_rules(
+        self,
+        consumer_id: str,
+        request: main_models.ListConsumerAuthorizationRulesRequest,
+    ) -> main_models.ListConsumerAuthorizationRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_consumer_authorization_rules_with_options(consumer_id, request, headers, runtime)
+
+    async def list_consumer_authorization_rules_async(
+        self,
+        consumer_id: str,
+        request: main_models.ListConsumerAuthorizationRulesRequest,
+    ) -> main_models.ListConsumerAuthorizationRulesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_consumer_authorization_rules_with_options_async(consumer_id, request, headers, runtime)
+
     def list_consumers_with_options(
         self,
         request: main_models.ListConsumersRequest,
@@ -5824,6 +5912,122 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_plugin_attachments_with_options_async(request, headers, runtime)
+
+    def list_plugin_classes_with_options(
+        self,
+        request: main_models.ListPluginClassesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPluginClassesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alias_like):
+            query['aliasLike'] = request.alias_like
+        if not DaraCore.is_null(request.direction):
+            query['direction'] = request.direction
+        if not DaraCore.is_null(request.exclude_builtin_ai_proxy):
+            query['excludeBuiltinAiProxy'] = request.exclude_builtin_ai_proxy
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.installed):
+            query['installed'] = request.installed
+        if not DaraCore.is_null(request.name_like):
+            query['nameLike'] = request.name_like
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.source):
+            query['source'] = request.source
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPluginClasses',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-classes',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPluginClassesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_plugin_classes_with_options_async(
+        self,
+        request: main_models.ListPluginClassesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPluginClassesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.alias_like):
+            query['aliasLike'] = request.alias_like
+        if not DaraCore.is_null(request.direction):
+            query['direction'] = request.direction
+        if not DaraCore.is_null(request.exclude_builtin_ai_proxy):
+            query['excludeBuiltinAiProxy'] = request.exclude_builtin_ai_proxy
+        if not DaraCore.is_null(request.gateway_id):
+            query['gatewayId'] = request.gateway_id
+        if not DaraCore.is_null(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.installed):
+            query['installed'] = request.installed
+        if not DaraCore.is_null(request.name_like):
+            query['nameLike'] = request.name_like
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.source):
+            query['source'] = request.source
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListPluginClasses',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/plugin-classes',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListPluginClassesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_plugin_classes(
+        self,
+        request: main_models.ListPluginClassesRequest,
+    ) -> main_models.ListPluginClassesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_plugin_classes_with_options(request, headers, runtime)
+
+    async def list_plugin_classes_async(
+        self,
+        request: main_models.ListPluginClassesRequest,
+    ) -> main_models.ListPluginClassesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_plugin_classes_with_options_async(request, headers, runtime)
 
     def list_plugins_with_options(
         self,
