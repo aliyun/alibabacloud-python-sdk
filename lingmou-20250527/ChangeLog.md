@@ -1,3 +1,6 @@
+2026-01-05 Version: 1.5.2
+- Generated python 2025-05-27 for LingMou.
+
 2025-12-30 Version: 1.5.1
 - Update API GetTTSVoiceByIdCustom: add response parameters Body.data.errorCode.
 - Update API ListPrivateTTSVoicesCustom: add response parameters Body.data.data.$.errorCode.
