@@ -1,3 +1,8 @@
+2026-01-05 Version: 1.3.0
+- Support API DescribeCapacityReservation.
+- Support API ModifyCapacityReservation.
+
+
 2025-10-10 Version: 1.2.10
 - Generated python 2020-06-16 for Alb.
 
