@@ -1,3 +1,9 @@
+2026-01-05 Version: 1.7.0
+- Support API DeleteFileUpload.
+- Support API DescribeFileUploadSignature.
+- Support API FileUploadCallback.
+
+
 2025-12-29 Version: 1.6.1
 - Update API SendChatMessage: add request parameters SessionConfig.ReportWaterMark.
 

@@ -73,12 +73,21 @@ from ._delete_data_lake_partition_response import DeleteDataLakePartitionRespons
 from ._delete_data_lake_table_request import DeleteDataLakeTableRequest
 from ._delete_data_lake_table_response_body import DeleteDataLakeTableResponseBody
 from ._delete_data_lake_table_response import DeleteDataLakeTableResponse
+from ._delete_file_upload_request import DeleteFileUploadRequest
+from ._delete_file_upload_response_body import DeleteFileUploadResponseBody
+from ._delete_file_upload_response import DeleteFileUploadResponse
 from ._describe_custom_agent_request import DescribeCustomAgentRequest
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBody
 from ._describe_custom_agent_response import DescribeCustomAgentResponse
 from ._describe_data_agent_session_request import DescribeDataAgentSessionRequest
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBody
 from ._describe_data_agent_session_response import DescribeDataAgentSessionResponse
+from ._describe_file_upload_signature_request import DescribeFileUploadSignatureRequest
+from ._describe_file_upload_signature_response_body import DescribeFileUploadSignatureResponseBody
+from ._describe_file_upload_signature_response import DescribeFileUploadSignatureResponse
+from ._file_upload_callback_request import FileUploadCallbackRequest
+from ._file_upload_callback_response_body import FileUploadCallbackResponseBody
+from ._file_upload_callback_response import FileUploadCallbackResponse
 from ._get_airflow_request import GetAirflowRequest
 from ._get_airflow_response_body import GetAirflowResponseBody
 from ._get_airflow_response import GetAirflowResponse
@@ -177,11 +186,14 @@ from ._create_data_agent_session_response_body import CreateDataAgentSessionResp
 from ._create_data_agent_session_response_body import CreateDataAgentSessionResponseBodyData
 from ._delete_airflow_response_body import DeleteAirflowResponseBodyRootResponses
 from ._delete_airflow_response_body import DeleteAirflowResponseBodyRoot
+from ._delete_file_upload_response_body import DeleteFileUploadResponseBodyData
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataExecutionConfig
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyData
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataChatHistoryLocations
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataSessionConfig
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyData
+from ._describe_file_upload_signature_response_body import DescribeFileUploadSignatureResponseBodyData
+from ._file_upload_callback_response_body import FileUploadCallbackResponseBodyData
 from ._get_airflow_response_body import GetAirflowResponseBodyRoot
 from ._get_notebook_task_status_response_body import GetNotebookTaskStatusResponseBodyData
 from ._list_airflows_response_body import ListAirflowsResponseBodyRootList
@@ -267,12 +279,21 @@ __all__ = [
     DeleteDataLakeTableRequest,
     DeleteDataLakeTableResponseBody,
     DeleteDataLakeTableResponse,
+    DeleteFileUploadRequest,
+    DeleteFileUploadResponseBody,
+    DeleteFileUploadResponse,
     DescribeCustomAgentRequest,
     DescribeCustomAgentResponseBody,
     DescribeCustomAgentResponse,
     DescribeDataAgentSessionRequest,
     DescribeDataAgentSessionResponseBody,
     DescribeDataAgentSessionResponse,
+    DescribeFileUploadSignatureRequest,
+    DescribeFileUploadSignatureResponseBody,
+    DescribeFileUploadSignatureResponse,
+    FileUploadCallbackRequest,
+    FileUploadCallbackResponseBody,
+    FileUploadCallbackResponse,
     GetAirflowRequest,
     GetAirflowResponseBody,
     GetAirflowResponse,
@@ -371,11 +392,14 @@ __all__ = [
     CreateDataAgentSessionResponseBodyData,
     DeleteAirflowResponseBodyRootResponses,
     DeleteAirflowResponseBodyRoot,
+    DeleteFileUploadResponseBodyData,
     DescribeCustomAgentResponseBodyDataExecutionConfig,
     DescribeCustomAgentResponseBodyData,
     DescribeDataAgentSessionResponseBodyDataChatHistoryLocations,
     DescribeDataAgentSessionResponseBodyDataSessionConfig,
     DescribeDataAgentSessionResponseBodyData,
+    DescribeFileUploadSignatureResponseBodyData,
+    FileUploadCallbackResponseBodyData,
     GetAirflowResponseBodyRoot,
     GetNotebookTaskStatusResponseBodyData,
     ListAirflowsResponseBodyRootList,

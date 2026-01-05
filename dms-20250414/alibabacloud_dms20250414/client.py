@@ -1485,6 +1485,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_data_lake_table_with_options_async(request, runtime)
 
+    def delete_file_upload_with_options(
+        self,
+        request: main_models.DeleteFileUploadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFileUploadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_from):
+            query['CallFrom'] = request.call_from
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteFileUpload',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteFileUploadResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_file_upload_with_options_async(
+        self,
+        request: main_models.DeleteFileUploadRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFileUploadResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_from):
+            query['CallFrom'] = request.call_from
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteFileUpload',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteFileUploadResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_file_upload(
+        self,
+        request: main_models.DeleteFileUploadRequest,
+    ) -> main_models.DeleteFileUploadResponse:
+        runtime = RuntimeOptions()
+        return self.delete_file_upload_with_options(request, runtime)
+
+    async def delete_file_upload_async(
+        self,
+        request: main_models.DeleteFileUploadRequest,
+    ) -> main_models.DeleteFileUploadResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_file_upload_with_options_async(request, runtime)
+
     def describe_custom_agent_with_options(
         self,
         request: main_models.DescribeCustomAgentRequest,
@@ -1636,6 +1714,166 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeDataAgentSessionResponse:
         runtime = RuntimeOptions()
         return await self.describe_data_agent_session_with_options_async(request, runtime)
+
+    def describe_file_upload_signature_with_options(
+        self,
+        request: main_models.DescribeFileUploadSignatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFileUploadSignatureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_from):
+            query['CallFrom'] = request.call_from
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFileUploadSignature',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFileUploadSignatureResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_file_upload_signature_with_options_async(
+        self,
+        request: main_models.DescribeFileUploadSignatureRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFileUploadSignatureResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_from):
+            query['CallFrom'] = request.call_from
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFileUploadSignature',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFileUploadSignatureResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_file_upload_signature(
+        self,
+        request: main_models.DescribeFileUploadSignatureRequest,
+    ) -> main_models.DescribeFileUploadSignatureResponse:
+        runtime = RuntimeOptions()
+        return self.describe_file_upload_signature_with_options(request, runtime)
+
+    async def describe_file_upload_signature_async(
+        self,
+        request: main_models.DescribeFileUploadSignatureRequest,
+    ) -> main_models.DescribeFileUploadSignatureResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_file_upload_signature_with_options_async(request, runtime)
+
+    def file_upload_callback_with_options(
+        self,
+        request: main_models.FileUploadCallbackRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.FileUploadCallbackResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_from):
+            query['CallFrom'] = request.call_from
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.file_size):
+            query['FileSize'] = request.file_size
+        if not DaraCore.is_null(request.filename):
+            query['Filename'] = request.filename
+        if not DaraCore.is_null(request.upload_location):
+            query['UploadLocation'] = request.upload_location
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'FileUploadCallback',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.FileUploadCallbackResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def file_upload_callback_with_options_async(
+        self,
+        request: main_models.FileUploadCallbackRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.FileUploadCallbackResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_from):
+            query['CallFrom'] = request.call_from
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.file_size):
+            query['FileSize'] = request.file_size
+        if not DaraCore.is_null(request.filename):
+            query['Filename'] = request.filename
+        if not DaraCore.is_null(request.upload_location):
+            query['UploadLocation'] = request.upload_location
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'FileUploadCallback',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.FileUploadCallbackResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def file_upload_callback(
+        self,
+        request: main_models.FileUploadCallbackRequest,
+    ) -> main_models.FileUploadCallbackResponse:
+        runtime = RuntimeOptions()
+        return self.file_upload_callback_with_options(request, runtime)
+
+    async def file_upload_callback_async(
+        self,
+        request: main_models.FileUploadCallbackRequest,
+    ) -> main_models.FileUploadCallbackResponse:
+        runtime = RuntimeOptions()
+        return await self.file_upload_callback_with_options_async(request, runtime)
 
     def get_airflow_with_options(
         self,
