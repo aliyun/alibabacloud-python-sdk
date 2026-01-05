@@ -1,3 +1,7 @@
+2026-01-05 Version: 6.2.2
+- Update API CreateApplication: add request parameters AutoCreatePolarFs.
+
+
 2025-12-11 Version: 6.2.1
 - Update API DeleteDBCluster: add request parameters CloudProvider.
 - Update API DescribeAIDBClusterAttribute: add response parameters Body.ModelType.

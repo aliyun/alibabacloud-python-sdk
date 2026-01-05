@@ -1,0 +1,90 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class ModifyEncryptionDBSecretRequest(DaraModel):
+    def __init__(
+        self,
+        dbcluster_id: str = None,
+        encryption_dbstatus: str = None,
+        encryption_key: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        role_arn: str = None,
+    ):
+        # This parameter is required.
+        self.dbcluster_id = dbcluster_id
+        self.encryption_dbstatus = encryption_dbstatus
+        self.encryption_key = encryption_key
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        self.role_arn = role_arn
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
+
+        if self.encryption_dbstatus is not None:
+            result['EncryptionDBStatus'] = self.encryption_dbstatus
+
+        if self.encryption_key is not None:
+            result['EncryptionKey'] = self.encryption_key
+
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
+
+        if m.get('EncryptionDBStatus') is not None:
+            self.encryption_dbstatus = m.get('EncryptionDBStatus')
+
+        if m.get('EncryptionKey') is not None:
+            self.encryption_key = m.get('EncryptionKey')
+
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
+
+        return self
+
