@@ -3,6 +3,11 @@
 - Support API ListPluginClasses.
 
 
+2026-01-05 Version: 5.6.0
+- Support API ListConsumerAuthorizationRules.
+- Support API ListPluginClasses.
+
+
 2025-12-25 Version: 5.5.0
 - Support API SyncMCPServers.
 - Update API CreateService: add request parameters body.serviceConfigs.$.sourceId.
