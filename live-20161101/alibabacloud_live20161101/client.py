@@ -21897,6 +21897,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_live_streams_total_count_with_options_async(request, runtime)
 
+    def describe_live_tag_resources_with_options(
+        self,
+        request: main_models.DescribeLiveTagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLiveTagResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLiveTagResources',
+            version = '2016-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLiveTagResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_live_tag_resources_with_options_async(
+        self,
+        request: main_models.DescribeLiveTagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeLiveTagResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeLiveTagResources',
+            version = '2016-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeLiveTagResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_live_tag_resources(
+        self,
+        request: main_models.DescribeLiveTagResourcesRequest,
+    ) -> main_models.DescribeLiveTagResourcesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_live_tag_resources_with_options(request, runtime)
+
+    async def describe_live_tag_resources_async(
+        self,
+        request: main_models.DescribeLiveTagResourcesRequest,
+    ) -> main_models.DescribeLiveTagResourcesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_live_tag_resources_with_options_async(request, runtime)
+
     def describe_live_top_domains_by_flow_with_options(
         self,
         request: main_models.DescribeLiveTopDomainsByFlowRequest,
