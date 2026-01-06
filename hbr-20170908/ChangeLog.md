@@ -1,3 +1,7 @@
+2026-01-06 Version: 2.3.1
+- Update API DescribeCrossAccounts: add response parameters Body.CrossAccounts.$.CrossAccountType.
+
+
 2025-12-16 Version: 2.3.0
 - Support API CreateVaultReplication.
 - Support API DeleteVaultReplication.
