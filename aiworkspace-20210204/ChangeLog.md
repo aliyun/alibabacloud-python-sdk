@@ -1,3 +1,7 @@
+2026-01-06 Version: 8.0.2
+- Update API ListDatasetFileMetas: add request parameters QueryVideo.
+
+
 2025-12-03 Version: 8.0.1
 - Update API ListDatasetFileMetas: add request parameters Status.
 
