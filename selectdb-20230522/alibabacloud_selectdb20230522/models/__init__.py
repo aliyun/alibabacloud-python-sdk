@@ -1,0 +1,391 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._allocate_instance_public_connection_request import AllocateInstancePublicConnectionRequest
+from ._allocate_instance_public_connection_response_body import AllocateInstancePublicConnectionResponseBody
+from ._allocate_instance_public_connection_response import AllocateInstancePublicConnectionResponse
+from ._change_resource_group_request import ChangeResourceGroupRequest
+from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
+from ._change_resource_group_response import ChangeResourceGroupResponse
+from ._check_create_dbinstance_request import CheckCreateDBInstanceRequest
+from ._check_create_dbinstance_response_body import CheckCreateDBInstanceResponseBody
+from ._check_create_dbinstance_response import CheckCreateDBInstanceResponse
+from ._check_ip_exists_in_security_ip_list_request import CheckIpExistsInSecurityIpListRequest
+from ._check_ip_exists_in_security_ip_list_response_body import CheckIpExistsInSecurityIpListResponseBody
+from ._check_ip_exists_in_security_ip_list_response import CheckIpExistsInSecurityIpListResponse
+from ._check_service_linked_role_request import CheckServiceLinkedRoleRequest
+from ._check_service_linked_role_response_body import CheckServiceLinkedRoleResponseBody
+from ._check_service_linked_role_response import CheckServiceLinkedRoleResponse
+from ._create_dbcluster_request import CreateDBClusterRequest
+from ._create_dbcluster_response_body import CreateDBClusterResponseBody
+from ._create_dbcluster_response import CreateDBClusterResponse
+from ._create_dbcluster_binding_request import CreateDBClusterBindingRequest
+from ._create_dbcluster_binding_response_body import CreateDBClusterBindingResponseBody
+from ._create_dbcluster_binding_response import CreateDBClusterBindingResponse
+from ._create_dbinstance_request import CreateDBInstanceRequest
+from ._create_dbinstance_shrink_request import CreateDBInstanceShrinkRequest
+from ._create_dbinstance_response_body import CreateDBInstanceResponseBody
+from ._create_dbinstance_response import CreateDBInstanceResponse
+from ._create_elastic_rule_request import CreateElasticRuleRequest
+from ._create_elastic_rule_response_body import CreateElasticRuleResponseBody
+from ._create_elastic_rule_response import CreateElasticRuleResponse
+from ._create_service_linked_role_for_select_dbrequest import CreateServiceLinkedRoleForSelectDBRequest
+from ._create_service_linked_role_for_select_dbresponse_body import CreateServiceLinkedRoleForSelectDBResponseBody
+from ._create_service_linked_role_for_select_dbresponse import CreateServiceLinkedRoleForSelectDBResponse
+from ._create_virtual_cluster_request import CreateVirtualClusterRequest
+from ._create_virtual_cluster_response_body import CreateVirtualClusterResponseBody
+from ._create_virtual_cluster_response import CreateVirtualClusterResponse
+from ._delete_dbcluster_request import DeleteDBClusterRequest
+from ._delete_dbcluster_response_body import DeleteDBClusterResponseBody
+from ._delete_dbcluster_response import DeleteDBClusterResponse
+from ._delete_dbcluster_binding_request import DeleteDBClusterBindingRequest
+from ._delete_dbcluster_binding_response_body import DeleteDBClusterBindingResponseBody
+from ._delete_dbcluster_binding_response import DeleteDBClusterBindingResponse
+from ._delete_dbinstance_request import DeleteDBInstanceRequest
+from ._delete_dbinstance_response_body import DeleteDBInstanceResponseBody
+from ._delete_dbinstance_response import DeleteDBInstanceResponse
+from ._delete_elastic_rule_request import DeleteElasticRuleRequest
+from ._delete_elastic_rule_response_body import DeleteElasticRuleResponseBody
+from ._delete_elastic_rule_response import DeleteElasticRuleResponse
+from ._delete_virtual_cluster_request import DeleteVirtualClusterRequest
+from ._delete_virtual_cluster_response_body import DeleteVirtualClusterResponseBody
+from ._delete_virtual_cluster_response import DeleteVirtualClusterResponse
+from ._describe_all_dbinstance_class_request import DescribeAllDBInstanceClassRequest
+from ._describe_all_dbinstance_class_response_body import DescribeAllDBInstanceClassResponseBody
+from ._describe_all_dbinstance_class_response import DescribeAllDBInstanceClassResponse
+from ._describe_dbcluster_config_request import DescribeDBClusterConfigRequest
+from ._describe_dbcluster_config_response_body import DescribeDBClusterConfigResponseBody
+from ._describe_dbcluster_config_response import DescribeDBClusterConfigResponse
+from ._describe_dbcluster_config_change_logs_request import DescribeDBClusterConfigChangeLogsRequest
+from ._describe_dbcluster_config_change_logs_response_body import DescribeDBClusterConfigChangeLogsResponseBody
+from ._describe_dbcluster_config_change_logs_response import DescribeDBClusterConfigChangeLogsResponse
+from ._describe_dbcluster_storage_limitation_request import DescribeDBClusterStorageLimitationRequest
+from ._describe_dbcluster_storage_limitation_response_body import DescribeDBClusterStorageLimitationResponseBody
+from ._describe_dbcluster_storage_limitation_response import DescribeDBClusterStorageLimitationResponse
+from ._describe_dbinstance_attribute_request import DescribeDBInstanceAttributeRequest
+from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBody
+from ._describe_dbinstance_attribute_response import DescribeDBInstanceAttributeResponse
+from ._describe_dbinstance_net_info_request import DescribeDBInstanceNetInfoRequest
+from ._describe_dbinstance_net_info_response_body import DescribeDBInstanceNetInfoResponseBody
+from ._describe_dbinstance_net_info_response import DescribeDBInstanceNetInfoResponse
+from ._describe_dbinstances_request import DescribeDBInstancesRequest
+from ._describe_dbinstances_shrink_request import DescribeDBInstancesShrinkRequest
+from ._describe_dbinstances_response_body import DescribeDBInstancesResponseBody
+from ._describe_dbinstances_response import DescribeDBInstancesResponse
+from ._describe_elastic_rules_request import DescribeElasticRulesRequest
+from ._describe_elastic_rules_response_body import DescribeElasticRulesResponseBody
+from ._describe_elastic_rules_response import DescribeElasticRulesResponse
+from ._describe_regions_request import DescribeRegionsRequest
+from ._describe_regions_response_body import DescribeRegionsResponseBody
+from ._describe_regions_response import DescribeRegionsResponse
+from ._describe_security_iplist_request import DescribeSecurityIPListRequest
+from ._describe_security_iplist_response_body import DescribeSecurityIPListResponseBody
+from ._describe_security_iplist_response import DescribeSecurityIPListResponse
+from ._describe_vswitches_request import DescribeVSwitchesRequest
+from ._describe_vswitches_response_body import DescribeVSwitchesResponseBody
+from ._describe_vswitches_response import DescribeVSwitchesResponse
+from ._describe_zones_request import DescribeZonesRequest
+from ._describe_zones_response_body import DescribeZonesResponseBody
+from ._describe_zones_response import DescribeZonesResponse
+from ._en_disable_scaling_rules_request import EnDisableScalingRulesRequest
+from ._en_disable_scaling_rules_response_body import EnDisableScalingRulesResponseBody
+from ._en_disable_scaling_rules_response import EnDisableScalingRulesResponse
+from ._get_create_becluster_inquiry_request import GetCreateBEClusterInquiryRequest
+from ._get_create_becluster_inquiry_response_body import GetCreateBEClusterInquiryResponseBody
+from ._get_create_becluster_inquiry_response import GetCreateBEClusterInquiryResponse
+from ._get_modify_becluster_inquiry_request import GetModifyBEClusterInquiryRequest
+from ._get_modify_becluster_inquiry_response_body import GetModifyBEClusterInquiryResponseBody
+from ._get_modify_becluster_inquiry_response import GetModifyBEClusterInquiryResponse
+from ._modify_becluster_attribute_request import ModifyBEClusterAttributeRequest
+from ._modify_becluster_attribute_response_body import ModifyBEClusterAttributeResponseBody
+from ._modify_becluster_attribute_response import ModifyBEClusterAttributeResponse
+from ._modify_dbcluster_request import ModifyDBClusterRequest
+from ._modify_dbcluster_response_body import ModifyDBClusterResponseBody
+from ._modify_dbcluster_response import ModifyDBClusterResponse
+from ._modify_dbcluster_config_request import ModifyDBClusterConfigRequest
+from ._modify_dbcluster_config_response_body import ModifyDBClusterConfigResponseBody
+from ._modify_dbcluster_config_response import ModifyDBClusterConfigResponse
+from ._modify_dbinstance_attribute_request import ModifyDBInstanceAttributeRequest
+from ._modify_dbinstance_attribute_response_body import ModifyDBInstanceAttributeResponseBody
+from ._modify_dbinstance_attribute_response import ModifyDBInstanceAttributeResponse
+from ._modify_elastic_rule_request import ModifyElasticRuleRequest
+from ._modify_elastic_rule_response_body import ModifyElasticRuleResponseBody
+from ._modify_elastic_rule_response import ModifyElasticRuleResponse
+from ._modify_security_iplist_request import ModifySecurityIPListRequest
+from ._modify_security_iplist_response_body import ModifySecurityIPListResponseBody
+from ._modify_security_iplist_response import ModifySecurityIPListResponse
+from ._modify_virtual_cluster_request import ModifyVirtualClusterRequest
+from ._modify_virtual_cluster_response_body import ModifyVirtualClusterResponseBody
+from ._modify_virtual_cluster_response import ModifyVirtualClusterResponse
+from ._release_instance_public_connection_request import ReleaseInstancePublicConnectionRequest
+from ._release_instance_public_connection_response_body import ReleaseInstancePublicConnectionResponseBody
+from ._release_instance_public_connection_response import ReleaseInstancePublicConnectionResponse
+from ._reset_account_password_request import ResetAccountPasswordRequest
+from ._reset_account_password_response_body import ResetAccountPasswordResponseBody
+from ._reset_account_password_response import ResetAccountPasswordResponse
+from ._restart_dbcluster_request import RestartDBClusterRequest
+from ._restart_dbcluster_response_body import RestartDBClusterResponseBody
+from ._restart_dbcluster_response import RestartDBClusterResponse
+from ._start_becluster_request import StartBEClusterRequest
+from ._start_becluster_response_body import StartBEClusterResponseBody
+from ._start_becluster_response import StartBEClusterResponse
+from ._stop_becluster_request import StopBEClusterRequest
+from ._stop_becluster_response_body import StopBEClusterResponseBody
+from ._stop_becluster_response import StopBEClusterResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
+from ._upgrade_dbinstance_deploy_scheme_request import UpgradeDBInstanceDeploySchemeRequest
+from ._upgrade_dbinstance_deploy_scheme_shrink_request import UpgradeDBInstanceDeploySchemeShrinkRequest
+from ._upgrade_dbinstance_deploy_scheme_response_body import UpgradeDBInstanceDeploySchemeResponseBody
+from ._upgrade_dbinstance_deploy_scheme_response import UpgradeDBInstanceDeploySchemeResponse
+from ._upgrade_dbinstance_engine_version_request import UpgradeDBInstanceEngineVersionRequest
+from ._upgrade_dbinstance_engine_version_response_body import UpgradeDBInstanceEngineVersionResponseBody
+from ._upgrade_dbinstance_engine_version_response import UpgradeDBInstanceEngineVersionResponse
+from ._check_ip_exists_in_security_ip_list_response_body import CheckIpExistsInSecurityIpListResponseBodyData
+from ._create_dbcluster_response_body import CreateDBClusterResponseBodyData
+from ._create_dbcluster_binding_response_body import CreateDBClusterBindingResponseBodyData
+from ._create_dbinstance_request import CreateDBInstanceRequestMultiZone
+from ._create_dbinstance_request import CreateDBInstanceRequestTag
+from ._create_dbinstance_response_body import CreateDBInstanceResponseBodyData
+from ._create_elastic_rule_response_body import CreateElasticRuleResponseBodyData
+from ._create_virtual_cluster_response_body import CreateVirtualClusterResponseBodyData
+from ._delete_dbcluster_response_body import DeleteDBClusterResponseBodyData
+from ._delete_virtual_cluster_response_body import DeleteVirtualClusterResponseBodyData
+from ._describe_all_dbinstance_class_response_body import DescribeAllDBInstanceClassResponseBodyClassCodeList
+from ._describe_dbcluster_config_response_body import DescribeDBClusterConfigResponseBodyDataParams
+from ._describe_dbcluster_config_response_body import DescribeDBClusterConfigResponseBodyData
+from ._describe_dbcluster_config_change_logs_response_body import DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs
+from ._describe_dbcluster_config_change_logs_response_body import DescribeDBClusterConfigChangeLogsResponseBodyData
+from ._describe_dbcluster_storage_limitation_response_body import DescribeDBClusterStorageLimitationResponseBodyDataClassCodeList
+from ._describe_dbcluster_storage_limitation_response_body import DescribeDBClusterStorageLimitationResponseBodyData
+from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyDBClusterList
+from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyMultiZone
+from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyTags
+from ._describe_dbinstance_attribute_response_body import DescribeDBInstanceAttributeResponseBodyVirtualClusterList
+from ._describe_dbinstance_net_info_response_body import DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList
+from ._describe_dbinstance_net_info_response_body import DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos
+from ._describe_dbinstance_net_info_response_body import DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList
+from ._describe_dbinstance_net_info_response_body import DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos
+from ._describe_dbinstances_request import DescribeDBInstancesRequestTag
+from ._describe_dbinstances_response_body import DescribeDBInstancesResponseBodyItemsMultiZone
+from ._describe_dbinstances_response_body import DescribeDBInstancesResponseBodyItemsTags
+from ._describe_dbinstances_response_body import DescribeDBInstancesResponseBodyItems
+from ._describe_elastic_rules_response_body import DescribeElasticRulesResponseBodyDataRules
+from ._describe_elastic_rules_response_body import DescribeElasticRulesResponseBodyData
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionModelListZones
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegionModelList
+from ._describe_security_iplist_response_body import DescribeSecurityIPListResponseBodyGroupItems
+from ._describe_vswitches_response_body import DescribeVSwitchesResponseBodyItems
+from ._describe_zones_response_body import DescribeZonesResponseBodyItems
+from ._en_disable_scaling_rules_response_body import EnDisableScalingRulesResponseBodyData
+from ._get_create_becluster_inquiry_response_body import GetCreateBEClusterInquiryResponseBodyDataOptionalPromotions
+from ._get_create_becluster_inquiry_response_body import GetCreateBEClusterInquiryResponseBodyData
+from ._get_modify_becluster_inquiry_response_body import GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions
+from ._get_modify_becluster_inquiry_response_body import GetModifyBEClusterInquiryResponseBodyData
+from ._modify_dbcluster_response_body import ModifyDBClusterResponseBodyData
+from ._modify_dbcluster_config_response_body import ModifyDBClusterConfigResponseBodyData
+from ._modify_elastic_rule_response_body import ModifyElasticRuleResponseBodyData
+from ._modify_virtual_cluster_response_body import ModifyVirtualClusterResponseBodyData
+from ._restart_dbcluster_response_body import RestartDBClusterResponseBodyData
+from ._tag_resources_request import TagResourcesRequestTag
+from ._upgrade_dbinstance_deploy_scheme_request import UpgradeDBInstanceDeploySchemeRequestMultiZone
+
+__all__ = [
+    AllocateInstancePublicConnectionRequest,
+    AllocateInstancePublicConnectionResponseBody,
+    AllocateInstancePublicConnectionResponse,
+    ChangeResourceGroupRequest,
+    ChangeResourceGroupResponseBody,
+    ChangeResourceGroupResponse,
+    CheckCreateDBInstanceRequest,
+    CheckCreateDBInstanceResponseBody,
+    CheckCreateDBInstanceResponse,
+    CheckIpExistsInSecurityIpListRequest,
+    CheckIpExistsInSecurityIpListResponseBody,
+    CheckIpExistsInSecurityIpListResponse,
+    CheckServiceLinkedRoleRequest,
+    CheckServiceLinkedRoleResponseBody,
+    CheckServiceLinkedRoleResponse,
+    CreateDBClusterRequest,
+    CreateDBClusterResponseBody,
+    CreateDBClusterResponse,
+    CreateDBClusterBindingRequest,
+    CreateDBClusterBindingResponseBody,
+    CreateDBClusterBindingResponse,
+    CreateDBInstanceRequest,
+    CreateDBInstanceShrinkRequest,
+    CreateDBInstanceResponseBody,
+    CreateDBInstanceResponse,
+    CreateElasticRuleRequest,
+    CreateElasticRuleResponseBody,
+    CreateElasticRuleResponse,
+    CreateServiceLinkedRoleForSelectDBRequest,
+    CreateServiceLinkedRoleForSelectDBResponseBody,
+    CreateServiceLinkedRoleForSelectDBResponse,
+    CreateVirtualClusterRequest,
+    CreateVirtualClusterResponseBody,
+    CreateVirtualClusterResponse,
+    DeleteDBClusterRequest,
+    DeleteDBClusterResponseBody,
+    DeleteDBClusterResponse,
+    DeleteDBClusterBindingRequest,
+    DeleteDBClusterBindingResponseBody,
+    DeleteDBClusterBindingResponse,
+    DeleteDBInstanceRequest,
+    DeleteDBInstanceResponseBody,
+    DeleteDBInstanceResponse,
+    DeleteElasticRuleRequest,
+    DeleteElasticRuleResponseBody,
+    DeleteElasticRuleResponse,
+    DeleteVirtualClusterRequest,
+    DeleteVirtualClusterResponseBody,
+    DeleteVirtualClusterResponse,
+    DescribeAllDBInstanceClassRequest,
+    DescribeAllDBInstanceClassResponseBody,
+    DescribeAllDBInstanceClassResponse,
+    DescribeDBClusterConfigRequest,
+    DescribeDBClusterConfigResponseBody,
+    DescribeDBClusterConfigResponse,
+    DescribeDBClusterConfigChangeLogsRequest,
+    DescribeDBClusterConfigChangeLogsResponseBody,
+    DescribeDBClusterConfigChangeLogsResponse,
+    DescribeDBClusterStorageLimitationRequest,
+    DescribeDBClusterStorageLimitationResponseBody,
+    DescribeDBClusterStorageLimitationResponse,
+    DescribeDBInstanceAttributeRequest,
+    DescribeDBInstanceAttributeResponseBody,
+    DescribeDBInstanceAttributeResponse,
+    DescribeDBInstanceNetInfoRequest,
+    DescribeDBInstanceNetInfoResponseBody,
+    DescribeDBInstanceNetInfoResponse,
+    DescribeDBInstancesRequest,
+    DescribeDBInstancesShrinkRequest,
+    DescribeDBInstancesResponseBody,
+    DescribeDBInstancesResponse,
+    DescribeElasticRulesRequest,
+    DescribeElasticRulesResponseBody,
+    DescribeElasticRulesResponse,
+    DescribeRegionsRequest,
+    DescribeRegionsResponseBody,
+    DescribeRegionsResponse,
+    DescribeSecurityIPListRequest,
+    DescribeSecurityIPListResponseBody,
+    DescribeSecurityIPListResponse,
+    DescribeVSwitchesRequest,
+    DescribeVSwitchesResponseBody,
+    DescribeVSwitchesResponse,
+    DescribeZonesRequest,
+    DescribeZonesResponseBody,
+    DescribeZonesResponse,
+    EnDisableScalingRulesRequest,
+    EnDisableScalingRulesResponseBody,
+    EnDisableScalingRulesResponse,
+    GetCreateBEClusterInquiryRequest,
+    GetCreateBEClusterInquiryResponseBody,
+    GetCreateBEClusterInquiryResponse,
+    GetModifyBEClusterInquiryRequest,
+    GetModifyBEClusterInquiryResponseBody,
+    GetModifyBEClusterInquiryResponse,
+    ModifyBEClusterAttributeRequest,
+    ModifyBEClusterAttributeResponseBody,
+    ModifyBEClusterAttributeResponse,
+    ModifyDBClusterRequest,
+    ModifyDBClusterResponseBody,
+    ModifyDBClusterResponse,
+    ModifyDBClusterConfigRequest,
+    ModifyDBClusterConfigResponseBody,
+    ModifyDBClusterConfigResponse,
+    ModifyDBInstanceAttributeRequest,
+    ModifyDBInstanceAttributeResponseBody,
+    ModifyDBInstanceAttributeResponse,
+    ModifyElasticRuleRequest,
+    ModifyElasticRuleResponseBody,
+    ModifyElasticRuleResponse,
+    ModifySecurityIPListRequest,
+    ModifySecurityIPListResponseBody,
+    ModifySecurityIPListResponse,
+    ModifyVirtualClusterRequest,
+    ModifyVirtualClusterResponseBody,
+    ModifyVirtualClusterResponse,
+    ReleaseInstancePublicConnectionRequest,
+    ReleaseInstancePublicConnectionResponseBody,
+    ReleaseInstancePublicConnectionResponse,
+    ResetAccountPasswordRequest,
+    ResetAccountPasswordResponseBody,
+    ResetAccountPasswordResponse,
+    RestartDBClusterRequest,
+    RestartDBClusterResponseBody,
+    RestartDBClusterResponse,
+    StartBEClusterRequest,
+    StartBEClusterResponseBody,
+    StartBEClusterResponse,
+    StopBEClusterRequest,
+    StopBEClusterResponseBody,
+    StopBEClusterResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UntagResourcesRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
+    UpgradeDBInstanceDeploySchemeRequest,
+    UpgradeDBInstanceDeploySchemeShrinkRequest,
+    UpgradeDBInstanceDeploySchemeResponseBody,
+    UpgradeDBInstanceDeploySchemeResponse,
+    UpgradeDBInstanceEngineVersionRequest,
+    UpgradeDBInstanceEngineVersionResponseBody,
+    UpgradeDBInstanceEngineVersionResponse,
+    CheckIpExistsInSecurityIpListResponseBodyData,
+    CreateDBClusterResponseBodyData,
+    CreateDBClusterBindingResponseBodyData,
+    CreateDBInstanceRequestMultiZone,
+    CreateDBInstanceRequestTag,
+    CreateDBInstanceResponseBodyData,
+    CreateElasticRuleResponseBodyData,
+    CreateVirtualClusterResponseBodyData,
+    DeleteDBClusterResponseBodyData,
+    DeleteVirtualClusterResponseBodyData,
+    DescribeAllDBInstanceClassResponseBodyClassCodeList,
+    DescribeDBClusterConfigResponseBodyDataParams,
+    DescribeDBClusterConfigResponseBodyData,
+    DescribeDBClusterConfigChangeLogsResponseBodyDataParamChangeLogs,
+    DescribeDBClusterConfigChangeLogsResponseBodyData,
+    DescribeDBClusterStorageLimitationResponseBodyDataClassCodeList,
+    DescribeDBClusterStorageLimitationResponseBodyData,
+    DescribeDBInstanceAttributeResponseBodyDBClusterList,
+    DescribeDBInstanceAttributeResponseBodyMultiZone,
+    DescribeDBInstanceAttributeResponseBodyTags,
+    DescribeDBInstanceAttributeResponseBodyVirtualClusterList,
+    DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList,
+    DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos,
+    DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList,
+    DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos,
+    DescribeDBInstancesRequestTag,
+    DescribeDBInstancesResponseBodyItemsMultiZone,
+    DescribeDBInstancesResponseBodyItemsTags,
+    DescribeDBInstancesResponseBodyItems,
+    DescribeElasticRulesResponseBodyDataRules,
+    DescribeElasticRulesResponseBodyData,
+    DescribeRegionsResponseBodyRegionModelListZones,
+    DescribeRegionsResponseBodyRegionModelList,
+    DescribeSecurityIPListResponseBodyGroupItems,
+    DescribeVSwitchesResponseBodyItems,
+    DescribeZonesResponseBodyItems,
+    EnDisableScalingRulesResponseBodyData,
+    GetCreateBEClusterInquiryResponseBodyDataOptionalPromotions,
+    GetCreateBEClusterInquiryResponseBodyData,
+    GetModifyBEClusterInquiryResponseBodyDataOptionalPromotions,
+    GetModifyBEClusterInquiryResponseBodyData,
+    ModifyDBClusterResponseBodyData,
+    ModifyDBClusterConfigResponseBodyData,
+    ModifyElasticRuleResponseBodyData,
+    ModifyVirtualClusterResponseBodyData,
+    RestartDBClusterResponseBodyData,
+    TagResourcesRequestTag,
+    UpgradeDBInstanceDeploySchemeRequestMultiZone
+]

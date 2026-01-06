@@ -1,3 +1,7 @@
+2026-01-06 Version: 5.0.0
+- Update API DescribeDBInstances: delete request parameters ResourceOwnerId.
+
+
 2025-12-19 Version: 4.5.0
 - Support API DescribeVSwitches.
 - Support API DescribeZones.
