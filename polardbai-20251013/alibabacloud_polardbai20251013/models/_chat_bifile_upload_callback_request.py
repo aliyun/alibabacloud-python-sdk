@@ -7,6 +7,8 @@ from darabonba.model import DaraModel
 class ChatBIFileUploadCallbackRequest(DaraModel):
     def __init__(
         self,
+        auth_message: str = None,
+        auth_type: str = None,
         character_set_name: str = None,
         db_name: str = None,
         file_name: str = None,
@@ -14,6 +16,8 @@ class ChatBIFileUploadCallbackRequest(DaraModel):
         table_name: str = None,
         table_type: str = None,
     ):
+        self.auth_message = auth_message
+        self.auth_type = auth_type
         self.character_set_name = character_set_name
         # This parameter is required.
         self.db_name = db_name
@@ -34,6 +38,12 @@ class ChatBIFileUploadCallbackRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auth_message is not None:
+            result['AuthMessage'] = self.auth_message
+
+        if self.auth_type is not None:
+            result['AuthType'] = self.auth_type
+
         if self.character_set_name is not None:
             result['CharacterSetName'] = self.character_set_name
 
@@ -56,6 +66,12 @@ class ChatBIFileUploadCallbackRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthMessage') is not None:
+            self.auth_message = m.get('AuthMessage')
+
+        if m.get('AuthType') is not None:
+            self.auth_type = m.get('AuthType')
+
         if m.get('CharacterSetName') is not None:
             self.character_set_name = m.get('CharacterSetName')
 

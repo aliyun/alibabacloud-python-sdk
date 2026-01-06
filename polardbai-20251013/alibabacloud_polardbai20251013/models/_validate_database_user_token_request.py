@@ -4,20 +4,22 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class ChatBIConfigDeleteRequest(DaraModel):
+class ValidateDatabaseUserTokenRequest(DaraModel):
     def __init__(
         self,
         auth_message: str = None,
         auth_type: str = None,
-        db_name: str = None,
-        instance_name: str = None,
+        dbcluster_id: str = None,
+        dbname: str = None,
     ):
+        # This parameter is required.
         self.auth_message = auth_message
+        # This parameter is required.
         self.auth_type = auth_type
         # This parameter is required.
-        self.db_name = db_name
+        self.dbcluster_id = dbcluster_id
         # This parameter is required.
-        self.instance_name = instance_name
+        self.dbname = dbname
 
     def validate(self):
         pass
@@ -33,11 +35,11 @@ class ChatBIConfigDeleteRequest(DaraModel):
         if self.auth_type is not None:
             result['AuthType'] = self.auth_type
 
-        if self.db_name is not None:
-            result['DbName'] = self.db_name
+        if self.dbcluster_id is not None:
+            result['DBClusterId'] = self.dbcluster_id
 
-        if self.instance_name is not None:
-            result['InstanceName'] = self.instance_name
+        if self.dbname is not None:
+            result['DBName'] = self.dbname
 
         return result
 
@@ -49,11 +51,11 @@ class ChatBIConfigDeleteRequest(DaraModel):
         if m.get('AuthType') is not None:
             self.auth_type = m.get('AuthType')
 
-        if m.get('DbName') is not None:
-            self.db_name = m.get('DbName')
+        if m.get('DBClusterId') is not None:
+            self.dbcluster_id = m.get('DBClusterId')
 
-        if m.get('InstanceName') is not None:
-            self.instance_name = m.get('InstanceName')
+        if m.get('DBName') is not None:
+            self.dbname = m.get('DBName')
 
         return self
 

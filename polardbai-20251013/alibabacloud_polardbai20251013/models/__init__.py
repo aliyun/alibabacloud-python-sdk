@@ -91,6 +91,9 @@ from ._delete_multimodal_embedding_response import DeleteMultimodalEmbeddingResp
 from ._download_multimodal_search_task_result_metadata_request import DownloadMultimodalSearchTaskResultMetadataRequest
 from ._download_multimodal_search_task_result_metadata_response_body import DownloadMultimodalSearchTaskResultMetadataResponseBody
 from ._download_multimodal_search_task_result_metadata_response import DownloadMultimodalSearchTaskResultMetadataResponse
+from ._get_user_token_request import GetUserTokenRequest
+from ._get_user_token_response_body import GetUserTokenResponseBody
+from ._get_user_token_response import GetUserTokenResponse
 from ._list_multimodal_dataset_request import ListMultimodalDatasetRequest
 from ._list_multimodal_dataset_response_body import ListMultimodalDatasetResponseBody
 from ._list_multimodal_dataset_response import ListMultimodalDatasetResponse
@@ -100,12 +103,21 @@ from ._list_multimodal_embedding_model_response import ListMultimodalEmbeddingMo
 from ._list_multimodal_search_task_request import ListMultimodalSearchTaskRequest
 from ._list_multimodal_search_task_response_body import ListMultimodalSearchTaskResponseBody
 from ._list_multimodal_search_task_response import ListMultimodalSearchTaskResponse
+from ._list_multimodal_search_task_result_request import ListMultimodalSearchTaskResultRequest
+from ._list_multimodal_search_task_result_response_body import ListMultimodalSearchTaskResultResponseBody
+from ._list_multimodal_search_task_result_response import ListMultimodalSearchTaskResultResponse
 from ._update_multimodal_dataset_request import UpdateMultimodalDatasetRequest
 from ._update_multimodal_dataset_response_body import UpdateMultimodalDatasetResponseBody
 from ._update_multimodal_dataset_response import UpdateMultimodalDatasetResponse
 from ._upload_ossmultimodal_dataset_request import UploadOSSMultimodalDatasetRequest
 from ._upload_ossmultimodal_dataset_response_body import UploadOSSMultimodalDatasetResponseBody
 from ._upload_ossmultimodal_dataset_response import UploadOSSMultimodalDatasetResponse
+from ._validate_database_user_token_request import ValidateDatabaseUserTokenRequest
+from ._validate_database_user_token_response_body import ValidateDatabaseUserTokenResponseBody
+from ._validate_database_user_token_response import ValidateDatabaseUserTokenResponse
+from ._validate_user_token_request import ValidateUserTokenRequest
+from ._validate_user_token_response_body import ValidateUserTokenResponseBody
+from ._validate_user_token_response import ValidateUserTokenResponse
 from ._chat_bipredict_sse_request import ChatBIPredictSseRequestParameters
 
 __all__ = [
@@ -198,6 +210,9 @@ __all__ = [
     DownloadMultimodalSearchTaskResultMetadataRequest,
     DownloadMultimodalSearchTaskResultMetadataResponseBody,
     DownloadMultimodalSearchTaskResultMetadataResponse,
+    GetUserTokenRequest,
+    GetUserTokenResponseBody,
+    GetUserTokenResponse,
     ListMultimodalDatasetRequest,
     ListMultimodalDatasetResponseBody,
     ListMultimodalDatasetResponse,
@@ -207,11 +222,20 @@ __all__ = [
     ListMultimodalSearchTaskRequest,
     ListMultimodalSearchTaskResponseBody,
     ListMultimodalSearchTaskResponse,
+    ListMultimodalSearchTaskResultRequest,
+    ListMultimodalSearchTaskResultResponseBody,
+    ListMultimodalSearchTaskResultResponse,
     UpdateMultimodalDatasetRequest,
     UpdateMultimodalDatasetResponseBody,
     UpdateMultimodalDatasetResponse,
     UploadOSSMultimodalDatasetRequest,
     UploadOSSMultimodalDatasetResponseBody,
     UploadOSSMultimodalDatasetResponse,
+    ValidateDatabaseUserTokenRequest,
+    ValidateDatabaseUserTokenResponseBody,
+    ValidateDatabaseUserTokenResponse,
+    ValidateUserTokenRequest,
+    ValidateUserTokenResponseBody,
+    ValidateUserTokenResponse,
     ChatBIPredictSseRequestParameters
 ]

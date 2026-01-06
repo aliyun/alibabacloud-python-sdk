@@ -50,6 +50,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIConfigCreateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
@@ -80,6 +84,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIConfigCreateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
@@ -124,6 +132,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIConfigDeleteResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
@@ -154,6 +166,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIConfigDeleteResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
@@ -198,6 +214,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIConfigDeleteEntryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.id):
@@ -230,6 +250,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIConfigDeleteEntryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.id):
@@ -276,6 +300,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIConfigQueryEntriesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.id):
@@ -312,6 +340,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIConfigQueryEntriesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.id):
@@ -362,6 +394,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIConfigQueryTablesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.input_field):
@@ -394,6 +430,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIConfigQueryTablesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.input_field):
@@ -440,6 +480,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIConfigUpdateEntryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.formula_function):
@@ -484,6 +528,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIConfigUpdateEntryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.formula_function):
@@ -542,6 +590,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIFileTemplateDownloadResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.table_type):
@@ -572,6 +624,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIFileTemplateDownloadResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.table_type):
@@ -616,6 +672,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIFileUploadResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.instance_name):
@@ -646,6 +706,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIFileUploadResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.file_name):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.instance_name):
@@ -690,6 +754,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIFileUploadCallbackResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.character_set_name):
             query['CharacterSetName'] = request.character_set_name
         if not DaraCore.is_null(request.db_name):
@@ -728,6 +796,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIFileUploadCallbackResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.character_set_name):
             query['CharacterSetName'] = request.character_set_name
         if not DaraCore.is_null(request.db_name):
@@ -780,6 +852,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternCreateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
@@ -812,6 +888,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternCreateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
@@ -858,6 +938,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternDeleteResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
@@ -890,6 +974,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternDeleteResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
@@ -936,6 +1024,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternDeleteEntryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.id):
@@ -970,6 +1062,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternDeleteEntryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.id):
@@ -1018,6 +1114,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternIndexCreateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
@@ -1052,6 +1152,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternIndexCreateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
@@ -1100,6 +1204,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternIndexDeleteResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
@@ -1132,6 +1240,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternIndexDeleteResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
@@ -1178,6 +1290,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternIndexQueryTablesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.input_field):
@@ -1214,6 +1330,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternIndexQueryTablesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.input_field):
@@ -1264,6 +1384,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternQueryEntriesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.id):
@@ -1302,6 +1426,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternQueryEntriesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.id):
@@ -1354,6 +1482,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternQueryTablesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.input_field):
@@ -1390,6 +1522,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternQueryTablesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.input_field):
@@ -1440,6 +1576,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternUpdateEntryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.id):
@@ -1482,6 +1622,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIPatternUpdateEntryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.id):
@@ -1542,6 +1686,10 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.parameters):
             request.parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.generate_chart):
@@ -1560,6 +1708,8 @@ class Client(OpenApiClient):
             query['SchemaIndexTableName'] = request.schema_index_table_name
         if not DaraCore.is_null(request.select_data):
             query['SelectData'] = request.select_data
+        if not DaraCore.is_null(request.thinking_mode):
+            query['ThinkingMode'] = request.thinking_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1599,6 +1749,10 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.parameters):
             request.parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.generate_chart):
@@ -1617,6 +1771,8 @@ class Client(OpenApiClient):
             query['SchemaIndexTableName'] = request.schema_index_table_name
         if not DaraCore.is_null(request.select_data):
             query['SelectData'] = request.select_data
+        if not DaraCore.is_null(request.thinking_mode):
+            query['ThinkingMode'] = request.thinking_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1656,6 +1812,10 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.parameters):
             request.parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.generate_chart):
@@ -1674,6 +1834,8 @@ class Client(OpenApiClient):
             query['SchemaIndexTableName'] = request.schema_index_table_name
         if not DaraCore.is_null(request.select_data):
             query['SelectData'] = request.select_data
+        if not DaraCore.is_null(request.thinking_mode):
+            query['ThinkingMode'] = request.thinking_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1704,6 +1866,10 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.parameters):
             request.parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.parameters, 'Parameters', 'json')
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.generate_chart):
@@ -1722,6 +1888,8 @@ class Client(OpenApiClient):
             query['SchemaIndexTableName'] = request.schema_index_table_name
         if not DaraCore.is_null(request.select_data):
             query['SelectData'] = request.select_data
+        if not DaraCore.is_null(request.thinking_mode):
+            query['ThinkingMode'] = request.thinking_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1762,6 +1930,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBISchemaIndexCreateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.columns_excluded):
             query['ColumnsExcluded'] = request.columns_excluded
         if not DaraCore.is_null(request.db_name):
@@ -1800,6 +1972,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBISchemaIndexCreateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.columns_excluded):
             query['ColumnsExcluded'] = request.columns_excluded
         if not DaraCore.is_null(request.db_name):
@@ -1852,6 +2028,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBISchemaIndexDeleteResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
@@ -1884,6 +2064,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBISchemaIndexDeleteResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
@@ -1930,6 +2114,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBISchemaIndexQueryTablesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.input_field):
@@ -1966,6 +2154,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBISchemaIndexQueryTablesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.input_field):
@@ -2016,6 +2208,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIUpdateTableValidationColumnsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
@@ -2050,6 +2246,10 @@ class Client(OpenApiClient):
     ) -> main_models.ChatBIUpdateTableValidationColumnsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.db_name):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
@@ -2567,6 +2767,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.download_multimodal_search_task_result_metadata_with_options_async(request, runtime)
 
+    def get_user_token_with_options(
+        self,
+        request: main_models.GetUserTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUserToken',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_user_token_with_options_async(
+        self,
+        request: main_models.GetUserTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetUserTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetUserToken',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetUserTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_user_token(
+        self,
+        request: main_models.GetUserTokenRequest,
+    ) -> main_models.GetUserTokenResponse:
+        runtime = RuntimeOptions()
+        return self.get_user_token_with_options(request, runtime)
+
+    async def get_user_token_async(
+        self,
+        request: main_models.GetUserTokenRequest,
+    ) -> main_models.GetUserTokenResponse:
+        runtime = RuntimeOptions()
+        return await self.get_user_token_with_options_async(request, runtime)
+
     def list_multimodal_dataset_with_options(
         self,
         request: main_models.ListMultimodalDatasetRequest,
@@ -2805,6 +3083,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_multimodal_search_task_with_options_async(request, runtime)
 
+    def list_multimodal_search_task_result_with_options(
+        self,
+        request: main_models.ListMultimodalSearchTaskResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMultimodalSearchTaskResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMultimodalSearchTaskResult',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMultimodalSearchTaskResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_multimodal_search_task_result_with_options_async(
+        self,
+        request: main_models.ListMultimodalSearchTaskResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMultimodalSearchTaskResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMultimodalSearchTaskResult',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMultimodalSearchTaskResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_multimodal_search_task_result(
+        self,
+        request: main_models.ListMultimodalSearchTaskResultRequest,
+    ) -> main_models.ListMultimodalSearchTaskResultResponse:
+        runtime = RuntimeOptions()
+        return self.list_multimodal_search_task_result_with_options(request, runtime)
+
+    async def list_multimodal_search_task_result_async(
+        self,
+        request: main_models.ListMultimodalSearchTaskResultRequest,
+    ) -> main_models.ListMultimodalSearchTaskResultResponse:
+        runtime = RuntimeOptions()
+        return await self.list_multimodal_search_task_result_with_options_async(request, runtime)
+
     def update_multimodal_dataset_with_options(
         self,
         request: main_models.UpdateMultimodalDatasetRequest,
@@ -2964,3 +3324,163 @@ class Client(OpenApiClient):
     ) -> main_models.UploadOSSMultimodalDatasetResponse:
         runtime = RuntimeOptions()
         return await self.upload_ossmultimodal_dataset_with_options_async(request, runtime)
+
+    def validate_database_user_token_with_options(
+        self,
+        request: main_models.ValidateDatabaseUserTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ValidateDatabaseUserTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ValidateDatabaseUserToken',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ValidateDatabaseUserTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def validate_database_user_token_with_options_async(
+        self,
+        request: main_models.ValidateDatabaseUserTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ValidateDatabaseUserTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dbname):
+            query['DBName'] = request.dbname
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ValidateDatabaseUserToken',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ValidateDatabaseUserTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def validate_database_user_token(
+        self,
+        request: main_models.ValidateDatabaseUserTokenRequest,
+    ) -> main_models.ValidateDatabaseUserTokenResponse:
+        runtime = RuntimeOptions()
+        return self.validate_database_user_token_with_options(request, runtime)
+
+    async def validate_database_user_token_async(
+        self,
+        request: main_models.ValidateDatabaseUserTokenRequest,
+    ) -> main_models.ValidateDatabaseUserTokenResponse:
+        runtime = RuntimeOptions()
+        return await self.validate_database_user_token_with_options_async(request, runtime)
+
+    def validate_user_token_with_options(
+        self,
+        request: main_models.ValidateUserTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ValidateUserTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ValidateUserToken',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ValidateUserTokenResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def validate_user_token_with_options_async(
+        self,
+        request: main_models.ValidateUserTokenRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ValidateUserTokenResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_message):
+            query['AuthMessage'] = request.auth_message
+        if not DaraCore.is_null(request.auth_type):
+            query['AuthType'] = request.auth_type
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ValidateUserToken',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ValidateUserTokenResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def validate_user_token(
+        self,
+        request: main_models.ValidateUserTokenRequest,
+    ) -> main_models.ValidateUserTokenResponse:
+        runtime = RuntimeOptions()
+        return self.validate_user_token_with_options(request, runtime)
+
+    async def validate_user_token_async(
+        self,
+        request: main_models.ValidateUserTokenRequest,
+    ) -> main_models.ValidateUserTokenResponse:
+        runtime = RuntimeOptions()
+        return await self.validate_user_token_with_options_async(request, runtime)

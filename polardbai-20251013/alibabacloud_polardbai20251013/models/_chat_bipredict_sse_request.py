@@ -8,6 +8,8 @@ from darabonba.model import DaraModel
 class ChatBIPredictSseRequest(DaraModel):
     def __init__(
         self,
+        auth_message: str = None,
+        auth_type: str = None,
         db_name: str = None,
         generate_chart: bool = None,
         generate_summary: bool = None,
@@ -17,7 +19,10 @@ class ChatBIPredictSseRequest(DaraModel):
         question: str = None,
         schema_index_table_name: str = None,
         select_data: bool = None,
+        thinking_mode: bool = None,
     ):
+        self.auth_message = auth_message
+        self.auth_type = auth_type
         # This parameter is required.
         self.db_name = db_name
         self.generate_chart = generate_chart
@@ -30,6 +35,7 @@ class ChatBIPredictSseRequest(DaraModel):
         self.question = question
         self.schema_index_table_name = schema_index_table_name
         self.select_data = select_data
+        self.thinking_mode = thinking_mode
 
     def validate(self):
         if self.parameters:
@@ -40,6 +46,12 @@ class ChatBIPredictSseRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auth_message is not None:
+            result['AuthMessage'] = self.auth_message
+
+        if self.auth_type is not None:
+            result['AuthType'] = self.auth_type
+
         if self.db_name is not None:
             result['DbName'] = self.db_name
 
@@ -67,10 +79,19 @@ class ChatBIPredictSseRequest(DaraModel):
         if self.select_data is not None:
             result['SelectData'] = self.select_data
 
+        if self.thinking_mode is not None:
+            result['ThinkingMode'] = self.thinking_mode
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AuthMessage') is not None:
+            self.auth_message = m.get('AuthMessage')
+
+        if m.get('AuthType') is not None:
+            self.auth_type = m.get('AuthType')
+
         if m.get('DbName') is not None:
             self.db_name = m.get('DbName')
 
@@ -98,6 +119,9 @@ class ChatBIPredictSseRequest(DaraModel):
 
         if m.get('SelectData') is not None:
             self.select_data = m.get('SelectData')
+
+        if m.get('ThinkingMode') is not None:
+            self.thinking_mode = m.get('ThinkingMode')
 
         return self
 

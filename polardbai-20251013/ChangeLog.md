@@ -1,3 +1,57 @@
+2026-01-06 Version: 1.1.0
+- Support API GetUserToken.
+- Support API ListMultimodalSearchTaskResult.
+- Support API ValidateDatabaseUserToken.
+- Support API ValidateUserToken.
+- Update API ChatBIConfigCreate: add request parameters AuthMessage.
+- Update API ChatBIConfigCreate: add request parameters AuthType.
+- Update API ChatBIConfigDelete: add request parameters AuthMessage.
+- Update API ChatBIConfigDelete: add request parameters AuthType.
+- Update API ChatBIConfigDeleteEntry: add request parameters AuthMessage.
+- Update API ChatBIConfigDeleteEntry: add request parameters AuthType.
+- Update API ChatBIConfigQueryEntries: add request parameters AuthMessage.
+- Update API ChatBIConfigQueryEntries: add request parameters AuthType.
+- Update API ChatBIConfigQueryTables: add request parameters AuthMessage.
+- Update API ChatBIConfigQueryTables: add request parameters AuthType.
+- Update API ChatBIConfigUpdateEntry: add request parameters AuthMessage.
+- Update API ChatBIConfigUpdateEntry: add request parameters AuthType.
+- Update API ChatBIFileTemplateDownload: add request parameters AuthMessage.
+- Update API ChatBIFileTemplateDownload: add request parameters AuthType.
+- Update API ChatBIFileUpload: add request parameters AuthMessage.
+- Update API ChatBIFileUpload: add request parameters AuthType.
+- Update API ChatBIFileUploadCallback: add request parameters AuthMessage.
+- Update API ChatBIFileUploadCallback: add request parameters AuthType.
+- Update API ChatBIPatternCreate: add request parameters AuthMessage.
+- Update API ChatBIPatternCreate: add request parameters AuthType.
+- Update API ChatBIPatternDelete: add request parameters AuthMessage.
+- Update API ChatBIPatternDelete: add request parameters AuthType.
+- Update API ChatBIPatternDeleteEntry: add request parameters AuthMessage.
+- Update API ChatBIPatternDeleteEntry: add request parameters AuthType.
+- Update API ChatBIPatternIndexCreate: add request parameters AuthMessage.
+- Update API ChatBIPatternIndexCreate: add request parameters AuthType.
+- Update API ChatBIPatternIndexDelete: add request parameters AuthMessage.
+- Update API ChatBIPatternIndexDelete: add request parameters AuthType.
+- Update API ChatBIPatternIndexQueryTables: add request parameters AuthMessage.
+- Update API ChatBIPatternIndexQueryTables: add request parameters AuthType.
+- Update API ChatBIPatternQueryEntries: add request parameters AuthMessage.
+- Update API ChatBIPatternQueryEntries: add request parameters AuthType.
+- Update API ChatBIPatternQueryTables: add request parameters AuthMessage.
+- Update API ChatBIPatternQueryTables: add request parameters AuthType.
+- Update API ChatBIPatternUpdateEntry: add request parameters AuthMessage.
+- Update API ChatBIPatternUpdateEntry: add request parameters AuthType.
+- Update API ChatBIPredictSse: add request parameters AuthMessage.
+- Update API ChatBIPredictSse: add request parameters AuthType.
+- Update API ChatBIPredictSse: add request parameters ThinkingMode.
+- Update API ChatBISchemaIndexCreate: add request parameters AuthMessage.
+- Update API ChatBISchemaIndexCreate: add request parameters AuthType.
+- Update API ChatBISchemaIndexDelete: add request parameters AuthMessage.
+- Update API ChatBISchemaIndexDelete: add request parameters AuthType.
+- Update API ChatBISchemaIndexQueryTables: add request parameters AuthMessage.
+- Update API ChatBISchemaIndexQueryTables: add request parameters AuthType.
+- Update API ChatBIUpdateTableValidationColumns: add request parameters AuthMessage.
+- Update API ChatBIUpdateTableValidationColumns: add request parameters AuthType.
+
+
 2025-12-30 Version: 1.0.0
 - Generated python 2025-10-13 for PolardbAI.
 
