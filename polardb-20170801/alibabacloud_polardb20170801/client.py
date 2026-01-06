@@ -14353,6 +14353,132 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_halogs_with_options_async(request, runtime)
 
+    def describe_history_events_with_options(
+        self,
+        request: main_models.DescribeHistoryEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeHistoryEventsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.archive_status):
+            query['ArchiveStatus'] = request.archive_status
+        if not DaraCore.is_null(request.event_category):
+            query['EventCategory'] = request.event_category
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.event_level):
+            query['EventLevel'] = request.event_level
+        if not DaraCore.is_null(request.event_status):
+            query['EventStatus'] = request.event_status
+        if not DaraCore.is_null(request.event_type):
+            query['EventType'] = request.event_type
+        if not DaraCore.is_null(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeHistoryEvents',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeHistoryEventsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_history_events_with_options_async(
+        self,
+        request: main_models.DescribeHistoryEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeHistoryEventsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.archive_status):
+            query['ArchiveStatus'] = request.archive_status
+        if not DaraCore.is_null(request.event_category):
+            query['EventCategory'] = request.event_category
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.event_level):
+            query['EventLevel'] = request.event_level
+        if not DaraCore.is_null(request.event_status):
+            query['EventStatus'] = request.event_status
+        if not DaraCore.is_null(request.event_type):
+            query['EventType'] = request.event_type
+        if not DaraCore.is_null(request.from_start_time):
+            query['FromStartTime'] = request.from_start_time
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.to_start_time):
+            query['ToStartTime'] = request.to_start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeHistoryEvents',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeHistoryEventsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_history_events(
+        self,
+        request: main_models.DescribeHistoryEventsRequest,
+    ) -> main_models.DescribeHistoryEventsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_history_events_with_options(request, runtime)
+
+    async def describe_history_events_async(
+        self,
+        request: main_models.DescribeHistoryEventsRequest,
+    ) -> main_models.DescribeHistoryEventsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_history_events_with_options_async(request, runtime)
+
     def describe_history_tasks_with_options(
         self,
         request: main_models.DescribeHistoryTasksRequest,

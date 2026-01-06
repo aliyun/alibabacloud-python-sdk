@@ -442,6 +442,9 @@ from ._describe_global_security_ipgroup_relation_response import DescribeGlobalS
 from ._describe_halogs_request import DescribeHALogsRequest
 from ._describe_halogs_response_body import DescribeHALogsResponseBody
 from ._describe_halogs_response import DescribeHALogsResponse
+from ._describe_history_events_request import DescribeHistoryEventsRequest
+from ._describe_history_events_response_body import DescribeHistoryEventsResponseBody
+from ._describe_history_events_response import DescribeHistoryEventsResponse
 from ._describe_history_tasks_request import DescribeHistoryTasksRequest
 from ._describe_history_tasks_response_body import DescribeHistoryTasksResponseBody
 from ._describe_history_tasks_response import DescribeHistoryTasksResponse
@@ -1021,6 +1024,8 @@ from ._describe_global_database_networks_response_body import DescribeGlobalData
 from ._describe_global_security_ipgroup_response_body import DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup
 from ._describe_global_security_ipgroup_relation_response_body import DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel
 from ._describe_halogs_response_body import DescribeHALogsResponseBodyHaLogItems
+from ._describe_history_events_response_body import DescribeHistoryEventsResponseBodyItemsData
+from ._describe_history_events_response_body import DescribeHistoryEventsResponseBodyItems
 from ._describe_history_tasks_response_body import DescribeHistoryTasksResponseBodyItems
 from ._describe_history_tasks_stat_response_body import DescribeHistoryTasksStatResponseBodyItems
 from ._describe_license_orders_response_body import DescribeLicenseOrdersResponseBodyItems
@@ -1526,6 +1531,9 @@ __all__ = [
     DescribeHALogsRequest,
     DescribeHALogsResponseBody,
     DescribeHALogsResponse,
+    DescribeHistoryEventsRequest,
+    DescribeHistoryEventsResponseBody,
+    DescribeHistoryEventsResponse,
     DescribeHistoryTasksRequest,
     DescribeHistoryTasksResponseBody,
     DescribeHistoryTasksResponse,
@@ -2105,6 +2113,8 @@ __all__ = [
     DescribeGlobalSecurityIPGroupResponseBodyGlobalSecurityIPGroup,
     DescribeGlobalSecurityIPGroupRelationResponseBodyGlobalSecurityIPGroupRel,
     DescribeHALogsResponseBodyHaLogItems,
+    DescribeHistoryEventsResponseBodyItemsData,
+    DescribeHistoryEventsResponseBodyItems,
     DescribeHistoryTasksResponseBodyItems,
     DescribeHistoryTasksStatResponseBodyItems,
     DescribeLicenseOrdersResponseBodyItems,
