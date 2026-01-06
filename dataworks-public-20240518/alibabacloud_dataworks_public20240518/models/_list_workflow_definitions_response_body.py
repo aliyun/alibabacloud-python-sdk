@@ -128,7 +128,7 @@ class ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitions(DaraModel
         self.description = description
         # The unique identifier of the workflow.
         # 
-        # >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK; parameters are still returned according to the type defined in the SDK. Compilation failures due to the type change may occur only when upgrading the SDK across version 8.0.0, in which case users need to manually correct the data type.
+        # >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
         self.id = id
         # The timestamp when the workflow was last modified.
         self.modify_time = modify_time
@@ -229,7 +229,7 @@ class ListWorkflowDefinitionsResponseBodyPagingInfoWorkflowDefinitionsScript(Dar
     ):
         # The ID of the script.
         # 
-        # >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK; parameters are still returned according to the type defined in the SDK. Compilation failures due to the type change may occur only when upgrading the SDK across version 8.0.0, in which case users need to manually correct the data type.
+        # >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures due to the type change may occur only when upgrading the SDK across version 8.0.0, in which case users need to manually correct the data type.
         self.id = id
         # The script path.
         self.path = path

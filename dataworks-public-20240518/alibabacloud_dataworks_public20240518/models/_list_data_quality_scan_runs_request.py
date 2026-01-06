@@ -25,6 +25,9 @@ class ListDataQualityScanRunsRequest(DaraModel):
         self.create_time_to = create_time_to
         # The ID of the data quality monitor.
         self.data_quality_scan_id = data_quality_scan_id
+        # The extended query filter. Supported parameters:
+        # 
+        # *   TaskInstanceId
         self.filter = filter
         # The page number of the results. Default value: 1.
         self.page_number = page_number

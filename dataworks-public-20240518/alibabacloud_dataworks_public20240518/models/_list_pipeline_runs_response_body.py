@@ -114,6 +114,7 @@ class ListPipelineRunsResponseBodyPagingInfoPipelineRuns(DaraModel):
         self,
         create_time: int = None,
         creator: str = None,
+        description: str = None,
         id: str = None,
         message: str = None,
         modify_time: int = None,
@@ -125,6 +126,7 @@ class ListPipelineRunsResponseBodyPagingInfoPipelineRuns(DaraModel):
         self.create_time = create_time
         # The creator of the process.
         self.creator = creator
+        self.description = description
         # The process ID.
         self.id = id
         # The error message returned during the stage.
@@ -164,6 +166,9 @@ class ListPipelineRunsResponseBodyPagingInfoPipelineRuns(DaraModel):
         if self.creator is not None:
             result['Creator'] = self.creator
 
+        if self.description is not None:
+            result['Description'] = self.description
+
         if self.id is not None:
             result['Id'] = self.id
 
@@ -193,6 +198,9 @@ class ListPipelineRunsResponseBodyPagingInfoPipelineRuns(DaraModel):
 
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
 
         if m.get('Id') is not None:
             self.id = m.get('Id')

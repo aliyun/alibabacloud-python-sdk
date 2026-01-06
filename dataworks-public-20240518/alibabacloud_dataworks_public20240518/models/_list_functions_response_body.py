@@ -165,8 +165,8 @@ class ListFunctionsResponseBodyPagingInfoFunctions(DaraModel):
         # 
         # Valid values:
         # 
-        # *   File: General resource file
-        # *   Embedded: Embedded resource
+        # *   File: General resource file.
+        # *   Embedded: Embedded resource.
         self.embedded_resource_type = embedded_resource_type
         # The example description.
         self.example_description = example_description
@@ -365,9 +365,9 @@ class ListFunctionsResponseBodyPagingInfoFunctionsScript(DaraModel):
         path: str = None,
         runtime: main_models.ListFunctionsResponseBodyPagingInfoFunctionsScriptRuntime = None,
     ):
-        # The script ID.
+        # The ID of the script.
         # 
-        # >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. However, compilation failures may occur due to the type change only when upgrading the SDK across version 8.0.0. In this case, you must manually update the data type.
         self.id = id
         # The script path.
         self.path = path

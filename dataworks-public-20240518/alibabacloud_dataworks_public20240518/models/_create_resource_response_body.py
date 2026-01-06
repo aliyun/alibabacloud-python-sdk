@@ -12,7 +12,7 @@ class CreateResourceResponseBody(DaraModel):
     ):
         # The unique identifier of the resource file.
         # 
-        # > This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK; parameters are still returned according to the type defined in the SDK. Compilation failures due to the type change may occur only when upgrading the SDK across version 8.0.0, in which case users need to manually correct the data type.
+        # > This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
         self.id = id
         # A5B97987-66EA-5563-9599-A2752292XXXX
         self.request_id = request_id

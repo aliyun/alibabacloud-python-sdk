@@ -18,9 +18,11 @@ class ListNodeDependenciesRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The page number, starting from 1. Default value: 1.
+        # The unique identifier of the Data Studio node.
+        # 
+        # >  This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Maximum value: 100.
+        # The page number, starting from 1. Default value: 1.
         self.page_size = page_size
         # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         # 

@@ -27,15 +27,19 @@ class UpdateWorkflowShrinkRequest(DaraModel):
         self.dependencies_shrink = dependencies_shrink
         # The description.
         self.description = description
-        # The environment of the workspace. Valid values:
+        # The project environment.
         # 
-        # *   Prod: production environment
-        # *   Dev: development environment
+        # *   Prod
+        # *   Dev
         self.env_type = env_type
         # The workflow ID.
         # 
         # This parameter is required.
         self.id = id
+        # The instance generation mode.
+        # 
+        # *   T+1: the next day
+        # *   Immediately Note: Periodic instances will only be generated normally if the workflow\\"s scheduled time is more than 10 minutes after the workflow publication time. Real-time instance generation is not available during the batch instance generation period (23:30 to 24:00). While workflows can be published during this time, instances will not be regenerated immediately after submission.
         self.instance_mode = instance_mode
         # The name of the workflow.
         # 
@@ -51,7 +55,7 @@ class UpdateWorkflowShrinkRequest(DaraModel):
         self.parameters = parameters
         # The tags.
         self.tags_shrink = tags_shrink
-        # The tasks.
+        # Details about tasks.
         self.tasks_shrink = tasks_shrink
         # The trigger method.
         # 

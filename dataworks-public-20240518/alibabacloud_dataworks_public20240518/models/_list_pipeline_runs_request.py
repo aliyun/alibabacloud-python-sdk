@@ -8,6 +8,7 @@ class ListPipelineRunsRequest(DaraModel):
     def __init__(
         self,
         creator: str = None,
+        object_id: str = None,
         page_number: int = None,
         page_size: int = None,
         project_id: int = None,
@@ -15,6 +16,7 @@ class ListPipelineRunsRequest(DaraModel):
     ):
         # The ID of the user who creates the processes. This parameter specifies a filter condition.
         self.creator = creator
+        self.object_id = object_id
         # The page number. Pages start from page 1. Default value: 1.
         self.page_number = page_number
         # The number of entries per page. Default value: 10. Maximum value: 100.
@@ -48,6 +50,9 @@ class ListPipelineRunsRequest(DaraModel):
         if self.creator is not None:
             result['Creator'] = self.creator
 
+        if self.object_id is not None:
+            result['ObjectId'] = self.object_id
+
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
 
@@ -66,6 +71,9 @@ class ListPipelineRunsRequest(DaraModel):
         m = m or dict()
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
+
+        if m.get('ObjectId') is not None:
+            self.object_id = m.get('ObjectId')
 
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')

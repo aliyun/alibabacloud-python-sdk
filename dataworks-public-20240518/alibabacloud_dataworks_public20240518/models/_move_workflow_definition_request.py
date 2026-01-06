@@ -17,9 +17,9 @@ class MoveWorkflowDefinitionRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The path to which you want to move the workflow. You do not need to specify a workflow name in the path.
+        # The unique identifier of the workflow.
         # 
-        # For example, if you want to move the test workflow to root/demo/test, you must set this parameter to root/demo.
+        # >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
         # 
         # This parameter is required.
         self.path = path

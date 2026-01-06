@@ -130,7 +130,7 @@ class ListNodesResponseBodyPagingInfoNodes(DaraModel):
         task_id: int = None,
         trigger: main_models.ListNodesResponseBodyPagingInfoNodesTrigger = None,
     ):
-        # The timestamp when the node in DataStudio was created.
+        # The timestamp when the node in Data Studio was created.
         self.create_time = create_time
         # The data source.
         self.data_source = data_source
@@ -138,7 +138,7 @@ class ListNodesResponseBodyPagingInfoNodes(DaraModel):
         self.description = description
         # The unique identifier of the Data Studio node.
         # 
-        # >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # >  This field is of the Long type in SDK versions prior to 8.0.0, and of the String type in SDK versions 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
         self.id = id
         # The node input.
         self.inputs = inputs
@@ -148,7 +148,7 @@ class ListNodesResponseBodyPagingInfoNodes(DaraModel):
         self.name = name
         # The output of the node.
         self.outputs = outputs
-        # The owner of nodes in DataStudio.
+        # The owner of nodes in Data Studio.
         self.owner = owner
         # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         self.project_id = project_id
@@ -168,7 +168,7 @@ class ListNodesResponseBodyPagingInfoNodes(DaraModel):
         self.strategy = strategy
         # The tag information (not in use).
         self.tags = tags
-        # The scheduling task ID.
+        # The ID of the scheduling task.
         self.task_id = task_id
         # The trigger.
         self.trigger = trigger
@@ -328,7 +328,7 @@ class ListNodesResponseBodyPagingInfoNodesTrigger(DaraModel):
         timezone: str = None,
         type: str = None,
     ):
-        # The cron expression for scheduling
+        # The cron expression for scheduling.
         self.cron = cron
         # The end time of the validity period of the trigger.
         self.end_time = end_time
@@ -344,9 +344,9 @@ class ListNodesResponseBodyPagingInfoNodesTrigger(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Scheduler: periodic scheduling
-        # *   Manual: manual trigger
-        # *   Streaming: streaming task
+        # *   Scheduler: Periodic scheduling
+        # *   Manual: Manual trigger
+        # *   Streaming: Streaming task
         self.type = type
 
     def validate(self):
@@ -516,7 +516,7 @@ class ListNodesResponseBodyPagingInfoNodesScript(DaraModel):
     ):
         # The ID of the script.
         # 
-        # >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
         self.id = id
         # The script path.
         self.path = path
@@ -796,7 +796,7 @@ class ListNodesResponseBodyPagingInfoNodesOutputsVariablesNode(DaraModel):
         self,
         output: str = None,
     ):
-        # The node output.
+        # The output of the node.
         self.output = output
 
     def validate(self):
@@ -852,7 +852,7 @@ class ListNodesResponseBodyPagingInfoNodesOutputsNodeOutputs(DaraModel):
         self,
         data: str = None,
     ):
-        # The node output.
+        # The output of the node.
         self.data = data
 
     def validate(self):
@@ -1049,7 +1049,7 @@ class ListNodesResponseBodyPagingInfoNodesInputsVariablesNode(DaraModel):
         self,
         output: str = None,
     ):
-        # The node output.
+        # The output of the node.
         self.output = output
 
     def validate(self):
@@ -1105,7 +1105,7 @@ class ListNodesResponseBodyPagingInfoNodesInputsNodeOutputs(DaraModel):
         self,
         data: str = None,
     ):
-        # The node output.
+        # The output of the node.
         self.data = data
 
     def validate(self):

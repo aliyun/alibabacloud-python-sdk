@@ -20,7 +20,7 @@ class ListResourcesRequest(DaraModel):
         self.owner = owner
         # The page number of the data to retrieve, used for pagination.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
+        # The page number of the data to retrieve, used for pagination.
         self.page_size = page_size
         # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         # 

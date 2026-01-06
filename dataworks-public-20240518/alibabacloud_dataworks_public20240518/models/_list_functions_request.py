@@ -20,7 +20,7 @@ class ListFunctionsRequest(DaraModel):
         self.owner = owner
         # The page number. Default value: 1. Minimum value: 1.
         self.page_number = page_number
-        # The number of entries per page. Default value: 10. Maximum value: 100.
+        # The page number. Default value: 1. Minimum value: 1.
         self.page_size = page_size
         # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         # 

@@ -24,17 +24,15 @@ class ListNodesRequest(DaraModel):
         self.name = name
         # The page number of the data to retrieve, used for pagination.
         self.page_number = page_number
-        # The number of entries per page. Default is 10, and the maximum is 100.
+        # The page number of the data to retrieve, used for pagination.
         self.page_size = page_size
         # The DataWorks workspace ID. You can log on to the [DataWorks console](https://workbench.data.aliyun.com/console) and go to the Workspace page to query the ID.
         # 
         # This parameter is required.
         self.project_id = project_id
-        # The scheduling type, which is a filter condition. Valid values:
+        # Leave this parameter empty if not specified. Filter condition: within a specified container. Specify the container ID. This parameter is independent of the resource group ID (ResourceGroupId).
         # 
-        # *   Normal: The nodes are scheduled as expected.
-        # *   Pause: The nodes are paused, and the running of their descendant nodes is blocked.
-        # *   Skip: The nodes are dry run. The system does not actually run the nodes, but directly returns a success response. The running duration of the nodes is 0 seconds. In addition, the nodes do not occupy resources or block the running of their descendant nodes.
+        # >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
         self.recurrence = recurrence
         # The rerun property, which is a filter condition. If you do not want to use this condition for filtering, you do not need to configure this parameter. Valid values:
         # 

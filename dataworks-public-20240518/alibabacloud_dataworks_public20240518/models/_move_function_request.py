@@ -17,9 +17,9 @@ class MoveFunctionRequest(DaraModel):
         # 
         # This parameter is required.
         self.id = id
-        # The path to which you want to move the UDF. You do not need to specify a UDF name in the path.
+        # The unique identifier of the UDF.
         # 
-        # For example, if you want to move the test UDF to root/demo/test, you must set this parameter to root/demo.
+        # >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect normal SDK usage; the parameter will still be returned according to the type defined in the SDK.. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
         # 
         # This parameter is required.
         self.path = path

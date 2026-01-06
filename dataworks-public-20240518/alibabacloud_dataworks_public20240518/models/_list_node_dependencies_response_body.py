@@ -168,7 +168,7 @@ class ListNodeDependenciesResponseBodyPagingInfoNodes(DaraModel):
         self.strategy = strategy
         # The tags. This parameter is not in use.
         self.tags = tags
-        # The scheduling task ID.
+        # The ID of the scheduling task.
         self.task_id = task_id
         # The trigger.
         self.trigger = trigger
@@ -344,9 +344,9 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesTrigger(DaraModel):
         # 
         # Valid values:
         # 
-        # *   Scheduler: periodic scheduling.
-        # *   Manual: manual scheduling.
-        # *   Streaming: streaming scheduler.
+        # *   Scheduler: Periodic scheduling.
+        # *   Manual: Manual scheduling.
+        # *   Streaming: Streaming scheduler.
         self.type = type
 
     def validate(self):
@@ -445,14 +445,14 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesStrategy(DaraModel):
         rerun_times: int = None,
         timeout: int = None,
     ):
-        # The instance generation mode. Valid values:
+        # The instance generation mode.
         # 
         # *   T+1
         # *   Immediately
         self.instance_mode = instance_mode
         # The interval between retries after failure. Unit: milliseconds.
         self.rerun_interval = rerun_interval
-        # The rerun mode. Valid values:
+        # The rerun mode.
         # 
         # *   Allowed
         # *   Denied
@@ -516,11 +516,11 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesScript(DaraModel):
     ):
         # The ID of the script.
         # 
-        # >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
+        # >  This field is of type Long in SDK versions prior to 8.0.0, and of type String in SDK version 8.0.0 and later. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
         self.id = id
         # The script path.
         self.path = path
-        # The runtime.
+        # Runtime
         self.runtime = runtime
 
     def validate(self):
@@ -620,11 +620,11 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesOutputs(DaraModel):
         tables: List[main_models.ListNodeDependenciesResponseBodyPagingInfoNodesOutputsTables] = None,
         variables: List[main_models.ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables] = None,
     ):
-        # The list of node outputs.
+        # The node output list.
         self.node_outputs = node_outputs
         # The table list.
         self.tables = tables
-        # The variable list.
+        # The variables.
         self.variables = variables
 
     def validate(self):
@@ -721,7 +721,7 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesOutputsVariables(DaraModel)
         # *   System
         # *   NodeOutput
         self.type = type
-        # The value of the variable.
+        # The variable name.
         self.value = value
 
     def validate(self):
@@ -873,7 +873,7 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesInputs(DaraModel):
         tables: List[main_models.ListNodeDependenciesResponseBodyPagingInfoNodesInputsTables] = None,
         variables: List[main_models.ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables] = None,
     ):
-        # The list of node outputs.
+        # The node output list.
         self.node_outputs = node_outputs
         # The table list.
         self.tables = tables
@@ -955,7 +955,7 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables(DaraModel):
         # 
         # >  Prior to SDK version 8.0.0, this field is of type Long. In SDK version 8.0.0 and later, it is of type String. This change does not affect the normal use of the SDK. The parameter is returned based on the type defined in the SDK. Compilation failures caused by the type change may occur only when you upgrade the SDK across version 8.0.0. In this case, you must manually update the data type.
         self.id = id
-        # The variable name.
+        # The name of the variable.
         self.name = name
         # The node to which the variable belongs.
         self.node = node
@@ -966,7 +966,7 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesInputsVariables(DaraModel):
         # *   Workflow
         # *   Workspace
         self.scope = scope
-        # The type of the variable. Valid values:
+        # The type of the variable.
         # 
         # *   NoKvVariableExpression
         # *   Constant
@@ -1096,7 +1096,7 @@ class ListNodeDependenciesResponseBodyPagingInfoNodesInputsNodeOutputs(DaraModel
         self,
         data: str = None,
     ):
-        # The node output.
+        # The output of the node.
         self.data = data
 
     def validate(self):

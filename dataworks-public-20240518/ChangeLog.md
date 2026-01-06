@@ -1,3 +1,9 @@
+2026-01-06 Version: 8.0.1
+- Update API GetPipelineRun: add response parameters Body.Pipeline.Description.
+- Update API ListPipelineRuns: add request parameters ObjectId.
+- Update API ListPipelineRuns: add response parameters Body.PagingInfo.PipelineRuns.$.Description.
+
+
 2026-01-05 Version: 8.0.0
 - Update API CreateFunction: update response parameters Body.Id' type has changed.
 - Update API CreateFunction: update response parameters Body.Id' format has changed.
