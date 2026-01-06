@@ -11,6 +11,19 @@
 - Update API StopRCInstances: add request parameters StoppedMode.
 
 
+2026-01-06 Version: 14.0.1
+- Update API DescribeDBInstanceReplication: add response parameters Body.GtidExecuted.
+- Update API DescribeDBInstanceReplication: add response parameters Body.ImportStatus.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.EcsHostName.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.OSName.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.OSType.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.StartTime.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.StoppedMode.
+- Update API ModifyRCDiskChargeType: add request parameters AutoPay.
+- Update API StopRCInstance: add request parameters StoppedMode.
+- Update API StopRCInstances: add request parameters StoppedMode.
+
+
 2026-01-06 Version: 14.0.0
 - Update API DescribeHistoryTasks: update request parameters ResourceOwnerAccount' type has changed.
 - Update API DescribeHistoryTasks: update request parameters ResourceOwnerAccount' format has changed.
