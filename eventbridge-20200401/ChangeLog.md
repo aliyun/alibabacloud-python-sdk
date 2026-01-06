@@ -6,6 +6,10 @@
 - Update API QueryTracedEvents: add request parameters Subject.
 
 
+2026-01-06 Version: 8.0.3
+- Update API QueryTracedEvents: add request parameters Subject.
+
+
 2025-11-28 Version: 8.0.2
 - Update API CreateEventStreaming: add request parameters Sink.SinkRabbitMQMetaParameters.
 - Update API CreateEventStreaming: add request parameters Sink.SinkRabbitMQMsgSyncParameters.
