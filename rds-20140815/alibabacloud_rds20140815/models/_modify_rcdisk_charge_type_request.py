@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ModifyRCDiskChargeTypeRequest(DaraModel):
     def __init__(
         self,
+        auto_pay: bool = None,
         auto_renew: str = None,
         auto_use_coupon: bool = None,
         business_info: str = None,
@@ -16,13 +17,13 @@ class ModifyRCDiskChargeTypeRequest(DaraModel):
         promotion_code: str = None,
         region_id: str = None,
     ):
+        self.auto_pay = auto_pay
         self.auto_renew = auto_renew
         self.auto_use_coupon = auto_use_coupon
         self.business_info = business_info
         self.client_token = client_token
         # This parameter is required.
         self.instance_id = instance_id
-        # This parameter is required.
         self.pay_type = pay_type
         self.promotion_code = promotion_code
         # This parameter is required.
@@ -36,6 +37,9 @@ class ModifyRCDiskChargeTypeRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_pay is not None:
+            result['AutoPay'] = self.auto_pay
+
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
 
@@ -64,6 +68,9 @@ class ModifyRCDiskChargeTypeRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoPay') is not None:
+            self.auto_pay = m.get('AutoPay')
+
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
 

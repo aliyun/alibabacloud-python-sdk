@@ -55,8 +55,6 @@ class ModifyRCInstanceChargeTypeRequest(DaraModel):
         # The new billing method of the instance. Valid values:
         # * **Prepaid**: subscription.
         # * **Postpaid**: pay-as-you-go.
-        # 
-        # This parameter is required.
         self.pay_type = pay_type
         # The renewal cycle of the instance. Valid values:
         # * **Year**

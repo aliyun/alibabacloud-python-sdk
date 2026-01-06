@@ -8,6 +8,8 @@ class DescribeDBInstanceReplicationResponseBody(DaraModel):
     def __init__(
         self,
         external_replication: str = None,
+        gtid_executed: str = None,
+        import_status: str = None,
         replication_delay: str = None,
         replication_error_message: str = None,
         replication_ip: str = None,
@@ -21,6 +23,8 @@ class DescribeDBInstanceReplicationResponseBody(DaraModel):
         # *   **ON**
         # *   **OFF**
         self.external_replication = external_replication
+        self.gtid_executed = gtid_executed
+        self.import_status = import_status
         # The replication latency. Unit: seconds.
         self.replication_delay = replication_delay
         # The replication error message.
@@ -50,6 +54,12 @@ class DescribeDBInstanceReplicationResponseBody(DaraModel):
         if self.external_replication is not None:
             result['ExternalReplication'] = self.external_replication
 
+        if self.gtid_executed is not None:
+            result['GtidExecuted'] = self.gtid_executed
+
+        if self.import_status is not None:
+            result['ImportStatus'] = self.import_status
+
         if self.replication_delay is not None:
             result['ReplicationDelay'] = self.replication_delay
 
@@ -77,6 +87,12 @@ class DescribeDBInstanceReplicationResponseBody(DaraModel):
         m = m or dict()
         if m.get('ExternalReplication') is not None:
             self.external_replication = m.get('ExternalReplication')
+
+        if m.get('GtidExecuted') is not None:
+            self.gtid_executed = m.get('GtidExecuted')
+
+        if m.get('ImportStatus') is not None:
+            self.import_status = m.get('ImportStatus')
 
         if m.get('ReplicationDelay') is not None:
             self.replication_delay = m.get('ReplicationDelay')

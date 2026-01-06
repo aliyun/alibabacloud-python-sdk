@@ -30602,6 +30602,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyRCDiskChargeTypeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.auto_use_coupon):
@@ -30644,6 +30646,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyRCDiskChargeTypeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.auto_use_coupon):
@@ -36192,6 +36196,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.stopped_mode):
+            query['StoppedMode'] = request.stopped_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -36224,6 +36230,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.stopped_mode):
+            query['StoppedMode'] = request.stopped_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -36276,6 +36284,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.stopped_mode):
+            query['StoppedMode'] = request.stopped_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -36314,6 +36324,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.stopped_mode):
+            query['StoppedMode'] = request.stopped_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
