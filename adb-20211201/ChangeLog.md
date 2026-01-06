@@ -1,3 +1,7 @@
+2026-01-06 Version: 3.7.1
+- Update API DescribeAuditLogRecords: add response parameters Body.Items.$.HasDiagnosticInfo.
+
+
 2025-12-16 Version: 3.7.0
 - Support API DescribeAutoRenewalAttribute.
 - Support API ModifyAutoRenewalAttribute.

@@ -1,0 +1,77 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from alibabacloud_adb20211201 import models as main_models
+from darabonba.model import DaraModel
+
+class DeleteSparkTemplateFileResponseBody(DaraModel):
+    def __init__(
+        self,
+        data: main_models.DeleteSparkTemplateFileResponseBodyData = None,
+        request_id: str = None,
+    ):
+        # The deletion result.
+        self.data = data
+        # The request ID.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Data') is not None:
+            temp_model = main_models.DeleteSparkTemplateFileResponseBodyData()
+            self.data = temp_model.from_map(m.get('Data'))
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        return self
+
+class DeleteSparkTemplateFileResponseBodyData(DaraModel):
+    def __init__(
+        self,
+        succeeded: bool = None,
+    ):
+        # Indicates whether the template file is deleted. Valid values:
+        # 
+        # *   **true**
+        # *   **false**
+        self.succeeded = succeeded
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.succeeded is not None:
+            result['Succeeded'] = self.succeeded
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Succeeded') is not None:
+            self.succeeded = m.get('Succeeded')
+
+        return self
+
