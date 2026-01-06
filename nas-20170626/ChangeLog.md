@@ -1,3 +1,8 @@
+2026-01-06 Version: 3.2.0
+- Support API GetFileset.
+- Support API GetProtocolMountTarget.
+
+
 2025-12-22 Version: 3.1.4
 - Update API CreateFileSystem: add request parameters RedundancyType.
 - Update API CreateFileSystem: add request parameters RedundancyVSwitchIds.
