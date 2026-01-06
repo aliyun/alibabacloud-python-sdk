@@ -10,6 +10,7 @@ class AuthorizeApplicationToGroupsRequest(DaraModel):
     def __init__(
         self,
         application_id: str = None,
+        application_role_id: str = None,
         group_ids: List[str] = None,
         instance_id: str = None,
     ):
@@ -17,6 +18,8 @@ class AuthorizeApplicationToGroupsRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
+        # 应用角色ID。
+        self.application_role_id = application_role_id
         # The group IDs. You can specify up to 100 group IDs at a time.
         # 
         # This parameter is required.
@@ -37,6 +40,9 @@ class AuthorizeApplicationToGroupsRequest(DaraModel):
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
 
+        if self.application_role_id is not None:
+            result['ApplicationRoleId'] = self.application_role_id
+
         if self.group_ids is not None:
             result['GroupIds'] = self.group_ids
 
@@ -49,6 +55,9 @@ class AuthorizeApplicationToGroupsRequest(DaraModel):
         m = m or dict()
         if m.get('ApplicationId') is not None:
             self.application_id = m.get('ApplicationId')
+
+        if m.get('ApplicationRoleId') is not None:
+            self.application_role_id = m.get('ApplicationRoleId')
 
         if m.get('GroupIds') is not None:
             self.group_ids = m.get('GroupIds')

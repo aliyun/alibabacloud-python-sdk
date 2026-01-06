@@ -10,6 +10,7 @@ class RevokeApplicationFromUsersRequest(DaraModel):
     def __init__(
         self,
         application_id: str = None,
+        application_role_id: str = None,
         instance_id: str = None,
         user_ids: List[str] = None,
     ):
@@ -17,6 +18,8 @@ class RevokeApplicationFromUsersRequest(DaraModel):
         # 
         # This parameter is required.
         self.application_id = application_id
+        # 应用角色ID。
+        self.application_role_id = application_role_id
         # The ID of the instance.
         # 
         # This parameter is required.
@@ -37,6 +40,9 @@ class RevokeApplicationFromUsersRequest(DaraModel):
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
 
+        if self.application_role_id is not None:
+            result['ApplicationRoleId'] = self.application_role_id
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -49,6 +55,9 @@ class RevokeApplicationFromUsersRequest(DaraModel):
         m = m or dict()
         if m.get('ApplicationId') is not None:
             self.application_id = m.get('ApplicationId')
+
+        if m.get('ApplicationRoleId') is not None:
+            self.application_role_id = m.get('ApplicationRoleId')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

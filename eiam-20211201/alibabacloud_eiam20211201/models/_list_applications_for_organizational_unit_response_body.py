@@ -65,12 +65,18 @@ class ListApplicationsForOrganizationalUnitResponseBodyApplications(DaraModel):
     def __init__(
         self,
         application_id: str = None,
+        application_roles: List[main_models.ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles] = None,
     ):
         # The ID of the application that the EIAM organization can access.
         self.application_id = application_id
+        # 应用角色列表。
+        self.application_roles = application_roles
 
     def validate(self):
-        pass
+        if self.application_roles:
+            for v1 in self.application_roles:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -80,12 +86,51 @@ class ListApplicationsForOrganizationalUnitResponseBodyApplications(DaraModel):
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
 
+        result['ApplicationRoles'] = []
+        if self.application_roles is not None:
+            for k1 in self.application_roles:
+                result['ApplicationRoles'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ApplicationId') is not None:
             self.application_id = m.get('ApplicationId')
+
+        self.application_roles = []
+        if m.get('ApplicationRoles') is not None:
+            for k1 in m.get('ApplicationRoles'):
+                temp_model = main_models.ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles()
+                self.application_roles.append(temp_model.from_map(k1))
+
+        return self
+
+class ListApplicationsForOrganizationalUnitResponseBodyApplicationsApplicationRoles(DaraModel):
+    def __init__(
+        self,
+        application_role_id: str = None,
+    ):
+        # 应用角色标识。
+        self.application_role_id = application_role_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.application_role_id is not None:
+            result['ApplicationRoleId'] = self.application_role_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApplicationRoleId') is not None:
+            self.application_role_id = m.get('ApplicationRoleId')
 
         return self
 

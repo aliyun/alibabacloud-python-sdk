@@ -64,10 +64,55 @@ class ListUsersForApplicationResponseBody(DaraModel):
 class ListUsersForApplicationResponseBodyUsers(DaraModel):
     def __init__(
         self,
+        application_roles: List[main_models.ListUsersForApplicationResponseBodyUsersApplicationRoles] = None,
         user_id: str = None,
     ):
+        # 应用角色列表。
+        self.application_roles = application_roles
         # The ID of the account.
         self.user_id = user_id
+
+    def validate(self):
+        if self.application_roles:
+            for v1 in self.application_roles:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['ApplicationRoles'] = []
+        if self.application_roles is not None:
+            for k1 in self.application_roles:
+                result['ApplicationRoles'].append(k1.to_map() if k1 else None)
+
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_roles = []
+        if m.get('ApplicationRoles') is not None:
+            for k1 in m.get('ApplicationRoles'):
+                temp_model = main_models.ListUsersForApplicationResponseBodyUsersApplicationRoles()
+                self.application_roles.append(temp_model.from_map(k1))
+
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+
+        return self
+
+class ListUsersForApplicationResponseBodyUsersApplicationRoles(DaraModel):
+    def __init__(
+        self,
+        application_role_id: str = None,
+    ):
+        # 应用角色标识。
+        self.application_role_id = application_role_id
 
     def validate(self):
         pass
@@ -77,15 +122,15 @@ class ListUsersForApplicationResponseBodyUsers(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.user_id is not None:
-            result['UserId'] = self.user_id
+        if self.application_role_id is not None:
+            result['ApplicationRoleId'] = self.application_role_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('UserId') is not None:
-            self.user_id = m.get('UserId')
+        if m.get('ApplicationRoleId') is not None:
+            self.application_role_id = m.get('ApplicationRoleId')
 
         return self
 

@@ -365,6 +365,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.group_ids):
             query['GroupIds'] = request.group_ids
         if not DaraCore.is_null(request.instance_id):
@@ -397,6 +399,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.group_ids):
             query['GroupIds'] = request.group_ids
         if not DaraCore.is_null(request.instance_id):
@@ -443,6 +447,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.organizational_unit_ids):
@@ -475,6 +481,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.organizational_unit_ids):
@@ -521,6 +529,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.user_ids):
@@ -553,6 +563,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.user_ids):
@@ -11109,6 +11121,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.group_ids):
             query['GroupIds'] = request.group_ids
         if not DaraCore.is_null(request.instance_id):
@@ -11145,6 +11159,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.group_ids):
             query['GroupIds'] = request.group_ids
         if not DaraCore.is_null(request.instance_id):
@@ -12065,6 +12081,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.organizational_unit_ids):
@@ -12101,6 +12119,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.organizational_unit_ids):
@@ -12531,6 +12551,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.page_number):
@@ -12567,6 +12589,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.page_number):
@@ -13253,6 +13277,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.group_ids):
             query['GroupIds'] = request.group_ids
         if not DaraCore.is_null(request.instance_id):
@@ -13285,6 +13311,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.group_ids):
             query['GroupIds'] = request.group_ids
         if not DaraCore.is_null(request.instance_id):
@@ -13331,6 +13359,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.organizational_unit_ids):
@@ -13363,6 +13393,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.organizational_unit_ids):
@@ -13409,6 +13441,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.user_ids):
@@ -13441,6 +13475,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_id):
             query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.application_role_id):
+            query['ApplicationRoleId'] = request.application_role_id
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.user_ids):

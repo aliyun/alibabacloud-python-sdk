@@ -1,3 +1,21 @@
+2026-01-06 Version: 2.8.2
+- Update API AuthorizeApplicationToGroups: add request parameters ApplicationRoleId.
+- Update API AuthorizeApplicationToOrganizationalUnits: add request parameters ApplicationRoleId.
+- Update API AuthorizeApplicationToUsers: add request parameters ApplicationRoleId.
+- Update API ListApplicationsForGroup: add response parameters Body.Applications.$.ApplicationRoles.
+- Update API ListApplicationsForOrganizationalUnit: add response parameters Body.Applications.$.ApplicationRoles.
+- Update API ListApplicationsForUser: add response parameters Body.Applications.$.ApplicationRoles.
+- Update API ListGroupsForApplication: add request parameters ApplicationRoleId.
+- Update API ListGroupsForApplication: add response parameters Body.Groups.$.ApplicationRoles.
+- Update API ListOrganizationalUnitsForApplication: add request parameters ApplicationRoleId.
+- Update API ListOrganizationalUnitsForApplication: add response parameters Body.OrganizationalUnits.$.ApplicationRoles.
+- Update API ListUsersForApplication: add request parameters ApplicationRoleId.
+- Update API ListUsersForApplication: add response parameters Body.Users.$.ApplicationRoles.
+- Update API RevokeApplicationFromGroups: add request parameters ApplicationRoleId.
+- Update API RevokeApplicationFromOrganizationalUnits: add request parameters ApplicationRoleId.
+- Update API RevokeApplicationFromUsers: add request parameters ApplicationRoleId.
+
+
 2026-01-04 Version: 2.8.1
 - Update API GetApplication: add response parameters Body.Application.ApplicationCreationType.
 - Update API GetApplication: add response parameters Body.Application.ResourceServerSourceType.

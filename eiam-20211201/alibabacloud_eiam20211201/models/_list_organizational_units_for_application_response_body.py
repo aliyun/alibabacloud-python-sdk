@@ -64,10 +64,55 @@ class ListOrganizationalUnitsForApplicationResponseBody(DaraModel):
 class ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits(DaraModel):
     def __init__(
         self,
+        application_roles: List[main_models.ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles] = None,
         organizational_unit_id: str = None,
     ):
+        # 应用角色列表。
+        self.application_roles = application_roles
         # The ID of the organization that is allowed to access the application.
         self.organizational_unit_id = organizational_unit_id
+
+    def validate(self):
+        if self.application_roles:
+            for v1 in self.application_roles:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['ApplicationRoles'] = []
+        if self.application_roles is not None:
+            for k1 in self.application_roles:
+                result['ApplicationRoles'].append(k1.to_map() if k1 else None)
+
+        if self.organizational_unit_id is not None:
+            result['OrganizationalUnitId'] = self.organizational_unit_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.application_roles = []
+        if m.get('ApplicationRoles') is not None:
+            for k1 in m.get('ApplicationRoles'):
+                temp_model = main_models.ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles()
+                self.application_roles.append(temp_model.from_map(k1))
+
+        if m.get('OrganizationalUnitId') is not None:
+            self.organizational_unit_id = m.get('OrganizationalUnitId')
+
+        return self
+
+class ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnitsApplicationRoles(DaraModel):
+    def __init__(
+        self,
+        application_role_id: str = None,
+    ):
+        # 应用角色标识。
+        self.application_role_id = application_role_id
 
     def validate(self):
         pass
@@ -77,15 +122,15 @@ class ListOrganizationalUnitsForApplicationResponseBodyOrganizationalUnits(DaraM
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.organizational_unit_id is not None:
-            result['OrganizationalUnitId'] = self.organizational_unit_id
+        if self.application_role_id is not None:
+            result['ApplicationRoleId'] = self.application_role_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('OrganizationalUnitId') is not None:
-            self.organizational_unit_id = m.get('OrganizationalUnitId')
+        if m.get('ApplicationRoleId') is not None:
+            self.application_role_id = m.get('ApplicationRoleId')
 
         return self
 
