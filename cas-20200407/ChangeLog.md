@@ -1,3 +1,12 @@
+2026-01-06 Version: 3.0.5
+- Update API Decrypt: add request parameters WarehouseId.
+- Update API Encrypt: add request parameters WarehouseId.
+- Update API GetCertWarehouseQuota: add response parameters Body.AppTotalQuota.
+- Update API GetCertWarehouseQuota: add response parameters Body.AppUseCount.
+- Update API Sign: add request parameters WarehouseId.
+- Update API Verify: add request parameters WarehouseId.
+
+
 2025-12-23 Version: 3.0.4
 - Update API Decrypt: add request parameters CustomIdentifier.
 - Update API Encrypt: add request parameters CustomIdentifier.
