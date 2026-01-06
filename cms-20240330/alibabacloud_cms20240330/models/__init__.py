@@ -107,6 +107,8 @@ from ._create_prometheus_virtual_instance_response import CreatePrometheusVirtua
 from ._create_service_request import CreateServiceRequest
 from ._create_service_response_body import CreateServiceResponseBody
 from ._create_service_response import CreateServiceResponse
+from ._create_service_observability_response_body import CreateServiceObservabilityResponseBody
+from ._create_service_observability_response import CreateServiceObservabilityResponse
 from ._create_thread_request import CreateThreadRequest
 from ._create_thread_response_body import CreateThreadResponseBody
 from ._create_thread_response import CreateThreadResponse
@@ -658,6 +660,8 @@ __all__ = [
     CreateServiceRequest,
     CreateServiceResponseBody,
     CreateServiceResponse,
+    CreateServiceObservabilityResponseBody,
+    CreateServiceObservabilityResponse,
     CreateThreadRequest,
     CreateThreadResponseBody,
     CreateThreadResponse,

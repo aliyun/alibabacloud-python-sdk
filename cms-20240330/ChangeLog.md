@@ -1,3 +1,11 @@
+2026-01-06 Version: 4.2.0
+- Support API CreateServiceObservability.
+- Update API CreateIntegrationPolicy: add request parameters body.entityGroup.clusterNamespace.
+- Update API GetDigitalEmployee: add response parameters Body.employeeType.
+- Update API ListDigitalEmployees: add request parameters employeeType.
+- Update API ListDigitalEmployees: add response parameters Body.digitalEmployees.$.employeeType.
+
+
 2025-12-30 Version: 4.1.0
 - Support API ChangeResourceGroup.
 - Support API ListTagResources.

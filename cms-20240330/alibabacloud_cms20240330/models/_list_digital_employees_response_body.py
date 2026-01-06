@@ -81,6 +81,7 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
         default_rule: str = None,
         description: str = None,
         display_name: str = None,
+        employee_type: str = None,
         knowledges: main_models.ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges = None,
         name: str = None,
         role_arn: str = None,
@@ -91,6 +92,7 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
         self.default_rule = default_rule
         self.description = description
         self.display_name = display_name
+        self.employee_type = employee_type
         self.knowledges = knowledges
         self.name = name
         self.role_arn = role_arn
@@ -117,6 +119,9 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
 
         if self.display_name is not None:
             result['displayName'] = self.display_name
+
+        if self.employee_type is not None:
+            result['employeeType'] = self.employee_type
 
         if self.knowledges is not None:
             result['knowledges'] = self.knowledges.to_map()
@@ -145,6 +150,9 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
 
         if m.get('displayName') is not None:
             self.display_name = m.get('displayName')
+
+        if m.get('employeeType') is not None:
+            self.employee_type = m.get('employeeType')
 
         if m.get('knowledges') is not None:
             temp_model = main_models.ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges()

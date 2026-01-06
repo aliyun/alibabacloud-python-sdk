@@ -1406,6 +1406,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_service_with_options_async(workspace, request, headers, runtime)
 
+    def create_service_observability_with_options(
+        self,
+        workspace: str,
+        type: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServiceObservabilityResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateServiceObservability',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service-observability/{DaraURL.percent_encode(type)}',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateServiceObservabilityResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_service_observability_with_options_async(
+        self,
+        workspace: str,
+        type: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServiceObservabilityResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateServiceObservability',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/workspace/{DaraURL.percent_encode(workspace)}/service-observability/{DaraURL.percent_encode(type)}',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateServiceObservabilityResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_service_observability(
+        self,
+        workspace: str,
+        type: str,
+    ) -> main_models.CreateServiceObservabilityResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_service_observability_with_options(workspace, type, headers, runtime)
+
+    async def create_service_observability_async(
+        self,
+        workspace: str,
+        type: str,
+    ) -> main_models.CreateServiceObservabilityResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_service_observability_with_options_async(workspace, type, headers, runtime)
+
     def create_thread_with_options(
         self,
         name: str,
@@ -5164,6 +5234,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListDigitalEmployeesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.employee_type):
+            query['employeeType'] = request.employee_type
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.name):
@@ -5198,6 +5270,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListDigitalEmployeesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.employee_type):
+            query['employeeType'] = request.employee_type
         if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
         if not DaraCore.is_null(request.name):

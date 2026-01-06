@@ -135,6 +135,7 @@ class CreateIntegrationPolicyRequestEntityGroup(DaraModel):
         self,
         cluster_entity_type: str = None,
         cluster_id: str = None,
+        cluster_namespace: str = None,
         disable_policy_share: bool = None,
         entity_group_id: str = None,
         entity_user_id: str = None,
@@ -144,6 +145,7 @@ class CreateIntegrationPolicyRequestEntityGroup(DaraModel):
         self.cluster_entity_type = cluster_entity_type
         # Cluster ID.
         self.cluster_id = cluster_id
+        self.cluster_namespace = cluster_namespace
         # Whether to disable the unique binding of the Policy. If enabled, multiple Policies can be created for a single container cluster.
         self.disable_policy_share = disable_policy_share
         # Entity group ID.
@@ -167,6 +169,9 @@ class CreateIntegrationPolicyRequestEntityGroup(DaraModel):
         if self.cluster_id is not None:
             result['clusterId'] = self.cluster_id
 
+        if self.cluster_namespace is not None:
+            result['clusterNamespace'] = self.cluster_namespace
+
         if self.disable_policy_share is not None:
             result['disablePolicyShare'] = self.disable_policy_share
 
@@ -188,6 +193,9 @@ class CreateIntegrationPolicyRequestEntityGroup(DaraModel):
 
         if m.get('clusterId') is not None:
             self.cluster_id = m.get('clusterId')
+
+        if m.get('clusterNamespace') is not None:
+            self.cluster_namespace = m.get('clusterNamespace')
 
         if m.get('disablePolicyShare') is not None:
             self.disable_policy_share = m.get('disablePolicyShare')
