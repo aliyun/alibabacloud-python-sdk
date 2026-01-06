@@ -16,7 +16,7 @@ class DescribeHistoryTasksRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
         resource_group_id: str = None,
-        resource_owner_account: int = None,
+        resource_owner_account: str = None,
         resource_owner_id: int = None,
         security_token: str = None,
         status: str = None,

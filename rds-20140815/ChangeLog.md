@@ -1,3 +1,10 @@
+2026-01-06 Version: 14.0.0
+- Update API DescribeHistoryTasks: update request parameters ResourceOwnerAccount' type has changed.
+- Update API DescribeHistoryTasks: update request parameters ResourceOwnerAccount' format has changed.
+- Update API DescribeHistoryTasksStat: update request parameters ResourceOwnerAccount' type has changed.
+- Update API DescribeHistoryTasksStat: update request parameters ResourceOwnerAccount' format has changed.
+
+
 2025-12-25 Version: 13.1.0
 - Support API ModifyRCDiskChargeType.
 - Update API DescribeRCDisks: add response parameters Body.Disks.$.AttachedTime.
