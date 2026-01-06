@@ -1,0 +1,108 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from alibabacloud_aliding20230426 import models as main_models
+from darabonba.model import DaraModel
+
+class SetRowsVisibilityRequest(DaraModel):
+    def __init__(
+        self,
+        row: int = None,
+        row_count: int = None,
+        sheet_id: str = None,
+        tenant_context: main_models.SetRowsVisibilityRequestTenantContext = None,
+        visibility: str = None,
+        workbook_id: str = None,
+    ):
+        # This parameter is required.
+        self.row = row
+        # This parameter is required.
+        self.row_count = row_count
+        # This parameter is required.
+        self.sheet_id = sheet_id
+        self.tenant_context = tenant_context
+        # This parameter is required.
+        self.visibility = visibility
+        # This parameter is required.
+        self.workbook_id = workbook_id
+
+    def validate(self):
+        if self.tenant_context:
+            self.tenant_context.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.row is not None:
+            result['Row'] = self.row
+
+        if self.row_count is not None:
+            result['RowCount'] = self.row_count
+
+        if self.sheet_id is not None:
+            result['SheetId'] = self.sheet_id
+
+        if self.tenant_context is not None:
+            result['TenantContext'] = self.tenant_context.to_map()
+
+        if self.visibility is not None:
+            result['Visibility'] = self.visibility
+
+        if self.workbook_id is not None:
+            result['WorkbookId'] = self.workbook_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Row') is not None:
+            self.row = m.get('Row')
+
+        if m.get('RowCount') is not None:
+            self.row_count = m.get('RowCount')
+
+        if m.get('SheetId') is not None:
+            self.sheet_id = m.get('SheetId')
+
+        if m.get('TenantContext') is not None:
+            temp_model = main_models.SetRowsVisibilityRequestTenantContext()
+            self.tenant_context = temp_model.from_map(m.get('TenantContext'))
+
+        if m.get('Visibility') is not None:
+            self.visibility = m.get('Visibility')
+
+        if m.get('WorkbookId') is not None:
+            self.workbook_id = m.get('WorkbookId')
+
+        return self
+
+class SetRowsVisibilityRequestTenantContext(DaraModel):
+    def __init__(
+        self,
+        tenant_id: str = None,
+    ):
+        self.tenant_id = tenant_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.tenant_id is not None:
+            result['tenantId'] = self.tenant_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tenantId') is not None:
+            self.tenant_id = m.get('tenantId')
+
+        return self
+
