@@ -21,7 +21,6 @@ class CreateTrainPicAvatarRequest(DaraModel):
         self.image_oss_path = image_oss_path
         # This parameter is required.
         self.name = name
-        # This parameter is required.
         self.template_id = template_id
         self.transparent = transparent
 
