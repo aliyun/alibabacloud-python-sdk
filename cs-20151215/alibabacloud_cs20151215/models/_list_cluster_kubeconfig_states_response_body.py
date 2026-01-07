@@ -65,6 +65,7 @@ class ListClusterKubeconfigStatesResponseBodyStates(DaraModel):
         account_type: str = None,
         cert_expire_time: str = None,
         cert_state: str = None,
+        cloud_service_roles: List[main_models.ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles] = None,
         revokable: bool = None,
     ):
         # The displayed name or role name of the RAM user.
@@ -93,11 +94,15 @@ class ListClusterKubeconfigStatesResponseBodyStates(DaraModel):
         # *   Expired: The certificate is expired.
         # *   Unknown: The status of the certificate is unknown.
         self.cert_state = cert_state
+        self.cloud_service_roles = cloud_service_roles
         # Indicates whether the client certificate for the kubeconfig file can be revoked.
         self.revokable = revokable
 
     def validate(self):
-        pass
+        if self.cloud_service_roles:
+            for v1 in self.cloud_service_roles:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -124,6 +129,11 @@ class ListClusterKubeconfigStatesResponseBodyStates(DaraModel):
 
         if self.cert_state is not None:
             result['cert_state'] = self.cert_state
+
+        result['cloud_service_roles'] = []
+        if self.cloud_service_roles is not None:
+            for k1 in self.cloud_service_roles:
+                result['cloud_service_roles'].append(k1.to_map() if k1 else None)
 
         if self.revokable is not None:
             result['revokable'] = self.revokable
@@ -153,8 +163,65 @@ class ListClusterKubeconfigStatesResponseBodyStates(DaraModel):
         if m.get('cert_state') is not None:
             self.cert_state = m.get('cert_state')
 
+        self.cloud_service_roles = []
+        if m.get('cloud_service_roles') is not None:
+            for k1 in m.get('cloud_service_roles'):
+                temp_model = main_models.ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles()
+                self.cloud_service_roles.append(temp_model.from_map(k1))
+
         if m.get('revokable') is not None:
             self.revokable = m.get('revokable')
+
+        return self
+
+class ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles(DaraModel):
+    def __init__(
+        self,
+        is_default_template: bool = None,
+        role_name: str = None,
+        role_namespace: str = None,
+        type: str = None,
+    ):
+        self.is_default_template = is_default_template
+        self.role_name = role_name
+        self.role_namespace = role_namespace
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.is_default_template is not None:
+            result['is_default_template'] = self.is_default_template
+
+        if self.role_name is not None:
+            result['role_name'] = self.role_name
+
+        if self.role_namespace is not None:
+            result['role_namespace'] = self.role_namespace
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('is_default_template') is not None:
+            self.is_default_template = m.get('is_default_template')
+
+        if m.get('role_name') is not None:
+            self.role_name = m.get('role_name')
+
+        if m.get('role_namespace') is not None:
+            self.role_namespace = m.get('role_namespace')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
 
         return self
 

@@ -7,9 +7,11 @@ from darabonba.model import DaraModel
 class ListClusterKubeconfigStatesRequest(DaraModel):
     def __init__(
         self,
+        cloud_service_kube_config: bool = None,
         page_number: int = None,
         page_size: int = None,
     ):
+        self.cloud_service_kube_config = cloud_service_kube_config
         # The page number.
         # 
         # *   Valid values: ≥ 1.
@@ -29,6 +31,9 @@ class ListClusterKubeconfigStatesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cloud_service_kube_config is not None:
+            result['cloudServiceKubeConfig'] = self.cloud_service_kube_config
+
         if self.page_number is not None:
             result['pageNumber'] = self.page_number
 
@@ -39,6 +44,9 @@ class ListClusterKubeconfigStatesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('cloudServiceKubeConfig') is not None:
+            self.cloud_service_kube_config = m.get('cloudServiceKubeConfig')
+
         if m.get('pageNumber') is not None:
             self.page_number = m.get('pageNumber')
 

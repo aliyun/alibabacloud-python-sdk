@@ -7736,6 +7736,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListClusterKubeconfigStatesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cloud_service_kube_config):
+            query['cloudServiceKubeConfig'] = request.cloud_service_kube_config
         if not DaraCore.is_null(request.page_number):
             query['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -7769,6 +7771,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListClusterKubeconfigStatesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cloud_service_kube_config):
+            query['cloudServiceKubeConfig'] = request.cloud_service_kube_config
         if not DaraCore.is_null(request.page_number):
             query['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
