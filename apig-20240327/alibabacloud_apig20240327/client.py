@@ -1729,6 +1729,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_policy_attachment_with_options_async(request, headers, runtime)
 
+    def create_secret_with_options(
+        self,
+        request: main_models.CreateSecretRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSecretResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.gateway_type):
+            body['gatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.kms_config):
+            body['kmsConfig'] = request.kms_config
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.secret_data):
+            body['secretData'] = request.secret_data
+        if not DaraCore.is_null(request.secret_source):
+            body['secretSource'] = request.secret_source
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSecret',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/secrets',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSecretResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_secret_with_options_async(
+        self,
+        request: main_models.CreateSecretRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSecretResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.gateway_type):
+            body['gatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.kms_config):
+            body['kmsConfig'] = request.kms_config
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.secret_data):
+            body['secretData'] = request.secret_data
+        if not DaraCore.is_null(request.secret_source):
+            body['secretSource'] = request.secret_source
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSecret',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/secrets',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSecretResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_secret(
+        self,
+        request: main_models.CreateSecretRequest,
+    ) -> main_models.CreateSecretResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_secret_with_options(request, headers, runtime)
+
+    async def create_secret_async(
+        self,
+        request: main_models.CreateSecretRequest,
+    ) -> main_models.CreateSecretResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_secret_with_options_async(request, headers, runtime)
+
     def create_service_with_options(
         self,
         request: main_models.CreateServiceRequest,
@@ -2880,6 +2976,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_policy_attachment_with_options_async(policy_attachment_id, headers, runtime)
+
+    def delete_secret_with_options(
+        self,
+        secret_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSecretResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSecret',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/secrets/{DaraURL.percent_encode(secret_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSecretResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_secret_with_options_async(
+        self,
+        secret_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSecretResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSecret',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/secrets/{DaraURL.percent_encode(secret_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSecretResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_secret(
+        self,
+        secret_id: str,
+    ) -> main_models.DeleteSecretResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_secret_with_options(secret_id, headers, runtime)
+
+    async def delete_secret_async(
+        self,
+        secret_id: str,
+    ) -> main_models.DeleteSecretResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_secret_with_options_async(secret_id, headers, runtime)
 
     def delete_service_with_options(
         self,
@@ -4334,6 +4496,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_resource_overview_with_options_async(request, headers, runtime)
+
+    def get_secret_value_with_options(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSecretValueResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSecretValue',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/secrets/name/{DaraURL.percent_encode(name)}/value',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSecretValueResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_secret_value_with_options_async(
+        self,
+        name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSecretValueResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSecretValue',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/secrets/name/{DaraURL.percent_encode(name)}/value',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSecretValueResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_secret_value(
+        self,
+        name: str,
+    ) -> main_models.GetSecretValueResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_secret_value_with_options(name, headers, runtime)
+
+    async def get_secret_value_async(
+        self,
+        name: str,
+    ) -> main_models.GetSecretValueResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_secret_value_with_options_async(name, headers, runtime)
 
     def get_service_with_options(
         self,
@@ -6336,6 +6564,178 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_policy_classes_with_options_async(request, headers, runtime)
+
+    def list_secret_references_with_options(
+        self,
+        secret_id: str,
+        request: main_models.ListSecretReferencesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSecretReferencesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSecretReferences',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/secrets/{DaraURL.percent_encode(secret_id)}/references',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSecretReferencesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_secret_references_with_options_async(
+        self,
+        secret_id: str,
+        request: main_models.ListSecretReferencesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSecretReferencesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSecretReferences',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/secrets/{DaraURL.percent_encode(secret_id)}/references',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSecretReferencesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_secret_references(
+        self,
+        secret_id: str,
+        request: main_models.ListSecretReferencesRequest,
+    ) -> main_models.ListSecretReferencesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_secret_references_with_options(secret_id, request, headers, runtime)
+
+    async def list_secret_references_async(
+        self,
+        secret_id: str,
+        request: main_models.ListSecretReferencesRequest,
+    ) -> main_models.ListSecretReferencesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_secret_references_with_options_async(secret_id, request, headers, runtime)
+
+    def list_secrets_with_options(
+        self,
+        request: main_models.ListSecretsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSecretsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.name_like):
+            query['nameLike'] = request.name_like
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSecrets',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/secrets',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSecretsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_secrets_with_options_async(
+        self,
+        request: main_models.ListSecretsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSecretsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.gateway_type):
+            query['gatewayType'] = request.gateway_type
+        if not DaraCore.is_null(request.name_like):
+            query['nameLike'] = request.name_like
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSecrets',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/secrets',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSecretsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_secrets(
+        self,
+        request: main_models.ListSecretsRequest,
+    ) -> main_models.ListSecretsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_secrets_with_options(request, headers, runtime)
+
+    async def list_secrets_async(
+        self,
+        request: main_models.ListSecretsRequest,
+    ) -> main_models.ListSecretsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_secrets_with_options_async(request, headers, runtime)
 
     def list_services_with_options(
         self,
@@ -8422,6 +8822,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_policy_with_options_async(policy_id, request, headers, runtime)
+
+    def update_secret_with_options(
+        self,
+        secret_id: str,
+        request: main_models.UpdateSecretRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSecretResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.secret_data):
+            body['secretData'] = request.secret_data
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSecret',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/secrets/{DaraURL.percent_encode(secret_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSecretResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_secret_with_options_async(
+        self,
+        secret_id: str,
+        request: main_models.UpdateSecretRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSecretResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.secret_data):
+            body['secretData'] = request.secret_data
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSecret',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/secrets/{DaraURL.percent_encode(secret_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSecretResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_secret(
+        self,
+        secret_id: str,
+        request: main_models.UpdateSecretRequest,
+    ) -> main_models.UpdateSecretResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_secret_with_options(secret_id, request, headers, runtime)
+
+    async def update_secret_async(
+        self,
+        secret_id: str,
+        request: main_models.UpdateSecretRequest,
+    ) -> main_models.UpdateSecretResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_secret_with_options_async(secret_id, request, headers, runtime)
 
     def update_service_with_options(
         self,

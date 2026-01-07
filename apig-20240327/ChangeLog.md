@@ -1,3 +1,12 @@
+2026-01-07 Version: 5.7.0
+- Support API CreateSecret.
+- Support API DeleteSecret.
+- Support API GetSecretValue.
+- Support API ListSecretReferences.
+- Support API ListSecrets.
+- Support API UpdateSecret.
+
+
 2026-01-05 Version: 5.6.0
 - Support API ListConsumerAuthorizationRules.
 - Support API ListPluginClasses.

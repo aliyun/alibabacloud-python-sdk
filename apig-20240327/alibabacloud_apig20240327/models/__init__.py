@@ -107,6 +107,9 @@ from ._create_policy_response import CreatePolicyResponse
 from ._create_policy_attachment_request import CreatePolicyAttachmentRequest
 from ._create_policy_attachment_response_body import CreatePolicyAttachmentResponseBody
 from ._create_policy_attachment_response import CreatePolicyAttachmentResponse
+from ._create_secret_request import CreateSecretRequest
+from ._create_secret_response_body import CreateSecretResponseBody
+from ._create_secret_response import CreateSecretResponse
 from ._create_service_request import CreateServiceRequest
 from ._create_service_response_body import CreateServiceResponseBody
 from ._create_service_response import CreateServiceResponse
@@ -143,6 +146,8 @@ from ._delete_policy_response_body import DeletePolicyResponseBody
 from ._delete_policy_response import DeletePolicyResponse
 from ._delete_policy_attachment_response_body import DeletePolicyAttachmentResponseBody
 from ._delete_policy_attachment_response import DeletePolicyAttachmentResponse
+from ._delete_secret_response_body import DeleteSecretResponseBody
+from ._delete_secret_response import DeleteSecretResponse
 from ._delete_service_response_body import DeleteServiceResponseBody
 from ._delete_service_response import DeleteServiceResponse
 from ._delete_service_version_response_body import DeleteServiceVersionResponseBody
@@ -189,6 +194,8 @@ from ._get_policy_attachment_response import GetPolicyAttachmentResponse
 from ._get_resource_overview_request import GetResourceOverviewRequest
 from ._get_resource_overview_response_body import GetResourceOverviewResponseBody
 from ._get_resource_overview_response import GetResourceOverviewResponse
+from ._get_secret_value_response_body import GetSecretValueResponseBody
+from ._get_secret_value_response import GetSecretValueResponse
 from ._get_service_response_body import GetServiceResponseBody
 from ._get_service_response import GetServiceResponse
 from ._get_source_response_body import GetSourceResponseBody
@@ -247,6 +254,12 @@ from ._list_policies_response import ListPoliciesResponse
 from ._list_policy_classes_request import ListPolicyClassesRequest
 from ._list_policy_classes_response_body import ListPolicyClassesResponseBody
 from ._list_policy_classes_response import ListPolicyClassesResponse
+from ._list_secret_references_request import ListSecretReferencesRequest
+from ._list_secret_references_response_body import ListSecretReferencesResponseBody
+from ._list_secret_references_response import ListSecretReferencesResponse
+from ._list_secrets_request import ListSecretsRequest
+from ._list_secrets_response_body import ListSecretsResponseBody
+from ._list_secrets_response import ListSecretsResponse
 from ._list_services_request import ListServicesRequest
 from ._list_services_response_body import ListServicesResponseBody
 from ._list_services_response import ListServicesResponse
@@ -311,6 +324,9 @@ from ._update_plugin_attachment_response import UpdatePluginAttachmentResponse
 from ._update_policy_request import UpdatePolicyRequest
 from ._update_policy_response_body import UpdatePolicyResponseBody
 from ._update_policy_response import UpdatePolicyResponse
+from ._update_secret_request import UpdateSecretRequest
+from ._update_secret_response_body import UpdateSecretResponseBody
+from ._update_secret_response import UpdateSecretResponse
 from ._update_service_request import UpdateServiceRequest
 from ._update_service_response_body import UpdateServiceResponseBody
 from ._update_service_response import UpdateServiceResponse
@@ -413,6 +429,7 @@ from ._create_mcp_server_response_body import CreateMcpServerResponseBodyData
 from ._create_plugin_attachment_response_body import CreatePluginAttachmentResponseBodyData
 from ._create_policy_response_body import CreatePolicyResponseBodyData
 from ._create_policy_attachment_response_body import CreatePolicyAttachmentResponseBodyData
+from ._create_secret_response_body import CreateSecretResponseBodyData
 from ._create_service_request import CreateServiceRequestServiceConfigs
 from ._create_service_response_body import CreateServiceResponseBodyData
 from ._create_service_version_request import CreateServiceVersionRequestLabels
@@ -457,6 +474,7 @@ from ._get_resource_overview_response_body import GetResourceOverviewResponseBod
 from ._get_resource_overview_response_body import GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails
 from ._get_resource_overview_response_body import GetResourceOverviewResponseBodyDataRiskOverview
 from ._get_resource_overview_response_body import GetResourceOverviewResponseBodyData
+from ._get_secret_value_response_body import GetSecretValueResponseBodyData
 from ._get_source_response_body import GetSourceResponseBodyDataK8SSourceInfo
 from ._get_source_response_body import GetSourceResponseBodyDataNacosSourceInfo
 from ._get_source_response_body import GetSourceResponseBodyData
@@ -509,6 +527,14 @@ from ._list_plugins_response_body import ListPluginsResponseBodyDataItems
 from ._list_plugins_response_body import ListPluginsResponseBodyData
 from ._list_policies_response_body import ListPoliciesResponseBodyData
 from ._list_policy_classes_response_body import ListPolicyClassesResponseBodyData
+from ._list_secret_references_response_body import ListSecretReferencesResponseBodyDataItemsPluginConfig
+from ._list_secret_references_response_body import ListSecretReferencesResponseBodyDataItemsServiceConfig
+from ._list_secret_references_response_body import ListSecretReferencesResponseBodyDataItemsConsumerConfig
+from ._list_secret_references_response_body import ListSecretReferencesResponseBodyDataItemsMcpServerConfig
+from ._list_secret_references_response_body import ListSecretReferencesResponseBodyDataItems
+from ._list_secret_references_response_body import ListSecretReferencesResponseBodyData
+from ._list_secrets_response_body import ListSecretsResponseBodyDataItems
+from ._list_secrets_response_body import ListSecretsResponseBodyData
 from ._list_services_response_body import ListServicesResponseBodyData
 from ._list_ssl_certs_response_body import ListSslCertsResponseBodyData
 from ._list_zones_response_body import ListZonesResponseBodyDataItems
@@ -642,6 +668,9 @@ __all__ = [
     CreatePolicyAttachmentRequest,
     CreatePolicyAttachmentResponseBody,
     CreatePolicyAttachmentResponse,
+    CreateSecretRequest,
+    CreateSecretResponseBody,
+    CreateSecretResponse,
     CreateServiceRequest,
     CreateServiceResponseBody,
     CreateServiceResponse,
@@ -678,6 +707,8 @@ __all__ = [
     DeletePolicyResponse,
     DeletePolicyAttachmentResponseBody,
     DeletePolicyAttachmentResponse,
+    DeleteSecretResponseBody,
+    DeleteSecretResponse,
     DeleteServiceResponseBody,
     DeleteServiceResponse,
     DeleteServiceVersionResponseBody,
@@ -724,6 +755,8 @@ __all__ = [
     GetResourceOverviewRequest,
     GetResourceOverviewResponseBody,
     GetResourceOverviewResponse,
+    GetSecretValueResponseBody,
+    GetSecretValueResponse,
     GetServiceResponseBody,
     GetServiceResponse,
     GetSourceResponseBody,
@@ -782,6 +815,12 @@ __all__ = [
     ListPolicyClassesRequest,
     ListPolicyClassesResponseBody,
     ListPolicyClassesResponse,
+    ListSecretReferencesRequest,
+    ListSecretReferencesResponseBody,
+    ListSecretReferencesResponse,
+    ListSecretsRequest,
+    ListSecretsResponseBody,
+    ListSecretsResponse,
     ListServicesRequest,
     ListServicesResponseBody,
     ListServicesResponse,
@@ -846,6 +885,9 @@ __all__ = [
     UpdatePolicyRequest,
     UpdatePolicyResponseBody,
     UpdatePolicyResponse,
+    UpdateSecretRequest,
+    UpdateSecretResponseBody,
+    UpdateSecretResponse,
     UpdateServiceRequest,
     UpdateServiceResponseBody,
     UpdateServiceResponse,
@@ -948,6 +990,7 @@ __all__ = [
     CreatePluginAttachmentResponseBodyData,
     CreatePolicyResponseBodyData,
     CreatePolicyAttachmentResponseBodyData,
+    CreateSecretResponseBodyData,
     CreateServiceRequestServiceConfigs,
     CreateServiceResponseBodyData,
     CreateServiceVersionRequestLabels,
@@ -992,6 +1035,7 @@ __all__ = [
     GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails,
     GetResourceOverviewResponseBodyDataRiskOverview,
     GetResourceOverviewResponseBodyData,
+    GetSecretValueResponseBodyData,
     GetSourceResponseBodyDataK8SSourceInfo,
     GetSourceResponseBodyDataNacosSourceInfo,
     GetSourceResponseBodyData,
@@ -1044,6 +1088,14 @@ __all__ = [
     ListPluginsResponseBodyData,
     ListPoliciesResponseBodyData,
     ListPolicyClassesResponseBodyData,
+    ListSecretReferencesResponseBodyDataItemsPluginConfig,
+    ListSecretReferencesResponseBodyDataItemsServiceConfig,
+    ListSecretReferencesResponseBodyDataItemsConsumerConfig,
+    ListSecretReferencesResponseBodyDataItemsMcpServerConfig,
+    ListSecretReferencesResponseBodyDataItems,
+    ListSecretReferencesResponseBodyData,
+    ListSecretsResponseBodyDataItems,
+    ListSecretsResponseBodyData,
     ListServicesResponseBodyData,
     ListSslCertsResponseBodyData,
     ListZonesResponseBodyDataItems,
