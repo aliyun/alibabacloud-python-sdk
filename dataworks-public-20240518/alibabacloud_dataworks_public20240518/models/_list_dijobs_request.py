@@ -14,6 +14,7 @@ class ListDIJobsRequest(DaraModel):
         page_size: int = None,
         project_id: int = None,
         source_data_source_type: str = None,
+        spec_type: str = None,
     ):
         # The destination type. Valid values: Hologres, OSS-HDFS, OSS, MaxCompute, Loghub, STARROCKS, Datahub, ANALYTICDB_FOR_MYSQL, Kafka, and Hive. If you do not configure this parameter, the API operation queries synchronization tasks that use all type of destinations.
         self.destination_data_source_type = destination_data_source_type
@@ -39,6 +40,7 @@ class ListDIJobsRequest(DaraModel):
         self.project_id = project_id
         # The source type. Valid values: PolarDB, MySQL, Kafka, Loghub, Hologres, Oracle, OceanBase, MongoDB, RedShift, Hive, SqlServer, Doris, and ClickHouse. If you do not configure this parameter, the API operation queries synchronization tasks that use all types of sources.
         self.source_data_source_type = source_data_source_type
+        self.spec_type = spec_type
 
     def validate(self):
         pass
@@ -69,6 +71,9 @@ class ListDIJobsRequest(DaraModel):
         if self.source_data_source_type is not None:
             result['SourceDataSourceType'] = self.source_data_source_type
 
+        if self.spec_type is not None:
+            result['SpecType'] = self.spec_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -93,6 +98,9 @@ class ListDIJobsRequest(DaraModel):
 
         if m.get('SourceDataSourceType') is not None:
             self.source_data_source_type = m.get('SourceDataSourceType')
+
+        if m.get('SpecType') is not None:
+            self.spec_type = m.get('SpecType')
 
         return self
 

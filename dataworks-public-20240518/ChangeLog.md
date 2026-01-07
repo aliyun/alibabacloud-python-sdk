@@ -1,3 +1,7 @@
+2026-01-07 Version: 8.0.2
+- Update API ListDIJobs: add request parameters SpecType.
+
+
 2026-01-06 Version: 8.0.1
 - Update API GetPipelineRun: add response parameters Body.Pipeline.Description.
 - Update API ListPipelineRuns: add request parameters ObjectId.
