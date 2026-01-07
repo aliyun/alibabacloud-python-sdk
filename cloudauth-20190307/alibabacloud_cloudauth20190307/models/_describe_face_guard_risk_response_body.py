@@ -66,11 +66,13 @@ class DescribeFaceGuardRiskResponseBodyResultObject(DaraModel):
     def __init__(
         self,
         certify_id: str = None,
+        guard_risk_score: float = None,
         risk_extends: str = None,
         risk_tags: str = None,
     ):
         # Unique real-person authentication identifier.
         self.certify_id = certify_id
+        self.guard_risk_score = guard_risk_score
         # Extended information, in JSON format. (Customized return based on tenant requirements)
         self.risk_extends = risk_extends
         # Device risk tags.
@@ -91,6 +93,9 @@ class DescribeFaceGuardRiskResponseBodyResultObject(DaraModel):
         if self.certify_id is not None:
             result['CertifyId'] = self.certify_id
 
+        if self.guard_risk_score is not None:
+            result['GuardRiskScore'] = self.guard_risk_score
+
         if self.risk_extends is not None:
             result['RiskExtends'] = self.risk_extends
 
@@ -103,6 +108,9 @@ class DescribeFaceGuardRiskResponseBodyResultObject(DaraModel):
         m = m or dict()
         if m.get('CertifyId') is not None:
             self.certify_id = m.get('CertifyId')
+
+        if m.get('GuardRiskScore') is not None:
+            self.guard_risk_score = m.get('GuardRiskScore')
 
         if m.get('RiskExtends') is not None:
             self.risk_extends = m.get('RiskExtends')

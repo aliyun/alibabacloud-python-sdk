@@ -1,3 +1,7 @@
+2026-01-07 Version: 3.12.2
+- Update API DescribeFaceGuardRisk: add response parameters Body.ResultObject.GuardRiskScore.
+
+
 2025-12-29 Version: 3.12.1
 - Generated python 2019-03-07 for Cloudauth.
 
