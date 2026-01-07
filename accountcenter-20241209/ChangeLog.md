@@ -1,3 +1,18 @@
+2026-01-07 Version: 1.2.0
+- Support API AccountContactAdd.
+- Support API AccountContactDelete.
+- Support API AccountContactEdit.
+- Support API AccountContactQueryDetail.
+- Support API AccountContactQueryPageList.
+- Support API EnterpriseContactAdd.
+- Support API EnterpriseContactDelete.
+- Support API EnterpriseContactEdit.
+- Support API EnterpriseContactQueryDetail.
+- Support API EnterpriseContactQueryPageList.
+- Support API SendAsyncEmailCaptcha.
+- Support API SendAsyncMobileCaptcha.
+
+
 2025-07-07 Version: 1.1.0
 - Support API EnterpriseAccountChangeLoginPassword.
 - Support API EnterpriseAccountChangeSecurityEmail.
