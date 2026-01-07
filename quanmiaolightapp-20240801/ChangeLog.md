@@ -1,3 +1,7 @@
+2026-01-07 Version: 2.13.3
+- Update API SubmitEssayCorrectionTask: add request parameters tasks.$.customId.
+
+
 2025-12-16 Version: 2.13.2
 - Update API GetVideoAnalysisTask: add response parameters Body.data.payload.output.addDatasetDocumentsResult.
 - Update API GetVideoAnalysisTask: add response parameters Body.data.payload.output.videoCalculatorResult.

@@ -1,0 +1,247 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_quanmiaolightapp20240801 import models as main_models
+from darabonba.model import DaraModel
+
+class SubmitEnterpriseVocAnalysisTaskRequest(DaraModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        contents: List[main_models.SubmitEnterpriseVocAnalysisTaskRequestContents] = None,
+        extra_info: str = None,
+        file_key: str = None,
+        filter_tags: List[main_models.SubmitEnterpriseVocAnalysisTaskRequestFilterTags] = None,
+        model_id: str = None,
+        output_format: str = None,
+        source_trace: bool = None,
+        tags: List[main_models.SubmitEnterpriseVocAnalysisTaskRequestTags] = None,
+        task_description: str = None,
+        url: str = None,
+    ):
+        self.api_key = api_key
+        self.contents = contents
+        self.extra_info = extra_info
+        self.file_key = file_key
+        self.filter_tags = filter_tags
+        self.model_id = model_id
+        self.output_format = output_format
+        self.source_trace = source_trace
+        self.tags = tags
+        self.task_description = task_description
+        self.url = url
+
+    def validate(self):
+        if self.contents:
+            for v1 in self.contents:
+                 if v1:
+                    v1.validate()
+        if self.filter_tags:
+            for v1 in self.filter_tags:
+                 if v1:
+                    v1.validate()
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
+
+        result['contents'] = []
+        if self.contents is not None:
+            for k1 in self.contents:
+                result['contents'].append(k1.to_map() if k1 else None)
+
+        if self.extra_info is not None:
+            result['extraInfo'] = self.extra_info
+
+        if self.file_key is not None:
+            result['fileKey'] = self.file_key
+
+        result['filterTags'] = []
+        if self.filter_tags is not None:
+            for k1 in self.filter_tags:
+                result['filterTags'].append(k1.to_map() if k1 else None)
+
+        if self.model_id is not None:
+            result['modelId'] = self.model_id
+
+        if self.output_format is not None:
+            result['outputFormat'] = self.output_format
+
+        if self.source_trace is not None:
+            result['sourceTrace'] = self.source_trace
+
+        result['tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['tags'].append(k1.to_map() if k1 else None)
+
+        if self.task_description is not None:
+            result['taskDescription'] = self.task_description
+
+        if self.url is not None:
+            result['url'] = self.url
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
+
+        self.contents = []
+        if m.get('contents') is not None:
+            for k1 in m.get('contents'):
+                temp_model = main_models.SubmitEnterpriseVocAnalysisTaskRequestContents()
+                self.contents.append(temp_model.from_map(k1))
+
+        if m.get('extraInfo') is not None:
+            self.extra_info = m.get('extraInfo')
+
+        if m.get('fileKey') is not None:
+            self.file_key = m.get('fileKey')
+
+        self.filter_tags = []
+        if m.get('filterTags') is not None:
+            for k1 in m.get('filterTags'):
+                temp_model = main_models.SubmitEnterpriseVocAnalysisTaskRequestFilterTags()
+                self.filter_tags.append(temp_model.from_map(k1))
+
+        if m.get('modelId') is not None:
+            self.model_id = m.get('modelId')
+
+        if m.get('outputFormat') is not None:
+            self.output_format = m.get('outputFormat')
+
+        if m.get('sourceTrace') is not None:
+            self.source_trace = m.get('sourceTrace')
+
+        self.tags = []
+        if m.get('tags') is not None:
+            for k1 in m.get('tags'):
+                temp_model = main_models.SubmitEnterpriseVocAnalysisTaskRequestTags()
+                self.tags.append(temp_model.from_map(k1))
+
+        if m.get('taskDescription') is not None:
+            self.task_description = m.get('taskDescription')
+
+        if m.get('url') is not None:
+            self.url = m.get('url')
+
+        return self
+
+class SubmitEnterpriseVocAnalysisTaskRequestTags(DaraModel):
+    def __init__(
+        self,
+        tag_define_prompt: str = None,
+        tag_name: str = None,
+    ):
+        self.tag_define_prompt = tag_define_prompt
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.tag_define_prompt is not None:
+            result['tagDefinePrompt'] = self.tag_define_prompt
+
+        if self.tag_name is not None:
+            result['tagName'] = self.tag_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagDefinePrompt') is not None:
+            self.tag_define_prompt = m.get('tagDefinePrompt')
+
+        if m.get('tagName') is not None:
+            self.tag_name = m.get('tagName')
+
+        return self
+
+class SubmitEnterpriseVocAnalysisTaskRequestFilterTags(DaraModel):
+    def __init__(
+        self,
+        tag_define_prompt: str = None,
+        tag_name: str = None,
+    ):
+        self.tag_define_prompt = tag_define_prompt
+        self.tag_name = tag_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.tag_define_prompt is not None:
+            result['tagDefinePrompt'] = self.tag_define_prompt
+
+        if self.tag_name is not None:
+            result['tagName'] = self.tag_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('tagDefinePrompt') is not None:
+            self.tag_define_prompt = m.get('tagDefinePrompt')
+
+        if m.get('tagName') is not None:
+            self.tag_name = m.get('tagName')
+
+        return self
+
+class SubmitEnterpriseVocAnalysisTaskRequestContents(DaraModel):
+    def __init__(
+        self,
+        id: str = None,
+        text: str = None,
+    ):
+        self.id = id
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.id is not None:
+            result['id'] = self.id
+
+        if self.text is not None:
+            result['text'] = self.text
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('id') is not None:
+            self.id = m.get('id')
+
+        if m.get('text') is not None:
+            self.text = m.get('text')
+
+        return self
+
