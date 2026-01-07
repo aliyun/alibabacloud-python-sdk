@@ -19,7 +19,9 @@ class ListServiceInstancesRequest(DaraModel):
         order: str = None,
         page_number: int = None,
         page_size: int = None,
+        quota_id: str = None,
         replica_name: str = None,
+        resource: str = None,
         resource_type: str = None,
         role: str = None,
         sort: str = None,
@@ -72,7 +74,9 @@ class ListServiceInstancesRequest(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: 100.
         self.page_size = page_size
+        self.quota_id = quota_id
         self.replica_name = replica_name
+        self.resource = resource
         # The type of the resource group to which the instance belongs.
         # 
         # Valid values:
@@ -212,8 +216,14 @@ class ListServiceInstancesRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.quota_id is not None:
+            result['QuotaId'] = self.quota_id
+
         if self.replica_name is not None:
             result['ReplicaName'] = self.replica_name
+
+        if self.resource is not None:
+            result['Resource'] = self.resource
 
         if self.resource_type is not None:
             result['ResourceType'] = self.resource_type
@@ -264,8 +274,14 @@ class ListServiceInstancesRequest(DaraModel):
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
 
+        if m.get('QuotaId') is not None:
+            self.quota_id = m.get('QuotaId')
+
         if m.get('ReplicaName') is not None:
             self.replica_name = m.get('ReplicaName')
+
+        if m.get('Resource') is not None:
+            self.resource = m.get('Resource')
 
         if m.get('ResourceType') is not None:
             self.resource_type = m.get('ResourceType')

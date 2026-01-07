@@ -10,6 +10,7 @@ class ListServicesRequest(DaraModel):
     def __init__(
         self,
         autoscaler_enabled: bool = None,
+        caller_uid: str = None,
         cronscaler_enabled: bool = None,
         filter: str = None,
         gateway: str = None,
@@ -36,6 +37,7 @@ class ListServicesRequest(DaraModel):
         workspace_id: str = None,
     ):
         self.autoscaler_enabled = autoscaler_enabled
+        self.caller_uid = caller_uid
         self.cronscaler_enabled = cronscaler_enabled
         # The field that is used for fuzzy matches. The system performs fuzzy matches only by service name.
         self.filter = filter
@@ -289,6 +291,9 @@ class ListServicesRequest(DaraModel):
         if self.autoscaler_enabled is not None:
             result['AutoscalerEnabled'] = self.autoscaler_enabled
 
+        if self.caller_uid is not None:
+            result['CallerUid'] = self.caller_uid
+
         if self.cronscaler_enabled is not None:
             result['CronscalerEnabled'] = self.cronscaler_enabled
 
@@ -367,6 +372,9 @@ class ListServicesRequest(DaraModel):
         m = m or dict()
         if m.get('AutoscalerEnabled') is not None:
             self.autoscaler_enabled = m.get('AutoscalerEnabled')
+
+        if m.get('CallerUid') is not None:
+            self.caller_uid = m.get('CallerUid')
 
         if m.get('CronscalerEnabled') is not None:
             self.cronscaler_enabled = m.get('CronscalerEnabled')

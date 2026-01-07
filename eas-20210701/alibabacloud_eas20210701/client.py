@@ -6014,6 +6014,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.sort):
             query['Sort'] = request.sort
+        if not DaraCore.is_null(request.zone):
+            query['Zone'] = request.zone
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6070,6 +6072,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.sort):
             query['Sort'] = request.sort
+        if not DaraCore.is_null(request.zone):
+            query['Zone'] = request.zone
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6484,8 +6488,12 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.quota_id):
+            query['QuotaId'] = request.quota_id
         if not DaraCore.is_null(request.replica_name):
             query['ReplicaName'] = request.replica_name
+        if not DaraCore.is_null(request.resource):
+            query['Resource'] = request.resource
         if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.role):
@@ -6546,8 +6554,12 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.quota_id):
+            query['QuotaId'] = request.quota_id
         if not DaraCore.is_null(request.replica_name):
             query['ReplicaName'] = request.replica_name
+        if not DaraCore.is_null(request.resource):
+            query['Resource'] = request.resource
         if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
         if not DaraCore.is_null(request.role):
@@ -6696,6 +6708,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.autoscaler_enabled):
             query['AutoscalerEnabled'] = request.autoscaler_enabled
+        if not DaraCore.is_null(request.caller_uid):
+            query['CallerUid'] = request.caller_uid
         if not DaraCore.is_null(request.cronscaler_enabled):
             query['CronscalerEnabled'] = request.cronscaler_enabled
         if not DaraCore.is_null(request.filter):
@@ -6778,6 +6792,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.autoscaler_enabled):
             query['AutoscalerEnabled'] = request.autoscaler_enabled
+        if not DaraCore.is_null(request.caller_uid):
+            query['CallerUid'] = request.caller_uid
         if not DaraCore.is_null(request.cronscaler_enabled):
             query['CronscalerEnabled'] = request.cronscaler_enabled
         if not DaraCore.is_null(request.filter):

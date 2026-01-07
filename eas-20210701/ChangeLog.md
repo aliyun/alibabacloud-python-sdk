@@ -1,3 +1,10 @@
+2026-01-07 Version: 6.11.1
+- Update API ListResourceInstances: add request parameters Zone.
+- Update API ListServiceInstances: add request parameters QuotaId.
+- Update API ListServiceInstances: add request parameters Resource.
+- Update API ListServices: add request parameters CallerUid.
+
+
 2025-12-24 Version: 6.11.0
 - Support API DeleteGatewayLabel.
 - Support API UpdateGatewayLabel.

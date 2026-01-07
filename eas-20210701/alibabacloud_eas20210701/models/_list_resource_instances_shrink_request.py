@@ -18,6 +18,7 @@ class ListResourceInstancesShrinkRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         sort: str = None,
+        zone: str = None,
     ):
         # The billing method of the instance. Valid values:
         # 
@@ -218,6 +219,7 @@ class ListResourceInstancesShrinkRequest(DaraModel):
         # 
         #     <!-- -->
         self.sort = sort
+        self.zone = zone
 
     def validate(self):
         pass
@@ -260,6 +262,9 @@ class ListResourceInstancesShrinkRequest(DaraModel):
         if self.sort is not None:
             result['Sort'] = self.sort
 
+        if self.zone is not None:
+            result['Zone'] = self.zone
+
         return result
 
     def from_map(self, m: dict = None):
@@ -296,6 +301,9 @@ class ListResourceInstancesShrinkRequest(DaraModel):
 
         if m.get('Sort') is not None:
             self.sort = m.get('Sort')
+
+        if m.get('Zone') is not None:
+            self.zone = m.get('Zone')
 
         return self
 
