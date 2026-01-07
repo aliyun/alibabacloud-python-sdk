@@ -83,6 +83,7 @@ class DescribeRCDisksResponseBodyDisks(DaraModel):
     def __init__(
         self,
         attached_time: str = None,
+        bursting_enabled: bool = None,
         category: str = None,
         creation_time: str = None,
         delete_auto_snapshot: bool = None,
@@ -98,6 +99,7 @@ class DescribeRCDisksResponseBodyDisks(DaraModel):
         image_id: str = None,
         instance_id: str = None,
         performance_level: str = None,
+        portable: bool = None,
         region_id: str = None,
         resource_group_id: str = None,
         serial_number: str = None,
@@ -111,6 +113,7 @@ class DescribeRCDisksResponseBodyDisks(DaraModel):
         zone_id: str = None,
     ):
         self.attached_time = attached_time
+        self.bursting_enabled = bursting_enabled
         # The category of the disk. Valid values:
         # 
         # *   **cloud_efficiency**: ultra disk.
@@ -164,6 +167,7 @@ class DescribeRCDisksResponseBodyDisks(DaraModel):
         # *   PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
         # *   PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
         self.performance_level = performance_level
+        self.portable = portable
         # The region ID.
         self.region_id = region_id
         # The ID of the resource group to which the disk belongs.
@@ -213,6 +217,9 @@ class DescribeRCDisksResponseBodyDisks(DaraModel):
         if self.attached_time is not None:
             result['AttachedTime'] = self.attached_time
 
+        if self.bursting_enabled is not None:
+            result['BurstingEnabled'] = self.bursting_enabled
+
         if self.category is not None:
             result['Category'] = self.category
 
@@ -258,6 +265,9 @@ class DescribeRCDisksResponseBodyDisks(DaraModel):
         if self.performance_level is not None:
             result['PerformanceLevel'] = self.performance_level
 
+        if self.portable is not None:
+            result['Portable'] = self.portable
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -299,6 +309,9 @@ class DescribeRCDisksResponseBodyDisks(DaraModel):
         m = m or dict()
         if m.get('AttachedTime') is not None:
             self.attached_time = m.get('AttachedTime')
+
+        if m.get('BurstingEnabled') is not None:
+            self.bursting_enabled = m.get('BurstingEnabled')
 
         if m.get('Category') is not None:
             self.category = m.get('Category')
@@ -344,6 +357,9 @@ class DescribeRCDisksResponseBodyDisks(DaraModel):
 
         if m.get('PerformanceLevel') is not None:
             self.performance_level = m.get('PerformanceLevel')
+
+        if m.get('Portable') is not None:
+            self.portable = m.get('Portable')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

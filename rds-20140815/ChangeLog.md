@@ -1,3 +1,8 @@
+2026-01-07 Version: 14.0.2
+- Update API DescribeRCDisks: add response parameters Body.Disks.$.BurstingEnabled.
+- Update API DescribeRCDisks: add response parameters Body.Disks.$.Portable.
+
+
 2026-01-06 Version: 14.0.1
 - Update API DescribeDBInstanceReplication: add response parameters Body.GtidExecuted.
 - Update API DescribeDBInstanceReplication: add response parameters Body.ImportStatus.
