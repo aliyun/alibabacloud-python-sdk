@@ -14,6 +14,7 @@ class ListHyperNodesShrinkRequest(DaraModel):
         commodity_code: str = None,
         hpn_zone: str = None,
         hyper_node_id: str = None,
+        hyper_node_ids_shrink: str = None,
         machine_type: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -27,6 +28,7 @@ class ListHyperNodesShrinkRequest(DaraModel):
         self.commodity_code = commodity_code
         self.hpn_zone = hpn_zone
         self.hyper_node_id = hyper_node_id
+        self.hyper_node_ids_shrink = hyper_node_ids_shrink
         self.machine_type = machine_type
         self.max_results = max_results
         self.next_token = next_token
@@ -58,6 +60,9 @@ class ListHyperNodesShrinkRequest(DaraModel):
 
         if self.hyper_node_id is not None:
             result['HyperNodeId'] = self.hyper_node_id
+
+        if self.hyper_node_ids_shrink is not None:
+            result['HyperNodeIds'] = self.hyper_node_ids_shrink
 
         if self.machine_type is not None:
             result['MachineType'] = self.machine_type
@@ -100,6 +105,9 @@ class ListHyperNodesShrinkRequest(DaraModel):
 
         if m.get('HyperNodeId') is not None:
             self.hyper_node_id = m.get('HyperNodeId')
+
+        if m.get('HyperNodeIds') is not None:
+            self.hyper_node_ids_shrink = m.get('HyperNodeIds')
 
         if m.get('MachineType') is not None:
             self.machine_type = m.get('MachineType')

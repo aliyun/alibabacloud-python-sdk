@@ -3004,11 +3004,15 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ListHyperNodesShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.hyper_node_ids):
+            request.hyper_node_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.hyper_node_ids, 'HyperNodeIds', 'json')
         if not DaraCore.is_null(tmp_req.operating_states):
             request.operating_states_shrink = Utils.array_to_string_with_specified_style(tmp_req.operating_states, 'OperatingStates', 'json')
         query = {}
         if not DaraCore.is_null(request.commodity_code):
             query['CommodityCode'] = request.commodity_code
+        if not DaraCore.is_null(request.hyper_node_ids_shrink):
+            query['HyperNodeIds'] = request.hyper_node_ids_shrink
         if not DaraCore.is_null(request.operating_states_shrink):
             query['OperatingStates'] = request.operating_states_shrink
         body = {}
@@ -3060,11 +3064,15 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ListHyperNodesShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.hyper_node_ids):
+            request.hyper_node_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.hyper_node_ids, 'HyperNodeIds', 'json')
         if not DaraCore.is_null(tmp_req.operating_states):
             request.operating_states_shrink = Utils.array_to_string_with_specified_style(tmp_req.operating_states, 'OperatingStates', 'json')
         query = {}
         if not DaraCore.is_null(request.commodity_code):
             query['CommodityCode'] = request.commodity_code
+        if not DaraCore.is_null(request.hyper_node_ids_shrink):
+            query['HyperNodeIds'] = request.hyper_node_ids_shrink
         if not DaraCore.is_null(request.operating_states_shrink):
             query['OperatingStates'] = request.operating_states_shrink
         body = {}
