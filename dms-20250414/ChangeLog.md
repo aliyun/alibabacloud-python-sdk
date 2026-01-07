@@ -1,3 +1,16 @@
+2026-01-07 Version: 1.8.0
+- Support API AddUserToDataAgentWorkspace.
+- Support API CreateDataAgentWorkspace.
+- Support API DeleteDataAgentWorkspace.
+- Support API GetDataAgentSubAccountInfo.
+- Support API GetDataAgentWorkspaceInfo.
+- Support API ListDataAgentWorkspace.
+- Support API ListDataAgentWorkspaceMember.
+- Support API RemoveUserToDataAgentWorkspace.
+- Support API UpdateDataAgentSpaceInfo.
+- Support API UpdateDataAgentWorkspaceMemberRole.
+
+
 2026-01-05 Version: 1.7.0
 - Support API DeleteFileUpload.
 - Support API DescribeFileUploadSignature.

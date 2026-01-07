@@ -82,8 +82,6 @@ class CreateAirflowResponseBody(DaraModel):
 
         return self
 
-
-
 class CreateAirflowResponseBodyRoot(DaraModel):
     def __init__(
         self,

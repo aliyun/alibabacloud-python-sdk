@@ -20,6 +20,9 @@ from ._dltablebase_info import DLTablebaseInfo
 from ._foreign_instance import ForeignInstance
 from ._foreign_instance_cred_info import ForeignInstanceCredInfo
 from ._partition_error import PartitionError
+from ._add_user_to_data_agent_workspace_request import AddUserToDataAgentWorkspaceRequest
+from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentWorkspaceResponseBody
+from ._add_user_to_data_agent_workspace_response import AddUserToDataAgentWorkspaceResponse
 from ._batch_create_data_lake_partitions_request import BatchCreateDataLakePartitionsRequest
 from ._batch_create_data_lake_partitions_shrink_request import BatchCreateDataLakePartitionsShrinkRequest
 from ._batch_create_data_lake_partitions_response_body import BatchCreateDataLakePartitionsResponseBody
@@ -41,6 +44,9 @@ from ._create_data_agent_session_request import CreateDataAgentSessionRequest
 from ._create_data_agent_session_shrink_request import CreateDataAgentSessionShrinkRequest
 from ._create_data_agent_session_response_body import CreateDataAgentSessionResponseBody
 from ._create_data_agent_session_response import CreateDataAgentSessionResponse
+from ._create_data_agent_workspace_request import CreateDataAgentWorkspaceRequest
+from ._create_data_agent_workspace_response_body import CreateDataAgentWorkspaceResponseBody
+from ._create_data_agent_workspace_response import CreateDataAgentWorkspaceResponse
 from ._create_data_lake_database_request import CreateDataLakeDatabaseRequest
 from ._create_data_lake_database_shrink_request import CreateDataLakeDatabaseShrinkRequest
 from ._create_data_lake_database_response_body import CreateDataLakeDatabaseResponseBody
@@ -60,6 +66,9 @@ from ._create_data_lake_table_response import CreateDataLakeTableResponse
 from ._delete_airflow_request import DeleteAirflowRequest
 from ._delete_airflow_response_body import DeleteAirflowResponseBody
 from ._delete_airflow_response import DeleteAirflowResponse
+from ._delete_data_agent_workspace_request import DeleteDataAgentWorkspaceRequest
+from ._delete_data_agent_workspace_response_body import DeleteDataAgentWorkspaceResponseBody
+from ._delete_data_agent_workspace_response import DeleteDataAgentWorkspaceResponse
 from ._delete_data_lake_database_request import DeleteDataLakeDatabaseRequest
 from ._delete_data_lake_database_response_body import DeleteDataLakeDatabaseResponseBody
 from ._delete_data_lake_database_response import DeleteDataLakeDatabaseResponse
@@ -94,6 +103,12 @@ from ._get_airflow_response import GetAirflowResponse
 from ._get_chat_content_request import GetChatContentRequest
 from ._get_chat_content_response_body import GetChatContentResponseBody
 from ._get_chat_content_response import GetChatContentResponse
+from ._get_data_agent_sub_account_info_request import GetDataAgentSubAccountInfoRequest
+from ._get_data_agent_sub_account_info_response_body import GetDataAgentSubAccountInfoResponseBody
+from ._get_data_agent_sub_account_info_response import GetDataAgentSubAccountInfoResponse
+from ._get_data_agent_workspace_info_request import GetDataAgentWorkspaceInfoRequest
+from ._get_data_agent_workspace_info_response_body import GetDataAgentWorkspaceInfoResponseBody
+from ._get_data_agent_workspace_info_response import GetDataAgentWorkspaceInfoResponse
 from ._get_data_lake_catalog_request import GetDataLakeCatalogRequest
 from ._get_data_lake_catalog_response_body import GetDataLakeCatalogResponseBody
 from ._get_data_lake_catalog_response import GetDataLakeCatalogResponse
@@ -122,6 +137,12 @@ from ._list_airflows_response import ListAirflowsResponse
 from ._list_custom_agent_request import ListCustomAgentRequest
 from ._list_custom_agent_response_body import ListCustomAgentResponseBody
 from ._list_custom_agent_response import ListCustomAgentResponse
+from ._list_data_agent_workspace_request import ListDataAgentWorkspaceRequest
+from ._list_data_agent_workspace_response_body import ListDataAgentWorkspaceResponseBody
+from ._list_data_agent_workspace_response import ListDataAgentWorkspaceResponse
+from ._list_data_agent_workspace_member_request import ListDataAgentWorkspaceMemberRequest
+from ._list_data_agent_workspace_member_response_body import ListDataAgentWorkspaceMemberResponseBody
+from ._list_data_agent_workspace_member_response import ListDataAgentWorkspaceMemberResponse
 from ._list_data_lake_catalog_request import ListDataLakeCatalogRequest
 from ._list_data_lake_catalog_response_body import ListDataLakeCatalogResponseBody
 from ._list_data_lake_catalog_response import ListDataLakeCatalogResponse
@@ -156,6 +177,9 @@ from ._list_data_lake_tablebase_info_response import ListDataLakeTablebaseInfoRe
 from ._list_file_upload_request import ListFileUploadRequest
 from ._list_file_upload_response_body import ListFileUploadResponseBody
 from ._list_file_upload_response import ListFileUploadResponse
+from ._remove_user_to_data_agent_workspace_request import RemoveUserToDataAgentWorkspaceRequest
+from ._remove_user_to_data_agent_workspace_response_body import RemoveUserToDataAgentWorkspaceResponseBody
+from ._remove_user_to_data_agent_workspace_response import RemoveUserToDataAgentWorkspaceResponse
 from ._send_chat_message_request import SendChatMessageRequest
 from ._send_chat_message_shrink_request import SendChatMessageShrinkRequest
 from ._send_chat_message_response_body import SendChatMessageResponseBody
@@ -163,6 +187,12 @@ from ._send_chat_message_response import SendChatMessageResponse
 from ._update_airflow_request import UpdateAirflowRequest
 from ._update_airflow_response_body import UpdateAirflowResponseBody
 from ._update_airflow_response import UpdateAirflowResponse
+from ._update_data_agent_space_info_request import UpdateDataAgentSpaceInfoRequest
+from ._update_data_agent_space_info_response_body import UpdateDataAgentSpaceInfoResponseBody
+from ._update_data_agent_space_info_response import UpdateDataAgentSpaceInfoResponse
+from ._update_data_agent_workspace_member_role_request import UpdateDataAgentWorkspaceMemberRoleRequest
+from ._update_data_agent_workspace_member_role_response_body import UpdateDataAgentWorkspaceMemberRoleResponseBody
+from ._update_data_agent_workspace_member_role_response import UpdateDataAgentWorkspaceMemberRoleResponse
 from ._update_data_lake_database_request import UpdateDataLakeDatabaseRequest
 from ._update_data_lake_database_shrink_request import UpdateDataLakeDatabaseShrinkRequest
 from ._update_data_lake_database_response_body import UpdateDataLakeDatabaseResponseBody
@@ -179,11 +209,13 @@ from ._update_data_lake_table_request import UpdateDataLakeTableRequest
 from ._update_data_lake_table_shrink_request import UpdateDataLakeTableShrinkRequest
 from ._update_data_lake_table_response_body import UpdateDataLakeTableResponseBody
 from ._update_data_lake_table_response import UpdateDataLakeTableResponse
+from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentWorkspaceResponseBodyData
 from ._create_airflow_response_body import CreateAirflowResponseBodyRoot
 from ._create_airflow_login_token_response_body import CreateAirflowLoginTokenResponseBodyData
 from ._create_data_agent_session_request import CreateDataAgentSessionRequestSessionConfig
 from ._create_data_agent_session_response_body import CreateDataAgentSessionResponseBodyDataSessionConfig
 from ._create_data_agent_session_response_body import CreateDataAgentSessionResponseBodyData
+from ._create_data_agent_workspace_response_body import CreateDataAgentWorkspaceResponseBodyData
 from ._delete_airflow_response_body import DeleteAirflowResponseBodyRootResponses
 from ._delete_airflow_response_body import DeleteAirflowResponseBodyRoot
 from ._delete_file_upload_response_body import DeleteFileUploadResponseBodyData
@@ -195,17 +227,25 @@ from ._describe_data_agent_session_response_body import DescribeDataAgentSession
 from ._describe_file_upload_signature_response_body import DescribeFileUploadSignatureResponseBodyData
 from ._file_upload_callback_response_body import FileUploadCallbackResponseBodyData
 from ._get_airflow_response_body import GetAirflowResponseBodyRoot
+from ._get_data_agent_sub_account_info_response_body import GetDataAgentSubAccountInfoResponseBodyData
+from ._get_data_agent_workspace_info_response_body import GetDataAgentWorkspaceInfoResponseBodyData
 from ._get_notebook_task_status_response_body import GetNotebookTaskStatusResponseBodyData
 from ._list_airflows_response_body import ListAirflowsResponseBodyRootList
 from ._list_airflows_response_body import ListAirflowsResponseBodyRoot
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentExecutionConfig
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContent
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyData
+from ._list_data_agent_workspace_response_body import ListDataAgentWorkspaceResponseBodyDataContent
+from ._list_data_agent_workspace_response_body import ListDataAgentWorkspaceResponseBodyData
+from ._list_data_agent_workspace_member_response_body import ListDataAgentWorkspaceMemberResponseBodyDataContent
+from ._list_data_agent_workspace_member_response_body import ListDataAgentWorkspaceMemberResponseBodyData
 from ._list_file_upload_response_body import ListFileUploadResponseBodyData
 from ._send_chat_message_request import SendChatMessageRequestDataSource
 from ._send_chat_message_request import SendChatMessageRequestSessionConfig
 from ._send_chat_message_response_body import SendChatMessageResponseBodyData
 from ._update_airflow_response_body import UpdateAirflowResponseBodyRoot
+from ._update_data_agent_space_info_response_body import UpdateDataAgentSpaceInfoResponseBodyData
+from ._update_data_agent_workspace_member_role_response_body import UpdateDataAgentWorkspaceMemberRoleResponseBodyData
 
 __all__ = [
     DLCatalog,
@@ -226,6 +266,9 @@ __all__ = [
     ForeignInstance,
     ForeignInstanceCredInfo,
     PartitionError,
+    AddUserToDataAgentWorkspaceRequest,
+    AddUserToDataAgentWorkspaceResponseBody,
+    AddUserToDataAgentWorkspaceResponse,
     BatchCreateDataLakePartitionsRequest,
     BatchCreateDataLakePartitionsShrinkRequest,
     BatchCreateDataLakePartitionsResponseBody,
@@ -247,6 +290,9 @@ __all__ = [
     CreateDataAgentSessionShrinkRequest,
     CreateDataAgentSessionResponseBody,
     CreateDataAgentSessionResponse,
+    CreateDataAgentWorkspaceRequest,
+    CreateDataAgentWorkspaceResponseBody,
+    CreateDataAgentWorkspaceResponse,
     CreateDataLakeDatabaseRequest,
     CreateDataLakeDatabaseShrinkRequest,
     CreateDataLakeDatabaseResponseBody,
@@ -266,6 +312,9 @@ __all__ = [
     DeleteAirflowRequest,
     DeleteAirflowResponseBody,
     DeleteAirflowResponse,
+    DeleteDataAgentWorkspaceRequest,
+    DeleteDataAgentWorkspaceResponseBody,
+    DeleteDataAgentWorkspaceResponse,
     DeleteDataLakeDatabaseRequest,
     DeleteDataLakeDatabaseResponseBody,
     DeleteDataLakeDatabaseResponse,
@@ -300,6 +349,12 @@ __all__ = [
     GetChatContentRequest,
     GetChatContentResponseBody,
     GetChatContentResponse,
+    GetDataAgentSubAccountInfoRequest,
+    GetDataAgentSubAccountInfoResponseBody,
+    GetDataAgentSubAccountInfoResponse,
+    GetDataAgentWorkspaceInfoRequest,
+    GetDataAgentWorkspaceInfoResponseBody,
+    GetDataAgentWorkspaceInfoResponse,
     GetDataLakeCatalogRequest,
     GetDataLakeCatalogResponseBody,
     GetDataLakeCatalogResponse,
@@ -328,6 +383,12 @@ __all__ = [
     ListCustomAgentRequest,
     ListCustomAgentResponseBody,
     ListCustomAgentResponse,
+    ListDataAgentWorkspaceRequest,
+    ListDataAgentWorkspaceResponseBody,
+    ListDataAgentWorkspaceResponse,
+    ListDataAgentWorkspaceMemberRequest,
+    ListDataAgentWorkspaceMemberResponseBody,
+    ListDataAgentWorkspaceMemberResponse,
     ListDataLakeCatalogRequest,
     ListDataLakeCatalogResponseBody,
     ListDataLakeCatalogResponse,
@@ -362,6 +423,9 @@ __all__ = [
     ListFileUploadRequest,
     ListFileUploadResponseBody,
     ListFileUploadResponse,
+    RemoveUserToDataAgentWorkspaceRequest,
+    RemoveUserToDataAgentWorkspaceResponseBody,
+    RemoveUserToDataAgentWorkspaceResponse,
     SendChatMessageRequest,
     SendChatMessageShrinkRequest,
     SendChatMessageResponseBody,
@@ -369,6 +433,12 @@ __all__ = [
     UpdateAirflowRequest,
     UpdateAirflowResponseBody,
     UpdateAirflowResponse,
+    UpdateDataAgentSpaceInfoRequest,
+    UpdateDataAgentSpaceInfoResponseBody,
+    UpdateDataAgentSpaceInfoResponse,
+    UpdateDataAgentWorkspaceMemberRoleRequest,
+    UpdateDataAgentWorkspaceMemberRoleResponseBody,
+    UpdateDataAgentWorkspaceMemberRoleResponse,
     UpdateDataLakeDatabaseRequest,
     UpdateDataLakeDatabaseShrinkRequest,
     UpdateDataLakeDatabaseResponseBody,
@@ -385,11 +455,13 @@ __all__ = [
     UpdateDataLakeTableShrinkRequest,
     UpdateDataLakeTableResponseBody,
     UpdateDataLakeTableResponse,
+    AddUserToDataAgentWorkspaceResponseBodyData,
     CreateAirflowResponseBodyRoot,
     CreateAirflowLoginTokenResponseBodyData,
     CreateDataAgentSessionRequestSessionConfig,
     CreateDataAgentSessionResponseBodyDataSessionConfig,
     CreateDataAgentSessionResponseBodyData,
+    CreateDataAgentWorkspaceResponseBodyData,
     DeleteAirflowResponseBodyRootResponses,
     DeleteAirflowResponseBodyRoot,
     DeleteFileUploadResponseBodyData,
@@ -401,15 +473,23 @@ __all__ = [
     DescribeFileUploadSignatureResponseBodyData,
     FileUploadCallbackResponseBodyData,
     GetAirflowResponseBodyRoot,
+    GetDataAgentSubAccountInfoResponseBodyData,
+    GetDataAgentWorkspaceInfoResponseBodyData,
     GetNotebookTaskStatusResponseBodyData,
     ListAirflowsResponseBodyRootList,
     ListAirflowsResponseBodyRoot,
     ListCustomAgentResponseBodyDataContentExecutionConfig,
     ListCustomAgentResponseBodyDataContent,
     ListCustomAgentResponseBodyData,
+    ListDataAgentWorkspaceResponseBodyDataContent,
+    ListDataAgentWorkspaceResponseBodyData,
+    ListDataAgentWorkspaceMemberResponseBodyDataContent,
+    ListDataAgentWorkspaceMemberResponseBodyData,
     ListFileUploadResponseBodyData,
     SendChatMessageRequestDataSource,
     SendChatMessageRequestSessionConfig,
     SendChatMessageResponseBodyData,
-    UpdateAirflowResponseBodyRoot
+    UpdateAirflowResponseBodyRoot,
+    UpdateDataAgentSpaceInfoResponseBodyData,
+    UpdateDataAgentWorkspaceMemberRoleResponseBodyData
 ]

@@ -43,6 +43,88 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def add_user_to_data_agent_workspace_with_options(
+        self,
+        request: main_models.AddUserToDataAgentWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddUserToDataAgentWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.role_name):
+            query['RoleName'] = request.role_name
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddUserToDataAgentWorkspace',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddUserToDataAgentWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_user_to_data_agent_workspace_with_options_async(
+        self,
+        request: main_models.AddUserToDataAgentWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddUserToDataAgentWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.role_name):
+            query['RoleName'] = request.role_name
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddUserToDataAgentWorkspace',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddUserToDataAgentWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_user_to_data_agent_workspace(
+        self,
+        request: main_models.AddUserToDataAgentWorkspaceRequest,
+    ) -> main_models.AddUserToDataAgentWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return self.add_user_to_data_agent_workspace_with_options(request, runtime)
+
+    async def add_user_to_data_agent_workspace_async(
+        self,
+        request: main_models.AddUserToDataAgentWorkspaceRequest,
+    ) -> main_models.AddUserToDataAgentWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return await self.add_user_to_data_agent_workspace_with_options_async(request, runtime)
+
     def batch_create_data_lake_partitions_with_options(
         self,
         tmp_req: main_models.BatchCreateDataLakePartitionsRequest,
@@ -643,6 +725,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_data_agent_session_with_options_async(request, runtime)
 
+    def create_data_agent_workspace_with_options(
+        self,
+        request: main_models.CreateDataAgentWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataAgentWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.workspace_desc):
+            query['WorkspaceDesc'] = request.workspace_desc
+        if not DaraCore.is_null(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataAgentWorkspace',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataAgentWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_data_agent_workspace_with_options_async(
+        self,
+        request: main_models.CreateDataAgentWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDataAgentWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.workspace_desc):
+            query['WorkspaceDesc'] = request.workspace_desc
+        if not DaraCore.is_null(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataAgentWorkspace',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDataAgentWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_data_agent_workspace(
+        self,
+        request: main_models.CreateDataAgentWorkspaceRequest,
+    ) -> main_models.CreateDataAgentWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return self.create_data_agent_workspace_with_options(request, runtime)
+
+    async def create_data_agent_workspace_async(
+        self,
+        request: main_models.CreateDataAgentWorkspaceRequest,
+    ) -> main_models.CreateDataAgentWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_data_agent_workspace_with_options_async(request, runtime)
+
     def create_data_lake_database_with_options(
         self,
         tmp_req: main_models.CreateDataLakeDatabaseRequest,
@@ -1128,6 +1288,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAirflowResponse:
         runtime = RuntimeOptions()
         return await self.delete_airflow_with_options_async(request, runtime)
+
+    def delete_data_agent_workspace_with_options(
+        self,
+        request: main_models.DeleteDataAgentWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataAgentWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataAgentWorkspace',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataAgentWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_data_agent_workspace_with_options_async(
+        self,
+        request: main_models.DeleteDataAgentWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDataAgentWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataAgentWorkspace',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDataAgentWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_data_agent_workspace(
+        self,
+        request: main_models.DeleteDataAgentWorkspaceRequest,
+    ) -> main_models.DeleteDataAgentWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_data_agent_workspace_with_options(request, runtime)
+
+    async def delete_data_agent_workspace_async(
+        self,
+        request: main_models.DeleteDataAgentWorkspaceRequest,
+    ) -> main_models.DeleteDataAgentWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_data_agent_workspace_with_options_async(request, runtime)
 
     def delete_data_lake_database_with_options(
         self,
@@ -2117,6 +2351,154 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_chat_content_with_options_async(request, runtime)
 
+    def get_data_agent_sub_account_info_with_options(
+        self,
+        request: main_models.GetDataAgentSubAccountInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataAgentSubAccountInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.sub_account_id):
+            query['SubAccountId'] = request.sub_account_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataAgentSubAccountInfo',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataAgentSubAccountInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_agent_sub_account_info_with_options_async(
+        self,
+        request: main_models.GetDataAgentSubAccountInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataAgentSubAccountInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.sub_account_id):
+            query['SubAccountId'] = request.sub_account_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataAgentSubAccountInfo',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataAgentSubAccountInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_agent_sub_account_info(
+        self,
+        request: main_models.GetDataAgentSubAccountInfoRequest,
+    ) -> main_models.GetDataAgentSubAccountInfoResponse:
+        runtime = RuntimeOptions()
+        return self.get_data_agent_sub_account_info_with_options(request, runtime)
+
+    async def get_data_agent_sub_account_info_async(
+        self,
+        request: main_models.GetDataAgentSubAccountInfoRequest,
+    ) -> main_models.GetDataAgentSubAccountInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.get_data_agent_sub_account_info_with_options_async(request, runtime)
+
+    def get_data_agent_workspace_info_with_options(
+        self,
+        request: main_models.GetDataAgentWorkspaceInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataAgentWorkspaceInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataAgentWorkspaceInfo',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataAgentWorkspaceInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_agent_workspace_info_with_options_async(
+        self,
+        request: main_models.GetDataAgentWorkspaceInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataAgentWorkspaceInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataAgentWorkspaceInfo',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataAgentWorkspaceInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_agent_workspace_info(
+        self,
+        request: main_models.GetDataAgentWorkspaceInfoRequest,
+    ) -> main_models.GetDataAgentWorkspaceInfoResponse:
+        runtime = RuntimeOptions()
+        return self.get_data_agent_workspace_info_with_options(request, runtime)
+
+    async def get_data_agent_workspace_info_async(
+        self,
+        request: main_models.GetDataAgentWorkspaceInfoRequest,
+    ) -> main_models.GetDataAgentWorkspaceInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.get_data_agent_workspace_info_with_options_async(request, runtime)
+
     def get_data_lake_catalog_with_options(
         self,
         request: main_models.GetDataLakeCatalogRequest,
@@ -2890,6 +3272,214 @@ class Client(OpenApiClient):
     ) -> main_models.ListCustomAgentResponse:
         runtime = RuntimeOptions()
         return await self.list_custom_agent_with_options_async(request, runtime)
+
+    def list_data_agent_workspace_with_options(
+        self,
+        request: main_models.ListDataAgentWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        if not DaraCore.is_null(request.workspace_type):
+            query['WorkspaceType'] = request.workspace_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentWorkspace',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_agent_workspace_with_options_async(
+        self,
+        request: main_models.ListDataAgentWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        if not DaraCore.is_null(request.workspace_type):
+            query['WorkspaceType'] = request.workspace_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentWorkspace',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_agent_workspace(
+        self,
+        request: main_models.ListDataAgentWorkspaceRequest,
+    ) -> main_models.ListDataAgentWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return self.list_data_agent_workspace_with_options(request, runtime)
+
+    async def list_data_agent_workspace_async(
+        self,
+        request: main_models.ListDataAgentWorkspaceRequest,
+    ) -> main_models.ListDataAgentWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return await self.list_data_agent_workspace_with_options_async(request, runtime)
+
+    def list_data_agent_workspace_member_with_options(
+        self,
+        request: main_models.ListDataAgentWorkspaceMemberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentWorkspaceMemberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_member_id):
+            query['SearchMemberId'] = request.search_member_id
+        if not DaraCore.is_null(request.search_role_name):
+            query['SearchRoleName'] = request.search_role_name
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentWorkspaceMember',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentWorkspaceMemberResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_agent_workspace_member_with_options_async(
+        self,
+        request: main_models.ListDataAgentWorkspaceMemberRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentWorkspaceMemberResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.order_by):
+            query['OrderBy'] = request.order_by
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_member_id):
+            query['SearchMemberId'] = request.search_member_id
+        if not DaraCore.is_null(request.search_role_name):
+            query['SearchRoleName'] = request.search_role_name
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentWorkspaceMember',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentWorkspaceMemberResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_agent_workspace_member(
+        self,
+        request: main_models.ListDataAgentWorkspaceMemberRequest,
+    ) -> main_models.ListDataAgentWorkspaceMemberResponse:
+        runtime = RuntimeOptions()
+        return self.list_data_agent_workspace_member_with_options(request, runtime)
+
+    async def list_data_agent_workspace_member_async(
+        self,
+        request: main_models.ListDataAgentWorkspaceMemberRequest,
+    ) -> main_models.ListDataAgentWorkspaceMemberResponse:
+        runtime = RuntimeOptions()
+        return await self.list_data_agent_workspace_member_with_options_async(request, runtime)
 
     def list_data_lake_catalog_with_options(
         self,
@@ -3941,6 +4531,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_file_upload_with_options_async(request, runtime)
 
+    def remove_user_to_data_agent_workspace_with_options(
+        self,
+        request: main_models.RemoveUserToDataAgentWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveUserToDataAgentWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveUserToDataAgentWorkspace',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveUserToDataAgentWorkspaceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_user_to_data_agent_workspace_with_options_async(
+        self,
+        request: main_models.RemoveUserToDataAgentWorkspaceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveUserToDataAgentWorkspaceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveUserToDataAgentWorkspace',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveUserToDataAgentWorkspaceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_user_to_data_agent_workspace(
+        self,
+        request: main_models.RemoveUserToDataAgentWorkspaceRequest,
+    ) -> main_models.RemoveUserToDataAgentWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return self.remove_user_to_data_agent_workspace_with_options(request, runtime)
+
+    async def remove_user_to_data_agent_workspace_async(
+        self,
+        request: main_models.RemoveUserToDataAgentWorkspaceRequest,
+    ) -> main_models.RemoveUserToDataAgentWorkspaceResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_user_to_data_agent_workspace_with_options_async(request, runtime)
+
     def send_chat_message_with_options(
         self,
         tmp_req: main_models.SendChatMessageRequest,
@@ -4168,6 +4836,170 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateAirflowResponse:
         runtime = RuntimeOptions()
         return await self.update_airflow_with_options_async(request, runtime)
+
+    def update_data_agent_space_info_with_options(
+        self,
+        request: main_models.UpdateDataAgentSpaceInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataAgentSpaceInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.workspace_desc):
+            query['WorkspaceDesc'] = request.workspace_desc
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        if not DaraCore.is_null(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataAgentSpaceInfo',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataAgentSpaceInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_agent_space_info_with_options_async(
+        self,
+        request: main_models.UpdateDataAgentSpaceInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataAgentSpaceInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.workspace_desc):
+            query['WorkspaceDesc'] = request.workspace_desc
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        if not DaraCore.is_null(request.workspace_name):
+            query['WorkspaceName'] = request.workspace_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataAgentSpaceInfo',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataAgentSpaceInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_agent_space_info(
+        self,
+        request: main_models.UpdateDataAgentSpaceInfoRequest,
+    ) -> main_models.UpdateDataAgentSpaceInfoResponse:
+        runtime = RuntimeOptions()
+        return self.update_data_agent_space_info_with_options(request, runtime)
+
+    async def update_data_agent_space_info_async(
+        self,
+        request: main_models.UpdateDataAgentSpaceInfoRequest,
+    ) -> main_models.UpdateDataAgentSpaceInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.update_data_agent_space_info_with_options_async(request, runtime)
+
+    def update_data_agent_workspace_member_role_with_options(
+        self,
+        request: main_models.UpdateDataAgentWorkspaceMemberRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataAgentWorkspaceMemberRoleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.role_name):
+            query['RoleName'] = request.role_name
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataAgentWorkspaceMemberRole',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataAgentWorkspaceMemberRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_data_agent_workspace_member_role_with_options_async(
+        self,
+        request: main_models.UpdateDataAgentWorkspaceMemberRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDataAgentWorkspaceMemberRoleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.member_id):
+            query['MemberId'] = request.member_id
+        if not DaraCore.is_null(request.role_name):
+            query['RoleName'] = request.role_name
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataAgentWorkspaceMemberRole',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDataAgentWorkspaceMemberRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_data_agent_workspace_member_role(
+        self,
+        request: main_models.UpdateDataAgentWorkspaceMemberRoleRequest,
+    ) -> main_models.UpdateDataAgentWorkspaceMemberRoleResponse:
+        runtime = RuntimeOptions()
+        return self.update_data_agent_workspace_member_role_with_options(request, runtime)
+
+    async def update_data_agent_workspace_member_role_async(
+        self,
+        request: main_models.UpdateDataAgentWorkspaceMemberRoleRequest,
+    ) -> main_models.UpdateDataAgentWorkspaceMemberRoleResponse:
+        runtime = RuntimeOptions()
+        return await self.update_data_agent_workspace_member_role_with_options_async(request, runtime)
 
     def update_data_lake_database_with_options(
         self,
