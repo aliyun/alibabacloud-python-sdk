@@ -59,6 +59,7 @@ class DescribeDomainCcProtectSwitchResponseBodyProtectSwitchList(DaraModel):
         black_white_list_enable: int = None,
         cc_custom_rule_enable: int = None,
         cc_enable: int = None,
+        cc_global_switch: str = None,
         cc_template: str = None,
         domain: str = None,
         precise_rule_enable: int = None,
@@ -70,6 +71,7 @@ class DescribeDomainCcProtectSwitchResponseBodyProtectSwitchList(DaraModel):
         self.black_white_list_enable = black_white_list_enable
         self.cc_custom_rule_enable = cc_custom_rule_enable
         self.cc_enable = cc_enable
+        self.cc_global_switch = cc_global_switch
         self.cc_template = cc_template
         self.domain = domain
         self.precise_rule_enable = precise_rule_enable
@@ -100,6 +102,9 @@ class DescribeDomainCcProtectSwitchResponseBodyProtectSwitchList(DaraModel):
 
         if self.cc_enable is not None:
             result['CcEnable'] = self.cc_enable
+
+        if self.cc_global_switch is not None:
+            result['CcGlobalSwitch'] = self.cc_global_switch
 
         if self.cc_template is not None:
             result['CcTemplate'] = self.cc_template
@@ -134,6 +139,9 @@ class DescribeDomainCcProtectSwitchResponseBodyProtectSwitchList(DaraModel):
 
         if m.get('CcEnable') is not None:
             self.cc_enable = m.get('CcEnable')
+
+        if m.get('CcGlobalSwitch') is not None:
+            self.cc_global_switch = m.get('CcGlobalSwitch')
 
         if m.get('CcTemplate') is not None:
             self.cc_template = m.get('CcTemplate')
