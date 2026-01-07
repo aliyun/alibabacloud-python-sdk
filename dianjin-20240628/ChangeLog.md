@@ -1,3 +1,12 @@
+2026-01-07 Version: 1.19.1
+- Update API RealtimeDialogAssist: add request parameters body.scriptContentPlayed.
+- Update API RealtimeDialogAssist: add request parameters body.userVad.
+- Update API RealtimeDialogAssist: add request parameters body.conversationModel.$.begin.
+- Update API RealtimeDialogAssist: add request parameters body.conversationModel.$.beginTime.
+- Update API RealtimeDialogAssist: add request parameters body.conversationModel.$.end.
+- Update API RealtimeDialogAssist: add response parameters Body.data.interrupt.
+
+
 2025-12-30 Version: 1.19.0
 - Support API DashscopeAsyncTaskFinishEvent.
 

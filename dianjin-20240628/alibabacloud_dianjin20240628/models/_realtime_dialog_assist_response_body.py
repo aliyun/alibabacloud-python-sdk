@@ -99,6 +99,7 @@ class RealtimeDialogAssistResponseBodyData(DaraModel):
         assist_scripts: List[main_models.RealtimeDialogAssistResponseBodyDataAssistScripts] = None,
         assist_sop: List[main_models.RealtimeDialogAssistResponseBodyDataAssistSop] = None,
         conversation_model: List[main_models.RealtimeDialogAssistResponseBodyDataConversationModel] = None,
+        interrupt: bool = None,
         request_id: str = None,
         session_id: str = None,
     ):
@@ -106,6 +107,7 @@ class RealtimeDialogAssistResponseBodyData(DaraModel):
         self.assist_scripts = assist_scripts
         self.assist_sop = assist_sop
         self.conversation_model = conversation_model
+        self.interrupt = interrupt
         self.request_id = request_id
         self.session_id = session_id
 
@@ -146,6 +148,9 @@ class RealtimeDialogAssistResponseBodyData(DaraModel):
             for k1 in self.conversation_model:
                 result['conversationModel'].append(k1.to_map() if k1 else None)
 
+        if self.interrupt is not None:
+            result['interrupt'] = self.interrupt
+
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
@@ -176,6 +181,9 @@ class RealtimeDialogAssistResponseBodyData(DaraModel):
             for k1 in m.get('conversationModel'):
                 temp_model = main_models.RealtimeDialogAssistResponseBodyDataConversationModel()
                 self.conversation_model.append(temp_model.from_map(k1))
+
+        if m.get('interrupt') is not None:
+            self.interrupt = m.get('interrupt')
 
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')

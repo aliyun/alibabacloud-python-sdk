@@ -3979,8 +3979,12 @@ class Client(OpenApiClient):
             body['metaData'] = request.meta_data
         if not DaraCore.is_null(request.request_id):
             body['requestId'] = request.request_id
+        if not DaraCore.is_null(request.script_content_played):
+            body['scriptContentPlayed'] = request.script_content_played
         if not DaraCore.is_null(request.session_id):
             body['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.user_vad):
+            body['userVad'] = request.user_vad
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -4024,8 +4028,12 @@ class Client(OpenApiClient):
             body['metaData'] = request.meta_data
         if not DaraCore.is_null(request.request_id):
             body['requestId'] = request.request_id
+        if not DaraCore.is_null(request.script_content_played):
+            body['scriptContentPlayed'] = request.script_content_played
         if not DaraCore.is_null(request.session_id):
             body['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.user_vad):
+            body['userVad'] = request.user_vad
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
