@@ -2,6 +2,10 @@
 - Update API ListHyperNodes: add request parameters HyperNodeIds.
 
 
+2026-01-07 Version: 3.0.3
+- Update API ListHyperNodes: add request parameters HyperNodeIds.
+
+
 2025-12-30 Version: 3.0.2
 - Update API ListHyperNodes: add request parameters CommodityCode.
 - Update API ListHyperNodes: add request parameters OperatingStates.
