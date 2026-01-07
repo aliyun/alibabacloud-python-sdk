@@ -336,9 +336,15 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
 class ListCustomAgentResponseBodyDataContentExecutionConfig(DaraModel):
     def __init__(
         self,
+        skip_ask_human: bool = None,
         skip_plan: bool = None,
+        skip_sql_confirm: bool = None,
+        skip_web_report_confirm: bool = None,
     ):
+        self.skip_ask_human = skip_ask_human
         self.skip_plan = skip_plan
+        self.skip_sql_confirm = skip_sql_confirm
+        self.skip_web_report_confirm = skip_web_report_confirm
 
     def validate(self):
         pass
@@ -348,15 +354,33 @@ class ListCustomAgentResponseBodyDataContentExecutionConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.skip_ask_human is not None:
+            result['SkipAskHuman'] = self.skip_ask_human
+
         if self.skip_plan is not None:
             result['SkipPlan'] = self.skip_plan
+
+        if self.skip_sql_confirm is not None:
+            result['SkipSqlConfirm'] = self.skip_sql_confirm
+
+        if self.skip_web_report_confirm is not None:
+            result['SkipWebReportConfirm'] = self.skip_web_report_confirm
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('SkipAskHuman') is not None:
+            self.skip_ask_human = m.get('SkipAskHuman')
+
         if m.get('SkipPlan') is not None:
             self.skip_plan = m.get('SkipPlan')
+
+        if m.get('SkipSqlConfirm') is not None:
+            self.skip_sql_confirm = m.get('SkipSqlConfirm')
+
+        if m.get('SkipWebReportConfirm') is not None:
+            self.skip_web_report_confirm = m.get('SkipWebReportConfirm')
 
         return self
 

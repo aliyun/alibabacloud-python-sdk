@@ -1,3 +1,12 @@
+2026-01-07 Version: 1.8.1
+- Update API DescribeCustomAgent: add response parameters Body.Data.ExecutionConfig.SkipAskHuman.
+- Update API DescribeCustomAgent: add response parameters Body.Data.ExecutionConfig.SkipSqlConfirm.
+- Update API DescribeCustomAgent: add response parameters Body.Data.ExecutionConfig.SkipWebReportConfirm.
+- Update API ListCustomAgent: add response parameters Body.Data.Content.$.ExecutionConfig.SkipAskHuman.
+- Update API ListCustomAgent: add response parameters Body.Data.Content.$.ExecutionConfig.SkipSqlConfirm.
+- Update API ListCustomAgent: add response parameters Body.Data.Content.$.ExecutionConfig.SkipWebReportConfirm.
+
+
 2026-01-07 Version: 1.8.0
 - Support API AddUserToDataAgentWorkspace.
 - Support API CreateDataAgentWorkspace.
