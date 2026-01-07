@@ -3,6 +3,11 @@
 - Update API ListClusterKubeconfigStates: add response parameters Body.states.$.cloud_service_roles.
 
 
+2026-01-07 Version: 6.3.1
+- Update API ListClusterKubeconfigStates: add request parameters cloudServiceKubeConfig.
+- Update API ListClusterKubeconfigStates: add response parameters Body.states.$.cloud_service_roles.
+
+
 2025-12-29 Version: 6.3.0
 - Support API InstallNodePoolComponents.
 - Support API UpdateNodePoolComponent.
