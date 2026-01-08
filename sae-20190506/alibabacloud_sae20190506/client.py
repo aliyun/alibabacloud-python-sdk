@@ -12117,6 +12117,8 @@ class Client(OpenApiClient):
             query['AppIds'] = request.app_ids
         if not DaraCore.is_null(request.enable_idle):
             query['EnableIdle'] = request.enable_idle
+        if not DaraCore.is_null(request.idle_hour):
+            query['IdleHour'] = request.idle_hour
         if not DaraCore.is_null(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_util_models.OpenApiRequest(
@@ -12153,6 +12155,8 @@ class Client(OpenApiClient):
             query['AppIds'] = request.app_ids
         if not DaraCore.is_null(request.enable_idle):
             query['EnableIdle'] = request.enable_idle
+        if not DaraCore.is_null(request.idle_hour):
+            query['IdleHour'] = request.idle_hour
         if not DaraCore.is_null(request.namespace_id):
             query['NamespaceId'] = request.namespace_id
         req = open_api_util_models.OpenApiRequest(

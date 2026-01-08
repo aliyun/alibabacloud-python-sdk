@@ -10,6 +10,7 @@ class UpdateAppModeRequest(DaraModel):
         app_id: str = None,
         app_ids: str = None,
         enable_idle: bool = None,
+        idle_hour: str = None,
         namespace_id: str = None,
     ):
         # The app ID.
@@ -22,6 +23,7 @@ class UpdateAppModeRequest(DaraModel):
         # *   true: enables.
         # *   false: disables.
         self.enable_idle = enable_idle
+        self.idle_hour = idle_hour
         self.namespace_id = namespace_id
 
     def validate(self):
@@ -41,6 +43,9 @@ class UpdateAppModeRequest(DaraModel):
         if self.enable_idle is not None:
             result['EnableIdle'] = self.enable_idle
 
+        if self.idle_hour is not None:
+            result['IdleHour'] = self.idle_hour
+
         if self.namespace_id is not None:
             result['NamespaceId'] = self.namespace_id
 
@@ -56,6 +61,9 @@ class UpdateAppModeRequest(DaraModel):
 
         if m.get('EnableIdle') is not None:
             self.enable_idle = m.get('EnableIdle')
+
+        if m.get('IdleHour') is not None:
+            self.idle_hour = m.get('IdleHour')
 
         if m.get('NamespaceId') is not None:
             self.namespace_id = m.get('NamespaceId')

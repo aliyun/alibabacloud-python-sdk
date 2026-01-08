@@ -10,7 +10,9 @@ class ResumeTrafficRequest(DaraModel):
         app_id: str = None,
         instance_ids: str = None,
     ):
+        # The application ID.
         self.app_id = app_id
+        # The instance ID.
         self.instance_ids = instance_ids
 
     def validate(self):

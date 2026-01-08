@@ -1,3 +1,8 @@
+2026-01-08 Version: 2.10.6
+- Update API DescribeApplicationConfig: add response parameters Body.Data.IdleHour.
+- Update API UpdateAppMode: add request parameters IdleHour.
+
+
 2025-12-29 Version: 2.10.5
 - Update API DescribeApplicationInstances: add response parameters Body.Data.Instances.$.Tags.
 - Update API UpdateApplicationVswitches: add request parameters MinReadyInstanceRatio.

@@ -141,6 +141,7 @@ class DescribeApplicationConfigResponseBodyData(DaraModel):
         gpu_type: str = None,
         headless_pvtz_discovery: str = None,
         html: str = None,
+        idle_hour: str = None,
         image_pull_secrets: str = None,
         image_url: str = None,
         init_containers_config: List[main_models.DescribeApplicationConfigResponseBodyDataInitContainersConfig] = None,
@@ -331,6 +332,7 @@ class DescribeApplicationConfigResponseBodyData(DaraModel):
         self.gpu_type = gpu_type
         self.headless_pvtz_discovery = headless_pvtz_discovery
         self.html = html
+        self.idle_hour = idle_hour
         # The ID of the corresponding secret dictionary.
         self.image_pull_secrets = image_pull_secrets
         # The URL of the image. This parameter is returned only if the **PackageType** parameter is set to **Image**.
@@ -763,6 +765,9 @@ class DescribeApplicationConfigResponseBodyData(DaraModel):
         if self.html is not None:
             result['Html'] = self.html
 
+        if self.idle_hour is not None:
+            result['IdleHour'] = self.idle_hour
+
         if self.image_pull_secrets is not None:
             result['ImagePullSecrets'] = self.image_pull_secrets
 
@@ -1084,6 +1089,9 @@ class DescribeApplicationConfigResponseBodyData(DaraModel):
 
         if m.get('Html') is not None:
             self.html = m.get('Html')
+
+        if m.get('IdleHour') is not None:
+            self.idle_hour = m.get('IdleHour')
 
         if m.get('ImagePullSecrets') is not None:
             self.image_pull_secrets = m.get('ImagePullSecrets')

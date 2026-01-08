@@ -16,13 +16,33 @@ class SuspendTrafficResponseBody(DaraModel):
         success: str = None,
         trace_id: str = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The returned data.
         self.data = data
+        # The error code. 
+        # 
+        # - The **ErrorCode** parameter is not returned when the request succeeds.
+        # - The **ErrorCode** parameter is returned when the request fails. For more information, see **Error codes** in this topic.
         self.error_code = error_code
+        # The message returned. Valid values:
+        # 
+        # *   If the request was successful, **success** is returned.
+        # *   If the request failed, an error code is returned.
         self.message = message
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the traffic was removed. Valid values: 
+        # 
+        # - **true**: The traffic was removed.
+        # - **false**: The traffic failed to be removed.
         self.success = success
+        # The trace ID.
         self.trace_id = trace_id
 
     def validate(self):
@@ -89,7 +109,11 @@ class SuspendTrafficResponseBodyData(DaraModel):
         msg: str = None,
         success: bool = None,
     ):
+        # The description of the returned code.
         self.msg = msg
+        # Indicates whether the traffic was removed. Valid values:
+        # *   **true**: The traffic was removed.
+        # *   **false**: The traffic failed to be removed.
         self.success = success
 
     def validate(self):
