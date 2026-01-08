@@ -374,6 +374,8 @@ from ._check_service_role_response_body import CheckServiceRoleResponseBodyRoles
 from ._create_cluster_request import CreateClusterRequestAuditLogConfig
 from ._create_cluster_request import CreateClusterRequestAutoMode
 from ._create_cluster_request import CreateClusterRequestControlPlaneConfig
+from ._create_cluster_request import CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig
+from ._create_cluster_request import CreateClusterRequestControlPlaneEndpointsConfig
 from ._create_cluster_request import CreateClusterRequestOperationPolicyClusterAutoUpgrade
 from ._create_cluster_request import CreateClusterRequestOperationPolicy
 from ._create_cluster_request import CreateClusterRequestRrsaConfig
@@ -407,6 +409,8 @@ from ._describe_addons_response_body import DescribeAddonsResponseBodyComponentG
 from ._describe_addons_response_body import DescribeAddonsResponseBodyComponentGroups
 from ._describe_cluster_detail_response_body import DescribeClusterDetailResponseBodyAutoMode
 from ._describe_cluster_detail_response_body import DescribeClusterDetailResponseBodyControlPlaneConfig
+from ._describe_cluster_detail_response_body import DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig
+from ._describe_cluster_detail_response_body import DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig
 from ._describe_cluster_detail_response_body import DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade
 from ._describe_cluster_detail_response_body import DescribeClusterDetailResponseBodyOperationPolicy
 from ._describe_cluster_detail_response_body import DescribeClusterDetailResponseBodyRrsaConfig
@@ -540,6 +544,8 @@ from ._list_user_kube_config_states_response_body import ListUserKubeConfigState
 from ._list_user_kube_config_states_response_body import ListUserKubeConfigStatesResponseBodyStates
 from ._modify_cluster_request import ModifyClusterRequestApiServerCustomCertSans
 from ._modify_cluster_request import ModifyClusterRequestControlPlaneConfig
+from ._modify_cluster_request import ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig
+from ._modify_cluster_request import ModifyClusterRequestControlPlaneEndpointsConfig
 from ._modify_cluster_request import ModifyClusterRequestOperationPolicyClusterAutoUpgrade
 from ._modify_cluster_request import ModifyClusterRequestOperationPolicy
 from ._modify_cluster_request import ModifyClusterRequestSystemEventsLogging
@@ -941,6 +947,8 @@ __all__ = [
     CreateClusterRequestAuditLogConfig,
     CreateClusterRequestAutoMode,
     CreateClusterRequestControlPlaneConfig,
+    CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig,
+    CreateClusterRequestControlPlaneEndpointsConfig,
     CreateClusterRequestOperationPolicyClusterAutoUpgrade,
     CreateClusterRequestOperationPolicy,
     CreateClusterRequestRrsaConfig,
@@ -974,6 +982,8 @@ __all__ = [
     DescribeAddonsResponseBodyComponentGroups,
     DescribeClusterDetailResponseBodyAutoMode,
     DescribeClusterDetailResponseBodyControlPlaneConfig,
+    DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig,
+    DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig,
     DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade,
     DescribeClusterDetailResponseBodyOperationPolicy,
     DescribeClusterDetailResponseBodyRrsaConfig,
@@ -1107,6 +1117,8 @@ __all__ = [
     ListUserKubeConfigStatesResponseBodyStates,
     ModifyClusterRequestApiServerCustomCertSans,
     ModifyClusterRequestControlPlaneConfig,
+    ModifyClusterRequestControlPlaneEndpointsConfigInternalDnsConfig,
+    ModifyClusterRequestControlPlaneEndpointsConfig,
     ModifyClusterRequestOperationPolicyClusterAutoUpgrade,
     ModifyClusterRequestOperationPolicy,
     ModifyClusterRequestSystemEventsLogging,

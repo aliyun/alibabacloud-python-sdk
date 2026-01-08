@@ -25,6 +25,7 @@ class CreateClusterRequest(DaraModel):
         cluster_type: str = None,
         container_cidr: str = None,
         control_plane_config: main_models.CreateClusterRequestControlPlaneConfig = None,
+        control_plane_endpoints_config: main_models.CreateClusterRequestControlPlaneEndpointsConfig = None,
         controlplane_log_components: List[str] = None,
         controlplane_log_project: str = None,
         controlplane_log_ttl: str = None,
@@ -214,6 +215,7 @@ class CreateClusterRequest(DaraModel):
         self.container_cidr = container_cidr
         # The control plane configurations of an ACK dedicated cluster.
         self.control_plane_config = control_plane_config
+        self.control_plane_endpoints_config = control_plane_endpoints_config
         # The control plane components for which you want to enable log collection.
         # 
         # By default, the logs of kube-apiserver, kube-controller-manager, and kube-scheduler are collected.
@@ -732,6 +734,8 @@ class CreateClusterRequest(DaraModel):
             self.auto_mode.validate()
         if self.control_plane_config:
             self.control_plane_config.validate()
+        if self.control_plane_endpoints_config:
+            self.control_plane_endpoints_config.validate()
         if self.maintenance_window:
             self.maintenance_window.validate()
         if self.nodepools:
@@ -808,6 +812,9 @@ class CreateClusterRequest(DaraModel):
 
         if self.control_plane_config is not None:
             result['control_plane_config'] = self.control_plane_config.to_map()
+
+        if self.control_plane_endpoints_config is not None:
+            result['control_plane_endpoints_config'] = self.control_plane_endpoints_config.to_map()
 
         if self.controlplane_log_components is not None:
             result['controlplane_log_components'] = self.controlplane_log_components
@@ -1132,6 +1139,10 @@ class CreateClusterRequest(DaraModel):
         if m.get('control_plane_config') is not None:
             temp_model = main_models.CreateClusterRequestControlPlaneConfig()
             self.control_plane_config = temp_model.from_map(m.get('control_plane_config'))
+
+        if m.get('control_plane_endpoints_config') is not None:
+            temp_model = main_models.CreateClusterRequestControlPlaneEndpointsConfig()
+            self.control_plane_endpoints_config = temp_model.from_map(m.get('control_plane_endpoints_config'))
 
         if m.get('controlplane_log_components') is not None:
             self.controlplane_log_components = m.get('controlplane_log_components')
@@ -1571,6 +1582,62 @@ class CreateClusterRequestOperationPolicyClusterAutoUpgrade(DaraModel):
 
         if m.get('enabled') is not None:
             self.enabled = m.get('enabled')
+
+        return self
+
+class CreateClusterRequestControlPlaneEndpointsConfig(DaraModel):
+    def __init__(
+        self,
+        internal_dns_config: main_models.CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig = None,
+    ):
+        self.internal_dns_config = internal_dns_config
+
+    def validate(self):
+        if self.internal_dns_config:
+            self.internal_dns_config.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.internal_dns_config is not None:
+            result['internal_dns_config'] = self.internal_dns_config.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('internal_dns_config') is not None:
+            temp_model = main_models.CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig()
+            self.internal_dns_config = temp_model.from_map(m.get('internal_dns_config'))
+
+        return self
+
+class CreateClusterRequestControlPlaneEndpointsConfigInternalDnsConfig(DaraModel):
+    def __init__(
+        self,
+        bind_vpcs: List[str] = None,
+    ):
+        self.bind_vpcs = bind_vpcs
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.bind_vpcs is not None:
+            result['bind_vpcs'] = self.bind_vpcs
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bind_vpcs') is not None:
+            self.bind_vpcs = m.get('bind_vpcs')
 
         return self
 

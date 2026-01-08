@@ -1061,6 +1061,8 @@ class Client(OpenApiClient):
             body['container_cidr'] = request.container_cidr
         if not DaraCore.is_null(request.control_plane_config):
             body['control_plane_config'] = request.control_plane_config
+        if not DaraCore.is_null(request.control_plane_endpoints_config):
+            body['control_plane_endpoints_config'] = request.control_plane_endpoints_config
         if not DaraCore.is_null(request.controlplane_log_components):
             body['controlplane_log_components'] = request.controlplane_log_components
         if not DaraCore.is_null(request.controlplane_log_project):
@@ -1293,6 +1295,8 @@ class Client(OpenApiClient):
             body['container_cidr'] = request.container_cidr
         if not DaraCore.is_null(request.control_plane_config):
             body['control_plane_config'] = request.control_plane_config
+        if not DaraCore.is_null(request.control_plane_endpoints_config):
+            body['control_plane_endpoints_config'] = request.control_plane_endpoints_config
         if not DaraCore.is_null(request.controlplane_log_components):
             body['controlplane_log_components'] = request.controlplane_log_components
         if not DaraCore.is_null(request.controlplane_log_project):
@@ -8276,6 +8280,8 @@ class Client(OpenApiClient):
             body['cluster_name'] = request.cluster_name
         if not DaraCore.is_null(request.control_plane_config):
             body['control_plane_config'] = request.control_plane_config
+        if not DaraCore.is_null(request.control_plane_endpoints_config):
+            body['control_plane_endpoints_config'] = request.control_plane_endpoints_config
         if not DaraCore.is_null(request.deletion_protection):
             body['deletion_protection'] = request.deletion_protection
         if not DaraCore.is_null(request.enable_rrsa):
@@ -8341,6 +8347,8 @@ class Client(OpenApiClient):
             body['cluster_name'] = request.cluster_name
         if not DaraCore.is_null(request.control_plane_config):
             body['control_plane_config'] = request.control_plane_config
+        if not DaraCore.is_null(request.control_plane_endpoints_config):
+            body['control_plane_endpoints_config'] = request.control_plane_endpoints_config
         if not DaraCore.is_null(request.deletion_protection):
             body['deletion_protection'] = request.deletion_protection
         if not DaraCore.is_null(request.enable_rrsa):

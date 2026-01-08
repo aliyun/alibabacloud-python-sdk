@@ -17,6 +17,7 @@ class DescribeClusterDetailResponseBody(DaraModel):
         cluster_type: str = None,
         container_cidr: str = None,
         control_plane_config: main_models.DescribeClusterDetailResponseBodyControlPlaneConfig = None,
+        control_plane_endpoints_config: main_models.DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig = None,
         created: str = None,
         current_version: str = None,
         deletion_protection: bool = None,
@@ -74,6 +75,7 @@ class DescribeClusterDetailResponseBody(DaraModel):
         self.container_cidr = container_cidr
         # The control plane configurations in an ACK dedicated cluster.
         self.control_plane_config = control_plane_config
+        self.control_plane_endpoints_config = control_plane_endpoints_config
         # The time when the cluster was created.
         self.created = created
         # The Kubernetes version of the cluster. For more information about the Kubernetes versions supported by ACK, see [Release notes for Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
@@ -186,6 +188,8 @@ class DescribeClusterDetailResponseBody(DaraModel):
             self.auto_mode.validate()
         if self.control_plane_config:
             self.control_plane_config.validate()
+        if self.control_plane_endpoints_config:
+            self.control_plane_endpoints_config.validate()
         if self.maintenance_window:
             self.maintenance_window.validate()
         if self.operation_policy:
@@ -222,6 +226,9 @@ class DescribeClusterDetailResponseBody(DaraModel):
 
         if self.control_plane_config is not None:
             result['control_plane_config'] = self.control_plane_config.to_map()
+
+        if self.control_plane_endpoints_config is not None:
+            result['control_plane_endpoints_config'] = self.control_plane_endpoints_config.to_map()
 
         if self.created is not None:
             result['created'] = self.created
@@ -359,6 +366,10 @@ class DescribeClusterDetailResponseBody(DaraModel):
         if m.get('control_plane_config') is not None:
             temp_model = main_models.DescribeClusterDetailResponseBodyControlPlaneConfig()
             self.control_plane_config = temp_model.from_map(m.get('control_plane_config'))
+
+        if m.get('control_plane_endpoints_config') is not None:
+            temp_model = main_models.DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig()
+            self.control_plane_endpoints_config = temp_model.from_map(m.get('control_plane_endpoints_config'))
 
         if m.get('created') is not None:
             self.created = m.get('created')
@@ -626,6 +637,70 @@ class DescribeClusterDetailResponseBodyOperationPolicyClusterAutoUpgrade(DaraMod
         m = m or dict()
         if m.get('channel') is not None:
             self.channel = m.get('channel')
+
+        if m.get('enabled') is not None:
+            self.enabled = m.get('enabled')
+
+        return self
+
+class DescribeClusterDetailResponseBodyControlPlaneEndpointsConfig(DaraModel):
+    def __init__(
+        self,
+        internal_dns_config: main_models.DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig = None,
+    ):
+        self.internal_dns_config = internal_dns_config
+
+    def validate(self):
+        if self.internal_dns_config:
+            self.internal_dns_config.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.internal_dns_config is not None:
+            result['internal_dns_config'] = self.internal_dns_config.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('internal_dns_config') is not None:
+            temp_model = main_models.DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig()
+            self.internal_dns_config = temp_model.from_map(m.get('internal_dns_config'))
+
+        return self
+
+class DescribeClusterDetailResponseBodyControlPlaneEndpointsConfigInternalDnsConfig(DaraModel):
+    def __init__(
+        self,
+        bind_vpcs: List[str] = None,
+        enabled: bool = None,
+    ):
+        self.bind_vpcs = bind_vpcs
+        self.enabled = enabled
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.bind_vpcs is not None:
+            result['bind_vpcs'] = self.bind_vpcs
+
+        if self.enabled is not None:
+            result['enabled'] = self.enabled
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bind_vpcs') is not None:
+            self.bind_vpcs = m.get('bind_vpcs')
 
         if m.get('enabled') is not None:
             self.enabled = m.get('enabled')
