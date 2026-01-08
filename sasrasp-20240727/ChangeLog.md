@@ -1,3 +1,7 @@
+2026-01-08 Version: 1.0.2
+- Update API DescribeAttacks: add request parameters HandleStatus.
+
+
 2025-11-25 Version: 1.0.1
 - Update API DescribeAttacks: add response parameters Body.Attacks.$.HandleStatus.
 - Update API DescribeAttacks: add response parameters Body.Attacks.$.HandleTimestamp.
