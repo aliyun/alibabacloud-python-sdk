@@ -288,16 +288,24 @@ class HttpApiDeployConfigPolicyConfigs(DaraModel):
     def __init__(
         self,
         ai_fallback_config: main_models.HttpApiDeployConfigPolicyConfigsAiFallbackConfig = None,
+        ai_security_guard_config: main_models.HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfig = None,
+        ai_token_rate_limit_config: main_models.HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfig = None,
         enable: bool = None,
         type: str = None,
     ):
         self.ai_fallback_config = ai_fallback_config
+        self.ai_security_guard_config = ai_security_guard_config
+        self.ai_token_rate_limit_config = ai_token_rate_limit_config
         self.enable = enable
         self.type = type
 
     def validate(self):
         if self.ai_fallback_config:
             self.ai_fallback_config.validate()
+        if self.ai_security_guard_config:
+            self.ai_security_guard_config.validate()
+        if self.ai_token_rate_limit_config:
+            self.ai_token_rate_limit_config.validate()
 
     def to_map(self):
         result = dict()
@@ -306,6 +314,12 @@ class HttpApiDeployConfigPolicyConfigs(DaraModel):
             result = _map
         if self.ai_fallback_config is not None:
             result['aiFallbackConfig'] = self.ai_fallback_config.to_map()
+
+        if self.ai_security_guard_config is not None:
+            result['aiSecurityGuardConfig'] = self.ai_security_guard_config.to_map()
+
+        if self.ai_token_rate_limit_config is not None:
+            result['aiTokenRateLimitConfig'] = self.ai_token_rate_limit_config.to_map()
 
         if self.enable is not None:
             result['enable'] = self.enable
@@ -321,11 +335,636 @@ class HttpApiDeployConfigPolicyConfigs(DaraModel):
             temp_model = main_models.HttpApiDeployConfigPolicyConfigsAiFallbackConfig()
             self.ai_fallback_config = temp_model.from_map(m.get('aiFallbackConfig'))
 
+        if m.get('aiSecurityGuardConfig') is not None:
+            temp_model = main_models.HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfig()
+            self.ai_security_guard_config = temp_model.from_map(m.get('aiSecurityGuardConfig'))
+
+        if m.get('aiTokenRateLimitConfig') is not None:
+            temp_model = main_models.HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfig()
+            self.ai_token_rate_limit_config = temp_model.from_map(m.get('aiTokenRateLimitConfig'))
+
         if m.get('enable') is not None:
             self.enable = m.get('enable')
 
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        return self
+
+class HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfig(DaraModel):
+    def __init__(
+        self,
+        enable_global_rules: bool = None,
+        global_rules: List[main_models.HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigGlobalRules] = None,
+        rules: List[main_models.HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigRules] = None,
+    ):
+        self.enable_global_rules = enable_global_rules
+        self.global_rules = global_rules
+        self.rules = rules
+
+    def validate(self):
+        if self.global_rules:
+            for v1 in self.global_rules:
+                 if v1:
+                    v1.validate()
+        if self.rules:
+            for v1 in self.rules:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enable_global_rules is not None:
+            result['enableGlobalRules'] = self.enable_global_rules
+
+        result['globalRules'] = []
+        if self.global_rules is not None:
+            for k1 in self.global_rules:
+                result['globalRules'].append(k1.to_map() if k1 else None)
+
+        result['rules'] = []
+        if self.rules is not None:
+            for k1 in self.rules:
+                result['rules'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('enableGlobalRules') is not None:
+            self.enable_global_rules = m.get('enableGlobalRules')
+
+        self.global_rules = []
+        if m.get('globalRules') is not None:
+            for k1 in m.get('globalRules'):
+                temp_model = main_models.HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigGlobalRules()
+                self.global_rules.append(temp_model.from_map(k1))
+
+        self.rules = []
+        if m.get('rules') is not None:
+            for k1 in m.get('rules'):
+                temp_model = main_models.HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigRules()
+                self.rules.append(temp_model.from_map(k1))
+
+        return self
+
+class HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigRules(DaraModel):
+    def __init__(
+        self,
+        limit_mode: str = None,
+        limit_type: str = None,
+        limit_value: int = None,
+        match_key: str = None,
+        match_type: str = None,
+        match_value: str = None,
+    ):
+        self.limit_mode = limit_mode
+        self.limit_type = limit_type
+        self.limit_value = limit_value
+        self.match_key = match_key
+        self.match_type = match_type
+        self.match_value = match_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.limit_mode is not None:
+            result['limitMode'] = self.limit_mode
+
+        if self.limit_type is not None:
+            result['limitType'] = self.limit_type
+
+        if self.limit_value is not None:
+            result['limitValue'] = self.limit_value
+
+        if self.match_key is not None:
+            result['matchKey'] = self.match_key
+
+        if self.match_type is not None:
+            result['matchType'] = self.match_type
+
+        if self.match_value is not None:
+            result['matchValue'] = self.match_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('limitMode') is not None:
+            self.limit_mode = m.get('limitMode')
+
+        if m.get('limitType') is not None:
+            self.limit_type = m.get('limitType')
+
+        if m.get('limitValue') is not None:
+            self.limit_value = m.get('limitValue')
+
+        if m.get('matchKey') is not None:
+            self.match_key = m.get('matchKey')
+
+        if m.get('matchType') is not None:
+            self.match_type = m.get('matchType')
+
+        if m.get('matchValue') is not None:
+            self.match_value = m.get('matchValue')
+
+        return self
+
+class HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigGlobalRules(DaraModel):
+    def __init__(
+        self,
+        limit_mode: str = None,
+        limit_type: str = None,
+        limit_value: int = None,
+        match_key: str = None,
+        match_type: str = None,
+        match_value: str = None,
+    ):
+        self.limit_mode = limit_mode
+        self.limit_type = limit_type
+        self.limit_value = limit_value
+        self.match_key = match_key
+        self.match_type = match_type
+        self.match_value = match_value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.limit_mode is not None:
+            result['limitMode'] = self.limit_mode
+
+        if self.limit_type is not None:
+            result['limitType'] = self.limit_type
+
+        if self.limit_value is not None:
+            result['limitValue'] = self.limit_value
+
+        if self.match_key is not None:
+            result['matchKey'] = self.match_key
+
+        if self.match_type is not None:
+            result['matchType'] = self.match_type
+
+        if self.match_value is not None:
+            result['matchValue'] = self.match_value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('limitMode') is not None:
+            self.limit_mode = m.get('limitMode')
+
+        if m.get('limitType') is not None:
+            self.limit_type = m.get('limitType')
+
+        if m.get('limitValue') is not None:
+            self.limit_value = m.get('limitValue')
+
+        if m.get('matchKey') is not None:
+            self.match_key = m.get('matchKey')
+
+        if m.get('matchType') is not None:
+            self.match_type = m.get('matchType')
+
+        if m.get('matchValue') is not None:
+            self.match_value = m.get('matchValue')
+
+        return self
+
+class HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfig(DaraModel):
+    def __init__(
+        self,
+        buffer_limit: int = None,
+        check_request: bool = None,
+        check_request_image: bool = None,
+        check_response: bool = None,
+        check_response_image: bool = None,
+        consumer_request_check_service: List[main_models.HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerRequestCheckService] = None,
+        consumer_response_check_service: List[main_models.HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerResponseCheckService] = None,
+        consumer_risk_level: List[main_models.HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerRiskLevel] = None,
+        request_check_service: str = None,
+        request_image_check_service: str = None,
+        response_check_service: str = None,
+        response_image_check_service: str = None,
+        risk_alert_level: str = None,
+        risk_config: List[main_models.HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfig] = None,
+        service_address: str = None,
+    ):
+        self.buffer_limit = buffer_limit
+        self.check_request = check_request
+        self.check_request_image = check_request_image
+        self.check_response = check_response
+        self.check_response_image = check_response_image
+        self.consumer_request_check_service = consumer_request_check_service
+        self.consumer_response_check_service = consumer_response_check_service
+        self.consumer_risk_level = consumer_risk_level
+        self.request_check_service = request_check_service
+        self.request_image_check_service = request_image_check_service
+        self.response_check_service = response_check_service
+        self.response_image_check_service = response_image_check_service
+        self.risk_alert_level = risk_alert_level
+        self.risk_config = risk_config
+        self.service_address = service_address
+
+    def validate(self):
+        if self.consumer_request_check_service:
+            for v1 in self.consumer_request_check_service:
+                 if v1:
+                    v1.validate()
+        if self.consumer_response_check_service:
+            for v1 in self.consumer_response_check_service:
+                 if v1:
+                    v1.validate()
+        if self.consumer_risk_level:
+            for v1 in self.consumer_risk_level:
+                 if v1:
+                    v1.validate()
+        if self.risk_config:
+            for v1 in self.risk_config:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.buffer_limit is not None:
+            result['bufferLimit'] = self.buffer_limit
+
+        if self.check_request is not None:
+            result['checkRequest'] = self.check_request
+
+        if self.check_request_image is not None:
+            result['checkRequestImage'] = self.check_request_image
+
+        if self.check_response is not None:
+            result['checkResponse'] = self.check_response
+
+        if self.check_response_image is not None:
+            result['checkResponseImage'] = self.check_response_image
+
+        result['consumerRequestCheckService'] = []
+        if self.consumer_request_check_service is not None:
+            for k1 in self.consumer_request_check_service:
+                result['consumerRequestCheckService'].append(k1.to_map() if k1 else None)
+
+        result['consumerResponseCheckService'] = []
+        if self.consumer_response_check_service is not None:
+            for k1 in self.consumer_response_check_service:
+                result['consumerResponseCheckService'].append(k1.to_map() if k1 else None)
+
+        result['consumerRiskLevel'] = []
+        if self.consumer_risk_level is not None:
+            for k1 in self.consumer_risk_level:
+                result['consumerRiskLevel'].append(k1.to_map() if k1 else None)
+
+        if self.request_check_service is not None:
+            result['requestCheckService'] = self.request_check_service
+
+        if self.request_image_check_service is not None:
+            result['requestImageCheckService'] = self.request_image_check_service
+
+        if self.response_check_service is not None:
+            result['responseCheckService'] = self.response_check_service
+
+        if self.response_image_check_service is not None:
+            result['responseImageCheckService'] = self.response_image_check_service
+
+        if self.risk_alert_level is not None:
+            result['riskAlertLevel'] = self.risk_alert_level
+
+        result['riskConfig'] = []
+        if self.risk_config is not None:
+            for k1 in self.risk_config:
+                result['riskConfig'].append(k1.to_map() if k1 else None)
+
+        if self.service_address is not None:
+            result['serviceAddress'] = self.service_address
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('bufferLimit') is not None:
+            self.buffer_limit = m.get('bufferLimit')
+
+        if m.get('checkRequest') is not None:
+            self.check_request = m.get('checkRequest')
+
+        if m.get('checkRequestImage') is not None:
+            self.check_request_image = m.get('checkRequestImage')
+
+        if m.get('checkResponse') is not None:
+            self.check_response = m.get('checkResponse')
+
+        if m.get('checkResponseImage') is not None:
+            self.check_response_image = m.get('checkResponseImage')
+
+        self.consumer_request_check_service = []
+        if m.get('consumerRequestCheckService') is not None:
+            for k1 in m.get('consumerRequestCheckService'):
+                temp_model = main_models.HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerRequestCheckService()
+                self.consumer_request_check_service.append(temp_model.from_map(k1))
+
+        self.consumer_response_check_service = []
+        if m.get('consumerResponseCheckService') is not None:
+            for k1 in m.get('consumerResponseCheckService'):
+                temp_model = main_models.HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerResponseCheckService()
+                self.consumer_response_check_service.append(temp_model.from_map(k1))
+
+        self.consumer_risk_level = []
+        if m.get('consumerRiskLevel') is not None:
+            for k1 in m.get('consumerRiskLevel'):
+                temp_model = main_models.HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerRiskLevel()
+                self.consumer_risk_level.append(temp_model.from_map(k1))
+
+        if m.get('requestCheckService') is not None:
+            self.request_check_service = m.get('requestCheckService')
+
+        if m.get('requestImageCheckService') is not None:
+            self.request_image_check_service = m.get('requestImageCheckService')
+
+        if m.get('responseCheckService') is not None:
+            self.response_check_service = m.get('responseCheckService')
+
+        if m.get('responseImageCheckService') is not None:
+            self.response_image_check_service = m.get('responseImageCheckService')
+
+        if m.get('riskAlertLevel') is not None:
+            self.risk_alert_level = m.get('riskAlertLevel')
+
+        self.risk_config = []
+        if m.get('riskConfig') is not None:
+            for k1 in m.get('riskConfig'):
+                temp_model = main_models.HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfig()
+                self.risk_config.append(temp_model.from_map(k1))
+
+        if m.get('serviceAddress') is not None:
+            self.service_address = m.get('serviceAddress')
+
+        return self
+
+class HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfig(DaraModel):
+    def __init__(
+        self,
+        consumer_rules: main_models.HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfigConsumerRules = None,
+        level: str = None,
+        type: str = None,
+    ):
+        self.consumer_rules = consumer_rules
+        self.level = level
+        self.type = type
+
+    def validate(self):
+        if self.consumer_rules:
+            self.consumer_rules.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.consumer_rules is not None:
+            result['consumerRules'] = self.consumer_rules.to_map()
+
+        if self.level is not None:
+            result['level'] = self.level
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('consumerRules') is not None:
+            temp_model = main_models.HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfigConsumerRules()
+            self.consumer_rules = temp_model.from_map(m.get('consumerRules'))
+
+        if m.get('level') is not None:
+            self.level = m.get('level')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        return self
+
+class HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfigConsumerRules(DaraModel):
+    def __init__(
+        self,
+        match_type: str = None,
+        pattern: str = None,
+    ):
+        self.match_type = match_type
+        self.pattern = pattern
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.match_type is not None:
+            result['matchType'] = self.match_type
+
+        if self.pattern is not None:
+            result['pattern'] = self.pattern
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('matchType') is not None:
+            self.match_type = m.get('matchType')
+
+        if m.get('pattern') is not None:
+            self.pattern = m.get('pattern')
+
+        return self
+
+class HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerRiskLevel(DaraModel):
+    def __init__(
+        self,
+        level: str = None,
+        match_type: str = None,
+        name: str = None,
+        type: str = None,
+    ):
+        self.level = level
+        self.match_type = match_type
+        self.name = name
+        self.type = type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.level is not None:
+            result['level'] = self.level
+
+        if self.match_type is not None:
+            result['matchType'] = self.match_type
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.type is not None:
+            result['type'] = self.type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('level') is not None:
+            self.level = m.get('level')
+
+        if m.get('matchType') is not None:
+            self.match_type = m.get('matchType')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        return self
+
+class HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerResponseCheckService(DaraModel):
+    def __init__(
+        self,
+        match_type: str = None,
+        modality_type: str = None,
+        name: str = None,
+        response_check_service: str = None,
+        response_image_check_service: str = None,
+    ):
+        self.match_type = match_type
+        self.modality_type = modality_type
+        self.name = name
+        self.response_check_service = response_check_service
+        self.response_image_check_service = response_image_check_service
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.match_type is not None:
+            result['matchType'] = self.match_type
+
+        if self.modality_type is not None:
+            result['modalityType'] = self.modality_type
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.response_check_service is not None:
+            result['responseCheckService'] = self.response_check_service
+
+        if self.response_image_check_service is not None:
+            result['responseImageCheckService'] = self.response_image_check_service
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('matchType') is not None:
+            self.match_type = m.get('matchType')
+
+        if m.get('modalityType') is not None:
+            self.modality_type = m.get('modalityType')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('responseCheckService') is not None:
+            self.response_check_service = m.get('responseCheckService')
+
+        if m.get('responseImageCheckService') is not None:
+            self.response_image_check_service = m.get('responseImageCheckService')
+
+        return self
+
+class HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerRequestCheckService(DaraModel):
+    def __init__(
+        self,
+        match_type: str = None,
+        modality_type: str = None,
+        name: str = None,
+        request_check_service: str = None,
+        request_image_check_service: str = None,
+    ):
+        self.match_type = match_type
+        self.modality_type = modality_type
+        self.name = name
+        self.request_check_service = request_check_service
+        self.request_image_check_service = request_image_check_service
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.match_type is not None:
+            result['matchType'] = self.match_type
+
+        if self.modality_type is not None:
+            result['modalityType'] = self.modality_type
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.request_check_service is not None:
+            result['requestCheckService'] = self.request_check_service
+
+        if self.request_image_check_service is not None:
+            result['requestImageCheckService'] = self.request_image_check_service
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('matchType') is not None:
+            self.match_type = m.get('matchType')
+
+        if m.get('modalityType') is not None:
+            self.modality_type = m.get('modalityType')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('requestCheckService') is not None:
+            self.request_check_service = m.get('requestCheckService')
+
+        if m.get('requestImageCheckService') is not None:
+            self.request_image_check_service = m.get('requestImageCheckService')
 
         return self
 

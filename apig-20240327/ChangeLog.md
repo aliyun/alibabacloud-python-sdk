@@ -1,3 +1,6 @@
+2026-01-08 Version: 5.7.1
+- Generated python 2024-03-27 for APIG.
+
 2026-01-07 Version: 5.7.0
 - Support API CreateSecret.
 - Support API DeleteSecret.
