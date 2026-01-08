@@ -1,24 +1,23 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
 from typing import Dict
-from Tea.core import TeaCore
 
+from alibabacloud_green20220302 import models as main_models
+from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
-from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_green20220302 import models as green_20220302_models
-from alibabacloud_tea_util import models as util_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_tea_openapi.utils import Utils
+from darabonba.core import DaraCore as DaraCore
+from darabonba.runtime import RuntimeOptions
 
-
+"""
+"""
 class Client(OpenApiClient):
-    """
-    *\
-    """
+
     def __init__(
-        self, 
-        config: open_api_models.Config,
+        self,
+        config: open_api_util_models.Config,
     ):
         super().__init__(config)
         self._endpoint_rule = 'regional'
@@ -55,2650 +54,1916 @@ class Client(OpenApiClient):
         endpoint_map: Dict[str, str],
         endpoint: str,
     ) -> str:
-        if not UtilClient.empty(endpoint):
+        if not DaraCore.is_null(endpoint):
             return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+        if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
     def describe_file_moderation_result_with_options(
         self,
-        request: green_20220302_models.DescribeFileModerationResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.DescribeFileModerationResultResponse:
-        """
-        @summary 文档审核结果
-        
-        @param request: DescribeFileModerationResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeFileModerationResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeFileModerationResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFileModerationResultResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DescribeFileModerationResult',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeFileModerationResult',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.DescribeFileModerationResultResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeFileModerationResultResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_file_moderation_result_with_options_async(
         self,
-        request: green_20220302_models.DescribeFileModerationResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.DescribeFileModerationResultResponse:
-        """
-        @summary 文档审核结果
-        
-        @param request: DescribeFileModerationResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeFileModerationResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeFileModerationResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFileModerationResultResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DescribeFileModerationResult',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeFileModerationResult',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.DescribeFileModerationResultResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeFileModerationResultResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_file_moderation_result(
         self,
-        request: green_20220302_models.DescribeFileModerationResultRequest,
-    ) -> green_20220302_models.DescribeFileModerationResultResponse:
-        """
-        @summary 文档审核结果
-        
-        @param request: DescribeFileModerationResultRequest
-        @return: DescribeFileModerationResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeFileModerationResultRequest,
+    ) -> main_models.DescribeFileModerationResultResponse:
+        runtime = RuntimeOptions()
         return self.describe_file_moderation_result_with_options(request, runtime)
 
     async def describe_file_moderation_result_async(
         self,
-        request: green_20220302_models.DescribeFileModerationResultRequest,
-    ) -> green_20220302_models.DescribeFileModerationResultResponse:
-        """
-        @summary 文档审核结果
-        
-        @param request: DescribeFileModerationResultRequest
-        @return: DescribeFileModerationResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeFileModerationResultRequest,
+    ) -> main_models.DescribeFileModerationResultResponse:
+        runtime = RuntimeOptions()
         return await self.describe_file_moderation_result_with_options_async(request, runtime)
 
     def describe_image_moderation_result_with_options(
         self,
-        request: green_20220302_models.DescribeImageModerationResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.DescribeImageModerationResultResponse:
-        """
-        @summary Obtains the moderation results of an Image Moderation 2.0 task.
-        
-        @description    Billing: This operation is free of charge.
-        QPS limit: You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeImageModerationResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeImageModerationResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeImageModerationResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeImageModerationResultResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.req_id):
+        if not DaraCore.is_null(request.req_id):
             query['ReqId'] = request.req_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeImageModerationResult',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeImageModerationResult',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.DescribeImageModerationResultResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeImageModerationResultResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_image_moderation_result_with_options_async(
         self,
-        request: green_20220302_models.DescribeImageModerationResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.DescribeImageModerationResultResponse:
-        """
-        @summary Obtains the moderation results of an Image Moderation 2.0 task.
-        
-        @description    Billing: This operation is free of charge.
-        QPS limit: You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeImageModerationResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeImageModerationResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeImageModerationResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeImageModerationResultResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.req_id):
+        if not DaraCore.is_null(request.req_id):
             query['ReqId'] = request.req_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeImageModerationResult',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeImageModerationResult',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.DescribeImageModerationResultResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeImageModerationResultResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_image_moderation_result(
         self,
-        request: green_20220302_models.DescribeImageModerationResultRequest,
-    ) -> green_20220302_models.DescribeImageModerationResultResponse:
-        """
-        @summary Obtains the moderation results of an Image Moderation 2.0 task.
-        
-        @description    Billing: This operation is free of charge.
-        QPS limit: You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeImageModerationResultRequest
-        @return: DescribeImageModerationResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeImageModerationResultRequest,
+    ) -> main_models.DescribeImageModerationResultResponse:
+        runtime = RuntimeOptions()
         return self.describe_image_moderation_result_with_options(request, runtime)
 
     async def describe_image_moderation_result_async(
         self,
-        request: green_20220302_models.DescribeImageModerationResultRequest,
-    ) -> green_20220302_models.DescribeImageModerationResultResponse:
-        """
-        @summary Obtains the moderation results of an Image Moderation 2.0 task.
-        
-        @description    Billing: This operation is free of charge.
-        QPS limit: You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeImageModerationResultRequest
-        @return: DescribeImageModerationResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeImageModerationResultRequest,
+    ) -> main_models.DescribeImageModerationResultResponse:
+        runtime = RuntimeOptions()
         return await self.describe_image_moderation_result_with_options_async(request, runtime)
 
     def describe_image_result_ext_with_options(
         self,
-        request: green_20220302_models.DescribeImageResultExtRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.DescribeImageResultExtResponse:
-        """
-        @summary 查询检测结果辅助信息
-        
-        @param request: DescribeImageResultExtRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeImageResultExtResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeImageResultExtRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeImageResultExtResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.info_type):
+        if not DaraCore.is_null(request.info_type):
             body['InfoType'] = request.info_type
-        if not UtilClient.is_unset(request.req_id):
+        if not DaraCore.is_null(request.req_id):
             body['ReqId'] = request.req_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DescribeImageResultExt',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeImageResultExt',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.DescribeImageResultExtResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeImageResultExtResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_image_result_ext_with_options_async(
         self,
-        request: green_20220302_models.DescribeImageResultExtRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.DescribeImageResultExtResponse:
-        """
-        @summary 查询检测结果辅助信息
-        
-        @param request: DescribeImageResultExtRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeImageResultExtResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeImageResultExtRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeImageResultExtResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.info_type):
+        if not DaraCore.is_null(request.info_type):
             body['InfoType'] = request.info_type
-        if not UtilClient.is_unset(request.req_id):
+        if not DaraCore.is_null(request.req_id):
             body['ReqId'] = request.req_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DescribeImageResultExt',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeImageResultExt',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.DescribeImageResultExtResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeImageResultExtResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_image_result_ext(
         self,
-        request: green_20220302_models.DescribeImageResultExtRequest,
-    ) -> green_20220302_models.DescribeImageResultExtResponse:
-        """
-        @summary 查询检测结果辅助信息
-        
-        @param request: DescribeImageResultExtRequest
-        @return: DescribeImageResultExtResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeImageResultExtRequest,
+    ) -> main_models.DescribeImageResultExtResponse:
+        runtime = RuntimeOptions()
         return self.describe_image_result_ext_with_options(request, runtime)
 
     async def describe_image_result_ext_async(
         self,
-        request: green_20220302_models.DescribeImageResultExtRequest,
-    ) -> green_20220302_models.DescribeImageResultExtResponse:
-        """
-        @summary 查询检测结果辅助信息
-        
-        @param request: DescribeImageResultExtRequest
-        @return: DescribeImageResultExtResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeImageResultExtRequest,
+    ) -> main_models.DescribeImageResultExtResponse:
+        runtime = RuntimeOptions()
         return await self.describe_image_result_ext_with_options_async(request, runtime)
 
     def describe_multimodal_moderation_result_with_options(
         self,
-        request: green_20220302_models.DescribeMultimodalModerationResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.DescribeMultimodalModerationResultResponse:
-        """
-        @summary 查询异步多模态检测结果
-        
-        @param request: DescribeMultimodalModerationResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeMultimodalModerationResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeMultimodalModerationResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMultimodalModerationResultResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.req_id):
+        if not DaraCore.is_null(request.req_id):
             query['ReqId'] = request.req_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeMultimodalModerationResult',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeMultimodalModerationResult',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.DescribeMultimodalModerationResultResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeMultimodalModerationResultResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_multimodal_moderation_result_with_options_async(
         self,
-        request: green_20220302_models.DescribeMultimodalModerationResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.DescribeMultimodalModerationResultResponse:
-        """
-        @summary 查询异步多模态检测结果
-        
-        @param request: DescribeMultimodalModerationResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeMultimodalModerationResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeMultimodalModerationResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMultimodalModerationResultResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.req_id):
+        if not DaraCore.is_null(request.req_id):
             query['ReqId'] = request.req_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeMultimodalModerationResult',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeMultimodalModerationResult',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.DescribeMultimodalModerationResultResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeMultimodalModerationResultResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_multimodal_moderation_result(
         self,
-        request: green_20220302_models.DescribeMultimodalModerationResultRequest,
-    ) -> green_20220302_models.DescribeMultimodalModerationResultResponse:
-        """
-        @summary 查询异步多模态检测结果
-        
-        @param request: DescribeMultimodalModerationResultRequest
-        @return: DescribeMultimodalModerationResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeMultimodalModerationResultRequest,
+    ) -> main_models.DescribeMultimodalModerationResultResponse:
+        runtime = RuntimeOptions()
         return self.describe_multimodal_moderation_result_with_options(request, runtime)
 
     async def describe_multimodal_moderation_result_async(
         self,
-        request: green_20220302_models.DescribeMultimodalModerationResultRequest,
-    ) -> green_20220302_models.DescribeMultimodalModerationResultResponse:
-        """
-        @summary 查询异步多模态检测结果
-        
-        @param request: DescribeMultimodalModerationResultRequest
-        @return: DescribeMultimodalModerationResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeMultimodalModerationResultRequest,
+    ) -> main_models.DescribeMultimodalModerationResultResponse:
+        runtime = RuntimeOptions()
         return await self.describe_multimodal_moderation_result_with_options_async(request, runtime)
 
     def describe_upload_token_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.DescribeUploadTokenResponse:
-        """
-        @summary 查询上传token
-        
-        @param request: DescribeUploadTokenRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeUploadTokenResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribeUploadToken',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUploadTokenResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeUploadToken',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.DescribeUploadTokenResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeUploadTokenResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_upload_token_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.DescribeUploadTokenResponse:
-        """
-        @summary 查询上传token
-        
-        @param request: DescribeUploadTokenRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeUploadTokenResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DescribeUploadToken',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUploadTokenResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribeUploadToken',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.DescribeUploadTokenResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeUploadTokenResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def describe_upload_token(self) -> green_20220302_models.DescribeUploadTokenResponse:
-        """
-        @summary 查询上传token
-        
-        @return: DescribeUploadTokenResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def describe_upload_token(self) -> main_models.DescribeUploadTokenResponse:
+        runtime = RuntimeOptions()
         return self.describe_upload_token_with_options(runtime)
 
-    async def describe_upload_token_async(self) -> green_20220302_models.DescribeUploadTokenResponse:
-        """
-        @summary 查询上传token
-        
-        @return: DescribeUploadTokenResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def describe_upload_token_async(self) -> main_models.DescribeUploadTokenResponse:
+        runtime = RuntimeOptions()
         return await self.describe_upload_token_with_options_async(runtime)
 
     def describe_url_moderation_result_with_options(
         self,
-        request: green_20220302_models.DescribeUrlModerationResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.DescribeUrlModerationResultResponse:
-        """
-        @summary Queries the moderation results based on the ReqId returned by asynchronous URL moderation.
-        
-        @description    Billing: This operation is free of charge.
-        Query timeout: We recommend that you query moderation results at least 480 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for up to 3 days. After 3 days, the results are deleted.
-        You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeUrlModerationResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeUrlModerationResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeUrlModerationResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUrlModerationResultResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.req_id):
+        if not DaraCore.is_null(request.req_id):
             body['ReqId'] = request.req_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DescribeUrlModerationResult',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeUrlModerationResult',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.DescribeUrlModerationResultResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeUrlModerationResultResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_url_moderation_result_with_options_async(
         self,
-        request: green_20220302_models.DescribeUrlModerationResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.DescribeUrlModerationResultResponse:
-        """
-        @summary Queries the moderation results based on the ReqId returned by asynchronous URL moderation.
-        
-        @description    Billing: This operation is free of charge.
-        Query timeout: We recommend that you query moderation results at least 480 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for up to 3 days. After 3 days, the results are deleted.
-        You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeUrlModerationResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeUrlModerationResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeUrlModerationResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeUrlModerationResultResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.req_id):
+        if not DaraCore.is_null(request.req_id):
             body['ReqId'] = request.req_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DescribeUrlModerationResult',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeUrlModerationResult',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.DescribeUrlModerationResultResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeUrlModerationResultResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_url_moderation_result(
         self,
-        request: green_20220302_models.DescribeUrlModerationResultRequest,
-    ) -> green_20220302_models.DescribeUrlModerationResultResponse:
-        """
-        @summary Queries the moderation results based on the ReqId returned by asynchronous URL moderation.
-        
-        @description    Billing: This operation is free of charge.
-        Query timeout: We recommend that you query moderation results at least 480 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for up to 3 days. After 3 days, the results are deleted.
-        You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeUrlModerationResultRequest
-        @return: DescribeUrlModerationResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeUrlModerationResultRequest,
+    ) -> main_models.DescribeUrlModerationResultResponse:
+        runtime = RuntimeOptions()
         return self.describe_url_moderation_result_with_options(request, runtime)
 
     async def describe_url_moderation_result_async(
         self,
-        request: green_20220302_models.DescribeUrlModerationResultRequest,
-    ) -> green_20220302_models.DescribeUrlModerationResultResponse:
-        """
-        @summary Queries the moderation results based on the ReqId returned by asynchronous URL moderation.
-        
-        @description    Billing: This operation is free of charge.
-        Query timeout: We recommend that you query moderation results at least 480 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for up to 3 days. After 3 days, the results are deleted.
-        You can call this operation up to 100 times per second per account. If the number of the calls per second exceeds the limit, throttling is triggered. As a result, your business may be affected. We recommend that you take note of the limit when you call this operation.
-        
-        @param request: DescribeUrlModerationResultRequest
-        @return: DescribeUrlModerationResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeUrlModerationResultRequest,
+    ) -> main_models.DescribeUrlModerationResultResponse:
+        runtime = RuntimeOptions()
         return await self.describe_url_moderation_result_with_options_async(request, runtime)
 
     def file_moderation_with_options(
         self,
-        request: green_20220302_models.FileModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.FileModerationResponse:
-        """
-        @summary 文档审核
-        
-        @param request: FileModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: FileModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.FileModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.FileModerationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='FileModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'FileModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.FileModerationResponse(),
+        return DaraCore.from_map(
+            main_models.FileModerationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def file_moderation_with_options_async(
         self,
-        request: green_20220302_models.FileModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.FileModerationResponse:
-        """
-        @summary 文档审核
-        
-        @param request: FileModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: FileModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.FileModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.FileModerationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='FileModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'FileModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.FileModerationResponse(),
+        return DaraCore.from_map(
+            main_models.FileModerationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def file_moderation(
         self,
-        request: green_20220302_models.FileModerationRequest,
-    ) -> green_20220302_models.FileModerationResponse:
-        """
-        @summary 文档审核
-        
-        @param request: FileModerationRequest
-        @return: FileModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.FileModerationRequest,
+    ) -> main_models.FileModerationResponse:
+        runtime = RuntimeOptions()
         return self.file_moderation_with_options(request, runtime)
 
     async def file_moderation_async(
         self,
-        request: green_20220302_models.FileModerationRequest,
-    ) -> green_20220302_models.FileModerationResponse:
-        """
-        @summary 文档审核
-        
-        @param request: FileModerationRequest
-        @return: FileModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.FileModerationRequest,
+    ) -> main_models.FileModerationResponse:
+        runtime = RuntimeOptions()
         return await self.file_moderation_with_options_async(request, runtime)
 
     def image_async_moderation_with_options(
         self,
-        request: green_20220302_models.ImageAsyncModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.ImageAsyncModerationResponse:
-        """
-        @summary 图片异步检测
-        
-        @param request: ImageAsyncModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ImageAsyncModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ImageAsyncModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageAsyncModerationResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             query['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             query['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ImageAsyncModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ImageAsyncModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.ImageAsyncModerationResponse(),
+        return DaraCore.from_map(
+            main_models.ImageAsyncModerationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def image_async_moderation_with_options_async(
         self,
-        request: green_20220302_models.ImageAsyncModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.ImageAsyncModerationResponse:
-        """
-        @summary 图片异步检测
-        
-        @param request: ImageAsyncModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ImageAsyncModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ImageAsyncModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageAsyncModerationResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             query['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             query['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ImageAsyncModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ImageAsyncModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.ImageAsyncModerationResponse(),
+        return DaraCore.from_map(
+            main_models.ImageAsyncModerationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def image_async_moderation(
         self,
-        request: green_20220302_models.ImageAsyncModerationRequest,
-    ) -> green_20220302_models.ImageAsyncModerationResponse:
-        """
-        @summary 图片异步检测
-        
-        @param request: ImageAsyncModerationRequest
-        @return: ImageAsyncModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ImageAsyncModerationRequest,
+    ) -> main_models.ImageAsyncModerationResponse:
+        runtime = RuntimeOptions()
         return self.image_async_moderation_with_options(request, runtime)
 
     async def image_async_moderation_async(
         self,
-        request: green_20220302_models.ImageAsyncModerationRequest,
-    ) -> green_20220302_models.ImageAsyncModerationResponse:
-        """
-        @summary 图片异步检测
-        
-        @param request: ImageAsyncModerationRequest
-        @return: ImageAsyncModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ImageAsyncModerationRequest,
+    ) -> main_models.ImageAsyncModerationResponse:
+        runtime = RuntimeOptions()
         return await self.image_async_moderation_with_options_async(request, runtime)
 
     def image_batch_moderation_with_options(
         self,
-        request: green_20220302_models.ImageBatchModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.ImageBatchModerationResponse:
-        """
-        @summary 图片批量调用
-        
-        @param request: ImageBatchModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ImageBatchModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ImageBatchModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageBatchModerationResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             query['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             query['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ImageBatchModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ImageBatchModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.ImageBatchModerationResponse(),
+        return DaraCore.from_map(
+            main_models.ImageBatchModerationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def image_batch_moderation_with_options_async(
         self,
-        request: green_20220302_models.ImageBatchModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.ImageBatchModerationResponse:
-        """
-        @summary 图片批量调用
-        
-        @param request: ImageBatchModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ImageBatchModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ImageBatchModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageBatchModerationResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             query['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             query['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ImageBatchModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ImageBatchModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.ImageBatchModerationResponse(),
+        return DaraCore.from_map(
+            main_models.ImageBatchModerationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def image_batch_moderation(
         self,
-        request: green_20220302_models.ImageBatchModerationRequest,
-    ) -> green_20220302_models.ImageBatchModerationResponse:
-        """
-        @summary 图片批量调用
-        
-        @param request: ImageBatchModerationRequest
-        @return: ImageBatchModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ImageBatchModerationRequest,
+    ) -> main_models.ImageBatchModerationResponse:
+        runtime = RuntimeOptions()
         return self.image_batch_moderation_with_options(request, runtime)
 
     async def image_batch_moderation_async(
         self,
-        request: green_20220302_models.ImageBatchModerationRequest,
-    ) -> green_20220302_models.ImageBatchModerationResponse:
-        """
-        @summary 图片批量调用
-        
-        @param request: ImageBatchModerationRequest
-        @return: ImageBatchModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ImageBatchModerationRequest,
+    ) -> main_models.ImageBatchModerationResponse:
+        runtime = RuntimeOptions()
         return await self.image_batch_moderation_with_options_async(request, runtime)
 
     def image_moderation_with_options(
         self,
-        request: green_20220302_models.ImageModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.ImageModerationResponse:
-        """
-        @summary Identifies whether an image contains content or elements that violate relevant regulations on network content dissemination, affect the content order of a specific platform, or affect user experience. Image Moderation 2.0 supports over 90 content risk labels and over 100 risk control items. Image Moderation 2.0 of Content Moderation allows you to develop further moderation or governance measures for specific image content based on business scenarios, platform-specific content governance rules, or rich risk labels and scores of confidence levels returned by API calls.
-        
-        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/467826.html)[](https://www.aliyun.com/price/product?#/lvwang/detail/cdibag) of Image Moderation 2.0.
-        
-        @param request: ImageModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ImageModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ImageModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageModerationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ImageModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ImageModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.ImageModerationResponse(),
+        return DaraCore.from_map(
+            main_models.ImageModerationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def image_moderation_with_options_async(
         self,
-        request: green_20220302_models.ImageModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.ImageModerationResponse:
-        """
-        @summary Identifies whether an image contains content or elements that violate relevant regulations on network content dissemination, affect the content order of a specific platform, or affect user experience. Image Moderation 2.0 supports over 90 content risk labels and over 100 risk control items. Image Moderation 2.0 of Content Moderation allows you to develop further moderation or governance measures for specific image content based on business scenarios, platform-specific content governance rules, or rich risk labels and scores of confidence levels returned by API calls.
-        
-        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/467826.html)[](https://www.aliyun.com/price/product?#/lvwang/detail/cdibag) of Image Moderation 2.0.
-        
-        @param request: ImageModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ImageModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ImageModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageModerationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ImageModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ImageModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.ImageModerationResponse(),
+        return DaraCore.from_map(
+            main_models.ImageModerationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def image_moderation(
         self,
-        request: green_20220302_models.ImageModerationRequest,
-    ) -> green_20220302_models.ImageModerationResponse:
-        """
-        @summary Identifies whether an image contains content or elements that violate relevant regulations on network content dissemination, affect the content order of a specific platform, or affect user experience. Image Moderation 2.0 supports over 90 content risk labels and over 100 risk control items. Image Moderation 2.0 of Content Moderation allows you to develop further moderation or governance measures for specific image content based on business scenarios, platform-specific content governance rules, or rich risk labels and scores of confidence levels returned by API calls.
-        
-        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/467826.html)[](https://www.aliyun.com/price/product?#/lvwang/detail/cdibag) of Image Moderation 2.0.
-        
-        @param request: ImageModerationRequest
-        @return: ImageModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ImageModerationRequest,
+    ) -> main_models.ImageModerationResponse:
+        runtime = RuntimeOptions()
         return self.image_moderation_with_options(request, runtime)
 
     async def image_moderation_async(
         self,
-        request: green_20220302_models.ImageModerationRequest,
-    ) -> green_20220302_models.ImageModerationResponse:
-        """
-        @summary Identifies whether an image contains content or elements that violate relevant regulations on network content dissemination, affect the content order of a specific platform, or affect user experience. Image Moderation 2.0 supports over 90 content risk labels and over 100 risk control items. Image Moderation 2.0 of Content Moderation allows you to develop further moderation or governance measures for specific image content based on business scenarios, platform-specific content governance rules, or rich risk labels and scores of confidence levels returned by API calls.
-        
-        @description *Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/467826.html)[](https://www.aliyun.com/price/product?#/lvwang/detail/cdibag) of Image Moderation 2.0.
-        
-        @param request: ImageModerationRequest
-        @return: ImageModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ImageModerationRequest,
+    ) -> main_models.ImageModerationResponse:
+        runtime = RuntimeOptions()
         return await self.image_moderation_with_options_async(request, runtime)
 
     def image_queue_moderation_with_options(
         self,
-        request: green_20220302_models.ImageQueueModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.ImageQueueModerationResponse:
-        """
-        @summary 图片审核
-        
-        @param request: ImageQueueModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ImageQueueModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ImageQueueModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageQueueModerationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ImageQueueModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ImageQueueModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.ImageQueueModerationResponse(),
+        return DaraCore.from_map(
+            main_models.ImageQueueModerationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def image_queue_moderation_with_options_async(
         self,
-        request: green_20220302_models.ImageQueueModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.ImageQueueModerationResponse:
-        """
-        @summary 图片审核
-        
-        @param request: ImageQueueModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ImageQueueModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ImageQueueModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ImageQueueModerationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ImageQueueModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ImageQueueModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.ImageQueueModerationResponse(),
+        return DaraCore.from_map(
+            main_models.ImageQueueModerationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def image_queue_moderation(
         self,
-        request: green_20220302_models.ImageQueueModerationRequest,
-    ) -> green_20220302_models.ImageQueueModerationResponse:
-        """
-        @summary 图片审核
-        
-        @param request: ImageQueueModerationRequest
-        @return: ImageQueueModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ImageQueueModerationRequest,
+    ) -> main_models.ImageQueueModerationResponse:
+        runtime = RuntimeOptions()
         return self.image_queue_moderation_with_options(request, runtime)
 
     async def image_queue_moderation_async(
         self,
-        request: green_20220302_models.ImageQueueModerationRequest,
-    ) -> green_20220302_models.ImageQueueModerationResponse:
-        """
-        @summary 图片审核
-        
-        @param request: ImageQueueModerationRequest
-        @return: ImageQueueModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ImageQueueModerationRequest,
+    ) -> main_models.ImageQueueModerationResponse:
+        runtime = RuntimeOptions()
         return await self.image_queue_moderation_with_options_async(request, runtime)
 
     def manual_callback_with_options(
         self,
-        request: green_20220302_models.ManualCallbackRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.ManualCallbackResponse:
-        """
-        @summary Content Security Manual Review Result Callback Interface
-        
-        @param request: ManualCallbackRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ManualCallbackResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ManualCallbackRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ManualCallbackResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.channel):
+        if not DaraCore.is_null(request.channel):
             body['Channel'] = request.channel
-        if not UtilClient.is_unset(request.checksum):
+        if not DaraCore.is_null(request.checksum):
             body['Checksum'] = request.checksum
-        if not UtilClient.is_unset(request.code):
+        if not DaraCore.is_null(request.code):
             body['Code'] = request.code
-        if not UtilClient.is_unset(request.data):
+        if not DaraCore.is_null(request.data):
             body['Data'] = request.data
-        if not UtilClient.is_unset(request.msg):
+        if not DaraCore.is_null(request.msg):
             body['Msg'] = request.msg
-        if not UtilClient.is_unset(request.req_id):
+        if not DaraCore.is_null(request.req_id):
             body['ReqId'] = request.req_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ManualCallback',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ManualCallback',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.ManualCallbackResponse(),
+        return DaraCore.from_map(
+            main_models.ManualCallbackResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def manual_callback_with_options_async(
         self,
-        request: green_20220302_models.ManualCallbackRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.ManualCallbackResponse:
-        """
-        @summary Content Security Manual Review Result Callback Interface
-        
-        @param request: ManualCallbackRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ManualCallbackResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ManualCallbackRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ManualCallbackResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.channel):
+        if not DaraCore.is_null(request.channel):
             body['Channel'] = request.channel
-        if not UtilClient.is_unset(request.checksum):
+        if not DaraCore.is_null(request.checksum):
             body['Checksum'] = request.checksum
-        if not UtilClient.is_unset(request.code):
+        if not DaraCore.is_null(request.code):
             body['Code'] = request.code
-        if not UtilClient.is_unset(request.data):
+        if not DaraCore.is_null(request.data):
             body['Data'] = request.data
-        if not UtilClient.is_unset(request.msg):
+        if not DaraCore.is_null(request.msg):
             body['Msg'] = request.msg
-        if not UtilClient.is_unset(request.req_id):
+        if not DaraCore.is_null(request.req_id):
             body['ReqId'] = request.req_id
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ManualCallback',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ManualCallback',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.ManualCallbackResponse(),
+        return DaraCore.from_map(
+            main_models.ManualCallbackResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def manual_callback(
         self,
-        request: green_20220302_models.ManualCallbackRequest,
-    ) -> green_20220302_models.ManualCallbackResponse:
-        """
-        @summary Content Security Manual Review Result Callback Interface
-        
-        @param request: ManualCallbackRequest
-        @return: ManualCallbackResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ManualCallbackRequest,
+    ) -> main_models.ManualCallbackResponse:
+        runtime = RuntimeOptions()
         return self.manual_callback_with_options(request, runtime)
 
     async def manual_callback_async(
         self,
-        request: green_20220302_models.ManualCallbackRequest,
-    ) -> green_20220302_models.ManualCallbackResponse:
-        """
-        @summary Content Security Manual Review Result Callback Interface
-        
-        @param request: ManualCallbackRequest
-        @return: ManualCallbackResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ManualCallbackRequest,
+    ) -> main_models.ManualCallbackResponse:
+        runtime = RuntimeOptions()
         return await self.manual_callback_with_options_async(request, runtime)
 
     def manual_moderation_with_options(
         self,
-        request: green_20220302_models.ManualModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.ManualModerationResponse:
-        """
-        @summary Content Security Manual Review Request Interface
-        
-        @param request: ManualModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ManualModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ManualModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ManualModerationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ManualModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ManualModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.ManualModerationResponse(),
+        return DaraCore.from_map(
+            main_models.ManualModerationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def manual_moderation_with_options_async(
         self,
-        request: green_20220302_models.ManualModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.ManualModerationResponse:
-        """
-        @summary Content Security Manual Review Request Interface
-        
-        @param request: ManualModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ManualModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ManualModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ManualModerationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ManualModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ManualModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.ManualModerationResponse(),
+        return DaraCore.from_map(
+            main_models.ManualModerationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def manual_moderation(
         self,
-        request: green_20220302_models.ManualModerationRequest,
-    ) -> green_20220302_models.ManualModerationResponse:
-        """
-        @summary Content Security Manual Review Request Interface
-        
-        @param request: ManualModerationRequest
-        @return: ManualModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ManualModerationRequest,
+    ) -> main_models.ManualModerationResponse:
+        runtime = RuntimeOptions()
         return self.manual_moderation_with_options(request, runtime)
 
     async def manual_moderation_async(
         self,
-        request: green_20220302_models.ManualModerationRequest,
-    ) -> green_20220302_models.ManualModerationResponse:
-        """
-        @summary Content Security Manual Review Request Interface
-        
-        @param request: ManualModerationRequest
-        @return: ManualModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ManualModerationRequest,
+    ) -> main_models.ManualModerationResponse:
+        runtime = RuntimeOptions()
         return await self.manual_moderation_with_options_async(request, runtime)
 
     def manual_moderation_result_with_options(
         self,
-        request: green_20220302_models.ManualModerationResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.ManualModerationResultResponse:
-        """
-        @summary Retrieve manual review results
-        
-        @param request: ManualModerationResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ManualModerationResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ManualModerationResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ManualModerationResultResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ManualModerationResult',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ManualModerationResult',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.ManualModerationResultResponse(),
+        return DaraCore.from_map(
+            main_models.ManualModerationResultResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def manual_moderation_result_with_options_async(
         self,
-        request: green_20220302_models.ManualModerationResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.ManualModerationResultResponse:
-        """
-        @summary Retrieve manual review results
-        
-        @param request: ManualModerationResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ManualModerationResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ManualModerationResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ManualModerationResultResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ManualModerationResult',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ManualModerationResult',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.ManualModerationResultResponse(),
+        return DaraCore.from_map(
+            main_models.ManualModerationResultResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def manual_moderation_result(
         self,
-        request: green_20220302_models.ManualModerationResultRequest,
-    ) -> green_20220302_models.ManualModerationResultResponse:
-        """
-        @summary Retrieve manual review results
-        
-        @param request: ManualModerationResultRequest
-        @return: ManualModerationResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ManualModerationResultRequest,
+    ) -> main_models.ManualModerationResultResponse:
+        runtime = RuntimeOptions()
         return self.manual_moderation_result_with_options(request, runtime)
 
     async def manual_moderation_result_async(
         self,
-        request: green_20220302_models.ManualModerationResultRequest,
-    ) -> green_20220302_models.ManualModerationResultResponse:
-        """
-        @summary Retrieve manual review results
-        
-        @param request: ManualModerationResultRequest
-        @return: ManualModerationResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ManualModerationResultRequest,
+    ) -> main_models.ManualModerationResultResponse:
+        runtime = RuntimeOptions()
         return await self.manual_moderation_result_with_options_async(request, runtime)
 
     def multi_modal_guard_with_options(
         self,
-        request: green_20220302_models.MultiModalGuardRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.MultiModalGuardResponse:
-        """
-        @summary 同步检测接口
-        
-        @param request: MultiModalGuardRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MultiModalGuardResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MultiModalGuardRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MultiModalGuardResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='MultiModalGuard',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MultiModalGuard',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.MultiModalGuardResponse(),
+        return DaraCore.from_map(
+            main_models.MultiModalGuardResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def multi_modal_guard_with_options_async(
         self,
-        request: green_20220302_models.MultiModalGuardRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.MultiModalGuardResponse:
-        """
-        @summary 同步检测接口
-        
-        @param request: MultiModalGuardRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MultiModalGuardResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MultiModalGuardRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MultiModalGuardResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='MultiModalGuard',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MultiModalGuard',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.MultiModalGuardResponse(),
+        return DaraCore.from_map(
+            main_models.MultiModalGuardResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def multi_modal_guard(
         self,
-        request: green_20220302_models.MultiModalGuardRequest,
-    ) -> green_20220302_models.MultiModalGuardResponse:
-        """
-        @summary 同步检测接口
-        
-        @param request: MultiModalGuardRequest
-        @return: MultiModalGuardResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MultiModalGuardRequest,
+    ) -> main_models.MultiModalGuardResponse:
+        runtime = RuntimeOptions()
         return self.multi_modal_guard_with_options(request, runtime)
 
     async def multi_modal_guard_async(
         self,
-        request: green_20220302_models.MultiModalGuardRequest,
-    ) -> green_20220302_models.MultiModalGuardResponse:
-        """
-        @summary 同步检测接口
-        
-        @param request: MultiModalGuardRequest
-        @return: MultiModalGuardResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MultiModalGuardRequest,
+    ) -> main_models.MultiModalGuardResponse:
+        runtime = RuntimeOptions()
         return await self.multi_modal_guard_with_options_async(request, runtime)
 
     def multi_modal_guard_for_base_64with_options(
         self,
-        request: green_20220302_models.MultiModalGuardForBase64Request,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.MultiModalGuardForBase64Response:
-        """
-        @summary 多模态同步检测接口，支持图片base64字符串
-        
-        @param request: MultiModalGuardForBase64Request
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MultiModalGuardForBase64Response
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MultiModalGuardForBase64Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.MultiModalGuardForBase64Response:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             query['Service'] = request.service
         body = {}
-        if not UtilClient.is_unset(request.image_base_64str):
+        if not DaraCore.is_null(request.image_base_64str):
             body['ImageBase64Str'] = request.image_base_64str
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='MultiModalGuardForBase64',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MultiModalGuardForBase64',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.MultiModalGuardForBase64Response(),
+        return DaraCore.from_map(
+            main_models.MultiModalGuardForBase64Response(),
             self.call_api(params, req, runtime)
         )
 
     async def multi_modal_guard_for_base_64with_options_async(
         self,
-        request: green_20220302_models.MultiModalGuardForBase64Request,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.MultiModalGuardForBase64Response:
-        """
-        @summary 多模态同步检测接口，支持图片base64字符串
-        
-        @param request: MultiModalGuardForBase64Request
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MultiModalGuardForBase64Response
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MultiModalGuardForBase64Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.MultiModalGuardForBase64Response:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             query['Service'] = request.service
         body = {}
-        if not UtilClient.is_unset(request.image_base_64str):
+        if not DaraCore.is_null(request.image_base_64str):
             body['ImageBase64Str'] = request.image_base_64str
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query),
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='MultiModalGuardForBase64',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MultiModalGuardForBase64',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.MultiModalGuardForBase64Response(),
+        return DaraCore.from_map(
+            main_models.MultiModalGuardForBase64Response(),
             await self.call_api_async(params, req, runtime)
         )
 
     def multi_modal_guard_for_base_64(
         self,
-        request: green_20220302_models.MultiModalGuardForBase64Request,
-    ) -> green_20220302_models.MultiModalGuardForBase64Response:
-        """
-        @summary 多模态同步检测接口，支持图片base64字符串
-        
-        @param request: MultiModalGuardForBase64Request
-        @return: MultiModalGuardForBase64Response
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MultiModalGuardForBase64Request,
+    ) -> main_models.MultiModalGuardForBase64Response:
+        runtime = RuntimeOptions()
         return self.multi_modal_guard_for_base_64with_options(request, runtime)
 
     async def multi_modal_guard_for_base_64_async(
         self,
-        request: green_20220302_models.MultiModalGuardForBase64Request,
-    ) -> green_20220302_models.MultiModalGuardForBase64Response:
-        """
-        @summary 多模态同步检测接口，支持图片base64字符串
-        
-        @param request: MultiModalGuardForBase64Request
-        @return: MultiModalGuardForBase64Response
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MultiModalGuardForBase64Request,
+    ) -> main_models.MultiModalGuardForBase64Response:
+        runtime = RuntimeOptions()
         return await self.multi_modal_guard_for_base_64with_options_async(request, runtime)
 
     def multimodal_async_moderation_with_options(
         self,
-        request: green_20220302_models.MultimodalAsyncModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.MultimodalAsyncModerationResponse:
-        """
-        @summary 多模态-异步检测
-        
-        @param request: MultimodalAsyncModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MultimodalAsyncModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MultimodalAsyncModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MultimodalAsyncModerationResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             query['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             query['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='MultimodalAsyncModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MultimodalAsyncModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.MultimodalAsyncModerationResponse(),
+        return DaraCore.from_map(
+            main_models.MultimodalAsyncModerationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def multimodal_async_moderation_with_options_async(
         self,
-        request: green_20220302_models.MultimodalAsyncModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.MultimodalAsyncModerationResponse:
-        """
-        @summary 多模态-异步检测
-        
-        @param request: MultimodalAsyncModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MultimodalAsyncModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MultimodalAsyncModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MultimodalAsyncModerationResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             query['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             query['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='MultimodalAsyncModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MultimodalAsyncModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.MultimodalAsyncModerationResponse(),
+        return DaraCore.from_map(
+            main_models.MultimodalAsyncModerationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def multimodal_async_moderation(
         self,
-        request: green_20220302_models.MultimodalAsyncModerationRequest,
-    ) -> green_20220302_models.MultimodalAsyncModerationResponse:
-        """
-        @summary 多模态-异步检测
-        
-        @param request: MultimodalAsyncModerationRequest
-        @return: MultimodalAsyncModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MultimodalAsyncModerationRequest,
+    ) -> main_models.MultimodalAsyncModerationResponse:
+        runtime = RuntimeOptions()
         return self.multimodal_async_moderation_with_options(request, runtime)
 
     async def multimodal_async_moderation_async(
         self,
-        request: green_20220302_models.MultimodalAsyncModerationRequest,
-    ) -> green_20220302_models.MultimodalAsyncModerationResponse:
-        """
-        @summary 多模态-异步检测
-        
-        @param request: MultimodalAsyncModerationRequest
-        @return: MultimodalAsyncModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MultimodalAsyncModerationRequest,
+    ) -> main_models.MultimodalAsyncModerationResponse:
+        runtime = RuntimeOptions()
         return await self.multimodal_async_moderation_with_options_async(request, runtime)
 
     def text_moderation_with_options(
         self,
-        request: green_20220302_models.TextModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.TextModerationResponse:
-        """
-        @summary Provides moderation services for multiple business scenarios and identifies various violation risks.
-        
-        @description Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/464388.html?#section-itm-m2s-ugq) of Text Moderation 2.0.
-        
-        @param request: TextModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TextModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.TextModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TextModerationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='TextModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TextModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.TextModerationResponse(),
+        return DaraCore.from_map(
+            main_models.TextModerationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def text_moderation_with_options_async(
         self,
-        request: green_20220302_models.TextModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.TextModerationResponse:
-        """
-        @summary Provides moderation services for multiple business scenarios and identifies various violation risks.
-        
-        @description Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/464388.html?#section-itm-m2s-ugq) of Text Moderation 2.0.
-        
-        @param request: TextModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TextModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.TextModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TextModerationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='TextModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TextModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.TextModerationResponse(),
+        return DaraCore.from_map(
+            main_models.TextModerationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def text_moderation(
         self,
-        request: green_20220302_models.TextModerationRequest,
-    ) -> green_20220302_models.TextModerationResponse:
-        """
-        @summary Provides moderation services for multiple business scenarios and identifies various violation risks.
-        
-        @description Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/464388.html?#section-itm-m2s-ugq) of Text Moderation 2.0.
-        
-        @param request: TextModerationRequest
-        @return: TextModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TextModerationRequest,
+    ) -> main_models.TextModerationResponse:
+        runtime = RuntimeOptions()
         return self.text_moderation_with_options(request, runtime)
 
     async def text_moderation_async(
         self,
-        request: green_20220302_models.TextModerationRequest,
-    ) -> green_20220302_models.TextModerationResponse:
-        """
-        @summary Provides moderation services for multiple business scenarios and identifies various violation risks.
-        
-        @description Before you call this operation, make sure that you are familiar with the [billing](https://help.aliyun.com/document_detail/464388.html?#section-itm-m2s-ugq) of Text Moderation 2.0.
-        
-        @param request: TextModerationRequest
-        @return: TextModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TextModerationRequest,
+    ) -> main_models.TextModerationResponse:
+        runtime = RuntimeOptions()
         return await self.text_moderation_with_options_async(request, runtime)
 
     def text_moderation_plus_with_options(
         self,
-        request: green_20220302_models.TextModerationPlusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.TextModerationPlusResponse:
-        """
-        @summary Moderates the input command and generated text of large language models (LLMs). Specific model input commands can be used to retrieve standard answers. The feature of enabling and disabling the moderation labels is also available.
-        
-        @description Before you call this operation, make sure that you have [activated the Content Moderation 2.0 service](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn) and are familiar with the [billing](https://help.aliyun.com/document_detail/2671445.html?#section-6od-32j-99n) of the Text Moderation 2.0 Plus service.
-        
-        @param request: TextModerationPlusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TextModerationPlusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.TextModerationPlusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TextModerationPlusResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='TextModerationPlus',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TextModerationPlus',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.TextModerationPlusResponse(),
+        return DaraCore.from_map(
+            main_models.TextModerationPlusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def text_moderation_plus_with_options_async(
         self,
-        request: green_20220302_models.TextModerationPlusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.TextModerationPlusResponse:
-        """
-        @summary Moderates the input command and generated text of large language models (LLMs). Specific model input commands can be used to retrieve standard answers. The feature of enabling and disabling the moderation labels is also available.
-        
-        @description Before you call this operation, make sure that you have [activated the Content Moderation 2.0 service](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn) and are familiar with the [billing](https://help.aliyun.com/document_detail/2671445.html?#section-6od-32j-99n) of the Text Moderation 2.0 Plus service.
-        
-        @param request: TextModerationPlusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TextModerationPlusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.TextModerationPlusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TextModerationPlusResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='TextModerationPlus',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TextModerationPlus',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.TextModerationPlusResponse(),
+        return DaraCore.from_map(
+            main_models.TextModerationPlusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def text_moderation_plus(
         self,
-        request: green_20220302_models.TextModerationPlusRequest,
-    ) -> green_20220302_models.TextModerationPlusResponse:
-        """
-        @summary Moderates the input command and generated text of large language models (LLMs). Specific model input commands can be used to retrieve standard answers. The feature of enabling and disabling the moderation labels is also available.
-        
-        @description Before you call this operation, make sure that you have [activated the Content Moderation 2.0 service](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn) and are familiar with the [billing](https://help.aliyun.com/document_detail/2671445.html?#section-6od-32j-99n) of the Text Moderation 2.0 Plus service.
-        
-        @param request: TextModerationPlusRequest
-        @return: TextModerationPlusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TextModerationPlusRequest,
+    ) -> main_models.TextModerationPlusResponse:
+        runtime = RuntimeOptions()
         return self.text_moderation_plus_with_options(request, runtime)
 
     async def text_moderation_plus_async(
         self,
-        request: green_20220302_models.TextModerationPlusRequest,
-    ) -> green_20220302_models.TextModerationPlusResponse:
-        """
-        @summary Moderates the input command and generated text of large language models (LLMs). Specific model input commands can be used to retrieve standard answers. The feature of enabling and disabling the moderation labels is also available.
-        
-        @description Before you call this operation, make sure that you have [activated the Content Moderation 2.0 service](https://common-buy.aliyun.com/?commodityCode=lvwang_cip_public_cn) and are familiar with the [billing](https://help.aliyun.com/document_detail/2671445.html?#section-6od-32j-99n) of the Text Moderation 2.0 Plus service.
-        
-        @param request: TextModerationPlusRequest
-        @return: TextModerationPlusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TextModerationPlusRequest,
+    ) -> main_models.TextModerationPlusResponse:
+        runtime = RuntimeOptions()
         return await self.text_moderation_plus_with_options_async(request, runtime)
 
     def url_async_moderation_with_options(
         self,
-        request: green_20220302_models.UrlAsyncModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.UrlAsyncModerationResponse:
-        """
-        @summary url异步检测
-        
-        @param request: UrlAsyncModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UrlAsyncModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UrlAsyncModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UrlAsyncModerationResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             query['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             query['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UrlAsyncModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UrlAsyncModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.UrlAsyncModerationResponse(),
+        return DaraCore.from_map(
+            main_models.UrlAsyncModerationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def url_async_moderation_with_options_async(
         self,
-        request: green_20220302_models.UrlAsyncModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.UrlAsyncModerationResponse:
-        """
-        @summary url异步检测
-        
-        @param request: UrlAsyncModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UrlAsyncModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UrlAsyncModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UrlAsyncModerationResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             query['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             query['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UrlAsyncModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UrlAsyncModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.UrlAsyncModerationResponse(),
+        return DaraCore.from_map(
+            main_models.UrlAsyncModerationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def url_async_moderation(
         self,
-        request: green_20220302_models.UrlAsyncModerationRequest,
-    ) -> green_20220302_models.UrlAsyncModerationResponse:
-        """
-        @summary url异步检测
-        
-        @param request: UrlAsyncModerationRequest
-        @return: UrlAsyncModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UrlAsyncModerationRequest,
+    ) -> main_models.UrlAsyncModerationResponse:
+        runtime = RuntimeOptions()
         return self.url_async_moderation_with_options(request, runtime)
 
     async def url_async_moderation_async(
         self,
-        request: green_20220302_models.UrlAsyncModerationRequest,
-    ) -> green_20220302_models.UrlAsyncModerationResponse:
-        """
-        @summary url异步检测
-        
-        @param request: UrlAsyncModerationRequest
-        @return: UrlAsyncModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UrlAsyncModerationRequest,
+    ) -> main_models.UrlAsyncModerationResponse:
+        runtime = RuntimeOptions()
         return await self.url_async_moderation_with_options_async(request, runtime)
 
     def video_moderation_with_options(
         self,
-        request: green_20220302_models.VideoModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.VideoModerationResponse:
-        """
-        @summary 视频检测任务提交
-        
-        @param request: VideoModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VideoModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VideoModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VideoModerationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='VideoModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VideoModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.VideoModerationResponse(),
+        return DaraCore.from_map(
+            main_models.VideoModerationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def video_moderation_with_options_async(
         self,
-        request: green_20220302_models.VideoModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.VideoModerationResponse:
-        """
-        @summary 视频检测任务提交
-        
-        @param request: VideoModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VideoModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VideoModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VideoModerationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='VideoModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VideoModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.VideoModerationResponse(),
+        return DaraCore.from_map(
+            main_models.VideoModerationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def video_moderation(
         self,
-        request: green_20220302_models.VideoModerationRequest,
-    ) -> green_20220302_models.VideoModerationResponse:
-        """
-        @summary 视频检测任务提交
-        
-        @param request: VideoModerationRequest
-        @return: VideoModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VideoModerationRequest,
+    ) -> main_models.VideoModerationResponse:
+        runtime = RuntimeOptions()
         return self.video_moderation_with_options(request, runtime)
 
     async def video_moderation_async(
         self,
-        request: green_20220302_models.VideoModerationRequest,
-    ) -> green_20220302_models.VideoModerationResponse:
-        """
-        @summary 视频检测任务提交
-        
-        @param request: VideoModerationRequest
-        @return: VideoModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VideoModerationRequest,
+    ) -> main_models.VideoModerationResponse:
+        runtime = RuntimeOptions()
         return await self.video_moderation_with_options_async(request, runtime)
 
     def video_moderation_cancel_with_options(
         self,
-        request: green_20220302_models.VideoModerationCancelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.VideoModerationCancelResponse:
-        """
-        @summary 取消视频直播流检测
-        
-        @param request: VideoModerationCancelRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VideoModerationCancelResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VideoModerationCancelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VideoModerationCancelResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='VideoModerationCancel',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VideoModerationCancel',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.VideoModerationCancelResponse(),
+        return DaraCore.from_map(
+            main_models.VideoModerationCancelResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def video_moderation_cancel_with_options_async(
         self,
-        request: green_20220302_models.VideoModerationCancelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.VideoModerationCancelResponse:
-        """
-        @summary 取消视频直播流检测
-        
-        @param request: VideoModerationCancelRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VideoModerationCancelResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VideoModerationCancelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VideoModerationCancelResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='VideoModerationCancel',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VideoModerationCancel',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.VideoModerationCancelResponse(),
+        return DaraCore.from_map(
+            main_models.VideoModerationCancelResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def video_moderation_cancel(
         self,
-        request: green_20220302_models.VideoModerationCancelRequest,
-    ) -> green_20220302_models.VideoModerationCancelResponse:
-        """
-        @summary 取消视频直播流检测
-        
-        @param request: VideoModerationCancelRequest
-        @return: VideoModerationCancelResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VideoModerationCancelRequest,
+    ) -> main_models.VideoModerationCancelResponse:
+        runtime = RuntimeOptions()
         return self.video_moderation_cancel_with_options(request, runtime)
 
     async def video_moderation_cancel_async(
         self,
-        request: green_20220302_models.VideoModerationCancelRequest,
-    ) -> green_20220302_models.VideoModerationCancelResponse:
-        """
-        @summary 取消视频直播流检测
-        
-        @param request: VideoModerationCancelRequest
-        @return: VideoModerationCancelResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VideoModerationCancelRequest,
+    ) -> main_models.VideoModerationCancelResponse:
+        runtime = RuntimeOptions()
         return await self.video_moderation_cancel_with_options_async(request, runtime)
 
     def video_moderation_result_with_options(
         self,
-        request: green_20220302_models.VideoModerationResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.VideoModerationResultResponse:
-        """
-        @summary Get Video Detection Results
-        
-        @description This operation is free of charge. We recommend that you query moderation results at least 30 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for at most 24 hours. After 24 hours, the results are deleted.
-        
-        @param request: VideoModerationResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VideoModerationResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VideoModerationResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VideoModerationResultResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='VideoModerationResult',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VideoModerationResult',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.VideoModerationResultResponse(),
+        return DaraCore.from_map(
+            main_models.VideoModerationResultResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def video_moderation_result_with_options_async(
         self,
-        request: green_20220302_models.VideoModerationResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.VideoModerationResultResponse:
-        """
-        @summary Get Video Detection Results
-        
-        @description This operation is free of charge. We recommend that you query moderation results at least 30 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for at most 24 hours. After 24 hours, the results are deleted.
-        
-        @param request: VideoModerationResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VideoModerationResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VideoModerationResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VideoModerationResultResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='VideoModerationResult',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VideoModerationResult',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.VideoModerationResultResponse(),
+        return DaraCore.from_map(
+            main_models.VideoModerationResultResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def video_moderation_result(
         self,
-        request: green_20220302_models.VideoModerationResultRequest,
-    ) -> green_20220302_models.VideoModerationResultResponse:
-        """
-        @summary Get Video Detection Results
-        
-        @description This operation is free of charge. We recommend that you query moderation results at least 30 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for at most 24 hours. After 24 hours, the results are deleted.
-        
-        @param request: VideoModerationResultRequest
-        @return: VideoModerationResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VideoModerationResultRequest,
+    ) -> main_models.VideoModerationResultResponse:
+        runtime = RuntimeOptions()
         return self.video_moderation_result_with_options(request, runtime)
 
     async def video_moderation_result_async(
         self,
-        request: green_20220302_models.VideoModerationResultRequest,
-    ) -> green_20220302_models.VideoModerationResultResponse:
-        """
-        @summary Get Video Detection Results
-        
-        @description This operation is free of charge. We recommend that you query moderation results at least 30 seconds after you send an asynchronous moderation request. Content Moderation retains moderation results for at most 24 hours. After 24 hours, the results are deleted.
-        
-        @param request: VideoModerationResultRequest
-        @return: VideoModerationResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VideoModerationResultRequest,
+    ) -> main_models.VideoModerationResultResponse:
+        runtime = RuntimeOptions()
         return await self.video_moderation_result_with_options_async(request, runtime)
 
     def voice_moderation_with_options(
         self,
-        request: green_20220302_models.VoiceModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.VoiceModerationResponse:
-        """
-        @summary 语音审核
-        
-        @param request: VoiceModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VoiceModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VoiceModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VoiceModerationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='VoiceModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VoiceModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.VoiceModerationResponse(),
+        return DaraCore.from_map(
+            main_models.VoiceModerationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def voice_moderation_with_options_async(
         self,
-        request: green_20220302_models.VoiceModerationRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.VoiceModerationResponse:
-        """
-        @summary 语音审核
-        
-        @param request: VoiceModerationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VoiceModerationResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VoiceModerationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VoiceModerationResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='VoiceModeration',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VoiceModeration',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.VoiceModerationResponse(),
+        return DaraCore.from_map(
+            main_models.VoiceModerationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def voice_moderation(
         self,
-        request: green_20220302_models.VoiceModerationRequest,
-    ) -> green_20220302_models.VoiceModerationResponse:
-        """
-        @summary 语音审核
-        
-        @param request: VoiceModerationRequest
-        @return: VoiceModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VoiceModerationRequest,
+    ) -> main_models.VoiceModerationResponse:
+        runtime = RuntimeOptions()
         return self.voice_moderation_with_options(request, runtime)
 
     async def voice_moderation_async(
         self,
-        request: green_20220302_models.VoiceModerationRequest,
-    ) -> green_20220302_models.VoiceModerationResponse:
-        """
-        @summary 语音审核
-        
-        @param request: VoiceModerationRequest
-        @return: VoiceModerationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VoiceModerationRequest,
+    ) -> main_models.VoiceModerationResponse:
+        runtime = RuntimeOptions()
         return await self.voice_moderation_with_options_async(request, runtime)
 
     def voice_moderation_cancel_with_options(
         self,
-        request: green_20220302_models.VoiceModerationCancelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.VoiceModerationCancelResponse:
-        """
-        @summary 取消检测
-        
-        @param request: VoiceModerationCancelRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VoiceModerationCancelResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VoiceModerationCancelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VoiceModerationCancelResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='VoiceModerationCancel',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VoiceModerationCancel',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.VoiceModerationCancelResponse(),
+        return DaraCore.from_map(
+            main_models.VoiceModerationCancelResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def voice_moderation_cancel_with_options_async(
         self,
-        request: green_20220302_models.VoiceModerationCancelRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.VoiceModerationCancelResponse:
-        """
-        @summary 取消检测
-        
-        @param request: VoiceModerationCancelRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VoiceModerationCancelResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VoiceModerationCancelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VoiceModerationCancelResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='VoiceModerationCancel',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VoiceModerationCancel',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.VoiceModerationCancelResponse(),
+        return DaraCore.from_map(
+            main_models.VoiceModerationCancelResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def voice_moderation_cancel(
         self,
-        request: green_20220302_models.VoiceModerationCancelRequest,
-    ) -> green_20220302_models.VoiceModerationCancelResponse:
-        """
-        @summary 取消检测
-        
-        @param request: VoiceModerationCancelRequest
-        @return: VoiceModerationCancelResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VoiceModerationCancelRequest,
+    ) -> main_models.VoiceModerationCancelResponse:
+        runtime = RuntimeOptions()
         return self.voice_moderation_cancel_with_options(request, runtime)
 
     async def voice_moderation_cancel_async(
         self,
-        request: green_20220302_models.VoiceModerationCancelRequest,
-    ) -> green_20220302_models.VoiceModerationCancelResponse:
-        """
-        @summary 取消检测
-        
-        @param request: VoiceModerationCancelRequest
-        @return: VoiceModerationCancelResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VoiceModerationCancelRequest,
+    ) -> main_models.VoiceModerationCancelResponse:
+        runtime = RuntimeOptions()
         return await self.voice_moderation_cancel_with_options_async(request, runtime)
 
     def voice_moderation_result_with_options(
         self,
-        request: green_20220302_models.VoiceModerationResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.VoiceModerationResultResponse:
-        """
-        @summary Obtains the moderation results of a Voice Moderation 2.0 task.
-        
-        @param request: VoiceModerationResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VoiceModerationResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VoiceModerationResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VoiceModerationResultResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='VoiceModerationResult',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VoiceModerationResult',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.VoiceModerationResultResponse(),
+        return DaraCore.from_map(
+            main_models.VoiceModerationResultResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def voice_moderation_result_with_options_async(
         self,
-        request: green_20220302_models.VoiceModerationResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> green_20220302_models.VoiceModerationResultResponse:
-        """
-        @summary Obtains the moderation results of a Voice Moderation 2.0 task.
-        
-        @param request: VoiceModerationResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: VoiceModerationResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.VoiceModerationResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VoiceModerationResultResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             body['Service'] = request.service
-        if not UtilClient.is_unset(request.service_parameters):
+        if not DaraCore.is_null(request.service_parameters):
             body['ServiceParameters'] = request.service_parameters
-        req = open_api_models.OpenApiRequest(
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='VoiceModerationResult',
-            version='2022-03-02',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'VoiceModerationResult',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            green_20220302_models.VoiceModerationResultResponse(),
+        return DaraCore.from_map(
+            main_models.VoiceModerationResultResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def voice_moderation_result(
         self,
-        request: green_20220302_models.VoiceModerationResultRequest,
-    ) -> green_20220302_models.VoiceModerationResultResponse:
-        """
-        @summary Obtains the moderation results of a Voice Moderation 2.0 task.
-        
-        @param request: VoiceModerationResultRequest
-        @return: VoiceModerationResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VoiceModerationResultRequest,
+    ) -> main_models.VoiceModerationResultResponse:
+        runtime = RuntimeOptions()
         return self.voice_moderation_result_with_options(request, runtime)
 
     async def voice_moderation_result_async(
         self,
-        request: green_20220302_models.VoiceModerationResultRequest,
-    ) -> green_20220302_models.VoiceModerationResultResponse:
-        """
-        @summary Obtains the moderation results of a Voice Moderation 2.0 task.
-        
-        @param request: VoiceModerationResultRequest
-        @return: VoiceModerationResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.VoiceModerationResultRequest,
+    ) -> main_models.VoiceModerationResultResponse:
+        runtime = RuntimeOptions()
         return await self.voice_moderation_result_with_options_async(request, runtime)

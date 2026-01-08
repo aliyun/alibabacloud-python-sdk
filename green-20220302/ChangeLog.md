@@ -1,3 +1,8 @@
+2026-01-08 Version: 3.1.1
+- Update API TextModeration: add response parameters Body.Data.ext.
+- Update API TextModerationPlus: add response parameters Body.Data.Ext.
+
+
 2025-12-22 Version: 3.1.0
 - Support API MultiModalGuardForBase64.
 - Update API DescribeFileModerationResult: add response parameters Body.Data.AccountId.
