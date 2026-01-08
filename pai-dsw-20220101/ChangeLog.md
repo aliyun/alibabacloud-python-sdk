@@ -1,3 +1,7 @@
+2026-01-08 Version: 2.3.1
+- Update API GetInstance: add response parameters Body.Datasets.$.ActualMountAccess.
+
+
 2025-12-17 Version: 2.3.0
 - Support API CreateSanityCheckTask.
 - Support API GetSanityCheckTask.
