@@ -1,3 +1,84 @@
+2026-01-08 Version: 4.0.0
+- Support API AddAddressRecoverSuspend.
+- Support API AddAuditViberOpen.
+- Support API AddContacts.
+- Support API AddCustomAudienceUser.
+- Support API AddGroup.
+- Support API AddMarketingFlow.
+- Support API BindDmAccount.
+- Support API BindInstagramPage.
+- Support API BindMessengerPage.
+- Support API ChangeResourceGroup.
+- Support API CopyTemplate.
+- Support API CreateCustomAudience.
+- Support API CreateInstance.
+- Support API CreateMessageCampaign.
+- Support API CreateMessengerPage.
+- Support API CreateWhatsappConversionApi.
+- Support API DeleteContacts.
+- Support API DeleteContactsByIds.
+- Support API DeleteGroupById.
+- Support API DeleteInstagramPage.
+- Support API DeleteInstance.
+- Support API DeleteMarketingFlow.
+- Support API DeleteMessageCampaign.
+- Support API DeleteMessengerPage.
+- Support API GeneratePresignedUrl.
+- Support API GetAuditRequestByTypeUnAudit.
+- Support API GetChatappOpenStatus.
+- Support API GetChatappPhoneNumberSetting.
+- Support API GetCustomerSite.
+- Support API GetDownloadExcelList.
+- Support API GetFbInstagramPages.
+- Support API GetFbMessengerPages.
+- Support API GetGroupExist.
+- Support API GetMessageCampaignInsights.
+- Support API GetPledgeTemplateAddress.
+- Support API GetViberByRequestNo.
+- Support API GetViberPauseTimes.
+- Support API GetWhatsappConversionApi.
+- Support API ListAllGroups.
+- Support API ListBindDmAccount.
+- Support API ListCustomAudience.
+- Support API ListDmAccount.
+- Support API ListDmTag.
+- Support API ListFacebookPosts.
+- Support API ListFlowNodeGroup.
+- Support API ListInstagramPage.
+- Support API ListInstagramPosts.
+- Support API ListInstance.
+- Support API ListMarketingFlow.
+- Support API ListMessageCampaign.
+- Support API ListMessengerSubscriptionToken.
+- Support API ListPageAdAccount.
+- Support API ListViberServiceMessage.
+- Support API MoveContactToGroup.
+- Support API OpenChatappService.
+- Support API PauseMarketingFLow.
+- Support API QueryInstance.
+- Support API QueryMMLActive.
+- Support API RemoveContactById.
+- Support API RequestWhatsappConversionApi.
+- Support API SyncFlow.
+- Support API SyncMessageCampaign.
+- Support API SyncMessengerSubscriptionToken.
+- Support API UnbindDmAccount.
+- Support API UpdateAuditRequest.
+- Support API UpdateContactById.
+- Support API UpdateGroupName.
+- Support API UpdateInstance.
+- Support API UpdateMarketingFLow.
+- Support API UpdateWabaMmlStatus.
+- Delete API ChatappEmbedSignUp.
+- Delete API SubmitIsvCustomerTerms.
+- Update API FlowUnbindPhone: add response parameters Body.RequestId.
+- Update API ListChatappMessage: add request parameters EndTimeStr.
+- Update API ListChatappMessage: add request parameters StartTimeStr.
+- Update API SendChatappMessage: add request parameters AdAccountId.
+- Update API SendChatappMessage: add request parameters MessageCampaignId.
+- Update API SendChatappMessage: add request parameters TokenType.
+
+
 2025-07-31 Version: 3.1.1
 - Update API SendChatappMassMessage: add request parameters OwnerId.
 - Update API SendChatappMassMessage: add request parameters ResourceOwnerAccount.

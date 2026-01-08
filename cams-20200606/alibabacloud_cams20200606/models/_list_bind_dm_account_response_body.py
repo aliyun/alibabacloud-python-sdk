@@ -1,0 +1,172 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_cams20200606 import models as main_models
+from darabonba.model import DaraModel
+
+class ListBindDmAccountResponseBody(DaraModel):
+    def __init__(
+        self,
+        access_denied_detail: str = None,
+        code: str = None,
+        data: List[main_models.ListBindDmAccountResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.access_denied_detail = access_denied_detail
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for v1 in self.data:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.access_denied_detail is not None:
+            result['AccessDeniedDetail'] = self.access_denied_detail
+
+        if self.code is not None:
+            result['Code'] = self.code
+
+        result['Data'] = []
+        if self.data is not None:
+            for k1 in self.data:
+                result['Data'].append(k1.to_map() if k1 else None)
+
+        if self.message is not None:
+            result['Message'] = self.message
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.success is not None:
+            result['Success'] = self.success
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessDeniedDetail') is not None:
+            self.access_denied_detail = m.get('AccessDeniedDetail')
+
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        self.data = []
+        if m.get('Data') is not None:
+            for k1 in m.get('Data'):
+                temp_model = main_models.ListBindDmAccountResponseBodyData()
+                self.data.append(temp_model.from_map(k1))
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+
+        return self
+
+class ListBindDmAccountResponseBodyData(DaraModel):
+    def __init__(
+        self,
+        account_code: str = None,
+        extend_attr: main_models.ListBindDmAccountResponseBodyDataExtendAttr = None,
+        instance_id: str = None,
+        instance_name: str = None,
+    ):
+        self.account_code = account_code
+        self.extend_attr = extend_attr
+        self.instance_id = instance_id
+        self.instance_name = instance_name
+
+    def validate(self):
+        if self.extend_attr:
+            self.extend_attr.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.account_code is not None:
+            result['AccountCode'] = self.account_code
+
+        if self.extend_attr is not None:
+            result['ExtendAttr'] = self.extend_attr.to_map()
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.instance_name is not None:
+            result['InstanceName'] = self.instance_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountCode') is not None:
+            self.account_code = m.get('AccountCode')
+
+        if m.get('ExtendAttr') is not None:
+            temp_model = main_models.ListBindDmAccountResponseBodyDataExtendAttr()
+            self.extend_attr = temp_model.from_map(m.get('ExtendAttr'))
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('InstanceName') is not None:
+            self.instance_name = m.get('InstanceName')
+
+        return self
+
+class ListBindDmAccountResponseBodyDataExtendAttr(DaraModel):
+    def __init__(
+        self,
+        account_name: str = None,
+        send_type: str = None,
+    ):
+        self.account_name = account_name
+        self.send_type = send_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.account_name is not None:
+            result['AccountName'] = self.account_name
+
+        if self.send_type is not None:
+            result['SendType'] = self.send_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccountName') is not None:
+            self.account_name = m.get('AccountName')
+
+        if m.get('SendType') is not None:
+            self.send_type = m.get('SendType')
+
+        return self
+
