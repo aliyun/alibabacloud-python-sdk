@@ -1,3 +1,10 @@
+2026-01-08 Version: 4.7.6
+- Update API ListImage: add response parameters Body.Data.$.EnvironmentId.
+- Update API ListImage: add response parameters Body.Data.$.ImageIconUrl.
+- Update API ListImage: add response parameters Body.Data.$.Rating.
+- Update API ListImage: add response parameters Body.Data.$.TagList.
+
+
 2025-12-26 Version: 4.7.5
 - Update API CreateWuyingServer: add request parameters MaxPrice.
 - Update API CreateWuyingServer: add request parameters SubPayType.
