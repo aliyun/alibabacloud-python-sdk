@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._change_resource_group_request import ChangeResourceGroupRequest
+from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
+from ._change_resource_group_response import ChangeResourceGroupResponse
 from ._convert_instance_request import ConvertInstanceRequest
 from ._convert_instance_response_body import ConvertInstanceResponseBody
 from ._convert_instance_response import ConvertInstanceResponse
@@ -138,6 +141,9 @@ from ._renew_instance_request import RenewInstanceRequestRenewInstanceRequest
 from ._tag_resources_request import TagResourcesRequestTag
 
 __all__ = [
+    ChangeResourceGroupRequest,
+    ChangeResourceGroupResponseBody,
+    ChangeResourceGroupResponse,
     ConvertInstanceRequest,
     ConvertInstanceResponseBody,
     ConvertInstanceResponse,

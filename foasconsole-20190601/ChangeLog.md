@@ -1,3 +1,7 @@
+2026-01-08 Version: 1.1.0
+- Support API ChangeResourceGroup.
+
+
 2025-12-25 Version: 1.0.4
 - Update API QueryConvertInstancePrice: add response parameters Body.PriceInfo.LxRequestId.
 - Update API QueryConvertPrepayInstancePrice: add response parameters Body.PriceInfo.LxRequestId.

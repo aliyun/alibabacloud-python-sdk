@@ -41,6 +41,84 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def change_resource_group_with_options(
+        self,
+        request: main_models.ChangeResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ChangeResourceGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ChangeResourceGroup',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ChangeResourceGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def change_resource_group_with_options_async(
+        self,
+        request: main_models.ChangeResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ChangeResourceGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ChangeResourceGroup',
+            version = '2019-06-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ChangeResourceGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def change_resource_group(
+        self,
+        request: main_models.ChangeResourceGroupRequest,
+    ) -> main_models.ChangeResourceGroupResponse:
+        runtime = RuntimeOptions()
+        return self.change_resource_group_with_options(request, runtime)
+
+    async def change_resource_group_async(
+        self,
+        request: main_models.ChangeResourceGroupRequest,
+    ) -> main_models.ChangeResourceGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.change_resource_group_with_options_async(request, runtime)
+
     def convert_instance_with_options(
         self,
         request: main_models.ConvertInstanceRequest,
