@@ -1241,6 +1241,7 @@ class RunInstancesRequestNetworkInterface(DaraModel):
         queue_number: int = None,
         queue_pair_number: int = None,
         rx_queue_size: int = None,
+        secondary_private_ip_address_count: int = None,
         security_group_id: str = None,
         security_group_ids: List[str] = None,
         source_dest_check: bool = None,
@@ -1361,6 +1362,7 @@ class RunInstancesRequestNetworkInterface(DaraModel):
         # *   This parameter is applicable to Linux images.
         # *   A larger Rx queue depth yields higher inbound throughput and reduces packet loss rates but consumes more memory.
         self.rx_queue_size = rx_queue_size
+        self.secondary_private_ip_address_count = secondary_private_ip_address_count
         # The ID of the security group to which to assign ENI N.
         # 
         # Take note of the following items:
@@ -1454,6 +1456,9 @@ class RunInstancesRequestNetworkInterface(DaraModel):
         if self.rx_queue_size is not None:
             result['RxQueueSize'] = self.rx_queue_size
 
+        if self.secondary_private_ip_address_count is not None:
+            result['SecondaryPrivateIpAddressCount'] = self.secondary_private_ip_address_count
+
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
 
@@ -1511,6 +1516,9 @@ class RunInstancesRequestNetworkInterface(DaraModel):
 
         if m.get('RxQueueSize') is not None:
             self.rx_queue_size = m.get('RxQueueSize')
+
+        if m.get('SecondaryPrivateIpAddressCount') is not None:
+            self.secondary_private_ip_address_count = m.get('SecondaryPrivateIpAddressCount')
 
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')

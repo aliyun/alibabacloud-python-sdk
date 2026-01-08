@@ -1,3 +1,7 @@
+2026-01-08 Version: 7.5.1
+- Update API RunInstances: add request parameters NetworkInterface.$.SecondaryPrivateIpAddressCount.
+
+
 2026-01-05 Version: 7.5.0
 - Support API DescribeLockedSnapshots.
 - Support API LockSnapshot.
