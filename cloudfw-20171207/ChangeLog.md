@@ -1,3 +1,8 @@
+2026-01-08 Version: 7.4.0
+- Support API DescribeVpcFirewallDomainList.
+- Support API DescribeVpcFirewallDomainRelationList.
+
+
 2025-12-18 Version: 7.3.0
 - Support API ModifyCfwInstance.
 
