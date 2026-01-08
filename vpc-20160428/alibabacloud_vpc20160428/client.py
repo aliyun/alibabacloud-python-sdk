@@ -29208,6 +29208,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.ip_origin):
             query['IpOrigin'] = request.ip_origin
+        if not DaraCore.is_null(request.ipv_4prefix):
+            query['Ipv4Prefix'] = request.ipv_4prefix
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.nat_gateway_id):
@@ -29266,6 +29268,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.ip_origin):
             query['IpOrigin'] = request.ip_origin
+        if not DaraCore.is_null(request.ipv_4prefix):
+            query['Ipv4Prefix'] = request.ipv_4prefix
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.nat_gateway_id):

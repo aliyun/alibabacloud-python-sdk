@@ -43,7 +43,15 @@ class GetRouteTargetGroupResponseBody(DaraModel):
         self.route_target_group_name = route_target_group_name
         # List of members in the route target group.
         self.route_target_member_list = route_target_member_list
-        # Status of the route target group.
+        # The status of the route target group. Values:
+        # - **Recovering**: In the process of switching back to the primary 
+        # - **Switched**: The primary and secondary have been switched 
+        # - **Available**: Available 
+        # - **Abnormal**: Secondary instance is abnormal 
+        # - **Pending**: In the process of being created 
+        # - **Switching**: In the process of switching between primary and secondary 
+        # - **Deleting**: In the process of being deleted 
+        # - **Unavailable**: Both primary and secondary instances are abnormal
         self.status = status
         # Tags of the route target group.
         self.tags = tags

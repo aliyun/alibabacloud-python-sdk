@@ -12,6 +12,7 @@ class ListNatIpsRequest(DaraModel):
         client_token: str = None,
         dry_run: bool = None,
         ip_origin: str = None,
+        ipv_4prefix: str = None,
         max_results: str = None,
         nat_gateway_id: str = None,
         nat_ip_cidr: str = None,
@@ -37,6 +38,7 @@ class ListNatIpsRequest(DaraModel):
         # *   **false** (default): sends the request. If the request passes the precheck, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
         self.ip_origin = ip_origin
+        self.ipv_4prefix = ipv_4prefix
         # The number of entries to return on each page. Valid values: **1** to **100**. Default value: **20**.
         self.max_results = max_results
         # The ID of the NAT gateway.
@@ -88,6 +90,9 @@ class ListNatIpsRequest(DaraModel):
         if self.ip_origin is not None:
             result['IpOrigin'] = self.ip_origin
 
+        if self.ipv_4prefix is not None:
+            result['Ipv4Prefix'] = self.ipv_4prefix
+
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
 
@@ -136,6 +141,9 @@ class ListNatIpsRequest(DaraModel):
 
         if m.get('IpOrigin') is not None:
             self.ip_origin = m.get('IpOrigin')
+
+        if m.get('Ipv4Prefix') is not None:
+            self.ipv_4prefix = m.get('Ipv4Prefix')
 
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
