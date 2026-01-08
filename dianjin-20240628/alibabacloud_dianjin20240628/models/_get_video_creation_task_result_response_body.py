@@ -76,6 +76,7 @@ class GetVideoCreationTaskResultResponseBodyData(DaraModel):
         finish_time: str = None,
         media_detection_task_result: main_models.GetVideoCreationTaskResultResponseBodyDataMediaDetectionTaskResult = None,
         start_time: str = None,
+        status_reason: str = None,
         task_id: str = None,
         task_status: str = None,
         video_url: str = None,
@@ -85,6 +86,7 @@ class GetVideoCreationTaskResultResponseBodyData(DaraModel):
         self.finish_time = finish_time
         self.media_detection_task_result = media_detection_task_result
         self.start_time = start_time
+        self.status_reason = status_reason
         self.task_id = task_id
         self.task_status = task_status
         self.video_url = video_url
@@ -115,6 +117,9 @@ class GetVideoCreationTaskResultResponseBodyData(DaraModel):
         if self.start_time is not None:
             result['startTime'] = self.start_time
 
+        if self.status_reason is not None:
+            result['statusReason'] = self.status_reason
+
         if self.task_id is not None:
             result['taskId'] = self.task_id
 
@@ -144,6 +149,9 @@ class GetVideoCreationTaskResultResponseBodyData(DaraModel):
 
         if m.get('startTime') is not None:
             self.start_time = m.get('startTime')
+
+        if m.get('statusReason') is not None:
+            self.status_reason = m.get('statusReason')
 
         if m.get('taskId') is not None:
             self.task_id = m.get('taskId')

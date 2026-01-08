@@ -1,3 +1,7 @@
+2026-01-08 Version: 1.19.2
+- Update API GetVideoCreationTaskResult: add response parameters Body.data.statusReason.
+
+
 2026-01-07 Version: 1.19.1
 - Update API RealtimeDialogAssist: add request parameters body.scriptContentPlayed.
 - Update API RealtimeDialogAssist: add request parameters body.userVad.
