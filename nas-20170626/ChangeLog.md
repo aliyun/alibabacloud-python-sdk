@@ -1,3 +1,22 @@
+2026-01-08 Version: 3.2.1
+- Update API CreateLifecyclePolicy: add request parameters Description.
+- Update API CreateLifecyclePolicy: add request parameters LifecyclePolicyType.
+- Update API CreateLifecyclePolicy: add request parameters RetrieveRules.
+- Update API CreateLifecyclePolicy: add request parameters TransitRules.
+- Update API CreateLifecyclePolicy: add response parameters Body.LifecyclePolicyId.
+- Update API DeleteLifecyclePolicy: add request parameters LifecyclePolicyId.
+- Update API DescribeLifecyclePolicies: add request parameters Description.
+- Update API DescribeLifecyclePolicies: add request parameters LifecyclePolicyId.
+- Update API DescribeLifecyclePolicies: add request parameters LifecyclePolicyType.
+- Update API DescribeLifecyclePolicies: add request parameters Path.
+- Update API DescribeLifecyclePolicies: add response parameters Body.LifecyclePolicies.$.Description.
+- Update API DescribeLifecyclePolicies: add response parameters Body.LifecyclePolicies.$.LifecyclePolicyId.
+- Update API DescribeLifecyclePolicies: add response parameters Body.LifecyclePolicies.$.LifecyclePolicyType.
+- Update API DescribeLifecyclePolicies: add response parameters Body.LifecyclePolicies.$.RetrieveRules.
+- Update API DescribeLifecyclePolicies: add response parameters Body.LifecyclePolicies.$.TransitRules.
+- Update API ModifyLifecyclePolicy: add request parameters LifecyclePolicyId.
+
+
 2026-01-06 Version: 3.2.0
 - Support API GetFileset.
 - Support API GetProtocolMountTarget.

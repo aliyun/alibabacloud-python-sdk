@@ -7,9 +7,11 @@ from darabonba.model import DaraModel
 class CreateLifecyclePolicyResponseBody(DaraModel):
     def __init__(
         self,
+        lifecycle_policy_id: str = None,
         request_id: str = None,
         success: bool = None,
     ):
+        self.lifecycle_policy_id = lifecycle_policy_id
         # The request ID.
         self.request_id = request_id
         # Indicates whether the request was successful.
@@ -28,6 +30,9 @@ class CreateLifecyclePolicyResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.lifecycle_policy_id is not None:
+            result['LifecyclePolicyId'] = self.lifecycle_policy_id
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -38,6 +43,9 @@ class CreateLifecyclePolicyResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('LifecyclePolicyId') is not None:
+            self.lifecycle_policy_id = m.get('LifecyclePolicyId')
+
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 

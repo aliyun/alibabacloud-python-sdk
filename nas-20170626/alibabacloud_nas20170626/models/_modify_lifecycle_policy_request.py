@@ -8,6 +8,7 @@ class ModifyLifecyclePolicyRequest(DaraModel):
     def __init__(
         self,
         file_system_id: str = None,
+        lifecycle_policy_id: str = None,
         lifecycle_policy_name: str = None,
         lifecycle_rule_name: str = None,
         path: str = None,
@@ -17,11 +18,10 @@ class ModifyLifecyclePolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        self.lifecycle_policy_id = lifecycle_policy_id
         # The name of the lifecycle policy.
         # 
         # The name must be 3 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
-        # 
-        # This parameter is required.
         self.lifecycle_policy_name = lifecycle_policy_name
         # The management rule that is associated with the lifecycle policy.
         # 
@@ -52,6 +52,9 @@ class ModifyLifecyclePolicyRequest(DaraModel):
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
 
+        if self.lifecycle_policy_id is not None:
+            result['LifecyclePolicyId'] = self.lifecycle_policy_id
+
         if self.lifecycle_policy_name is not None:
             result['LifecyclePolicyName'] = self.lifecycle_policy_name
 
@@ -70,6 +73,9 @@ class ModifyLifecyclePolicyRequest(DaraModel):
         m = m or dict()
         if m.get('FileSystemId') is not None:
             self.file_system_id = m.get('FileSystemId')
+
+        if m.get('LifecyclePolicyId') is not None:
+            self.lifecycle_policy_id = m.get('LifecyclePolicyId')
 
         if m.get('LifecyclePolicyName') is not None:
             self.lifecycle_policy_name = m.get('LifecyclePolicyName')

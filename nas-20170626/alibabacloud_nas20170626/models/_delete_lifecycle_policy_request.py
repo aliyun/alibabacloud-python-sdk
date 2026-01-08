@@ -8,15 +8,15 @@ class DeleteLifecyclePolicyRequest(DaraModel):
     def __init__(
         self,
         file_system_id: str = None,
+        lifecycle_policy_id: str = None,
         lifecycle_policy_name: str = None,
     ):
         # The ID of the file system.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        self.lifecycle_policy_id = lifecycle_policy_id
         # The name of the lifecycle policy.
-        # 
-        # This parameter is required.
         self.lifecycle_policy_name = lifecycle_policy_name
 
     def validate(self):
@@ -30,6 +30,9 @@ class DeleteLifecyclePolicyRequest(DaraModel):
         if self.file_system_id is not None:
             result['FileSystemId'] = self.file_system_id
 
+        if self.lifecycle_policy_id is not None:
+            result['LifecyclePolicyId'] = self.lifecycle_policy_id
+
         if self.lifecycle_policy_name is not None:
             result['LifecyclePolicyName'] = self.lifecycle_policy_name
 
@@ -39,6 +42,9 @@ class DeleteLifecyclePolicyRequest(DaraModel):
         m = m or dict()
         if m.get('FileSystemId') is not None:
             self.file_system_id = m.get('FileSystemId')
+
+        if m.get('LifecyclePolicyId') is not None:
+            self.lifecycle_policy_id = m.get('LifecyclePolicyId')
 
         if m.get('LifecyclePolicyName') is not None:
             self.lifecycle_policy_name = m.get('LifecyclePolicyName')

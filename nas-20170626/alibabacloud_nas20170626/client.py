@@ -2339,18 +2339,26 @@ class Client(OpenApiClient):
     ) -> main_models.CreateLifecyclePolicyResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
         if not DaraCore.is_null(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
         if not DaraCore.is_null(request.lifecycle_policy_name):
             query['LifecyclePolicyName'] = request.lifecycle_policy_name
+        if not DaraCore.is_null(request.lifecycle_policy_type):
+            query['LifecyclePolicyType'] = request.lifecycle_policy_type
         if not DaraCore.is_null(request.lifecycle_rule_name):
             query['LifecycleRuleName'] = request.lifecycle_rule_name
         if not DaraCore.is_null(request.path):
             query['Path'] = request.path
         if not DaraCore.is_null(request.paths):
             query['Paths'] = request.paths
+        if not DaraCore.is_null(request.retrieve_rules):
+            query['RetrieveRules'] = request.retrieve_rules
         if not DaraCore.is_null(request.storage_type):
             query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.transit_rules):
+            query['TransitRules'] = request.transit_rules
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2377,18 +2385,26 @@ class Client(OpenApiClient):
     ) -> main_models.CreateLifecyclePolicyResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
         if not DaraCore.is_null(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
         if not DaraCore.is_null(request.lifecycle_policy_name):
             query['LifecyclePolicyName'] = request.lifecycle_policy_name
+        if not DaraCore.is_null(request.lifecycle_policy_type):
+            query['LifecyclePolicyType'] = request.lifecycle_policy_type
         if not DaraCore.is_null(request.lifecycle_rule_name):
             query['LifecycleRuleName'] = request.lifecycle_rule_name
         if not DaraCore.is_null(request.path):
             query['Path'] = request.path
         if not DaraCore.is_null(request.paths):
             query['Paths'] = request.paths
+        if not DaraCore.is_null(request.retrieve_rules):
+            query['RetrieveRules'] = request.retrieve_rules
         if not DaraCore.is_null(request.storage_type):
             query['StorageType'] = request.storage_type
+        if not DaraCore.is_null(request.transit_rules):
+            query['TransitRules'] = request.transit_rules
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3707,6 +3723,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.lifecycle_policy_id):
+            query['LifecyclePolicyId'] = request.lifecycle_policy_id
         if not DaraCore.is_null(request.lifecycle_policy_name):
             query['LifecyclePolicyName'] = request.lifecycle_policy_name
         req = open_api_util_models.OpenApiRequest(
@@ -3737,6 +3755,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.lifecycle_policy_id):
+            query['LifecyclePolicyId'] = request.lifecycle_policy_id
         if not DaraCore.is_null(request.lifecycle_policy_name):
             query['LifecyclePolicyName'] = request.lifecycle_policy_name
         req = open_api_util_models.OpenApiRequest(
@@ -8441,6 +8461,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.lifecycle_policy_id):
+            query['LifecyclePolicyId'] = request.lifecycle_policy_id
         if not DaraCore.is_null(request.lifecycle_policy_name):
             query['LifecyclePolicyName'] = request.lifecycle_policy_name
         if not DaraCore.is_null(request.lifecycle_rule_name):
@@ -8477,6 +8499,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.file_system_id):
             query['FileSystemId'] = request.file_system_id
+        if not DaraCore.is_null(request.lifecycle_policy_id):
+            query['LifecyclePolicyId'] = request.lifecycle_policy_id
         if not DaraCore.is_null(request.lifecycle_policy_name):
             query['LifecyclePolicyName'] = request.lifecycle_policy_name
         if not DaraCore.is_null(request.lifecycle_rule_name):
