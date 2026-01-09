@@ -18534,6 +18534,116 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_vpc_firewall_summary_info_with_options_async(request, runtime)
 
+    def describe_vpc_firewall_traffic_asset_list_with_options(
+        self,
+        request: main_models.DescribeVpcFirewallTrafficAssetListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVpcFirewallTrafficAssetListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.ip):
+            query['IP'] = request.ip
+        if not DaraCore.is_null(request.is_aitraffic):
+            query['IsAITraffic'] = request.is_aitraffic
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort):
+            query['Sort'] = request.sort
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeVpcFirewallTrafficAssetList',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeVpcFirewallTrafficAssetListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_vpc_firewall_traffic_asset_list_with_options_async(
+        self,
+        request: main_models.DescribeVpcFirewallTrafficAssetListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeVpcFirewallTrafficAssetListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.ip):
+            query['IP'] = request.ip
+        if not DaraCore.is_null(request.is_aitraffic):
+            query['IsAITraffic'] = request.is_aitraffic
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.sort):
+            query['Sort'] = request.sort
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeVpcFirewallTrafficAssetList',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeVpcFirewallTrafficAssetListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_vpc_firewall_traffic_asset_list(
+        self,
+        request: main_models.DescribeVpcFirewallTrafficAssetListRequest,
+    ) -> main_models.DescribeVpcFirewallTrafficAssetListResponse:
+        runtime = RuntimeOptions()
+        return self.describe_vpc_firewall_traffic_asset_list_with_options(request, runtime)
+
+    async def describe_vpc_firewall_traffic_asset_list_async(
+        self,
+        request: main_models.DescribeVpcFirewallTrafficAssetListRequest,
+    ) -> main_models.DescribeVpcFirewallTrafficAssetListResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_vpc_firewall_traffic_asset_list_with_options_async(request, runtime)
+
     def describe_vpc_firewall_zone_with_options(
         self,
         request: main_models.DescribeVpcFirewallZoneRequest,

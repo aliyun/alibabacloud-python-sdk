@@ -1,3 +1,7 @@
+2026-01-09 Version: 7.5.0
+- Support API DescribeVpcFirewallTrafficAssetList.
+
+
 2026-01-08 Version: 7.4.0
 - Support API DescribeVpcFirewallDomainList.
 - Support API DescribeVpcFirewallDomainRelationList.
