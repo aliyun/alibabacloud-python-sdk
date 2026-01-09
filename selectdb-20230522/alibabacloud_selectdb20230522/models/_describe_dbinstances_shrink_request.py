@@ -14,6 +14,7 @@ class DescribeDBInstancesShrinkRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
         resource_group_id: str = None,
+        resource_owner_id: int = None,
         tag_shrink: str = None,
     ):
         # The description of the instance.
@@ -43,6 +44,7 @@ class DescribeDBInstancesShrinkRequest(DaraModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
+        self.resource_owner_id = resource_owner_id
         self.tag_shrink = tag_shrink
 
     def validate(self):
@@ -74,6 +76,9 @@ class DescribeDBInstancesShrinkRequest(DaraModel):
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
 
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+
         if self.tag_shrink is not None:
             result['Tag'] = self.tag_shrink
 
@@ -101,6 +106,9 @@ class DescribeDBInstancesShrinkRequest(DaraModel):
 
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
 
         if m.get('Tag') is not None:
             self.tag_shrink = m.get('Tag')

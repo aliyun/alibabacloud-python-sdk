@@ -1,3 +1,7 @@
+2026-01-09 Version: 5.0.1
+- Update API DescribeDBInstances: add request parameters ResourceOwnerId.
+
+
 2026-01-06 Version: 5.0.0
 - Update API DescribeDBInstances: delete request parameters ResourceOwnerId.
 

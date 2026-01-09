@@ -17,6 +17,7 @@ class DescribeDBInstancesRequest(DaraModel):
         page_size: int = None,
         region_id: str = None,
         resource_group_id: str = None,
+        resource_owner_id: int = None,
         tag: List[main_models.DescribeDBInstancesRequestTag] = None,
     ):
         # The description of the instance.
@@ -46,6 +47,7 @@ class DescribeDBInstancesRequest(DaraModel):
         self.region_id = region_id
         # The resource group ID.
         self.resource_group_id = resource_group_id
+        self.resource_owner_id = resource_owner_id
         self.tag = tag
 
     def validate(self):
@@ -80,6 +82,9 @@ class DescribeDBInstancesRequest(DaraModel):
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
 
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+
         result['Tag'] = []
         if self.tag is not None:
             for k1 in self.tag:
@@ -109,6 +114,9 @@ class DescribeDBInstancesRequest(DaraModel):
 
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
 
         self.tag = []
         if m.get('Tag') is not None:

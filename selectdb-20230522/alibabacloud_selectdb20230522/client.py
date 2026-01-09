@@ -2069,6 +2069,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.tag_shrink):
             query['Tag'] = request.tag_shrink
         req = open_api_util_models.OpenApiRequest(
@@ -2115,6 +2117,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
         if not DaraCore.is_null(request.tag_shrink):
             query['Tag'] = request.tag_shrink
         req = open_api_util_models.OpenApiRequest(
