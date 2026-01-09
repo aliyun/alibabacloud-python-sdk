@@ -1,3 +1,8 @@
+2026-01-09 Version: 3.3.2
+- Update API PageQueryAgentList: add response parameters Body.Data.List.$.WithActivePrompt.
+- Update API QueryAiCallDetailPage: add response parameters Body.Data.List.$.OutId.
+
+
 2025-12-03 Version: 3.3.1
 - Update API QueryAiVoiceAgentDetail: add response parameters Body.Data.AiVoiceAgentCallConfig.TtsConfig.BackgroundEnabled.
 - Update API QueryAiVoiceAgentDetail: add response parameters Body.Data.AiVoiceAgentCallConfig.TtsConfig.BackgroundSound.
