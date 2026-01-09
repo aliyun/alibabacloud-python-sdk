@@ -1,0 +1,73 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_sls20201230 import models as main_models
+from darabonba.model import DaraModel
+
+class CreateStoreViewRequest(DaraModel):
+    def __init__(
+        self,
+        name: str = None,
+        store_type: str = None,
+        stores: List[main_models.StoreViewStore] = None,
+    ):
+        # The name of the dataset.
+        # 
+        # *   The name can contain lowercase letters, digits, and underscores (_).
+        # *   The name must start with a lowercase letter.
+        # *   The name must be 3 to 62 characters in length.
+        # 
+        # This parameter is required.
+        self.name = name
+        # The type of the dataset. Valid values: metricstore and logstore.
+        # 
+        # This parameter is required.
+        self.store_type = store_type
+        # The Logstores or Metricstores.
+        # 
+        # This parameter is required.
+        self.stores = stores
+
+    def validate(self):
+        if self.stores:
+            for v1 in self.stores:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.store_type is not None:
+            result['storeType'] = self.store_type
+
+        result['stores'] = []
+        if self.stores is not None:
+            for k1 in self.stores:
+                result['stores'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('storeType') is not None:
+            self.store_type = m.get('storeType')
+
+        self.stores = []
+        if m.get('stores') is not None:
+            for k1 in m.get('stores'):
+                temp_model = main_models.StoreViewStore()
+                self.stores.append(temp_model.from_map(k1))
+
+        return self
+

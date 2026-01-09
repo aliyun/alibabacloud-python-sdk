@@ -1,3 +1,14 @@
+2026-01-09 Version: 5.11.0
+- Support API CreateMaterializedView.
+- Support API DeleteMaterializedView.
+- Support API GetAsyncSql.
+- Support API GetMaterializedView.
+- Support API ListMaterializedView.
+- Support API ListMaterializedViews.
+- Support API SubmitAsyncSql.
+- Support API UpdateMaterializedView.
+
+
 2025-12-03 Version: 5.10.0
 - Support API CreateAzureBlobIngestion.
 - Support API CreateElasticsearchIngestion.
