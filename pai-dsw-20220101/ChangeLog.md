@@ -1,3 +1,8 @@
+2026-01-09 Version: 2.3.2
+- Update API GetToken: add request parameters Audience.
+- Update API GetToken: add request parameters Type.
+
+
 2026-01-08 Version: 2.3.1
 - Update API GetInstance: add response parameters Body.Datasets.$.ActualMountAccess.
 

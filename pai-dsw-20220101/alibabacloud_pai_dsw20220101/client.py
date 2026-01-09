@@ -1943,10 +1943,14 @@ class Client(OpenApiClient):
     ) -> main_models.GetTokenResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.audience):
+            query['Audience'] = request.audience
         if not DaraCore.is_null(request.expire_time):
             query['ExpireTime'] = request.expire_time
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -1975,10 +1979,14 @@ class Client(OpenApiClient):
     ) -> main_models.GetTokenResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.audience):
+            query['Audience'] = request.audience
         if not DaraCore.is_null(request.expire_time):
             query['ExpireTime'] = request.expire_time
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
