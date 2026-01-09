@@ -1,3 +1,10 @@
+2026-01-09 Version: 3.13.0
+- Support API MobileRecycledMetaVerify.
+- Update API CreateAntCloudAuthScene: add request parameters DeviceRiskPlus.
+- Update API DescribeListAntCloudAuthScenes: add response parameters Body.Scenes.$.DeviceRiskPlus.
+- Update API UpdateAntCloudAuthScene: add request parameters DeviceRiskPlus.
+
+
 2026-01-07 Version: 3.12.2
 - Update API DescribeFaceGuardRisk: add response parameters Body.ResultObject.GuardRiskScore.
 

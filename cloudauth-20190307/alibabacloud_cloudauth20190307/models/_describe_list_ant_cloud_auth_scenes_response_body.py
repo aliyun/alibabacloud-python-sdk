@@ -59,6 +59,7 @@ class DescribeListAntCloudAuthScenesResponseBodyScenes(DaraModel):
         bind_mini_program: str = None,
         create_time: str = None,
         creator: str = None,
+        device_risk_plus: str = None,
         domain: str = None,
         mini_program_name: str = None,
         modifier: str = None,
@@ -81,6 +82,7 @@ class DescribeListAntCloudAuthScenesResponseBodyScenes(DaraModel):
         self.create_time = create_time
         # Creator.
         self.creator = creator
+        self.device_risk_plus = device_risk_plus
         # Bound domain.
         self.domain = domain
         # Mini program name.
@@ -126,6 +128,9 @@ class DescribeListAntCloudAuthScenesResponseBodyScenes(DaraModel):
 
         if self.creator is not None:
             result['Creator'] = self.creator
+
+        if self.device_risk_plus is not None:
+            result['DeviceRiskPlus'] = self.device_risk_plus
 
         if self.domain is not None:
             result['Domain'] = self.domain
@@ -175,6 +180,9 @@ class DescribeListAntCloudAuthScenesResponseBodyScenes(DaraModel):
 
         if m.get('Creator') is not None:
             self.creator = m.get('Creator')
+
+        if m.get('DeviceRiskPlus') is not None:
+            self.device_risk_plus = m.get('DeviceRiskPlus')
 
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')

@@ -922,6 +922,8 @@ class Client(OpenApiClient):
             query['CheckFileBody'] = request.check_file_body
         if not DaraCore.is_null(request.check_file_name):
             query['CheckFileName'] = request.check_file_name
+        if not DaraCore.is_null(request.device_risk_plus):
+            query['DeviceRiskPlus'] = request.device_risk_plus
         if not DaraCore.is_null(request.mini_program_name):
             query['MiniProgramName'] = request.mini_program_name
         if not DaraCore.is_null(request.platform):
@@ -966,6 +968,8 @@ class Client(OpenApiClient):
             query['CheckFileBody'] = request.check_file_body
         if not DaraCore.is_null(request.check_file_name):
             query['CheckFileName'] = request.check_file_name
+        if not DaraCore.is_null(request.device_risk_plus):
+            query['DeviceRiskPlus'] = request.device_risk_plus
         if not DaraCore.is_null(request.mini_program_name):
             query['MiniProgramName'] = request.mini_program_name
         if not DaraCore.is_null(request.platform):
@@ -8113,6 +8117,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.mobile_online_time_with_options_async(request, runtime)
 
+    def mobile_recycled_meta_verify_with_options(
+        self,
+        request: main_models.MobileRecycledMetaVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MobileRecycledMetaVerifyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.mobile):
+            query['Mobile'] = request.mobile
+        if not DaraCore.is_null(request.param_type):
+            query['ParamType'] = request.param_type
+        if not DaraCore.is_null(request.register_date):
+            query['RegisterDate'] = request.register_date
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MobileRecycledMetaVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MobileRecycledMetaVerifyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def mobile_recycled_meta_verify_with_options_async(
+        self,
+        request: main_models.MobileRecycledMetaVerifyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MobileRecycledMetaVerifyResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.mobile):
+            query['Mobile'] = request.mobile
+        if not DaraCore.is_null(request.param_type):
+            query['ParamType'] = request.param_type
+        if not DaraCore.is_null(request.register_date):
+            query['RegisterDate'] = request.register_date
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MobileRecycledMetaVerify',
+            version = '2019-03-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MobileRecycledMetaVerifyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def mobile_recycled_meta_verify(
+        self,
+        request: main_models.MobileRecycledMetaVerifyRequest,
+    ) -> main_models.MobileRecycledMetaVerifyResponse:
+        runtime = RuntimeOptions()
+        return self.mobile_recycled_meta_verify_with_options(request, runtime)
+
+    async def mobile_recycled_meta_verify_async(
+        self,
+        request: main_models.MobileRecycledMetaVerifyRequest,
+    ) -> main_models.MobileRecycledMetaVerifyResponse:
+        runtime = RuntimeOptions()
+        return await self.mobile_recycled_meta_verify_with_options_async(request, runtime)
+
     def modify_black_list_strategy_with_options(
         self,
         tmp_req: main_models.ModifyBlackListStrategyRequest,
@@ -9172,6 +9254,8 @@ class Client(OpenApiClient):
             query['CheckFileBody'] = request.check_file_body
         if not DaraCore.is_null(request.check_file_name):
             query['CheckFileName'] = request.check_file_name
+        if not DaraCore.is_null(request.device_risk_plus):
+            query['DeviceRiskPlus'] = request.device_risk_plus
         if not DaraCore.is_null(request.mini_program_name):
             query['MiniProgramName'] = request.mini_program_name
         if not DaraCore.is_null(request.platform):
@@ -9220,6 +9304,8 @@ class Client(OpenApiClient):
             query['CheckFileBody'] = request.check_file_body
         if not DaraCore.is_null(request.check_file_name):
             query['CheckFileName'] = request.check_file_name
+        if not DaraCore.is_null(request.device_risk_plus):
+            query['DeviceRiskPlus'] = request.device_risk_plus
         if not DaraCore.is_null(request.mini_program_name):
             query['MiniProgramName'] = request.mini_program_name
         if not DaraCore.is_null(request.platform):

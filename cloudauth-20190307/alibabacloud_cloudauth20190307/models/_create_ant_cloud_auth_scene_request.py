@@ -10,6 +10,7 @@ class CreateAntCloudAuthSceneRequest(DaraModel):
         bind_mini_program: str = None,
         check_file_body: str = None,
         check_file_name: str = None,
+        device_risk_plus: str = None,
         mini_program_name: str = None,
         platform: str = None,
         return_pic_count: int = None,
@@ -25,6 +26,7 @@ class CreateAntCloudAuthSceneRequest(DaraModel):
         self.check_file_body = check_file_body
         # Name of the uploaded verification file.
         self.check_file_name = check_file_name
+        self.device_risk_plus = device_risk_plus
         # Mini program name.
         self.mini_program_name = mini_program_name
         # Binding platform for the mini program:
@@ -60,6 +62,9 @@ class CreateAntCloudAuthSceneRequest(DaraModel):
         if self.check_file_name is not None:
             result['CheckFileName'] = self.check_file_name
 
+        if self.device_risk_plus is not None:
+            result['DeviceRiskPlus'] = self.device_risk_plus
+
         if self.mini_program_name is not None:
             result['MiniProgramName'] = self.mini_program_name
 
@@ -90,6 +95,9 @@ class CreateAntCloudAuthSceneRequest(DaraModel):
 
         if m.get('CheckFileName') is not None:
             self.check_file_name = m.get('CheckFileName')
+
+        if m.get('DeviceRiskPlus') is not None:
+            self.device_risk_plus = m.get('DeviceRiskPlus')
 
         if m.get('MiniProgramName') is not None:
             self.mini_program_name = m.get('MiniProgramName')
