@@ -18,6 +18,7 @@ class CreateLogStoreRequest(DaraModel):
         max_split_shard: int = None,
         mode: str = None,
         processor_id: str = None,
+        resource_group_id: str = None,
         shard_count: int = None,
         sharding_policy: main_models.ShardingPolicy = None,
         telemetry_type: str = None,
@@ -66,6 +67,7 @@ class CreateLogStoreRequest(DaraModel):
         self.mode = mode
         # IngestProcessor ID
         self.processor_id = processor_id
+        self.resource_group_id = resource_group_id
         # The number of shards.
         # 
         # >  You cannot call the CreateLogStore operation to change the number of shards. You can call the SplitShard or MergeShards operation to change the number of shards.
@@ -124,6 +126,9 @@ class CreateLogStoreRequest(DaraModel):
         if self.processor_id is not None:
             result['processorId'] = self.processor_id
 
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+
         if self.shard_count is not None:
             result['shardCount'] = self.shard_count
 
@@ -170,6 +175,9 @@ class CreateLogStoreRequest(DaraModel):
 
         if m.get('processorId') is not None:
             self.processor_id = m.get('processorId')
+
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
 
         if m.get('shardCount') is not None:
             self.shard_count = m.get('shardCount')

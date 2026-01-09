@@ -1690,6 +1690,8 @@ class Client(OpenApiClient):
             body['mode'] = request.mode
         if not DaraCore.is_null(request.processor_id):
             body['processorId'] = request.processor_id
+        if not DaraCore.is_null(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.shard_count):
             body['shardCount'] = request.shard_count
         if not DaraCore.is_null(request.sharding_policy):
@@ -1750,6 +1752,8 @@ class Client(OpenApiClient):
             body['mode'] = request.mode
         if not DaraCore.is_null(request.processor_id):
             body['processorId'] = request.processor_id
+        if not DaraCore.is_null(request.resource_group_id):
+            body['resourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.shard_count):
             body['shardCount'] = request.shard_count
         if not DaraCore.is_null(request.sharding_policy):

@@ -1,3 +1,7 @@
+2026-01-09 Version: 5.11.1
+- Update API CreateLogStore: add request parameters body.resourceGroupId.
+
+
 2026-01-09 Version: 5.11.0
 - Support API CreateMaterializedView.
 - Support API DeleteMaterializedView.
