@@ -4656,6 +4656,8 @@ class Client(OpenApiClient):
             query['Comment'] = request.comment
         if not DaraCore.is_null(request.plugin_type):
             query['PluginType'] = request.plugin_type
+        if not DaraCore.is_null(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not DaraCore.is_null(request.related_user_list):
             query['RelatedUserList'] = request.related_user_list
         if not DaraCore.is_null(request.tid):
@@ -4700,6 +4702,8 @@ class Client(OpenApiClient):
             query['Comment'] = request.comment
         if not DaraCore.is_null(request.plugin_type):
             query['PluginType'] = request.plugin_type
+        if not DaraCore.is_null(request.real_login_user_uid):
+            query['RealLoginUserUid'] = request.real_login_user_uid
         if not DaraCore.is_null(request.related_user_list):
             query['RelatedUserList'] = request.related_user_list
         if not DaraCore.is_null(request.tid):

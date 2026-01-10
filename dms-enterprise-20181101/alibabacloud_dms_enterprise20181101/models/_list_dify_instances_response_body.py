@@ -140,6 +140,7 @@ class ListDifyInstancesResponseBodyRootData(DaraModel):
         self,
         app_uuid: str = None,
         created_time: str = None,
+        description: str = None,
         edition: str = None,
         enterprise_internet_url: str = None,
         enterprise_intranet_url: str = None,
@@ -148,7 +149,9 @@ class ListDifyInstancesResponseBodyRootData(DaraModel):
         internet_url: str = None,
         intranet_url: str = None,
         major_version: str = None,
+        region_code: str = None,
         security_group_id: str = None,
+        status: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
         workspace_id: str = None,
@@ -156,6 +159,7 @@ class ListDifyInstancesResponseBodyRootData(DaraModel):
     ):
         self.app_uuid = app_uuid
         self.created_time = created_time
+        self.description = description
         self.edition = edition
         self.enterprise_internet_url = enterprise_internet_url
         self.enterprise_intranet_url = enterprise_intranet_url
@@ -164,7 +168,9 @@ class ListDifyInstancesResponseBodyRootData(DaraModel):
         self.internet_url = internet_url
         self.intranet_url = intranet_url
         self.major_version = major_version
+        self.region_code = region_code
         self.security_group_id = security_group_id
+        self.status = status
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
         self.workspace_id = workspace_id
@@ -183,6 +189,9 @@ class ListDifyInstancesResponseBodyRootData(DaraModel):
 
         if self.created_time is not None:
             result['CreatedTime'] = self.created_time
+
+        if self.description is not None:
+            result['Description'] = self.description
 
         if self.edition is not None:
             result['Edition'] = self.edition
@@ -208,8 +217,14 @@ class ListDifyInstancesResponseBodyRootData(DaraModel):
         if self.major_version is not None:
             result['MajorVersion'] = self.major_version
 
+        if self.region_code is not None:
+            result['RegionCode'] = self.region_code
+
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+
+        if self.status is not None:
+            result['Status'] = self.status
 
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
@@ -232,6 +247,9 @@ class ListDifyInstancesResponseBodyRootData(DaraModel):
 
         if m.get('CreatedTime') is not None:
             self.created_time = m.get('CreatedTime')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
 
         if m.get('Edition') is not None:
             self.edition = m.get('Edition')
@@ -257,8 +275,14 @@ class ListDifyInstancesResponseBodyRootData(DaraModel):
         if m.get('MajorVersion') is not None:
             self.major_version = m.get('MajorVersion')
 
+        if m.get('RegionCode') is not None:
+            self.region_code = m.get('RegionCode')
+
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')

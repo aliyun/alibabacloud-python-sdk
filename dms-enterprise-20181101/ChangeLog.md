@@ -1,3 +1,10 @@
+2026-01-10 Version: 2.1.4
+- Update API CreateOrder: add request parameters RealLoginUserUid.
+- Update API ListDifyInstances: add response parameters Body.Root.Data.$.Description.
+- Update API ListDifyInstances: add response parameters Body.Root.Data.$.RegionCode.
+- Update API ListDifyInstances: add response parameters Body.Root.Data.$.Status.
+
+
 2025-12-25 Version: 2.1.3
 - Update API ChatWithDesensitizeSSE: add request parameters Parameters.
 

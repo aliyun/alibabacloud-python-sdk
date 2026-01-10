@@ -13,6 +13,7 @@ class CreateOrderRequest(DaraModel):
         comment: str = None,
         plugin_param: Dict[str, Any] = None,
         plugin_type: str = None,
+        real_login_user_uid: str = None,
         related_user_list: str = None,
         tid: int = None,
     ):
@@ -30,6 +31,7 @@ class CreateOrderRequest(DaraModel):
         # 
         # This parameter is required.
         self.plugin_type = plugin_type
+        self.real_login_user_uid = real_login_user_uid
         # The IDs of the stakeholders that are involved in the ticket. Separate multiple IDs with commas (,).
         self.related_user_list = related_user_list
         # The ID of the tenant. You can call the [GetUserActiveTenant](https://help.aliyun.com/document_detail/198073.html) or [ListUserTenants](https://help.aliyun.com/document_detail/198074.html) operation to obtain the tenant ID.
@@ -55,6 +57,9 @@ class CreateOrderRequest(DaraModel):
         if self.plugin_type is not None:
             result['PluginType'] = self.plugin_type
 
+        if self.real_login_user_uid is not None:
+            result['RealLoginUserUid'] = self.real_login_user_uid
+
         if self.related_user_list is not None:
             result['RelatedUserList'] = self.related_user_list
 
@@ -76,6 +81,9 @@ class CreateOrderRequest(DaraModel):
 
         if m.get('PluginType') is not None:
             self.plugin_type = m.get('PluginType')
+
+        if m.get('RealLoginUserUid') is not None:
+            self.real_login_user_uid = m.get('RealLoginUserUid')
 
         if m.get('RelatedUserList') is not None:
             self.related_user_list = m.get('RelatedUserList')
