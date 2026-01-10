@@ -1,3 +1,17 @@
+2026-01-10 Version: 5.0.0
+- Delete API CreateMemory.
+- Delete API CreateMemoryEvent.
+- Delete API DeleteMemory.
+- Delete API GetMemory.
+- Delete API GetMemoryEvent.
+- Delete API GetMemorySession.
+- Delete API ListMemory.
+- Delete API ListMemoryEvent.
+- Delete API ListMemorySessions.
+- Delete API RetrieveMemory.
+- Delete API UpdateMemory.
+
+
 2025-12-18 Version: 4.0.4
 - Generated python 2025-09-10 for AgentRun.
 
