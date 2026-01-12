@@ -225,6 +225,8 @@ from ._create_credential_request import CreateCredentialRequest
 from ._create_credential_response import CreateCredentialResponse
 from ._create_knowledge_base_request import CreateKnowledgeBaseRequest
 from ._create_knowledge_base_response import CreateKnowledgeBaseResponse
+from ._create_memory_collection_request import CreateMemoryCollectionRequest
+from ._create_memory_collection_response import CreateMemoryCollectionResponse
 from ._create_model_proxy_request import CreateModelProxyRequest
 from ._create_model_proxy_response import CreateModelProxyResponse
 from ._create_model_service_request import CreateModelServiceRequest
@@ -239,6 +241,7 @@ from ._delete_browser_response import DeleteBrowserResponse
 from ._delete_code_interpreter_response import DeleteCodeInterpreterResponse
 from ._delete_credential_response import DeleteCredentialResponse
 from ._delete_knowledge_base_response import DeleteKnowledgeBaseResponse
+from ._delete_memory_collection_response import DeleteMemoryCollectionResponse
 from ._delete_model_proxy_response import DeleteModelProxyResponse
 from ._delete_model_service_response import DeleteModelServiceResponse
 from ._delete_sandbox_response import DeleteSandboxResponse
@@ -253,6 +256,7 @@ from ._get_browser_response import GetBrowserResponse
 from ._get_code_interpreter_response import GetCodeInterpreterResponse
 from ._get_credential_response import GetCredentialResponse
 from ._get_knowledge_base_response import GetKnowledgeBaseResponse
+from ._get_memory_collection_response import GetMemoryCollectionResponse
 from ._get_model_proxy_response import GetModelProxyResponse
 from ._get_model_service_response import GetModelServiceResponse
 from ._get_sandbox_response import GetSandboxResponse
@@ -271,6 +275,8 @@ from ._list_credentials_request import ListCredentialsRequest
 from ._list_credentials_response import ListCredentialsResponse
 from ._list_knowledge_bases_request import ListKnowledgeBasesRequest
 from ._list_knowledge_bases_response import ListKnowledgeBasesResponse
+from ._list_memory_collections_request import ListMemoryCollectionsRequest
+from ._list_memory_collections_response import ListMemoryCollectionsResponse
 from ._list_model_providers_request import ListModelProvidersRequest
 from ._list_model_providers_response_body import ListModelProvidersResponseBody
 from ._list_model_providers_response import ListModelProvidersResponse
@@ -294,6 +300,8 @@ from ._update_credential_request import UpdateCredentialRequest
 from ._update_credential_response import UpdateCredentialResponse
 from ._update_knowledge_base_request import UpdateKnowledgeBaseRequest
 from ._update_knowledge_base_response import UpdateKnowledgeBaseResponse
+from ._update_memory_collection_request import UpdateMemoryCollectionRequest
+from ._update_memory_collection_response import UpdateMemoryCollectionResponse
 from ._update_model_proxy_request import UpdateModelProxyRequest
 from ._update_model_proxy_response import UpdateModelProxyResponse
 from ._update_model_service_request import UpdateModelServiceRequest
@@ -540,6 +548,8 @@ __all__ = [
     CreateCredentialResponse,
     CreateKnowledgeBaseRequest,
     CreateKnowledgeBaseResponse,
+    CreateMemoryCollectionRequest,
+    CreateMemoryCollectionResponse,
     CreateModelProxyRequest,
     CreateModelProxyResponse,
     CreateModelServiceRequest,
@@ -554,6 +564,7 @@ __all__ = [
     DeleteCodeInterpreterResponse,
     DeleteCredentialResponse,
     DeleteKnowledgeBaseResponse,
+    DeleteMemoryCollectionResponse,
     DeleteModelProxyResponse,
     DeleteModelServiceResponse,
     DeleteSandboxResponse,
@@ -568,6 +579,7 @@ __all__ = [
     GetCodeInterpreterResponse,
     GetCredentialResponse,
     GetKnowledgeBaseResponse,
+    GetMemoryCollectionResponse,
     GetModelProxyResponse,
     GetModelServiceResponse,
     GetSandboxResponse,
@@ -586,6 +598,8 @@ __all__ = [
     ListCredentialsResponse,
     ListKnowledgeBasesRequest,
     ListKnowledgeBasesResponse,
+    ListMemoryCollectionsRequest,
+    ListMemoryCollectionsResponse,
     ListModelProvidersRequest,
     ListModelProvidersResponseBody,
     ListModelProvidersResponse,
@@ -609,6 +623,8 @@ __all__ = [
     UpdateCredentialResponse,
     UpdateKnowledgeBaseRequest,
     UpdateKnowledgeBaseResponse,
+    UpdateMemoryCollectionRequest,
+    UpdateMemoryCollectionResponse,
     UpdateModelProxyRequest,
     UpdateModelProxyResponse,
     UpdateModelServiceRequest,

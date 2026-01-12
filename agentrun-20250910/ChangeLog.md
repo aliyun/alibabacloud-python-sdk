@@ -1,3 +1,11 @@
+2026-01-12 Version: 5.2.0
+- Support API CreateMemoryCollection.
+- Support API DeleteMemoryCollection.
+- Support API GetMemoryCollection.
+- Support API ListMemoryCollections.
+- Support API UpdateMemoryCollection.
+
+
 2026-01-12 Version: 5.1.0
 - Support API CreateKnowledgeBase.
 - Support API DeleteKnowledgeBase.

@@ -549,6 +549,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_knowledge_base_with_options_async(request, headers, runtime)
 
+    def create_memory_collection_with_options(
+        self,
+        request: main_models.CreateMemoryCollectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMemoryCollectionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMemoryCollection',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/memory-collections',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMemoryCollectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_memory_collection_with_options_async(
+        self,
+        request: main_models.CreateMemoryCollectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMemoryCollectionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMemoryCollection',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/memory-collections',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMemoryCollectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_memory_collection(
+        self,
+        request: main_models.CreateMemoryCollectionRequest,
+    ) -> main_models.CreateMemoryCollectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_memory_collection_with_options(request, headers, runtime)
+
+    async def create_memory_collection_async(
+        self,
+        request: main_models.CreateMemoryCollectionRequest,
+    ) -> main_models.CreateMemoryCollectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_memory_collection_with_options_async(request, headers, runtime)
+
     def create_model_proxy_with_options(
         self,
         request: main_models.CreateModelProxyRequest,
@@ -1228,6 +1298,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_knowledge_base_with_options_async(knowledge_base_name, headers, runtime)
+
+    def delete_memory_collection_with_options(
+        self,
+        memory_collection_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMemoryCollectionResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMemoryCollection',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/memory-collections/{DaraURL.percent_encode(memory_collection_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMemoryCollectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_memory_collection_with_options_async(
+        self,
+        memory_collection_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMemoryCollectionResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMemoryCollection',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/memory-collections/{DaraURL.percent_encode(memory_collection_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMemoryCollectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_memory_collection(
+        self,
+        memory_collection_name: str,
+    ) -> main_models.DeleteMemoryCollectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_memory_collection_with_options(memory_collection_name, headers, runtime)
+
+    async def delete_memory_collection_async(
+        self,
+        memory_collection_name: str,
+    ) -> main_models.DeleteMemoryCollectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_memory_collection_with_options_async(memory_collection_name, headers, runtime)
 
     def delete_model_proxy_with_options(
         self,
@@ -1990,6 +2126,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_knowledge_base_with_options_async(knowledge_base_name, headers, runtime)
+
+    def get_memory_collection_with_options(
+        self,
+        memory_collection_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryCollectionResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemoryCollection',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/memory-collections/{DaraURL.percent_encode(memory_collection_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryCollectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_memory_collection_with_options_async(
+        self,
+        memory_collection_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryCollectionResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemoryCollection',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/memory-collections/{DaraURL.percent_encode(memory_collection_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryCollectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_memory_collection(
+        self,
+        memory_collection_name: str,
+    ) -> main_models.GetMemoryCollectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_memory_collection_with_options(memory_collection_name, headers, runtime)
+
+    async def get_memory_collection_async(
+        self,
+        memory_collection_name: str,
+    ) -> main_models.GetMemoryCollectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_memory_collection_with_options_async(memory_collection_name, headers, runtime)
 
     def get_model_proxy_with_options(
         self,
@@ -2878,6 +3080,98 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_knowledge_bases_with_options_async(request, headers, runtime)
+
+    def list_memory_collections_with_options(
+        self,
+        request: main_models.ListMemoryCollectionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMemoryCollectionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.memory_collection_name):
+            query['memoryCollectionName'] = request.memory_collection_name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMemoryCollections',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/memory-collections',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMemoryCollectionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_memory_collections_with_options_async(
+        self,
+        request: main_models.ListMemoryCollectionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMemoryCollectionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.memory_collection_name):
+            query['memoryCollectionName'] = request.memory_collection_name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['status'] = request.status
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMemoryCollections',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/memory-collections',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMemoryCollectionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_memory_collections(
+        self,
+        request: main_models.ListMemoryCollectionsRequest,
+    ) -> main_models.ListMemoryCollectionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_memory_collections_with_options(request, headers, runtime)
+
+    async def list_memory_collections_async(
+        self,
+        request: main_models.ListMemoryCollectionsRequest,
+    ) -> main_models.ListMemoryCollectionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_memory_collections_with_options_async(request, headers, runtime)
 
     def list_model_providers_with_options(
         self,
@@ -3840,6 +4134,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_knowledge_base_with_options_async(knowledge_base_name, request, headers, runtime)
+
+    def update_memory_collection_with_options(
+        self,
+        memory_collection_name: str,
+        request: main_models.UpdateMemoryCollectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMemoryCollectionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMemoryCollection',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/memory-collections/{DaraURL.percent_encode(memory_collection_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMemoryCollectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_memory_collection_with_options_async(
+        self,
+        memory_collection_name: str,
+        request: main_models.UpdateMemoryCollectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMemoryCollectionResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMemoryCollection',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/memory-collections/{DaraURL.percent_encode(memory_collection_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMemoryCollectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_memory_collection(
+        self,
+        memory_collection_name: str,
+        request: main_models.UpdateMemoryCollectionRequest,
+    ) -> main_models.UpdateMemoryCollectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_memory_collection_with_options(memory_collection_name, request, headers, runtime)
+
+    async def update_memory_collection_async(
+        self,
+        memory_collection_name: str,
+        request: main_models.UpdateMemoryCollectionRequest,
+    ) -> main_models.UpdateMemoryCollectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_memory_collection_with_options_async(memory_collection_name, request, headers, runtime)
 
     def update_model_proxy_with_options(
         self,
