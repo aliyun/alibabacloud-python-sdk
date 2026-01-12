@@ -12,9 +12,14 @@ class ChatMessagesShrinkRequest(DaraModel):
         parent_message_id: str = None,
         query: str = None,
     ):
+        # The query content.
         self.conversation_id = conversation_id
+        # The ID of the parent message.
         self.inputs_shrink = inputs_shrink
+        # The ID of the conversation.
         self.parent_message_id = parent_message_id
+        # The operation that you want to perform. Set the value to **ChatMessages**.
+        # 
         # This parameter is required.
         self.query = query
 

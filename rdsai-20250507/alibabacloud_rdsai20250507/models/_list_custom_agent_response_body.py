@@ -16,10 +16,15 @@ class ListCustomAgentResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The returned data.
         self.data = data
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries returned on each page.
         self.page_size = page_size
+        # The request ID.
         self.request_id = request_id
+        # The total number of entries returned. By default, this parameter is not returned.
         self.total_count = total_count
 
     def validate(self):
@@ -85,13 +90,19 @@ class ListCustomAgentResponseBodyData(DaraModel):
         tools: List[str] = None,
         updated_at: str = None,
     ):
+        # The creation time of the agent.
         self.created_at = created_at
+        # Indicates whether tools are enabled.
         self.enable_tools = enable_tools
-        # AgentId。
+        # The ID of the agent.
         self.id = id
+        # The name of the dedicated agent.
         self.name = name
+        # The system prompts.
         self.system_prompt = system_prompt
+        # The information about the tool.
         self.tools = tools
+        # The modification time of the agent.
         self.updated_at = updated_at
 
     def validate(self):

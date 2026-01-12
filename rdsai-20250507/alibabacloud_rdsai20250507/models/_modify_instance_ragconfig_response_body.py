@@ -11,8 +11,14 @@ class ModifyInstanceRAGConfigResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The ID of the RDS Supabase instance.
         self.instance_name = instance_name
+        # The request ID.
         self.request_id = request_id
+        # The status of the RAG agent.
+        # 
+        # *   **true**
+        # *   **false**
         self.status = status
 
     def validate(self):

@@ -16,11 +16,20 @@ class ModifyInstanceRAGConfigRequest(DaraModel):
         region_id: str = None,
         status: bool = None,
     ):
+        # The value of the configuration item.
         self.client_token = client_token
+        # Specifies whether to enable the RAG agent. If you do not configure this parameter, the RAG agent state remains unchanged. Valid values:
+        # 
+        # *   **true**
+        # *   **false**
         self.config_list = config_list
+        # The region ID.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The operation that you want to perform. Set the value to **ModifyInstanceRAGConfig**.
         self.region_id = region_id
+        # The ID of the RDS Supabase instance.
         self.status = status
 
     def validate(self):

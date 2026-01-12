@@ -16,11 +16,15 @@ class DescribeInstanceAuthInfoResponseBody(DaraModel):
         jwt_secret: str = None,
         request_id: str = None,
     ):
-        # API Keys
+        # The API keys.
         self.api_keys = api_keys
+        # The authentication configurations.
         self.config_list = config_list
+        # The ID of the RDS Supabase instance.
         self.instance_name = instance_name
+        # The JWT key.
         self.jwt_secret = jwt_secret
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -84,7 +88,21 @@ class DescribeInstanceAuthInfoResponseBodyConfigList(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the configuration item. Valid values:
+        # 
+        # *   **GOTRUE_EXTERNAL_EMAIL_ENABLED**: Enables authentication via external email addresses.
+        # *   **GOTRUE_SITE_URL**: the URL that is displayed in the emails sent from the instance.
+        # *   **GOTRUE_SMTP_PORT**: the port of the SMTP service provider.
+        # *   **GOTRUE_SMTP_SENDER_NAME**: the name of the sender of the email.
+        # *   **GOTRUE_SMTP_USER**: the username of the SMTP service provider.
+        # *   **GOTRUE_SMTP_PASS**: the key of the SMTP service provider.
+        # *   **GOTRUE_SMTP_ADMIN_EMAIL**: the email address of the SMTP service provider.
+        # *   **GOTRUE_SMTP_HOST**: The host address of the SMTP service provider.
+        # *   **GOTRUE_MAILER_AUTOCONFIRM**: specifies whether to enable automatic confirmation.
+        # *   **GOTRUE_MAILER_OTP_EXP**: The validity period of the one-time password (OTP). Unit: seconds.
+        # *   **GOTRUE_MAILER_OTP_LENGTH**: The verification code length of the one-time password (OTP). The value must be an integer greater than or equal to 6.
         self.name = name
+        # The value of the configuration item.
         self.value = value
 
     def validate(self):
@@ -119,9 +137,9 @@ class DescribeInstanceAuthInfoResponseBodyApiKeys(DaraModel):
         anon_key: str = None,
         service_key: str = None,
     ):
-        # Supabase ANON_KEY
+        # The ANON_KEY of Supabase.
         self.anon_key = anon_key
-        # Supabase SERVICE_ROLE_KEY
+        # The SERVICE_ROLE_KEY of Supabase.
         self.service_key = service_key
 
     def validate(self):

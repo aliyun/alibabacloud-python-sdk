@@ -14,8 +14,11 @@ class DescribeInstanceStorageConfigResponseBody(DaraModel):
         instance_name: str = None,
         request_id: str = None,
     ):
+        # The storage configurations.
         self.config_list = config_list
+        # The ID of the RDS Supabase instance.
         self.instance_name = instance_name
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,7 +67,17 @@ class DescribeInstanceStorageConfigResponseBodyConfigList(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The configuration item name. Valid values:
+        # 
+        # *   **AWS_SESSION_TOKEN**: temporary OSS access token (session token).
+        # *   **AWS_ACCESS_KEY_ID**: the AccessKey ID of OSS.
+        # *   **AWS_SECRET_ACCESS_KEY**: the AccessKey secret of OSS.
+        # *   **GLOBAL_S3_BUCKET**: the name of the OSS bucket.
+        # *   **TENANT_ID**: the tenant ID of the OSS Prefix (prefix or directory).
+        # *   **GLOBAL_S3_ENDPOINT**: the endpoint of OSS.
+        # *   **REGION**: the region of OSS.
         self.name = name
+        # The value of the configuration item.
         self.value = value
 
     def validate(self):

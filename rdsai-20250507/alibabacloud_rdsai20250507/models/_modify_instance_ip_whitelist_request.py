@@ -14,11 +14,27 @@ class ModifyInstanceIpWhitelistRequest(DaraModel):
         modify_mode: str = None,
         region_id: str = None,
     ):
+        # The method that is used to modify the IP address whitelist. Valid values:
+        # 
+        # *   **Cover** (default): Uses the IP addresses and CIDR blocks that are specified in the **IpWhitelist** parameter to **overwrite** the existing ones in the current whitelist.
+        # *   **Append**: **Appends** the IP addresses and CIDR blocks that are specified in the **IpWhitelist** parameter to the current whitelist.
+        # *   **Delete**: **Deletes** the IP addresses and CIDR blocks that are specified in the **IpWhitelist** parameter from the current whitelist. You must retain at least one IP address or CIDR block.
         self.client_token = client_token
+        # The idempotency token. The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         self.group_name = group_name
+        # The region ID.
         self.instance_name = instance_name
+        # The ID of the RDS Supabase instance.
         self.ip_whitelist = ip_whitelist
+        # The IP address whitelist. Before you modify the IP address whitelist, call the DescribeInstanceIpWhitelist operation to query the existing IP address whitelist of the instance.
+        # 
+        # **Configuration rules**
+        # 
+        # *   You can configure IP addresses (such as 10.23.XXX.XXX) or CIDR blocks (such as 10.23.XXX.XXX/24).
+        # *   Separate multiple IP addresses or CIDR blocks with commas (,) and do not add spaces preceding or following the commas.
+        # *   You can configure up to 1,000 IP addresses and CIDR blocks in total for each instance. If you want to add a large number of IP addresses, we recommend that you merge the IP addresses into CIDR blocks, such as 10.23.XXX.XXX/24.
         self.modify_mode = modify_mode
+        # The operation that you want to perform. Set the value to **ModifyInstanceIpWhitelist**.
         self.region_id = region_id
 
     def validate(self):

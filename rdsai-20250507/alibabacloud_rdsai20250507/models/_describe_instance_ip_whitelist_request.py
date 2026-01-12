@@ -7,10 +7,14 @@ from darabonba.model import DaraModel
 class DescribeInstanceIpWhitelistRequest(DaraModel):
     def __init__(
         self,
+        group_name: str = None,
         instance_name: str = None,
         region_id: str = None,
     ):
+        self.group_name = group_name
+        # The region ID of the instance.
         self.instance_name = instance_name
+        # The operation that you want to perform. Set the value to **DescribeInstanceIpWhitelist**.
         self.region_id = region_id
 
     def validate(self):
@@ -21,6 +25,9 @@ class DescribeInstanceIpWhitelistRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
@@ -31,6 +38,9 @@ class DescribeInstanceIpWhitelistRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
 

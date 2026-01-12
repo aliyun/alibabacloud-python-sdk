@@ -14,8 +14,11 @@ class ModifyInstanceAuthConfigRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The ID of the RDS Supabase instance.
         self.config_list = config_list
+        # The region ID.
         self.instance_name = instance_name
+        # The operation that you want to perform. Set the value to **ModifyInstanceAuthConfig**.
         self.region_id = region_id
 
     def validate(self):

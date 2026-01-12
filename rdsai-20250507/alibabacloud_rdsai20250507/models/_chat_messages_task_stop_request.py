@@ -9,6 +9,8 @@ class ChatMessagesTaskStopRequest(DaraModel):
         self,
         task_id: str = None,
     ):
+        # The operation that you want to perform. Set the value to **ChatMessagesTaskStop**.
+        # 
         # This parameter is required.
         self.task_id = task_id
 

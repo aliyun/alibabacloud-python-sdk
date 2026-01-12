@@ -24,20 +24,49 @@ class CreateAppInstanceRequest(DaraModel):
         region_id: str = None,
         v_switch_id: str = None,
     ):
+        # The ID of the RDS for PostgreSQL instance with which the RDS Supabase instances are associated.
+        # 
+        # > : Only newly purchased empty RDS for PostgreSQL instances are supported. The major engine version must be PostgreSQL 17 and the minor version must be 20250630 or later.
         self.app_name = app_name
+        # The region ID of the instance.
         self.app_type = app_type
+        # The name of the new AI application.
         self.client_token = client_token
+        # A reserved parameter.
         self.dbinstance_config = dbinstance_config
+        # The instance type. Only **rdsai.supabase.basic** is supported.
         self.dbinstance_name = dbinstance_name
+        # The Supabase Dashboard user name.
         self.dashboard_password = dashboard_password
+        # The password used to access the RDS database.
+        # 
+        # The password must be 8 to 32 characters in length and must contain at least three of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
         self.dashboard_username = dashboard_username
+        # The idempotency token. The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests.
         self.database_password = database_password
+        # Specifies whether to enable public endpoint.
+        # 
+        # *   true (default)
+        # *   false
         self.initialize_with_existing_data = initialize_with_existing_data
+        # The vSwitch ID.
         self.instance_class = instance_class
+        # The billing method of the RDS for PostgreSQL instance.
         self.public_endpoint_enabled = public_endpoint_enabled
+        # The Supabase Dashboard password.
+        # 
+        # The password must be 8 to 32 characters in length and must contain at least three of the following characters: uppercase letters, lowercase letters, digits, and underscores (_).
         self.public_network_access_enabled = public_network_access_enabled
+        # Specifies whether to enable the Internet NAT gateway. Valid values:
+        # 
+        # *   **true**: enable the Internet NAT gateway.
+        # *   **false** (default): disable the Internet NAT gateway.
+        # 
+        # >  If an Internet NAT gateway is enabled for the vSwitch that you specify for VSwitchId, select false for this parameter.
         self.ragenabled = ragenabled
+        # The operation that you want to perform. Set the value to **CreateAppInstance**.
         self.region_id = region_id
+        # The application type. Only **supabase** is supported.
         self.v_switch_id = v_switch_id
 
     def validate(self):

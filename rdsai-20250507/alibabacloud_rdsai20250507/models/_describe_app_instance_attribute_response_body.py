@@ -23,20 +23,33 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         vpc_connection_string: str = None,
         zone_id: str = None,
     ):
+        # The name of the AI application.
         self.app_name = app_name
+        # The application type. Only **supabase** is supported. For more information, see [RDS Supabase](https://help.aliyun.com/document_detail/2938735.html).
         self.app_type = app_type
+        # The ID of the RDS for PostgreSQL instance with which the RDS Supabase instances are associated.
         self.dbinstance_name = dbinstance_name
         self.eip_status = eip_status
+        # The instance type of the RDS Supabase instance.
         self.instance_class = instance_class
+        # The minor version number of RDS Supabase instance.
         self.instance_minor_version = instance_minor_version
+        # The ID of the RDS Supabase instance.
         self.instance_name = instance_name
         self.nat_status = nat_status
+        # The public endpoint of the AI application.
         self.public_connection_string = public_connection_string
+        # The region ID.
         self.region_id = region_id
+        # The request ID.
         self.request_id = request_id
+        # The status of the instance. For more information, see [Instance state table](https://help.aliyun.com/document_detail/2623972.html).
         self.status = status
+        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        # The internal endpoint of the AI application.
         self.vpc_connection_string = vpc_connection_string
+        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

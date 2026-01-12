@@ -1,3 +1,7 @@
+2026-01-12 Version: 2.0.4
+- Update API DescribeInstanceIpWhitelist: add request parameters GroupName.
+
+
 2025-12-23 Version: 2.0.3
 - Update API DescribeEventsList: add response parameters Body.Events.$.RegionId.
 - Update API DescribeInstanceEndpoints: add response parameters Body.DBInstanceEndpoints.

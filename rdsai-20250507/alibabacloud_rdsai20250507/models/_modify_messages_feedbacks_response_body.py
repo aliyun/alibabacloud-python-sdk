@@ -10,7 +10,9 @@ class ModifyMessagesFeedbacksResponseBody(DaraModel):
         request_id: str = None,
         result: str = None,
     ):
+        # The request ID.
         self.request_id = request_id
+        # The returned results.
         self.result = result
 
     def validate(self):

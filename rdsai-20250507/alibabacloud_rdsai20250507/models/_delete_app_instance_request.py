@@ -11,8 +11,11 @@ class DeleteAppInstanceRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The ID of the RDS Supabase instance.
         self.client_token = client_token
+        # The region ID.
         self.instance_name = instance_name
+        # The operation that you want to perform. Set the value to **DeleteAppInstance**.
         self.region_id = region_id
 
     def validate(self):

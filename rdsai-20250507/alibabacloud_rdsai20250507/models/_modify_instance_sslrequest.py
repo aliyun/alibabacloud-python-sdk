@@ -14,13 +14,28 @@ class ModifyInstanceSSLRequest(DaraModel):
         server_cert: str = None,
         server_key: str = None,
     ):
+        # Enables or disables SSL. Valid values:
+        # 
+        # *   **1**: enables SSL.
+        # *   **0**: disables SSL.
         self.catype = catype
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The operation that you want to perform. Set the value to **ModifyInstanceSSL**.
         self.region_id = region_id
+        # The ID of the RDS Supabase instance.
+        # 
         # This parameter is required.
         self.sslenabled = sslenabled
+        # The certificate type. Only **custom** is supported.
+        # 
+        # >  This parameter is required if **SSLEnabled** is set to **1**.
         self.server_cert = server_cert
+        # The content of the custom certificate.
+        # 
+        # >  This parameter is required if **CAType** is set to **custom**.
         self.server_key = server_key
 
     def validate(self):

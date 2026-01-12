@@ -15,9 +15,13 @@ class GetConversationsResponseBody(DaraModel):
         limit: int = None,
         request_id: str = None,
     ):
+        # The returned results.
         self.data = data
+        # Indicates whether the current page is followed by a page.
         self.has_more = has_more
+        # The number of entries per page. Valid values: 1 to 100. Default value: 100.
         self.limit = limit
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -74,9 +78,13 @@ class GetConversationsResponseBodyData(DaraModel):
         introduction: str = None,
         name: str = None,
     ):
+        # The creation time of the conversation.
         self.created_at = created_at
+        # The ID of the history conversation.
         self.id = id
+        # The introduction to the conversation.
         self.introduction = introduction
+        # The name of the history conversation.
         self.name = name
 
     def validate(self):

@@ -15,9 +15,13 @@ class DescribeInstanceEndpointsResponseBody(DaraModel):
         instance_name: str = None,
         request_id: str = None,
     ):
+        # The information about the endpoints of the RDS instance.
         self.dbinstance_endpoints = dbinstance_endpoints
+        # The information about the endpoints of the RDS Supabase instance.
         self.instance_endpoints = instance_endpoints
+        # The ID of the RDS Supabase instance.
         self.instance_name = instance_name
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -83,9 +87,16 @@ class DescribeInstanceEndpointsResponseBodyInstanceEndpoints(DaraModel):
         ip_type: str = None,
         port: str = None,
     ):
+        # The endpoint of the RDS Supabase instance.
         self.connection_string = connection_string
+        # The IP address used to access the RDS Supabase instance.
         self.ip = ip
+        # The network type of the RDS Supabase instance. Valid values:
+        # 
+        # *   **public**: Internet
+        # *   **vpc**: VPC
         self.ip_type = ip_type
+        # The port used to access the RDS Supabase instance.
         self.port = port
 
     def validate(self):
@@ -133,8 +144,14 @@ class DescribeInstanceEndpointsResponseBodyDBInstanceEndpoints(DaraModel):
         ip_type: str = None,
         port: str = None,
     ):
+        # The endpoint of the RDS instance.
         self.connection_string = connection_string
+        # The network type of the RDS instance. Valid values:
+        # 
+        # *   **public**: Internet
+        # *   **vpc**: VPC
         self.ip_type = ip_type
+        # The port used to access the RDS instance.
         self.port = port
 
     def validate(self):

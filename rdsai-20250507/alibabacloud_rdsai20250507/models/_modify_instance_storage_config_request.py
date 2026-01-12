@@ -15,10 +15,15 @@ class ModifyInstanceStorageConfigRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The value of the configuration item.
         self.client_token = client_token
+        # The ID of the RDS Supabase instance.
         self.config_list = config_list
+        # The region ID.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The operation that you want to perform. Set the value to **ModifyInstanceStorageConfig**.
         self.region_id = region_id
 
     def validate(self):

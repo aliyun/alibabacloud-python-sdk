@@ -12,10 +12,17 @@ class ResetInstancePasswordRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The ID of the RDS Supabase instance.
         self.dashboard_password = dashboard_password
+        # The Supabase Dashboard password.
+        # 
+        # The password must be 8 to 32 characters in length and must contain at least three of the following types: uppercase letters, lowercase letters, digits, and underscores (_).
         self.database_password = database_password
+        # The region ID.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The operation that you want to perform. Set the value to **ResetInstancePassword**.
         self.region_id = region_id
 
     def validate(self):

@@ -13,11 +13,17 @@ class ModifyInstanceConfigRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The ID of the RDS Supabase instance.
         self.client_token = client_token
+        # The client token that is used to ensure the idempotence of the request.
         self.config_name = config_name
+        # The name of the configuration item that you want to modify. Configure this parameter together with the ConfigValue parameter.
         self.config_value = config_value
+        # The region ID of the instance.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The operation that you want to perform. Set the value to **ModifyInstanceConfig**.
         self.region_id = region_id
 
     def validate(self):

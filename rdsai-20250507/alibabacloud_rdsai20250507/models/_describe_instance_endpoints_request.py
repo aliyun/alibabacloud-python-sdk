@@ -10,7 +10,9 @@ class DescribeInstanceEndpointsRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The region ID.
         self.instance_name = instance_name
+        # The operation that you want to perform. Set the value to **DescribeInstanceEndpoints**.
         self.region_id = region_id
 
     def validate(self):

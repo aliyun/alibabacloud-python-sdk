@@ -10,7 +10,9 @@ class ModifyInstanceStorageConfigResponseBody(DaraModel):
         instance_name: str = None,
         request_id: str = None,
     ):
+        # The ID of the RDS Supabase instance.
         self.instance_name = instance_name
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

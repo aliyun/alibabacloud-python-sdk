@@ -15,9 +15,13 @@ class GetMessagesResponseBody(DaraModel):
         limit: int = None,
         request_id: str = None,
     ):
+        # The returned results.
         self.data = data
+        # Indicates whether the current page is followed by a page.
         self.has_more = has_more
+        # The maximum number of entries to return.
         self.limit = limit
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -77,12 +81,19 @@ class GetMessagesResponseBodyData(DaraModel):
         query: str = None,
         retriever_resources: List[Any] = None,
     ):
+        # The response to the query.
         self.answer = answer
+        # The ID of the conversation.
         self.conversation_id = conversation_id
+        # The creation time of the conversation.
         self.created_at = created_at
+        # The feedback.
         self.feedback = feedback
+        # The message ID.
         self.id = id
+        # The query statement.
         self.query = query
+        # The retriever resources.
         self.retriever_resources = retriever_resources
 
     def validate(self):

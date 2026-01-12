@@ -1074,6 +1074,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceIpWhitelistResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):
@@ -1104,6 +1106,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeInstanceIpWhitelistResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.group_name):
+            query['GroupName'] = request.group_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.region_id):

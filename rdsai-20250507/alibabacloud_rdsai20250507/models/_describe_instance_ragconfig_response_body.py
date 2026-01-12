@@ -15,9 +15,16 @@ class DescribeInstanceRAGConfigResponseBody(DaraModel):
         request_id: str = None,
         status: bool = None,
     ):
+        # The RAG agent configurations.
         self.config_list = config_list
+        # The ID of the RDS Supabase instance.
         self.instance_name = instance_name
+        # The request ID.
         self.request_id = request_id
+        # The status of the RAG agent.
+        # 
+        # *   **true**: RAG agent is enabled.
+        # *   **false**: RAG agent is disabled.
         self.status = status
 
     def validate(self):
@@ -72,7 +79,9 @@ class DescribeInstanceRAGConfigResponseBodyConfigList(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the configuration item.
         self.name = name
+        # The value of the configuration item.
         self.value = value
 
     def validate(self):

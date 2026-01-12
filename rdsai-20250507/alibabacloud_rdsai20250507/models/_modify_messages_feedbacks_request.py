@@ -11,8 +11,16 @@ class ModifyMessagesFeedbacksRequest(DaraModel):
         message_id: str = None,
         rating: str = None,
     ):
+        # The rating of the message.
+        # 
+        # Valid values:
+        # 
+        # *   like
+        # *   dislike
         self.content = content
+        # The operation that you want to perform. Set the value to **ModifyMessagesFeedbacks**.
         self.message_id = message_id
+        # The message ID.
         self.rating = rating
 
     def validate(self):

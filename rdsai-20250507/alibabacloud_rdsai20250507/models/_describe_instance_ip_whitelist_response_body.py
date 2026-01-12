@@ -14,8 +14,11 @@ class DescribeInstanceIpWhitelistResponseBody(DaraModel):
         ip_white_list_groups: List[main_models.DescribeInstanceIpWhitelistResponseBodyIpWhiteListGroups] = None,
         request_id: str = None,
     ):
+        # The ID of the RDS Supabase instance.
         self.instance_name = instance_name
+        # The IP address whitelists.
         self.ip_white_list_groups = ip_white_list_groups
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -64,7 +67,9 @@ class DescribeInstanceIpWhitelistResponseBodyIpWhiteListGroups(DaraModel):
         group_name: str = None,
         ip_whitelist: str = None,
     ):
+        # The IP address whitelist name.
         self.group_name = group_name
+        # The IP addresses or CIDR blocks in the whitelist.
         self.ip_whitelist = ip_whitelist
 
     def validate(self):

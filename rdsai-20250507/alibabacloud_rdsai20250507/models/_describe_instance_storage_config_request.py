@@ -10,8 +10,11 @@ class DescribeInstanceStorageConfigRequest(DaraModel):
         instance_name: str = None,
         region_id: str = None,
     ):
+        # The region ID.
+        # 
         # This parameter is required.
         self.instance_name = instance_name
+        # The operation that you want to perform. Set the value to **DescribeInstanceStorageConfig**.
         self.region_id = region_id
 
     def validate(self):

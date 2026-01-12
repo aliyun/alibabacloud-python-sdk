@@ -14,11 +14,20 @@ class DescribeInstanceSSLResponseBody(DaraModel):
         server_cert: str = None,
         server_key: str = None,
     ):
+        # The type of the certificate. Set the value to **custom**, which indicates that a custom certificate is used.
         self.catype = catype
+        # The ID of the RDS Supabase instance.
         self.instance_name = instance_name
+        # The request ID.
         self.request_id = request_id
+        # Specifies whether to enable SSL encryption. Valid values:
+        # 
+        # *   **1**: enables SSL encryption.
+        # *   **0**: disables SSL encryption.
         self.sslenabled = sslenabled
+        # The content of the custom certificate.
         self.server_cert = server_cert
+        # The private key of the certificate.
         self.server_key = server_key
 
     def validate(self):

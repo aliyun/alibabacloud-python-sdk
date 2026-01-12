@@ -11,8 +11,11 @@ class GetMessagesRequest(DaraModel):
         first_id: str = None,
         limit: int = None,
     ):
+        # The operation that you want to perform. Set the value to **GetMessages**.
         self.conversation_id = conversation_id
+        # The ID of the conversation.
         self.first_id = first_id
+        # The ID of the first message.
         self.limit = limit
 
     def validate(self):
