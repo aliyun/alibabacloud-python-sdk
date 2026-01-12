@@ -479,6 +479,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_credential_with_options_async(request, headers, runtime)
 
+    def create_knowledge_base_with_options(
+        self,
+        request: main_models.CreateKnowledgeBaseRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKnowledgeBaseResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKnowledgeBase',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/knowledgebases',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_knowledge_base_with_options_async(
+        self,
+        request: main_models.CreateKnowledgeBaseRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateKnowledgeBaseResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateKnowledgeBase',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/knowledgebases',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_knowledge_base(
+        self,
+        request: main_models.CreateKnowledgeBaseRequest,
+    ) -> main_models.CreateKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_knowledge_base_with_options(request, headers, runtime)
+
+    async def create_knowledge_base_async(
+        self,
+        request: main_models.CreateKnowledgeBaseRequest,
+    ) -> main_models.CreateKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_knowledge_base_with_options_async(request, headers, runtime)
+
     def create_model_proxy_with_options(
         self,
         request: main_models.CreateModelProxyRequest,
@@ -1092,6 +1162,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_credential_with_options_async(credential_name, headers, runtime)
+
+    def delete_knowledge_base_with_options(
+        self,
+        knowledge_base_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteKnowledgeBaseResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteKnowledgeBase',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/knowledgebases/{DaraURL.percent_encode(knowledge_base_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_knowledge_base_with_options_async(
+        self,
+        knowledge_base_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteKnowledgeBaseResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteKnowledgeBase',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/knowledgebases/{DaraURL.percent_encode(knowledge_base_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_knowledge_base(
+        self,
+        knowledge_base_name: str,
+    ) -> main_models.DeleteKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_knowledge_base_with_options(knowledge_base_name, headers, runtime)
+
+    async def delete_knowledge_base_async(
+        self,
+        knowledge_base_name: str,
+    ) -> main_models.DeleteKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_knowledge_base_with_options_async(knowledge_base_name, headers, runtime)
 
     def delete_model_proxy_with_options(
         self,
@@ -1788,6 +1924,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_credential_with_options_async(credential_name, headers, runtime)
+
+    def get_knowledge_base_with_options(
+        self,
+        knowledge_base_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKnowledgeBaseResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKnowledgeBase',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/knowledgebases/{DaraURL.percent_encode(knowledge_base_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_knowledge_base_with_options_async(
+        self,
+        knowledge_base_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetKnowledgeBaseResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetKnowledgeBase',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/knowledgebases/{DaraURL.percent_encode(knowledge_base_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_knowledge_base(
+        self,
+        knowledge_base_name: str,
+    ) -> main_models.GetKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_knowledge_base_with_options(knowledge_base_name, headers, runtime)
+
+    async def get_knowledge_base_async(
+        self,
+        knowledge_base_name: str,
+    ) -> main_models.GetKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_knowledge_base_with_options_async(knowledge_base_name, headers, runtime)
 
     def get_model_proxy_with_options(
         self,
@@ -2592,6 +2794,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_credentials_with_options_async(request, headers, runtime)
+
+    def list_knowledge_bases_with_options(
+        self,
+        request: main_models.ListKnowledgeBasesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKnowledgeBasesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.provider):
+            query['provider'] = request.provider
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKnowledgeBases',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/knowledgebases',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKnowledgeBasesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_knowledge_bases_with_options_async(
+        self,
+        request: main_models.ListKnowledgeBasesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKnowledgeBasesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.provider):
+            query['provider'] = request.provider
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKnowledgeBases',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/knowledgebases',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKnowledgeBasesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_knowledge_bases(
+        self,
+        request: main_models.ListKnowledgeBasesRequest,
+    ) -> main_models.ListKnowledgeBasesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_knowledge_bases_with_options(request, headers, runtime)
+
+    async def list_knowledge_bases_async(
+        self,
+        request: main_models.ListKnowledgeBasesRequest,
+    ) -> main_models.ListKnowledgeBasesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_knowledge_bases_with_options_async(request, headers, runtime)
 
     def list_model_providers_with_options(
         self,
@@ -3480,6 +3766,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_credential_with_options_async(credential_name, request, headers, runtime)
+
+    def update_knowledge_base_with_options(
+        self,
+        knowledge_base_name: str,
+        request: main_models.UpdateKnowledgeBaseRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKnowledgeBaseResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKnowledgeBase',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/knowledgebases/{DaraURL.percent_encode(knowledge_base_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKnowledgeBaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_knowledge_base_with_options_async(
+        self,
+        knowledge_base_name: str,
+        request: main_models.UpdateKnowledgeBaseRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKnowledgeBaseResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKnowledgeBase',
+            version = '2025-09-10',
+            protocol = 'HTTPS',
+            pathname = f'/2025-09-10/agents/knowledgebases/{DaraURL.percent_encode(knowledge_base_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKnowledgeBaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_knowledge_base(
+        self,
+        knowledge_base_name: str,
+        request: main_models.UpdateKnowledgeBaseRequest,
+    ) -> main_models.UpdateKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_knowledge_base_with_options(knowledge_base_name, request, headers, runtime)
+
+    async def update_knowledge_base_async(
+        self,
+        knowledge_base_name: str,
+        request: main_models.UpdateKnowledgeBaseRequest,
+    ) -> main_models.UpdateKnowledgeBaseResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_knowledge_base_with_options_async(knowledge_base_name, request, headers, runtime)
 
     def update_model_proxy_with_options(
         self,

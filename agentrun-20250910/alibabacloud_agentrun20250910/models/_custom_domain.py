@@ -12,6 +12,7 @@ class CustomDomain(DaraModel):
         created_at: str = None,
         description: str = None,
         domain_name: str = None,
+        domain_type: str = None,
         protocol: str = None,
         route_config: main_models.RouteConfig = None,
         tls_config: main_models.TLSConfig = None,
@@ -25,6 +26,7 @@ class CustomDomain(DaraModel):
         self.description = description
         # 域名。填写已在阿里云备案或接入备案的自定义域名名称。
         self.domain_name = domain_name
+        self.domain_type = domain_type
         # 域名支持的协议类型：● HTTP：仅支持 HTTP 协议。● HTTPS：仅支持 HTTPS 协议。● HTTP,HTTPS：支持 HTTP 及 HTTPS 协议。
         self.protocol = protocol
         # 路由表：自定义域名访问时的 PATH 到 资源 的映射。
@@ -59,6 +61,9 @@ class CustomDomain(DaraModel):
         if self.domain_name is not None:
             result['domainName'] = self.domain_name
 
+        if self.domain_type is not None:
+            result['domainType'] = self.domain_type
+
         if self.protocol is not None:
             result['protocol'] = self.protocol
 
@@ -87,6 +92,9 @@ class CustomDomain(DaraModel):
 
         if m.get('domainName') is not None:
             self.domain_name = m.get('domainName')
+
+        if m.get('domainType') is not None:
+            self.domain_type = m.get('domainType')
 
         if m.get('protocol') is not None:
             self.protocol = m.get('protocol')

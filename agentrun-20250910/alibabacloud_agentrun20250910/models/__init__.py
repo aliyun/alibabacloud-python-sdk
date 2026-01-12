@@ -48,6 +48,8 @@ from ._create_custom_domain_input import CreateCustomDomainInput
 from ._create_domain_input import CreateDomainInput
 from ._create_gateway_input import CreateGatewayInput
 from ._create_gateway_target_input import CreateGatewayTargetInput
+from ._create_knowledge_base_input import CreateKnowledgeBaseInput
+from ._create_memory_collection_input import CreateMemoryCollectionInput
 from ._create_model_input import CreateModelInput
 from ._create_model_proxy_input import CreateModelProxyInput
 from ._create_model_service_input import CreateModelServiceInput
@@ -68,12 +70,14 @@ from ._delete_browser_out import DeleteBrowserOut
 from ._delete_browser_result import DeleteBrowserResult
 from ._delete_code_interpreter_out import DeleteCodeInterpreterOut
 from ._delete_code_interpreter_result import DeleteCodeInterpreterResult
+from ._delete_knowledge_base_result import DeleteKnowledgeBaseResult
 from ._delete_model_proxy_result import DeleteModelProxyResult
 from ._delete_model_service_result import DeleteModelServiceResult
 from ._delete_sandbox_result import DeleteSandboxResult
 from ._delete_template_result import DeleteTemplateResult
 from ._deregister_service_input import DeregisterServiceInput
 from ._domain_info import DomainInfo
+from ._embedder_config import EmbedderConfig
 from ._error_result import ErrorResult
 from ._fclink_config import FCLinkConfig
 from ._gateway import Gateway
@@ -85,7 +89,10 @@ from ._get_tool_output import GetToolOutput
 from ._gray_traffic_weight import GrayTrafficWeight
 from ._health_check_config import HealthCheckConfig
 from ._health_check_configuration import HealthCheckConfiguration
+from ._knowledge_base import KnowledgeBase
+from ._knowledge_base_result import KnowledgeBaseResult
 from ._llmapiconfiguration import LLMAPIConfiguration
+from ._llmconfig import LLMConfig
 from ._llmdeploy_config import LLMDeployConfig
 from ._list_agent_runtime_endpoints_input import ListAgentRuntimeEndpointsInput
 from ._list_agent_runtime_endpoints_output import ListAgentRuntimeEndpointsOutput
@@ -110,6 +117,10 @@ from ._list_custom_domains_output import ListCustomDomainsOutput
 from ._list_custom_domains_result import ListCustomDomainsResult
 from ._list_domains_output import ListDomainsOutput
 from ._list_gateways_output import ListGatewaysOutput
+from ._list_knowledge_bases_output import ListKnowledgeBasesOutput
+from ._list_knowledge_bases_result import ListKnowledgeBasesResult
+from ._list_memory_collections_output import ListMemoryCollectionsOutput
+from ._list_memory_collections_result import ListMemoryCollectionsResult
 from ._list_model_proxies_output import ListModelProxiesOutput
 from ._list_model_proxies_result import ListModelProxiesResult
 from ._list_model_services_output import ListModelServicesOutput
@@ -127,6 +138,8 @@ from ._mcpmatch import MCPMatch
 from ._mcppath_match import MCPPathMatch
 from ._mcpserver_config import MCPServerConfig
 from ._mcpservice_config import MCPServiceConfig
+from ._memory_collection import MemoryCollection
+from ._memory_collection_result import MemoryCollectionResult
 from ._model import Model
 from ._model_features import ModelFeatures
 from ._model_info_config import ModelInfoConfig
@@ -185,6 +198,8 @@ from ._update_credential_input import UpdateCredentialInput
 from ._update_credential_output import UpdateCredentialOutput
 from ._update_custom_domain_input import UpdateCustomDomainInput
 from ._update_domain_input import UpdateDomainInput
+from ._update_knowledge_base_input import UpdateKnowledgeBaseInput
+from ._update_memory_collection_input import UpdateMemoryCollectionInput
 from ._update_model_input import UpdateModelInput
 from ._update_model_proxy_input import UpdateModelProxyInput
 from ._update_model_service_input import UpdateModelServiceInput
@@ -193,6 +208,7 @@ from ._update_template_input import UpdateTemplateInput
 from ._update_tool_data import UpdateToolData
 from ._update_tool_input import UpdateToolInput
 from ._update_tool_output import UpdateToolOutput
+from ._vector_store_config import VectorStoreConfig
 from ._version_weight import VersionWeight
 from ._view_port_configuration import ViewPortConfiguration
 from ._activate_template_mcprequest import ActivateTemplateMCPRequest
@@ -207,6 +223,8 @@ from ._create_code_interpreter_request import CreateCodeInterpreterRequest
 from ._create_code_interpreter_response import CreateCodeInterpreterResponse
 from ._create_credential_request import CreateCredentialRequest
 from ._create_credential_response import CreateCredentialResponse
+from ._create_knowledge_base_request import CreateKnowledgeBaseRequest
+from ._create_knowledge_base_response import CreateKnowledgeBaseResponse
 from ._create_model_proxy_request import CreateModelProxyRequest
 from ._create_model_proxy_response import CreateModelProxyResponse
 from ._create_model_service_request import CreateModelServiceRequest
@@ -220,6 +238,7 @@ from ._delete_agent_runtime_endpoint_response import DeleteAgentRuntimeEndpointR
 from ._delete_browser_response import DeleteBrowserResponse
 from ._delete_code_interpreter_response import DeleteCodeInterpreterResponse
 from ._delete_credential_response import DeleteCredentialResponse
+from ._delete_knowledge_base_response import DeleteKnowledgeBaseResponse
 from ._delete_model_proxy_response import DeleteModelProxyResponse
 from ._delete_model_service_response import DeleteModelServiceResponse
 from ._delete_sandbox_response import DeleteSandboxResponse
@@ -233,6 +252,7 @@ from ._get_agent_runtime_endpoint_response import GetAgentRuntimeEndpointRespons
 from ._get_browser_response import GetBrowserResponse
 from ._get_code_interpreter_response import GetCodeInterpreterResponse
 from ._get_credential_response import GetCredentialResponse
+from ._get_knowledge_base_response import GetKnowledgeBaseResponse
 from ._get_model_proxy_response import GetModelProxyResponse
 from ._get_model_service_response import GetModelServiceResponse
 from ._get_sandbox_response import GetSandboxResponse
@@ -249,6 +269,8 @@ from ._list_code_interpreters_request import ListCodeInterpretersRequest
 from ._list_code_interpreters_response import ListCodeInterpretersResponse
 from ._list_credentials_request import ListCredentialsRequest
 from ._list_credentials_response import ListCredentialsResponse
+from ._list_knowledge_bases_request import ListKnowledgeBasesRequest
+from ._list_knowledge_bases_response import ListKnowledgeBasesResponse
 from ._list_model_providers_request import ListModelProvidersRequest
 from ._list_model_providers_response_body import ListModelProvidersResponseBody
 from ._list_model_providers_response import ListModelProvidersResponse
@@ -270,6 +292,8 @@ from ._update_agent_runtime_endpoint_request import UpdateAgentRuntimeEndpointRe
 from ._update_agent_runtime_endpoint_response import UpdateAgentRuntimeEndpointResponse
 from ._update_credential_request import UpdateCredentialRequest
 from ._update_credential_response import UpdateCredentialResponse
+from ._update_knowledge_base_request import UpdateKnowledgeBaseRequest
+from ._update_knowledge_base_response import UpdateKnowledgeBaseResponse
 from ._update_model_proxy_request import UpdateModelProxyRequest
 from ._update_model_proxy_response import UpdateModelProxyResponse
 from ._update_model_service_request import UpdateModelServiceRequest
@@ -278,6 +302,8 @@ from ._update_template_request import UpdateTemplateRequest
 from ._update_template_response import UpdateTemplateResponse
 from ._credential_public_config import CredentialPublicConfigRemoteConfig
 from ._credential_public_config import CredentialPublicConfigUsers
+from ._embedder_config import EmbedderConfigConfig
+from ._llmconfig import LLMConfigConfig
 from ._proxy_config import ProxyConfigEndpoints
 from ._proxy_config import ProxyConfigPoliciesAiGuardrailConfig
 from ._proxy_config import ProxyConfigPoliciesFallbacks
@@ -285,6 +311,7 @@ from ._proxy_config import ProxyConfigPoliciesTokenRateLimiter
 from ._proxy_config import ProxyConfigPolicies
 from ._template import TemplateMcpOptions
 from ._template import TemplateMcpState
+from ._vector_store_config import VectorStoreConfigConfig
 from ._get_access_token_response_body import GetAccessTokenResponseBodyData
 from ._list_model_providers_response_body import ListModelProvidersResponseBodyDataItems
 from ._list_model_providers_response_body import ListModelProvidersResponseBodyData
@@ -336,6 +363,8 @@ __all__ = [
     CreateDomainInput,
     CreateGatewayInput,
     CreateGatewayTargetInput,
+    CreateKnowledgeBaseInput,
+    CreateMemoryCollectionInput,
     CreateModelInput,
     CreateModelProxyInput,
     CreateModelServiceInput,
@@ -356,12 +385,14 @@ __all__ = [
     DeleteBrowserResult,
     DeleteCodeInterpreterOut,
     DeleteCodeInterpreterResult,
+    DeleteKnowledgeBaseResult,
     DeleteModelProxyResult,
     DeleteModelServiceResult,
     DeleteSandboxResult,
     DeleteTemplateResult,
     DeregisterServiceInput,
     DomainInfo,
+    EmbedderConfig,
     ErrorResult,
     FCLinkConfig,
     Gateway,
@@ -373,7 +404,10 @@ __all__ = [
     GrayTrafficWeight,
     HealthCheckConfig,
     HealthCheckConfiguration,
+    KnowledgeBase,
+    KnowledgeBaseResult,
     LLMAPIConfiguration,
+    LLMConfig,
     LLMDeployConfig,
     ListAgentRuntimeEndpointsInput,
     ListAgentRuntimeEndpointsOutput,
@@ -398,6 +432,10 @@ __all__ = [
     ListCustomDomainsResult,
     ListDomainsOutput,
     ListGatewaysOutput,
+    ListKnowledgeBasesOutput,
+    ListKnowledgeBasesResult,
+    ListMemoryCollectionsOutput,
+    ListMemoryCollectionsResult,
     ListModelProxiesOutput,
     ListModelProxiesResult,
     ListModelServicesOutput,
@@ -415,6 +453,8 @@ __all__ = [
     MCPPathMatch,
     MCPServerConfig,
     MCPServiceConfig,
+    MemoryCollection,
+    MemoryCollectionResult,
     Model,
     ModelFeatures,
     ModelInfoConfig,
@@ -473,6 +513,8 @@ __all__ = [
     UpdateCredentialOutput,
     UpdateCustomDomainInput,
     UpdateDomainInput,
+    UpdateKnowledgeBaseInput,
+    UpdateMemoryCollectionInput,
     UpdateModelInput,
     UpdateModelProxyInput,
     UpdateModelServiceInput,
@@ -481,6 +523,7 @@ __all__ = [
     UpdateToolData,
     UpdateToolInput,
     UpdateToolOutput,
+    VectorStoreConfig,
     VersionWeight,
     ViewPortConfiguration,
     ActivateTemplateMCPRequest,
@@ -495,6 +538,8 @@ __all__ = [
     CreateCodeInterpreterResponse,
     CreateCredentialRequest,
     CreateCredentialResponse,
+    CreateKnowledgeBaseRequest,
+    CreateKnowledgeBaseResponse,
     CreateModelProxyRequest,
     CreateModelProxyResponse,
     CreateModelServiceRequest,
@@ -508,6 +553,7 @@ __all__ = [
     DeleteBrowserResponse,
     DeleteCodeInterpreterResponse,
     DeleteCredentialResponse,
+    DeleteKnowledgeBaseResponse,
     DeleteModelProxyResponse,
     DeleteModelServiceResponse,
     DeleteSandboxResponse,
@@ -521,6 +567,7 @@ __all__ = [
     GetBrowserResponse,
     GetCodeInterpreterResponse,
     GetCredentialResponse,
+    GetKnowledgeBaseResponse,
     GetModelProxyResponse,
     GetModelServiceResponse,
     GetSandboxResponse,
@@ -537,6 +584,8 @@ __all__ = [
     ListCodeInterpretersResponse,
     ListCredentialsRequest,
     ListCredentialsResponse,
+    ListKnowledgeBasesRequest,
+    ListKnowledgeBasesResponse,
     ListModelProvidersRequest,
     ListModelProvidersResponseBody,
     ListModelProvidersResponse,
@@ -558,6 +607,8 @@ __all__ = [
     UpdateAgentRuntimeEndpointResponse,
     UpdateCredentialRequest,
     UpdateCredentialResponse,
+    UpdateKnowledgeBaseRequest,
+    UpdateKnowledgeBaseResponse,
     UpdateModelProxyRequest,
     UpdateModelProxyResponse,
     UpdateModelServiceRequest,
@@ -566,6 +617,8 @@ __all__ = [
     UpdateTemplateResponse,
     CredentialPublicConfigRemoteConfig,
     CredentialPublicConfigUsers,
+    EmbedderConfigConfig,
+    LLMConfigConfig,
     ProxyConfigEndpoints,
     ProxyConfigPoliciesAiGuardrailConfig,
     ProxyConfigPoliciesFallbacks,
@@ -573,6 +626,7 @@ __all__ = [
     ProxyConfigPolicies,
     TemplateMcpOptions,
     TemplateMcpState,
+    VectorStoreConfigConfig,
     GetAccessTokenResponseBodyData,
     ListModelProvidersResponseBodyDataItems,
     ListModelProvidersResponseBodyData

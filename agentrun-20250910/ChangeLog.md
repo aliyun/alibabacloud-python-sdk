@@ -1,3 +1,11 @@
+2026-01-12 Version: 5.1.0
+- Support API CreateKnowledgeBase.
+- Support API DeleteKnowledgeBase.
+- Support API GetKnowledgeBase.
+- Support API ListKnowledgeBases.
+- Support API UpdateKnowledgeBase.
+
+
 2026-01-10 Version: 5.0.0
 - Delete API CreateMemory.
 - Delete API CreateMemoryEvent.
