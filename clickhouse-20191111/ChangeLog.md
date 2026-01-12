@@ -1,3 +1,7 @@
+2026-01-12 Version: 3.3.2
+- Update API DescribeTransferHistory: add response parameters Body.HistoryDetails.$.SubJobMessage.
+
+
 2025-12-18 Version: 3.3.1
 - Update API CreateDBInstance: add request parameters Tags.
 
