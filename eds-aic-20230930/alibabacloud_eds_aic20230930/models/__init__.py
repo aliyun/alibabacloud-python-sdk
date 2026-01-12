@@ -9,6 +9,12 @@ from ._attach_key_pair_response import AttachKeyPairResponse
 from ._authorize_android_instance_request import AuthorizeAndroidInstanceRequest
 from ._authorize_android_instance_response_body import AuthorizeAndroidInstanceResponseBody
 from ._authorize_android_instance_response import AuthorizeAndroidInstanceResponse
+from ._backup_android_instance_request import BackupAndroidInstanceRequest
+from ._backup_android_instance_response_body import BackupAndroidInstanceResponseBody
+from ._backup_android_instance_response import BackupAndroidInstanceResponse
+from ._backup_app_request import BackupAppRequest
+from ._backup_app_response_body import BackupAppResponseBody
+from ._backup_app_response import BackupAppResponse
 from ._backup_file_request import BackupFileRequest
 from ._backup_file_response_body import BackupFileResponseBody
 from ._backup_file_response import BackupFileResponse
@@ -216,6 +222,12 @@ from ._operate_app_response import OperateAppResponse
 from ._reboot_android_instances_in_group_request import RebootAndroidInstancesInGroupRequest
 from ._reboot_android_instances_in_group_response_body import RebootAndroidInstancesInGroupResponseBody
 from ._reboot_android_instances_in_group_response import RebootAndroidInstancesInGroupResponse
+from ._recover_android_instance_request import RecoverAndroidInstanceRequest
+from ._recover_android_instance_response_body import RecoverAndroidInstanceResponseBody
+from ._recover_android_instance_response import RecoverAndroidInstanceResponse
+from ._recover_app_request import RecoverAppRequest
+from ._recover_app_response_body import RecoverAppResponseBody
+from ._recover_app_response import RecoverAppResponse
 from ._recovery_file_request import RecoveryFileRequest
 from ._recovery_file_response_body import RecoveryFileResponseBody
 from ._recovery_file_response import RecoveryFileResponse
@@ -277,6 +289,8 @@ from ._upgrade_android_instance_group_request import UpgradeAndroidInstanceGroup
 from ._upgrade_android_instance_group_response_body import UpgradeAndroidInstanceGroupResponseBody
 from ._upgrade_android_instance_group_response import UpgradeAndroidInstanceGroupResponse
 from ._attach_key_pair_response_body import AttachKeyPairResponseBodyData
+from ._backup_android_instance_response_body import BackupAndroidInstanceResponseBodyData
+from ._backup_app_response_body import BackupAppResponseBodyData
 from ._backup_file_response_body import BackupFileResponseBodyData
 from ._batch_get_acp_connection_ticket_request import BatchGetAcpConnectionTicketRequestInstanceTasks
 from ._batch_get_acp_connection_ticket_response_body import BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels
@@ -368,6 +382,8 @@ from ._modify_policy_group_request import ModifyPolicyGroupRequestNetRedirectPol
 from ._modify_policy_group_request import ModifyPolicyGroupRequestWatermark
 from ._modify_system_property_template_request import ModifySystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos
 from ._modify_system_property_template_request import ModifySystemPropertyTemplateRequestSystemPropertyInfo
+from ._recover_android_instance_response_body import RecoverAndroidInstanceResponseBodyData
+from ._recover_app_response_body import RecoverAppResponseBodyData
 from ._recovery_file_response_body import RecoveryFileResponseBodyData
 from ._run_command_response_body import RunCommandResponseBodyRunCommandInfos
 from ._send_file_response_body import SendFileResponseBodyData
@@ -382,6 +398,12 @@ __all__ = [
     AuthorizeAndroidInstanceRequest,
     AuthorizeAndroidInstanceResponseBody,
     AuthorizeAndroidInstanceResponse,
+    BackupAndroidInstanceRequest,
+    BackupAndroidInstanceResponseBody,
+    BackupAndroidInstanceResponse,
+    BackupAppRequest,
+    BackupAppResponseBody,
+    BackupAppResponse,
     BackupFileRequest,
     BackupFileResponseBody,
     BackupFileResponse,
@@ -589,6 +611,12 @@ __all__ = [
     RebootAndroidInstancesInGroupRequest,
     RebootAndroidInstancesInGroupResponseBody,
     RebootAndroidInstancesInGroupResponse,
+    RecoverAndroidInstanceRequest,
+    RecoverAndroidInstanceResponseBody,
+    RecoverAndroidInstanceResponse,
+    RecoverAppRequest,
+    RecoverAppResponseBody,
+    RecoverAppResponse,
     RecoveryFileRequest,
     RecoveryFileResponseBody,
     RecoveryFileResponse,
@@ -650,6 +678,8 @@ __all__ = [
     UpgradeAndroidInstanceGroupResponseBody,
     UpgradeAndroidInstanceGroupResponse,
     AttachKeyPairResponseBodyData,
+    BackupAndroidInstanceResponseBodyData,
+    BackupAppResponseBodyData,
     BackupFileResponseBodyData,
     BatchGetAcpConnectionTicketRequestInstanceTasks,
     BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels,
@@ -741,6 +771,8 @@ __all__ = [
     ModifyPolicyGroupRequestWatermark,
     ModifySystemPropertyTemplateRequestSystemPropertyInfoCustomPropertyInfos,
     ModifySystemPropertyTemplateRequestSystemPropertyInfo,
+    RecoverAndroidInstanceResponseBodyData,
+    RecoverAppResponseBodyData,
     RecoveryFileResponseBodyData,
     RunCommandResponseBodyRunCommandInfos,
     SendFileResponseBodyData,

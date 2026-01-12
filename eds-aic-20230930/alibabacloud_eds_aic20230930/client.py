@@ -192,6 +192,182 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.authorize_android_instance_with_options_async(request, runtime)
 
+    def backup_android_instance_with_options(
+        self,
+        request: main_models.BackupAndroidInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BackupAndroidInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.android_instance_id_list):
+            query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not DaraCore.is_null(request.backup_file_name):
+            query['BackupFileName'] = request.backup_file_name
+        if not DaraCore.is_null(request.backup_file_path):
+            query['BackupFilePath'] = request.backup_file_path
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.upload_endpoint):
+            query['UploadEndpoint'] = request.upload_endpoint
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BackupAndroidInstance',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BackupAndroidInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def backup_android_instance_with_options_async(
+        self,
+        request: main_models.BackupAndroidInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BackupAndroidInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.android_instance_id_list):
+            query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not DaraCore.is_null(request.backup_file_name):
+            query['BackupFileName'] = request.backup_file_name
+        if not DaraCore.is_null(request.backup_file_path):
+            query['BackupFilePath'] = request.backup_file_path
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.upload_endpoint):
+            query['UploadEndpoint'] = request.upload_endpoint
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BackupAndroidInstance',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BackupAndroidInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def backup_android_instance(
+        self,
+        request: main_models.BackupAndroidInstanceRequest,
+    ) -> main_models.BackupAndroidInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.backup_android_instance_with_options(request, runtime)
+
+    async def backup_android_instance_async(
+        self,
+        request: main_models.BackupAndroidInstanceRequest,
+    ) -> main_models.BackupAndroidInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.backup_android_instance_with_options_async(request, runtime)
+
+    def backup_app_with_options(
+        self,
+        request: main_models.BackupAppRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BackupAppResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.android_instance_id_list):
+            query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not DaraCore.is_null(request.backup_file_name):
+            query['BackupFileName'] = request.backup_file_name
+        if not DaraCore.is_null(request.backup_file_path):
+            query['BackupFilePath'] = request.backup_file_path
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.source_app_list):
+            query['SourceAppList'] = request.source_app_list
+        if not DaraCore.is_null(request.upload_endpoint):
+            query['UploadEndpoint'] = request.upload_endpoint
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BackupApp',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BackupAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def backup_app_with_options_async(
+        self,
+        request: main_models.BackupAppRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BackupAppResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.android_instance_id_list):
+            query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not DaraCore.is_null(request.backup_file_name):
+            query['BackupFileName'] = request.backup_file_name
+        if not DaraCore.is_null(request.backup_file_path):
+            query['BackupFilePath'] = request.backup_file_path
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.source_app_list):
+            query['SourceAppList'] = request.source_app_list
+        if not DaraCore.is_null(request.upload_endpoint):
+            query['UploadEndpoint'] = request.upload_endpoint
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BackupApp',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BackupAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def backup_app(
+        self,
+        request: main_models.BackupAppRequest,
+    ) -> main_models.BackupAppResponse:
+        runtime = RuntimeOptions()
+        return self.backup_app_with_options(request, runtime)
+
+    async def backup_app_async(
+        self,
+        request: main_models.BackupAppRequest,
+    ) -> main_models.BackupAppResponse:
+        runtime = RuntimeOptions()
+        return await self.backup_app_with_options_async(request, runtime)
+
     def backup_file_with_options(
         self,
         request: main_models.BackupFileRequest,
@@ -6139,6 +6315,178 @@ class Client(OpenApiClient):
     ) -> main_models.RebootAndroidInstancesInGroupResponse:
         runtime = RuntimeOptions()
         return await self.reboot_android_instances_in_group_with_options_async(request, runtime)
+
+    def recover_android_instance_with_options(
+        self,
+        request: main_models.RecoverAndroidInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RecoverAndroidInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.android_instance_id_list):
+            query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not DaraCore.is_null(request.backup_file_id):
+            query['BackupFileId'] = request.backup_file_id
+        if not DaraCore.is_null(request.backup_file_path):
+            query['BackupFilePath'] = request.backup_file_path
+        if not DaraCore.is_null(request.upload_endpoint):
+            query['UploadEndpoint'] = request.upload_endpoint
+        if not DaraCore.is_null(request.upload_type):
+            query['UploadType'] = request.upload_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RecoverAndroidInstance',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RecoverAndroidInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recover_android_instance_with_options_async(
+        self,
+        request: main_models.RecoverAndroidInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RecoverAndroidInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.android_instance_id_list):
+            query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not DaraCore.is_null(request.backup_file_id):
+            query['BackupFileId'] = request.backup_file_id
+        if not DaraCore.is_null(request.backup_file_path):
+            query['BackupFilePath'] = request.backup_file_path
+        if not DaraCore.is_null(request.upload_endpoint):
+            query['UploadEndpoint'] = request.upload_endpoint
+        if not DaraCore.is_null(request.upload_type):
+            query['UploadType'] = request.upload_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RecoverAndroidInstance',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RecoverAndroidInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recover_android_instance(
+        self,
+        request: main_models.RecoverAndroidInstanceRequest,
+    ) -> main_models.RecoverAndroidInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.recover_android_instance_with_options(request, runtime)
+
+    async def recover_android_instance_async(
+        self,
+        request: main_models.RecoverAndroidInstanceRequest,
+    ) -> main_models.RecoverAndroidInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.recover_android_instance_with_options_async(request, runtime)
+
+    def recover_app_with_options(
+        self,
+        request: main_models.RecoverAppRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RecoverAppResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.android_instance_id_list):
+            query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not DaraCore.is_null(request.backup_file_id):
+            query['BackupFileId'] = request.backup_file_id
+        if not DaraCore.is_null(request.backup_file_path):
+            query['BackupFilePath'] = request.backup_file_path
+        if not DaraCore.is_null(request.upload_endpoint):
+            query['UploadEndpoint'] = request.upload_endpoint
+        if not DaraCore.is_null(request.upload_type):
+            query['UploadType'] = request.upload_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RecoverApp',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RecoverAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def recover_app_with_options_async(
+        self,
+        request: main_models.RecoverAppRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RecoverAppResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.android_instance_id_list):
+            query['AndroidInstanceIdList'] = request.android_instance_id_list
+        if not DaraCore.is_null(request.backup_file_id):
+            query['BackupFileId'] = request.backup_file_id
+        if not DaraCore.is_null(request.backup_file_path):
+            query['BackupFilePath'] = request.backup_file_path
+        if not DaraCore.is_null(request.upload_endpoint):
+            query['UploadEndpoint'] = request.upload_endpoint
+        if not DaraCore.is_null(request.upload_type):
+            query['UploadType'] = request.upload_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RecoverApp',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RecoverAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def recover_app(
+        self,
+        request: main_models.RecoverAppRequest,
+    ) -> main_models.RecoverAppResponse:
+        runtime = RuntimeOptions()
+        return self.recover_app_with_options(request, runtime)
+
+    async def recover_app_async(
+        self,
+        request: main_models.RecoverAppRequest,
+    ) -> main_models.RecoverAppResponse:
+        runtime = RuntimeOptions()
+        return await self.recover_app_with_options_async(request, runtime)
 
     def recovery_file_with_options(
         self,
