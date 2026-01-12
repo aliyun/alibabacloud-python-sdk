@@ -65,6 +65,8 @@ class ListLdpsComputeGroupsResponseBodyGroupList(DaraModel):
         group_name: str = None,
         is_default: bool = None,
         properties: Dict[str, Any] = None,
+        ray_interactive_access_addr: str = None,
+        ray_vpc_web_uiaddr: str = None,
         state: str = None,
         web_ui: str = None,
     ):
@@ -72,6 +74,8 @@ class ListLdpsComputeGroupsResponseBodyGroupList(DaraModel):
         self.group_name = group_name
         self.is_default = is_default
         self.properties = properties
+        self.ray_interactive_access_addr = ray_interactive_access_addr
+        self.ray_vpc_web_uiaddr = ray_vpc_web_uiaddr
         self.state = state
         self.web_ui = web_ui
 
@@ -95,6 +99,12 @@ class ListLdpsComputeGroupsResponseBodyGroupList(DaraModel):
         if self.properties is not None:
             result['Properties'] = self.properties
 
+        if self.ray_interactive_access_addr is not None:
+            result['RayInteractiveAccessAddr'] = self.ray_interactive_access_addr
+
+        if self.ray_vpc_web_uiaddr is not None:
+            result['RayVpcWebUIAddr'] = self.ray_vpc_web_uiaddr
+
         if self.state is not None:
             result['State'] = self.state
 
@@ -116,6 +126,12 @@ class ListLdpsComputeGroupsResponseBodyGroupList(DaraModel):
 
         if m.get('Properties') is not None:
             self.properties = m.get('Properties')
+
+        if m.get('RayInteractiveAccessAddr') is not None:
+            self.ray_interactive_access_addr = m.get('RayInteractiveAccessAddr')
+
+        if m.get('RayVpcWebUIAddr') is not None:
+            self.ray_vpc_web_uiaddr = m.get('RayVpcWebUIAddr')
 
         if m.get('State') is not None:
             self.state = m.get('State')

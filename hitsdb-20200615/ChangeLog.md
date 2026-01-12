@@ -1,3 +1,8 @@
+2026-01-12 Version: 4.15.1
+- Update API ListLdpsComputeGroups: add response parameters Body.GroupList.$.RayInteractiveAccessAddr.
+- Update API ListLdpsComputeGroups: add response parameters Body.GroupList.$.RayVpcWebUIAddr.
+
+
 2025-12-24 Version: 4.15.0
 - Support API GetInstanceSummary.
 
