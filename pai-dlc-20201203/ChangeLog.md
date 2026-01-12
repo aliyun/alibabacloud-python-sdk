@@ -1,3 +1,6 @@
+2026-01-12 Version: 1.6.6
+- Generated python 2020-12-03 for pai-dlc.
+
 2025-11-18 Version: 1.6.5
 - Update API GetJob: add response parameters Body.Pods.$.Duration.
 - Update API GetJob: add response parameters Body.Pods.$.NodeName.
