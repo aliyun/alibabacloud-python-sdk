@@ -1,3 +1,7 @@
+2026-01-12 Version: 5.7.2
+- Update API UpdateHttpApiRoute: add request parameters body.policyConfigs.
+
+
 2026-01-08 Version: 5.7.1
 - Generated python 2024-03-27 for APIG.
 

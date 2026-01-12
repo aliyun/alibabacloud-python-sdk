@@ -8441,6 +8441,8 @@ class Client(OpenApiClient):
             body['mcpRouteConfig'] = request.mcp_route_config
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.policy_configs):
+            body['policyConfigs'] = request.policy_configs
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -8487,6 +8489,8 @@ class Client(OpenApiClient):
             body['mcpRouteConfig'] = request.mcp_route_config
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.policy_configs):
+            body['policyConfigs'] = request.policy_configs
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
