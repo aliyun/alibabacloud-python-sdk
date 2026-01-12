@@ -1,3 +1,9 @@
+2026-01-12 Version: 1.5.5
+- Update API GetScanResult: add response parameters Body.Data.Items.$.AppId.
+- Update API GetScanResult: add response parameters Body.Data.Items.$.ImageUrls.
+- Update API LlmStreamChat: add request parameters Channel.
+
+
 2025-12-23 Version: 1.5.4
 - Update API GetTextScanResult: add response parameters Body.Data.Items.$.AccountId.
 - Update API GetTextScanResult: add response parameters Body.Data.Items.$.DataId.

@@ -1,0 +1,148 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List, Dict, Any
+
+from alibabacloud_green20220926 import models as main_models
+from darabonba.model import DaraModel
+
+class GetFeatureConfigResponseBody(DaraModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: main_models.GetFeatureConfigResponseBodyData = None,
+        http_status_code: int = None,
+        msg: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        # Status code
+        self.code = code
+        # Returned data.
+        self.data = data
+        # HTTP status code.
+        self.http_status_code = http_status_code
+        # Response message for this request.
+        self.msg = msg
+        # ID assigned by the backend, used to uniquely identify a request. Can be used for troubleshooting.
+        self.request_id = request_id
+        # Success indicator
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            self.data.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['Code'] = self.code
+
+        if self.data is not None:
+            result['Data'] = self.data.to_map()
+
+        if self.http_status_code is not None:
+            result['HttpStatusCode'] = self.http_status_code
+
+        if self.msg is not None:
+            result['Msg'] = self.msg
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.success is not None:
+            result['Success'] = self.success
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        if m.get('Data') is not None:
+            temp_model = main_models.GetFeatureConfigResponseBodyData()
+            self.data = temp_model.from_map(m.get('Data'))
+
+        if m.get('HttpStatusCode') is not None:
+            self.http_status_code = m.get('HttpStatusCode')
+
+        if m.get('Msg') is not None:
+            self.msg = m.get('Msg')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+
+        return self
+
+class GetFeatureConfigResponseBodyData(DaraModel):
+    def __init__(
+        self,
+        feature_conf: List[Dict[str, Any]] = None,
+        resource_type: str = None,
+        service_code: str = None,
+        type: str = None,
+        uid: str = None,
+    ):
+        # List of feature configurations
+        self.feature_conf = feature_conf
+        # Resource type.
+        self.resource_type = resource_type
+        # Service code.
+        self.service_code = service_code
+        # Type
+        self.type = type
+        # UID.
+        self.uid = uid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.feature_conf is not None:
+            result['FeatureConf'] = self.feature_conf
+
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+
+        if self.service_code is not None:
+            result['ServiceCode'] = self.service_code
+
+        if self.type is not None:
+            result['Type'] = self.type
+
+        if self.uid is not None:
+            result['Uid'] = self.uid
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('FeatureConf') is not None:
+            self.feature_conf = m.get('FeatureConf')
+
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+
+        if m.get('ServiceCode') is not None:
+            self.service_code = m.get('ServiceCode')
+
+        if m.get('Type') is not None:
+            self.type = m.get('Type')
+
+        if m.get('Uid') is not None:
+            self.uid = m.get('Uid')
+
+        return self
+
