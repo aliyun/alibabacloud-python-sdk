@@ -9,6 +9,7 @@ class DescribeInstancesShrinkRequest(DaraModel):
         self,
         architecture_type: str = None,
         charge_type: str = None,
+        elastic: bool = None,
         instance_id: str = None,
         instance_name: str = None,
         namespace_name: str = None,
@@ -20,6 +21,7 @@ class DescribeInstancesShrinkRequest(DaraModel):
     ):
         self.architecture_type = architecture_type
         self.charge_type = charge_type
+        self.elastic = elastic
         self.instance_id = instance_id
         self.instance_name = instance_name
         self.namespace_name = namespace_name
@@ -43,6 +45,9 @@ class DescribeInstancesShrinkRequest(DaraModel):
 
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+
+        if self.elastic is not None:
+            result['Elastic'] = self.elastic
 
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
@@ -77,6 +82,9 @@ class DescribeInstancesShrinkRequest(DaraModel):
 
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+
+        if m.get('Elastic') is not None:
+            self.elastic = m.get('Elastic')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')

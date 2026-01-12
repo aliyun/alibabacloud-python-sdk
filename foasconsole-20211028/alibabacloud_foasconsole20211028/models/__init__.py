@@ -52,6 +52,10 @@ from ._modify_elastic_resource_spec_request import ModifyElasticResourceSpecRequ
 from ._modify_elastic_resource_spec_shrink_request import ModifyElasticResourceSpecShrinkRequest
 from ._modify_elastic_resource_spec_response_body import ModifyElasticResourceSpecResponseBody
 from ._modify_elastic_resource_spec_response import ModifyElasticResourceSpecResponse
+from ._modify_instance_spec_request import ModifyInstanceSpecRequest
+from ._modify_instance_spec_shrink_request import ModifyInstanceSpecShrinkRequest
+from ._modify_instance_spec_response_body import ModifyInstanceSpecResponseBody
+from ._modify_instance_spec_response import ModifyInstanceSpecResponse
 from ._modify_instance_vswitch_request import ModifyInstanceVswitchRequest
 from ._modify_instance_vswitch_shrink_request import ModifyInstanceVswitchShrinkRequest
 from ._modify_instance_vswitch_response_body import ModifyInstanceVswitchResponseBody
@@ -137,6 +141,8 @@ from ._describe_supported_regions_response_body import DescribeSupportedRegionsR
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._modify_elastic_resource_spec_request import ModifyElasticResourceSpecRequestResourceSpec
+from ._modify_instance_spec_request import ModifyInstanceSpecRequestHaResourceSpec
+from ._modify_instance_spec_request import ModifyInstanceSpecRequestResourceSpec
 from ._modify_namespace_spec_v2request import ModifyNamespaceSpecV2RequestElasticResourceSpec
 from ._modify_namespace_spec_v2request import ModifyNamespaceSpecV2RequestGuaranteedResourceSpec
 from ._modify_prepay_instance_spec_request import ModifyPrepayInstanceSpecRequestHaResourceSpec
@@ -223,6 +229,10 @@ __all__ = [
     ModifyElasticResourceSpecShrinkRequest,
     ModifyElasticResourceSpecResponseBody,
     ModifyElasticResourceSpecResponse,
+    ModifyInstanceSpecRequest,
+    ModifyInstanceSpecShrinkRequest,
+    ModifyInstanceSpecResponseBody,
+    ModifyInstanceSpecResponse,
     ModifyInstanceVswitchRequest,
     ModifyInstanceVswitchShrinkRequest,
     ModifyInstanceVswitchResponseBody,
@@ -308,6 +318,8 @@ __all__ = [
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResources,
     ModifyElasticResourceSpecRequestResourceSpec,
+    ModifyInstanceSpecRequestHaResourceSpec,
+    ModifyInstanceSpecRequestResourceSpec,
     ModifyNamespaceSpecV2RequestElasticResourceSpec,
     ModifyNamespaceSpecV2RequestGuaranteedResourceSpec,
     ModifyPrepayInstanceSpecRequestHaResourceSpec,

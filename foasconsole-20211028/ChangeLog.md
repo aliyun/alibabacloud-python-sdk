@@ -1,3 +1,8 @@
+2026-01-12 Version: 2.2.0
+- Support API ModifyInstanceSpec.
+- Update API DescribeInstances: add request parameters Elastic.
+
+
 2025-12-25 Version: 2.1.3
 - Update API DescribeInstances: add request parameters InstanceName.
 - Update API DescribeInstances: add request parameters NamespaceName.

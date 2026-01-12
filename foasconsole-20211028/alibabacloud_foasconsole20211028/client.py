@@ -1162,6 +1162,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_elastic_resource_spec_with_options_async(request, runtime)
 
+    def modify_instance_spec_with_options(
+        self,
+        tmp_req: main_models.ModifyInstanceSpecRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyInstanceSpecResponse:
+        tmp_req.validate()
+        request = main_models.ModifyInstanceSpecShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ha_resource_spec):
+            request.ha_resource_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.ha_resource_spec, 'HaResourceSpec', 'json')
+        if not DaraCore.is_null(tmp_req.ha_vswitch_ids):
+            request.ha_vswitch_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ha_vswitch_ids, 'HaVSwitchIds', 'json')
+        if not DaraCore.is_null(tmp_req.resource_spec):
+            request.resource_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_spec, 'ResourceSpec', 'json')
+        body = {}
+        if not DaraCore.is_null(request.ha):
+            body['Ha'] = request.ha
+        if not DaraCore.is_null(request.ha_resource_spec_shrink):
+            body['HaResourceSpec'] = request.ha_resource_spec_shrink
+        if not DaraCore.is_null(request.ha_vswitch_ids_shrink):
+            body['HaVSwitchIds'] = request.ha_vswitch_ids_shrink
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.promotion_code):
+            body['PromotionCode'] = request.promotion_code
+        if not DaraCore.is_null(request.region):
+            body['Region'] = request.region
+        if not DaraCore.is_null(request.resource_spec_shrink):
+            body['ResourceSpec'] = request.resource_spec_shrink
+        if not DaraCore.is_null(request.use_promotion_code):
+            body['UsePromotionCode'] = request.use_promotion_code
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyInstanceSpec',
+            version = '2021-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyInstanceSpecResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instance_spec_with_options_async(
+        self,
+        tmp_req: main_models.ModifyInstanceSpecRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyInstanceSpecResponse:
+        tmp_req.validate()
+        request = main_models.ModifyInstanceSpecShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ha_resource_spec):
+            request.ha_resource_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.ha_resource_spec, 'HaResourceSpec', 'json')
+        if not DaraCore.is_null(tmp_req.ha_vswitch_ids):
+            request.ha_vswitch_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.ha_vswitch_ids, 'HaVSwitchIds', 'json')
+        if not DaraCore.is_null(tmp_req.resource_spec):
+            request.resource_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_spec, 'ResourceSpec', 'json')
+        body = {}
+        if not DaraCore.is_null(request.ha):
+            body['Ha'] = request.ha
+        if not DaraCore.is_null(request.ha_resource_spec_shrink):
+            body['HaResourceSpec'] = request.ha_resource_spec_shrink
+        if not DaraCore.is_null(request.ha_vswitch_ids_shrink):
+            body['HaVSwitchIds'] = request.ha_vswitch_ids_shrink
+        if not DaraCore.is_null(request.instance_id):
+            body['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.promotion_code):
+            body['PromotionCode'] = request.promotion_code
+        if not DaraCore.is_null(request.region):
+            body['Region'] = request.region
+        if not DaraCore.is_null(request.resource_spec_shrink):
+            body['ResourceSpec'] = request.resource_spec_shrink
+        if not DaraCore.is_null(request.use_promotion_code):
+            body['UsePromotionCode'] = request.use_promotion_code
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyInstanceSpec',
+            version = '2021-10-28',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyInstanceSpecResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instance_spec(
+        self,
+        request: main_models.ModifyInstanceSpecRequest,
+    ) -> main_models.ModifyInstanceSpecResponse:
+        runtime = RuntimeOptions()
+        return self.modify_instance_spec_with_options(request, runtime)
+
+    async def modify_instance_spec_async(
+        self,
+        request: main_models.ModifyInstanceSpecRequest,
+    ) -> main_models.ModifyInstanceSpecResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_instance_spec_with_options_async(request, runtime)
+
     def modify_instance_vswitch_with_options(
         self,
         tmp_req: main_models.ModifyInstanceVswitchRequest,
