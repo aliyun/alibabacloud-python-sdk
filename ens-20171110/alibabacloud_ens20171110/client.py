@@ -8424,6 +8424,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_cluster_kube_config_with_options_async(request, runtime)
 
+    def describe_clusters_v1with_options(
+        self,
+        request: main_models.DescribeClustersV1Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClustersV1Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeClustersV1',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeClustersV1Response(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_clusters_v1with_options_async(
+        self,
+        request: main_models.DescribeClustersV1Request,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClustersV1Response:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.ens_region_id):
+            query['EnsRegionId'] = request.ens_region_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeClustersV1',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeClustersV1Response(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_clusters_v1(
+        self,
+        request: main_models.DescribeClustersV1Request,
+    ) -> main_models.DescribeClustersV1Response:
+        runtime = RuntimeOptions()
+        return self.describe_clusters_v1with_options(request, runtime)
+
+    async def describe_clusters_v1_async(
+        self,
+        request: main_models.DescribeClustersV1Request,
+    ) -> main_models.DescribeClustersV1Response:
+        runtime = RuntimeOptions()
+        return await self.describe_clusters_v1with_options_async(request, runtime)
+
     def describe_create_pre_paid_instance_result_with_options(
         self,
         request: main_models.DescribeCreatePrePaidInstanceResultRequest,

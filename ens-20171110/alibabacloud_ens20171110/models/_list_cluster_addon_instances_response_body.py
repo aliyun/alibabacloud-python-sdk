@@ -13,8 +13,9 @@ class ListClusterAddonInstancesResponseBody(DaraModel):
         addons: List[main_models.ListClusterAddonInstancesResponseBodyAddons] = None,
         request_id: str = None,
     ):
+        # List of addon information.
         self.addons = addons
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
 
     def validate(self):
@@ -60,10 +61,21 @@ class ListClusterAddonInstancesResponseBodyAddons(DaraModel):
         status: str = None,
         version: str = None,
     ):
+        # Whether to automatically clean up associated cloud resources.
         self.cleanup_cloud_resources = cleanup_cloud_resources
+        # List of custom parameter schemas for the addon.
         self.config_schema = config_schema
+        # Addon name.
         self.name = name
+        # Current addon status. Values:
+        # 
+        # - **enabling**: Enabling.
+        # - **enabled**: Enabled.
+        # - **disabling**: Disabling.
+        # - **disabled**: Disabled.
+        # - **upgrading**: Upgrading.
         self.status = status
+        # Version number.
         self.version = version
 
     def validate(self):
@@ -126,9 +138,13 @@ class ListClusterAddonInstancesResponseBodyAddonsConfigSchema(DaraModel):
         name: str = None,
         params: str = None,
     ):
+        # Application version.
         self.app_version = app_version
+        # Configuration version.
         self.config_version = config_version
+        # Component name.
         self.name = name
+        # Custom parameters.
         self.params = params
 
     def validate(self):
