@@ -1,3 +1,6 @@
+2026-01-12 Version: 3.0.4
+- Generated python 2022-12-15 for eflo-controller.
+
 2026-01-07 Version: 3.0.3
 - Update API ListHyperNodes: add request parameters HyperNodeIds.
 
