@@ -9,6 +9,8 @@ class ListInstancesShrinkRequest(DaraModel):
         self,
         accelerator_type: str = None,
         accessibility: str = None,
+        create_time_after: str = None,
+        create_time_before: str = None,
         create_user_id: str = None,
         gpu_type: str = None,
         image_name: str = None,
@@ -45,6 +47,8 @@ class ListInstancesShrinkRequest(DaraModel):
         # *   PRIVATE (default): The instances are accessible only to you and the administrator of the workspace.
         # *   PUBLIC: The instances are accessible only to all members in the workspace.
         self.accessibility = accessibility
+        self.create_time_after = create_time_after
+        self.create_time_before = create_time_before
         # The UID of the creator.
         self.create_user_id = create_user_id
         # The GPU type.
@@ -142,6 +146,12 @@ class ListInstancesShrinkRequest(DaraModel):
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
 
+        if self.create_time_after is not None:
+            result['CreateTimeAfter'] = self.create_time_after
+
+        if self.create_time_before is not None:
+            result['CreateTimeBefore'] = self.create_time_before
+
         if self.create_user_id is not None:
             result['CreateUserId'] = self.create_user_id
 
@@ -226,6 +236,12 @@ class ListInstancesShrinkRequest(DaraModel):
 
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
+
+        if m.get('CreateTimeAfter') is not None:
+            self.create_time_after = m.get('CreateTimeAfter')
+
+        if m.get('CreateTimeBefore') is not None:
+            self.create_time_before = m.get('CreateTimeBefore')
 
         if m.get('CreateUserId') is not None:
             self.create_user_id = m.get('CreateUserId')

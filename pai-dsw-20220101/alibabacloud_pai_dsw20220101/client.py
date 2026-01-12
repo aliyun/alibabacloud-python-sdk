@@ -2447,6 +2447,10 @@ class Client(OpenApiClient):
             query['AcceleratorType'] = request.accelerator_type
         if not DaraCore.is_null(request.accessibility):
             query['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.create_time_after):
+            query['CreateTimeAfter'] = request.create_time_after
+        if not DaraCore.is_null(request.create_time_before):
+            query['CreateTimeBefore'] = request.create_time_before
         if not DaraCore.is_null(request.create_user_id):
             query['CreateUserId'] = request.create_user_id
         if not DaraCore.is_null(request.gpu_type):
@@ -2535,6 +2539,10 @@ class Client(OpenApiClient):
             query['AcceleratorType'] = request.accelerator_type
         if not DaraCore.is_null(request.accessibility):
             query['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.create_time_after):
+            query['CreateTimeAfter'] = request.create_time_after
+        if not DaraCore.is_null(request.create_time_before):
+            query['CreateTimeBefore'] = request.create_time_before
         if not DaraCore.is_null(request.create_user_id):
             query['CreateUserId'] = request.create_user_id
         if not DaraCore.is_null(request.gpu_type):
