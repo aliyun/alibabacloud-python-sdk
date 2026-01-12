@@ -20,6 +20,7 @@ class CreateSimpleOfficeSiteRequest(DaraModel):
         cloud_box_office_site: bool = None,
         desktop_access_type: str = None,
         domain_name: str = None,
+        eid: str = None,
         enable_admin_access: bool = None,
         enable_internet_access: bool = None,
         need_verify_zero_device: bool = None,
@@ -76,6 +77,7 @@ class CreateSimpleOfficeSiteRequest(DaraModel):
         # >  The VPC connection depends on Alibaba Cloud PrivateLink. You can use PrivateLink for free. When you set this parameter to VPC or Any, PrivateLink is automatically activated.````
         self.desktop_access_type = desktop_access_type
         self.domain_name = domain_name
+        self.eid = eid
         # Specifies whether to grant the local administrator permissions to users that are authorized to use cloud computers in the office network.
         # 
         # Valid values:
@@ -165,6 +167,9 @@ class CreateSimpleOfficeSiteRequest(DaraModel):
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
 
+        if self.eid is not None:
+            result['Eid'] = self.eid
+
         if self.enable_admin_access is not None:
             result['EnableAdminAccess'] = self.enable_admin_access
 
@@ -228,6 +233,9 @@ class CreateSimpleOfficeSiteRequest(DaraModel):
 
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
+
+        if m.get('Eid') is not None:
+            self.eid = m.get('Eid')
 
         if m.get('EnableAdminAccess') is not None:
             self.enable_admin_access = m.get('EnableAdminAccess')

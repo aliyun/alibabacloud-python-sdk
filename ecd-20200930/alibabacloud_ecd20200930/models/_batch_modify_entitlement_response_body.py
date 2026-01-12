@@ -13,6 +13,7 @@ class BatchModifyEntitlementResponseBody(DaraModel):
         entitlements: main_models.BatchModifyEntitlementResponseBodyEntitlements = None,
         request_id: str = None,
     ):
+        # The results.
         self.entitlements = entitlements
         # The request ID.
         self.request_id = request_id
@@ -52,6 +53,7 @@ class BatchModifyEntitlementResponseBodyEntitlements(DaraModel):
         status: str = None,
         task_id: str = None,
     ):
+        # The assignment results.
         self.assign_models = assign_models
         # The result.
         # 

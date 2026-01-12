@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class DescribeSubnetsRequest(DaraModel):
     def __init__(
         self,
+        eid: str = None,
         max_results: int = None,
         name: str = None,
         next_token: str = None,
@@ -14,6 +15,7 @@ class DescribeSubnetsRequest(DaraModel):
         region_id: str = None,
         subnet_id: str = None,
     ):
+        self.eid = eid
         self.max_results = max_results
         self.name = name
         self.next_token = next_token
@@ -30,6 +32,9 @@ class DescribeSubnetsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.eid is not None:
+            result['Eid'] = self.eid
+
         if self.max_results is not None:
             result['MaxResults'] = self.max_results
 
@@ -52,6 +57,9 @@ class DescribeSubnetsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Eid') is not None:
+            self.eid = m.get('Eid')
+
         if m.get('MaxResults') is not None:
             self.max_results = m.get('MaxResults')
 

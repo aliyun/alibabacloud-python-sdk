@@ -6356,6 +6356,8 @@ class Client(OpenApiClient):
             query['DesktopAccessType'] = request.desktop_access_type
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.eid):
+            query['Eid'] = request.eid
         if not DaraCore.is_null(request.enable_admin_access):
             query['EnableAdminAccess'] = request.enable_admin_access
         if not DaraCore.is_null(request.enable_internet_access):
@@ -6422,6 +6424,8 @@ class Client(OpenApiClient):
             query['DesktopAccessType'] = request.desktop_access_type
         if not DaraCore.is_null(request.domain_name):
             query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.eid):
+            query['Eid'] = request.eid
         if not DaraCore.is_null(request.enable_admin_access):
             query['EnableAdminAccess'] = request.enable_admin_access
         if not DaraCore.is_null(request.enable_internet_access):
@@ -15502,6 +15506,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeSubnetsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.eid):
+            query['Eid'] = request.eid
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.name):
@@ -15540,6 +15546,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeSubnetsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.eid):
+            query['Eid'] = request.eid
         if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.name):

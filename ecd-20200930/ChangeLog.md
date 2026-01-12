@@ -1,3 +1,10 @@
+2026-01-12 Version: 4.21.1
+- Update API CreateSimpleOfficeSite: add request parameters Eid.
+- Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.Eid.
+- Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.EnvType.
+- Update API DescribeSubnets: add request parameters Eid.
+
+
 2025-12-30 Version: 4.21.0
 - Support API ListTransferFileDownloadUrl.
 

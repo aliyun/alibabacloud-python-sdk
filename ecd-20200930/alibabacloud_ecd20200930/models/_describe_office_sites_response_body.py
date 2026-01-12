@@ -99,10 +99,12 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
         domain_name: str = None,
         domain_password: str = None,
         domain_user_name: str = None,
+        eid: str = None,
         enable_admin_access: bool = None,
         enable_cross_desktop_access: bool = None,
         enable_internet_access: bool = None,
         enable_service_route: bool = None,
+        env_type: str = None,
         file_system_ids: List[str] = None,
         is_ldap: bool = None,
         ldap_url: str = None,
@@ -199,6 +201,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
         self.domain_password = domain_password
         # The username of the domain administrator.
         self.domain_user_name = domain_user_name
+        self.eid = eid
         # Indicates whether the local administrator permissions are granted to users that are authorized to use cloud computers in the office network.
         # 
         # Valid values:
@@ -212,6 +215,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
         self.enable_internet_access = enable_internet_access
         # Indicates whether route access control is enabled for cloud services.
         self.enable_service_route = enable_service_route
+        self.env_type = env_type
         # An array of File Storage NAS (NAS) file system IDs.
         self.file_system_ids = file_system_ids
         self.is_ldap = is_ldap
@@ -427,6 +431,9 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
         if self.domain_user_name is not None:
             result['DomainUserName'] = self.domain_user_name
 
+        if self.eid is not None:
+            result['Eid'] = self.eid
+
         if self.enable_admin_access is not None:
             result['EnableAdminAccess'] = self.enable_admin_access
 
@@ -438,6 +445,9 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
 
         if self.enable_service_route is not None:
             result['EnableServiceRoute'] = self.enable_service_route
+
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
 
         if self.file_system_ids is not None:
             result['FileSystemIds'] = self.file_system_ids
@@ -627,6 +637,9 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
         if m.get('DomainUserName') is not None:
             self.domain_user_name = m.get('DomainUserName')
 
+        if m.get('Eid') is not None:
+            self.eid = m.get('Eid')
+
         if m.get('EnableAdminAccess') is not None:
             self.enable_admin_access = m.get('EnableAdminAccess')
 
@@ -638,6 +651,9 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
 
         if m.get('EnableServiceRoute') is not None:
             self.enable_service_route = m.get('EnableServiceRoute')
+
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
 
         if m.get('FileSystemIds') is not None:
             self.file_system_ids = m.get('FileSystemIds')
