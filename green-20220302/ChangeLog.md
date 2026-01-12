@@ -1,3 +1,7 @@
+2026-01-12 Version: 3.2.0
+- Support API MultiModalAgent.
+
+
 2026-01-08 Version: 3.1.1
 - Update API TextModeration: add response parameters Body.Data.ext.
 - Update API TextModerationPlus: add response parameters Body.Data.Ext.

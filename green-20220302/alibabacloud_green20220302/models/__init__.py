@@ -43,6 +43,9 @@ from ._manual_moderation_response import ManualModerationResponse
 from ._manual_moderation_result_request import ManualModerationResultRequest
 from ._manual_moderation_result_response_body import ManualModerationResultResponseBody
 from ._manual_moderation_result_response import ManualModerationResultResponse
+from ._multi_modal_agent_request import MultiModalAgentRequest
+from ._multi_modal_agent_response_body import MultiModalAgentResponseBody
+from ._multi_modal_agent_response import MultiModalAgentResponse
 from ._multi_modal_guard_request import MultiModalGuardRequest
 from ._multi_modal_guard_response_body import MultiModalGuardResponseBody
 from ._multi_modal_guard_response import MultiModalGuardResponse
@@ -158,6 +161,9 @@ from ._image_queue_moderation_response_body import ImageQueueModerationResponseB
 from ._manual_moderation_response_body import ManualModerationResponseBodyData
 from ._manual_moderation_result_response_body import ManualModerationResultResponseBodyDataResult
 from ._manual_moderation_result_response_body import ManualModerationResultResponseBodyData
+from ._multi_modal_agent_response_body import MultiModalAgentResponseBodyDataResult
+from ._multi_modal_agent_response_body import MultiModalAgentResponseBodyDataUsage
+from ._multi_modal_agent_response_body import MultiModalAgentResponseBodyData
 from ._multi_modal_guard_response_body import MultiModalGuardResponseBodyDataDetailResult
 from ._multi_modal_guard_response_body import MultiModalGuardResponseBodyDataDetail
 from ._multi_modal_guard_response_body import MultiModalGuardResponseBodyData
@@ -239,6 +245,9 @@ __all__ = [
     ManualModerationResultRequest,
     ManualModerationResultResponseBody,
     ManualModerationResultResponse,
+    MultiModalAgentRequest,
+    MultiModalAgentResponseBody,
+    MultiModalAgentResponse,
     MultiModalGuardRequest,
     MultiModalGuardResponseBody,
     MultiModalGuardResponse,
@@ -354,6 +363,9 @@ __all__ = [
     ManualModerationResponseBodyData,
     ManualModerationResultResponseBodyDataResult,
     ManualModerationResultResponseBodyData,
+    MultiModalAgentResponseBodyDataResult,
+    MultiModalAgentResponseBodyDataUsage,
+    MultiModalAgentResponseBodyData,
     MultiModalGuardResponseBodyDataDetailResult,
     MultiModalGuardResponseBodyDataDetail,
     MultiModalGuardResponseBodyData,

@@ -1072,6 +1072,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.manual_moderation_result_with_options_async(request, runtime)
 
+    def multi_modal_agent_with_options(
+        self,
+        request: main_models.MultiModalAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MultiModalAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppID'] = request.app_id
+        if not DaraCore.is_null(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MultiModalAgent',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MultiModalAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def multi_modal_agent_with_options_async(
+        self,
+        request: main_models.MultiModalAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MultiModalAgentResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_id):
+            body['AppID'] = request.app_id
+        if not DaraCore.is_null(request.service_parameters):
+            body['ServiceParameters'] = request.service_parameters
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MultiModalAgent',
+            version = '2022-03-02',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MultiModalAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def multi_modal_agent(
+        self,
+        request: main_models.MultiModalAgentRequest,
+    ) -> main_models.MultiModalAgentResponse:
+        runtime = RuntimeOptions()
+        return self.multi_modal_agent_with_options(request, runtime)
+
+    async def multi_modal_agent_async(
+        self,
+        request: main_models.MultiModalAgentRequest,
+    ) -> main_models.MultiModalAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.multi_modal_agent_with_options_async(request, runtime)
+
     def multi_modal_guard_with_options(
         self,
         request: main_models.MultiModalGuardRequest,
