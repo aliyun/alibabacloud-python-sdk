@@ -1,0 +1,39 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._create_customer_module_basic_info_request import CreateCustomerModuleBasicInfoRequest
+from ._create_customer_module_basic_info_response_body import CreateCustomerModuleBasicInfoResponseBody
+from ._create_customer_module_basic_info_response import CreateCustomerModuleBasicInfoResponse
+from ._create_customer_module_meta_info_request import CreateCustomerModuleMetaInfoRequest
+from ._create_customer_module_meta_info_response_body import CreateCustomerModuleMetaInfoResponseBody
+from ._create_customer_module_meta_info_response import CreateCustomerModuleMetaInfoResponse
+from ._create_customer_module_output_info_request import CreateCustomerModuleOutputInfoRequest
+from ._create_customer_module_output_info_response_body import CreateCustomerModuleOutputInfoResponseBody
+from ._create_customer_module_output_info_response import CreateCustomerModuleOutputInfoResponse
+from ._delete_model_request import DeleteModelRequest
+from ._delete_model_response_body import DeleteModelResponseBody
+from ._delete_model_response import DeleteModelResponse
+from ._describe_customer_module_basic_info_request import DescribeCustomerModuleBasicInfoRequest
+from ._describe_customer_module_basic_info_response_body import DescribeCustomerModuleBasicInfoResponseBody
+from ._describe_customer_module_basic_info_response import DescribeCustomerModuleBasicInfoResponse
+from ._describe_customer_module_basic_info_response_body import DescribeCustomerModuleBasicInfoResponseBodyResultObject
+
+__all__ = [
+    CreateCustomerModuleBasicInfoRequest,
+    CreateCustomerModuleBasicInfoResponseBody,
+    CreateCustomerModuleBasicInfoResponse,
+    CreateCustomerModuleMetaInfoRequest,
+    CreateCustomerModuleMetaInfoResponseBody,
+    CreateCustomerModuleMetaInfoResponse,
+    CreateCustomerModuleOutputInfoRequest,
+    CreateCustomerModuleOutputInfoResponseBody,
+    CreateCustomerModuleOutputInfoResponse,
+    DeleteModelRequest,
+    DeleteModelResponseBody,
+    DeleteModelResponse,
+    DescribeCustomerModuleBasicInfoRequest,
+    DescribeCustomerModuleBasicInfoResponseBody,
+    DescribeCustomerModuleBasicInfoResponse,
+    DescribeCustomerModuleBasicInfoResponseBodyResultObject
+]
