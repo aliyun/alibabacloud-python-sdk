@@ -1,3 +1,11 @@
+2026-01-13 Version: 5.3.0
+- Support API CreateCustomDomain.
+- Support API DeleteCustomDomain.
+- Support API GetCustomDomain.
+- Support API ListCustomDomains.
+- Support API UpdateCustomDomain.
+
+
 2026-01-12 Version: 5.2.0
 - Support API CreateMemoryCollection.
 - Support API DeleteMemoryCollection.
