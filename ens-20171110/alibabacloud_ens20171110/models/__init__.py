@@ -666,6 +666,8 @@ from ._import_image_response import ImportImageResponse
 from ._import_key_pair_request import ImportKeyPairRequest
 from ._import_key_pair_response_body import ImportKeyPairResponseBody
 from ._import_key_pair_response import ImportKeyPairResponse
+from ._initialize_enseckservice_role_response_body import InitializeENSECKServiceRoleResponseBody
+from ._initialize_enseckservice_role_response import InitializeENSECKServiceRoleResponse
 from ._join_public_ips_to_epn_instance_request import JoinPublicIpsToEpnInstanceRequest
 from ._join_public_ips_to_epn_instance_response_body import JoinPublicIpsToEpnInstanceResponseBody
 from ._join_public_ips_to_epn_instance_response import JoinPublicIpsToEpnInstanceResponse
@@ -2077,6 +2079,8 @@ __all__ = [
     ImportKeyPairRequest,
     ImportKeyPairResponseBody,
     ImportKeyPairResponse,
+    InitializeENSECKServiceRoleResponseBody,
+    InitializeENSECKServiceRoleResponse,
     JoinPublicIpsToEpnInstanceRequest,
     JoinPublicIpsToEpnInstanceResponseBody,
     JoinPublicIpsToEpnInstanceResponse,

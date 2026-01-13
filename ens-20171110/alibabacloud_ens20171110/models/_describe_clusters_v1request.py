@@ -11,8 +11,11 @@ class DescribeClustersV1Request(DaraModel):
         ens_region_id: str = None,
         name: str = None,
     ):
+        # The name of the ECS instance.
         self.cluster_id = cluster_id
+        # The cluster ID.
         self.ens_region_id = ens_region_id
+        # System specified parameters. Set the value to **DescribeClustersV1**.
         self.name = name
 
     def validate(self):

@@ -17110,6 +17110,56 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.import_key_pair_with_options_async(request, runtime)
 
+    def initialize_enseckservice_role_with_options(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.InitializeENSECKServiceRoleResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'InitializeENSECKServiceRole',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InitializeENSECKServiceRoleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def initialize_enseckservice_role_with_options_async(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.InitializeENSECKServiceRoleResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'InitializeENSECKServiceRole',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InitializeENSECKServiceRoleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def initialize_enseckservice_role(self) -> main_models.InitializeENSECKServiceRoleResponse:
+        runtime = RuntimeOptions()
+        return self.initialize_enseckservice_role_with_options(runtime)
+
+    async def initialize_enseckservice_role_async(self) -> main_models.InitializeENSECKServiceRoleResponse:
+        runtime = RuntimeOptions()
+        return await self.initialize_enseckservice_role_with_options_async(runtime)
+
     def join_public_ips_to_epn_instance_with_options(
         self,
         request: main_models.JoinPublicIpsToEpnInstanceRequest,

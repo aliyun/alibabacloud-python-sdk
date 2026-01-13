@@ -13,6 +13,7 @@ class DescribeClustersV1ResponseBody(DaraModel):
         clusters: List[main_models.DescribeClustersV1ResponseBodyClusters] = None,
         request_id: str = None,
     ):
+        # An array that consists of the information about clusters.
         self.clusters = clusters
         # Id of the request
         self.request_id = request_id
@@ -67,23 +68,40 @@ class DescribeClustersV1ResponseBodyClusters(DaraModel):
         pod_vswitch_ids: List[str] = None,
         public_access: bool = None,
         service_cidr: str = None,
+        state: str = None,
         vpc_id: str = None,
         vswitch_ids: List[str] = None,
     ):
+        # The user IDs.
         self.ali_uid = ali_uid
+        # The cluster instance ID.
         self.cluster_id = cluster_id
+        # The kubeconfig file of the cluster.
         self.config = config
+        # The pod CIDR block. You can specify 10.0.0.0/8, 172.16-31.0.0/12-16, 192.168.0.0/16, or their subnets as the pod CIDR block. The pod CIDR block cannot overlap with the CIDR block of the VPC in which the cluster is deployed and the CIDR blocks of existing clusters in the VPC. You cannot modify the pod CIDR block after you create the cluster.
         self.container_cidr = container_cidr
+        # Control plane configuration.
         self.control_plane_config = control_plane_config
+        # The ID of the ENS node.
         self.ens_region_id = ens_region_id
+        # The cluster access authentication token.
         self.join_token = join_token
+        # The Kubernetes version of the cluster. The Kubernetes versions supported are the same as the Kubernetes versions supported by open source Kubernetes. We recommend that you specify the latest Kubernetes version. If you do not specify this parameter, the latest Kubernetes version is used.
         self.kubernetes_version = kubernetes_version
+        # The ID of the ALB instance.
         self.load_balancer_id = load_balancer_id
+        # The name of the monitoring object.
         self.name = name
+        # For each vSwitch that allocates IP addresses to worker nodes, you must select a vSwitch in the same zone to allocate IP addresses to pods. If you do not specify this parameter, vswitch_ids is used by default.
         self.pod_vswitch_ids = pod_vswitch_ids
+        # Specifies whether to enable Internet access for the application. You can use an elastic IP address (EIP) to expose the API server. This way, you can access the cluster over the Internet. Valid values: true: enables Internet access for the application. false: disables Internet access to the API server of the cluster. If you set the value to false, the API server cannot be accessed over the Internet.
         self.public_access = public_access
+        # Valid values: 10.0.0.0/16-24, 172.16-31.0.0/16-24, and 192.168.0.0/16-24. The Service CIDR block cannot overlap with the VPC CIDR block 10.1.0.0/21 or the CIDR blocks of existing ACK clusters in the VPC. You cannot change the Service CIDR block after you create the cluster.
         self.service_cidr = service_cidr
+        self.state = state
+        # The VPC of the cluster.
         self.vpc_id = vpc_id
+        # the id of the vswitch to which the cluster node belongs. The ENS region of the vswitch_ids service must be the same as that of the ens_region_id.
         self.vswitch_ids = vswitch_ids
 
     def validate(self):
@@ -133,6 +151,9 @@ class DescribeClustersV1ResponseBodyClusters(DaraModel):
 
         if self.service_cidr is not None:
             result['ServiceCidr'] = self.service_cidr
+
+        if self.state is not None:
+            result['State'] = self.state
 
         if self.vpc_id is not None:
             result['VpcId'] = self.vpc_id
@@ -184,6 +205,9 @@ class DescribeClustersV1ResponseBodyClusters(DaraModel):
         if m.get('ServiceCidr') is not None:
             self.service_cidr = m.get('ServiceCidr')
 
+        if m.get('State') is not None:
+            self.state = m.get('State')
+
         if m.get('VpcId') is not None:
             self.vpc_id = m.get('VpcId')
 
@@ -203,12 +227,19 @@ class DescribeClustersV1ResponseBodyClustersControlPlaneConfig(DaraModel):
         system_disk_category: str = None,
         system_disk_size: int = None,
     ):
+        # The runtime type used by the nodes.
         self.container_runtime = container_runtime
+        # The ID of the custom image.
         self.image_id = image_id
+        # The instance type.
         self.instance_spec = instance_spec
+        # The node port range.
         self.node_port_range = node_port_range
+        # The number of control plane nodes.
         self.size = size
+        # The system disk type of the node. Valid value: local_ssd, cloud_ssd, cloud_efficiency, and local_hdd.
         self.system_disk_category = system_disk_category
+        # The size of the system disk. Unit: GB.
         self.system_disk_size = system_disk_size
 
     def validate(self):
