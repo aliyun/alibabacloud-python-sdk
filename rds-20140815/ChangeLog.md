@@ -1,3 +1,9 @@
+2026-01-13 Version: 14.1.0
+- Support API ModifyRCDiskAttribute.
+- Update API DescribeRCSnapshots: add request parameters InstanceId.
+- Update API DescribeRCSnapshots: add response parameters Body.Snapshots.$.LastModifiedTime.
+
+
 2026-01-07 Version: 14.0.2
 - Update API DescribeRCDisks: add response parameters Body.Disks.$.BurstingEnabled.
 - Update API DescribeRCDisks: add response parameters Body.Disks.$.Portable.

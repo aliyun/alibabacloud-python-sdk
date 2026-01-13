@@ -11,6 +11,7 @@ class DescribeRCSnapshotsRequest(DaraModel):
     def __init__(
         self,
         disk_id: str = None,
+        instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
@@ -19,13 +20,12 @@ class DescribeRCSnapshotsRequest(DaraModel):
     ):
         # The cloud disk ID.
         self.disk_id = disk_id
+        self.instance_id = instance_id
         # The page number.
         self.page_number = page_number
         # The number of entries per page. Valid values: **30** to **100**. Default value: **30**.
         self.page_size = page_size
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
-        # 
-        # This parameter is required.
         self.region_id = region_id
         # The snapshot IDs.
         # 
@@ -46,6 +46,9 @@ class DescribeRCSnapshotsRequest(DaraModel):
             result = _map
         if self.disk_id is not None:
             result['DiskId'] = self.disk_id
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
 
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
@@ -70,6 +73,9 @@ class DescribeRCSnapshotsRequest(DaraModel):
         m = m or dict()
         if m.get('DiskId') is not None:
             self.disk_id = m.get('DiskId')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
 
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')

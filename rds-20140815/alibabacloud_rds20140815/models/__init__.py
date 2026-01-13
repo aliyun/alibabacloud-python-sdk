@@ -940,6 +940,9 @@ from ._modify_parameter_response import ModifyParameterResponse
 from ._modify_parameter_group_request import ModifyParameterGroupRequest
 from ._modify_parameter_group_response_body import ModifyParameterGroupResponseBody
 from ._modify_parameter_group_response import ModifyParameterGroupResponse
+from ._modify_rcdisk_attribute_request import ModifyRCDiskAttributeRequest
+from ._modify_rcdisk_attribute_response_body import ModifyRCDiskAttributeResponseBody
+from ._modify_rcdisk_attribute_response import ModifyRCDiskAttributeResponse
 from ._modify_rcdisk_charge_type_request import ModifyRCDiskChargeTypeRequest
 from ._modify_rcdisk_charge_type_response_body import ModifyRCDiskChargeTypeResponseBody
 from ._modify_rcdisk_charge_type_response import ModifyRCDiskChargeTypeResponse
@@ -2523,6 +2526,9 @@ __all__ = [
     ModifyParameterGroupRequest,
     ModifyParameterGroupResponseBody,
     ModifyParameterGroupResponse,
+    ModifyRCDiskAttributeRequest,
+    ModifyRCDiskAttributeResponseBody,
+    ModifyRCDiskAttributeResponse,
     ModifyRCDiskChargeTypeRequest,
     ModifyRCDiskChargeTypeResponseBody,
     ModifyRCDiskChargeTypeResponse,

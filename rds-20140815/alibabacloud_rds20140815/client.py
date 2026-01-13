@@ -20378,6 +20378,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.disk_id):
             query['DiskId'] = request.disk_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -20416,6 +20418,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.disk_id):
             query['DiskId'] = request.disk_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -30594,6 +30598,96 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyParameterGroupResponse:
         runtime = RuntimeOptions()
         return await self.modify_parameter_group_with_options_async(request, runtime)
+
+    def modify_rcdisk_attribute_with_options(
+        self,
+        request: main_models.ModifyRCDiskAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyRCDiskAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bursting_enabled):
+            query['BurstingEnabled'] = request.bursting_enabled
+        if not DaraCore.is_null(request.delete_with_instance):
+            query['DeleteWithInstance'] = request.delete_with_instance
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not DaraCore.is_null(request.disk_name):
+            query['DiskName'] = request.disk_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyRCDiskAttribute',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyRCDiskAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_rcdisk_attribute_with_options_async(
+        self,
+        request: main_models.ModifyRCDiskAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyRCDiskAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bursting_enabled):
+            query['BurstingEnabled'] = request.bursting_enabled
+        if not DaraCore.is_null(request.delete_with_instance):
+            query['DeleteWithInstance'] = request.delete_with_instance
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not DaraCore.is_null(request.disk_name):
+            query['DiskName'] = request.disk_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyRCDiskAttribute',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyRCDiskAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_rcdisk_attribute(
+        self,
+        request: main_models.ModifyRCDiskAttributeRequest,
+    ) -> main_models.ModifyRCDiskAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.modify_rcdisk_attribute_with_options(request, runtime)
+
+    async def modify_rcdisk_attribute_async(
+        self,
+        request: main_models.ModifyRCDiskAttributeRequest,
+    ) -> main_models.ModifyRCDiskAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_rcdisk_attribute_with_options_async(request, runtime)
 
     def modify_rcdisk_charge_type_with_options(
         self,
