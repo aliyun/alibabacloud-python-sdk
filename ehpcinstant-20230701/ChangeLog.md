@@ -1,3 +1,9 @@
+2026-01-13 Version: 3.4.1
+- Update API CreateActionPlan: add request parameters IntervalMinutes.
+- Update API GetActionPlan: add response parameters Body.IntervalMinutes.
+- Update API UpdateActionPlan: add request parameters IntervalMinutes.
+
+
 2025-12-11 Version: 3.4.0
 - Support API ListExecutorEvents.
 
