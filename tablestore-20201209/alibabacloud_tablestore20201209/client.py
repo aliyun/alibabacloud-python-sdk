@@ -1,24 +1,23 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
 from typing import Dict
-from Tea.core import TeaCore
 
+from alibabacloud_tablestore20201209 import models as main_models
+from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
-from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_tablestore20201209 import models as tablestore_20201209_models
-from alibabacloud_tea_util import models as util_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_tea_openapi.utils import Utils
+from darabonba.core import DaraCore as DaraCore
+from darabonba.runtime import RuntimeOptions
 
-
+"""
+"""
 class Client(OpenApiClient):
-    """
-    *\
-    """
+
     def __init__(
-        self, 
-        config: open_api_models.Config,
+        self,
+        config: open_api_util_models.Config,
     ):
         super().__init__(config)
         self._endpoint_rule = ''
@@ -35,1840 +34,1822 @@ class Client(OpenApiClient):
         endpoint_map: Dict[str, str],
         endpoint: str,
     ) -> str:
-        if not UtilClient.empty(endpoint):
+        if not DaraCore.is_null(endpoint):
             return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+        if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def bind_instance_2vpc_with_options(
+        self,
+        request: main_models.BindInstance2VpcRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BindInstance2VpcResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.instance_vpc_name):
+            body['InstanceVpcName'] = request.instance_vpc_name
+        if not DaraCore.is_null(request.virtual_switch_id):
+            body['VirtualSwitchId'] = request.virtual_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BindInstance2Vpc',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/bindinstance2vpc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BindInstance2VpcResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def bind_instance_2vpc_with_options_async(
+        self,
+        request: main_models.BindInstance2VpcRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BindInstance2VpcResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.instance_vpc_name):
+            body['InstanceVpcName'] = request.instance_vpc_name
+        if not DaraCore.is_null(request.virtual_switch_id):
+            body['VirtualSwitchId'] = request.virtual_switch_id
+        if not DaraCore.is_null(request.vpc_id):
+            body['VpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'BindInstance2Vpc',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/bindinstance2vpc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BindInstance2VpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def bind_instance_2vpc(
+        self,
+        request: main_models.BindInstance2VpcRequest,
+    ) -> main_models.BindInstance2VpcResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.bind_instance_2vpc_with_options(request, headers, runtime)
+
+    async def bind_instance_2vpc_async(
+        self,
+        request: main_models.BindInstance2VpcRequest,
+    ) -> main_models.BindInstance2VpcResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.bind_instance_2vpc_with_options_async(request, headers, runtime)
 
     def change_resource_group_with_options(
         self,
-        request: tablestore_20201209_models.ChangeResourceGroupRequest,
+        request: main_models.ChangeResourceGroupRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.ChangeResourceGroupResponse:
-        """
-        @summary Changes the resource group to which an instance belongs.
-        
-        @param request: ChangeResourceGroupRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ChangeResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ChangeResourceGroupResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.new_resource_group_id):
+        if not DaraCore.is_null(request.new_resource_group_id):
             body['NewResourceGroupId'] = request.new_resource_group_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             body['ResourceId'] = request.resource_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ChangeResourceGroup',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/changeresourcegroup',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ChangeResourceGroup',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/changeresourcegroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.ChangeResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.ChangeResourceGroupResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def change_resource_group_with_options_async(
         self,
-        request: tablestore_20201209_models.ChangeResourceGroupRequest,
+        request: main_models.ChangeResourceGroupRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.ChangeResourceGroupResponse:
-        """
-        @summary Changes the resource group to which an instance belongs.
-        
-        @param request: ChangeResourceGroupRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ChangeResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ChangeResourceGroupResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.new_resource_group_id):
+        if not DaraCore.is_null(request.new_resource_group_id):
             body['NewResourceGroupId'] = request.new_resource_group_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             body['ResourceId'] = request.resource_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='ChangeResourceGroup',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/changeresourcegroup',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ChangeResourceGroup',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/changeresourcegroup',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.ChangeResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.ChangeResourceGroupResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def change_resource_group(
         self,
-        request: tablestore_20201209_models.ChangeResourceGroupRequest,
-    ) -> tablestore_20201209_models.ChangeResourceGroupResponse:
-        """
-        @summary Changes the resource group to which an instance belongs.
-        
-        @param request: ChangeResourceGroupRequest
-        @return: ChangeResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ChangeResourceGroupRequest,
+    ) -> main_models.ChangeResourceGroupResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.change_resource_group_with_options(request, headers, runtime)
 
     async def change_resource_group_async(
         self,
-        request: tablestore_20201209_models.ChangeResourceGroupRequest,
-    ) -> tablestore_20201209_models.ChangeResourceGroupResponse:
-        """
-        @summary Changes the resource group to which an instance belongs.
-        
-        @param request: ChangeResourceGroupRequest
-        @return: ChangeResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ChangeResourceGroupRequest,
+    ) -> main_models.ChangeResourceGroupResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.change_resource_group_with_options_async(request, headers, runtime)
 
     def check_instance_policy_with_options(
         self,
-        request: tablestore_20201209_models.CheckInstancePolicyRequest,
+        request: main_models.CheckInstancePolicyRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.CheckInstancePolicyResponse:
-        """
-        @summary Checks the validity of a Resource Access Management (RAM) policy for an instance.
-        
-        @param request: CheckInstancePolicyRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckInstancePolicyResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckInstancePolicyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             body['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.policy):
+        if not DaraCore.is_null(request.policy):
             body['Policy'] = request.policy
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CheckInstancePolicy',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/checkinstancepolicy',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CheckInstancePolicy',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/checkinstancepolicy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.CheckInstancePolicyResponse(),
+        return DaraCore.from_map(
+            main_models.CheckInstancePolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def check_instance_policy_with_options_async(
         self,
-        request: tablestore_20201209_models.CheckInstancePolicyRequest,
+        request: main_models.CheckInstancePolicyRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.CheckInstancePolicyResponse:
-        """
-        @summary Checks the validity of a Resource Access Management (RAM) policy for an instance.
-        
-        @param request: CheckInstancePolicyRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckInstancePolicyResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckInstancePolicyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             body['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.policy):
+        if not DaraCore.is_null(request.policy):
             body['Policy'] = request.policy
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CheckInstancePolicy',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/checkinstancepolicy',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CheckInstancePolicy',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/checkinstancepolicy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.CheckInstancePolicyResponse(),
+        return DaraCore.from_map(
+            main_models.CheckInstancePolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def check_instance_policy(
         self,
-        request: tablestore_20201209_models.CheckInstancePolicyRequest,
-    ) -> tablestore_20201209_models.CheckInstancePolicyResponse:
-        """
-        @summary Checks the validity of a Resource Access Management (RAM) policy for an instance.
-        
-        @param request: CheckInstancePolicyRequest
-        @return: CheckInstancePolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CheckInstancePolicyRequest,
+    ) -> main_models.CheckInstancePolicyResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.check_instance_policy_with_options(request, headers, runtime)
 
     async def check_instance_policy_async(
         self,
-        request: tablestore_20201209_models.CheckInstancePolicyRequest,
-    ) -> tablestore_20201209_models.CheckInstancePolicyResponse:
-        """
-        @summary Checks the validity of a Resource Access Management (RAM) policy for an instance.
-        
-        @param request: CheckInstancePolicyRequest
-        @return: CheckInstancePolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CheckInstancePolicyRequest,
+    ) -> main_models.CheckInstancePolicyResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.check_instance_policy_with_options_async(request, headers, runtime)
 
     def create_instance_with_options(
         self,
-        request: tablestore_20201209_models.CreateInstanceRequest,
+        request: main_models.CreateInstanceRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.CreateInstanceResponse:
-        """
-        @summary Creates an instance.
-        
-        @description    **Before you call this operation, you must understand the billing and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**\
-        Each Alibaba Cloud account can create up to 10 instances. The name of an instance must be unique within the region in which the instance resides.
-        After you create an instance, you cannot change the type of the instance. Proceed with caution.
-        
-        @param request: CreateInstanceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInstanceResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.cluster_type):
+        if not DaraCore.is_null(request.cluster_type):
             body['ClusterType'] = request.cluster_type
-        if not UtilClient.is_unset(request.disable_replication):
+        if not DaraCore.is_null(request.disable_replication):
             body['DisableReplication'] = request.disable_replication
-        if not UtilClient.is_unset(request.instance_description):
+        if not DaraCore.is_null(request.instance_description):
             body['InstanceDescription'] = request.instance_description
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             body['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.network):
+        if not DaraCore.is_null(request.network):
             body['Network'] = request.network
-        if not UtilClient.is_unset(request.network_source_acl):
+        if not DaraCore.is_null(request.network_source_acl):
             body['NetworkSourceACL'] = request.network_source_acl
-        if not UtilClient.is_unset(request.network_type_acl):
+        if not DaraCore.is_null(request.network_type_acl):
             body['NetworkTypeACL'] = request.network_type_acl
-        if not UtilClient.is_unset(request.policy):
+        if not DaraCore.is_null(request.policy):
             body['Policy'] = request.policy
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             body['Tags'] = request.tags
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateInstance',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/createinstance',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateInstance',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/createinstance',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.CreateInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.CreateInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_instance_with_options_async(
         self,
-        request: tablestore_20201209_models.CreateInstanceRequest,
+        request: main_models.CreateInstanceRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.CreateInstanceResponse:
-        """
-        @summary Creates an instance.
-        
-        @description    **Before you call this operation, you must understand the billing and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**\
-        Each Alibaba Cloud account can create up to 10 instances. The name of an instance must be unique within the region in which the instance resides.
-        After you create an instance, you cannot change the type of the instance. Proceed with caution.
-        
-        @param request: CreateInstanceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInstanceResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.cluster_type):
+        if not DaraCore.is_null(request.cluster_type):
             body['ClusterType'] = request.cluster_type
-        if not UtilClient.is_unset(request.disable_replication):
+        if not DaraCore.is_null(request.disable_replication):
             body['DisableReplication'] = request.disable_replication
-        if not UtilClient.is_unset(request.instance_description):
+        if not DaraCore.is_null(request.instance_description):
             body['InstanceDescription'] = request.instance_description
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             body['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.network):
+        if not DaraCore.is_null(request.network):
             body['Network'] = request.network
-        if not UtilClient.is_unset(request.network_source_acl):
+        if not DaraCore.is_null(request.network_source_acl):
             body['NetworkSourceACL'] = request.network_source_acl
-        if not UtilClient.is_unset(request.network_type_acl):
+        if not DaraCore.is_null(request.network_type_acl):
             body['NetworkTypeACL'] = request.network_type_acl
-        if not UtilClient.is_unset(request.policy):
+        if not DaraCore.is_null(request.policy):
             body['Policy'] = request.policy
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             body['Tags'] = request.tags
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateInstance',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/createinstance',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateInstance',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/createinstance',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.CreateInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.CreateInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_instance(
         self,
-        request: tablestore_20201209_models.CreateInstanceRequest,
-    ) -> tablestore_20201209_models.CreateInstanceResponse:
-        """
-        @summary Creates an instance.
-        
-        @description    **Before you call this operation, you must understand the billing and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**\
-        Each Alibaba Cloud account can create up to 10 instances. The name of an instance must be unique within the region in which the instance resides.
-        After you create an instance, you cannot change the type of the instance. Proceed with caution.
-        
-        @param request: CreateInstanceRequest
-        @return: CreateInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateInstanceRequest,
+    ) -> main_models.CreateInstanceResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.create_instance_with_options(request, headers, runtime)
 
     async def create_instance_async(
         self,
-        request: tablestore_20201209_models.CreateInstanceRequest,
-    ) -> tablestore_20201209_models.CreateInstanceResponse:
-        """
-        @summary Creates an instance.
-        
-        @description    **Before you call this operation, you must understand the billing and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**\
-        Each Alibaba Cloud account can create up to 10 instances. The name of an instance must be unique within the region in which the instance resides.
-        After you create an instance, you cannot change the type of the instance. Proceed with caution.
-        
-        @param request: CreateInstanceRequest
-        @return: CreateInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateInstanceRequest,
+    ) -> main_models.CreateInstanceResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.create_instance_with_options_async(request, headers, runtime)
 
     def create_vcuinstance_with_options(
         self,
-        request: tablestore_20201209_models.CreateVCUInstanceRequest,
+        request: main_models.CreateVCUInstanceRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.CreateVCUInstanceResponse:
-        """
-        @summary 创建VCU实例
-        
-        @param request: CreateVCUInstanceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateVCUInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVCUInstanceResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.alias_name):
+        if not DaraCore.is_null(request.alias_name):
             body['AliasName'] = request.alias_name
-        if not UtilClient.is_unset(request.auto_renew_period_in_month):
+        if not DaraCore.is_null(request.auto_renew_period_in_month):
             body['AutoRenewPeriodInMonth'] = request.auto_renew_period_in_month
-        if not UtilClient.is_unset(request.cluster_type):
+        if not DaraCore.is_null(request.cluster_type):
             body['ClusterType'] = request.cluster_type
-        if not UtilClient.is_unset(request.dry_run):
+        if not DaraCore.is_null(request.dry_run):
             body['DryRun'] = request.dry_run
-        if not UtilClient.is_unset(request.enable_auto_renew):
+        if not DaraCore.is_null(request.enable_auto_renew):
             body['EnableAutoRenew'] = request.enable_auto_renew
-        if not UtilClient.is_unset(request.enable_elastic_vcu):
+        if not DaraCore.is_null(request.enable_elastic_vcu):
             body['EnableElasticVCU'] = request.enable_elastic_vcu
-        if not UtilClient.is_unset(request.instance_description):
+        if not DaraCore.is_null(request.instance_description):
             body['InstanceDescription'] = request.instance_description
-        if not UtilClient.is_unset(request.period_in_month):
+        if not DaraCore.is_null(request.period_in_month):
             body['PeriodInMonth'] = request.period_in_month
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             body['Tags'] = request.tags
-        if not UtilClient.is_unset(request.vcu):
+        if not DaraCore.is_null(request.vcu):
             body['VCU'] = request.vcu
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateVCUInstance',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/createvcuinstance',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateVCUInstance',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/createvcuinstance',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.CreateVCUInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.CreateVCUInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_vcuinstance_with_options_async(
         self,
-        request: tablestore_20201209_models.CreateVCUInstanceRequest,
+        request: main_models.CreateVCUInstanceRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.CreateVCUInstanceResponse:
-        """
-        @summary 创建VCU实例
-        
-        @param request: CreateVCUInstanceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateVCUInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVCUInstanceResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.alias_name):
+        if not DaraCore.is_null(request.alias_name):
             body['AliasName'] = request.alias_name
-        if not UtilClient.is_unset(request.auto_renew_period_in_month):
+        if not DaraCore.is_null(request.auto_renew_period_in_month):
             body['AutoRenewPeriodInMonth'] = request.auto_renew_period_in_month
-        if not UtilClient.is_unset(request.cluster_type):
+        if not DaraCore.is_null(request.cluster_type):
             body['ClusterType'] = request.cluster_type
-        if not UtilClient.is_unset(request.dry_run):
+        if not DaraCore.is_null(request.dry_run):
             body['DryRun'] = request.dry_run
-        if not UtilClient.is_unset(request.enable_auto_renew):
+        if not DaraCore.is_null(request.enable_auto_renew):
             body['EnableAutoRenew'] = request.enable_auto_renew
-        if not UtilClient.is_unset(request.enable_elastic_vcu):
+        if not DaraCore.is_null(request.enable_elastic_vcu):
             body['EnableElasticVCU'] = request.enable_elastic_vcu
-        if not UtilClient.is_unset(request.instance_description):
+        if not DaraCore.is_null(request.instance_description):
             body['InstanceDescription'] = request.instance_description
-        if not UtilClient.is_unset(request.period_in_month):
+        if not DaraCore.is_null(request.period_in_month):
             body['PeriodInMonth'] = request.period_in_month
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             body['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             body['Tags'] = request.tags
-        if not UtilClient.is_unset(request.vcu):
+        if not DaraCore.is_null(request.vcu):
             body['VCU'] = request.vcu
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateVCUInstance',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/createvcuinstance',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateVCUInstance',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/createvcuinstance',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.CreateVCUInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.CreateVCUInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_vcuinstance(
         self,
-        request: tablestore_20201209_models.CreateVCUInstanceRequest,
-    ) -> tablestore_20201209_models.CreateVCUInstanceResponse:
-        """
-        @summary 创建VCU实例
-        
-        @param request: CreateVCUInstanceRequest
-        @return: CreateVCUInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateVCUInstanceRequest,
+    ) -> main_models.CreateVCUInstanceResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.create_vcuinstance_with_options(request, headers, runtime)
 
     async def create_vcuinstance_async(
         self,
-        request: tablestore_20201209_models.CreateVCUInstanceRequest,
-    ) -> tablestore_20201209_models.CreateVCUInstanceResponse:
-        """
-        @summary 创建VCU实例
-        
-        @param request: CreateVCUInstanceRequest
-        @return: CreateVCUInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateVCUInstanceRequest,
+    ) -> main_models.CreateVCUInstanceResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.create_vcuinstance_with_options_async(request, headers, runtime)
 
     def delete_instance_with_options(
         self,
-        request: tablestore_20201209_models.DeleteInstanceRequest,
+        request: main_models.DeleteInstanceRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.DeleteInstanceResponse:
-        """
-        @summary Deletes an instance.
-        
-        @description    Before you delete an instance, make sure that all data tables and time series tables in the instance are deleted and virtual private clouds (VPCs) are unbound from the instance.
-        To prevent conflicts, do not create an instance that has the same name as the instance that is being deleted.
-        After an instance is deleted, the instance becomes unavailable and the tables, table data, and related indexes in the instance cannot be recovered. Proceed with caution.
-        
-        @param request: DeleteInstanceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInstanceResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             body['InstanceName'] = request.instance_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DeleteInstance',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/deleteinstance',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteInstance',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/deleteinstance',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.DeleteInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_instance_with_options_async(
         self,
-        request: tablestore_20201209_models.DeleteInstanceRequest,
+        request: main_models.DeleteInstanceRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.DeleteInstanceResponse:
-        """
-        @summary Deletes an instance.
-        
-        @description    Before you delete an instance, make sure that all data tables and time series tables in the instance are deleted and virtual private clouds (VPCs) are unbound from the instance.
-        To prevent conflicts, do not create an instance that has the same name as the instance that is being deleted.
-        After an instance is deleted, the instance becomes unavailable and the tables, table data, and related indexes in the instance cannot be recovered. Proceed with caution.
-        
-        @param request: DeleteInstanceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInstanceResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             body['InstanceName'] = request.instance_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DeleteInstance',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/deleteinstance',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteInstance',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/deleteinstance',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.DeleteInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_instance(
         self,
-        request: tablestore_20201209_models.DeleteInstanceRequest,
-    ) -> tablestore_20201209_models.DeleteInstanceResponse:
-        """
-        @summary Deletes an instance.
-        
-        @description    Before you delete an instance, make sure that all data tables and time series tables in the instance are deleted and virtual private clouds (VPCs) are unbound from the instance.
-        To prevent conflicts, do not create an instance that has the same name as the instance that is being deleted.
-        After an instance is deleted, the instance becomes unavailable and the tables, table data, and related indexes in the instance cannot be recovered. Proceed with caution.
-        
-        @param request: DeleteInstanceRequest
-        @return: DeleteInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteInstanceRequest,
+    ) -> main_models.DeleteInstanceResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.delete_instance_with_options(request, headers, runtime)
 
     async def delete_instance_async(
         self,
-        request: tablestore_20201209_models.DeleteInstanceRequest,
-    ) -> tablestore_20201209_models.DeleteInstanceResponse:
-        """
-        @summary Deletes an instance.
-        
-        @description    Before you delete an instance, make sure that all data tables and time series tables in the instance are deleted and virtual private clouds (VPCs) are unbound from the instance.
-        To prevent conflicts, do not create an instance that has the same name as the instance that is being deleted.
-        After an instance is deleted, the instance becomes unavailable and the tables, table data, and related indexes in the instance cannot be recovered. Proceed with caution.
-        
-        @param request: DeleteInstanceRequest
-        @return: DeleteInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteInstanceRequest,
+    ) -> main_models.DeleteInstanceResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.delete_instance_with_options_async(request, headers, runtime)
 
     def delete_instance_policy_with_options(
         self,
-        request: tablestore_20201209_models.DeleteInstancePolicyRequest,
+        request: main_models.DeleteInstancePolicyRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.DeleteInstancePolicyResponse:
-        """
-        @summary Deletes a Resource Access Management (RAM) policy of an instance.
-        
-        @description    You cannot recover a deleted instance policy. Proceed with caution.
-        After you delete an instance policy, the access control that is specified by the instance policy becomes invalid. Make sure that your instance is in a secure environment.
-        
-        @param request: DeleteInstancePolicyRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteInstancePolicyResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInstancePolicyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             body['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.policy_version):
+        if not DaraCore.is_null(request.policy_version):
             body['PolicyVersion'] = request.policy_version
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DeleteInstancePolicy',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/deleteinstancepolicy',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteInstancePolicy',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/deleteinstancepolicy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.DeleteInstancePolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteInstancePolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_instance_policy_with_options_async(
         self,
-        request: tablestore_20201209_models.DeleteInstancePolicyRequest,
+        request: main_models.DeleteInstancePolicyRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.DeleteInstancePolicyResponse:
-        """
-        @summary Deletes a Resource Access Management (RAM) policy of an instance.
-        
-        @description    You cannot recover a deleted instance policy. Proceed with caution.
-        After you delete an instance policy, the access control that is specified by the instance policy becomes invalid. Make sure that your instance is in a secure environment.
-        
-        @param request: DeleteInstancePolicyRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteInstancePolicyResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInstancePolicyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             body['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.policy_version):
+        if not DaraCore.is_null(request.policy_version):
             body['PolicyVersion'] = request.policy_version
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='DeleteInstancePolicy',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/deleteinstancepolicy',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteInstancePolicy',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/deleteinstancepolicy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.DeleteInstancePolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteInstancePolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_instance_policy(
         self,
-        request: tablestore_20201209_models.DeleteInstancePolicyRequest,
-    ) -> tablestore_20201209_models.DeleteInstancePolicyResponse:
-        """
-        @summary Deletes a Resource Access Management (RAM) policy of an instance.
-        
-        @description    You cannot recover a deleted instance policy. Proceed with caution.
-        After you delete an instance policy, the access control that is specified by the instance policy becomes invalid. Make sure that your instance is in a secure environment.
-        
-        @param request: DeleteInstancePolicyRequest
-        @return: DeleteInstancePolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteInstancePolicyRequest,
+    ) -> main_models.DeleteInstancePolicyResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.delete_instance_policy_with_options(request, headers, runtime)
 
     async def delete_instance_policy_async(
         self,
-        request: tablestore_20201209_models.DeleteInstancePolicyRequest,
-    ) -> tablestore_20201209_models.DeleteInstancePolicyResponse:
-        """
-        @summary Deletes a Resource Access Management (RAM) policy of an instance.
-        
-        @description    You cannot recover a deleted instance policy. Proceed with caution.
-        After you delete an instance policy, the access control that is specified by the instance policy becomes invalid. Make sure that your instance is in a secure environment.
-        
-        @param request: DeleteInstancePolicyRequest
-        @return: DeleteInstancePolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteInstancePolicyRequest,
+    ) -> main_models.DeleteInstancePolicyResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.delete_instance_policy_with_options_async(request, headers, runtime)
 
+    def delete_vcuinstance_with_options(
+        self,
+        request: main_models.DeleteVCUInstanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVCUInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVCUInstance',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/deletevcuinstance',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVCUInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_vcuinstance_with_options_async(
+        self,
+        request: main_models.DeleteVCUInstanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteVCUInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteVCUInstance',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/deletevcuinstance',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteVCUInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_vcuinstance(
+        self,
+        request: main_models.DeleteVCUInstanceRequest,
+    ) -> main_models.DeleteVCUInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_vcuinstance_with_options(request, headers, runtime)
+
+    async def delete_vcuinstance_async(
+        self,
+        request: main_models.DeleteVCUInstanceRequest,
+    ) -> main_models.DeleteVCUInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_vcuinstance_with_options_async(request, headers, runtime)
+
     def describe_regions_with_options(
         self,
-        request: tablestore_20201209_models.DescribeRegionsRequest,
+        request: main_models.DescribeRegionsRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.DescribeRegionsResponse:
-        """
-        @summary Queries supported regions.
-        
-        @param request: DescribeRegionsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeRegionsResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRegionsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeRegions',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/region/DescribeRegions',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeRegions',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/region/DescribeRegions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.DescribeRegionsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeRegionsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_regions_with_options_async(
         self,
-        request: tablestore_20201209_models.DescribeRegionsRequest,
+        request: main_models.DescribeRegionsRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.DescribeRegionsResponse:
-        """
-        @summary Queries supported regions.
-        
-        @param request: DescribeRegionsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeRegionsResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRegionsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.client_token):
+        if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeRegions',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/region/DescribeRegions',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeRegions',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/region/DescribeRegions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.DescribeRegionsResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeRegionsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_regions(
         self,
-        request: tablestore_20201209_models.DescribeRegionsRequest,
-    ) -> tablestore_20201209_models.DescribeRegionsResponse:
-        """
-        @summary Queries supported regions.
-        
-        @param request: DescribeRegionsRequest
-        @return: DescribeRegionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeRegionsRequest,
+    ) -> main_models.DescribeRegionsResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.describe_regions_with_options(request, headers, runtime)
 
     async def describe_regions_async(
         self,
-        request: tablestore_20201209_models.DescribeRegionsRequest,
-    ) -> tablestore_20201209_models.DescribeRegionsResponse:
-        """
-        @summary Queries supported regions.
-        
-        @param request: DescribeRegionsRequest
-        @return: DescribeRegionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeRegionsRequest,
+    ) -> main_models.DescribeRegionsResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.describe_regions_with_options_async(request, headers, runtime)
 
     def get_instance_with_options(
         self,
-        request: tablestore_20201209_models.GetInstanceRequest,
+        request: main_models.GetInstanceRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.GetInstanceResponse:
-        """
-        @summary Queries instance information.
-        
-        @param request: GetInstanceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetInstance',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/getinstance',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetInstance',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/getinstance',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.GetInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.GetInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_instance_with_options_async(
         self,
-        request: tablestore_20201209_models.GetInstanceRequest,
+        request: main_models.GetInstanceRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.GetInstanceResponse:
-        """
-        @summary Queries instance information.
-        
-        @param request: GetInstanceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetInstance',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/getinstance',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetInstance',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/getinstance',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.GetInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.GetInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_instance(
         self,
-        request: tablestore_20201209_models.GetInstanceRequest,
-    ) -> tablestore_20201209_models.GetInstanceResponse:
-        """
-        @summary Queries instance information.
-        
-        @param request: GetInstanceRequest
-        @return: GetInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetInstanceRequest,
+    ) -> main_models.GetInstanceResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_instance_with_options(request, headers, runtime)
 
     async def get_instance_async(
         self,
-        request: tablestore_20201209_models.GetInstanceRequest,
-    ) -> tablestore_20201209_models.GetInstanceResponse:
-        """
-        @summary Queries instance information.
-        
-        @param request: GetInstanceRequest
-        @return: GetInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetInstanceRequest,
+    ) -> main_models.GetInstanceResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_instance_with_options_async(request, headers, runtime)
 
+    def list_cluster_type_with_options(
+        self,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListClusterTypeResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListClusterType',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/listclustertype',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListClusterTypeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_cluster_type_with_options_async(
+        self,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListClusterTypeResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListClusterType',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/listclustertype',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListClusterTypeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_cluster_type(self) -> main_models.ListClusterTypeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_cluster_type_with_options(headers, runtime)
+
+    async def list_cluster_type_async(self) -> main_models.ListClusterTypeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_cluster_type_with_options_async(headers, runtime)
+
     def list_instances_with_options(
         self,
-        tmp_req: tablestore_20201209_models.ListInstancesRequest,
+        tmp_req: main_models.ListInstancesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.ListInstancesResponse:
-        """
-        @summary Queries instances.
-        
-        @param tmp_req: ListInstancesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListInstancesResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = tablestore_20201209_models.ListInstancesShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.instance_name_list):
-            request.instance_name_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_name_list, 'InstanceNameList', 'simple')
-        if not UtilClient.is_unset(tmp_req.tag):
-            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstancesResponse:
+        tmp_req.validate()
+        request = main_models.ListInstancesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_name_list):
+            request.instance_name_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_name_list, 'InstanceNameList', 'simple')
+        if not DaraCore.is_null(tmp_req.tag):
+            request.tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.instance_name_list_shrink):
+        if not DaraCore.is_null(request.instance_name_list_shrink):
             query['InstanceNameList'] = request.instance_name_list_shrink
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.tag_shrink):
+        if not DaraCore.is_null(request.tag_shrink):
             query['Tag'] = request.tag_shrink
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstances',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/listinstances',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListInstances',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/listinstances',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.ListInstancesResponse(),
+        return DaraCore.from_map(
+            main_models.ListInstancesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_instances_with_options_async(
         self,
-        tmp_req: tablestore_20201209_models.ListInstancesRequest,
+        tmp_req: main_models.ListInstancesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.ListInstancesResponse:
-        """
-        @summary Queries instances.
-        
-        @param tmp_req: ListInstancesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListInstancesResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = tablestore_20201209_models.ListInstancesShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.instance_name_list):
-            request.instance_name_list_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_name_list, 'InstanceNameList', 'simple')
-        if not UtilClient.is_unset(tmp_req.tag):
-            request.tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstancesResponse:
+        tmp_req.validate()
+        request = main_models.ListInstancesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_name_list):
+            request.instance_name_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_name_list, 'InstanceNameList', 'simple')
+        if not DaraCore.is_null(tmp_req.tag):
+            request.tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.tag, 'Tag', 'json')
         query = {}
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.instance_name_list_shrink):
+        if not DaraCore.is_null(request.instance_name_list_shrink):
             query['InstanceNameList'] = request.instance_name_list_shrink
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.tag_shrink):
+        if not DaraCore.is_null(request.tag_shrink):
             query['Tag'] = request.tag_shrink
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstances',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/listinstances',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListInstances',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/listinstances',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.ListInstancesResponse(),
+        return DaraCore.from_map(
+            main_models.ListInstancesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_instances(
         self,
-        request: tablestore_20201209_models.ListInstancesRequest,
-    ) -> tablestore_20201209_models.ListInstancesResponse:
-        """
-        @summary Queries instances.
-        
-        @param request: ListInstancesRequest
-        @return: ListInstancesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListInstancesRequest,
+    ) -> main_models.ListInstancesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_instances_with_options(request, headers, runtime)
 
     async def list_instances_async(
         self,
-        request: tablestore_20201209_models.ListInstancesRequest,
-    ) -> tablestore_20201209_models.ListInstancesResponse:
-        """
-        @summary Queries instances.
-        
-        @param request: ListInstancesRequest
-        @return: ListInstancesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListInstancesRequest,
+    ) -> main_models.ListInstancesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_instances_with_options_async(request, headers, runtime)
 
     def list_tag_resources_with_options(
         self,
-        tmp_req: tablestore_20201209_models.ListTagResourcesRequest,
+        tmp_req: main_models.ListTagResourcesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.ListTagResourcesResponse:
-        """
-        @summary Queries tagged resources.
-        
-        @param tmp_req: ListTagResourcesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagResourcesResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = tablestore_20201209_models.ListTagResourcesShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.resource_ids):
-            request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'simple')
-        if not UtilClient.is_unset(tmp_req.tags):
-            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResourcesResponse:
+        tmp_req.validate()
+        request = main_models.ListTagResourcesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource_ids):
+            request.resource_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'simple')
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_ids_shrink):
+        if not DaraCore.is_null(request.resource_ids_shrink):
             query['ResourceIds'] = request.resource_ids_shrink
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tags_shrink):
+        if not DaraCore.is_null(request.tags_shrink):
             query['Tags'] = request.tags_shrink
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTagResources',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/listtagresources',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTagResources',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/listtagresources',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.ListTagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.ListTagResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
         self,
-        tmp_req: tablestore_20201209_models.ListTagResourcesRequest,
+        tmp_req: main_models.ListTagResourcesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.ListTagResourcesResponse:
-        """
-        @summary Queries tagged resources.
-        
-        @param tmp_req: ListTagResourcesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagResourcesResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = tablestore_20201209_models.ListTagResourcesShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.resource_ids):
-            request.resource_ids_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'simple')
-        if not UtilClient.is_unset(tmp_req.tags):
-            request.tags_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResourcesResponse:
+        tmp_req.validate()
+        request = main_models.ListTagResourcesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource_ids):
+            request.resource_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_ids, 'ResourceIds', 'simple')
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_ids_shrink):
+        if not DaraCore.is_null(request.resource_ids_shrink):
             query['ResourceIds'] = request.resource_ids_shrink
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tags_shrink):
+        if not DaraCore.is_null(request.tags_shrink):
             query['Tags'] = request.tags_shrink
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTagResources',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/listtagresources',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTagResources',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/listtagresources',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.ListTagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.ListTagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_resources(
         self,
-        request: tablestore_20201209_models.ListTagResourcesRequest,
-    ) -> tablestore_20201209_models.ListTagResourcesResponse:
-        """
-        @summary Queries tagged resources.
-        
-        @param request: ListTagResourcesRequest
-        @return: ListTagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTagResourcesRequest,
+    ) -> main_models.ListTagResourcesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_tag_resources_with_options(request, headers, runtime)
 
     async def list_tag_resources_async(
         self,
-        request: tablestore_20201209_models.ListTagResourcesRequest,
-    ) -> tablestore_20201209_models.ListTagResourcesResponse:
-        """
-        @summary Queries tagged resources.
-        
-        @param request: ListTagResourcesRequest
-        @return: ListTagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTagResourcesRequest,
+    ) -> main_models.ListTagResourcesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_tag_resources_with_options_async(request, headers, runtime)
 
+    def list_vpc_info_by_instance_with_options(
+        self,
+        request: main_models.ListVpcInfoByInstanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVpcInfoByInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVpcInfoByInstance',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/listvpcinfobyinstance',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVpcInfoByInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_vpc_info_by_instance_with_options_async(
+        self,
+        request: main_models.ListVpcInfoByInstanceRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVpcInfoByInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVpcInfoByInstance',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/listvpcinfobyinstance',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVpcInfoByInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_vpc_info_by_instance(
+        self,
+        request: main_models.ListVpcInfoByInstanceRequest,
+    ) -> main_models.ListVpcInfoByInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_vpc_info_by_instance_with_options(request, headers, runtime)
+
+    async def list_vpc_info_by_instance_async(
+        self,
+        request: main_models.ListVpcInfoByInstanceRequest,
+    ) -> main_models.ListVpcInfoByInstanceResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_vpc_info_by_instance_with_options_async(request, headers, runtime)
+
+    def list_vpc_info_by_vpc_with_options(
+        self,
+        request: main_models.ListVpcInfoByVpcRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVpcInfoByVpcResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVpcInfoByVpc',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/listvpcinfobyvpc',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVpcInfoByVpcResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_vpc_info_by_vpc_with_options_async(
+        self,
+        request: main_models.ListVpcInfoByVpcRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVpcInfoByVpcResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.vpc_id):
+            query['VpcId'] = request.vpc_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListVpcInfoByVpc',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/listvpcinfobyvpc',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListVpcInfoByVpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_vpc_info_by_vpc(
+        self,
+        request: main_models.ListVpcInfoByVpcRequest,
+    ) -> main_models.ListVpcInfoByVpcResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_vpc_info_by_vpc_with_options(request, headers, runtime)
+
+    async def list_vpc_info_by_vpc_async(
+        self,
+        request: main_models.ListVpcInfoByVpcRequest,
+    ) -> main_models.ListVpcInfoByVpcResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_vpc_info_by_vpc_with_options_async(request, headers, runtime)
+
     def tag_resources_with_options(
         self,
-        request: tablestore_20201209_models.TagResourcesRequest,
+        request: main_models.TagResourcesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.TagResourcesResponse:
-        """
-        @summary Adds tags to instances.
-        
-        @param request: TagResourcesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.resource_ids):
+        if not DaraCore.is_null(request.resource_ids):
             body['ResourceIds'] = request.resource_ids
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             body['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             body['Tags'] = request.tags
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/tagresources',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/tagresources',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.TagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
         self,
-        request: tablestore_20201209_models.TagResourcesRequest,
+        request: main_models.TagResourcesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.TagResourcesResponse:
-        """
-        @summary Adds tags to instances.
-        
-        @param request: TagResourcesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.resource_ids):
+        if not DaraCore.is_null(request.resource_ids):
             body['ResourceIds'] = request.resource_ids
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             body['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tags):
+        if not DaraCore.is_null(request.tags):
             body['Tags'] = request.tags
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/tagresources',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/tagresources',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.TagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
         self,
-        request: tablestore_20201209_models.TagResourcesRequest,
-    ) -> tablestore_20201209_models.TagResourcesResponse:
-        """
-        @summary Adds tags to instances.
-        
-        @param request: TagResourcesRequest
-        @return: TagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.tag_resources_with_options(request, headers, runtime)
 
     async def tag_resources_async(
         self,
-        request: tablestore_20201209_models.TagResourcesRequest,
-    ) -> tablestore_20201209_models.TagResourcesResponse:
-        """
-        @summary Adds tags to instances.
-        
-        @param request: TagResourcesRequest
-        @return: TagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.tag_resources_with_options_async(request, headers, runtime)
 
+    def unbind_instance_2vpc_with_options(
+        self,
+        request: main_models.UnbindInstance2VpcRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UnbindInstance2VpcResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.instance_vpc_name):
+            body['InstanceVpcName'] = request.instance_vpc_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnbindInstance2Vpc',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/unbindinstance2vpc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnbindInstance2VpcResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unbind_instance_2vpc_with_options_async(
+        self,
+        request: main_models.UnbindInstance2VpcRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UnbindInstance2VpcResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.instance_name):
+            body['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.instance_vpc_name):
+            body['InstanceVpcName'] = request.instance_vpc_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnbindInstance2Vpc',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/unbindinstance2vpc',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnbindInstance2VpcResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unbind_instance_2vpc(
+        self,
+        request: main_models.UnbindInstance2VpcRequest,
+    ) -> main_models.UnbindInstance2VpcResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.unbind_instance_2vpc_with_options(request, headers, runtime)
+
+    async def unbind_instance_2vpc_async(
+        self,
+        request: main_models.UnbindInstance2VpcRequest,
+    ) -> main_models.UnbindInstance2VpcResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.unbind_instance_2vpc_with_options_async(request, headers, runtime)
+
     def untag_resources_with_options(
         self,
-        request: tablestore_20201209_models.UntagResourcesRequest,
+        request: main_models.UntagResourcesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.UntagResourcesResponse:
-        """
-        @summary Removes tags from resources.
-        
-        @description Removing tags from resources helps simplify resource management, optimize system performance, and mitigate potential security vulnerabilities. After a tag is removed from a resource, the system automatically deletes the tag if the tag is not added to other resources.
-        
-        @param request: UntagResourcesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UntagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.all):
+        if not DaraCore.is_null(request.all):
             body['All'] = request.all
-        if not UtilClient.is_unset(request.resource_ids):
+        if not DaraCore.is_null(request.resource_ids):
             body['ResourceIds'] = request.resource_ids
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             body['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag_keys):
+        if not DaraCore.is_null(request.tag_keys):
             body['TagKeys'] = request.tag_keys
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UntagResources',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/untagresources',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/untagresources',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.UntagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def untag_resources_with_options_async(
         self,
-        request: tablestore_20201209_models.UntagResourcesRequest,
+        request: main_models.UntagResourcesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.UntagResourcesResponse:
-        """
-        @summary Removes tags from resources.
-        
-        @description Removing tags from resources helps simplify resource management, optimize system performance, and mitigate potential security vulnerabilities. After a tag is removed from a resource, the system automatically deletes the tag if the tag is not added to other resources.
-        
-        @param request: UntagResourcesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UntagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.all):
+        if not DaraCore.is_null(request.all):
             body['All'] = request.all
-        if not UtilClient.is_unset(request.resource_ids):
+        if not DaraCore.is_null(request.resource_ids):
             body['ResourceIds'] = request.resource_ids
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             body['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag_keys):
+        if not DaraCore.is_null(request.tag_keys):
             body['TagKeys'] = request.tag_keys
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UntagResources',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/untagresources',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/untagresources',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.UntagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def untag_resources(
         self,
-        request: tablestore_20201209_models.UntagResourcesRequest,
-    ) -> tablestore_20201209_models.UntagResourcesResponse:
-        """
-        @summary Removes tags from resources.
-        
-        @description Removing tags from resources helps simplify resource management, optimize system performance, and mitigate potential security vulnerabilities. After a tag is removed from a resource, the system automatically deletes the tag if the tag is not added to other resources.
-        
-        @param request: UntagResourcesRequest
-        @return: UntagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.untag_resources_with_options(request, headers, runtime)
 
     async def untag_resources_async(
         self,
-        request: tablestore_20201209_models.UntagResourcesRequest,
-    ) -> tablestore_20201209_models.UntagResourcesResponse:
-        """
-        @summary Removes tags from resources.
-        
-        @description Removing tags from resources helps simplify resource management, optimize system performance, and mitigate potential security vulnerabilities. After a tag is removed from a resource, the system automatically deletes the tag if the tag is not added to other resources.
-        
-        @param request: UntagResourcesRequest
-        @return: UntagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.untag_resources_with_options_async(request, headers, runtime)
 
     def update_instance_with_options(
         self,
-        request: tablestore_20201209_models.UpdateInstanceRequest,
+        request: main_models.UpdateInstanceRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.UpdateInstanceResponse:
-        """
-        @summary Updates instance information.
-        
-        @param request: UpdateInstanceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.alias_name):
+        if not DaraCore.is_null(request.alias_name):
             body['AliasName'] = request.alias_name
-        if not UtilClient.is_unset(request.instance_description):
+        if not DaraCore.is_null(request.instance_description):
             body['InstanceDescription'] = request.instance_description
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             body['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.network):
+        if not DaraCore.is_null(request.network):
             body['Network'] = request.network
-        if not UtilClient.is_unset(request.network_source_acl):
+        if not DaraCore.is_null(request.network_source_acl):
             body['NetworkSourceACL'] = request.network_source_acl
-        if not UtilClient.is_unset(request.network_type_acl):
+        if not DaraCore.is_null(request.network_type_acl):
             body['NetworkTypeACL'] = request.network_type_acl
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateInstance',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/updateinstance',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateInstance',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/updateinstance',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.UpdateInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_instance_with_options_async(
         self,
-        request: tablestore_20201209_models.UpdateInstanceRequest,
+        request: main_models.UpdateInstanceRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.UpdateInstanceResponse:
-        """
-        @summary Updates instance information.
-        
-        @param request: UpdateInstanceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.alias_name):
+        if not DaraCore.is_null(request.alias_name):
             body['AliasName'] = request.alias_name
-        if not UtilClient.is_unset(request.instance_description):
+        if not DaraCore.is_null(request.instance_description):
             body['InstanceDescription'] = request.instance_description
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             body['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.network):
+        if not DaraCore.is_null(request.network):
             body['Network'] = request.network
-        if not UtilClient.is_unset(request.network_source_acl):
+        if not DaraCore.is_null(request.network_source_acl):
             body['NetworkSourceACL'] = request.network_source_acl
-        if not UtilClient.is_unset(request.network_type_acl):
+        if not DaraCore.is_null(request.network_type_acl):
             body['NetworkTypeACL'] = request.network_type_acl
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateInstance',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/updateinstance',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateInstance',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/updateinstance',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.UpdateInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_instance(
         self,
-        request: tablestore_20201209_models.UpdateInstanceRequest,
-    ) -> tablestore_20201209_models.UpdateInstanceResponse:
-        """
-        @summary Updates instance information.
-        
-        @param request: UpdateInstanceRequest
-        @return: UpdateInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateInstanceRequest,
+    ) -> main_models.UpdateInstanceResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.update_instance_with_options(request, headers, runtime)
 
     async def update_instance_async(
         self,
-        request: tablestore_20201209_models.UpdateInstanceRequest,
-    ) -> tablestore_20201209_models.UpdateInstanceResponse:
-        """
-        @summary Updates instance information.
-        
-        @param request: UpdateInstanceRequest
-        @return: UpdateInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateInstanceRequest,
+    ) -> main_models.UpdateInstanceResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.update_instance_with_options_async(request, headers, runtime)
 
     def update_instance_elastic_vcuupper_limit_with_options(
         self,
-        request: tablestore_20201209_models.UpdateInstanceElasticVCUUpperLimitRequest,
+        request: main_models.UpdateInstanceElasticVCUUpperLimitRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.UpdateInstanceElasticVCUUpperLimitResponse:
-        """
-        @summary Modifies the upper limit for the VCUs of an instance in VCU mode (formerly reserved mode).
-        
-        @description    **Before you call this operation, you must understand the billing and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**\
-        After you enable scalability for an instance, the default upper limit for the VCUs of the instance is the sum of the scalability and the reserved VCUs.
-        To use more computing resources when your business grows, you can modify the upper limit for the VCUs of your instance. The new upper limit for the VCUs of your instance immediately takes effect.
-        
-        @param request: UpdateInstanceElasticVCUUpperLimitRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateInstanceElasticVCUUpperLimitResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceElasticVCUUpperLimitResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.elastic_vcuupper_limit):
+        if not DaraCore.is_null(request.elastic_vcuupper_limit):
             body['ElasticVCUUpperLimit'] = request.elastic_vcuupper_limit
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             body['InstanceName'] = request.instance_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateInstanceElasticVCUUpperLimit',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/updateinstanceelasticvcuupperlimit',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateInstanceElasticVCUUpperLimit',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/updateinstanceelasticvcuupperlimit',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.UpdateInstanceElasticVCUUpperLimitResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateInstanceElasticVCUUpperLimitResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_instance_elastic_vcuupper_limit_with_options_async(
         self,
-        request: tablestore_20201209_models.UpdateInstanceElasticVCUUpperLimitRequest,
+        request: main_models.UpdateInstanceElasticVCUUpperLimitRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.UpdateInstanceElasticVCUUpperLimitResponse:
-        """
-        @summary Modifies the upper limit for the VCUs of an instance in VCU mode (formerly reserved mode).
-        
-        @description    **Before you call this operation, you must understand the billing and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**\
-        After you enable scalability for an instance, the default upper limit for the VCUs of the instance is the sum of the scalability and the reserved VCUs.
-        To use more computing resources when your business grows, you can modify the upper limit for the VCUs of your instance. The new upper limit for the VCUs of your instance immediately takes effect.
-        
-        @param request: UpdateInstanceElasticVCUUpperLimitRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateInstanceElasticVCUUpperLimitResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceElasticVCUUpperLimitResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.elastic_vcuupper_limit):
+        if not DaraCore.is_null(request.elastic_vcuupper_limit):
             body['ElasticVCUUpperLimit'] = request.elastic_vcuupper_limit
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             body['InstanceName'] = request.instance_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateInstanceElasticVCUUpperLimit',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/updateinstanceelasticvcuupperlimit',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateInstanceElasticVCUUpperLimit',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/updateinstanceelasticvcuupperlimit',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.UpdateInstanceElasticVCUUpperLimitResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateInstanceElasticVCUUpperLimitResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_instance_elastic_vcuupper_limit(
         self,
-        request: tablestore_20201209_models.UpdateInstanceElasticVCUUpperLimitRequest,
-    ) -> tablestore_20201209_models.UpdateInstanceElasticVCUUpperLimitResponse:
-        """
-        @summary Modifies the upper limit for the VCUs of an instance in VCU mode (formerly reserved mode).
-        
-        @description    **Before you call this operation, you must understand the billing and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**\
-        After you enable scalability for an instance, the default upper limit for the VCUs of the instance is the sum of the scalability and the reserved VCUs.
-        To use more computing resources when your business grows, you can modify the upper limit for the VCUs of your instance. The new upper limit for the VCUs of your instance immediately takes effect.
-        
-        @param request: UpdateInstanceElasticVCUUpperLimitRequest
-        @return: UpdateInstanceElasticVCUUpperLimitResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateInstanceElasticVCUUpperLimitRequest,
+    ) -> main_models.UpdateInstanceElasticVCUUpperLimitResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.update_instance_elastic_vcuupper_limit_with_options(request, headers, runtime)
 
     async def update_instance_elastic_vcuupper_limit_async(
         self,
-        request: tablestore_20201209_models.UpdateInstanceElasticVCUUpperLimitRequest,
-    ) -> tablestore_20201209_models.UpdateInstanceElasticVCUUpperLimitResponse:
-        """
-        @summary Modifies the upper limit for the VCUs of an instance in VCU mode (formerly reserved mode).
-        
-        @description    **Before you call this operation, you must understand the billing and pricing of Tablestore. For more information, see [Billing overview](https://help.aliyun.com/document_detail/27291.html).**\
-        After you enable scalability for an instance, the default upper limit for the VCUs of the instance is the sum of the scalability and the reserved VCUs.
-        To use more computing resources when your business grows, you can modify the upper limit for the VCUs of your instance. The new upper limit for the VCUs of your instance immediately takes effect.
-        
-        @param request: UpdateInstanceElasticVCUUpperLimitRequest
-        @return: UpdateInstanceElasticVCUUpperLimitResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateInstanceElasticVCUUpperLimitRequest,
+    ) -> main_models.UpdateInstanceElasticVCUUpperLimitResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.update_instance_elastic_vcuupper_limit_with_options_async(request, headers, runtime)
 
     def update_instance_policy_with_options(
         self,
-        request: tablestore_20201209_models.UpdateInstancePolicyRequest,
+        request: main_models.UpdateInstancePolicyRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.UpdateInstancePolicyResponse:
-        """
-        @summary Modifies a Resource Access Management (RAM) policy for an instance.
-        
-        @param request: UpdateInstancePolicyRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateInstancePolicyResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstancePolicyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             body['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.policy):
+        if not DaraCore.is_null(request.policy):
             body['Policy'] = request.policy
-        if not UtilClient.is_unset(request.policy_version):
+        if not DaraCore.is_null(request.policy_version):
             body['PolicyVersion'] = request.policy_version
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateInstancePolicy',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/updateinstancepolicy',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateInstancePolicy',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/updateinstancepolicy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.UpdateInstancePolicyResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateInstancePolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_instance_policy_with_options_async(
         self,
-        request: tablestore_20201209_models.UpdateInstancePolicyRequest,
+        request: main_models.UpdateInstancePolicyRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> tablestore_20201209_models.UpdateInstancePolicyResponse:
-        """
-        @summary Modifies a Resource Access Management (RAM) policy for an instance.
-        
-        @param request: UpdateInstancePolicyRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateInstancePolicyResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstancePolicyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             body['InstanceName'] = request.instance_name
-        if not UtilClient.is_unset(request.policy):
+        if not DaraCore.is_null(request.policy):
             body['Policy'] = request.policy
-        if not UtilClient.is_unset(request.policy_version):
+        if not DaraCore.is_null(request.policy_version):
             body['PolicyVersion'] = request.policy_version
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateInstancePolicy',
-            version='2020-12-09',
-            protocol='HTTPS',
-            pathname=f'/v2/openapi/updateinstancepolicy',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateInstancePolicy',
+            version = '2020-12-09',
+            protocol = 'HTTPS',
+            pathname = f'/v2/openapi/updateinstancepolicy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            tablestore_20201209_models.UpdateInstancePolicyResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateInstancePolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_instance_policy(
         self,
-        request: tablestore_20201209_models.UpdateInstancePolicyRequest,
-    ) -> tablestore_20201209_models.UpdateInstancePolicyResponse:
-        """
-        @summary Modifies a Resource Access Management (RAM) policy for an instance.
-        
-        @param request: UpdateInstancePolicyRequest
-        @return: UpdateInstancePolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateInstancePolicyRequest,
+    ) -> main_models.UpdateInstancePolicyResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.update_instance_policy_with_options(request, headers, runtime)
 
     async def update_instance_policy_async(
         self,
-        request: tablestore_20201209_models.UpdateInstancePolicyRequest,
-    ) -> tablestore_20201209_models.UpdateInstancePolicyResponse:
-        """
-        @summary Modifies a Resource Access Management (RAM) policy for an instance.
-        
-        @param request: UpdateInstancePolicyRequest
-        @return: UpdateInstancePolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateInstancePolicyRequest,
+    ) -> main_models.UpdateInstancePolicyResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.update_instance_policy_with_options_async(request, headers, runtime)

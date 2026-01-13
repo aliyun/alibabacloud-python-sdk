@@ -1,3 +1,14 @@
+2026-01-13 Version: 2.0.0
+- Support API BindInstance2Vpc.
+- Support API DeleteVCUInstance.
+- Support API ListClusterType.
+- Support API ListVpcInfoByInstance.
+- Support API ListVpcInfoByVpc.
+- Support API UnbindInstance2Vpc.
+- Update API DescribeRegions: add response parameters Body.RequestId.
+- Update API DescribeRegions: delete response parameters Body.requestId.
+
+
 2025-07-28 Version: 1.2.0
 - Support API CreateVCUInstance.
 
