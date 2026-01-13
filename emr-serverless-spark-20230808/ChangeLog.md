@@ -1,3 +1,8 @@
+2026-01-13 Version: 1.18.1
+- Update API ListCatalogs: add response parameters Body.catalogs.$.alias.
+- Update API ListKyuubiSparkApplications: add response parameters Body.applications.$.tags.
+
+
 2025-12-12 Version: 1.18.0
 - Support API GetRunConfiguration.
 

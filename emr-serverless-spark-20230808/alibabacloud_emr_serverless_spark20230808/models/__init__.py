@@ -1,0 +1,605 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._artifact import Artifact
+from ._category import Category
+from ._configuration import Configuration
+from ._configuration_overrides import ConfigurationOverrides
+from ._credential import Credential
+from ._job_driver import JobDriver
+from ._kerberos_conf import KerberosConf
+from ._principal_action import PrincipalAction
+from ._release_version_image import ReleaseVersionImage
+from ._run_log import RunLog
+from ._spark_conf import SparkConf
+from ._sql_output import SqlOutput
+from ._tag import Tag
+from ._task import Task
+from ._task_instance import TaskInstance
+from ._task_snapshot import TaskSnapshot
+from ._template import Template
+from ._time_range import TimeRange
+from ._add_members_request import AddMembersRequest
+from ._add_members_response_body import AddMembersResponseBody
+from ._add_members_response import AddMembersResponse
+from ._cancel_job_run_request import CancelJobRunRequest
+from ._cancel_job_run_response_body import CancelJobRunResponseBody
+from ._cancel_job_run_response import CancelJobRunResponse
+from ._cancel_kyuubi_spark_application_request import CancelKyuubiSparkApplicationRequest
+from ._cancel_kyuubi_spark_application_response_body import CancelKyuubiSparkApplicationResponseBody
+from ._cancel_kyuubi_spark_application_response import CancelKyuubiSparkApplicationResponse
+from ._create_kyuubi_service_request import CreateKyuubiServiceRequest
+from ._create_kyuubi_service_response_body import CreateKyuubiServiceResponseBody
+from ._create_kyuubi_service_response import CreateKyuubiServiceResponse
+from ._create_kyuubi_token_request import CreateKyuubiTokenRequest
+from ._create_kyuubi_token_response_body import CreateKyuubiTokenResponseBody
+from ._create_kyuubi_token_response import CreateKyuubiTokenResponse
+from ._create_livy_compute_request import CreateLivyComputeRequest
+from ._create_livy_compute_response_body import CreateLivyComputeResponseBody
+from ._create_livy_compute_response import CreateLivyComputeResponse
+from ._create_livy_compute_token_request import CreateLivyComputeTokenRequest
+from ._create_livy_compute_token_response_body import CreateLivyComputeTokenResponseBody
+from ._create_livy_compute_token_response import CreateLivyComputeTokenResponse
+from ._create_process_definition_with_schedule_request import CreateProcessDefinitionWithScheduleRequest
+from ._create_process_definition_with_schedule_shrink_request import CreateProcessDefinitionWithScheduleShrinkRequest
+from ._create_process_definition_with_schedule_response_body import CreateProcessDefinitionWithScheduleResponseBody
+from ._create_process_definition_with_schedule_response import CreateProcessDefinitionWithScheduleResponse
+from ._create_session_cluster_request import CreateSessionClusterRequest
+from ._create_session_cluster_response_body import CreateSessionClusterResponseBody
+from ._create_session_cluster_response import CreateSessionClusterResponse
+from ._create_sql_statement_request import CreateSqlStatementRequest
+from ._create_sql_statement_response_body import CreateSqlStatementResponseBody
+from ._create_sql_statement_response import CreateSqlStatementResponse
+from ._create_workspace_request import CreateWorkspaceRequest
+from ._create_workspace_response_body import CreateWorkspaceResponseBody
+from ._create_workspace_response import CreateWorkspaceResponse
+from ._delete_kyuubi_service_response_body import DeleteKyuubiServiceResponseBody
+from ._delete_kyuubi_service_response import DeleteKyuubiServiceResponse
+from ._delete_kyuubi_token_request import DeleteKyuubiTokenRequest
+from ._delete_kyuubi_token_response_body import DeleteKyuubiTokenResponseBody
+from ._delete_kyuubi_token_response import DeleteKyuubiTokenResponse
+from ._delete_livy_compute_request import DeleteLivyComputeRequest
+from ._delete_livy_compute_response_body import DeleteLivyComputeResponseBody
+from ._delete_livy_compute_response import DeleteLivyComputeResponse
+from ._delete_livy_compute_token_request import DeleteLivyComputeTokenRequest
+from ._delete_livy_compute_token_response_body import DeleteLivyComputeTokenResponseBody
+from ._delete_livy_compute_token_response import DeleteLivyComputeTokenResponse
+from ._edit_workspace_queue_request import EditWorkspaceQueueRequest
+from ._edit_workspace_queue_response_body import EditWorkspaceQueueResponseBody
+from ._edit_workspace_queue_response import EditWorkspaceQueueResponse
+from ._generate_task_codes_request import GenerateTaskCodesRequest
+from ._generate_task_codes_response_body import GenerateTaskCodesResponseBody
+from ._generate_task_codes_response import GenerateTaskCodesResponse
+from ._get_cu_hours_request import GetCuHoursRequest
+from ._get_cu_hours_response_body import GetCuHoursResponseBody
+from ._get_cu_hours_response import GetCuHoursResponse
+from ._get_doctor_application_request import GetDoctorApplicationRequest
+from ._get_doctor_application_response_body import GetDoctorApplicationResponseBody
+from ._get_doctor_application_response import GetDoctorApplicationResponse
+from ._get_job_run_request import GetJobRunRequest
+from ._get_job_run_response_body import GetJobRunResponseBody
+from ._get_job_run_response import GetJobRunResponse
+from ._get_kyuubi_service_response_body import GetKyuubiServiceResponseBody
+from ._get_kyuubi_service_response import GetKyuubiServiceResponse
+from ._get_kyuubi_token_request import GetKyuubiTokenRequest
+from ._get_kyuubi_token_response_body import GetKyuubiTokenResponseBody
+from ._get_kyuubi_token_response import GetKyuubiTokenResponse
+from ._get_livy_compute_request import GetLivyComputeRequest
+from ._get_livy_compute_response_body import GetLivyComputeResponseBody
+from ._get_livy_compute_response import GetLivyComputeResponse
+from ._get_livy_compute_token_request import GetLivyComputeTokenRequest
+from ._get_livy_compute_token_response_body import GetLivyComputeTokenResponseBody
+from ._get_livy_compute_token_response import GetLivyComputeTokenResponse
+from ._get_run_configuration_request import GetRunConfigurationRequest
+from ._get_run_configuration_response_body import GetRunConfigurationResponseBody
+from ._get_run_configuration_response import GetRunConfigurationResponse
+from ._get_session_cluster_request import GetSessionClusterRequest
+from ._get_session_cluster_response_body import GetSessionClusterResponseBody
+from ._get_session_cluster_response import GetSessionClusterResponse
+from ._get_sql_statement_request import GetSqlStatementRequest
+from ._get_sql_statement_response_body import GetSqlStatementResponseBody
+from ._get_sql_statement_response import GetSqlStatementResponse
+from ._get_template_request import GetTemplateRequest
+from ._get_template_response_body import GetTemplateResponseBody
+from ._get_template_response import GetTemplateResponse
+from ._grant_role_to_users_request import GrantRoleToUsersRequest
+from ._grant_role_to_users_response_body import GrantRoleToUsersResponseBody
+from ._grant_role_to_users_response import GrantRoleToUsersResponse
+from ._list_catalogs_request import ListCatalogsRequest
+from ._list_catalogs_response_body import ListCatalogsResponseBody
+from ._list_catalogs_response import ListCatalogsResponse
+from ._list_job_executors_request import ListJobExecutorsRequest
+from ._list_job_executors_response_body import ListJobExecutorsResponseBody
+from ._list_job_executors_response import ListJobExecutorsResponse
+from ._list_job_runs_request import ListJobRunsRequest
+from ._list_job_runs_shrink_request import ListJobRunsShrinkRequest
+from ._list_job_runs_response_body import ListJobRunsResponseBody
+from ._list_job_runs_response import ListJobRunsResponse
+from ._list_kyuubi_services_response_body import ListKyuubiServicesResponseBody
+from ._list_kyuubi_services_response import ListKyuubiServicesResponse
+from ._list_kyuubi_spark_applications_request import ListKyuubiSparkApplicationsRequest
+from ._list_kyuubi_spark_applications_shrink_request import ListKyuubiSparkApplicationsShrinkRequest
+from ._list_kyuubi_spark_applications_response_body import ListKyuubiSparkApplicationsResponseBody
+from ._list_kyuubi_spark_applications_response import ListKyuubiSparkApplicationsResponse
+from ._list_kyuubi_token_request import ListKyuubiTokenRequest
+from ._list_kyuubi_token_response_body import ListKyuubiTokenResponseBody
+from ._list_kyuubi_token_response import ListKyuubiTokenResponse
+from ._list_livy_compute_request import ListLivyComputeRequest
+from ._list_livy_compute_response_body import ListLivyComputeResponseBody
+from ._list_livy_compute_response import ListLivyComputeResponse
+from ._list_livy_compute_token_request import ListLivyComputeTokenRequest
+from ._list_livy_compute_token_response_body import ListLivyComputeTokenResponseBody
+from ._list_livy_compute_token_response import ListLivyComputeTokenResponse
+from ._list_log_contents_request import ListLogContentsRequest
+from ._list_log_contents_response_body import ListLogContentsResponseBody
+from ._list_log_contents_response import ListLogContentsResponse
+from ._list_members_request import ListMembersRequest
+from ._list_members_response_body import ListMembersResponseBody
+from ._list_members_response import ListMembersResponse
+from ._list_release_versions_request import ListReleaseVersionsRequest
+from ._list_release_versions_response_body import ListReleaseVersionsResponseBody
+from ._list_release_versions_response import ListReleaseVersionsResponse
+from ._list_session_clusters_request import ListSessionClustersRequest
+from ._list_session_clusters_response_body import ListSessionClustersResponseBody
+from ._list_session_clusters_response import ListSessionClustersResponse
+from ._list_sql_statement_contents_request import ListSqlStatementContentsRequest
+from ._list_sql_statement_contents_response_body import ListSqlStatementContentsResponseBody
+from ._list_sql_statement_contents_response import ListSqlStatementContentsResponse
+from ._list_template_request import ListTemplateRequest
+from ._list_template_response_body import ListTemplateResponseBody
+from ._list_template_response import ListTemplateResponse
+from ._list_workspace_queues_request import ListWorkspaceQueuesRequest
+from ._list_workspace_queues_response_body import ListWorkspaceQueuesResponseBody
+from ._list_workspace_queues_response import ListWorkspaceQueuesResponse
+from ._list_workspaces_request import ListWorkspacesRequest
+from ._list_workspaces_shrink_request import ListWorkspacesShrinkRequest
+from ._list_workspaces_response_body import ListWorkspacesResponseBody
+from ._list_workspaces_response import ListWorkspacesResponse
+from ._refresh_livy_compute_token_request import RefreshLivyComputeTokenRequest
+from ._refresh_livy_compute_token_response_body import RefreshLivyComputeTokenResponseBody
+from ._refresh_livy_compute_token_response import RefreshLivyComputeTokenResponse
+from ._start_job_run_request import StartJobRunRequest
+from ._start_job_run_response_body import StartJobRunResponseBody
+from ._start_job_run_response import StartJobRunResponse
+from ._start_kyuubi_service_response_body import StartKyuubiServiceResponseBody
+from ._start_kyuubi_service_response import StartKyuubiServiceResponse
+from ._start_livy_compute_request import StartLivyComputeRequest
+from ._start_livy_compute_response_body import StartLivyComputeResponseBody
+from ._start_livy_compute_response import StartLivyComputeResponse
+from ._start_process_instance_request import StartProcessInstanceRequest
+from ._start_process_instance_response_body import StartProcessInstanceResponseBody
+from ._start_process_instance_response import StartProcessInstanceResponse
+from ._start_session_cluster_request import StartSessionClusterRequest
+from ._start_session_cluster_response_body import StartSessionClusterResponseBody
+from ._start_session_cluster_response import StartSessionClusterResponse
+from ._stop_kyuubi_service_response_body import StopKyuubiServiceResponseBody
+from ._stop_kyuubi_service_response import StopKyuubiServiceResponse
+from ._stop_livy_compute_request import StopLivyComputeRequest
+from ._stop_livy_compute_response_body import StopLivyComputeResponseBody
+from ._stop_livy_compute_response import StopLivyComputeResponse
+from ._stop_session_cluster_request import StopSessionClusterRequest
+from ._stop_session_cluster_response_body import StopSessionClusterResponseBody
+from ._stop_session_cluster_response import StopSessionClusterResponse
+from ._terminate_sql_statement_request import TerminateSqlStatementRequest
+from ._terminate_sql_statement_response_body import TerminateSqlStatementResponseBody
+from ._terminate_sql_statement_response import TerminateSqlStatementResponse
+from ._update_kyuubi_service_request import UpdateKyuubiServiceRequest
+from ._update_kyuubi_service_response_body import UpdateKyuubiServiceResponseBody
+from ._update_kyuubi_service_response import UpdateKyuubiServiceResponse
+from ._update_kyuubi_token_request import UpdateKyuubiTokenRequest
+from ._update_kyuubi_token_response_body import UpdateKyuubiTokenResponseBody
+from ._update_kyuubi_token_response import UpdateKyuubiTokenResponse
+from ._update_livy_compute_request import UpdateLivyComputeRequest
+from ._update_livy_compute_response_body import UpdateLivyComputeResponseBody
+from ._update_livy_compute_response import UpdateLivyComputeResponse
+from ._update_process_definition_with_schedule_request import UpdateProcessDefinitionWithScheduleRequest
+from ._update_process_definition_with_schedule_shrink_request import UpdateProcessDefinitionWithScheduleShrinkRequest
+from ._update_process_definition_with_schedule_response_body import UpdateProcessDefinitionWithScheduleResponseBody
+from ._update_process_definition_with_schedule_response import UpdateProcessDefinitionWithScheduleResponse
+from ._configuration_overrides import ConfigurationOverridesConfigurations
+from ._job_driver import JobDriverSparkSubmit
+from ._sql_output import SqlOutputRows
+from ._sql_output import SqlOutputSchemaFields
+from ._sql_output import SqlOutputSchema
+from ._task import TaskCredential
+from ._cancel_kyuubi_spark_application_response_body import CancelKyuubiSparkApplicationResponseBodyBody
+from ._create_kyuubi_service_response_body import CreateKyuubiServiceResponseBodyData
+from ._create_kyuubi_token_request import CreateKyuubiTokenRequestAutoExpireConfiguration
+from ._create_kyuubi_token_response_body import CreateKyuubiTokenResponseBodyData
+from ._create_livy_compute_request import CreateLivyComputeRequestAutoStartConfiguration
+from ._create_livy_compute_request import CreateLivyComputeRequestAutoStopConfiguration
+from ._create_livy_compute_response_body import CreateLivyComputeResponseBodyData
+from ._create_livy_compute_token_request import CreateLivyComputeTokenRequestAutoExpireConfiguration
+from ._create_livy_compute_token_response_body import CreateLivyComputeTokenResponseBodyData
+from ._create_process_definition_with_schedule_request import CreateProcessDefinitionWithScheduleRequestGlobalParams
+from ._create_process_definition_with_schedule_request import CreateProcessDefinitionWithScheduleRequestSchedule
+from ._create_process_definition_with_schedule_request import CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLocalParams
+from ._create_process_definition_with_schedule_request import CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf
+from ._create_process_definition_with_schedule_request import CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams
+from ._create_process_definition_with_schedule_request import CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson
+from ._create_process_definition_with_schedule_request import CreateProcessDefinitionWithScheduleRequestTaskRelationJson
+from ._create_process_definition_with_schedule_response_body import CreateProcessDefinitionWithScheduleResponseBodyData
+from ._create_session_cluster_request import CreateSessionClusterRequestApplicationConfigs
+from ._create_session_cluster_request import CreateSessionClusterRequestAutoStartConfiguration
+from ._create_session_cluster_request import CreateSessionClusterRequestAutoStopConfiguration
+from ._create_sql_statement_response_body import CreateSqlStatementResponseBodyData
+from ._create_workspace_request import CreateWorkspaceRequestResourceSpec
+from ._create_workspace_request import CreateWorkspaceRequestTag
+from ._edit_workspace_queue_request import EditWorkspaceQueueRequestResourceSpec
+from ._get_cu_hours_response_body import GetCuHoursResponseBodyData
+from ._get_doctor_application_response_body import GetDoctorApplicationResponseBodyData
+from ._get_job_run_response_body import GetJobRunResponseBodyJobRunConfigurationOverrides
+from ._get_job_run_response_body import GetJobRunResponseBodyJobRunStateChangeReason
+from ._get_job_run_response_body import GetJobRunResponseBodyJobRun
+from ._get_kyuubi_service_response_body import GetKyuubiServiceResponseBodyData
+from ._get_kyuubi_token_response_body import GetKyuubiTokenResponseBodyDataAutoExpireConfiguration
+from ._get_kyuubi_token_response_body import GetKyuubiTokenResponseBodyData
+from ._get_livy_compute_response_body import GetLivyComputeResponseBodyDataAutoStopConfiguration
+from ._get_livy_compute_response_body import GetLivyComputeResponseBodyData
+from ._get_livy_compute_token_response_body import GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration
+from ._get_livy_compute_token_response_body import GetLivyComputeTokenResponseBodyData
+from ._get_run_configuration_response_body import GetRunConfigurationResponseBodyRunConfigurationApplicationConfigs
+from ._get_run_configuration_response_body import GetRunConfigurationResponseBodyRunConfigurationLogConfig
+from ._get_run_configuration_response_body import GetRunConfigurationResponseBodyRunConfiguration
+from ._get_session_cluster_response_body import GetSessionClusterResponseBodySessionClusterApplicationConfigs
+from ._get_session_cluster_response_body import GetSessionClusterResponseBodySessionClusterAutoStartConfiguration
+from ._get_session_cluster_response_body import GetSessionClusterResponseBodySessionClusterAutoStopConfiguration
+from ._get_session_cluster_response_body import GetSessionClusterResponseBodySessionClusterStateChangeReason
+from ._get_session_cluster_response_body import GetSessionClusterResponseBodySessionCluster
+from ._get_sql_statement_response_body import GetSqlStatementResponseBodyDataSqlOutputs
+from ._get_sql_statement_response_body import GetSqlStatementResponseBodyData
+from ._list_catalogs_response_body import ListCatalogsResponseBodyCatalogs
+from ._list_job_executors_response_body import ListJobExecutorsResponseBodyExexutors
+from ._list_job_runs_request import ListJobRunsRequestEndTime
+from ._list_job_runs_request import ListJobRunsRequestStartTime
+from ._list_job_runs_request import ListJobRunsRequestTags
+from ._list_job_runs_response_body import ListJobRunsResponseBodyJobRunsConfigurationOverrides
+from ._list_job_runs_response_body import ListJobRunsResponseBodyJobRunsStateChangeReason
+from ._list_job_runs_response_body import ListJobRunsResponseBodyJobRuns
+from ._list_kyuubi_services_response_body import ListKyuubiServicesResponseBodyDataKyuubiServices
+from ._list_kyuubi_services_response_body import ListKyuubiServicesResponseBodyData
+from ._list_kyuubi_spark_applications_request import ListKyuubiSparkApplicationsRequestStartTime
+from ._list_kyuubi_spark_applications_response_body import ListKyuubiSparkApplicationsResponseBodyApplications
+from ._list_kyuubi_token_response_body import ListKyuubiTokenResponseBodyDataTokens
+from ._list_kyuubi_token_response_body import ListKyuubiTokenResponseBodyData
+from ._list_livy_compute_response_body import ListLivyComputeResponseBodyDataLivyComputes
+from ._list_livy_compute_response_body import ListLivyComputeResponseBodyData
+from ._list_livy_compute_token_response_body import ListLivyComputeTokenResponseBodyDataTokens
+from ._list_livy_compute_token_response_body import ListLivyComputeTokenResponseBodyData
+from ._list_log_contents_response_body import ListLogContentsResponseBodyListLogContentContents
+from ._list_log_contents_response_body import ListLogContentsResponseBodyListLogContent
+from ._list_members_response_body import ListMembersResponseBodyMembersActions
+from ._list_members_response_body import ListMembersResponseBodyMembersRolesActions
+from ._list_members_response_body import ListMembersResponseBodyMembersRoles
+from ._list_members_response_body import ListMembersResponseBodyMembers
+from ._list_release_versions_response_body import ListReleaseVersionsResponseBodyReleaseVersions
+from ._list_session_clusters_response_body import ListSessionClustersResponseBodySessionClustersApplicationConfigs
+from ._list_session_clusters_response_body import ListSessionClustersResponseBodySessionClustersAutoStartConfiguration
+from ._list_session_clusters_response_body import ListSessionClustersResponseBodySessionClustersAutoStopConfiguration
+from ._list_session_clusters_response_body import ListSessionClustersResponseBodySessionClustersStateChangeReason
+from ._list_session_clusters_response_body import ListSessionClustersResponseBodySessionClusters
+from ._list_sql_statement_contents_response_body import ListSqlStatementContentsResponseBodySqlStatementContents
+from ._list_workspace_queues_response_body import ListWorkspaceQueuesResponseBodyQueuesAllowActions
+from ._list_workspace_queues_response_body import ListWorkspaceQueuesResponseBodyQueues
+from ._list_workspaces_request import ListWorkspacesRequestTag
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspacesPrePaidQuota
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspacesStateChangeReason
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspacesTags
+from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspaces
+from ._refresh_livy_compute_token_request import RefreshLivyComputeTokenRequestAutoExpireConfiguration
+from ._start_job_run_request import StartJobRunRequestConfigurationOverridesConfigurations
+from ._start_job_run_request import StartJobRunRequestConfigurationOverrides
+from ._update_kyuubi_token_request import UpdateKyuubiTokenRequestAutoExpireConfiguration
+from ._update_livy_compute_request import UpdateLivyComputeRequestAutoStartConfiguration
+from ._update_livy_compute_request import UpdateLivyComputeRequestAutoStopConfiguration
+from ._update_process_definition_with_schedule_request import UpdateProcessDefinitionWithScheduleRequestGlobalParams
+from ._update_process_definition_with_schedule_request import UpdateProcessDefinitionWithScheduleRequestSchedule
+from ._update_process_definition_with_schedule_request import UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLocalParams
+from ._update_process_definition_with_schedule_request import UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf
+from ._update_process_definition_with_schedule_request import UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams
+from ._update_process_definition_with_schedule_request import UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson
+from ._update_process_definition_with_schedule_request import UpdateProcessDefinitionWithScheduleRequestTaskRelationJson
+from ._update_process_definition_with_schedule_response_body import UpdateProcessDefinitionWithScheduleResponseBodyData
+
+__all__ = [
+    Artifact,
+    Category,
+    Configuration,
+    ConfigurationOverrides,
+    Credential,
+    JobDriver,
+    KerberosConf,
+    PrincipalAction,
+    ReleaseVersionImage,
+    RunLog,
+    SparkConf,
+    SqlOutput,
+    Tag,
+    Task,
+    TaskInstance,
+    TaskSnapshot,
+    Template,
+    TimeRange,
+    AddMembersRequest,
+    AddMembersResponseBody,
+    AddMembersResponse,
+    CancelJobRunRequest,
+    CancelJobRunResponseBody,
+    CancelJobRunResponse,
+    CancelKyuubiSparkApplicationRequest,
+    CancelKyuubiSparkApplicationResponseBody,
+    CancelKyuubiSparkApplicationResponse,
+    CreateKyuubiServiceRequest,
+    CreateKyuubiServiceResponseBody,
+    CreateKyuubiServiceResponse,
+    CreateKyuubiTokenRequest,
+    CreateKyuubiTokenResponseBody,
+    CreateKyuubiTokenResponse,
+    CreateLivyComputeRequest,
+    CreateLivyComputeResponseBody,
+    CreateLivyComputeResponse,
+    CreateLivyComputeTokenRequest,
+    CreateLivyComputeTokenResponseBody,
+    CreateLivyComputeTokenResponse,
+    CreateProcessDefinitionWithScheduleRequest,
+    CreateProcessDefinitionWithScheduleShrinkRequest,
+    CreateProcessDefinitionWithScheduleResponseBody,
+    CreateProcessDefinitionWithScheduleResponse,
+    CreateSessionClusterRequest,
+    CreateSessionClusterResponseBody,
+    CreateSessionClusterResponse,
+    CreateSqlStatementRequest,
+    CreateSqlStatementResponseBody,
+    CreateSqlStatementResponse,
+    CreateWorkspaceRequest,
+    CreateWorkspaceResponseBody,
+    CreateWorkspaceResponse,
+    DeleteKyuubiServiceResponseBody,
+    DeleteKyuubiServiceResponse,
+    DeleteKyuubiTokenRequest,
+    DeleteKyuubiTokenResponseBody,
+    DeleteKyuubiTokenResponse,
+    DeleteLivyComputeRequest,
+    DeleteLivyComputeResponseBody,
+    DeleteLivyComputeResponse,
+    DeleteLivyComputeTokenRequest,
+    DeleteLivyComputeTokenResponseBody,
+    DeleteLivyComputeTokenResponse,
+    EditWorkspaceQueueRequest,
+    EditWorkspaceQueueResponseBody,
+    EditWorkspaceQueueResponse,
+    GenerateTaskCodesRequest,
+    GenerateTaskCodesResponseBody,
+    GenerateTaskCodesResponse,
+    GetCuHoursRequest,
+    GetCuHoursResponseBody,
+    GetCuHoursResponse,
+    GetDoctorApplicationRequest,
+    GetDoctorApplicationResponseBody,
+    GetDoctorApplicationResponse,
+    GetJobRunRequest,
+    GetJobRunResponseBody,
+    GetJobRunResponse,
+    GetKyuubiServiceResponseBody,
+    GetKyuubiServiceResponse,
+    GetKyuubiTokenRequest,
+    GetKyuubiTokenResponseBody,
+    GetKyuubiTokenResponse,
+    GetLivyComputeRequest,
+    GetLivyComputeResponseBody,
+    GetLivyComputeResponse,
+    GetLivyComputeTokenRequest,
+    GetLivyComputeTokenResponseBody,
+    GetLivyComputeTokenResponse,
+    GetRunConfigurationRequest,
+    GetRunConfigurationResponseBody,
+    GetRunConfigurationResponse,
+    GetSessionClusterRequest,
+    GetSessionClusterResponseBody,
+    GetSessionClusterResponse,
+    GetSqlStatementRequest,
+    GetSqlStatementResponseBody,
+    GetSqlStatementResponse,
+    GetTemplateRequest,
+    GetTemplateResponseBody,
+    GetTemplateResponse,
+    GrantRoleToUsersRequest,
+    GrantRoleToUsersResponseBody,
+    GrantRoleToUsersResponse,
+    ListCatalogsRequest,
+    ListCatalogsResponseBody,
+    ListCatalogsResponse,
+    ListJobExecutorsRequest,
+    ListJobExecutorsResponseBody,
+    ListJobExecutorsResponse,
+    ListJobRunsRequest,
+    ListJobRunsShrinkRequest,
+    ListJobRunsResponseBody,
+    ListJobRunsResponse,
+    ListKyuubiServicesResponseBody,
+    ListKyuubiServicesResponse,
+    ListKyuubiSparkApplicationsRequest,
+    ListKyuubiSparkApplicationsShrinkRequest,
+    ListKyuubiSparkApplicationsResponseBody,
+    ListKyuubiSparkApplicationsResponse,
+    ListKyuubiTokenRequest,
+    ListKyuubiTokenResponseBody,
+    ListKyuubiTokenResponse,
+    ListLivyComputeRequest,
+    ListLivyComputeResponseBody,
+    ListLivyComputeResponse,
+    ListLivyComputeTokenRequest,
+    ListLivyComputeTokenResponseBody,
+    ListLivyComputeTokenResponse,
+    ListLogContentsRequest,
+    ListLogContentsResponseBody,
+    ListLogContentsResponse,
+    ListMembersRequest,
+    ListMembersResponseBody,
+    ListMembersResponse,
+    ListReleaseVersionsRequest,
+    ListReleaseVersionsResponseBody,
+    ListReleaseVersionsResponse,
+    ListSessionClustersRequest,
+    ListSessionClustersResponseBody,
+    ListSessionClustersResponse,
+    ListSqlStatementContentsRequest,
+    ListSqlStatementContentsResponseBody,
+    ListSqlStatementContentsResponse,
+    ListTemplateRequest,
+    ListTemplateResponseBody,
+    ListTemplateResponse,
+    ListWorkspaceQueuesRequest,
+    ListWorkspaceQueuesResponseBody,
+    ListWorkspaceQueuesResponse,
+    ListWorkspacesRequest,
+    ListWorkspacesShrinkRequest,
+    ListWorkspacesResponseBody,
+    ListWorkspacesResponse,
+    RefreshLivyComputeTokenRequest,
+    RefreshLivyComputeTokenResponseBody,
+    RefreshLivyComputeTokenResponse,
+    StartJobRunRequest,
+    StartJobRunResponseBody,
+    StartJobRunResponse,
+    StartKyuubiServiceResponseBody,
+    StartKyuubiServiceResponse,
+    StartLivyComputeRequest,
+    StartLivyComputeResponseBody,
+    StartLivyComputeResponse,
+    StartProcessInstanceRequest,
+    StartProcessInstanceResponseBody,
+    StartProcessInstanceResponse,
+    StartSessionClusterRequest,
+    StartSessionClusterResponseBody,
+    StartSessionClusterResponse,
+    StopKyuubiServiceResponseBody,
+    StopKyuubiServiceResponse,
+    StopLivyComputeRequest,
+    StopLivyComputeResponseBody,
+    StopLivyComputeResponse,
+    StopSessionClusterRequest,
+    StopSessionClusterResponseBody,
+    StopSessionClusterResponse,
+    TerminateSqlStatementRequest,
+    TerminateSqlStatementResponseBody,
+    TerminateSqlStatementResponse,
+    UpdateKyuubiServiceRequest,
+    UpdateKyuubiServiceResponseBody,
+    UpdateKyuubiServiceResponse,
+    UpdateKyuubiTokenRequest,
+    UpdateKyuubiTokenResponseBody,
+    UpdateKyuubiTokenResponse,
+    UpdateLivyComputeRequest,
+    UpdateLivyComputeResponseBody,
+    UpdateLivyComputeResponse,
+    UpdateProcessDefinitionWithScheduleRequest,
+    UpdateProcessDefinitionWithScheduleShrinkRequest,
+    UpdateProcessDefinitionWithScheduleResponseBody,
+    UpdateProcessDefinitionWithScheduleResponse,
+    ConfigurationOverridesConfigurations,
+    JobDriverSparkSubmit,
+    SqlOutputRows,
+    SqlOutputSchemaFields,
+    SqlOutputSchema,
+    TaskCredential,
+    CancelKyuubiSparkApplicationResponseBodyBody,
+    CreateKyuubiServiceResponseBodyData,
+    CreateKyuubiTokenRequestAutoExpireConfiguration,
+    CreateKyuubiTokenResponseBodyData,
+    CreateLivyComputeRequestAutoStartConfiguration,
+    CreateLivyComputeRequestAutoStopConfiguration,
+    CreateLivyComputeResponseBodyData,
+    CreateLivyComputeTokenRequestAutoExpireConfiguration,
+    CreateLivyComputeTokenResponseBodyData,
+    CreateProcessDefinitionWithScheduleRequestGlobalParams,
+    CreateProcessDefinitionWithScheduleRequestSchedule,
+    CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLocalParams,
+    CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf,
+    CreateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams,
+    CreateProcessDefinitionWithScheduleRequestTaskDefinitionJson,
+    CreateProcessDefinitionWithScheduleRequestTaskRelationJson,
+    CreateProcessDefinitionWithScheduleResponseBodyData,
+    CreateSessionClusterRequestApplicationConfigs,
+    CreateSessionClusterRequestAutoStartConfiguration,
+    CreateSessionClusterRequestAutoStopConfiguration,
+    CreateSqlStatementResponseBodyData,
+    CreateWorkspaceRequestResourceSpec,
+    CreateWorkspaceRequestTag,
+    EditWorkspaceQueueRequestResourceSpec,
+    GetCuHoursResponseBodyData,
+    GetDoctorApplicationResponseBodyData,
+    GetJobRunResponseBodyJobRunConfigurationOverrides,
+    GetJobRunResponseBodyJobRunStateChangeReason,
+    GetJobRunResponseBodyJobRun,
+    GetKyuubiServiceResponseBodyData,
+    GetKyuubiTokenResponseBodyDataAutoExpireConfiguration,
+    GetKyuubiTokenResponseBodyData,
+    GetLivyComputeResponseBodyDataAutoStopConfiguration,
+    GetLivyComputeResponseBodyData,
+    GetLivyComputeTokenResponseBodyDataAutoExpireConfiguration,
+    GetLivyComputeTokenResponseBodyData,
+    GetRunConfigurationResponseBodyRunConfigurationApplicationConfigs,
+    GetRunConfigurationResponseBodyRunConfigurationLogConfig,
+    GetRunConfigurationResponseBodyRunConfiguration,
+    GetSessionClusterResponseBodySessionClusterApplicationConfigs,
+    GetSessionClusterResponseBodySessionClusterAutoStartConfiguration,
+    GetSessionClusterResponseBodySessionClusterAutoStopConfiguration,
+    GetSessionClusterResponseBodySessionClusterStateChangeReason,
+    GetSessionClusterResponseBodySessionCluster,
+    GetSqlStatementResponseBodyDataSqlOutputs,
+    GetSqlStatementResponseBodyData,
+    ListCatalogsResponseBodyCatalogs,
+    ListJobExecutorsResponseBodyExexutors,
+    ListJobRunsRequestEndTime,
+    ListJobRunsRequestStartTime,
+    ListJobRunsRequestTags,
+    ListJobRunsResponseBodyJobRunsConfigurationOverrides,
+    ListJobRunsResponseBodyJobRunsStateChangeReason,
+    ListJobRunsResponseBodyJobRuns,
+    ListKyuubiServicesResponseBodyDataKyuubiServices,
+    ListKyuubiServicesResponseBodyData,
+    ListKyuubiSparkApplicationsRequestStartTime,
+    ListKyuubiSparkApplicationsResponseBodyApplications,
+    ListKyuubiTokenResponseBodyDataTokens,
+    ListKyuubiTokenResponseBodyData,
+    ListLivyComputeResponseBodyDataLivyComputes,
+    ListLivyComputeResponseBodyData,
+    ListLivyComputeTokenResponseBodyDataTokens,
+    ListLivyComputeTokenResponseBodyData,
+    ListLogContentsResponseBodyListLogContentContents,
+    ListLogContentsResponseBodyListLogContent,
+    ListMembersResponseBodyMembersActions,
+    ListMembersResponseBodyMembersRolesActions,
+    ListMembersResponseBodyMembersRoles,
+    ListMembersResponseBodyMembers,
+    ListReleaseVersionsResponseBodyReleaseVersions,
+    ListSessionClustersResponseBodySessionClustersApplicationConfigs,
+    ListSessionClustersResponseBodySessionClustersAutoStartConfiguration,
+    ListSessionClustersResponseBodySessionClustersAutoStopConfiguration,
+    ListSessionClustersResponseBodySessionClustersStateChangeReason,
+    ListSessionClustersResponseBodySessionClusters,
+    ListSqlStatementContentsResponseBodySqlStatementContents,
+    ListWorkspaceQueuesResponseBodyQueuesAllowActions,
+    ListWorkspaceQueuesResponseBodyQueues,
+    ListWorkspacesRequestTag,
+    ListWorkspacesResponseBodyWorkspacesPrePaidQuota,
+    ListWorkspacesResponseBodyWorkspacesStateChangeReason,
+    ListWorkspacesResponseBodyWorkspacesTags,
+    ListWorkspacesResponseBodyWorkspaces,
+    RefreshLivyComputeTokenRequestAutoExpireConfiguration,
+    StartJobRunRequestConfigurationOverridesConfigurations,
+    StartJobRunRequestConfigurationOverrides,
+    UpdateKyuubiTokenRequestAutoExpireConfiguration,
+    UpdateLivyComputeRequestAutoStartConfiguration,
+    UpdateLivyComputeRequestAutoStopConfiguration,
+    UpdateProcessDefinitionWithScheduleRequestGlobalParams,
+    UpdateProcessDefinitionWithScheduleRequestSchedule,
+    UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsLocalParams,
+    UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParamsSparkConf,
+    UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJsonTaskParams,
+    UpdateProcessDefinitionWithScheduleRequestTaskDefinitionJson,
+    UpdateProcessDefinitionWithScheduleRequestTaskRelationJson,
+    UpdateProcessDefinitionWithScheduleResponseBodyData
+]
