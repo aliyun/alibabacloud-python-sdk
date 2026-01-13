@@ -1,3 +1,41 @@
+2026-01-13 Version: 4.0.0
+- Support API ChangeRecallManagementServiceVersion.
+- Support API CreateRecallManagementConfig.
+- Support API CreateRecallManagementService.
+- Support API CreateRecallManagementServiceVersion.
+- Support API CreateRecallManagementServiceVersionConfig.
+- Support API CreateRecallManagementTable.
+- Support API DeleteRecallManagementService.
+- Support API DeleteRecallManagementServiceVersion.
+- Support API DeleteRecallManagementServiceVersionConfig.
+- Support API DeleteRecallManagementTable.
+- Support API GetRecallManagementConfig.
+- Support API GetRecallManagementJob.
+- Support API GetRecallManagementService.
+- Support API GetRecallManagementServiceVersion.
+- Support API GetRecallManagementServiceVersionConfig.
+- Support API GetRecallManagementTable.
+- Support API GetService.
+- Support API ListRecallManagementJobs.
+- Support API ListRecallManagementServiceVersions.
+- Support API ListRecallManagementServices.
+- Support API ListRecallManagementTableVersions.
+- Support API ListRecallManagementTables.
+- Support API OfflineRecallManagementService.
+- Support API OnlineRecallManagementService.
+- Support API PublishRecallManagementTable.
+- Support API UpdateRecallManagementConfig.
+- Support API UpdateRecallManagementService.
+- Support API UpdateRecallManagementServiceVersionConfig.
+- Support API UpdateRecallManagementTable.
+- Update API GetTrafficControlTaskTraffic: add response parameters Body.TrafficControlTaskTrafficInfo.TargetTraffics.$.TrafficControlTargetId.
+- Update API GetTrafficControlTaskTraffic: add response parameters Body.TrafficControlTaskTrafficInfo.TargetTraffics.$.Data.RecorfTime.
+- Update API GetTrafficControlTaskTraffic: delete response parameters Body.TrafficControlTaskTrafficInfo.TargetTraffics.$.Data.RecordTime.
+- Update API GetTrafficControlTaskTraffic: delete response parameters Body.TrafficControlTaskTrafficInfo.TargetTraffics.$.TrafficContorlTargetId.
+- Update API ListTrafficControlTasks: add response parameters Body.TrafficControlTasks.$.StatisBehaviorConditionExpress.
+- Update API UpdateTrafficControlTask: add request parameters body.StatisBehaviorConditionArray.
+
+
 2025-08-29 Version: 3.1.4
 - Update API ListTrafficControlTasks: add response parameters Body.TrafficControlTasks.$.EffectiveSceneNameList.
 - Update API ListTrafficControlTasks: add response parameters Body.TrafficControlTasks.$.ServiceIdList.
