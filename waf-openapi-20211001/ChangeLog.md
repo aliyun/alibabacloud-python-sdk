@@ -1,3 +1,8 @@
+2026-01-13 Version: 7.4.0
+- Support API DescribeCloudResourceList.
+- Support API DescribeThreatEventTopMetric.
+
+
 2026-01-05 Version: 7.3.1
 - Update API DescribeDomains: add request parameters DomainId.
 

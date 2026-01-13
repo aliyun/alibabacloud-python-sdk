@@ -218,6 +218,9 @@ from ._describe_cloud_resource_access_port_details_response import DescribeCloud
 from ._describe_cloud_resource_accessed_ports_request import DescribeCloudResourceAccessedPortsRequest
 from ._describe_cloud_resource_accessed_ports_response_body import DescribeCloudResourceAccessedPortsResponseBody
 from ._describe_cloud_resource_accessed_ports_response import DescribeCloudResourceAccessedPortsResponse
+from ._describe_cloud_resource_list_request import DescribeCloudResourceListRequest
+from ._describe_cloud_resource_list_response_body import DescribeCloudResourceListResponseBody
+from ._describe_cloud_resource_list_response import DescribeCloudResourceListResponse
 from ._describe_cloud_resources_request import DescribeCloudResourcesRequest
 from ._describe_cloud_resources_response_body import DescribeCloudResourcesResponseBody
 from ._describe_cloud_resources_response import DescribeCloudResourcesResponse
@@ -518,6 +521,9 @@ from ._describe_threat_event_response import DescribeThreatEventResponse
 from ._describe_threat_event_detail_request import DescribeThreatEventDetailRequest
 from ._describe_threat_event_detail_response_body import DescribeThreatEventDetailResponseBody
 from ._describe_threat_event_detail_response import DescribeThreatEventDetailResponse
+from ._describe_threat_event_top_metric_request import DescribeThreatEventTopMetricRequest
+from ._describe_threat_event_top_metric_response_body import DescribeThreatEventTopMetricResponseBody
+from ._describe_threat_event_top_metric_response import DescribeThreatEventTopMetricResponse
 from ._describe_user_abnormal_trend_request import DescribeUserAbnormalTrendRequest
 from ._describe_user_abnormal_trend_response_body import DescribeUserAbnormalTrendResponseBody
 from ._describe_user_abnormal_trend_response import DescribeUserAbnormalTrendResponse
@@ -756,6 +762,7 @@ from ._describe_cloud_resource_access_port_details_response_body import Describe
 from ._describe_cloud_resource_access_port_details_response_body import DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders
 from ._describe_cloud_resource_access_port_details_response_body import DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails
 from ._describe_cloud_resource_access_port_details_response_body import DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails
+from ._describe_cloud_resource_list_response_body import DescribeCloudResourceListResponseBodyCloudResourceList
 from ._describe_cloud_resources_response_body import DescribeCloudResourcesResponseBodyCloudResources
 from ._describe_cname_count_response_body import DescribeCnameCountResponseBodyCnameCount
 from ._describe_common_log_fields_response_body import DescribeCommonLogFieldsResponseBodyLogFieldList
@@ -885,6 +892,7 @@ from ._describe_sensitive_statistic_response_body import DescribeSensitiveStatis
 from ._describe_template_resource_count_response_body import DescribeTemplateResourceCountResponseBodyResourceCount
 from ._describe_threat_event_response_body import DescribeThreatEventResponseBodyThreatEvents
 from ._describe_threat_event_detail_response_body import DescribeThreatEventDetailResponseBodyThreatEventDetail
+from ._describe_threat_event_top_metric_response_body import DescribeThreatEventTopMetricResponseBodyTopMetrics
 from ._describe_user_abnormal_trend_response_body import DescribeUserAbnormalTrendResponseBodyTrend
 from ._describe_user_abnormal_type_response_body import DescribeUserAbnormalTypeResponseBodyAbnormal
 from ._describe_user_api_request_response_body import DescribeUserApiRequestResponseBodyRequests
@@ -1130,6 +1138,9 @@ __all__ = [
     DescribeCloudResourceAccessedPortsRequest,
     DescribeCloudResourceAccessedPortsResponseBody,
     DescribeCloudResourceAccessedPortsResponse,
+    DescribeCloudResourceListRequest,
+    DescribeCloudResourceListResponseBody,
+    DescribeCloudResourceListResponse,
     DescribeCloudResourcesRequest,
     DescribeCloudResourcesResponseBody,
     DescribeCloudResourcesResponse,
@@ -1430,6 +1441,9 @@ __all__ = [
     DescribeThreatEventDetailRequest,
     DescribeThreatEventDetailResponseBody,
     DescribeThreatEventDetailResponse,
+    DescribeThreatEventTopMetricRequest,
+    DescribeThreatEventTopMetricResponseBody,
+    DescribeThreatEventTopMetricResponse,
     DescribeUserAbnormalTrendRequest,
     DescribeUserAbnormalTrendResponseBody,
     DescribeUserAbnormalTrendResponse,
@@ -1668,6 +1682,7 @@ __all__ = [
     DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsLogHeaders,
     DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetailsSubStatusDetails,
     DescribeCloudResourceAccessPortDetailsResponseBodyAccessPortDetails,
+    DescribeCloudResourceListResponseBodyCloudResourceList,
     DescribeCloudResourcesResponseBodyCloudResources,
     DescribeCnameCountResponseBodyCnameCount,
     DescribeCommonLogFieldsResponseBodyLogFieldList,
@@ -1797,6 +1812,7 @@ __all__ = [
     DescribeTemplateResourceCountResponseBodyResourceCount,
     DescribeThreatEventResponseBodyThreatEvents,
     DescribeThreatEventDetailResponseBodyThreatEventDetail,
+    DescribeThreatEventTopMetricResponseBodyTopMetrics,
     DescribeUserAbnormalTrendResponseBodyTrend,
     DescribeUserAbnormalTypeResponseBodyAbnormal,
     DescribeUserApiRequestResponseBodyRequests,

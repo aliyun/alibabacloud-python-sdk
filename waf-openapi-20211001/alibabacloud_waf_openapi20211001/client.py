@@ -6752,6 +6752,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_cloud_resource_accessed_ports_with_options_async(request, runtime)
 
+    def describe_cloud_resource_list_with_options(
+        self,
+        request: main_models.DescribeCloudResourceListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCloudResourceListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_resource_id):
+            query['CloudResourceId'] = request.cloud_resource_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_instance_id):
+            query['ResourceInstanceId'] = request.resource_instance_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.resource_product):
+            query['ResourceProduct'] = request.resource_product
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCloudResourceList',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCloudResourceListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cloud_resource_list_with_options_async(
+        self,
+        request: main_models.DescribeCloudResourceListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeCloudResourceListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cloud_resource_id):
+            query['CloudResourceId'] = request.cloud_resource_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.owner_user_id):
+            query['OwnerUserId'] = request.owner_user_id
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_instance_id):
+            query['ResourceInstanceId'] = request.resource_instance_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        if not DaraCore.is_null(request.resource_product):
+            query['ResourceProduct'] = request.resource_product
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeCloudResourceList',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeCloudResourceListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cloud_resource_list(
+        self,
+        request: main_models.DescribeCloudResourceListRequest,
+    ) -> main_models.DescribeCloudResourceListResponse:
+        runtime = RuntimeOptions()
+        return self.describe_cloud_resource_list_with_options(request, runtime)
+
+    async def describe_cloud_resource_list_async(
+        self,
+        request: main_models.DescribeCloudResourceListRequest,
+    ) -> main_models.DescribeCloudResourceListResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_cloud_resource_list_with_options_async(request, runtime)
+
     def describe_cloud_resources_with_options(
         self,
         request: main_models.DescribeCloudResourcesRequest,
@@ -15599,6 +15705,92 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeThreatEventDetailResponse:
         runtime = RuntimeOptions()
         return await self.describe_threat_event_detail_with_options_async(request, runtime)
+
+    def describe_threat_event_top_metric_with_options(
+        self,
+        request: main_models.DescribeThreatEventTopMetricRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeThreatEventTopMetricResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.metric):
+            query['Metric'] = request.metric
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeThreatEventTopMetric',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeThreatEventTopMetricResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_threat_event_top_metric_with_options_async(
+        self,
+        request: main_models.DescribeThreatEventTopMetricRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeThreatEventTopMetricResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.metric):
+            query['Metric'] = request.metric
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeThreatEventTopMetric',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeThreatEventTopMetricResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_threat_event_top_metric(
+        self,
+        request: main_models.DescribeThreatEventTopMetricRequest,
+    ) -> main_models.DescribeThreatEventTopMetricResponse:
+        runtime = RuntimeOptions()
+        return self.describe_threat_event_top_metric_with_options(request, runtime)
+
+    async def describe_threat_event_top_metric_async(
+        self,
+        request: main_models.DescribeThreatEventTopMetricRequest,
+    ) -> main_models.DescribeThreatEventTopMetricResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_threat_event_top_metric_with_options_async(request, runtime)
 
     def describe_user_abnormal_trend_with_options(
         self,
