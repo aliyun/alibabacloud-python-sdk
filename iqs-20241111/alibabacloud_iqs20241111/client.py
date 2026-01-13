@@ -1,24 +1,26 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
-from typing import Dict
-from Tea.core import TeaCore
+from __future__ import annotations
 
+import json
+
+from typing import Dict, Generator, AsyncGenerator
+
+from alibabacloud_iqs20241111 import models as main_models
+from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
-from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_iqs20241111 import models as iqs20241111_models
-from alibabacloud_tea_util import models as util_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_tea_openapi.utils import Utils
+from darabonba.core import DaraCore as DaraCore
+from darabonba.core import DaraCore
+from darabonba.runtime import RuntimeOptions
 
-
+"""
+"""
 class Client(OpenApiClient):
-    """
-    *\
-    """
+
     def __init__(
-        self, 
-        config: open_api_models.Config,
+        self,
+        config: open_api_util_models.Config,
     ):
         super().__init__(config)
         self._endpoint_rule = ''
@@ -35,914 +37,788 @@ class Client(OpenApiClient):
         endpoint_map: Dict[str, str],
         endpoint: str,
     ) -> str:
-        if not UtilClient.empty(endpoint):
+        if not DaraCore.is_null(endpoint):
             return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+        if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def ai_search_with_sse(
+        self,
+        request: main_models.AiSearchRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.AiSearchResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.industry):
+            query['industry'] = request.industry
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.query):
+            query['query'] = request.query
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.time_range):
+            query['timeRange'] = request.time_range
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AiSearch',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v3/linkedRetrieval/commands/aiSearch',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            data = json.loads(resp.event.data)
+            yield  DaraCore.from_map(
+                main_models.AiSearchResponse(),
+                {
+                'statusCode': resp.status_code,
+                'headers': resp.headers,
+                'body': DaraCore.merge({
+                    'RequestId': resp.event.id,
+                    'Message': resp.event.event
+                }, data)
+            })
+
+    async def ai_search_with_sse_async(
+        self,
+        request: main_models.AiSearchRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.AiSearchResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.industry):
+            query['industry'] = request.industry
+        if not DaraCore.is_null(request.page):
+            query['page'] = request.page
+        if not DaraCore.is_null(request.query):
+            query['query'] = request.query
+        if not DaraCore.is_null(request.session_id):
+            query['sessionId'] = request.session_id
+        if not DaraCore.is_null(request.time_range):
+            query['timeRange'] = request.time_range
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AiSearch',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v3/linkedRetrieval/commands/aiSearch',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            data = json.loads(resp.event.data)
+            yield  DaraCore.from_map(
+                main_models.AiSearchResponse(),
+                {
+                'statusCode': resp.status_code,
+                'headers': resp.headers,
+                'body': DaraCore.merge({
+                    'RequestId': resp.event.id,
+                    'Message': resp.event.event
+                }, data)
+            })
 
     def ai_search_with_options(
         self,
-        request: iqs20241111_models.AiSearchRequest,
+        request: main_models.AiSearchRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> iqs20241111_models.AiSearchResponse:
-        """
-        @summary AI搜索流式接口
-        
-        @param request: AiSearchRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AiSearchResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.AiSearchResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.industry):
+        if not DaraCore.is_null(request.industry):
             query['industry'] = request.industry
-        if not UtilClient.is_unset(request.page):
+        if not DaraCore.is_null(request.page):
             query['page'] = request.page
-        if not UtilClient.is_unset(request.query):
+        if not DaraCore.is_null(request.query):
             query['query'] = request.query
-        if not UtilClient.is_unset(request.session_id):
+        if not DaraCore.is_null(request.session_id):
             query['sessionId'] = request.session_id
-        if not UtilClient.is_unset(request.time_range):
+        if not DaraCore.is_null(request.time_range):
             query['timeRange'] = request.time_range
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AiSearch',
-            version='2024-11-11',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-entry/v3/linkedRetrieval/commands/aiSearch',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AiSearch',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v3/linkedRetrieval/commands/aiSearch',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            iqs20241111_models.AiSearchResponse(),
+        return DaraCore.from_map(
+            main_models.AiSearchResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def ai_search_with_options_async(
         self,
-        request: iqs20241111_models.AiSearchRequest,
+        request: main_models.AiSearchRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> iqs20241111_models.AiSearchResponse:
-        """
-        @summary AI搜索流式接口
-        
-        @param request: AiSearchRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AiSearchResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.AiSearchResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.industry):
+        if not DaraCore.is_null(request.industry):
             query['industry'] = request.industry
-        if not UtilClient.is_unset(request.page):
+        if not DaraCore.is_null(request.page):
             query['page'] = request.page
-        if not UtilClient.is_unset(request.query):
+        if not DaraCore.is_null(request.query):
             query['query'] = request.query
-        if not UtilClient.is_unset(request.session_id):
+        if not DaraCore.is_null(request.session_id):
             query['sessionId'] = request.session_id
-        if not UtilClient.is_unset(request.time_range):
+        if not DaraCore.is_null(request.time_range):
             query['timeRange'] = request.time_range
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AiSearch',
-            version='2024-11-11',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-entry/v3/linkedRetrieval/commands/aiSearch',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AiSearch',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v3/linkedRetrieval/commands/aiSearch',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            iqs20241111_models.AiSearchResponse(),
+        return DaraCore.from_map(
+            main_models.AiSearchResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def ai_search(
         self,
-        request: iqs20241111_models.AiSearchRequest,
-    ) -> iqs20241111_models.AiSearchResponse:
-        """
-        @summary AI搜索流式接口
-        
-        @param request: AiSearchRequest
-        @return: AiSearchResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AiSearchRequest,
+    ) -> main_models.AiSearchResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.ai_search_with_options(request, headers, runtime)
 
     async def ai_search_async(
         self,
-        request: iqs20241111_models.AiSearchRequest,
-    ) -> iqs20241111_models.AiSearchResponse:
-        """
-        @summary AI搜索流式接口
-        
-        @param request: AiSearchRequest
-        @return: AiSearchResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AiSearchRequest,
+    ) -> main_models.AiSearchResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.ai_search_with_options_async(request, headers, runtime)
 
     def generic_advanced_search_with_options(
         self,
-        request: iqs20241111_models.GenericAdvancedSearchRequest,
+        request: main_models.GenericAdvancedSearchRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> iqs20241111_models.GenericAdvancedSearchResponse:
-        """
-        @summary 增强版通用搜索
-        
-        @param request: GenericAdvancedSearchRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GenericAdvancedSearchResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GenericAdvancedSearchResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.industry):
+        if not DaraCore.is_null(request.industry):
             query['industry'] = request.industry
-        if not UtilClient.is_unset(request.query):
+        if not DaraCore.is_null(request.query):
             query['query'] = request.query
-        if not UtilClient.is_unset(request.session_id):
+        if not DaraCore.is_null(request.session_id):
             query['sessionId'] = request.session_id
-        if not UtilClient.is_unset(request.time_range):
+        if not DaraCore.is_null(request.time_range):
             query['timeRange'] = request.time_range
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GenericAdvancedSearch',
-            version='2024-11-11',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-entry/v2/linkedRetrieval/commands/genericAdvancedSearch',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GenericAdvancedSearch',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v2/linkedRetrieval/commands/genericAdvancedSearch',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            iqs20241111_models.GenericAdvancedSearchResponse(),
+        return DaraCore.from_map(
+            main_models.GenericAdvancedSearchResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def generic_advanced_search_with_options_async(
         self,
-        request: iqs20241111_models.GenericAdvancedSearchRequest,
+        request: main_models.GenericAdvancedSearchRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> iqs20241111_models.GenericAdvancedSearchResponse:
-        """
-        @summary 增强版通用搜索
-        
-        @param request: GenericAdvancedSearchRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GenericAdvancedSearchResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GenericAdvancedSearchResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.industry):
+        if not DaraCore.is_null(request.industry):
             query['industry'] = request.industry
-        if not UtilClient.is_unset(request.query):
+        if not DaraCore.is_null(request.query):
             query['query'] = request.query
-        if not UtilClient.is_unset(request.session_id):
+        if not DaraCore.is_null(request.session_id):
             query['sessionId'] = request.session_id
-        if not UtilClient.is_unset(request.time_range):
+        if not DaraCore.is_null(request.time_range):
             query['timeRange'] = request.time_range
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GenericAdvancedSearch',
-            version='2024-11-11',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-entry/v2/linkedRetrieval/commands/genericAdvancedSearch',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GenericAdvancedSearch',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v2/linkedRetrieval/commands/genericAdvancedSearch',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            iqs20241111_models.GenericAdvancedSearchResponse(),
+        return DaraCore.from_map(
+            main_models.GenericAdvancedSearchResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def generic_advanced_search(
         self,
-        request: iqs20241111_models.GenericAdvancedSearchRequest,
-    ) -> iqs20241111_models.GenericAdvancedSearchResponse:
-        """
-        @summary 增强版通用搜索
-        
-        @param request: GenericAdvancedSearchRequest
-        @return: GenericAdvancedSearchResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GenericAdvancedSearchRequest,
+    ) -> main_models.GenericAdvancedSearchResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.generic_advanced_search_with_options(request, headers, runtime)
 
     async def generic_advanced_search_async(
         self,
-        request: iqs20241111_models.GenericAdvancedSearchRequest,
-    ) -> iqs20241111_models.GenericAdvancedSearchResponse:
-        """
-        @summary 增强版通用搜索
-        
-        @param request: GenericAdvancedSearchRequest
-        @return: GenericAdvancedSearchResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GenericAdvancedSearchRequest,
+    ) -> main_models.GenericAdvancedSearchResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.generic_advanced_search_with_options_async(request, headers, runtime)
 
     def generic_search_with_options(
         self,
-        tmp_req: iqs20241111_models.GenericSearchRequest,
+        tmp_req: main_models.GenericSearchRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> iqs20241111_models.GenericSearchResponse:
-        """
-        @summary 通用搜索
-        
-        @param tmp_req: GenericSearchRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GenericSearchResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = iqs20241111_models.GenericSearchShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.advanced_params):
-            request.advanced_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.advanced_params, 'advancedParams', 'json')
+        runtime: RuntimeOptions,
+    ) -> main_models.GenericSearchResponse:
+        tmp_req.validate()
+        request = main_models.GenericSearchShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.advanced_params):
+            request.advanced_params_shrink = Utils.array_to_string_with_specified_style(tmp_req.advanced_params, 'advancedParams', 'json')
         query = {}
-        if not UtilClient.is_unset(request.advanced_params_shrink):
+        if not DaraCore.is_null(request.advanced_params_shrink):
             query['advancedParams'] = request.advanced_params_shrink
-        if not UtilClient.is_unset(request.enable_rerank):
+        if not DaraCore.is_null(request.enable_rerank):
             query['enableRerank'] = request.enable_rerank
-        if not UtilClient.is_unset(request.industry):
+        if not DaraCore.is_null(request.industry):
             query['industry'] = request.industry
-        if not UtilClient.is_unset(request.page):
+        if not DaraCore.is_null(request.page):
             query['page'] = request.page
-        if not UtilClient.is_unset(request.query):
+        if not DaraCore.is_null(request.query):
             query['query'] = request.query
-        if not UtilClient.is_unset(request.return_main_text):
+        if not DaraCore.is_null(request.return_main_text):
             query['returnMainText'] = request.return_main_text
-        if not UtilClient.is_unset(request.return_markdown_text):
+        if not DaraCore.is_null(request.return_markdown_text):
             query['returnMarkdownText'] = request.return_markdown_text
-        if not UtilClient.is_unset(request.return_rich_main_body):
+        if not DaraCore.is_null(request.return_rich_main_body):
             query['returnRichMainBody'] = request.return_rich_main_body
-        if not UtilClient.is_unset(request.return_summary):
+        if not DaraCore.is_null(request.return_summary):
             query['returnSummary'] = request.return_summary
-        if not UtilClient.is_unset(request.session_id):
+        if not DaraCore.is_null(request.session_id):
             query['sessionId'] = request.session_id
-        if not UtilClient.is_unset(request.time_range):
+        if not DaraCore.is_null(request.time_range):
             query['timeRange'] = request.time_range
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GenericSearch',
-            version='2024-11-11',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-entry/v2/linkedRetrieval/commands/genericSearch',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GenericSearch',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v2/linkedRetrieval/commands/genericSearch',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            iqs20241111_models.GenericSearchResponse(),
+        return DaraCore.from_map(
+            main_models.GenericSearchResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def generic_search_with_options_async(
         self,
-        tmp_req: iqs20241111_models.GenericSearchRequest,
+        tmp_req: main_models.GenericSearchRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> iqs20241111_models.GenericSearchResponse:
-        """
-        @summary 通用搜索
-        
-        @param tmp_req: GenericSearchRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GenericSearchResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = iqs20241111_models.GenericSearchShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.advanced_params):
-            request.advanced_params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.advanced_params, 'advancedParams', 'json')
+        runtime: RuntimeOptions,
+    ) -> main_models.GenericSearchResponse:
+        tmp_req.validate()
+        request = main_models.GenericSearchShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.advanced_params):
+            request.advanced_params_shrink = Utils.array_to_string_with_specified_style(tmp_req.advanced_params, 'advancedParams', 'json')
         query = {}
-        if not UtilClient.is_unset(request.advanced_params_shrink):
+        if not DaraCore.is_null(request.advanced_params_shrink):
             query['advancedParams'] = request.advanced_params_shrink
-        if not UtilClient.is_unset(request.enable_rerank):
+        if not DaraCore.is_null(request.enable_rerank):
             query['enableRerank'] = request.enable_rerank
-        if not UtilClient.is_unset(request.industry):
+        if not DaraCore.is_null(request.industry):
             query['industry'] = request.industry
-        if not UtilClient.is_unset(request.page):
+        if not DaraCore.is_null(request.page):
             query['page'] = request.page
-        if not UtilClient.is_unset(request.query):
+        if not DaraCore.is_null(request.query):
             query['query'] = request.query
-        if not UtilClient.is_unset(request.return_main_text):
+        if not DaraCore.is_null(request.return_main_text):
             query['returnMainText'] = request.return_main_text
-        if not UtilClient.is_unset(request.return_markdown_text):
+        if not DaraCore.is_null(request.return_markdown_text):
             query['returnMarkdownText'] = request.return_markdown_text
-        if not UtilClient.is_unset(request.return_rich_main_body):
+        if not DaraCore.is_null(request.return_rich_main_body):
             query['returnRichMainBody'] = request.return_rich_main_body
-        if not UtilClient.is_unset(request.return_summary):
+        if not DaraCore.is_null(request.return_summary):
             query['returnSummary'] = request.return_summary
-        if not UtilClient.is_unset(request.session_id):
+        if not DaraCore.is_null(request.session_id):
             query['sessionId'] = request.session_id
-        if not UtilClient.is_unset(request.time_range):
+        if not DaraCore.is_null(request.time_range):
             query['timeRange'] = request.time_range
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GenericSearch',
-            version='2024-11-11',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-entry/v2/linkedRetrieval/commands/genericSearch',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GenericSearch',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v2/linkedRetrieval/commands/genericSearch',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            iqs20241111_models.GenericSearchResponse(),
+        return DaraCore.from_map(
+            main_models.GenericSearchResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def generic_search(
         self,
-        request: iqs20241111_models.GenericSearchRequest,
-    ) -> iqs20241111_models.GenericSearchResponse:
-        """
-        @summary 通用搜索
-        
-        @param request: GenericSearchRequest
-        @return: GenericSearchResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GenericSearchRequest,
+    ) -> main_models.GenericSearchResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.generic_search_with_options(request, headers, runtime)
 
     async def generic_search_async(
         self,
-        request: iqs20241111_models.GenericSearchRequest,
-    ) -> iqs20241111_models.GenericSearchResponse:
-        """
-        @summary 通用搜索
-        
-        @param request: GenericSearchRequest
-        @return: GenericSearchResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GenericSearchRequest,
+    ) -> main_models.GenericSearchResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.generic_search_with_options_async(request, headers, runtime)
 
     def get_iqs_usage_with_options(
         self,
-        request: iqs20241111_models.GetIqsUsageRequest,
+        request: main_models.GetIqsUsageRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> iqs20241111_models.GetIqsUsageResponse:
-        """
-        @summary 信息查询服务接口日维度使用量查询
-        
-        @param request: GetIqsUsageRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetIqsUsageResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIqsUsageResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.caller_id):
+            query['callerId'] = request.caller_id
+        if not DaraCore.is_null(request.end_date):
             query['endDate'] = request.end_date
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['startDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetIqsUsage',
-            version='2024-11-11',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-admin/v1/iqs/usage',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetIqsUsage',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-admin/v1/iqs/usage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            iqs20241111_models.GetIqsUsageResponse(),
+        return DaraCore.from_map(
+            main_models.GetIqsUsageResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_iqs_usage_with_options_async(
         self,
-        request: iqs20241111_models.GetIqsUsageRequest,
+        request: main_models.GetIqsUsageRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> iqs20241111_models.GetIqsUsageResponse:
-        """
-        @summary 信息查询服务接口日维度使用量查询
-        
-        @param request: GetIqsUsageRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetIqsUsageResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIqsUsageResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.end_date):
+        if not DaraCore.is_null(request.caller_id):
+            query['callerId'] = request.caller_id
+        if not DaraCore.is_null(request.end_date):
             query['endDate'] = request.end_date
-        if not UtilClient.is_unset(request.start_date):
+        if not DaraCore.is_null(request.start_date):
             query['startDate'] = request.start_date
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetIqsUsage',
-            version='2024-11-11',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-admin/v1/iqs/usage',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetIqsUsage',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-admin/v1/iqs/usage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            iqs20241111_models.GetIqsUsageResponse(),
+        return DaraCore.from_map(
+            main_models.GetIqsUsageResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_iqs_usage(
         self,
-        request: iqs20241111_models.GetIqsUsageRequest,
-    ) -> iqs20241111_models.GetIqsUsageResponse:
-        """
-        @summary 信息查询服务接口日维度使用量查询
-        
-        @param request: GetIqsUsageRequest
-        @return: GetIqsUsageResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetIqsUsageRequest,
+    ) -> main_models.GetIqsUsageResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_iqs_usage_with_options(request, headers, runtime)
 
     async def get_iqs_usage_async(
         self,
-        request: iqs20241111_models.GetIqsUsageRequest,
-    ) -> iqs20241111_models.GetIqsUsageResponse:
-        """
-        @summary 信息查询服务接口日维度使用量查询
-        
-        @param request: GetIqsUsageRequest
-        @return: GetIqsUsageResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetIqsUsageRequest,
+    ) -> main_models.GetIqsUsageResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_iqs_usage_with_options_async(request, headers, runtime)
 
     def global_search_with_options(
         self,
-        request: iqs20241111_models.GlobalSearchRequest,
+        request: main_models.GlobalSearchRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> iqs20241111_models.GlobalSearchResponse:
-        """
-        @summary 通晓搜索-出海版(全球信息搜索)
-        
-        @param request: GlobalSearchRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GlobalSearchResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalSearchResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page):
+        if not DaraCore.is_null(request.page):
             query['page'] = request.page
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.query):
+        if not DaraCore.is_null(request.query):
             query['query'] = request.query
-        if not UtilClient.is_unset(request.time_range):
+        if not DaraCore.is_null(request.time_range):
             query['timeRange'] = request.time_range
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GlobalSearch',
-            version='2024-11-11',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/iqs/search/global',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GlobalSearch',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/search/global',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            iqs20241111_models.GlobalSearchResponse(),
+        return DaraCore.from_map(
+            main_models.GlobalSearchResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def global_search_with_options_async(
         self,
-        request: iqs20241111_models.GlobalSearchRequest,
+        request: main_models.GlobalSearchRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> iqs20241111_models.GlobalSearchResponse:
-        """
-        @summary 通晓搜索-出海版(全球信息搜索)
-        
-        @param request: GlobalSearchRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GlobalSearchResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GlobalSearchResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page):
+        if not DaraCore.is_null(request.page):
             query['page'] = request.page
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.query):
+        if not DaraCore.is_null(request.query):
             query['query'] = request.query
-        if not UtilClient.is_unset(request.time_range):
+        if not DaraCore.is_null(request.time_range):
             query['timeRange'] = request.time_range
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GlobalSearch',
-            version='2024-11-11',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/iqs/search/global',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GlobalSearch',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/search/global',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            iqs20241111_models.GlobalSearchResponse(),
+        return DaraCore.from_map(
+            main_models.GlobalSearchResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def global_search(
         self,
-        request: iqs20241111_models.GlobalSearchRequest,
-    ) -> iqs20241111_models.GlobalSearchResponse:
-        """
-        @summary 通晓搜索-出海版(全球信息搜索)
-        
-        @param request: GlobalSearchRequest
-        @return: GlobalSearchResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GlobalSearchRequest,
+    ) -> main_models.GlobalSearchResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.global_search_with_options(request, headers, runtime)
 
     async def global_search_async(
         self,
-        request: iqs20241111_models.GlobalSearchRequest,
-    ) -> iqs20241111_models.GlobalSearchResponse:
-        """
-        @summary 通晓搜索-出海版(全球信息搜索)
-        
-        @param request: GlobalSearchRequest
-        @return: GlobalSearchResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GlobalSearchRequest,
+    ) -> main_models.GlobalSearchResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.global_search_with_options_async(request, headers, runtime)
 
     def read_page_basic_with_options(
         self,
-        request: iqs20241111_models.ReadPageBasicRequest,
+        request: main_models.ReadPageBasicRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> iqs20241111_models.ReadPageBasicResponse:
-        """
-        @summary 页面读取
-        
-        @param request: ReadPageBasicRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReadPageBasicResponse
-        """
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(request.body)
+        runtime: RuntimeOptions,
+    ) -> main_models.ReadPageBasicResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
         )
-        params = open_api_models.Params(
-            action='ReadPageBasic',
-            version='2024-11-11',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/iqs/readpage/basic',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReadPageBasic',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/readpage/basic',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            iqs20241111_models.ReadPageBasicResponse(),
+        return DaraCore.from_map(
+            main_models.ReadPageBasicResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def read_page_basic_with_options_async(
         self,
-        request: iqs20241111_models.ReadPageBasicRequest,
+        request: main_models.ReadPageBasicRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> iqs20241111_models.ReadPageBasicResponse:
-        """
-        @summary 页面读取
-        
-        @param request: ReadPageBasicRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReadPageBasicResponse
-        """
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(request.body)
+        runtime: RuntimeOptions,
+    ) -> main_models.ReadPageBasicResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
         )
-        params = open_api_models.Params(
-            action='ReadPageBasic',
-            version='2024-11-11',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/iqs/readpage/basic',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReadPageBasic',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/readpage/basic',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            iqs20241111_models.ReadPageBasicResponse(),
+        return DaraCore.from_map(
+            main_models.ReadPageBasicResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def read_page_basic(
         self,
-        request: iqs20241111_models.ReadPageBasicRequest,
-    ) -> iqs20241111_models.ReadPageBasicResponse:
-        """
-        @summary 页面读取
-        
-        @param request: ReadPageBasicRequest
-        @return: ReadPageBasicResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReadPageBasicRequest,
+    ) -> main_models.ReadPageBasicResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.read_page_basic_with_options(request, headers, runtime)
 
     async def read_page_basic_async(
         self,
-        request: iqs20241111_models.ReadPageBasicRequest,
-    ) -> iqs20241111_models.ReadPageBasicResponse:
-        """
-        @summary 页面读取
-        
-        @param request: ReadPageBasicRequest
-        @return: ReadPageBasicResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReadPageBasicRequest,
+    ) -> main_models.ReadPageBasicResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.read_page_basic_with_options_async(request, headers, runtime)
 
     def read_page_scrape_with_options(
         self,
-        request: iqs20241111_models.ReadPageScrapeRequest,
+        request: main_models.ReadPageScrapeRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> iqs20241111_models.ReadPageScrapeResponse:
-        """
-        @summary 动态页面解析
-        
-        @param request: ReadPageScrapeRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReadPageScrapeResponse
-        """
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(request.body)
+        runtime: RuntimeOptions,
+    ) -> main_models.ReadPageScrapeResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
         )
-        params = open_api_models.Params(
-            action='ReadPageScrape',
-            version='2024-11-11',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/iqs/readpage/scrape',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReadPageScrape',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/readpage/scrape',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            iqs20241111_models.ReadPageScrapeResponse(),
+        return DaraCore.from_map(
+            main_models.ReadPageScrapeResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def read_page_scrape_with_options_async(
         self,
-        request: iqs20241111_models.ReadPageScrapeRequest,
+        request: main_models.ReadPageScrapeRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> iqs20241111_models.ReadPageScrapeResponse:
-        """
-        @summary 动态页面解析
-        
-        @param request: ReadPageScrapeRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ReadPageScrapeResponse
-        """
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(request.body)
+        runtime: RuntimeOptions,
+    ) -> main_models.ReadPageScrapeResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
         )
-        params = open_api_models.Params(
-            action='ReadPageScrape',
-            version='2024-11-11',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/iqs/readpage/scrape',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ReadPageScrape',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/readpage/scrape',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            iqs20241111_models.ReadPageScrapeResponse(),
+        return DaraCore.from_map(
+            main_models.ReadPageScrapeResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def read_page_scrape(
         self,
-        request: iqs20241111_models.ReadPageScrapeRequest,
-    ) -> iqs20241111_models.ReadPageScrapeResponse:
-        """
-        @summary 动态页面解析
-        
-        @param request: ReadPageScrapeRequest
-        @return: ReadPageScrapeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReadPageScrapeRequest,
+    ) -> main_models.ReadPageScrapeResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.read_page_scrape_with_options(request, headers, runtime)
 
     async def read_page_scrape_async(
         self,
-        request: iqs20241111_models.ReadPageScrapeRequest,
-    ) -> iqs20241111_models.ReadPageScrapeResponse:
-        """
-        @summary 动态页面解析
-        
-        @param request: ReadPageScrapeRequest
-        @return: ReadPageScrapeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ReadPageScrapeRequest,
+    ) -> main_models.ReadPageScrapeResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.read_page_scrape_with_options_async(request, headers, runtime)
 
     def unified_search_with_options(
         self,
-        request: iqs20241111_models.UnifiedSearchRequest,
+        request: main_models.UnifiedSearchRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> iqs20241111_models.UnifiedSearchResponse:
-        """
-        @summary 通晓统一搜索API
-        
-        @param request: UnifiedSearchRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UnifiedSearchResponse
-        """
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(request.body)
+        runtime: RuntimeOptions,
+    ) -> main_models.UnifiedSearchResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
         )
-        params = open_api_models.Params(
-            action='UnifiedSearch',
-            version='2024-11-11',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/iqs/search/unified',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UnifiedSearch',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/search/unified',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            iqs20241111_models.UnifiedSearchResponse(),
+        return DaraCore.from_map(
+            main_models.UnifiedSearchResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def unified_search_with_options_async(
         self,
-        request: iqs20241111_models.UnifiedSearchRequest,
+        request: main_models.UnifiedSearchRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> iqs20241111_models.UnifiedSearchResponse:
-        """
-        @summary 通晓统一搜索API
-        
-        @param request: UnifiedSearchRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UnifiedSearchResponse
-        """
-        UtilClient.validate_model(request)
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(request.body)
+        runtime: RuntimeOptions,
+    ) -> main_models.UnifiedSearchResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
         )
-        params = open_api_models.Params(
-            action='UnifiedSearch',
-            version='2024-11-11',
-            protocol='HTTPS',
-            pathname=f'/linked-retrieval/linked-retrieval-entry/v1/iqs/search/unified',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UnifiedSearch',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/search/unified',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            iqs20241111_models.UnifiedSearchResponse(),
+        return DaraCore.from_map(
+            main_models.UnifiedSearchResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def unified_search(
         self,
-        request: iqs20241111_models.UnifiedSearchRequest,
-    ) -> iqs20241111_models.UnifiedSearchResponse:
-        """
-        @summary 通晓统一搜索API
-        
-        @param request: UnifiedSearchRequest
-        @return: UnifiedSearchResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UnifiedSearchRequest,
+    ) -> main_models.UnifiedSearchResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.unified_search_with_options(request, headers, runtime)
 
     async def unified_search_async(
         self,
-        request: iqs20241111_models.UnifiedSearchRequest,
-    ) -> iqs20241111_models.UnifiedSearchResponse:
-        """
-        @summary 通晓统一搜索API
-        
-        @param request: UnifiedSearchRequest
-        @return: UnifiedSearchResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UnifiedSearchRequest,
+    ) -> main_models.UnifiedSearchResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.unified_search_with_options_async(request, headers, runtime)
