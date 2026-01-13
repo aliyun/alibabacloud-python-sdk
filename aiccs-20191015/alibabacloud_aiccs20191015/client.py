@@ -11127,6 +11127,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_hotline_number_with_options_async(request, runtime)
 
+    def query_inbound_call_id_with_options(
+        self,
+        request: main_models.QueryInboundCallIdRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryInboundCallIdResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_date):
+            query['CallDate'] = request.call_date
+        if not DaraCore.is_null(request.out_id):
+            query['OutId'] = request.out_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryInboundCallId',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryInboundCallIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_inbound_call_id_with_options_async(
+        self,
+        request: main_models.QueryInboundCallIdRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryInboundCallIdResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_date):
+            query['CallDate'] = request.call_date
+        if not DaraCore.is_null(request.out_id):
+            query['OutId'] = request.out_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryInboundCallId',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryInboundCallIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_inbound_call_id(
+        self,
+        request: main_models.QueryInboundCallIdRequest,
+    ) -> main_models.QueryInboundCallIdResponse:
+        runtime = RuntimeOptions()
+        return self.query_inbound_call_id_with_options(request, runtime)
+
+    async def query_inbound_call_id_async(
+        self,
+        request: main_models.QueryInboundCallIdRequest,
+    ) -> main_models.QueryInboundCallIdResponse:
+        runtime = RuntimeOptions()
+        return await self.query_inbound_call_id_with_options_async(request, runtime)
+
     def query_outbound_task_with_options(
         self,
         request: main_models.QueryOutboundTaskRequest,

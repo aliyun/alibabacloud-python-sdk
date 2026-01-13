@@ -1,3 +1,7 @@
+2026-01-13 Version: 3.4.0
+- Support API QueryInboundCallId.
+
+
 2026-01-09 Version: 3.3.2
 - Update API PageQueryAgentList: add response parameters Body.Data.List.$.WithActivePrompt.
 - Update API QueryAiCallDetailPage: add response parameters Body.Data.List.$.OutId.

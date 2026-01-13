@@ -422,6 +422,9 @@ from ._query_hotline_number_request import QueryHotlineNumberRequest
 from ._query_hotline_number_shrink_request import QueryHotlineNumberShrinkRequest
 from ._query_hotline_number_response_body import QueryHotlineNumberResponseBody
 from ._query_hotline_number_response import QueryHotlineNumberResponse
+from ._query_inbound_call_id_request import QueryInboundCallIdRequest
+from ._query_inbound_call_id_response_body import QueryInboundCallIdResponseBody
+from ._query_inbound_call_id_response import QueryInboundCallIdResponse
 from ._query_outbound_task_request import QueryOutboundTaskRequest
 from ._query_outbound_task_response_body import QueryOutboundTaskResponseBody
 from ._query_outbound_task_response import QueryOutboundTaskResponse
@@ -1084,6 +1087,9 @@ __all__ = [
     QueryHotlineNumberShrinkRequest,
     QueryHotlineNumberResponseBody,
     QueryHotlineNumberResponse,
+    QueryInboundCallIdRequest,
+    QueryInboundCallIdResponseBody,
+    QueryInboundCallIdResponse,
     QueryOutboundTaskRequest,
     QueryOutboundTaskResponseBody,
     QueryOutboundTaskResponse,
