@@ -1,3 +1,8 @@
+2026-01-13 Version: 5.0.0
+- Update API ChatWithKnowledgeBase: delete response parameters Body.MultiCollectionRecallResult.Matches.$.Metadata.
+- Update API ChatWithKnowledgeBaseStream: delete response parameters Body.MultiCollectionRecallResult.Matches.$.Metadata.
+
+
 2025-12-15 Version: 4.15.2
 - Update API GetSupabaseProject: add response parameters Body.Eni.
 

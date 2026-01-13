@@ -17,14 +17,23 @@ class DescribeExtensionResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
+        # The current version.
         self.current_version = current_version
+        # The description of the extension.
         self.description = description
+        # The extension ID.
         self.extension_id = extension_id
+        # The extension name.
         self.extension_name = extension_name
+        # Indicates whether an instance restart is required after you install the extension.
         self.is_install_need_restart = is_install_need_restart
+        # Whether it is the latest version extension.
         self.is_latest_version = is_latest_version
+        # The latest version.
         self.latest_version = latest_version
+        # Request ID.
         self.request_id = request_id
+        # The status of the extension.
         self.status = status
 
     def validate(self):

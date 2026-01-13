@@ -13,7 +13,9 @@ class ListDatabaseExtensionsResponseBody(DaraModel):
         extensions: List[main_models.ListDatabaseExtensionsResponseBodyExtensions] = None,
         request_id: str = None,
     ):
+        # Extension list.
         self.extensions = extensions
+        # The unique ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,11 @@ class ListDatabaseExtensionsResponseBodyExtensions(DaraModel):
         extension_name: str = None,
         status: str = None,
     ):
+        # The description of the extension.
         self.description = description
+        # The extension name.
         self.extension_name = extension_name
+        # The status of the extension.
         self.status = status
 
     def validate(self):

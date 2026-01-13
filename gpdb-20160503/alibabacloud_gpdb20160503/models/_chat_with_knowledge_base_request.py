@@ -36,6 +36,8 @@ class ChatWithKnowledgeBaseRequest(DaraModel):
         # The system prompt template, which should include {{ text_chunks }},{{ user_system_prompt }},{{ graph_entities },{{ graph_relations }}. If any of these placeholders are not specified, the corresponding section should have no effect.
         self.prompt_params = prompt_params
         # 实例所在的地域ID
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
@@ -312,12 +314,16 @@ class ChatWithKnowledgeBaseRequestModelParamsMessages(DaraModel):
         role: str = None,
     ):
         # The message content.
+        # 
+        # This parameter is required.
         self.content = content
         # The message role. Valid values:
         # 
         # *   system
         # *   user
         # *   assistant
+        # 
+        # This parameter is required.
         self.role = role
 
     def validate(self):

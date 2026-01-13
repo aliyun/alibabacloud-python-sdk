@@ -10,7 +10,9 @@ class DescribePrivateRAGServiceResponseBody(DaraModel):
         ca_cert: str = None,
         request_id: str = None,
     ):
+        # CA certificate Info. The returned OSS link, valid for 2 hours.
         self.ca_cert = ca_cert
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

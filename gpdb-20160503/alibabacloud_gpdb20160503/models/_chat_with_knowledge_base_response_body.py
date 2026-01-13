@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Any
+from typing import List, Any, Dict
 
 from alibabacloud_gpdb20160503 import models as main_models
 from darabonba.model import DaraModel
@@ -213,7 +213,7 @@ class ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches(DaraMo
         file_url: str = None,
         id: str = None,
         loader_metadata: Any = None,
-        metadata: main_models.ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatchesMetadata = None,
+        metadata: Dict[str, Any] = None,
         rerank_score: float = None,
         retrieval_source: int = None,
         score: float = None,
@@ -243,8 +243,7 @@ class ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches(DaraMo
         self.vector = vector
 
     def validate(self):
-        if self.metadata:
-            self.metadata.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -267,7 +266,7 @@ class ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches(DaraMo
             result['LoaderMetadata'] = self.loader_metadata
 
         if self.metadata is not None:
-            result['Metadata'] = self.metadata.to_map()
+            result['Metadata'] = self.metadata
 
         if self.rerank_score is not None:
             result['RerankScore'] = self.rerank_score
@@ -301,8 +300,7 @@ class ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches(DaraMo
             self.loader_metadata = m.get('LoaderMetadata')
 
         if m.get('Metadata') is not None:
-            temp_model = main_models.ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatchesMetadata()
-            self.metadata = temp_model.from_map(m.get('Metadata'))
+            self.metadata = m.get('Metadata')
 
         if m.get('RerankScore') is not None:
             self.rerank_score = m.get('RerankScore')
@@ -315,34 +313,6 @@ class ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatches(DaraMo
 
         if m.get('Vector') is not None:
             self.vector = m.get('Vector')
-
-        return self
-
-class ChatWithKnowledgeBaseResponseBodyMultiCollectionRecallResultMatchesMetadata(DaraModel):
-    def __init__(
-        self,
-        source: int = None,
-    ):
-        # The source of the document.
-        self.source = source
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.source is not None:
-            result['Source'] = self.source
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('Source') is not None:
-            self.source = m.get('Source')
 
         return self
 

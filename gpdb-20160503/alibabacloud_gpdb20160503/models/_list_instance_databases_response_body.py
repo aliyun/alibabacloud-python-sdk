@@ -15,9 +15,15 @@ class ListInstanceDatabasesResponseBody(DaraModel):
         request_id: str = None,
         total_count: str = None,
     ):
+        # The cluster ID.
+        # 
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
         self.dbinstance_id = dbinstance_id
+        # The queried databases.
         self.databases = databases
+        # The unique ID of the request.
         self.request_id = request_id
+        # The total number of entries.
         self.total_count = total_count
 
     def validate(self):
@@ -72,7 +78,13 @@ class ListInstanceDatabasesResponseBodyDatabases(DaraModel):
         database_name: str = None,
         description: str = None,
     ):
+        # The database name.
+        # 
+        # *   Only contain letters, digits, and underscores (_).
+        # *   Must start with a letter.
+        # *   Up to 63 characters in length.
         self.database_name = database_name
+        # The description.
         self.description = description
 
     def validate(self):

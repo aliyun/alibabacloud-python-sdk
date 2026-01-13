@@ -12,7 +12,9 @@ class DescribeZonesPrivateRAGServiceResponseBody(DaraModel):
         request_id: str = None,
         zone_ids: List[str] = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # The list of zones.
         self.zone_ids = zone_ids
 
     def validate(self):

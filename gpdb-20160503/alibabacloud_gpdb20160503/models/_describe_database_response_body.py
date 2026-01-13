@@ -20,17 +20,52 @@ class DescribeDatabaseResponseBody(DaraModel):
         size: str = None,
         table_space: str = None,
     ):
+        # The permission control information.
         self.access_privilege = access_privilege
+        # The character set.
+        # 
+        # For more information about the value range, see Document https://www.postgresql.org/docs/current/multibyte.html.
         self.character_set_name = character_set_name
+        # Database locale parameter that specifies string comparison and sorting rules.
+        # 
+        # > 
+        # 
+        # *   The locale must be compatible with the character set specified by the CharacterSetName parameter.
+        # 
+        # *   Collate: You can query available collations using the command SELECT DISTINCT collname FROM pg_collation;. If not specified, the default value is en_US.utf8.
         self.collate = collate
+        # Limits the number of concurrent connections. -1 indicates unlimited.
         self.conn_limit = conn_limit
+        # Database locale parameter that specifies character classification and case conversion rules.
+        # 
+        # > 
+        # 
+        # *   The locale must be compatible with the character set specified by the CharacterSetName parameter.
+        # 
+        # *   You can execute the SELECT DISTINCT collctype FROM pg_collation; statement to obtain the field value. The default value is en_US.utf8.
         self.ctype = ctype
+        # The cluster ID.
         self.dbinstance_id = dbinstance_id
+        # The database name.
+        # 
+        # *   Only contain letters, digits, and underscores (_).
+        # *   Must start with a letter.
+        # *   Up to 63 characters in length.
         self.database_name = database_name
+        # The database comment.
         self.description = description
+        # The owner of the table.
+        # 
+        # *   Contain lowercase letters, digits, and underscores (_).
+        # *   Must start with a lowercase letter and end with a lowercase letter or a digit.
+        # *   Cannot start with gp.
+        # *   Must be 2 to 16 characters in length.
         self.owner = owner
+        # The unique ID of the request.
         self.request_id = request_id
+        # The database size.
         self.size = size
+        # The database tablespace.
         self.table_space = table_space
 
     def validate(self):

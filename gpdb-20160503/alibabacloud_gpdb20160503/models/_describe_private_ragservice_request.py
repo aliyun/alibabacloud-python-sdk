@@ -9,6 +9,10 @@ class DescribePrivateRAGServiceRequest(DaraModel):
         self,
         dbinstance_id: str = None,
     ):
+        # Instance ID.
+        # 
+        # >  You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) Interface to query the details of all AnalyticDB PostgreSQL Instances in the target region, including Instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
 

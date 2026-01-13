@@ -11,9 +11,21 @@ class ListInstanceDatabasesRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
+        # The cluster ID.
+        # 
+        # > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/86911.html) operation to query the information about all AnalyticDB for PostgreSQL instances within a region, including instance IDs.
+        # 
         # This parameter is required.
         self.dbinstance_id = dbinstance_id
+        # The page number of the returned page.
         self.page_number = page_number
+        # The number of entries per page. Valid values:
+        # 
+        # *   **20**
+        # *   **50**
+        # *   **100**
+        # 
+        # Default value: **20**.
         self.page_size = page_size
 
     def validate(self):
