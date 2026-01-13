@@ -1,3 +1,15 @@
+2026-01-13 Version: 4.21.2
+- Update API DescribeDesktopTypes: add request parameters OfficeSiteId.
+- Update API DescribeDesktopTypes: add response parameters Body.DesktopTypes.$.EnvId.
+- Update API DescribeDesktopTypes: add response parameters Body.DesktopTypes.$.EnvType.
+- Update API DescribeDesktops: add response parameters Body.Desktops.$.EnvId.
+- Update API DescribeDesktops: add response parameters Body.Desktops.$.EnvType.
+- Update API DescribeGlobalDesktopRecords: add request parameters DesktopStatusList.
+- Update API DescribeGlobalDesktopRecords: add request parameters ExcludeDesktopStatusList.
+- Update API DescribeSnapshots: add response parameters Body.Snapshots.$.EnvId.
+- Update API DescribeSnapshots: add response parameters Body.Snapshots.$.EnvType.
+
+
 2026-01-12 Version: 4.21.1
 - Update API CreateSimpleOfficeSite: add request parameters Eid.
 - Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.Eid.

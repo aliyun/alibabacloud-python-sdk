@@ -60,6 +60,8 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(DaraModel):
         description: str = None,
         desktop_type_id: str = None,
         desktop_type_status: str = None,
+        env_id: str = None,
+        env_type: str = None,
         gpu_count: float = None,
         gpu_memory: int = None,
         gpu_spec: str = None,
@@ -79,6 +81,8 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(DaraModel):
         self.desktop_type_id = desktop_type_id
         # The status of the cloud desktop type. If SUFFICIENT is returned, the number of cloud desktops of the type is sufficient.
         self.desktop_type_status = desktop_type_status
+        self.env_id = env_id
+        self.env_type = env_type
         # The number of GPUs.
         self.gpu_count = gpu_count
         # The GPU memory size. For GPU-accelerated cloud computers, this return value is significant. Unit: MB.
@@ -126,6 +130,12 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(DaraModel):
         if self.desktop_type_status is not None:
             result['DesktopTypeStatus'] = self.desktop_type_status
 
+        if self.env_id is not None:
+            result['EnvId'] = self.env_id
+
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
+
         if self.gpu_count is not None:
             result['GpuCount'] = self.gpu_count
 
@@ -171,6 +181,12 @@ class DescribeDesktopTypesResponseBodyDesktopTypes(DaraModel):
 
         if m.get('DesktopTypeStatus') is not None:
             self.desktop_type_status = m.get('DesktopTypeStatus')
+
+        if m.get('EnvId') is not None:
+            self.env_id = m.get('EnvId')
+
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
 
         if m.get('GpuCount') is not None:
             self.gpu_count = m.get('GpuCount')

@@ -72,6 +72,8 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
         desktop_name: str = None,
         desktop_status: str = None,
         disk_status: str = None,
+        env_id: str = None,
+        env_type: str = None,
         os_type: str = None,
         progress: str = None,
         protocol_type: str = None,
@@ -113,6 +115,8 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
         # *   Pending
         self.desktop_status = desktop_status
         self.disk_status = disk_status
+        self.env_id = env_id
+        self.env_type = env_type
         self.os_type = os_type
         # The progress of creating the snapshot. Unit: %.
         self.progress = progress
@@ -255,6 +259,12 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
         if self.disk_status is not None:
             result['DiskStatus'] = self.disk_status
 
+        if self.env_id is not None:
+            result['EnvId'] = self.env_id
+
+        if self.env_type is not None:
+            result['EnvType'] = self.env_type
+
         if self.os_type is not None:
             result['OsType'] = self.os_type
 
@@ -324,6 +334,12 @@ class DescribeSnapshotsResponseBodySnapshots(DaraModel):
 
         if m.get('DiskStatus') is not None:
             self.disk_status = m.get('DiskStatus')
+
+        if m.get('EnvId') is not None:
+            self.env_id = m.get('EnvId')
+
+        if m.get('EnvType') is not None:
+            self.env_type = m.get('EnvType')
 
         if m.get('OsType') is not None:
             self.os_type = m.get('OsType')

@@ -20,6 +20,7 @@ class DescribeDesktopTypesRequest(DaraModel):
         gpu_memory: int = None,
         instance_type_family: str = None,
         memory_size: int = None,
+        office_site_id: str = None,
         order_by: str = None,
         order_type: str = None,
         region_id: str = None,
@@ -99,6 +100,7 @@ class DescribeDesktopTypesRequest(DaraModel):
         self.instance_type_family = instance_type_family
         # The memory size. Unit: MiB.
         self.memory_size = memory_size
+        self.office_site_id = office_site_id
         # The sorting field. If this parameter is not provided, results are sorted by creation time in descending order.
         # 
         # Valid values:
@@ -173,6 +175,9 @@ class DescribeDesktopTypesRequest(DaraModel):
         if self.memory_size is not None:
             result['MemorySize'] = self.memory_size
 
+        if self.office_site_id is not None:
+            result['OfficeSiteId'] = self.office_site_id
+
         if self.order_by is not None:
             result['OrderBy'] = self.order_by
 
@@ -233,6 +238,9 @@ class DescribeDesktopTypesRequest(DaraModel):
 
         if m.get('MemorySize') is not None:
             self.memory_size = m.get('MemorySize')
+
+        if m.get('OfficeSiteId') is not None:
+            self.office_site_id = m.get('OfficeSiteId')
 
         if m.get('OrderBy') is not None:
             self.order_by = m.get('OrderBy')

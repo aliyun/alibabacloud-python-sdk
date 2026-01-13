@@ -11,9 +11,11 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
         self,
         desktop_id: List[str] = None,
         desktop_name: str = None,
+        desktop_status_list: List[str] = None,
         desktop_type: str = None,
         end_time: str = None,
         end_user_id: str = None,
+        exclude_desktop_status_list: List[str] = None,
         office_site_id: str = None,
         order_by: str = None,
         page_number: int = None,
@@ -29,6 +31,7 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
         self.desktop_id = desktop_id
         # The name of the cloud computer.
         self.desktop_name = desktop_name
+        self.desktop_status_list = desktop_status_list
         # The cloud computer type. You can call the [DescribeDesktopTypes](https://help.aliyun.com/document_detail/188882.html) operation to query the IDs of the specifications supported by the cloud computer.
         self.desktop_type = desktop_type
         # The end time. The interval between the start time and end time can be up to 30 days. Supported formats:
@@ -37,6 +40,7 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
         self.end_time = end_time
         # The end user ID.
         self.end_user_id = end_user_id
+        self.exclude_desktop_status_list = exclude_desktop_status_list
         # The office network IDs.
         self.office_site_id = office_site_id
         # The sorting field. If this parameter is not provided, results are sorted by creation time in descending order. Valid values:
@@ -91,6 +95,9 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
         if self.desktop_name is not None:
             result['DesktopName'] = self.desktop_name
 
+        if self.desktop_status_list is not None:
+            result['DesktopStatusList'] = self.desktop_status_list
+
         if self.desktop_type is not None:
             result['DesktopType'] = self.desktop_type
 
@@ -99,6 +106,9 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
 
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
+
+        if self.exclude_desktop_status_list is not None:
+            result['ExcludeDesktopStatusList'] = self.exclude_desktop_status_list
 
         if self.office_site_id is not None:
             result['OfficeSiteId'] = self.office_site_id
@@ -140,6 +150,9 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
         if m.get('DesktopName') is not None:
             self.desktop_name = m.get('DesktopName')
 
+        if m.get('DesktopStatusList') is not None:
+            self.desktop_status_list = m.get('DesktopStatusList')
+
         if m.get('DesktopType') is not None:
             self.desktop_type = m.get('DesktopType')
 
@@ -148,6 +161,9 @@ class DescribeGlobalDesktopRecordsRequest(DaraModel):
 
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
+
+        if m.get('ExcludeDesktopStatusList') is not None:
+            self.exclude_desktop_status_list = m.get('ExcludeDesktopStatusList')
 
         if m.get('OfficeSiteId') is not None:
             self.office_site_id = m.get('OfficeSiteId')

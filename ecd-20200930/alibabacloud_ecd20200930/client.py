@@ -11192,6 +11192,8 @@ class Client(OpenApiClient):
             query['InstanceTypeFamily'] = request.instance_type_family
         if not DaraCore.is_null(request.memory_size):
             query['MemorySize'] = request.memory_size
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.order_by):
             query['OrderBy'] = request.order_by
         if not DaraCore.is_null(request.order_type):
@@ -11256,6 +11258,8 @@ class Client(OpenApiClient):
             query['InstanceTypeFamily'] = request.instance_type_family
         if not DaraCore.is_null(request.memory_size):
             query['MemorySize'] = request.memory_size
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.order_by):
             query['OrderBy'] = request.order_by
         if not DaraCore.is_null(request.order_type):
@@ -12466,12 +12470,16 @@ class Client(OpenApiClient):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.desktop_name):
             query['DesktopName'] = request.desktop_name
+        if not DaraCore.is_null(request.desktop_status_list):
+            query['DesktopStatusList'] = request.desktop_status_list
         if not DaraCore.is_null(request.desktop_type):
             query['DesktopType'] = request.desktop_type
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.exclude_desktop_status_list):
+            query['ExcludeDesktopStatusList'] = request.exclude_desktop_status_list
         if not DaraCore.is_null(request.office_site_id):
             query['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.order_by):
@@ -12522,12 +12530,16 @@ class Client(OpenApiClient):
             query['DesktopId'] = request.desktop_id
         if not DaraCore.is_null(request.desktop_name):
             query['DesktopName'] = request.desktop_name
+        if not DaraCore.is_null(request.desktop_status_list):
+            query['DesktopStatusList'] = request.desktop_status_list
         if not DaraCore.is_null(request.desktop_type):
             query['DesktopType'] = request.desktop_type
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.end_user_id):
             query['EndUserId'] = request.end_user_id
+        if not DaraCore.is_null(request.exclude_desktop_status_list):
+            query['ExcludeDesktopStatusList'] = request.exclude_desktop_status_list
         if not DaraCore.is_null(request.office_site_id):
             query['OfficeSiteId'] = request.office_site_id
         if not DaraCore.is_null(request.order_by):
