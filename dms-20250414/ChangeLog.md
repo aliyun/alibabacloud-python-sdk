@@ -1,3 +1,8 @@
+2026-01-14 Version: 1.8.2
+- Update API DescribeCustomAgent: add response parameters Body.Data.KnowledgeConfigList.
+- Update API ListCustomAgent: add response parameters Body.Data.Content.$.KnowledgeConfigList.
+
+
 2026-01-07 Version: 1.8.1
 - Update API DescribeCustomAgent: add response parameters Body.Data.ExecutionConfig.SkipAskHuman.
 - Update API DescribeCustomAgent: add response parameters Body.Data.ExecutionConfig.SkipSqlConfirm.

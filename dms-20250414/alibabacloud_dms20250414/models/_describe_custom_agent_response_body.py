@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_dms20250414 import models as main_models
 from darabonba.model import DaraModel
 
@@ -82,6 +84,7 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         gmt_modified: str = None,
         instruction: str = None,
         knowledge: str = None,
+        knowledge_config_list: List[main_models.DescribeCustomAgentResponseBodyDataKnowledgeConfigList] = None,
         modifier: str = None,
         modifier_user_name: str = None,
         name: str = None,
@@ -105,6 +108,7 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         self.gmt_modified = gmt_modified
         self.instruction = instruction
         self.knowledge = knowledge
+        self.knowledge_config_list = knowledge_config_list
         self.modifier = modifier
         self.modifier_user_name = modifier_user_name
         self.name = name
@@ -119,6 +123,10 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
     def validate(self):
         if self.execution_config:
             self.execution_config.validate()
+        if self.knowledge_config_list:
+            for v1 in self.knowledge_config_list:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -160,6 +168,11 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
 
         if self.knowledge is not None:
             result['Knowledge'] = self.knowledge
+
+        result['KnowledgeConfigList'] = []
+        if self.knowledge_config_list is not None:
+            for k1 in self.knowledge_config_list:
+                result['KnowledgeConfigList'].append(k1.to_map() if k1 else None)
 
         if self.modifier is not None:
             result['Modifier'] = self.modifier
@@ -232,6 +245,12 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         if m.get('Knowledge') is not None:
             self.knowledge = m.get('Knowledge')
 
+        self.knowledge_config_list = []
+        if m.get('KnowledgeConfigList') is not None:
+            for k1 in m.get('KnowledgeConfigList'):
+                temp_model = main_models.DescribeCustomAgentResponseBodyDataKnowledgeConfigList()
+                self.knowledge_config_list.append(temp_model.from_map(k1))
+
         if m.get('Modifier') is not None:
             self.modifier = m.get('Modifier')
 
@@ -261,6 +280,41 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
+
+        return self
+
+class DescribeCustomAgentResponseBodyDataKnowledgeConfigList(DaraModel):
+    def __init__(
+        self,
+        access_type: str = None,
+        mcp_server_id: str = None,
+    ):
+        self.access_type = access_type
+        self.mcp_server_id = mcp_server_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.access_type is not None:
+            result['AccessType'] = self.access_type
+
+        if self.mcp_server_id is not None:
+            result['McpServerId'] = self.mcp_server_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AccessType') is not None:
+            self.access_type = m.get('AccessType')
+
+        if m.get('McpServerId') is not None:
+            self.mcp_server_id = m.get('McpServerId')
 
         return self
 
