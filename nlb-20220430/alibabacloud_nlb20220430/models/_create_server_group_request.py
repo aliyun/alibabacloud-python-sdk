@@ -17,6 +17,7 @@ class CreateServerGroupRequest(DaraModel):
         connection_drain_timeout: int = None,
         dry_run: bool = None,
         health_check_config: main_models.CreateServerGroupRequestHealthCheckConfig = None,
+        ip_version_affinity_mode: str = None,
         preserve_client_ip_enabled: bool = None,
         protocol: str = None,
         region_id: str = None,
@@ -57,6 +58,7 @@ class CreateServerGroupRequest(DaraModel):
         self.dry_run = dry_run
         # The configurations of health checks.
         self.health_check_config = health_check_config
+        self.ip_version_affinity_mode = ip_version_affinity_mode
         # Specifies whether to enable client IP preservation. Valid values:
         # 
         # *   **true** (default)
@@ -146,6 +148,9 @@ class CreateServerGroupRequest(DaraModel):
         if self.health_check_config is not None:
             result['HealthCheckConfig'] = self.health_check_config.to_map()
 
+        if self.ip_version_affinity_mode is not None:
+            result['IpVersionAffinityMode'] = self.ip_version_affinity_mode
+
         if self.preserve_client_ip_enabled is not None:
             result['PreserveClientIpEnabled'] = self.preserve_client_ip_enabled
 
@@ -200,6 +205,9 @@ class CreateServerGroupRequest(DaraModel):
         if m.get('HealthCheckConfig') is not None:
             temp_model = main_models.CreateServerGroupRequestHealthCheckConfig()
             self.health_check_config = temp_model.from_map(m.get('HealthCheckConfig'))
+
+        if m.get('IpVersionAffinityMode') is not None:
+            self.ip_version_affinity_mode = m.get('IpVersionAffinityMode')
 
         if m.get('PreserveClientIpEnabled') is not None:
             self.preserve_client_ip_enabled = m.get('PreserveClientIpEnabled')

@@ -805,6 +805,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not DaraCore.is_null(request.health_check_config):
             body_flat['HealthCheckConfig'] = request.health_check_config
+        if not DaraCore.is_null(request.ip_version_affinity_mode):
+            body['IpVersionAffinityMode'] = request.ip_version_affinity_mode
         if not DaraCore.is_null(request.preserve_client_ip_enabled):
             body['PreserveClientIpEnabled'] = request.preserve_client_ip_enabled
         if not DaraCore.is_null(request.protocol):
@@ -865,6 +867,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not DaraCore.is_null(request.health_check_config):
             body_flat['HealthCheckConfig'] = request.health_check_config
+        if not DaraCore.is_null(request.ip_version_affinity_mode):
+            body['IpVersionAffinityMode'] = request.ip_version_affinity_mode
         if not DaraCore.is_null(request.preserve_client_ip_enabled):
             body['PreserveClientIpEnabled'] = request.preserve_client_ip_enabled
         if not DaraCore.is_null(request.protocol):
@@ -4459,6 +4463,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not DaraCore.is_null(request.health_check_config):
             body_flat['HealthCheckConfig'] = request.health_check_config
+        if not DaraCore.is_null(request.ip_version_affinity_mode):
+            body['IpVersionAffinityMode'] = request.ip_version_affinity_mode
         if not DaraCore.is_null(request.preserve_client_ip_enabled):
             body['PreserveClientIpEnabled'] = request.preserve_client_ip_enabled
         if not DaraCore.is_null(request.region_id):
@@ -4507,6 +4513,8 @@ class Client(OpenApiClient):
         body_flat = {}
         if not DaraCore.is_null(request.health_check_config):
             body_flat['HealthCheckConfig'] = request.health_check_config
+        if not DaraCore.is_null(request.ip_version_affinity_mode):
+            body['IpVersionAffinityMode'] = request.ip_version_affinity_mode
         if not DaraCore.is_null(request.preserve_client_ip_enabled):
             body['PreserveClientIpEnabled'] = request.preserve_client_ip_enabled
         if not DaraCore.is_null(request.region_id):
