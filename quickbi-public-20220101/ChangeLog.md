@@ -1,3 +1,10 @@
+2026-01-14 Version: 1.15.0
+- Support API GetMailTaskList.
+- Support API ListWhitePortalMenu.
+- Support API QueryUserByMobileAccount.
+- Update API QueryOrganizationWorkspaceList: add response parameters Body.Result.Data.$.RealOwnerAccountName.
+
+
 2025-12-04 Version: 1.14.1
 - Generated python 2022-01-01 for quickbi-public.
 
