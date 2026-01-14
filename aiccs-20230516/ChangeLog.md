@@ -1,3 +1,18 @@
+2026-01-14 Version: 1.2.0
+- Support API AddAgent.
+- Support API AddAgentGroup.
+- Support API AgentCallList.
+- Support API AgentGroupPage.
+- Support API AgentImportNumber.
+- Support API CallChatList.
+- Support API CallNumberDetail.
+- Support API JoinAgentGroup.
+- Support API QueryAgentInfo.
+- Support API QuickAddTask.
+- Support API QuitAgentGroup.
+- Update API ImportNumber: add response parameters Body.AccessDeniedDetail.
+
+
 2025-05-13 Version: 1.1.1
 - Generated python 2023-05-16 for aiccs.
 
