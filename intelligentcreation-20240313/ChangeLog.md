@@ -1,3 +1,7 @@
+2026-01-14 Version: 2.16.2
+- Update API ListAICoachTaskPage: add response parameters Body.total.
+
+
 2025-10-14 Version: 2.16.1
 - Update API BuildAICoachScriptRecord: add response parameters Body.scriptRecordId.
 

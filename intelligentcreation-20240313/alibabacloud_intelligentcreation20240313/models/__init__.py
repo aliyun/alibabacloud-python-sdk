@@ -1,0 +1,631 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._add_document_info import AddDocumentInfo
+from ._add_document_result import AddDocumentResult
+from ._anchor_response import AnchorResponse
+from ._batch_add_document_result import BatchAddDocumentResult
+from ._document_info import DocumentInfo
+from ._document_result import DocumentResult
+from ._get_oss_upload_token_result import GetOssUploadTokenResult
+from ._illustration import Illustration
+from ._illustration_result import IllustrationResult
+from ._illustration_task import IllustrationTask
+from ._illustration_task_create_cmd import IllustrationTaskCreateCmd
+from ._illustration_task_result import IllustrationTaskResult
+from ._knowledge_base_info import KnowledgeBaseInfo
+from ._knowledge_base_list_result import KnowledgeBaseListResult
+from ._reference_tag import ReferenceTag
+from ._text import Text
+from ._text_query_result import TextQueryResult
+from ._text_result import TextResult
+from ._text_task import TextTask
+from ._text_task_create_cmd import TextTaskCreateCmd
+from ._text_task_result import TextTaskResult
+from ._text_theme import TextTheme
+from ._text_theme_list_result import TextThemeListResult
+from ._upload_info import UploadInfo
+from ._voice_model_response import VoiceModelResponse
+from ._add_text_feedback_request import AddTextFeedbackRequest
+from ._add_text_feedback_response_body import AddTextFeedbackResponseBody
+from ._add_text_feedback_response import AddTextFeedbackResponse
+from ._batch_add_document_request import BatchAddDocumentRequest
+from ._batch_add_document_response import BatchAddDocumentResponse
+from ._batch_create_aicoach_task_request import BatchCreateAICoachTaskRequest
+from ._batch_create_aicoach_task_response_body import BatchCreateAICoachTaskResponseBody
+from ._batch_create_aicoach_task_response import BatchCreateAICoachTaskResponse
+from ._batch_get_project_task_request import BatchGetProjectTaskRequest
+from ._batch_get_project_task_shrink_request import BatchGetProjectTaskShrinkRequest
+from ._batch_get_project_task_response_body import BatchGetProjectTaskResponseBody
+from ._batch_get_project_task_response import BatchGetProjectTaskResponse
+from ._batch_get_train_task_request import BatchGetTrainTaskRequest
+from ._batch_get_train_task_shrink_request import BatchGetTrainTaskShrinkRequest
+from ._batch_get_train_task_response_body import BatchGetTrainTaskResponseBody
+from ._batch_get_train_task_response import BatchGetTrainTaskResponse
+from ._batch_get_video_clip_task_request import BatchGetVideoClipTaskRequest
+from ._batch_get_video_clip_task_shrink_request import BatchGetVideoClipTaskShrinkRequest
+from ._batch_get_video_clip_task_response_body import BatchGetVideoClipTaskResponseBody
+from ._batch_get_video_clip_task_response import BatchGetVideoClipTaskResponse
+from ._batch_query_individuation_text_request import BatchQueryIndividuationTextRequest
+from ._batch_query_individuation_text_shrink_request import BatchQueryIndividuationTextShrinkRequest
+from ._batch_query_individuation_text_response_body import BatchQueryIndividuationTextResponseBody
+from ._batch_query_individuation_text_response import BatchQueryIndividuationTextResponse
+from ._build_aicoach_script_record_request import BuildAICoachScriptRecordRequest
+from ._build_aicoach_script_record_response_body import BuildAICoachScriptRecordResponseBody
+from ._build_aicoach_script_record_response import BuildAICoachScriptRecordResponse
+from ._check_session_request import CheckSessionRequest
+from ._check_session_response_body import CheckSessionResponseBody
+from ._check_session_response import CheckSessionResponse
+from ._close_aicoach_task_session_request import CloseAICoachTaskSessionRequest
+from ._close_aicoach_task_session_response_body import CloseAICoachTaskSessionResponseBody
+from ._close_aicoach_task_session_response import CloseAICoachTaskSessionResponse
+from ._count_text_request import CountTextRequest
+from ._count_text_response_body import CountTextResponseBody
+from ._count_text_response import CountTextResponse
+from ._create_aicoach_task_request import CreateAICoachTaskRequest
+from ._create_aicoach_task_response_body import CreateAICoachTaskResponseBody
+from ._create_aicoach_task_response import CreateAICoachTaskResponse
+from ._create_aicoach_task_session_request import CreateAICoachTaskSessionRequest
+from ._create_aicoach_task_session_response_body import CreateAICoachTaskSessionResponseBody
+from ._create_aicoach_task_session_response import CreateAICoachTaskSessionResponse
+from ._create_agent_request import CreateAgentRequest
+from ._create_agent_response_body import CreateAgentResponseBody
+from ._create_agent_response import CreateAgentResponse
+from ._create_anchor_request import CreateAnchorRequest
+from ._create_anchor_response_body import CreateAnchorResponseBody
+from ._create_anchor_response import CreateAnchorResponse
+from ._create_illustration_task_request import CreateIllustrationTaskRequest
+from ._create_illustration_task_response import CreateIllustrationTaskResponse
+from ._create_individuation_project_request import CreateIndividuationProjectRequest
+from ._create_individuation_project_response_body import CreateIndividuationProjectResponseBody
+from ._create_individuation_project_response import CreateIndividuationProjectResponse
+from ._create_individuation_text_task_request import CreateIndividuationTextTaskRequest
+from ._create_individuation_text_task_response_body import CreateIndividuationTextTaskResponseBody
+from ._create_individuation_text_task_response import CreateIndividuationTextTaskResponse
+from ._create_product_image_request import CreateProductImageRequest
+from ._create_product_image_response_body import CreateProductImageResponseBody
+from ._create_product_image_response import CreateProductImageResponse
+from ._create_realistic_portrait_request import CreateRealisticPortraitRequest
+from ._create_realistic_portrait_response_body import CreateRealisticPortraitResponseBody
+from ._create_realistic_portrait_response import CreateRealisticPortraitResponse
+from ._create_text_task_request import CreateTextTaskRequest
+from ._create_text_task_response import CreateTextTaskResponse
+from ._create_train_task_request import CreateTrainTaskRequest
+from ._create_train_task_response_body import CreateTrainTaskResponseBody
+from ._create_train_task_response import CreateTrainTaskResponse
+from ._create_video_clip_task_request import CreateVideoClipTaskRequest
+from ._create_video_clip_task_response_body import CreateVideoClipTaskResponseBody
+from ._create_video_clip_task_response import CreateVideoClipTaskResponse
+from ._delete_aicoach_script_request import DeleteAICoachScriptRequest
+from ._delete_aicoach_script_response_body import DeleteAICoachScriptResponseBody
+from ._delete_aicoach_script_response import DeleteAICoachScriptResponse
+from ._delete_agent_request import DeleteAgentRequest
+from ._delete_agent_response_body import DeleteAgentResponseBody
+from ._delete_agent_response import DeleteAgentResponse
+from ._delete_individuation_project_request import DeleteIndividuationProjectRequest
+from ._delete_individuation_project_response_body import DeleteIndividuationProjectResponseBody
+from ._delete_individuation_project_response import DeleteIndividuationProjectResponse
+from ._delete_individuation_text_request import DeleteIndividuationTextRequest
+from ._delete_individuation_text_response_body import DeleteIndividuationTextResponseBody
+from ._delete_individuation_text_response import DeleteIndividuationTextResponse
+from ._describe_document_response import DescribeDocumentResponse
+from ._finish_aicoach_task_session_request import FinishAICoachTaskSessionRequest
+from ._finish_aicoach_task_session_response_body import FinishAICoachTaskSessionResponseBody
+from ._finish_aicoach_task_session_response import FinishAICoachTaskSessionResponse
+from ._get_aicoach_assessment_point_request import GetAICoachAssessmentPointRequest
+from ._get_aicoach_assessment_point_response_body import GetAICoachAssessmentPointResponseBody
+from ._get_aicoach_assessment_point_response import GetAICoachAssessmentPointResponse
+from ._get_aicoach_cheat_detection_request import GetAICoachCheatDetectionRequest
+from ._get_aicoach_cheat_detection_response_body import GetAICoachCheatDetectionResponseBody
+from ._get_aicoach_cheat_detection_response import GetAICoachCheatDetectionResponse
+from ._get_aicoach_script_request import GetAICoachScriptRequest
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBody
+from ._get_aicoach_script_response import GetAICoachScriptResponse
+from ._get_aicoach_task_session_history_request import GetAICoachTaskSessionHistoryRequest
+from ._get_aicoach_task_session_history_response_body import GetAICoachTaskSessionHistoryResponseBody
+from ._get_aicoach_task_session_history_response import GetAICoachTaskSessionHistoryResponse
+from ._get_aicoach_task_session_report_request import GetAICoachTaskSessionReportRequest
+from ._get_aicoach_task_session_report_response_body import GetAICoachTaskSessionReportResponseBody
+from ._get_aicoach_task_session_report_response import GetAICoachTaskSessionReportResponse
+from ._get_aicoach_task_session_resource_usage_request import GetAICoachTaskSessionResourceUsageRequest
+from ._get_aicoach_task_session_resource_usage_response_body import GetAICoachTaskSessionResourceUsageResponseBody
+from ._get_aicoach_task_session_resource_usage_response import GetAICoachTaskSessionResourceUsageResponse
+from ._get_illustration_response import GetIllustrationResponse
+from ._get_illustration_task_response import GetIllustrationTaskResponse
+from ._get_oss_upload_token_request import GetOssUploadTokenRequest
+from ._get_oss_upload_token_response import GetOssUploadTokenResponse
+from ._get_project_task_request import GetProjectTaskRequest
+from ._get_project_task_response_body import GetProjectTaskResponseBody
+from ._get_project_task_response import GetProjectTaskResponse
+from ._get_text_response import GetTextResponse
+from ._get_text_task_response import GetTextTaskResponse
+from ._get_text_template_request import GetTextTemplateRequest
+from ._get_text_template_response_body import GetTextTemplateResponseBody
+from ._get_text_template_response import GetTextTemplateResponse
+from ._interact_text_request import InteractTextRequest
+from ._interact_text_response_body import InteractTextResponseBody
+from ._interact_text_response import InteractTextResponse
+from ._list_aicoach_script_page_request import ListAICoachScriptPageRequest
+from ._list_aicoach_script_page_response_body import ListAICoachScriptPageResponseBody
+from ._list_aicoach_script_page_response import ListAICoachScriptPageResponse
+from ._list_aicoach_task_page_request import ListAICoachTaskPageRequest
+from ._list_aicoach_task_page_response_body import ListAICoachTaskPageResponseBody
+from ._list_aicoach_task_page_response import ListAICoachTaskPageResponse
+from ._list_agents_request import ListAgentsRequest
+from ._list_agents_response_body import ListAgentsResponseBody
+from ._list_agents_response import ListAgentsResponse
+from ._list_anchor_request import ListAnchorRequest
+from ._list_anchor_response_body import ListAnchorResponseBody
+from ._list_anchor_response import ListAnchorResponse
+from ._list_avatar_project_request import ListAvatarProjectRequest
+from ._list_avatar_project_shrink_request import ListAvatarProjectShrinkRequest
+from ._list_avatar_project_response_body import ListAvatarProjectResponseBody
+from ._list_avatar_project_response import ListAvatarProjectResponse
+from ._list_knowledge_base_request import ListKnowledgeBaseRequest
+from ._list_knowledge_base_response import ListKnowledgeBaseResponse
+from ._list_text_themes_request import ListTextThemesRequest
+from ._list_text_themes_response import ListTextThemesResponse
+from ._list_texts_request import ListTextsRequest
+from ._list_texts_response import ListTextsResponse
+from ._list_voice_models_request import ListVoiceModelsRequest
+from ._list_voice_models_response_body import ListVoiceModelsResponseBody
+from ._list_voice_models_response import ListVoiceModelsResponse
+from ._offline_aicoach_script_request import OfflineAICoachScriptRequest
+from ._offline_aicoach_script_response_body import OfflineAICoachScriptResponseBody
+from ._offline_aicoach_script_response import OfflineAICoachScriptResponse
+from ._operate_avatar_project_request import OperateAvatarProjectRequest
+from ._operate_avatar_project_response_body import OperateAvatarProjectResponseBody
+from ._operate_avatar_project_response import OperateAvatarProjectResponse
+from ._query_avatar_project_request import QueryAvatarProjectRequest
+from ._query_avatar_project_response_body import QueryAvatarProjectResponseBody
+from ._query_avatar_project_response import QueryAvatarProjectResponse
+from ._query_avatar_resource_request import QueryAvatarResourceRequest
+from ._query_avatar_resource_response_body import QueryAvatarResourceResponseBody
+from ._query_avatar_resource_response import QueryAvatarResourceResponse
+from ._query_image_to_video_task_request import QueryImageToVideoTaskRequest
+from ._query_image_to_video_task_response_body import QueryImageToVideoTaskResponseBody
+from ._query_image_to_video_task_response import QueryImageToVideoTaskResponse
+from ._query_individuation_text_task_request import QueryIndividuationTextTaskRequest
+from ._query_individuation_text_task_response_body import QueryIndividuationTextTaskResponseBody
+from ._query_individuation_text_task_response import QueryIndividuationTextTaskResponse
+from ._query_session_info_request import QuerySessionInfoRequest
+from ._query_session_info_shrink_request import QuerySessionInfoShrinkRequest
+from ._query_session_info_response_body import QuerySessionInfoResponseBody
+from ._query_session_info_response import QuerySessionInfoResponse
+from ._query_text_stream_response_body import QueryTextStreamResponseBody
+from ._query_text_stream_response import QueryTextStreamResponse
+from ._release_agent_request import ReleaseAgentRequest
+from ._release_agent_response_body import ReleaseAgentResponseBody
+from ._release_agent_response import ReleaseAgentResponse
+from ._save_avatar_project_request import SaveAvatarProjectRequest
+from ._save_avatar_project_response_body import SaveAvatarProjectResponseBody
+from ._save_avatar_project_response import SaveAvatarProjectResponse
+from ._select_image_task_response_body import SelectImageTaskResponseBody
+from ._select_image_task_response import SelectImageTaskResponse
+from ._select_resource_request import SelectResourceRequest
+from ._select_resource_response_body import SelectResourceResponseBody
+from ._select_resource_response import SelectResourceResponse
+from ._send_sdk_message_request import SendSdkMessageRequest
+from ._send_sdk_message_response_body import SendSdkMessageResponseBody
+from ._send_sdk_message_response import SendSdkMessageResponse
+from ._send_sdk_stream_message_request import SendSdkStreamMessageRequest
+from ._send_sdk_stream_message_response_body import SendSdkStreamMessageResponseBody
+from ._send_sdk_stream_message_response import SendSdkStreamMessageResponse
+from ._send_text_msg_request import SendTextMsgRequest
+from ._send_text_msg_response_body import SendTextMsgResponseBody
+from ._send_text_msg_response import SendTextMsgResponse
+from ._start_avatar_session_request import StartAvatarSessionRequest
+from ._start_avatar_session_response_body import StartAvatarSessionResponseBody
+from ._start_avatar_session_response import StartAvatarSessionResponse
+from ._stop_avatar_session_request import StopAvatarSessionRequest
+from ._stop_avatar_session_response_body import StopAvatarSessionResponseBody
+from ._stop_avatar_session_response import StopAvatarSessionResponse
+from ._stop_project_task_request import StopProjectTaskRequest
+from ._stop_project_task_response_body import StopProjectTaskResponseBody
+from ._stop_project_task_response import StopProjectTaskResponse
+from ._submit_image_to_video_task_request import SubmitImageToVideoTaskRequest
+from ._submit_image_to_video_task_response_body import SubmitImageToVideoTaskResponseBody
+from ._submit_image_to_video_task_response import SubmitImageToVideoTaskResponse
+from ._submit_project_task_request import SubmitProjectTaskRequest
+from ._submit_project_task_response_body import SubmitProjectTaskResponseBody
+from ._submit_project_task_response import SubmitProjectTaskResponse
+from ._transfer_portrait_style_request import TransferPortraitStyleRequest
+from ._transfer_portrait_style_response_body import TransferPortraitStyleResponseBody
+from ._transfer_portrait_style_response import TransferPortraitStyleResponse
+from ._update_agent_request import UpdateAgentRequest
+from ._update_agent_response_body import UpdateAgentResponseBody
+from ._update_agent_response import UpdateAgentResponse
+from ._batch_create_aicoach_task_request import BatchCreateAICoachTaskRequestStudentList
+from ._batch_get_project_task_response_body import BatchGetProjectTaskResponseBodyResultList
+from ._batch_get_train_task_response_body import BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial
+from ._batch_get_train_task_response_body import BatchGetTrainTaskResponseBodyVoiceList
+from ._batch_get_video_clip_task_response_body import BatchGetVideoClipTaskResponseBodyTaskListVideoList
+from ._batch_get_video_clip_task_response_body import BatchGetVideoClipTaskResponseBodyTaskList
+from ._batch_query_individuation_text_response_body import BatchQueryIndividuationTextResponseBodyTextList
+from ._build_aicoach_script_record_response_body import BuildAICoachScriptRecordResponseBodyData
+from ._count_text_response_body import CountTextResponseBodyCountTextCmdList
+from ._create_aicoach_task_session_response_body import CreateAICoachTaskSessionResponseBodyScriptInfo
+from ._get_aicoach_assessment_point_response_body import GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues
+from ._get_aicoach_assessment_point_response_body import GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules
+from ._get_aicoach_assessment_point_response_body import GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues
+from ._get_aicoach_assessment_point_response_body import GetAICoachAssessmentPointResponseBodyAnswerListParameters
+from ._get_aicoach_assessment_point_response_body import GetAICoachAssessmentPointResponseBodyAnswerList
+from ._get_aicoach_cheat_detection_response_body import GetAICoachCheatDetectionResponseBodyImageCheatList
+from ._get_aicoach_cheat_detection_response_body import GetAICoachCheatDetectionResponseBodyImageCheat
+from ._get_aicoach_cheat_detection_response_body import GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList
+from ._get_aicoach_cheat_detection_response_body import GetAICoachCheatDetectionResponseBodyVoiceCheatOriginalList
+from ._get_aicoach_cheat_detection_response_body import GetAICoachCheatDetectionResponseBodyVoiceCheat
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyCheckCheatConfig
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyCompleteStrategy
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyCustomReplyRulesActionParameters
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyCustomReplyRulesAction
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyCustomReplyRulesMainConditionParameters
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyCustomReplyRulesMainCondition
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyCustomReplyRulesSubCondition
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyCustomReplyRules
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyExpressivenessList
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyPointDeductionRuleList
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesKeywordValues
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesScoringRules
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyPointsAnswerListAnswerValues
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyPointsAnswerListParameters
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyPointsAnswerList
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyPoints
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodySampleDialogueList
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyScoreConfigLevels
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyScoreConfig
+from ._get_aicoach_script_response_body import GetAICoachScriptResponseBodyWeights
+from ._get_aicoach_task_session_history_response_body import GetAICoachTaskSessionHistoryResponseBodyConversationList
+from ._get_text_template_response_body import GetTextTemplateResponseBodyAvailableIndustryTextModeTypesTextStyles
+from ._get_text_template_response_body import GetTextTemplateResponseBodyAvailableIndustryTextModeTypes
+from ._get_text_template_response_body import GetTextTemplateResponseBodyAvailableIndustry
+from ._list_aicoach_script_page_response_body import ListAICoachScriptPageResponseBodyListCompleteStrategy
+from ._list_aicoach_script_page_response_body import ListAICoachScriptPageResponseBodyListCustomReplyRulesActionParameters
+from ._list_aicoach_script_page_response_body import ListAICoachScriptPageResponseBodyListCustomReplyRulesAction
+from ._list_aicoach_script_page_response_body import ListAICoachScriptPageResponseBodyListCustomReplyRulesMainConditionParameters
+from ._list_aicoach_script_page_response_body import ListAICoachScriptPageResponseBodyListCustomReplyRulesMainCondition
+from ._list_aicoach_script_page_response_body import ListAICoachScriptPageResponseBodyListCustomReplyRulesSubCondition
+from ._list_aicoach_script_page_response_body import ListAICoachScriptPageResponseBodyListCustomReplyRules
+from ._list_aicoach_script_page_response_body import ListAICoachScriptPageResponseBodyListSampleDialogueList
+from ._list_aicoach_script_page_response_body import ListAICoachScriptPageResponseBodyListScoreConfigLevels
+from ._list_aicoach_script_page_response_body import ListAICoachScriptPageResponseBodyListScoreConfig
+from ._list_aicoach_script_page_response_body import ListAICoachScriptPageResponseBodyListWeights
+from ._list_aicoach_script_page_response_body import ListAICoachScriptPageResponseBodyList
+from ._list_aicoach_task_page_response_body import ListAICoachTaskPageResponseBodyTaskList
+from ._list_agents_response_body import ListAgentsResponseBodyList
+from ._list_avatar_project_response_body import ListAvatarProjectResponseBodyQueryAvatarProjectResultList
+from ._query_avatar_project_response_body import QueryAvatarProjectResponseBodyFramesLayersMaterial
+from ._query_avatar_project_response_body import QueryAvatarProjectResponseBodyFramesLayers
+from ._query_avatar_project_response_body import QueryAvatarProjectResponseBodyFramesVideoScript
+from ._query_avatar_project_response_body import QueryAvatarProjectResponseBodyFrames
+from ._query_avatar_resource_response_body import QueryAvatarResourceResponseBodyQueryResourceInfoList
+from ._query_individuation_text_task_response_body import QueryIndividuationTextTaskResponseBodyTextList
+from ._query_session_info_response_body import QuerySessionInfoResponseBodyQueryResourceInfoList
+from ._save_avatar_project_request import SaveAvatarProjectRequestFramesLayersMaterial
+from ._save_avatar_project_request import SaveAvatarProjectRequestFramesLayers
+from ._save_avatar_project_request import SaveAvatarProjectRequestFramesVideoScript
+from ._save_avatar_project_request import SaveAvatarProjectRequestFrames
+from ._select_image_task_response_body import SelectImageTaskResponseBodyImageInfos
+from ._select_resource_response_body import SelectResourceResponseBodyResourceInfoList
+from ._submit_project_task_request import SubmitProjectTaskRequestFramesLayersMaterialMask
+from ._submit_project_task_request import SubmitProjectTaskRequestFramesLayersMaterial
+from ._submit_project_task_request import SubmitProjectTaskRequestFramesLayers
+from ._submit_project_task_request import SubmitProjectTaskRequestFramesSubtitle
+from ._submit_project_task_request import SubmitProjectTaskRequestFramesVideoScript
+from ._submit_project_task_request import SubmitProjectTaskRequestFrames
+
+__all__ = [
+    AddDocumentInfo,
+    AddDocumentResult,
+    AnchorResponse,
+    BatchAddDocumentResult,
+    DocumentInfo,
+    DocumentResult,
+    GetOssUploadTokenResult,
+    Illustration,
+    IllustrationResult,
+    IllustrationTask,
+    IllustrationTaskCreateCmd,
+    IllustrationTaskResult,
+    KnowledgeBaseInfo,
+    KnowledgeBaseListResult,
+    ReferenceTag,
+    Text,
+    TextQueryResult,
+    TextResult,
+    TextTask,
+    TextTaskCreateCmd,
+    TextTaskResult,
+    TextTheme,
+    TextThemeListResult,
+    UploadInfo,
+    VoiceModelResponse,
+    AddTextFeedbackRequest,
+    AddTextFeedbackResponseBody,
+    AddTextFeedbackResponse,
+    BatchAddDocumentRequest,
+    BatchAddDocumentResponse,
+    BatchCreateAICoachTaskRequest,
+    BatchCreateAICoachTaskResponseBody,
+    BatchCreateAICoachTaskResponse,
+    BatchGetProjectTaskRequest,
+    BatchGetProjectTaskShrinkRequest,
+    BatchGetProjectTaskResponseBody,
+    BatchGetProjectTaskResponse,
+    BatchGetTrainTaskRequest,
+    BatchGetTrainTaskShrinkRequest,
+    BatchGetTrainTaskResponseBody,
+    BatchGetTrainTaskResponse,
+    BatchGetVideoClipTaskRequest,
+    BatchGetVideoClipTaskShrinkRequest,
+    BatchGetVideoClipTaskResponseBody,
+    BatchGetVideoClipTaskResponse,
+    BatchQueryIndividuationTextRequest,
+    BatchQueryIndividuationTextShrinkRequest,
+    BatchQueryIndividuationTextResponseBody,
+    BatchQueryIndividuationTextResponse,
+    BuildAICoachScriptRecordRequest,
+    BuildAICoachScriptRecordResponseBody,
+    BuildAICoachScriptRecordResponse,
+    CheckSessionRequest,
+    CheckSessionResponseBody,
+    CheckSessionResponse,
+    CloseAICoachTaskSessionRequest,
+    CloseAICoachTaskSessionResponseBody,
+    CloseAICoachTaskSessionResponse,
+    CountTextRequest,
+    CountTextResponseBody,
+    CountTextResponse,
+    CreateAICoachTaskRequest,
+    CreateAICoachTaskResponseBody,
+    CreateAICoachTaskResponse,
+    CreateAICoachTaskSessionRequest,
+    CreateAICoachTaskSessionResponseBody,
+    CreateAICoachTaskSessionResponse,
+    CreateAgentRequest,
+    CreateAgentResponseBody,
+    CreateAgentResponse,
+    CreateAnchorRequest,
+    CreateAnchorResponseBody,
+    CreateAnchorResponse,
+    CreateIllustrationTaskRequest,
+    CreateIllustrationTaskResponse,
+    CreateIndividuationProjectRequest,
+    CreateIndividuationProjectResponseBody,
+    CreateIndividuationProjectResponse,
+    CreateIndividuationTextTaskRequest,
+    CreateIndividuationTextTaskResponseBody,
+    CreateIndividuationTextTaskResponse,
+    CreateProductImageRequest,
+    CreateProductImageResponseBody,
+    CreateProductImageResponse,
+    CreateRealisticPortraitRequest,
+    CreateRealisticPortraitResponseBody,
+    CreateRealisticPortraitResponse,
+    CreateTextTaskRequest,
+    CreateTextTaskResponse,
+    CreateTrainTaskRequest,
+    CreateTrainTaskResponseBody,
+    CreateTrainTaskResponse,
+    CreateVideoClipTaskRequest,
+    CreateVideoClipTaskResponseBody,
+    CreateVideoClipTaskResponse,
+    DeleteAICoachScriptRequest,
+    DeleteAICoachScriptResponseBody,
+    DeleteAICoachScriptResponse,
+    DeleteAgentRequest,
+    DeleteAgentResponseBody,
+    DeleteAgentResponse,
+    DeleteIndividuationProjectRequest,
+    DeleteIndividuationProjectResponseBody,
+    DeleteIndividuationProjectResponse,
+    DeleteIndividuationTextRequest,
+    DeleteIndividuationTextResponseBody,
+    DeleteIndividuationTextResponse,
+    DescribeDocumentResponse,
+    FinishAICoachTaskSessionRequest,
+    FinishAICoachTaskSessionResponseBody,
+    FinishAICoachTaskSessionResponse,
+    GetAICoachAssessmentPointRequest,
+    GetAICoachAssessmentPointResponseBody,
+    GetAICoachAssessmentPointResponse,
+    GetAICoachCheatDetectionRequest,
+    GetAICoachCheatDetectionResponseBody,
+    GetAICoachCheatDetectionResponse,
+    GetAICoachScriptRequest,
+    GetAICoachScriptResponseBody,
+    GetAICoachScriptResponse,
+    GetAICoachTaskSessionHistoryRequest,
+    GetAICoachTaskSessionHistoryResponseBody,
+    GetAICoachTaskSessionHistoryResponse,
+    GetAICoachTaskSessionReportRequest,
+    GetAICoachTaskSessionReportResponseBody,
+    GetAICoachTaskSessionReportResponse,
+    GetAICoachTaskSessionResourceUsageRequest,
+    GetAICoachTaskSessionResourceUsageResponseBody,
+    GetAICoachTaskSessionResourceUsageResponse,
+    GetIllustrationResponse,
+    GetIllustrationTaskResponse,
+    GetOssUploadTokenRequest,
+    GetOssUploadTokenResponse,
+    GetProjectTaskRequest,
+    GetProjectTaskResponseBody,
+    GetProjectTaskResponse,
+    GetTextResponse,
+    GetTextTaskResponse,
+    GetTextTemplateRequest,
+    GetTextTemplateResponseBody,
+    GetTextTemplateResponse,
+    InteractTextRequest,
+    InteractTextResponseBody,
+    InteractTextResponse,
+    ListAICoachScriptPageRequest,
+    ListAICoachScriptPageResponseBody,
+    ListAICoachScriptPageResponse,
+    ListAICoachTaskPageRequest,
+    ListAICoachTaskPageResponseBody,
+    ListAICoachTaskPageResponse,
+    ListAgentsRequest,
+    ListAgentsResponseBody,
+    ListAgentsResponse,
+    ListAnchorRequest,
+    ListAnchorResponseBody,
+    ListAnchorResponse,
+    ListAvatarProjectRequest,
+    ListAvatarProjectShrinkRequest,
+    ListAvatarProjectResponseBody,
+    ListAvatarProjectResponse,
+    ListKnowledgeBaseRequest,
+    ListKnowledgeBaseResponse,
+    ListTextThemesRequest,
+    ListTextThemesResponse,
+    ListTextsRequest,
+    ListTextsResponse,
+    ListVoiceModelsRequest,
+    ListVoiceModelsResponseBody,
+    ListVoiceModelsResponse,
+    OfflineAICoachScriptRequest,
+    OfflineAICoachScriptResponseBody,
+    OfflineAICoachScriptResponse,
+    OperateAvatarProjectRequest,
+    OperateAvatarProjectResponseBody,
+    OperateAvatarProjectResponse,
+    QueryAvatarProjectRequest,
+    QueryAvatarProjectResponseBody,
+    QueryAvatarProjectResponse,
+    QueryAvatarResourceRequest,
+    QueryAvatarResourceResponseBody,
+    QueryAvatarResourceResponse,
+    QueryImageToVideoTaskRequest,
+    QueryImageToVideoTaskResponseBody,
+    QueryImageToVideoTaskResponse,
+    QueryIndividuationTextTaskRequest,
+    QueryIndividuationTextTaskResponseBody,
+    QueryIndividuationTextTaskResponse,
+    QuerySessionInfoRequest,
+    QuerySessionInfoShrinkRequest,
+    QuerySessionInfoResponseBody,
+    QuerySessionInfoResponse,
+    QueryTextStreamResponseBody,
+    QueryTextStreamResponse,
+    ReleaseAgentRequest,
+    ReleaseAgentResponseBody,
+    ReleaseAgentResponse,
+    SaveAvatarProjectRequest,
+    SaveAvatarProjectResponseBody,
+    SaveAvatarProjectResponse,
+    SelectImageTaskResponseBody,
+    SelectImageTaskResponse,
+    SelectResourceRequest,
+    SelectResourceResponseBody,
+    SelectResourceResponse,
+    SendSdkMessageRequest,
+    SendSdkMessageResponseBody,
+    SendSdkMessageResponse,
+    SendSdkStreamMessageRequest,
+    SendSdkStreamMessageResponseBody,
+    SendSdkStreamMessageResponse,
+    SendTextMsgRequest,
+    SendTextMsgResponseBody,
+    SendTextMsgResponse,
+    StartAvatarSessionRequest,
+    StartAvatarSessionResponseBody,
+    StartAvatarSessionResponse,
+    StopAvatarSessionRequest,
+    StopAvatarSessionResponseBody,
+    StopAvatarSessionResponse,
+    StopProjectTaskRequest,
+    StopProjectTaskResponseBody,
+    StopProjectTaskResponse,
+    SubmitImageToVideoTaskRequest,
+    SubmitImageToVideoTaskResponseBody,
+    SubmitImageToVideoTaskResponse,
+    SubmitProjectTaskRequest,
+    SubmitProjectTaskResponseBody,
+    SubmitProjectTaskResponse,
+    TransferPortraitStyleRequest,
+    TransferPortraitStyleResponseBody,
+    TransferPortraitStyleResponse,
+    UpdateAgentRequest,
+    UpdateAgentResponseBody,
+    UpdateAgentResponse,
+    BatchCreateAICoachTaskRequestStudentList,
+    BatchGetProjectTaskResponseBodyResultList,
+    BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial,
+    BatchGetTrainTaskResponseBodyVoiceList,
+    BatchGetVideoClipTaskResponseBodyTaskListVideoList,
+    BatchGetVideoClipTaskResponseBodyTaskList,
+    BatchQueryIndividuationTextResponseBodyTextList,
+    BuildAICoachScriptRecordResponseBodyData,
+    CountTextResponseBodyCountTextCmdList,
+    CreateAICoachTaskSessionResponseBodyScriptInfo,
+    GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesKeywordValues,
+    GetAICoachAssessmentPointResponseBodyAnswerListAnswerValuesScoringRules,
+    GetAICoachAssessmentPointResponseBodyAnswerListAnswerValues,
+    GetAICoachAssessmentPointResponseBodyAnswerListParameters,
+    GetAICoachAssessmentPointResponseBodyAnswerList,
+    GetAICoachCheatDetectionResponseBodyImageCheatList,
+    GetAICoachCheatDetectionResponseBodyImageCheat,
+    GetAICoachCheatDetectionResponseBodyVoiceCheatComparisonList,
+    GetAICoachCheatDetectionResponseBodyVoiceCheatOriginalList,
+    GetAICoachCheatDetectionResponseBodyVoiceCheat,
+    GetAICoachScriptResponseBodyCheckCheatConfig,
+    GetAICoachScriptResponseBodyCompleteStrategy,
+    GetAICoachScriptResponseBodyCustomReplyRulesActionParameters,
+    GetAICoachScriptResponseBodyCustomReplyRulesAction,
+    GetAICoachScriptResponseBodyCustomReplyRulesMainConditionParameters,
+    GetAICoachScriptResponseBodyCustomReplyRulesMainCondition,
+    GetAICoachScriptResponseBodyCustomReplyRulesSubCondition,
+    GetAICoachScriptResponseBodyCustomReplyRules,
+    GetAICoachScriptResponseBodyExpressivenessList,
+    GetAICoachScriptResponseBodyPointDeductionRuleList,
+    GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesKeywordValues,
+    GetAICoachScriptResponseBodyPointsAnswerListAnswerValuesScoringRules,
+    GetAICoachScriptResponseBodyPointsAnswerListAnswerValues,
+    GetAICoachScriptResponseBodyPointsAnswerListParameters,
+    GetAICoachScriptResponseBodyPointsAnswerList,
+    GetAICoachScriptResponseBodyPoints,
+    GetAICoachScriptResponseBodySampleDialogueList,
+    GetAICoachScriptResponseBodyScoreConfigLevels,
+    GetAICoachScriptResponseBodyScoreConfig,
+    GetAICoachScriptResponseBodyWeights,
+    GetAICoachTaskSessionHistoryResponseBodyConversationList,
+    GetTextTemplateResponseBodyAvailableIndustryTextModeTypesTextStyles,
+    GetTextTemplateResponseBodyAvailableIndustryTextModeTypes,
+    GetTextTemplateResponseBodyAvailableIndustry,
+    ListAICoachScriptPageResponseBodyListCompleteStrategy,
+    ListAICoachScriptPageResponseBodyListCustomReplyRulesActionParameters,
+    ListAICoachScriptPageResponseBodyListCustomReplyRulesAction,
+    ListAICoachScriptPageResponseBodyListCustomReplyRulesMainConditionParameters,
+    ListAICoachScriptPageResponseBodyListCustomReplyRulesMainCondition,
+    ListAICoachScriptPageResponseBodyListCustomReplyRulesSubCondition,
+    ListAICoachScriptPageResponseBodyListCustomReplyRules,
+    ListAICoachScriptPageResponseBodyListSampleDialogueList,
+    ListAICoachScriptPageResponseBodyListScoreConfigLevels,
+    ListAICoachScriptPageResponseBodyListScoreConfig,
+    ListAICoachScriptPageResponseBodyListWeights,
+    ListAICoachScriptPageResponseBodyList,
+    ListAICoachTaskPageResponseBodyTaskList,
+    ListAgentsResponseBodyList,
+    ListAvatarProjectResponseBodyQueryAvatarProjectResultList,
+    QueryAvatarProjectResponseBodyFramesLayersMaterial,
+    QueryAvatarProjectResponseBodyFramesLayers,
+    QueryAvatarProjectResponseBodyFramesVideoScript,
+    QueryAvatarProjectResponseBodyFrames,
+    QueryAvatarResourceResponseBodyQueryResourceInfoList,
+    QueryIndividuationTextTaskResponseBodyTextList,
+    QuerySessionInfoResponseBodyQueryResourceInfoList,
+    SaveAvatarProjectRequestFramesLayersMaterial,
+    SaveAvatarProjectRequestFramesLayers,
+    SaveAvatarProjectRequestFramesVideoScript,
+    SaveAvatarProjectRequestFrames,
+    SelectImageTaskResponseBodyImageInfos,
+    SelectResourceResponseBodyResourceInfoList,
+    SubmitProjectTaskRequestFramesLayersMaterialMask,
+    SubmitProjectTaskRequestFramesLayersMaterial,
+    SubmitProjectTaskRequestFramesLayers,
+    SubmitProjectTaskRequestFramesSubtitle,
+    SubmitProjectTaskRequestFramesVideoScript,
+    SubmitProjectTaskRequestFrames
+]
