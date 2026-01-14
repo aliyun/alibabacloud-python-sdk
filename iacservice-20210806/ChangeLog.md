@@ -1,3 +1,7 @@
+2026-01-14 Version: 2.1.3
+- Update API ListRegistryModules: add request parameters status.
+
+
 2025-12-04 Version: 2.1.2
 - Update API GetJob: add response parameters Body.job.jobType.
 - Update API ListJobs: add request parameters jobType.

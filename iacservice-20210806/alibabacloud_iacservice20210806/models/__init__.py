@@ -1,0 +1,557 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._job_status_detail_value import JobStatusDetailValue
+from ._jobs_status_detail_value import JobsStatusDetailValue
+from ._add_shared_accounts_request import AddSharedAccountsRequest
+from ._add_shared_accounts_response_body import AddSharedAccountsResponseBody
+from ._add_shared_accounts_response import AddSharedAccountsResponse
+from ._associate_group_request import AssociateGroupRequest
+from ._associate_group_response_body import AssociateGroupResponseBody
+from ._associate_group_response import AssociateGroupResponse
+from ._cancel_resource_export_task_request import CancelResourceExportTaskRequest
+from ._cancel_resource_export_task_response_body import CancelResourceExportTaskResponseBody
+from ._cancel_resource_export_task_response import CancelResourceExportTaskResponse
+from ._create_group_request import CreateGroupRequest
+from ._create_group_response_body import CreateGroupResponseBody
+from ._create_group_response import CreateGroupResponse
+from ._create_job_request import CreateJobRequest
+from ._create_job_response_body import CreateJobResponseBody
+from ._create_job_response import CreateJobResponse
+from ._create_module_request import CreateModuleRequest
+from ._create_module_response_body import CreateModuleResponseBody
+from ._create_module_response import CreateModuleResponse
+from ._create_module_version_request import CreateModuleVersionRequest
+from ._create_module_version_response_body import CreateModuleVersionResponseBody
+from ._create_module_version_response import CreateModuleVersionResponse
+from ._create_project_request import CreateProjectRequest
+from ._create_project_response_body import CreateProjectResponseBody
+from ._create_project_response import CreateProjectResponse
+from ._create_registry_module_request import CreateRegistryModuleRequest
+from ._create_registry_module_response_body import CreateRegistryModuleResponseBody
+from ._create_registry_module_response import CreateRegistryModuleResponse
+from ._create_registry_namespace_request import CreateRegistryNamespaceRequest
+from ._create_registry_namespace_response_body import CreateRegistryNamespaceResponseBody
+from ._create_registry_namespace_response import CreateRegistryNamespaceResponse
+from ._create_resource_export_task_request import CreateResourceExportTaskRequest
+from ._create_resource_export_task_response_body import CreateResourceExportTaskResponseBody
+from ._create_resource_export_task_response import CreateResourceExportTaskResponse
+from ._create_task_request import CreateTaskRequest
+from ._create_task_response_body import CreateTaskResponseBody
+from ._create_task_response import CreateTaskResponse
+from ._delete_group_response_body import DeleteGroupResponseBody
+from ._delete_group_response import DeleteGroupResponse
+from ._delete_module_response_body import DeleteModuleResponseBody
+from ._delete_module_response import DeleteModuleResponse
+from ._delete_project_response_body import DeleteProjectResponseBody
+from ._delete_project_response import DeleteProjectResponse
+from ._delete_registry_module_response_body import DeleteRegistryModuleResponseBody
+from ._delete_registry_module_response import DeleteRegistryModuleResponse
+from ._delete_registry_module_version_response_body import DeleteRegistryModuleVersionResponseBody
+from ._delete_registry_module_version_response import DeleteRegistryModuleVersionResponse
+from ._delete_registry_namespace_response_body import DeleteRegistryNamespaceResponseBody
+from ._delete_registry_namespace_response import DeleteRegistryNamespaceResponse
+from ._delete_resource_export_task_response_body import DeleteResourceExportTaskResponseBody
+from ._delete_resource_export_task_response import DeleteResourceExportTaskResponse
+from ._delete_task_response_body import DeleteTaskResponseBody
+from ._delete_task_response import DeleteTaskResponse
+from ._dissociate_group_request import DissociateGroupRequest
+from ._dissociate_group_response_body import DissociateGroupResponseBody
+from ._dissociate_group_response import DissociateGroupResponse
+from ._execute_registry_module_request import ExecuteRegistryModuleRequest
+from ._execute_registry_module_response_body import ExecuteRegistryModuleResponseBody
+from ._execute_registry_module_response import ExecuteRegistryModuleResponse
+from ._execute_resource_export_task_request import ExecuteResourceExportTaskRequest
+from ._execute_resource_export_task_response_body import ExecuteResourceExportTaskResponseBody
+from ._execute_resource_export_task_response import ExecuteResourceExportTaskResponse
+from ._execute_terraform_apply_request import ExecuteTerraformApplyRequest
+from ._execute_terraform_apply_response_body import ExecuteTerraformApplyResponseBody
+from ._execute_terraform_apply_response import ExecuteTerraformApplyResponse
+from ._execute_terraform_destroy_request import ExecuteTerraformDestroyRequest
+from ._execute_terraform_destroy_response_body import ExecuteTerraformDestroyResponseBody
+from ._execute_terraform_destroy_response import ExecuteTerraformDestroyResponse
+from ._execute_terraform_plan_request import ExecuteTerraformPlanRequest
+from ._execute_terraform_plan_response_body import ExecuteTerraformPlanResponseBody
+from ._execute_terraform_plan_response import ExecuteTerraformPlanResponse
+from ._generate_module_request import GenerateModuleRequest
+from ._generate_module_response_body import GenerateModuleResponseBody
+from ._generate_module_response import GenerateModuleResponse
+from ._get_execute_state_response_body import GetExecuteStateResponseBody
+from ._get_execute_state_response import GetExecuteStateResponse
+from ._get_group_response_body import GetGroupResponseBody
+from ._get_group_response import GetGroupResponse
+from ._get_job_request import GetJobRequest
+from ._get_job_response_body import GetJobResponseBody
+from ._get_job_response import GetJobResponse
+from ._get_module_response_body import GetModuleResponseBody
+from ._get_module_response import GetModuleResponse
+from ._get_module_version_response_body import GetModuleVersionResponseBody
+from ._get_module_version_response import GetModuleVersionResponse
+from ._get_project_response_body import GetProjectResponseBody
+from ._get_project_response import GetProjectResponse
+from ._get_registry_module_response_body import GetRegistryModuleResponseBody
+from ._get_registry_module_response import GetRegistryModuleResponse
+from ._get_registry_module_version_response_body import GetRegistryModuleVersionResponseBody
+from ._get_registry_module_version_response import GetRegistryModuleVersionResponse
+from ._get_registry_namespace_response_body import GetRegistryNamespaceResponseBody
+from ._get_registry_namespace_response import GetRegistryNamespaceResponse
+from ._get_resource_export_task_request import GetResourceExportTaskRequest
+from ._get_resource_export_task_response_body import GetResourceExportTaskResponseBody
+from ._get_resource_export_task_response import GetResourceExportTaskResponse
+from ._get_resource_type_request import GetResourceTypeRequest
+from ._get_resource_type_response_body import GetResourceTypeResponseBody
+from ._get_resource_type_response import GetResourceTypeResponse
+from ._get_task_response_body import GetTaskResponseBody
+from ._get_task_response import GetTaskResponse
+from ._list_explorer_registry_module_examples_request import ListExplorerRegistryModuleExamplesRequest
+from ._list_explorer_registry_module_examples_response_body import ListExplorerRegistryModuleExamplesResponseBody
+from ._list_explorer_registry_module_examples_response import ListExplorerRegistryModuleExamplesResponse
+from ._list_explorer_registry_module_versions_request import ListExplorerRegistryModuleVersionsRequest
+from ._list_explorer_registry_module_versions_response_body import ListExplorerRegistryModuleVersionsResponseBody
+from ._list_explorer_registry_module_versions_response import ListExplorerRegistryModuleVersionsResponse
+from ._list_explorer_registry_modules_request import ListExplorerRegistryModulesRequest
+from ._list_explorer_registry_modules_response_body import ListExplorerRegistryModulesResponseBody
+from ._list_explorer_registry_modules_response import ListExplorerRegistryModulesResponse
+from ._list_group_request import ListGroupRequest
+from ._list_group_shrink_request import ListGroupShrinkRequest
+from ._list_group_response_body import ListGroupResponseBody
+from ._list_group_response import ListGroupResponse
+from ._list_jobs_request import ListJobsRequest
+from ._list_jobs_response_body import ListJobsResponseBody
+from ._list_jobs_response import ListJobsResponse
+from ._list_module_version_request import ListModuleVersionRequest
+from ._list_module_version_response_body import ListModuleVersionResponseBody
+from ._list_module_version_response import ListModuleVersionResponse
+from ._list_modules_request import ListModulesRequest
+from ._list_modules_shrink_request import ListModulesShrinkRequest
+from ._list_modules_response_body import ListModulesResponseBody
+from ._list_modules_response import ListModulesResponse
+from ._list_products_request import ListProductsRequest
+from ._list_products_response_body import ListProductsResponseBody
+from ._list_products_response import ListProductsResponse
+from ._list_project_request import ListProjectRequest
+from ._list_project_shrink_request import ListProjectShrinkRequest
+from ._list_project_response_body import ListProjectResponseBody
+from ._list_project_response import ListProjectResponse
+from ._list_registry_module_versions_request import ListRegistryModuleVersionsRequest
+from ._list_registry_module_versions_response_body import ListRegistryModuleVersionsResponseBody
+from ._list_registry_module_versions_response import ListRegistryModuleVersionsResponse
+from ._list_registry_modules_request import ListRegistryModulesRequest
+from ._list_registry_modules_response_body import ListRegistryModulesResponseBody
+from ._list_registry_modules_response import ListRegistryModulesResponse
+from ._list_registry_namespaces_request import ListRegistryNamespacesRequest
+from ._list_registry_namespaces_response_body import ListRegistryNamespacesResponseBody
+from ._list_registry_namespaces_response import ListRegistryNamespacesResponse
+from ._list_resource_export_task_versions_request import ListResourceExportTaskVersionsRequest
+from ._list_resource_export_task_versions_response_body import ListResourceExportTaskVersionsResponseBody
+from ._list_resource_export_task_versions_response import ListResourceExportTaskVersionsResponse
+from ._list_resource_export_tasks_request import ListResourceExportTasksRequest
+from ._list_resource_export_tasks_response_body import ListResourceExportTasksResponseBody
+from ._list_resource_export_tasks_response import ListResourceExportTasksResponse
+from ._list_resource_types_request import ListResourceTypesRequest
+from ._list_resource_types_shrink_request import ListResourceTypesShrinkRequest
+from ._list_resource_types_response_body import ListResourceTypesResponseBody
+from ._list_resource_types_response import ListResourceTypesResponse
+from ._list_tasks_request import ListTasksRequest
+from ._list_tasks_shrink_request import ListTasksShrinkRequest
+from ._list_tasks_response_body import ListTasksResponseBody
+from ._list_tasks_response import ListTasksResponse
+from ._list_terraform_provider_versions_request import ListTerraformProviderVersionsRequest
+from ._list_terraform_provider_versions_response_body import ListTerraformProviderVersionsResponseBody
+from ._list_terraform_provider_versions_response import ListTerraformProviderVersionsResponse
+from ._operate_job_request import OperateJobRequest
+from ._operate_job_response_body import OperateJobResponseBody
+from ._operate_job_response import OperateJobResponse
+from ._publish_registry_module_version_request import PublishRegistryModuleVersionRequest
+from ._publish_registry_module_version_response_body import PublishRegistryModuleVersionResponseBody
+from ._publish_registry_module_version_response import PublishRegistryModuleVersionResponse
+from ._remove_shared_accounts_request import RemoveSharedAccountsRequest
+from ._remove_shared_accounts_shrink_request import RemoveSharedAccountsShrinkRequest
+from ._remove_shared_accounts_response_body import RemoveSharedAccountsResponseBody
+from ._remove_shared_accounts_response import RemoveSharedAccountsResponse
+from ._update_explorer_module_attribute_request import UpdateExplorerModuleAttributeRequest
+from ._update_explorer_module_attribute_response_body import UpdateExplorerModuleAttributeResponseBody
+from ._update_explorer_module_attribute_response import UpdateExplorerModuleAttributeResponse
+from ._update_group_request import UpdateGroupRequest
+from ._update_group_response_body import UpdateGroupResponseBody
+from ._update_group_response import UpdateGroupResponse
+from ._update_module_attribute_request import UpdateModuleAttributeRequest
+from ._update_module_attribute_response_body import UpdateModuleAttributeResponseBody
+from ._update_module_attribute_response import UpdateModuleAttributeResponse
+from ._update_project_request import UpdateProjectRequest
+from ._update_project_response_body import UpdateProjectResponseBody
+from ._update_project_response import UpdateProjectResponse
+from ._update_registry_module_attribute_request import UpdateRegistryModuleAttributeRequest
+from ._update_registry_module_attribute_response_body import UpdateRegistryModuleAttributeResponseBody
+from ._update_registry_module_attribute_response import UpdateRegistryModuleAttributeResponse
+from ._update_registry_namespace_attribute_request import UpdateRegistryNamespaceAttributeRequest
+from ._update_registry_namespace_attribute_response_body import UpdateRegistryNamespaceAttributeResponseBody
+from ._update_registry_namespace_attribute_response import UpdateRegistryNamespaceAttributeResponse
+from ._update_resource_export_task_attribute_request import UpdateResourceExportTaskAttributeRequest
+from ._update_resource_export_task_attribute_response_body import UpdateResourceExportTaskAttributeResponseBody
+from ._update_resource_export_task_attribute_response import UpdateResourceExportTaskAttributeResponse
+from ._update_task_attribute_request import UpdateTaskAttributeRequest
+from ._update_task_attribute_response_body import UpdateTaskAttributeResponseBody
+from ._update_task_attribute_response import UpdateTaskAttributeResponse
+from ._validate_module_request import ValidateModuleRequest
+from ._validate_module_response_body import ValidateModuleResponseBody
+from ._validate_module_response import ValidateModuleResponse
+from ._create_group_request import CreateGroupRequestNotifyConfig
+from ._create_group_request import CreateGroupRequestTriggerConfig
+from ._create_module_request import CreateModuleRequestGroupInfo
+from ._create_module_request import CreateModuleRequestTags
+from ._create_resource_export_task_request import CreateResourceExportTaskRequestExportToModule
+from ._create_resource_export_task_request import CreateResourceExportTaskRequestIncludeRules
+from ._create_resource_export_task_request import CreateResourceExportTaskRequestVariables
+from ._create_task_request import CreateTaskRequestGroupInfo
+from ._create_task_request import CreateTaskRequestTags
+from ._create_task_request import CreateTaskRequestTaskBackend
+from ._get_group_response_body import GetGroupResponseBodyGroupNotifyConfig
+from ._get_group_response_body import GetGroupResponseBodyGroupTriggerConfig
+from ._get_group_response_body import GetGroupResponseBodyGroup
+from ._get_job_response_body import GetJobResponseBodyJobAssertCheckDetail
+from ._get_job_response_body import GetJobResponseBodyJobConfig
+from ._get_job_response_body import GetJobResponseBodyJob
+from ._get_module_response_body import GetModuleResponseBodyModuleGroupInfo
+from ._get_module_response_body import GetModuleResponseBodyModuleTags
+from ._get_module_response_body import GetModuleResponseBodyModule
+from ._get_module_version_response_body import GetModuleVersionResponseBodyVersion
+from ._get_project_response_body import GetProjectResponseBodyProject
+from ._get_registry_module_response_body import GetRegistryModuleResponseBodyRegistryModule
+from ._get_registry_module_version_response_body import GetRegistryModuleVersionResponseBodyModuleVersion
+from ._get_registry_namespace_response_body import GetRegistryNamespaceResponseBodyNamespace
+from ._get_resource_export_task_response_body import GetResourceExportTaskResponseBodyTaskExportToModule
+from ._get_resource_export_task_response_body import GetResourceExportTaskResponseBodyTaskIncludeRules
+from ._get_resource_export_task_response_body import GetResourceExportTaskResponseBodyTaskModules
+from ._get_resource_export_task_response_body import GetResourceExportTaskResponseBodyTaskVariables
+from ._get_resource_export_task_response_body import GetResourceExportTaskResponseBodyTask
+from ._get_resource_type_response_body import GetResourceTypeResponseBodyResourceTypeOperations
+from ._get_resource_type_response_body import GetResourceTypeResponseBodyResourceType
+from ._get_task_response_body import GetTaskResponseBodyTaskGroupInfo
+from ._get_task_response_body import GetTaskResponseBodyTaskTags
+from ._get_task_response_body import GetTaskResponseBodyTaskTaskBackend
+from ._get_task_response_body import GetTaskResponseBodyTask
+from ._list_explorer_registry_module_examples_response_body import ListExplorerRegistryModuleExamplesResponseBodyExplorerRegistryModuleExamples
+from ._list_explorer_registry_module_versions_response_body import ListExplorerRegistryModuleVersionsResponseBodyExplorerRegistryModuleVersions
+from ._list_explorer_registry_modules_response_body import ListExplorerRegistryModulesResponseBodyExplorerRegistryModules
+from ._list_group_request import ListGroupRequestTag
+from ._list_group_response_body import ListGroupResponseBodyGroupsTags
+from ._list_group_response_body import ListGroupResponseBodyGroups
+from ._list_jobs_response_body import ListJobsResponseBodyJobsConfig
+from ._list_jobs_response_body import ListJobsResponseBodyJobs
+from ._list_module_version_response_body import ListModuleVersionResponseBodyVersions
+from ._list_modules_request import ListModulesRequestTag
+from ._list_modules_response_body import ListModulesResponseBodyModulesGroupInfo
+from ._list_modules_response_body import ListModulesResponseBodyModulesTags
+from ._list_modules_response_body import ListModulesResponseBodyModules
+from ._list_products_response_body import ListProductsResponseBodyProducts
+from ._list_project_request import ListProjectRequestTag
+from ._list_project_response_body import ListProjectResponseBodyProjectsTags
+from ._list_project_response_body import ListProjectResponseBodyProjects
+from ._list_registry_module_versions_response_body import ListRegistryModuleVersionsResponseBodyModuleVersions
+from ._list_registry_modules_response_body import ListRegistryModulesResponseBodyRegistryModules
+from ._list_registry_namespaces_response_body import ListRegistryNamespacesResponseBodyNamespaces
+from ._list_resource_export_task_versions_response_body import ListResourceExportTaskVersionsResponseBodyExportTasksExportToModule
+from ._list_resource_export_task_versions_response_body import ListResourceExportTaskVersionsResponseBodyExportTasksIncludeRules
+from ._list_resource_export_task_versions_response_body import ListResourceExportTaskVersionsResponseBodyExportTasksModules
+from ._list_resource_export_task_versions_response_body import ListResourceExportTaskVersionsResponseBodyExportTasksVariables
+from ._list_resource_export_task_versions_response_body import ListResourceExportTaskVersionsResponseBodyExportTasks
+from ._list_resource_export_tasks_response_body import ListResourceExportTasksResponseBodyExportTasksExportToModule
+from ._list_resource_export_tasks_response_body import ListResourceExportTasksResponseBodyExportTasksIncludeRules
+from ._list_resource_export_tasks_response_body import ListResourceExportTasksResponseBodyExportTasksModules
+from ._list_resource_export_tasks_response_body import ListResourceExportTasksResponseBodyExportTasksVariables
+from ._list_resource_export_tasks_response_body import ListResourceExportTasksResponseBodyExportTasks
+from ._list_resource_types_response_body import ListResourceTypesResponseBodyResourceTypes
+from ._list_tasks_request import ListTasksRequestTag
+from ._list_tasks_response_body import ListTasksResponseBodyTasksGroupInfo
+from ._list_tasks_response_body import ListTasksResponseBodyTasksTags
+from ._list_tasks_response_body import ListTasksResponseBodyTasks
+from ._list_terraform_provider_versions_response_body import ListTerraformProviderVersionsResponseBodyVersions
+from ._update_group_request import UpdateGroupRequestNotifyConfig
+from ._update_group_request import UpdateGroupRequestTriggerConfig
+from ._update_module_attribute_request import UpdateModuleAttributeRequestGroupInfo
+from ._update_module_attribute_request import UpdateModuleAttributeRequestTags
+from ._update_resource_export_task_attribute_request import UpdateResourceExportTaskAttributeRequestExportToModule
+from ._update_resource_export_task_attribute_request import UpdateResourceExportTaskAttributeRequestIncludeRules
+from ._update_resource_export_task_attribute_request import UpdateResourceExportTaskAttributeRequestVariables
+from ._update_task_attribute_request import UpdateTaskAttributeRequestGroupInfo
+from ._update_task_attribute_request import UpdateTaskAttributeRequestTags
+
+__all__ = [
+    JobStatusDetailValue,
+    JobsStatusDetailValue,
+    AddSharedAccountsRequest,
+    AddSharedAccountsResponseBody,
+    AddSharedAccountsResponse,
+    AssociateGroupRequest,
+    AssociateGroupResponseBody,
+    AssociateGroupResponse,
+    CancelResourceExportTaskRequest,
+    CancelResourceExportTaskResponseBody,
+    CancelResourceExportTaskResponse,
+    CreateGroupRequest,
+    CreateGroupResponseBody,
+    CreateGroupResponse,
+    CreateJobRequest,
+    CreateJobResponseBody,
+    CreateJobResponse,
+    CreateModuleRequest,
+    CreateModuleResponseBody,
+    CreateModuleResponse,
+    CreateModuleVersionRequest,
+    CreateModuleVersionResponseBody,
+    CreateModuleVersionResponse,
+    CreateProjectRequest,
+    CreateProjectResponseBody,
+    CreateProjectResponse,
+    CreateRegistryModuleRequest,
+    CreateRegistryModuleResponseBody,
+    CreateRegistryModuleResponse,
+    CreateRegistryNamespaceRequest,
+    CreateRegistryNamespaceResponseBody,
+    CreateRegistryNamespaceResponse,
+    CreateResourceExportTaskRequest,
+    CreateResourceExportTaskResponseBody,
+    CreateResourceExportTaskResponse,
+    CreateTaskRequest,
+    CreateTaskResponseBody,
+    CreateTaskResponse,
+    DeleteGroupResponseBody,
+    DeleteGroupResponse,
+    DeleteModuleResponseBody,
+    DeleteModuleResponse,
+    DeleteProjectResponseBody,
+    DeleteProjectResponse,
+    DeleteRegistryModuleResponseBody,
+    DeleteRegistryModuleResponse,
+    DeleteRegistryModuleVersionResponseBody,
+    DeleteRegistryModuleVersionResponse,
+    DeleteRegistryNamespaceResponseBody,
+    DeleteRegistryNamespaceResponse,
+    DeleteResourceExportTaskResponseBody,
+    DeleteResourceExportTaskResponse,
+    DeleteTaskResponseBody,
+    DeleteTaskResponse,
+    DissociateGroupRequest,
+    DissociateGroupResponseBody,
+    DissociateGroupResponse,
+    ExecuteRegistryModuleRequest,
+    ExecuteRegistryModuleResponseBody,
+    ExecuteRegistryModuleResponse,
+    ExecuteResourceExportTaskRequest,
+    ExecuteResourceExportTaskResponseBody,
+    ExecuteResourceExportTaskResponse,
+    ExecuteTerraformApplyRequest,
+    ExecuteTerraformApplyResponseBody,
+    ExecuteTerraformApplyResponse,
+    ExecuteTerraformDestroyRequest,
+    ExecuteTerraformDestroyResponseBody,
+    ExecuteTerraformDestroyResponse,
+    ExecuteTerraformPlanRequest,
+    ExecuteTerraformPlanResponseBody,
+    ExecuteTerraformPlanResponse,
+    GenerateModuleRequest,
+    GenerateModuleResponseBody,
+    GenerateModuleResponse,
+    GetExecuteStateResponseBody,
+    GetExecuteStateResponse,
+    GetGroupResponseBody,
+    GetGroupResponse,
+    GetJobRequest,
+    GetJobResponseBody,
+    GetJobResponse,
+    GetModuleResponseBody,
+    GetModuleResponse,
+    GetModuleVersionResponseBody,
+    GetModuleVersionResponse,
+    GetProjectResponseBody,
+    GetProjectResponse,
+    GetRegistryModuleResponseBody,
+    GetRegistryModuleResponse,
+    GetRegistryModuleVersionResponseBody,
+    GetRegistryModuleVersionResponse,
+    GetRegistryNamespaceResponseBody,
+    GetRegistryNamespaceResponse,
+    GetResourceExportTaskRequest,
+    GetResourceExportTaskResponseBody,
+    GetResourceExportTaskResponse,
+    GetResourceTypeRequest,
+    GetResourceTypeResponseBody,
+    GetResourceTypeResponse,
+    GetTaskResponseBody,
+    GetTaskResponse,
+    ListExplorerRegistryModuleExamplesRequest,
+    ListExplorerRegistryModuleExamplesResponseBody,
+    ListExplorerRegistryModuleExamplesResponse,
+    ListExplorerRegistryModuleVersionsRequest,
+    ListExplorerRegistryModuleVersionsResponseBody,
+    ListExplorerRegistryModuleVersionsResponse,
+    ListExplorerRegistryModulesRequest,
+    ListExplorerRegistryModulesResponseBody,
+    ListExplorerRegistryModulesResponse,
+    ListGroupRequest,
+    ListGroupShrinkRequest,
+    ListGroupResponseBody,
+    ListGroupResponse,
+    ListJobsRequest,
+    ListJobsResponseBody,
+    ListJobsResponse,
+    ListModuleVersionRequest,
+    ListModuleVersionResponseBody,
+    ListModuleVersionResponse,
+    ListModulesRequest,
+    ListModulesShrinkRequest,
+    ListModulesResponseBody,
+    ListModulesResponse,
+    ListProductsRequest,
+    ListProductsResponseBody,
+    ListProductsResponse,
+    ListProjectRequest,
+    ListProjectShrinkRequest,
+    ListProjectResponseBody,
+    ListProjectResponse,
+    ListRegistryModuleVersionsRequest,
+    ListRegistryModuleVersionsResponseBody,
+    ListRegistryModuleVersionsResponse,
+    ListRegistryModulesRequest,
+    ListRegistryModulesResponseBody,
+    ListRegistryModulesResponse,
+    ListRegistryNamespacesRequest,
+    ListRegistryNamespacesResponseBody,
+    ListRegistryNamespacesResponse,
+    ListResourceExportTaskVersionsRequest,
+    ListResourceExportTaskVersionsResponseBody,
+    ListResourceExportTaskVersionsResponse,
+    ListResourceExportTasksRequest,
+    ListResourceExportTasksResponseBody,
+    ListResourceExportTasksResponse,
+    ListResourceTypesRequest,
+    ListResourceTypesShrinkRequest,
+    ListResourceTypesResponseBody,
+    ListResourceTypesResponse,
+    ListTasksRequest,
+    ListTasksShrinkRequest,
+    ListTasksResponseBody,
+    ListTasksResponse,
+    ListTerraformProviderVersionsRequest,
+    ListTerraformProviderVersionsResponseBody,
+    ListTerraformProviderVersionsResponse,
+    OperateJobRequest,
+    OperateJobResponseBody,
+    OperateJobResponse,
+    PublishRegistryModuleVersionRequest,
+    PublishRegistryModuleVersionResponseBody,
+    PublishRegistryModuleVersionResponse,
+    RemoveSharedAccountsRequest,
+    RemoveSharedAccountsShrinkRequest,
+    RemoveSharedAccountsResponseBody,
+    RemoveSharedAccountsResponse,
+    UpdateExplorerModuleAttributeRequest,
+    UpdateExplorerModuleAttributeResponseBody,
+    UpdateExplorerModuleAttributeResponse,
+    UpdateGroupRequest,
+    UpdateGroupResponseBody,
+    UpdateGroupResponse,
+    UpdateModuleAttributeRequest,
+    UpdateModuleAttributeResponseBody,
+    UpdateModuleAttributeResponse,
+    UpdateProjectRequest,
+    UpdateProjectResponseBody,
+    UpdateProjectResponse,
+    UpdateRegistryModuleAttributeRequest,
+    UpdateRegistryModuleAttributeResponseBody,
+    UpdateRegistryModuleAttributeResponse,
+    UpdateRegistryNamespaceAttributeRequest,
+    UpdateRegistryNamespaceAttributeResponseBody,
+    UpdateRegistryNamespaceAttributeResponse,
+    UpdateResourceExportTaskAttributeRequest,
+    UpdateResourceExportTaskAttributeResponseBody,
+    UpdateResourceExportTaskAttributeResponse,
+    UpdateTaskAttributeRequest,
+    UpdateTaskAttributeResponseBody,
+    UpdateTaskAttributeResponse,
+    ValidateModuleRequest,
+    ValidateModuleResponseBody,
+    ValidateModuleResponse,
+    CreateGroupRequestNotifyConfig,
+    CreateGroupRequestTriggerConfig,
+    CreateModuleRequestGroupInfo,
+    CreateModuleRequestTags,
+    CreateResourceExportTaskRequestExportToModule,
+    CreateResourceExportTaskRequestIncludeRules,
+    CreateResourceExportTaskRequestVariables,
+    CreateTaskRequestGroupInfo,
+    CreateTaskRequestTags,
+    CreateTaskRequestTaskBackend,
+    GetGroupResponseBodyGroupNotifyConfig,
+    GetGroupResponseBodyGroupTriggerConfig,
+    GetGroupResponseBodyGroup,
+    GetJobResponseBodyJobAssertCheckDetail,
+    GetJobResponseBodyJobConfig,
+    GetJobResponseBodyJob,
+    GetModuleResponseBodyModuleGroupInfo,
+    GetModuleResponseBodyModuleTags,
+    GetModuleResponseBodyModule,
+    GetModuleVersionResponseBodyVersion,
+    GetProjectResponseBodyProject,
+    GetRegistryModuleResponseBodyRegistryModule,
+    GetRegistryModuleVersionResponseBodyModuleVersion,
+    GetRegistryNamespaceResponseBodyNamespace,
+    GetResourceExportTaskResponseBodyTaskExportToModule,
+    GetResourceExportTaskResponseBodyTaskIncludeRules,
+    GetResourceExportTaskResponseBodyTaskModules,
+    GetResourceExportTaskResponseBodyTaskVariables,
+    GetResourceExportTaskResponseBodyTask,
+    GetResourceTypeResponseBodyResourceTypeOperations,
+    GetResourceTypeResponseBodyResourceType,
+    GetTaskResponseBodyTaskGroupInfo,
+    GetTaskResponseBodyTaskTags,
+    GetTaskResponseBodyTaskTaskBackend,
+    GetTaskResponseBodyTask,
+    ListExplorerRegistryModuleExamplesResponseBodyExplorerRegistryModuleExamples,
+    ListExplorerRegistryModuleVersionsResponseBodyExplorerRegistryModuleVersions,
+    ListExplorerRegistryModulesResponseBodyExplorerRegistryModules,
+    ListGroupRequestTag,
+    ListGroupResponseBodyGroupsTags,
+    ListGroupResponseBodyGroups,
+    ListJobsResponseBodyJobsConfig,
+    ListJobsResponseBodyJobs,
+    ListModuleVersionResponseBodyVersions,
+    ListModulesRequestTag,
+    ListModulesResponseBodyModulesGroupInfo,
+    ListModulesResponseBodyModulesTags,
+    ListModulesResponseBodyModules,
+    ListProductsResponseBodyProducts,
+    ListProjectRequestTag,
+    ListProjectResponseBodyProjectsTags,
+    ListProjectResponseBodyProjects,
+    ListRegistryModuleVersionsResponseBodyModuleVersions,
+    ListRegistryModulesResponseBodyRegistryModules,
+    ListRegistryNamespacesResponseBodyNamespaces,
+    ListResourceExportTaskVersionsResponseBodyExportTasksExportToModule,
+    ListResourceExportTaskVersionsResponseBodyExportTasksIncludeRules,
+    ListResourceExportTaskVersionsResponseBodyExportTasksModules,
+    ListResourceExportTaskVersionsResponseBodyExportTasksVariables,
+    ListResourceExportTaskVersionsResponseBodyExportTasks,
+    ListResourceExportTasksResponseBodyExportTasksExportToModule,
+    ListResourceExportTasksResponseBodyExportTasksIncludeRules,
+    ListResourceExportTasksResponseBodyExportTasksModules,
+    ListResourceExportTasksResponseBodyExportTasksVariables,
+    ListResourceExportTasksResponseBodyExportTasks,
+    ListResourceTypesResponseBodyResourceTypes,
+    ListTasksRequestTag,
+    ListTasksResponseBodyTasksGroupInfo,
+    ListTasksResponseBodyTasksTags,
+    ListTasksResponseBodyTasks,
+    ListTerraformProviderVersionsResponseBodyVersions,
+    UpdateGroupRequestNotifyConfig,
+    UpdateGroupRequestTriggerConfig,
+    UpdateModuleAttributeRequestGroupInfo,
+    UpdateModuleAttributeRequestTags,
+    UpdateResourceExportTaskAttributeRequestExportToModule,
+    UpdateResourceExportTaskAttributeRequestIncludeRules,
+    UpdateResourceExportTaskAttributeRequestVariables,
+    UpdateTaskAttributeRequestGroupInfo,
+    UpdateTaskAttributeRequestTags
+]
