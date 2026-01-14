@@ -1,0 +1,275 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._app_ai_staff import AppAiStaff
+from ._app_instance import AppInstance
+from ._app_instance_aggregate import AppInstanceAggregate
+from ._app_instance_profile import AppInstanceProfile
+from ._app_operate_action import AppOperateAction
+from ._app_operation_address import AppOperationAddress
+from ._app_service import AppService
+from ._app_service_aggregate import AppServiceAggregate
+from ._app_service_group import AppServiceGroup
+from ._app_service_profile import AppServiceProfile
+from ._bind_app_domain_request import BindAppDomainRequest
+from ._bind_app_domain_response_body import BindAppDomainResponseBody
+from ._bind_app_domain_response import BindAppDomainResponse
+from ._create_app_instance_request import CreateAppInstanceRequest
+from ._create_app_instance_response_body import CreateAppInstanceResponseBody
+from ._create_app_instance_response import CreateAppInstanceResponse
+from ._create_app_instance_ticket_request import CreateAppInstanceTicketRequest
+from ._create_app_instance_ticket_response_body import CreateAppInstanceTicketResponseBody
+from ._create_app_instance_ticket_response import CreateAppInstanceTicketResponse
+from ._create_logo_task_request import CreateLogoTaskRequest
+from ._create_logo_task_response_body import CreateLogoTaskResponseBody
+from ._create_logo_task_response import CreateLogoTaskResponse
+from ._delete_app_domain_certificate_request import DeleteAppDomainCertificateRequest
+from ._delete_app_domain_certificate_response_body import DeleteAppDomainCertificateResponseBody
+from ._delete_app_domain_certificate_response import DeleteAppDomainCertificateResponse
+from ._delete_app_domain_redirect_request import DeleteAppDomainRedirectRequest
+from ._delete_app_domain_redirect_response_body import DeleteAppDomainRedirectResponseBody
+from ._delete_app_domain_redirect_response import DeleteAppDomainRedirectResponse
+from ._describe_app_domain_dns_record_request import DescribeAppDomainDnsRecordRequest
+from ._describe_app_domain_dns_record_response_body import DescribeAppDomainDnsRecordResponseBody
+from ._describe_app_domain_dns_record_response import DescribeAppDomainDnsRecordResponse
+from ._dispatch_console_apifor_partner_request import DispatchConsoleAPIForPartnerRequest
+from ._dispatch_console_apifor_partner_response_body import DispatchConsoleAPIForPartnerResponseBody
+from ._dispatch_console_apifor_partner_response import DispatchConsoleAPIForPartnerResponse
+from ._get_app_instance_request import GetAppInstanceRequest
+from ._get_app_instance_response_body import GetAppInstanceResponseBody
+from ._get_app_instance_response import GetAppInstanceResponse
+from ._get_create_logo_task_request import GetCreateLogoTaskRequest
+from ._get_create_logo_task_response_body import GetCreateLogoTaskResponseBody
+from ._get_create_logo_task_response import GetCreateLogoTaskResponse
+from ._get_domain_info_for_partner_request import GetDomainInfoForPartnerRequest
+from ._get_domain_info_for_partner_response_body import GetDomainInfoForPartnerResponseBody
+from ._get_domain_info_for_partner_response import GetDomainInfoForPartnerResponse
+from ._get_icp_filing_info_for_partner_request import GetIcpFilingInfoForPartnerRequest
+from ._get_icp_filing_info_for_partner_response_body import GetIcpFilingInfoForPartnerResponseBody
+from ._get_icp_filing_info_for_partner_response import GetIcpFilingInfoForPartnerResponse
+from ._get_user_access_token_for_partner_request import GetUserAccessTokenForPartnerRequest
+from ._get_user_access_token_for_partner_response_body import GetUserAccessTokenForPartnerResponseBody
+from ._get_user_access_token_for_partner_response import GetUserAccessTokenForPartnerResponse
+from ._get_user_tmp_identity_for_partner_request import GetUserTmpIdentityForPartnerRequest
+from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBody
+from ._get_user_tmp_identity_for_partner_response import GetUserTmpIdentityForPartnerResponse
+from ._list_app_domain_redirect_records_request import ListAppDomainRedirectRecordsRequest
+from ._list_app_domain_redirect_records_response_body import ListAppDomainRedirectRecordsResponseBody
+from ._list_app_domain_redirect_records_response import ListAppDomainRedirectRecordsResponse
+from ._list_app_instance_domains_request import ListAppInstanceDomainsRequest
+from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBody
+from ._list_app_instance_domains_response import ListAppInstanceDomainsResponse
+from ._list_app_instances_request import ListAppInstancesRequest
+from ._list_app_instances_shrink_request import ListAppInstancesShrinkRequest
+from ._list_app_instances_response_body import ListAppInstancesResponseBody
+from ._list_app_instances_response import ListAppInstancesResponse
+from ._modify_app_instance_spec_request import ModifyAppInstanceSpecRequest
+from ._modify_app_instance_spec_response_body import ModifyAppInstanceSpecResponseBody
+from ._modify_app_instance_spec_response import ModifyAppInstanceSpecResponse
+from ._operate_app_instance_for_partner_request import OperateAppInstanceForPartnerRequest
+from ._operate_app_instance_for_partner_response_body import OperateAppInstanceForPartnerResponseBody
+from ._operate_app_instance_for_partner_response import OperateAppInstanceForPartnerResponse
+from ._operate_app_service_for_partner_request import OperateAppServiceForPartnerRequest
+from ._operate_app_service_for_partner_response_body import OperateAppServiceForPartnerResponseBody
+from ._operate_app_service_for_partner_response import OperateAppServiceForPartnerResponse
+from ._refresh_app_instance_ticket_request import RefreshAppInstanceTicketRequest
+from ._refresh_app_instance_ticket_response_body import RefreshAppInstanceTicketResponseBody
+from ._refresh_app_instance_ticket_response import RefreshAppInstanceTicketResponse
+from ._renew_app_instance_request import RenewAppInstanceRequest
+from ._renew_app_instance_response_body import RenewAppInstanceResponseBody
+from ._renew_app_instance_response import RenewAppInstanceResponse
+from ._search_image_request import SearchImageRequest
+from ._search_image_shrink_request import SearchImageShrinkRequest
+from ._search_image_response_body import SearchImageResponseBody
+from ._search_image_response import SearchImageResponse
+from ._set_app_domain_certificate_request import SetAppDomainCertificateRequest
+from ._set_app_domain_certificate_response_body import SetAppDomainCertificateResponseBody
+from ._set_app_domain_certificate_response import SetAppDomainCertificateResponse
+from ._sync_app_instance_for_partner_request import SyncAppInstanceForPartnerRequest
+from ._sync_app_instance_for_partner_shrink_request import SyncAppInstanceForPartnerShrinkRequest
+from ._sync_app_instance_for_partner_response_body import SyncAppInstanceForPartnerResponseBody
+from ._sync_app_instance_for_partner_response import SyncAppInstanceForPartnerResponse
+from ._unbind_app_domain_request import UnbindAppDomainRequest
+from ._unbind_app_domain_response_body import UnbindAppDomainResponseBody
+from ._unbind_app_domain_response import UnbindAppDomainResponse
+from ._bind_app_domain_response_body import BindAppDomainResponseBodyModule
+from ._create_app_instance_response_body import CreateAppInstanceResponseBodyModule
+from ._create_app_instance_ticket_response_body import CreateAppInstanceTicketResponseBodyModule
+from ._delete_app_domain_certificate_response_body import DeleteAppDomainCertificateResponseBodyModule
+from ._delete_app_domain_redirect_response_body import DeleteAppDomainRedirectResponseBodyModule
+from ._describe_app_domain_dns_record_response_body import DescribeAppDomainDnsRecordResponseBodyModule
+from ._dispatch_console_apifor_partner_response_body import DispatchConsoleAPIForPartnerResponseBodyModule
+from ._get_create_logo_task_response_body import GetCreateLogoTaskResponseBodyTask
+from ._get_domain_info_for_partner_response_body import GetDomainInfoForPartnerResponseBodyDataOwnership
+from ._get_domain_info_for_partner_response_body import GetDomainInfoForPartnerResponseBodyData
+from ._get_icp_filing_info_for_partner_response_body import GetIcpFilingInfoForPartnerResponseBodyData
+from ._get_user_access_token_for_partner_response_body import GetUserAccessTokenForPartnerResponseBodyModule
+from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyDataCredentials
+from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyData
+from ._list_app_domain_redirect_records_response_body import ListAppDomainRedirectRecordsResponseBodyModuleData
+from ._list_app_domain_redirect_records_response_body import ListAppDomainRedirectRecordsResponseBodyModuleNext
+from ._list_app_domain_redirect_records_response_body import ListAppDomainRedirectRecordsResponseBodyModule
+from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleDataCertificate
+from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleDataOwnership
+from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleDataResolutionDnsRecord
+from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleDataResolution
+from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleDataVerificationDnsRecord
+from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleDataVerification
+from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleData
+from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleNextCertificate
+from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleNextOwnership
+from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleNextResolutionDnsRecord
+from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleNextResolution
+from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleNextVerificationDnsRecord
+from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleNextVerification
+from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleNext
+from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModule
+from ._modify_app_instance_spec_response_body import ModifyAppInstanceSpecResponseBodyModule
+from ._refresh_app_instance_ticket_response_body import RefreshAppInstanceTicketResponseBodyModule
+from ._renew_app_instance_response_body import RenewAppInstanceResponseBodyModule
+from ._search_image_response_body import SearchImageResponseBodyImageResponseImageList
+from ._search_image_response_body import SearchImageResponseBodyImageResponse
+from ._set_app_domain_certificate_response_body import SetAppDomainCertificateResponseBodyModule
+from ._sync_app_instance_for_partner_request import SyncAppInstanceForPartnerRequestAppInstanceProfile
+from ._sync_app_instance_for_partner_request import SyncAppInstanceForPartnerRequestAppInstance
+from ._sync_app_instance_for_partner_response_body import SyncAppInstanceForPartnerResponseBodyDataAppInstance
+from ._sync_app_instance_for_partner_response_body import SyncAppInstanceForPartnerResponseBodyData
+from ._unbind_app_domain_response_body import UnbindAppDomainResponseBodyModule
+
+__all__ = [
+    AppAiStaff,
+    AppInstance,
+    AppInstanceAggregate,
+    AppInstanceProfile,
+    AppOperateAction,
+    AppOperationAddress,
+    AppService,
+    AppServiceAggregate,
+    AppServiceGroup,
+    AppServiceProfile,
+    BindAppDomainRequest,
+    BindAppDomainResponseBody,
+    BindAppDomainResponse,
+    CreateAppInstanceRequest,
+    CreateAppInstanceResponseBody,
+    CreateAppInstanceResponse,
+    CreateAppInstanceTicketRequest,
+    CreateAppInstanceTicketResponseBody,
+    CreateAppInstanceTicketResponse,
+    CreateLogoTaskRequest,
+    CreateLogoTaskResponseBody,
+    CreateLogoTaskResponse,
+    DeleteAppDomainCertificateRequest,
+    DeleteAppDomainCertificateResponseBody,
+    DeleteAppDomainCertificateResponse,
+    DeleteAppDomainRedirectRequest,
+    DeleteAppDomainRedirectResponseBody,
+    DeleteAppDomainRedirectResponse,
+    DescribeAppDomainDnsRecordRequest,
+    DescribeAppDomainDnsRecordResponseBody,
+    DescribeAppDomainDnsRecordResponse,
+    DispatchConsoleAPIForPartnerRequest,
+    DispatchConsoleAPIForPartnerResponseBody,
+    DispatchConsoleAPIForPartnerResponse,
+    GetAppInstanceRequest,
+    GetAppInstanceResponseBody,
+    GetAppInstanceResponse,
+    GetCreateLogoTaskRequest,
+    GetCreateLogoTaskResponseBody,
+    GetCreateLogoTaskResponse,
+    GetDomainInfoForPartnerRequest,
+    GetDomainInfoForPartnerResponseBody,
+    GetDomainInfoForPartnerResponse,
+    GetIcpFilingInfoForPartnerRequest,
+    GetIcpFilingInfoForPartnerResponseBody,
+    GetIcpFilingInfoForPartnerResponse,
+    GetUserAccessTokenForPartnerRequest,
+    GetUserAccessTokenForPartnerResponseBody,
+    GetUserAccessTokenForPartnerResponse,
+    GetUserTmpIdentityForPartnerRequest,
+    GetUserTmpIdentityForPartnerResponseBody,
+    GetUserTmpIdentityForPartnerResponse,
+    ListAppDomainRedirectRecordsRequest,
+    ListAppDomainRedirectRecordsResponseBody,
+    ListAppDomainRedirectRecordsResponse,
+    ListAppInstanceDomainsRequest,
+    ListAppInstanceDomainsResponseBody,
+    ListAppInstanceDomainsResponse,
+    ListAppInstancesRequest,
+    ListAppInstancesShrinkRequest,
+    ListAppInstancesResponseBody,
+    ListAppInstancesResponse,
+    ModifyAppInstanceSpecRequest,
+    ModifyAppInstanceSpecResponseBody,
+    ModifyAppInstanceSpecResponse,
+    OperateAppInstanceForPartnerRequest,
+    OperateAppInstanceForPartnerResponseBody,
+    OperateAppInstanceForPartnerResponse,
+    OperateAppServiceForPartnerRequest,
+    OperateAppServiceForPartnerResponseBody,
+    OperateAppServiceForPartnerResponse,
+    RefreshAppInstanceTicketRequest,
+    RefreshAppInstanceTicketResponseBody,
+    RefreshAppInstanceTicketResponse,
+    RenewAppInstanceRequest,
+    RenewAppInstanceResponseBody,
+    RenewAppInstanceResponse,
+    SearchImageRequest,
+    SearchImageShrinkRequest,
+    SearchImageResponseBody,
+    SearchImageResponse,
+    SetAppDomainCertificateRequest,
+    SetAppDomainCertificateResponseBody,
+    SetAppDomainCertificateResponse,
+    SyncAppInstanceForPartnerRequest,
+    SyncAppInstanceForPartnerShrinkRequest,
+    SyncAppInstanceForPartnerResponseBody,
+    SyncAppInstanceForPartnerResponse,
+    UnbindAppDomainRequest,
+    UnbindAppDomainResponseBody,
+    UnbindAppDomainResponse,
+    BindAppDomainResponseBodyModule,
+    CreateAppInstanceResponseBodyModule,
+    CreateAppInstanceTicketResponseBodyModule,
+    DeleteAppDomainCertificateResponseBodyModule,
+    DeleteAppDomainRedirectResponseBodyModule,
+    DescribeAppDomainDnsRecordResponseBodyModule,
+    DispatchConsoleAPIForPartnerResponseBodyModule,
+    GetCreateLogoTaskResponseBodyTask,
+    GetDomainInfoForPartnerResponseBodyDataOwnership,
+    GetDomainInfoForPartnerResponseBodyData,
+    GetIcpFilingInfoForPartnerResponseBodyData,
+    GetUserAccessTokenForPartnerResponseBodyModule,
+    GetUserTmpIdentityForPartnerResponseBodyDataCredentials,
+    GetUserTmpIdentityForPartnerResponseBodyData,
+    ListAppDomainRedirectRecordsResponseBodyModuleData,
+    ListAppDomainRedirectRecordsResponseBodyModuleNext,
+    ListAppDomainRedirectRecordsResponseBodyModule,
+    ListAppInstanceDomainsResponseBodyModuleDataCertificate,
+    ListAppInstanceDomainsResponseBodyModuleDataOwnership,
+    ListAppInstanceDomainsResponseBodyModuleDataResolutionDnsRecord,
+    ListAppInstanceDomainsResponseBodyModuleDataResolution,
+    ListAppInstanceDomainsResponseBodyModuleDataVerificationDnsRecord,
+    ListAppInstanceDomainsResponseBodyModuleDataVerification,
+    ListAppInstanceDomainsResponseBodyModuleData,
+    ListAppInstanceDomainsResponseBodyModuleNextCertificate,
+    ListAppInstanceDomainsResponseBodyModuleNextOwnership,
+    ListAppInstanceDomainsResponseBodyModuleNextResolutionDnsRecord,
+    ListAppInstanceDomainsResponseBodyModuleNextResolution,
+    ListAppInstanceDomainsResponseBodyModuleNextVerificationDnsRecord,
+    ListAppInstanceDomainsResponseBodyModuleNextVerification,
+    ListAppInstanceDomainsResponseBodyModuleNext,
+    ListAppInstanceDomainsResponseBodyModule,
+    ModifyAppInstanceSpecResponseBodyModule,
+    RefreshAppInstanceTicketResponseBodyModule,
+    RenewAppInstanceResponseBodyModule,
+    SearchImageResponseBodyImageResponseImageList,
+    SearchImageResponseBodyImageResponse,
+    SetAppDomainCertificateResponseBodyModule,
+    SyncAppInstanceForPartnerRequestAppInstanceProfile,
+    SyncAppInstanceForPartnerRequestAppInstance,
+    SyncAppInstanceForPartnerResponseBodyDataAppInstance,
+    SyncAppInstanceForPartnerResponseBodyData,
+    UnbindAppDomainResponseBodyModule
+]

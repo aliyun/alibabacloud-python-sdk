@@ -1,3 +1,7 @@
+2026-01-14 Version: 2.7.2
+- Update API CreateAppInstance: add response parameters Body.Module.SiteHost.
+
+
 2025-12-24 Version: 2.7.1
 - Generated python 2025-04-29 for WebsiteBuild.
 
