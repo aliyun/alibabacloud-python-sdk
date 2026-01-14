@@ -1,3 +1,9 @@
+2026-01-14 Version: 4.4.0
+- Support API Retrieve.
+- Update API Chat: add request parameters body.documentIds.
+- Update API ChatStream: add request parameters body.documentIds.
+
+
 2025-10-23 Version: 4.3.0
 - Support API DetailDocument.
 

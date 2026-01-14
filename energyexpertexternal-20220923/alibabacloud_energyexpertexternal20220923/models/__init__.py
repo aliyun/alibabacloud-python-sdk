@@ -1,0 +1,549 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._carbon_emission_elec_summary_item import CarbonEmissionElecSummaryItem
+from ._chat_document_page_num import ChatDocumentPageNum
+from ._chat_folder_item import ChatFolderItem
+from ._chat_item import ChatItem
+from ._chat_ref_doc_info import ChatRefDocInfo
+from ._chat_ref_doc_item import ChatRefDocItem
+from ._chat_ref_doc_page_info import ChatRefDocPageInfo
+from ._chat_ref_doc_page_num import ChatRefDocPageNum
+from ._chat_ref_doc_postion import ChatRefDocPostion
+from ._chunk_item import ChunkItem
+from ._constitute_item import ConstituteItem
+from ._content_item import ContentItem
+from ._document_detail_item import DocumentDetailItem
+from ._epd_inventory_constitute_item import EpdInventoryConstituteItem
+from ._folder_item import FolderItem
+from ._gwp_inventory_constitute import GwpInventoryConstitute
+from ._gwp_resource_constitute import GwpResourceConstitute
+from ._org_emission import OrgEmission
+from ._add_folder_request import AddFolderRequest
+from ._add_folder_response_body import AddFolderResponseBody
+from ._add_folder_response import AddFolderResponse
+from ._analyze_vl_realtime_request import AnalyzeVlRealtimeRequest
+from ._analyze_vl_realtime_advance_request import AnalyzeVlRealtimeAdvanceRequest
+from ._analyze_vl_realtime_response_body import AnalyzeVlRealtimeResponseBody
+from ._analyze_vl_realtime_response import AnalyzeVlRealtimeResponse
+from ._batch_save_instruction_status_request import BatchSaveInstructionStatusRequest
+from ._batch_save_instruction_status_response_body import BatchSaveInstructionStatusResponseBody
+from ._batch_save_instruction_status_response import BatchSaveInstructionStatusResponse
+from ._batch_update_system_running_plan_request import BatchUpdateSystemRunningPlanRequest
+from ._batch_update_system_running_plan_response_body import BatchUpdateSystemRunningPlanResponseBody
+from ._batch_update_system_running_plan_response import BatchUpdateSystemRunningPlanResponse
+from ._chat_request import ChatRequest
+from ._chat_response_body import ChatResponseBody
+from ._chat_response import ChatResponse
+from ._chat_stream_request import ChatStreamRequest
+from ._chat_stream_response_body import ChatStreamResponseBody
+from ._chat_stream_response import ChatStreamResponse
+from ._create_chat_session_request import CreateChatSessionRequest
+from ._create_chat_session_response_body import CreateChatSessionResponseBody
+from ._create_chat_session_response import CreateChatSessionResponse
+from ._delete_document_request import DeleteDocumentRequest
+from ._delete_document_response_body import DeleteDocumentResponseBody
+from ._delete_document_response import DeleteDocumentResponse
+from ._delete_folder_request import DeleteFolderRequest
+from ._delete_folder_response_body import DeleteFolderResponseBody
+from ._delete_folder_response import DeleteFolderResponse
+from ._detail_document_request import DetailDocumentRequest
+from ._detail_document_response_body import DetailDocumentResponseBody
+from ._detail_document_response import DetailDocumentResponse
+from ._edit_prohibited_devices_request import EditProhibitedDevicesRequest
+from ._edit_prohibited_devices_response_body import EditProhibitedDevicesResponseBody
+from ._edit_prohibited_devices_response import EditProhibitedDevicesResponse
+from ._edit_unfavorable_area_devices_request import EditUnfavorableAreaDevicesRequest
+from ._edit_unfavorable_area_devices_response_body import EditUnfavorableAreaDevicesResponseBody
+from ._edit_unfavorable_area_devices_response import EditUnfavorableAreaDevicesResponse
+from ._generate_result_request import GenerateResultRequest
+from ._generate_result_response_body import GenerateResultResponseBody
+from ._generate_result_response import GenerateResultResponse
+from ._get_area_elec_constitute_request import GetAreaElecConstituteRequest
+from ._get_area_elec_constitute_response_body import GetAreaElecConstituteResponseBody
+from ._get_area_elec_constitute_response import GetAreaElecConstituteResponse
+from ._get_carbon_emission_trend_request import GetCarbonEmissionTrendRequest
+from ._get_carbon_emission_trend_response_body import GetCarbonEmissionTrendResponseBody
+from ._get_carbon_emission_trend_response import GetCarbonEmissionTrendResponse
+from ._get_chat_folder_list_response_body import GetChatFolderListResponseBody
+from ._get_chat_folder_list_response import GetChatFolderListResponse
+from ._get_chat_list_request import GetChatListRequest
+from ._get_chat_list_response_body import GetChatListResponseBody
+from ._get_chat_list_response import GetChatListResponse
+from ._get_chat_session_list_request import GetChatSessionListRequest
+from ._get_chat_session_list_response_body import GetChatSessionListResponseBody
+from ._get_chat_session_list_response import GetChatSessionListResponse
+from ._get_data_item_list_request import GetDataItemListRequest
+from ._get_data_item_list_response_body import GetDataItemListResponseBody
+from ._get_data_item_list_response import GetDataItemListResponse
+from ._get_data_quality_analysis_request import GetDataQualityAnalysisRequest
+from ._get_data_quality_analysis_response_body import GetDataQualityAnalysisResponseBody
+from ._get_data_quality_analysis_response import GetDataQualityAnalysisResponse
+from ._get_device_info_request import GetDeviceInfoRequest
+from ._get_device_info_response_body import GetDeviceInfoResponseBody
+from ._get_device_info_response import GetDeviceInfoResponse
+from ._get_device_list_request import GetDeviceListRequest
+from ._get_device_list_response_body import GetDeviceListResponseBody
+from ._get_device_list_response import GetDeviceListResponse
+from ._get_doc_extraction_result_request import GetDocExtractionResultRequest
+from ._get_doc_extraction_result_response_body import GetDocExtractionResultResponseBody
+from ._get_doc_extraction_result_response import GetDocExtractionResultResponse
+from ._get_doc_parsing_result_request import GetDocParsingResultRequest
+from ._get_doc_parsing_result_response_body import GetDocParsingResultResponseBody
+from ._get_doc_parsing_result_response import GetDocParsingResultResponse
+from ._get_document_analyze_result_request import GetDocumentAnalyzeResultRequest
+from ._get_document_analyze_result_response_body import GetDocumentAnalyzeResultResponseBody
+from ._get_document_analyze_result_response import GetDocumentAnalyzeResultResponse
+from ._get_elec_constitute_request import GetElecConstituteRequest
+from ._get_elec_constitute_response_body import GetElecConstituteResponseBody
+from ._get_elec_constitute_response import GetElecConstituteResponse
+from ._get_elec_trend_request import GetElecTrendRequest
+from ._get_elec_trend_response_body import GetElecTrendResponseBody
+from ._get_elec_trend_response import GetElecTrendResponse
+from ._get_emission_source_constitute_request import GetEmissionSourceConstituteRequest
+from ._get_emission_source_constitute_response_body import GetEmissionSourceConstituteResponseBody
+from ._get_emission_source_constitute_response import GetEmissionSourceConstituteResponse
+from ._get_emission_summary_request import GetEmissionSummaryRequest
+from ._get_emission_summary_response_body import GetEmissionSummaryResponseBody
+from ._get_emission_summary_response import GetEmissionSummaryResponse
+from ._get_epd_inventory_constitute_request import GetEpdInventoryConstituteRequest
+from ._get_epd_inventory_constitute_response_body import GetEpdInventoryConstituteResponseBody
+from ._get_epd_inventory_constitute_response import GetEpdInventoryConstituteResponse
+from ._get_epd_summary_request import GetEpdSummaryRequest
+from ._get_epd_summary_response_body import GetEpdSummaryResponseBody
+from ._get_epd_summary_response import GetEpdSummaryResponse
+from ._get_footprint_list_request import GetFootprintListRequest
+from ._get_footprint_list_response_body import GetFootprintListResponseBody
+from ._get_footprint_list_response import GetFootprintListResponse
+from ._get_gas_constitute_request import GetGasConstituteRequest
+from ._get_gas_constitute_response_body import GetGasConstituteResponseBody
+from ._get_gas_constitute_response import GetGasConstituteResponse
+from ._get_gwp_benchmark_list_request import GetGwpBenchmarkListRequest
+from ._get_gwp_benchmark_list_response_body import GetGwpBenchmarkListResponseBody
+from ._get_gwp_benchmark_list_response import GetGwpBenchmarkListResponse
+from ._get_gwp_benchmark_summary_request import GetGwpBenchmarkSummaryRequest
+from ._get_gwp_benchmark_summary_response_body import GetGwpBenchmarkSummaryResponseBody
+from ._get_gwp_benchmark_summary_response import GetGwpBenchmarkSummaryResponse
+from ._get_gwp_inventory_constitute_request import GetGwpInventoryConstituteRequest
+from ._get_gwp_inventory_constitute_response_body import GetGwpInventoryConstituteResponseBody
+from ._get_gwp_inventory_constitute_response import GetGwpInventoryConstituteResponse
+from ._get_gwp_inventory_summary_request import GetGwpInventorySummaryRequest
+from ._get_gwp_inventory_summary_response_body import GetGwpInventorySummaryResponseBody
+from ._get_gwp_inventory_summary_response import GetGwpInventorySummaryResponse
+from ._get_inventory_list_request import GetInventoryListRequest
+from ._get_inventory_list_response_body import GetInventoryListResponseBody
+from ._get_inventory_list_response import GetInventoryListResponse
+from ._get_org_and_factory_response_body import GetOrgAndFactoryResponseBody
+from ._get_org_and_factory_response import GetOrgAndFactoryResponse
+from ._get_org_constitute_request import GetOrgConstituteRequest
+from ._get_org_constitute_response_body import GetOrgConstituteResponseBody
+from ._get_org_constitute_response import GetOrgConstituteResponse
+from ._get_pcr_info_request import GetPcrInfoRequest
+from ._get_pcr_info_response_body import GetPcrInfoResponseBody
+from ._get_pcr_info_response import GetPcrInfoResponse
+from ._get_reduction_proposal_request import GetReductionProposalRequest
+from ._get_reduction_proposal_response_body import GetReductionProposalResponseBody
+from ._get_reduction_proposal_response import GetReductionProposalResponse
+from ._get_vlextraction_result_request import GetVLExtractionResultRequest
+from ._get_vlextraction_result_response_body import GetVLExtractionResultResponseBody
+from ._get_vlextraction_result_response import GetVLExtractionResultResponse
+from ._is_completed_request import IsCompletedRequest
+from ._is_completed_response_body import IsCompletedResponseBody
+from ._is_completed_response import IsCompletedResponse
+from ._push_device_data_request import PushDeviceDataRequest
+from ._push_device_data_response_body import PushDeviceDataResponseBody
+from ._push_device_data_response import PushDeviceDataResponse
+from ._push_item_data_request import PushItemDataRequest
+from ._push_item_data_response_body import PushItemDataResponseBody
+from ._push_item_data_response import PushItemDataResponse
+from ._recalculate_carbon_emission_request import RecalculateCarbonEmissionRequest
+from ._recalculate_carbon_emission_response_body import RecalculateCarbonEmissionResponseBody
+from ._recalculate_carbon_emission_response import RecalculateCarbonEmissionResponse
+from ._retrieve_request import RetrieveRequest
+from ._retrieve_response_body import RetrieveResponseBody
+from ._retrieve_response import RetrieveResponse
+from ._send_document_ask_question_request import SendDocumentAskQuestionRequest
+from ._send_document_ask_question_response_body import SendDocumentAskQuestionResponseBody
+from ._send_document_ask_question_response import SendDocumentAskQuestionResponse
+from ._set_running_plan_request import SetRunningPlanRequest
+from ._set_running_plan_response_body import SetRunningPlanResponseBody
+from ._set_running_plan_response import SetRunningPlanResponse
+from ._submit_doc_extraction_task_request import SubmitDocExtractionTaskRequest
+from ._submit_doc_extraction_task_advance_request import SubmitDocExtractionTaskAdvanceRequest
+from ._submit_doc_extraction_task_response_body import SubmitDocExtractionTaskResponseBody
+from ._submit_doc_extraction_task_response import SubmitDocExtractionTaskResponse
+from ._submit_doc_parsing_task_request import SubmitDocParsingTaskRequest
+from ._submit_doc_parsing_task_advance_request import SubmitDocParsingTaskAdvanceRequest
+from ._submit_doc_parsing_task_response_body import SubmitDocParsingTaskResponseBody
+from ._submit_doc_parsing_task_response import SubmitDocParsingTaskResponse
+from ._submit_document_analyze_job_request import SubmitDocumentAnalyzeJobRequest
+from ._submit_document_analyze_job_advance_request import SubmitDocumentAnalyzeJobAdvanceRequest
+from ._submit_document_analyze_job_response_body import SubmitDocumentAnalyzeJobResponseBody
+from ._submit_document_analyze_job_response import SubmitDocumentAnalyzeJobResponse
+from ._submit_vlextraction_task_request import SubmitVLExtractionTaskRequest
+from ._submit_vlextraction_task_advance_request import SubmitVLExtractionTaskAdvanceRequest
+from ._submit_vlextraction_task_response_body import SubmitVLExtractionTaskResponseBody
+from ._submit_vlextraction_task_response import SubmitVLExtractionTaskResponse
+from ._constitute_item import ConstituteItemEnvGasEmissions
+from ._content_item import ContentItemExtInfoPos
+from ._content_item import ContentItemExtInfo
+from ._org_emission import OrgEmissionModuleEmissionList
+from ._analyze_vl_realtime_response_body import AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence
+from ._analyze_vl_realtime_response_body import AnalyzeVlRealtimeResponseBodyDataKvListInfoContext
+from ._analyze_vl_realtime_response_body import AnalyzeVlRealtimeResponseBodyDataKvListInfo
+from ._analyze_vl_realtime_response_body import AnalyzeVlRealtimeResponseBodyData
+from ._create_chat_session_response_body import CreateChatSessionResponseBodyData
+from ._edit_prohibited_devices_request import EditProhibitedDevicesRequestHvacDeviceConfigVOList
+from ._edit_unfavorable_area_devices_request import EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList
+from ._get_area_elec_constitute_response_body import GetAreaElecConstituteResponseBodyData
+from ._get_carbon_emission_trend_response_body import GetCarbonEmissionTrendResponseBodyDataActualEmissionListItems
+from ._get_carbon_emission_trend_response_body import GetCarbonEmissionTrendResponseBodyDataActualEmissionList
+from ._get_carbon_emission_trend_response_body import GetCarbonEmissionTrendResponseBodyDataTargetEmissionListItems
+from ._get_carbon_emission_trend_response_body import GetCarbonEmissionTrendResponseBodyDataTargetEmissionList
+from ._get_carbon_emission_trend_response_body import GetCarbonEmissionTrendResponseBodyData
+from ._get_chat_list_response_body import GetChatListResponseBodyData
+from ._get_chat_session_list_response_body import GetChatSessionListResponseBodyDataSessionList
+from ._get_chat_session_list_response_body import GetChatSessionListResponseBodyData
+from ._get_data_item_list_response_body import GetDataItemListResponseBodyData
+from ._get_data_quality_analysis_response_body import GetDataQualityAnalysisResponseBodyDataDataQualityScore
+from ._get_data_quality_analysis_response_body import GetDataQualityAnalysisResponseBodyDataDataQuality
+from ._get_data_quality_analysis_response_body import GetDataQualityAnalysisResponseBodyDataDataQualityResult
+from ._get_data_quality_analysis_response_body import GetDataQualityAnalysisResponseBodyDataSensitivityList
+from ._get_data_quality_analysis_response_body import GetDataQualityAnalysisResponseBodyDataUncertaintyValues
+from ._get_data_quality_analysis_response_body import GetDataQualityAnalysisResponseBodyData
+from ._get_device_info_response_body import GetDeviceInfoResponseBodyDataRecordList
+from ._get_device_info_response_body import GetDeviceInfoResponseBodyData
+from ._get_device_list_response_body import GetDeviceListResponseBodyDataDeviceListInfo
+from ._get_device_list_response_body import GetDeviceListResponseBodyDataDeviceList
+from ._get_device_list_response_body import GetDeviceListResponseBodyData
+from ._get_doc_extraction_result_response_body import GetDocExtractionResultResponseBodyDataKvListInfoContextConfidence
+from ._get_doc_extraction_result_response_body import GetDocExtractionResultResponseBodyDataKvListInfoContext
+from ._get_doc_extraction_result_response_body import GetDocExtractionResultResponseBodyDataKvListInfo
+from ._get_doc_extraction_result_response_body import GetDocExtractionResultResponseBodyData
+from ._get_doc_parsing_result_response_body import GetDocParsingResultResponseBodyData
+from ._get_document_analyze_result_response_body import GetDocumentAnalyzeResultResponseBodyDataKvListInfoContextConfidence
+from ._get_document_analyze_result_response_body import GetDocumentAnalyzeResultResponseBodyDataKvListInfoContext
+from ._get_document_analyze_result_response_body import GetDocumentAnalyzeResultResponseBodyDataKvListInfo
+from ._get_document_analyze_result_response_body import GetDocumentAnalyzeResultResponseBodyData
+from ._get_elec_constitute_response_body import GetElecConstituteResponseBodyDataLight
+from ._get_elec_constitute_response_body import GetElecConstituteResponseBodyDataNuclear
+from ._get_elec_constitute_response_body import GetElecConstituteResponseBodyDataRenewing
+from ._get_elec_constitute_response_body import GetElecConstituteResponseBodyDataUrban
+from ._get_elec_constitute_response_body import GetElecConstituteResponseBodyDataWater
+from ._get_elec_constitute_response_body import GetElecConstituteResponseBodyDataWind
+from ._get_elec_constitute_response_body import GetElecConstituteResponseBodyDataZero
+from ._get_elec_constitute_response_body import GetElecConstituteResponseBodyData
+from ._get_elec_trend_response_body import GetElecTrendResponseBodyDataLight
+from ._get_elec_trend_response_body import GetElecTrendResponseBodyDataNuclear
+from ._get_elec_trend_response_body import GetElecTrendResponseBodyDataRenewing
+from ._get_elec_trend_response_body import GetElecTrendResponseBodyDataUrban
+from ._get_elec_trend_response_body import GetElecTrendResponseBodyDataWater
+from ._get_elec_trend_response_body import GetElecTrendResponseBodyDataWind
+from ._get_elec_trend_response_body import GetElecTrendResponseBodyDataZero
+from ._get_elec_trend_response_body import GetElecTrendResponseBodyData
+from ._get_emission_summary_response_body import GetEmissionSummaryResponseBodyData
+from ._get_epd_summary_response_body import GetEpdSummaryResponseBodyData
+from ._get_footprint_list_response_body import GetFootprintListResponseBodyDataRecords
+from ._get_footprint_list_response_body import GetFootprintListResponseBodyData
+from ._get_gas_constitute_response_body import GetGasConstituteResponseBodyData
+from ._get_gwp_benchmark_list_response_body import GetGwpBenchmarkListResponseBodyDataItems
+from ._get_gwp_benchmark_list_response_body import GetGwpBenchmarkListResponseBodyData
+from ._get_gwp_benchmark_summary_response_body import GetGwpBenchmarkSummaryResponseBodyDataItems
+from ._get_gwp_benchmark_summary_response_body import GetGwpBenchmarkSummaryResponseBodyData
+from ._get_gwp_inventory_constitute_response_body import GetGwpInventoryConstituteResponseBodyData
+from ._get_gwp_inventory_summary_response_body import GetGwpInventorySummaryResponseBodyDataItems
+from ._get_gwp_inventory_summary_response_body import GetGwpInventorySummaryResponseBodyData
+from ._get_inventory_list_response_body import GetInventoryListResponseBodyDataItems
+from ._get_inventory_list_response_body import GetInventoryListResponseBodyData
+from ._get_org_and_factory_response_body import GetOrgAndFactoryResponseBodyDataFactoryList
+from ._get_org_and_factory_response_body import GetOrgAndFactoryResponseBodyData
+from ._get_pcr_info_response_body import GetPcrInfoResponseBodyData
+from ._get_reduction_proposal_response_body import GetReductionProposalResponseBodyData
+from ._get_vlextraction_result_response_body import GetVLExtractionResultResponseBodyDataKvListInfoContextConfidence
+from ._get_vlextraction_result_response_body import GetVLExtractionResultResponseBodyDataKvListInfoContext
+from ._get_vlextraction_result_response_body import GetVLExtractionResultResponseBodyDataKvListInfo
+from ._get_vlextraction_result_response_body import GetVLExtractionResultResponseBodyData
+from ._is_completed_response_body import IsCompletedResponseBodyData
+from ._push_device_data_request import PushDeviceDataRequestDevices
+from ._push_item_data_request import PushItemDataRequestItems
+from ._retrieve_response_body import RetrieveResponseBodyData
+from ._send_document_ask_question_response_body import SendDocumentAskQuestionResponseBodyData
+from ._submit_doc_extraction_task_response_body import SubmitDocExtractionTaskResponseBodyData
+from ._submit_doc_parsing_task_response_body import SubmitDocParsingTaskResponseBodyData
+from ._submit_document_analyze_job_response_body import SubmitDocumentAnalyzeJobResponseBodyData
+from ._submit_vlextraction_task_response_body import SubmitVLExtractionTaskResponseBodyData
+
+__all__ = [
+    CarbonEmissionElecSummaryItem,
+    ChatDocumentPageNum,
+    ChatFolderItem,
+    ChatItem,
+    ChatRefDocInfo,
+    ChatRefDocItem,
+    ChatRefDocPageInfo,
+    ChatRefDocPageNum,
+    ChatRefDocPostion,
+    ChunkItem,
+    ConstituteItem,
+    ContentItem,
+    DocumentDetailItem,
+    EpdInventoryConstituteItem,
+    FolderItem,
+    GwpInventoryConstitute,
+    GwpResourceConstitute,
+    OrgEmission,
+    AddFolderRequest,
+    AddFolderResponseBody,
+    AddFolderResponse,
+    AnalyzeVlRealtimeRequest,
+    AnalyzeVlRealtimeAdvanceRequest,
+    AnalyzeVlRealtimeResponseBody,
+    AnalyzeVlRealtimeResponse,
+    BatchSaveInstructionStatusRequest,
+    BatchSaveInstructionStatusResponseBody,
+    BatchSaveInstructionStatusResponse,
+    BatchUpdateSystemRunningPlanRequest,
+    BatchUpdateSystemRunningPlanResponseBody,
+    BatchUpdateSystemRunningPlanResponse,
+    ChatRequest,
+    ChatResponseBody,
+    ChatResponse,
+    ChatStreamRequest,
+    ChatStreamResponseBody,
+    ChatStreamResponse,
+    CreateChatSessionRequest,
+    CreateChatSessionResponseBody,
+    CreateChatSessionResponse,
+    DeleteDocumentRequest,
+    DeleteDocumentResponseBody,
+    DeleteDocumentResponse,
+    DeleteFolderRequest,
+    DeleteFolderResponseBody,
+    DeleteFolderResponse,
+    DetailDocumentRequest,
+    DetailDocumentResponseBody,
+    DetailDocumentResponse,
+    EditProhibitedDevicesRequest,
+    EditProhibitedDevicesResponseBody,
+    EditProhibitedDevicesResponse,
+    EditUnfavorableAreaDevicesRequest,
+    EditUnfavorableAreaDevicesResponseBody,
+    EditUnfavorableAreaDevicesResponse,
+    GenerateResultRequest,
+    GenerateResultResponseBody,
+    GenerateResultResponse,
+    GetAreaElecConstituteRequest,
+    GetAreaElecConstituteResponseBody,
+    GetAreaElecConstituteResponse,
+    GetCarbonEmissionTrendRequest,
+    GetCarbonEmissionTrendResponseBody,
+    GetCarbonEmissionTrendResponse,
+    GetChatFolderListResponseBody,
+    GetChatFolderListResponse,
+    GetChatListRequest,
+    GetChatListResponseBody,
+    GetChatListResponse,
+    GetChatSessionListRequest,
+    GetChatSessionListResponseBody,
+    GetChatSessionListResponse,
+    GetDataItemListRequest,
+    GetDataItemListResponseBody,
+    GetDataItemListResponse,
+    GetDataQualityAnalysisRequest,
+    GetDataQualityAnalysisResponseBody,
+    GetDataQualityAnalysisResponse,
+    GetDeviceInfoRequest,
+    GetDeviceInfoResponseBody,
+    GetDeviceInfoResponse,
+    GetDeviceListRequest,
+    GetDeviceListResponseBody,
+    GetDeviceListResponse,
+    GetDocExtractionResultRequest,
+    GetDocExtractionResultResponseBody,
+    GetDocExtractionResultResponse,
+    GetDocParsingResultRequest,
+    GetDocParsingResultResponseBody,
+    GetDocParsingResultResponse,
+    GetDocumentAnalyzeResultRequest,
+    GetDocumentAnalyzeResultResponseBody,
+    GetDocumentAnalyzeResultResponse,
+    GetElecConstituteRequest,
+    GetElecConstituteResponseBody,
+    GetElecConstituteResponse,
+    GetElecTrendRequest,
+    GetElecTrendResponseBody,
+    GetElecTrendResponse,
+    GetEmissionSourceConstituteRequest,
+    GetEmissionSourceConstituteResponseBody,
+    GetEmissionSourceConstituteResponse,
+    GetEmissionSummaryRequest,
+    GetEmissionSummaryResponseBody,
+    GetEmissionSummaryResponse,
+    GetEpdInventoryConstituteRequest,
+    GetEpdInventoryConstituteResponseBody,
+    GetEpdInventoryConstituteResponse,
+    GetEpdSummaryRequest,
+    GetEpdSummaryResponseBody,
+    GetEpdSummaryResponse,
+    GetFootprintListRequest,
+    GetFootprintListResponseBody,
+    GetFootprintListResponse,
+    GetGasConstituteRequest,
+    GetGasConstituteResponseBody,
+    GetGasConstituteResponse,
+    GetGwpBenchmarkListRequest,
+    GetGwpBenchmarkListResponseBody,
+    GetGwpBenchmarkListResponse,
+    GetGwpBenchmarkSummaryRequest,
+    GetGwpBenchmarkSummaryResponseBody,
+    GetGwpBenchmarkSummaryResponse,
+    GetGwpInventoryConstituteRequest,
+    GetGwpInventoryConstituteResponseBody,
+    GetGwpInventoryConstituteResponse,
+    GetGwpInventorySummaryRequest,
+    GetGwpInventorySummaryResponseBody,
+    GetGwpInventorySummaryResponse,
+    GetInventoryListRequest,
+    GetInventoryListResponseBody,
+    GetInventoryListResponse,
+    GetOrgAndFactoryResponseBody,
+    GetOrgAndFactoryResponse,
+    GetOrgConstituteRequest,
+    GetOrgConstituteResponseBody,
+    GetOrgConstituteResponse,
+    GetPcrInfoRequest,
+    GetPcrInfoResponseBody,
+    GetPcrInfoResponse,
+    GetReductionProposalRequest,
+    GetReductionProposalResponseBody,
+    GetReductionProposalResponse,
+    GetVLExtractionResultRequest,
+    GetVLExtractionResultResponseBody,
+    GetVLExtractionResultResponse,
+    IsCompletedRequest,
+    IsCompletedResponseBody,
+    IsCompletedResponse,
+    PushDeviceDataRequest,
+    PushDeviceDataResponseBody,
+    PushDeviceDataResponse,
+    PushItemDataRequest,
+    PushItemDataResponseBody,
+    PushItemDataResponse,
+    RecalculateCarbonEmissionRequest,
+    RecalculateCarbonEmissionResponseBody,
+    RecalculateCarbonEmissionResponse,
+    RetrieveRequest,
+    RetrieveResponseBody,
+    RetrieveResponse,
+    SendDocumentAskQuestionRequest,
+    SendDocumentAskQuestionResponseBody,
+    SendDocumentAskQuestionResponse,
+    SetRunningPlanRequest,
+    SetRunningPlanResponseBody,
+    SetRunningPlanResponse,
+    SubmitDocExtractionTaskRequest,
+    SubmitDocExtractionTaskAdvanceRequest,
+    SubmitDocExtractionTaskResponseBody,
+    SubmitDocExtractionTaskResponse,
+    SubmitDocParsingTaskRequest,
+    SubmitDocParsingTaskAdvanceRequest,
+    SubmitDocParsingTaskResponseBody,
+    SubmitDocParsingTaskResponse,
+    SubmitDocumentAnalyzeJobRequest,
+    SubmitDocumentAnalyzeJobAdvanceRequest,
+    SubmitDocumentAnalyzeJobResponseBody,
+    SubmitDocumentAnalyzeJobResponse,
+    SubmitVLExtractionTaskRequest,
+    SubmitVLExtractionTaskAdvanceRequest,
+    SubmitVLExtractionTaskResponseBody,
+    SubmitVLExtractionTaskResponse,
+    ConstituteItemEnvGasEmissions,
+    ContentItemExtInfoPos,
+    ContentItemExtInfo,
+    OrgEmissionModuleEmissionList,
+    AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence,
+    AnalyzeVlRealtimeResponseBodyDataKvListInfoContext,
+    AnalyzeVlRealtimeResponseBodyDataKvListInfo,
+    AnalyzeVlRealtimeResponseBodyData,
+    CreateChatSessionResponseBodyData,
+    EditProhibitedDevicesRequestHvacDeviceConfigVOList,
+    EditUnfavorableAreaDevicesRequestHvacDeviceConfigVOList,
+    GetAreaElecConstituteResponseBodyData,
+    GetCarbonEmissionTrendResponseBodyDataActualEmissionListItems,
+    GetCarbonEmissionTrendResponseBodyDataActualEmissionList,
+    GetCarbonEmissionTrendResponseBodyDataTargetEmissionListItems,
+    GetCarbonEmissionTrendResponseBodyDataTargetEmissionList,
+    GetCarbonEmissionTrendResponseBodyData,
+    GetChatListResponseBodyData,
+    GetChatSessionListResponseBodyDataSessionList,
+    GetChatSessionListResponseBodyData,
+    GetDataItemListResponseBodyData,
+    GetDataQualityAnalysisResponseBodyDataDataQualityScore,
+    GetDataQualityAnalysisResponseBodyDataDataQuality,
+    GetDataQualityAnalysisResponseBodyDataDataQualityResult,
+    GetDataQualityAnalysisResponseBodyDataSensitivityList,
+    GetDataQualityAnalysisResponseBodyDataUncertaintyValues,
+    GetDataQualityAnalysisResponseBodyData,
+    GetDeviceInfoResponseBodyDataRecordList,
+    GetDeviceInfoResponseBodyData,
+    GetDeviceListResponseBodyDataDeviceListInfo,
+    GetDeviceListResponseBodyDataDeviceList,
+    GetDeviceListResponseBodyData,
+    GetDocExtractionResultResponseBodyDataKvListInfoContextConfidence,
+    GetDocExtractionResultResponseBodyDataKvListInfoContext,
+    GetDocExtractionResultResponseBodyDataKvListInfo,
+    GetDocExtractionResultResponseBodyData,
+    GetDocParsingResultResponseBodyData,
+    GetDocumentAnalyzeResultResponseBodyDataKvListInfoContextConfidence,
+    GetDocumentAnalyzeResultResponseBodyDataKvListInfoContext,
+    GetDocumentAnalyzeResultResponseBodyDataKvListInfo,
+    GetDocumentAnalyzeResultResponseBodyData,
+    GetElecConstituteResponseBodyDataLight,
+    GetElecConstituteResponseBodyDataNuclear,
+    GetElecConstituteResponseBodyDataRenewing,
+    GetElecConstituteResponseBodyDataUrban,
+    GetElecConstituteResponseBodyDataWater,
+    GetElecConstituteResponseBodyDataWind,
+    GetElecConstituteResponseBodyDataZero,
+    GetElecConstituteResponseBodyData,
+    GetElecTrendResponseBodyDataLight,
+    GetElecTrendResponseBodyDataNuclear,
+    GetElecTrendResponseBodyDataRenewing,
+    GetElecTrendResponseBodyDataUrban,
+    GetElecTrendResponseBodyDataWater,
+    GetElecTrendResponseBodyDataWind,
+    GetElecTrendResponseBodyDataZero,
+    GetElecTrendResponseBodyData,
+    GetEmissionSummaryResponseBodyData,
+    GetEpdSummaryResponseBodyData,
+    GetFootprintListResponseBodyDataRecords,
+    GetFootprintListResponseBodyData,
+    GetGasConstituteResponseBodyData,
+    GetGwpBenchmarkListResponseBodyDataItems,
+    GetGwpBenchmarkListResponseBodyData,
+    GetGwpBenchmarkSummaryResponseBodyDataItems,
+    GetGwpBenchmarkSummaryResponseBodyData,
+    GetGwpInventoryConstituteResponseBodyData,
+    GetGwpInventorySummaryResponseBodyDataItems,
+    GetGwpInventorySummaryResponseBodyData,
+    GetInventoryListResponseBodyDataItems,
+    GetInventoryListResponseBodyData,
+    GetOrgAndFactoryResponseBodyDataFactoryList,
+    GetOrgAndFactoryResponseBodyData,
+    GetPcrInfoResponseBodyData,
+    GetReductionProposalResponseBodyData,
+    GetVLExtractionResultResponseBodyDataKvListInfoContextConfidence,
+    GetVLExtractionResultResponseBodyDataKvListInfoContext,
+    GetVLExtractionResultResponseBodyDataKvListInfo,
+    GetVLExtractionResultResponseBodyData,
+    IsCompletedResponseBodyData,
+    PushDeviceDataRequestDevices,
+    PushItemDataRequestItems,
+    RetrieveResponseBodyData,
+    SendDocumentAskQuestionResponseBodyData,
+    SubmitDocExtractionTaskResponseBodyData,
+    SubmitDocParsingTaskResponseBodyData,
+    SubmitDocumentAnalyzeJobResponseBodyData,
+    SubmitVLExtractionTaskResponseBodyData
+]
