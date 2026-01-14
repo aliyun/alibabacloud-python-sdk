@@ -1,3 +1,7 @@
+2026-01-14 Version: 5.0.2
+- Update API CreateInstance: add request parameters body.productInfo.traceOn.
+
+
 2025-12-11 Version: 5.0.1
 - Update API GetInstance: add response parameters Body.data.networkInfo.endpoints.$.endpointId.
 

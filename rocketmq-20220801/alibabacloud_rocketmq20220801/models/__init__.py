@@ -1,0 +1,623 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._data_lite_topic_lag_map_value import DataLiteTopicLagMapValue
+from ._data_topic_lag_map_value import DataTopicLagMapValue
+from ._add_disaster_recovery_item_request import AddDisasterRecoveryItemRequest
+from ._add_disaster_recovery_item_response_body import AddDisasterRecoveryItemResponseBody
+from ._add_disaster_recovery_item_response import AddDisasterRecoveryItemResponse
+from ._change_resource_group_request import ChangeResourceGroupRequest
+from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
+from ._change_resource_group_response import ChangeResourceGroupResponse
+from ._create_consumer_group_request import CreateConsumerGroupRequest
+from ._create_consumer_group_response_body import CreateConsumerGroupResponseBody
+from ._create_consumer_group_response import CreateConsumerGroupResponse
+from ._create_disaster_recovery_plan_request import CreateDisasterRecoveryPlanRequest
+from ._create_disaster_recovery_plan_response_body import CreateDisasterRecoveryPlanResponseBody
+from ._create_disaster_recovery_plan_response import CreateDisasterRecoveryPlanResponse
+from ._create_instance_request import CreateInstanceRequest
+from ._create_instance_response_body import CreateInstanceResponseBody
+from ._create_instance_response import CreateInstanceResponse
+from ._create_instance_account_request import CreateInstanceAccountRequest
+from ._create_instance_account_response_body import CreateInstanceAccountResponseBody
+from ._create_instance_account_response import CreateInstanceAccountResponse
+from ._create_instance_acl_request import CreateInstanceAclRequest
+from ._create_instance_acl_response_body import CreateInstanceAclResponseBody
+from ._create_instance_acl_response import CreateInstanceAclResponse
+from ._create_instance_ip_whitelist_request import CreateInstanceIpWhitelistRequest
+from ._create_instance_ip_whitelist_response_body import CreateInstanceIpWhitelistResponseBody
+from ._create_instance_ip_whitelist_response import CreateInstanceIpWhitelistResponse
+from ._create_topic_request import CreateTopicRequest
+from ._create_topic_response_body import CreateTopicResponseBody
+from ._create_topic_response import CreateTopicResponse
+from ._delete_consumer_group_response_body import DeleteConsumerGroupResponseBody
+from ._delete_consumer_group_response import DeleteConsumerGroupResponse
+from ._delete_consumer_group_subscription_request import DeleteConsumerGroupSubscriptionRequest
+from ._delete_consumer_group_subscription_response_body import DeleteConsumerGroupSubscriptionResponseBody
+from ._delete_consumer_group_subscription_response import DeleteConsumerGroupSubscriptionResponse
+from ._delete_disaster_recovery_item_response_body import DeleteDisasterRecoveryItemResponseBody
+from ._delete_disaster_recovery_item_response import DeleteDisasterRecoveryItemResponse
+from ._delete_disaster_recovery_plan_response_body import DeleteDisasterRecoveryPlanResponseBody
+from ._delete_disaster_recovery_plan_response import DeleteDisasterRecoveryPlanResponse
+from ._delete_instance_response_body import DeleteInstanceResponseBody
+from ._delete_instance_response import DeleteInstanceResponse
+from ._delete_instance_account_response_body import DeleteInstanceAccountResponseBody
+from ._delete_instance_account_response import DeleteInstanceAccountResponse
+from ._delete_instance_acl_request import DeleteInstanceAclRequest
+from ._delete_instance_acl_response_body import DeleteInstanceAclResponseBody
+from ._delete_instance_acl_response import DeleteInstanceAclResponse
+from ._delete_instance_ip_whitelist_request import DeleteInstanceIpWhitelistRequest
+from ._delete_instance_ip_whitelist_shrink_request import DeleteInstanceIpWhitelistShrinkRequest
+from ._delete_instance_ip_whitelist_response_body import DeleteInstanceIpWhitelistResponseBody
+from ._delete_instance_ip_whitelist_response import DeleteInstanceIpWhitelistResponse
+from ._delete_topic_response_body import DeleteTopicResponseBody
+from ._delete_topic_response import DeleteTopicResponse
+from ._execute_migration_operation_request import ExecuteMigrationOperationRequest
+from ._execute_migration_operation_response_body import ExecuteMigrationOperationResponseBody
+from ._execute_migration_operation_response import ExecuteMigrationOperationResponse
+from ._finish_migration_stage_request import FinishMigrationStageRequest
+from ._finish_migration_stage_response_body import FinishMigrationStageResponseBody
+from ._finish_migration_stage_response import FinishMigrationStageResponse
+from ._get_consume_timespan_response_body import GetConsumeTimespanResponseBody
+from ._get_consume_timespan_response import GetConsumeTimespanResponse
+from ._get_consumer_group_response_body import GetConsumerGroupResponseBody
+from ._get_consumer_group_response import GetConsumerGroupResponse
+from ._get_consumer_group_lag_request import GetConsumerGroupLagRequest
+from ._get_consumer_group_lag_response_body import GetConsumerGroupLagResponseBody
+from ._get_consumer_group_lag_response import GetConsumerGroupLagResponse
+from ._get_consumer_group_subscription_response_body import GetConsumerGroupSubscriptionResponseBody
+from ._get_consumer_group_subscription_response import GetConsumerGroupSubscriptionResponse
+from ._get_consumer_stack_request import GetConsumerStackRequest
+from ._get_consumer_stack_response_body import GetConsumerStackResponseBody
+from ._get_consumer_stack_response import GetConsumerStackResponse
+from ._get_disaster_recovery_item_response_body import GetDisasterRecoveryItemResponseBody
+from ._get_disaster_recovery_item_response import GetDisasterRecoveryItemResponse
+from ._get_disaster_recovery_plan_response_body import GetDisasterRecoveryPlanResponseBody
+from ._get_disaster_recovery_plan_response import GetDisasterRecoveryPlanResponse
+from ._get_instance_response_body import GetInstanceResponseBody
+from ._get_instance_response import GetInstanceResponse
+from ._get_instance_account_request import GetInstanceAccountRequest
+from ._get_instance_account_response_body import GetInstanceAccountResponseBody
+from ._get_instance_account_response import GetInstanceAccountResponse
+from ._get_instance_acl_request import GetInstanceAclRequest
+from ._get_instance_acl_response_body import GetInstanceAclResponseBody
+from ._get_instance_acl_response import GetInstanceAclResponse
+from ._get_instance_ip_whitelist_request import GetInstanceIpWhitelistRequest
+from ._get_instance_ip_whitelist_shrink_request import GetInstanceIpWhitelistShrinkRequest
+from ._get_instance_ip_whitelist_response_body import GetInstanceIpWhitelistResponseBody
+from ._get_instance_ip_whitelist_response import GetInstanceIpWhitelistResponse
+from ._get_message_detail_response_body import GetMessageDetailResponseBody
+from ._get_message_detail_response import GetMessageDetailResponse
+from ._get_topic_response_body import GetTopicResponseBody
+from ._get_topic_response import GetTopicResponse
+from ._get_trace_request import GetTraceRequest
+from ._get_trace_response_body import GetTraceResponseBody
+from ._get_trace_response import GetTraceResponse
+from ._list_available_zones_response_body import ListAvailableZonesResponseBody
+from ._list_available_zones_response import ListAvailableZonesResponse
+from ._list_consumer_connections_request import ListConsumerConnectionsRequest
+from ._list_consumer_connections_response_body import ListConsumerConnectionsResponseBody
+from ._list_consumer_connections_response import ListConsumerConnectionsResponse
+from ._list_consumer_group_subscriptions_request import ListConsumerGroupSubscriptionsRequest
+from ._list_consumer_group_subscriptions_response_body import ListConsumerGroupSubscriptionsResponseBody
+from ._list_consumer_group_subscriptions_response import ListConsumerGroupSubscriptionsResponse
+from ._list_consumer_groups_request import ListConsumerGroupsRequest
+from ._list_consumer_groups_response_body import ListConsumerGroupsResponseBody
+from ._list_consumer_groups_response import ListConsumerGroupsResponse
+from ._list_disaster_recovery_checkpoints_request import ListDisasterRecoveryCheckpointsRequest
+from ._list_disaster_recovery_checkpoints_response_body import ListDisasterRecoveryCheckpointsResponseBody
+from ._list_disaster_recovery_checkpoints_response import ListDisasterRecoveryCheckpointsResponse
+from ._list_disaster_recovery_items_request import ListDisasterRecoveryItemsRequest
+from ._list_disaster_recovery_items_response_body import ListDisasterRecoveryItemsResponseBody
+from ._list_disaster_recovery_items_response import ListDisasterRecoveryItemsResponse
+from ._list_disaster_recovery_plans_request import ListDisasterRecoveryPlansRequest
+from ._list_disaster_recovery_plans_response_body import ListDisasterRecoveryPlansResponseBody
+from ._list_disaster_recovery_plans_response import ListDisasterRecoveryPlansResponse
+from ._list_instance_account_request import ListInstanceAccountRequest
+from ._list_instance_account_response_body import ListInstanceAccountResponseBody
+from ._list_instance_account_response import ListInstanceAccountResponse
+from ._list_instance_acl_request import ListInstanceAclRequest
+from ._list_instance_acl_response_body import ListInstanceAclResponseBody
+from ._list_instance_acl_response import ListInstanceAclResponse
+from ._list_instance_ip_whitelist_request import ListInstanceIpWhitelistRequest
+from ._list_instance_ip_whitelist_response_body import ListInstanceIpWhitelistResponseBody
+from ._list_instance_ip_whitelist_response import ListInstanceIpWhitelistResponse
+from ._list_instances_request import ListInstancesRequest
+from ._list_instances_shrink_request import ListInstancesShrinkRequest
+from ._list_instances_response_body import ListInstancesResponseBody
+from ._list_instances_response import ListInstancesResponse
+from ._list_messages_request import ListMessagesRequest
+from ._list_messages_response_body import ListMessagesResponseBody
+from ._list_messages_response import ListMessagesResponse
+from ._list_metric_meta_request import ListMetricMetaRequest
+from ._list_metric_meta_response_body import ListMetricMetaResponseBody
+from ._list_metric_meta_response import ListMetricMetaResponse
+from ._list_migration_operations_request import ListMigrationOperationsRequest
+from ._list_migration_operations_response_body import ListMigrationOperationsResponseBody
+from ._list_migration_operations_response import ListMigrationOperationsResponse
+from ._list_migrations_request import ListMigrationsRequest
+from ._list_migrations_response_body import ListMigrationsResponseBody
+from ._list_migrations_response import ListMigrationsResponse
+from ._list_regions_response_body import ListRegionsResponseBody
+from ._list_regions_response import ListRegionsResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
+from ._list_topic_subscriptions_response_body import ListTopicSubscriptionsResponseBody
+from ._list_topic_subscriptions_response import ListTopicSubscriptionsResponse
+from ._list_topics_request import ListTopicsRequest
+from ._list_topics_shrink_request import ListTopicsShrinkRequest
+from ._list_topics_response_body import ListTopicsResponseBody
+from ._list_topics_response import ListTopicsResponse
+from ._list_traces_request import ListTracesRequest
+from ._list_traces_response_body import ListTracesResponseBody
+from ._list_traces_response import ListTracesResponse
+from ._reset_consume_offset_request import ResetConsumeOffsetRequest
+from ._reset_consume_offset_response_body import ResetConsumeOffsetResponseBody
+from ._reset_consume_offset_response import ResetConsumeOffsetResponse
+from ._start_disaster_recovery_item_response_body import StartDisasterRecoveryItemResponseBody
+from ._start_disaster_recovery_item_response import StartDisasterRecoveryItemResponse
+from ._stop_disaster_recovery_item_response_body import StopDisasterRecoveryItemResponseBody
+from ._stop_disaster_recovery_item_response import StopDisasterRecoveryItemResponse
+from ._sync_disaster_recovery_checkpoint_response_body import SyncDisasterRecoveryCheckpointResponseBody
+from ._sync_disaster_recovery_checkpoint_response import SyncDisasterRecoveryCheckpointResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
+from ._update_consumer_group_request import UpdateConsumerGroupRequest
+from ._update_consumer_group_response_body import UpdateConsumerGroupResponseBody
+from ._update_consumer_group_response import UpdateConsumerGroupResponse
+from ._update_disaster_recovery_item_request import UpdateDisasterRecoveryItemRequest
+from ._update_disaster_recovery_item_response_body import UpdateDisasterRecoveryItemResponseBody
+from ._update_disaster_recovery_item_response import UpdateDisasterRecoveryItemResponse
+from ._update_disaster_recovery_plan_request import UpdateDisasterRecoveryPlanRequest
+from ._update_disaster_recovery_plan_response_body import UpdateDisasterRecoveryPlanResponseBody
+from ._update_disaster_recovery_plan_response import UpdateDisasterRecoveryPlanResponse
+from ._update_instance_request import UpdateInstanceRequest
+from ._update_instance_response_body import UpdateInstanceResponseBody
+from ._update_instance_response import UpdateInstanceResponse
+from ._update_instance_account_request import UpdateInstanceAccountRequest
+from ._update_instance_account_response_body import UpdateInstanceAccountResponseBody
+from ._update_instance_account_response import UpdateInstanceAccountResponse
+from ._update_instance_acl_request import UpdateInstanceAclRequest
+from ._update_instance_acl_response_body import UpdateInstanceAclResponseBody
+from ._update_instance_acl_response import UpdateInstanceAclResponse
+from ._update_topic_request import UpdateTopicRequest
+from ._update_topic_response_body import UpdateTopicResponseBody
+from ._update_topic_response import UpdateTopicResponse
+from ._verify_consume_message_request import VerifyConsumeMessageRequest
+from ._verify_consume_message_response_body import VerifyConsumeMessageResponseBody
+from ._verify_consume_message_response import VerifyConsumeMessageResponse
+from ._verify_send_message_request import VerifySendMessageRequest
+from ._verify_send_message_response_body import VerifySendMessageResponseBody
+from ._verify_send_message_response import VerifySendMessageResponse
+from ._add_disaster_recovery_item_request import AddDisasterRecoveryItemRequestTopics
+from ._create_consumer_group_request import CreateConsumerGroupRequestConsumeRetryPolicy
+from ._create_disaster_recovery_plan_request import CreateDisasterRecoveryPlanRequestInstancesMessageProperty
+from ._create_disaster_recovery_plan_request import CreateDisasterRecoveryPlanRequestInstances
+from ._create_instance_request import CreateInstanceRequestNetworkInfoInternetInfo
+from ._create_instance_request import CreateInstanceRequestNetworkInfoVpcInfoVSwitches
+from ._create_instance_request import CreateInstanceRequestNetworkInfoVpcInfo
+from ._create_instance_request import CreateInstanceRequestNetworkInfo
+from ._create_instance_request import CreateInstanceRequestProductInfo
+from ._create_instance_request import CreateInstanceRequestTags
+from ._execute_migration_operation_request import ExecuteMigrationOperationRequestOperationParam
+from ._execute_migration_operation_response_body import ExecuteMigrationOperationResponseBodyDataOperationParam
+from ._execute_migration_operation_response_body import ExecuteMigrationOperationResponseBodyDataOperationResult
+from ._execute_migration_operation_response_body import ExecuteMigrationOperationResponseBodyData
+from ._get_consume_timespan_response_body import GetConsumeTimespanResponseBodyData
+from ._get_consumer_group_response_body import GetConsumerGroupResponseBodyDataConsumeRetryPolicy
+from ._get_consumer_group_response_body import GetConsumerGroupResponseBodyData
+from ._get_consumer_group_lag_response_body import GetConsumerGroupLagResponseBodyDataTotalLag
+from ._get_consumer_group_lag_response_body import GetConsumerGroupLagResponseBodyData
+from ._get_consumer_group_subscription_response_body import GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO
+from ._get_consumer_group_subscription_response_body import GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO
+from ._get_consumer_group_subscription_response_body import GetConsumerGroupSubscriptionResponseBodyData
+from ._get_consumer_stack_response_body import GetConsumerStackResponseBodyDataStacks
+from ._get_consumer_stack_response_body import GetConsumerStackResponseBodyData
+from ._get_disaster_recovery_item_response_body import GetDisasterRecoveryItemResponseBodyDataTopics
+from ._get_disaster_recovery_item_response_body import GetDisasterRecoveryItemResponseBodyData
+from ._get_disaster_recovery_plan_response_body import GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty
+from ._get_disaster_recovery_plan_response_body import GetDisasterRecoveryPlanResponseBodyDataInstances
+from ._get_disaster_recovery_plan_response_body import GetDisasterRecoveryPlanResponseBodyData
+from ._get_instance_response_body import GetInstanceResponseBodyDataAccountInfo
+from ._get_instance_response_body import GetInstanceResponseBodyDataAclInfo
+from ._get_instance_response_body import GetInstanceResponseBodyDataExtConfig
+from ._get_instance_response_body import GetInstanceResponseBodyDataInstanceQuotas
+from ._get_instance_response_body import GetInstanceResponseBodyDataNetworkInfoEndpoints
+from ._get_instance_response_body import GetInstanceResponseBodyDataNetworkInfoInternetInfo
+from ._get_instance_response_body import GetInstanceResponseBodyDataNetworkInfoVpcInfoVSwitches
+from ._get_instance_response_body import GetInstanceResponseBodyDataNetworkInfoVpcInfo
+from ._get_instance_response_body import GetInstanceResponseBodyDataNetworkInfo
+from ._get_instance_response_body import GetInstanceResponseBodyDataProductInfo
+from ._get_instance_response_body import GetInstanceResponseBodyDataSoftware
+from ._get_instance_response_body import GetInstanceResponseBodyDataTags
+from ._get_instance_response_body import GetInstanceResponseBodyData
+from ._get_instance_account_response_body import GetInstanceAccountResponseBodyData
+from ._get_instance_acl_response_body import GetInstanceAclResponseBodyData
+from ._get_instance_ip_whitelist_response_body import GetInstanceIpWhitelistResponseBodyData
+from ._get_message_detail_response_body import GetMessageDetailResponseBodyData
+from ._get_topic_response_body import GetTopicResponseBodyData
+from ._get_trace_response_body import GetTraceResponseBodyDataBrokerInfoOperations
+from ._get_trace_response_body import GetTraceResponseBodyDataBrokerInfo
+from ._get_trace_response_body import GetTraceResponseBodyDataConsumerInfosDeadLetterInfo
+from ._get_trace_response_body import GetTraceResponseBodyDataConsumerInfosRecordsOperations
+from ._get_trace_response_body import GetTraceResponseBodyDataConsumerInfosRecords
+from ._get_trace_response_body import GetTraceResponseBodyDataConsumerInfos
+from ._get_trace_response_body import GetTraceResponseBodyDataMessageInfo
+from ._get_trace_response_body import GetTraceResponseBodyDataProducerInfoRecords
+from ._get_trace_response_body import GetTraceResponseBodyDataProducerInfo
+from ._get_trace_response_body import GetTraceResponseBodyData
+from ._list_available_zones_response_body import ListAvailableZonesResponseBodyData
+from ._list_consumer_connections_response_body import ListConsumerConnectionsResponseBodyDataConnections
+from ._list_consumer_connections_response_body import ListConsumerConnectionsResponseBodyData
+from ._list_consumer_group_subscriptions_response_body import ListConsumerGroupSubscriptionsResponseBodyData
+from ._list_consumer_groups_response_body import ListConsumerGroupsResponseBodyDataList
+from ._list_consumer_groups_response_body import ListConsumerGroupsResponseBodyData
+from ._list_disaster_recovery_checkpoints_response_body import ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData
+from ._list_disaster_recovery_checkpoints_response_body import ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress
+from ._list_disaster_recovery_checkpoints_response_body import ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData
+from ._list_disaster_recovery_checkpoints_response_body import ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress
+from ._list_disaster_recovery_checkpoints_response_body import ListDisasterRecoveryCheckpointsResponseBodyDataList
+from ._list_disaster_recovery_checkpoints_response_body import ListDisasterRecoveryCheckpointsResponseBodyData
+from ._list_disaster_recovery_items_response_body import ListDisasterRecoveryItemsResponseBodyDataListTopics
+from ._list_disaster_recovery_items_response_body import ListDisasterRecoveryItemsResponseBodyDataList
+from ._list_disaster_recovery_items_response_body import ListDisasterRecoveryItemsResponseBodyData
+from ._list_disaster_recovery_plans_response_body import ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty
+from ._list_disaster_recovery_plans_response_body import ListDisasterRecoveryPlansResponseBodyDataListInstances
+from ._list_disaster_recovery_plans_response_body import ListDisasterRecoveryPlansResponseBodyDataList
+from ._list_disaster_recovery_plans_response_body import ListDisasterRecoveryPlansResponseBodyData
+from ._list_instance_account_response_body import ListInstanceAccountResponseBodyDataList
+from ._list_instance_account_response_body import ListInstanceAccountResponseBodyData
+from ._list_instance_acl_response_body import ListInstanceAclResponseBodyDataList
+from ._list_instance_acl_response_body import ListInstanceAclResponseBodyData
+from ._list_instance_ip_whitelist_response_body import ListInstanceIpWhitelistResponseBodyData
+from ._list_instances_response_body import ListInstancesResponseBodyDataListProductInfo
+from ._list_instances_response_body import ListInstancesResponseBodyDataListTags
+from ._list_instances_response_body import ListInstancesResponseBodyDataList
+from ._list_instances_response_body import ListInstancesResponseBodyData
+from ._list_messages_response_body import ListMessagesResponseBodyDataList
+from ._list_messages_response_body import ListMessagesResponseBodyData
+from ._list_metric_meta_response_body import ListMetricMetaResponseBodyDataList
+from ._list_metric_meta_response_body import ListMetricMetaResponseBodyData
+from ._list_migration_operations_response_body import ListMigrationOperationsResponseBodyDataListOperationParam
+from ._list_migration_operations_response_body import ListMigrationOperationsResponseBodyDataListOperationResult
+from ._list_migration_operations_response_body import ListMigrationOperationsResponseBodyDataList
+from ._list_migration_operations_response_body import ListMigrationOperationsResponseBodyData
+from ._list_migrations_response_body import ListMigrationsResponseBodyDataListCurrentStage
+from ._list_migrations_response_body import ListMigrationsResponseBodyDataListMigrationSource
+from ._list_migrations_response_body import ListMigrationsResponseBodyDataListMigrationTarget
+from ._list_migrations_response_body import ListMigrationsResponseBodyDataList
+from ._list_migrations_response_body import ListMigrationsResponseBodyData
+from ._list_regions_response_body import ListRegionsResponseBodyDataTags
+from ._list_regions_response_body import ListRegionsResponseBodyData
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyDataTagResources
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyData
+from ._list_topic_subscriptions_response_body import ListTopicSubscriptionsResponseBodyData
+from ._list_topics_response_body import ListTopicsResponseBodyDataList
+from ._list_topics_response_body import ListTopicsResponseBodyData
+from ._list_traces_response_body import ListTracesResponseBodyDataList
+from ._list_traces_response_body import ListTracesResponseBodyData
+from ._update_consumer_group_request import UpdateConsumerGroupRequestConsumeRetryPolicy
+from ._update_disaster_recovery_item_request import UpdateDisasterRecoveryItemRequestTopics
+from ._update_disaster_recovery_plan_request import UpdateDisasterRecoveryPlanRequestInstancesMessageProperty
+from ._update_disaster_recovery_plan_request import UpdateDisasterRecoveryPlanRequestInstances
+from ._update_instance_request import UpdateInstanceRequestAclInfo
+from ._update_instance_request import UpdateInstanceRequestNetworkInfoInternetInfo
+from ._update_instance_request import UpdateInstanceRequestNetworkInfo
+from ._update_instance_request import UpdateInstanceRequestProductInfo
+
+__all__ = [
+    DataLiteTopicLagMapValue,
+    DataTopicLagMapValue,
+    AddDisasterRecoveryItemRequest,
+    AddDisasterRecoveryItemResponseBody,
+    AddDisasterRecoveryItemResponse,
+    ChangeResourceGroupRequest,
+    ChangeResourceGroupResponseBody,
+    ChangeResourceGroupResponse,
+    CreateConsumerGroupRequest,
+    CreateConsumerGroupResponseBody,
+    CreateConsumerGroupResponse,
+    CreateDisasterRecoveryPlanRequest,
+    CreateDisasterRecoveryPlanResponseBody,
+    CreateDisasterRecoveryPlanResponse,
+    CreateInstanceRequest,
+    CreateInstanceResponseBody,
+    CreateInstanceResponse,
+    CreateInstanceAccountRequest,
+    CreateInstanceAccountResponseBody,
+    CreateInstanceAccountResponse,
+    CreateInstanceAclRequest,
+    CreateInstanceAclResponseBody,
+    CreateInstanceAclResponse,
+    CreateInstanceIpWhitelistRequest,
+    CreateInstanceIpWhitelistResponseBody,
+    CreateInstanceIpWhitelistResponse,
+    CreateTopicRequest,
+    CreateTopicResponseBody,
+    CreateTopicResponse,
+    DeleteConsumerGroupResponseBody,
+    DeleteConsumerGroupResponse,
+    DeleteConsumerGroupSubscriptionRequest,
+    DeleteConsumerGroupSubscriptionResponseBody,
+    DeleteConsumerGroupSubscriptionResponse,
+    DeleteDisasterRecoveryItemResponseBody,
+    DeleteDisasterRecoveryItemResponse,
+    DeleteDisasterRecoveryPlanResponseBody,
+    DeleteDisasterRecoveryPlanResponse,
+    DeleteInstanceResponseBody,
+    DeleteInstanceResponse,
+    DeleteInstanceAccountResponseBody,
+    DeleteInstanceAccountResponse,
+    DeleteInstanceAclRequest,
+    DeleteInstanceAclResponseBody,
+    DeleteInstanceAclResponse,
+    DeleteInstanceIpWhitelistRequest,
+    DeleteInstanceIpWhitelistShrinkRequest,
+    DeleteInstanceIpWhitelistResponseBody,
+    DeleteInstanceIpWhitelistResponse,
+    DeleteTopicResponseBody,
+    DeleteTopicResponse,
+    ExecuteMigrationOperationRequest,
+    ExecuteMigrationOperationResponseBody,
+    ExecuteMigrationOperationResponse,
+    FinishMigrationStageRequest,
+    FinishMigrationStageResponseBody,
+    FinishMigrationStageResponse,
+    GetConsumeTimespanResponseBody,
+    GetConsumeTimespanResponse,
+    GetConsumerGroupResponseBody,
+    GetConsumerGroupResponse,
+    GetConsumerGroupLagRequest,
+    GetConsumerGroupLagResponseBody,
+    GetConsumerGroupLagResponse,
+    GetConsumerGroupSubscriptionResponseBody,
+    GetConsumerGroupSubscriptionResponse,
+    GetConsumerStackRequest,
+    GetConsumerStackResponseBody,
+    GetConsumerStackResponse,
+    GetDisasterRecoveryItemResponseBody,
+    GetDisasterRecoveryItemResponse,
+    GetDisasterRecoveryPlanResponseBody,
+    GetDisasterRecoveryPlanResponse,
+    GetInstanceResponseBody,
+    GetInstanceResponse,
+    GetInstanceAccountRequest,
+    GetInstanceAccountResponseBody,
+    GetInstanceAccountResponse,
+    GetInstanceAclRequest,
+    GetInstanceAclResponseBody,
+    GetInstanceAclResponse,
+    GetInstanceIpWhitelistRequest,
+    GetInstanceIpWhitelistShrinkRequest,
+    GetInstanceIpWhitelistResponseBody,
+    GetInstanceIpWhitelistResponse,
+    GetMessageDetailResponseBody,
+    GetMessageDetailResponse,
+    GetTopicResponseBody,
+    GetTopicResponse,
+    GetTraceRequest,
+    GetTraceResponseBody,
+    GetTraceResponse,
+    ListAvailableZonesResponseBody,
+    ListAvailableZonesResponse,
+    ListConsumerConnectionsRequest,
+    ListConsumerConnectionsResponseBody,
+    ListConsumerConnectionsResponse,
+    ListConsumerGroupSubscriptionsRequest,
+    ListConsumerGroupSubscriptionsResponseBody,
+    ListConsumerGroupSubscriptionsResponse,
+    ListConsumerGroupsRequest,
+    ListConsumerGroupsResponseBody,
+    ListConsumerGroupsResponse,
+    ListDisasterRecoveryCheckpointsRequest,
+    ListDisasterRecoveryCheckpointsResponseBody,
+    ListDisasterRecoveryCheckpointsResponse,
+    ListDisasterRecoveryItemsRequest,
+    ListDisasterRecoveryItemsResponseBody,
+    ListDisasterRecoveryItemsResponse,
+    ListDisasterRecoveryPlansRequest,
+    ListDisasterRecoveryPlansResponseBody,
+    ListDisasterRecoveryPlansResponse,
+    ListInstanceAccountRequest,
+    ListInstanceAccountResponseBody,
+    ListInstanceAccountResponse,
+    ListInstanceAclRequest,
+    ListInstanceAclResponseBody,
+    ListInstanceAclResponse,
+    ListInstanceIpWhitelistRequest,
+    ListInstanceIpWhitelistResponseBody,
+    ListInstanceIpWhitelistResponse,
+    ListInstancesRequest,
+    ListInstancesShrinkRequest,
+    ListInstancesResponseBody,
+    ListInstancesResponse,
+    ListMessagesRequest,
+    ListMessagesResponseBody,
+    ListMessagesResponse,
+    ListMetricMetaRequest,
+    ListMetricMetaResponseBody,
+    ListMetricMetaResponse,
+    ListMigrationOperationsRequest,
+    ListMigrationOperationsResponseBody,
+    ListMigrationOperationsResponse,
+    ListMigrationsRequest,
+    ListMigrationsResponseBody,
+    ListMigrationsResponse,
+    ListRegionsResponseBody,
+    ListRegionsResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
+    ListTopicSubscriptionsResponseBody,
+    ListTopicSubscriptionsResponse,
+    ListTopicsRequest,
+    ListTopicsShrinkRequest,
+    ListTopicsResponseBody,
+    ListTopicsResponse,
+    ListTracesRequest,
+    ListTracesResponseBody,
+    ListTracesResponse,
+    ResetConsumeOffsetRequest,
+    ResetConsumeOffsetResponseBody,
+    ResetConsumeOffsetResponse,
+    StartDisasterRecoveryItemResponseBody,
+    StartDisasterRecoveryItemResponse,
+    StopDisasterRecoveryItemResponseBody,
+    StopDisasterRecoveryItemResponse,
+    SyncDisasterRecoveryCheckpointResponseBody,
+    SyncDisasterRecoveryCheckpointResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UntagResourcesRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
+    UpdateConsumerGroupRequest,
+    UpdateConsumerGroupResponseBody,
+    UpdateConsumerGroupResponse,
+    UpdateDisasterRecoveryItemRequest,
+    UpdateDisasterRecoveryItemResponseBody,
+    UpdateDisasterRecoveryItemResponse,
+    UpdateDisasterRecoveryPlanRequest,
+    UpdateDisasterRecoveryPlanResponseBody,
+    UpdateDisasterRecoveryPlanResponse,
+    UpdateInstanceRequest,
+    UpdateInstanceResponseBody,
+    UpdateInstanceResponse,
+    UpdateInstanceAccountRequest,
+    UpdateInstanceAccountResponseBody,
+    UpdateInstanceAccountResponse,
+    UpdateInstanceAclRequest,
+    UpdateInstanceAclResponseBody,
+    UpdateInstanceAclResponse,
+    UpdateTopicRequest,
+    UpdateTopicResponseBody,
+    UpdateTopicResponse,
+    VerifyConsumeMessageRequest,
+    VerifyConsumeMessageResponseBody,
+    VerifyConsumeMessageResponse,
+    VerifySendMessageRequest,
+    VerifySendMessageResponseBody,
+    VerifySendMessageResponse,
+    AddDisasterRecoveryItemRequestTopics,
+    CreateConsumerGroupRequestConsumeRetryPolicy,
+    CreateDisasterRecoveryPlanRequestInstancesMessageProperty,
+    CreateDisasterRecoveryPlanRequestInstances,
+    CreateInstanceRequestNetworkInfoInternetInfo,
+    CreateInstanceRequestNetworkInfoVpcInfoVSwitches,
+    CreateInstanceRequestNetworkInfoVpcInfo,
+    CreateInstanceRequestNetworkInfo,
+    CreateInstanceRequestProductInfo,
+    CreateInstanceRequestTags,
+    ExecuteMigrationOperationRequestOperationParam,
+    ExecuteMigrationOperationResponseBodyDataOperationParam,
+    ExecuteMigrationOperationResponseBodyDataOperationResult,
+    ExecuteMigrationOperationResponseBodyData,
+    GetConsumeTimespanResponseBodyData,
+    GetConsumerGroupResponseBodyDataConsumeRetryPolicy,
+    GetConsumerGroupResponseBodyData,
+    GetConsumerGroupLagResponseBodyDataTotalLag,
+    GetConsumerGroupLagResponseBodyData,
+    GetConsumerGroupSubscriptionResponseBodyDataConnectionDTO,
+    GetConsumerGroupSubscriptionResponseBodyDataSubscriptionDTO,
+    GetConsumerGroupSubscriptionResponseBodyData,
+    GetConsumerStackResponseBodyDataStacks,
+    GetConsumerStackResponseBodyData,
+    GetDisasterRecoveryItemResponseBodyDataTopics,
+    GetDisasterRecoveryItemResponseBodyData,
+    GetDisasterRecoveryPlanResponseBodyDataInstancesMessageProperty,
+    GetDisasterRecoveryPlanResponseBodyDataInstances,
+    GetDisasterRecoveryPlanResponseBodyData,
+    GetInstanceResponseBodyDataAccountInfo,
+    GetInstanceResponseBodyDataAclInfo,
+    GetInstanceResponseBodyDataExtConfig,
+    GetInstanceResponseBodyDataInstanceQuotas,
+    GetInstanceResponseBodyDataNetworkInfoEndpoints,
+    GetInstanceResponseBodyDataNetworkInfoInternetInfo,
+    GetInstanceResponseBodyDataNetworkInfoVpcInfoVSwitches,
+    GetInstanceResponseBodyDataNetworkInfoVpcInfo,
+    GetInstanceResponseBodyDataNetworkInfo,
+    GetInstanceResponseBodyDataProductInfo,
+    GetInstanceResponseBodyDataSoftware,
+    GetInstanceResponseBodyDataTags,
+    GetInstanceResponseBodyData,
+    GetInstanceAccountResponseBodyData,
+    GetInstanceAclResponseBodyData,
+    GetInstanceIpWhitelistResponseBodyData,
+    GetMessageDetailResponseBodyData,
+    GetTopicResponseBodyData,
+    GetTraceResponseBodyDataBrokerInfoOperations,
+    GetTraceResponseBodyDataBrokerInfo,
+    GetTraceResponseBodyDataConsumerInfosDeadLetterInfo,
+    GetTraceResponseBodyDataConsumerInfosRecordsOperations,
+    GetTraceResponseBodyDataConsumerInfosRecords,
+    GetTraceResponseBodyDataConsumerInfos,
+    GetTraceResponseBodyDataMessageInfo,
+    GetTraceResponseBodyDataProducerInfoRecords,
+    GetTraceResponseBodyDataProducerInfo,
+    GetTraceResponseBodyData,
+    ListAvailableZonesResponseBodyData,
+    ListConsumerConnectionsResponseBodyDataConnections,
+    ListConsumerConnectionsResponseBodyData,
+    ListConsumerGroupSubscriptionsResponseBodyData,
+    ListConsumerGroupsResponseBodyDataList,
+    ListConsumerGroupsResponseBodyData,
+    ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgressProgressData,
+    ListDisasterRecoveryCheckpointsResponseBodyDataListSourceProgress,
+    ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgressProgressData,
+    ListDisasterRecoveryCheckpointsResponseBodyDataListTargetProgress,
+    ListDisasterRecoveryCheckpointsResponseBodyDataList,
+    ListDisasterRecoveryCheckpointsResponseBodyData,
+    ListDisasterRecoveryItemsResponseBodyDataListTopics,
+    ListDisasterRecoveryItemsResponseBodyDataList,
+    ListDisasterRecoveryItemsResponseBodyData,
+    ListDisasterRecoveryPlansResponseBodyDataListInstancesMessageProperty,
+    ListDisasterRecoveryPlansResponseBodyDataListInstances,
+    ListDisasterRecoveryPlansResponseBodyDataList,
+    ListDisasterRecoveryPlansResponseBodyData,
+    ListInstanceAccountResponseBodyDataList,
+    ListInstanceAccountResponseBodyData,
+    ListInstanceAclResponseBodyDataList,
+    ListInstanceAclResponseBodyData,
+    ListInstanceIpWhitelistResponseBodyData,
+    ListInstancesResponseBodyDataListProductInfo,
+    ListInstancesResponseBodyDataListTags,
+    ListInstancesResponseBodyDataList,
+    ListInstancesResponseBodyData,
+    ListMessagesResponseBodyDataList,
+    ListMessagesResponseBodyData,
+    ListMetricMetaResponseBodyDataList,
+    ListMetricMetaResponseBodyData,
+    ListMigrationOperationsResponseBodyDataListOperationParam,
+    ListMigrationOperationsResponseBodyDataListOperationResult,
+    ListMigrationOperationsResponseBodyDataList,
+    ListMigrationOperationsResponseBodyData,
+    ListMigrationsResponseBodyDataListCurrentStage,
+    ListMigrationsResponseBodyDataListMigrationSource,
+    ListMigrationsResponseBodyDataListMigrationTarget,
+    ListMigrationsResponseBodyDataList,
+    ListMigrationsResponseBodyData,
+    ListRegionsResponseBodyDataTags,
+    ListRegionsResponseBodyData,
+    ListTagResourcesResponseBodyDataTagResources,
+    ListTagResourcesResponseBodyData,
+    ListTopicSubscriptionsResponseBodyData,
+    ListTopicsResponseBodyDataList,
+    ListTopicsResponseBodyData,
+    ListTracesResponseBodyDataList,
+    ListTracesResponseBodyData,
+    UpdateConsumerGroupRequestConsumeRetryPolicy,
+    UpdateDisasterRecoveryItemRequestTopics,
+    UpdateDisasterRecoveryPlanRequestInstancesMessageProperty,
+    UpdateDisasterRecoveryPlanRequestInstances,
+    UpdateInstanceRequestAclInfo,
+    UpdateInstanceRequestNetworkInfoInternetInfo,
+    UpdateInstanceRequestNetworkInfo,
+    UpdateInstanceRequestProductInfo
+]
