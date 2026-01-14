@@ -83,16 +83,20 @@ class GetEssayCorrectionTaskResponseBodyData(DaraModel):
         error_message: str = None,
         results: List[main_models.GetEssayCorrectionTaskResponseBodyDataResults] = None,
         status: str = None,
+        total_usage: main_models.ModelUsage = None,
     ):
         self.error_message = error_message
         self.results = results
         self.status = status
+        self.total_usage = total_usage
 
     def validate(self):
         if self.results:
             for v1 in self.results:
                  if v1:
                     v1.validate()
+        if self.total_usage:
+            self.total_usage.validate()
 
     def to_map(self):
         result = dict()
@@ -110,6 +114,9 @@ class GetEssayCorrectionTaskResponseBodyData(DaraModel):
         if self.status is not None:
             result['status'] = self.status
 
+        if self.total_usage is not None:
+            result['totalUsage'] = self.total_usage.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -126,6 +133,10 @@ class GetEssayCorrectionTaskResponseBodyData(DaraModel):
         if m.get('status') is not None:
             self.status = m.get('status')
 
+        if m.get('totalUsage') is not None:
+            temp_model = main_models.ModelUsage()
+            self.total_usage = temp_model.from_map(m.get('totalUsage'))
+
         return self
 
 class GetEssayCorrectionTaskResponseBodyDataResults(DaraModel):
@@ -134,14 +145,17 @@ class GetEssayCorrectionTaskResponseBodyDataResults(DaraModel):
         custom_id: str = None,
         result: str = None,
         score: int = None,
+        usage: main_models.ModelUsage = None,
     ):
         # xxx
         self.custom_id = custom_id
         self.result = result
         self.score = score
+        self.usage = usage
 
     def validate(self):
-        pass
+        if self.usage:
+            self.usage.validate()
 
     def to_map(self):
         result = dict()
@@ -157,6 +171,9 @@ class GetEssayCorrectionTaskResponseBodyDataResults(DaraModel):
         if self.score is not None:
             result['score'] = self.score
 
+        if self.usage is not None:
+            result['usage'] = self.usage.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -169,6 +186,10 @@ class GetEssayCorrectionTaskResponseBodyDataResults(DaraModel):
 
         if m.get('score') is not None:
             self.score = m.get('score')
+
+        if m.get('usage') is not None:
+            temp_model = main_models.ModelUsage()
+            self.usage = temp_model.from_map(m.get('usage'))
 
         return self
 

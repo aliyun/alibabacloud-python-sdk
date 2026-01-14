@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._model_usage import ModelUsage
 from ._cancel_async_task_request import CancelAsyncTaskRequest
 from ._cancel_async_task_response_body import CancelAsyncTaskResponseBody
 from ._cancel_async_task_response import CancelAsyncTaskResponse
@@ -346,6 +347,7 @@ from ._update_video_analysis_tasks_response_body import UpdateVideoAnalysisTasks
 from ._update_video_detect_shot_task_response_body import UpdateVideoDetectShotTaskResponseBodyData
 
 __all__ = [
+    ModelUsage,
     CancelAsyncTaskRequest,
     CancelAsyncTaskResponseBody,
     CancelAsyncTaskResponse,

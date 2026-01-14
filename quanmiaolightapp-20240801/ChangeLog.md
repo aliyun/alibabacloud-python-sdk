@@ -1,3 +1,8 @@
+2026-01-14 Version: 2.13.4
+- Update API GetEssayCorrectionTask: add response parameters Body.data.totalUsage.
+- Update API GetEssayCorrectionTask: add response parameters Body.data.results.$.usage.
+
+
 2026-01-07 Version: 2.13.3
 - Update API SubmitEssayCorrectionTask: add request parameters tasks.$.customId.
 
