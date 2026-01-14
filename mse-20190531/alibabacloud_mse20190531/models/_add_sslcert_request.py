@@ -1,0 +1,64 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class AddSSLCertRequest(DaraModel):
+    def __init__(
+        self,
+        accept_language: str = None,
+        cert_identifier: str = None,
+        domain_id: int = None,
+        gateway_unique_id: str = None,
+    ):
+        # The language of the response. Valid values:
+        # 
+        # *   zh: Chinese
+        # *   en: English
+        self.accept_language = accept_language
+        # The ID of the certificate.
+        self.cert_identifier = cert_identifier
+        # The domain ID.
+        self.domain_id = domain_id
+        # The unique ID of the gateway.
+        self.gateway_unique_id = gateway_unique_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.accept_language is not None:
+            result['AcceptLanguage'] = self.accept_language
+
+        if self.cert_identifier is not None:
+            result['CertIdentifier'] = self.cert_identifier
+
+        if self.domain_id is not None:
+            result['DomainId'] = self.domain_id
+
+        if self.gateway_unique_id is not None:
+            result['GatewayUniqueId'] = self.gateway_unique_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AcceptLanguage') is not None:
+            self.accept_language = m.get('AcceptLanguage')
+
+        if m.get('CertIdentifier') is not None:
+            self.cert_identifier = m.get('CertIdentifier')
+
+        if m.get('DomainId') is not None:
+            self.domain_id = m.get('DomainId')
+
+        if m.get('GatewayUniqueId') is not None:
+            self.gateway_unique_id = m.get('GatewayUniqueId')
+
+        return self
+

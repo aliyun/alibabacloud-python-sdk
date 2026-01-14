@@ -1,3 +1,10 @@
+2026-01-14 Version: 6.23.0
+- Support API DeleteBlackWhiteList.
+- Support API DeleteGatewayAuth.
+- Support API ListGatewayAuth.
+- Support API UpdateGatewayAuth.
+
+
 2025-12-23 Version: 6.22.2
 - Update API ListNacosConfigs: add response parameters Body.Configurations.$.ConfigTags.
 - Update API ListNacosConfigs: add response parameters Body.Configurations.$.Description.
