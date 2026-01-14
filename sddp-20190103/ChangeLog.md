@@ -1,3 +1,8 @@
+2026-01-14 Version: 1.6.2
+- Update API DescribeRules: add response parameters Body.Items.$.AuditMode.
+- Update API DescribeRules: add response parameters Body.Items.$.ThreatAnalysisStatus.
+
+
 2025-12-23 Version: 1.6.1
 - Update API DescribeAuditLogs: add request parameters LogQueryOpJson.
 
