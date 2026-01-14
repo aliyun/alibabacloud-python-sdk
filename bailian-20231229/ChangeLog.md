@@ -1,3 +1,7 @@
+2026-01-14 Version: 2.7.0
+- Support API GetIndexMonitor.
+
+
 2025-12-03 Version: 2.6.2
 - Update API CreateIndex: add request parameters pipelineCommercialCu.
 - Update API CreateIndex: add request parameters pipelineCommercialType.

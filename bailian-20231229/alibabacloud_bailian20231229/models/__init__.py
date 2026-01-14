@@ -1,0 +1,513 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._add_category_request import AddCategoryRequest
+from ._add_category_response_body import AddCategoryResponseBody
+from ._add_category_response import AddCategoryResponse
+from ._add_file_request import AddFileRequest
+from ._add_file_shrink_request import AddFileShrinkRequest
+from ._add_file_response_body import AddFileResponseBody
+from ._add_file_response import AddFileResponse
+from ._add_files_from_authorized_oss_request import AddFilesFromAuthorizedOssRequest
+from ._add_files_from_authorized_oss_shrink_request import AddFilesFromAuthorizedOssShrinkRequest
+from ._add_files_from_authorized_oss_response_body import AddFilesFromAuthorizedOssResponseBody
+from ._add_files_from_authorized_oss_response import AddFilesFromAuthorizedOssResponse
+from ._apply_file_upload_lease_request import ApplyFileUploadLeaseRequest
+from ._apply_file_upload_lease_response_body import ApplyFileUploadLeaseResponseBody
+from ._apply_file_upload_lease_response import ApplyFileUploadLeaseResponse
+from ._apply_temp_storage_lease_request import ApplyTempStorageLeaseRequest
+from ._apply_temp_storage_lease_response_body import ApplyTempStorageLeaseResponseBody
+from ._apply_temp_storage_lease_response import ApplyTempStorageLeaseResponse
+from ._change_parse_setting_request import ChangeParseSettingRequest
+from ._change_parse_setting_shrink_request import ChangeParseSettingShrinkRequest
+from ._change_parse_setting_response_body import ChangeParseSettingResponseBody
+from ._change_parse_setting_response import ChangeParseSettingResponse
+from ._create_and_pulish_agent_request import CreateAndPulishAgentRequest
+from ._create_and_pulish_agent_shrink_request import CreateAndPulishAgentShrinkRequest
+from ._create_and_pulish_agent_response_body import CreateAndPulishAgentResponseBody
+from ._create_and_pulish_agent_response import CreateAndPulishAgentResponse
+from ._create_index_request import CreateIndexRequest
+from ._create_index_shrink_request import CreateIndexShrinkRequest
+from ._create_index_response_body import CreateIndexResponseBody
+from ._create_index_response import CreateIndexResponse
+from ._create_memory_request import CreateMemoryRequest
+from ._create_memory_response_body import CreateMemoryResponseBody
+from ._create_memory_response import CreateMemoryResponse
+from ._create_memory_node_request import CreateMemoryNodeRequest
+from ._create_memory_node_response_body import CreateMemoryNodeResponseBody
+from ._create_memory_node_response import CreateMemoryNodeResponse
+from ._create_prompt_template_request import CreatePromptTemplateRequest
+from ._create_prompt_template_response_body import CreatePromptTemplateResponseBody
+from ._create_prompt_template_response import CreatePromptTemplateResponse
+from ._delete_agent_response_body import DeleteAgentResponseBody
+from ._delete_agent_response import DeleteAgentResponse
+from ._delete_category_response_body import DeleteCategoryResponseBody
+from ._delete_category_response import DeleteCategoryResponse
+from ._delete_chunk_request import DeleteChunkRequest
+from ._delete_chunk_shrink_request import DeleteChunkShrinkRequest
+from ._delete_chunk_response_body import DeleteChunkResponseBody
+from ._delete_chunk_response import DeleteChunkResponse
+from ._delete_file_response_body import DeleteFileResponseBody
+from ._delete_file_response import DeleteFileResponse
+from ._delete_index_request import DeleteIndexRequest
+from ._delete_index_response_body import DeleteIndexResponseBody
+from ._delete_index_response import DeleteIndexResponse
+from ._delete_index_document_request import DeleteIndexDocumentRequest
+from ._delete_index_document_shrink_request import DeleteIndexDocumentShrinkRequest
+from ._delete_index_document_response_body import DeleteIndexDocumentResponseBody
+from ._delete_index_document_response import DeleteIndexDocumentResponse
+from ._delete_memory_response_body import DeleteMemoryResponseBody
+from ._delete_memory_response import DeleteMemoryResponse
+from ._delete_memory_node_response_body import DeleteMemoryNodeResponseBody
+from ._delete_memory_node_response import DeleteMemoryNodeResponse
+from ._delete_prompt_template_response_body import DeletePromptTemplateResponseBody
+from ._delete_prompt_template_response import DeletePromptTemplateResponse
+from ._describe_file_response_body import DescribeFileResponseBody
+from ._describe_file_response import DescribeFileResponse
+from ._get_alipay_transfer_status_request import GetAlipayTransferStatusRequest
+from ._get_alipay_transfer_status_response_body import GetAlipayTransferStatusResponseBody
+from ._get_alipay_transfer_status_response import GetAlipayTransferStatusResponse
+from ._get_alipay_url_request import GetAlipayUrlRequest
+from ._get_alipay_url_response_body import GetAlipayUrlResponseBody
+from ._get_alipay_url_response import GetAlipayUrlResponse
+from ._get_available_parser_types_request import GetAvailableParserTypesRequest
+from ._get_available_parser_types_response_body import GetAvailableParserTypesResponseBody
+from ._get_available_parser_types_response import GetAvailableParserTypesResponse
+from ._get_index_job_status_request import GetIndexJobStatusRequest
+from ._get_index_job_status_response_body import GetIndexJobStatusResponseBody
+from ._get_index_job_status_response import GetIndexJobStatusResponse
+from ._get_index_monitor_request import GetIndexMonitorRequest
+from ._get_index_monitor_response_body import GetIndexMonitorResponseBody
+from ._get_index_monitor_response import GetIndexMonitorResponse
+from ._get_memory_response_body import GetMemoryResponseBody
+from ._get_memory_response import GetMemoryResponse
+from ._get_memory_node_response_body import GetMemoryNodeResponseBody
+from ._get_memory_node_response import GetMemoryNodeResponse
+from ._get_parse_settings_request import GetParseSettingsRequest
+from ._get_parse_settings_response_body import GetParseSettingsResponseBody
+from ._get_parse_settings_response import GetParseSettingsResponse
+from ._get_prompt_template_response_body import GetPromptTemplateResponseBody
+from ._get_prompt_template_response import GetPromptTemplateResponse
+from ._get_published_agent_response_body import GetPublishedAgentResponseBody
+from ._get_published_agent_response import GetPublishedAgentResponse
+from ._high_code_deploy_request import HighCodeDeployRequest
+from ._high_code_deploy_response_body import HighCodeDeployResponseBody
+from ._high_code_deploy_response import HighCodeDeployResponse
+from ._list_category_request import ListCategoryRequest
+from ._list_category_response_body import ListCategoryResponseBody
+from ._list_category_response import ListCategoryResponse
+from ._list_chunks_request import ListChunksRequest
+from ._list_chunks_response_body import ListChunksResponseBody
+from ._list_chunks_response import ListChunksResponse
+from ._list_file_request import ListFileRequest
+from ._list_file_response_body import ListFileResponseBody
+from ._list_file_response import ListFileResponse
+from ._list_index_documents_request import ListIndexDocumentsRequest
+from ._list_index_documents_response_body import ListIndexDocumentsResponseBody
+from ._list_index_documents_response import ListIndexDocumentsResponse
+from ._list_index_file_details_request import ListIndexFileDetailsRequest
+from ._list_index_file_details_response_body import ListIndexFileDetailsResponseBody
+from ._list_index_file_details_response import ListIndexFileDetailsResponse
+from ._list_indices_request import ListIndicesRequest
+from ._list_indices_response_body import ListIndicesResponseBody
+from ._list_indices_response import ListIndicesResponse
+from ._list_memories_request import ListMemoriesRequest
+from ._list_memories_response_body import ListMemoriesResponseBody
+from ._list_memories_response import ListMemoriesResponse
+from ._list_memory_nodes_request import ListMemoryNodesRequest
+from ._list_memory_nodes_response_body import ListMemoryNodesResponseBody
+from ._list_memory_nodes_response import ListMemoryNodesResponse
+from ._list_prompt_templates_request import ListPromptTemplatesRequest
+from ._list_prompt_templates_response_body import ListPromptTemplatesResponseBody
+from ._list_prompt_templates_response import ListPromptTemplatesResponse
+from ._list_published_agent_request import ListPublishedAgentRequest
+from ._list_published_agent_response_body import ListPublishedAgentResponseBody
+from ._list_published_agent_response import ListPublishedAgentResponse
+from ._retrieve_request import RetrieveRequest
+from ._retrieve_shrink_request import RetrieveShrinkRequest
+from ._retrieve_response_body import RetrieveResponseBody
+from ._retrieve_response import RetrieveResponse
+from ._submit_index_add_documents_job_request import SubmitIndexAddDocumentsJobRequest
+from ._submit_index_add_documents_job_shrink_request import SubmitIndexAddDocumentsJobShrinkRequest
+from ._submit_index_add_documents_job_response_body import SubmitIndexAddDocumentsJobResponseBody
+from ._submit_index_add_documents_job_response import SubmitIndexAddDocumentsJobResponse
+from ._submit_index_job_request import SubmitIndexJobRequest
+from ._submit_index_job_response_body import SubmitIndexJobResponseBody
+from ._submit_index_job_response import SubmitIndexJobResponse
+from ._update_and_publish_agent_request import UpdateAndPublishAgentRequest
+from ._update_and_publish_agent_shrink_request import UpdateAndPublishAgentShrinkRequest
+from ._update_and_publish_agent_response_body import UpdateAndPublishAgentResponseBody
+from ._update_and_publish_agent_response import UpdateAndPublishAgentResponse
+from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequest
+from ._update_and_publish_agent_selective_shrink_request import UpdateAndPublishAgentSelectiveShrinkRequest
+from ._update_and_publish_agent_selective_response_body import UpdateAndPublishAgentSelectiveResponseBody
+from ._update_and_publish_agent_selective_response import UpdateAndPublishAgentSelectiveResponse
+from ._update_chunk_request import UpdateChunkRequest
+from ._update_chunk_response_body import UpdateChunkResponseBody
+from ._update_chunk_response import UpdateChunkResponse
+from ._update_file_tag_request import UpdateFileTagRequest
+from ._update_file_tag_shrink_request import UpdateFileTagShrinkRequest
+from ._update_file_tag_response_body import UpdateFileTagResponseBody
+from ._update_file_tag_response import UpdateFileTagResponse
+from ._update_memory_request import UpdateMemoryRequest
+from ._update_memory_response_body import UpdateMemoryResponseBody
+from ._update_memory_response import UpdateMemoryResponse
+from ._update_memory_node_request import UpdateMemoryNodeRequest
+from ._update_memory_node_response_body import UpdateMemoryNodeResponseBody
+from ._update_memory_node_response import UpdateMemoryNodeResponse
+from ._update_prompt_template_request import UpdatePromptTemplateRequest
+from ._update_prompt_template_response_body import UpdatePromptTemplateResponseBody
+from ._update_prompt_template_response import UpdatePromptTemplateResponse
+from ._add_category_response_body import AddCategoryResponseBodyData
+from ._add_file_response_body import AddFileResponseBodyData
+from ._add_files_from_authorized_oss_request import AddFilesFromAuthorizedOssRequestFileDetails
+from ._add_files_from_authorized_oss_response_body import AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList
+from ._add_files_from_authorized_oss_response_body import AddFilesFromAuthorizedOssResponseBodyData
+from ._apply_file_upload_lease_response_body import ApplyFileUploadLeaseResponseBodyDataParam
+from ._apply_file_upload_lease_response_body import ApplyFileUploadLeaseResponseBodyData
+from ._apply_temp_storage_lease_response_body import ApplyTempStorageLeaseResponseBodyDataParam
+from ._apply_temp_storage_lease_response_body import ApplyTempStorageLeaseResponseBodyData
+from ._change_parse_setting_request import ChangeParseSettingRequestParserConfig
+from ._change_parse_setting_response_body import ChangeParseSettingResponseBodyData
+from ._create_and_pulish_agent_request import CreateAndPulishAgentRequestApplicationConfigHistoryConfig
+from ._create_and_pulish_agent_request import CreateAndPulishAgentRequestApplicationConfigLongTermMemory
+from ._create_and_pulish_agent_request import CreateAndPulishAgentRequestApplicationConfigParameters
+from ._create_and_pulish_agent_request import CreateAndPulishAgentRequestApplicationConfigRagConfig
+from ._create_and_pulish_agent_request import CreateAndPulishAgentRequestApplicationConfigSecurityConfig
+from ._create_and_pulish_agent_request import CreateAndPulishAgentRequestApplicationConfigTools
+from ._create_and_pulish_agent_request import CreateAndPulishAgentRequestApplicationConfigWorkFlows
+from ._create_and_pulish_agent_request import CreateAndPulishAgentRequestApplicationConfig
+from ._create_and_pulish_agent_request import CreateAndPulishAgentRequestSampleLibrary
+from ._create_index_request import CreateIndexRequestColumns
+from ._create_index_request import CreateIndexRequestDataSource
+from ._create_index_request import CreateIndexRequestMetaExtractColumns
+from ._create_index_response_body import CreateIndexResponseBodyData
+from ._delete_category_response_body import DeleteCategoryResponseBodyData
+from ._delete_file_response_body import DeleteFileResponseBodyData
+from ._delete_index_document_response_body import DeleteIndexDocumentResponseBodyData
+from ._describe_file_response_body import DescribeFileResponseBodyData
+from ._get_alipay_transfer_status_response_body import GetAlipayTransferStatusResponseBodyData
+from ._get_alipay_url_response_body import GetAlipayUrlResponseBodyData
+from ._get_available_parser_types_response_body import GetAvailableParserTypesResponseBodyDataParserList
+from ._get_available_parser_types_response_body import GetAvailableParserTypesResponseBodyData
+from ._get_index_job_status_response_body import GetIndexJobStatusResponseBodyDataDocuments
+from ._get_index_job_status_response_body import GetIndexJobStatusResponseBodyData
+from ._get_parse_settings_response_body import GetParseSettingsResponseBodyDataParserConfig
+from ._get_parse_settings_response_body import GetParseSettingsResponseBodyData
+from ._get_published_agent_response_body import GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig
+from ._get_published_agent_response_body import GetPublishedAgentResponseBodyDataApplicationConfigLongTermMemory
+from ._get_published_agent_response_body import GetPublishedAgentResponseBodyDataApplicationConfigParameters
+from ._get_published_agent_response_body import GetPublishedAgentResponseBodyDataApplicationConfigRagConfig
+from ._get_published_agent_response_body import GetPublishedAgentResponseBodyDataApplicationConfigSecurity
+from ._get_published_agent_response_body import GetPublishedAgentResponseBodyDataApplicationConfigTools
+from ._get_published_agent_response_body import GetPublishedAgentResponseBodyDataApplicationConfigWorkFlows
+from ._get_published_agent_response_body import GetPublishedAgentResponseBodyDataApplicationConfig
+from ._get_published_agent_response_body import GetPublishedAgentResponseBodyData
+from ._list_category_response_body import ListCategoryResponseBodyDataCategoryList
+from ._list_category_response_body import ListCategoryResponseBodyData
+from ._list_chunks_response_body import ListChunksResponseBodyDataNodes
+from ._list_chunks_response_body import ListChunksResponseBodyData
+from ._list_file_response_body import ListFileResponseBodyDataFileList
+from ._list_file_response_body import ListFileResponseBodyData
+from ._list_index_documents_response_body import ListIndexDocumentsResponseBodyDataDocuments
+from ._list_index_documents_response_body import ListIndexDocumentsResponseBodyData
+from ._list_index_file_details_response_body import ListIndexFileDetailsResponseBodyDataDocuments
+from ._list_index_file_details_response_body import ListIndexFileDetailsResponseBodyData
+from ._list_indices_response_body import ListIndicesResponseBodyDataIndices
+from ._list_indices_response_body import ListIndicesResponseBodyData
+from ._list_memories_response_body import ListMemoriesResponseBodyMemories
+from ._list_memory_nodes_response_body import ListMemoryNodesResponseBodyMemoryNodes
+from ._list_prompt_templates_response_body import ListPromptTemplatesResponseBodyPromptTemplates
+from ._list_published_agent_response_body import ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig
+from ._list_published_agent_response_body import ListPublishedAgentResponseBodyDataListApplicationConfigLongTermMemory
+from ._list_published_agent_response_body import ListPublishedAgentResponseBodyDataListApplicationConfigParameters
+from ._list_published_agent_response_body import ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig
+from ._list_published_agent_response_body import ListPublishedAgentResponseBodyDataListApplicationConfigSecurity
+from ._list_published_agent_response_body import ListPublishedAgentResponseBodyDataListApplicationConfigTools
+from ._list_published_agent_response_body import ListPublishedAgentResponseBodyDataListApplicationConfigWorkFlows
+from ._list_published_agent_response_body import ListPublishedAgentResponseBodyDataListApplicationConfig
+from ._list_published_agent_response_body import ListPublishedAgentResponseBodyDataList
+from ._list_published_agent_response_body import ListPublishedAgentResponseBodyData
+from ._retrieve_request import RetrieveRequestQueryHistory
+from ._retrieve_request import RetrieveRequestRerank
+from ._retrieve_request import RetrieveRequestRewrite
+from ._retrieve_response_body import RetrieveResponseBodyDataNodes
+from ._retrieve_response_body import RetrieveResponseBodyData
+from ._submit_index_add_documents_job_response_body import SubmitIndexAddDocumentsJobResponseBodyData
+from ._submit_index_job_response_body import SubmitIndexJobResponseBodyData
+from ._update_and_publish_agent_request import UpdateAndPublishAgentRequestApplicationConfigHistoryConfig
+from ._update_and_publish_agent_request import UpdateAndPublishAgentRequestApplicationConfigLongTermMemory
+from ._update_and_publish_agent_request import UpdateAndPublishAgentRequestApplicationConfigParameters
+from ._update_and_publish_agent_request import UpdateAndPublishAgentRequestApplicationConfigRagConfig
+from ._update_and_publish_agent_request import UpdateAndPublishAgentRequestApplicationConfigSecurity
+from ._update_and_publish_agent_request import UpdateAndPublishAgentRequestApplicationConfigTools
+from ._update_and_publish_agent_request import UpdateAndPublishAgentRequestApplicationConfigWorkFlows
+from ._update_and_publish_agent_request import UpdateAndPublishAgentRequestApplicationConfig
+from ._update_and_publish_agent_request import UpdateAndPublishAgentRequestSampleLibrary
+from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestApplicationConfigHistoryConfig
+from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestApplicationConfigLongTermMemory
+from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestApplicationConfigParameters
+from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig
+from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestApplicationConfigSecurity
+from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestApplicationConfigTools
+from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestApplicationConfigWorkFlows
+from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestApplicationConfig
+from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestSampleLibrary
+from ._update_file_tag_response_body import UpdateFileTagResponseBodyData
+
+__all__ = [
+    AddCategoryRequest,
+    AddCategoryResponseBody,
+    AddCategoryResponse,
+    AddFileRequest,
+    AddFileShrinkRequest,
+    AddFileResponseBody,
+    AddFileResponse,
+    AddFilesFromAuthorizedOssRequest,
+    AddFilesFromAuthorizedOssShrinkRequest,
+    AddFilesFromAuthorizedOssResponseBody,
+    AddFilesFromAuthorizedOssResponse,
+    ApplyFileUploadLeaseRequest,
+    ApplyFileUploadLeaseResponseBody,
+    ApplyFileUploadLeaseResponse,
+    ApplyTempStorageLeaseRequest,
+    ApplyTempStorageLeaseResponseBody,
+    ApplyTempStorageLeaseResponse,
+    ChangeParseSettingRequest,
+    ChangeParseSettingShrinkRequest,
+    ChangeParseSettingResponseBody,
+    ChangeParseSettingResponse,
+    CreateAndPulishAgentRequest,
+    CreateAndPulishAgentShrinkRequest,
+    CreateAndPulishAgentResponseBody,
+    CreateAndPulishAgentResponse,
+    CreateIndexRequest,
+    CreateIndexShrinkRequest,
+    CreateIndexResponseBody,
+    CreateIndexResponse,
+    CreateMemoryRequest,
+    CreateMemoryResponseBody,
+    CreateMemoryResponse,
+    CreateMemoryNodeRequest,
+    CreateMemoryNodeResponseBody,
+    CreateMemoryNodeResponse,
+    CreatePromptTemplateRequest,
+    CreatePromptTemplateResponseBody,
+    CreatePromptTemplateResponse,
+    DeleteAgentResponseBody,
+    DeleteAgentResponse,
+    DeleteCategoryResponseBody,
+    DeleteCategoryResponse,
+    DeleteChunkRequest,
+    DeleteChunkShrinkRequest,
+    DeleteChunkResponseBody,
+    DeleteChunkResponse,
+    DeleteFileResponseBody,
+    DeleteFileResponse,
+    DeleteIndexRequest,
+    DeleteIndexResponseBody,
+    DeleteIndexResponse,
+    DeleteIndexDocumentRequest,
+    DeleteIndexDocumentShrinkRequest,
+    DeleteIndexDocumentResponseBody,
+    DeleteIndexDocumentResponse,
+    DeleteMemoryResponseBody,
+    DeleteMemoryResponse,
+    DeleteMemoryNodeResponseBody,
+    DeleteMemoryNodeResponse,
+    DeletePromptTemplateResponseBody,
+    DeletePromptTemplateResponse,
+    DescribeFileResponseBody,
+    DescribeFileResponse,
+    GetAlipayTransferStatusRequest,
+    GetAlipayTransferStatusResponseBody,
+    GetAlipayTransferStatusResponse,
+    GetAlipayUrlRequest,
+    GetAlipayUrlResponseBody,
+    GetAlipayUrlResponse,
+    GetAvailableParserTypesRequest,
+    GetAvailableParserTypesResponseBody,
+    GetAvailableParserTypesResponse,
+    GetIndexJobStatusRequest,
+    GetIndexJobStatusResponseBody,
+    GetIndexJobStatusResponse,
+    GetIndexMonitorRequest,
+    GetIndexMonitorResponseBody,
+    GetIndexMonitorResponse,
+    GetMemoryResponseBody,
+    GetMemoryResponse,
+    GetMemoryNodeResponseBody,
+    GetMemoryNodeResponse,
+    GetParseSettingsRequest,
+    GetParseSettingsResponseBody,
+    GetParseSettingsResponse,
+    GetPromptTemplateResponseBody,
+    GetPromptTemplateResponse,
+    GetPublishedAgentResponseBody,
+    GetPublishedAgentResponse,
+    HighCodeDeployRequest,
+    HighCodeDeployResponseBody,
+    HighCodeDeployResponse,
+    ListCategoryRequest,
+    ListCategoryResponseBody,
+    ListCategoryResponse,
+    ListChunksRequest,
+    ListChunksResponseBody,
+    ListChunksResponse,
+    ListFileRequest,
+    ListFileResponseBody,
+    ListFileResponse,
+    ListIndexDocumentsRequest,
+    ListIndexDocumentsResponseBody,
+    ListIndexDocumentsResponse,
+    ListIndexFileDetailsRequest,
+    ListIndexFileDetailsResponseBody,
+    ListIndexFileDetailsResponse,
+    ListIndicesRequest,
+    ListIndicesResponseBody,
+    ListIndicesResponse,
+    ListMemoriesRequest,
+    ListMemoriesResponseBody,
+    ListMemoriesResponse,
+    ListMemoryNodesRequest,
+    ListMemoryNodesResponseBody,
+    ListMemoryNodesResponse,
+    ListPromptTemplatesRequest,
+    ListPromptTemplatesResponseBody,
+    ListPromptTemplatesResponse,
+    ListPublishedAgentRequest,
+    ListPublishedAgentResponseBody,
+    ListPublishedAgentResponse,
+    RetrieveRequest,
+    RetrieveShrinkRequest,
+    RetrieveResponseBody,
+    RetrieveResponse,
+    SubmitIndexAddDocumentsJobRequest,
+    SubmitIndexAddDocumentsJobShrinkRequest,
+    SubmitIndexAddDocumentsJobResponseBody,
+    SubmitIndexAddDocumentsJobResponse,
+    SubmitIndexJobRequest,
+    SubmitIndexJobResponseBody,
+    SubmitIndexJobResponse,
+    UpdateAndPublishAgentRequest,
+    UpdateAndPublishAgentShrinkRequest,
+    UpdateAndPublishAgentResponseBody,
+    UpdateAndPublishAgentResponse,
+    UpdateAndPublishAgentSelectiveRequest,
+    UpdateAndPublishAgentSelectiveShrinkRequest,
+    UpdateAndPublishAgentSelectiveResponseBody,
+    UpdateAndPublishAgentSelectiveResponse,
+    UpdateChunkRequest,
+    UpdateChunkResponseBody,
+    UpdateChunkResponse,
+    UpdateFileTagRequest,
+    UpdateFileTagShrinkRequest,
+    UpdateFileTagResponseBody,
+    UpdateFileTagResponse,
+    UpdateMemoryRequest,
+    UpdateMemoryResponseBody,
+    UpdateMemoryResponse,
+    UpdateMemoryNodeRequest,
+    UpdateMemoryNodeResponseBody,
+    UpdateMemoryNodeResponse,
+    UpdatePromptTemplateRequest,
+    UpdatePromptTemplateResponseBody,
+    UpdatePromptTemplateResponse,
+    AddCategoryResponseBodyData,
+    AddFileResponseBodyData,
+    AddFilesFromAuthorizedOssRequestFileDetails,
+    AddFilesFromAuthorizedOssResponseBodyDataAddFileResultList,
+    AddFilesFromAuthorizedOssResponseBodyData,
+    ApplyFileUploadLeaseResponseBodyDataParam,
+    ApplyFileUploadLeaseResponseBodyData,
+    ApplyTempStorageLeaseResponseBodyDataParam,
+    ApplyTempStorageLeaseResponseBodyData,
+    ChangeParseSettingRequestParserConfig,
+    ChangeParseSettingResponseBodyData,
+    CreateAndPulishAgentRequestApplicationConfigHistoryConfig,
+    CreateAndPulishAgentRequestApplicationConfigLongTermMemory,
+    CreateAndPulishAgentRequestApplicationConfigParameters,
+    CreateAndPulishAgentRequestApplicationConfigRagConfig,
+    CreateAndPulishAgentRequestApplicationConfigSecurityConfig,
+    CreateAndPulishAgentRequestApplicationConfigTools,
+    CreateAndPulishAgentRequestApplicationConfigWorkFlows,
+    CreateAndPulishAgentRequestApplicationConfig,
+    CreateAndPulishAgentRequestSampleLibrary,
+    CreateIndexRequestColumns,
+    CreateIndexRequestDataSource,
+    CreateIndexRequestMetaExtractColumns,
+    CreateIndexResponseBodyData,
+    DeleteCategoryResponseBodyData,
+    DeleteFileResponseBodyData,
+    DeleteIndexDocumentResponseBodyData,
+    DescribeFileResponseBodyData,
+    GetAlipayTransferStatusResponseBodyData,
+    GetAlipayUrlResponseBodyData,
+    GetAvailableParserTypesResponseBodyDataParserList,
+    GetAvailableParserTypesResponseBodyData,
+    GetIndexJobStatusResponseBodyDataDocuments,
+    GetIndexJobStatusResponseBodyData,
+    GetParseSettingsResponseBodyDataParserConfig,
+    GetParseSettingsResponseBodyData,
+    GetPublishedAgentResponseBodyDataApplicationConfigHistoryConfig,
+    GetPublishedAgentResponseBodyDataApplicationConfigLongTermMemory,
+    GetPublishedAgentResponseBodyDataApplicationConfigParameters,
+    GetPublishedAgentResponseBodyDataApplicationConfigRagConfig,
+    GetPublishedAgentResponseBodyDataApplicationConfigSecurity,
+    GetPublishedAgentResponseBodyDataApplicationConfigTools,
+    GetPublishedAgentResponseBodyDataApplicationConfigWorkFlows,
+    GetPublishedAgentResponseBodyDataApplicationConfig,
+    GetPublishedAgentResponseBodyData,
+    ListCategoryResponseBodyDataCategoryList,
+    ListCategoryResponseBodyData,
+    ListChunksResponseBodyDataNodes,
+    ListChunksResponseBodyData,
+    ListFileResponseBodyDataFileList,
+    ListFileResponseBodyData,
+    ListIndexDocumentsResponseBodyDataDocuments,
+    ListIndexDocumentsResponseBodyData,
+    ListIndexFileDetailsResponseBodyDataDocuments,
+    ListIndexFileDetailsResponseBodyData,
+    ListIndicesResponseBodyDataIndices,
+    ListIndicesResponseBodyData,
+    ListMemoriesResponseBodyMemories,
+    ListMemoryNodesResponseBodyMemoryNodes,
+    ListPromptTemplatesResponseBodyPromptTemplates,
+    ListPublishedAgentResponseBodyDataListApplicationConfigHistoryConfig,
+    ListPublishedAgentResponseBodyDataListApplicationConfigLongTermMemory,
+    ListPublishedAgentResponseBodyDataListApplicationConfigParameters,
+    ListPublishedAgentResponseBodyDataListApplicationConfigRagConfig,
+    ListPublishedAgentResponseBodyDataListApplicationConfigSecurity,
+    ListPublishedAgentResponseBodyDataListApplicationConfigTools,
+    ListPublishedAgentResponseBodyDataListApplicationConfigWorkFlows,
+    ListPublishedAgentResponseBodyDataListApplicationConfig,
+    ListPublishedAgentResponseBodyDataList,
+    ListPublishedAgentResponseBodyData,
+    RetrieveRequestQueryHistory,
+    RetrieveRequestRerank,
+    RetrieveRequestRewrite,
+    RetrieveResponseBodyDataNodes,
+    RetrieveResponseBodyData,
+    SubmitIndexAddDocumentsJobResponseBodyData,
+    SubmitIndexJobResponseBodyData,
+    UpdateAndPublishAgentRequestApplicationConfigHistoryConfig,
+    UpdateAndPublishAgentRequestApplicationConfigLongTermMemory,
+    UpdateAndPublishAgentRequestApplicationConfigParameters,
+    UpdateAndPublishAgentRequestApplicationConfigRagConfig,
+    UpdateAndPublishAgentRequestApplicationConfigSecurity,
+    UpdateAndPublishAgentRequestApplicationConfigTools,
+    UpdateAndPublishAgentRequestApplicationConfigWorkFlows,
+    UpdateAndPublishAgentRequestApplicationConfig,
+    UpdateAndPublishAgentRequestSampleLibrary,
+    UpdateAndPublishAgentSelectiveRequestApplicationConfigHistoryConfig,
+    UpdateAndPublishAgentSelectiveRequestApplicationConfigLongTermMemory,
+    UpdateAndPublishAgentSelectiveRequestApplicationConfigParameters,
+    UpdateAndPublishAgentSelectiveRequestApplicationConfigRagConfig,
+    UpdateAndPublishAgentSelectiveRequestApplicationConfigSecurity,
+    UpdateAndPublishAgentSelectiveRequestApplicationConfigTools,
+    UpdateAndPublishAgentSelectiveRequestApplicationConfigWorkFlows,
+    UpdateAndPublishAgentSelectiveRequestApplicationConfig,
+    UpdateAndPublishAgentSelectiveRequestSampleLibrary,
+    UpdateFileTagResponseBodyData
+]
