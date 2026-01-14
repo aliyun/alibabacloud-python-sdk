@@ -1,3 +1,71 @@
+2026-01-14 Version: 3.0.0
+- Support API AssociateResources.
+- Support API DisassociateResources.
+- Support API GetGlobalAcceleratorResources.
+- Support API UpdateLogStoreConfig.
+- Update API AttachDdosToAccelerator: add request parameters DdosConfigList.
+- Update API AttachDdosToAccelerator: add request parameters DryRun.
+- Update API AttachLogStoreToEndpointGroup: add request parameters AccessLogRecordCustomizedHeaderList.
+- Update API AttachLogStoreToEndpointGroup: add request parameters AccessLogRecordCustomizedHeadersEnabled.
+- Update API CreateAccelerator: add request parameters Bandwidth.
+- Update API CreateDomain: add request parameters DryRun.
+- Update API CreateEndpointGroup: add request parameters DryRun.
+- Update API CreateEndpointGroup: add request parameters EndpointIpVersion.
+- Update API CreateEndpointGroup: add request parameters HealthCheckHost.
+- Update API CreateEndpointGroup: add request parameters EndpointConfigurations.$.VSwitchIds.
+- Update API CreateEndpointGroup: add request parameters EndpointConfigurations.$.VpcId.
+- Update API CreateEndpointGroups: add request parameters EndpointGroupConfigurations.$.EndpointIpVersion.
+- Update API CreateEndpointGroups: add request parameters EndpointGroupConfigurations.$.HealthCheckHost.
+- Update API CreateEndpointGroups: add request parameters EndpointGroupConfigurations.$.EndpointConfigurations.$.EnableClientIPPreservation.
+- Update API CreateEndpointGroups: add request parameters EndpointGroupConfigurations.$.EndpointConfigurations.$.EnableProxyProtocol.
+- Update API CreateEndpointGroups: add request parameters EndpointGroupConfigurations.$.EndpointConfigurations.$.VSwitchIds.
+- Update API CreateEndpointGroups: add request parameters EndpointGroupConfigurations.$.EndpointConfigurations.$.VpcId.
+- Update API CreateEndpointGroups: delete request parameters EndpointGroupConfigurations.$.EnableClientIPPreservationProxyProtocol.
+- Update API CreateEndpointGroups: delete request parameters EndpointGroupConfigurations.$.EnableClientIPPreservationToa.
+- Update API CreateListener: add request parameters EndpointGroupConfigurations.$.EndpointIpVersion.
+- Update API CreateListener: add request parameters EndpointGroupConfigurations.$.HealthCheckHost.
+- Update API CreateListener: add request parameters EndpointGroupConfigurations.$.EndpointConfigurations.$.EnableClientIPPreservation.
+- Update API CreateListener: add request parameters EndpointGroupConfigurations.$.EndpointConfigurations.$.EnableProxyProtocol.
+- Update API CreateListener: add request parameters EndpointGroupConfigurations.$.EndpointConfigurations.$.VSwitchIds.
+- Update API CreateListener: add request parameters EndpointGroupConfigurations.$.EndpointConfigurations.$.VpcId.
+- Update API CreateListener: delete request parameters EndpointGroupConfigurations.$.EnableClientIPPreservationProxyProtocol.
+- Update API CreateListener: delete request parameters EndpointGroupConfigurations.$.EnableClientIPPreservationToa.
+- Update API CreateListener: delete request parameters ProxyProtocol.
+- Update API DescribeAccelerator: add response parameters Body.Bandwidth.
+- Update API DescribeAccelerator: add response parameters Body.DdosConfigList.
+- Update API DescribeEndpointGroup: add response parameters Body.AccessLogRecordCustomizedHeaderList.
+- Update API DescribeEndpointGroup: add response parameters Body.AccessLogRecordCustomizedHeadersEnabled.
+- Update API DescribeEndpointGroup: add response parameters Body.EndpointIpVersion.
+- Update API DescribeEndpointGroup: add response parameters Body.EndpointPrivateIpList.
+- Update API DescribeEndpointGroup: add response parameters Body.HealthCheckHost.
+- Update API DescribeEndpointGroup: add response parameters Body.EndpointConfigurations.$.VSwitchIds.
+- Update API DescribeEndpointGroup: add response parameters Body.EndpointConfigurations.$.VpcId.
+- Update API DescribeLogStoreOfEndpointGroup: add response parameters Body.AccessLogRecordCustomizedHeaderList.
+- Update API DescribeLogStoreOfEndpointGroup: add response parameters Body.AccessLogRecordCustomizedHeadersEnabled.
+- Update API DetachDdosFromAccelerator: add request parameters DdosConfigList.
+- Update API DetachDdosFromAccelerator: add request parameters DryRun.
+- Update API ListAccelerators: add response parameters Body.Accelerators.$.DdosConfigList.
+- Update API ListAvailableAccelerateAreas: add request parameters AccessMode.
+- Update API ListEndpointGroups: add response parameters Body.EndpointGroups.$.EndpointIpVersion.
+- Update API ListEndpointGroups: add response parameters Body.EndpointGroups.$.EndpointPrivateIpList.
+- Update API ListEndpointGroups: add response parameters Body.EndpointGroups.$.HealthCheckHost.
+- Update API ListEndpointGroups: add response parameters Body.EndpointGroups.$.EndpointConfigurations.$.EnableProxyProtocol.
+- Update API ListEndpointGroups: add response parameters Body.EndpointGroups.$.EndpointConfigurations.$.VSwitchIds.
+- Update API ListEndpointGroups: add response parameters Body.EndpointGroups.$.EndpointConfigurations.$.VpcId.
+- Update API ListListeners: add request parameters Protocol.
+- Update API UpdateAccelerator: add request parameters Bandwidth.
+- Update API UpdateEndpointGroup: add request parameters EndpointIpVersion.
+- Update API UpdateEndpointGroup: add request parameters HealthCheckHost.
+- Update API UpdateEndpointGroup: add request parameters EndpointConfigurations.$.VSwitchIds.
+- Update API UpdateEndpointGroup: add request parameters EndpointConfigurations.$.VpcId.
+- Update API UpdateEndpointGroups: add request parameters EndpointGroupConfigurations.$.EndpointIpVersion.
+- Update API UpdateEndpointGroups: add request parameters EndpointGroupConfigurations.$.HealthCheckHost.
+- Update API UpdateEndpointGroups: add request parameters EndpointGroupConfigurations.$.EndpointConfigurations.$.EnableClientIPPreservation.
+- Update API UpdateEndpointGroups: add request parameters EndpointGroupConfigurations.$.EndpointConfigurations.$.EnableProxyProtocol.
+- Update API UpdateEndpointGroups: add request parameters EndpointGroupConfigurations.$.EndpointConfigurations.$.VSwitchIds.
+- Update API UpdateEndpointGroups: add request parameters EndpointGroupConfigurations.$.EndpointConfigurations.$.VpcId.
+
+
 2024-07-20 Version: 2.1.8
 - Update API CreateEndpointGroup: add param EndpointProtocolVersion.
 - Update API CreateEndpointGroups: update param EndpointGroupConfigurations.
