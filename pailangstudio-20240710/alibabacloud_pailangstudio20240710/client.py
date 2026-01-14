@@ -609,6 +609,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_knowledge_base_job_with_options_async(knowledge_base_id, knowledge_base_job_id, request, headers, runtime)
 
+    def list_knowledge_base_chunks_with_options(
+        self,
+        knowledge_base_id: str,
+        request: main_models.ListKnowledgeBaseChunksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKnowledgeBaseChunksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.chunk_status):
+            query['ChunkStatus'] = request.chunk_status
+        if not DaraCore.is_null(request.meta_data):
+            query['MetaData'] = request.meta_data
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.version_name):
+            query['VersionName'] = request.version_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKnowledgeBaseChunks',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/knowledgebases/{DaraURL.percent_encode(knowledge_base_id)}/knowledgebasechunks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKnowledgeBaseChunksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_knowledge_base_chunks_with_options_async(
+        self,
+        knowledge_base_id: str,
+        request: main_models.ListKnowledgeBaseChunksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListKnowledgeBaseChunksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.chunk_status):
+            query['ChunkStatus'] = request.chunk_status
+        if not DaraCore.is_null(request.meta_data):
+            query['MetaData'] = request.meta_data
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.version_name):
+            query['VersionName'] = request.version_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListKnowledgeBaseChunks',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/knowledgebases/{DaraURL.percent_encode(knowledge_base_id)}/knowledgebasechunks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListKnowledgeBaseChunksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_knowledge_base_chunks(
+        self,
+        knowledge_base_id: str,
+        request: main_models.ListKnowledgeBaseChunksRequest,
+    ) -> main_models.ListKnowledgeBaseChunksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_knowledge_base_chunks_with_options(knowledge_base_id, request, headers, runtime)
+
+    async def list_knowledge_base_chunks_async(
+        self,
+        knowledge_base_id: str,
+        request: main_models.ListKnowledgeBaseChunksRequest,
+    ) -> main_models.ListKnowledgeBaseChunksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_knowledge_base_chunks_with_options_async(knowledge_base_id, request, headers, runtime)
+
     def list_knowledge_base_jobs_with_options(
         self,
         knowledge_base_id: str,
@@ -1056,6 +1152,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_knowledge_base_with_options_async(knowledge_base_id, request, headers, runtime)
+
+    def update_knowledge_base_chunk_with_options(
+        self,
+        knowledge_base_id: str,
+        knowledge_base_chunk_id: str,
+        request: main_models.UpdateKnowledgeBaseChunkRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKnowledgeBaseChunkResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.chunk_content):
+            body['ChunkContent'] = request.chunk_content
+        if not DaraCore.is_null(request.chunk_status):
+            body['ChunkStatus'] = request.chunk_status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKnowledgeBaseChunk',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/knowledgebases/{DaraURL.percent_encode(knowledge_base_id)}/knowledgebasechunks/{DaraURL.percent_encode(knowledge_base_chunk_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKnowledgeBaseChunkResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_knowledge_base_chunk_with_options_async(
+        self,
+        knowledge_base_id: str,
+        knowledge_base_chunk_id: str,
+        request: main_models.UpdateKnowledgeBaseChunkRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKnowledgeBaseChunkResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.chunk_content):
+            body['ChunkContent'] = request.chunk_content
+        if not DaraCore.is_null(request.chunk_status):
+            body['ChunkStatus'] = request.chunk_status
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKnowledgeBaseChunk',
+            version = '2024-07-10',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/langstudio/knowledgebases/{DaraURL.percent_encode(knowledge_base_id)}/knowledgebasechunks/{DaraURL.percent_encode(knowledge_base_chunk_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKnowledgeBaseChunkResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_knowledge_base_chunk(
+        self,
+        knowledge_base_id: str,
+        knowledge_base_chunk_id: str,
+        request: main_models.UpdateKnowledgeBaseChunkRequest,
+    ) -> main_models.UpdateKnowledgeBaseChunkResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_knowledge_base_chunk_with_options(knowledge_base_id, knowledge_base_chunk_id, request, headers, runtime)
+
+    async def update_knowledge_base_chunk_async(
+        self,
+        knowledge_base_id: str,
+        knowledge_base_chunk_id: str,
+        request: main_models.UpdateKnowledgeBaseChunkRequest,
+    ) -> main_models.UpdateKnowledgeBaseChunkResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_knowledge_base_chunk_with_options_async(knowledge_base_id, knowledge_base_chunk_id, request, headers, runtime)
 
     def update_knowledge_base_job_with_options(
         self,

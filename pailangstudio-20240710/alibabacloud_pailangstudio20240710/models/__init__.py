@@ -35,6 +35,9 @@ from ._get_knowledge_base_response import GetKnowledgeBaseResponse
 from ._get_knowledge_base_job_request import GetKnowledgeBaseJobRequest
 from ._get_knowledge_base_job_response_body import GetKnowledgeBaseJobResponseBody
 from ._get_knowledge_base_job_response import GetKnowledgeBaseJobResponse
+from ._list_knowledge_base_chunks_request import ListKnowledgeBaseChunksRequest
+from ._list_knowledge_base_chunks_response_body import ListKnowledgeBaseChunksResponseBody
+from ._list_knowledge_base_chunks_response import ListKnowledgeBaseChunksResponse
 from ._list_knowledge_base_jobs_request import ListKnowledgeBaseJobsRequest
 from ._list_knowledge_base_jobs_response_body import ListKnowledgeBaseJobsResponseBody
 from ._list_knowledge_base_jobs_response import ListKnowledgeBaseJobsResponse
@@ -47,6 +50,9 @@ from ._retrieve_knowledge_base_response import RetrieveKnowledgeBaseResponse
 from ._update_knowledge_base_request import UpdateKnowledgeBaseRequest
 from ._update_knowledge_base_response_body import UpdateKnowledgeBaseResponseBody
 from ._update_knowledge_base_response import UpdateKnowledgeBaseResponse
+from ._update_knowledge_base_chunk_request import UpdateKnowledgeBaseChunkRequest
+from ._update_knowledge_base_chunk_response_body import UpdateKnowledgeBaseChunkResponseBody
+from ._update_knowledge_base_chunk_response import UpdateKnowledgeBaseChunkResponse
 from ._update_knowledge_base_job_request import UpdateKnowledgeBaseJobRequest
 from ._update_knowledge_base_job_response_body import UpdateKnowledgeBaseJobResponseBody
 from ._update_knowledge_base_job_response import UpdateKnowledgeBaseJobResponse
@@ -60,6 +66,7 @@ from ._deployment import DeploymentCredentialConfigCredentialConfigItemsRoles
 from ._deployment import DeploymentCredentialConfigCredentialConfigItems
 from ._deployment import DeploymentCredentialConfig
 from ._deployment import DeploymentDataSources
+from ._deployment import DeploymentDeploymentStages
 from ._deployment import DeploymentEcsSpecComputingInstanceConfigComputingInstances
 from ._deployment import DeploymentEcsSpecComputingInstanceConfig
 from ._deployment import DeploymentEcsSpec
@@ -143,6 +150,10 @@ from ._get_knowledge_base_job_response_body import GetKnowledgeBaseJobResponseBo
 from ._get_knowledge_base_job_response_body import GetKnowledgeBaseJobResponseBodyKnowledgeBaseJobResult
 from ._get_knowledge_base_job_response_body import GetKnowledgeBaseJobResponseBodyPipelineRunInfo
 from ._get_knowledge_base_job_response_body import GetKnowledgeBaseJobResponseBodyUserVpc
+from ._list_knowledge_base_chunks_request import ListKnowledgeBaseChunksRequestMetaData
+from ._list_knowledge_base_chunks_response_body import ListKnowledgeBaseChunksResponseBodyKnowledgeBaseChunksChunkAttachment
+from ._list_knowledge_base_chunks_response_body import ListKnowledgeBaseChunksResponseBodyKnowledgeBaseChunksMetaData
+from ._list_knowledge_base_chunks_response_body import ListKnowledgeBaseChunksResponseBodyKnowledgeBaseChunks
 from ._update_knowledge_base_request import UpdateKnowledgeBaseRequestAutoUpdateConfigEcsSpecs
 from ._update_knowledge_base_request import UpdateKnowledgeBaseRequestAutoUpdateConfigEmbeddingConfig
 from ._update_knowledge_base_request import UpdateKnowledgeBaseRequestAutoUpdateConfig
@@ -183,6 +194,9 @@ __all__ = [
     GetKnowledgeBaseJobRequest,
     GetKnowledgeBaseJobResponseBody,
     GetKnowledgeBaseJobResponse,
+    ListKnowledgeBaseChunksRequest,
+    ListKnowledgeBaseChunksResponseBody,
+    ListKnowledgeBaseChunksResponse,
     ListKnowledgeBaseJobsRequest,
     ListKnowledgeBaseJobsResponseBody,
     ListKnowledgeBaseJobsResponse,
@@ -195,6 +209,9 @@ __all__ = [
     UpdateKnowledgeBaseRequest,
     UpdateKnowledgeBaseResponseBody,
     UpdateKnowledgeBaseResponse,
+    UpdateKnowledgeBaseChunkRequest,
+    UpdateKnowledgeBaseChunkResponseBody,
+    UpdateKnowledgeBaseChunkResponse,
     UpdateKnowledgeBaseJobRequest,
     UpdateKnowledgeBaseJobResponseBody,
     UpdateKnowledgeBaseJobResponse,
@@ -208,6 +225,7 @@ __all__ = [
     DeploymentCredentialConfigCredentialConfigItems,
     DeploymentCredentialConfig,
     DeploymentDataSources,
+    DeploymentDeploymentStages,
     DeploymentEcsSpecComputingInstanceConfigComputingInstances,
     DeploymentEcsSpecComputingInstanceConfig,
     DeploymentEcsSpec,
@@ -291,6 +309,10 @@ __all__ = [
     GetKnowledgeBaseJobResponseBodyKnowledgeBaseJobResult,
     GetKnowledgeBaseJobResponseBodyPipelineRunInfo,
     GetKnowledgeBaseJobResponseBodyUserVpc,
+    ListKnowledgeBaseChunksRequestMetaData,
+    ListKnowledgeBaseChunksResponseBodyKnowledgeBaseChunksChunkAttachment,
+    ListKnowledgeBaseChunksResponseBodyKnowledgeBaseChunksMetaData,
+    ListKnowledgeBaseChunksResponseBodyKnowledgeBaseChunks,
     UpdateKnowledgeBaseRequestAutoUpdateConfigEcsSpecs,
     UpdateKnowledgeBaseRequestAutoUpdateConfigEmbeddingConfig,
     UpdateKnowledgeBaseRequestAutoUpdateConfig,

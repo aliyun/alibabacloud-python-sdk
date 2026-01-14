@@ -11,6 +11,7 @@ class Deployment(DaraModel):
     def __init__(
         self,
         accessibility: str = None,
+        auto_approval: bool = None,
         chat_history_config: main_models.DeploymentChatHistoryConfig = None,
         content_moderation_config: main_models.DeploymentContentModerationConfig = None,
         creator: str = None,
@@ -18,7 +19,7 @@ class Deployment(DaraModel):
         data_sources: List[main_models.DeploymentDataSources] = None,
         deployment_config: str = None,
         deployment_id: str = None,
-        deployment_stages: str = None,
+        deployment_stages: List[main_models.DeploymentDeploymentStages] = None,
         deployment_status: str = None,
         description: str = None,
         ecs_spec: main_models.DeploymentEcsSpec = None,
@@ -39,6 +40,7 @@ class Deployment(DaraModel):
         workspace_id: str = None,
     ):
         self.accessibility = accessibility
+        self.auto_approval = auto_approval
         self.chat_history_config = chat_history_config
         self.content_moderation_config = content_moderation_config
         self.creator = creator
@@ -77,6 +79,10 @@ class Deployment(DaraModel):
             for v1 in self.data_sources:
                  if v1:
                     v1.validate()
+        if self.deployment_stages:
+            for v1 in self.deployment_stages:
+                 if v1:
+                    v1.validate()
         if self.ecs_spec:
             self.ecs_spec.validate()
         if self.envs:
@@ -97,6 +103,9 @@ class Deployment(DaraModel):
             result = _map
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
+
+        if self.auto_approval is not None:
+            result['AutoApproval'] = self.auto_approval
 
         if self.chat_history_config is not None:
             result['ChatHistoryConfig'] = self.chat_history_config.to_map()
@@ -121,8 +130,10 @@ class Deployment(DaraModel):
         if self.deployment_id is not None:
             result['DeploymentId'] = self.deployment_id
 
+        result['DeploymentStages'] = []
         if self.deployment_stages is not None:
-            result['DeploymentStages'] = self.deployment_stages
+            for k1 in self.deployment_stages:
+                result['DeploymentStages'].append(k1.to_map() if k1 else None)
 
         if self.deployment_status is not None:
             result['DeploymentStatus'] = self.deployment_status
@@ -189,6 +200,9 @@ class Deployment(DaraModel):
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
 
+        if m.get('AutoApproval') is not None:
+            self.auto_approval = m.get('AutoApproval')
+
         if m.get('ChatHistoryConfig') is not None:
             temp_model = main_models.DeploymentChatHistoryConfig()
             self.chat_history_config = temp_model.from_map(m.get('ChatHistoryConfig'))
@@ -216,8 +230,11 @@ class Deployment(DaraModel):
         if m.get('DeploymentId') is not None:
             self.deployment_id = m.get('DeploymentId')
 
+        self.deployment_stages = []
         if m.get('DeploymentStages') is not None:
-            self.deployment_stages = m.get('DeploymentStages')
+            for k1 in m.get('DeploymentStages'):
+                temp_model = main_models.DeploymentDeploymentStages()
+                self.deployment_stages.append(temp_model.from_map(k1))
 
         if m.get('DeploymentStatus') is not None:
             self.deployment_status = m.get('DeploymentStatus')
@@ -638,6 +655,97 @@ class DeploymentEcsSpecComputingInstanceConfigComputingInstances(DaraModel):
 
         if m.get('Type') is not None:
             self.type = m.get('Type')
+
+        return self
+
+class DeploymentDeploymentStages(DaraModel):
+    def __init__(
+        self,
+        description: str = None,
+        error_message: str = None,
+        gmt_end_time: str = None,
+        gmt_start_time: str = None,
+        stage: int = None,
+        stage_info: str = None,
+        stage_name: str = None,
+        stage_status: str = None,
+    ):
+        # 描述
+        self.description = description
+        # 错误信息
+        self.error_message = error_message
+        # 结束时间
+        self.gmt_end_time = gmt_end_time
+        # 开始时间
+        self.gmt_start_time = gmt_start_time
+        # 阶段
+        self.stage = stage
+        # 阶段信息
+        self.stage_info = stage_info
+        # 阶段名称
+        self.stage_name = stage_name
+        # 阶段状态
+        self.stage_status = stage_status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.error_message is not None:
+            result['ErrorMessage'] = self.error_message
+
+        if self.gmt_end_time is not None:
+            result['GmtEndTime'] = self.gmt_end_time
+
+        if self.gmt_start_time is not None:
+            result['GmtStartTime'] = self.gmt_start_time
+
+        if self.stage is not None:
+            result['Stage'] = self.stage
+
+        if self.stage_info is not None:
+            result['StageInfo'] = self.stage_info
+
+        if self.stage_name is not None:
+            result['StageName'] = self.stage_name
+
+        if self.stage_status is not None:
+            result['StageStatus'] = self.stage_status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('ErrorMessage') is not None:
+            self.error_message = m.get('ErrorMessage')
+
+        if m.get('GmtEndTime') is not None:
+            self.gmt_end_time = m.get('GmtEndTime')
+
+        if m.get('GmtStartTime') is not None:
+            self.gmt_start_time = m.get('GmtStartTime')
+
+        if m.get('Stage') is not None:
+            self.stage = m.get('Stage')
+
+        if m.get('StageInfo') is not None:
+            self.stage_info = m.get('StageInfo')
+
+        if m.get('StageName') is not None:
+            self.stage_name = m.get('StageName')
+
+        if m.get('StageStatus') is not None:
+            self.stage_status = m.get('StageStatus')
 
         return self
 
