@@ -5414,6 +5414,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_bucket_lifecycle_with_options_async(request, runtime)
 
+    def delete_cluster_with_options(
+        self,
+        request: main_models.DeleteClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCluster',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteClusterResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cluster_with_options_async(
+        self,
+        request: main_models.DeleteClusterRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteClusterResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCluster',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteClusterResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cluster(
+        self,
+        request: main_models.DeleteClusterRequest,
+    ) -> main_models.DeleteClusterResponse:
+        runtime = RuntimeOptions()
+        return self.delete_cluster_with_options(request, runtime)
+
+    async def delete_cluster_async(
+        self,
+        request: main_models.DeleteClusterRequest,
+    ) -> main_models.DeleteClusterResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_cluster_with_options_async(request, runtime)
+
     def delete_disk_with_options(
         self,
         request: main_models.DeleteDiskRequest,

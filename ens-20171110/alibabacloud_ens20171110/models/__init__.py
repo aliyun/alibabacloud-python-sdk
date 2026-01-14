@@ -206,6 +206,9 @@ from ._delete_bucket_response import DeleteBucketResponse
 from ._delete_bucket_lifecycle_request import DeleteBucketLifecycleRequest
 from ._delete_bucket_lifecycle_response_body import DeleteBucketLifecycleResponseBody
 from ._delete_bucket_lifecycle_response import DeleteBucketLifecycleResponse
+from ._delete_cluster_request import DeleteClusterRequest
+from ._delete_cluster_response_body import DeleteClusterResponseBody
+from ._delete_cluster_response import DeleteClusterResponse
 from ._delete_disk_request import DeleteDiskRequest
 from ._delete_disk_response_body import DeleteDiskResponseBody
 from ._delete_disk_response import DeleteDiskResponse
@@ -1619,6 +1622,9 @@ __all__ = [
     DeleteBucketLifecycleRequest,
     DeleteBucketLifecycleResponseBody,
     DeleteBucketLifecycleResponse,
+    DeleteClusterRequest,
+    DeleteClusterResponseBody,
+    DeleteClusterResponse,
     DeleteDiskRequest,
     DeleteDiskResponseBody,
     DeleteDiskResponse,
