@@ -1,3 +1,10 @@
+2026-01-14 Version: 14.2.0
+- Support API CreateRCImage.
+- Support API ModifyDBInstanceVectorSupportStatus.
+- Update API ModifyRCDiskChargeType: add request parameters Period.
+- Update API ModifyRCDiskChargeType: add request parameters UsedTime.
+
+
 2026-01-13 Version: 14.1.0
 - Support API ModifyRCDiskAttribute.
 - Update API DescribeRCSnapshots: add request parameters InstanceId.

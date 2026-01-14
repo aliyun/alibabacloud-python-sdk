@@ -152,6 +152,9 @@ from ._create_rcdeployment_set_response import CreateRCDeploymentSetResponse
 from ._create_rcdisk_request import CreateRCDiskRequest
 from ._create_rcdisk_response_body import CreateRCDiskResponseBody
 from ._create_rcdisk_response import CreateRCDiskResponse
+from ._create_rcimage_request import CreateRCImageRequest
+from ._create_rcimage_response_body import CreateRCImageResponseBody
+from ._create_rcimage_response import CreateRCImageResponse
 from ._create_rcnode_pool_request import CreateRCNodePoolRequest
 from ._create_rcnode_pool_shrink_request import CreateRCNodePoolShrinkRequest
 from ._create_rcnode_pool_response_body import CreateRCNodePoolResponseBody
@@ -882,6 +885,9 @@ from ._modify_dbinstance_spec_response import ModifyDBInstanceSpecResponse
 from ._modify_dbinstance_tderequest import ModifyDBInstanceTDERequest
 from ._modify_dbinstance_tderesponse_body import ModifyDBInstanceTDEResponseBody
 from ._modify_dbinstance_tderesponse import ModifyDBInstanceTDEResponse
+from ._modify_dbinstance_vector_support_status_request import ModifyDBInstanceVectorSupportStatusRequest
+from ._modify_dbinstance_vector_support_status_response_body import ModifyDBInstanceVectorSupportStatusResponseBody
+from ._modify_dbinstance_vector_support_status_response import ModifyDBInstanceVectorSupportStatusResponse
 from ._modify_dbnode_request import ModifyDBNodeRequest
 from ._modify_dbnode_shrink_request import ModifyDBNodeShrinkRequest
 from ._modify_dbnode_response_body import ModifyDBNodeResponseBody
@@ -1738,6 +1744,9 @@ __all__ = [
     CreateRCDiskRequest,
     CreateRCDiskResponseBody,
     CreateRCDiskResponse,
+    CreateRCImageRequest,
+    CreateRCImageResponseBody,
+    CreateRCImageResponse,
     CreateRCNodePoolRequest,
     CreateRCNodePoolShrinkRequest,
     CreateRCNodePoolResponseBody,
@@ -2468,6 +2477,9 @@ __all__ = [
     ModifyDBInstanceTDERequest,
     ModifyDBInstanceTDEResponseBody,
     ModifyDBInstanceTDEResponse,
+    ModifyDBInstanceVectorSupportStatusRequest,
+    ModifyDBInstanceVectorSupportStatusResponseBody,
+    ModifyDBInstanceVectorSupportStatusResponse,
     ModifyDBNodeRequest,
     ModifyDBNodeShrinkRequest,
     ModifyDBNodeResponseBody,

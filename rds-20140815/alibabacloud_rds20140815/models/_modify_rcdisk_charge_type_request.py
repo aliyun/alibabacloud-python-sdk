@@ -14,8 +14,10 @@ class ModifyRCDiskChargeTypeRequest(DaraModel):
         client_token: str = None,
         instance_id: str = None,
         pay_type: str = None,
+        period: str = None,
         promotion_code: str = None,
         region_id: str = None,
+        used_time: int = None,
     ):
         self.auto_pay = auto_pay
         self.auto_renew = auto_renew
@@ -25,9 +27,11 @@ class ModifyRCDiskChargeTypeRequest(DaraModel):
         # This parameter is required.
         self.instance_id = instance_id
         self.pay_type = pay_type
+        self.period = period
         self.promotion_code = promotion_code
         # This parameter is required.
         self.region_id = region_id
+        self.used_time = used_time
 
     def validate(self):
         pass
@@ -58,11 +62,17 @@ class ModifyRCDiskChargeTypeRequest(DaraModel):
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
 
+        if self.period is not None:
+            result['Period'] = self.period
+
         if self.promotion_code is not None:
             result['PromotionCode'] = self.promotion_code
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
+
+        if self.used_time is not None:
+            result['UsedTime'] = self.used_time
 
         return result
 
@@ -89,11 +99,17 @@ class ModifyRCDiskChargeTypeRequest(DaraModel):
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
 
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+
         if m.get('PromotionCode') is not None:
             self.promotion_code = m.get('PromotionCode')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('UsedTime') is not None:
+            self.used_time = m.get('UsedTime')
 
         return self
 
