@@ -1,3 +1,10 @@
+2026-01-15 Version: 1.2.0
+- Support API ListMultimodalEmbeddingModelMode.
+- Support API ListMultimodalSearchModel.
+- Update API CreateMultimodalDatasetEmbedding: add request parameters ModelMode.
+- Update API CreateMultimodalSearchTask: add request parameters ModelMode.
+
+
 2026-01-06 Version: 1.1.0
 - Support API GetUserToken.
 - Support API ListMultimodalSearchTaskResult.

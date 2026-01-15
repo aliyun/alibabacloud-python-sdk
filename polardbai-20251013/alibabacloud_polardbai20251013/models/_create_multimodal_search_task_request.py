@@ -12,6 +12,7 @@ class CreateMultimodalSearchTaskRequest(DaraModel):
         dbcluster_id: str = None,
         dataset_ids: List[str] = None,
         embedding_model: str = None,
+        model_mode: str = None,
         query: str = None,
         search_model: str = None,
         top_k: int = None,
@@ -20,6 +21,7 @@ class CreateMultimodalSearchTaskRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         self.dataset_ids = dataset_ids
         self.embedding_model = embedding_model
+        self.model_mode = model_mode
         self.query = query
         self.search_model = search_model
         self.top_k = top_k
@@ -40,6 +42,9 @@ class CreateMultimodalSearchTaskRequest(DaraModel):
 
         if self.embedding_model is not None:
             result['EmbeddingModel'] = self.embedding_model
+
+        if self.model_mode is not None:
+            result['ModelMode'] = self.model_mode
 
         if self.query is not None:
             result['Query'] = self.query
@@ -62,6 +67,9 @@ class CreateMultimodalSearchTaskRequest(DaraModel):
 
         if m.get('EmbeddingModel') is not None:
             self.embedding_model = m.get('EmbeddingModel')
+
+        if m.get('ModelMode') is not None:
+            self.model_mode = m.get('ModelMode')
 
         if m.get('Query') is not None:
             self.query = m.get('Query')

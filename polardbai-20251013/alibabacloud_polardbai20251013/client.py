@@ -2382,6 +2382,8 @@ class Client(OpenApiClient):
             query['DatasetId'] = request.dataset_id
         if not DaraCore.is_null(request.model):
             query['Model'] = request.model
+        if not DaraCore.is_null(request.model_mode):
+            query['ModelMode'] = request.model_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2414,6 +2416,8 @@ class Client(OpenApiClient):
             query['DatasetId'] = request.dataset_id
         if not DaraCore.is_null(request.model):
             query['Model'] = request.model
+        if not DaraCore.is_null(request.model_mode):
+            query['ModelMode'] = request.model_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2464,6 +2468,8 @@ class Client(OpenApiClient):
             query['DatasetIds'] = request.dataset_ids_shrink
         if not DaraCore.is_null(request.embedding_model):
             query['EmbeddingModel'] = request.embedding_model
+        if not DaraCore.is_null(request.model_mode):
+            query['ModelMode'] = request.model_mode
         if not DaraCore.is_null(request.query):
             query['Query'] = request.query
         if not DaraCore.is_null(request.search_model):
@@ -2506,6 +2512,8 @@ class Client(OpenApiClient):
             query['DatasetIds'] = request.dataset_ids_shrink
         if not DaraCore.is_null(request.embedding_model):
             query['EmbeddingModel'] = request.embedding_model
+        if not DaraCore.is_null(request.model_mode):
+            query['ModelMode'] = request.model_mode
         if not DaraCore.is_null(request.query):
             query['Query'] = request.query
         if not DaraCore.is_null(request.search_model):
@@ -3004,6 +3012,154 @@ class Client(OpenApiClient):
     ) -> main_models.ListMultimodalEmbeddingModelResponse:
         runtime = RuntimeOptions()
         return await self.list_multimodal_embedding_model_with_options_async(request, runtime)
+
+    def list_multimodal_embedding_model_mode_with_options(
+        self,
+        request: main_models.ListMultimodalEmbeddingModelModeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMultimodalEmbeddingModelModeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMultimodalEmbeddingModelMode',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMultimodalEmbeddingModelModeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_multimodal_embedding_model_mode_with_options_async(
+        self,
+        request: main_models.ListMultimodalEmbeddingModelModeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMultimodalEmbeddingModelModeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMultimodalEmbeddingModelMode',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMultimodalEmbeddingModelModeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_multimodal_embedding_model_mode(
+        self,
+        request: main_models.ListMultimodalEmbeddingModelModeRequest,
+    ) -> main_models.ListMultimodalEmbeddingModelModeResponse:
+        runtime = RuntimeOptions()
+        return self.list_multimodal_embedding_model_mode_with_options(request, runtime)
+
+    async def list_multimodal_embedding_model_mode_async(
+        self,
+        request: main_models.ListMultimodalEmbeddingModelModeRequest,
+    ) -> main_models.ListMultimodalEmbeddingModelModeResponse:
+        runtime = RuntimeOptions()
+        return await self.list_multimodal_embedding_model_mode_with_options_async(request, runtime)
+
+    def list_multimodal_search_model_with_options(
+        self,
+        request: main_models.ListMultimodalSearchModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMultimodalSearchModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMultimodalSearchModel',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMultimodalSearchModelResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_multimodal_search_model_with_options_async(
+        self,
+        request: main_models.ListMultimodalSearchModelRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMultimodalSearchModelResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMultimodalSearchModel',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMultimodalSearchModelResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_multimodal_search_model(
+        self,
+        request: main_models.ListMultimodalSearchModelRequest,
+    ) -> main_models.ListMultimodalSearchModelResponse:
+        runtime = RuntimeOptions()
+        return self.list_multimodal_search_model_with_options(request, runtime)
+
+    async def list_multimodal_search_model_async(
+        self,
+        request: main_models.ListMultimodalSearchModelRequest,
+    ) -> main_models.ListMultimodalSearchModelResponse:
+        runtime = RuntimeOptions()
+        return await self.list_multimodal_search_model_with_options_async(request, runtime)
 
     def list_multimodal_search_task_with_options(
         self,

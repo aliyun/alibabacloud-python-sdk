@@ -100,6 +100,12 @@ from ._list_multimodal_dataset_response import ListMultimodalDatasetResponse
 from ._list_multimodal_embedding_model_request import ListMultimodalEmbeddingModelRequest
 from ._list_multimodal_embedding_model_response_body import ListMultimodalEmbeddingModelResponseBody
 from ._list_multimodal_embedding_model_response import ListMultimodalEmbeddingModelResponse
+from ._list_multimodal_embedding_model_mode_request import ListMultimodalEmbeddingModelModeRequest
+from ._list_multimodal_embedding_model_mode_response_body import ListMultimodalEmbeddingModelModeResponseBody
+from ._list_multimodal_embedding_model_mode_response import ListMultimodalEmbeddingModelModeResponse
+from ._list_multimodal_search_model_request import ListMultimodalSearchModelRequest
+from ._list_multimodal_search_model_response_body import ListMultimodalSearchModelResponseBody
+from ._list_multimodal_search_model_response import ListMultimodalSearchModelResponse
 from ._list_multimodal_search_task_request import ListMultimodalSearchTaskRequest
 from ._list_multimodal_search_task_response_body import ListMultimodalSearchTaskResponseBody
 from ._list_multimodal_search_task_response import ListMultimodalSearchTaskResponse
@@ -219,6 +225,12 @@ __all__ = [
     ListMultimodalEmbeddingModelRequest,
     ListMultimodalEmbeddingModelResponseBody,
     ListMultimodalEmbeddingModelResponse,
+    ListMultimodalEmbeddingModelModeRequest,
+    ListMultimodalEmbeddingModelModeResponseBody,
+    ListMultimodalEmbeddingModelModeResponse,
+    ListMultimodalSearchModelRequest,
+    ListMultimodalSearchModelResponseBody,
+    ListMultimodalSearchModelResponse,
     ListMultimodalSearchTaskRequest,
     ListMultimodalSearchTaskResponseBody,
     ListMultimodalSearchTaskResponse,
