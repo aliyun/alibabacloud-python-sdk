@@ -13,6 +13,7 @@ class ContainerConfiguration(DaraModel):
         command: List[str] = None,
         image: str = None,
         image_registry_type: str = None,
+        port: int = None,
     ):
         # 阿里云容器镜像服务（ACR）的实例ID或名称
         self.acr_instance_id = acr_instance_id
@@ -21,6 +22,7 @@ class ContainerConfiguration(DaraModel):
         self.image = image
         # 容器镜像的来源类型，支持ACR（阿里云容器镜像服务）、ACREE（阿里云容器镜像服务企业版）、CUSTOM（自定义镜像仓库）
         self.image_registry_type = image_registry_type
+        self.port = port
 
     def validate(self):
         pass
@@ -42,6 +44,9 @@ class ContainerConfiguration(DaraModel):
         if self.image_registry_type is not None:
             result['imageRegistryType'] = self.image_registry_type
 
+        if self.port is not None:
+            result['port'] = self.port
+
         return result
 
     def from_map(self, m: dict = None):
@@ -57,6 +62,9 @@ class ContainerConfiguration(DaraModel):
 
         if m.get('imageRegistryType') is not None:
             self.image_registry_type = m.get('imageRegistryType')
+
+        if m.get('port') is not None:
+            self.port = m.get('port')
 
         return self
 
