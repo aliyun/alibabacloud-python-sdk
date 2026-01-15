@@ -33,14 +33,18 @@ from ._machine_group import MachineGroup
 from ._metric import Metric
 from ._metric_definition import MetricDefinition
 from ._node import Node
+from ._node_cordon_parameters import NodeCordonParameters
+from ._node_drain_parameters import NodeDrainParameters
 from ._node_gpumetric import NodeGPUMetric
 from ._node_metric import NodeMetric
+from ._node_operation_parameters import NodeOperationParameters
 from ._node_operation_result import NodeOperationResult
 from ._node_pod_info import NodePodInfo
 from ._node_snapshot import NodeSnapshot
 from ._node_spec import NodeSpec
 from ._node_type import NodeType
 from ._node_type_statistic import NodeTypeStatistic
+from ._node_uncordon_parameters import NodeUncordonParameters
 from ._node_view_metric import NodeViewMetric
 from ._oversold_usage_config import OversoldUsageConfig
 from ._permission import Permission
@@ -341,14 +345,18 @@ __all__ = [
     Metric,
     MetricDefinition,
     Node,
+    NodeCordonParameters,
+    NodeDrainParameters,
     NodeGPUMetric,
     NodeMetric,
+    NodeOperationParameters,
     NodeOperationResult,
     NodePodInfo,
     NodeSnapshot,
     NodeSpec,
     NodeType,
     NodeTypeStatistic,
+    NodeUncordonParameters,
     NodeViewMetric,
     OversoldUsageConfig,
     Permission,

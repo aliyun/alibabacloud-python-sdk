@@ -12,13 +12,14 @@ class QuotaConfig(DaraModel):
         self,
         acs: main_models.ACS = None,
         cluster_id: str = None,
+        control_plane_cluster_id: str = None,
         default_gpudriver: str = None,
         enable_gpushare: bool = None,
         enable_preempt_subquota_workloads: bool = None,
         enable_self_quota_preemption: bool = None,
         enable_sub_quota_preemption: bool = None,
         eni_cache_config: main_models.EniCacheConfig = None,
-        oversold_usage_info: main_models.OversoldUsageConfig = None,
+        oversold_usage_config: main_models.OversoldUsageConfig = None,
         resource_specs: List[main_models.WorkspaceSpecs] = None,
         sandbox_cache_config: main_models.SandboxCacheConfig = None,
         self_quota_preemption_config: main_models.SelfQuotaPreemptionConfig = None,
@@ -30,13 +31,14 @@ class QuotaConfig(DaraModel):
     ):
         self.acs = acs
         self.cluster_id = cluster_id
+        self.control_plane_cluster_id = control_plane_cluster_id
         self.default_gpudriver = default_gpudriver
         self.enable_gpushare = enable_gpushare
         self.enable_preempt_subquota_workloads = enable_preempt_subquota_workloads
         self.enable_self_quota_preemption = enable_self_quota_preemption
         self.enable_sub_quota_preemption = enable_sub_quota_preemption
         self.eni_cache_config = eni_cache_config
-        self.oversold_usage_info = oversold_usage_info
+        self.oversold_usage_config = oversold_usage_config
         self.resource_specs = resource_specs
         self.sandbox_cache_config = sandbox_cache_config
         self.self_quota_preemption_config = self_quota_preemption_config
@@ -51,8 +53,8 @@ class QuotaConfig(DaraModel):
             self.acs.validate()
         if self.eni_cache_config:
             self.eni_cache_config.validate()
-        if self.oversold_usage_info:
-            self.oversold_usage_info.validate()
+        if self.oversold_usage_config:
+            self.oversold_usage_config.validate()
         if self.resource_specs:
             for v1 in self.resource_specs:
                  if v1:
@@ -77,6 +79,9 @@ class QuotaConfig(DaraModel):
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
 
+        if self.control_plane_cluster_id is not None:
+            result['ControlPlaneClusterId'] = self.control_plane_cluster_id
+
         if self.default_gpudriver is not None:
             result['DefaultGPUDriver'] = self.default_gpudriver
 
@@ -95,8 +100,8 @@ class QuotaConfig(DaraModel):
         if self.eni_cache_config is not None:
             result['EniCacheConfig'] = self.eni_cache_config.to_map()
 
-        if self.oversold_usage_info is not None:
-            result['OversoldUsageInfo'] = self.oversold_usage_info.to_map()
+        if self.oversold_usage_config is not None:
+            result['OversoldUsageConfig'] = self.oversold_usage_config.to_map()
 
         result['ResourceSpecs'] = []
         if self.resource_specs is not None:
@@ -135,6 +140,9 @@ class QuotaConfig(DaraModel):
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
 
+        if m.get('ControlPlaneClusterId') is not None:
+            self.control_plane_cluster_id = m.get('ControlPlaneClusterId')
+
         if m.get('DefaultGPUDriver') is not None:
             self.default_gpudriver = m.get('DefaultGPUDriver')
 
@@ -154,9 +162,9 @@ class QuotaConfig(DaraModel):
             temp_model = main_models.EniCacheConfig()
             self.eni_cache_config = temp_model.from_map(m.get('EniCacheConfig'))
 
-        if m.get('OversoldUsageInfo') is not None:
+        if m.get('OversoldUsageConfig') is not None:
             temp_model = main_models.OversoldUsageConfig()
-            self.oversold_usage_info = temp_model.from_map(m.get('OversoldUsageInfo'))
+            self.oversold_usage_config = temp_model.from_map(m.get('OversoldUsageConfig'))
 
         self.resource_specs = []
         if m.get('ResourceSpecs') is not None:
