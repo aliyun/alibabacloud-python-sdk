@@ -130,10 +130,13 @@ class DescribeInternetDnsLogsResponseBodyLogsLog(DaraModel):
     def __init__(
         self,
         dns_msg_id: str = None,
+        flags: str = None,
         log_time: int = None,
         protocol: str = None,
+        query_flags: str = None,
         query_name: str = None,
         query_type: str = None,
+        response_timestamp: str = None,
         rt: int = None,
         server_ip: str = None,
         source_ip: str = None,
@@ -144,6 +147,7 @@ class DescribeInternetDnsLogsResponseBodyLogsLog(DaraModel):
     ):
         # Parse log ID (can be duplicated).
         self.dns_msg_id = dns_msg_id
+        self.flags = flags
         # Parse timestamp.
         self.log_time = log_time
         # The protocol type of the domain name resolution query request:
@@ -153,10 +157,12 @@ class DescribeInternetDnsLogsResponseBodyLogsLog(DaraModel):
         # - HTTPS
         # - DOH
         self.protocol = protocol
+        self.query_flags = query_flags
         # The domain name for which you want to query Domain Name System (DNS) records.
         self.query_name = query_name
         # Record type.
         self.query_type = query_type
+        self.response_timestamp = response_timestamp
         # Parse response time.
         self.rt = rt
         # Parse server IP.
@@ -184,17 +190,26 @@ class DescribeInternetDnsLogsResponseBodyLogsLog(DaraModel):
         if self.dns_msg_id is not None:
             result['DnsMsgId'] = self.dns_msg_id
 
+        if self.flags is not None:
+            result['Flags'] = self.flags
+
         if self.log_time is not None:
             result['LogTime'] = self.log_time
 
         if self.protocol is not None:
             result['Protocol'] = self.protocol
 
+        if self.query_flags is not None:
+            result['QueryFlags'] = self.query_flags
+
         if self.query_name is not None:
             result['QueryName'] = self.query_name
 
         if self.query_type is not None:
             result['QueryType'] = self.query_type
+
+        if self.response_timestamp is not None:
+            result['ResponseTimestamp'] = self.response_timestamp
 
         if self.rt is not None:
             result['Rt'] = self.rt
@@ -224,17 +239,26 @@ class DescribeInternetDnsLogsResponseBodyLogsLog(DaraModel):
         if m.get('DnsMsgId') is not None:
             self.dns_msg_id = m.get('DnsMsgId')
 
+        if m.get('Flags') is not None:
+            self.flags = m.get('Flags')
+
         if m.get('LogTime') is not None:
             self.log_time = m.get('LogTime')
 
         if m.get('Protocol') is not None:
             self.protocol = m.get('Protocol')
 
+        if m.get('QueryFlags') is not None:
+            self.query_flags = m.get('QueryFlags')
+
         if m.get('QueryName') is not None:
             self.query_name = m.get('QueryName')
 
         if m.get('QueryType') is not None:
             self.query_type = m.get('QueryType')
+
+        if m.get('ResponseTimestamp') is not None:
+            self.response_timestamp = m.get('ResponseTimestamp')
 
         if m.get('Rt') is not None:
             self.rt = m.get('Rt')

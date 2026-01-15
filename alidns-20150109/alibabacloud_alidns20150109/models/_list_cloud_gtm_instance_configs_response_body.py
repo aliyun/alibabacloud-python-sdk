@@ -125,6 +125,7 @@ class ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig(DaraM
         available_status: str = None,
         commodity_code: str = None,
         config_id: str = None,
+        config_logging_switch_status: str = None,
         create_time: str = None,
         create_timestamp: int = None,
         enable_status: str = None,
@@ -163,6 +164,7 @@ class ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig(DaraM
         self.commodity_code = commodity_code
         # The configuration ID of the access domain name. Two configuration IDs exist when the access domain name is bound to the same GTM instance but an A record and an AAAA record are configured for the access domain name. The configuration ID uniquely identifies a configuration.
         self.config_id = config_id
+        self.config_logging_switch_status = config_logging_switch_status
         # Instance configuration creation time.
         self.create_time = create_time
         # Instance creation time (timestamp).
@@ -239,6 +241,9 @@ class ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig(DaraM
         if self.config_id is not None:
             result['ConfigId'] = self.config_id
 
+        if self.config_logging_switch_status is not None:
+            result['ConfigLoggingSwitchStatus'] = self.config_logging_switch_status
+
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
 
@@ -306,6 +311,9 @@ class ListCloudGtmInstanceConfigsResponseBodyInstanceConfigsInstanceConfig(DaraM
 
         if m.get('ConfigId') is not None:
             self.config_id = m.get('ConfigId')
+
+        if m.get('ConfigLoggingSwitchStatus') is not None:
+            self.config_logging_switch_status = m.get('ConfigLoggingSwitchStatus')
 
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')

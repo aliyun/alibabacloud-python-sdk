@@ -1,3 +1,13 @@
+2026-01-15 Version: 4.1.1
+- Update API DescribeCloudGtmGlobalAlert: add response parameters Body.AlertConfig.$.Threshold.
+- Update API DescribeInternetDnsLogs: add response parameters Body.Logs.$.Flags.
+- Update API DescribeInternetDnsLogs: add response parameters Body.Logs.$.QueryFlags.
+- Update API DescribeInternetDnsLogs: add response parameters Body.Logs.$.ResponseTimestamp.
+- Update API ListCloudGtmInstanceConfigs: add response parameters Body.InstanceConfigs.$.ConfigLoggingSwitchStatus.
+- Update API SearchCloudGtmInstanceConfigs: add response parameters Body.InstanceConfigs.$.ConfigLoggingSwitchStatus.
+- Update API UpdateCloudGtmGlobalAlert: add request parameters AlertConfig.$.Threshold.
+
+
 2025-12-30 Version: 4.1.0
 - Support API AddRspDomainServerHoldStatusForGateway.
 - Update API DescribePdnsAppKeys: add response parameters Body.AppKeys.$.BindEdgeDnsClusters.

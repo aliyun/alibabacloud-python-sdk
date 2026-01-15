@@ -127,6 +127,7 @@ class DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig(DaraModel):
         email_notice: bool = None,
         notice_type: str = None,
         sms_notice: bool = None,
+        threshold: int = None,
     ):
         # Indicates whether DingTalk notifications are configured. Valid values:
         # 
@@ -152,6 +153,7 @@ class DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig(DaraModel):
         # 
         # Only the China site (aliyun.com) supports text message notifications.
         self.sms_notice = sms_notice
+        self.threshold = threshold
 
     def validate(self):
         pass
@@ -173,6 +175,9 @@ class DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig(DaraModel):
         if self.sms_notice is not None:
             result['SmsNotice'] = self.sms_notice
 
+        if self.threshold is not None:
+            result['Threshold'] = self.threshold
+
         return result
 
     def from_map(self, m: dict = None):
@@ -188,6 +193,9 @@ class DescribeCloudGtmGlobalAlertResponseBodyAlertConfigAlertConfig(DaraModel):
 
         if m.get('SmsNotice') is not None:
             self.sms_notice = m.get('SmsNotice')
+
+        if m.get('Threshold') is not None:
+            self.threshold = m.get('Threshold')
 
         return self
 
