@@ -291,6 +291,8 @@ class Client(OpenApiClient):
     ) -> main_models.AnalyzeVlRealtimeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.file_name):
+            query['fileName'] = request.file_name
         if not DaraCore.is_null(request.file_url):
             query['fileUrl'] = request.file_url
         if not DaraCore.is_null(request.language):
@@ -325,6 +327,8 @@ class Client(OpenApiClient):
     ) -> main_models.AnalyzeVlRealtimeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.file_name):
+            query['fileName'] = request.file_name
         if not DaraCore.is_null(request.file_url):
             query['fileUrl'] = request.file_url
         if not DaraCore.is_null(request.language):

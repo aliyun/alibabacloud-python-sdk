@@ -1,3 +1,7 @@
+2026-01-15 Version: 4.4.2
+- Update API AnalyzeVlRealtime: add request parameters fileName.
+
+
 2026-01-15 Version: 4.4.1
 - Generated python 2022-09-23 for energyExpertExternal.
 

@@ -9,26 +9,29 @@ from darabonba.model import DaraModel
 class AnalyzeVlRealtimeAdvanceRequest(DaraModel):
     def __init__(
         self,
+        file_name: str = None,
         file_url_object: BinaryIO = None,
         language: str = None,
         template_id: str = None,
     ):
-        # Choose one of fileUrl or fileUrlObject:
+        # 文件名需带文件类型后缀
+        self.file_name = file_name
+        # Valid values: fileUrl and fileUrlObject.
         # 
-        # - fileUrl: Use in the form of a document URL, for a single document (supports up to 1000 pages and 100MB)
+        # *   fileUrl: used as a document URL. A single document with not more than 1,000 pages and whose size does not exceed 100 MB is supported.
+        # *   fileUrlObject: used when the operation is called in local file upload mode. A single document with not more than 1,000 pages and whose size does not exceed 100 MB is supported.
         # 
-        # - fileUrlObject: Use when calling the interface with local file upload, for a single document (supports up to 1000 pages and 100 MB)
-        # 
-        # > The relationship between file parsing methods and supported document types
-        # > - Long Text RAG: Supports pdf, doc/docx, up to 1000 pages
-        # > - Image Processing: Supports pdf, jpg, jpeg, png, bmp
-        # > - Long Text Understanding: Supports pdf, doc/docx, xls/xlsx
+        # > The relationship between file extraction methods and supported document types
+        # > - Long text RAG: Supports pdf, doc/docx, xlsx, csv, txt, up to 1000 pages
+        # > - Image processing: Supports pdf, jpg, jpeg, png, bmp, jpe, tif, tiff, webp, heic
+        # > - Long text understanding: Supports doc/docx, xlsx, pdf, csv, txt
         self.file_url_object = file_url_object
-        # Language, parameters that can be passed
-        # - zh-CN: Chinese (default)
-        # - en-US: English
+        # The language, which can be transferred. Valid values:
+        # 
+        # *   zh-CN (default)
+        # *   en-US
         self.language = language
-        # A unique parsing template ID used to specify the key-value pairs to be extracted from the document. You need to log in to the template management page, configure the template, and then get the corresponding template ID.
+        # The unique ID of an extraction template, which is used to specify the content to be extracted from a document. You must log on to the Template Management page to configure the template and then obtain the corresponding template ID.
         self.template_id = template_id
 
     def validate(self):
@@ -39,6 +42,9 @@ class AnalyzeVlRealtimeAdvanceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.file_name is not None:
+            result['fileName'] = self.file_name
+
         if self.file_url_object is not None:
             result['fileUrl'] = self.file_url_object
 
@@ -52,6 +58,9 @@ class AnalyzeVlRealtimeAdvanceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('fileName') is not None:
+            self.file_name = m.get('fileName')
+
         if m.get('fileUrl') is not None:
             self.file_url_object = m.get('fileUrl')
 

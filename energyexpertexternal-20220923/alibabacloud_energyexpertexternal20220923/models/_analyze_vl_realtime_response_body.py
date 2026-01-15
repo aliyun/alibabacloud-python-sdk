@@ -13,9 +13,9 @@ class AnalyzeVlRealtimeResponseBody(DaraModel):
         data: main_models.AnalyzeVlRealtimeResponseBodyData = None,
         request_id: str = None,
     ):
-        # Return result.
+        # The returned result.
         self.data = data
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,7 +51,7 @@ class AnalyzeVlRealtimeResponseBodyData(DaraModel):
         self,
         kv_list_info: List[main_models.AnalyzeVlRealtimeResponseBodyDataKvListInfo] = None,
     ):
-        # Document parsing result details
+        # The details of the document extraction result.
         self.kv_list_info = kv_list_info
 
     def validate(self):
@@ -89,11 +89,11 @@ class AnalyzeVlRealtimeResponseBodyDataKvListInfo(DaraModel):
         key_name: str = None,
         key_value: str = None,
     ):
-        # Recall content
+        # The recalled content.
         self.context = context
-        # Field Key name
+        # The name of the key.
         self.key_name = key_name
-        # Field key value
+        # The value of the key.
         self.key_value = key_value
 
     def validate(self):
@@ -137,11 +137,11 @@ class AnalyzeVlRealtimeResponseBodyDataKvListInfoContext(DaraModel):
         key: List[main_models.ContentItem] = None,
         value: List[main_models.ContentItem] = None,
     ):
-        # Confidence
+        # The confidence level.
         self.confidence = confidence
-        # Key recall information details
+        # The details of the recalled key information.
         self.key = key
-        # Value recall information details
+        # The details of the recalled value information.
         self.value = value
 
     def validate(self):
@@ -202,9 +202,9 @@ class AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence(DaraModel):
         key_confidence: float = None,
         value_confidence: float = None,
     ):
-        # Key confidence
+        # The confidence level of the key.
         self.key_confidence = key_confidence
-        # Value confidence
+        # The confidence level of the value.
         self.value_confidence = value_confidence
 
     def validate(self):
