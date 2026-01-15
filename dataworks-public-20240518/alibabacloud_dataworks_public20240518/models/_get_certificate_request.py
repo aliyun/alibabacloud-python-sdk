@@ -15,6 +15,8 @@ class GetCertificateRequest(DaraModel):
         # This parameter is required.
         self.id = id
         # The ID of the workspace to which the certificate file belongs.
+        # 
+        # This parameter is required.
         self.project_id = project_id
 
     def validate(self):

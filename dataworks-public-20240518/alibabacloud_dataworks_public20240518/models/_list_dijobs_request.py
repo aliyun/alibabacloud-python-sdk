@@ -40,6 +40,7 @@ class ListDIJobsRequest(DaraModel):
         self.project_id = project_id
         # The source type. Valid values: PolarDB, MySQL, Kafka, Loghub, Hologres, Oracle, OceanBase, MongoDB, RedShift, Hive, SqlServer, Doris, and ClickHouse. If you do not configure this parameter, the API operation queries synchronization tasks that use all types of sources.
         self.source_data_source_type = source_data_source_type
+        # The task configuration specification type. Valid values: FILESPEC, CLASSIC, ALL. FILESPEC: New-style task based on structured filespec; CLASSIC: Task using traditional configuration mode.
         self.spec_type = spec_type
 
     def validate(self):
