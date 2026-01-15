@@ -1,3 +1,7 @@
+2026-01-15 Version: 2.7.1
+- Update API DescribeFile: add response parameters Body.Data.ParseResultDownloadUrl.
+
+
 2026-01-14 Version: 2.7.0
 - Support API GetIndexMonitor.
 

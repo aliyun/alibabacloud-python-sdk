@@ -93,6 +93,7 @@ class DescribeFileResponseBodyData(DaraModel):
         file_id: str = None,
         file_name: str = None,
         file_type: str = None,
+        parse_result_download_url: str = None,
         parser: str = None,
         size_in_bytes: int = None,
         status: str = None,
@@ -108,6 +109,7 @@ class DescribeFileResponseBodyData(DaraModel):
         self.file_name = file_name
         # The file type of the document. The value is an extension. Valid values: pdf, docx, doc, txt, md, pptx, and ppt.
         self.file_type = file_type
+        self.parse_result_download_url = parse_result_download_url
         # The parser that is used to parse the document. Valid value:
         # 
         # *   DASHSCOPE_DOCMIND: The default document parser.
@@ -147,6 +149,9 @@ class DescribeFileResponseBodyData(DaraModel):
         if self.file_type is not None:
             result['FileType'] = self.file_type
 
+        if self.parse_result_download_url is not None:
+            result['ParseResultDownloadUrl'] = self.parse_result_download_url
+
         if self.parser is not None:
             result['Parser'] = self.parser
 
@@ -177,6 +182,9 @@ class DescribeFileResponseBodyData(DaraModel):
 
         if m.get('FileType') is not None:
             self.file_type = m.get('FileType')
+
+        if m.get('ParseResultDownloadUrl') is not None:
+            self.parse_result_download_url = m.get('ParseResultDownloadUrl')
 
         if m.get('Parser') is not None:
             self.parser = m.get('Parser')
