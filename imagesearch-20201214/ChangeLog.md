@@ -1,3 +1,9 @@
+2026-01-15 Version: 4.2.3
+- Update API SearchImageByName: add request parameters ScoreThreshold.
+- Update API SearchImageByPic: add request parameters ScoreThreshold.
+- Update API SearchImageByText: add request parameters ScoreThreshold.
+
+
 2025-04-09 Version: 4.2.2
 - Generated python 2020-12-14 for ImageSearch.
 
