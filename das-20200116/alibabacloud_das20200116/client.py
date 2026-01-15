@@ -6476,10 +6476,14 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetInstanceGroupInspectReportDetailResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
         body = {}
         if not DaraCore.is_null(request.report_id):
             body['ReportId'] = request.report_id
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -6504,10 +6508,14 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetInstanceGroupInspectReportDetailResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['AgentId'] = request.agent_id
         body = {}
         if not DaraCore.is_null(request.report_id):
             body['ReportId'] = request.report_id
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(

@@ -1,3 +1,7 @@
+2026-01-15 Version: 2.11.3
+- Update API GetInstanceGroupInspectReportDetail: add request parameters AgentId.
+
+
 2026-01-06 Version: 2.11.2
 - Generated python 2020-01-16 for DAS.
 
