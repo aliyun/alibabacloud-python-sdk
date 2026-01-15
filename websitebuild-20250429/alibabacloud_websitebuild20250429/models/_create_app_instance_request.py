@@ -18,15 +18,25 @@ class CreateAppInstanceRequest(DaraModel):
         quantity: int = None,
         site_version: str = None,
     ):
+        # Application type
         self.application_type = application_type
+        # Whether to enable auto-renewal upon expiration
         self.auto_renew = auto_renew
+        # Ensures idempotence of the request. Generate a unique value from your client to ensure that it is unique across different requests. ClientToken only supports ASCII characters and cannot exceed 64 characters
         self.client_token = client_token
+        # Deployment area
         self.deploy_area = deploy_area
+        # Required. The number of subscription periods
         self.duration = duration
+        # Extended information
         self.extend = extend
+        # Payment type
         self.payment_type = payment_type
+        # Required. The unit of the subscription period, Year: Year, Month: Month, Day: Day, Hour: Hour
         self.pricing_cycle = pricing_cycle
+        # Required. The quantity of instances to be ordered.
         self.quantity = quantity
+        # Site version
         self.site_version = site_version
 
     def validate(self):
