@@ -4497,6 +4497,72 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_resource_overview_with_options_async(request, headers, runtime)
 
+    def get_secret_with_options(
+        self,
+        secret_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSecretResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSecret',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/secrets/{DaraURL.percent_encode(secret_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSecretResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_secret_with_options_async(
+        self,
+        secret_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSecretResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSecret',
+            version = '2024-03-27',
+            protocol = 'HTTPS',
+            pathname = f'/v1/secrets/{DaraURL.percent_encode(secret_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSecretResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_secret(
+        self,
+        secret_id: str,
+    ) -> main_models.GetSecretResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_secret_with_options(secret_id, headers, runtime)
+
+    async def get_secret_async(
+        self,
+        secret_id: str,
+    ) -> main_models.GetSecretResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_secret_with_options_async(secret_id, headers, runtime)
+
     def get_secret_value_with_options(
         self,
         name: str,

@@ -229,19 +229,22 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
     def __init__(
         self,
         intent_code: str = None,
+        match: main_models.HttpApiBackendMatchConditions = None,
         model_name: str = None,
         model_name_pattern: str = None,
         service_id: str = None,
         weight: int = None,
     ):
         self.intent_code = intent_code
+        self.match = match
         self.model_name = model_name
         self.model_name_pattern = model_name_pattern
         self.service_id = service_id
         self.weight = weight
 
     def validate(self):
-        pass
+        if self.match:
+            self.match.validate()
 
     def to_map(self):
         result = dict()
@@ -250,6 +253,9 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
             result = _map
         if self.intent_code is not None:
             result['intentCode'] = self.intent_code
+
+        if self.match is not None:
+            result['match'] = self.match.to_map()
 
         if self.model_name is not None:
             result['modelName'] = self.model_name
@@ -269,6 +275,10 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
         m = m or dict()
         if m.get('intentCode') is not None:
             self.intent_code = m.get('intentCode')
+
+        if m.get('match') is not None:
+            temp_model = main_models.HttpApiBackendMatchConditions()
+            self.match = temp_model.from_map(m.get('match'))
 
         if m.get('modelName') is not None:
             self.model_name = m.get('modelName')

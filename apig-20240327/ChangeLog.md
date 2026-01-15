@@ -1,3 +1,7 @@
+2026-01-15 Version: 5.8.0
+- Support API GetSecret.
+
+
 2026-01-12 Version: 5.7.2
 - Update API UpdateHttpApiRoute: add request parameters body.policyConfigs.
 

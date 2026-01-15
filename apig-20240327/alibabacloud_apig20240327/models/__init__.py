@@ -194,6 +194,8 @@ from ._get_policy_attachment_response import GetPolicyAttachmentResponse
 from ._get_resource_overview_request import GetResourceOverviewRequest
 from ._get_resource_overview_response_body import GetResourceOverviewResponseBody
 from ._get_resource_overview_response import GetResourceOverviewResponse
+from ._get_secret_response_body import GetSecretResponseBody
+from ._get_secret_response import GetSecretResponse
 from ._get_secret_value_response_body import GetSecretValueResponseBody
 from ._get_secret_value_response import GetSecretValueResponse
 from ._get_service_response_body import GetServiceResponseBody
@@ -483,6 +485,7 @@ from ._get_resource_overview_response_body import GetResourceOverviewResponseBod
 from ._get_resource_overview_response_body import GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails
 from ._get_resource_overview_response_body import GetResourceOverviewResponseBodyDataRiskOverview
 from ._get_resource_overview_response_body import GetResourceOverviewResponseBodyData
+from ._get_secret_response_body import GetSecretResponseBodyData
 from ._get_secret_value_response_body import GetSecretValueResponseBodyData
 from ._get_source_response_body import GetSourceResponseBodyDataK8SSourceInfo
 from ._get_source_response_body import GetSourceResponseBodyDataNacosSourceInfo
@@ -801,6 +804,8 @@ __all__ = [
     GetResourceOverviewRequest,
     GetResourceOverviewResponseBody,
     GetResourceOverviewResponse,
+    GetSecretResponseBody,
+    GetSecretResponse,
     GetSecretValueResponseBody,
     GetSecretValueResponse,
     GetServiceResponseBody,
@@ -1090,6 +1095,7 @@ __all__ = [
     GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails,
     GetResourceOverviewResponseBodyDataRiskOverview,
     GetResourceOverviewResponseBodyData,
+    GetSecretResponseBodyData,
     GetSecretValueResponseBodyData,
     GetSourceResponseBodyDataK8SSourceInfo,
     GetSourceResponseBodyDataNacosSourceInfo,
