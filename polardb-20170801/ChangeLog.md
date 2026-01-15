@@ -1,3 +1,12 @@
+2026-01-15 Version: 6.4.1
+- Update API DescribeUserEncryptionKeyList: add request parameters PageNumber.
+- Update API DescribeUserEncryptionKeyList: add request parameters PageSize.
+- Update API DescribeUserEncryptionKeyList: add response parameters Body.PageNumber.
+- Update API DescribeUserEncryptionKeyList: add response parameters Body.PageRecordCount.
+- Update API DescribeUserEncryptionKeyList: add response parameters Body.PageSize.
+- Update API DescribeUserEncryptionKeyList: add response parameters Body.TotalRecordCount.
+
+
 2026-01-06 Version: 6.4.0
 - Support API DescribeHistoryEvents.
 

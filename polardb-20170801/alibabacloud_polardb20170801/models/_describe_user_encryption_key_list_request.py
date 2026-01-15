@@ -10,6 +10,8 @@ class DescribeUserEncryptionKeyListRequest(DaraModel):
         dbcluster_id: str = None,
         owner_account: str = None,
         owner_id: int = None,
+        page_number: int = None,
+        page_size: int = None,
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
@@ -21,6 +23,8 @@ class DescribeUserEncryptionKeyListRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         self.owner_account = owner_account
         self.owner_id = owner_id
+        self.page_number = page_number
+        self.page_size = page_size
         # The ID of the region.
         # 
         # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query all regions that are available for your account, such as the region ID.
@@ -47,6 +51,12 @@ class DescribeUserEncryptionKeyListRequest(DaraModel):
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
 
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -71,6 +81,12 @@ class DescribeUserEncryptionKeyListRequest(DaraModel):
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
+
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
