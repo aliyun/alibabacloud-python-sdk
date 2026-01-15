@@ -11,6 +11,7 @@ class RebootAndroidInstancesInGroupRequest(DaraModel):
         self,
         android_instance_ids: List[str] = None,
         force_stop: bool = None,
+        ignore_param_validation: bool = None,
         sale_mode: str = None,
     ):
         # The IDs of the cloud phone instances.
@@ -22,6 +23,7 @@ class RebootAndroidInstancesInGroupRequest(DaraModel):
         # *   true
         # *   false
         self.force_stop = force_stop
+        self.ignore_param_validation = ignore_param_validation
         self.sale_mode = sale_mode
 
     def validate(self):
@@ -38,6 +40,9 @@ class RebootAndroidInstancesInGroupRequest(DaraModel):
         if self.force_stop is not None:
             result['ForceStop'] = self.force_stop
 
+        if self.ignore_param_validation is not None:
+            result['IgnoreParamValidation'] = self.ignore_param_validation
+
         if self.sale_mode is not None:
             result['SaleMode'] = self.sale_mode
 
@@ -50,6 +55,9 @@ class RebootAndroidInstancesInGroupRequest(DaraModel):
 
         if m.get('ForceStop') is not None:
             self.force_stop = m.get('ForceStop')
+
+        if m.get('IgnoreParamValidation') is not None:
+            self.ignore_param_validation = m.get('IgnoreParamValidation')
 
         if m.get('SaleMode') is not None:
             self.sale_mode = m.get('SaleMode')

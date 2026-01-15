@@ -1,3 +1,11 @@
+2026-01-15 Version: 4.20.1
+- Update API BatchGetAcpConnectionTicket: add request parameters ConnectionMode.
+- Update API BatchGetAcpConnectionTicket: add response parameters Body.InstanceConnectionModels.$.Port.
+- Update API RebootAndroidInstancesInGroup: add request parameters IgnoreParamValidation.
+- Update API ResetAndroidInstancesInGroup: add request parameters IgnoreParamValidation.
+- Update API UpdateInstanceImage: add request parameters IgnoreParamValidation.
+
+
 2026-01-12 Version: 4.20.0
 - Support API BackupAndroidInstance.
 - Support API BackupApp.

@@ -60,6 +60,7 @@ class BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels(DaraModel)
         error_code: str = None,
         instance_id: str = None,
         persistent_app_instance_id: str = None,
+        port: int = None,
         task_id: str = None,
         task_status: str = None,
         ticket: str = None,
@@ -71,6 +72,7 @@ class BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels(DaraModel)
         # The ID of the cloud phone instance.
         self.instance_id = instance_id
         self.persistent_app_instance_id = persistent_app_instance_id
+        self.port = port
         # The ID of the task.
         self.task_id = task_id
         # The state of the task.
@@ -101,6 +103,9 @@ class BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels(DaraModel)
         if self.persistent_app_instance_id is not None:
             result['PersistentAppInstanceId'] = self.persistent_app_instance_id
 
+        if self.port is not None:
+            result['Port'] = self.port
+
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
@@ -128,6 +133,9 @@ class BatchGetAcpConnectionTicketResponseBodyInstanceConnectionModels(DaraModel)
 
         if m.get('PersistentAppInstanceId') is not None:
             self.persistent_app_instance_id = m.get('PersistentAppInstanceId')
+
+        if m.get('Port') is not None:
+            self.port = m.get('Port')
 
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')

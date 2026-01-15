@@ -9,10 +9,12 @@ from darabonba.model import DaraModel
 class UpdateInstanceImageRequest(DaraModel):
     def __init__(
         self,
+        ignore_param_validation: bool = None,
         image_id: str = None,
         instance_id_list: List[str] = None,
         reset: bool = None,
     ):
+        self.ignore_param_validation = ignore_param_validation
         self.image_id = image_id
         self.instance_id_list = instance_id_list
         self.reset = reset
@@ -25,6 +27,9 @@ class UpdateInstanceImageRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.ignore_param_validation is not None:
+            result['IgnoreParamValidation'] = self.ignore_param_validation
+
         if self.image_id is not None:
             result['ImageId'] = self.image_id
 
@@ -38,6 +43,9 @@ class UpdateInstanceImageRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IgnoreParamValidation') is not None:
+            self.ignore_param_validation = m.get('IgnoreParamValidation')
+
         if m.get('ImageId') is not None:
             self.image_id = m.get('ImageId')
 

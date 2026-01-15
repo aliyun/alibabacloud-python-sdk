@@ -10,11 +10,13 @@ from darabonba.model import DaraModel
 class BatchGetAcpConnectionTicketRequest(DaraModel):
     def __init__(
         self,
+        connection_mode: str = None,
         end_user_id: str = None,
         instance_group_id: str = None,
         instance_ids: List[str] = None,
         instance_tasks: List[main_models.BatchGetAcpConnectionTicketRequestInstanceTasks] = None,
     ):
+        self.connection_mode = connection_mode
         # The ID of the user to whom the cloud phone instance is assigned.
         self.end_user_id = end_user_id
         # The ID of the instance group.
@@ -35,6 +37,9 @@ class BatchGetAcpConnectionTicketRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.connection_mode is not None:
+            result['ConnectionMode'] = self.connection_mode
+
         if self.end_user_id is not None:
             result['EndUserId'] = self.end_user_id
 
@@ -53,6 +58,9 @@ class BatchGetAcpConnectionTicketRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ConnectionMode') is not None:
+            self.connection_mode = m.get('ConnectionMode')
+
         if m.get('EndUserId') is not None:
             self.end_user_id = m.get('EndUserId')
 

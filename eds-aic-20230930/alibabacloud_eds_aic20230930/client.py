@@ -481,6 +481,8 @@ class Client(OpenApiClient):
     ) -> main_models.BatchGetAcpConnectionTicketResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.connection_mode):
+            query['ConnectionMode'] = request.connection_mode
         if not DaraCore.is_null(request.end_user_id):
             query['EndUserId'] = request.end_user_id
         if not DaraCore.is_null(request.instance_group_id):
@@ -515,6 +517,8 @@ class Client(OpenApiClient):
     ) -> main_models.BatchGetAcpConnectionTicketResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.connection_mode):
+            query['ConnectionMode'] = request.connection_mode
         if not DaraCore.is_null(request.end_user_id):
             query['EndUserId'] = request.end_user_id
         if not DaraCore.is_null(request.instance_group_id):
@@ -6249,6 +6253,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceIds'] = request.android_instance_ids
         if not DaraCore.is_null(request.force_stop):
             query['ForceStop'] = request.force_stop
+        if not DaraCore.is_null(request.ignore_param_validation):
+            query['IgnoreParamValidation'] = request.ignore_param_validation
         if not DaraCore.is_null(request.sale_mode):
             query['SaleMode'] = request.sale_mode
         req = open_api_util_models.OpenApiRequest(
@@ -6281,6 +6287,8 @@ class Client(OpenApiClient):
             query['AndroidInstanceIds'] = request.android_instance_ids
         if not DaraCore.is_null(request.force_stop):
             query['ForceStop'] = request.force_stop
+        if not DaraCore.is_null(request.ignore_param_validation):
+            query['IgnoreParamValidation'] = request.ignore_param_validation
         if not DaraCore.is_null(request.sale_mode):
             query['SaleMode'] = request.sale_mode
         req = open_api_util_models.OpenApiRequest(
@@ -6767,6 +6775,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.android_instance_ids):
             query['AndroidInstanceIds'] = request.android_instance_ids
+        if not DaraCore.is_null(request.ignore_param_validation):
+            query['IgnoreParamValidation'] = request.ignore_param_validation
         if not DaraCore.is_null(request.sale_mode):
             query['SaleMode'] = request.sale_mode
         if not DaraCore.is_null(request.setting_reset_type):
@@ -6799,6 +6809,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.android_instance_ids):
             query['AndroidInstanceIds'] = request.android_instance_ids
+        if not DaraCore.is_null(request.ignore_param_validation):
+            query['IgnoreParamValidation'] = request.ignore_param_validation
         if not DaraCore.is_null(request.sale_mode):
             query['SaleMode'] = request.sale_mode
         if not DaraCore.is_null(request.setting_reset_type):
@@ -7931,6 +7943,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateInstanceImageResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.ignore_param_validation):
+            query['IgnoreParamValidation'] = request.ignore_param_validation
         if not DaraCore.is_null(request.image_id):
             query['ImageId'] = request.image_id
         if not DaraCore.is_null(request.instance_id_list):
@@ -7963,6 +7977,8 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateInstanceImageResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.ignore_param_validation):
+            query['IgnoreParamValidation'] = request.ignore_param_validation
         if not DaraCore.is_null(request.image_id):
             query['ImageId'] = request.image_id
         if not DaraCore.is_null(request.instance_id_list):
