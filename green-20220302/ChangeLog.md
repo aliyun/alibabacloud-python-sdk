@@ -1,3 +1,7 @@
+2026-01-15 Version: 3.2.1
+- Update API TextModerationPlus: add response parameters Body.Data.Result.$.RiskPositions.
+
+
 2026-01-12 Version: 3.2.0
 - Support API MultiModalAgent.
 

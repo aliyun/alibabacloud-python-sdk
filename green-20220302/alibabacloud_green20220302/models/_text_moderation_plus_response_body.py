@@ -304,6 +304,7 @@ class TextModerationPlusResponseBodyDataResult(DaraModel):
         customized_hit: List[main_models.TextModerationPlusResponseBodyDataResultCustomizedHit] = None,
         description: str = None,
         label: str = None,
+        risk_positions: List[main_models.TextModerationPlusResponseBodyDataResultRiskPositions] = None,
         risk_words: str = None,
     ):
         # The score of the confidence level. Valid values: 0 to 100. The value is accurate to two decimal places.
@@ -314,12 +315,17 @@ class TextModerationPlusResponseBodyDataResult(DaraModel):
         self.description = description
         # The label.
         self.label = label
+        self.risk_positions = risk_positions
         # The term hit by the moderated content.
         self.risk_words = risk_words
 
     def validate(self):
         if self.customized_hit:
             for v1 in self.customized_hit:
+                 if v1:
+                    v1.validate()
+        if self.risk_positions:
+            for v1 in self.risk_positions:
                  if v1:
                     v1.validate()
 
@@ -341,6 +347,11 @@ class TextModerationPlusResponseBodyDataResult(DaraModel):
 
         if self.label is not None:
             result['Label'] = self.label
+
+        result['RiskPositions'] = []
+        if self.risk_positions is not None:
+            for k1 in self.risk_positions:
+                result['RiskPositions'].append(k1.to_map() if k1 else None)
 
         if self.risk_words is not None:
             result['RiskWords'] = self.risk_words
@@ -364,8 +375,57 @@ class TextModerationPlusResponseBodyDataResult(DaraModel):
         if m.get('Label') is not None:
             self.label = m.get('Label')
 
+        self.risk_positions = []
+        if m.get('RiskPositions') is not None:
+            for k1 in m.get('RiskPositions'):
+                temp_model = main_models.TextModerationPlusResponseBodyDataResultRiskPositions()
+                self.risk_positions.append(temp_model.from_map(k1))
+
         if m.get('RiskWords') is not None:
             self.risk_words = m.get('RiskWords')
+
+        return self
+
+class TextModerationPlusResponseBodyDataResultRiskPositions(DaraModel):
+    def __init__(
+        self,
+        end_pos: int = None,
+        risk_word: str = None,
+        start_pos: int = None,
+    ):
+        self.end_pos = end_pos
+        self.risk_word = risk_word
+        self.start_pos = start_pos
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.end_pos is not None:
+            result['EndPos'] = self.end_pos
+
+        if self.risk_word is not None:
+            result['RiskWord'] = self.risk_word
+
+        if self.start_pos is not None:
+            result['StartPos'] = self.start_pos
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EndPos') is not None:
+            self.end_pos = m.get('EndPos')
+
+        if m.get('RiskWord') is not None:
+            self.risk_word = m.get('RiskWord')
+
+        if m.get('StartPos') is not None:
+            self.start_pos = m.get('StartPos')
 
         return self
 

@@ -179,6 +179,7 @@ from ._text_moderation_plus_response_body import TextModerationPlusResponseBodyD
 from ._text_moderation_plus_response_body import TextModerationPlusResponseBodyDataExtLlmContent
 from ._text_moderation_plus_response_body import TextModerationPlusResponseBodyDataExt
 from ._text_moderation_plus_response_body import TextModerationPlusResponseBodyDataResultCustomizedHit
+from ._text_moderation_plus_response_body import TextModerationPlusResponseBodyDataResultRiskPositions
 from ._text_moderation_plus_response_body import TextModerationPlusResponseBodyDataResult
 from ._text_moderation_plus_response_body import TextModerationPlusResponseBodyDataSensitiveResult
 from ._text_moderation_plus_response_body import TextModerationPlusResponseBodyData
@@ -381,6 +382,7 @@ __all__ = [
     TextModerationPlusResponseBodyDataExtLlmContent,
     TextModerationPlusResponseBodyDataExt,
     TextModerationPlusResponseBodyDataResultCustomizedHit,
+    TextModerationPlusResponseBodyDataResultRiskPositions,
     TextModerationPlusResponseBodyDataResult,
     TextModerationPlusResponseBodyDataSensitiveResult,
     TextModerationPlusResponseBodyData,
