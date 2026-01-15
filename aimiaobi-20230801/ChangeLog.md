@@ -1,3 +1,9 @@
+2026-01-15 Version: 1.38.5
+- Update API ExportCustomSourceAnalysisTask: add request parameters ExportType.
+- Update API SubmitCustomSourceTopicAnalysis: add request parameters Topics.
+- Update API SubmitCustomSourceTopicAnalysis: add request parameters TopicsFileUrl.
+
+
 2026-01-14 Version: 1.38.4
 - Generated python 2023-08-01 for AiMiaoBi.
 

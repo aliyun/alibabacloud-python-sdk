@@ -15,6 +15,8 @@ class SubmitCustomSourceTopicAnalysisRequest(DaraModel):
         file_url: str = None,
         max_topic_size: int = None,
         news: List[main_models.SubmitCustomSourceTopicAnalysisRequestNews] = None,
+        topics: List[main_models.SubmitCustomSourceTopicAnalysisRequestTopics] = None,
+        topics_file_url: str = None,
         workspace_id: str = None,
     ):
         self.analysis_types = analysis_types
@@ -22,12 +24,18 @@ class SubmitCustomSourceTopicAnalysisRequest(DaraModel):
         self.file_url = file_url
         self.max_topic_size = max_topic_size
         self.news = news
+        self.topics = topics
+        self.topics_file_url = topics_file_url
         # This parameter is required.
         self.workspace_id = workspace_id
 
     def validate(self):
         if self.news:
             for v1 in self.news:
+                 if v1:
+                    v1.validate()
+        if self.topics:
+            for v1 in self.topics:
                  if v1:
                     v1.validate()
 
@@ -52,6 +60,14 @@ class SubmitCustomSourceTopicAnalysisRequest(DaraModel):
         if self.news is not None:
             for k1 in self.news:
                 result['News'].append(k1.to_map() if k1 else None)
+
+        result['Topics'] = []
+        if self.topics is not None:
+            for k1 in self.topics:
+                result['Topics'].append(k1.to_map() if k1 else None)
+
+        if self.topics_file_url is not None:
+            result['TopicsFileUrl'] = self.topics_file_url
 
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
@@ -78,8 +94,60 @@ class SubmitCustomSourceTopicAnalysisRequest(DaraModel):
                 temp_model = main_models.SubmitCustomSourceTopicAnalysisRequestNews()
                 self.news.append(temp_model.from_map(k1))
 
+        self.topics = []
+        if m.get('Topics') is not None:
+            for k1 in m.get('Topics'):
+                temp_model = main_models.SubmitCustomSourceTopicAnalysisRequestTopics()
+                self.topics.append(temp_model.from_map(k1))
+
+        if m.get('TopicsFileUrl') is not None:
+            self.topics_file_url = m.get('TopicsFileUrl')
+
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
+
+        return self
+
+class SubmitCustomSourceTopicAnalysisRequestTopics(DaraModel):
+    def __init__(
+        self,
+        news: List[main_models.HottopicNews] = None,
+        topic: str = None,
+    ):
+        self.news = news
+        self.topic = topic
+
+    def validate(self):
+        if self.news:
+            for v1 in self.news:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['News'] = []
+        if self.news is not None:
+            for k1 in self.news:
+                result['News'].append(k1.to_map() if k1 else None)
+
+        if self.topic is not None:
+            result['Topic'] = self.topic
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.news = []
+        if m.get('News') is not None:
+            for k1 in m.get('News'):
+                temp_model = main_models.HottopicNews()
+                self.news.append(temp_model.from_map(k1))
+
+        if m.get('Topic') is not None:
+            self.topic = m.get('Topic')
 
         return self
 

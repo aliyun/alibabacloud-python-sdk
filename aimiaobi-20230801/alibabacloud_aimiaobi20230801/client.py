@@ -3344,6 +3344,8 @@ class Client(OpenApiClient):
     ) -> main_models.ExportCustomSourceAnalysisTaskResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.export_type):
+            body['ExportType'] = request.export_type
         if not DaraCore.is_null(request.task_id):
             body['TaskId'] = request.task_id
         if not DaraCore.is_null(request.workspace_id):
@@ -3374,6 +3376,8 @@ class Client(OpenApiClient):
     ) -> main_models.ExportCustomSourceAnalysisTaskResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.export_type):
+            body['ExportType'] = request.export_type
         if not DaraCore.is_null(request.task_id):
             body['TaskId'] = request.task_id
         if not DaraCore.is_null(request.workspace_id):
@@ -19579,6 +19583,8 @@ class Client(OpenApiClient):
             request.analysis_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.analysis_types, 'AnalysisTypes', 'json')
         if not DaraCore.is_null(tmp_req.news):
             request.news_shrink = Utils.array_to_string_with_specified_style(tmp_req.news, 'News', 'json')
+        if not DaraCore.is_null(tmp_req.topics):
+            request.topics_shrink = Utils.array_to_string_with_specified_style(tmp_req.topics, 'Topics', 'json')
         body = {}
         if not DaraCore.is_null(request.analysis_types_shrink):
             body['AnalysisTypes'] = request.analysis_types_shrink
@@ -19590,6 +19596,10 @@ class Client(OpenApiClient):
             body['MaxTopicSize'] = request.max_topic_size
         if not DaraCore.is_null(request.news_shrink):
             body['News'] = request.news_shrink
+        if not DaraCore.is_null(request.topics_shrink):
+            body['Topics'] = request.topics_shrink
+        if not DaraCore.is_null(request.topics_file_url):
+            body['TopicsFileUrl'] = request.topics_file_url
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -19623,6 +19633,8 @@ class Client(OpenApiClient):
             request.analysis_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.analysis_types, 'AnalysisTypes', 'json')
         if not DaraCore.is_null(tmp_req.news):
             request.news_shrink = Utils.array_to_string_with_specified_style(tmp_req.news, 'News', 'json')
+        if not DaraCore.is_null(tmp_req.topics):
+            request.topics_shrink = Utils.array_to_string_with_specified_style(tmp_req.topics, 'Topics', 'json')
         body = {}
         if not DaraCore.is_null(request.analysis_types_shrink):
             body['AnalysisTypes'] = request.analysis_types_shrink
@@ -19634,6 +19646,10 @@ class Client(OpenApiClient):
             body['MaxTopicSize'] = request.max_topic_size
         if not DaraCore.is_null(request.news_shrink):
             body['News'] = request.news_shrink
+        if not DaraCore.is_null(request.topics_shrink):
+            body['Topics'] = request.topics_shrink
+        if not DaraCore.is_null(request.topics_file_url):
+            body['TopicsFileUrl'] = request.topics_file_url
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(

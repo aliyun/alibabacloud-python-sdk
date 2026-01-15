@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 from ._generate_traceability import GenerateTraceability
+from ._hottopic_news import HottopicNews
 from ._outline_search_result import OutlineSearchResult
 from ._outline_writing_article import OutlineWritingArticle
 from ._topic_selection import TopicSelection
@@ -673,6 +674,7 @@ from ._validate_upload_template_request import ValidateUploadTemplateRequest
 from ._validate_upload_template_response_body import ValidateUploadTemplateResponseBody
 from ._validate_upload_template_response import ValidateUploadTemplateResponse
 from ._generate_traceability import GenerateTraceabilityNews
+from ._hottopic_news import HottopicNewsComments
 from ._topic_selection import TopicSelectionOutlines
 from ._writing_style_template_define import WritingStyleTemplateDefineExample
 from ._writing_style_template_field import WritingStyleTemplateFieldEnums
@@ -1229,6 +1231,7 @@ from ._submit_custom_hot_topic_broadcast_job_request import SubmitCustomHotTopic
 from ._submit_custom_hot_topic_broadcast_job_response_body import SubmitCustomHotTopicBroadcastJobResponseBodyData
 from ._submit_custom_source_topic_analysis_request import SubmitCustomSourceTopicAnalysisRequestNewsComments
 from ._submit_custom_source_topic_analysis_request import SubmitCustomSourceTopicAnalysisRequestNews
+from ._submit_custom_source_topic_analysis_request import SubmitCustomSourceTopicAnalysisRequestTopics
 from ._submit_custom_source_topic_analysis_response_body import SubmitCustomSourceTopicAnalysisResponseBodyData
 from ._submit_custom_topic_selection_perspective_analysis_task_request import SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments
 from ._submit_custom_topic_selection_perspective_analysis_task_response_body import SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData
@@ -1288,6 +1291,7 @@ from ._validate_upload_template_response_body import ValidateUploadTemplateRespo
 
 __all__ = [
     GenerateTraceability,
+    HottopicNews,
     OutlineSearchResult,
     OutlineWritingArticle,
     TopicSelection,
@@ -1958,6 +1962,7 @@ __all__ = [
     ValidateUploadTemplateResponseBody,
     ValidateUploadTemplateResponse,
     GenerateTraceabilityNews,
+    HottopicNewsComments,
     TopicSelectionOutlines,
     WritingStyleTemplateDefineExample,
     WritingStyleTemplateFieldEnums,
@@ -2514,6 +2519,7 @@ __all__ = [
     SubmitCustomHotTopicBroadcastJobResponseBodyData,
     SubmitCustomSourceTopicAnalysisRequestNewsComments,
     SubmitCustomSourceTopicAnalysisRequestNews,
+    SubmitCustomSourceTopicAnalysisRequestTopics,
     SubmitCustomSourceTopicAnalysisResponseBodyData,
     SubmitCustomTopicSelectionPerspectiveAnalysisTaskRequestDocuments,
     SubmitCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData,

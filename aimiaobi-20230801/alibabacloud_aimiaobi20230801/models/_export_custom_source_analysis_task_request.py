@@ -7,9 +7,11 @@ from darabonba.model import DaraModel
 class ExportCustomSourceAnalysisTaskRequest(DaraModel):
     def __init__(
         self,
+        export_type: str = None,
         task_id: str = None,
         workspace_id: str = None,
     ):
+        self.export_type = export_type
         # This parameter is required.
         self.task_id = task_id
         # This parameter is required.
@@ -23,6 +25,9 @@ class ExportCustomSourceAnalysisTaskRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.export_type is not None:
+            result['ExportType'] = self.export_type
+
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
@@ -33,6 +38,9 @@ class ExportCustomSourceAnalysisTaskRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ExportType') is not None:
+            self.export_type = m.get('ExportType')
+
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')
 

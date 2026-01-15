@@ -12,6 +12,8 @@ class SubmitCustomSourceTopicAnalysisShrinkRequest(DaraModel):
         file_url: str = None,
         max_topic_size: int = None,
         news_shrink: str = None,
+        topics_shrink: str = None,
+        topics_file_url: str = None,
         workspace_id: str = None,
     ):
         self.analysis_types_shrink = analysis_types_shrink
@@ -19,6 +21,8 @@ class SubmitCustomSourceTopicAnalysisShrinkRequest(DaraModel):
         self.file_url = file_url
         self.max_topic_size = max_topic_size
         self.news_shrink = news_shrink
+        self.topics_shrink = topics_shrink
+        self.topics_file_url = topics_file_url
         # This parameter is required.
         self.workspace_id = workspace_id
 
@@ -45,6 +49,12 @@ class SubmitCustomSourceTopicAnalysisShrinkRequest(DaraModel):
         if self.news_shrink is not None:
             result['News'] = self.news_shrink
 
+        if self.topics_shrink is not None:
+            result['Topics'] = self.topics_shrink
+
+        if self.topics_file_url is not None:
+            result['TopicsFileUrl'] = self.topics_file_url
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -66,6 +76,12 @@ class SubmitCustomSourceTopicAnalysisShrinkRequest(DaraModel):
 
         if m.get('News') is not None:
             self.news_shrink = m.get('News')
+
+        if m.get('Topics') is not None:
+            self.topics_shrink = m.get('Topics')
+
+        if m.get('TopicsFileUrl') is not None:
+            self.topics_file_url = m.get('TopicsFileUrl')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
