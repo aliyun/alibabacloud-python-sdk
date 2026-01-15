@@ -76,6 +76,9 @@ from ._operate_app_service_for_partner_response import OperateAppServiceForPartn
 from ._refresh_app_instance_ticket_request import RefreshAppInstanceTicketRequest
 from ._refresh_app_instance_ticket_response_body import RefreshAppInstanceTicketResponseBody
 from ._refresh_app_instance_ticket_response import RefreshAppInstanceTicketResponse
+from ._refund_app_instance_for_partner_request import RefundAppInstanceForPartnerRequest
+from ._refund_app_instance_for_partner_response_body import RefundAppInstanceForPartnerResponseBody
+from ._refund_app_instance_for_partner_response import RefundAppInstanceForPartnerResponse
 from ._renew_app_instance_request import RenewAppInstanceRequest
 from ._renew_app_instance_response_body import RenewAppInstanceResponseBody
 from ._renew_app_instance_response import RenewAppInstanceResponse
@@ -127,6 +130,7 @@ from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResp
 from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModule
 from ._modify_app_instance_spec_response_body import ModifyAppInstanceSpecResponseBodyModule
 from ._refresh_app_instance_ticket_response_body import RefreshAppInstanceTicketResponseBodyModule
+from ._refund_app_instance_for_partner_response_body import RefundAppInstanceForPartnerResponseBodyModule
 from ._renew_app_instance_response_body import RenewAppInstanceResponseBodyModule
 from ._search_image_response_body import SearchImageResponseBodyImageResponseImageList
 from ._search_image_response_body import SearchImageResponseBodyImageResponse
@@ -212,6 +216,9 @@ __all__ = [
     RefreshAppInstanceTicketRequest,
     RefreshAppInstanceTicketResponseBody,
     RefreshAppInstanceTicketResponse,
+    RefundAppInstanceForPartnerRequest,
+    RefundAppInstanceForPartnerResponseBody,
+    RefundAppInstanceForPartnerResponse,
     RenewAppInstanceRequest,
     RenewAppInstanceResponseBody,
     RenewAppInstanceResponse,
@@ -263,6 +270,7 @@ __all__ = [
     ListAppInstanceDomainsResponseBodyModule,
     ModifyAppInstanceSpecResponseBodyModule,
     RefreshAppInstanceTicketResponseBodyModule,
+    RefundAppInstanceForPartnerResponseBodyModule,
     RenewAppInstanceResponseBodyModule,
     SearchImageResponseBodyImageResponseImageList,
     SearchImageResponseBodyImageResponse,

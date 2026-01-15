@@ -1770,6 +1770,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.refresh_app_instance_ticket_with_options_async(request, runtime)
 
+    def refund_app_instance_for_partner_with_options(
+        self,
+        request: main_models.RefundAppInstanceForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RefundAppInstanceForPartnerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.refund_reason):
+            query['RefundReason'] = request.refund_reason
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RefundAppInstanceForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RefundAppInstanceForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def refund_app_instance_for_partner_with_options_async(
+        self,
+        request: main_models.RefundAppInstanceForPartnerRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RefundAppInstanceForPartnerResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.refund_reason):
+            query['RefundReason'] = request.refund_reason
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RefundAppInstanceForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RefundAppInstanceForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def refund_app_instance_for_partner(
+        self,
+        request: main_models.RefundAppInstanceForPartnerRequest,
+    ) -> main_models.RefundAppInstanceForPartnerResponse:
+        runtime = RuntimeOptions()
+        return self.refund_app_instance_for_partner_with_options(request, runtime)
+
+    async def refund_app_instance_for_partner_async(
+        self,
+        request: main_models.RefundAppInstanceForPartnerRequest,
+    ) -> main_models.RefundAppInstanceForPartnerResponse:
+        runtime = RuntimeOptions()
+        return await self.refund_app_instance_for_partner_with_options_async(request, runtime)
+
     def renew_app_instance_with_options(
         self,
         request: main_models.RenewAppInstanceRequest,
