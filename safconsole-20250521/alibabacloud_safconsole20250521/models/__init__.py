@@ -17,7 +17,95 @@ from ._delete_model_response import DeleteModelResponse
 from ._describe_customer_module_basic_info_request import DescribeCustomerModuleBasicInfoRequest
 from ._describe_customer_module_basic_info_response_body import DescribeCustomerModuleBasicInfoResponseBody
 from ._describe_customer_module_basic_info_response import DescribeCustomerModuleBasicInfoResponse
+from ._describe_customer_module_meta_info_request import DescribeCustomerModuleMetaInfoRequest
+from ._describe_customer_module_meta_info_response_body import DescribeCustomerModuleMetaInfoResponseBody
+from ._describe_customer_module_meta_info_response import DescribeCustomerModuleMetaInfoResponse
+from ._describe_customer_module_output_info_request import DescribeCustomerModuleOutputInfoRequest
+from ._describe_customer_module_output_info_response_body import DescribeCustomerModuleOutputInfoResponseBody
+from ._describe_customer_module_output_info_response import DescribeCustomerModuleOutputInfoResponse
+from ._describe_feature_option_request import DescribeFeatureOptionRequest
+from ._describe_feature_option_response_body import DescribeFeatureOptionResponseBody
+from ._describe_feature_option_response import DescribeFeatureOptionResponse
+from ._describe_feature_template_list_response_body import DescribeFeatureTemplateListResponseBody
+from ._describe_feature_template_list_response import DescribeFeatureTemplateListResponse
+from ._describe_model_feature_request import DescribeModelFeatureRequest
+from ._describe_model_feature_response_body import DescribeModelFeatureResponseBody
+from ._describe_model_feature_response import DescribeModelFeatureResponse
+from ._describe_model_oss_token_response_body import DescribeModelOssTokenResponseBody
+from ._describe_model_oss_token_response import DescribeModelOssTokenResponse
+from ._describe_module_service_exist_request import DescribeModuleServiceExistRequest
+from ._describe_module_service_exist_response_body import DescribeModuleServiceExistResponseBody
+from ._describe_module_service_exist_response import DescribeModuleServiceExistResponse
+from ._describe_module_status_request import DescribeModuleStatusRequest
+from ._describe_module_status_response_body import DescribeModuleStatusResponseBody
+from ._describe_module_status_response import DescribeModuleStatusResponse
+from ._describe_saf_rmmp_order_response_body import DescribeSafRmmpOrderResponseBody
+from ._describe_saf_rmmp_order_response import DescribeSafRmmpOrderResponse
+from ._describe_service_and_scene_request import DescribeServiceAndSceneRequest
+from ._describe_service_and_scene_response_body import DescribeServiceAndSceneResponseBody
+from ._describe_service_and_scene_response import DescribeServiceAndSceneResponse
+from ._describe_user_model_list_request import DescribeUserModelListRequest
+from ._describe_user_model_list_response_body import DescribeUserModelListResponseBody
+from ._describe_user_model_list_response import DescribeUserModelListResponse
+from ._duplicate_model_request import DuplicateModelRequest
+from ._duplicate_model_response_body import DuplicateModelResponseBody
+from ._duplicate_model_response import DuplicateModelResponse
+from ._edit_model_request import EditModelRequest
+from ._edit_model_response_body import EditModelResponseBody
+from ._edit_model_response import EditModelResponse
+from ._iterate_model_request import IterateModelRequest
+from ._iterate_model_response_body import IterateModelResponseBody
+from ._iterate_model_response import IterateModelResponse
+from ._offline_model_request import OfflineModelRequest
+from ._offline_model_response_body import OfflineModelResponseBody
+from ._offline_model_response import OfflineModelResponse
+from ._online_model_request import OnlineModelRequest
+from ._online_model_response_body import OnlineModelResponseBody
+from ._online_model_response import OnlineModelResponse
+from ._parse_expression_parameters_request import ParseExpressionParametersRequest
+from ._parse_expression_parameters_response_body import ParseExpressionParametersResponseBody
+from ._parse_expression_parameters_response import ParseExpressionParametersResponse
+from ._prepublish_model_request import PrepublishModelRequest
+from ._prepublish_model_response_body import PrepublishModelResponseBody
+from ._prepublish_model_response import PrepublishModelResponse
+from ._rollback_model_request import RollbackModelRequest
+from ._rollback_model_response_body import RollbackModelResponseBody
+from ._rollback_model_response import RollbackModelResponse
+from ._test_model_request import TestModelRequest
+from ._test_model_response_body import TestModelResponseBody
+from ._test_model_response import TestModelResponse
+from ._test_pre_model_request import TestPreModelRequest
+from ._test_pre_model_response_body import TestPreModelResponseBody
+from ._test_pre_model_response import TestPreModelResponse
+from ._test_process_expression_request import TestProcessExpressionRequest
+from ._test_process_expression_response_body import TestProcessExpressionResponseBody
+from ._test_process_expression_response import TestProcessExpressionResponse
+from ._update_module_basic_info_request import UpdateModuleBasicInfoRequest
+from ._update_module_basic_info_response_body import UpdateModuleBasicInfoResponseBody
+from ._update_module_basic_info_response import UpdateModuleBasicInfoResponse
+from ._validate_model_file_request import ValidateModelFileRequest
+from ._validate_model_file_response_body import ValidateModelFileResponseBody
+from ._validate_model_file_response import ValidateModelFileResponse
+from ._validate_test_file_request import ValidateTestFileRequest
+from ._validate_test_file_response_body import ValidateTestFileResponseBody
+from ._validate_test_file_response import ValidateTestFileResponse
 from ._describe_customer_module_basic_info_response_body import DescribeCustomerModuleBasicInfoResponseBodyResultObject
+from ._describe_customer_module_meta_info_response_body import DescribeCustomerModuleMetaInfoResponseBodyResultObjectFeatureList
+from ._describe_customer_module_meta_info_response_body import DescribeCustomerModuleMetaInfoResponseBodyResultObject
+from ._describe_customer_module_output_info_response_body import DescribeCustomerModuleOutputInfoResponseBodyResultObject
+from ._describe_feature_option_response_body import DescribeFeatureOptionResponseBodyResultObject
+from ._describe_feature_template_list_response_body import DescribeFeatureTemplateListResponseBodyResultObject
+from ._describe_model_feature_response_body import DescribeModelFeatureResponseBodyResultObject
+from ._describe_model_oss_token_response_body import DescribeModelOssTokenResponseBodyResultObject
+from ._describe_saf_rmmp_order_response_body import DescribeSafRmmpOrderResponseBodyResultObject
+from ._describe_service_and_scene_response_body import DescribeServiceAndSceneResponseBodyResultObject
+from ._describe_user_model_list_response_body import DescribeUserModelListResponseBodyResultObject
+from ._parse_expression_parameters_response_body import ParseExpressionParametersResponseBodyResultObject
+from ._test_model_response_body import TestModelResponseBodyResultObjectTestResult
+from ._test_model_response_body import TestModelResponseBodyResultObject
+from ._test_process_expression_response_body import TestProcessExpressionResponseBodyResultObject
+from ._validate_model_file_response_body import ValidateModelFileResponseBodyResultObject
+from ._validate_test_file_response_body import ValidateTestFileResponseBodyResultObject
 
 __all__ = [
     CreateCustomerModuleBasicInfoRequest,
@@ -35,5 +123,93 @@ __all__ = [
     DescribeCustomerModuleBasicInfoRequest,
     DescribeCustomerModuleBasicInfoResponseBody,
     DescribeCustomerModuleBasicInfoResponse,
-    DescribeCustomerModuleBasicInfoResponseBodyResultObject
+    DescribeCustomerModuleMetaInfoRequest,
+    DescribeCustomerModuleMetaInfoResponseBody,
+    DescribeCustomerModuleMetaInfoResponse,
+    DescribeCustomerModuleOutputInfoRequest,
+    DescribeCustomerModuleOutputInfoResponseBody,
+    DescribeCustomerModuleOutputInfoResponse,
+    DescribeFeatureOptionRequest,
+    DescribeFeatureOptionResponseBody,
+    DescribeFeatureOptionResponse,
+    DescribeFeatureTemplateListResponseBody,
+    DescribeFeatureTemplateListResponse,
+    DescribeModelFeatureRequest,
+    DescribeModelFeatureResponseBody,
+    DescribeModelFeatureResponse,
+    DescribeModelOssTokenResponseBody,
+    DescribeModelOssTokenResponse,
+    DescribeModuleServiceExistRequest,
+    DescribeModuleServiceExistResponseBody,
+    DescribeModuleServiceExistResponse,
+    DescribeModuleStatusRequest,
+    DescribeModuleStatusResponseBody,
+    DescribeModuleStatusResponse,
+    DescribeSafRmmpOrderResponseBody,
+    DescribeSafRmmpOrderResponse,
+    DescribeServiceAndSceneRequest,
+    DescribeServiceAndSceneResponseBody,
+    DescribeServiceAndSceneResponse,
+    DescribeUserModelListRequest,
+    DescribeUserModelListResponseBody,
+    DescribeUserModelListResponse,
+    DuplicateModelRequest,
+    DuplicateModelResponseBody,
+    DuplicateModelResponse,
+    EditModelRequest,
+    EditModelResponseBody,
+    EditModelResponse,
+    IterateModelRequest,
+    IterateModelResponseBody,
+    IterateModelResponse,
+    OfflineModelRequest,
+    OfflineModelResponseBody,
+    OfflineModelResponse,
+    OnlineModelRequest,
+    OnlineModelResponseBody,
+    OnlineModelResponse,
+    ParseExpressionParametersRequest,
+    ParseExpressionParametersResponseBody,
+    ParseExpressionParametersResponse,
+    PrepublishModelRequest,
+    PrepublishModelResponseBody,
+    PrepublishModelResponse,
+    RollbackModelRequest,
+    RollbackModelResponseBody,
+    RollbackModelResponse,
+    TestModelRequest,
+    TestModelResponseBody,
+    TestModelResponse,
+    TestPreModelRequest,
+    TestPreModelResponseBody,
+    TestPreModelResponse,
+    TestProcessExpressionRequest,
+    TestProcessExpressionResponseBody,
+    TestProcessExpressionResponse,
+    UpdateModuleBasicInfoRequest,
+    UpdateModuleBasicInfoResponseBody,
+    UpdateModuleBasicInfoResponse,
+    ValidateModelFileRequest,
+    ValidateModelFileResponseBody,
+    ValidateModelFileResponse,
+    ValidateTestFileRequest,
+    ValidateTestFileResponseBody,
+    ValidateTestFileResponse,
+    DescribeCustomerModuleBasicInfoResponseBodyResultObject,
+    DescribeCustomerModuleMetaInfoResponseBodyResultObjectFeatureList,
+    DescribeCustomerModuleMetaInfoResponseBodyResultObject,
+    DescribeCustomerModuleOutputInfoResponseBodyResultObject,
+    DescribeFeatureOptionResponseBodyResultObject,
+    DescribeFeatureTemplateListResponseBodyResultObject,
+    DescribeModelFeatureResponseBodyResultObject,
+    DescribeModelOssTokenResponseBodyResultObject,
+    DescribeSafRmmpOrderResponseBodyResultObject,
+    DescribeServiceAndSceneResponseBodyResultObject,
+    DescribeUserModelListResponseBodyResultObject,
+    ParseExpressionParametersResponseBodyResultObject,
+    TestModelResponseBodyResultObjectTestResult,
+    TestModelResponseBodyResultObject,
+    TestProcessExpressionResponseBodyResultObject,
+    ValidateModelFileResponseBodyResultObject,
+    ValidateTestFileResponseBodyResultObject
 ]
