@@ -1,3 +1,6 @@
+2026-01-15 Version: 4.4.1
+- Generated python 2022-09-23 for energyExpertExternal.
+
 2026-01-14 Version: 4.4.0
 - Support API Retrieve.
 - Update API Chat: add request parameters body.documentIds.
