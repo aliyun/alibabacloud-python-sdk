@@ -86,6 +86,7 @@ class ListNatIpsResponseBodyNatIps(DaraModel):
         nat_ip_name: str = None,
         nat_ip_status: str = None,
     ):
+        # The IP prefix address range to which the queried NAT IP address belongs.
         self.ipv_4prefix = ipv_4prefix
         # Indicates whether the IP address is the default IP address of the NAT gateway. Valid values:
         # 

@@ -37,6 +37,7 @@ class GetNatGatewayAttributeResponseBody(DaraModel):
         status: str = None,
         vpc_id: str = None,
     ):
+        # Access mode for reverse access to VPC NAT gateway.
         self.access_mode = access_mode
         # The billing information.
         self.billing_config = billing_config
@@ -56,6 +57,9 @@ class GetNatGatewayAttributeResponseBody(DaraModel):
         # *   **true**: yes
         # *   **false**: no
         self.ecs_metric_enabled = ecs_metric_enabled
+        # Whether to enable session log, with values:
+        # - **true**: Session logging is enabled. 
+        # - **false**: Session logging is disabled.
         self.enable_session_log = enable_session_log
         # The time when the NAT gateway expires.
         self.expired_time = expired_time
@@ -65,6 +69,7 @@ class GetNatGatewayAttributeResponseBody(DaraModel):
         self.full_nat_table = full_nat_table
         # The elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
         self.ip_list = ip_list
+        # Session log configuration information.
         self.log_delivery = log_delivery
         # The name of the NAT gateway.
         self.name = name
@@ -419,9 +424,15 @@ class GetNatGatewayAttributeResponseBodyLogDelivery(DaraModel):
         log_delivery_type: str = None,
         log_destination: str = None,
     ):
+        # Error message for session log write failure.
         self.deliver_logs_error_message = deliver_logs_error_message
+        # Session log write status. Values:
+        # - **Success**: Success. 
+        # - **Failure**: Failure.
         self.delivery_status = delivery_status
+        # Session log delivery destination type. Value: **sls**, Alibaba Cloud Log Service SLS.
         self.log_delivery_type = log_delivery_type
+        # Destination address for session log writing
         self.log_destination = log_destination
 
     def validate(self):
@@ -694,7 +705,12 @@ class GetNatGatewayAttributeResponseBodyAccessMode(DaraModel):
         mode_value: str = None,
         tunnel_type: str = None,
     ):
+        # Access mode values:
+        # - **route**: Route mode.
+        # - **tunnel**: Tunnel mode.
         self.mode_value = mode_value
+        # Tunnel mode type:
+        # - **geneve**: Geneve type.
         self.tunnel_type = tunnel_type
 
     def validate(self):

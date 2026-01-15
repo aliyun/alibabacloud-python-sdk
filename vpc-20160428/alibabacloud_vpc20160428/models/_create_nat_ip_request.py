@@ -33,7 +33,9 @@ class CreateNatIpRequest(DaraModel):
         # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
         # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
         self.dry_run = dry_run
+        # The created IP prefix address segment must be within the reserved network segment of the switch where the NAT is located, and the reserved network segment cannot be occupied. The IP prefix mask must be /28.
         self.ipv_4prefix = ipv_4prefix
+        # The number of automatically assigned IP prefixes. These are randomly allocated from the unassigned reserved segments of the switch where the NAT is located. Value range: 1 to 10.
         self.ipv_4prefix_count = ipv_4prefix_count
         # The ID of the Virtual Private Cloud (VPC) NAT gateway for which you want to create the NAT IP address.
         # 

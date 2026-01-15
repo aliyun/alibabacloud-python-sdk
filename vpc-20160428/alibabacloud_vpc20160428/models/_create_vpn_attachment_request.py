@@ -33,6 +33,7 @@ class CreateVpnAttachmentRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         tags: List[main_models.CreateVpnAttachmentRequestTags] = None,
+        tunnel_bandwidth: str = None,
         tunnel_options_specification: List[main_models.CreateVpnAttachmentRequestTunnelOptionsSpecification] = None,
     ):
         # Specifies whether to automatically configure routes. Valid values:
@@ -203,6 +204,7 @@ class CreateVpnAttachmentRequest(DaraModel):
         # 
         # Each tag key corresponds to one tag value. You can specify up to 20 tag values in each call.
         self.tags = tags
+        self.tunnel_bandwidth = tunnel_bandwidth
         # The tunnel configurations.
         # 
         # *   You can specify parameters in the **TunnelOptionsSpecification** array when you create an IPsec-VPN connection in dual tunnel mode.
@@ -295,6 +297,9 @@ class CreateVpnAttachmentRequest(DaraModel):
             for k1 in self.tags:
                 result['Tags'].append(k1.to_map() if k1 else None)
 
+        if self.tunnel_bandwidth is not None:
+            result['TunnelBandwidth'] = self.tunnel_bandwidth
+
         result['TunnelOptionsSpecification'] = []
         if self.tunnel_options_specification is not None:
             for k1 in self.tunnel_options_specification:
@@ -375,6 +380,9 @@ class CreateVpnAttachmentRequest(DaraModel):
             for k1 in m.get('Tags'):
                 temp_model = main_models.CreateVpnAttachmentRequestTags()
                 self.tags.append(temp_model.from_map(k1))
+
+        if m.get('TunnelBandwidth') is not None:
+            self.tunnel_bandwidth = m.get('TunnelBandwidth')
 
         self.tunnel_options_specification = []
         if m.get('TunnelOptionsSpecification') is not None:

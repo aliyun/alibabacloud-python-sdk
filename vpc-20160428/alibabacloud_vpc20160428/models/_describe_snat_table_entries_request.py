@@ -29,6 +29,7 @@ class DescribeSnatTableEntriesRequest(DaraModel):
         # 
         # >  You must specify at least one of **SnatTableId** and **NatGatewayId**.
         self.nat_gateway_id = nat_gateway_id
+        # The ID of the elastic network interface to be queried.
         self.network_interface_ids = network_interface_ids
         self.owner_account = owner_account
         self.owner_id = owner_id

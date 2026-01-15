@@ -91,6 +91,7 @@ class DescribeVpnAttachmentsResponseBodyVpnAttachments(DaraModel):
         tags: List[main_models.DescribeVpnAttachmentsResponseBodyVpnAttachmentsTags] = None,
         transit_router_id: str = None,
         transit_router_name: str = None,
+        tunnel_bandwidth: str = None,
     ):
         # The type of resource that is associated with the IPsec-VPN connection. The value is set to **CEN**, which indicates that the IPsec-VPN connection is associated with a transit router.
         self.attach_type = attach_type
@@ -120,6 +121,7 @@ class DescribeVpnAttachmentsResponseBodyVpnAttachments(DaraModel):
         self.transit_router_id = transit_router_id
         # The name of the transit router.
         self.transit_router_name = transit_router_name
+        self.tunnel_bandwidth = tunnel_bandwidth
 
     def validate(self):
         if self.tags:
@@ -161,6 +163,9 @@ class DescribeVpnAttachmentsResponseBodyVpnAttachments(DaraModel):
         if self.transit_router_name is not None:
             result['TransitRouterName'] = self.transit_router_name
 
+        if self.tunnel_bandwidth is not None:
+            result['TunnelBandwidth'] = self.tunnel_bandwidth
+
         return result
 
     def from_map(self, m: dict = None):
@@ -194,6 +199,9 @@ class DescribeVpnAttachmentsResponseBodyVpnAttachments(DaraModel):
 
         if m.get('TransitRouterName') is not None:
             self.transit_router_name = m.get('TransitRouterName')
+
+        if m.get('TunnelBandwidth') is not None:
+            self.tunnel_bandwidth = m.get('TunnelBandwidth')
 
         return self
 

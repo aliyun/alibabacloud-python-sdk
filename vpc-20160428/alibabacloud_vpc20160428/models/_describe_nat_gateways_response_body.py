@@ -144,6 +144,7 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(DaraModel):
         tags: main_models.DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags = None,
         vpc_id: str = None,
     ):
+        # Access mode for reverse access to VPC NAT gateway.
         self.access_mode = access_mode
         # Indicates whether automatic payment is enabled. Valid values:
         # 
@@ -176,6 +177,9 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(DaraModel):
         # 
         # >  Note: If you use the NAT mode, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, you can associate a NAT gateway with up to 50 EIPs.
         self.eip_bind_mode = eip_bind_mode
+        # Whether to enable session logging, with values:
+        # - **true**: Session logging is enabled. 
+        # - **false**: Session logging is disabled.
         self.enable_session_log = enable_session_log
         # The time when the NAT gateway expires.
         self.expired_time = expired_time
@@ -197,6 +201,7 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(DaraModel):
         self.internet_charge_type = internet_charge_type
         # The list of elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
         self.ip_lists = ip_lists
+        # List of NAT IP prefix address segments.
         self.ip_prefix_list = ip_prefix_list
         # The name of the NAT gateway.
         self.name = name
@@ -713,6 +718,7 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixListIpPrefixLi
         self,
         ip_prefix: str = None,
     ):
+        # NAT IP prefix address range
         self.ip_prefix = ip_prefix
 
     def validate(self):
@@ -902,7 +908,12 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayAccessMode(DaraModel):
         mode_value: str = None,
         tunnel_type: str = None,
     ):
+        # Access mode, with values:
+        # - **route**: Route mode.
+        # - **tunnel**: Tunnel mode.
         self.mode_value = mode_value
+        # Tunnel mode type:
+        # - **geneve**: Geneve type.
         self.tunnel_type = tunnel_type
 
     def validate(self):

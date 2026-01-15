@@ -27,8 +27,16 @@ class ModifySnatEntryRequest(DaraModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Whether to perform a dry run of this request, with values:
+        # - **true**: Sends a check request without modifying the SNAT entry. The checks include whether the required parameters are filled in, the request format, and business restrictions. If the check fails, the corresponding error is returned. If the check passes, an error code `DryRunOperation` is returned.
+        # - **false** (default): Sends a normal request. After passing the check, it returns a 2xx HTTP status code and modifies the SNAT entry.
         self.dry_run = dry_run
+        # Whether to enable IP affinity. Values:
+        # - **0**: Disable IP affinity.
+        #  - **1**: Enable IP affinity.
+        # > After enabling the IP affinity switch, if an SNAT entry is bound to multiple EIPs or NAT IPs, the same client will use the same EIP or NAT IP for access; otherwise, the client will randomly select from the bound EIPs or NAT IPs for access.
         self.eip_affinity = eip_affinity
+        # Elastic Network Interface ID. The IPv4 address set of the elastic network interface will be used as the SNAT address.
         self.network_interface_id = network_interface_id
         self.owner_account = owner_account
         self.owner_id = owner_id

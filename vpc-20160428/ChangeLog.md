@@ -1,3 +1,15 @@
+2026-01-15 Version: 6.15.0
+- Support API GetNatIpAttribute.
+- Support API GetNatIpCidrAttribute.
+- Update API CreateVpnAttachment: add request parameters TunnelBandwidth.
+- Update API DescribeVpnAttachments: add response parameters Body.VpnAttachments.$.TunnelBandwidth.
+- Update API DescribeVpnConnection: add response parameters Body.TunnelBandwidth.
+- Update API DescribeVpnConnections: add response parameters Body.VpnConnections.$.TunnelBandwidth.
+- Update API DescribeVpnGateway: add response parameters Body.GatewayType.
+- Update API DescribeVpnGateways: add request parameters GatewayType.
+- Update API DescribeVpnGateways: add response parameters Body.VpnGateways.$.GatewayType.
+
+
 2026-01-08 Version: 6.14.1
 - Update API ListNatIps: add request parameters Ipv4Prefix.
 

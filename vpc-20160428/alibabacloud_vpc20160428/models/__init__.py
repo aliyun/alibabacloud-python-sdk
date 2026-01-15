@@ -750,6 +750,12 @@ from ._get_ipv_4gateway_attribute_response import GetIpv4GatewayAttributeRespons
 from ._get_nat_gateway_attribute_request import GetNatGatewayAttributeRequest
 from ._get_nat_gateway_attribute_response_body import GetNatGatewayAttributeResponseBody
 from ._get_nat_gateway_attribute_response import GetNatGatewayAttributeResponse
+from ._get_nat_ip_attribute_request import GetNatIpAttributeRequest
+from ._get_nat_ip_attribute_response_body import GetNatIpAttributeResponseBody
+from ._get_nat_ip_attribute_response import GetNatIpAttributeResponse
+from ._get_nat_ip_cidr_attribute_request import GetNatIpCidrAttributeRequest
+from ._get_nat_ip_cidr_attribute_response_body import GetNatIpCidrAttributeResponseBody
+from ._get_nat_ip_cidr_attribute_response import GetNatIpCidrAttributeResponse
 from ._get_physical_connection_service_status_request import GetPhysicalConnectionServiceStatusRequest
 from ._get_physical_connection_service_status_response_body import GetPhysicalConnectionServiceStatusResponseBody
 from ._get_physical_connection_service_status_response import GetPhysicalConnectionServiceStatusResponse
@@ -2471,6 +2477,12 @@ __all__ = [
     GetNatGatewayAttributeRequest,
     GetNatGatewayAttributeResponseBody,
     GetNatGatewayAttributeResponse,
+    GetNatIpAttributeRequest,
+    GetNatIpAttributeResponseBody,
+    GetNatIpAttributeResponse,
+    GetNatIpCidrAttributeRequest,
+    GetNatIpCidrAttributeResponseBody,
+    GetNatIpCidrAttributeResponse,
     GetPhysicalConnectionServiceStatusRequest,
     GetPhysicalConnectionServiceStatusResponseBody,
     GetPhysicalConnectionServiceStatusResponse,

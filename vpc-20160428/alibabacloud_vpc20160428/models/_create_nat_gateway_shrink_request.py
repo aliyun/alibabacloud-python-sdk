@@ -74,6 +74,7 @@ class CreateNatGatewayShrinkRequest(DaraModel):
         self.instance_charge_type = instance_charge_type
         # The metering method of the NAT gateway. Set the value to **PayByLcu**, which specifies the pay-by-CU metering method.
         self.internet_charge_type = internet_charge_type
+        # Create an IP prefix address segment for batch creation of NAT IPs. Please use the reserved and unallocated network segments in the VSwitch where the NAT is located.
         self.ipv_4prefix = ipv_4prefix
         # The name of the NAT gateway.
         # 
@@ -81,6 +82,7 @@ class CreateNatGatewayShrinkRequest(DaraModel):
         # 
         # If this parameter is not set, the system assigns a default name to the NAT gateway.
         self.name = name
+        # The private IP address occupied by the NAT gateway. Please use an unassigned IP from the subnet where the NAT is located. If left empty, an IP address will be randomly assigned.
         self.nat_ip = nat_ip
         # The type of NAT gateway. Set the value to **Enhanced**, which specifies enhanced NAT gateway.
         self.nat_type = nat_type

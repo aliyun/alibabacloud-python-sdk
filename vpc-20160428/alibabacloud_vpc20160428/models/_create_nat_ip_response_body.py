@@ -16,11 +16,13 @@ class CreateNatIpResponseBody(DaraModel):
         nat_ips: List[main_models.CreateNatIpResponseBodyNatIps] = None,
         request_id: str = None,
     ):
+        # The IPv4Prefix returned by the previous API is obsolete.
         self.ipv_4prefix = ipv_4prefix
         # The NAT IP address.
         self.nat_ip = nat_ip
         # The ID of the NAT IP address.
         self.nat_ip_id = nat_ip_id
+        # The NatIp parameter that is returned after you create a NatIp. If you use IPv4Prefix to create a NatIp, the information about all NatIp is returned. We recommend that you use this parameter to obtain the information about a NatIp when you create a NatIp.
         self.nat_ips = nat_ips
         # The request ID.
         self.request_id = request_id
@@ -84,8 +86,11 @@ class CreateNatIpResponseBodyNatIps(DaraModel):
         nat_ip: str = None,
         nat_ip_id: str = None,
     ):
+        # The Ipv4Prefix of the created NatIpList list is returned when Ipv4Preix is created.
         self.ipv_4prefix = ipv_4prefix
+        # Returns the NatIp address of the created NatIpList list when Ipv4Preix is created.
         self.nat_ip = nat_ip
+        # Returns the NatIpId of the created NatIpList list when Ipv4Preix is created.
         self.nat_ip_id = nat_ip_id
 
     def validate(self):

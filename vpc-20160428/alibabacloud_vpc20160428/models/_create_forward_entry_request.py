@@ -29,6 +29,9 @@ class CreateForwardEntryRequest(DaraModel):
         # 
         # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
         self.client_token = client_token
+        # Indicates whether to perform a dry run of the request. Values:
+        # - **true**: Sends a check request without creating a DNAT entry. The checks include whether the AccessKey is valid, the RAM user\\"s authorization status, and if all required parameters are filled out. If any check fails, the corresponding error is returned. If all checks pass, an error code `DryRunOperation` is returned.
+        # - **false** (default): Sends a normal request. After passing the checks, it returns a 2xx HTTP status code and creates a DNAT entry.
         self.dry_run = dry_run
         # *   The EIP that can be accessed over the Internet when you configure a DNAT entry for an Internet NAT gateway.
         # *   The NAT IP address that can be accessed by external networks when you configure a DNAT entry for a VPC NAT gateway.
@@ -77,12 +80,10 @@ class CreateForwardEntryRequest(DaraModel):
         self.ip_protocol = ip_protocol
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # Specifies whether to remove limits on the port range. Valid values:
-        # 
-        # *   **true**
-        # *   **false** (default)
-        # 
-        # >  If a DNAT entry and an SNAT entry have the same public IP address, ou must specify a port that is larger that 1024, and set **PortBreak** to **true**.
+        # Whether to enable port breakthrough, with values:
+        # - **true**: Enable port breakthrough. 
+        # - **false** (default): Do not enable port breakthrough.
+        # >When both DNAT and SNAT entries use the same public IP address, if you need to configure a port number greater than 1024, you must set **PortBreak** to **true**.
         self.port_break = port_break
         # The region ID of the NAT gateway.
         # 

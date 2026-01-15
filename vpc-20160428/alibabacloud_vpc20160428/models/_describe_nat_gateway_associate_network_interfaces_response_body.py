@@ -150,6 +150,7 @@ class DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkIn
         self.resource_owner_id = resource_owner_id
         # The type of the service resource.
         self.resource_type = resource_type
+        # VPC ID of the service resource
         self.resource_vpc_id = resource_vpc_id
         # The ID of the tunnel index.
         self.tunnel_index = tunnel_index

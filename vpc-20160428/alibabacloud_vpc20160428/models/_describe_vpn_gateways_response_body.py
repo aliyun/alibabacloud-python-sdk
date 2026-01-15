@@ -121,6 +121,7 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(DaraModel):
         enable_bgp: bool = None,
         end_time: int = None,
         eni_instance_ids: main_models.DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayEniInstanceIds = None,
+        gateway_type: str = None,
         internet_ip: str = None,
         ipsec_vpn: str = None,
         name: str = None,
@@ -178,6 +179,7 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(DaraModel):
         self.end_time = end_time
         # The ENIs created by the system for the VPN gateway.
         self.eni_instance_ids = eni_instance_ids
+        self.gateway_type = gateway_type
         # *   If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the value of this parameter is the IP address of the VPN gateway, which can be used to create IPsec-VPN or SSL-VPN connections.
         # 
         # *   If the VPN gateway supports IPsec-VPN connections in dual-tunnel mode, the value of this parameter is the first IP address that is used to create an IPsec-VPN connection. The IP address cannot be used to create SSL-VPN connections.
@@ -312,6 +314,9 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(DaraModel):
         if self.eni_instance_ids is not None:
             result['EniInstanceIds'] = self.eni_instance_ids.to_map()
 
+        if self.gateway_type is not None:
+            result['GatewayType'] = self.gateway_type
+
         if self.internet_ip is not None:
             result['InternetIp'] = self.internet_ip
 
@@ -397,6 +402,9 @@ class DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGateway(DaraModel):
         if m.get('EniInstanceIds') is not None:
             temp_model = main_models.DescribeVpnGatewaysResponseBodyVpnGatewaysVpnGatewayEniInstanceIds()
             self.eni_instance_ids = temp_model.from_map(m.get('EniInstanceIds'))
+
+        if m.get('GatewayType') is not None:
+            self.gateway_type = m.get('GatewayType')
 
         if m.get('InternetIp') is not None:
             self.internet_ip = m.get('InternetIp')

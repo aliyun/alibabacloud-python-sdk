@@ -35,6 +35,7 @@ class DescribeVpnConnectionResponseBody(DaraModel):
         tags: main_models.DescribeVpnConnectionResponseBodyTags = None,
         transit_router_id: str = None,
         transit_router_name: str = None,
+        tunnel_bandwidth: str = None,
         tunnel_options_specification: main_models.DescribeVpnConnectionResponseBodyTunnelOptionsSpecification = None,
         vco_health_check: main_models.DescribeVpnConnectionResponseBodyVcoHealthCheck = None,
         vpn_bgp_config: main_models.DescribeVpnConnectionResponseBodyVpnBgpConfig = None,
@@ -142,6 +143,7 @@ class DescribeVpnConnectionResponseBody(DaraModel):
         self.transit_router_id = transit_router_id
         # The name of the transit router.
         self.transit_router_name = transit_router_name
+        self.tunnel_bandwidth = tunnel_bandwidth
         # The tunnel configurations of the IPsec-VPN connection.
         # 
         # Parameters in **TunnelOptionsSpecification** are returned only if you query an IPsec-VPN connection in dual-tunnel mode.
@@ -253,6 +255,9 @@ class DescribeVpnConnectionResponseBody(DaraModel):
         if self.transit_router_name is not None:
             result['TransitRouterName'] = self.transit_router_name
 
+        if self.tunnel_bandwidth is not None:
+            result['TunnelBandwidth'] = self.tunnel_bandwidth
+
         if self.tunnel_options_specification is not None:
             result['TunnelOptionsSpecification'] = self.tunnel_options_specification.to_map()
 
@@ -352,6 +357,9 @@ class DescribeVpnConnectionResponseBody(DaraModel):
 
         if m.get('TransitRouterName') is not None:
             self.transit_router_name = m.get('TransitRouterName')
+
+        if m.get('TunnelBandwidth') is not None:
+            self.tunnel_bandwidth = m.get('TunnelBandwidth')
 
         if m.get('TunnelOptionsSpecification') is not None:
             temp_model = main_models.DescribeVpnConnectionResponseBodyTunnelOptionsSpecification()

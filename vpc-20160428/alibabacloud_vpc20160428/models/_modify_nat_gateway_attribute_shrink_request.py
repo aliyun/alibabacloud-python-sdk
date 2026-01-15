@@ -24,23 +24,25 @@ class ModifyNatGatewayAttributeShrinkRequest(DaraModel):
         # 
         # The description must be 1 to 128 characters in length, and cannot start with `http://` or `https://`.
         self.description = description
-        # The mode in which the NAT gateway is associated with an elastic IP address (EIP). You can leave this parameter empty. If you want to specify a value for this parameter, set the value to **NAT**, which indicates that the NAT gateway is associated with the EIP in NAT mode.
+        # Modifies the mode in which the EIP is associated with the NAT gateway. The value can be empty or **NAT**, which specifies the NAT mode.
         # 
-        # **
+        # > 
         # 
-        # **Description**
+        # *   You can only change **MULTI_BINDED** to **NAT**. You cannot change **NAT** to **MULTI_BINDED**. For more information about the **MULTI_BINDED** mode, see [CreateNatGateway](https://help.aliyun.com/document_detail/120219.html).
         # 
-        # *   If EipBindMode is set to MULTI_BINDED when the NAT gateway is created, you can change the value of this parameter from **MULTI_BINDED** to **NAT**. If EipBindMode is set to NAT when the NAT gateway is created, you cannot change the value of this parameter from **NAT** to **MULTI_BINDED**. For more information about **MULTI_BINDED**, see [CreateNatGateway](https://help.aliyun.com/document_detail/120219.html).
-        # 
-        # *   When the mode in which the NAT gateway is associated with an EIP is being changed, a transient connection that lasts a few seconds may occur. If the number of EIPs with which the NAT gateway is associated increases, the transient connection lasts longer. You can change the mode only for a NAT gateway that is associated with up to five EIPs. We recommend that you change the mode during off-peak hours.
-        # *   After the mode is changed to **NAT**, the Internet NAT gateway is compatible with the IPv4 gateway. However, if you associate an EIP with the NAT gateway, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the EIP fails to be associated with the NAT gateway.
+        # *   When you change the association mode, your network may be interrupted for seconds. The duration increases with the number of EIPs. You can change the association mode for at most 5 EIPs at the same time. We recommend changing the association mode during off-peak hours.
+        # *   After the association mode is changed to **NAT**, the Internet NAT gateway is compatible with an IPv4 gateway. If an EIP is associated with a NAT gateway in NAT mode, the EIP occupies a private IP address of the vSwitch to which the NAT gateway belongs. Ensure the vSwitch has sufficient private IP addresses for EIPs to be associated with the NAT gateway.
         self.eip_bind_mode = eip_bind_mode
+        # Whether to enable session logging, with values:
+        # - **true**: Session logging is enabled. 
+        # - **false**: Session logging is disabled.
         self.enable_session_log = enable_session_log
         # Specifies whether to enable the Internet Control Message Protocol (ICMP) non-retrieval feature. Valid values:
         # 
         # *   **false** (default)
         # *   **true**
         self.icmp_reply_enabled = icmp_reply_enabled
+        # Session log configuration information.
         self.log_delivery_shrink = log_delivery_shrink
         # The name of the NAT gateway.
         # 

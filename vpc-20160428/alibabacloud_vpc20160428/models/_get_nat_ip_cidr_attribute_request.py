@@ -4,42 +4,37 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class DeleteNatIpRequest(DaraModel):
+class GetNatIpCidrAttributeRequest(DaraModel):
     def __init__(
         self,
         client_token: str = None,
         dry_run: bool = None,
-        ipv_4prefix: str = None,
         nat_gateway_id: str = None,
-        nat_ip_id: str = None,
+        nat_ip_cidr: str = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
-        # The client token that is used to ensure the idempotence of the request.
-        # 
-        # You can use the client to generate the token, but you must make sure that the token is unique among different requests. The client token can contain only ASCII characters.
-        # 
-        # >  If you do not specify this parameter, the system automatically uses the **request ID** as the **client token**. The **request ID** may be different for each request.
+        # Client Token, used to ensure the idempotence of requests. Generate a unique value for this parameter from your client, ensuring it is unique across different requests. ClientToken only supports ASCII characters.
+        # > If not specified, the system automatically uses the RequestId of the API request as the ClientToken identifier. The RequestId is different for each API request.
         self.client_token = client_token
-        # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
-        # 
-        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and service limits. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
-        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, a 2xx HTTP status code is returned and the operation is performed.
+        # Whether to perform a dry run of this request. Values:
+        # - true: Sends a check request. The checks include whether the AccessKey is valid, the RAM user\\"s authorization status, and if all required parameters are filled out. If any check fails, the corresponding error is returned. If all checks pass, an error code DryRunOperation is returned.
+        # - false (default): Sends a normal request. After passing the checks, a 2xx HTTP status code is returned.
         self.dry_run = dry_run
-        # The IP prefix address to be deleted.
-        self.ipv_4prefix = ipv_4prefix
-        # The ID of the NAT gateway instance to which the IP prefix to be deleted belongs. Required when deleting an IP prefix.
+        # The ID of the VPC NAT gateway instance to which the queried NAT IP address range belongs.
+        # 
+        # This parameter is required.
         self.nat_gateway_id = nat_gateway_id
-        # The ID of the NAT IP address that you want to delete.
-        self.nat_ip_id = nat_ip_id
+        # The NAT IP address range to be queried.
+        # 
+        # This parameter is required.
+        self.nat_ip_cidr = nat_ip_cidr
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The region ID of the NAT gateway to which the NAT IP address that you want to delete belongs.
-        # 
-        # You can call the [DescribeRegions](https://help.aliyun.com/document_detail/36063.html) operation to query the most recent region list.
+        # The region ID of the NAT gateway instance to which the NAT IP address range to be queried belongs. You can obtain the region ID by calling the DescribeRegions interface.
         # 
         # This parameter is required.
         self.region_id = region_id
@@ -60,14 +55,11 @@ class DeleteNatIpRequest(DaraModel):
         if self.dry_run is not None:
             result['DryRun'] = self.dry_run
 
-        if self.ipv_4prefix is not None:
-            result['Ipv4Prefix'] = self.ipv_4prefix
-
         if self.nat_gateway_id is not None:
             result['NatGatewayId'] = self.nat_gateway_id
 
-        if self.nat_ip_id is not None:
-            result['NatIpId'] = self.nat_ip_id
+        if self.nat_ip_cidr is not None:
+            result['NatIpCidr'] = self.nat_ip_cidr
 
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
@@ -94,14 +86,11 @@ class DeleteNatIpRequest(DaraModel):
         if m.get('DryRun') is not None:
             self.dry_run = m.get('DryRun')
 
-        if m.get('Ipv4Prefix') is not None:
-            self.ipv_4prefix = m.get('Ipv4Prefix')
-
         if m.get('NatGatewayId') is not None:
             self.nat_gateway_id = m.get('NatGatewayId')
 
-        if m.get('NatIpId') is not None:
-            self.nat_ip_id = m.get('NatIpId')
+        if m.get('NatIpCidr') is not None:
+            self.nat_ip_cidr = m.get('NatIpCidr')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

@@ -122,9 +122,13 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry(DaraMod
         source_vswitch_id: str = None,
         status: str = None,
     ):
+        # Whether to enable IP affinity. Values:
+        # - **0**: Disable IP affinity. - **1**: Enable IP affinity.
+        # > After enabling the IP affinity switch, if an SNAT entry is bound to multiple EIPs or NAT IPs, the same client will use the same EIP or NAT IP for access. Otherwise, the client will randomly select from the bound EIPs or NAT IPs for access.
         self.eip_affinity = eip_affinity
         # The ID of the NAT gateway to which the SNAT entry belongs.
         self.nat_gateway_id = nat_gateway_id
+        # Elastic Network Interface ID
         self.network_interface_id = network_interface_id
         # The ID of the SNAT entry.
         self.snat_entry_id = snat_entry_id

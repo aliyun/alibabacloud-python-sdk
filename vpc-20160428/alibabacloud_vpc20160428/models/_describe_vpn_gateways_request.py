@@ -11,6 +11,7 @@ class DescribeVpnGatewaysRequest(DaraModel):
     def __init__(
         self,
         business_status: str = None,
+        gateway_type: str = None,
         include_reservation_data: bool = None,
         owner_account: str = None,
         owner_id: int = None,
@@ -30,6 +31,7 @@ class DescribeVpnGatewaysRequest(DaraModel):
         # *   **Normal**
         # *   **FinancialLocked**
         self.business_status = business_status
+        self.gateway_type = gateway_type
         # Specifies whether to return information about pending orders. Valid values:
         # 
         # *   **false** (default)
@@ -82,6 +84,9 @@ class DescribeVpnGatewaysRequest(DaraModel):
         if self.business_status is not None:
             result['BusinessStatus'] = self.business_status
 
+        if self.gateway_type is not None:
+            result['GatewayType'] = self.gateway_type
+
         if self.include_reservation_data is not None:
             result['IncludeReservationData'] = self.include_reservation_data
 
@@ -129,6 +134,9 @@ class DescribeVpnGatewaysRequest(DaraModel):
         m = m or dict()
         if m.get('BusinessStatus') is not None:
             self.business_status = m.get('BusinessStatus')
+
+        if m.get('GatewayType') is not None:
+            self.gateway_type = m.get('GatewayType')
 
         if m.get('IncludeReservationData') is not None:
             self.include_reservation_data = m.get('IncludeReservationData')

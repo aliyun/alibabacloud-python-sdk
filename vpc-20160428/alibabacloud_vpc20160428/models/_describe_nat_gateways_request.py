@@ -54,9 +54,9 @@ class DescribeNatGatewaysRequest(DaraModel):
         self.network_type = network_type
         self.owner_account = owner_account
         self.owner_id = owner_id
-        # The number of the page to return. Default value: **1**.
+        # The page number. Default value: **1**.
         self.page_number = page_number
-        # The number of entries to return on each page. Maximum value: **50**. Default value: **10**.
+        # The number of entries per page. Maximum value: **50**. Default value: **10**.
         self.page_size = page_size
         # The region ID of the NAT gateways that you want to query.
         # 
