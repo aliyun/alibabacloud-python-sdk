@@ -144,6 +144,7 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         creator_user_name: str = None,
         custom_agent_id: str = None,
         data_json: str = None,
+        default_agent: int = None,
         description: str = None,
         dms_unit: str = None,
         execution_config: main_models.ListCustomAgentResponseBodyDataContentExecutionConfig = None,
@@ -168,6 +169,7 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
         self.creator_user_name = creator_user_name
         self.custom_agent_id = custom_agent_id
         self.data_json = data_json
+        self.default_agent = default_agent
         self.description = description
         self.dms_unit = dms_unit
         self.execution_config = execution_config
@@ -214,6 +216,9 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
 
         if self.data_json is not None:
             result['DataJson'] = self.data_json
+
+        if self.default_agent is not None:
+            result['DefaultAgent'] = self.default_agent
 
         if self.description is not None:
             result['Description'] = self.description
@@ -289,6 +294,9 @@ class ListCustomAgentResponseBodyDataContent(DaraModel):
 
         if m.get('DataJson') is not None:
             self.data_json = m.get('DataJson')
+
+        if m.get('DefaultAgent') is not None:
+            self.default_agent = m.get('DefaultAgent')
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
