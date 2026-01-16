@@ -101,10 +101,12 @@ class OperatorBasicInfoParam(DaraModel):
         customer_param: main_models.JudgeNodeMetaDesc = None,
         delay_time: int = None,
         different_role: bool = None,
+        dimensions: List[main_models.OperatorBasicInfoParamDimensions] = None,
         end_type: str = None,
         excludes: List[str] = None,
         from_: int = None,
         from_end: bool = None,
+        hit_condition: str = None,
         hit_time: int = None,
         in_sentence: bool = None,
         interval: int = None,
@@ -117,7 +119,9 @@ class OperatorBasicInfoParam(DaraModel):
         knowledge_target_id: str = None,
         knowledge_target_name: str = None,
         knowledge_target_type: int = None,
+        knowledges: str = None,
         lgf_sentences: List[str] = None,
+        llm_model_code: str = None,
         max_emotion_change_value: int = None,
         min_word_size: int = None,
         near_dialogue: bool = None,
@@ -130,6 +134,7 @@ class OperatorBasicInfoParam(DaraModel):
         references: List[str] = None,
         regex: str = None,
         role_id: int = None,
+        scene_name: str = None,
         score: int = None,
         similarity_threshold: float = None,
         similarly_sentences: List[str] = None,
@@ -155,10 +160,12 @@ class OperatorBasicInfoParam(DaraModel):
         self.customer_param = customer_param
         self.delay_time = delay_time
         self.different_role = different_role
+        self.dimensions = dimensions
         self.end_type = end_type
         self.excludes = excludes
         self.from_ = from_
         self.from_end = from_end
+        self.hit_condition = hit_condition
         self.hit_time = hit_time
         self.in_sentence = in_sentence
         self.interval = interval
@@ -171,7 +178,9 @@ class OperatorBasicInfoParam(DaraModel):
         self.knowledge_target_id = knowledge_target_id
         self.knowledge_target_name = knowledge_target_name
         self.knowledge_target_type = knowledge_target_type
+        self.knowledges = knowledges
         self.lgf_sentences = lgf_sentences
+        self.llm_model_code = llm_model_code
         self.max_emotion_change_value = max_emotion_change_value
         self.min_word_size = min_word_size
         self.near_dialogue = near_dialogue
@@ -184,6 +193,7 @@ class OperatorBasicInfoParam(DaraModel):
         self.references = references
         self.regex = regex
         self.role_id = role_id
+        self.scene_name = scene_name
         self.score = score
         self.similarity_threshold = similarity_threshold
         self.similarly_sentences = similarly_sentences
@@ -198,6 +208,10 @@ class OperatorBasicInfoParam(DaraModel):
     def validate(self):
         if self.customer_param:
             self.customer_param.validate()
+        if self.dimensions:
+            for v1 in self.dimensions:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -246,6 +260,11 @@ class OperatorBasicInfoParam(DaraModel):
         if self.different_role is not None:
             result['Different_role'] = self.different_role
 
+        result['Dimensions'] = []
+        if self.dimensions is not None:
+            for k1 in self.dimensions:
+                result['Dimensions'].append(k1.to_map() if k1 else None)
+
         if self.end_type is not None:
             result['EndType'] = self.end_type
 
@@ -257,6 +276,9 @@ class OperatorBasicInfoParam(DaraModel):
 
         if self.from_end is not None:
             result['From_end'] = self.from_end
+
+        if self.hit_condition is not None:
+            result['HitCondition'] = self.hit_condition
 
         if self.hit_time is not None:
             result['Hit_time'] = self.hit_time
@@ -294,8 +316,14 @@ class OperatorBasicInfoParam(DaraModel):
         if self.knowledge_target_type is not None:
             result['KnowledgeTargetType'] = self.knowledge_target_type
 
+        if self.knowledges is not None:
+            result['Knowledges'] = self.knowledges
+
         if self.lgf_sentences is not None:
             result['LgfSentences'] = self.lgf_sentences
+
+        if self.llm_model_code is not None:
+            result['LlmModelCode'] = self.llm_model_code
 
         if self.max_emotion_change_value is not None:
             result['MaxEmotionChangeValue'] = self.max_emotion_change_value
@@ -332,6 +360,9 @@ class OperatorBasicInfoParam(DaraModel):
 
         if self.role_id is not None:
             result['RoleId'] = self.role_id
+
+        if self.scene_name is not None:
+            result['SceneName'] = self.scene_name
 
         if self.score is not None:
             result['Score'] = self.score
@@ -410,6 +441,12 @@ class OperatorBasicInfoParam(DaraModel):
         if m.get('Different_role') is not None:
             self.different_role = m.get('Different_role')
 
+        self.dimensions = []
+        if m.get('Dimensions') is not None:
+            for k1 in m.get('Dimensions'):
+                temp_model = main_models.OperatorBasicInfoParamDimensions()
+                self.dimensions.append(temp_model.from_map(k1))
+
         if m.get('EndType') is not None:
             self.end_type = m.get('EndType')
 
@@ -421,6 +458,9 @@ class OperatorBasicInfoParam(DaraModel):
 
         if m.get('From_end') is not None:
             self.from_end = m.get('From_end')
+
+        if m.get('HitCondition') is not None:
+            self.hit_condition = m.get('HitCondition')
 
         if m.get('Hit_time') is not None:
             self.hit_time = m.get('Hit_time')
@@ -458,8 +498,14 @@ class OperatorBasicInfoParam(DaraModel):
         if m.get('KnowledgeTargetType') is not None:
             self.knowledge_target_type = m.get('KnowledgeTargetType')
 
+        if m.get('Knowledges') is not None:
+            self.knowledges = m.get('Knowledges')
+
         if m.get('LgfSentences') is not None:
             self.lgf_sentences = m.get('LgfSentences')
+
+        if m.get('LlmModelCode') is not None:
+            self.llm_model_code = m.get('LlmModelCode')
 
         if m.get('MaxEmotionChangeValue') is not None:
             self.max_emotion_change_value = m.get('MaxEmotionChangeValue')
@@ -497,6 +543,9 @@ class OperatorBasicInfoParam(DaraModel):
         if m.get('RoleId') is not None:
             self.role_id = m.get('RoleId')
 
+        if m.get('SceneName') is not None:
+            self.scene_name = m.get('SceneName')
+
         if m.get('Score') is not None:
             self.score = m.get('Score')
 
@@ -526,6 +575,57 @@ class OperatorBasicInfoParam(DaraModel):
 
         if m.get('VelocityInMint') is not None:
             self.velocity_in_mint = m.get('VelocityInMint')
+
+        return self
+
+class OperatorBasicInfoParamDimensions(DaraModel):
+    def __init__(
+        self,
+        desc: str = None,
+        dimension: str = None,
+        exclude_condition: str = None,
+        include_condition: str = None,
+    ):
+        self.desc = desc
+        self.dimension = dimension
+        self.exclude_condition = exclude_condition
+        self.include_condition = include_condition
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.desc is not None:
+            result['Desc'] = self.desc
+
+        if self.dimension is not None:
+            result['Dimension'] = self.dimension
+
+        if self.exclude_condition is not None:
+            result['ExcludeCondition'] = self.exclude_condition
+
+        if self.include_condition is not None:
+            result['IncludeCondition'] = self.include_condition
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Desc') is not None:
+            self.desc = m.get('Desc')
+
+        if m.get('Dimension') is not None:
+            self.dimension = m.get('Dimension')
+
+        if m.get('ExcludeCondition') is not None:
+            self.exclude_condition = m.get('ExcludeCondition')
+
+        if m.get('IncludeCondition') is not None:
+            self.include_condition = m.get('IncludeCondition')
 
         return self
 

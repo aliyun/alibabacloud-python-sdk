@@ -1,3 +1,9 @@
+2026-01-16 Version: 8.5.2
+- Update API GetResult: add response parameters Body.Data.$.HitResult.$.ArtificialRule.
+- Update API GetResult: add response parameters Body.Data.$.HitResult.$.FinalHitResult.
+- Update API GetResult: add response parameters Body.Data.$.HitResult.$.MachineHitResult.
+
+
 2025-12-30 Version: 8.5.1
 - Update API GetResultToReview: add response parameters Body.Data.HitRuleReviewInfoList.$.ReviewInfo.Comment.
 

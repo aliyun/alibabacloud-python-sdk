@@ -1146,8 +1146,11 @@ class GetResultResponseBodyDataResultInfoHitResult(DaraModel):
 class GetResultResponseBodyDataResultInfoHitResultHitResult(DaraModel):
     def __init__(
         self,
+        artificial_rule: str = None,
         conditions: main_models.GetResultResponseBodyDataResultInfoHitResultHitResultConditions = None,
+        final_hit_result: str = None,
         hits: main_models.GetResultResponseBodyDataResultInfoHitResultHitResultHits = None,
+        machine_hit_result: str = None,
         name: str = None,
         review_result: int = None,
         rid: str = None,
@@ -1156,8 +1159,11 @@ class GetResultResponseBodyDataResultInfoHitResultHitResult(DaraModel):
         score: int = None,
         type: str = None,
     ):
+        self.artificial_rule = artificial_rule
         self.conditions = conditions
+        self.final_hit_result = final_hit_result
         self.hits = hits
+        self.machine_hit_result = machine_hit_result
         self.name = name
         self.review_result = review_result
         self.rid = rid
@@ -1177,11 +1183,20 @@ class GetResultResponseBodyDataResultInfoHitResultHitResult(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.artificial_rule is not None:
+            result['ArtificialRule'] = self.artificial_rule
+
         if self.conditions is not None:
             result['Conditions'] = self.conditions.to_map()
 
+        if self.final_hit_result is not None:
+            result['FinalHitResult'] = self.final_hit_result
+
         if self.hits is not None:
             result['Hits'] = self.hits.to_map()
+
+        if self.machine_hit_result is not None:
+            result['MachineHitResult'] = self.machine_hit_result
 
         if self.name is not None:
             result['Name'] = self.name
@@ -1208,13 +1223,22 @@ class GetResultResponseBodyDataResultInfoHitResultHitResult(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ArtificialRule') is not None:
+            self.artificial_rule = m.get('ArtificialRule')
+
         if m.get('Conditions') is not None:
             temp_model = main_models.GetResultResponseBodyDataResultInfoHitResultHitResultConditions()
             self.conditions = temp_model.from_map(m.get('Conditions'))
 
+        if m.get('FinalHitResult') is not None:
+            self.final_hit_result = m.get('FinalHitResult')
+
         if m.get('Hits') is not None:
             temp_model = main_models.GetResultResponseBodyDataResultInfoHitResultHitResultHits()
             self.hits = temp_model.from_map(m.get('Hits'))
+
+        if m.get('MachineHitResult') is not None:
+            self.machine_hit_result = m.get('MachineHitResult')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
