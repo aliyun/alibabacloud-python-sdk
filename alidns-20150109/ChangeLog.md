@@ -1,3 +1,7 @@
+2026-01-16 Version: 4.2.0
+- Support API SetCloudGtmInstanceConfigLogSwitch.
+
+
 2026-01-15 Version: 4.1.1
 - Update API DescribeCloudGtmGlobalAlert: add response parameters Body.AlertConfig.$.Threshold.
 - Update API DescribeInternetDnsLogs: add response parameters Body.Logs.$.Flags.

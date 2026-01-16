@@ -519,6 +519,9 @@ from ._search_recursion_zones_request import SearchRecursionZonesRequest
 from ._search_recursion_zones_shrink_request import SearchRecursionZonesShrinkRequest
 from ._search_recursion_zones_response_body import SearchRecursionZonesResponseBody
 from ._search_recursion_zones_response import SearchRecursionZonesResponse
+from ._set_cloud_gtm_instance_config_log_switch_request import SetCloudGtmInstanceConfigLogSwitchRequest
+from ._set_cloud_gtm_instance_config_log_switch_response_body import SetCloudGtmInstanceConfigLogSwitchResponseBody
+from ._set_cloud_gtm_instance_config_log_switch_response import SetCloudGtmInstanceConfigLogSwitchResponse
 from ._set_dnsslbstatus_request import SetDNSSLBStatusRequest
 from ._set_dnsslbstatus_response_body import SetDNSSLBStatusResponseBody
 from ._set_dnsslbstatus_response import SetDNSSLBStatusResponse
@@ -1537,6 +1540,9 @@ __all__ = [
     SearchRecursionZonesShrinkRequest,
     SearchRecursionZonesResponseBody,
     SearchRecursionZonesResponse,
+    SetCloudGtmInstanceConfigLogSwitchRequest,
+    SetCloudGtmInstanceConfigLogSwitchResponseBody,
+    SetCloudGtmInstanceConfigLogSwitchResponse,
     SetDNSSLBStatusRequest,
     SetDNSSLBStatusResponseBody,
     SetDNSSLBStatusResponse,

@@ -14582,6 +14582,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.search_recursion_zones_with_options_async(request, runtime)
 
+    def set_cloud_gtm_instance_config_log_switch_with_options(
+        self,
+        request: main_models.SetCloudGtmInstanceConfigLogSwitchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetCloudGtmInstanceConfigLogSwitchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetCloudGtmInstanceConfigLogSwitch',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetCloudGtmInstanceConfigLogSwitchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_cloud_gtm_instance_config_log_switch_with_options_async(
+        self,
+        request: main_models.SetCloudGtmInstanceConfigLogSwitchRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetCloudGtmInstanceConfigLogSwitchResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetCloudGtmInstanceConfigLogSwitch',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetCloudGtmInstanceConfigLogSwitchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_cloud_gtm_instance_config_log_switch(
+        self,
+        request: main_models.SetCloudGtmInstanceConfigLogSwitchRequest,
+    ) -> main_models.SetCloudGtmInstanceConfigLogSwitchResponse:
+        runtime = RuntimeOptions()
+        return self.set_cloud_gtm_instance_config_log_switch_with_options(request, runtime)
+
+    async def set_cloud_gtm_instance_config_log_switch_async(
+        self,
+        request: main_models.SetCloudGtmInstanceConfigLogSwitchRequest,
+    ) -> main_models.SetCloudGtmInstanceConfigLogSwitchResponse:
+        runtime = RuntimeOptions()
+        return await self.set_cloud_gtm_instance_config_log_switch_with_options_async(request, runtime)
+
     def set_dnsslbstatus_with_options(
         self,
         request: main_models.SetDNSSLBStatusRequest,
