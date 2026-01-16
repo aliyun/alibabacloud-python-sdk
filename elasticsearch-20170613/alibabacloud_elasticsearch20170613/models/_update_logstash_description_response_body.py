@@ -1,0 +1,74 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from alibabacloud_elasticsearch20170613 import models as main_models
+from darabonba.model import DaraModel
+
+class UpdateLogstashDescriptionResponseBody(DaraModel):
+    def __init__(
+        self,
+        request_id: str = None,
+        result: main_models.UpdateLogstashDescriptionResponseBodyResult = None,
+    ):
+        # The ID of the request.
+        self.request_id = request_id
+        # The result returned.
+        self.result = result
+
+    def validate(self):
+        if self.result:
+            self.result.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.result is not None:
+            result['Result'] = self.result.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('Result') is not None:
+            temp_model = main_models.UpdateLogstashDescriptionResponseBodyResult()
+            self.result = temp_model.from_map(m.get('Result'))
+
+        return self
+
+class UpdateLogstashDescriptionResponseBodyResult(DaraModel):
+    def __init__(
+        self,
+        description: str = None,
+    ):
+        # The name of the cluster.
+        self.description = description
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.description is not None:
+            result['description'] = self.description
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('description') is not None:
+            self.description = m.get('description')
+
+        return self
+

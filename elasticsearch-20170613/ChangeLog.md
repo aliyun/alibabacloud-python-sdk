@@ -1,3 +1,11 @@
+2026-01-16 Version: 5.0.0
+- Update API EnableKibanaPvlNetwork: add request parameters clientToken.
+- Update API UpdateInstance: add request parameters body.updateType.
+- Update API UpdateInstanceChargeType: update request parameters body' type has changed.
+- Update API UpdateInstanceSettings: update request parameters body' type has changed.
+- Update API UpdateKibanaPvlNetwork: add request parameters clientToken.
+
+
 2025-10-31 Version: 4.0.1
 - Update API DescribeInstance: add response parameters Body.Result.endpoints.
 
