@@ -4,13 +4,13 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class InitializeENSECKServiceRoleResponseBody(DaraModel):
+class DescribeClusterDetailRequest(DaraModel):
     def __init__(
         self,
-        request_id: str = None,
+        cluster_id: str = None,
     ):
-        # ID of the request
-        self.request_id = request_id
+        # This parameter is required.
+        self.cluster_id = cluster_id
 
     def validate(self):
         pass
@@ -20,15 +20,15 @@ class InitializeENSECKServiceRoleResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
 
         return self
 

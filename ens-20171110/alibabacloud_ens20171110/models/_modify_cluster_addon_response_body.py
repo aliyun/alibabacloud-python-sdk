@@ -4,12 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class InitializeENSECKServiceRoleResponseBody(DaraModel):
+class ModifyClusterAddonResponseBody(DaraModel):
     def __init__(
         self,
         request_id: str = None,
     ):
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):

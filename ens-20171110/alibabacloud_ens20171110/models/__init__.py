@@ -91,6 +91,10 @@ from ._create_cluster_request import CreateClusterRequest
 from ._create_cluster_shrink_request import CreateClusterShrinkRequest
 from ._create_cluster_response_body import CreateClusterResponseBody
 from ._create_cluster_response import CreateClusterResponse
+from ._create_cluster_node_pool_request import CreateClusterNodePoolRequest
+from ._create_cluster_node_pool_shrink_request import CreateClusterNodePoolShrinkRequest
+from ._create_cluster_node_pool_response_body import CreateClusterNodePoolResponseBody
+from ._create_cluster_node_pool_response import CreateClusterNodePoolResponse
 from ._create_disk_request import CreateDiskRequest
 from ._create_disk_response_body import CreateDiskResponseBody
 from ._create_disk_response import CreateDiskResponse
@@ -209,6 +213,13 @@ from ._delete_bucket_lifecycle_response import DeleteBucketLifecycleResponse
 from ._delete_cluster_request import DeleteClusterRequest
 from ._delete_cluster_response_body import DeleteClusterResponseBody
 from ._delete_cluster_response import DeleteClusterResponse
+from ._delete_cluster_node_pool_request import DeleteClusterNodePoolRequest
+from ._delete_cluster_node_pool_response_body import DeleteClusterNodePoolResponseBody
+from ._delete_cluster_node_pool_response import DeleteClusterNodePoolResponse
+from ._delete_cluster_nodes_request import DeleteClusterNodesRequest
+from ._delete_cluster_nodes_shrink_request import DeleteClusterNodesShrinkRequest
+from ._delete_cluster_nodes_response_body import DeleteClusterNodesResponseBody
+from ._delete_cluster_nodes_response import DeleteClusterNodesResponse
 from ._delete_disk_request import DeleteDiskRequest
 from ._delete_disk_response_body import DeleteDiskResponseBody
 from ._delete_disk_response import DeleteDiskResponse
@@ -314,6 +325,9 @@ from ._describe_armserver_instances_request import DescribeARMServerInstancesReq
 from ._describe_armserver_instances_shrink_request import DescribeARMServerInstancesShrinkRequest
 from ._describe_armserver_instances_response_body import DescribeARMServerInstancesResponseBody
 from ._describe_armserver_instances_response import DescribeARMServerInstancesResponse
+from ._describe_addon_request import DescribeAddonRequest
+from ._describe_addon_response_body import DescribeAddonResponseBody
+from ._describe_addon_response import DescribeAddonResponse
 from ._describe_application_request import DescribeApplicationRequest
 from ._describe_application_response_body import DescribeApplicationResponseBody
 from ._describe_application_response import DescribeApplicationResponse
@@ -335,9 +349,21 @@ from ._describe_cloud_disk_types_response import DescribeCloudDiskTypesResponse
 from ._describe_cluster_request import DescribeClusterRequest
 from ._describe_cluster_response_body import DescribeClusterResponseBody
 from ._describe_cluster_response import DescribeClusterResponse
+from ._describe_cluster_detail_request import DescribeClusterDetailRequest
+from ._describe_cluster_detail_response_body import DescribeClusterDetailResponseBody
+from ._describe_cluster_detail_response import DescribeClusterDetailResponse
 from ._describe_cluster_kube_config_request import DescribeClusterKubeConfigRequest
 from ._describe_cluster_kube_config_response_body import DescribeClusterKubeConfigResponseBody
 from ._describe_cluster_kube_config_response import DescribeClusterKubeConfigResponse
+from ._describe_cluster_node_pools_request import DescribeClusterNodePoolsRequest
+from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBody
+from ._describe_cluster_node_pools_response import DescribeClusterNodePoolsResponse
+from ._describe_cluster_nodes_request import DescribeClusterNodesRequest
+from ._describe_cluster_nodes_response_body import DescribeClusterNodesResponseBody
+from ._describe_cluster_nodes_response import DescribeClusterNodesResponse
+from ._describe_cluster_user_kubeconfig_request import DescribeClusterUserKubeconfigRequest
+from ._describe_cluster_user_kubeconfig_response_body import DescribeClusterUserKubeconfigResponseBody
+from ._describe_cluster_user_kubeconfig_response import DescribeClusterUserKubeconfigResponse
 from ._describe_clusters_v1request import DescribeClustersV1Request
 from ._describe_clusters_v1response_body import DescribeClustersV1ResponseBody
 from ._describe_clusters_v1response import DescribeClustersV1Response
@@ -656,6 +682,9 @@ from ._get_bucket_info_response import GetBucketInfoResponse
 from ._get_bucket_lifecycle_request import GetBucketLifecycleRequest
 from ._get_bucket_lifecycle_response_body import GetBucketLifecycleResponseBody
 from ._get_bucket_lifecycle_response import GetBucketLifecycleResponse
+from ._get_cluster_addon_instance_request import GetClusterAddonInstanceRequest
+from ._get_cluster_addon_instance_response_body import GetClusterAddonInstanceResponseBody
+from ._get_cluster_addon_instance_response import GetClusterAddonInstanceResponse
 from ._get_oss_storage_and_acc_by_buckets_request import GetOssStorageAndAccByBucketsRequest
 from ._get_oss_storage_and_acc_by_buckets_response_body import GetOssStorageAndAccByBucketsResponseBody
 from ._get_oss_storage_and_acc_by_buckets_response import GetOssStorageAndAccByBucketsResponse
@@ -671,6 +700,10 @@ from ._import_key_pair_response_body import ImportKeyPairResponseBody
 from ._import_key_pair_response import ImportKeyPairResponse
 from ._initialize_enseckservice_role_response_body import InitializeENSECKServiceRoleResponseBody
 from ._initialize_enseckservice_role_response import InitializeENSECKServiceRoleResponse
+from ._install_cluster_addons_request import InstallClusterAddonsRequest
+from ._install_cluster_addons_shrink_request import InstallClusterAddonsShrinkRequest
+from ._install_cluster_addons_response_body import InstallClusterAddonsResponseBody
+from ._install_cluster_addons_response import InstallClusterAddonsResponse
 from ._join_public_ips_to_epn_instance_request import JoinPublicIpsToEpnInstanceRequest
 from ._join_public_ips_to_epn_instance_response_body import JoinPublicIpsToEpnInstanceResponseBody
 from ._join_public_ips_to_epn_instance_response import JoinPublicIpsToEpnInstanceResponse
@@ -711,6 +744,14 @@ from ._list_tag_resources_response import ListTagResourcesResponse
 from ._manage_aiclogin_request import ManageAICLoginRequest
 from ._manage_aiclogin_response_body import ManageAICLoginResponseBody
 from ._manage_aiclogin_response import ManageAICLoginResponse
+from ._modify_cluster_addon_request import ModifyClusterAddonRequest
+from ._modify_cluster_addon_shrink_request import ModifyClusterAddonShrinkRequest
+from ._modify_cluster_addon_response_body import ModifyClusterAddonResponseBody
+from ._modify_cluster_addon_response import ModifyClusterAddonResponse
+from ._modify_cluster_node_pool_request import ModifyClusterNodePoolRequest
+from ._modify_cluster_node_pool_shrink_request import ModifyClusterNodePoolShrinkRequest
+from ._modify_cluster_node_pool_response_body import ModifyClusterNodePoolResponseBody
+from ._modify_cluster_node_pool_response import ModifyClusterNodePoolResponse
 from ._modify_ens_eip_address_attribute_request import ModifyEnsEipAddressAttributeRequest
 from ._modify_ens_eip_address_attribute_response_body import ModifyEnsEipAddressAttributeResponseBody
 from ._modify_ens_eip_address_attribute_response import ModifyEnsEipAddressAttributeResponse
@@ -902,6 +943,10 @@ from ._run_service_schedule_response import RunServiceScheduleResponse
 from ._save_sdgrequest import SaveSDGRequest
 from ._save_sdgresponse_body import SaveSDGResponseBody
 from ._save_sdgresponse import SaveSDGResponse
+from ._scale_cluster_node_pool_request import ScaleClusterNodePoolRequest
+from ._scale_cluster_node_pool_shrink_request import ScaleClusterNodePoolShrinkRequest
+from ._scale_cluster_node_pool_response_body import ScaleClusterNodePoolResponseBody
+from ._scale_cluster_node_pool_response import ScaleClusterNodePoolResponse
 from ._set_backend_servers_request import SetBackendServersRequest
 from ._set_backend_servers_shrink_request import SetBackendServersShrinkRequest
 from ._set_backend_servers_response_body import SetBackendServersResponseBody
@@ -963,6 +1008,10 @@ from ._tag_resources_response import TagResourcesResponse
 from ._un_associate_ens_eip_address_request import UnAssociateEnsEipAddressRequest
 from ._un_associate_ens_eip_address_response_body import UnAssociateEnsEipAddressResponseBody
 from ._un_associate_ens_eip_address_response import UnAssociateEnsEipAddressResponse
+from ._un_install_cluster_addons_request import UnInstallClusterAddonsRequest
+from ._un_install_cluster_addons_shrink_request import UnInstallClusterAddonsShrinkRequest
+from ._un_install_cluster_addons_response_body import UnInstallClusterAddonsResponseBody
+from ._un_install_cluster_addons_response import UnInstallClusterAddonsResponse
 from ._unassign_private_ip_addresses_request import UnassignPrivateIpAddressesRequest
 from ._unassign_private_ip_addresses_response_body import UnassignPrivateIpAddressesResponseBody
 from ._unassign_private_ip_addresses_response import UnassignPrivateIpAddressesResponse
@@ -994,6 +1043,10 @@ from ._upgrade_aicinstance_image_response import UpgradeAICInstanceImageResponse
 from ._upgrade_application_request import UpgradeApplicationRequest
 from ._upgrade_application_response_body import UpgradeApplicationResponseBody
 from ._upgrade_application_response import UpgradeApplicationResponse
+from ._upgrade_cluster_addons_request import UpgradeClusterAddonsRequest
+from ._upgrade_cluster_addons_shrink_request import UpgradeClusterAddonsShrinkRequest
+from ._upgrade_cluster_addons_response_body import UpgradeClusterAddonsResponseBody
+from ._upgrade_cluster_addons_response import UpgradeClusterAddonsResponse
 from ._upload_aicpublic_key_request import UploadAICPublicKeyRequest
 from ._upload_aicpublic_key_response_body import UploadAICPublicKeyResponseBody
 from ._upload_aicpublic_key_response import UploadAICPublicKeyResponse
@@ -1020,6 +1073,16 @@ from ._copy_snapshot_response_body import CopySnapshotResponseBodyAllocationId
 from ._copy_snapshot_response_body import CopySnapshotResponseBodyUnAllocationId
 from ._create_armserver_instances_request import CreateARMServerInstancesRequestTag
 from ._create_cluster_request import CreateClusterRequestControlPlaneConfig
+from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestKubernetesConfig
+from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestNodepoolInfo
+from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestScalingGroupDataDisks
+from ._create_cluster_node_pool_request import CreateClusterNodePoolRequestScalingGroup
+from ._create_cluster_node_pool_response_body import CreateClusterNodePoolResponseBodyNodepoolKubernetesConfig
+from ._create_cluster_node_pool_response_body import CreateClusterNodePoolResponseBodyNodepoolNodepoolInfo
+from ._create_cluster_node_pool_response_body import CreateClusterNodePoolResponseBodyNodepoolScalingGroupDataDisks
+from ._create_cluster_node_pool_response_body import CreateClusterNodePoolResponseBodyNodepoolScalingGroup
+from ._create_cluster_node_pool_response_body import CreateClusterNodePoolResponseBodyNodepoolStatus
+from ._create_cluster_node_pool_response_body import CreateClusterNodePoolResponseBodyNodepool
 from ._create_disk_request import CreateDiskRequestTag
 from ._create_eip_instance_request import CreateEipInstanceRequestTag
 from ._create_ens_sale_control_request import CreateEnsSaleControlRequestSaleControlsConditionControls
@@ -1038,6 +1101,7 @@ from ._create_storage_gateway_request import CreateStorageGatewayRequestOrderDet
 from ._create_storage_gateway_response_body import CreateStorageGatewayResponseBodyAllocationId
 from ._create_storage_gateway_response_body import CreateStorageGatewayResponseBodyUnAllocationId
 from ._create_vswitch_request import CreateVSwitchRequestTag
+from ._delete_cluster_nodes_request import DeleteClusterNodesRequestBody
 from ._delete_ens_sale_condition_control_request import DeleteEnsSaleConditionControlRequestSaleControlsConditionControls
 from ._delete_ens_sale_condition_control_request import DeleteEnsSaleConditionControlRequestSaleControls
 from ._delete_ens_sale_control_request import DeleteEnsSaleControlRequestSaleControls
@@ -1059,6 +1123,8 @@ from ._describe_armserver_instances_response_body import DescribeARMServerInstan
 from ._describe_armserver_instances_response_body import DescribeARMServerInstancesResponseBodyServersAICInstances
 from ._describe_armserver_instances_response_body import DescribeARMServerInstancesResponseBodyServersTags
 from ._describe_armserver_instances_response_body import DescribeARMServerInstancesResponseBodyServers
+from ._describe_addon_response_body import DescribeAddonResponseBodyAddonsConfigSchema
+from ._describe_addon_response_body import DescribeAddonResponseBodyAddons
 from ._describe_available_resource_response_body import DescribeAvailableResourceResponseBodyImagesImage
 from ._describe_available_resource_response_body import DescribeAvailableResourceResponseBodyImages
 from ._describe_available_resource_response_body import DescribeAvailableResourceResponseBodySupportResourcesSupportResource
@@ -1079,6 +1145,16 @@ from ._describe_cloud_disk_available_resource_info_response_body import Describe
 from ._describe_cloud_disk_types_response_body import DescribeCloudDiskTypesResponseBodySupportResourcesSupportResource
 from ._describe_cloud_disk_types_response_body import DescribeCloudDiskTypesResponseBodySupportResources
 from ._describe_cluster_response_body import DescribeClusterResponseBodyClusters
+from ._describe_cluster_detail_response_body import DescribeClusterDetailResponseBodyControlPlaneConfig
+from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodePoolsKubernetesConfig
+from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodePoolsNodepoolInfo
+from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodePoolsScalingGroupDataDisks
+from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodePoolsScalingGroup
+from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodePoolsStatus
+from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyNodePools
+from ._describe_cluster_node_pools_response_body import DescribeClusterNodePoolsResponseBodyPage
+from ._describe_cluster_nodes_response_body import DescribeClusterNodesResponseBodyNodes
+from ._describe_cluster_nodes_response_body import DescribeClusterNodesResponseBodyPage
 from ._describe_clusters_v1response_body import DescribeClustersV1ResponseBodyClustersControlPlaneConfig
 from ._describe_clusters_v1response_body import DescribeClustersV1ResponseBodyClusters
 from ._describe_create_pre_paid_instance_result_response_body import DescribeCreatePrePaidInstanceResultResponseBodyInstanceCreateResult
@@ -1361,9 +1437,12 @@ from ._dist_application_data_response_body import DistApplicationDataResponseBod
 from ._get_bucket_info_response_body import GetBucketInfoResponseBodyBucketInfo
 from ._get_bucket_lifecycle_response_body import GetBucketLifecycleResponseBodyRuleExpiration
 from ._get_bucket_lifecycle_response_body import GetBucketLifecycleResponseBodyRule
+from ._get_cluster_addon_instance_response_body import GetClusterAddonInstanceResponseBodyConfigSchema
 from ._get_oss_storage_and_acc_by_buckets_response_body import GetOssStorageAndAccByBucketsResponseBodyBucketList
 from ._get_oss_usage_data_response_body import GetOssUsageDataResponseBodyUsageList
 from ._import_image_request import ImportImageRequestDiskDeviceMapping
+from ._install_cluster_addons_request import InstallClusterAddonsRequestAddonsConfigSchema
+from ._install_cluster_addons_request import InstallClusterAddonsRequestAddons
 from ._list_aicpublic_key_deliveries_response_body import ListAICPublicKeyDeliveriesResponseBodyPublicKeyDeliverInfo
 from ._list_aicpublic_keys_response_body import ListAICPublicKeysResponseBodyPublicKeys
 from ._list_addons_response_body import ListAddonsResponseBodyAddonsConfigSchema
@@ -1378,6 +1457,12 @@ from ._list_cluster_addon_instances_response_body import ListClusterAddonInstanc
 from ._list_objects_response_body import ListObjectsResponseBodyContents
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._modify_cluster_addon_request import ModifyClusterAddonRequestAddonConfigSchema
+from ._modify_cluster_addon_request import ModifyClusterAddonRequestAddon
+from ._modify_cluster_node_pool_request import ModifyClusterNodePoolRequestKubernetesConfig
+from ._modify_cluster_node_pool_request import ModifyClusterNodePoolRequestNodepoolInfo
+from ._modify_cluster_node_pool_request import ModifyClusterNodePoolRequestScalingGroupDataDisks
+from ._modify_cluster_node_pool_request import ModifyClusterNodePoolRequestScalingGroup
 from ._mount_instance_sdgresponse_body import MountInstanceSDGResponseBodyDataResultFailedItems
 from ._mount_instance_sdgresponse_body import MountInstanceSDGResponseBodyDataResult
 from ._mount_instance_sdgresponse_body import MountInstanceSDGResponseBodyData
@@ -1402,10 +1487,12 @@ from ._run_instances_request import RunInstancesRequestTag
 from ._run_instances_shrink_request import RunInstancesShrinkRequestTag
 from ._run_service_schedule_response_body import RunServiceScheduleResponseBodyCommandResultsCommandResult
 from ._run_service_schedule_response_body import RunServiceScheduleResponseBodyCommandResults
+from ._scale_cluster_node_pool_request import ScaleClusterNodePoolRequestBody
 from ._set_backend_servers_request import SetBackendServersRequestBackendServers
 from ._set_backend_servers_response_body import SetBackendServersResponseBodyBackendServersBackendServer
 from ._set_backend_servers_response_body import SetBackendServersResponseBodyBackendServers
 from ._tag_resources_request import TagResourcesRequestTag
+from ._un_install_cluster_addons_request import UnInstallClusterAddonsRequestAddons
 from ._unassociate_network_acl_request import UnassociateNetworkAclRequestResource
 from ._unload_region_sdgresponse_body import UnloadRegionSDGResponseBodyDataResultFailedItems
 from ._unload_region_sdgresponse_body import UnloadRegionSDGResponseBodyDataResult
@@ -1416,6 +1503,8 @@ from ._unmount_instance_sdgresponse_body import UnmountInstanceSDGResponseBodyDa
 from ._update_ens_sale_control_request import UpdateEnsSaleControlRequestSaleControlsConditionControls
 from ._update_ens_sale_control_request import UpdateEnsSaleControlRequestSaleControlsModuleValue
 from ._update_ens_sale_control_request import UpdateEnsSaleControlRequestSaleControls
+from ._upgrade_cluster_addons_request import UpgradeClusterAddonsRequestAddonsConfigSchema
+from ._upgrade_cluster_addons_request import UpgradeClusterAddonsRequestAddons
 
 __all__ = [
     BucketInfo,
@@ -1507,6 +1596,10 @@ __all__ = [
     CreateClusterShrinkRequest,
     CreateClusterResponseBody,
     CreateClusterResponse,
+    CreateClusterNodePoolRequest,
+    CreateClusterNodePoolShrinkRequest,
+    CreateClusterNodePoolResponseBody,
+    CreateClusterNodePoolResponse,
     CreateDiskRequest,
     CreateDiskResponseBody,
     CreateDiskResponse,
@@ -1625,6 +1718,13 @@ __all__ = [
     DeleteClusterRequest,
     DeleteClusterResponseBody,
     DeleteClusterResponse,
+    DeleteClusterNodePoolRequest,
+    DeleteClusterNodePoolResponseBody,
+    DeleteClusterNodePoolResponse,
+    DeleteClusterNodesRequest,
+    DeleteClusterNodesShrinkRequest,
+    DeleteClusterNodesResponseBody,
+    DeleteClusterNodesResponse,
     DeleteDiskRequest,
     DeleteDiskResponseBody,
     DeleteDiskResponse,
@@ -1730,6 +1830,9 @@ __all__ = [
     DescribeARMServerInstancesShrinkRequest,
     DescribeARMServerInstancesResponseBody,
     DescribeARMServerInstancesResponse,
+    DescribeAddonRequest,
+    DescribeAddonResponseBody,
+    DescribeAddonResponse,
     DescribeApplicationRequest,
     DescribeApplicationResponseBody,
     DescribeApplicationResponse,
@@ -1751,9 +1854,21 @@ __all__ = [
     DescribeClusterRequest,
     DescribeClusterResponseBody,
     DescribeClusterResponse,
+    DescribeClusterDetailRequest,
+    DescribeClusterDetailResponseBody,
+    DescribeClusterDetailResponse,
     DescribeClusterKubeConfigRequest,
     DescribeClusterKubeConfigResponseBody,
     DescribeClusterKubeConfigResponse,
+    DescribeClusterNodePoolsRequest,
+    DescribeClusterNodePoolsResponseBody,
+    DescribeClusterNodePoolsResponse,
+    DescribeClusterNodesRequest,
+    DescribeClusterNodesResponseBody,
+    DescribeClusterNodesResponse,
+    DescribeClusterUserKubeconfigRequest,
+    DescribeClusterUserKubeconfigResponseBody,
+    DescribeClusterUserKubeconfigResponse,
     DescribeClustersV1Request,
     DescribeClustersV1ResponseBody,
     DescribeClustersV1Response,
@@ -2072,6 +2187,9 @@ __all__ = [
     GetBucketLifecycleRequest,
     GetBucketLifecycleResponseBody,
     GetBucketLifecycleResponse,
+    GetClusterAddonInstanceRequest,
+    GetClusterAddonInstanceResponseBody,
+    GetClusterAddonInstanceResponse,
     GetOssStorageAndAccByBucketsRequest,
     GetOssStorageAndAccByBucketsResponseBody,
     GetOssStorageAndAccByBucketsResponse,
@@ -2087,6 +2205,10 @@ __all__ = [
     ImportKeyPairResponse,
     InitializeENSECKServiceRoleResponseBody,
     InitializeENSECKServiceRoleResponse,
+    InstallClusterAddonsRequest,
+    InstallClusterAddonsShrinkRequest,
+    InstallClusterAddonsResponseBody,
+    InstallClusterAddonsResponse,
     JoinPublicIpsToEpnInstanceRequest,
     JoinPublicIpsToEpnInstanceResponseBody,
     JoinPublicIpsToEpnInstanceResponse,
@@ -2127,6 +2249,14 @@ __all__ = [
     ManageAICLoginRequest,
     ManageAICLoginResponseBody,
     ManageAICLoginResponse,
+    ModifyClusterAddonRequest,
+    ModifyClusterAddonShrinkRequest,
+    ModifyClusterAddonResponseBody,
+    ModifyClusterAddonResponse,
+    ModifyClusterNodePoolRequest,
+    ModifyClusterNodePoolShrinkRequest,
+    ModifyClusterNodePoolResponseBody,
+    ModifyClusterNodePoolResponse,
     ModifyEnsEipAddressAttributeRequest,
     ModifyEnsEipAddressAttributeResponseBody,
     ModifyEnsEipAddressAttributeResponse,
@@ -2318,6 +2448,10 @@ __all__ = [
     SaveSDGRequest,
     SaveSDGResponseBody,
     SaveSDGResponse,
+    ScaleClusterNodePoolRequest,
+    ScaleClusterNodePoolShrinkRequest,
+    ScaleClusterNodePoolResponseBody,
+    ScaleClusterNodePoolResponse,
     SetBackendServersRequest,
     SetBackendServersShrinkRequest,
     SetBackendServersResponseBody,
@@ -2379,6 +2513,10 @@ __all__ = [
     UnAssociateEnsEipAddressRequest,
     UnAssociateEnsEipAddressResponseBody,
     UnAssociateEnsEipAddressResponse,
+    UnInstallClusterAddonsRequest,
+    UnInstallClusterAddonsShrinkRequest,
+    UnInstallClusterAddonsResponseBody,
+    UnInstallClusterAddonsResponse,
     UnassignPrivateIpAddressesRequest,
     UnassignPrivateIpAddressesResponseBody,
     UnassignPrivateIpAddressesResponse,
@@ -2410,6 +2548,10 @@ __all__ = [
     UpgradeApplicationRequest,
     UpgradeApplicationResponseBody,
     UpgradeApplicationResponse,
+    UpgradeClusterAddonsRequest,
+    UpgradeClusterAddonsShrinkRequest,
+    UpgradeClusterAddonsResponseBody,
+    UpgradeClusterAddonsResponse,
     UploadAICPublicKeyRequest,
     UploadAICPublicKeyResponseBody,
     UploadAICPublicKeyResponse,
@@ -2436,6 +2578,16 @@ __all__ = [
     CopySnapshotResponseBodyUnAllocationId,
     CreateARMServerInstancesRequestTag,
     CreateClusterRequestControlPlaneConfig,
+    CreateClusterNodePoolRequestKubernetesConfig,
+    CreateClusterNodePoolRequestNodepoolInfo,
+    CreateClusterNodePoolRequestScalingGroupDataDisks,
+    CreateClusterNodePoolRequestScalingGroup,
+    CreateClusterNodePoolResponseBodyNodepoolKubernetesConfig,
+    CreateClusterNodePoolResponseBodyNodepoolNodepoolInfo,
+    CreateClusterNodePoolResponseBodyNodepoolScalingGroupDataDisks,
+    CreateClusterNodePoolResponseBodyNodepoolScalingGroup,
+    CreateClusterNodePoolResponseBodyNodepoolStatus,
+    CreateClusterNodePoolResponseBodyNodepool,
     CreateDiskRequestTag,
     CreateEipInstanceRequestTag,
     CreateEnsSaleControlRequestSaleControlsConditionControls,
@@ -2454,6 +2606,7 @@ __all__ = [
     CreateStorageGatewayResponseBodyAllocationId,
     CreateStorageGatewayResponseBodyUnAllocationId,
     CreateVSwitchRequestTag,
+    DeleteClusterNodesRequestBody,
     DeleteEnsSaleConditionControlRequestSaleControlsConditionControls,
     DeleteEnsSaleConditionControlRequestSaleControls,
     DeleteEnsSaleControlRequestSaleControls,
@@ -2475,6 +2628,8 @@ __all__ = [
     DescribeARMServerInstancesResponseBodyServersAICInstances,
     DescribeARMServerInstancesResponseBodyServersTags,
     DescribeARMServerInstancesResponseBodyServers,
+    DescribeAddonResponseBodyAddonsConfigSchema,
+    DescribeAddonResponseBodyAddons,
     DescribeAvailableResourceResponseBodyImagesImage,
     DescribeAvailableResourceResponseBodyImages,
     DescribeAvailableResourceResponseBodySupportResourcesSupportResource,
@@ -2495,6 +2650,16 @@ __all__ = [
     DescribeCloudDiskTypesResponseBodySupportResourcesSupportResource,
     DescribeCloudDiskTypesResponseBodySupportResources,
     DescribeClusterResponseBodyClusters,
+    DescribeClusterDetailResponseBodyControlPlaneConfig,
+    DescribeClusterNodePoolsResponseBodyNodePoolsKubernetesConfig,
+    DescribeClusterNodePoolsResponseBodyNodePoolsNodepoolInfo,
+    DescribeClusterNodePoolsResponseBodyNodePoolsScalingGroupDataDisks,
+    DescribeClusterNodePoolsResponseBodyNodePoolsScalingGroup,
+    DescribeClusterNodePoolsResponseBodyNodePoolsStatus,
+    DescribeClusterNodePoolsResponseBodyNodePools,
+    DescribeClusterNodePoolsResponseBodyPage,
+    DescribeClusterNodesResponseBodyNodes,
+    DescribeClusterNodesResponseBodyPage,
     DescribeClustersV1ResponseBodyClustersControlPlaneConfig,
     DescribeClustersV1ResponseBodyClusters,
     DescribeCreatePrePaidInstanceResultResponseBodyInstanceCreateResult,
@@ -2777,9 +2942,12 @@ __all__ = [
     GetBucketInfoResponseBodyBucketInfo,
     GetBucketLifecycleResponseBodyRuleExpiration,
     GetBucketLifecycleResponseBodyRule,
+    GetClusterAddonInstanceResponseBodyConfigSchema,
     GetOssStorageAndAccByBucketsResponseBodyBucketList,
     GetOssUsageDataResponseBodyUsageList,
     ImportImageRequestDiskDeviceMapping,
+    InstallClusterAddonsRequestAddonsConfigSchema,
+    InstallClusterAddonsRequestAddons,
     ListAICPublicKeyDeliveriesResponseBodyPublicKeyDeliverInfo,
     ListAICPublicKeysResponseBodyPublicKeys,
     ListAddonsResponseBodyAddonsConfigSchema,
@@ -2794,6 +2962,12 @@ __all__ = [
     ListObjectsResponseBodyContents,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResources,
+    ModifyClusterAddonRequestAddonConfigSchema,
+    ModifyClusterAddonRequestAddon,
+    ModifyClusterNodePoolRequestKubernetesConfig,
+    ModifyClusterNodePoolRequestNodepoolInfo,
+    ModifyClusterNodePoolRequestScalingGroupDataDisks,
+    ModifyClusterNodePoolRequestScalingGroup,
     MountInstanceSDGResponseBodyDataResultFailedItems,
     MountInstanceSDGResponseBodyDataResult,
     MountInstanceSDGResponseBodyData,
@@ -2818,10 +2992,12 @@ __all__ = [
     RunInstancesShrinkRequestTag,
     RunServiceScheduleResponseBodyCommandResultsCommandResult,
     RunServiceScheduleResponseBodyCommandResults,
+    ScaleClusterNodePoolRequestBody,
     SetBackendServersRequestBackendServers,
     SetBackendServersResponseBodyBackendServersBackendServer,
     SetBackendServersResponseBodyBackendServers,
     TagResourcesRequestTag,
+    UnInstallClusterAddonsRequestAddons,
     UnassociateNetworkAclRequestResource,
     UnloadRegionSDGResponseBodyDataResultFailedItems,
     UnloadRegionSDGResponseBodyDataResult,
@@ -2831,5 +3007,7 @@ __all__ = [
     UnmountInstanceSDGResponseBodyData,
     UpdateEnsSaleControlRequestSaleControlsConditionControls,
     UpdateEnsSaleControlRequestSaleControlsModuleValue,
-    UpdateEnsSaleControlRequestSaleControls
+    UpdateEnsSaleControlRequestSaleControls,
+    UpgradeClusterAddonsRequestAddonsConfigSchema,
+    UpgradeClusterAddonsRequestAddons
 ]

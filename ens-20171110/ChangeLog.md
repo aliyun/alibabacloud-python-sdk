@@ -1,3 +1,21 @@
+2026-01-16 Version: 9.10.0
+- Support API CreateClusterNodePool.
+- Support API DeleteClusterNodePool.
+- Support API DeleteClusterNodes.
+- Support API DescribeAddon.
+- Support API DescribeClusterDetail.
+- Support API DescribeClusterNodePools.
+- Support API DescribeClusterNodes.
+- Support API DescribeClusterUserKubeconfig.
+- Support API GetClusterAddonInstance.
+- Support API InstallClusterAddons.
+- Support API ModifyClusterAddon.
+- Support API ModifyClusterNodePool.
+- Support API ScaleClusterNodePool.
+- Support API UnInstallClusterAddons.
+- Support API UpgradeClusterAddons.
+
+
 2026-01-14 Version: 9.9.0
 - Support API DeleteCluster.
 

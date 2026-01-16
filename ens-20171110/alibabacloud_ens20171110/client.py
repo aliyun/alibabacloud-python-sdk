@@ -2014,6 +2014,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_cluster_with_options_async(request, runtime)
 
+    def create_cluster_node_pool_with_options(
+        self,
+        tmp_req: main_models.CreateClusterNodePoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateClusterNodePoolResponse:
+        tmp_req.validate()
+        request = main_models.CreateClusterNodePoolShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.kubernetes_config):
+            request.kubernetes_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.kubernetes_config, 'KubernetesConfig', 'json')
+        if not DaraCore.is_null(tmp_req.nodepool_info):
+            request.nodepool_info_shrink = Utils.array_to_string_with_specified_style(tmp_req.nodepool_info, 'NodepoolInfo', 'json')
+        if not DaraCore.is_null(tmp_req.scaling_group):
+            request.scaling_group_shrink = Utils.array_to_string_with_specified_style(tmp_req.scaling_group, 'ScalingGroup', 'json')
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.kubernetes_config_shrink):
+            query['KubernetesConfig'] = request.kubernetes_config_shrink
+        if not DaraCore.is_null(request.nodepool_info_shrink):
+            query['NodepoolInfo'] = request.nodepool_info_shrink
+        if not DaraCore.is_null(request.scaling_group_shrink):
+            query['ScalingGroup'] = request.scaling_group_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateClusterNodePool',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateClusterNodePoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cluster_node_pool_with_options_async(
+        self,
+        tmp_req: main_models.CreateClusterNodePoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateClusterNodePoolResponse:
+        tmp_req.validate()
+        request = main_models.CreateClusterNodePoolShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.kubernetes_config):
+            request.kubernetes_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.kubernetes_config, 'KubernetesConfig', 'json')
+        if not DaraCore.is_null(tmp_req.nodepool_info):
+            request.nodepool_info_shrink = Utils.array_to_string_with_specified_style(tmp_req.nodepool_info, 'NodepoolInfo', 'json')
+        if not DaraCore.is_null(tmp_req.scaling_group):
+            request.scaling_group_shrink = Utils.array_to_string_with_specified_style(tmp_req.scaling_group, 'ScalingGroup', 'json')
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.kubernetes_config_shrink):
+            query['KubernetesConfig'] = request.kubernetes_config_shrink
+        if not DaraCore.is_null(request.nodepool_info_shrink):
+            query['NodepoolInfo'] = request.nodepool_info_shrink
+        if not DaraCore.is_null(request.scaling_group_shrink):
+            query['ScalingGroup'] = request.scaling_group_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateClusterNodePool',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateClusterNodePoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cluster_node_pool(
+        self,
+        request: main_models.CreateClusterNodePoolRequest,
+    ) -> main_models.CreateClusterNodePoolResponse:
+        runtime = RuntimeOptions()
+        return self.create_cluster_node_pool_with_options(request, runtime)
+
+    async def create_cluster_node_pool_async(
+        self,
+        request: main_models.CreateClusterNodePoolRequest,
+    ) -> main_models.CreateClusterNodePoolResponse:
+        runtime = RuntimeOptions()
+        return await self.create_cluster_node_pool_with_options_async(request, runtime)
+
     def create_disk_with_options(
         self,
         request: main_models.CreateDiskRequest,
@@ -5484,6 +5582,162 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_cluster_with_options_async(request, runtime)
 
+    def delete_cluster_node_pool_with_options(
+        self,
+        request: main_models.DeleteClusterNodePoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteClusterNodePoolResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.nodepool_id):
+            query['NodepoolId'] = request.nodepool_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteClusterNodePool',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteClusterNodePoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cluster_node_pool_with_options_async(
+        self,
+        request: main_models.DeleteClusterNodePoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteClusterNodePoolResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.nodepool_id):
+            query['NodepoolId'] = request.nodepool_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteClusterNodePool',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteClusterNodePoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cluster_node_pool(
+        self,
+        request: main_models.DeleteClusterNodePoolRequest,
+    ) -> main_models.DeleteClusterNodePoolResponse:
+        runtime = RuntimeOptions()
+        return self.delete_cluster_node_pool_with_options(request, runtime)
+
+    async def delete_cluster_node_pool_async(
+        self,
+        request: main_models.DeleteClusterNodePoolRequest,
+    ) -> main_models.DeleteClusterNodePoolResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_cluster_node_pool_with_options_async(request, runtime)
+
+    def delete_cluster_nodes_with_options(
+        self,
+        tmp_req: main_models.DeleteClusterNodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteClusterNodesResponse:
+        tmp_req.validate()
+        request = main_models.DeleteClusterNodesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'Body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.body_shrink):
+            query['Body'] = request.body_shrink
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteClusterNodes',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteClusterNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cluster_nodes_with_options_async(
+        self,
+        tmp_req: main_models.DeleteClusterNodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteClusterNodesResponse:
+        tmp_req.validate()
+        request = main_models.DeleteClusterNodesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'Body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.body_shrink):
+            query['Body'] = request.body_shrink
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteClusterNodes',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteClusterNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cluster_nodes(
+        self,
+        request: main_models.DeleteClusterNodesRequest,
+    ) -> main_models.DeleteClusterNodesResponse:
+        runtime = RuntimeOptions()
+        return self.delete_cluster_nodes_with_options(request, runtime)
+
+    async def delete_cluster_nodes_async(
+        self,
+        request: main_models.DeleteClusterNodesRequest,
+    ) -> main_models.DeleteClusterNodesResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_cluster_nodes_with_options_async(request, runtime)
+
     def delete_disk_with_options(
         self,
         request: main_models.DeleteDiskRequest,
@@ -7912,6 +8166,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_armserver_instances_with_options_async(request, runtime)
 
+    def describe_addon_with_options(
+        self,
+        request: main_models.DescribeAddonRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAddonResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.addon_name):
+            query['AddonName'] = request.addon_name
+        if not DaraCore.is_null(request.addon_version):
+            query['AddonVersion'] = request.addon_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAddon',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAddonResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_addon_with_options_async(
+        self,
+        request: main_models.DescribeAddonRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAddonResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.addon_name):
+            query['AddonName'] = request.addon_name
+        if not DaraCore.is_null(request.addon_version):
+            query['AddonVersion'] = request.addon_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAddon',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAddonResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_addon(
+        self,
+        request: main_models.DescribeAddonRequest,
+    ) -> main_models.DescribeAddonResponse:
+        runtime = RuntimeOptions()
+        return self.describe_addon_with_options(request, runtime)
+
+    async def describe_addon_async(
+        self,
+        request: main_models.DescribeAddonRequest,
+    ) -> main_models.DescribeAddonResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_addon_with_options_async(request, runtime)
+
     def describe_application_with_options(
         self,
         request: main_models.DescribeApplicationRequest,
@@ -8424,6 +8752,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_cluster_with_options_async(request, runtime)
 
+    def describe_cluster_detail_with_options(
+        self,
+        request: main_models.DescribeClusterDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClusterDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeClusterDetail',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeClusterDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_detail_with_options_async(
+        self,
+        request: main_models.DescribeClusterDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClusterDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeClusterDetail',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeClusterDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cluster_detail(
+        self,
+        request: main_models.DescribeClusterDetailRequest,
+    ) -> main_models.DescribeClusterDetailResponse:
+        runtime = RuntimeOptions()
+        return self.describe_cluster_detail_with_options(request, runtime)
+
+    async def describe_cluster_detail_async(
+        self,
+        request: main_models.DescribeClusterDetailRequest,
+    ) -> main_models.DescribeClusterDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_cluster_detail_with_options_async(request, runtime)
+
     def describe_cluster_kube_config_with_options(
         self,
         request: main_models.DescribeClusterKubeConfigRequest,
@@ -8493,6 +8891,236 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeClusterKubeConfigResponse:
         runtime = RuntimeOptions()
         return await self.describe_cluster_kube_config_with_options_async(request, runtime)
+
+    def describe_cluster_node_pools_with_options(
+        self,
+        request: main_models.DescribeClusterNodePoolsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClusterNodePoolsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeClusterNodePools',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeClusterNodePoolsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_node_pools_with_options_async(
+        self,
+        request: main_models.DescribeClusterNodePoolsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClusterNodePoolsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeClusterNodePools',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeClusterNodePoolsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cluster_node_pools(
+        self,
+        request: main_models.DescribeClusterNodePoolsRequest,
+    ) -> main_models.DescribeClusterNodePoolsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_cluster_node_pools_with_options(request, runtime)
+
+    async def describe_cluster_node_pools_async(
+        self,
+        request: main_models.DescribeClusterNodePoolsRequest,
+    ) -> main_models.DescribeClusterNodePoolsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_cluster_node_pools_with_options_async(request, runtime)
+
+    def describe_cluster_nodes_with_options(
+        self,
+        request: main_models.DescribeClusterNodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClusterNodesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.nodepool_id):
+            query['NodepoolId'] = request.nodepool_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeClusterNodes',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeClusterNodesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_nodes_with_options_async(
+        self,
+        request: main_models.DescribeClusterNodesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClusterNodesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.nodepool_id):
+            query['NodepoolId'] = request.nodepool_id
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeClusterNodes',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeClusterNodesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cluster_nodes(
+        self,
+        request: main_models.DescribeClusterNodesRequest,
+    ) -> main_models.DescribeClusterNodesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_cluster_nodes_with_options(request, runtime)
+
+    async def describe_cluster_nodes_async(
+        self,
+        request: main_models.DescribeClusterNodesRequest,
+    ) -> main_models.DescribeClusterNodesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_cluster_nodes_with_options_async(request, runtime)
+
+    def describe_cluster_user_kubeconfig_with_options(
+        self,
+        request: main_models.DescribeClusterUserKubeconfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClusterUserKubeconfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeClusterUserKubeconfig',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeClusterUserKubeconfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_cluster_user_kubeconfig_with_options_async(
+        self,
+        request: main_models.DescribeClusterUserKubeconfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeClusterUserKubeconfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeClusterUserKubeconfig',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeClusterUserKubeconfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_cluster_user_kubeconfig(
+        self,
+        request: main_models.DescribeClusterUserKubeconfigRequest,
+    ) -> main_models.DescribeClusterUserKubeconfigResponse:
+        runtime = RuntimeOptions()
+        return self.describe_cluster_user_kubeconfig_with_options(request, runtime)
+
+    async def describe_cluster_user_kubeconfig_async(
+        self,
+        request: main_models.DescribeClusterUserKubeconfigRequest,
+    ) -> main_models.DescribeClusterUserKubeconfigResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_cluster_user_kubeconfig_with_options_async(request, runtime)
 
     def describe_clusters_v1with_options(
         self,
@@ -16848,6 +17476,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_bucket_lifecycle_with_options_async(request, runtime)
 
+    def get_cluster_addon_instance_with_options(
+        self,
+        request: main_models.GetClusterAddonInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetClusterAddonInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetClusterAddonInstance',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetClusterAddonInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_cluster_addon_instance_with_options_async(
+        self,
+        request: main_models.GetClusterAddonInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetClusterAddonInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetClusterAddonInstance',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetClusterAddonInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_cluster_addon_instance(
+        self,
+        request: main_models.GetClusterAddonInstanceRequest,
+    ) -> main_models.GetClusterAddonInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.get_cluster_addon_instance_with_options(request, runtime)
+
+    async def get_cluster_addon_instance_async(
+        self,
+        request: main_models.GetClusterAddonInstanceRequest,
+    ) -> main_models.GetClusterAddonInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.get_cluster_addon_instance_with_options_async(request, runtime)
+
     def get_oss_storage_and_acc_by_buckets_with_options(
         self,
         request: main_models.GetOssStorageAndAccByBucketsRequest,
@@ -17229,6 +17931,88 @@ class Client(OpenApiClient):
     async def initialize_enseckservice_role_async(self) -> main_models.InitializeENSECKServiceRoleResponse:
         runtime = RuntimeOptions()
         return await self.initialize_enseckservice_role_with_options_async(runtime)
+
+    def install_cluster_addons_with_options(
+        self,
+        tmp_req: main_models.InstallClusterAddonsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallClusterAddonsResponse:
+        tmp_req.validate()
+        request = main_models.InstallClusterAddonsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.addons):
+            request.addons_shrink = Utils.array_to_string_with_specified_style(tmp_req.addons, 'Addons', 'json')
+        query = {}
+        if not DaraCore.is_null(request.addons_shrink):
+            query['Addons'] = request.addons_shrink
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InstallClusterAddons',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InstallClusterAddonsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def install_cluster_addons_with_options_async(
+        self,
+        tmp_req: main_models.InstallClusterAddonsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallClusterAddonsResponse:
+        tmp_req.validate()
+        request = main_models.InstallClusterAddonsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.addons):
+            request.addons_shrink = Utils.array_to_string_with_specified_style(tmp_req.addons, 'Addons', 'json')
+        query = {}
+        if not DaraCore.is_null(request.addons_shrink):
+            query['Addons'] = request.addons_shrink
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'InstallClusterAddons',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.InstallClusterAddonsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def install_cluster_addons(
+        self,
+        request: main_models.InstallClusterAddonsRequest,
+    ) -> main_models.InstallClusterAddonsResponse:
+        runtime = RuntimeOptions()
+        return self.install_cluster_addons_with_options(request, runtime)
+
+    async def install_cluster_addons_async(
+        self,
+        request: main_models.InstallClusterAddonsRequest,
+    ) -> main_models.InstallClusterAddonsResponse:
+        runtime = RuntimeOptions()
+        return await self.install_cluster_addons_with_options_async(request, runtime)
 
     def join_public_ips_to_epn_instance_with_options(
         self,
@@ -18313,6 +19097,190 @@ class Client(OpenApiClient):
     ) -> main_models.ManageAICLoginResponse:
         runtime = RuntimeOptions()
         return await self.manage_aiclogin_with_options_async(request, runtime)
+
+    def modify_cluster_addon_with_options(
+        self,
+        tmp_req: main_models.ModifyClusterAddonRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyClusterAddonResponse:
+        tmp_req.validate()
+        request = main_models.ModifyClusterAddonShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.addon):
+            request.addon_shrink = Utils.array_to_string_with_specified_style(tmp_req.addon, 'Addon', 'json')
+        query = {}
+        if not DaraCore.is_null(request.addon_shrink):
+            query['Addon'] = request.addon_shrink
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.component_name):
+            query['ComponentName'] = request.component_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyClusterAddon',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyClusterAddonResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_cluster_addon_with_options_async(
+        self,
+        tmp_req: main_models.ModifyClusterAddonRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyClusterAddonResponse:
+        tmp_req.validate()
+        request = main_models.ModifyClusterAddonShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.addon):
+            request.addon_shrink = Utils.array_to_string_with_specified_style(tmp_req.addon, 'Addon', 'json')
+        query = {}
+        if not DaraCore.is_null(request.addon_shrink):
+            query['Addon'] = request.addon_shrink
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.component_name):
+            query['ComponentName'] = request.component_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyClusterAddon',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyClusterAddonResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_cluster_addon(
+        self,
+        request: main_models.ModifyClusterAddonRequest,
+    ) -> main_models.ModifyClusterAddonResponse:
+        runtime = RuntimeOptions()
+        return self.modify_cluster_addon_with_options(request, runtime)
+
+    async def modify_cluster_addon_async(
+        self,
+        request: main_models.ModifyClusterAddonRequest,
+    ) -> main_models.ModifyClusterAddonResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_cluster_addon_with_options_async(request, runtime)
+
+    def modify_cluster_node_pool_with_options(
+        self,
+        tmp_req: main_models.ModifyClusterNodePoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyClusterNodePoolResponse:
+        tmp_req.validate()
+        request = main_models.ModifyClusterNodePoolShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.kubernetes_config):
+            request.kubernetes_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.kubernetes_config, 'KubernetesConfig', 'json')
+        if not DaraCore.is_null(tmp_req.nodepool_info):
+            request.nodepool_info_shrink = Utils.array_to_string_with_specified_style(tmp_req.nodepool_info, 'NodepoolInfo', 'json')
+        if not DaraCore.is_null(tmp_req.scaling_group):
+            request.scaling_group_shrink = Utils.array_to_string_with_specified_style(tmp_req.scaling_group, 'ScalingGroup', 'json')
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.kubernetes_config_shrink):
+            query['KubernetesConfig'] = request.kubernetes_config_shrink
+        if not DaraCore.is_null(request.nodepool_info_shrink):
+            query['NodepoolInfo'] = request.nodepool_info_shrink
+        if not DaraCore.is_null(request.scaling_group_shrink):
+            query['ScalingGroup'] = request.scaling_group_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyClusterNodePool',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyClusterNodePoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_cluster_node_pool_with_options_async(
+        self,
+        tmp_req: main_models.ModifyClusterNodePoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyClusterNodePoolResponse:
+        tmp_req.validate()
+        request = main_models.ModifyClusterNodePoolShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.kubernetes_config):
+            request.kubernetes_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.kubernetes_config, 'KubernetesConfig', 'json')
+        if not DaraCore.is_null(tmp_req.nodepool_info):
+            request.nodepool_info_shrink = Utils.array_to_string_with_specified_style(tmp_req.nodepool_info, 'NodepoolInfo', 'json')
+        if not DaraCore.is_null(tmp_req.scaling_group):
+            request.scaling_group_shrink = Utils.array_to_string_with_specified_style(tmp_req.scaling_group, 'ScalingGroup', 'json')
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.kubernetes_config_shrink):
+            query['KubernetesConfig'] = request.kubernetes_config_shrink
+        if not DaraCore.is_null(request.nodepool_info_shrink):
+            query['NodepoolInfo'] = request.nodepool_info_shrink
+        if not DaraCore.is_null(request.scaling_group_shrink):
+            query['ScalingGroup'] = request.scaling_group_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyClusterNodePool',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyClusterNodePoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_cluster_node_pool(
+        self,
+        request: main_models.ModifyClusterNodePoolRequest,
+    ) -> main_models.ModifyClusterNodePoolResponse:
+        runtime = RuntimeOptions()
+        return self.modify_cluster_node_pool_with_options(request, runtime)
+
+    async def modify_cluster_node_pool_async(
+        self,
+        request: main_models.ModifyClusterNodePoolRequest,
+    ) -> main_models.ModifyClusterNodePoolResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_cluster_node_pool_with_options_async(request, runtime)
 
     def modify_ens_eip_address_attribute_with_options(
         self,
@@ -23262,6 +24230,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.save_sdgwith_options_async(request, runtime)
 
+    def scale_cluster_node_pool_with_options(
+        self,
+        tmp_req: main_models.ScaleClusterNodePoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ScaleClusterNodePoolResponse:
+        tmp_req.validate()
+        request = main_models.ScaleClusterNodePoolShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'Body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.body_shrink):
+            query['Body'] = request.body_shrink
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.nodepool_id):
+            query['NodepoolId'] = request.nodepool_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ScaleClusterNodePool',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ScaleClusterNodePoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def scale_cluster_node_pool_with_options_async(
+        self,
+        tmp_req: main_models.ScaleClusterNodePoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ScaleClusterNodePoolResponse:
+        tmp_req.validate()
+        request = main_models.ScaleClusterNodePoolShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.body):
+            request.body_shrink = Utils.array_to_string_with_specified_style(tmp_req.body, 'Body', 'json')
+        query = {}
+        if not DaraCore.is_null(request.body_shrink):
+            query['Body'] = request.body_shrink
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.nodepool_id):
+            query['NodepoolId'] = request.nodepool_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ScaleClusterNodePool',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ScaleClusterNodePoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def scale_cluster_node_pool(
+        self,
+        request: main_models.ScaleClusterNodePoolRequest,
+    ) -> main_models.ScaleClusterNodePoolResponse:
+        runtime = RuntimeOptions()
+        return self.scale_cluster_node_pool_with_options(request, runtime)
+
+    async def scale_cluster_node_pool_async(
+        self,
+        request: main_models.ScaleClusterNodePoolRequest,
+    ) -> main_models.ScaleClusterNodePoolResponse:
+        runtime = RuntimeOptions()
+        return await self.scale_cluster_node_pool_with_options_async(request, runtime)
+
     def set_backend_servers_with_options(
         self,
         tmp_req: main_models.SetBackendServersRequest,
@@ -24912,6 +25966,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.un_associate_ens_eip_address_with_options_async(request, runtime)
 
+    def un_install_cluster_addons_with_options(
+        self,
+        tmp_req: main_models.UnInstallClusterAddonsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnInstallClusterAddonsResponse:
+        tmp_req.validate()
+        request = main_models.UnInstallClusterAddonsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.addons):
+            request.addons_shrink = Utils.array_to_string_with_specified_style(tmp_req.addons, 'Addons', 'json')
+        query = {}
+        if not DaraCore.is_null(request.addons_shrink):
+            query['Addons'] = request.addons_shrink
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnInstallClusterAddons',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnInstallClusterAddonsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def un_install_cluster_addons_with_options_async(
+        self,
+        tmp_req: main_models.UnInstallClusterAddonsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnInstallClusterAddonsResponse:
+        tmp_req.validate()
+        request = main_models.UnInstallClusterAddonsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.addons):
+            request.addons_shrink = Utils.array_to_string_with_specified_style(tmp_req.addons, 'Addons', 'json')
+        query = {}
+        if not DaraCore.is_null(request.addons_shrink):
+            query['Addons'] = request.addons_shrink
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnInstallClusterAddons',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnInstallClusterAddonsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def un_install_cluster_addons(
+        self,
+        request: main_models.UnInstallClusterAddonsRequest,
+    ) -> main_models.UnInstallClusterAddonsResponse:
+        runtime = RuntimeOptions()
+        return self.un_install_cluster_addons_with_options(request, runtime)
+
+    async def un_install_cluster_addons_async(
+        self,
+        request: main_models.UnInstallClusterAddonsRequest,
+    ) -> main_models.UnInstallClusterAddonsResponse:
+        runtime = RuntimeOptions()
+        return await self.un_install_cluster_addons_with_options_async(request, runtime)
+
     def unassign_private_ip_addresses_with_options(
         self,
         request: main_models.UnassignPrivateIpAddressesRequest,
@@ -25629,6 +26765,88 @@ class Client(OpenApiClient):
     ) -> main_models.UpgradeApplicationResponse:
         runtime = RuntimeOptions()
         return await self.upgrade_application_with_options_async(request, runtime)
+
+    def upgrade_cluster_addons_with_options(
+        self,
+        tmp_req: main_models.UpgradeClusterAddonsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradeClusterAddonsResponse:
+        tmp_req.validate()
+        request = main_models.UpgradeClusterAddonsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.addons):
+            request.addons_shrink = Utils.array_to_string_with_specified_style(tmp_req.addons, 'Addons', 'json')
+        query = {}
+        if not DaraCore.is_null(request.addons_shrink):
+            query['Addons'] = request.addons_shrink
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradeClusterAddons',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradeClusterAddonsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upgrade_cluster_addons_with_options_async(
+        self,
+        tmp_req: main_models.UpgradeClusterAddonsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradeClusterAddonsResponse:
+        tmp_req.validate()
+        request = main_models.UpgradeClusterAddonsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.addons):
+            request.addons_shrink = Utils.array_to_string_with_specified_style(tmp_req.addons, 'Addons', 'json')
+        query = {}
+        if not DaraCore.is_null(request.addons_shrink):
+            query['Addons'] = request.addons_shrink
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpgradeClusterAddons',
+            version = '2017-11-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpgradeClusterAddonsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upgrade_cluster_addons(
+        self,
+        request: main_models.UpgradeClusterAddonsRequest,
+    ) -> main_models.UpgradeClusterAddonsResponse:
+        runtime = RuntimeOptions()
+        return self.upgrade_cluster_addons_with_options(request, runtime)
+
+    async def upgrade_cluster_addons_async(
+        self,
+        request: main_models.UpgradeClusterAddonsRequest,
+    ) -> main_models.UpgradeClusterAddonsResponse:
+        runtime = RuntimeOptions()
+        return await self.upgrade_cluster_addons_with_options_async(request, runtime)
 
     def upload_aicpublic_key_with_options(
         self,
