@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._config_bucket_prefix_filter_config_value import ConfigBucketPrefixFilterConfigValue
 from ._add_answer_sample_request import AddAnswerSampleRequest
 from ._add_answer_sample_response_body import AddAnswerSampleResponseBody
 from ._add_answer_sample_response import AddAnswerSampleResponse
@@ -345,6 +346,7 @@ from ._update_oss_check_results_freeze_response_body import UpdateOssCheckResult
 from ._update_oss_check_results_unfreeze_response_body import UpdateOssCheckResultsUnfreezeResponseBodyData
 
 __all__ = [
+    ConfigBucketPrefixFilterConfigValue,
     AddAnswerSampleRequest,
     AddAnswerSampleResponseBody,
     AddAnswerSampleResponse,

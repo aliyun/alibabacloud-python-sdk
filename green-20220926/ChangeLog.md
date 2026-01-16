@@ -1,3 +1,9 @@
+2026-01-16 Version: 1.5.6
+- Update API CreatStockOssCheckTask: add request parameters BucketPrefixFilterConfig.
+- Update API CreatePreCheck: add request parameters BucketPrefixFilterConfig.
+- Update API GetOssCheckTaskInfo: add response parameters Body.Config.BucketPrefixFilterConfig.
+
+
 2026-01-12 Version: 1.5.5
 - Update API GetScanResult: add response parameters Body.Data.Items.$.AppId.
 - Update API GetScanResult: add response parameters Body.Data.Items.$.ImageUrls.

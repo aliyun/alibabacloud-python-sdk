@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreatePreCheckRequest(DaraModel):
     def __init__(
         self,
+        bucket_prefix_filter_config: str = None,
         buckets: str = None,
         distinct_history_tasks: bool = None,
         end_time: str = None,
@@ -22,6 +23,7 @@ class CreatePreCheckRequest(DaraModel):
         start_time: str = None,
         task_name: str = None,
     ):
+        self.bucket_prefix_filter_config = bucket_prefix_filter_config
         # Buckets.
         self.buckets = buckets
         # Whether to deduplicate historical detected tasks.
@@ -59,6 +61,9 @@ class CreatePreCheckRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.bucket_prefix_filter_config is not None:
+            result['BucketPrefixFilterConfig'] = self.bucket_prefix_filter_config
+
         if self.buckets is not None:
             result['Buckets'] = self.buckets
 
@@ -105,6 +110,9 @@ class CreatePreCheckRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BucketPrefixFilterConfig') is not None:
+            self.bucket_prefix_filter_config = m.get('BucketPrefixFilterConfig')
+
         if m.get('Buckets') is not None:
             self.buckets = m.get('Buckets')
 

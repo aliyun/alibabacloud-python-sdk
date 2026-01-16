@@ -738,6 +738,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreatStockOssCheckTaskResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.bucket_prefix_filter_config):
+            query['BucketPrefixFilterConfig'] = request.bucket_prefix_filter_config
         if not DaraCore.is_null(request.buckets):
             query['Buckets'] = request.buckets
         if not DaraCore.is_null(request.callback_id):
@@ -820,6 +822,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreatStockOssCheckTaskResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.bucket_prefix_filter_config):
+            query['BucketPrefixFilterConfig'] = request.bucket_prefix_filter_config
         if not DaraCore.is_null(request.buckets):
             query['Buckets'] = request.buckets
         if not DaraCore.is_null(request.callback_id):
@@ -1181,6 +1185,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
+        if not DaraCore.is_null(request.bucket_prefix_filter_config):
+            body['BucketPrefixFilterConfig'] = request.bucket_prefix_filter_config
         if not DaraCore.is_null(request.buckets):
             body['Buckets'] = request.buckets
         if not DaraCore.is_null(request.distinct_history_tasks):
@@ -1237,6 +1243,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         body = {}
+        if not DaraCore.is_null(request.bucket_prefix_filter_config):
+            body['BucketPrefixFilterConfig'] = request.bucket_prefix_filter_config
         if not DaraCore.is_null(request.buckets):
             body['Buckets'] = request.buckets
         if not DaraCore.is_null(request.distinct_history_tasks):

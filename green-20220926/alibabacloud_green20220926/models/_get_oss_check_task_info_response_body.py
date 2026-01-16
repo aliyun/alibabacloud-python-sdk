@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import Dict, List
 
 from alibabacloud_green20220926 import models as main_models
 from darabonba.model import DaraModel
@@ -159,6 +159,7 @@ class GetOssCheckTaskInfoResponseBody(DaraModel):
 class GetOssCheckTaskInfoResponseBodyConfig(DaraModel):
     def __init__(
         self,
+        bucket_prefix_filter_config: Dict[str, main_models.ConfigBucketPrefixFilterConfigValue] = None,
         callback_id: int = None,
         distinct_history_tasks: bool = None,
         end_time: str = None,
@@ -184,6 +185,7 @@ class GetOssCheckTaskInfoResponseBodyConfig(DaraModel):
         task_cycle: int = None,
         user_freeze_config: main_models.GetOssCheckTaskInfoResponseBodyConfigUserFreezeConfig = None,
     ):
+        self.bucket_prefix_filter_config = bucket_prefix_filter_config
         self.callback_id = callback_id
         self.distinct_history_tasks = distinct_history_tasks
         self.end_time = end_time
@@ -211,6 +213,10 @@ class GetOssCheckTaskInfoResponseBodyConfig(DaraModel):
         self.user_freeze_config = user_freeze_config
 
     def validate(self):
+        if self.bucket_prefix_filter_config:
+            for v1 in self.bucket_prefix_filter_config.values():
+                 if v1:
+                    v1.validate()
         if self.scan_service_infos:
             for v1 in self.scan_service_infos:
                  if v1:
@@ -223,6 +229,11 @@ class GetOssCheckTaskInfoResponseBodyConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['BucketPrefixFilterConfig'] = {}
+        if self.bucket_prefix_filter_config is not None:
+            for k1, v1 in self.bucket_prefix_filter_config.items():
+                result['BucketPrefixFilterConfig'][k1] = v1.to_map() if v1 else None
+
         if self.callback_id is not None:
             result['CallbackId'] = self.callback_id
 
@@ -301,6 +312,12 @@ class GetOssCheckTaskInfoResponseBodyConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.bucket_prefix_filter_config = {}
+        if m.get('BucketPrefixFilterConfig') is not None:
+            for k1, v1 in m.get('BucketPrefixFilterConfig').items():
+                temp_model = main_models.ConfigBucketPrefixFilterConfigValue()
+                self.bucket_prefix_filter_config[k1] = temp_model.from_map(v1)
+
         if m.get('CallbackId') is not None:
             self.callback_id = m.get('CallbackId')
 
