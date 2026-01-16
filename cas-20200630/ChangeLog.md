@@ -1,3 +1,18 @@
+2026-01-16 Version: 2.0.0
+- Update API CreateClientCertificate: add request parameters AliasName.
+- Update API CreateClientCertificate: add request parameters ClientToken.
+- Update API DescribeClientCertificate: add response parameters Body.Certificate.AliasName.
+- Update API DescribeClientCertificate: add response parameters Body.Certificate.FullAlgorithm.
+- Update API DescribeClientCertificate: add response parameters Body.Certificate.Id.
+- Update API DescribeClientCertificate: add response parameters Body.Certificate.UploadFlag.
+- Update API ListCert: add request parameters ParentIdentifier.
+- Update API ListCert: update response parameters Body.List.$.Id' type has changed.
+- Update API ListCert: update response parameters Body.List.$.Id' format has changed.
+- Update API ListClientCertificate: add response parameters Body.MaxResults.
+- Update API ListClientCertificate: add response parameters Body.CertificateList.$.AliasName.
+- Update API ListClientCertificate: add response parameters Body.CertificateList.$.Id.
+
+
 2025-12-31 Version: 1.5.2
 - Generated python 2020-06-30 for cas.
 

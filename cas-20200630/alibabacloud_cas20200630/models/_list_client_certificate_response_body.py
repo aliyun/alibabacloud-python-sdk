@@ -12,6 +12,7 @@ class ListClientCertificateResponseBody(DaraModel):
         self,
         certificate_list: List[main_models.ListClientCertificateResponseBodyCertificateList] = None,
         current_page: int = None,
+        max_results: int = None,
         page_count: int = None,
         request_id: str = None,
         show_size: int = None,
@@ -21,6 +22,7 @@ class ListClientCertificateResponseBody(DaraModel):
         self.certificate_list = certificate_list
         # The page number of the current page.
         self.current_page = current_page
+        self.max_results = max_results
         # The total number of pages returned.
         self.page_count = page_count
         # The ID of the request.
@@ -49,6 +51,9 @@ class ListClientCertificateResponseBody(DaraModel):
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
 
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+
         if self.page_count is not None:
             result['PageCount'] = self.page_count
 
@@ -74,6 +79,9 @@ class ListClientCertificateResponseBody(DaraModel):
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
 
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+
         if m.get('PageCount') is not None:
             self.page_count = m.get('PageCount')
 
@@ -93,12 +101,14 @@ class ListClientCertificateResponseBodyCertificateList(DaraModel):
         self,
         after_date: int = None,
         algorithm: str = None,
+        alias_name: str = None,
         before_date: int = None,
         certificate_type: str = None,
         common_name: str = None,
         country_code: str = None,
         custom_identifier: str = None,
         days: int = None,
+        id: int = None,
         identifier: str = None,
         key_size: int = None,
         locality: str = None,
@@ -124,6 +134,7 @@ class ListClientCertificateResponseBodyCertificateList(DaraModel):
         # *   **ECC**: the elliptic curve cryptography (ECC) algorithm.
         # *   **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
         self.algorithm = algorithm
+        self.alias_name = alias_name
         # The issuance date of the certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.before_date = before_date
         # The type of the certificate. Valid values:
@@ -140,6 +151,7 @@ class ListClientCertificateResponseBodyCertificateList(DaraModel):
         self.custom_identifier = custom_identifier
         # The validity period of the certificate. Unit: days.
         self.days = days
+        self.id = id
         # The unique identifier of the certificate.
         self.identifier = identifier
         # The key length of the certificate.
@@ -207,6 +219,9 @@ class ListClientCertificateResponseBodyCertificateList(DaraModel):
         if self.algorithm is not None:
             result['Algorithm'] = self.algorithm
 
+        if self.alias_name is not None:
+            result['AliasName'] = self.alias_name
+
         if self.before_date is not None:
             result['BeforeDate'] = self.before_date
 
@@ -224,6 +239,9 @@ class ListClientCertificateResponseBodyCertificateList(DaraModel):
 
         if self.days is not None:
             result['Days'] = self.days
+
+        if self.id is not None:
+            result['Id'] = self.id
 
         if self.identifier is not None:
             result['Identifier'] = self.identifier
@@ -283,6 +301,9 @@ class ListClientCertificateResponseBodyCertificateList(DaraModel):
         if m.get('Algorithm') is not None:
             self.algorithm = m.get('Algorithm')
 
+        if m.get('AliasName') is not None:
+            self.alias_name = m.get('AliasName')
+
         if m.get('BeforeDate') is not None:
             self.before_date = m.get('BeforeDate')
 
@@ -300,6 +321,9 @@ class ListClientCertificateResponseBodyCertificateList(DaraModel):
 
         if m.get('Days') is not None:
             self.days = m.get('Days')
+
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
 
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')

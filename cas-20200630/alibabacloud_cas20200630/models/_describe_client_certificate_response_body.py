@@ -51,6 +51,7 @@ class DescribeClientCertificateResponseBodyCertificate(DaraModel):
         self,
         after_date: int = None,
         algorithm: str = None,
+        alias_name: str = None,
         before_date: int = None,
         cert_chain: str = None,
         certificate_type: str = None,
@@ -58,6 +59,8 @@ class DescribeClientCertificateResponseBodyCertificate(DaraModel):
         country_code: str = None,
         custom_identifier: str = None,
         days: int = None,
+        full_algorithm: str = None,
+        id: int = None,
         identifier: str = None,
         key_size: int = None,
         locality: str = None,
@@ -74,6 +77,7 @@ class DescribeClientCertificateResponseBodyCertificate(DaraModel):
         status: str = None,
         subject_dn: str = None,
         tags: List[main_models.DescribeClientCertificateResponseBodyCertificateTags] = None,
+        upload_flag: int = None,
         x_509certificate: str = None,
     ):
         # The expiration date of the certificate. This value is a UNIX timestamp. Unit: milliseconds.
@@ -84,6 +88,7 @@ class DescribeClientCertificateResponseBodyCertificate(DaraModel):
         # *   **ECC**: the elliptic curve cryptography (ECC) algorithm.
         # *   **SM2**: the SM2 algorithm, which is developed and approved by the State Cryptography Administration of China.
         self.algorithm = algorithm
+        self.alias_name = alias_name
         # The issuance date of the certificate. This value is a UNIX timestamp. Unit: milliseconds.
         self.before_date = before_date
         self.cert_chain = cert_chain
@@ -101,6 +106,8 @@ class DescribeClientCertificateResponseBodyCertificate(DaraModel):
         self.custom_identifier = custom_identifier
         # The validity period of the certificate. Unit: days.
         self.days = days
+        self.full_algorithm = full_algorithm
+        self.id = id
         # The unique identifier of the certificate.
         self.identifier = identifier
         # The key length of the certificate.
@@ -152,6 +159,7 @@ class DescribeClientCertificateResponseBodyCertificate(DaraModel):
         # *   **CN**: the common name
         self.subject_dn = subject_dn
         self.tags = tags
+        self.upload_flag = upload_flag
         # The content of the certificate.
         self.x_509certificate = x_509certificate
 
@@ -171,6 +179,9 @@ class DescribeClientCertificateResponseBodyCertificate(DaraModel):
 
         if self.algorithm is not None:
             result['Algorithm'] = self.algorithm
+
+        if self.alias_name is not None:
+            result['AliasName'] = self.alias_name
 
         if self.before_date is not None:
             result['BeforeDate'] = self.before_date
@@ -192,6 +203,12 @@ class DescribeClientCertificateResponseBodyCertificate(DaraModel):
 
         if self.days is not None:
             result['Days'] = self.days
+
+        if self.full_algorithm is not None:
+            result['FullAlgorithm'] = self.full_algorithm
+
+        if self.id is not None:
+            result['Id'] = self.id
 
         if self.identifier is not None:
             result['Identifier'] = self.identifier
@@ -243,6 +260,9 @@ class DescribeClientCertificateResponseBodyCertificate(DaraModel):
             for k1 in self.tags:
                 result['Tags'].append(k1.to_map() if k1 else None)
 
+        if self.upload_flag is not None:
+            result['UploadFlag'] = self.upload_flag
+
         if self.x_509certificate is not None:
             result['X509Certificate'] = self.x_509certificate
 
@@ -255,6 +275,9 @@ class DescribeClientCertificateResponseBodyCertificate(DaraModel):
 
         if m.get('Algorithm') is not None:
             self.algorithm = m.get('Algorithm')
+
+        if m.get('AliasName') is not None:
+            self.alias_name = m.get('AliasName')
 
         if m.get('BeforeDate') is not None:
             self.before_date = m.get('BeforeDate')
@@ -276,6 +299,12 @@ class DescribeClientCertificateResponseBodyCertificate(DaraModel):
 
         if m.get('Days') is not None:
             self.days = m.get('Days')
+
+        if m.get('FullAlgorithm') is not None:
+            self.full_algorithm = m.get('FullAlgorithm')
+
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
 
         if m.get('Identifier') is not None:
             self.identifier = m.get('Identifier')
@@ -327,6 +356,9 @@ class DescribeClientCertificateResponseBodyCertificate(DaraModel):
             for k1 in m.get('Tags'):
                 temp_model = main_models.DescribeClientCertificateResponseBodyCertificateTags()
                 self.tags.append(temp_model.from_map(k1))
+
+        if m.get('UploadFlag') is not None:
+            self.upload_flag = m.get('UploadFlag')
 
         if m.get('X509Certificate') is not None:
             self.x_509certificate = m.get('X509Certificate')

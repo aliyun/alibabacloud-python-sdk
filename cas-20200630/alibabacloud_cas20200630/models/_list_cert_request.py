@@ -13,6 +13,7 @@ class ListCertRequest(DaraModel):
         instance_uuid: str = None,
         max_results: int = None,
         next_token: str = None,
+        parent_identifier: str = None,
         show_size: int = None,
         status: str = None,
         type: str = None,
@@ -23,6 +24,7 @@ class ListCertRequest(DaraModel):
         self.instance_uuid = instance_uuid
         self.max_results = max_results
         self.next_token = next_token
+        self.parent_identifier = parent_identifier
         self.show_size = show_size
         self.status = status
         self.type = type
@@ -52,6 +54,9 @@ class ListCertRequest(DaraModel):
 
         if self.next_token is not None:
             result['NextToken'] = self.next_token
+
+        if self.parent_identifier is not None:
+            result['ParentIdentifier'] = self.parent_identifier
 
         if self.show_size is not None:
             result['ShowSize'] = self.show_size
@@ -83,6 +88,9 @@ class ListCertRequest(DaraModel):
 
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+
+        if m.get('ParentIdentifier') is not None:
+            self.parent_identifier = m.get('ParentIdentifier')
 
         if m.get('ShowSize') is not None:
             self.show_size = m.get('ShowSize')

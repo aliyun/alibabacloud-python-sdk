@@ -111,7 +111,7 @@ class ListCertResponseBodyList(DaraModel):
         common_name: str = None,
         custom_identifier: str = None,
         extra: str = None,
-        id: str = None,
+        id: int = None,
         identifier: str = None,
         key_exportable: bool = None,
         organization: str = None,

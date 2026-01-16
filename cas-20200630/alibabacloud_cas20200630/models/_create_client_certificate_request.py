@@ -12,7 +12,9 @@ class CreateClientCertificateRequest(DaraModel):
         self,
         after_time: int = None,
         algorithm: str = None,
+        alias_name: str = None,
         before_time: int = None,
+        client_token: str = None,
         common_name: str = None,
         country: str = None,
         custom_identifier: str = None,
@@ -49,10 +51,12 @@ class CreateClientCertificateRequest(DaraModel):
         # 
         # > You can call the [DescribeCACertificate] operation to query the key algorithm of an intermediate CA certificate.
         self.algorithm = algorithm
+        self.alias_name = alias_name
         # The issuance time of the client certificate. This value is a UNIX timestamp. The default value is the time when you call this operation. Unit: seconds.
         # 
         # >  The **BeforeTime** and **AfterTime** parameters must be both empty or both specified.
         self.before_time = before_time
+        self.client_token = client_token
         # The name of the client certificate user. In most cases, the user of a client certificate is an individual, a company, an organization, or an application. We recommend that you enter the common name of a user. Examples: Bob, Alibaba, Alibaba Cloud password platform, and Tmall Genie.
         self.common_name = common_name
         # The country in which the organization is located. Default value: CN.
@@ -123,8 +127,14 @@ class CreateClientCertificateRequest(DaraModel):
         if self.algorithm is not None:
             result['Algorithm'] = self.algorithm
 
+        if self.alias_name is not None:
+            result['AliasName'] = self.alias_name
+
         if self.before_time is not None:
             result['BeforeTime'] = self.before_time
+
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
 
         if self.common_name is not None:
             result['CommonName'] = self.common_name
@@ -189,8 +199,14 @@ class CreateClientCertificateRequest(DaraModel):
         if m.get('Algorithm') is not None:
             self.algorithm = m.get('Algorithm')
 
+        if m.get('AliasName') is not None:
+            self.alias_name = m.get('AliasName')
+
         if m.get('BeforeTime') is not None:
             self.before_time = m.get('BeforeTime')
+
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
 
         if m.get('CommonName') is not None:
             self.common_name = m.get('CommonName')

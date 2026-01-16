@@ -178,6 +178,8 @@ class Client(OpenApiClient):
             query['AfterTime'] = request.after_time
         if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
+        if not DaraCore.is_null(request.alias_name):
+            query['AliasName'] = request.alias_name
         if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
         if not DaraCore.is_null(request.common_name):
@@ -214,8 +216,12 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         if not DaraCore.is_null(request.years):
             query['Years'] = request.years
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'CreateClientCertificate',
@@ -244,6 +250,8 @@ class Client(OpenApiClient):
             query['AfterTime'] = request.after_time
         if not DaraCore.is_null(request.algorithm):
             query['Algorithm'] = request.algorithm
+        if not DaraCore.is_null(request.alias_name):
+            query['AliasName'] = request.alias_name
         if not DaraCore.is_null(request.before_time):
             query['BeforeTime'] = request.before_time
         if not DaraCore.is_null(request.common_name):
@@ -280,8 +288,12 @@ class Client(OpenApiClient):
             query['Tags'] = request.tags
         if not DaraCore.is_null(request.years):
             query['Years'] = request.years
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'CreateClientCertificate',
@@ -2238,6 +2250,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
         if not DaraCore.is_null(request.show_size):
             query['ShowSize'] = request.show_size
         if not DaraCore.is_null(request.status):
@@ -2282,6 +2296,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.parent_identifier):
+            query['ParentIdentifier'] = request.parent_identifier
         if not DaraCore.is_null(request.show_size):
             query['ShowSize'] = request.show_size
         if not DaraCore.is_null(request.status):
