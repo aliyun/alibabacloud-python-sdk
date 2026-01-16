@@ -1,0 +1,559 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._add_ipfilter_request import AddIpfilterRequest
+from ._add_ipfilter_response_body import AddIpfilterResponseBody
+from ._add_ipfilter_response import AddIpfilterResponse
+from ._approve_reply_mail_address_request import ApproveReplyMailAddressRequest
+from ._approve_reply_mail_address_response_body import ApproveReplyMailAddressResponseBody
+from ._approve_reply_mail_address_response import ApproveReplyMailAddressResponse
+from ._batch_send_mail_request import BatchSendMailRequest
+from ._batch_send_mail_response_body import BatchSendMailResponseBody
+from ._batch_send_mail_response import BatchSendMailResponse
+from ._change_domain_dkim_record_request import ChangeDomainDkimRecordRequest
+from ._change_domain_dkim_record_response_body import ChangeDomainDkimRecordResponseBody
+from ._change_domain_dkim_record_response import ChangeDomainDkimRecordResponse
+from ._check_disposable_request import CheckDisposableRequest
+from ._check_disposable_response_body import CheckDisposableResponseBody
+from ._check_disposable_response import CheckDisposableResponse
+from ._check_domain_request import CheckDomainRequest
+from ._check_domain_response_body import CheckDomainResponseBody
+from ._check_domain_response import CheckDomainResponse
+from ._check_reply_to_mail_address_request import CheckReplyToMailAddressRequest
+from ._check_reply_to_mail_address_response_body import CheckReplyToMailAddressResponseBody
+from ._check_reply_to_mail_address_response import CheckReplyToMailAddressResponse
+from ._config_set_cancel_relation_from_address_request import ConfigSetCancelRelationFromAddressRequest
+from ._config_set_cancel_relation_from_address_response_body import ConfigSetCancelRelationFromAddressResponseBody
+from ._config_set_cancel_relation_from_address_response import ConfigSetCancelRelationFromAddressResponse
+from ._config_set_create_request import ConfigSetCreateRequest
+from ._config_set_create_response_body import ConfigSetCreateResponseBody
+from ._config_set_create_response import ConfigSetCreateResponse
+from ._config_set_delete_request import ConfigSetDeleteRequest
+from ._config_set_delete_response_body import ConfigSetDeleteResponseBody
+from ._config_set_delete_response import ConfigSetDeleteResponse
+from ._config_set_detail_request import ConfigSetDetailRequest
+from ._config_set_detail_response_body import ConfigSetDetailResponseBody
+from ._config_set_detail_response import ConfigSetDetailResponse
+from ._config_set_list_request import ConfigSetListRequest
+from ._config_set_list_response_body import ConfigSetListResponseBody
+from ._config_set_list_response import ConfigSetListResponse
+from ._config_set_relation_from_address_request import ConfigSetRelationFromAddressRequest
+from ._config_set_relation_from_address_response_body import ConfigSetRelationFromAddressResponseBody
+from ._config_set_relation_from_address_response import ConfigSetRelationFromAddressResponse
+from ._config_set_update_request import ConfigSetUpdateRequest
+from ._config_set_update_response_body import ConfigSetUpdateResponseBody
+from ._config_set_update_response import ConfigSetUpdateResponse
+from ._create_domain_request import CreateDomainRequest
+from ._create_domain_response_body import CreateDomainResponseBody
+from ._create_domain_response import CreateDomainResponse
+from ._create_mail_address_request import CreateMailAddressRequest
+from ._create_mail_address_response_body import CreateMailAddressResponseBody
+from ._create_mail_address_response import CreateMailAddressResponse
+from ._create_receiver_request import CreateReceiverRequest
+from ._create_receiver_response_body import CreateReceiverResponseBody
+from ._create_receiver_response import CreateReceiverResponse
+from ._create_tag_request import CreateTagRequest
+from ._create_tag_response_body import CreateTagResponseBody
+from ._create_tag_response import CreateTagResponse
+from ._create_user_suppression_request import CreateUserSuppressionRequest
+from ._create_user_suppression_response_body import CreateUserSuppressionResponseBody
+from ._create_user_suppression_response import CreateUserSuppressionResponse
+from ._dedicated_ip_auto_renewal_request import DedicatedIpAutoRenewalRequest
+from ._dedicated_ip_auto_renewal_response_body import DedicatedIpAutoRenewalResponseBody
+from ._dedicated_ip_auto_renewal_response import DedicatedIpAutoRenewalResponse
+from ._dedicated_ip_change_warmup_type_request import DedicatedIpChangeWarmupTypeRequest
+from ._dedicated_ip_change_warmup_type_response_body import DedicatedIpChangeWarmupTypeResponseBody
+from ._dedicated_ip_change_warmup_type_response import DedicatedIpChangeWarmupTypeResponse
+from ._dedicated_ip_list_request import DedicatedIpListRequest
+from ._dedicated_ip_list_response_body import DedicatedIpListResponseBody
+from ._dedicated_ip_list_response import DedicatedIpListResponse
+from ._dedicated_ip_none_pool_list_response_body import DedicatedIpNonePoolListResponseBody
+from ._dedicated_ip_none_pool_list_response import DedicatedIpNonePoolListResponse
+from ._dedicated_ip_pool_create_request import DedicatedIpPoolCreateRequest
+from ._dedicated_ip_pool_create_response_body import DedicatedIpPoolCreateResponseBody
+from ._dedicated_ip_pool_create_response import DedicatedIpPoolCreateResponse
+from ._dedicated_ip_pool_delete_request import DedicatedIpPoolDeleteRequest
+from ._dedicated_ip_pool_delete_response_body import DedicatedIpPoolDeleteResponseBody
+from ._dedicated_ip_pool_delete_response import DedicatedIpPoolDeleteResponse
+from ._dedicated_ip_pool_list_request import DedicatedIpPoolListRequest
+from ._dedicated_ip_pool_list_response_body import DedicatedIpPoolListResponseBody
+from ._dedicated_ip_pool_list_response import DedicatedIpPoolListResponse
+from ._dedicated_ip_pool_update_request import DedicatedIpPoolUpdateRequest
+from ._dedicated_ip_pool_update_response_body import DedicatedIpPoolUpdateResponseBody
+from ._dedicated_ip_pool_update_response import DedicatedIpPoolUpdateResponse
+from ._delete_domain_request import DeleteDomainRequest
+from ._delete_domain_response_body import DeleteDomainResponseBody
+from ._delete_domain_response import DeleteDomainResponse
+from ._delete_invalid_address_request import DeleteInvalidAddressRequest
+from ._delete_invalid_address_response_body import DeleteInvalidAddressResponseBody
+from ._delete_invalid_address_response import DeleteInvalidAddressResponse
+from ._delete_ipfilter_by_edm_id_request import DeleteIpfilterByEdmIdRequest
+from ._delete_ipfilter_by_edm_id_response_body import DeleteIpfilterByEdmIdResponseBody
+from ._delete_ipfilter_by_edm_id_response import DeleteIpfilterByEdmIdResponse
+from ._delete_mail_address_request import DeleteMailAddressRequest
+from ._delete_mail_address_response_body import DeleteMailAddressResponseBody
+from ._delete_mail_address_response import DeleteMailAddressResponse
+from ._delete_receiver_request import DeleteReceiverRequest
+from ._delete_receiver_response_body import DeleteReceiverResponseBody
+from ._delete_receiver_response import DeleteReceiverResponse
+from ._delete_receiver_detail_request import DeleteReceiverDetailRequest
+from ._delete_receiver_detail_response_body import DeleteReceiverDetailResponseBody
+from ._delete_receiver_detail_response import DeleteReceiverDetailResponse
+from ._delete_tag_request import DeleteTagRequest
+from ._delete_tag_response_body import DeleteTagResponseBody
+from ._delete_tag_response import DeleteTagResponse
+from ._delete_validate_file_request import DeleteValidateFileRequest
+from ._delete_validate_file_response_body import DeleteValidateFileResponseBody
+from ._delete_validate_file_response import DeleteValidateFileResponse
+from ._desc_account_summary_request import DescAccountSummaryRequest
+from ._desc_account_summary_response_body import DescAccountSummaryResponseBody
+from ._desc_account_summary_response import DescAccountSummaryResponse
+from ._desc_domain_request import DescDomainRequest
+from ._desc_domain_response_body import DescDomainResponseBody
+from ._desc_domain_response import DescDomainResponse
+from ._desc_template_request import DescTemplateRequest
+from ._desc_template_response_body import DescTemplateResponseBody
+from ._desc_template_response import DescTemplateResponse
+from ._get_dedicated_ip_warm_up_detail_request import GetDedicatedIpWarmUpDetailRequest
+from ._get_dedicated_ip_warm_up_detail_response_body import GetDedicatedIpWarmUpDetailResponseBody
+from ._get_dedicated_ip_warm_up_detail_response import GetDedicatedIpWarmUpDetailResponse
+from ._get_dedicated_ip_warm_up_info_request import GetDedicatedIpWarmUpInfoRequest
+from ._get_dedicated_ip_warm_up_info_response_body import GetDedicatedIpWarmUpInfoResponseBody
+from ._get_dedicated_ip_warm_up_info_response import GetDedicatedIpWarmUpInfoResponse
+from ._get_ip_protection_request import GetIpProtectionRequest
+from ._get_ip_protection_response_body import GetIpProtectionResponseBody
+from ._get_ip_protection_response import GetIpProtectionResponse
+from ._get_ipfilter_list_request import GetIpfilterListRequest
+from ._get_ipfilter_list_response_body import GetIpfilterListResponseBody
+from ._get_ipfilter_list_response import GetIpfilterListResponse
+from ._get_suppression_list_level_request import GetSuppressionListLevelRequest
+from ._get_suppression_list_level_response_body import GetSuppressionListLevelResponseBody
+from ._get_suppression_list_level_response import GetSuppressionListLevelResponse
+from ._get_track_list_request import GetTrackListRequest
+from ._get_track_list_response_body import GetTrackListResponseBody
+from ._get_track_list_response import GetTrackListResponse
+from ._get_track_list_by_mail_from_and_tag_name_request import GetTrackListByMailFromAndTagNameRequest
+from ._get_track_list_by_mail_from_and_tag_name_response_body import GetTrackListByMailFromAndTagNameResponseBody
+from ._get_track_list_by_mail_from_and_tag_name_response import GetTrackListByMailFromAndTagNameResponse
+from ._get_user_response_body import GetUserResponseBody
+from ._get_user_response import GetUserResponse
+from ._get_validate_file_request import GetValidateFileRequest
+from ._get_validate_file_response_body import GetValidateFileResponseBody
+from ._get_validate_file_response import GetValidateFileResponse
+from ._get_validate_file_status_request import GetValidateFileStatusRequest
+from ._get_validate_file_status_response_body import GetValidateFileStatusResponseBody
+from ._get_validate_file_status_response import GetValidateFileStatusResponse
+from ._get_validation_quota_response_body import GetValidationQuotaResponseBody
+from ._get_validation_quota_response import GetValidationQuotaResponse
+from ._list_block_sending_request import ListBlockSendingRequest
+from ._list_block_sending_response_body import ListBlockSendingResponseBody
+from ._list_block_sending_response import ListBlockSendingResponse
+from ._list_user_suppression_request import ListUserSuppressionRequest
+from ._list_user_suppression_response_body import ListUserSuppressionResponseBody
+from ._list_user_suppression_response import ListUserSuppressionResponse
+from ._list_validate_file_request import ListValidateFileRequest
+from ._list_validate_file_response_body import ListValidateFileResponseBody
+from ._list_validate_file_response import ListValidateFileResponse
+from ._modify_mail_address_request import ModifyMailAddressRequest
+from ._modify_mail_address_response_body import ModifyMailAddressResponseBody
+from ._modify_mail_address_response import ModifyMailAddressResponse
+from ._modify_pwby_domain_request import ModifyPWByDomainRequest
+from ._modify_pwby_domain_response_body import ModifyPWByDomainResponseBody
+from ._modify_pwby_domain_response import ModifyPWByDomainResponse
+from ._modify_tag_request import ModifyTagRequest
+from ._modify_tag_response_body import ModifyTagResponseBody
+from ._modify_tag_response import ModifyTagResponse
+from ._query_domain_by_param_request import QueryDomainByParamRequest
+from ._query_domain_by_param_response_body import QueryDomainByParamResponseBody
+from ._query_domain_by_param_response import QueryDomainByParamResponse
+from ._query_invalid_address_request import QueryInvalidAddressRequest
+from ._query_invalid_address_response_body import QueryInvalidAddressResponseBody
+from ._query_invalid_address_response import QueryInvalidAddressResponse
+from ._query_mail_address_by_param_request import QueryMailAddressByParamRequest
+from ._query_mail_address_by_param_response_body import QueryMailAddressByParamResponseBody
+from ._query_mail_address_by_param_response import QueryMailAddressByParamResponse
+from ._query_receiver_by_param_request import QueryReceiverByParamRequest
+from ._query_receiver_by_param_response_body import QueryReceiverByParamResponseBody
+from ._query_receiver_by_param_response import QueryReceiverByParamResponse
+from ._query_receiver_detail_request import QueryReceiverDetailRequest
+from ._query_receiver_detail_response_body import QueryReceiverDetailResponseBody
+from ._query_receiver_detail_response import QueryReceiverDetailResponse
+from ._query_tag_by_param_request import QueryTagByParamRequest
+from ._query_tag_by_param_response_body import QueryTagByParamResponseBody
+from ._query_tag_by_param_response import QueryTagByParamResponse
+from ._query_task_by_param_request import QueryTaskByParamRequest
+from ._query_task_by_param_response_body import QueryTaskByParamResponseBody
+from ._query_task_by_param_response import QueryTaskByParamResponse
+from ._query_template_by_param_request import QueryTemplateByParamRequest
+from ._query_template_by_param_response_body import QueryTemplateByParamResponseBody
+from ._query_template_by_param_response import QueryTemplateByParamResponse
+from ._remove_user_suppression_request import RemoveUserSuppressionRequest
+from ._remove_user_suppression_response_body import RemoveUserSuppressionResponseBody
+from ._remove_user_suppression_response import RemoveUserSuppressionResponse
+from ._save_receiver_detail_request import SaveReceiverDetailRequest
+from ._save_receiver_detail_response_body import SaveReceiverDetailResponseBody
+from ._save_receiver_detail_response import SaveReceiverDetailResponse
+from ._send_test_by_template_request import SendTestByTemplateRequest
+from ._send_test_by_template_response_body import SendTestByTemplateResponseBody
+from ._send_test_by_template_response import SendTestByTemplateResponse
+from ._send_validate_file_request import SendValidateFileRequest
+from ._send_validate_file_advance_request import SendValidateFileAdvanceRequest
+from ._send_validate_file_response_body import SendValidateFileResponseBody
+from ._send_validate_file_response import SendValidateFileResponse
+from ._sender_statistics_by_tag_name_and_batch_idrequest import SenderStatisticsByTagNameAndBatchIDRequest
+from ._sender_statistics_by_tag_name_and_batch_idresponse_body import SenderStatisticsByTagNameAndBatchIDResponseBody
+from ._sender_statistics_by_tag_name_and_batch_idresponse import SenderStatisticsByTagNameAndBatchIDResponse
+from ._sender_statistics_detail_by_param_request import SenderStatisticsDetailByParamRequest
+from ._sender_statistics_detail_by_param_response_body import SenderStatisticsDetailByParamResponseBody
+from ._sender_statistics_detail_by_param_response import SenderStatisticsDetailByParamResponse
+from ._set_suppression_list_level_request import SetSuppressionListLevelRequest
+from ._set_suppression_list_level_response_body import SetSuppressionListLevelResponseBody
+from ._set_suppression_list_level_response import SetSuppressionListLevelResponse
+from ._single_send_mail_request import SingleSendMailRequest
+from ._single_send_mail_advance_request import SingleSendMailAdvanceRequest
+from ._single_send_mail_shrink_request import SingleSendMailShrinkRequest
+from ._single_send_mail_response_body import SingleSendMailResponseBody
+from ._single_send_mail_response import SingleSendMailResponse
+from ._unblock_sending_request import UnblockSendingRequest
+from ._unblock_sending_response_body import UnblockSendingResponseBody
+from ._unblock_sending_response import UnblockSendingResponse
+from ._update_ip_protection_request import UpdateIpProtectionRequest
+from ._update_ip_protection_response_body import UpdateIpProtectionResponseBody
+from ._update_ip_protection_response import UpdateIpProtectionResponse
+from ._update_user_request import UpdateUserRequest
+from ._update_user_shrink_request import UpdateUserShrinkRequest
+from ._update_user_response_body import UpdateUserResponseBody
+from ._update_user_response import UpdateUserResponse
+from ._validate_email_request import ValidateEmailRequest
+from ._validate_email_response_body import ValidateEmailResponseBody
+from ._validate_email_response import ValidateEmailResponse
+from ._config_set_detail_response_body import ConfigSetDetailResponseBodyDetailIpPool
+from ._config_set_detail_response_body import ConfigSetDetailResponseBodyDetail
+from ._config_set_list_response_body import ConfigSetListResponseBodyConfigSetsIpPool
+from ._config_set_list_response_body import ConfigSetListResponseBodyConfigSets
+from ._dedicated_ip_list_response_body import DedicatedIpListResponseBodyIpsIpExt
+from ._dedicated_ip_list_response_body import DedicatedIpListResponseBodyIps
+from ._dedicated_ip_none_pool_list_response_body import DedicatedIpNonePoolListResponseBodyIps
+from ._dedicated_ip_pool_list_response_body import DedicatedIpPoolListResponseBodyIpPoolsIps
+from ._dedicated_ip_pool_list_response_body import DedicatedIpPoolListResponseBodyIpPools
+from ._get_dedicated_ip_warm_up_detail_response_body import GetDedicatedIpWarmUpDetailResponseBodyDetail
+from ._get_dedicated_ip_warm_up_info_response_body import GetDedicatedIpWarmUpInfoResponseBodyInfo
+from ._get_ipfilter_list_response_body import GetIpfilterListResponseBodyDataIpfilters
+from ._get_ipfilter_list_response_body import GetIpfilterListResponseBodyData
+from ._get_track_list_response_body import GetTrackListResponseBodyDataStat
+from ._get_track_list_response_body import GetTrackListResponseBodyData
+from ._get_track_list_by_mail_from_and_tag_name_response_body import GetTrackListByMailFromAndTagNameResponseBodyTrackListStat
+from ._get_track_list_by_mail_from_and_tag_name_response_body import GetTrackListByMailFromAndTagNameResponseBodyTrackList
+from ._get_user_response_body import GetUserResponseBodyData
+from ._list_block_sending_response_body import ListBlockSendingResponseBodyData
+from ._list_user_suppression_response_body import ListUserSuppressionResponseBodyDataUserSuppressions
+from ._list_user_suppression_response_body import ListUserSuppressionResponseBodyData
+from ._list_validate_file_response_body import ListValidateFileResponseBodyFiles
+from ._query_domain_by_param_response_body import QueryDomainByParamResponseBodyDataDomain
+from ._query_domain_by_param_response_body import QueryDomainByParamResponseBodyData
+from ._query_invalid_address_response_body import QueryInvalidAddressResponseBodyDataMailDetail
+from ._query_invalid_address_response_body import QueryInvalidAddressResponseBodyData
+from ._query_mail_address_by_param_response_body import QueryMailAddressByParamResponseBodyDataMailAddress
+from ._query_mail_address_by_param_response_body import QueryMailAddressByParamResponseBodyData
+from ._query_receiver_by_param_response_body import QueryReceiverByParamResponseBodyDataReceiver
+from ._query_receiver_by_param_response_body import QueryReceiverByParamResponseBodyData
+from ._query_receiver_detail_response_body import QueryReceiverDetailResponseBodyDataDetail
+from ._query_receiver_detail_response_body import QueryReceiverDetailResponseBodyData
+from ._query_tag_by_param_response_body import QueryTagByParamResponseBodyDataTag
+from ._query_tag_by_param_response_body import QueryTagByParamResponseBodyData
+from ._query_task_by_param_response_body import QueryTaskByParamResponseBodyDataTask
+from ._query_task_by_param_response_body import QueryTaskByParamResponseBodyData
+from ._query_template_by_param_response_body import QueryTemplateByParamResponseBodyDataTemplate
+from ._query_template_by_param_response_body import QueryTemplateByParamResponseBodyData
+from ._save_receiver_detail_response_body import SaveReceiverDetailResponseBodyDataDetail
+from ._save_receiver_detail_response_body import SaveReceiverDetailResponseBodyData
+from ._sender_statistics_by_tag_name_and_batch_idresponse_body import SenderStatisticsByTagNameAndBatchIDResponseBodyDataStat
+from ._sender_statistics_by_tag_name_and_batch_idresponse_body import SenderStatisticsByTagNameAndBatchIDResponseBodyData
+from ._sender_statistics_detail_by_param_response_body import SenderStatisticsDetailByParamResponseBodyDataMailDetail
+from ._sender_statistics_detail_by_param_response_body import SenderStatisticsDetailByParamResponseBodyData
+from ._single_send_mail_request import SingleSendMailRequestAttachments
+from ._single_send_mail_request import SingleSendMailRequestTemplate
+from ._single_send_mail_advance_request import SingleSendMailAdvanceRequestAttachments
+from ._single_send_mail_advance_request import SingleSendMailAdvanceRequestTemplate
+from ._single_send_mail_shrink_request import SingleSendMailShrinkRequestAttachments
+from ._update_user_request import UpdateUserRequestUser
+
+__all__ = [
+    AddIpfilterRequest,
+    AddIpfilterResponseBody,
+    AddIpfilterResponse,
+    ApproveReplyMailAddressRequest,
+    ApproveReplyMailAddressResponseBody,
+    ApproveReplyMailAddressResponse,
+    BatchSendMailRequest,
+    BatchSendMailResponseBody,
+    BatchSendMailResponse,
+    ChangeDomainDkimRecordRequest,
+    ChangeDomainDkimRecordResponseBody,
+    ChangeDomainDkimRecordResponse,
+    CheckDisposableRequest,
+    CheckDisposableResponseBody,
+    CheckDisposableResponse,
+    CheckDomainRequest,
+    CheckDomainResponseBody,
+    CheckDomainResponse,
+    CheckReplyToMailAddressRequest,
+    CheckReplyToMailAddressResponseBody,
+    CheckReplyToMailAddressResponse,
+    ConfigSetCancelRelationFromAddressRequest,
+    ConfigSetCancelRelationFromAddressResponseBody,
+    ConfigSetCancelRelationFromAddressResponse,
+    ConfigSetCreateRequest,
+    ConfigSetCreateResponseBody,
+    ConfigSetCreateResponse,
+    ConfigSetDeleteRequest,
+    ConfigSetDeleteResponseBody,
+    ConfigSetDeleteResponse,
+    ConfigSetDetailRequest,
+    ConfigSetDetailResponseBody,
+    ConfigSetDetailResponse,
+    ConfigSetListRequest,
+    ConfigSetListResponseBody,
+    ConfigSetListResponse,
+    ConfigSetRelationFromAddressRequest,
+    ConfigSetRelationFromAddressResponseBody,
+    ConfigSetRelationFromAddressResponse,
+    ConfigSetUpdateRequest,
+    ConfigSetUpdateResponseBody,
+    ConfigSetUpdateResponse,
+    CreateDomainRequest,
+    CreateDomainResponseBody,
+    CreateDomainResponse,
+    CreateMailAddressRequest,
+    CreateMailAddressResponseBody,
+    CreateMailAddressResponse,
+    CreateReceiverRequest,
+    CreateReceiverResponseBody,
+    CreateReceiverResponse,
+    CreateTagRequest,
+    CreateTagResponseBody,
+    CreateTagResponse,
+    CreateUserSuppressionRequest,
+    CreateUserSuppressionResponseBody,
+    CreateUserSuppressionResponse,
+    DedicatedIpAutoRenewalRequest,
+    DedicatedIpAutoRenewalResponseBody,
+    DedicatedIpAutoRenewalResponse,
+    DedicatedIpChangeWarmupTypeRequest,
+    DedicatedIpChangeWarmupTypeResponseBody,
+    DedicatedIpChangeWarmupTypeResponse,
+    DedicatedIpListRequest,
+    DedicatedIpListResponseBody,
+    DedicatedIpListResponse,
+    DedicatedIpNonePoolListResponseBody,
+    DedicatedIpNonePoolListResponse,
+    DedicatedIpPoolCreateRequest,
+    DedicatedIpPoolCreateResponseBody,
+    DedicatedIpPoolCreateResponse,
+    DedicatedIpPoolDeleteRequest,
+    DedicatedIpPoolDeleteResponseBody,
+    DedicatedIpPoolDeleteResponse,
+    DedicatedIpPoolListRequest,
+    DedicatedIpPoolListResponseBody,
+    DedicatedIpPoolListResponse,
+    DedicatedIpPoolUpdateRequest,
+    DedicatedIpPoolUpdateResponseBody,
+    DedicatedIpPoolUpdateResponse,
+    DeleteDomainRequest,
+    DeleteDomainResponseBody,
+    DeleteDomainResponse,
+    DeleteInvalidAddressRequest,
+    DeleteInvalidAddressResponseBody,
+    DeleteInvalidAddressResponse,
+    DeleteIpfilterByEdmIdRequest,
+    DeleteIpfilterByEdmIdResponseBody,
+    DeleteIpfilterByEdmIdResponse,
+    DeleteMailAddressRequest,
+    DeleteMailAddressResponseBody,
+    DeleteMailAddressResponse,
+    DeleteReceiverRequest,
+    DeleteReceiverResponseBody,
+    DeleteReceiverResponse,
+    DeleteReceiverDetailRequest,
+    DeleteReceiverDetailResponseBody,
+    DeleteReceiverDetailResponse,
+    DeleteTagRequest,
+    DeleteTagResponseBody,
+    DeleteTagResponse,
+    DeleteValidateFileRequest,
+    DeleteValidateFileResponseBody,
+    DeleteValidateFileResponse,
+    DescAccountSummaryRequest,
+    DescAccountSummaryResponseBody,
+    DescAccountSummaryResponse,
+    DescDomainRequest,
+    DescDomainResponseBody,
+    DescDomainResponse,
+    DescTemplateRequest,
+    DescTemplateResponseBody,
+    DescTemplateResponse,
+    GetDedicatedIpWarmUpDetailRequest,
+    GetDedicatedIpWarmUpDetailResponseBody,
+    GetDedicatedIpWarmUpDetailResponse,
+    GetDedicatedIpWarmUpInfoRequest,
+    GetDedicatedIpWarmUpInfoResponseBody,
+    GetDedicatedIpWarmUpInfoResponse,
+    GetIpProtectionRequest,
+    GetIpProtectionResponseBody,
+    GetIpProtectionResponse,
+    GetIpfilterListRequest,
+    GetIpfilterListResponseBody,
+    GetIpfilterListResponse,
+    GetSuppressionListLevelRequest,
+    GetSuppressionListLevelResponseBody,
+    GetSuppressionListLevelResponse,
+    GetTrackListRequest,
+    GetTrackListResponseBody,
+    GetTrackListResponse,
+    GetTrackListByMailFromAndTagNameRequest,
+    GetTrackListByMailFromAndTagNameResponseBody,
+    GetTrackListByMailFromAndTagNameResponse,
+    GetUserResponseBody,
+    GetUserResponse,
+    GetValidateFileRequest,
+    GetValidateFileResponseBody,
+    GetValidateFileResponse,
+    GetValidateFileStatusRequest,
+    GetValidateFileStatusResponseBody,
+    GetValidateFileStatusResponse,
+    GetValidationQuotaResponseBody,
+    GetValidationQuotaResponse,
+    ListBlockSendingRequest,
+    ListBlockSendingResponseBody,
+    ListBlockSendingResponse,
+    ListUserSuppressionRequest,
+    ListUserSuppressionResponseBody,
+    ListUserSuppressionResponse,
+    ListValidateFileRequest,
+    ListValidateFileResponseBody,
+    ListValidateFileResponse,
+    ModifyMailAddressRequest,
+    ModifyMailAddressResponseBody,
+    ModifyMailAddressResponse,
+    ModifyPWByDomainRequest,
+    ModifyPWByDomainResponseBody,
+    ModifyPWByDomainResponse,
+    ModifyTagRequest,
+    ModifyTagResponseBody,
+    ModifyTagResponse,
+    QueryDomainByParamRequest,
+    QueryDomainByParamResponseBody,
+    QueryDomainByParamResponse,
+    QueryInvalidAddressRequest,
+    QueryInvalidAddressResponseBody,
+    QueryInvalidAddressResponse,
+    QueryMailAddressByParamRequest,
+    QueryMailAddressByParamResponseBody,
+    QueryMailAddressByParamResponse,
+    QueryReceiverByParamRequest,
+    QueryReceiverByParamResponseBody,
+    QueryReceiverByParamResponse,
+    QueryReceiverDetailRequest,
+    QueryReceiverDetailResponseBody,
+    QueryReceiverDetailResponse,
+    QueryTagByParamRequest,
+    QueryTagByParamResponseBody,
+    QueryTagByParamResponse,
+    QueryTaskByParamRequest,
+    QueryTaskByParamResponseBody,
+    QueryTaskByParamResponse,
+    QueryTemplateByParamRequest,
+    QueryTemplateByParamResponseBody,
+    QueryTemplateByParamResponse,
+    RemoveUserSuppressionRequest,
+    RemoveUserSuppressionResponseBody,
+    RemoveUserSuppressionResponse,
+    SaveReceiverDetailRequest,
+    SaveReceiverDetailResponseBody,
+    SaveReceiverDetailResponse,
+    SendTestByTemplateRequest,
+    SendTestByTemplateResponseBody,
+    SendTestByTemplateResponse,
+    SendValidateFileRequest,
+    SendValidateFileAdvanceRequest,
+    SendValidateFileResponseBody,
+    SendValidateFileResponse,
+    SenderStatisticsByTagNameAndBatchIDRequest,
+    SenderStatisticsByTagNameAndBatchIDResponseBody,
+    SenderStatisticsByTagNameAndBatchIDResponse,
+    SenderStatisticsDetailByParamRequest,
+    SenderStatisticsDetailByParamResponseBody,
+    SenderStatisticsDetailByParamResponse,
+    SetSuppressionListLevelRequest,
+    SetSuppressionListLevelResponseBody,
+    SetSuppressionListLevelResponse,
+    SingleSendMailRequest,
+    SingleSendMailAdvanceRequest,
+    SingleSendMailShrinkRequest,
+    SingleSendMailResponseBody,
+    SingleSendMailResponse,
+    UnblockSendingRequest,
+    UnblockSendingResponseBody,
+    UnblockSendingResponse,
+    UpdateIpProtectionRequest,
+    UpdateIpProtectionResponseBody,
+    UpdateIpProtectionResponse,
+    UpdateUserRequest,
+    UpdateUserShrinkRequest,
+    UpdateUserResponseBody,
+    UpdateUserResponse,
+    ValidateEmailRequest,
+    ValidateEmailResponseBody,
+    ValidateEmailResponse,
+    ConfigSetDetailResponseBodyDetailIpPool,
+    ConfigSetDetailResponseBodyDetail,
+    ConfigSetListResponseBodyConfigSetsIpPool,
+    ConfigSetListResponseBodyConfigSets,
+    DedicatedIpListResponseBodyIpsIpExt,
+    DedicatedIpListResponseBodyIps,
+    DedicatedIpNonePoolListResponseBodyIps,
+    DedicatedIpPoolListResponseBodyIpPoolsIps,
+    DedicatedIpPoolListResponseBodyIpPools,
+    GetDedicatedIpWarmUpDetailResponseBodyDetail,
+    GetDedicatedIpWarmUpInfoResponseBodyInfo,
+    GetIpfilterListResponseBodyDataIpfilters,
+    GetIpfilterListResponseBodyData,
+    GetTrackListResponseBodyDataStat,
+    GetTrackListResponseBodyData,
+    GetTrackListByMailFromAndTagNameResponseBodyTrackListStat,
+    GetTrackListByMailFromAndTagNameResponseBodyTrackList,
+    GetUserResponseBodyData,
+    ListBlockSendingResponseBodyData,
+    ListUserSuppressionResponseBodyDataUserSuppressions,
+    ListUserSuppressionResponseBodyData,
+    ListValidateFileResponseBodyFiles,
+    QueryDomainByParamResponseBodyDataDomain,
+    QueryDomainByParamResponseBodyData,
+    QueryInvalidAddressResponseBodyDataMailDetail,
+    QueryInvalidAddressResponseBodyData,
+    QueryMailAddressByParamResponseBodyDataMailAddress,
+    QueryMailAddressByParamResponseBodyData,
+    QueryReceiverByParamResponseBodyDataReceiver,
+    QueryReceiverByParamResponseBodyData,
+    QueryReceiverDetailResponseBodyDataDetail,
+    QueryReceiverDetailResponseBodyData,
+    QueryTagByParamResponseBodyDataTag,
+    QueryTagByParamResponseBodyData,
+    QueryTaskByParamResponseBodyDataTask,
+    QueryTaskByParamResponseBodyData,
+    QueryTemplateByParamResponseBodyDataTemplate,
+    QueryTemplateByParamResponseBodyData,
+    SaveReceiverDetailResponseBodyDataDetail,
+    SaveReceiverDetailResponseBodyData,
+    SenderStatisticsByTagNameAndBatchIDResponseBodyDataStat,
+    SenderStatisticsByTagNameAndBatchIDResponseBodyData,
+    SenderStatisticsDetailByParamResponseBodyDataMailDetail,
+    SenderStatisticsDetailByParamResponseBodyData,
+    SingleSendMailRequestAttachments,
+    SingleSendMailRequestTemplate,
+    SingleSendMailAdvanceRequestAttachments,
+    SingleSendMailAdvanceRequestTemplate,
+    SingleSendMailShrinkRequestAttachments,
+    UpdateUserRequestUser
+]

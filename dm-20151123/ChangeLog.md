@@ -1,3 +1,8 @@
+2026-01-16 Version: 1.8.2
+- Update API BatchSendMail: add request parameters DomainAuth.
+- Update API SingleSendMail: add request parameters DomainAuth.
+
+
 2025-12-22 Version: 1.8.1
 - Update API SingleSendMail: add request parameters BccAddress.
 
