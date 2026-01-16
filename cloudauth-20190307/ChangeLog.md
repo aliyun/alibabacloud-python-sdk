@@ -1,3 +1,16 @@
+2026-01-16 Version: 3.13.1
+- Update API DescribeVerifySearchPageList: add request parameters RiskBizScenario.
+- Update API DescribeVerifySearchPageList: add request parameters RiskDevice.
+- Update API DescribeVerifySearchPageList: add request parameters RiskDeviceToken.
+- Update API DescribeVerifySearchPageList: add request parameters RiskGeneric.
+- Update API DescribeVerifySearchPageList: add request parameters RiskModelMining.
+- Update API DescribeVerifySearchPageList: add response parameters Body.Items.$.RiskBizScenario.
+- Update API DescribeVerifySearchPageList: add response parameters Body.Items.$.RiskDevice.
+- Update API DescribeVerifySearchPageList: add response parameters Body.Items.$.RiskDeviceToken.
+- Update API DescribeVerifySearchPageList: add response parameters Body.Items.$.RiskGeneric.
+- Update API DescribeVerifySearchPageList: add response parameters Body.Items.$.RiskModelMining.
+
+
 2026-01-09 Version: 3.13.0
 - Support API MobileRecycledMetaVerify.
 - Update API CreateAntCloudAuthScene: add request parameters DeviceRiskPlus.

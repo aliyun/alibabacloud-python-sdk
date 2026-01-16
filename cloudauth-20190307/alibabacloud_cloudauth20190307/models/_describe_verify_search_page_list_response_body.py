@@ -99,6 +99,11 @@ class DescribeVerifySearchPageListResponseBodyItems(DaraModel):
         outer_order_no: str = None,
         passed: str = None,
         product_code: str = None,
+        risk_biz_scenario: int = None,
+        risk_device: int = None,
+        risk_device_token: int = None,
+        risk_generic: int = None,
+        risk_model_mining: int = None,
         root: int = None,
         scene_id: int = None,
         simulator: int = None,
@@ -124,6 +129,11 @@ class DescribeVerifySearchPageListResponseBodyItems(DaraModel):
         self.passed = passed
         # Product code.
         self.product_code = product_code
+        self.risk_biz_scenario = risk_biz_scenario
+        self.risk_device = risk_device
+        self.risk_device_token = risk_device_token
+        self.risk_generic = risk_generic
+        self.risk_model_mining = risk_model_mining
         # Whether it is root (pass 1 if selected, otherwise do not pass; corresponds to identity label risk type).
         self.root = root
         # Scene ID.
@@ -169,6 +179,21 @@ class DescribeVerifySearchPageListResponseBodyItems(DaraModel):
 
         if self.product_code is not None:
             result['ProductCode'] = self.product_code
+
+        if self.risk_biz_scenario is not None:
+            result['RiskBizScenario'] = self.risk_biz_scenario
+
+        if self.risk_device is not None:
+            result['RiskDevice'] = self.risk_device
+
+        if self.risk_device_token is not None:
+            result['RiskDeviceToken'] = self.risk_device_token
+
+        if self.risk_generic is not None:
+            result['RiskGeneric'] = self.risk_generic
+
+        if self.risk_model_mining is not None:
+            result['RiskModelMining'] = self.risk_model_mining
 
         if self.root is not None:
             result['Root'] = self.root
@@ -216,6 +241,21 @@ class DescribeVerifySearchPageListResponseBodyItems(DaraModel):
 
         if m.get('ProductCode') is not None:
             self.product_code = m.get('ProductCode')
+
+        if m.get('RiskBizScenario') is not None:
+            self.risk_biz_scenario = m.get('RiskBizScenario')
+
+        if m.get('RiskDevice') is not None:
+            self.risk_device = m.get('RiskDevice')
+
+        if m.get('RiskDeviceToken') is not None:
+            self.risk_device_token = m.get('RiskDeviceToken')
+
+        if m.get('RiskGeneric') is not None:
+            self.risk_generic = m.get('RiskGeneric')
+
+        if m.get('RiskModelMining') is not None:
+            self.risk_model_mining = m.get('RiskModelMining')
 
         if m.get('Root') is not None:
             self.root = m.get('Root')

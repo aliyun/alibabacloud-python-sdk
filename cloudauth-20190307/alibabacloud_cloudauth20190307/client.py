@@ -5192,6 +5192,16 @@ class Client(OpenApiClient):
             query['Passed'] = request.passed
         if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.risk_biz_scenario):
+            query['RiskBizScenario'] = request.risk_biz_scenario
+        if not DaraCore.is_null(request.risk_device):
+            query['RiskDevice'] = request.risk_device
+        if not DaraCore.is_null(request.risk_device_token):
+            query['RiskDeviceToken'] = request.risk_device_token
+        if not DaraCore.is_null(request.risk_generic):
+            query['RiskGeneric'] = request.risk_generic
+        if not DaraCore.is_null(request.risk_model_mining):
+            query['RiskModelMining'] = request.risk_model_mining
         if not DaraCore.is_null(request.root):
             query['Root'] = request.root
         if not DaraCore.is_null(request.scene_id):
@@ -5252,6 +5262,16 @@ class Client(OpenApiClient):
             query['Passed'] = request.passed
         if not DaraCore.is_null(request.product_code):
             query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.risk_biz_scenario):
+            query['RiskBizScenario'] = request.risk_biz_scenario
+        if not DaraCore.is_null(request.risk_device):
+            query['RiskDevice'] = request.risk_device
+        if not DaraCore.is_null(request.risk_device_token):
+            query['RiskDeviceToken'] = request.risk_device_token
+        if not DaraCore.is_null(request.risk_generic):
+            query['RiskGeneric'] = request.risk_generic
+        if not DaraCore.is_null(request.risk_model_mining):
+            query['RiskModelMining'] = request.risk_model_mining
         if not DaraCore.is_null(request.root):
             query['Root'] = request.root
         if not DaraCore.is_null(request.scene_id):
