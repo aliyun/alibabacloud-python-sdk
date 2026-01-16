@@ -1,3 +1,14 @@
+2026-01-16 Version: 1.6.7
+- Update API ListJobs: add request parameters EnableAssignNode.
+- Update API ListJobs: add request parameters ImageSearch.
+- Update API ListJobs: add request parameters NumericRangeField.
+- Update API ListJobs: add request parameters NumericRangeMax.
+- Update API ListJobs: add request parameters NumericRangeMin.
+- Update API ListJobs: add request parameters ReasonSearch.
+- Update API ListJobs: add request parameters TimeRangeField.
+- Update API ListJobs: add request parameters UserCommandSearch.
+
+
 2026-01-12 Version: 1.6.6
 - Generated python 2020-12-03 for pai-dlc.
 

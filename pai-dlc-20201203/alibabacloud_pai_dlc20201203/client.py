@@ -1798,16 +1798,26 @@ class Client(OpenApiClient):
             query['DisplayName'] = request.display_name
         if not DaraCore.is_null(request.display_name_search_mode):
             query['DisplayNameSearchMode'] = request.display_name_search_mode
+        if not DaraCore.is_null(request.enable_assign_node):
+            query['EnableAssignNode'] = request.enable_assign_node
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.from_all_workspaces):
             query['FromAllWorkspaces'] = request.from_all_workspaces
+        if not DaraCore.is_null(request.image_search):
+            query['ImageSearch'] = request.image_search
         if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
         if not DaraCore.is_null(request.job_ids):
             query['JobIds'] = request.job_ids
         if not DaraCore.is_null(request.job_type):
             query['JobType'] = request.job_type
+        if not DaraCore.is_null(request.numeric_range_field):
+            query['NumericRangeField'] = request.numeric_range_field
+        if not DaraCore.is_null(request.numeric_range_max):
+            query['NumericRangeMax'] = request.numeric_range_max
+        if not DaraCore.is_null(request.numeric_range_min):
+            query['NumericRangeMin'] = request.numeric_range_min
         if not DaraCore.is_null(request.order):
             query['Order'] = request.order
         if not DaraCore.is_null(request.oversold_info):
@@ -1820,6 +1830,8 @@ class Client(OpenApiClient):
             query['PaymentType'] = request.payment_type
         if not DaraCore.is_null(request.pipeline_id):
             query['PipelineId'] = request.pipeline_id
+        if not DaraCore.is_null(request.reason_search):
+            query['ReasonSearch'] = request.reason_search
         if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not DaraCore.is_null(request.resource_quota_name):
@@ -1834,6 +1846,10 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not DaraCore.is_null(request.tags_shrink):
             query['Tags'] = request.tags_shrink
+        if not DaraCore.is_null(request.time_range_field):
+            query['TimeRangeField'] = request.time_range_field
+        if not DaraCore.is_null(request.user_command_search):
+            query['UserCommandSearch'] = request.user_command_search
         if not DaraCore.is_null(request.user_id_for_filter):
             query['UserIdForFilter'] = request.user_id_for_filter
         if not DaraCore.is_null(request.username):
@@ -1882,16 +1898,26 @@ class Client(OpenApiClient):
             query['DisplayName'] = request.display_name
         if not DaraCore.is_null(request.display_name_search_mode):
             query['DisplayNameSearchMode'] = request.display_name_search_mode
+        if not DaraCore.is_null(request.enable_assign_node):
+            query['EnableAssignNode'] = request.enable_assign_node
         if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
         if not DaraCore.is_null(request.from_all_workspaces):
             query['FromAllWorkspaces'] = request.from_all_workspaces
+        if not DaraCore.is_null(request.image_search):
+            query['ImageSearch'] = request.image_search
         if not DaraCore.is_null(request.job_id):
             query['JobId'] = request.job_id
         if not DaraCore.is_null(request.job_ids):
             query['JobIds'] = request.job_ids
         if not DaraCore.is_null(request.job_type):
             query['JobType'] = request.job_type
+        if not DaraCore.is_null(request.numeric_range_field):
+            query['NumericRangeField'] = request.numeric_range_field
+        if not DaraCore.is_null(request.numeric_range_max):
+            query['NumericRangeMax'] = request.numeric_range_max
+        if not DaraCore.is_null(request.numeric_range_min):
+            query['NumericRangeMin'] = request.numeric_range_min
         if not DaraCore.is_null(request.order):
             query['Order'] = request.order
         if not DaraCore.is_null(request.oversold_info):
@@ -1904,6 +1930,8 @@ class Client(OpenApiClient):
             query['PaymentType'] = request.payment_type
         if not DaraCore.is_null(request.pipeline_id):
             query['PipelineId'] = request.pipeline_id
+        if not DaraCore.is_null(request.reason_search):
+            query['ReasonSearch'] = request.reason_search
         if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
         if not DaraCore.is_null(request.resource_quota_name):
@@ -1918,6 +1946,10 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not DaraCore.is_null(request.tags_shrink):
             query['Tags'] = request.tags_shrink
+        if not DaraCore.is_null(request.time_range_field):
+            query['TimeRangeField'] = request.time_range_field
+        if not DaraCore.is_null(request.user_command_search):
+            query['UserCommandSearch'] = request.user_command_search
         if not DaraCore.is_null(request.user_id_for_filter):
             query['UserIdForFilter'] = request.user_id_for_filter
         if not DaraCore.is_null(request.username):

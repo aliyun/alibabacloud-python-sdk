@@ -14,17 +14,23 @@ class ListJobsRequest(DaraModel):
         caller: str = None,
         display_name: str = None,
         display_name_search_mode: str = None,
+        enable_assign_node: str = None,
         end_time: str = None,
         from_all_workspaces: bool = None,
+        image_search: str = None,
         job_id: str = None,
         job_ids: str = None,
         job_type: str = None,
+        numeric_range_field: str = None,
+        numeric_range_max: int = None,
+        numeric_range_min: int = None,
         order: str = None,
         oversold_info: str = None,
         page_number: int = None,
         page_size: int = None,
         payment_type: str = None,
         pipeline_id: str = None,
+        reason_search: str = None,
         resource_id: str = None,
         resource_quota_name: str = None,
         show_own: bool = None,
@@ -32,6 +38,8 @@ class ListJobsRequest(DaraModel):
         start_time: str = None,
         status: str = None,
         tags: Dict[str, str] = None,
+        time_range_field: str = None,
+        user_command_search: str = None,
         user_id_for_filter: str = None,
         username: str = None,
         workspace_id: str = None,
@@ -48,10 +56,12 @@ class ListJobsRequest(DaraModel):
         # The job name. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. For example, if you enter test, test-job1, job-test, job-test2, or job-test can be matched, and job-t1 cannot be matched. The default value null indicates any job name.
         self.display_name = display_name
         self.display_name_search_mode = display_name_search_mode
+        self.enable_assign_node = enable_assign_node
         # The end time of the query. Use the job creation time to filter data. The default value is the current time.
         self.end_time = end_time
         # Specifies whether to query a list of jobs across workspaces. This parameter must be used together with `ShowOwn=true`. You can use this parameter to query a list of jobs recently submitted by the current user.
         self.from_all_workspaces = from_all_workspaces
+        self.image_search = image_search
         # The job ID. Fuzzy query is supported. The name is case-insensitive. Wildcards are not supported. The default value null indicates any job ID.
         self.job_id = job_id
         self.job_ids = job_ids
@@ -63,6 +73,9 @@ class ListJobsRequest(DaraModel):
         # *   OneFlowJob
         # *   ElasticBatchJob
         self.job_type = job_type
+        self.numeric_range_field = numeric_range_field
+        self.numeric_range_max = numeric_range_max
+        self.numeric_range_min = numeric_range_min
         # The sorting order. Valid values:
         # 
         # *   desc (default)
@@ -87,6 +100,7 @@ class ListJobsRequest(DaraModel):
         self.payment_type = payment_type
         # The specific pipeline ID used to filter jobs.
         self.pipeline_id = pipeline_id
+        self.reason_search = reason_search
         # The resource group ID. For information about how to obtain the ID of a dedicated resource group, see [Manage resource quota](https://help.aliyun.com/document_detail/2651299.html).
         self.resource_id = resource_id
         # The resource quota name used to filter jobs. Fuzzy search is supported. Wildcards are not supported. The default value null indicates that jobs are not filtered by resource quota name.
@@ -121,6 +135,8 @@ class ListJobsRequest(DaraModel):
         self.status = status
         # The tags.
         self.tags = tags
+        self.time_range_field = time_range_field
+        self.user_command_search = user_command_search
         # The user ID used to filter jobs.
         self.user_id_for_filter = user_id_for_filter
         # The username used to filter jobs. Fuzzy search is supported. Wildcards are not supported. The default value null indicates that jobs are not filtered by username.
@@ -151,11 +167,17 @@ class ListJobsRequest(DaraModel):
         if self.display_name_search_mode is not None:
             result['DisplayNameSearchMode'] = self.display_name_search_mode
 
+        if self.enable_assign_node is not None:
+            result['EnableAssignNode'] = self.enable_assign_node
+
         if self.end_time is not None:
             result['EndTime'] = self.end_time
 
         if self.from_all_workspaces is not None:
             result['FromAllWorkspaces'] = self.from_all_workspaces
+
+        if self.image_search is not None:
+            result['ImageSearch'] = self.image_search
 
         if self.job_id is not None:
             result['JobId'] = self.job_id
@@ -165,6 +187,15 @@ class ListJobsRequest(DaraModel):
 
         if self.job_type is not None:
             result['JobType'] = self.job_type
+
+        if self.numeric_range_field is not None:
+            result['NumericRangeField'] = self.numeric_range_field
+
+        if self.numeric_range_max is not None:
+            result['NumericRangeMax'] = self.numeric_range_max
+
+        if self.numeric_range_min is not None:
+            result['NumericRangeMin'] = self.numeric_range_min
 
         if self.order is not None:
             result['Order'] = self.order
@@ -183,6 +214,9 @@ class ListJobsRequest(DaraModel):
 
         if self.pipeline_id is not None:
             result['PipelineId'] = self.pipeline_id
+
+        if self.reason_search is not None:
+            result['ReasonSearch'] = self.reason_search
 
         if self.resource_id is not None:
             result['ResourceId'] = self.resource_id
@@ -204,6 +238,12 @@ class ListJobsRequest(DaraModel):
 
         if self.tags is not None:
             result['Tags'] = self.tags
+
+        if self.time_range_field is not None:
+            result['TimeRangeField'] = self.time_range_field
+
+        if self.user_command_search is not None:
+            result['UserCommandSearch'] = self.user_command_search
 
         if self.user_id_for_filter is not None:
             result['UserIdForFilter'] = self.user_id_for_filter
@@ -233,11 +273,17 @@ class ListJobsRequest(DaraModel):
         if m.get('DisplayNameSearchMode') is not None:
             self.display_name_search_mode = m.get('DisplayNameSearchMode')
 
+        if m.get('EnableAssignNode') is not None:
+            self.enable_assign_node = m.get('EnableAssignNode')
+
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
 
         if m.get('FromAllWorkspaces') is not None:
             self.from_all_workspaces = m.get('FromAllWorkspaces')
+
+        if m.get('ImageSearch') is not None:
+            self.image_search = m.get('ImageSearch')
 
         if m.get('JobId') is not None:
             self.job_id = m.get('JobId')
@@ -247,6 +293,15 @@ class ListJobsRequest(DaraModel):
 
         if m.get('JobType') is not None:
             self.job_type = m.get('JobType')
+
+        if m.get('NumericRangeField') is not None:
+            self.numeric_range_field = m.get('NumericRangeField')
+
+        if m.get('NumericRangeMax') is not None:
+            self.numeric_range_max = m.get('NumericRangeMax')
+
+        if m.get('NumericRangeMin') is not None:
+            self.numeric_range_min = m.get('NumericRangeMin')
 
         if m.get('Order') is not None:
             self.order = m.get('Order')
@@ -265,6 +320,9 @@ class ListJobsRequest(DaraModel):
 
         if m.get('PipelineId') is not None:
             self.pipeline_id = m.get('PipelineId')
+
+        if m.get('ReasonSearch') is not None:
+            self.reason_search = m.get('ReasonSearch')
 
         if m.get('ResourceId') is not None:
             self.resource_id = m.get('ResourceId')
@@ -286,6 +344,12 @@ class ListJobsRequest(DaraModel):
 
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+
+        if m.get('TimeRangeField') is not None:
+            self.time_range_field = m.get('TimeRangeField')
+
+        if m.get('UserCommandSearch') is not None:
+            self.user_command_search = m.get('UserCommandSearch')
 
         if m.get('UserIdForFilter') is not None:
             self.user_id_for_filter = m.get('UserIdForFilter')
