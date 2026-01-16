@@ -546,6 +546,8 @@ class Client(OpenApiClient):
             query['FeatureType'] = request.feature_type
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.service_name):
+            query['ServiceName'] = request.service_name
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(
@@ -578,6 +580,8 @@ class Client(OpenApiClient):
             query['FeatureType'] = request.feature_type
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.service_name):
+            query['ServiceName'] = request.service_name
         if not DaraCore.is_null(request.source_ip):
             query['SourceIp'] = request.source_ip
         req = open_api_util_models.OpenApiRequest(

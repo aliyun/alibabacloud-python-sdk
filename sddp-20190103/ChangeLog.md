@@ -1,3 +1,8 @@
+2026-01-16 Version: 1.6.3
+- Update API CreateSlrRole: add request parameters ServiceName.
+- Update API DescribeUserStatus: add response parameters Body.UserStatus.AssetRoleAuthed.
+
+
 2026-01-14 Version: 1.6.2
 - Update API DescribeRules: add response parameters Body.Items.$.AuditMode.
 - Update API DescribeRules: add response parameters Body.Items.$.ThreatAnalysisStatus.

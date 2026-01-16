@@ -9,6 +9,7 @@ class CreateSlrRoleRequest(DaraModel):
         self,
         feature_type: int = None,
         lang: str = None,
+        service_name: str = None,
         source_ip: str = None,
     ):
         # This parameter is deprecated.
@@ -18,6 +19,7 @@ class CreateSlrRoleRequest(DaraModel):
         # *   **zh_cn**: Simplified Chinese
         # *   **en_us**: English
         self.lang = lang
+        self.service_name = service_name
         # This parameter is deprecated.
         self.source_ip = source_ip
 
@@ -35,6 +37,9 @@ class CreateSlrRoleRequest(DaraModel):
         if self.lang is not None:
             result['Lang'] = self.lang
 
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+
         if self.source_ip is not None:
             result['SourceIp'] = self.source_ip
 
@@ -47,6 +52,9 @@ class CreateSlrRoleRequest(DaraModel):
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
 
         if m.get('SourceIp') is not None:
             self.source_ip = m.get('SourceIp')

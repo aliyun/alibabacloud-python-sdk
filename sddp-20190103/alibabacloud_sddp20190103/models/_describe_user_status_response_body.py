@@ -48,6 +48,7 @@ class DescribeUserStatusResponseBodyUserStatus(DaraModel):
     def __init__(
         self,
         access_key_id: str = None,
+        asset_role_authed: bool = None,
         audit_closable: bool = None,
         audit_releasable: bool = None,
         authed: bool = None,
@@ -70,6 +71,7 @@ class DescribeUserStatusResponseBodyUserStatus(DaraModel):
     ):
         # The AccessKey ID of the current account.
         self.access_key_id = access_key_id
+        self.asset_role_authed = asset_role_authed
         # Indicates whether the SQL Explorer feature can be disabled. Valid values:
         # 
         # *   **true**: yes
@@ -147,6 +149,9 @@ class DescribeUserStatusResponseBodyUserStatus(DaraModel):
         if self.access_key_id is not None:
             result['AccessKeyId'] = self.access_key_id
 
+        if self.asset_role_authed is not None:
+            result['AssetRoleAuthed'] = self.asset_role_authed
+
         if self.audit_closable is not None:
             result['AuditClosable'] = self.audit_closable
 
@@ -210,6 +215,9 @@ class DescribeUserStatusResponseBodyUserStatus(DaraModel):
         m = m or dict()
         if m.get('AccessKeyId') is not None:
             self.access_key_id = m.get('AccessKeyId')
+
+        if m.get('AssetRoleAuthed') is not None:
+            self.asset_role_authed = m.get('AssetRoleAuthed')
 
         if m.get('AuditClosable') is not None:
             self.audit_closable = m.get('AuditClosable')
