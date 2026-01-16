@@ -810,6 +810,10 @@ class Client(OpenApiClient):
             query['TableIds'] = request.table_ids_shrink
         if not DaraCore.is_null(request.chunk_mode):
             query['chunkMode'] = request.chunk_mode
+        if not DaraCore.is_null(request.database):
+            query['database'] = request.database
+        if not DaraCore.is_null(request.datasource_code):
+            query['datasourceCode'] = request.datasource_code
         if not DaraCore.is_null(request.enable_headers):
             query['enableHeaders'] = request.enable_headers
         if not DaraCore.is_null(request.meta_extract_columns_shrink):
@@ -820,6 +824,8 @@ class Client(OpenApiClient):
             query['pipelineCommercialType'] = request.pipeline_commercial_type
         if not DaraCore.is_null(request.pipeline_retrieve_rate_limit_strategy):
             query['pipelineRetrieveRateLimitStrategy'] = request.pipeline_retrieve_rate_limit_strategy
+        if not DaraCore.is_null(request.table):
+            query['table'] = request.table
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -905,6 +911,10 @@ class Client(OpenApiClient):
             query['TableIds'] = request.table_ids_shrink
         if not DaraCore.is_null(request.chunk_mode):
             query['chunkMode'] = request.chunk_mode
+        if not DaraCore.is_null(request.database):
+            query['database'] = request.database
+        if not DaraCore.is_null(request.datasource_code):
+            query['datasourceCode'] = request.datasource_code
         if not DaraCore.is_null(request.enable_headers):
             query['enableHeaders'] = request.enable_headers
         if not DaraCore.is_null(request.meta_extract_columns_shrink):
@@ -915,6 +925,8 @@ class Client(OpenApiClient):
             query['pipelineCommercialType'] = request.pipeline_commercial_type
         if not DaraCore.is_null(request.pipeline_retrieve_rate_limit_strategy):
             query['pipelineRetrieveRateLimitStrategy'] = request.pipeline_retrieve_rate_limit_strategy
+        if not DaraCore.is_null(request.table):
+            query['table'] = request.table
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)

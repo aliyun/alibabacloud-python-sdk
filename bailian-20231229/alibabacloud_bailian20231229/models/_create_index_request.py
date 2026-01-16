@@ -31,11 +31,14 @@ class CreateIndexRequest(DaraModel):
         structure_type: str = None,
         table_ids: List[str] = None,
         chunk_mode: str = None,
+        database: str = None,
+        datasource_code: str = None,
         enable_headers: bool = None,
         meta_extract_columns: List[main_models.CreateIndexRequestMetaExtractColumns] = None,
         pipeline_commercial_cu: int = None,
         pipeline_commercial_type: str = None,
         pipeline_retrieve_rate_limit_strategy: str = None,
+        table: str = None,
     ):
         # The files to imported to the knowledge base. Specify the category IDs. All files under the categories will be imported (up to 10,000 files). To add more files later, call **SubmitIndexAddDocumentsJob**.
         self.category_ids = category_ids
@@ -128,6 +131,8 @@ class CreateIndexRequest(DaraModel):
         self.table_ids = table_ids
         # > This parameter is not available. Do not specify this parameter.
         self.chunk_mode = chunk_mode
+        self.database = database
+        self.datasource_code = datasource_code
         # Whether to treat the first row of all .xlsx and .xls files as headers and concatenate them into each text chunk. This prevents the models from mistakenly interpreting headers as regular data rows.
         # 
         # > Enable this feature only when all imported files are in .xlsx or .xls format and contain headers. Otherwise, leave it disabled.
@@ -144,6 +149,7 @@ class CreateIndexRequest(DaraModel):
         self.pipeline_commercial_cu = pipeline_commercial_cu
         self.pipeline_commercial_type = pipeline_commercial_type
         self.pipeline_retrieve_rate_limit_strategy = pipeline_retrieve_rate_limit_strategy
+        self.table = table
 
     def validate(self):
         if self.columns:
@@ -227,6 +233,12 @@ class CreateIndexRequest(DaraModel):
         if self.chunk_mode is not None:
             result['chunkMode'] = self.chunk_mode
 
+        if self.database is not None:
+            result['database'] = self.database
+
+        if self.datasource_code is not None:
+            result['datasourceCode'] = self.datasource_code
+
         if self.enable_headers is not None:
             result['enableHeaders'] = self.enable_headers
 
@@ -243,6 +255,9 @@ class CreateIndexRequest(DaraModel):
 
         if self.pipeline_retrieve_rate_limit_strategy is not None:
             result['pipelineRetrieveRateLimitStrategy'] = self.pipeline_retrieve_rate_limit_strategy
+
+        if self.table is not None:
+            result['table'] = self.table
 
         return result
 
@@ -315,6 +330,12 @@ class CreateIndexRequest(DaraModel):
         if m.get('chunkMode') is not None:
             self.chunk_mode = m.get('chunkMode')
 
+        if m.get('database') is not None:
+            self.database = m.get('database')
+
+        if m.get('datasourceCode') is not None:
+            self.datasource_code = m.get('datasourceCode')
+
         if m.get('enableHeaders') is not None:
             self.enable_headers = m.get('enableHeaders')
 
@@ -332,6 +353,9 @@ class CreateIndexRequest(DaraModel):
 
         if m.get('pipelineRetrieveRateLimitStrategy') is not None:
             self.pipeline_retrieve_rate_limit_strategy = m.get('pipelineRetrieveRateLimitStrategy')
+
+        if m.get('table') is not None:
+            self.table = m.get('table')
 
         return self
 
