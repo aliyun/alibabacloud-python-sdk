@@ -124,10 +124,14 @@ class Client(OpenApiClient):
 
     def create_app_instance_with_options(
         self,
-        request: main_models.CreateAppInstanceRequest,
+        tmp_req: main_models.CreateAppInstanceRequest,
         runtime: RuntimeOptions,
     ) -> main_models.CreateAppInstanceResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.CreateAppInstanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not DaraCore.is_null(request.application_type):
             query['ApplicationType'] = request.application_type
@@ -149,8 +153,14 @@ class Client(OpenApiClient):
             query['Quantity'] = request.quantity
         if not DaraCore.is_null(request.site_version):
             query['SiteVersion'] = request.site_version
+        body = {}
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'CreateAppInstance',
@@ -170,10 +180,14 @@ class Client(OpenApiClient):
 
     async def create_app_instance_with_options_async(
         self,
-        request: main_models.CreateAppInstanceRequest,
+        tmp_req: main_models.CreateAppInstanceRequest,
         runtime: RuntimeOptions,
     ) -> main_models.CreateAppInstanceResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.CreateAppInstanceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
         query = {}
         if not DaraCore.is_null(request.application_type):
             query['ApplicationType'] = request.application_type
@@ -195,8 +209,14 @@ class Client(OpenApiClient):
             query['Quantity'] = request.quantity
         if not DaraCore.is_null(request.site_version):
             query['SiteVersion'] = request.site_version
+        body = {}
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.tags_shrink):
+            body['Tags'] = request.tags_shrink
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'CreateAppInstance',

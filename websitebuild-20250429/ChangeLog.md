@@ -1,3 +1,8 @@
+2026-01-17 Version: 2.8.2
+- Update API CreateAppInstance: add request parameters ResourceGroupId.
+- Update API CreateAppInstance: add request parameters Tags.
+
+
 2026-01-15 Version: 2.8.1
 - Generated python 2025-04-29 for WebsiteBuild.
 

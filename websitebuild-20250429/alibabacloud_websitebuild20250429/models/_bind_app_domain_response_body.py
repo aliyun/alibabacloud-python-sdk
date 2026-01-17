@@ -117,8 +117,6 @@ class BindAppDomainResponseBody(DaraModel):
 
         return self
 
-
-
 class BindAppDomainResponseBodyModule(DaraModel):
     def __init__(
         self,

@@ -2,12 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
-from alibabacloud_websitebuild20250429 import models as main_models
 from darabonba.model import DaraModel
 
-class CreateAppInstanceRequest(DaraModel):
+class CreateAppInstanceShrinkRequest(DaraModel):
     def __init__(
         self,
         application_type: str = None,
@@ -21,7 +18,7 @@ class CreateAppInstanceRequest(DaraModel):
         quantity: int = None,
         resource_group_id: str = None,
         site_version: str = None,
-        tags: List[main_models.CreateAppInstanceRequestTags] = None,
+        tags_shrink: str = None,
     ):
         # Application type
         self.application_type = application_type
@@ -44,13 +41,10 @@ class CreateAppInstanceRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # Site version
         self.site_version = site_version
-        self.tags = tags
+        self.tags_shrink = tags_shrink
 
     def validate(self):
-        if self.tags:
-            for v1 in self.tags:
-                 if v1:
-                    v1.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -90,10 +84,8 @@ class CreateAppInstanceRequest(DaraModel):
         if self.site_version is not None:
             result['SiteVersion'] = self.site_version
 
-        result['Tags'] = []
-        if self.tags is not None:
-            for k1 in self.tags:
-                result['Tags'].append(k1.to_map() if k1 else None)
+        if self.tags_shrink is not None:
+            result['Tags'] = self.tags_shrink
 
         return result
 
@@ -132,46 +124,8 @@ class CreateAppInstanceRequest(DaraModel):
         if m.get('SiteVersion') is not None:
             self.site_version = m.get('SiteVersion')
 
-        self.tags = []
         if m.get('Tags') is not None:
-            for k1 in m.get('Tags'):
-                temp_model = main_models.CreateAppInstanceRequestTags()
-                self.tags.append(temp_model.from_map(k1))
-
-        return self
-
-class CreateAppInstanceRequestTags(DaraModel):
-    def __init__(
-        self,
-        tag_key: str = None,
-        tag_value: str = None,
-    ):
-        self.tag_key = tag_key
-        self.tag_value = tag_value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.tag_key is not None:
-            result['TagKey'] = self.tag_key
-
-        if self.tag_value is not None:
-            result['TagValue'] = self.tag_value
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('TagKey') is not None:
-            self.tag_key = m.get('TagKey')
-
-        if m.get('TagValue') is not None:
-            self.tag_value = m.get('TagValue')
+            self.tags_shrink = m.get('Tags')
 
         return self
 

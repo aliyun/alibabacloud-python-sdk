@@ -16,6 +16,7 @@ from ._bind_app_domain_request import BindAppDomainRequest
 from ._bind_app_domain_response_body import BindAppDomainResponseBody
 from ._bind_app_domain_response import BindAppDomainResponse
 from ._create_app_instance_request import CreateAppInstanceRequest
+from ._create_app_instance_shrink_request import CreateAppInstanceShrinkRequest
 from ._create_app_instance_response_body import CreateAppInstanceResponseBody
 from ._create_app_instance_response import CreateAppInstanceResponse
 from ._create_app_instance_ticket_request import CreateAppInstanceTicketRequest
@@ -96,7 +97,11 @@ from ._sync_app_instance_for_partner_response import SyncAppInstanceForPartnerRe
 from ._unbind_app_domain_request import UnbindAppDomainRequest
 from ._unbind_app_domain_response_body import UnbindAppDomainResponseBody
 from ._unbind_app_domain_response import UnbindAppDomainResponse
+from ._app_instance_aggregate import AppInstanceAggregatePartnerDetailBindData
+from ._app_instance_aggregate import AppInstanceAggregatePartnerDetail
+from ._app_instance_aggregate import AppInstanceAggregateTags
 from ._bind_app_domain_response_body import BindAppDomainResponseBodyModule
+from ._create_app_instance_request import CreateAppInstanceRequestTags
 from ._create_app_instance_response_body import CreateAppInstanceResponseBodyModule
 from ._create_app_instance_ticket_response_body import CreateAppInstanceTicketResponseBodyModule
 from ._delete_app_domain_certificate_response_body import DeleteAppDomainCertificateResponseBodyModule
@@ -156,6 +161,7 @@ __all__ = [
     BindAppDomainResponseBody,
     BindAppDomainResponse,
     CreateAppInstanceRequest,
+    CreateAppInstanceShrinkRequest,
     CreateAppInstanceResponseBody,
     CreateAppInstanceResponse,
     CreateAppInstanceTicketRequest,
@@ -236,7 +242,11 @@ __all__ = [
     UnbindAppDomainRequest,
     UnbindAppDomainResponseBody,
     UnbindAppDomainResponse,
+    AppInstanceAggregatePartnerDetailBindData,
+    AppInstanceAggregatePartnerDetail,
+    AppInstanceAggregateTags,
     BindAppDomainResponseBodyModule,
+    CreateAppInstanceRequestTags,
     CreateAppInstanceResponseBodyModule,
     CreateAppInstanceTicketResponseBodyModule,
     DeleteAppDomainCertificateResponseBodyModule,
