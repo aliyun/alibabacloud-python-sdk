@@ -1,3 +1,8 @@
+2026-01-19 Version: 5.0.2
+- Update API CreateDBInstance: add request parameters ConfigPatternType.
+- Update API DescribeDBInstanceAttribute: add response parameters Body.ConfigPatternType.
+
+
 2026-01-09 Version: 5.0.1
 - Update API DescribeDBInstances: add request parameters ResourceOwnerId.
 

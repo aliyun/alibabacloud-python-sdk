@@ -16,6 +16,7 @@ class CreateDBInstanceRequest(DaraModel):
         client_token: str = None,
         cluster_node_count: int = None,
         cluster_node_type: str = None,
+        config_pattern_type: str = None,
         connection_string: str = None,
         dbinstance_class: str = None,
         dbinstance_description: str = None,
@@ -56,6 +57,7 @@ class CreateDBInstanceRequest(DaraModel):
         self.client_token = client_token
         self.cluster_node_count = cluster_node_count
         self.cluster_node_type = cluster_node_type
+        self.config_pattern_type = config_pattern_type
         # The instance endpoint.
         self.connection_string = connection_string
         # The instance type. You can call the [DescribeAllDBInstanceClass](https://help.aliyun.com/document_detail/2853363.html) operation to query instance types.
@@ -151,6 +153,9 @@ class CreateDBInstanceRequest(DaraModel):
         if self.cluster_node_type is not None:
             result['ClusterNodeType'] = self.cluster_node_type
 
+        if self.config_pattern_type is not None:
+            result['ConfigPatternType'] = self.config_pattern_type
+
         if self.connection_string is not None:
             result['ConnectionString'] = self.connection_string
 
@@ -233,6 +238,9 @@ class CreateDBInstanceRequest(DaraModel):
 
         if m.get('ClusterNodeType') is not None:
             self.cluster_node_type = m.get('ClusterNodeType')
+
+        if m.get('ConfigPatternType') is not None:
+            self.config_pattern_type = m.get('ConfigPatternType')
 
         if m.get('ConnectionString') is not None:
             self.connection_string = m.get('ConnectionString')

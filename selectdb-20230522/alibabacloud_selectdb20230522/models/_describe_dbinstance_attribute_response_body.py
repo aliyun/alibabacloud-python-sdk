@@ -12,6 +12,7 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         self,
         can_upgrade_versions: List[str] = None,
         charge_type: str = None,
+        config_pattern_type: str = None,
         create_time: str = None,
         dbcluster_list: List[main_models.DescribeDBInstanceAttributeResponseBodyDBClusterList] = None,
         dbinstance_id: str = None,
@@ -50,6 +51,7 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         # *   **Postpaid**: pay-as-you-go.
         # *   **Prepaid**: subscription.
         self.charge_type = charge_type
+        self.config_pattern_type = config_pattern_type
         # The time when the instance was created.
         self.create_time = create_time
         # The information about each cluster returned.
@@ -140,6 +142,9 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
 
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
+
+        if self.config_pattern_type is not None:
+            result['ConfigPatternType'] = self.config_pattern_type
 
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
@@ -248,6 +253,9 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
 
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
+
+        if m.get('ConfigPatternType') is not None:
+            self.config_pattern_type = m.get('ConfigPatternType')
 
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')

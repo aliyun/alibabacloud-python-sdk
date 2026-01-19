@@ -731,6 +731,8 @@ class Client(OpenApiClient):
             query['ClusterNodeCount'] = request.cluster_node_count
         if not DaraCore.is_null(request.cluster_node_type):
             query['ClusterNodeType'] = request.cluster_node_type
+        if not DaraCore.is_null(request.config_pattern_type):
+            query['ConfigPatternType'] = request.config_pattern_type
         if not DaraCore.is_null(request.connection_string):
             query['ConnectionString'] = request.connection_string
         if not DaraCore.is_null(request.dbinstance_class):
@@ -815,6 +817,8 @@ class Client(OpenApiClient):
             query['ClusterNodeCount'] = request.cluster_node_count
         if not DaraCore.is_null(request.cluster_node_type):
             query['ClusterNodeType'] = request.cluster_node_type
+        if not DaraCore.is_null(request.config_pattern_type):
+            query['ConfigPatternType'] = request.config_pattern_type
         if not DaraCore.is_null(request.connection_string):
             query['ConnectionString'] = request.connection_string
         if not DaraCore.is_null(request.dbinstance_class):
