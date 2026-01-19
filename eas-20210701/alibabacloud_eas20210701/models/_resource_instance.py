@@ -22,6 +22,7 @@ class ResourceInstance(DaraModel):
         instance_ip: str = None,
         instance_memory: str = None,
         instance_name: str = None,
+        instance_phase: str = None,
         instance_status: str = None,
         instance_system_disk_size: int = None,
         instance_tenant_ip: str = None,
@@ -47,6 +48,7 @@ class ResourceInstance(DaraModel):
         self.instance_ip = instance_ip
         self.instance_memory = instance_memory
         self.instance_name = instance_name
+        self.instance_phase = instance_phase
         self.instance_status = instance_status
         self.instance_system_disk_size = instance_system_disk_size
         self.instance_tenant_ip = instance_tenant_ip
@@ -106,6 +108,9 @@ class ResourceInstance(DaraModel):
 
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+
+        if self.instance_phase is not None:
+            result['InstancePhase'] = self.instance_phase
 
         if self.instance_status is not None:
             result['InstanceStatus'] = self.instance_status
@@ -184,6 +189,9 @@ class ResourceInstance(DaraModel):
 
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+
+        if m.get('InstancePhase') is not None:
+            self.instance_phase = m.get('InstancePhase')
 
         if m.get('InstanceStatus') is not None:
             self.instance_status = m.get('InstanceStatus')

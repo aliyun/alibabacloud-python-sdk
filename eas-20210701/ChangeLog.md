@@ -1,3 +1,7 @@
+2026-01-19 Version: 6.11.2
+- Update API UpdateResourceInstance: add request parameters body.NewDiskSize.
+
+
 2026-01-07 Version: 6.11.1
 - Update API ListResourceInstances: add request parameters Zone.
 - Update API ListServiceInstances: add request parameters QuotaId.

@@ -8303,6 +8303,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.action):
             body['Action'] = request.action
+        if not DaraCore.is_null(request.new_disk_size):
+            body['NewDiskSize'] = request.new_disk_size
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -8336,6 +8338,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.action):
             body['Action'] = request.action
+        if not DaraCore.is_null(request.new_disk_size):
+            body['NewDiskSize'] = request.new_disk_size
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
