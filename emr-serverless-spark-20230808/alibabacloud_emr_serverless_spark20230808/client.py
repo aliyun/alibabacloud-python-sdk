@@ -3555,6 +3555,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_livy_compute_with_options_async(workspace_biz_id, request, headers, runtime)
 
+    def list_livy_compute_sessions_with_options(
+        self,
+        workspace_id: str,
+        livy_compute_id: str,
+        request: main_models.ListLivyComputeSessionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLivyComputeSessionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_num):
+            query['pageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLivyComputeSessions',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/livycompute/{DaraURL.percent_encode(livy_compute_id)}/session',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLivyComputeSessionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_livy_compute_sessions_with_options_async(
+        self,
+        workspace_id: str,
+        livy_compute_id: str,
+        request: main_models.ListLivyComputeSessionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListLivyComputeSessionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_num):
+            query['pageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.region_id):
+            query['regionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListLivyComputeSessions',
+            version = '2023-08-08',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/workspaces/{DaraURL.percent_encode(workspace_id)}/livycompute/{DaraURL.percent_encode(livy_compute_id)}/session',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListLivyComputeSessionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_livy_compute_sessions(
+        self,
+        workspace_id: str,
+        livy_compute_id: str,
+        request: main_models.ListLivyComputeSessionsRequest,
+    ) -> main_models.ListLivyComputeSessionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_livy_compute_sessions_with_options(workspace_id, livy_compute_id, request, headers, runtime)
+
+    async def list_livy_compute_sessions_async(
+        self,
+        workspace_id: str,
+        livy_compute_id: str,
+        request: main_models.ListLivyComputeSessionsRequest,
+    ) -> main_models.ListLivyComputeSessionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_livy_compute_sessions_with_options_async(workspace_id, livy_compute_id, request, headers, runtime)
+
     def list_livy_compute_token_with_options(
         self,
         workspace_biz_id: str,

@@ -128,6 +128,9 @@ from ._list_kyuubi_token_response import ListKyuubiTokenResponse
 from ._list_livy_compute_request import ListLivyComputeRequest
 from ._list_livy_compute_response_body import ListLivyComputeResponseBody
 from ._list_livy_compute_response import ListLivyComputeResponse
+from ._list_livy_compute_sessions_request import ListLivyComputeSessionsRequest
+from ._list_livy_compute_sessions_response_body import ListLivyComputeSessionsResponseBody
+from ._list_livy_compute_sessions_response import ListLivyComputeSessionsResponse
 from ._list_livy_compute_token_request import ListLivyComputeTokenRequest
 from ._list_livy_compute_token_response_body import ListLivyComputeTokenResponseBody
 from ._list_livy_compute_token_response import ListLivyComputeTokenResponse
@@ -265,6 +268,7 @@ from ._list_kyuubi_token_response_body import ListKyuubiTokenResponseBodyDataTok
 from ._list_kyuubi_token_response_body import ListKyuubiTokenResponseBodyData
 from ._list_livy_compute_response_body import ListLivyComputeResponseBodyDataLivyComputes
 from ._list_livy_compute_response_body import ListLivyComputeResponseBodyData
+from ._list_livy_compute_sessions_response_body import ListLivyComputeSessionsResponseBodySessions
 from ._list_livy_compute_token_response_body import ListLivyComputeTokenResponseBodyDataTokens
 from ._list_livy_compute_token_response_body import ListLivyComputeTokenResponseBodyData
 from ._list_log_contents_response_body import ListLogContentsResponseBodyListLogContentContents
@@ -429,6 +433,9 @@ __all__ = [
     ListLivyComputeRequest,
     ListLivyComputeResponseBody,
     ListLivyComputeResponse,
+    ListLivyComputeSessionsRequest,
+    ListLivyComputeSessionsResponseBody,
+    ListLivyComputeSessionsResponse,
     ListLivyComputeTokenRequest,
     ListLivyComputeTokenResponseBody,
     ListLivyComputeTokenResponse,
@@ -566,6 +573,7 @@ __all__ = [
     ListKyuubiTokenResponseBodyData,
     ListLivyComputeResponseBodyDataLivyComputes,
     ListLivyComputeResponseBodyData,
+    ListLivyComputeSessionsResponseBodySessions,
     ListLivyComputeTokenResponseBodyDataTokens,
     ListLivyComputeTokenResponseBodyData,
     ListLogContentsResponseBodyListLogContentContents,
