@@ -1,0 +1,295 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._campaign_detail import CampaignDetail
+from ._data_schema_properties_value import DataSchemaPropertiesValue
+from ._abort_campaign_request import AbortCampaignRequest
+from ._abort_campaign_response_body import AbortCampaignResponseBody
+from ._abort_campaign_response import AbortCampaignResponse
+from ._abort_cases_request import AbortCasesRequest
+from ._abort_cases_shrink_request import AbortCasesShrinkRequest
+from ._abort_cases_response_body import AbortCasesResponseBody
+from ._abort_cases_response import AbortCasesResponse
+from ._check_demo_instance_exists_response_body import CheckDemoInstanceExistsResponseBody
+from ._check_demo_instance_exists_response import CheckDemoInstanceExistsResponse
+from ._check_mqrole_assumption_authority_response_body import CheckMQRoleAssumptionAuthorityResponseBody
+from ._check_mqrole_assumption_authority_response import CheckMQRoleAssumptionAuthorityResponse
+from ._create_campaign_request import CreateCampaignRequest
+from ._create_campaign_shrink_request import CreateCampaignShrinkRequest
+from ._create_campaign_response_body import CreateCampaignResponseBody
+from ._create_campaign_response import CreateCampaignResponse
+from ._create_chat_media_url_request import CreateChatMediaUrlRequest
+from ._create_chat_media_url_response_body import CreateChatMediaUrlResponseBody
+from ._create_chat_media_url_response import CreateChatMediaUrlResponse
+from ._create_corp_number_group_request import CreateCorpNumberGroupRequest
+from ._create_corp_number_group_response_body import CreateCorpNumberGroupResponseBody
+from ._create_corp_number_group_response import CreateCorpNumberGroupResponse
+from ._create_demo_instance_request import CreateDemoInstanceRequest
+from ._create_demo_instance_response_body import CreateDemoInstanceResponseBody
+from ._create_demo_instance_response import CreateDemoInstanceResponse
+from ._get_access_channel_of_staging_request import GetAccessChannelOfStagingRequest
+from ._get_access_channel_of_staging_response_body import GetAccessChannelOfStagingResponseBody
+from ._get_access_channel_of_staging_response import GetAccessChannelOfStagingResponse
+from ._get_campaign_request import GetCampaignRequest
+from ._get_campaign_response_body import GetCampaignResponseBody
+from ._get_campaign_response import GetCampaignResponse
+from ._get_document_request import GetDocumentRequest
+from ._get_document_response_body import GetDocumentResponseBody
+from ._get_document_response import GetDocumentResponse
+from ._get_historical_campaign_report_request import GetHistoricalCampaignReportRequest
+from ._get_historical_campaign_report_response_body import GetHistoricalCampaignReportResponseBody
+from ._get_historical_campaign_report_response import GetHistoricalCampaignReportResponse
+from ._get_instance_ids_by_aliyun_uid_v2request import GetInstanceIdsByAliyunUidV2Request
+from ._get_instance_ids_by_aliyun_uid_v2response_body import GetInstanceIdsByAliyunUidV2ResponseBody
+from ._get_instance_ids_by_aliyun_uid_v2response import GetInstanceIdsByAliyunUidV2Response
+from ._get_realtime_campaign_stats_request import GetRealtimeCampaignStatsRequest
+from ._get_realtime_campaign_stats_response_body import GetRealtimeCampaignStatsResponseBody
+from ._get_realtime_campaign_stats_response import GetRealtimeCampaignStatsResponse
+from ._import_admins_request import ImportAdminsRequest
+from ._import_admins_response_body import ImportAdminsResponseBody
+from ._import_admins_response import ImportAdminsResponse
+from ._issue_softphone_command_request import IssueSoftphoneCommandRequest
+from ._issue_softphone_command_response_body import IssueSoftphoneCommandResponseBody
+from ._issue_softphone_command_response import IssueSoftphoneCommandResponse
+from ._list_attempts_request import ListAttemptsRequest
+from ._list_attempts_response_body import ListAttemptsResponseBody
+from ._list_attempts_response import ListAttemptsResponse
+from ._list_campaign_trending_report_request import ListCampaignTrendingReportRequest
+from ._list_campaign_trending_report_response_body import ListCampaignTrendingReportResponseBody
+from ._list_campaign_trending_report_response import ListCampaignTrendingReportResponse
+from ._list_campaigns_request import ListCampaignsRequest
+from ._list_campaigns_response_body import ListCampaignsResponseBody
+from ._list_campaigns_response import ListCampaignsResponse
+from ._list_cases_request import ListCasesRequest
+from ._list_cases_response_body import ListCasesResponseBody
+from ._list_cases_response import ListCasesResponse
+from ._list_flash_sms_settings_request import ListFlashSmsSettingsRequest
+from ._list_flash_sms_settings_shrink_request import ListFlashSmsSettingsShrinkRequest
+from ._list_flash_sms_settings_response_body import ListFlashSmsSettingsResponseBody
+from ._list_flash_sms_settings_response import ListFlashSmsSettingsResponse
+from ._list_historical_agent_skill_group_report_request import ListHistoricalAgentSkillGroupReportRequest
+from ._list_historical_agent_skill_group_report_response_body import ListHistoricalAgentSkillGroupReportResponseBody
+from ._list_historical_agent_skill_group_report_response import ListHistoricalAgentSkillGroupReportResponse
+from ._list_interval_agent_skill_group_report_request import ListIntervalAgentSkillGroupReportRequest
+from ._list_interval_agent_skill_group_report_response_body import ListIntervalAgentSkillGroupReportResponseBody
+from ._list_interval_agent_skill_group_report_response import ListIntervalAgentSkillGroupReportResponse
+from ._list_mono_recordings_request import ListMonoRecordingsRequest
+from ._list_mono_recordings_response_body import ListMonoRecordingsResponseBody
+from ._list_mono_recordings_response import ListMonoRecordingsResponse
+from ._pause_campaign_request import PauseCampaignRequest
+from ._pause_campaign_response_body import PauseCampaignResponseBody
+from ._pause_campaign_response import PauseCampaignResponse
+from ._process_ali_me_callback_of_staging_request import ProcessAliMeCallbackOfStagingRequest
+from ._process_ali_me_callback_of_staging_response_body import ProcessAliMeCallbackOfStagingResponseBody
+from ._process_ali_me_callback_of_staging_response import ProcessAliMeCallbackOfStagingResponse
+from ._process_custom_imcallback_request import ProcessCustomIMCallbackRequest
+from ._process_custom_imcallback_response_body import ProcessCustomIMCallbackResponseBody
+from ._process_custom_imcallback_response import ProcessCustomIMCallbackResponse
+from ._replace_migration_available_numbers_request import ReplaceMigrationAvailableNumbersRequest
+from ._replace_migration_available_numbers_response_body import ReplaceMigrationAvailableNumbersResponseBody
+from ._replace_migration_available_numbers_response import ReplaceMigrationAvailableNumbersResponse
+from ._resume_campaign_request import ResumeCampaignRequest
+from ._resume_campaign_response_body import ResumeCampaignResponseBody
+from ._resume_campaign_response import ResumeCampaignResponse
+from ._save_rtcstats_v2request import SaveRTCStatsV2Request
+from ._save_rtcstats_v2response_body import SaveRTCStatsV2ResponseBody
+from ._save_rtcstats_v2response import SaveRTCStatsV2Response
+from ._save_terminal_log_request import SaveTerminalLogRequest
+from ._save_terminal_log_response_body import SaveTerminalLogResponseBody
+from ._save_terminal_log_response import SaveTerminalLogResponse
+from ._save_web_rtc_info_request import SaveWebRtcInfoRequest
+from ._save_web_rtc_info_response_body import SaveWebRtcInfoResponseBody
+from ._save_web_rtc_info_response import SaveWebRtcInfoResponse
+from ._send_notification_request import SendNotificationRequest
+from ._send_notification_response_body import SendNotificationResponseBody
+from ._send_notification_response import SendNotificationResponse
+from ._submit_campaign_request import SubmitCampaignRequest
+from ._submit_campaign_response_body import SubmitCampaignResponseBody
+from ._submit_campaign_response import SubmitCampaignResponse
+from ._unregister_device_request import UnregisterDeviceRequest
+from ._unregister_device_response_body import UnregisterDeviceResponseBody
+from ._unregister_device_response import UnregisterDeviceResponse
+from ._create_campaign_request import CreateCampaignRequestCaseList
+from ._create_chat_media_url_response_body import CreateChatMediaUrlResponseBodyData
+from ._create_corp_number_group_response_body import CreateCorpNumberGroupResponseBodyData
+from ._get_access_channel_of_staging_response_body import GetAccessChannelOfStagingResponseBodyData
+from ._get_campaign_response_body import GetCampaignResponseBodyData
+from ._get_document_response_body import GetDocumentResponseBodyDataSchema
+from ._get_document_response_body import GetDocumentResponseBodyData
+from ._get_historical_campaign_report_response_body import GetHistoricalCampaignReportResponseBodyData
+from ._get_realtime_campaign_stats_response_body import GetRealtimeCampaignStatsResponseBodyData
+from ._import_admins_response_body import ImportAdminsResponseBodyData
+from ._list_attempts_response_body import ListAttemptsResponseBodyDataList
+from ._list_attempts_response_body import ListAttemptsResponseBodyData
+from ._list_campaign_trending_report_response_body import ListCampaignTrendingReportResponseBodyData
+from ._list_campaigns_response_body import ListCampaignsResponseBodyDataList
+from ._list_campaigns_response_body import ListCampaignsResponseBodyData
+from ._list_cases_response_body import ListCasesResponseBodyDataList
+from ._list_cases_response_body import ListCasesResponseBodyData
+from ._list_flash_sms_settings_response_body import ListFlashSmsSettingsResponseBodyDataList
+from ._list_flash_sms_settings_response_body import ListFlashSmsSettingsResponseBodyData
+from ._list_historical_agent_skill_group_report_response_body import ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back
+from ._list_historical_agent_skill_group_report_response_body import ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound
+from ._list_historical_agent_skill_group_report_response_body import ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal
+from ._list_historical_agent_skill_group_report_response_body import ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound
+from ._list_historical_agent_skill_group_report_response_body import ListHistoricalAgentSkillGroupReportResponseBodyDataListOverallBreakCodeDetailList
+from ._list_historical_agent_skill_group_report_response_body import ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall
+from ._list_historical_agent_skill_group_report_response_body import ListHistoricalAgentSkillGroupReportResponseBodyDataList
+from ._list_historical_agent_skill_group_report_response_body import ListHistoricalAgentSkillGroupReportResponseBodyData
+from ._list_interval_agent_skill_group_report_response_body import ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back
+from ._list_interval_agent_skill_group_report_response_body import ListIntervalAgentSkillGroupReportResponseBodyDataInbound
+from ._list_interval_agent_skill_group_report_response_body import ListIntervalAgentSkillGroupReportResponseBodyDataInternal
+from ._list_interval_agent_skill_group_report_response_body import ListIntervalAgentSkillGroupReportResponseBodyDataOutbound
+from ._list_interval_agent_skill_group_report_response_body import ListIntervalAgentSkillGroupReportResponseBodyDataOverallBreakCodeDetailList
+from ._list_interval_agent_skill_group_report_response_body import ListIntervalAgentSkillGroupReportResponseBodyDataOverall
+from ._list_interval_agent_skill_group_report_response_body import ListIntervalAgentSkillGroupReportResponseBodyData
+from ._list_mono_recordings_response_body import ListMonoRecordingsResponseBodyData
+from ._process_ali_me_callback_of_staging_response_body import ProcessAliMeCallbackOfStagingResponseBodyData
+
+__all__ = [
+    CampaignDetail,
+    DataSchemaPropertiesValue,
+    AbortCampaignRequest,
+    AbortCampaignResponseBody,
+    AbortCampaignResponse,
+    AbortCasesRequest,
+    AbortCasesShrinkRequest,
+    AbortCasesResponseBody,
+    AbortCasesResponse,
+    CheckDemoInstanceExistsResponseBody,
+    CheckDemoInstanceExistsResponse,
+    CheckMQRoleAssumptionAuthorityResponseBody,
+    CheckMQRoleAssumptionAuthorityResponse,
+    CreateCampaignRequest,
+    CreateCampaignShrinkRequest,
+    CreateCampaignResponseBody,
+    CreateCampaignResponse,
+    CreateChatMediaUrlRequest,
+    CreateChatMediaUrlResponseBody,
+    CreateChatMediaUrlResponse,
+    CreateCorpNumberGroupRequest,
+    CreateCorpNumberGroupResponseBody,
+    CreateCorpNumberGroupResponse,
+    CreateDemoInstanceRequest,
+    CreateDemoInstanceResponseBody,
+    CreateDemoInstanceResponse,
+    GetAccessChannelOfStagingRequest,
+    GetAccessChannelOfStagingResponseBody,
+    GetAccessChannelOfStagingResponse,
+    GetCampaignRequest,
+    GetCampaignResponseBody,
+    GetCampaignResponse,
+    GetDocumentRequest,
+    GetDocumentResponseBody,
+    GetDocumentResponse,
+    GetHistoricalCampaignReportRequest,
+    GetHistoricalCampaignReportResponseBody,
+    GetHistoricalCampaignReportResponse,
+    GetInstanceIdsByAliyunUidV2Request,
+    GetInstanceIdsByAliyunUidV2ResponseBody,
+    GetInstanceIdsByAliyunUidV2Response,
+    GetRealtimeCampaignStatsRequest,
+    GetRealtimeCampaignStatsResponseBody,
+    GetRealtimeCampaignStatsResponse,
+    ImportAdminsRequest,
+    ImportAdminsResponseBody,
+    ImportAdminsResponse,
+    IssueSoftphoneCommandRequest,
+    IssueSoftphoneCommandResponseBody,
+    IssueSoftphoneCommandResponse,
+    ListAttemptsRequest,
+    ListAttemptsResponseBody,
+    ListAttemptsResponse,
+    ListCampaignTrendingReportRequest,
+    ListCampaignTrendingReportResponseBody,
+    ListCampaignTrendingReportResponse,
+    ListCampaignsRequest,
+    ListCampaignsResponseBody,
+    ListCampaignsResponse,
+    ListCasesRequest,
+    ListCasesResponseBody,
+    ListCasesResponse,
+    ListFlashSmsSettingsRequest,
+    ListFlashSmsSettingsShrinkRequest,
+    ListFlashSmsSettingsResponseBody,
+    ListFlashSmsSettingsResponse,
+    ListHistoricalAgentSkillGroupReportRequest,
+    ListHistoricalAgentSkillGroupReportResponseBody,
+    ListHistoricalAgentSkillGroupReportResponse,
+    ListIntervalAgentSkillGroupReportRequest,
+    ListIntervalAgentSkillGroupReportResponseBody,
+    ListIntervalAgentSkillGroupReportResponse,
+    ListMonoRecordingsRequest,
+    ListMonoRecordingsResponseBody,
+    ListMonoRecordingsResponse,
+    PauseCampaignRequest,
+    PauseCampaignResponseBody,
+    PauseCampaignResponse,
+    ProcessAliMeCallbackOfStagingRequest,
+    ProcessAliMeCallbackOfStagingResponseBody,
+    ProcessAliMeCallbackOfStagingResponse,
+    ProcessCustomIMCallbackRequest,
+    ProcessCustomIMCallbackResponseBody,
+    ProcessCustomIMCallbackResponse,
+    ReplaceMigrationAvailableNumbersRequest,
+    ReplaceMigrationAvailableNumbersResponseBody,
+    ReplaceMigrationAvailableNumbersResponse,
+    ResumeCampaignRequest,
+    ResumeCampaignResponseBody,
+    ResumeCampaignResponse,
+    SaveRTCStatsV2Request,
+    SaveRTCStatsV2ResponseBody,
+    SaveRTCStatsV2Response,
+    SaveTerminalLogRequest,
+    SaveTerminalLogResponseBody,
+    SaveTerminalLogResponse,
+    SaveWebRtcInfoRequest,
+    SaveWebRtcInfoResponseBody,
+    SaveWebRtcInfoResponse,
+    SendNotificationRequest,
+    SendNotificationResponseBody,
+    SendNotificationResponse,
+    SubmitCampaignRequest,
+    SubmitCampaignResponseBody,
+    SubmitCampaignResponse,
+    UnregisterDeviceRequest,
+    UnregisterDeviceResponseBody,
+    UnregisterDeviceResponse,
+    CreateCampaignRequestCaseList,
+    CreateChatMediaUrlResponseBodyData,
+    CreateCorpNumberGroupResponseBodyData,
+    GetAccessChannelOfStagingResponseBodyData,
+    GetCampaignResponseBodyData,
+    GetDocumentResponseBodyDataSchema,
+    GetDocumentResponseBodyData,
+    GetHistoricalCampaignReportResponseBodyData,
+    GetRealtimeCampaignStatsResponseBodyData,
+    ImportAdminsResponseBodyData,
+    ListAttemptsResponseBodyDataList,
+    ListAttemptsResponseBodyData,
+    ListCampaignTrendingReportResponseBodyData,
+    ListCampaignsResponseBodyDataList,
+    ListCampaignsResponseBodyData,
+    ListCasesResponseBodyDataList,
+    ListCasesResponseBodyData,
+    ListFlashSmsSettingsResponseBodyDataList,
+    ListFlashSmsSettingsResponseBodyData,
+    ListHistoricalAgentSkillGroupReportResponseBodyDataListBack2Back,
+    ListHistoricalAgentSkillGroupReportResponseBodyDataListInbound,
+    ListHistoricalAgentSkillGroupReportResponseBodyDataListInternal,
+    ListHistoricalAgentSkillGroupReportResponseBodyDataListOutbound,
+    ListHistoricalAgentSkillGroupReportResponseBodyDataListOverallBreakCodeDetailList,
+    ListHistoricalAgentSkillGroupReportResponseBodyDataListOverall,
+    ListHistoricalAgentSkillGroupReportResponseBodyDataList,
+    ListHistoricalAgentSkillGroupReportResponseBodyData,
+    ListIntervalAgentSkillGroupReportResponseBodyDataBack2Back,
+    ListIntervalAgentSkillGroupReportResponseBodyDataInbound,
+    ListIntervalAgentSkillGroupReportResponseBodyDataInternal,
+    ListIntervalAgentSkillGroupReportResponseBodyDataOutbound,
+    ListIntervalAgentSkillGroupReportResponseBodyDataOverallBreakCodeDetailList,
+    ListIntervalAgentSkillGroupReportResponseBodyDataOverall,
+    ListIntervalAgentSkillGroupReportResponseBodyData,
+    ListMonoRecordingsResponseBodyData,
+    ProcessAliMeCallbackOfStagingResponseBodyData
+]
