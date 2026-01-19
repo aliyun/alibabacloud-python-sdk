@@ -11,8 +11,11 @@ class GetKvDetailResponseBody(DaraModel):
         request_id: str = None,
         value: str = None,
     ):
+        # The expiration time of the key. Unit: seconds.
         self.expiration_ttl = expiration_ttl
+        # The expiration time of the key. Unit: seconds.
         self.request_id = request_id
+        # The value of the key. The value of the root node.
         self.value = value
 
     def validate(self):

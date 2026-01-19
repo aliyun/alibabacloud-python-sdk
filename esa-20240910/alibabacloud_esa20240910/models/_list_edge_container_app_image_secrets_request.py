@@ -9,6 +9,8 @@ class ListEdgeContainerAppImageSecretsRequest(DaraModel):
         self,
         app_id: str = None,
     ):
+        # Application ID, which can be obtained using the [ListEdgeContainerApps](~~ListEdgeContainerApps~~) interface.
+        # 
         # This parameter is required.
         self.app_id = app_id
 

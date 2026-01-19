@@ -10829,6 +10829,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_ddo_sl7qps_list_with_options_async(request, runtime)
 
+    def describe_ddos_max_burst_gbps_with_options(
+        self,
+        request: main_models.DescribeDdosMaxBurstGbpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDdosMaxBurstGbpsResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDdosMaxBurstGbps',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDdosMaxBurstGbpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_ddos_max_burst_gbps_with_options_async(
+        self,
+        request: main_models.DescribeDdosMaxBurstGbpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDdosMaxBurstGbpsResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDdosMaxBurstGbps',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDdosMaxBurstGbpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_ddos_max_burst_gbps(
+        self,
+        request: main_models.DescribeDdosMaxBurstGbpsRequest,
+    ) -> main_models.DescribeDdosMaxBurstGbpsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_ddos_max_burst_gbps_with_options(request, runtime)
+
+    async def describe_ddos_max_burst_gbps_async(
+        self,
+        request: main_models.DescribeDdosMaxBurstGbpsRequest,
+    ) -> main_models.DescribeDdosMaxBurstGbpsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_ddos_max_burst_gbps_with_options_async(request, runtime)
+
     def describe_edge_container_app_stats_with_options(
         self,
         request: main_models.DescribeEdgeContainerAppStatsRequest,
@@ -11034,6 +11100,248 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeHttpDDoSAttackProtectionResponse:
         runtime = RuntimeOptions()
         return await self.describe_http_ddo_sattack_protection_with_options_async(request, runtime)
+
+    def describe_http_ddo_sattack_rules_with_options(
+        self,
+        request: main_models.DescribeHttpDDoSAttackRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeHttpDDoSAttackRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeHttpDDoSAttackRules',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeHttpDDoSAttackRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_http_ddo_sattack_rules_with_options_async(
+        self,
+        request: main_models.DescribeHttpDDoSAttackRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeHttpDDoSAttackRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeHttpDDoSAttackRules',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeHttpDDoSAttackRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_http_ddo_sattack_rules(
+        self,
+        request: main_models.DescribeHttpDDoSAttackRulesRequest,
+    ) -> main_models.DescribeHttpDDoSAttackRulesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_http_ddo_sattack_rules_with_options(request, runtime)
+
+    async def describe_http_ddo_sattack_rules_async(
+        self,
+        request: main_models.DescribeHttpDDoSAttackRulesRequest,
+    ) -> main_models.DescribeHttpDDoSAttackRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_http_ddo_sattack_rules_with_options_async(request, runtime)
+
+    def describe_http_ddo_sintelligent_acl_rules_with_options(
+        self,
+        request: main_models.DescribeHttpDDoSIntelligentAclRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeHttpDDoSIntelligentAclRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeHttpDDoSIntelligentAclRules',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeHttpDDoSIntelligentAclRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_http_ddo_sintelligent_acl_rules_with_options_async(
+        self,
+        request: main_models.DescribeHttpDDoSIntelligentAclRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeHttpDDoSIntelligentAclRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeHttpDDoSIntelligentAclRules',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeHttpDDoSIntelligentAclRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_http_ddo_sintelligent_acl_rules(
+        self,
+        request: main_models.DescribeHttpDDoSIntelligentAclRulesRequest,
+    ) -> main_models.DescribeHttpDDoSIntelligentAclRulesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_http_ddo_sintelligent_acl_rules_with_options(request, runtime)
+
+    async def describe_http_ddo_sintelligent_acl_rules_async(
+        self,
+        request: main_models.DescribeHttpDDoSIntelligentAclRulesRequest,
+    ) -> main_models.DescribeHttpDDoSIntelligentAclRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_http_ddo_sintelligent_acl_rules_with_options_async(request, runtime)
+
+    def describe_http_ddo_sintelligent_rate_limit_rules_with_options(
+        self,
+        request: main_models.DescribeHttpDDoSIntelligentRateLimitRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeHttpDDoSIntelligentRateLimitRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeHttpDDoSIntelligentRateLimitRules',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeHttpDDoSIntelligentRateLimitRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_http_ddo_sintelligent_rate_limit_rules_with_options_async(
+        self,
+        request: main_models.DescribeHttpDDoSIntelligentRateLimitRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeHttpDDoSIntelligentRateLimitRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.rule_type):
+            query['RuleType'] = request.rule_type
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeHttpDDoSIntelligentRateLimitRules',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeHttpDDoSIntelligentRateLimitRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_http_ddo_sintelligent_rate_limit_rules(
+        self,
+        request: main_models.DescribeHttpDDoSIntelligentRateLimitRulesRequest,
+    ) -> main_models.DescribeHttpDDoSIntelligentRateLimitRulesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_http_ddo_sintelligent_rate_limit_rules_with_options(request, runtime)
+
+    async def describe_http_ddo_sintelligent_rate_limit_rules_async(
+        self,
+        request: main_models.DescribeHttpDDoSIntelligentRateLimitRulesRequest,
+    ) -> main_models.DescribeHttpDDoSIntelligentRateLimitRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_http_ddo_sintelligent_rate_limit_rules_with_options_async(request, runtime)
 
     def describe_kv_account_status_with_options(
         self,
@@ -23802,6 +24110,80 @@ class Client(OpenApiClient):
     ) -> main_models.SetClientCertificateHostnamesResponse:
         runtime = RuntimeOptions()
         return await self.set_client_certificate_hostnames_with_options_async(request, runtime)
+
+    def set_ddos_max_burst_gbps_with_options(
+        self,
+        request: main_models.SetDdosMaxBurstGbpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetDdosMaxBurstGbpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_burst_gbps):
+            query['MaxBurstGbps'] = request.max_burst_gbps
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetDdosMaxBurstGbps',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetDdosMaxBurstGbpsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_ddos_max_burst_gbps_with_options_async(
+        self,
+        request: main_models.SetDdosMaxBurstGbpsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetDdosMaxBurstGbpsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_burst_gbps):
+            query['MaxBurstGbps'] = request.max_burst_gbps
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetDdosMaxBurstGbps',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetDdosMaxBurstGbpsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_ddos_max_burst_gbps(
+        self,
+        request: main_models.SetDdosMaxBurstGbpsRequest,
+    ) -> main_models.SetDdosMaxBurstGbpsResponse:
+        runtime = RuntimeOptions()
+        return self.set_ddos_max_burst_gbps_with_options(request, runtime)
+
+    async def set_ddos_max_burst_gbps_async(
+        self,
+        request: main_models.SetDdosMaxBurstGbpsRequest,
+    ) -> main_models.SetDdosMaxBurstGbpsResponse:
+        runtime = RuntimeOptions()
+        return await self.set_ddos_max_burst_gbps_with_options_async(request, runtime)
 
     def set_http_ddo_sattack_intelligent_protection_with_options(
         self,

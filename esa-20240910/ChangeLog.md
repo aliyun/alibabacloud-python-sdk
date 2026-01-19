@@ -1,3 +1,11 @@
+2026-01-19 Version: 2.35.0
+- Support API DescribeDdosMaxBurstGbps.
+- Support API DescribeHttpDDoSAttackRules.
+- Support API DescribeHttpDDoSIntelligentAclRules.
+- Support API DescribeHttpDDoSIntelligentRateLimitRules.
+- Support API SetDdosMaxBurstGbps.
+
+
 2025-12-26 Version: 2.34.0
 - Support API GetKvDetail.
 

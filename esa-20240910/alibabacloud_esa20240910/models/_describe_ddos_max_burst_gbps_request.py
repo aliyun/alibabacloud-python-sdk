@@ -4,13 +4,13 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class SetHttpDDoSAttackRuleStatusResponseBody(DaraModel):
+class DescribeDdosMaxBurstGbpsRequest(DaraModel):
     def __init__(
         self,
-        request_id: str = None,
+        instance_id: str = None,
     ):
-        # ID of the request
-        self.request_id = request_id
+        # This parameter is required.
+        self.instance_id = instance_id
 
     def validate(self):
         pass
@@ -20,15 +20,15 @@ class SetHttpDDoSAttackRuleStatusResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.request_id is not None:
-            result['RequestId'] = self.request_id
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('RequestId') is not None:
-            self.request_id = m.get('RequestId')
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
 
         return self
 

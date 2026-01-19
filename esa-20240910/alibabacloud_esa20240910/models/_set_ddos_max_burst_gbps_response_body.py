@@ -4,12 +4,11 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class SetHttpDDoSAttackRuleStatusResponseBody(DaraModel):
+class SetDdosMaxBurstGbpsResponseBody(DaraModel):
     def __init__(
         self,
         request_id: str = None,
     ):
-        # ID of the request
         self.request_id = request_id
 
     def validate(self):

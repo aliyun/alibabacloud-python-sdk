@@ -13,7 +13,9 @@ class ListEdgeContainerAppImageSecretsResponseBody(DaraModel):
         image_secret_list: List[main_models.ListEdgeContainerAppImageSecretsResponseBodyImageSecretList] = None,
         request_id: str = None,
     ):
+        # List of image secrets.
         self.image_secret_list = image_secret_list
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -57,8 +59,11 @@ class ListEdgeContainerAppImageSecretsResponseBodyImageSecretList(DaraModel):
         registry: str = None,
         username: str = None,
     ):
+        # Name of the image secret.
         self.name = name
+        # Registry address.
         self.registry = registry
+        # Username for the image repository
         self.username = username
 
     def validate(self):

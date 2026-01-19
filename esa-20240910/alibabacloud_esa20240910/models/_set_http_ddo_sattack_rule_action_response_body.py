@@ -9,7 +9,7 @@ class SetHttpDDoSAttackRuleActionResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # Request ID
         self.request_id = request_id
 
     def validate(self):

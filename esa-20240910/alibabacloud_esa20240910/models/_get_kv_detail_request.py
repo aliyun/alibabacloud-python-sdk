@@ -10,8 +10,12 @@ class GetKvDetailRequest(DaraModel):
         key: str = None,
         namespace: str = None,
     ):
+        # The key name for the query.
+        # 
         # This parameter is required.
         self.key = key
+        # The name of the namespace that you specify when you call the [CreateKvNamespace](https://help.aliyun.com/document_detail/2850317.html) operation.
+        # 
         # This parameter is required.
         self.namespace = namespace
 

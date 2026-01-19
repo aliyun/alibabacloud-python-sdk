@@ -402,6 +402,9 @@ from ._describe_ddo_sbps_list_response import DescribeDDoSBpsListResponse
 from ._describe_ddo_sl7qps_list_request import DescribeDDoSL7QpsListRequest
 from ._describe_ddo_sl7qps_list_response_body import DescribeDDoSL7QpsListResponseBody
 from ._describe_ddo_sl7qps_list_response import DescribeDDoSL7QpsListResponse
+from ._describe_ddos_max_burst_gbps_request import DescribeDdosMaxBurstGbpsRequest
+from ._describe_ddos_max_burst_gbps_response_body import DescribeDdosMaxBurstGbpsResponseBody
+from ._describe_ddos_max_burst_gbps_response import DescribeDdosMaxBurstGbpsResponse
 from ._describe_edge_container_app_stats_request import DescribeEdgeContainerAppStatsRequest
 from ._describe_edge_container_app_stats_response_body import DescribeEdgeContainerAppStatsResponseBody
 from ._describe_edge_container_app_stats_response import DescribeEdgeContainerAppStatsResponse
@@ -411,6 +414,15 @@ from ._describe_http_ddo_sattack_intelligent_protection_response import Describe
 from ._describe_http_ddo_sattack_protection_request import DescribeHttpDDoSAttackProtectionRequest
 from ._describe_http_ddo_sattack_protection_response_body import DescribeHttpDDoSAttackProtectionResponseBody
 from ._describe_http_ddo_sattack_protection_response import DescribeHttpDDoSAttackProtectionResponse
+from ._describe_http_ddo_sattack_rules_request import DescribeHttpDDoSAttackRulesRequest
+from ._describe_http_ddo_sattack_rules_response_body import DescribeHttpDDoSAttackRulesResponseBody
+from ._describe_http_ddo_sattack_rules_response import DescribeHttpDDoSAttackRulesResponse
+from ._describe_http_ddo_sintelligent_acl_rules_request import DescribeHttpDDoSIntelligentAclRulesRequest
+from ._describe_http_ddo_sintelligent_acl_rules_response_body import DescribeHttpDDoSIntelligentAclRulesResponseBody
+from ._describe_http_ddo_sintelligent_acl_rules_response import DescribeHttpDDoSIntelligentAclRulesResponse
+from ._describe_http_ddo_sintelligent_rate_limit_rules_request import DescribeHttpDDoSIntelligentRateLimitRulesRequest
+from ._describe_http_ddo_sintelligent_rate_limit_rules_response_body import DescribeHttpDDoSIntelligentRateLimitRulesResponseBody
+from ._describe_http_ddo_sintelligent_rate_limit_rules_response import DescribeHttpDDoSIntelligentRateLimitRulesResponse
 from ._describe_kv_account_status_response_body import DescribeKvAccountStatusResponseBody
 from ._describe_kv_account_status_response import DescribeKvAccountStatusResponse
 from ._describe_preload_tasks_request import DescribePreloadTasksRequest
@@ -950,6 +962,9 @@ from ._set_client_certificate_hostnames_request import SetClientCertificateHostn
 from ._set_client_certificate_hostnames_shrink_request import SetClientCertificateHostnamesShrinkRequest
 from ._set_client_certificate_hostnames_response_body import SetClientCertificateHostnamesResponseBody
 from ._set_client_certificate_hostnames_response import SetClientCertificateHostnamesResponse
+from ._set_ddos_max_burst_gbps_request import SetDdosMaxBurstGbpsRequest
+from ._set_ddos_max_burst_gbps_response_body import SetDdosMaxBurstGbpsResponseBody
+from ._set_ddos_max_burst_gbps_response import SetDdosMaxBurstGbpsResponse
 from ._set_http_ddo_sattack_intelligent_protection_request import SetHttpDDoSAttackIntelligentProtectionRequest
 from ._set_http_ddo_sattack_intelligent_protection_response_body import SetHttpDDoSAttackIntelligentProtectionResponseBody
 from ._set_http_ddo_sattack_intelligent_protection_response import SetHttpDDoSAttackIntelligentProtectionResponse
@@ -1267,6 +1282,9 @@ from ._describe_ddo_sall_event_list_response_body import DescribeDDoSAllEventLis
 from ._describe_ddo_sbps_list_response_body import DescribeDDoSBpsListResponseBodyDataModule
 from ._describe_ddo_sl7qps_list_response_body import DescribeDDoSL7QpsListResponseBodyDataModule
 from ._describe_edge_container_app_stats_response_body import DescribeEdgeContainerAppStatsResponseBodyPoints
+from ._describe_http_ddo_sattack_rules_response_body import DescribeHttpDDoSAttackRulesResponseBodyRuleInfos
+from ._describe_http_ddo_sintelligent_acl_rules_response_body import DescribeHttpDDoSIntelligentAclRulesResponseBodyRuleInfos
+from ._describe_http_ddo_sintelligent_rate_limit_rules_response_body import DescribeHttpDDoSIntelligentRateLimitRulesResponseBodyRuleInfos
 from ._describe_preload_tasks_response_body import DescribePreloadTasksResponseBodyTasks
 from ._describe_purge_tasks_response_body import DescribePurgeTasksResponseBodyTasks
 from ._describe_site_logs_response_body import DescribeSiteLogsResponseBodySiteLogDetailsLogInfos
@@ -1892,6 +1910,9 @@ __all__ = [
     DescribeDDoSL7QpsListRequest,
     DescribeDDoSL7QpsListResponseBody,
     DescribeDDoSL7QpsListResponse,
+    DescribeDdosMaxBurstGbpsRequest,
+    DescribeDdosMaxBurstGbpsResponseBody,
+    DescribeDdosMaxBurstGbpsResponse,
     DescribeEdgeContainerAppStatsRequest,
     DescribeEdgeContainerAppStatsResponseBody,
     DescribeEdgeContainerAppStatsResponse,
@@ -1901,6 +1922,15 @@ __all__ = [
     DescribeHttpDDoSAttackProtectionRequest,
     DescribeHttpDDoSAttackProtectionResponseBody,
     DescribeHttpDDoSAttackProtectionResponse,
+    DescribeHttpDDoSAttackRulesRequest,
+    DescribeHttpDDoSAttackRulesResponseBody,
+    DescribeHttpDDoSAttackRulesResponse,
+    DescribeHttpDDoSIntelligentAclRulesRequest,
+    DescribeHttpDDoSIntelligentAclRulesResponseBody,
+    DescribeHttpDDoSIntelligentAclRulesResponse,
+    DescribeHttpDDoSIntelligentRateLimitRulesRequest,
+    DescribeHttpDDoSIntelligentRateLimitRulesResponseBody,
+    DescribeHttpDDoSIntelligentRateLimitRulesResponse,
     DescribeKvAccountStatusResponseBody,
     DescribeKvAccountStatusResponse,
     DescribePreloadTasksRequest,
@@ -2440,6 +2470,9 @@ __all__ = [
     SetClientCertificateHostnamesShrinkRequest,
     SetClientCertificateHostnamesResponseBody,
     SetClientCertificateHostnamesResponse,
+    SetDdosMaxBurstGbpsRequest,
+    SetDdosMaxBurstGbpsResponseBody,
+    SetDdosMaxBurstGbpsResponse,
     SetHttpDDoSAttackIntelligentProtectionRequest,
     SetHttpDDoSAttackIntelligentProtectionResponseBody,
     SetHttpDDoSAttackIntelligentProtectionResponse,
@@ -2757,6 +2790,9 @@ __all__ = [
     DescribeDDoSBpsListResponseBodyDataModule,
     DescribeDDoSL7QpsListResponseBodyDataModule,
     DescribeEdgeContainerAppStatsResponseBodyPoints,
+    DescribeHttpDDoSAttackRulesResponseBodyRuleInfos,
+    DescribeHttpDDoSIntelligentAclRulesResponseBodyRuleInfos,
+    DescribeHttpDDoSIntelligentRateLimitRulesResponseBodyRuleInfos,
     DescribePreloadTasksResponseBodyTasks,
     DescribePurgeTasksResponseBodyTasks,
     DescribeSiteLogsResponseBodySiteLogDetailsLogInfos,
