@@ -1,3 +1,7 @@
+2026-01-19 Version: 6.3.3
+- Update API ListClusterKubeconfigStates: add response parameters Body.states.$.cloud_service_name.
+
+
 2026-01-08 Version: 6.3.2
 - Update API CreateCluster: add request parameters body.control_plane_endpoints_config.
 - Update API DescribeClusterDetail: add response parameters Body.control_plane_endpoints_config.

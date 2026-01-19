@@ -65,6 +65,7 @@ class ListClusterKubeconfigStatesResponseBodyStates(DaraModel):
         account_type: str = None,
         cert_expire_time: str = None,
         cert_state: str = None,
+        cloud_service_name: str = None,
         cloud_service_roles: List[main_models.ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles] = None,
         revokable: bool = None,
     ):
@@ -94,6 +95,7 @@ class ListClusterKubeconfigStatesResponseBodyStates(DaraModel):
         # *   Expired: The certificate is expired.
         # *   Unknown: The status of the certificate is unknown.
         self.cert_state = cert_state
+        self.cloud_service_name = cloud_service_name
         self.cloud_service_roles = cloud_service_roles
         # Indicates whether the client certificate for the kubeconfig file can be revoked.
         self.revokable = revokable
@@ -130,6 +132,9 @@ class ListClusterKubeconfigStatesResponseBodyStates(DaraModel):
         if self.cert_state is not None:
             result['cert_state'] = self.cert_state
 
+        if self.cloud_service_name is not None:
+            result['cloud_service_name'] = self.cloud_service_name
+
         result['cloud_service_roles'] = []
         if self.cloud_service_roles is not None:
             for k1 in self.cloud_service_roles:
@@ -162,6 +167,9 @@ class ListClusterKubeconfigStatesResponseBodyStates(DaraModel):
 
         if m.get('cert_state') is not None:
             self.cert_state = m.get('cert_state')
+
+        if m.get('cloud_service_name') is not None:
+            self.cloud_service_name = m.get('cloud_service_name')
 
         self.cloud_service_roles = []
         if m.get('cloud_service_roles') is not None:
