@@ -1,3 +1,57 @@
+2026-01-19 Version: 2.9.0
+- Support API AuthorizeResourceServerScopesToClient.
+- Support API AuthorizeResourceServerScopesToGroup.
+- Support API AuthorizeResourceServerScopesToOrganizationalUnit.
+- Support API AuthorizeResourceServerScopesToUser.
+- Support API AuthorizeResourceServerToClient.
+- Support API CreateApplicationRole.
+- Support API CreateClientPublicKey.
+- Support API CreateCloudAccount.
+- Support API CreateCloudAccountRole.
+- Support API CreateResourceServerScope.
+- Support API DeleteApplicationRole.
+- Support API DeleteClientPublicKey.
+- Support API DeleteCloudAccount.
+- Support API DeleteCloudAccountRole.
+- Support API DeleteResourceServerScope.
+- Support API DisableApplicationM2MClient.
+- Support API DisableApplicationResourceServer.
+- Support API DisableClientPublicKey.
+- Support API DisableCloudAccountRole.
+- Support API DisableResourceServerCustomSubject.
+- Support API EnableApplicationM2MClient.
+- Support API EnableApplicationResourceServer.
+- Support API EnableClientPublicKey.
+- Support API EnableCloudAccountRole.
+- Support API EnableResourceServerCustomSubject.
+- Support API GetApplicationRole.
+- Support API GetClientPublicKey.
+- Support API GetCloudAccount.
+- Support API GetCloudAccountRole.
+- Support API GetResourceServerScope.
+- Support API ListApplicationRoles.
+- Support API ListClientPublicKeys.
+- Support API ListCloudAccountRoles.
+- Support API ListCloudAccounts.
+- Support API ListGroupsForResourceServer.
+- Support API ListOrganizationalUnitsForResourceServer.
+- Support API ListResourceServersForUser.
+- Support API ListUsersForResourceServer.
+- Support API RevokeResourceServerFromClient.
+- Support API RevokeResourceServerScopesFromClient.
+- Support API RevokeResourceServerScopesFromGroup.
+- Support API RevokeResourceServerScopesFromOrganizationalUnit.
+- Support API RevokeResourceServerScopesFromUser.
+- Support API SetApplicationResourceServerIdentifier.
+- Support API SetPrimaryClientPublicKey.
+- Support API UpdateApplicationRole.
+- Support API UpdateApplicationRoleDescription.
+- Support API UpdateCloudAccount.
+- Support API UpdateCloudAccountDescription.
+- Support API UpdateCloudAccountRoleDescription.
+- Support API UpdateResourceServerScope.
+
+
 2026-01-06 Version: 2.8.2
 - Update API AuthorizeApplicationToGroups: add request parameters ApplicationRoleId.
 - Update API AuthorizeApplicationToOrganizationalUnits: add request parameters ApplicationRoleId.
