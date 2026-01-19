@@ -1,3 +1,7 @@
+2026-01-19 Version: 2.8.3
+- Update API RefundAppInstanceForPartner: add request parameters ClientToken.
+
+
 2026-01-17 Version: 2.8.2
 - Update API CreateAppInstance: add request parameters ResourceGroupId.
 - Update API CreateAppInstance: add request parameters Tags.

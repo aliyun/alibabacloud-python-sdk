@@ -1799,6 +1799,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.refund_reason):
             query['RefundReason'] = request.refund_reason
         if not DaraCore.is_null(request.user_id):
@@ -1831,6 +1833,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.biz_id):
             query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.refund_reason):
             query['RefundReason'] = request.refund_reason
         if not DaraCore.is_null(request.user_id):
