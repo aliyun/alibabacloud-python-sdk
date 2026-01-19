@@ -1,3 +1,12 @@
+2026-01-19 Version: 4.1.0
+- Support API DeleteReportTemplate.
+- Support API GenerateReportFromTemplate.
+- Support API GetReportFromTemplate.
+- Support API TriggerReportSend.
+- Update API ListAggregateConfigRuleEvaluationResults: add response parameters Body.EvaluationResults.EvaluationResultList.$.LastCompliantFixedTimestamp.
+- Update API ListConfigRuleEvaluationResults: add response parameters Body.EvaluationResults.EvaluationResultList.$.LastCompliantFixedTimestamp.
+
+
 2025-12-18 Version: 4.0.0
 - Support API DescribeDiscoveredResourceBatch.
 - Support API DescribeIntegratedServiceStatus.
