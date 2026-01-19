@@ -138,6 +138,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
         vpc_type: str = None,
+        vpl_version: str = None,
     ):
         # Details of AD connectors.
         self.adconnectors = adconnectors
@@ -331,6 +332,7 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
         # *   Customized
         # *   Standard
         self.vpc_type = vpc_type
+        self.vpl_version = vpl_version
 
     def validate(self):
         if self.adconnectors:
@@ -552,6 +554,9 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
         if self.vpc_type is not None:
             result['VpcType'] = self.vpc_type
 
+        if self.vpl_version is not None:
+            result['VplVersion'] = self.vpl_version
+
         return result
 
     def from_map(self, m: dict = None):
@@ -759,6 +764,9 @@ class DescribeOfficeSitesResponseBodyOfficeSites(DaraModel):
 
         if m.get('VpcType') is not None:
             self.vpc_type = m.get('VpcType')
+
+        if m.get('VplVersion') is not None:
+            self.vpl_version = m.get('VplVersion')
 
         return self
 

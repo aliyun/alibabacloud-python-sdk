@@ -1,3 +1,7 @@
+2026-01-19 Version: 4.21.3
+- Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.VplVersion.
+
+
 2026-01-13 Version: 4.21.2
 - Update API DescribeDesktopTypes: add request parameters OfficeSiteId.
 - Update API DescribeDesktopTypes: add response parameters Body.DesktopTypes.$.EnvId.
