@@ -7567,6 +7567,202 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_aidbcluster_performance_with_options_async(request, runtime)
 
+    def describe_aidbcluster_task_log_files_with_options(
+        self,
+        request: main_models.DescribeAIDBClusterTaskLogFilesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIDBClusterTaskLogFilesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.log_type):
+            query['LogType'] = request.log_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.relative_dbcluster_id):
+            query['RelativeDBClusterId'] = request.relative_dbcluster_id
+        if not DaraCore.is_null(request.reverse):
+            query['Reverse'] = request.reverse
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAIDBClusterTaskLogFiles',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIDBClusterTaskLogFilesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_aidbcluster_task_log_files_with_options_async(
+        self,
+        request: main_models.DescribeAIDBClusterTaskLogFilesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIDBClusterTaskLogFilesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.log_type):
+            query['LogType'] = request.log_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.relative_dbcluster_id):
+            query['RelativeDBClusterId'] = request.relative_dbcluster_id
+        if not DaraCore.is_null(request.reverse):
+            query['Reverse'] = request.reverse
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAIDBClusterTaskLogFiles',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIDBClusterTaskLogFilesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_aidbcluster_task_log_files(
+        self,
+        request: main_models.DescribeAIDBClusterTaskLogFilesRequest,
+    ) -> main_models.DescribeAIDBClusterTaskLogFilesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_aidbcluster_task_log_files_with_options(request, runtime)
+
+    async def describe_aidbcluster_task_log_files_async(
+        self,
+        request: main_models.DescribeAIDBClusterTaskLogFilesRequest,
+    ) -> main_models.DescribeAIDBClusterTaskLogFilesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_aidbcluster_task_log_files_with_options_async(request, runtime)
+
+    def describe_aidbcluster_task_metrics_with_options(
+        self,
+        request: main_models.DescribeAIDBClusterTaskMetricsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIDBClusterTaskMetricsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.metric_type):
+            query['MetricType'] = request.metric_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.relative_dbcluster_id):
+            query['RelativeDBClusterId'] = request.relative_dbcluster_id
+        if not DaraCore.is_null(request.reverse):
+            query['Reverse'] = request.reverse
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAIDBClusterTaskMetrics',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIDBClusterTaskMetricsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_aidbcluster_task_metrics_with_options_async(
+        self,
+        request: main_models.DescribeAIDBClusterTaskMetricsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAIDBClusterTaskMetricsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.metric_type):
+            query['MetricType'] = request.metric_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.relative_dbcluster_id):
+            query['RelativeDBClusterId'] = request.relative_dbcluster_id
+        if not DaraCore.is_null(request.reverse):
+            query['Reverse'] = request.reverse
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAIDBClusterTaskMetrics',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAIDBClusterTaskMetricsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_aidbcluster_task_metrics(
+        self,
+        request: main_models.DescribeAIDBClusterTaskMetricsRequest,
+    ) -> main_models.DescribeAIDBClusterTaskMetricsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_aidbcluster_task_metrics_with_options(request, runtime)
+
+    async def describe_aidbcluster_task_metrics_async(
+        self,
+        request: main_models.DescribeAIDBClusterTaskMetricsRequest,
+    ) -> main_models.DescribeAIDBClusterTaskMetricsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_aidbcluster_task_metrics_with_options_async(request, runtime)
+
     def describe_aidbclusters_with_options(
         self,
         request: main_models.DescribeAIDBClustersRequest,

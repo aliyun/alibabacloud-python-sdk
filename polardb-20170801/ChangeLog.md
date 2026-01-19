@@ -1,3 +1,8 @@
+2026-01-19 Version: 6.5.0
+- Support API DescribeAIDBClusterTaskLogFiles.
+- Support API DescribeAIDBClusterTaskMetrics.
+
+
 2026-01-15 Version: 6.4.1
 - Update API DescribeUserEncryptionKeyList: add request parameters PageNumber.
 - Update API DescribeUserEncryptionKeyList: add request parameters PageSize.
