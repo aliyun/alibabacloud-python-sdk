@@ -1,3 +1,10 @@
+2026-01-19 Version: 4.8.9
+- Update API DescribeApiGroup: add response parameters Body.CustomDomains.$.ClientCertSDnPassThrough.
+- Update API DescribeApiGroup: add response parameters Body.CustomDomains.$.SslOcspCacheEnable.
+- Update API DescribeApiGroup: add response parameters Body.CustomDomains.$.SslOcspEnable.
+- Update API DescribeApiGroup: add response parameters Body.CustomDomains.$.SslVerifyDepth.
+
+
 2025-12-03 Version: 4.8.8
 - Update SDK.
 

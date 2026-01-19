@@ -1,0 +1,196 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_cloudapi20160714 import models as main_models
+from darabonba.model import DaraModel
+
+class DescribePluginGroupsResponseBody(DaraModel):
+    def __init__(
+        self,
+        group_summarys: main_models.DescribePluginGroupsResponseBodyGroupSummarys = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # Collection of group information
+        self.group_summarys = group_summarys
+        # Pagination parameter: current page number
+        self.page_number = page_number
+        # Pagination parameter: number of items per page, default value 10
+        self.page_size = page_size
+        # Request ID
+        self.request_id = request_id
+        # Total number of returned results
+        self.total_count = total_count
+
+    def validate(self):
+        if self.group_summarys:
+            self.group_summarys.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.group_summarys is not None:
+            result['GroupSummarys'] = self.group_summarys.to_map()
+
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('GroupSummarys') is not None:
+            temp_model = main_models.DescribePluginGroupsResponseBodyGroupSummarys()
+            self.group_summarys = temp_model.from_map(m.get('GroupSummarys'))
+
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+
+        return self
+
+class DescribePluginGroupsResponseBodyGroupSummarys(DaraModel):
+    def __init__(
+        self,
+        group_plugin_summary: List[main_models.DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary] = None,
+    ):
+        self.group_plugin_summary = group_plugin_summary
+
+    def validate(self):
+        if self.group_plugin_summary:
+            for v1 in self.group_plugin_summary:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['GroupPluginSummary'] = []
+        if self.group_plugin_summary is not None:
+            for k1 in self.group_plugin_summary:
+                result['GroupPluginSummary'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.group_plugin_summary = []
+        if m.get('GroupPluginSummary') is not None:
+            for k1 in m.get('GroupPluginSummary'):
+                temp_model = main_models.DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary()
+                self.group_plugin_summary.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribePluginGroupsResponseBodyGroupSummarysGroupPluginSummary(DaraModel):
+    def __init__(
+        self,
+        base_path: str = None,
+        description: str = None,
+        group_id: str = None,
+        group_name: str = None,
+        region_id: str = None,
+        stage_alias: str = None,
+        stage_name: str = None,
+    ):
+        # API root path
+        self.base_path = base_path
+        # Description
+        self.description = description
+        # API group ID
+        self.group_id = group_id
+        # API group name
+        self.group_name = group_name
+        # Region ID where the API group is located
+        self.region_id = region_id
+        # Stage name Alias
+        self.stage_alias = stage_alias
+        # Environment name, possible values:
+        # 
+        # - **RELEASE**: Production
+        # - **PRE**: Pre-release
+        # - **TEST**: Testing
+        self.stage_name = stage_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.base_path is not None:
+            result['BasePath'] = self.base_path
+
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        if self.stage_alias is not None:
+            result['StageAlias'] = self.stage_alias
+
+        if self.stage_name is not None:
+            result['StageName'] = self.stage_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BasePath') is not None:
+            self.base_path = m.get('BasePath')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        if m.get('StageAlias') is not None:
+            self.stage_alias = m.get('StageAlias')
+
+        if m.get('StageName') is not None:
+            self.stage_name = m.get('StageName')
+
+        return self
+

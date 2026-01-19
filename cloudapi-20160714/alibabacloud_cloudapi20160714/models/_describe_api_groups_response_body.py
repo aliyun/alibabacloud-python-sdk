@@ -1,0 +1,344 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_cloudapi20160714 import models as main_models
+from darabonba.model import DaraModel
+
+class DescribeApiGroupsResponseBody(DaraModel):
+    def __init__(
+        self,
+        api_group_attributes: main_models.DescribeApiGroupsResponseBodyApiGroupAttributes = None,
+        page_number: int = None,
+        page_size: int = None,
+        request_id: str = None,
+        total_count: int = None,
+    ):
+        # The returned group set.
+        self.api_group_attributes = api_group_attributes
+        # The number of pages to return the results on.
+        self.page_number = page_number
+        # The number of entries returned per page.
+        self.page_size = page_size
+        # The ID of the request.
+        self.request_id = request_id
+        # The total number of returned entries.
+        self.total_count = total_count
+
+    def validate(self):
+        if self.api_group_attributes:
+            self.api_group_attributes.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.api_group_attributes is not None:
+            result['ApiGroupAttributes'] = self.api_group_attributes.to_map()
+
+        if self.page_number is not None:
+            result['PageNumber'] = self.page_number
+
+        if self.page_size is not None:
+            result['PageSize'] = self.page_size
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.total_count is not None:
+            result['TotalCount'] = self.total_count
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ApiGroupAttributes') is not None:
+            temp_model = main_models.DescribeApiGroupsResponseBodyApiGroupAttributes()
+            self.api_group_attributes = temp_model.from_map(m.get('ApiGroupAttributes'))
+
+        if m.get('PageNumber') is not None:
+            self.page_number = m.get('PageNumber')
+
+        if m.get('PageSize') is not None:
+            self.page_size = m.get('PageSize')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('TotalCount') is not None:
+            self.total_count = m.get('TotalCount')
+
+        return self
+
+class DescribeApiGroupsResponseBodyApiGroupAttributes(DaraModel):
+    def __init__(
+        self,
+        api_group_attribute: List[main_models.DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttribute] = None,
+    ):
+        self.api_group_attribute = api_group_attribute
+
+    def validate(self):
+        if self.api_group_attribute:
+            for v1 in self.api_group_attribute:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['ApiGroupAttribute'] = []
+        if self.api_group_attribute is not None:
+            for k1 in self.api_group_attribute:
+                result['ApiGroupAttribute'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.api_group_attribute = []
+        if m.get('ApiGroupAttribute') is not None:
+            for k1 in m.get('ApiGroupAttribute'):
+                temp_model = main_models.DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttribute()
+                self.api_group_attribute.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttribute(DaraModel):
+    def __init__(
+        self,
+        base_path: str = None,
+        billing_status: str = None,
+        created_time: str = None,
+        description: str = None,
+        group_id: str = None,
+        group_name: str = None,
+        https_policy: str = None,
+        illegal_status: str = None,
+        instance_id: str = None,
+        instance_type: str = None,
+        modified_time: str = None,
+        region_id: str = None,
+        sub_domain: str = None,
+        tags: main_models.DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttributeTags = None,
+        traffic_limit: int = None,
+    ):
+        # The basepath.
+        self.base_path = base_path
+        # The billing status of the API group. Valid values:
+        # 
+        # *   **NORMAL**: The instance is normal.
+        # *   **LOCKED**: The API group is locked due to overdue payments.
+        self.billing_status = billing_status
+        # The creation time (UTC) of the API group.
+        self.created_time = created_time
+        # Group Description
+        self.description = description
+        # The ID of the API group. This ID is generated by the system and globally unique.
+        self.group_id = group_id
+        # The name of the API group.
+        self.group_name = group_name
+        # The HTTPS security policy
+        self.https_policy = https_policy
+        # The validity status of the API group. Valid values:
+        # 
+        # *   **NORMAL**: The instance is normal.
+        # *   **LOCKED**: The API group is locked because it is not valid.
+        self.illegal_status = illegal_status
+        # The ID of the instance.
+        self.instance_id = instance_id
+        # The type of the instance.
+        self.instance_type = instance_type
+        # The last modification time (UTC) of the API group.
+        self.modified_time = modified_time
+        # The region to which the API group belongs.
+        self.region_id = region_id
+        # The second-level domain name that corresponds to the API group and is used by the CNAME of the custom domain name.
+        self.sub_domain = sub_domain
+        # The list of tags.
+        self.tags = tags
+        # The upper QPS limit of the API group. The default value is 500. You can increase the upper limit by submitting an application.
+        self.traffic_limit = traffic_limit
+
+    def validate(self):
+        if self.tags:
+            self.tags.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.base_path is not None:
+            result['BasePath'] = self.base_path
+
+        if self.billing_status is not None:
+            result['BillingStatus'] = self.billing_status
+
+        if self.created_time is not None:
+            result['CreatedTime'] = self.created_time
+
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.group_id is not None:
+            result['GroupId'] = self.group_id
+
+        if self.group_name is not None:
+            result['GroupName'] = self.group_name
+
+        if self.https_policy is not None:
+            result['HttpsPolicy'] = self.https_policy
+
+        if self.illegal_status is not None:
+            result['IllegalStatus'] = self.illegal_status
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.instance_type is not None:
+            result['InstanceType'] = self.instance_type
+
+        if self.modified_time is not None:
+            result['ModifiedTime'] = self.modified_time
+
+        if self.region_id is not None:
+            result['RegionId'] = self.region_id
+
+        if self.sub_domain is not None:
+            result['SubDomain'] = self.sub_domain
+
+        if self.tags is not None:
+            result['Tags'] = self.tags.to_map()
+
+        if self.traffic_limit is not None:
+            result['TrafficLimit'] = self.traffic_limit
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BasePath') is not None:
+            self.base_path = m.get('BasePath')
+
+        if m.get('BillingStatus') is not None:
+            self.billing_status = m.get('BillingStatus')
+
+        if m.get('CreatedTime') is not None:
+            self.created_time = m.get('CreatedTime')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('GroupId') is not None:
+            self.group_id = m.get('GroupId')
+
+        if m.get('GroupName') is not None:
+            self.group_name = m.get('GroupName')
+
+        if m.get('HttpsPolicy') is not None:
+            self.https_policy = m.get('HttpsPolicy')
+
+        if m.get('IllegalStatus') is not None:
+            self.illegal_status = m.get('IllegalStatus')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('InstanceType') is not None:
+            self.instance_type = m.get('InstanceType')
+
+        if m.get('ModifiedTime') is not None:
+            self.modified_time = m.get('ModifiedTime')
+
+        if m.get('RegionId') is not None:
+            self.region_id = m.get('RegionId')
+
+        if m.get('SubDomain') is not None:
+            self.sub_domain = m.get('SubDomain')
+
+        if m.get('Tags') is not None:
+            temp_model = main_models.DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttributeTags()
+            self.tags = temp_model.from_map(m.get('Tags'))
+
+        if m.get('TrafficLimit') is not None:
+            self.traffic_limit = m.get('TrafficLimit')
+
+        return self
+
+class DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttributeTags(DaraModel):
+    def __init__(
+        self,
+        tag_info: List[main_models.DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttributeTagsTagInfo] = None,
+    ):
+        self.tag_info = tag_info
+
+    def validate(self):
+        if self.tag_info:
+            for v1 in self.tag_info:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['TagInfo'] = []
+        if self.tag_info is not None:
+            for k1 in self.tag_info:
+                result['TagInfo'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.tag_info = []
+        if m.get('TagInfo') is not None:
+            for k1 in m.get('TagInfo'):
+                temp_model = main_models.DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttributeTagsTagInfo()
+                self.tag_info.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeApiGroupsResponseBodyApiGroupAttributesApiGroupAttributeTagsTagInfo(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        # The key of the tag.
+        self.key = key
+        # The value of the tag.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+
+        return self
+
