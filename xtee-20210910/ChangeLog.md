@@ -1,3 +1,8 @@
+2026-01-19 Version: 2.2.1
+- Update API DescribeListPoc: add request parameters TaskName.
+- Update API DescribeListPoc: add request parameters TaskStatus.
+
+
 2025-12-01 Version: 2.2.0
 - Support API CompareRule.
 - Support API DescribeExpressionVariableVersionDetail.
