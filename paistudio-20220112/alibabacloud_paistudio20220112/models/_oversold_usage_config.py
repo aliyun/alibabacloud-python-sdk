@@ -7,7 +7,7 @@ from darabonba.model import DaraModel
 class OversoldUsageConfig(DaraModel):
     def __init__(
         self,
-        disabled: str = None,
+        disabled: bool = None,
         disabled_by: str = None,
     ):
         self.disabled = disabled
