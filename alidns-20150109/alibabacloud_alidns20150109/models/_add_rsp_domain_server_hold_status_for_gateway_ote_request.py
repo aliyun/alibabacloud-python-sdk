@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class RemoveRspDomainServerHoldStatusForGatewayRequest(DaraModel):
+class AddRspDomainServerHoldStatusForGatewayOteRequest(DaraModel):
     def __init__(
         self,
         client_token: str = None,
@@ -15,6 +15,7 @@ class RemoveRspDomainServerHoldStatusForGatewayRequest(DaraModel):
         self.client_token = client_token
         # This parameter is required.
         self.domain_name = domain_name
+        # This parameter is required.
         self.status_msg = status_msg
 
     def validate(self):

@@ -1,3 +1,10 @@
+2026-01-20 Version: 4.3.0
+- Support API AddRspDomainServerHoldStatusForGatewayOte.
+- Support API RemoveRspDomainServerHoldStatusForGatewayOte.
+- Support API UpdateRspDomainServerProhibitStatusForGatewayOte.
+- Update API RemoveRspDomainServerHoldStatusForGateway: add response parameters Body.Data.ServerHoldStatus.
+
+
 2026-01-16 Version: 4.2.0
 - Support API SetCloudGtmInstanceConfigLogSwitch.
 

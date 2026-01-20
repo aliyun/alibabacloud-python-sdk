@@ -1560,6 +1560,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_rsp_domain_server_hold_status_for_gateway_with_options_async(request, runtime)
 
+    def add_rsp_domain_server_hold_status_for_gateway_ote_with_options(
+        self,
+        request: main_models.AddRspDomainServerHoldStatusForGatewayOteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddRspDomainServerHoldStatusForGatewayOteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.status_msg):
+            query['StatusMsg'] = request.status_msg
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddRspDomainServerHoldStatusForGatewayOte',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddRspDomainServerHoldStatusForGatewayOteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_rsp_domain_server_hold_status_for_gateway_ote_with_options_async(
+        self,
+        request: main_models.AddRspDomainServerHoldStatusForGatewayOteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddRspDomainServerHoldStatusForGatewayOteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.status_msg):
+            query['StatusMsg'] = request.status_msg
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddRspDomainServerHoldStatusForGatewayOte',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddRspDomainServerHoldStatusForGatewayOteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_rsp_domain_server_hold_status_for_gateway_ote(
+        self,
+        request: main_models.AddRspDomainServerHoldStatusForGatewayOteRequest,
+    ) -> main_models.AddRspDomainServerHoldStatusForGatewayOteResponse:
+        runtime = RuntimeOptions()
+        return self.add_rsp_domain_server_hold_status_for_gateway_ote_with_options(request, runtime)
+
+    async def add_rsp_domain_server_hold_status_for_gateway_ote_async(
+        self,
+        request: main_models.AddRspDomainServerHoldStatusForGatewayOteRequest,
+    ) -> main_models.AddRspDomainServerHoldStatusForGatewayOteResponse:
+        runtime = RuntimeOptions()
+        return await self.add_rsp_domain_server_hold_status_for_gateway_ote_with_options_async(request, runtime)
+
     def bind_instance_domains_with_options(
         self,
         request: main_models.BindInstanceDomainsRequest,
@@ -13418,6 +13496,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.remove_rsp_domain_server_hold_status_for_gateway_with_options_async(request, runtime)
 
+    def remove_rsp_domain_server_hold_status_for_gateway_ote_with_options(
+        self,
+        request: main_models.RemoveRspDomainServerHoldStatusForGatewayOteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveRspDomainServerHoldStatusForGatewayOteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.status_msg):
+            query['StatusMsg'] = request.status_msg
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveRspDomainServerHoldStatusForGatewayOte',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveRspDomainServerHoldStatusForGatewayOteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_rsp_domain_server_hold_status_for_gateway_ote_with_options_async(
+        self,
+        request: main_models.RemoveRspDomainServerHoldStatusForGatewayOteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveRspDomainServerHoldStatusForGatewayOteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        if not DaraCore.is_null(request.status_msg):
+            query['StatusMsg'] = request.status_msg
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveRspDomainServerHoldStatusForGatewayOte',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveRspDomainServerHoldStatusForGatewayOteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_rsp_domain_server_hold_status_for_gateway_ote(
+        self,
+        request: main_models.RemoveRspDomainServerHoldStatusForGatewayOteRequest,
+    ) -> main_models.RemoveRspDomainServerHoldStatusForGatewayOteResponse:
+        runtime = RuntimeOptions()
+        return self.remove_rsp_domain_server_hold_status_for_gateway_ote_with_options(request, runtime)
+
+    async def remove_rsp_domain_server_hold_status_for_gateway_ote_async(
+        self,
+        request: main_models.RemoveRspDomainServerHoldStatusForGatewayOteRequest,
+    ) -> main_models.RemoveRspDomainServerHoldStatusForGatewayOteResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_rsp_domain_server_hold_status_for_gateway_ote_with_options_async(request, runtime)
+
     def replace_cloud_gtm_address_pool_address_with_options(
         self,
         tmp_req: main_models.ReplaceCloudGtmAddressPoolAddressRequest,
@@ -19727,6 +19883,88 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateRspDomainServerProhibitStatusForGatewayResponse:
         runtime = RuntimeOptions()
         return await self.update_rsp_domain_server_prohibit_status_for_gateway_with_options_async(request, runtime)
+
+    def update_rsp_domain_server_prohibit_status_for_gateway_ote_with_options(
+        self,
+        request: main_models.UpdateRspDomainServerProhibitStatusForGatewayOteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRspDomainServerProhibitStatusForGatewayOteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.add_status_list):
+            query['AddStatusList'] = request.add_status_list
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.delete_status_list):
+            query['DeleteStatusList'] = request.delete_status_list
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRspDomainServerProhibitStatusForGatewayOte',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRspDomainServerProhibitStatusForGatewayOteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_rsp_domain_server_prohibit_status_for_gateway_ote_with_options_async(
+        self,
+        request: main_models.UpdateRspDomainServerProhibitStatusForGatewayOteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRspDomainServerProhibitStatusForGatewayOteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.add_status_list):
+            query['AddStatusList'] = request.add_status_list
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.delete_status_list):
+            query['DeleteStatusList'] = request.delete_status_list
+        if not DaraCore.is_null(request.domain_name):
+            query['DomainName'] = request.domain_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateRspDomainServerProhibitStatusForGatewayOte',
+            version = '2015-01-09',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateRspDomainServerProhibitStatusForGatewayOteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_rsp_domain_server_prohibit_status_for_gateway_ote(
+        self,
+        request: main_models.UpdateRspDomainServerProhibitStatusForGatewayOteRequest,
+    ) -> main_models.UpdateRspDomainServerProhibitStatusForGatewayOteResponse:
+        runtime = RuntimeOptions()
+        return self.update_rsp_domain_server_prohibit_status_for_gateway_ote_with_options(request, runtime)
+
+    async def update_rsp_domain_server_prohibit_status_for_gateway_ote_async(
+        self,
+        request: main_models.UpdateRspDomainServerProhibitStatusForGatewayOteRequest,
+    ) -> main_models.UpdateRspDomainServerProhibitStatusForGatewayOteResponse:
+        runtime = RuntimeOptions()
+        return await self.update_rsp_domain_server_prohibit_status_for_gateway_ote_with_options_async(request, runtime)
 
     def validate_dns_gtm_cname_rr_can_use_with_options(
         self,

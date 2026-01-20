@@ -2,14 +2,16 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_alidns20150109 import models as main_models
 from darabonba.model import DaraModel
 
-class RemoveRspDomainServerHoldStatusForGatewayResponseBody(DaraModel):
+class UpdateRspDomainServerProhibitStatusForGatewayOteResponseBody(DaraModel):
     def __init__(
         self,
-        access_denied_detail: main_models.RemoveRspDomainServerHoldStatusForGatewayResponseBodyAccessDeniedDetail = None,
-        data: main_models.RemoveRspDomainServerHoldStatusForGatewayResponseBodyData = None,
+        access_denied_detail: main_models.UpdateRspDomainServerProhibitStatusForGatewayOteResponseBodyAccessDeniedDetail = None,
+        data: main_models.UpdateRspDomainServerProhibitStatusForGatewayOteResponseBodyData = None,
         recoverable_error: bool = None,
         request_id: str = None,
         success: bool = None,
@@ -51,11 +53,11 @@ class RemoveRspDomainServerHoldStatusForGatewayResponseBody(DaraModel):
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('AccessDeniedDetail') is not None:
-            temp_model = main_models.RemoveRspDomainServerHoldStatusForGatewayResponseBodyAccessDeniedDetail()
+            temp_model = main_models.UpdateRspDomainServerProhibitStatusForGatewayOteResponseBodyAccessDeniedDetail()
             self.access_denied_detail = temp_model.from_map(m.get('AccessDeniedDetail'))
 
         if m.get('Data') is not None:
-            temp_model = main_models.RemoveRspDomainServerHoldStatusForGatewayResponseBodyData()
+            temp_model = main_models.UpdateRspDomainServerProhibitStatusForGatewayOteResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('RecoverableError') is not None:
@@ -69,14 +71,59 @@ class RemoveRspDomainServerHoldStatusForGatewayResponseBody(DaraModel):
 
         return self
 
-class RemoveRspDomainServerHoldStatusForGatewayResponseBodyData(DaraModel):
+class UpdateRspDomainServerProhibitStatusForGatewayOteResponseBodyData(DaraModel):
     def __init__(
         self,
         domain_name: str = None,
-        server_hold_status: str = None,
+        status_list: List[main_models.UpdateRspDomainServerProhibitStatusForGatewayOteResponseBodyDataStatusList] = None,
     ):
         self.domain_name = domain_name
-        self.server_hold_status = server_hold_status
+        self.status_list = status_list
+
+    def validate(self):
+        if self.status_list:
+            for v1 in self.status_list:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.domain_name is not None:
+            result['DomainName'] = self.domain_name
+
+        result['StatusList'] = []
+        if self.status_list is not None:
+            for k1 in self.status_list:
+                result['StatusList'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DomainName') is not None:
+            self.domain_name = m.get('DomainName')
+
+        self.status_list = []
+        if m.get('StatusList') is not None:
+            for k1 in m.get('StatusList'):
+                temp_model = main_models.UpdateRspDomainServerProhibitStatusForGatewayOteResponseBodyDataStatusList()
+                self.status_list.append(temp_model.from_map(k1))
+
+        return self
+
+class UpdateRspDomainServerProhibitStatusForGatewayOteResponseBodyDataStatusList(DaraModel):
+    def __init__(
+        self,
+        domain_name: str = None,
+        status: str = None,
+        status_msg: str = None,
+    ):
+        self.domain_name = domain_name
+        self.status = status
+        self.status_msg = status_msg
 
     def validate(self):
         pass
@@ -89,8 +136,11 @@ class RemoveRspDomainServerHoldStatusForGatewayResponseBodyData(DaraModel):
         if self.domain_name is not None:
             result['DomainName'] = self.domain_name
 
-        if self.server_hold_status is not None:
-            result['ServerHoldStatus'] = self.server_hold_status
+        if self.status is not None:
+            result['Status'] = self.status
+
+        if self.status_msg is not None:
+            result['StatusMsg'] = self.status_msg
 
         return result
 
@@ -99,12 +149,15 @@ class RemoveRspDomainServerHoldStatusForGatewayResponseBodyData(DaraModel):
         if m.get('DomainName') is not None:
             self.domain_name = m.get('DomainName')
 
-        if m.get('ServerHoldStatus') is not None:
-            self.server_hold_status = m.get('ServerHoldStatus')
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
+        if m.get('StatusMsg') is not None:
+            self.status_msg = m.get('StatusMsg')
 
         return self
 
-class RemoveRspDomainServerHoldStatusForGatewayResponseBodyAccessDeniedDetail(DaraModel):
+class UpdateRspDomainServerProhibitStatusForGatewayOteResponseBodyAccessDeniedDetail(DaraModel):
     def __init__(
         self,
         auth_action: str = None,
