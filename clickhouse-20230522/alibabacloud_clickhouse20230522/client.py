@@ -2051,6 +2051,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeEndpointsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.region_id):
@@ -2081,6 +2083,8 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeEndpointsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.computing_group_id):
+            query['ComputingGroupId'] = request.computing_group_id
         if not DaraCore.is_null(request.dbinstance_id):
             query['DBInstanceId'] = request.dbinstance_id
         if not DaraCore.is_null(request.region_id):

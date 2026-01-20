@@ -1,3 +1,8 @@
+2026-01-20 Version: 2.4.1
+- Update API DescribeEndpoints: add request parameters ComputingGroupId.
+- Update API DescribeEndpoints: add response parameters Body.Data.Endpoints.$.EndpointName.
+
+
 2025-12-25 Version: 2.4.0
 - Support API ListClickHouseDBTimezones.
 

@@ -7,9 +7,11 @@ from darabonba.model import DaraModel
 class DescribeEndpointsRequest(DaraModel):
     def __init__(
         self,
+        computing_group_id: str = None,
         dbinstance_id: str = None,
         region_id: str = None,
     ):
+        self.computing_group_id = computing_group_id
         # The cluster ID.
         # 
         # This parameter is required.
@@ -25,6 +27,9 @@ class DescribeEndpointsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.computing_group_id is not None:
+            result['ComputingGroupId'] = self.computing_group_id
+
         if self.dbinstance_id is not None:
             result['DBInstanceId'] = self.dbinstance_id
 
@@ -35,6 +40,9 @@ class DescribeEndpointsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ComputingGroupId') is not None:
+            self.computing_group_id = m.get('ComputingGroupId')
+
         if m.get('DBInstanceId') is not None:
             self.dbinstance_id = m.get('DBInstanceId')
 

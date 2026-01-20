@@ -99,6 +99,7 @@ class DescribeEndpointsResponseBodyDataEndpoints(DaraModel):
         self,
         computing_group_id: str = None,
         connection_string: str = None,
+        endpoint_name: str = None,
         ipaddress: str = None,
         net_type: str = None,
         ports: List[main_models.DescribeEndpointsResponseBodyDataEndpointsPorts] = None,
@@ -110,6 +111,7 @@ class DescribeEndpointsResponseBodyDataEndpoints(DaraModel):
         self.computing_group_id = computing_group_id
         # The endpoint of the cluster.
         self.connection_string = connection_string
+        self.endpoint_name = endpoint_name
         # The IP address.
         self.ipaddress = ipaddress
         # The network type of the endpoint. Valid values:
@@ -145,6 +147,9 @@ class DescribeEndpointsResponseBodyDataEndpoints(DaraModel):
         if self.connection_string is not None:
             result['ConnectionString'] = self.connection_string
 
+        if self.endpoint_name is not None:
+            result['EndpointName'] = self.endpoint_name
+
         if self.ipaddress is not None:
             result['IPAddress'] = self.ipaddress
 
@@ -177,6 +182,9 @@ class DescribeEndpointsResponseBodyDataEndpoints(DaraModel):
 
         if m.get('ConnectionString') is not None:
             self.connection_string = m.get('ConnectionString')
+
+        if m.get('EndpointName') is not None:
+            self.endpoint_name = m.get('EndpointName')
 
         if m.get('IPAddress') is not None:
             self.ipaddress = m.get('IPAddress')
