@@ -503,9 +503,11 @@ class QueryConfigResponseBodyDataNacosRunningEnvFencePolicy(DaraModel):
         self,
         enabled_modules: List[str] = None,
         intercept_policy: Dict[str, str] = None,
+        service_name: str = None,
     ):
         self.enabled_modules = enabled_modules
         self.intercept_policy = intercept_policy
+        self.service_name = service_name
 
     def validate(self):
         pass
@@ -521,6 +523,9 @@ class QueryConfigResponseBodyDataNacosRunningEnvFencePolicy(DaraModel):
         if self.intercept_policy is not None:
             result['interceptPolicy'] = self.intercept_policy
 
+        if self.service_name is not None:
+            result['serviceName'] = self.service_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -530,6 +535,9 @@ class QueryConfigResponseBodyDataNacosRunningEnvFencePolicy(DaraModel):
 
         if m.get('interceptPolicy') is not None:
             self.intercept_policy = m.get('interceptPolicy')
+
+        if m.get('serviceName') is not None:
+            self.service_name = m.get('serviceName')
 
         return self
 

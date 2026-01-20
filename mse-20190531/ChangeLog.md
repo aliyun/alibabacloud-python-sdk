@@ -1,3 +1,7 @@
+2026-01-20 Version: 6.23.1
+- Update API QueryConfig: add response parameters Body.Data.NacosRunningEnv.fencePolicy.serviceName.
+
+
 2026-01-14 Version: 6.23.0
 - Support API DeleteBlackWhiteList.
 - Support API DeleteGatewayAuth.
