@@ -1,3 +1,11 @@
+2026-01-20 Version: 2.2.2
+- Update API AssociateResourceShare: add request parameters ResourceProperties.
+- Update API AssociateResourceShare: add response parameters Body.ResourceShareAssociations.$.ResourceProperty.
+- Update API CreateResourceShare: add request parameters ResourceProperties.
+- Update API DisassociateResourceShare: add response parameters Body.ResourceShareAssociations.$.ResourceProperty.
+- Update API ListResourceShareAssociations: add response parameters Body.ResourceShareAssociations.$.ResourceProperty.
+
+
 2025-09-24 Version: 2.2.1
 - Update API AcceptResourceShareInvitation: add response parameters Body.ResourceShareInvitation.AcceptInvitationFailedDetails.$.ResourceArn.
 - Update API AssociateResourceShare: add request parameters ResourceArns.

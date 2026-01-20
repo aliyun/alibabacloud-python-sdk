@@ -1,0 +1,219 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._accept_resource_share_invitation_request import AcceptResourceShareInvitationRequest
+from ._accept_resource_share_invitation_response_body import AcceptResourceShareInvitationResponseBody
+from ._accept_resource_share_invitation_response import AcceptResourceShareInvitationResponse
+from ._associate_resource_share_request import AssociateResourceShareRequest
+from ._associate_resource_share_response_body import AssociateResourceShareResponseBody
+from ._associate_resource_share_response import AssociateResourceShareResponse
+from ._associate_resource_share_permission_request import AssociateResourceSharePermissionRequest
+from ._associate_resource_share_permission_response_body import AssociateResourceSharePermissionResponseBody
+from ._associate_resource_share_permission_response import AssociateResourceSharePermissionResponse
+from ._change_resource_group_request import ChangeResourceGroupRequest
+from ._change_resource_group_response_body import ChangeResourceGroupResponseBody
+from ._change_resource_group_response import ChangeResourceGroupResponse
+from ._check_sharing_with_resource_directory_status_response_body import CheckSharingWithResourceDirectoryStatusResponseBody
+from ._check_sharing_with_resource_directory_status_response import CheckSharingWithResourceDirectoryStatusResponse
+from ._create_resource_share_request import CreateResourceShareRequest
+from ._create_resource_share_response_body import CreateResourceShareResponseBody
+from ._create_resource_share_response import CreateResourceShareResponse
+from ._delete_resource_share_request import DeleteResourceShareRequest
+from ._delete_resource_share_response_body import DeleteResourceShareResponseBody
+from ._delete_resource_share_response import DeleteResourceShareResponse
+from ._describe_regions_request import DescribeRegionsRequest
+from ._describe_regions_response_body import DescribeRegionsResponseBody
+from ._describe_regions_response import DescribeRegionsResponse
+from ._disassociate_resource_share_request import DisassociateResourceShareRequest
+from ._disassociate_resource_share_response_body import DisassociateResourceShareResponseBody
+from ._disassociate_resource_share_response import DisassociateResourceShareResponse
+from ._disassociate_resource_share_permission_request import DisassociateResourceSharePermissionRequest
+from ._disassociate_resource_share_permission_response_body import DisassociateResourceSharePermissionResponseBody
+from ._disassociate_resource_share_permission_response import DisassociateResourceSharePermissionResponse
+from ._enable_sharing_with_resource_directory_response_body import EnableSharingWithResourceDirectoryResponseBody
+from ._enable_sharing_with_resource_directory_response import EnableSharingWithResourceDirectoryResponse
+from ._get_permission_request import GetPermissionRequest
+from ._get_permission_response_body import GetPermissionResponseBody
+from ._get_permission_response import GetPermissionResponse
+from ._list_permission_versions_request import ListPermissionVersionsRequest
+from ._list_permission_versions_response_body import ListPermissionVersionsResponseBody
+from ._list_permission_versions_response import ListPermissionVersionsResponse
+from ._list_permissions_request import ListPermissionsRequest
+from ._list_permissions_response_body import ListPermissionsResponseBody
+from ._list_permissions_response import ListPermissionsResponse
+from ._list_resource_share_associations_request import ListResourceShareAssociationsRequest
+from ._list_resource_share_associations_response_body import ListResourceShareAssociationsResponseBody
+from ._list_resource_share_associations_response import ListResourceShareAssociationsResponse
+from ._list_resource_share_invitations_request import ListResourceShareInvitationsRequest
+from ._list_resource_share_invitations_response_body import ListResourceShareInvitationsResponseBody
+from ._list_resource_share_invitations_response import ListResourceShareInvitationsResponse
+from ._list_resource_share_permissions_request import ListResourceSharePermissionsRequest
+from ._list_resource_share_permissions_response_body import ListResourceSharePermissionsResponseBody
+from ._list_resource_share_permissions_response import ListResourceSharePermissionsResponse
+from ._list_resource_shares_request import ListResourceSharesRequest
+from ._list_resource_shares_response_body import ListResourceSharesResponseBody
+from ._list_resource_shares_response import ListResourceSharesResponse
+from ._list_shared_resources_request import ListSharedResourcesRequest
+from ._list_shared_resources_response_body import ListSharedResourcesResponseBody
+from ._list_shared_resources_response import ListSharedResourcesResponse
+from ._list_shared_targets_request import ListSharedTargetsRequest
+from ._list_shared_targets_response_body import ListSharedTargetsResponseBody
+from ._list_shared_targets_response import ListSharedTargetsResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
+from ._reject_resource_share_invitation_request import RejectResourceShareInvitationRequest
+from ._reject_resource_share_invitation_response_body import RejectResourceShareInvitationResponseBody
+from ._reject_resource_share_invitation_response import RejectResourceShareInvitationResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
+from ._update_resource_share_request import UpdateResourceShareRequest
+from ._update_resource_share_response_body import UpdateResourceShareResponseBody
+from ._update_resource_share_response import UpdateResourceShareResponse
+from ._accept_resource_share_invitation_response_body import AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails
+from ._accept_resource_share_invitation_response_body import AcceptResourceShareInvitationResponseBodyResourceShareInvitation
+from ._associate_resource_share_request import AssociateResourceShareRequestResourceProperties
+from ._associate_resource_share_request import AssociateResourceShareRequestResources
+from ._associate_resource_share_request import AssociateResourceShareRequestTargetProperties
+from ._associate_resource_share_response_body import AssociateResourceShareResponseBodyResourceShareAssociations
+from ._create_resource_share_request import CreateResourceShareRequestResourceProperties
+from ._create_resource_share_request import CreateResourceShareRequestResources
+from ._create_resource_share_request import CreateResourceShareRequestTag
+from ._create_resource_share_request import CreateResourceShareRequestTargetProperties
+from ._create_resource_share_response_body import CreateResourceShareResponseBodyResourceShare
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
+from ._disassociate_resource_share_request import DisassociateResourceShareRequestResources
+from ._disassociate_resource_share_response_body import DisassociateResourceShareResponseBodyResourceShareAssociations
+from ._get_permission_response_body import GetPermissionResponseBodyPermission
+from ._list_permission_versions_response_body import ListPermissionVersionsResponseBodyPermissions
+from ._list_permissions_response_body import ListPermissionsResponseBodyPermissions
+from ._list_resource_share_associations_response_body import ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails
+from ._list_resource_share_associations_response_body import ListResourceShareAssociationsResponseBodyResourceShareAssociations
+from ._list_resource_share_invitations_response_body import ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails
+from ._list_resource_share_invitations_response_body import ListResourceShareInvitationsResponseBodyResourceShareInvitations
+from ._list_resource_share_permissions_response_body import ListResourceSharePermissionsResponseBodyPermissions
+from ._list_resource_shares_request import ListResourceSharesRequestTag
+from ._list_resource_shares_response_body import ListResourceSharesResponseBodyResourceSharesTags
+from ._list_resource_shares_response_body import ListResourceSharesResponseBodyResourceShares
+from ._list_shared_resources_response_body import ListSharedResourcesResponseBodySharedResources
+from ._list_shared_targets_response_body import ListSharedTargetsResponseBodySharedTargets
+from ._list_tag_resources_request import ListTagResourcesRequestTag
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._reject_resource_share_invitation_response_body import RejectResourceShareInvitationResponseBodyResourceShareInvitation
+from ._tag_resources_request import TagResourcesRequestTag
+from ._update_resource_share_response_body import UpdateResourceShareResponseBodyResourceShare
+
+__all__ = [
+    AcceptResourceShareInvitationRequest,
+    AcceptResourceShareInvitationResponseBody,
+    AcceptResourceShareInvitationResponse,
+    AssociateResourceShareRequest,
+    AssociateResourceShareResponseBody,
+    AssociateResourceShareResponse,
+    AssociateResourceSharePermissionRequest,
+    AssociateResourceSharePermissionResponseBody,
+    AssociateResourceSharePermissionResponse,
+    ChangeResourceGroupRequest,
+    ChangeResourceGroupResponseBody,
+    ChangeResourceGroupResponse,
+    CheckSharingWithResourceDirectoryStatusResponseBody,
+    CheckSharingWithResourceDirectoryStatusResponse,
+    CreateResourceShareRequest,
+    CreateResourceShareResponseBody,
+    CreateResourceShareResponse,
+    DeleteResourceShareRequest,
+    DeleteResourceShareResponseBody,
+    DeleteResourceShareResponse,
+    DescribeRegionsRequest,
+    DescribeRegionsResponseBody,
+    DescribeRegionsResponse,
+    DisassociateResourceShareRequest,
+    DisassociateResourceShareResponseBody,
+    DisassociateResourceShareResponse,
+    DisassociateResourceSharePermissionRequest,
+    DisassociateResourceSharePermissionResponseBody,
+    DisassociateResourceSharePermissionResponse,
+    EnableSharingWithResourceDirectoryResponseBody,
+    EnableSharingWithResourceDirectoryResponse,
+    GetPermissionRequest,
+    GetPermissionResponseBody,
+    GetPermissionResponse,
+    ListPermissionVersionsRequest,
+    ListPermissionVersionsResponseBody,
+    ListPermissionVersionsResponse,
+    ListPermissionsRequest,
+    ListPermissionsResponseBody,
+    ListPermissionsResponse,
+    ListResourceShareAssociationsRequest,
+    ListResourceShareAssociationsResponseBody,
+    ListResourceShareAssociationsResponse,
+    ListResourceShareInvitationsRequest,
+    ListResourceShareInvitationsResponseBody,
+    ListResourceShareInvitationsResponse,
+    ListResourceSharePermissionsRequest,
+    ListResourceSharePermissionsResponseBody,
+    ListResourceSharePermissionsResponse,
+    ListResourceSharesRequest,
+    ListResourceSharesResponseBody,
+    ListResourceSharesResponse,
+    ListSharedResourcesRequest,
+    ListSharedResourcesResponseBody,
+    ListSharedResourcesResponse,
+    ListSharedTargetsRequest,
+    ListSharedTargetsResponseBody,
+    ListSharedTargetsResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
+    RejectResourceShareInvitationRequest,
+    RejectResourceShareInvitationResponseBody,
+    RejectResourceShareInvitationResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UntagResourcesRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
+    UpdateResourceShareRequest,
+    UpdateResourceShareResponseBody,
+    UpdateResourceShareResponse,
+    AcceptResourceShareInvitationResponseBodyResourceShareInvitationAcceptInvitationFailedDetails,
+    AcceptResourceShareInvitationResponseBodyResourceShareInvitation,
+    AssociateResourceShareRequestResourceProperties,
+    AssociateResourceShareRequestResources,
+    AssociateResourceShareRequestTargetProperties,
+    AssociateResourceShareResponseBodyResourceShareAssociations,
+    CreateResourceShareRequestResourceProperties,
+    CreateResourceShareRequestResources,
+    CreateResourceShareRequestTag,
+    CreateResourceShareRequestTargetProperties,
+    CreateResourceShareResponseBodyResourceShare,
+    DescribeRegionsResponseBodyRegions,
+    DisassociateResourceShareRequestResources,
+    DisassociateResourceShareResponseBodyResourceShareAssociations,
+    GetPermissionResponseBodyPermission,
+    ListPermissionVersionsResponseBodyPermissions,
+    ListPermissionsResponseBodyPermissions,
+    ListResourceShareAssociationsResponseBodyResourceShareAssociationsAssociationFailedDetails,
+    ListResourceShareAssociationsResponseBodyResourceShareAssociations,
+    ListResourceShareInvitationsResponseBodyResourceShareInvitationsInvitationFailedDetails,
+    ListResourceShareInvitationsResponseBodyResourceShareInvitations,
+    ListResourceSharePermissionsResponseBodyPermissions,
+    ListResourceSharesRequestTag,
+    ListResourceSharesResponseBodyResourceSharesTags,
+    ListResourceSharesResponseBodyResourceShares,
+    ListSharedResourcesResponseBodySharedResources,
+    ListSharedTargetsResponseBodySharedTargets,
+    ListTagResourcesRequestTag,
+    ListTagResourcesResponseBodyTagResourcesTagResource,
+    ListTagResourcesResponseBodyTagResources,
+    RejectResourceShareInvitationResponseBodyResourceShareInvitation,
+    TagResourcesRequestTag,
+    UpdateResourceShareResponseBodyResourceShare
+]
