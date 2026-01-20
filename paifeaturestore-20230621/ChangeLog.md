@@ -1,3 +1,7 @@
+2026-01-20 Version: 6.0.6
+- Update API ExportModelFeatureTrainingSetTable: add request parameters body.FeatureViewConfig.Snapshot.
+
+
 2025-11-17 Version: 6.0.5
 - Update API CreateFeatureEntity: add request parameters body.ParentFeatureEntityId.
 - Update API GetFeatureEntity: add response parameters Body.ParentFeatureEntityId.
