@@ -1,3 +1,14 @@
+2026-01-20 Version: 1.8.4
+- Update API DescribeCustomAgent: add response parameters Body.Data.DMSUnit.
+- Update API DescribeCustomAgent: add response parameters Body.Data.IsScheduleTask.
+- Update API DescribeCustomAgent: add response parameters Body.Data.NextRuntime.
+- Update API DescribeCustomAgent: add response parameters Body.Data.ScheduleTaskConfig.
+- Update API ListCustomAgent: add response parameters Body.Data.Content.$.DMSUnit.
+- Update API ListCustomAgent: add response parameters Body.Data.Content.$.IsScheduleTask.
+- Update API ListCustomAgent: add response parameters Body.Data.Content.$.NextRuntime.
+- Update API ListCustomAgent: add response parameters Body.Data.Content.$.ScheduleTaskConfig.
+
+
 2026-01-15 Version: 1.8.3
 - Update API DescribeCustomAgent: add response parameters Body.Data.DefaultAgent.
 - Update API ListCustomAgent: add response parameters Body.Data.Content.$.DefaultAgent.

@@ -221,6 +221,7 @@ from ._delete_airflow_response_body import DeleteAirflowResponseBodyRoot
 from ._delete_file_upload_response_body import DeleteFileUploadResponseBodyData
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataExecutionConfig
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataKnowledgeConfigList
+from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataScheduleTaskConfig
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyData
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataChatHistoryLocations
 from ._describe_data_agent_session_response_body import DescribeDataAgentSessionResponseBodyDataSessionConfig
@@ -235,6 +236,7 @@ from ._list_airflows_response_body import ListAirflowsResponseBodyRootList
 from ._list_airflows_response_body import ListAirflowsResponseBodyRoot
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentExecutionConfig
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentKnowledgeConfigList
+from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContentScheduleTaskConfig
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyDataContent
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyData
 from ._list_data_agent_workspace_response_body import ListDataAgentWorkspaceResponseBodyDataContent
@@ -469,6 +471,7 @@ __all__ = [
     DeleteFileUploadResponseBodyData,
     DescribeCustomAgentResponseBodyDataExecutionConfig,
     DescribeCustomAgentResponseBodyDataKnowledgeConfigList,
+    DescribeCustomAgentResponseBodyDataScheduleTaskConfig,
     DescribeCustomAgentResponseBodyData,
     DescribeDataAgentSessionResponseBodyDataChatHistoryLocations,
     DescribeDataAgentSessionResponseBodyDataSessionConfig,
@@ -483,6 +486,7 @@ __all__ = [
     ListAirflowsResponseBodyRoot,
     ListCustomAgentResponseBodyDataContentExecutionConfig,
     ListCustomAgentResponseBodyDataContentKnowledgeConfigList,
+    ListCustomAgentResponseBodyDataContentScheduleTaskConfig,
     ListCustomAgentResponseBodyDataContent,
     ListCustomAgentResponseBodyData,
     ListDataAgentWorkspaceResponseBodyDataContent,

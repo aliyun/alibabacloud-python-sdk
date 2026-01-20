@@ -76,6 +76,7 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         aliyun_uid: str = None,
         creator_user_name: str = None,
         custom_agent_id: str = None,
+        dmsunit: str = None,
         data_json: str = None,
         default_agent: int = None,
         description: str = None,
@@ -84,14 +85,17 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         gmt_created: str = None,
         gmt_modified: str = None,
         instruction: str = None,
+        is_schedule_task: bool = None,
         knowledge: str = None,
         knowledge_config_list: List[main_models.DescribeCustomAgentResponseBodyDataKnowledgeConfigList] = None,
         modifier: str = None,
         modifier_user_name: str = None,
         name: str = None,
+        next_runtime: int = None,
         offline_time: str = None,
         region: str = None,
         release_time: str = None,
+        schedule_task_config: main_models.DescribeCustomAgentResponseBodyDataScheduleTaskConfig = None,
         status: str = None,
         text_report_config: str = None,
         web_report_config: str = None,
@@ -101,6 +105,7 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         self.aliyun_uid = aliyun_uid
         self.creator_user_name = creator_user_name
         self.custom_agent_id = custom_agent_id
+        self.dmsunit = dmsunit
         self.data_json = data_json
         self.default_agent = default_agent
         self.description = description
@@ -109,14 +114,17 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         self.gmt_created = gmt_created
         self.gmt_modified = gmt_modified
         self.instruction = instruction
+        self.is_schedule_task = is_schedule_task
         self.knowledge = knowledge
         self.knowledge_config_list = knowledge_config_list
         self.modifier = modifier
         self.modifier_user_name = modifier_user_name
         self.name = name
+        self.next_runtime = next_runtime
         self.offline_time = offline_time
         self.region = region
         self.release_time = release_time
+        self.schedule_task_config = schedule_task_config
         self.status = status
         self.text_report_config = text_report_config
         self.web_report_config = web_report_config
@@ -129,6 +137,8 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
             for v1 in self.knowledge_config_list:
                  if v1:
                     v1.validate()
+        if self.schedule_task_config:
+            self.schedule_task_config.validate()
 
     def to_map(self):
         result = dict()
@@ -146,6 +156,9 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
 
         if self.custom_agent_id is not None:
             result['CustomAgentId'] = self.custom_agent_id
+
+        if self.dmsunit is not None:
+            result['DMSUnit'] = self.dmsunit
 
         if self.data_json is not None:
             result['DataJson'] = self.data_json
@@ -171,6 +184,9 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         if self.instruction is not None:
             result['Instruction'] = self.instruction
 
+        if self.is_schedule_task is not None:
+            result['IsScheduleTask'] = self.is_schedule_task
+
         if self.knowledge is not None:
             result['Knowledge'] = self.knowledge
 
@@ -188,6 +204,9 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.next_runtime is not None:
+            result['NextRuntime'] = self.next_runtime
+
         if self.offline_time is not None:
             result['OfflineTime'] = self.offline_time
 
@@ -196,6 +215,9 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
 
         if self.release_time is not None:
             result['ReleaseTime'] = self.release_time
+
+        if self.schedule_task_config is not None:
+            result['ScheduleTaskConfig'] = self.schedule_task_config.to_map()
 
         if self.status is not None:
             result['Status'] = self.status
@@ -225,6 +247,9 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         if m.get('CustomAgentId') is not None:
             self.custom_agent_id = m.get('CustomAgentId')
 
+        if m.get('DMSUnit') is not None:
+            self.dmsunit = m.get('DMSUnit')
+
         if m.get('DataJson') is not None:
             self.data_json = m.get('DataJson')
 
@@ -250,6 +275,9 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         if m.get('Instruction') is not None:
             self.instruction = m.get('Instruction')
 
+        if m.get('IsScheduleTask') is not None:
+            self.is_schedule_task = m.get('IsScheduleTask')
+
         if m.get('Knowledge') is not None:
             self.knowledge = m.get('Knowledge')
 
@@ -268,6 +296,9 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
         if m.get('Name') is not None:
             self.name = m.get('Name')
 
+        if m.get('NextRuntime') is not None:
+            self.next_runtime = m.get('NextRuntime')
+
         if m.get('OfflineTime') is not None:
             self.offline_time = m.get('OfflineTime')
 
@@ -276,6 +307,10 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
 
         if m.get('ReleaseTime') is not None:
             self.release_time = m.get('ReleaseTime')
+
+        if m.get('ScheduleTaskConfig') is not None:
+            temp_model = main_models.DescribeCustomAgentResponseBodyDataScheduleTaskConfig()
+            self.schedule_task_config = temp_model.from_map(m.get('ScheduleTaskConfig'))
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
@@ -288,6 +323,49 @@ class DescribeCustomAgentResponseBodyData(DaraModel):
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
+
+        return self
+
+class DescribeCustomAgentResponseBodyDataScheduleTaskConfig(DaraModel):
+    def __init__(
+        self,
+        cron_expression: str = None,
+        query: str = None,
+        related_session_id: str = None,
+    ):
+        self.cron_expression = cron_expression
+        self.query = query
+        self.related_session_id = related_session_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.cron_expression is not None:
+            result['CronExpression'] = self.cron_expression
+
+        if self.query is not None:
+            result['Query'] = self.query
+
+        if self.related_session_id is not None:
+            result['RelatedSessionId'] = self.related_session_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CronExpression') is not None:
+            self.cron_expression = m.get('CronExpression')
+
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
+
+        if m.get('RelatedSessionId') is not None:
+            self.related_session_id = m.get('RelatedSessionId')
 
         return self
 
