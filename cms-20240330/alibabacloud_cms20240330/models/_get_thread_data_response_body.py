@@ -10,24 +10,24 @@ from darabonba.model import DaraModel
 class GetThreadDataResponseBody(DaraModel):
     def __init__(
         self,
+        data: List[main_models.GetThreadDataResponseBodyData] = None,
         digital_employee_name: str = None,
         max_results: int = None,
-        messages: List[main_models.GetThreadDataResponseBodyMessages] = None,
         next_token: str = None,
         request_id: str = None,
         thread_id: str = None,
     ):
+        self.data = data
         self.digital_employee_name = digital_employee_name
         self.max_results = max_results
-        self.messages = messages
         self.next_token = next_token
         # Id of the request
         self.request_id = request_id
         self.thread_id = thread_id
 
     def validate(self):
-        if self.messages:
-            for v1 in self.messages:
+        if self.data:
+            for v1 in self.data:
                  if v1:
                     v1.validate()
 
@@ -36,16 +36,16 @@ class GetThreadDataResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['data'] = []
+        if self.data is not None:
+            for k1 in self.data:
+                result['data'].append(k1.to_map() if k1 else None)
+
         if self.digital_employee_name is not None:
             result['digitalEmployeeName'] = self.digital_employee_name
 
         if self.max_results is not None:
             result['maxResults'] = self.max_results
-
-        result['messages'] = []
-        if self.messages is not None:
-            for k1 in self.messages:
-                result['messages'].append(k1.to_map() if k1 else None)
 
         if self.next_token is not None:
             result['nextToken'] = self.next_token
@@ -60,17 +60,17 @@ class GetThreadDataResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.data = []
+        if m.get('data') is not None:
+            for k1 in m.get('data'):
+                temp_model = main_models.GetThreadDataResponseBodyData()
+                self.data.append(temp_model.from_map(k1))
+
         if m.get('digitalEmployeeName') is not None:
             self.digital_employee_name = m.get('digitalEmployeeName')
 
         if m.get('maxResults') is not None:
             self.max_results = m.get('maxResults')
-
-        self.messages = []
-        if m.get('messages') is not None:
-            for k1 in m.get('messages'):
-                temp_model = main_models.GetThreadDataResponseBodyMessages()
-                self.messages.append(temp_model.from_map(k1))
 
         if m.get('nextToken') is not None:
             self.next_token = m.get('nextToken')
@@ -83,36 +83,87 @@ class GetThreadDataResponseBody(DaraModel):
 
         return self
 
-class GetThreadDataResponseBodyMessages(DaraModel):
+class GetThreadDataResponseBodyData(DaraModel):
     def __init__(
         self,
-        caller_uid: str = None,
-        digital_employee_name: str = None,
-        items: List[Dict[str, Any]] = None,
-        message_id: str = None,
-        owner_uid: str = None,
-        parent_message_id: str = None,
-        region: str = None,
-        role: str = None,
-        run_id: str = None,
-        thread_id: str = None,
-        timestamp: str = None,
+        messages: List[main_models.GetThreadDataResponseBodyDataMessages] = None,
+        request_id: str = None,
         trace_id: str = None,
-        variables: Dict[str, str] = None,
     ):
-        self.caller_uid = caller_uid
-        self.digital_employee_name = digital_employee_name
-        self.items = items
-        self.message_id = message_id
-        self.owner_uid = owner_uid
-        self.parent_message_id = parent_message_id
-        self.region = region
-        self.role = role
-        self.run_id = run_id
-        self.thread_id = thread_id
-        self.timestamp = timestamp
+        self.messages = messages
+        self.request_id = request_id
         self.trace_id = trace_id
-        self.variables = variables
+
+    def validate(self):
+        if self.messages:
+            for v1 in self.messages:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['messages'] = []
+        if self.messages is not None:
+            for k1 in self.messages:
+                result['messages'].append(k1.to_map() if k1 else None)
+
+        if self.request_id is not None:
+            result['requestId'] = self.request_id
+
+        if self.trace_id is not None:
+            result['traceId'] = self.trace_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.messages = []
+        if m.get('messages') is not None:
+            for k1 in m.get('messages'):
+                temp_model = main_models.GetThreadDataResponseBodyDataMessages()
+                self.messages.append(temp_model.from_map(k1))
+
+        if m.get('requestId') is not None:
+            self.request_id = m.get('requestId')
+
+        if m.get('traceId') is not None:
+            self.trace_id = m.get('traceId')
+
+        return self
+
+class GetThreadDataResponseBodyDataMessages(DaraModel):
+    def __init__(
+        self,
+        agents: List[Dict[str, Any]] = None,
+        artifacts: List[Dict[str, Any]] = None,
+        call_id: str = None,
+        contents: List[Dict[str, Any]] = None,
+        detail: str = None,
+        events: List[Dict[str, Any]] = None,
+        parent_call_id: str = None,
+        role: str = None,
+        seq: int = None,
+        timestamp: str = None,
+        tools: List[Dict[str, Any]] = None,
+        type: str = None,
+        version: str = None,
+    ):
+        self.agents = agents
+        self.artifacts = artifacts
+        self.call_id = call_id
+        self.contents = contents
+        self.detail = detail
+        self.events = events
+        self.parent_call_id = parent_call_id
+        self.role = role
+        self.seq = seq
+        self.timestamp = timestamp
+        self.tools = tools
+        self.type = type
+        self.version = version
 
     def validate(self):
         pass
@@ -122,87 +173,87 @@ class GetThreadDataResponseBodyMessages(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.caller_uid is not None:
-            result['callerUid'] = self.caller_uid
+        if self.agents is not None:
+            result['agents'] = self.agents
 
-        if self.digital_employee_name is not None:
-            result['digitalEmployeeName'] = self.digital_employee_name
+        if self.artifacts is not None:
+            result['artifacts'] = self.artifacts
 
-        if self.items is not None:
-            result['items'] = self.items
+        if self.call_id is not None:
+            result['callId'] = self.call_id
 
-        if self.message_id is not None:
-            result['messageId'] = self.message_id
+        if self.contents is not None:
+            result['contents'] = self.contents
 
-        if self.owner_uid is not None:
-            result['ownerUid'] = self.owner_uid
+        if self.detail is not None:
+            result['detail'] = self.detail
 
-        if self.parent_message_id is not None:
-            result['parentMessageId'] = self.parent_message_id
+        if self.events is not None:
+            result['events'] = self.events
 
-        if self.region is not None:
-            result['region'] = self.region
+        if self.parent_call_id is not None:
+            result['parentCallId'] = self.parent_call_id
 
         if self.role is not None:
             result['role'] = self.role
 
-        if self.run_id is not None:
-            result['runId'] = self.run_id
-
-        if self.thread_id is not None:
-            result['threadId'] = self.thread_id
+        if self.seq is not None:
+            result['seq'] = self.seq
 
         if self.timestamp is not None:
             result['timestamp'] = self.timestamp
 
-        if self.trace_id is not None:
-            result['traceId'] = self.trace_id
+        if self.tools is not None:
+            result['tools'] = self.tools
 
-        if self.variables is not None:
-            result['variables'] = self.variables
+        if self.type is not None:
+            result['type'] = self.type
+
+        if self.version is not None:
+            result['version'] = self.version
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('callerUid') is not None:
-            self.caller_uid = m.get('callerUid')
+        if m.get('agents') is not None:
+            self.agents = m.get('agents')
 
-        if m.get('digitalEmployeeName') is not None:
-            self.digital_employee_name = m.get('digitalEmployeeName')
+        if m.get('artifacts') is not None:
+            self.artifacts = m.get('artifacts')
 
-        if m.get('items') is not None:
-            self.items = m.get('items')
+        if m.get('callId') is not None:
+            self.call_id = m.get('callId')
 
-        if m.get('messageId') is not None:
-            self.message_id = m.get('messageId')
+        if m.get('contents') is not None:
+            self.contents = m.get('contents')
 
-        if m.get('ownerUid') is not None:
-            self.owner_uid = m.get('ownerUid')
+        if m.get('detail') is not None:
+            self.detail = m.get('detail')
 
-        if m.get('parentMessageId') is not None:
-            self.parent_message_id = m.get('parentMessageId')
+        if m.get('events') is not None:
+            self.events = m.get('events')
 
-        if m.get('region') is not None:
-            self.region = m.get('region')
+        if m.get('parentCallId') is not None:
+            self.parent_call_id = m.get('parentCallId')
 
         if m.get('role') is not None:
             self.role = m.get('role')
 
-        if m.get('runId') is not None:
-            self.run_id = m.get('runId')
-
-        if m.get('threadId') is not None:
-            self.thread_id = m.get('threadId')
+        if m.get('seq') is not None:
+            self.seq = m.get('seq')
 
         if m.get('timestamp') is not None:
             self.timestamp = m.get('timestamp')
 
-        if m.get('traceId') is not None:
-            self.trace_id = m.get('traceId')
+        if m.get('tools') is not None:
+            self.tools = m.get('tools')
 
-        if m.get('variables') is not None:
-            self.variables = m.get('variables')
+        if m.get('type') is not None:
+            self.type = m.get('type')
+
+        if m.get('version') is not None:
+            self.version = m.get('version')
 
         return self
 

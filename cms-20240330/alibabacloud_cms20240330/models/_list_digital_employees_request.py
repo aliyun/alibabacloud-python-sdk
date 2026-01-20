@@ -7,11 +7,13 @@ from darabonba.model import DaraModel
 class ListDigitalEmployeesRequest(DaraModel):
     def __init__(
         self,
+        display_name: str = None,
         employee_type: str = None,
         max_results: int = None,
         name: str = None,
         next_token: str = None,
     ):
+        self.display_name = display_name
         self.employee_type = employee_type
         self.max_results = max_results
         self.name = name
@@ -25,6 +27,9 @@ class ListDigitalEmployeesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.display_name is not None:
+            result['displayName'] = self.display_name
+
         if self.employee_type is not None:
             result['employeeType'] = self.employee_type
 
@@ -41,6 +46,9 @@ class ListDigitalEmployeesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('displayName') is not None:
+            self.display_name = m.get('displayName')
+
         if m.get('employeeType') is not None:
             self.employee_type = m.get('employeeType')
 

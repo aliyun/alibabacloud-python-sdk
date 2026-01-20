@@ -1,3 +1,18 @@
+2026-01-20 Version: 5.0.0
+- Update API CreateChat: add response parameters Body.messages.$.artifacts.
+- Update API CreateChat: add response parameters Body.messages.$.events.
+- Update API CreateChat: add response parameters Body.messages.$.version.
+- Update API CreateChat: update response parameters Body.messages.$.timestamp' type has changed.
+- Update API CreateChat: update response parameters Body.messages.$.timestamp' format has changed.
+- Update API CreateDigitalEmployee: add request parameters body.knowledges.sop.
+- Update API GetDigitalEmployee: add response parameters Body.knowledges.sop.
+- Update API GetThreadData: add response parameters Body.data.
+- Update API GetThreadData: delete response parameters Body.messages.
+- Update API ListDigitalEmployees: add request parameters displayName.
+- Update API ListDigitalEmployees: add response parameters Body.digitalEmployees.$.knowledges.sop.
+- Update API UpdateDigitalEmployee: add request parameters body.knowledges.sop.
+
+
 2026-01-06 Version: 4.2.0
 - Support API CreateServiceObservability.
 - Update API CreateIntegrationPolicy: add request parameters body.entityGroup.clusterNamespace.

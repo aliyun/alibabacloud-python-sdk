@@ -62,26 +62,32 @@ class CreateChatResponseBodyMessages(DaraModel):
     def __init__(
         self,
         agents: List[Dict[str, Any]] = None,
+        artifacts: List[Dict[str, Any]] = None,
         call_id: str = None,
         contents: List[Dict[str, Any]] = None,
         detail: str = None,
+        events: List[Dict[str, Any]] = None,
         parent_call_id: str = None,
         role: str = None,
         seq: int = None,
-        timestamp: int = None,
+        timestamp: str = None,
         tools: List[Dict[str, Any]] = None,
         type: str = None,
+        version: str = None,
     ):
         self.agents = agents
+        self.artifacts = artifacts
         self.call_id = call_id
         self.contents = contents
         self.detail = detail
+        self.events = events
         self.parent_call_id = parent_call_id
         self.role = role
         self.seq = seq
         self.timestamp = timestamp
         self.tools = tools
         self.type = type
+        self.version = version
 
     def validate(self):
         pass
@@ -94,6 +100,9 @@ class CreateChatResponseBodyMessages(DaraModel):
         if self.agents is not None:
             result['agents'] = self.agents
 
+        if self.artifacts is not None:
+            result['artifacts'] = self.artifacts
+
         if self.call_id is not None:
             result['callId'] = self.call_id
 
@@ -102,6 +111,9 @@ class CreateChatResponseBodyMessages(DaraModel):
 
         if self.detail is not None:
             result['detail'] = self.detail
+
+        if self.events is not None:
+            result['events'] = self.events
 
         if self.parent_call_id is not None:
             result['parentCallId'] = self.parent_call_id
@@ -121,12 +133,18 @@ class CreateChatResponseBodyMessages(DaraModel):
         if self.type is not None:
             result['type'] = self.type
 
+        if self.version is not None:
+            result['version'] = self.version
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('agents') is not None:
             self.agents = m.get('agents')
+
+        if m.get('artifacts') is not None:
+            self.artifacts = m.get('artifacts')
 
         if m.get('callId') is not None:
             self.call_id = m.get('callId')
@@ -136,6 +154,9 @@ class CreateChatResponseBodyMessages(DaraModel):
 
         if m.get('detail') is not None:
             self.detail = m.get('detail')
+
+        if m.get('events') is not None:
+            self.events = m.get('events')
 
         if m.get('parentCallId') is not None:
             self.parent_call_id = m.get('parentCallId')
@@ -154,6 +175,9 @@ class CreateChatResponseBodyMessages(DaraModel):
 
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        if m.get('version') is not None:
+            self.version = m.get('version')
 
         return self
 

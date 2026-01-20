@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict, Any
 
 from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
@@ -173,8 +173,10 @@ class ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges(DaraModel):
     def __init__(
         self,
         bailian: List[main_models.ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian] = None,
+        sop: List[Dict[str, Any]] = None,
     ):
         self.bailian = bailian
+        self.sop = sop
 
     def validate(self):
         if self.bailian:
@@ -192,6 +194,9 @@ class ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges(DaraModel):
             for k1 in self.bailian:
                 result['bailian'].append(k1.to_map() if k1 else None)
 
+        if self.sop is not None:
+            result['sop'] = self.sop
+
         return result
 
     def from_map(self, m: dict = None):
@@ -201,6 +206,9 @@ class ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges(DaraModel):
             for k1 in m.get('bailian'):
                 temp_model = main_models.ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian()
                 self.bailian.append(temp_model.from_map(k1))
+
+        if m.get('sop') is not None:
+            self.sop = m.get('sop')
 
         return self
 

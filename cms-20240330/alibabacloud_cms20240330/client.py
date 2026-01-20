@@ -5234,6 +5234,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListDigitalEmployeesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.display_name):
+            query['displayName'] = request.display_name
         if not DaraCore.is_null(request.employee_type):
             query['employeeType'] = request.employee_type
         if not DaraCore.is_null(request.max_results):
@@ -5270,6 +5272,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListDigitalEmployeesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.display_name):
+            query['displayName'] = request.display_name
         if not DaraCore.is_null(request.employee_type):
             query['employeeType'] = request.employee_type
         if not DaraCore.is_null(request.max_results):
