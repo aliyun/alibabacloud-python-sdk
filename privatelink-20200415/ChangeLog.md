@@ -1,3 +1,25 @@
+2026-01-21 Version: 4.0.6
+- Update API CreateVpcEndpoint: add request parameters CrossRegionBandwidth.
+- Update API CreateVpcEndpoint: add request parameters ServiceRegionId.
+- Update API CreateVpcEndpoint: add response parameters Body.CrossRegionBandwidth.
+- Update API CreateVpcEndpoint: add response parameters Body.ServiceRegionId.
+- Update API CreateVpcEndpointService: add request parameters SupportedRegionList.
+- Update API CreateVpcEndpointService: add response parameters Body.SupportedRegionSet.
+- Update API GetVpcEndpointAttribute: add response parameters Body.CrossRegionBandwidth.
+- Update API GetVpcEndpointAttribute: add response parameters Body.ServiceRegionId.
+- Update API GetVpcEndpointServiceAttribute: add response parameters Body.SupportedRegionSet.
+- Update API ListVpcEndpointConnections: add response parameters Body.Connections.$.EndpointRegionId.
+- Update API ListVpcEndpointConnections: add response parameters Body.Connections.$.ServiceRegionId.
+- Update API ListVpcEndpointServices: add response parameters Body.Services.$.SupportedRegionSet.
+- Update API ListVpcEndpointServicesByEndUser: add request parameters ServiceRegionId.
+- Update API ListVpcEndpoints: add request parameters ServiceRegionId.
+- Update API ListVpcEndpoints: add response parameters Body.Endpoints.$.CrossRegionBandwidth.
+- Update API ListVpcEndpoints: add response parameters Body.Endpoints.$.ServiceRegionId.
+- Update API UpdateVpcEndpointAttribute: add request parameters CrossRegionBandwidth.
+- Update API UpdateVpcEndpointServiceAttribute: add request parameters AddSupportedRegionSet.
+- Update API UpdateVpcEndpointServiceAttribute: add request parameters DeleteSupportedRegionSet.
+
+
 2025-12-09 Version: 4.0.5
 - Update API ListVpcEndpointServicesByEndUser: add response parameters Body.Services.$.AutoAcceptEnabled.
 - Update API ListVpcEndpointServicesByEndUser: add response parameters Body.Services.$.VpcEndpointPolicySupported.
