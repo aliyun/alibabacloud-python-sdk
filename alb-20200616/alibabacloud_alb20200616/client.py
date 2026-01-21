@@ -136,10 +136,14 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.server_group_id):
             query['ServerGroupId'] = request.server_group_id
+        body = {}
+        body_flat = {}
         if not DaraCore.is_null(request.servers):
-            query['Servers'] = request.servers
+            body_flat['Servers'] = request.servers
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'AddServersToServerGroup',
@@ -170,10 +174,14 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.server_group_id):
             query['ServerGroupId'] = request.server_group_id
+        body = {}
+        body_flat = {}
         if not DaraCore.is_null(request.servers):
-            query['Servers'] = request.servers
+            body_flat['Servers'] = request.servers
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'AddServersToServerGroup',
@@ -5594,8 +5602,6 @@ class Client(OpenApiClient):
     ) -> main_models.ReplaceServersInServerGroupResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.added_servers):
-            query['AddedServers'] = request.added_servers
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
@@ -5604,8 +5610,14 @@ class Client(OpenApiClient):
             query['RemovedServers'] = request.removed_servers
         if not DaraCore.is_null(request.server_group_id):
             query['ServerGroupId'] = request.server_group_id
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.added_servers):
+            body_flat['AddedServers'] = request.added_servers
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'ReplaceServersInServerGroup',
@@ -5630,8 +5642,6 @@ class Client(OpenApiClient):
     ) -> main_models.ReplaceServersInServerGroupResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.added_servers):
-            query['AddedServers'] = request.added_servers
         if not DaraCore.is_null(request.client_token):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.dry_run):
@@ -5640,8 +5650,14 @@ class Client(OpenApiClient):
             query['RemovedServers'] = request.removed_servers
         if not DaraCore.is_null(request.server_group_id):
             query['ServerGroupId'] = request.server_group_id
+        body = {}
+        body_flat = {}
+        if not DaraCore.is_null(request.added_servers):
+            body_flat['AddedServers'] = request.added_servers
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'ReplaceServersInServerGroup',
@@ -7310,10 +7326,14 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.server_group_id):
             query['ServerGroupId'] = request.server_group_id
+        body = {}
+        body_flat = {}
         if not DaraCore.is_null(request.servers):
-            query['Servers'] = request.servers
+            body_flat['Servers'] = request.servers
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'UpdateServerGroupServersAttribute',
@@ -7344,10 +7364,14 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.server_group_id):
             query['ServerGroupId'] = request.server_group_id
+        body = {}
+        body_flat = {}
         if not DaraCore.is_null(request.servers):
-            query['Servers'] = request.servers
+            body_flat['Servers'] = request.servers
+        body = DaraCore.merge({}, body, Utils.query(body_flat))
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'UpdateServerGroupServersAttribute',

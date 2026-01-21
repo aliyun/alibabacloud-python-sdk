@@ -30,8 +30,6 @@ class UpdateServerGroupServersAttributeRequest(DaraModel):
         # 
         # This parameter is required.
         self.server_group_id = server_group_id
-        # The server groups. You can specify at most 40 server groups in each call.
-        # 
         # This parameter is required.
         self.servers = servers
 
@@ -91,33 +89,12 @@ class UpdateServerGroupServersAttributeRequestServers(DaraModel):
         server_type: str = None,
         weight: int = None,
     ):
-        # The description of the backend server. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
         self.description = description
-        # The port that is used by the backend server. Valid values: **1** to **65535**.
-        # 
-        # > You do not need to set this parameter if **ServerType** is set to **Fc**.
         self.port = port
-        # The ID of the backend server.
-        # 
-        # *   Specify the ID of an Elastic Compute Service (ECS) instance, an elastic network interface (ENI), or an elastic container instance if you set **ServerType** to **Ecs**, **Eni**, or **Eci**.
-        # *   Specify an IP address if you set **ServerType** to **Ip**.
-        # *   Specify the Alibaba Cloud Resource Name (ARN) of a Function Compute function if you set **ServerType** to **Fc**.
         self.server_id = server_id
-        # The IP address of the backend server.
         self.server_ip = server_ip
-        # The type of the backend server. Valid values:
-        # 
-        # *   **Ecs**: ECS instance
-        # *   **Eni**: ENI
-        # *   **Eci**: elastic container instance
-        # *   **Ip**: IP address
-        # *   **Fc**: Function Compute
-        # 
         # This parameter is required.
         self.server_type = server_type
-        # The weight of the backend server. Valid values: **0** to **100**. Default value: **100**. If the value is set to **0**, no requests are forwarded to the server. You can specify up to 40 servers in each call.
-        # 
-        # > You do not need to set this parameter if **ServerType** is set to **Fc**.
         self.weight = weight
 
     def validate(self):

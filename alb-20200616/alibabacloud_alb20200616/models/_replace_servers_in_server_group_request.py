@@ -16,8 +16,6 @@ class ReplaceServersInServerGroupRequest(DaraModel):
         removed_servers: List[main_models.ReplaceServersInServerGroupRequestRemovedServers] = None,
         server_group_id: str = None,
     ):
-        # The backend servers. You can specify at most 200 servers in each call.
-        # 
         # This parameter is required.
         self.added_servers = added_servers
         # The client token that is used to ensure the idempotence of the request.
@@ -179,30 +177,11 @@ class ReplaceServersInServerGroupRequestAddedServers(DaraModel):
         server_type: str = None,
         weight: int = None,
     ):
-        # The description of the backend server. The description must be 2 to 256 characters in length, and cannot start with http:// or https://.
         self.description = description
-        # The port used by the backend server in the server group. Valid values: **1** to **65535**. You can specify at most 200 servers in each call.
         self.port = port
-        # The ID of the backend server. You can specify at most 200 servers in each call.
-        # 
-        # *   If the server group is of the **Instance** type, set ServerId to the ID of a resource of the **Ecs**, **Eni**, or **Eci** type.
-        # *   If the server group is of the **Ip** type, set ServerId to IP addresses.
-        # 
-        # >  You cannot perform this operation on a server group of the Function Compute type. You can call the [ListServerGroups](https://help.aliyun.com/document_detail/213627.html) operation to query the type of server groups.
-        # 
-        # This parameter is required.
         self.server_id = server_id
-        # The IP address of the elastic network interface (ENI) in exclusive mode.
         self.server_ip = server_ip
-        # The type of backend server. You can specify at most 200 servers in each call. Valid values:
-        # 
-        # *   **Ecs**: Elastic Compute Service (ECS) instance
-        # *   **Eni**: ENI
-        # *   **Eci**: elastic container instance
         self.server_type = server_type
-        # The weight of the backend server. You can specify at most 200 servers in each call.
-        # 
-        # Valid values: **0** to **100**. Default value: **100**. If the value is set to **0**, no requests are forwarded to the server.
         self.weight = weight
 
     def validate(self):
