@@ -13,6 +13,7 @@ class CreateEventResponseBody(DaraModel):
         attendees: List[main_models.CreateEventResponseBodyAttendees] = None,
         create_time: str = None,
         description: str = None,
+        encrypted_id: str = None,
         end: main_models.CreateEventResponseBodyEnd = None,
         id: str = None,
         is_all_day: bool = None,
@@ -31,6 +32,7 @@ class CreateEventResponseBody(DaraModel):
         self.attendees = attendees
         self.create_time = create_time
         self.description = description
+        self.encrypted_id = encrypted_id
         self.end = end
         self.id = id
         self.is_all_day = is_all_day
@@ -90,6 +92,9 @@ class CreateEventResponseBody(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
+
+        if self.encrypted_id is not None:
+            result['encryptedId'] = self.encrypted_id
 
         if self.end is not None:
             result['end'] = self.end.to_map()
@@ -152,6 +157,9 @@ class CreateEventResponseBody(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('encryptedId') is not None:
+            self.encrypted_id = m.get('encryptedId')
 
         if m.get('end') is not None:
             temp_model = main_models.CreateEventResponseBodyEnd()

@@ -69,11 +69,13 @@ class GetDingtalkMeetingMemberEventResponseBody(DaraModel):
 class GetDingtalkMeetingMemberEventResponseBodyData(DaraModel):
     def __init__(
         self,
+        conf_module: str = None,
         event_id: str = None,
         event_name: str = None,
         event_type: str = None,
         ts: int = None,
     ):
+        self.conf_module = conf_module
         self.event_id = event_id
         self.event_name = event_name
         self.event_type = event_type
@@ -87,6 +89,9 @@ class GetDingtalkMeetingMemberEventResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.conf_module is not None:
+            result['confModule'] = self.conf_module
+
         if self.event_id is not None:
             result['eventId'] = self.event_id
 
@@ -103,6 +108,9 @@ class GetDingtalkMeetingMemberEventResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('confModule') is not None:
+            self.conf_module = m.get('confModule')
+
         if m.get('eventId') is not None:
             self.event_id = m.get('eventId')
 
