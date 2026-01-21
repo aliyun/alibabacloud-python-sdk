@@ -4914,6 +4914,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_terraform_provider_versions_with_options_async(request, headers, runtime)
 
+    def manage_terraform_state_with_options(
+        self,
+        request: main_models.ManageTerraformStateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ManageTerraformStateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.action):
+            body['action'] = request.action
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.identifier):
+            body['identifier'] = request.identifier
+        if not DaraCore.is_null(request.import_resource_id):
+            body['importResourceId'] = request.import_resource_id
+        if not DaraCore.is_null(request.resource_identifier):
+            body['resourceIdentifier'] = request.resource_identifier
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ManageTerraformState',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/manage',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ManageTerraformStateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def manage_terraform_state_with_options_async(
+        self,
+        request: main_models.ManageTerraformStateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ManageTerraformStateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.action):
+            body['action'] = request.action
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.identifier):
+            body['identifier'] = request.identifier
+        if not DaraCore.is_null(request.import_resource_id):
+            body['importResourceId'] = request.import_resource_id
+        if not DaraCore.is_null(request.resource_identifier):
+            body['resourceIdentifier'] = request.resource_identifier
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ManageTerraformState',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/terraformState/manage',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ManageTerraformStateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def manage_terraform_state(
+        self,
+        request: main_models.ManageTerraformStateRequest,
+    ) -> main_models.ManageTerraformStateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.manage_terraform_state_with_options(request, headers, runtime)
+
+    async def manage_terraform_state_async(
+        self,
+        request: main_models.ManageTerraformStateRequest,
+    ) -> main_models.ManageTerraformStateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.manage_terraform_state_with_options_async(request, headers, runtime)
+
     def operate_job_with_options(
         self,
         task_id: str,

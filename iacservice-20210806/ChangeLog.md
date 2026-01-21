@@ -1,3 +1,7 @@
+2026-01-21 Version: 2.2.0
+- Support API ManageTerraformState.
+
+
 2026-01-14 Version: 2.1.3
 - Update API ListRegistryModules: add request parameters status.
 

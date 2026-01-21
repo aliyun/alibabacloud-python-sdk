@@ -160,6 +160,9 @@ from ._list_tasks_response import ListTasksResponse
 from ._list_terraform_provider_versions_request import ListTerraformProviderVersionsRequest
 from ._list_terraform_provider_versions_response_body import ListTerraformProviderVersionsResponseBody
 from ._list_terraform_provider_versions_response import ListTerraformProviderVersionsResponse
+from ._manage_terraform_state_request import ManageTerraformStateRequest
+from ._manage_terraform_state_response_body import ManageTerraformStateResponseBody
+from ._manage_terraform_state_response import ManageTerraformStateResponse
 from ._operate_job_request import OperateJobRequest
 from ._operate_job_response_body import OperateJobResponseBody
 from ._operate_job_response import OperateJobResponse
@@ -437,6 +440,9 @@ __all__ = [
     ListTerraformProviderVersionsRequest,
     ListTerraformProviderVersionsResponseBody,
     ListTerraformProviderVersionsResponse,
+    ManageTerraformStateRequest,
+    ManageTerraformStateResponseBody,
+    ManageTerraformStateResponse,
     OperateJobRequest,
     OperateJobResponseBody,
     OperateJobResponse,
