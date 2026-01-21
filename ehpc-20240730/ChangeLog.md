@@ -1,3 +1,7 @@
+2026-01-21 Version: 2.2.3
+- Update API CreateNodes: add request parameters MinCount.
+
+
 2025-12-30 Version: 2.2.2
 - Update API CreateNodes: add request parameters Hostnames.
 - Update API GetCluster: add response parameters Body.SchedulerSpec.EnablePowerSaving.

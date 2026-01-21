@@ -19,6 +19,7 @@ class CreateNodesRequest(DaraModel):
         hostname_suffix: str = None,
         hostnames: List[str] = None,
         keep_alive: str = None,
+        min_count: int = None,
         queue_name: str = None,
         ram_role: str = None,
         reserved_node_pool_id: str = None,
@@ -50,6 +51,7 @@ class CreateNodesRequest(DaraModel):
         self.hostnames = hostnames
         # Specifies whether to enable deletion protection for the added compute nodes.
         self.keep_alive = keep_alive
+        self.min_count = min_count
         # The name of the queue for which you want to create compute nodes.
         self.queue_name = queue_name
         # The Resource Access Management (RAM) role to be assumed by the added nodes.
@@ -95,6 +97,9 @@ class CreateNodesRequest(DaraModel):
         if self.keep_alive is not None:
             result['KeepAlive'] = self.keep_alive
 
+        if self.min_count is not None:
+            result['MinCount'] = self.min_count
+
         if self.queue_name is not None:
             result['QueueName'] = self.queue_name
 
@@ -138,6 +143,9 @@ class CreateNodesRequest(DaraModel):
 
         if m.get('KeepAlive') is not None:
             self.keep_alive = m.get('KeepAlive')
+
+        if m.get('MinCount') is not None:
+            self.min_count = m.get('MinCount')
 
         if m.get('QueueName') is not None:
             self.queue_name = m.get('QueueName')

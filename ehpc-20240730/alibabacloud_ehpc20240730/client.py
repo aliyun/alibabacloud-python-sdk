@@ -511,6 +511,8 @@ class Client(OpenApiClient):
             query['Hostnames'] = request.hostnames_shrink
         if not DaraCore.is_null(request.keep_alive):
             query['KeepAlive'] = request.keep_alive
+        if not DaraCore.is_null(request.min_count):
+            query['MinCount'] = request.min_count
         if not DaraCore.is_null(request.queue_name):
             query['QueueName'] = request.queue_name
         if not DaraCore.is_null(request.ram_role):
@@ -569,6 +571,8 @@ class Client(OpenApiClient):
             query['Hostnames'] = request.hostnames_shrink
         if not DaraCore.is_null(request.keep_alive):
             query['KeepAlive'] = request.keep_alive
+        if not DaraCore.is_null(request.min_count):
+            query['MinCount'] = request.min_count
         if not DaraCore.is_null(request.queue_name):
             query['QueueName'] = request.queue_name
         if not DaraCore.is_null(request.ram_role):
