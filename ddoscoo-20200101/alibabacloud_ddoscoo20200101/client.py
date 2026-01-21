@@ -11223,6 +11223,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.domains):
             query['Domains'] = request.domains
+        if not DaraCore.is_null(request.owner):
+            query['Owner'] = request.owner
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         req = open_api_util_models.OpenApiRequest(
@@ -11253,6 +11255,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.domains):
             query['Domains'] = request.domains
+        if not DaraCore.is_null(request.owner):
+            query['Owner'] = request.owner
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         req = open_api_util_models.OpenApiRequest(

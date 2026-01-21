@@ -102,6 +102,7 @@ class DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList(Da
         self,
         action: str = None,
         condition_list: List[main_models.DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListConditionList] = None,
+        expire_period: int = None,
         expires: int = None,
         name: str = None,
         owner: str = None,
@@ -114,6 +115,7 @@ class DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList(Da
         self.action = action
         # The match conditions.
         self.condition_list = condition_list
+        self.expire_period = expire_period
         # The validity period of the rule. Unit: seconds. This parameter takes effect only when **action** of a rule is **block**. Access requests that match the rule are blocked within the specified validity period of the rule. The value **0** indicates that the whitelist takes effect all the time.
         self.expires = expires
         # The name of the scheduling rule.
@@ -143,6 +145,9 @@ class DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList(Da
             for k1 in self.condition_list:
                 result['ConditionList'].append(k1.to_map() if k1 else None)
 
+        if self.expire_period is not None:
+            result['ExpirePeriod'] = self.expire_period
+
         if self.expires is not None:
             result['Expires'] = self.expires
 
@@ -164,6 +169,9 @@ class DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleList(Da
             for k1 in m.get('ConditionList'):
                 temp_model = main_models.DescribeWebPreciseAccessRuleResponseBodyPreciseAccessConfigListRuleListConditionList()
                 self.condition_list.append(temp_model.from_map(k1))
+
+        if m.get('ExpirePeriod') is not None:
+            self.expire_period = m.get('ExpirePeriod')
 
         if m.get('Expires') is not None:
             self.expires = m.get('Expires')

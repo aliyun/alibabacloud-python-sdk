@@ -10,6 +10,7 @@ class DescribeWebPreciseAccessRuleRequest(DaraModel):
     def __init__(
         self,
         domains: List[str] = None,
+        owner: str = None,
         resource_group_id: str = None,
     ):
         # An array that consists of the domain names of websites.
@@ -18,6 +19,7 @@ class DescribeWebPreciseAccessRuleRequest(DaraModel):
         # 
         # This parameter is required.
         self.domains = domains
+        self.owner = owner
         # The ID of the resource group to which the instance belongs in Resource Management. This parameter is empty by default, which indicates that the instance belongs to the default resource group.
         self.resource_group_id = resource_group_id
 
@@ -32,6 +34,9 @@ class DescribeWebPreciseAccessRuleRequest(DaraModel):
         if self.domains is not None:
             result['Domains'] = self.domains
 
+        if self.owner is not None:
+            result['Owner'] = self.owner
+
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
 
@@ -41,6 +46,9 @@ class DescribeWebPreciseAccessRuleRequest(DaraModel):
         m = m or dict()
         if m.get('Domains') is not None:
             self.domains = m.get('Domains')
+
+        if m.get('Owner') is not None:
+            self.owner = m.get('Owner')
 
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
