@@ -1,3 +1,11 @@
+2026-01-21 Version: 1.4.2
+- Update API GetNetworkDomain: add request parameters CheckProxyState.
+- Update API SetPolicyProtocolConfig: add request parameters ProtocolConfig.RDP.DiskRedirectionDownload.
+- Update API SetPolicyProtocolConfig: add request parameters ProtocolConfig.RDP.DiskRedirectionUpload.
+- Update API SetPolicyProtocolConfig: add request parameters ProtocolConfig.SSH.AllowDirectTcp.
+- Update API SetPolicyProtocolConfig: add request parameters ProtocolConfig.SSH.AllowTcpForwarding.
+
+
 2025-12-05 Version: 1.4.1
 - Update API CreateDatabase: add request parameters InstanceMemberId.
 - Update API CreateHost: add request parameters InstanceMemberId.
