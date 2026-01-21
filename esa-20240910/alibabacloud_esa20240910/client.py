@@ -20999,6 +20999,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_site_delivery_tasks_with_options_async(request, runtime)
 
+    def list_site_origin_client_certificates_with_options(
+        self,
+        request: main_models.ListSiteOriginClientCertificatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSiteOriginClientCertificatesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSiteOriginClientCertificates',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSiteOriginClientCertificatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_site_origin_client_certificates_with_options_async(
+        self,
+        request: main_models.ListSiteOriginClientCertificatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSiteOriginClientCertificatesResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSiteOriginClientCertificates',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSiteOriginClientCertificatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_site_origin_client_certificates(
+        self,
+        request: main_models.ListSiteOriginClientCertificatesRequest,
+    ) -> main_models.ListSiteOriginClientCertificatesResponse:
+        runtime = RuntimeOptions()
+        return self.list_site_origin_client_certificates_with_options(request, runtime)
+
+    async def list_site_origin_client_certificates_async(
+        self,
+        request: main_models.ListSiteOriginClientCertificatesRequest,
+    ) -> main_models.ListSiteOriginClientCertificatesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_site_origin_client_certificates_with_options_async(request, runtime)
+
     def list_site_routes_with_options(
         self,
         request: main_models.ListSiteRoutesRequest,

@@ -846,6 +846,9 @@ from ._list_scheduled_preload_jobs_response import ListScheduledPreloadJobsRespo
 from ._list_site_delivery_tasks_request import ListSiteDeliveryTasksRequest
 from ._list_site_delivery_tasks_response_body import ListSiteDeliveryTasksResponseBody
 from ._list_site_delivery_tasks_response import ListSiteDeliveryTasksResponse
+from ._list_site_origin_client_certificates_request import ListSiteOriginClientCertificatesRequest
+from ._list_site_origin_client_certificates_response_body import ListSiteOriginClientCertificatesResponseBody
+from ._list_site_origin_client_certificates_response import ListSiteOriginClientCertificatesResponse
 from ._list_site_routes_request import ListSiteRoutesRequest
 from ._list_site_routes_response_body import ListSiteRoutesResponseBody
 from ._list_site_routes_response import ListSiteRoutesResponse
@@ -1454,6 +1457,7 @@ from ._list_routine_routes_response_body import ListRoutineRoutesResponseBodyCon
 from ._list_scheduled_preload_executions_response_body import ListScheduledPreloadExecutionsResponseBodyExecutions
 from ._list_scheduled_preload_jobs_response_body import ListScheduledPreloadJobsResponseBodyJobs
 from ._list_site_delivery_tasks_response_body import ListSiteDeliveryTasksResponseBodyTasks
+from ._list_site_origin_client_certificates_response_body import ListSiteOriginClientCertificatesResponseBodyResult
 from ._list_site_routes_response_body import ListSiteRoutesResponseBodyConfigs
 from ._list_sites_request import ListSitesRequestTagFilter
 from ._list_sites_response_body import ListSitesResponseBodySites
@@ -2354,6 +2358,9 @@ __all__ = [
     ListSiteDeliveryTasksRequest,
     ListSiteDeliveryTasksResponseBody,
     ListSiteDeliveryTasksResponse,
+    ListSiteOriginClientCertificatesRequest,
+    ListSiteOriginClientCertificatesResponseBody,
+    ListSiteOriginClientCertificatesResponse,
     ListSiteRoutesRequest,
     ListSiteRoutesResponseBody,
     ListSiteRoutesResponse,
@@ -2962,6 +2969,7 @@ __all__ = [
     ListScheduledPreloadExecutionsResponseBodyExecutions,
     ListScheduledPreloadJobsResponseBodyJobs,
     ListSiteDeliveryTasksResponseBodyTasks,
+    ListSiteOriginClientCertificatesResponseBodyResult,
     ListSiteRoutesResponseBodyConfigs,
     ListSitesRequestTagFilter,
     ListSitesResponseBodySites,
