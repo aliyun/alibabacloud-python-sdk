@@ -340,6 +340,7 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         clipboard: str = None,
         clipboard_read_limit: int = None,
         clipboard_scope: str = None,
+        clipboard_size_unit: str = None,
         clipboard_write_limit: int = None,
         file_clipboard: str = None,
         rich_text_clipboard: str = None,
@@ -363,6 +364,7 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         # *   grained: fine-grained control
         # *   global: global control
         self.clipboard_scope = clipboard_scope
+        self.clipboard_size_unit = clipboard_size_unit
         # The maximum number of characters allowed when copying to the clipboard.
         self.clipboard_write_limit = clipboard_write_limit
         # The file clipboard policy.
@@ -410,6 +412,9 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
         if self.clipboard_scope is not None:
             result['ClipboardScope'] = self.clipboard_scope
 
+        if self.clipboard_size_unit is not None:
+            result['ClipboardSizeUnit'] = self.clipboard_size_unit
+
         if self.clipboard_write_limit is not None:
             result['ClipboardWriteLimit'] = self.clipboard_write_limit
 
@@ -434,6 +439,9 @@ class ModifyBrowserInstanceGroupRequestPolicyClipboardPolicy(DaraModel):
 
         if m.get('ClipboardScope') is not None:
             self.clipboard_scope = m.get('ClipboardScope')
+
+        if m.get('ClipboardSizeUnit') is not None:
+            self.clipboard_size_unit = m.get('ClipboardSizeUnit')
 
         if m.get('ClipboardWriteLimit') is not None:
             self.clipboard_write_limit = m.get('ClipboardWriteLimit')

@@ -1,3 +1,7 @@
+2026-01-21 Version: 4.7.7
+- Update API ModifyBrowserInstanceGroup: add request parameters Policy.ClipboardPolicy.ClipboardSizeUnit.
+
+
 2026-01-08 Version: 4.7.6
 - Update API ListImage: add response parameters Body.Data.$.EnvironmentId.
 - Update API ListImage: add response parameters Body.Data.$.ImageIconUrl.
