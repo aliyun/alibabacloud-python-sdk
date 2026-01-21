@@ -1,3 +1,8 @@
+2026-01-21 Version: 4.0.7
+- Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.private_crt_file_name.
+- Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.use_private_crt.
+
+
 2025-12-02 Version: 4.0.6
 - Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.enable_packet_capture.
 
