@@ -8,9 +8,11 @@ class ModifyResourceTypeAutoEnableRequest(DaraModel):
     def __init__(
         self,
         lang: str = None,
+        region_no: str = None,
         resource_type_auto_enable: str = None,
     ):
         self.lang = lang
+        self.region_no = region_no
         self.resource_type_auto_enable = resource_type_auto_enable
 
     def validate(self):
@@ -24,6 +26,9 @@ class ModifyResourceTypeAutoEnableRequest(DaraModel):
         if self.lang is not None:
             result['Lang'] = self.lang
 
+        if self.region_no is not None:
+            result['RegionNo'] = self.region_no
+
         if self.resource_type_auto_enable is not None:
             result['ResourceTypeAutoEnable'] = self.resource_type_auto_enable
 
@@ -33,6 +38,9 @@ class ModifyResourceTypeAutoEnableRequest(DaraModel):
         m = m or dict()
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+
+        if m.get('RegionNo') is not None:
+            self.region_no = m.get('RegionNo')
 
         if m.get('ResourceTypeAutoEnable') is not None:
             self.resource_type_auto_enable = m.get('ResourceTypeAutoEnable')

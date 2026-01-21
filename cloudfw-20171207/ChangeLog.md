@@ -1,3 +1,25 @@
+2026-01-21 Version: 8.0.0
+- Support API DescribeRegionResourceTypeAutoEnable.
+- Support API SetAutoProtectNewAssets.
+- Update API ClearLogStoreStorage: add request parameters Site.
+- Update API ClearLogStoreStorage: add request The number of query or body parameters has changed from zero to many.
+- Update API DescribeBatchSlsDispatchStatus: add response parameters Body.InfoList.
+- Update API DescribeBatchSlsDispatchStatus: add response parameters Body.LogVersion.
+- Update API DescribeLogStoreInfo: add response parameters Body.InfoList.
+- Update API DescribeLogStoreInfo: add response parameters Body.LogModifyQuota.
+- Update API DescribeLogStoreInfo: add response parameters Body.LogVersion.
+- Update API DescribeLogStoreInfo: add response parameters Body.TaskId.
+- Update API DescribeLogStoreInfo: add response parameters Body.TotalQuota.
+- Update API ModifyResourceTypeAutoEnable: add request parameters RegionNo.
+- Update API ModifySlsDispatchStatus: add request parameters Site.
+- Update API ModifyUserSlsLogStorageTime: add request parameters LogVersion.
+- Update API ModifyUserSlsLogStorageTime: add request parameters SlsRegionId.
+- Update API PutDisableFwSwitch: add request parameters IpVersion.
+- Update API PutDisableFwSwitch: add request parameters MemberUid.
+- Update API PutEnableFwSwitch: add request parameters IpVersion.
+- Update API PutEnableFwSwitch: add request parameters MemberUid.
+
+
 2026-01-09 Version: 7.5.0
 - Support API DescribeVpcFirewallTrafficAssetList.
 

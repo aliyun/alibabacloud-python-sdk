@@ -11,11 +11,13 @@ class ModifySlsDispatchStatusRequest(DaraModel):
         enable_status: bool = None,
         filter_keys: str = None,
         new_region_id: str = None,
+        site: str = None,
     ):
         self.dispatch_value = dispatch_value
         self.enable_status = enable_status
         self.filter_keys = filter_keys
         self.new_region_id = new_region_id
+        self.site = site
 
     def validate(self):
         pass
@@ -37,6 +39,9 @@ class ModifySlsDispatchStatusRequest(DaraModel):
         if self.new_region_id is not None:
             result['NewRegionId'] = self.new_region_id
 
+        if self.site is not None:
+            result['Site'] = self.site
+
         return result
 
     def from_map(self, m: dict = None):
@@ -52,6 +57,9 @@ class ModifySlsDispatchStatusRequest(DaraModel):
 
         if m.get('NewRegionId') is not None:
             self.new_region_id = m.get('NewRegionId')
+
+        if m.get('Site') is not None:
+            self.site = m.get('Site')
 
         return self
 

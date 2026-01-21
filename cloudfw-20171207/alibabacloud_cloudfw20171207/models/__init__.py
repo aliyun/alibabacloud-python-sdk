@@ -29,6 +29,7 @@ from ._batch_copy_vpc_firewall_control_policy_response import BatchCopyVpcFirewa
 from ._batch_delete_vpc_firewall_control_policy_request import BatchDeleteVpcFirewallControlPolicyRequest
 from ._batch_delete_vpc_firewall_control_policy_response_body import BatchDeleteVpcFirewallControlPolicyResponseBody
 from ._batch_delete_vpc_firewall_control_policy_response import BatchDeleteVpcFirewallControlPolicyResponse
+from ._clear_log_store_storage_request import ClearLogStoreStorageRequest
 from ._clear_log_store_storage_response_body import ClearLogStoreStorageResponseBody
 from ._clear_log_store_storage_response import ClearLogStoreStorageResponse
 from ._create_ack_cluster_connector_request import CreateAckClusterConnectorRequest
@@ -462,6 +463,9 @@ from ._describe_private_dns_statistics_response import DescribePrivateDnsStatist
 from ._describe_region_info_request import DescribeRegionInfoRequest
 from ._describe_region_info_response_body import DescribeRegionInfoResponseBody
 from ._describe_region_info_response import DescribeRegionInfoResponse
+from ._describe_region_resource_type_auto_enable_request import DescribeRegionResourceTypeAutoEnableRequest
+from ._describe_region_resource_type_auto_enable_response_body import DescribeRegionResourceTypeAutoEnableResponseBody
+from ._describe_region_resource_type_auto_enable_response import DescribeRegionResourceTypeAutoEnableResponse
 from ._describe_resource_type_auto_enable_request import DescribeResourceTypeAutoEnableRequest
 from ._describe_resource_type_auto_enable_response_body import DescribeResourceTypeAutoEnableResponseBody
 from ._describe_resource_type_auto_enable_response import DescribeResourceTypeAutoEnableResponse
@@ -780,6 +784,9 @@ from ._reset_rule_hit_count_response import ResetRuleHitCountResponse
 from ._reset_vpc_firewall_rule_hit_count_request import ResetVpcFirewallRuleHitCountRequest
 from ._reset_vpc_firewall_rule_hit_count_response_body import ResetVpcFirewallRuleHitCountResponseBody
 from ._reset_vpc_firewall_rule_hit_count_response import ResetVpcFirewallRuleHitCountResponse
+from ._set_auto_protect_new_assets_request import SetAutoProtectNewAssetsRequest
+from ._set_auto_protect_new_assets_response_body import SetAutoProtectNewAssetsResponseBody
+from ._set_auto_protect_new_assets_response import SetAutoProtectNewAssetsResponse
 from ._switch_security_proxy_request import SwitchSecurityProxyRequest
 from ._switch_security_proxy_response_body import SwitchSecurityProxyResponseBody
 from ._switch_security_proxy_response import SwitchSecurityProxyResponse
@@ -845,6 +852,8 @@ from ._describe_asset_statistic_response_body import DescribeAssetStatisticRespo
 from ._describe_asset_statistic_response_body import DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic
 from ._describe_asset_statistic_response_body import DescribeAssetStatisticResponseBodyResourceSpecStatistic
 from ._describe_attack_app_category_response_body import DescribeAttackAppCategoryResponseBodyAppCategories
+from ._describe_batch_sls_dispatch_status_response_body import DescribeBatchSlsDispatchStatusResponseBodyInfoListItemList
+from ._describe_batch_sls_dispatch_status_response_body import DescribeBatchSlsDispatchStatusResponseBodyInfoList
 from ._describe_batch_sls_dispatch_status_response_body import DescribeBatchSlsDispatchStatusResponseBodyItemList
 from ._describe_cfw_risk_level_summary_response_body import DescribeCfwRiskLevelSummaryResponseBodyRiskList
 from ._describe_configured_destination_ipresponse_body import DescribeConfiguredDestinationIPResponseBodyDestinations
@@ -894,6 +903,7 @@ from ._describe_location_info_response_body import DescribeLocationInfoResponseB
 from ._describe_location_info_response_body import DescribeLocationInfoResponseBodyCnProvinceListCities
 from ._describe_location_info_response_body import DescribeLocationInfoResponseBodyCnProvinceList
 from ._describe_location_info_response_body import DescribeLocationInfoResponseBodyOverseasList
+from ._describe_log_store_info_response_body import DescribeLogStoreInfoResponseBodyInfoList
 from ._describe_nat_firewall_acl_group_list_response_body import DescribeNatFirewallAclGroupListResponseBodyNatFirewalls
 from ._describe_nat_firewall_control_policy_response_body import DescribeNatFirewallControlPolicyResponseBodyPolicys
 from ._describe_nat_firewall_drop_traffic_trend_response_body import DescribeNatFirewallDropTrafficTrendResponseBodyDataList
@@ -1080,6 +1090,7 @@ __all__ = [
     BatchDeleteVpcFirewallControlPolicyRequest,
     BatchDeleteVpcFirewallControlPolicyResponseBody,
     BatchDeleteVpcFirewallControlPolicyResponse,
+    ClearLogStoreStorageRequest,
     ClearLogStoreStorageResponseBody,
     ClearLogStoreStorageResponse,
     CreateAckClusterConnectorRequest,
@@ -1513,6 +1524,9 @@ __all__ = [
     DescribeRegionInfoRequest,
     DescribeRegionInfoResponseBody,
     DescribeRegionInfoResponse,
+    DescribeRegionResourceTypeAutoEnableRequest,
+    DescribeRegionResourceTypeAutoEnableResponseBody,
+    DescribeRegionResourceTypeAutoEnableResponse,
     DescribeResourceTypeAutoEnableRequest,
     DescribeResourceTypeAutoEnableResponseBody,
     DescribeResourceTypeAutoEnableResponse,
@@ -1831,6 +1845,9 @@ __all__ = [
     ResetVpcFirewallRuleHitCountRequest,
     ResetVpcFirewallRuleHitCountResponseBody,
     ResetVpcFirewallRuleHitCountResponse,
+    SetAutoProtectNewAssetsRequest,
+    SetAutoProtectNewAssetsResponseBody,
+    SetAutoProtectNewAssetsResponse,
     SwitchSecurityProxyRequest,
     SwitchSecurityProxyResponseBody,
     SwitchSecurityProxyResponse,
@@ -1896,6 +1913,8 @@ __all__ = [
     DescribeAssetStatisticResponseBodyGeneralInstanceSpecStatistic,
     DescribeAssetStatisticResponseBodyResourceSpecStatistic,
     DescribeAttackAppCategoryResponseBodyAppCategories,
+    DescribeBatchSlsDispatchStatusResponseBodyInfoListItemList,
+    DescribeBatchSlsDispatchStatusResponseBodyInfoList,
     DescribeBatchSlsDispatchStatusResponseBodyItemList,
     DescribeCfwRiskLevelSummaryResponseBodyRiskList,
     DescribeConfiguredDestinationIPResponseBodyDestinations,
@@ -1945,6 +1964,7 @@ __all__ = [
     DescribeLocationInfoResponseBodyCnProvinceListCities,
     DescribeLocationInfoResponseBodyCnProvinceList,
     DescribeLocationInfoResponseBodyOverseasList,
+    DescribeLogStoreInfoResponseBodyInfoList,
     DescribeNatFirewallAclGroupListResponseBodyNatFirewalls,
     DescribeNatFirewallControlPolicyResponseBodyPolicys,
     DescribeNatFirewallDropTrafficTrendResponseBodyDataList,

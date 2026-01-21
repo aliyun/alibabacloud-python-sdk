@@ -9,12 +9,15 @@ from darabonba.model import DaraModel
 class PutEnableFwSwitchRequest(DaraModel):
     def __init__(
         self,
+        ip_version: str = None,
         ipaddr_list: List[str] = None,
         lang: str = None,
+        member_uid: str = None,
         region_list: List[str] = None,
         resource_type_list: List[str] = None,
         source_ip: str = None,
     ):
+        self.ip_version = ip_version
         # The IP addresses.
         # 
         # > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
@@ -24,6 +27,7 @@ class PutEnableFwSwitchRequest(DaraModel):
         # *   **zh**: Chinese
         # *   **en**: English
         self.lang = lang
+        self.member_uid = member_uid
         # The regions.
         # 
         # > You must specify at least one of the IpaddrList, RegionList, and ResourceTypeList parameters.
@@ -57,11 +61,17 @@ class PutEnableFwSwitchRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.ip_version is not None:
+            result['IpVersion'] = self.ip_version
+
         if self.ipaddr_list is not None:
             result['IpaddrList'] = self.ipaddr_list
 
         if self.lang is not None:
             result['Lang'] = self.lang
+
+        if self.member_uid is not None:
+            result['MemberUid'] = self.member_uid
 
         if self.region_list is not None:
             result['RegionList'] = self.region_list
@@ -76,11 +86,17 @@ class PutEnableFwSwitchRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('IpVersion') is not None:
+            self.ip_version = m.get('IpVersion')
+
         if m.get('IpaddrList') is not None:
             self.ipaddr_list = m.get('IpaddrList')
 
         if m.get('Lang') is not None:
             self.lang = m.get('Lang')
+
+        if m.get('MemberUid') is not None:
+            self.member_uid = m.get('MemberUid')
 
         if m.get('RegionList') is not None:
             self.region_list = m.get('RegionList')

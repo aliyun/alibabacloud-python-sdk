@@ -904,9 +904,16 @@ class Client(OpenApiClient):
 
     def clear_log_store_storage_with_options(
         self,
+        request: main_models.ClearLogStoreStorageRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ClearLogStoreStorageResponse:
-        req = open_api_util_models.OpenApiRequest()
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.site):
+            query['Site'] = request.site
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
         params = open_api_util_models.Params(
             action = 'ClearLogStoreStorage',
             version = '2017-12-07',
@@ -925,9 +932,16 @@ class Client(OpenApiClient):
 
     async def clear_log_store_storage_with_options_async(
         self,
+        request: main_models.ClearLogStoreStorageRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ClearLogStoreStorageResponse:
-        req = open_api_util_models.OpenApiRequest()
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.site):
+            query['Site'] = request.site
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
         params = open_api_util_models.Params(
             action = 'ClearLogStoreStorage',
             version = '2017-12-07',
@@ -944,13 +958,19 @@ class Client(OpenApiClient):
             await self.call_api_async(params, req, runtime)
         )
 
-    def clear_log_store_storage(self) -> main_models.ClearLogStoreStorageResponse:
+    def clear_log_store_storage(
+        self,
+        request: main_models.ClearLogStoreStorageRequest,
+    ) -> main_models.ClearLogStoreStorageResponse:
         runtime = RuntimeOptions()
-        return self.clear_log_store_storage_with_options(runtime)
+        return self.clear_log_store_storage_with_options(request, runtime)
 
-    async def clear_log_store_storage_async(self) -> main_models.ClearLogStoreStorageResponse:
+    async def clear_log_store_storage_async(
+        self,
+        request: main_models.ClearLogStoreStorageRequest,
+    ) -> main_models.ClearLogStoreStorageResponse:
         runtime = RuntimeOptions()
-        return await self.clear_log_store_storage_with_options_async(runtime)
+        return await self.clear_log_store_storage_with_options_async(request, runtime)
 
     def create_ack_cluster_connector_with_options(
         self,
@@ -13510,6 +13530,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_region_info_with_options_async(request, runtime)
 
+    def describe_region_resource_type_auto_enable_with_options(
+        self,
+        request: main_models.DescribeRegionResourceTypeAutoEnableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRegionResourceTypeAutoEnableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRegionResourceTypeAutoEnable',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRegionResourceTypeAutoEnableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_region_resource_type_auto_enable_with_options_async(
+        self,
+        request: main_models.DescribeRegionResourceTypeAutoEnableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRegionResourceTypeAutoEnableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRegionResourceTypeAutoEnable',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRegionResourceTypeAutoEnableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_region_resource_type_auto_enable(
+        self,
+        request: main_models.DescribeRegionResourceTypeAutoEnableRequest,
+    ) -> main_models.DescribeRegionResourceTypeAutoEnableResponse:
+        runtime = RuntimeOptions()
+        return self.describe_region_resource_type_auto_enable_with_options(request, runtime)
+
+    async def describe_region_resource_type_auto_enable_async(
+        self,
+        request: main_models.DescribeRegionResourceTypeAutoEnableRequest,
+    ) -> main_models.DescribeRegionResourceTypeAutoEnableResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_region_resource_type_auto_enable_with_options_async(request, runtime)
+
     def describe_resource_type_auto_enable_with_options(
         self,
         request: main_models.DescribeResourceTypeAutoEnableRequest,
@@ -20917,6 +21007,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_no):
+            query['RegionNo'] = request.region_no
         if not DaraCore.is_null(request.resource_type_auto_enable):
             query['ResourceTypeAutoEnable'] = request.resource_type_auto_enable
         req = open_api_util_models.OpenApiRequest(
@@ -20947,6 +21039,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.region_no):
+            query['RegionNo'] = request.region_no
         if not DaraCore.is_null(request.resource_type_auto_enable):
             query['ResourceTypeAutoEnable'] = request.resource_type_auto_enable
         req = open_api_util_models.OpenApiRequest(
@@ -21075,6 +21169,8 @@ class Client(OpenApiClient):
             query['FilterKeys'] = request.filter_keys
         if not DaraCore.is_null(request.new_region_id):
             query['NewRegionId'] = request.new_region_id
+        if not DaraCore.is_null(request.site):
+            query['Site'] = request.site
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -21109,6 +21205,8 @@ class Client(OpenApiClient):
             query['FilterKeys'] = request.filter_keys
         if not DaraCore.is_null(request.new_region_id):
             query['NewRegionId'] = request.new_region_id
+        if not DaraCore.is_null(request.site):
+            query['Site'] = request.site
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -21597,6 +21695,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.log_version):
+            query['LogVersion'] = request.log_version
+        if not DaraCore.is_null(request.sls_region_id):
+            query['SlsRegionId'] = request.sls_region_id
         if not DaraCore.is_null(request.storage_time):
             query['StorageTime'] = request.storage_time
         req = open_api_util_models.OpenApiRequest(
@@ -21627,6 +21729,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.log_version):
+            query['LogVersion'] = request.log_version
+        if not DaraCore.is_null(request.sls_region_id):
+            query['SlsRegionId'] = request.sls_region_id
         if not DaraCore.is_null(request.storage_time):
             query['StorageTime'] = request.storage_time
         req = open_api_util_models.OpenApiRequest(
@@ -22593,10 +22699,14 @@ class Client(OpenApiClient):
     ) -> main_models.PutDisableFwSwitchResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.ip_version):
+            query['IpVersion'] = request.ip_version
         if not DaraCore.is_null(request.ipaddr_list):
             query['IpaddrList'] = request.ipaddr_list
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.member_uid):
+            query['MemberUid'] = request.member_uid
         if not DaraCore.is_null(request.region_list):
             query['RegionList'] = request.region_list
         if not DaraCore.is_null(request.resource_type_list):
@@ -22629,10 +22739,14 @@ class Client(OpenApiClient):
     ) -> main_models.PutDisableFwSwitchResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.ip_version):
+            query['IpVersion'] = request.ip_version
         if not DaraCore.is_null(request.ipaddr_list):
             query['IpaddrList'] = request.ipaddr_list
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.member_uid):
+            query['MemberUid'] = request.member_uid
         if not DaraCore.is_null(request.region_list):
             query['RegionList'] = request.region_list
         if not DaraCore.is_null(request.resource_type_list):
@@ -22757,10 +22871,14 @@ class Client(OpenApiClient):
     ) -> main_models.PutEnableFwSwitchResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.ip_version):
+            query['IpVersion'] = request.ip_version
         if not DaraCore.is_null(request.ipaddr_list):
             query['IpaddrList'] = request.ipaddr_list
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.member_uid):
+            query['MemberUid'] = request.member_uid
         if not DaraCore.is_null(request.region_list):
             query['RegionList'] = request.region_list
         if not DaraCore.is_null(request.resource_type_list):
@@ -22793,10 +22911,14 @@ class Client(OpenApiClient):
     ) -> main_models.PutEnableFwSwitchResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.ip_version):
+            query['IpVersion'] = request.ip_version
         if not DaraCore.is_null(request.ipaddr_list):
             query['IpaddrList'] = request.ipaddr_list
         if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
+        if not DaraCore.is_null(request.member_uid):
+            query['MemberUid'] = request.member_uid
         if not DaraCore.is_null(request.region_list):
             query['RegionList'] = request.region_list
         if not DaraCore.is_null(request.resource_type_list):
@@ -23205,6 +23327,84 @@ class Client(OpenApiClient):
     ) -> main_models.ResetVpcFirewallRuleHitCountResponse:
         runtime = RuntimeOptions()
         return await self.reset_vpc_firewall_rule_hit_count_with_options_async(request, runtime)
+
+    def set_auto_protect_new_assets_with_options(
+        self,
+        request: main_models.SetAutoProtectNewAssetsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetAutoProtectNewAssetsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_protect):
+            query['AutoProtect'] = request.auto_protect
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetAutoProtectNewAssets',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetAutoProtectNewAssetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_auto_protect_new_assets_with_options_async(
+        self,
+        request: main_models.SetAutoProtectNewAssetsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetAutoProtectNewAssetsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_protect):
+            query['AutoProtect'] = request.auto_protect
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
+        if not DaraCore.is_null(request.source_ip):
+            query['SourceIp'] = request.source_ip
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetAutoProtectNewAssets',
+            version = '2017-12-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetAutoProtectNewAssetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_auto_protect_new_assets(
+        self,
+        request: main_models.SetAutoProtectNewAssetsRequest,
+    ) -> main_models.SetAutoProtectNewAssetsResponse:
+        runtime = RuntimeOptions()
+        return self.set_auto_protect_new_assets_with_options(request, runtime)
+
+    async def set_auto_protect_new_assets_async(
+        self,
+        request: main_models.SetAutoProtectNewAssetsRequest,
+    ) -> main_models.SetAutoProtectNewAssetsResponse:
+        runtime = RuntimeOptions()
+        return await self.set_auto_protect_new_assets_with_options_async(request, runtime)
 
     def switch_security_proxy_with_options(
         self,
