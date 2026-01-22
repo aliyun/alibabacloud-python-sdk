@@ -496,6 +496,15 @@ from ._describe_pending_maintenance_action_response import DescribePendingMainte
 from ._describe_pending_maintenance_actions_request import DescribePendingMaintenanceActionsRequest
 from ._describe_pending_maintenance_actions_response_body import DescribePendingMaintenanceActionsResponseBody
 from ._describe_pending_maintenance_actions_response import DescribePendingMaintenanceActionsResponse
+from ._describe_polar_agent_chat_records_request import DescribePolarAgentChatRecordsRequest
+from ._describe_polar_agent_chat_records_response_body import DescribePolarAgentChatRecordsResponseBody
+from ._describe_polar_agent_chat_records_response import DescribePolarAgentChatRecordsResponse
+from ._describe_polar_agent_session_status_request import DescribePolarAgentSessionStatusRequest
+from ._describe_polar_agent_session_status_response_body import DescribePolarAgentSessionStatusResponseBody
+from ._describe_polar_agent_session_status_response import DescribePolarAgentSessionStatusResponse
+from ._describe_polar_agent_user_sessions_request import DescribePolarAgentUserSessionsRequest
+from ._describe_polar_agent_user_sessions_response_body import DescribePolarAgentUserSessionsResponseBody
+from ._describe_polar_agent_user_sessions_response import DescribePolarAgentUserSessionsResponse
 from ._describe_polar_fs_attribute_request import DescribePolarFsAttributeRequest
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBody
 from ._describe_polar_fs_attribute_response import DescribePolarFsAttributeResponse
@@ -582,6 +591,9 @@ from ._failover_dbcluster_zonal_response import FailoverDBClusterZonalResponse
 from ._generate_upgrade_report_for_sync_clone_request import GenerateUpgradeReportForSyncCloneRequest
 from ._generate_upgrade_report_for_sync_clone_response_body import GenerateUpgradeReportForSyncCloneResponseBody
 from ._generate_upgrade_report_for_sync_clone_response import GenerateUpgradeReportForSyncCloneResponse
+from ._get_polar_agent_request import GetPolarAgentRequest
+from ._get_polar_agent_response_body import GetPolarAgentResponseBody
+from ._get_polar_agent_response import GetPolarAgentResponse
 from ._grant_account_privilege_request import GrantAccountPrivilegeRequest
 from ._grant_account_privilege_response_body import GrantAccountPrivilegeResponseBody
 from ._grant_account_privilege_response import GrantAccountPrivilegeResponse
@@ -1052,6 +1064,8 @@ from ._describe_parameter_templates_response_body import DescribeParameterTempla
 from ._describe_parameter_templates_response_body import DescribeParameterTemplatesResponseBodyParameters
 from ._describe_pending_maintenance_action_response_body import DescribePendingMaintenanceActionResponseBodyItems
 from ._describe_pending_maintenance_actions_response_body import DescribePendingMaintenanceActionsResponseBodyTypeList
+from ._describe_polar_agent_chat_records_response_body import DescribePolarAgentChatRecordsResponseBodyData
+from ._describe_polar_agent_user_sessions_response_body import DescribePolarAgentUserSessionsResponseBodyData
 from ._describe_polar_fs_attribute_response_body import DescribePolarFsAttributeResponseBodyMountInfo
 from ._describe_polar_fs_quota_response_body import DescribePolarFsQuotaResponseBodyPolicyItems
 from ._describe_rds_vswitchs_response_body import DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch
@@ -1082,6 +1096,8 @@ from ._describe_vswitches_response_body import DescribeVSwitchesResponseBodyVSwi
 from ._describe_vpcs_response_body import DescribeVpcsResponseBodyVpcsVSwitchs
 from ._describe_vpcs_response_body import DescribeVpcsResponseBodyVpcs
 from ._describe_zones_response_body import DescribeZonesResponseBodyZones
+from ._get_polar_agent_response_body import GetPolarAgentResponseBodyFunctionCall
+from ._get_polar_agent_response_body import GetPolarAgentResponseBodyUiFunctionCall
 from ._list_orders_response_body import ListOrdersResponseBodyOrderList
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
@@ -1595,6 +1611,15 @@ __all__ = [
     DescribePendingMaintenanceActionsRequest,
     DescribePendingMaintenanceActionsResponseBody,
     DescribePendingMaintenanceActionsResponse,
+    DescribePolarAgentChatRecordsRequest,
+    DescribePolarAgentChatRecordsResponseBody,
+    DescribePolarAgentChatRecordsResponse,
+    DescribePolarAgentSessionStatusRequest,
+    DescribePolarAgentSessionStatusResponseBody,
+    DescribePolarAgentSessionStatusResponse,
+    DescribePolarAgentUserSessionsRequest,
+    DescribePolarAgentUserSessionsResponseBody,
+    DescribePolarAgentUserSessionsResponse,
     DescribePolarFsAttributeRequest,
     DescribePolarFsAttributeResponseBody,
     DescribePolarFsAttributeResponse,
@@ -1681,6 +1706,9 @@ __all__ = [
     GenerateUpgradeReportForSyncCloneRequest,
     GenerateUpgradeReportForSyncCloneResponseBody,
     GenerateUpgradeReportForSyncCloneResponse,
+    GetPolarAgentRequest,
+    GetPolarAgentResponseBody,
+    GetPolarAgentResponse,
     GrantAccountPrivilegeRequest,
     GrantAccountPrivilegeResponseBody,
     GrantAccountPrivilegeResponse,
@@ -2151,6 +2179,8 @@ __all__ = [
     DescribeParameterTemplatesResponseBodyParameters,
     DescribePendingMaintenanceActionResponseBodyItems,
     DescribePendingMaintenanceActionsResponseBodyTypeList,
+    DescribePolarAgentChatRecordsResponseBodyData,
+    DescribePolarAgentUserSessionsResponseBodyData,
     DescribePolarFsAttributeResponseBodyMountInfo,
     DescribePolarFsQuotaResponseBodyPolicyItems,
     DescribeRdsVSwitchsResponseBodyVSwitchesVSwitch,
@@ -2181,6 +2211,8 @@ __all__ = [
     DescribeVpcsResponseBodyVpcsVSwitchs,
     DescribeVpcsResponseBodyVpcs,
     DescribeZonesResponseBodyZones,
+    GetPolarAgentResponseBodyFunctionCall,
+    GetPolarAgentResponseBodyUiFunctionCall,
     ListOrdersResponseBodyOrderList,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResourcesTagResource,

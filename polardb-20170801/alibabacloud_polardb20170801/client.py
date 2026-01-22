@@ -2,13 +2,16 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
+import json
+
+from typing import Dict, Generator, AsyncGenerator
 
 from alibabacloud_polardb20170801 import models as main_models
 from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
 from darabonba.core import DaraCore as DaraCore
+from darabonba.core import DaraCore
 from darabonba.runtime import RuntimeOptions
 
 """
@@ -16193,6 +16196,224 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_pending_maintenance_actions_with_options_async(request, runtime)
 
+    def describe_polar_agent_chat_records_with_options(
+        self,
+        request: main_models.DescribePolarAgentChatRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarAgentChatRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarAgentChatRecords',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarAgentChatRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_agent_chat_records_with_options_async(
+        self,
+        request: main_models.DescribePolarAgentChatRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarAgentChatRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarAgentChatRecords',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarAgentChatRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_agent_chat_records(
+        self,
+        request: main_models.DescribePolarAgentChatRecordsRequest,
+    ) -> main_models.DescribePolarAgentChatRecordsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_polar_agent_chat_records_with_options(request, runtime)
+
+    async def describe_polar_agent_chat_records_async(
+        self,
+        request: main_models.DescribePolarAgentChatRecordsRequest,
+    ) -> main_models.DescribePolarAgentChatRecordsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_polar_agent_chat_records_with_options_async(request, runtime)
+
+    def describe_polar_agent_session_status_with_options(
+        self,
+        request: main_models.DescribePolarAgentSessionStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarAgentSessionStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarAgentSessionStatus',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarAgentSessionStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_agent_session_status_with_options_async(
+        self,
+        request: main_models.DescribePolarAgentSessionStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarAgentSessionStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarAgentSessionStatus',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarAgentSessionStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_agent_session_status(
+        self,
+        request: main_models.DescribePolarAgentSessionStatusRequest,
+    ) -> main_models.DescribePolarAgentSessionStatusResponse:
+        runtime = RuntimeOptions()
+        return self.describe_polar_agent_session_status_with_options(request, runtime)
+
+    async def describe_polar_agent_session_status_async(
+        self,
+        request: main_models.DescribePolarAgentSessionStatusRequest,
+    ) -> main_models.DescribePolarAgentSessionStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_polar_agent_session_status_with_options_async(request, runtime)
+
+    def describe_polar_agent_user_sessions_with_options(
+        self,
+        request: main_models.DescribePolarAgentUserSessionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarAgentUserSessionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarAgentUserSessions',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarAgentUserSessionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_polar_agent_user_sessions_with_options_async(
+        self,
+        request: main_models.DescribePolarAgentUserSessionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePolarAgentUserSessionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePolarAgentUserSessions',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePolarAgentUserSessionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_polar_agent_user_sessions(
+        self,
+        request: main_models.DescribePolarAgentUserSessionsRequest,
+    ) -> main_models.DescribePolarAgentUserSessionsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_polar_agent_user_sessions_with_options(request, runtime)
+
+    async def describe_polar_agent_user_sessions_async(
+        self,
+        request: main_models.DescribePolarAgentUserSessionsRequest,
+    ) -> main_models.DescribePolarAgentUserSessionsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_polar_agent_user_sessions_with_options_async(request, runtime)
+
     def describe_polar_fs_attribute_with_options(
         self,
         request: main_models.DescribePolarFsAttributeRequest,
@@ -19014,6 +19235,174 @@ class Client(OpenApiClient):
     ) -> main_models.GenerateUpgradeReportForSyncCloneResponse:
         runtime = RuntimeOptions()
         return await self.generate_upgrade_report_for_sync_clone_with_options_async(request, runtime)
+
+    def get_polar_agent_with_sse(
+        self,
+        request: main_models.GetPolarAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.GetPolarAgentResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extra_info):
+            query['ExtraInfo'] = request.extra_info
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPolarAgent',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            data = json.loads(resp.event.data)
+            yield  DaraCore.from_map(
+                main_models.GetPolarAgentResponse(),
+                {
+                'statusCode': resp.status_code,
+                'headers': resp.headers,
+                'body': DaraCore.merge({
+                    'RequestId': resp.event.id,
+                    'Message': resp.event.event
+                }, data)
+            })
+
+    async def get_polar_agent_with_sse_async(
+        self,
+        request: main_models.GetPolarAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.GetPolarAgentResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extra_info):
+            query['ExtraInfo'] = request.extra_info
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPolarAgent',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            data = json.loads(resp.event.data)
+            yield  DaraCore.from_map(
+                main_models.GetPolarAgentResponse(),
+                {
+                'statusCode': resp.status_code,
+                'headers': resp.headers,
+                'body': DaraCore.merge({
+                    'RequestId': resp.event.id,
+                    'Message': resp.event.event
+                }, data)
+            })
+
+    def get_polar_agent_with_options(
+        self,
+        request: main_models.GetPolarAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPolarAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extra_info):
+            query['ExtraInfo'] = request.extra_info
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPolarAgent',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPolarAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_polar_agent_with_options_async(
+        self,
+        request: main_models.GetPolarAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPolarAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extra_info):
+            query['ExtraInfo'] = request.extra_info
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPolarAgent',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPolarAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_polar_agent(
+        self,
+        request: main_models.GetPolarAgentRequest,
+    ) -> main_models.GetPolarAgentResponse:
+        runtime = RuntimeOptions()
+        return self.get_polar_agent_with_options(request, runtime)
+
+    async def get_polar_agent_async(
+        self,
+        request: main_models.GetPolarAgentRequest,
+    ) -> main_models.GetPolarAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.get_polar_agent_with_options_async(request, runtime)
 
     def grant_account_privilege_with_options(
         self,

@@ -1,3 +1,10 @@
+2026-01-22 Version: 6.6.0
+- Support API DescribePolarAgentChatRecords.
+- Support API DescribePolarAgentSessionStatus.
+- Support API DescribePolarAgentUserSessions.
+- Support API GetPolarAgent.
+
+
 2026-01-19 Version: 6.5.0
 - Support API DescribeAIDBClusterTaskLogFiles.
 - Support API DescribeAIDBClusterTaskMetrics.
