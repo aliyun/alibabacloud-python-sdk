@@ -8,6 +8,7 @@ class CreateDifyInstanceRequest(DaraModel):
     def __init__(
         self,
         adbpg_instance_mode: str = None,
+        auto_renew: bool = None,
         backup_vswitch_id: str = None,
         client_token: str = None,
         data_region: str = None,
@@ -68,6 +69,7 @@ class CreateDifyInstanceRequest(DaraModel):
         zone_id: str = None,
     ):
         self.adbpg_instance_mode = adbpg_instance_mode
+        self.auto_renew = auto_renew
         self.backup_vswitch_id = backup_vswitch_id
         self.client_token = client_token
         # This parameter is required.
@@ -143,6 +145,9 @@ class CreateDifyInstanceRequest(DaraModel):
             result = _map
         if self.adbpg_instance_mode is not None:
             result['AdbpgInstanceMode'] = self.adbpg_instance_mode
+
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
 
         if self.backup_vswitch_id is not None:
             result['BackupVSwitchId'] = self.backup_vswitch_id
@@ -324,6 +329,9 @@ class CreateDifyInstanceRequest(DaraModel):
         m = m or dict()
         if m.get('AdbpgInstanceMode') is not None:
             self.adbpg_instance_mode = m.get('AdbpgInstanceMode')
+
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
 
         if m.get('BackupVSwitchId') is not None:
             self.backup_vswitch_id = m.get('BackupVSwitchId')

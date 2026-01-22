@@ -274,6 +274,8 @@ class Client(OpenApiClient):
             query['Port'] = request.port
         if not DaraCore.is_null(request.query_timeout):
             query['QueryTimeout'] = request.query_timeout
+        if not DaraCore.is_null(request.role_arn):
+            query['RoleArn'] = request.role_arn
         if not DaraCore.is_null(request.safe_rule):
             query['SafeRule'] = request.safe_rule
         if not DaraCore.is_null(request.sid):
@@ -358,6 +360,8 @@ class Client(OpenApiClient):
             query['Port'] = request.port
         if not DaraCore.is_null(request.query_timeout):
             query['QueryTimeout'] = request.query_timeout
+        if not DaraCore.is_null(request.role_arn):
+            query['RoleArn'] = request.role_arn
         if not DaraCore.is_null(request.safe_rule):
             query['SafeRule'] = request.safe_rule
         if not DaraCore.is_null(request.sid):
@@ -3962,6 +3966,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.adbpg_instance_mode):
             query['AdbpgInstanceMode'] = request.adbpg_instance_mode
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.backup_vswitch_id):
             query['BackupVSwitchId'] = request.backup_vswitch_id
         if not DaraCore.is_null(request.client_token):
@@ -4106,6 +4112,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.adbpg_instance_mode):
             query['AdbpgInstanceMode'] = request.adbpg_instance_mode
+        if not DaraCore.is_null(request.auto_renew):
+            query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.backup_vswitch_id):
             query['BackupVSwitchId'] = request.backup_vswitch_id
         if not DaraCore.is_null(request.client_token):

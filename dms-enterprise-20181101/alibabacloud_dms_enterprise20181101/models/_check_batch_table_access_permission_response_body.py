@@ -15,10 +15,16 @@ class CheckBatchTableAccessPermissionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The dataset.
         self.data = data
+        # Error code.
         self.error_code = error_code
-        # Id of the request
+        # ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):
@@ -74,8 +80,12 @@ class CheckBatchTableAccessPermissionResponseBodyData(DaraModel):
         success: str = None,
         table_name: str = None,
     ):
+        # The error message that is returned if the request failed.
         self.error_message = error_message
+        # *   **true**: Permission granted
+        # *   **false**: Permissions denied
         self.success = success
+        # The name of the table.
         self.table_name = table_name
 
     def validate(self):

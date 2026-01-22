@@ -39,35 +39,65 @@ class ChatWithDesensitizeSSERequest(DaraModel):
         vl_high_resolution_images: bool = None,
         xdash_scope_data_inspection: str = None,
     ):
+        # Output audio voice and format; only applicable to the Qwen-Omni model, provided that the modalities parameter is set to ["text", "audio"].
         self.audio_json = audio_json
+        # Masking category. Required when needDataMasking is true.
         self.desensitization_rule = desensitization_rule
+        # The embedding dimensions.
         self.dimensions = dimensions
+        # Specifies whether to enable the code interpreter feature. Takes effect only when model is qwen3-max-preview and enable_thinking is true.
         self.enable_code_interpreter = enable_code_interpreter
+        # Whether to enable web search.
         self.enable_search = enable_search
+        # Specifies whether to enable thinking mode when using hybrid thinking models.
         self.enable_thinking = enable_thinking
+        # Specifies whether to include token usage information in the final chunk of the streaming response.
         self.include_usage = include_usage
+        # The input to the embedding model.
         self.input = input
+        # The ID of the instance, used to specify the corresponding data masking rules. You can call the [ListInstances](https://help.aliyun.com/document_detail/141936.html) or [GetInstance](https://help.aliyun.com/document_detail/141567.html) operation to query the ID of the instance.
+        # 
         # This parameter is required.
         self.instance_id = instance_id
+        # Specifies whether to return the log probabilities of the output tokens.
         self.logprobs = logprobs
+        # Limits the maximum number of tokens the model can generate. If the output exceeds this value, generation will be truncated. Suitable for scenarios where you need to control the output length.
         self.max_tokens = max_tokens
+        # The conversation context passed to the model, arranged in chronological order.
         self.messages = messages
+        # Output data modality; only applicable to the Qwen-Omni model.
         self.modalities_list = modalities_list
+        # The model name. Supported models: Qwen series text-only Large Language Models (commercial and open-source). Multi-modal models are not supported.
         self.model = model
+        # Whether to enable data masking. Defaults to false.
         self.need_desensitization = need_desensitization
+        # Model configuration parameters.
         self.parameters = parameters
+        # Controls the degree of repetition in generated text. Valid values: [-2.0, 2.0]. Positive values decrease repetition, while negative values increase it.
         self.presence_penalty = presence_penalty
+        # The format of the returned content. Valid values: text: Plain text response; json_object: Standardized JSON string.
         self.response_format = response_format
+        # Web search strategy.
         self.search_options = search_options
+        # Random seed. Used to ensure the reproducibility of results under the same input and parameters. Valid values: [0, 2^31−1].
         self.seed = seed
+        # Stop sequences.
         self.stop = stop
+        # Specifies whether to use streaming output.
         self.stream = stream
+        # The sampling temperature controls the diversity of the generated text. The higher the temperature, the more diverse the generated text, and conversely, the more deterministic the generated text. Valid values: [0, 2).
         self.temperature = temperature
+        # The maximum number of tokens allowed for the model\\"s internal reasoning process.
         self.thinking_budget = thinking_budget
+        # Specifies the number of candidate tokens to consider during sampling. Higher values increase randomness, while lower values make the output more deterministic. Set to null or a value greater than 100 to disable.
         self.top_k = top_k
+        # Specifies the number of most likely candidate tokens to return at each generation step. Valid values: [0, 5].
         self.top_logprobs = top_logprobs
+        # The probability threshold for nucleus sampling, used to control the diversity of the generated text. Higher Top-P values result in more diverse generated text. Valid values: (0,1.0].
         self.top_p = top_p
+        # Specifies whether to increase the maximum pixel limit of input images to the equivalent of 16,384 tokens.
         self.vl_high_resolution_images = vl_high_resolution_images
+        # Specifies whether to further identify non-compliant information in both input and output content, building upon the built-in content safety capabilities of the Tongyi Qianwen API.
         self.xdash_scope_data_inspection = xdash_scope_data_inspection
 
     def validate(self):

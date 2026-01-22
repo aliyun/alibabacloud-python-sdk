@@ -27,6 +27,7 @@ class AddInstanceRequest(DaraModel):
         network_type: str = None,
         port: int = None,
         query_timeout: int = None,
+        role_arn: str = None,
         safe_rule: str = None,
         sid: str = None,
         skip_test: bool = None,
@@ -149,6 +150,7 @@ class AddInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.query_timeout = query_timeout
+        self.role_arn = role_arn
         # The name of the security rule set for the database instance. This parameter is required if Security Collaboration is enabled. You can call the[ListStandardGroups](https://help.aliyun.com/document_detail/465940.html) or [GetInstance](https://help.aliyun.com/document_detail/465826.html) operation to obtain the name of the security rule set from GroupName.
         self.safe_rule = safe_rule
         # The system ID (SID) of the database instance.
@@ -260,6 +262,9 @@ class AddInstanceRequest(DaraModel):
         if self.query_timeout is not None:
             result['QueryTimeout'] = self.query_timeout
 
+        if self.role_arn is not None:
+            result['RoleArn'] = self.role_arn
+
         if self.safe_rule is not None:
             result['SafeRule'] = self.safe_rule
 
@@ -350,6 +355,9 @@ class AddInstanceRequest(DaraModel):
 
         if m.get('QueryTimeout') is not None:
             self.query_timeout = m.get('QueryTimeout')
+
+        if m.get('RoleArn') is not None:
+            self.role_arn = m.get('RoleArn')
 
         if m.get('SafeRule') is not None:
             self.safe_rule = m.get('SafeRule')

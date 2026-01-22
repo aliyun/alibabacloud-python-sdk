@@ -1,3 +1,8 @@
+2026-01-22 Version: 2.1.5
+- Update API AddInstance: add request parameters RoleArn.
+- Update API CreateDifyInstance: add request parameters AutoRenew.
+
+
 2026-01-10 Version: 2.1.4
 - Update API CreateOrder: add request parameters RealLoginUserUid.
 - Update API ListDifyInstances: add response parameters Body.Root.Data.$.Description.

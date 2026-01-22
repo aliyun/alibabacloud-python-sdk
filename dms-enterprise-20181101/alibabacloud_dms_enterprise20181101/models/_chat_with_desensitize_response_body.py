@@ -16,11 +16,18 @@ class ChatWithDesensitizeResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The data returned.
         self.data = data
+        # Error code.
         self.error_code = error_code
+        # Error message.
         self.error_message = error_message
-        # Id of the request
+        # ID of the request.
         self.request_id = request_id
+        # Indicates whether the operation was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request fails.
         self.success = success
 
     def validate(self):
@@ -80,12 +87,19 @@ class ChatWithDesensitizeResponseBodyData(DaraModel):
         type: str = None,
         usage: main_models.ChatWithDesensitizeResponseBodyDataUsage = None,
     ):
+        # The candidate array for model-generated content.
         self.choices = choices
+        # The Unix timestamp (in seconds) when the request was created.
         self.created = created
+        # Error message, provided when StatusCode is not 200.
         self.message = message
+        # The model used for this request.
         self.model = model
+        # Error code, 200 for normal calls, others for exceptions.
         self.status_code = status_code
+        # Error type.
         self.type = type
+        # The token consumption information of this request.
         self.usage = usage
 
     def validate(self):
@@ -164,10 +178,15 @@ class ChatWithDesensitizeResponseBodyDataUsage(DaraModel):
         prompt_tokens_details: Dict[str, str] = None,
         total_tokens: str = None,
     ):
+        # The number of output tokens.
         self.completion_tokens = completion_tokens
+        # Fine-grained classification of output tokens when using the Qwen-VL model.
         self.completion_tokens_details = completion_tokens_details
+        # The number of input tokens.
         self.prompt_tokens = prompt_tokens
+        # Fine-grained classification of input tokens.
         self.prompt_tokens_details = prompt_tokens_details
+        # The total number of tokens consumed.
         self.total_tokens = total_tokens
 
     def validate(self):
@@ -221,8 +240,11 @@ class ChatWithDesensitizeResponseBodyDataChoices(DaraModel):
         logprobs: Dict[str, Any] = None,
         message: main_models.ChatWithDesensitizeResponseBodyDataChoicesMessage = None,
     ):
+        # Finish reason: ● stop: The model reached a natural stop point or a specified stop sequence. ● length: Generation ended because the maximum number of tokens was reached. ● tool_calls: The model stopped because it needs to call a tool to proceed.
         self.finish_reason = finish_reason
+        # Token probability information of model output.
         self.logprobs = logprobs
+        # The message body output by the model.
         self.message = message
 
     def validate(self):
@@ -266,8 +288,11 @@ class ChatWithDesensitizeResponseBodyDataChoicesMessage(DaraModel):
         reasoning_content: str = None,
         role: str = None,
     ):
+        # The content of the model\\"s response.
         self.content = content
+        # The internal reasoning content of the model.
         self.reasoning_content = reasoning_content
+        # Message role.
         self.role = role
 
     def validate(self):
