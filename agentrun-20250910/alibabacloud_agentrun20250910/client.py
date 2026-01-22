@@ -2849,6 +2849,8 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.search_mode):
             query['searchMode'] = request.search_mode
         if not DaraCore.is_null(request.status):
@@ -2887,6 +2889,8 @@ class Client(OpenApiClient):
             query['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_group_id):
+            query['resourceGroupId'] = request.resource_group_id
         if not DaraCore.is_null(request.search_mode):
             query['searchMode'] = request.search_mode
         if not DaraCore.is_null(request.status):

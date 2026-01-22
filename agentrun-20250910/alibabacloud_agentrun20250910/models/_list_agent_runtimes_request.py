@@ -10,6 +10,7 @@ class ListAgentRuntimesRequest(DaraModel):
         agent_runtime_name: str = None,
         page_number: int = None,
         page_size: int = None,
+        resource_group_id: str = None,
         search_mode: str = None,
         status: str = None,
     ):
@@ -19,6 +20,7 @@ class ListAgentRuntimesRequest(DaraModel):
         self.page_number = page_number
         # 每页返回的记录数量
         self.page_size = page_size
+        self.resource_group_id = resource_group_id
         # 查询模式，支持精确查询和模糊查询
         self.search_mode = search_mode
         # 根据状态进行过滤，多个状态用逗号分隔，支持精确匹配
@@ -41,6 +43,9 @@ class ListAgentRuntimesRequest(DaraModel):
         if self.page_size is not None:
             result['pageSize'] = self.page_size
 
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+
         if self.search_mode is not None:
             result['searchMode'] = self.search_mode
 
@@ -59,6 +64,9 @@ class ListAgentRuntimesRequest(DaraModel):
 
         if m.get('pageSize') is not None:
             self.page_size = m.get('pageSize')
+
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
 
         if m.get('searchMode') is not None:
             self.search_mode = m.get('searchMode')

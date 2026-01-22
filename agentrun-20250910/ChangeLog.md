@@ -1,3 +1,7 @@
+2026-01-22 Version: 5.3.2
+- Update API ListAgentRuntimes: add request parameters resourceGroupId.
+
+
 2026-01-15 Version: 5.3.1
 - Generated python 2025-09-10 for AgentRun.
 

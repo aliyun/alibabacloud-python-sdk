@@ -30,6 +30,7 @@ class AgentRuntime(DaraModel):
         network_configuration: main_models.NetworkConfiguration = None,
         port: int = None,
         protocol_configuration: main_models.ProtocolConfiguration = None,
+        resource_group_id: str = None,
         session_concurrency_limit_per_instance: int = None,
         session_idle_timeout_seconds: int = None,
         status: str = None,
@@ -75,6 +76,7 @@ class AgentRuntime(DaraModel):
         self.port = port
         # 智能体运行时的通信协议配置
         self.protocol_configuration = protocol_configuration
+        self.resource_group_id = resource_group_id
         # 每个运行时实例允许的最大并发会话数
         self.session_concurrency_limit_per_instance = session_concurrency_limit_per_instance
         # 会话的空闲超时时间，单位为秒。实例没有会话请求后处于空闲状态，空闲态为闲置计费模式，超过此超时时间后会话自动过期，不可继续使用
@@ -163,6 +165,9 @@ class AgentRuntime(DaraModel):
         if self.protocol_configuration is not None:
             result['protocolConfiguration'] = self.protocol_configuration.to_map()
 
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+
         if self.session_concurrency_limit_per_instance is not None:
             result['sessionConcurrencyLimitPerInstance'] = self.session_concurrency_limit_per_instance
 
@@ -244,6 +249,9 @@ class AgentRuntime(DaraModel):
         if m.get('protocolConfiguration') is not None:
             temp_model = main_models.ProtocolConfiguration()
             self.protocol_configuration = temp_model.from_map(m.get('protocolConfiguration'))
+
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
 
         if m.get('sessionConcurrencyLimitPerInstance') is not None:
             self.session_concurrency_limit_per_instance = m.get('sessionConcurrencyLimitPerInstance')

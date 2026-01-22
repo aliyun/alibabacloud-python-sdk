@@ -27,6 +27,8 @@ from ._browser_streams import BrowserStreams
 from ._browser_view_port import BrowserViewPort
 from ._capconfig import CAPConfig
 from ._cert_config import CertConfig
+from ._change_resource_group_input import ChangeResourceGroupInput
+from ._change_resource_group_output import ChangeResourceGroupOutput
 from ._code_configuration import CodeConfiguration
 from ._code_info import CodeInfo
 from ._code_interpreter import CodeInterpreter
@@ -359,6 +361,8 @@ __all__ = [
     BrowserViewPort,
     CAPConfig,
     CertConfig,
+    ChangeResourceGroupInput,
+    ChangeResourceGroupOutput,
     CodeConfiguration,
     CodeInfo,
     CodeInterpreter,
