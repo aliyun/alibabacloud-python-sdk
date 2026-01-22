@@ -4555,6 +4555,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_file_tag_with_options_async(workspace_id, file_id, request, headers, runtime)
 
+    def update_index_with_options(
+        self,
+        workspace_id: str,
+        request: main_models.UpdateIndexRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateIndexResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dense_similarity_top_k):
+            query['DenseSimilarityTopK'] = request.dense_similarity_top_k
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.pipeline_commercial_cu):
+            query['PipelineCommercialCu'] = request.pipeline_commercial_cu
+        if not DaraCore.is_null(request.pipeline_commercial_type):
+            query['PipelineCommercialType'] = request.pipeline_commercial_type
+        if not DaraCore.is_null(request.rerank_min_score):
+            query['RerankMinScore'] = request.rerank_min_score
+        if not DaraCore.is_null(request.sparse_similarity_top_k):
+            query['SparseSimilarityTopK'] = request.sparse_similarity_top_k
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateIndex',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/index/update',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateIndexResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_index_with_options_async(
+        self,
+        workspace_id: str,
+        request: main_models.UpdateIndexRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateIndexResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dense_similarity_top_k):
+            query['DenseSimilarityTopK'] = request.dense_similarity_top_k
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.pipeline_commercial_cu):
+            query['PipelineCommercialCu'] = request.pipeline_commercial_cu
+        if not DaraCore.is_null(request.pipeline_commercial_type):
+            query['PipelineCommercialType'] = request.pipeline_commercial_type
+        if not DaraCore.is_null(request.rerank_min_score):
+            query['RerankMinScore'] = request.rerank_min_score
+        if not DaraCore.is_null(request.sparse_similarity_top_k):
+            query['SparseSimilarityTopK'] = request.sparse_similarity_top_k
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateIndex',
+            version = '2023-12-29',
+            protocol = 'HTTPS',
+            pathname = f'/{DaraURL.percent_encode(workspace_id)}/index/update',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateIndexResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_index(
+        self,
+        workspace_id: str,
+        request: main_models.UpdateIndexRequest,
+    ) -> main_models.UpdateIndexResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_index_with_options(workspace_id, request, headers, runtime)
+
+    async def update_index_async(
+        self,
+        workspace_id: str,
+        request: main_models.UpdateIndexRequest,
+    ) -> main_models.UpdateIndexResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_index_with_options_async(workspace_id, request, headers, runtime)
+
     def update_memory_with_options(
         self,
         workspace_id: str,

@@ -1,3 +1,7 @@
+2026-01-22 Version: 2.8.0
+- Support API UpdateIndex.
+
+
 2026-01-16 Version: 2.7.2
 - Update API CreateIndex: add request parameters database.
 - Update API CreateIndex: add request parameters datasourceCode.

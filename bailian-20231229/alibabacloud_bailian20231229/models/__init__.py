@@ -150,6 +150,9 @@ from ._update_file_tag_request import UpdateFileTagRequest
 from ._update_file_tag_shrink_request import UpdateFileTagShrinkRequest
 from ._update_file_tag_response_body import UpdateFileTagResponseBody
 from ._update_file_tag_response import UpdateFileTagResponse
+from ._update_index_request import UpdateIndexRequest
+from ._update_index_response_body import UpdateIndexResponseBody
+from ._update_index_response import UpdateIndexResponse
 from ._update_memory_request import UpdateMemoryRequest
 from ._update_memory_response_body import UpdateMemoryResponseBody
 from ._update_memory_response import UpdateMemoryResponse
@@ -255,6 +258,7 @@ from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSe
 from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestApplicationConfig
 from ._update_and_publish_agent_selective_request import UpdateAndPublishAgentSelectiveRequestSampleLibrary
 from ._update_file_tag_response_body import UpdateFileTagResponseBodyData
+from ._update_index_response_body import UpdateIndexResponseBodyData
 
 __all__ = [
     AddCategoryRequest,
@@ -405,6 +409,9 @@ __all__ = [
     UpdateFileTagShrinkRequest,
     UpdateFileTagResponseBody,
     UpdateFileTagResponse,
+    UpdateIndexRequest,
+    UpdateIndexResponseBody,
+    UpdateIndexResponse,
     UpdateMemoryRequest,
     UpdateMemoryResponseBody,
     UpdateMemoryResponse,
@@ -509,5 +516,6 @@ __all__ = [
     UpdateAndPublishAgentSelectiveRequestApplicationConfigWorkFlows,
     UpdateAndPublishAgentSelectiveRequestApplicationConfig,
     UpdateAndPublishAgentSelectiveRequestSampleLibrary,
-    UpdateFileTagResponseBodyData
+    UpdateFileTagResponseBodyData,
+    UpdateIndexResponseBodyData
 ]
