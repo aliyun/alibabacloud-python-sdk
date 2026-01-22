@@ -1,3 +1,8 @@
+2026-01-22 Version: 1.2.0
+- Support API GetEmbodiedAIPlatformResourceUsageInfo.
+- Support API ResetEmbodiedAIPlatformPassword.
+
+
 2026-01-21 Version: 1.1.0
 - Support API CreateAgentPlatform.
 

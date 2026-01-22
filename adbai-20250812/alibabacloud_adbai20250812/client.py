@@ -329,3 +329,171 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeEmbodiedAIPlatformsResponse:
         runtime = RuntimeOptions()
         return await self.describe_embodied_aiplatforms_with_options_async(request, runtime)
+
+    def get_embodied_aiplatform_resource_usage_info_with_options(
+        self,
+        request: main_models.GetEmbodiedAIPlatformResourceUsageInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEmbodiedAIPlatformResourceUsageInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.platform_name):
+            query['PlatformName'] = request.platform_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEmbodiedAIPlatformResourceUsageInfo',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEmbodiedAIPlatformResourceUsageInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_embodied_aiplatform_resource_usage_info_with_options_async(
+        self,
+        request: main_models.GetEmbodiedAIPlatformResourceUsageInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetEmbodiedAIPlatformResourceUsageInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.platform_name):
+            query['PlatformName'] = request.platform_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetEmbodiedAIPlatformResourceUsageInfo',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetEmbodiedAIPlatformResourceUsageInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_embodied_aiplatform_resource_usage_info(
+        self,
+        request: main_models.GetEmbodiedAIPlatformResourceUsageInfoRequest,
+    ) -> main_models.GetEmbodiedAIPlatformResourceUsageInfoResponse:
+        runtime = RuntimeOptions()
+        return self.get_embodied_aiplatform_resource_usage_info_with_options(request, runtime)
+
+    async def get_embodied_aiplatform_resource_usage_info_async(
+        self,
+        request: main_models.GetEmbodiedAIPlatformResourceUsageInfoRequest,
+    ) -> main_models.GetEmbodiedAIPlatformResourceUsageInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.get_embodied_aiplatform_resource_usage_info_with_options_async(request, runtime)
+
+    def reset_embodied_aiplatform_password_with_options(
+        self,
+        request: main_models.ResetEmbodiedAIPlatformPasswordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetEmbodiedAIPlatformPasswordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.platform_name):
+            query['PlatformName'] = request.platform_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetEmbodiedAIPlatformPassword',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetEmbodiedAIPlatformPasswordResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def reset_embodied_aiplatform_password_with_options_async(
+        self,
+        request: main_models.ResetEmbodiedAIPlatformPasswordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResetEmbodiedAIPlatformPasswordResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.platform_name):
+            query['PlatformName'] = request.platform_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ResetEmbodiedAIPlatformPassword',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ResetEmbodiedAIPlatformPasswordResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def reset_embodied_aiplatform_password(
+        self,
+        request: main_models.ResetEmbodiedAIPlatformPasswordRequest,
+    ) -> main_models.ResetEmbodiedAIPlatformPasswordResponse:
+        runtime = RuntimeOptions()
+        return self.reset_embodied_aiplatform_password_with_options(request, runtime)
+
+    async def reset_embodied_aiplatform_password_async(
+        self,
+        request: main_models.ResetEmbodiedAIPlatformPasswordRequest,
+    ) -> main_models.ResetEmbodiedAIPlatformPasswordResponse:
+        runtime = RuntimeOptions()
+        return await self.reset_embodied_aiplatform_password_with_options_async(request, runtime)
