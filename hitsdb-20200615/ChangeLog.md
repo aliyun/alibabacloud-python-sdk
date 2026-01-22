@@ -1,3 +1,10 @@
+2026-01-22 Version: 4.15.2
+- Update API GetLindormV2Instance: add response parameters Body.EnableFS.
+- Update API GetLindormV2Instance: add response parameters Body.EnableStoreTDE.
+- Update API GetLindormV2InstanceDetails: add response parameters Body.EnableFs.
+- Update API GetLindormV2InstanceDetails: add response parameters Body.EnableStoreTDE.
+
+
 2026-01-12 Version: 4.15.1
 - Update API ListLdpsComputeGroups: add response parameters Body.GroupList.$.RayInteractiveAccessAddr.
 - Update API ListLdpsComputeGroups: add response parameters Body.GroupList.$.RayVpcWebUIAddr.

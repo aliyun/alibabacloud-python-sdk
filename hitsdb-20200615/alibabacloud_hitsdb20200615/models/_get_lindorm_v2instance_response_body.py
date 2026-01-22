@@ -22,6 +22,8 @@ class GetLindormV2InstanceResponseBody(DaraModel):
         disk_threshold: str = None,
         disk_usage: str = None,
         enable_compute: bool = None,
+        enable_fs: bool = None,
+        enable_store_tde: bool = None,
         engine_list: List[main_models.GetLindormV2InstanceResponseBodyEngineList] = None,
         expired_milliseconds: int = None,
         initial_root_password: str = None,
@@ -60,6 +62,8 @@ class GetLindormV2InstanceResponseBody(DaraModel):
         self.disk_threshold = disk_threshold
         self.disk_usage = disk_usage
         self.enable_compute = enable_compute
+        self.enable_fs = enable_fs
+        self.enable_store_tde = enable_store_tde
         self.engine_list = engine_list
         self.expired_milliseconds = expired_milliseconds
         self.initial_root_password = initial_root_password
@@ -138,6 +142,12 @@ class GetLindormV2InstanceResponseBody(DaraModel):
 
         if self.enable_compute is not None:
             result['EnableCompute'] = self.enable_compute
+
+        if self.enable_fs is not None:
+            result['EnableFS'] = self.enable_fs
+
+        if self.enable_store_tde is not None:
+            result['EnableStoreTDE'] = self.enable_store_tde
 
         result['EngineList'] = []
         if self.engine_list is not None:
@@ -257,6 +267,12 @@ class GetLindormV2InstanceResponseBody(DaraModel):
 
         if m.get('EnableCompute') is not None:
             self.enable_compute = m.get('EnableCompute')
+
+        if m.get('EnableFS') is not None:
+            self.enable_fs = m.get('EnableFS')
+
+        if m.get('EnableStoreTDE') is not None:
+            self.enable_store_tde = m.get('EnableStoreTDE')
 
         self.engine_list = []
         if m.get('EngineList') is not None:
