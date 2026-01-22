@@ -10,6 +10,7 @@ class SetCertificateRequest(DaraModel):
         cas_id: int = None,
         certificate: str = None,
         id: str = None,
+        key_server_id: str = None,
         name: str = None,
         owner_id: int = None,
         private_key: str = None,
@@ -24,6 +25,7 @@ class SetCertificateRequest(DaraModel):
         self.certificate = certificate
         # The certificate ID on ESA.
         self.id = id
+        self.key_server_id = key_server_id
         # The certificate name.
         self.name = name
         self.owner_id = owner_id
@@ -61,6 +63,9 @@ class SetCertificateRequest(DaraModel):
         if self.id is not None:
             result['Id'] = self.id
 
+        if self.key_server_id is not None:
+            result['KeyServerId'] = self.key_server_id
+
         if self.name is not None:
             result['Name'] = self.name
 
@@ -94,6 +99,9 @@ class SetCertificateRequest(DaraModel):
 
         if m.get('Id') is not None:
             self.id = m.get('Id')
+
+        if m.get('KeyServerId') is not None:
+            self.key_server_id = m.get('KeyServerId')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

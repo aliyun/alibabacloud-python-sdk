@@ -95,6 +95,7 @@ class GetCertificateResponseBodyResult(DaraModel):
         id: str = None,
         issuer: str = None,
         issuer_cn: str = None,
+        key_server_id: str = None,
         name: str = None,
         not_after: str = None,
         not_before: str = None,
@@ -127,6 +128,7 @@ class GetCertificateResponseBodyResult(DaraModel):
         self.issuer = issuer
         # Certificate issuing authority.
         self.issuer_cn = issuer_cn
+        self.key_server_id = key_server_id
         # Certificate name.
         self.name = name
         # End time of the certificate validity period.
@@ -192,6 +194,9 @@ class GetCertificateResponseBodyResult(DaraModel):
 
         if self.issuer_cn is not None:
             result['IssuerCN'] = self.issuer_cn
+
+        if self.key_server_id is not None:
+            result['KeyServerId'] = self.key_server_id
 
         if self.name is not None:
             result['Name'] = self.name
@@ -262,6 +267,9 @@ class GetCertificateResponseBodyResult(DaraModel):
 
         if m.get('IssuerCN') is not None:
             self.issuer_cn = m.get('IssuerCN')
+
+        if m.get('KeyServerId') is not None:
+            self.key_server_id = m.get('KeyServerId')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')

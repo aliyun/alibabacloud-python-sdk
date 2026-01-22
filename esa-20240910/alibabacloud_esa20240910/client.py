@@ -343,7 +343,13 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.ApplyCertificateResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.domains):
+            query['Domains'] = request.domains
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -352,7 +358,7 @@ class Client(OpenApiClient):
             version = '2024-09-10',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -369,7 +375,13 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.ApplyCertificateResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.domains):
+            query['Domains'] = request.domains
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -378,7 +390,7 @@ class Client(OpenApiClient):
             version = '2024-09-10',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -12521,7 +12533,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetCertificateResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -12530,7 +12546,7 @@ class Client(OpenApiClient):
             version = '2024-09-10',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -12547,7 +12563,11 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.GetCertificateResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -12556,7 +12576,7 @@ class Client(OpenApiClient):
             version = '2024-09-10',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -17947,7 +17967,17 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.ListCertificatesResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.valid_only):
+            query['ValidOnly'] = request.valid_only
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -17956,7 +17986,7 @@ class Client(OpenApiClient):
             version = '2024-09-10',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -17973,7 +18003,17 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.ListCertificatesResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.valid_only):
+            query['ValidOnly'] = request.valid_only
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -17982,7 +18022,7 @@ class Client(OpenApiClient):
             version = '2024-09-10',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -18013,7 +18053,15 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.ListCertificatesByRecordResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.detail):
+            query['Detail'] = request.detail
+        if not DaraCore.is_null(request.record_name):
+            query['RecordName'] = request.record_name
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.valid_only):
+            query['ValidOnly'] = request.valid_only
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -18022,7 +18070,7 @@ class Client(OpenApiClient):
             version = '2024-09-10',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -18039,7 +18087,15 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.ListCertificatesByRecordResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.detail):
+            query['Detail'] = request.detail
+        if not DaraCore.is_null(request.record_name):
+            query['RecordName'] = request.record_name
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.valid_only):
+            query['ValidOnly'] = request.valid_only
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -18048,7 +18104,7 @@ class Client(OpenApiClient):
             version = '2024-09-10',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -23984,6 +24040,8 @@ class Client(OpenApiClient):
     ) -> main_models.SetCertificateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.key_server_id):
+            query['KeyServerId'] = request.key_server_id
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.security_token):
@@ -24032,6 +24090,8 @@ class Client(OpenApiClient):
     ) -> main_models.SetCertificateResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.key_server_id):
+            query['KeyServerId'] = request.key_server_id
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.security_token):

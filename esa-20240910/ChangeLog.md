@@ -1,3 +1,10 @@
+2026-01-22 Version: 2.36.1
+- Update API GetCertificate: add response parameters Body.Result.KeyServerId.
+- Update API ListCertificates: add response parameters Body.Result.$.KeyServerId.
+- Update API ListCertificatesByRecord: add response parameters Body.Result.$.Certificates.$.KeyServerId.
+- Update API SetCertificate: add request parameters KeyServerId.
+
+
 2026-01-21 Version: 2.36.0
 - Support API ListSiteOriginClientCertificates.
 
