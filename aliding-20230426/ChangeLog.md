@@ -1,3 +1,6 @@
+2026-01-22 Version: 2.47.2
+- Generated python 2023-04-26 for aliding.
+
 2026-01-21 Version: 2.47.1
 - Update API CreateEvent: add response parameters Body.encryptedId.
 - Update API GetDingtalkMeetingMemberEvent: add response parameters Body.data.$.confModule.
