@@ -1,3 +1,7 @@
+2026-01-22 Version: 3.5.0
+- Support API DescribeJobResults.
+
+
 2026-01-13 Version: 3.4.1
 - Update API CreateActionPlan: add request parameters IntervalMinutes.
 - Update API GetActionPlan: add response parameters Body.IntervalMinutes.

@@ -948,6 +948,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_job_metric_last_with_options_async(request, runtime)
 
+    def describe_job_results_with_options(
+        self,
+        request: main_models.DescribeJobResultsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeJobResultsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.array_index):
+            query['ArrayIndex'] = request.array_index
+        if not DaraCore.is_null(request.content_encoding):
+            query['ContentEncoding'] = request.content_encoding
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.limit_bytes):
+            query['LimitBytes'] = request.limit_bytes
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeJobResults',
+            version = '2023-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeJobResultsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_job_results_with_options_async(
+        self,
+        request: main_models.DescribeJobResultsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeJobResultsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.array_index):
+            query['ArrayIndex'] = request.array_index
+        if not DaraCore.is_null(request.content_encoding):
+            query['ContentEncoding'] = request.content_encoding
+        if not DaraCore.is_null(request.job_id):
+            query['JobId'] = request.job_id
+        if not DaraCore.is_null(request.limit_bytes):
+            query['LimitBytes'] = request.limit_bytes
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.task_name):
+            query['TaskName'] = request.task_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeJobResults',
+            version = '2023-07-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeJobResultsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_job_results(
+        self,
+        request: main_models.DescribeJobResultsRequest,
+    ) -> main_models.DescribeJobResultsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_job_results_with_options(request, runtime)
+
+    async def describe_job_results_async(
+        self,
+        request: main_models.DescribeJobResultsRequest,
+    ) -> main_models.DescribeJobResultsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_job_results_with_options_async(request, runtime)
+
     def get_action_plan_with_options(
         self,
         request: main_models.GetActionPlanRequest,

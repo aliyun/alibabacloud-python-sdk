@@ -40,6 +40,9 @@ from ._describe_job_metric_last_request import DescribeJobMetricLastRequest
 from ._describe_job_metric_last_shrink_request import DescribeJobMetricLastShrinkRequest
 from ._describe_job_metric_last_response_body import DescribeJobMetricLastResponseBody
 from ._describe_job_metric_last_response import DescribeJobMetricLastResponse
+from ._describe_job_results_request import DescribeJobResultsRequest
+from ._describe_job_results_response_body import DescribeJobResultsResponseBody
+from ._describe_job_results_response import DescribeJobResultsResponse
 from ._get_action_plan_request import GetActionPlanRequest
 from ._get_action_plan_response_body import GetActionPlanResponseBody
 from ._get_action_plan_response import GetActionPlanResponse
@@ -231,6 +234,9 @@ __all__ = [
     DescribeJobMetricLastShrinkRequest,
     DescribeJobMetricLastResponseBody,
     DescribeJobMetricLastResponse,
+    DescribeJobResultsRequest,
+    DescribeJobResultsResponseBody,
+    DescribeJobResultsResponse,
     GetActionPlanRequest,
     GetActionPlanResponseBody,
     GetActionPlanResponse,
