@@ -1101,6 +1101,8 @@ class Client(OpenApiClient):
             query['AndroidExtParameters'] = request.android_ext_parameters
         if not DaraCore.is_null(request.android_honor_target_user_type):
             query['AndroidHonorTargetUserType'] = request.android_honor_target_user_type
+        if not DaraCore.is_null(request.android_huawei_business_type):
+            query['AndroidHuaweiBusinessType'] = request.android_huawei_business_type
         if not DaraCore.is_null(request.android_huawei_live_notification_payload):
             query['AndroidHuaweiLiveNotificationPayload'] = request.android_huawei_live_notification_payload
         if not DaraCore.is_null(request.android_huawei_receipt_id):
@@ -1363,6 +1365,8 @@ class Client(OpenApiClient):
             query['AndroidExtParameters'] = request.android_ext_parameters
         if not DaraCore.is_null(request.android_honor_target_user_type):
             query['AndroidHonorTargetUserType'] = request.android_honor_target_user_type
+        if not DaraCore.is_null(request.android_huawei_business_type):
+            query['AndroidHuaweiBusinessType'] = request.android_huawei_business_type
         if not DaraCore.is_null(request.android_huawei_live_notification_payload):
             query['AndroidHuaweiLiveNotificationPayload'] = request.android_huawei_live_notification_payload
         if not DaraCore.is_null(request.android_huawei_receipt_id):

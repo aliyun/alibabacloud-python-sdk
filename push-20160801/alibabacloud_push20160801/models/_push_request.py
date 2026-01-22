@@ -18,6 +18,7 @@ class PushRequest(DaraModel):
         android_big_title: str = None,
         android_ext_parameters: str = None,
         android_honor_target_user_type: int = None,
+        android_huawei_business_type: int = None,
         android_huawei_live_notification_payload: str = None,
         android_huawei_receipt_id: str = None,
         android_huawei_target_user_type: int = None,
@@ -134,6 +135,7 @@ class PushRequest(DaraModel):
         self.android_big_title = android_big_title
         self.android_ext_parameters = android_ext_parameters
         self.android_honor_target_user_type = android_honor_target_user_type
+        self.android_huawei_business_type = android_huawei_business_type
         self.android_huawei_live_notification_payload = android_huawei_live_notification_payload
         self.android_huawei_receipt_id = android_huawei_receipt_id
         self.android_huawei_target_user_type = android_huawei_target_user_type
@@ -280,6 +282,9 @@ class PushRequest(DaraModel):
 
         if self.android_honor_target_user_type is not None:
             result['AndroidHonorTargetUserType'] = self.android_honor_target_user_type
+
+        if self.android_huawei_business_type is not None:
+            result['AndroidHuaweiBusinessType'] = self.android_huawei_business_type
 
         if self.android_huawei_live_notification_payload is not None:
             result['AndroidHuaweiLiveNotificationPayload'] = self.android_huawei_live_notification_payload
@@ -629,6 +634,9 @@ class PushRequest(DaraModel):
 
         if m.get('AndroidHonorTargetUserType') is not None:
             self.android_honor_target_user_type = m.get('AndroidHonorTargetUserType')
+
+        if m.get('AndroidHuaweiBusinessType') is not None:
+            self.android_huawei_business_type = m.get('AndroidHuaweiBusinessType')
 
         if m.get('AndroidHuaweiLiveNotificationPayload') is not None:
             self.android_huawei_live_notification_payload = m.get('AndroidHuaweiLiveNotificationPayload')

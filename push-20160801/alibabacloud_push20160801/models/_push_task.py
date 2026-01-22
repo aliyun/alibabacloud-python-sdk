@@ -1105,12 +1105,14 @@ class PushTaskNotificationAndroidOptionsMeizu(DaraModel):
 class PushTaskNotificationAndroidOptionsHuawei(DaraModel):
     def __init__(
         self,
+        business_type: int = None,
         category: str = None,
         importance: int = None,
         live_notification_payload: str = None,
         receipt_id: str = None,
         urgency: str = None,
     ):
+        self.business_type = business_type
         self.category = category
         self.importance = importance
         self.live_notification_payload = live_notification_payload
@@ -1125,6 +1127,9 @@ class PushTaskNotificationAndroidOptionsHuawei(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.business_type is not None:
+            result['BusinessType'] = self.business_type
+
         if self.category is not None:
             result['Category'] = self.category
 
@@ -1144,6 +1149,9 @@ class PushTaskNotificationAndroidOptionsHuawei(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BusinessType') is not None:
+            self.business_type = m.get('BusinessType')
+
         if m.get('Category') is not None:
             self.category = m.get('Category')
 

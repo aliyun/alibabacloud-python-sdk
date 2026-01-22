@@ -1,3 +1,8 @@
+2026-01-22 Version: 2.1.3
+- Update API MassPush: add request parameters PushTask.$.AndroidHuaweiBusinessType.
+- Update API Push: add request parameters AndroidHuaweiBusinessType.
+
+
 2025-12-25 Version: 2.1.2
 - Generated python 2016-08-01 for Push.
 
