@@ -38,6 +38,7 @@ class RuleInfo(DaraModel):
         modify_type: int = None,
         name: str = None,
         operation_mode: int = None,
+        preq_rule: List[main_models.RuleInfoPreqRule] = None,
         quality_check_type: int = None,
         rid: str = None,
         rule_category_name: str = None,
@@ -94,6 +95,7 @@ class RuleInfo(DaraModel):
         self.modify_type = modify_type
         self.name = name
         self.operation_mode = operation_mode
+        self.preq_rule = preq_rule
         self.quality_check_type = quality_check_type
         self.rid = rid
         self.rule_category_name = rule_category_name
@@ -125,6 +127,10 @@ class RuleInfo(DaraModel):
     def validate(self):
         if self.dialogues:
             for v1 in self.dialogues:
+                 if v1:
+                    v1.validate()
+        if self.preq_rule:
+            for v1 in self.preq_rule:
                  if v1:
                     v1.validate()
         if self.scheme_check_type:
@@ -220,6 +226,11 @@ class RuleInfo(DaraModel):
 
         if self.operation_mode is not None:
             result['OperationMode'] = self.operation_mode
+
+        result['PreqRule'] = []
+        if self.preq_rule is not None:
+            for k1 in self.preq_rule:
+                result['PreqRule'].append(k1.to_map() if k1 else None)
 
         if self.quality_check_type is not None:
             result['QualityCheckType'] = self.quality_check_type
@@ -393,6 +404,12 @@ class RuleInfo(DaraModel):
         if m.get('OperationMode') is not None:
             self.operation_mode = m.get('OperationMode')
 
+        self.preq_rule = []
+        if m.get('PreqRule') is not None:
+            for k1 in m.get('PreqRule'):
+                temp_model = main_models.RuleInfoPreqRule()
+                self.preq_rule.append(temp_model.from_map(k1))
+
         if m.get('QualityCheckType') is not None:
             self.quality_check_type = m.get('QualityCheckType')
 
@@ -474,6 +491,33 @@ class RuleInfo(DaraModel):
 
         if m.get('Weight') is not None:
             self.weight = m.get('Weight')
+
+        return self
+
+class RuleInfoPreqRule(DaraModel):
+    def __init__(
+        self,
+        rid: str = None,
+    ):
+        self.rid = rid
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.rid is not None:
+            result['Rid'] = self.rid
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Rid') is not None:
+            self.rid = m.get('Rid')
 
         return self
 

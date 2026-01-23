@@ -1,3 +1,6 @@
+2026-01-23 Version: 8.5.3
+- Generated python 2019-01-15 for Qualitycheck.
+
 2026-01-16 Version: 8.5.2
 - Update API GetResult: add response parameters Body.Data.$.HitResult.$.ArtificialRule.
 - Update API GetResult: add response parameters Body.Data.$.HitResult.$.FinalHitResult.

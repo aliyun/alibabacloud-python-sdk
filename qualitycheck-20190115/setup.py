@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_qualitycheck20190115.
 
-Created on 16/01/2026
+Created on 23/01/2026
 
 @author: Alibaba Cloud SDK
 """

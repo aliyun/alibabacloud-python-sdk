@@ -323,6 +323,7 @@ from ._judge_node_meta_desc import JudgeNodeMetaDescExpressionMetaDesc
 from ._next_node_situations import NextNodeSituationsConditionGroup
 from ._operator_basic_info import OperatorBasicInfoParamDimensions
 from ._operator_basic_info import OperatorBasicInfoParam
+from ._rule_info import RuleInfoPreqRule
 from ._rule_test_dialogue import RuleTestDialogueContent
 from ._scheme_check_type import SchemeCheckTypeSchemeScoreInfoList
 from ._scheme_check_type import SchemeCheckTypeTaskFlowScoreInfoListSchemeScoreInfoList
@@ -931,6 +932,7 @@ __all__ = [
     NextNodeSituationsConditionGroup,
     OperatorBasicInfoParamDimensions,
     OperatorBasicInfoParam,
+    RuleInfoPreqRule,
     RuleTestDialogueContent,
     SchemeCheckTypeSchemeScoreInfoList,
     SchemeCheckTypeTaskFlowScoreInfoListSchemeScoreInfoList,
