@@ -1,3 +1,9 @@
+2026-01-23 Version: 4.21.0
+- Support API GetNetworkBlacklist.
+- Support API SetNetworkBlacklist.
+- Update API DescribeCloudPhoneNodes: add request parameters NodeNameList.
+
+
 2026-01-15 Version: 4.20.1
 - Update API BatchGetAcpConnectionTicket: add request parameters ConnectionMode.
 - Update API BatchGetAcpConnectionTicket: add response parameters Body.InstanceConnectionModels.$.Port.

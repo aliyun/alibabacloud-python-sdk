@@ -16,6 +16,7 @@ class DescribeCloudPhoneNodesRequest(DaraModel):
         next_token: str = None,
         node_ids: List[str] = None,
         node_name: str = None,
+        node_name_list: List[str] = None,
         server_type: str = None,
         status: str = None,
     ):
@@ -32,6 +33,7 @@ class DescribeCloudPhoneNodesRequest(DaraModel):
         self.node_ids = node_ids
         # The matrix name.
         self.node_name = node_name
+        self.node_name_list = node_name_list
         # The matrix specification.
         # 
         # Valid values:
@@ -79,6 +81,9 @@ class DescribeCloudPhoneNodesRequest(DaraModel):
         if self.node_name is not None:
             result['NodeName'] = self.node_name
 
+        if self.node_name_list is not None:
+            result['NodeNameList'] = self.node_name_list
+
         if self.server_type is not None:
             result['ServerType'] = self.server_type
 
@@ -109,6 +114,9 @@ class DescribeCloudPhoneNodesRequest(DaraModel):
 
         if m.get('NodeName') is not None:
             self.node_name = m.get('NodeName')
+
+        if m.get('NodeNameList') is not None:
+            self.node_name_list = m.get('NodeNameList')
 
         if m.get('ServerType') is not None:
             self.server_type = m.get('ServerType')

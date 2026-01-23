@@ -162,6 +162,9 @@ from ._generate_coordination_code_response import GenerateCoordinationCodeRespon
 from ._get_instance_properties_request import GetInstancePropertiesRequest
 from ._get_instance_properties_response_body import GetInstancePropertiesResponseBody
 from ._get_instance_properties_response import GetInstancePropertiesResponse
+from ._get_network_blacklist_request import GetNetworkBlacklistRequest
+from ._get_network_blacklist_response_body import GetNetworkBlacklistResponseBody
+from ._get_network_blacklist_response import GetNetworkBlacklistResponse
 from ._import_image_request import ImportImageRequest
 from ._import_image_response_body import ImportImageResponseBody
 from ._import_image_response import ImportImageResponse
@@ -252,6 +255,9 @@ from ._send_system_property_template_response import SendSystemPropertyTemplateR
 from ._set_adb_secure_request import SetAdbSecureRequest
 from ._set_adb_secure_response_body import SetAdbSecureResponseBody
 from ._set_adb_secure_response import SetAdbSecureResponse
+from ._set_network_blacklist_request import SetNetworkBlacklistRequest
+from ._set_network_blacklist_response_body import SetNetworkBlacklistResponseBody
+from ._set_network_blacklist_response import SetNetworkBlacklistResponse
 from ._start_android_instance_request import StartAndroidInstanceRequest
 from ._start_android_instance_response_body import StartAndroidInstanceResponseBody
 from ._start_android_instance_response import StartAndroidInstanceResponse
@@ -366,6 +372,7 @@ from ._describe_tasks_response_body import DescribeTasksResponseBodyData
 from ._detach_key_pair_response_body import DetachKeyPairResponseBodyData
 from ._fetch_file_response_body import FetchFileResponseBodyData
 from ._get_instance_properties_response_body import GetInstancePropertiesResponseBodyPropertyTemplateModel
+from ._get_network_blacklist_response_body import GetNetworkBlacklistResponseBodyNetworkBlacklistModel
 from ._import_key_pair_response_body import ImportKeyPairResponseBodyData
 from ._instance_healer_response_body import InstanceHealerResponseBodyInstanceHealerModel
 from ._list_instance_adb_attributes_response_body import ListInstanceAdbAttributesResponseBodyData
@@ -551,6 +558,9 @@ __all__ = [
     GetInstancePropertiesRequest,
     GetInstancePropertiesResponseBody,
     GetInstancePropertiesResponse,
+    GetNetworkBlacklistRequest,
+    GetNetworkBlacklistResponseBody,
+    GetNetworkBlacklistResponse,
     ImportImageRequest,
     ImportImageResponseBody,
     ImportImageResponse,
@@ -641,6 +651,9 @@ __all__ = [
     SetAdbSecureRequest,
     SetAdbSecureResponseBody,
     SetAdbSecureResponse,
+    SetNetworkBlacklistRequest,
+    SetNetworkBlacklistResponseBody,
+    SetNetworkBlacklistResponse,
     StartAndroidInstanceRequest,
     StartAndroidInstanceResponseBody,
     StartAndroidInstanceResponse,
@@ -755,6 +768,7 @@ __all__ = [
     DetachKeyPairResponseBodyData,
     FetchFileResponseBodyData,
     GetInstancePropertiesResponseBodyPropertyTemplateModel,
+    GetNetworkBlacklistResponseBodyNetworkBlacklistModel,
     ImportKeyPairResponseBodyData,
     InstanceHealerResponseBodyInstanceHealerModel,
     ListInstanceAdbAttributesResponseBodyData,

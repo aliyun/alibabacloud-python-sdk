@@ -2839,6 +2839,8 @@ class Client(OpenApiClient):
             query['NodeIds'] = request.node_ids
         if not DaraCore.is_null(request.node_name):
             query['NodeName'] = request.node_name
+        if not DaraCore.is_null(request.node_name_list):
+            query['NodeNameList'] = request.node_name_list
         if not DaraCore.is_null(request.server_type):
             query['ServerType'] = request.server_type
         if not DaraCore.is_null(request.status):
@@ -2883,6 +2885,8 @@ class Client(OpenApiClient):
             query['NodeIds'] = request.node_ids
         if not DaraCore.is_null(request.node_name):
             query['NodeName'] = request.node_name
+        if not DaraCore.is_null(request.node_name_list):
+            query['NodeNameList'] = request.node_name_list
         if not DaraCore.is_null(request.server_type):
             query['ServerType'] = request.server_type
         if not DaraCore.is_null(request.status):
@@ -4717,6 +4721,76 @@ class Client(OpenApiClient):
     ) -> main_models.GetInstancePropertiesResponse:
         runtime = RuntimeOptions()
         return await self.get_instance_properties_with_options_async(request, runtime)
+
+    def get_network_blacklist_with_options(
+        self,
+        request: main_models.GetNetworkBlacklistRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetNetworkBlacklistResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetNetworkBlacklist',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetNetworkBlacklistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_network_blacklist_with_options_async(
+        self,
+        request: main_models.GetNetworkBlacklistRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetNetworkBlacklistResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetNetworkBlacklist',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetNetworkBlacklistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_network_blacklist(
+        self,
+        request: main_models.GetNetworkBlacklistRequest,
+    ) -> main_models.GetNetworkBlacklistResponse:
+        runtime = RuntimeOptions()
+        return self.get_network_blacklist_with_options(request, runtime)
+
+    async def get_network_blacklist_async(
+        self,
+        request: main_models.GetNetworkBlacklistRequest,
+    ) -> main_models.GetNetworkBlacklistResponse:
+        runtime = RuntimeOptions()
+        return await self.get_network_blacklist_with_options_async(request, runtime)
 
     def import_image_with_options(
         self,
@@ -7183,6 +7257,80 @@ class Client(OpenApiClient):
     ) -> main_models.SetAdbSecureResponse:
         runtime = RuntimeOptions()
         return await self.set_adb_secure_with_options_async(request, runtime)
+
+    def set_network_blacklist_with_options(
+        self,
+        request: main_models.SetNetworkBlacklistRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetNetworkBlacklistResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain_blacklist):
+            query['DomainBlacklist'] = request.domain_blacklist
+        if not DaraCore.is_null(request.ip_blacklist):
+            query['IpBlacklist'] = request.ip_blacklist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetNetworkBlacklist',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetNetworkBlacklistResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def set_network_blacklist_with_options_async(
+        self,
+        request: main_models.SetNetworkBlacklistRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetNetworkBlacklistResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.domain_blacklist):
+            query['DomainBlacklist'] = request.domain_blacklist
+        if not DaraCore.is_null(request.ip_blacklist):
+            query['IpBlacklist'] = request.ip_blacklist
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SetNetworkBlacklist',
+            version = '2023-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SetNetworkBlacklistResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def set_network_blacklist(
+        self,
+        request: main_models.SetNetworkBlacklistRequest,
+    ) -> main_models.SetNetworkBlacklistResponse:
+        runtime = RuntimeOptions()
+        return self.set_network_blacklist_with_options(request, runtime)
+
+    async def set_network_blacklist_async(
+        self,
+        request: main_models.SetNetworkBlacklistRequest,
+    ) -> main_models.SetNetworkBlacklistResponse:
+        runtime = RuntimeOptions()
+        return await self.set_network_blacklist_with_options_async(request, runtime)
 
     def start_android_instance_with_options(
         self,
