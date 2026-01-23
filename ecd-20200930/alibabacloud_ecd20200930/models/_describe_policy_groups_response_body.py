@@ -128,6 +128,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         file_transfer_speed: str = None,
         file_transfer_speed_location: str = None,
         gpu_acceleration: str = None,
+        hover_config_msg: str = None,
         html_5access: str = None,
         html_5file_transfer: str = None,
         internet_communication_protocol: str = None,
@@ -147,6 +148,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         mobile_wuying_keeper: str = None,
         mobile_wy_assistant: str = None,
         model_library: str = None,
+        multi_screen: str = None,
         name: str = None,
         net_redirect: str = None,
         net_redirect_rule: List[main_models.DescribePolicyGroupsResponseBodyDescribePolicyGroupsNetRedirectRule] = None,
@@ -176,6 +178,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         recording_user_notify_message: str = None,
         remote_coordinate: str = None,
         reset_desktop: str = None,
+        resolution_dpi: int = None,
         resolution_height: int = None,
         resolution_model: str = None,
         resolution_width: int = None,
@@ -345,6 +348,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         # *   off
         # *   on
         self.gpu_acceleration = gpu_acceleration
+        self.hover_config_msg = hover_config_msg
         # Specifies whether to allow web client access.
         # 
         # Valid values:
@@ -422,6 +426,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         # Indicates whether the Xiaoying AI Assistant is enabled for mobile clients.
         self.mobile_wy_assistant = mobile_wy_assistant
         self.model_library = model_library
+        self.multi_screen = multi_screen
         # The name of the cloud computer policy.
         self.name = name
         # Indicates whether the network redirection feature is enabled.
@@ -558,6 +563,7 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         self.remote_coordinate = remote_coordinate
         # Resets the cloud computer.
         self.reset_desktop = reset_desktop
+        self.resolution_dpi = resolution_dpi
         self.resolution_height = resolution_height
         self.resolution_model = resolution_model
         self.resolution_width = resolution_width
@@ -897,6 +903,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         if self.gpu_acceleration is not None:
             result['GpuAcceleration'] = self.gpu_acceleration
 
+        if self.hover_config_msg is not None:
+            result['HoverConfigMsg'] = self.hover_config_msg
+
         if self.html_5access is not None:
             result['Html5Access'] = self.html_5access
 
@@ -953,6 +962,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
 
         if self.model_library is not None:
             result['ModelLibrary'] = self.model_library
+
+        if self.multi_screen is not None:
+            result['MultiScreen'] = self.multi_screen
 
         if self.name is not None:
             result['Name'] = self.name
@@ -1044,6 +1056,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
 
         if self.reset_desktop is not None:
             result['ResetDesktop'] = self.reset_desktop
+
+        if self.resolution_dpi is not None:
+            result['ResolutionDpi'] = self.resolution_dpi
 
         if self.resolution_height is not None:
             result['ResolutionHeight'] = self.resolution_height
@@ -1306,6 +1321,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         if m.get('GpuAcceleration') is not None:
             self.gpu_acceleration = m.get('GpuAcceleration')
 
+        if m.get('HoverConfigMsg') is not None:
+            self.hover_config_msg = m.get('HoverConfigMsg')
+
         if m.get('Html5Access') is not None:
             self.html_5access = m.get('Html5Access')
 
@@ -1362,6 +1380,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
 
         if m.get('ModelLibrary') is not None:
             self.model_library = m.get('ModelLibrary')
+
+        if m.get('MultiScreen') is not None:
+            self.multi_screen = m.get('MultiScreen')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
@@ -1455,6 +1476,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
 
         if m.get('ResetDesktop') is not None:
             self.reset_desktop = m.get('ResetDesktop')
+
+        if m.get('ResolutionDpi') is not None:
+            self.resolution_dpi = m.get('ResolutionDpi')
 
         if m.get('ResolutionHeight') is not None:
             self.resolution_height = m.get('ResolutionHeight')

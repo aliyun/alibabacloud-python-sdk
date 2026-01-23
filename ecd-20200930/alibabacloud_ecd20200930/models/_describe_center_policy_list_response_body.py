@@ -96,6 +96,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         file_transfer_speed: str = None,
         file_transfer_speed_location: str = None,
         gpu_acceleration: str = None,
+        hover_config_msg: str = None,
         html_5access: str = None,
         html_5file_transfer: str = None,
         internet_communication_protocol: str = None,
@@ -135,6 +136,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         recording_user_notify: str = None,
         recording_user_notify_message: str = None,
         remote_coordinate: str = None,
+        resolution_dpi: int = None,
         resolution_height: int = None,
         resolution_model: str = None,
         resolution_width: int = None,
@@ -237,6 +239,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.file_transfer_speed_location = file_transfer_speed_location
         # Indicates whether image quality control is enabled. For optimal computer performance and user experience in professional design scenarios, we recommend enabling this feature.
         self.gpu_acceleration = gpu_acceleration
+        self.hover_config_msg = hover_config_msg
         # The web client access policy.
         self.html_5access = html_5access
         # The file transfer feature on the web client.
@@ -326,6 +329,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.recording_user_notify_message = recording_user_notify_message
         # The keyboard and mouse control permissions during remote assistance.
         self.remote_coordinate = remote_coordinate
+        self.resolution_dpi = resolution_dpi
         # The height of the resolution. Unit: pixel.
         self.resolution_height = resolution_height
         # The resolution type.
@@ -545,6 +549,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         if self.gpu_acceleration is not None:
             result['GpuAcceleration'] = self.gpu_acceleration
 
+        if self.hover_config_msg is not None:
+            result['HoverConfigMsg'] = self.hover_config_msg
+
         if self.html_5access is not None:
             result['Html5Access'] = self.html_5access
 
@@ -663,6 +670,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
         if self.remote_coordinate is not None:
             result['RemoteCoordinate'] = self.remote_coordinate
+
+        if self.resolution_dpi is not None:
+            result['ResolutionDpi'] = self.resolution_dpi
 
         if self.resolution_height is not None:
             result['ResolutionHeight'] = self.resolution_height
@@ -892,6 +902,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         if m.get('GpuAcceleration') is not None:
             self.gpu_acceleration = m.get('GpuAcceleration')
 
+        if m.get('HoverConfigMsg') is not None:
+            self.hover_config_msg = m.get('HoverConfigMsg')
+
         if m.get('Html5Access') is not None:
             self.html_5access = m.get('Html5Access')
 
@@ -1011,6 +1024,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
         if m.get('RemoteCoordinate') is not None:
             self.remote_coordinate = m.get('RemoteCoordinate')
+
+        if m.get('ResolutionDpi') is not None:
+            self.resolution_dpi = m.get('ResolutionDpi')
 
         if m.get('ResolutionHeight') is not None:
             self.resolution_height = m.get('ResolutionHeight')

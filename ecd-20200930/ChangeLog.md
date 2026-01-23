@@ -1,3 +1,25 @@
+2026-01-23 Version: 4.21.4
+- Update API CreateCenterPolicy: add request parameters HoverConfigMsg.
+- Update API CreateCenterPolicy: add request parameters MultiScreen.
+- Update API CreateCenterPolicy: add request parameters ResolutionDpi.
+- Update API CreateCenterPolicy: add request parameters ClipboardGraineds.$.InClipboardSize.
+- Update API CreateCenterPolicy: add request parameters ClipboardGraineds.$.InClipboardSizeUnit.
+- Update API CreateCenterPolicy: add request parameters ClipboardGraineds.$.OutClipboardSize.
+- Update API CreateCenterPolicy: add request parameters ClipboardGraineds.$.OutClipboardSizeUnit.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.HoverConfigMsg.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.ResolutionDpi.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.HoverConfigMsg.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.MultiScreen.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.ResolutionDpi.
+- Update API ModifyCenterPolicy: add request parameters HoverConfigMsg.
+- Update API ModifyCenterPolicy: add request parameters MultiScreen.
+- Update API ModifyCenterPolicy: add request parameters ResolutionDpi.
+- Update API ModifyCenterPolicy: add request parameters ClipboardGraineds.$.InClipboardSize.
+- Update API ModifyCenterPolicy: add request parameters ClipboardGraineds.$.InClipboardSizeUnit.
+- Update API ModifyCenterPolicy: add request parameters ClipboardGraineds.$.OutClipboardSize.
+- Update API ModifyCenterPolicy: add request parameters ClipboardGraineds.$.OutClipboardSizeUnit.
+
+
 2026-01-19 Version: 4.21.3
 - Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.VplVersion.
 

@@ -3470,6 +3470,8 @@ class Client(OpenApiClient):
             query['FileTransferSpeedLocation'] = request.file_transfer_speed_location
         if not DaraCore.is_null(request.gpu_acceleration):
             query['GpuAcceleration'] = request.gpu_acceleration
+        if not DaraCore.is_null(request.hover_config_msg):
+            query['HoverConfigMsg'] = request.hover_config_msg
         if not DaraCore.is_null(request.html_5file_transfer):
             query['Html5FileTransfer'] = request.html_5file_transfer
         if not DaraCore.is_null(request.internet_communication_protocol):
@@ -3506,6 +3508,8 @@ class Client(OpenApiClient):
             query['MobileWyAssistant'] = request.mobile_wy_assistant
         if not DaraCore.is_null(request.model_library):
             query['ModelLibrary'] = request.model_library
+        if not DaraCore.is_null(request.multi_screen):
+            query['MultiScreen'] = request.multi_screen
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.net_redirect):
@@ -3558,6 +3562,8 @@ class Client(OpenApiClient):
             query['RemoteCoordinate'] = request.remote_coordinate
         if not DaraCore.is_null(request.reset_desktop):
             query['ResetDesktop'] = request.reset_desktop
+        if not DaraCore.is_null(request.resolution_dpi):
+            query['ResolutionDpi'] = request.resolution_dpi
         if not DaraCore.is_null(request.resolution_height):
             query['ResolutionHeight'] = request.resolution_height
         if not DaraCore.is_null(request.resolution_model):
@@ -3748,6 +3754,8 @@ class Client(OpenApiClient):
             query['FileTransferSpeedLocation'] = request.file_transfer_speed_location
         if not DaraCore.is_null(request.gpu_acceleration):
             query['GpuAcceleration'] = request.gpu_acceleration
+        if not DaraCore.is_null(request.hover_config_msg):
+            query['HoverConfigMsg'] = request.hover_config_msg
         if not DaraCore.is_null(request.html_5file_transfer):
             query['Html5FileTransfer'] = request.html_5file_transfer
         if not DaraCore.is_null(request.internet_communication_protocol):
@@ -3784,6 +3792,8 @@ class Client(OpenApiClient):
             query['MobileWyAssistant'] = request.mobile_wy_assistant
         if not DaraCore.is_null(request.model_library):
             query['ModelLibrary'] = request.model_library
+        if not DaraCore.is_null(request.multi_screen):
+            query['MultiScreen'] = request.multi_screen
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.net_redirect):
@@ -3836,6 +3846,8 @@ class Client(OpenApiClient):
             query['RemoteCoordinate'] = request.remote_coordinate
         if not DaraCore.is_null(request.reset_desktop):
             query['ResetDesktop'] = request.reset_desktop
+        if not DaraCore.is_null(request.resolution_dpi):
+            query['ResolutionDpi'] = request.resolution_dpi
         if not DaraCore.is_null(request.resolution_height):
             query['ResolutionHeight'] = request.resolution_height
         if not DaraCore.is_null(request.resolution_model):
@@ -19848,6 +19860,8 @@ class Client(OpenApiClient):
             query['FileTransferSpeedLocation'] = request.file_transfer_speed_location
         if not DaraCore.is_null(request.gpu_acceleration):
             query['GpuAcceleration'] = request.gpu_acceleration
+        if not DaraCore.is_null(request.hover_config_msg):
+            query['HoverConfigMsg'] = request.hover_config_msg
         if not DaraCore.is_null(request.html_5file_transfer):
             query['Html5FileTransfer'] = request.html_5file_transfer
         if not DaraCore.is_null(request.internet_communication_protocol):
@@ -19884,6 +19898,8 @@ class Client(OpenApiClient):
             query['MobileWyAssistant'] = request.mobile_wy_assistant
         if not DaraCore.is_null(request.model_library):
             query['ModelLibrary'] = request.model_library
+        if not DaraCore.is_null(request.multi_screen):
+            query['MultiScreen'] = request.multi_screen
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.net_redirect):
@@ -19938,6 +19954,8 @@ class Client(OpenApiClient):
             query['RemoteCoordinate'] = request.remote_coordinate
         if not DaraCore.is_null(request.reset_desktop):
             query['ResetDesktop'] = request.reset_desktop
+        if not DaraCore.is_null(request.resolution_dpi):
+            query['ResolutionDpi'] = request.resolution_dpi
         if not DaraCore.is_null(request.resolution_height):
             query['ResolutionHeight'] = request.resolution_height
         if not DaraCore.is_null(request.resolution_model):
@@ -20132,6 +20150,8 @@ class Client(OpenApiClient):
             query['FileTransferSpeedLocation'] = request.file_transfer_speed_location
         if not DaraCore.is_null(request.gpu_acceleration):
             query['GpuAcceleration'] = request.gpu_acceleration
+        if not DaraCore.is_null(request.hover_config_msg):
+            query['HoverConfigMsg'] = request.hover_config_msg
         if not DaraCore.is_null(request.html_5file_transfer):
             query['Html5FileTransfer'] = request.html_5file_transfer
         if not DaraCore.is_null(request.internet_communication_protocol):
@@ -20168,6 +20188,8 @@ class Client(OpenApiClient):
             query['MobileWyAssistant'] = request.mobile_wy_assistant
         if not DaraCore.is_null(request.model_library):
             query['ModelLibrary'] = request.model_library
+        if not DaraCore.is_null(request.multi_screen):
+            query['MultiScreen'] = request.multi_screen
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
         if not DaraCore.is_null(request.net_redirect):
@@ -20222,6 +20244,8 @@ class Client(OpenApiClient):
             query['RemoteCoordinate'] = request.remote_coordinate
         if not DaraCore.is_null(request.reset_desktop):
             query['ResetDesktop'] = request.reset_desktop
+        if not DaraCore.is_null(request.resolution_dpi):
+            query['ResolutionDpi'] = request.resolution_dpi
         if not DaraCore.is_null(request.resolution_height):
             query['ResolutionHeight'] = request.resolution_height
         if not DaraCore.is_null(request.resolution_model):
