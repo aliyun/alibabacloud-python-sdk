@@ -1,3 +1,6 @@
+2026-01-23 Version: 1.19.4
+- Generated python 2024-06-28 for DianJin.
+
 2026-01-08 Version: 1.19.2
 - Update API GetVideoCreationTaskResult: add response parameters Body.data.statusReason.
 

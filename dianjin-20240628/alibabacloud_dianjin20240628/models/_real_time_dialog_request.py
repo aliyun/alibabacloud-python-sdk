@@ -134,6 +134,7 @@ class RealTimeDialogRequestConversationModel(DaraModel):
         customer_service_id: str = None,
         customer_service_type: str = None,
         end: int = None,
+        intention_code: str = None,
         role: int = None,
         type: str = None,
     ):
@@ -145,6 +146,7 @@ class RealTimeDialogRequestConversationModel(DaraModel):
         self.customer_service_id = customer_service_id
         self.customer_service_type = customer_service_type
         self.end = end
+        self.intention_code = intention_code
         # This parameter is required.
         self.role = role
         # This parameter is required.
@@ -179,6 +181,9 @@ class RealTimeDialogRequestConversationModel(DaraModel):
         if self.end is not None:
             result['end'] = self.end
 
+        if self.intention_code is not None:
+            result['intentionCode'] = self.intention_code
+
         if self.role is not None:
             result['role'] = self.role
 
@@ -209,6 +214,9 @@ class RealTimeDialogRequestConversationModel(DaraModel):
 
         if m.get('end') is not None:
             self.end = m.get('end')
+
+        if m.get('intentionCode') is not None:
+            self.intention_code = m.get('intentionCode')
 
         if m.get('role') is not None:
             self.role = m.get('role')
