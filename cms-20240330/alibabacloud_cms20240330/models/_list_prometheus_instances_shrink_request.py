@@ -16,6 +16,7 @@ class ListPrometheusInstancesShrinkRequest(DaraModel):
         resource_type: str = None,
         tag_shrink: str = None,
         version: str = None,
+        workspace: str = None,
     ):
         # Specified list of regionIds to filter (comma-separated).
         self.filter_region_ids = filter_region_ids
@@ -35,6 +36,7 @@ class ListPrometheusInstancesShrinkRequest(DaraModel):
         self.tag_shrink = tag_shrink
         # Instance version: V1 or V2
         self.version = version
+        self.workspace = workspace
 
     def validate(self):
         pass
@@ -71,6 +73,9 @@ class ListPrometheusInstancesShrinkRequest(DaraModel):
         if self.version is not None:
             result['version'] = self.version
 
+        if self.workspace is not None:
+            result['workspace'] = self.workspace
+
         return result
 
     def from_map(self, m: dict = None):
@@ -101,6 +106,9 @@ class ListPrometheusInstancesShrinkRequest(DaraModel):
 
         if m.get('version') is not None:
             self.version = m.get('version')
+
+        if m.get('workspace') is not None:
+            self.workspace = m.get('workspace')
 
         return self
 

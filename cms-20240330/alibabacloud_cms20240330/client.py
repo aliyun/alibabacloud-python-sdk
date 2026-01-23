@@ -392,6 +392,106 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_agg_task_group_with_options_async(instance_id, request, headers, runtime)
 
+    def create_alert_webhook_with_options(
+        self,
+        request: main_models.CreateAlertWebhookRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAlertWebhookResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.content_type):
+            body['contentType'] = request.content_type
+        if not DaraCore.is_null(request.headers):
+            body['headers'] = request.headers
+        if not DaraCore.is_null(request.lang):
+            body['lang'] = request.lang
+        if not DaraCore.is_null(request.method):
+            body['method'] = request.method
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.url):
+            body['url'] = request.url
+        if not DaraCore.is_null(request.webhook_id):
+            body['webhookId'] = request.webhook_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAlertWebhook',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/webhook',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAlertWebhookResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_alert_webhook_with_options_async(
+        self,
+        request: main_models.CreateAlertWebhookRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAlertWebhookResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.content_type):
+            body['contentType'] = request.content_type
+        if not DaraCore.is_null(request.headers):
+            body['headers'] = request.headers
+        if not DaraCore.is_null(request.lang):
+            body['lang'] = request.lang
+        if not DaraCore.is_null(request.method):
+            body['method'] = request.method
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.url):
+            body['url'] = request.url
+        if not DaraCore.is_null(request.webhook_id):
+            body['webhookId'] = request.webhook_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAlertWebhook',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/webhook',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAlertWebhookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_alert_webhook(
+        self,
+        request: main_models.CreateAlertWebhookRequest,
+    ) -> main_models.CreateAlertWebhookResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_alert_webhook_with_options(request, headers, runtime)
+
+    async def create_alert_webhook_async(
+        self,
+        request: main_models.CreateAlertWebhookRequest,
+    ) -> main_models.CreateAlertWebhookResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_alert_webhook_with_options_async(request, headers, runtime)
+
     def create_biz_trace_with_options(
         self,
         request: main_models.CreateBizTraceRequest,
@@ -1877,6 +1977,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_agg_task_group_with_options_async(instance_id, group_id, headers, runtime)
+
+    def delete_alert_webhooks_with_options(
+        self,
+        tmp_req: main_models.DeleteAlertWebhooksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAlertWebhooksResponse:
+        tmp_req.validate()
+        request = main_models.DeleteAlertWebhooksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.webhook_ids):
+            request.webhook_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.webhook_ids, 'webhookIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.webhook_ids_shrink):
+            query['webhookIds'] = request.webhook_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAlertWebhooks',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/webhooks',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAlertWebhooksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_alert_webhooks_with_options_async(
+        self,
+        tmp_req: main_models.DeleteAlertWebhooksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAlertWebhooksResponse:
+        tmp_req.validate()
+        request = main_models.DeleteAlertWebhooksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.webhook_ids):
+            request.webhook_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.webhook_ids, 'webhookIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.webhook_ids_shrink):
+            query['webhookIds'] = request.webhook_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAlertWebhooks',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/webhooks',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAlertWebhooksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_alert_webhooks(
+        self,
+        request: main_models.DeleteAlertWebhooksRequest,
+    ) -> main_models.DeleteAlertWebhooksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_alert_webhooks_with_options(request, headers, runtime)
+
+    async def delete_alert_webhooks_async(
+        self,
+        request: main_models.DeleteAlertWebhooksRequest,
+    ) -> main_models.DeleteAlertWebhooksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_alert_webhooks_with_options_async(request, headers, runtime)
 
     def delete_biz_trace_with_options(
         self,
@@ -5142,6 +5326,102 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_alert_actions_with_options_async(request, headers, runtime)
 
+    def list_alert_webhooks_with_options(
+        self,
+        tmp_req: main_models.ListAlertWebhooksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertWebhooksResponse:
+        tmp_req.validate()
+        request = main_models.ListAlertWebhooksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.webhook_ids):
+            request.webhook_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.webhook_ids, 'webhookIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.webhook_ids_shrink):
+            query['webhookIds'] = request.webhook_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAlertWebhooks',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/webhooks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAlertWebhooksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_alert_webhooks_with_options_async(
+        self,
+        tmp_req: main_models.ListAlertWebhooksRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertWebhooksResponse:
+        tmp_req.validate()
+        request = main_models.ListAlertWebhooksShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.webhook_ids):
+            request.webhook_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.webhook_ids, 'webhookIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.webhook_ids_shrink):
+            query['webhookIds'] = request.webhook_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAlertWebhooks',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/webhooks',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAlertWebhooksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_alert_webhooks(
+        self,
+        request: main_models.ListAlertWebhooksRequest,
+    ) -> main_models.ListAlertWebhooksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_alert_webhooks_with_options(request, headers, runtime)
+
+    async def list_alert_webhooks_async(
+        self,
+        request: main_models.ListAlertWebhooksRequest,
+    ) -> main_models.ListAlertWebhooksResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_alert_webhooks_with_options_async(request, headers, runtime)
+
     def list_biz_traces_with_options(
         self,
         request: main_models.ListBizTracesRequest,
@@ -6162,6 +6442,8 @@ class Client(OpenApiClient):
             query['tag'] = request.tag_shrink
         if not DaraCore.is_null(request.version):
             query['version'] = request.version
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6212,6 +6494,8 @@ class Client(OpenApiClient):
             query['tag'] = request.tag_shrink
         if not DaraCore.is_null(request.version):
             query['version'] = request.version
+        if not DaraCore.is_null(request.workspace):
+            query['workspace'] = request.workspace
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -7455,6 +7739,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_agg_task_group_status_with_options_async(instance_id, group_id, request, headers, runtime)
+
+    def update_alert_webhook_with_options(
+        self,
+        webhook_id: str,
+        request: main_models.UpdateAlertWebhookRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertWebhookResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.content_type):
+            body['contentType'] = request.content_type
+        if not DaraCore.is_null(request.headers):
+            body['headers'] = request.headers
+        if not DaraCore.is_null(request.lang):
+            body['lang'] = request.lang
+        if not DaraCore.is_null(request.method):
+            body['method'] = request.method
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.url):
+            body['url'] = request.url
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAlertWebhook',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/webhook/{DaraURL.percent_encode(webhook_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAlertWebhookResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_alert_webhook_with_options_async(
+        self,
+        webhook_id: str,
+        request: main_models.UpdateAlertWebhookRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertWebhookResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.content_type):
+            body['contentType'] = request.content_type
+        if not DaraCore.is_null(request.headers):
+            body['headers'] = request.headers
+        if not DaraCore.is_null(request.lang):
+            body['lang'] = request.lang
+        if not DaraCore.is_null(request.method):
+            body['method'] = request.method
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.url):
+            body['url'] = request.url
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAlertWebhook',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/webhook/{DaraURL.percent_encode(webhook_id)}',
+            method = 'PATCH',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAlertWebhookResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_alert_webhook(
+        self,
+        webhook_id: str,
+        request: main_models.UpdateAlertWebhookRequest,
+    ) -> main_models.UpdateAlertWebhookResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_alert_webhook_with_options(webhook_id, request, headers, runtime)
+
+    async def update_alert_webhook_async(
+        self,
+        webhook_id: str,
+        request: main_models.UpdateAlertWebhookRequest,
+    ) -> main_models.UpdateAlertWebhookResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_alert_webhook_with_options_async(webhook_id, request, headers, runtime)
 
     def update_biz_trace_with_options(
         self,

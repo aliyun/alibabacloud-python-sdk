@@ -90,10 +90,8 @@ class ListPrometheusViewsResponseBodyPrometheusViews(DaraModel):
         prometheus_view_id: str = None,
         prometheus_view_name: str = None,
         region_id: str = None,
-        resource_group_id: str = None,
         resource_type: str = None,
         status: str = None,
-        tags: List[main_models.ListPrometheusViewsResponseBodyPrometheusViewsTags] = None,
         user_id: str = None,
         version: str = None,
         workspace: str = None,
@@ -116,14 +114,10 @@ class ListPrometheusViewsResponseBodyPrometheusViews(DaraModel):
         self.prometheus_view_name = prometheus_view_name
         # Region ID.
         self.region_id = region_id
-        # Resource group ID.
-        self.resource_group_id = resource_group_id
         # Fixed value: PrometheusView.
         self.resource_type = resource_type
         # Backend data storage status.
         self.status = status
-        # Tag values.
-        self.tags = tags
         # User ID.
         self.user_id = user_id
         # Version.
@@ -132,10 +126,7 @@ class ListPrometheusViewsResponseBodyPrometheusViews(DaraModel):
         self.workspace = workspace
 
     def validate(self):
-        if self.tags:
-            for v1 in self.tags:
-                 if v1:
-                    v1.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -166,19 +157,11 @@ class ListPrometheusViewsResponseBodyPrometheusViews(DaraModel):
         if self.region_id is not None:
             result['regionId'] = self.region_id
 
-        if self.resource_group_id is not None:
-            result['resourceGroupId'] = self.resource_group_id
-
         if self.resource_type is not None:
             result['resourceType'] = self.resource_type
 
         if self.status is not None:
             result['status'] = self.status
-
-        result['tags'] = []
-        if self.tags is not None:
-            for k1 in self.tags:
-                result['tags'].append(k1.to_map() if k1 else None)
 
         if self.user_id is not None:
             result['userId'] = self.user_id
@@ -217,20 +200,11 @@ class ListPrometheusViewsResponseBodyPrometheusViews(DaraModel):
         if m.get('regionId') is not None:
             self.region_id = m.get('regionId')
 
-        if m.get('resourceGroupId') is not None:
-            self.resource_group_id = m.get('resourceGroupId')
-
         if m.get('resourceType') is not None:
             self.resource_type = m.get('resourceType')
 
         if m.get('status') is not None:
             self.status = m.get('status')
-
-        self.tags = []
-        if m.get('tags') is not None:
-            for k1 in m.get('tags'):
-                temp_model = main_models.ListPrometheusViewsResponseBodyPrometheusViewsTags()
-                self.tags.append(temp_model.from_map(k1))
 
         if m.get('userId') is not None:
             self.user_id = m.get('userId')
@@ -240,43 +214,6 @@ class ListPrometheusViewsResponseBodyPrometheusViews(DaraModel):
 
         if m.get('workspace') is not None:
             self.workspace = m.get('workspace')
-
-        return self
-
-class ListPrometheusViewsResponseBodyPrometheusViewsTags(DaraModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        # Tag key
-        self.key = key
-        # Match value.
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.key is not None:
-            result['key'] = self.key
-
-        if self.value is not None:
-            result['value'] = self.value
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('key') is not None:
-            self.key = m.get('key')
-
-        if m.get('value') is not None:
-            self.value = m.get('value')
 
         return self
 

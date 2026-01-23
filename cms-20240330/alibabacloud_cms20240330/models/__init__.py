@@ -80,6 +80,9 @@ from ._create_addon_release_response import CreateAddonReleaseResponse
 from ._create_agg_task_group_request import CreateAggTaskGroupRequest
 from ._create_agg_task_group_response_body import CreateAggTaskGroupResponseBody
 from ._create_agg_task_group_response import CreateAggTaskGroupResponse
+from ._create_alert_webhook_request import CreateAlertWebhookRequest
+from ._create_alert_webhook_response_body import CreateAlertWebhookResponseBody
+from ._create_alert_webhook_response import CreateAlertWebhookResponse
 from ._create_biz_trace_request import CreateBizTraceRequest
 from ._create_biz_trace_response_body import CreateBizTraceResponseBody
 from ._create_biz_trace_response import CreateBizTraceResponse
@@ -124,6 +127,10 @@ from ._delete_addon_release_response_body import DeleteAddonReleaseResponseBody
 from ._delete_addon_release_response import DeleteAddonReleaseResponse
 from ._delete_agg_task_group_response_body import DeleteAggTaskGroupResponseBody
 from ._delete_agg_task_group_response import DeleteAggTaskGroupResponse
+from ._delete_alert_webhooks_request import DeleteAlertWebhooksRequest
+from ._delete_alert_webhooks_shrink_request import DeleteAlertWebhooksShrinkRequest
+from ._delete_alert_webhooks_response_body import DeleteAlertWebhooksResponseBody
+from ._delete_alert_webhooks_response import DeleteAlertWebhooksResponse
 from ._delete_biz_trace_response_body import DeleteBizTraceResponseBody
 from ._delete_biz_trace_response import DeleteBizTraceResponse
 from ._delete_cloud_resource_response_body import DeleteCloudResourceResponseBody
@@ -233,6 +240,10 @@ from ._list_alert_actions_request import ListAlertActionsRequest
 from ._list_alert_actions_shrink_request import ListAlertActionsShrinkRequest
 from ._list_alert_actions_response_body import ListAlertActionsResponseBody
 from ._list_alert_actions_response import ListAlertActionsResponse
+from ._list_alert_webhooks_request import ListAlertWebhooksRequest
+from ._list_alert_webhooks_shrink_request import ListAlertWebhooksShrinkRequest
+from ._list_alert_webhooks_response_body import ListAlertWebhooksResponseBody
+from ._list_alert_webhooks_response import ListAlertWebhooksResponse
 from ._list_biz_traces_request import ListBizTracesRequest
 from ._list_biz_traces_response_body import ListBizTracesResponseBody
 from ._list_biz_traces_response import ListBizTracesResponse
@@ -312,6 +323,9 @@ from ._update_agg_task_group_response import UpdateAggTaskGroupResponse
 from ._update_agg_task_group_status_request import UpdateAggTaskGroupStatusRequest
 from ._update_agg_task_group_status_response_body import UpdateAggTaskGroupStatusResponseBody
 from ._update_agg_task_group_status_response import UpdateAggTaskGroupStatusResponse
+from ._update_alert_webhook_request import UpdateAlertWebhookRequest
+from ._update_alert_webhook_response_body import UpdateAlertWebhookResponseBody
+from ._update_alert_webhook_response import UpdateAlertWebhookResponse
 from ._update_biz_trace_request import UpdateBizTraceRequest
 from ._update_biz_trace_response_body import UpdateBizTraceResponseBody
 from ._update_biz_trace_response import UpdateBizTraceResponse
@@ -486,7 +500,6 @@ from ._list_addons_response_body import ListAddonsResponseBodyAddonsEnvironments
 from ._list_addons_response_body import ListAddonsResponseBodyAddonsEnvironments
 from ._list_addons_response_body import ListAddonsResponseBodyAddons
 from ._list_agg_task_groups_request import ListAggTaskGroupsRequestTags
-from ._list_agg_task_groups_response_body import ListAggTaskGroupsResponseBodyAggTaskGroupsTags
 from ._list_agg_task_groups_response_body import ListAggTaskGroupsResponseBodyAggTaskGroups
 from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlertActionsEbParam
 from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlertActionsEssParam
@@ -497,6 +510,7 @@ from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlert
 from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlertActionsSlsParam
 from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlertActionsWebhookParam
 from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlertActions
+from ._list_alert_webhooks_response_body import ListAlertWebhooksResponseBodyWebhooks
 from ._list_digital_employees_response_body import ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian
 from ._list_digital_employees_response_body import ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges
 from ._list_digital_employees_response_body import ListDigitalEmployeesResponseBodyDigitalEmployees
@@ -511,7 +525,6 @@ from ._list_integration_policies_response_body import ListIntegrationPoliciesRes
 from ._list_integration_policies_response_body import ListIntegrationPoliciesResponseBodyPoliciesEntityGroup
 from ._list_integration_policies_response_body import ListIntegrationPoliciesResponseBodyPoliciesManagedInfo
 from ._list_integration_policies_response_body import ListIntegrationPoliciesResponseBodyPoliciesSubAddonRelease
-from ._list_integration_policies_response_body import ListIntegrationPoliciesResponseBodyPoliciesTags
 from ._list_integration_policies_response_body import ListIntegrationPoliciesResponseBodyPolicies
 from ._list_integration_policy_addons_response_body import ListIntegrationPolicyAddonsResponseBodyAddonsDashboards
 from ._list_integration_policy_addons_response_body import ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsDependencies
@@ -537,10 +550,8 @@ from ._list_integration_policy_storage_requirements_response_body import ListInt
 from ._list_integration_policy_storage_requirements_response_body import ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements
 from ._list_prometheus_dashboards_response_body import ListPrometheusDashboardsResponseBodyPrometheusDashboards
 from ._list_prometheus_instances_request import ListPrometheusInstancesRequestTag
-from ._list_prometheus_instances_response_body import ListPrometheusInstancesResponseBodyPrometheusInstancesTags
 from ._list_prometheus_instances_response_body import ListPrometheusInstancesResponseBodyPrometheusInstances
 from ._list_prometheus_views_request import ListPrometheusViewsRequestTag
-from ._list_prometheus_views_response_body import ListPrometheusViewsResponseBodyPrometheusViewsTags
 from ._list_prometheus_views_response_body import ListPrometheusViewsResponseBodyPrometheusViews
 from ._list_prometheus_virtual_instances_response_body import ListPrometheusVirtualInstancesResponseBodyInstances
 from ._list_services_request import ListServicesRequestTags
@@ -635,6 +646,9 @@ __all__ = [
     CreateAggTaskGroupRequest,
     CreateAggTaskGroupResponseBody,
     CreateAggTaskGroupResponse,
+    CreateAlertWebhookRequest,
+    CreateAlertWebhookResponseBody,
+    CreateAlertWebhookResponse,
     CreateBizTraceRequest,
     CreateBizTraceResponseBody,
     CreateBizTraceResponse,
@@ -679,6 +693,10 @@ __all__ = [
     DeleteAddonReleaseResponse,
     DeleteAggTaskGroupResponseBody,
     DeleteAggTaskGroupResponse,
+    DeleteAlertWebhooksRequest,
+    DeleteAlertWebhooksShrinkRequest,
+    DeleteAlertWebhooksResponseBody,
+    DeleteAlertWebhooksResponse,
     DeleteBizTraceResponseBody,
     DeleteBizTraceResponse,
     DeleteCloudResourceResponseBody,
@@ -788,6 +806,10 @@ __all__ = [
     ListAlertActionsShrinkRequest,
     ListAlertActionsResponseBody,
     ListAlertActionsResponse,
+    ListAlertWebhooksRequest,
+    ListAlertWebhooksShrinkRequest,
+    ListAlertWebhooksResponseBody,
+    ListAlertWebhooksResponse,
     ListBizTracesRequest,
     ListBizTracesResponseBody,
     ListBizTracesResponse,
@@ -867,6 +889,9 @@ __all__ = [
     UpdateAggTaskGroupStatusRequest,
     UpdateAggTaskGroupStatusResponseBody,
     UpdateAggTaskGroupStatusResponse,
+    UpdateAlertWebhookRequest,
+    UpdateAlertWebhookResponseBody,
+    UpdateAlertWebhookResponse,
     UpdateBizTraceRequest,
     UpdateBizTraceResponseBody,
     UpdateBizTraceResponse,
@@ -1041,7 +1066,6 @@ __all__ = [
     ListAddonsResponseBodyAddonsEnvironments,
     ListAddonsResponseBodyAddons,
     ListAggTaskGroupsRequestTags,
-    ListAggTaskGroupsResponseBodyAggTaskGroupsTags,
     ListAggTaskGroupsResponseBodyAggTaskGroups,
     ListAlertActionsResponseBodyAlertActionsEbParam,
     ListAlertActionsResponseBodyAlertActionsEssParam,
@@ -1052,6 +1076,7 @@ __all__ = [
     ListAlertActionsResponseBodyAlertActionsSlsParam,
     ListAlertActionsResponseBodyAlertActionsWebhookParam,
     ListAlertActionsResponseBodyAlertActions,
+    ListAlertWebhooksResponseBodyWebhooks,
     ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian,
     ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges,
     ListDigitalEmployeesResponseBodyDigitalEmployees,
@@ -1066,7 +1091,6 @@ __all__ = [
     ListIntegrationPoliciesResponseBodyPoliciesEntityGroup,
     ListIntegrationPoliciesResponseBodyPoliciesManagedInfo,
     ListIntegrationPoliciesResponseBodyPoliciesSubAddonRelease,
-    ListIntegrationPoliciesResponseBodyPoliciesTags,
     ListIntegrationPoliciesResponseBodyPolicies,
     ListIntegrationPolicyAddonsResponseBodyAddonsDashboards,
     ListIntegrationPolicyAddonsResponseBodyAddonsEnvironmentsDependencies,
@@ -1092,10 +1116,8 @@ __all__ = [
     ListIntegrationPolicyStorageRequirementsResponseBodyStorageRequirements,
     ListPrometheusDashboardsResponseBodyPrometheusDashboards,
     ListPrometheusInstancesRequestTag,
-    ListPrometheusInstancesResponseBodyPrometheusInstancesTags,
     ListPrometheusInstancesResponseBodyPrometheusInstances,
     ListPrometheusViewsRequestTag,
-    ListPrometheusViewsResponseBodyPrometheusViewsTags,
     ListPrometheusViewsResponseBodyPrometheusViews,
     ListPrometheusVirtualInstancesResponseBodyInstances,
     ListServicesRequestTags,

@@ -97,7 +97,6 @@ class ListAggTaskGroupsResponseBodyAggTaskGroups(DaraModel):
         schedule_time_expr: str = None,
         source_prometheus_id: str = None,
         status: str = None,
-        tags: List[main_models.ListAggTaskGroupsResponseBodyAggTaskGroupsTags] = None,
         target_prometheus_id: str = None,
         to_time: int = None,
         update_time: str = None,
@@ -132,8 +131,6 @@ class ListAggTaskGroupsResponseBodyAggTaskGroups(DaraModel):
         self.source_prometheus_id = source_prometheus_id
         # Status of the aggregation task group.
         self.status = status
-        # Resource group tags
-        self.tags = tags
         # The target Prometheus instance ID of the aggregation task group.
         self.target_prometheus_id = target_prometheus_id
         # The second-level timestamp corresponding to the end time of scheduling.
@@ -142,10 +139,7 @@ class ListAggTaskGroupsResponseBodyAggTaskGroups(DaraModel):
         self.update_time = update_time
 
     def validate(self):
-        if self.tags:
-            for v1 in self.tags:
-                 if v1:
-                    v1.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -196,11 +190,6 @@ class ListAggTaskGroupsResponseBodyAggTaskGroups(DaraModel):
 
         if self.status is not None:
             result['status'] = self.status
-
-        result['tags'] = []
-        if self.tags is not None:
-            for k1 in self.tags:
-                result['tags'].append(k1.to_map() if k1 else None)
 
         if self.target_prometheus_id is not None:
             result['targetPrometheusId'] = self.target_prometheus_id
@@ -260,12 +249,6 @@ class ListAggTaskGroupsResponseBodyAggTaskGroups(DaraModel):
         if m.get('status') is not None:
             self.status = m.get('status')
 
-        self.tags = []
-        if m.get('tags') is not None:
-            for k1 in m.get('tags'):
-                temp_model = main_models.ListAggTaskGroupsResponseBodyAggTaskGroupsTags()
-                self.tags.append(temp_model.from_map(k1))
-
         if m.get('targetPrometheusId') is not None:
             self.target_prometheus_id = m.get('targetPrometheusId')
 
@@ -274,43 +257,6 @@ class ListAggTaskGroupsResponseBodyAggTaskGroups(DaraModel):
 
         if m.get('updateTime') is not None:
             self.update_time = m.get('updateTime')
-
-        return self
-
-class ListAggTaskGroupsResponseBodyAggTaskGroupsTags(DaraModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        # Key of the resource group tag.
-        self.key = key
-        # Value of the resource group tag.
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.key is not None:
-            result['key'] = self.key
-
-        if self.value is not None:
-            result['value'] = self.value
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('key') is not None:
-            self.key = m.get('key')
-
-        if m.get('value') is not None:
-            self.value = m.get('value')
 
         return self
 

@@ -97,7 +97,6 @@ class ListIntegrationPoliciesResponseBodyPolicies(DaraModel):
         region_id: str = None,
         resource_group_id: str = None,
         sub_addon_release: main_models.ListIntegrationPoliciesResponseBodyPoliciesSubAddonRelease = None,
-        tags: List[main_models.ListIntegrationPoliciesResponseBodyPoliciesTags] = None,
         user_id: str = None,
         workspace: str = None,
     ):
@@ -123,8 +122,6 @@ class ListIntegrationPoliciesResponseBodyPolicies(DaraModel):
         self.resource_group_id = resource_group_id
         # Number of sub-releases
         self.sub_addon_release = sub_addon_release
-        # Resource tag key values.
-        self.tags = tags
         # User ID
         self.user_id = user_id
         # Workspace.
@@ -139,10 +136,6 @@ class ListIntegrationPoliciesResponseBodyPolicies(DaraModel):
             self.managed_info.validate()
         if self.sub_addon_release:
             self.sub_addon_release.validate()
-        if self.tags:
-            for v1 in self.tags:
-                 if v1:
-                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -181,11 +174,6 @@ class ListIntegrationPoliciesResponseBodyPolicies(DaraModel):
 
         if self.sub_addon_release is not None:
             result['subAddonRelease'] = self.sub_addon_release.to_map()
-
-        result['tags'] = []
-        if self.tags is not None:
-            for k1 in self.tags:
-                result['tags'].append(k1.to_map() if k1 else None)
 
         if self.user_id is not None:
             result['userId'] = self.user_id
@@ -234,54 +222,11 @@ class ListIntegrationPoliciesResponseBodyPolicies(DaraModel):
             temp_model = main_models.ListIntegrationPoliciesResponseBodyPoliciesSubAddonRelease()
             self.sub_addon_release = temp_model.from_map(m.get('subAddonRelease'))
 
-        self.tags = []
-        if m.get('tags') is not None:
-            for k1 in m.get('tags'):
-                temp_model = main_models.ListIntegrationPoliciesResponseBodyPoliciesTags()
-                self.tags.append(temp_model.from_map(k1))
-
         if m.get('userId') is not None:
             self.user_id = m.get('userId')
 
         if m.get('workspace') is not None:
             self.workspace = m.get('workspace')
-
-        return self
-
-class ListIntegrationPoliciesResponseBodyPoliciesTags(DaraModel):
-    def __init__(
-        self,
-        key: str = None,
-        value: str = None,
-    ):
-        # Tag key
-        self.key = key
-        # Match value.
-        self.value = value
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.key is not None:
-            result['key'] = self.key
-
-        if self.value is not None:
-            result['value'] = self.value
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('key') is not None:
-            self.key = m.get('key')
-
-        if m.get('value') is not None:
-            self.value = m.get('value')
 
         return self
 

@@ -1,3 +1,13 @@
+2026-01-23 Version: 6.0.0
+- Update API ListAggTaskGroups: delete response parameters Body.aggTaskGroups.$.tags.
+- Update API ListIntegrationPolicies: delete response parameters Body.policies.$.tags.
+- Update API ListPrometheusInstances: add request parameters workspace.
+- Update API ListPrometheusInstances: delete response parameters Body.prometheusInstances.$.resourceGroupId.
+- Update API ListPrometheusInstances: delete response parameters Body.prometheusInstances.$.tags.
+- Update API ListPrometheusViews: delete response parameters Body.prometheusViews.$.resourceGroupId.
+- Update API ListPrometheusViews: delete response parameters Body.prometheusViews.$.tags.
+
+
 2026-01-20 Version: 5.0.0
 - Update API CreateChat: add response parameters Body.messages.$.artifacts.
 - Update API CreateChat: add response parameters Body.messages.$.events.
