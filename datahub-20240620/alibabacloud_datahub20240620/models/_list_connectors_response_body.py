@@ -111,8 +111,6 @@ class ListConnectorsResponseBodyList(DaraModel):
 
         return self
 
-
-
 class ListConnectorsResponseBodyListConnector(DaraModel):
     def __init__(
         self,

@@ -262,6 +262,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_project_with_options_async(request, runtime)
 
+    def get_records_with_options(
+        self,
+        request: main_models.GetRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.shard_id):
+            query['ShardId'] = request.shard_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.topic_name):
+            query['TopicName'] = request.topic_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRecords',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_records_with_options_async(
+        self,
+        request: main_models.GetRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRecordsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.shard_id):
+            query['ShardId'] = request.shard_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.topic_name):
+            query['TopicName'] = request.topic_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetRecords',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_records(
+        self,
+        request: main_models.GetRecordsRequest,
+    ) -> main_models.GetRecordsResponse:
+        runtime = RuntimeOptions()
+        return self.get_records_with_options(request, runtime)
+
+    async def get_records_async(
+        self,
+        request: main_models.GetRecordsRequest,
+    ) -> main_models.GetRecordsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_records_with_options_async(request, runtime)
+
     def get_schema_with_options(
         self,
         request: main_models.GetSchemaRequest,
@@ -1027,3 +1109,93 @@ class Client(OpenApiClient):
     ) -> main_models.ListTopicsResponse:
         runtime = RuntimeOptions()
         return await self.list_topics_with_options_async(request, runtime)
+
+    def put_records_with_options(
+        self,
+        tmp_req: main_models.PutRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PutRecordsResponse:
+        tmp_req.validate()
+        request = main_models.PutRecordsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.records):
+            request.records_shrink = Utils.array_to_string_with_specified_style(tmp_req.records, 'Records', 'json')
+        query = {}
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.records_shrink):
+            query['Records'] = request.records_shrink
+        if not DaraCore.is_null(request.shard_id):
+            query['ShardId'] = request.shard_id
+        if not DaraCore.is_null(request.topic_name):
+            query['TopicName'] = request.topic_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PutRecords',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PutRecordsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def put_records_with_options_async(
+        self,
+        tmp_req: main_models.PutRecordsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PutRecordsResponse:
+        tmp_req.validate()
+        request = main_models.PutRecordsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.records):
+            request.records_shrink = Utils.array_to_string_with_specified_style(tmp_req.records, 'Records', 'json')
+        query = {}
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.records_shrink):
+            query['Records'] = request.records_shrink
+        if not DaraCore.is_null(request.shard_id):
+            query['ShardId'] = request.shard_id
+        if not DaraCore.is_null(request.topic_name):
+            query['TopicName'] = request.topic_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'PutRecords',
+            version = '2024-06-20',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.PutRecordsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def put_records(
+        self,
+        request: main_models.PutRecordsRequest,
+    ) -> main_models.PutRecordsResponse:
+        runtime = RuntimeOptions()
+        return self.put_records_with_options(request, runtime)
+
+    async def put_records_async(
+        self,
+        request: main_models.PutRecordsRequest,
+    ) -> main_models.PutRecordsResponse:
+        runtime = RuntimeOptions()
+        return await self.put_records_with_options_async(request, runtime)

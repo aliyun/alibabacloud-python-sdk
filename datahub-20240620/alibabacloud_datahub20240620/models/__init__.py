@@ -11,6 +11,9 @@ from ._get_group_response import GetGroupResponse
 from ._get_project_request import GetProjectRequest
 from ._get_project_response_body import GetProjectResponseBody
 from ._get_project_response import GetProjectResponse
+from ._get_records_request import GetRecordsRequest
+from ._get_records_response_body import GetRecordsResponseBody
+from ._get_records_response import GetRecordsResponse
 from ._get_schema_request import GetSchemaRequest
 from ._get_schema_response_body import GetSchemaResponseBody
 from ._get_schema_response import GetSchemaResponse
@@ -38,6 +41,11 @@ from ._list_subscriptions_response import ListSubscriptionsResponse
 from ._list_topics_request import ListTopicsRequest
 from ._list_topics_response_body import ListTopicsResponseBody
 from ._list_topics_response import ListTopicsResponse
+from ._put_records_request import PutRecordsRequest
+from ._put_records_shrink_request import PutRecordsShrinkRequest
+from ._put_records_response_body import PutRecordsResponseBody
+from ._put_records_response import PutRecordsResponse
+from ._get_records_response_body import GetRecordsResponseBodyRecords
 from ._list_connectors_response_body import ListConnectorsResponseBodyListConnector
 from ._list_connectors_response_body import ListConnectorsResponseBodyList
 from ._list_groups_response_body import ListGroupsResponseBodyList
@@ -48,6 +56,7 @@ from ._list_subscriptions_response_body import ListSubscriptionsResponseBodyList
 from ._list_subscriptions_response_body import ListSubscriptionsResponseBodyList
 from ._list_topics_response_body import ListTopicsResponseBodyListTopic
 from ._list_topics_response_body import ListTopicsResponseBodyList
+from ._put_records_request import PutRecordsRequestRecords
 
 __all__ = [
     GetConnectorRequest,
@@ -59,6 +68,9 @@ __all__ = [
     GetProjectRequest,
     GetProjectResponseBody,
     GetProjectResponse,
+    GetRecordsRequest,
+    GetRecordsResponseBody,
+    GetRecordsResponse,
     GetSchemaRequest,
     GetSchemaResponseBody,
     GetSchemaResponse,
@@ -86,6 +98,11 @@ __all__ = [
     ListTopicsRequest,
     ListTopicsResponseBody,
     ListTopicsResponse,
+    PutRecordsRequest,
+    PutRecordsShrinkRequest,
+    PutRecordsResponseBody,
+    PutRecordsResponse,
+    GetRecordsResponseBodyRecords,
     ListConnectorsResponseBodyListConnector,
     ListConnectorsResponseBodyList,
     ListGroupsResponseBodyList,
@@ -95,5 +112,6 @@ __all__ = [
     ListSubscriptionsResponseBodyListSubscription,
     ListSubscriptionsResponseBodyList,
     ListTopicsResponseBodyListTopic,
-    ListTopicsResponseBodyList
+    ListTopicsResponseBodyList,
+    PutRecordsRequestRecords
 ]
