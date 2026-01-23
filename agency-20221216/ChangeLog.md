@@ -3,6 +3,11 @@
 - Update API ListCouponUsage: add request parameters T2PartnerUid.
 
 
+2026-01-23 Version: 1.8.1
+- Update API IssueCouponForCustomer: add request parameters ApplicationReason.
+- Update API ListCouponUsage: add request parameters T2PartnerUid.
+
+
 2025-11-27 Version: 1.8.0
 - Support API GetPurchaseControlRecord.
 - Support API GetShutdownPolicyRecord.
