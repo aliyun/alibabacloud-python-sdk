@@ -38,7 +38,7 @@ class RuleInfo(DaraModel):
         modify_type: int = None,
         name: str = None,
         operation_mode: int = None,
-        preq_rule: List[main_models.RuleInfoPreqRule] = None,
+        preq_rule: main_models.RuleInfoPreqRule = None,
         quality_check_type: int = None,
         rid: str = None,
         rule_category_name: str = None,
@@ -130,9 +130,7 @@ class RuleInfo(DaraModel):
                  if v1:
                     v1.validate()
         if self.preq_rule:
-            for v1 in self.preq_rule:
-                 if v1:
-                    v1.validate()
+            self.preq_rule.validate()
         if self.scheme_check_type:
             self.scheme_check_type.validate()
 
@@ -227,10 +225,8 @@ class RuleInfo(DaraModel):
         if self.operation_mode is not None:
             result['OperationMode'] = self.operation_mode
 
-        result['PreqRule'] = []
         if self.preq_rule is not None:
-            for k1 in self.preq_rule:
-                result['PreqRule'].append(k1.to_map() if k1 else None)
+            result['PreqRule'] = self.preq_rule.to_map()
 
         if self.quality_check_type is not None:
             result['QualityCheckType'] = self.quality_check_type
@@ -404,11 +400,9 @@ class RuleInfo(DaraModel):
         if m.get('OperationMode') is not None:
             self.operation_mode = m.get('OperationMode')
 
-        self.preq_rule = []
         if m.get('PreqRule') is not None:
-            for k1 in m.get('PreqRule'):
-                temp_model = main_models.RuleInfoPreqRule()
-                self.preq_rule.append(temp_model.from_map(k1))
+            temp_model = main_models.RuleInfoPreqRule()
+            self.preq_rule = temp_model.from_map(m.get('PreqRule'))
 
         if m.get('QualityCheckType') is not None:
             self.quality_check_type = m.get('QualityCheckType')
