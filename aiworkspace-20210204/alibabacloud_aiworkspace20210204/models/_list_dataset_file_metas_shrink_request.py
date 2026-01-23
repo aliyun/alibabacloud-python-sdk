@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ListDatasetFileMetasShrinkRequest(DaraModel):
     def __init__(
         self,
+        dataset_file_meta_ids_shrink: str = None,
         dataset_version: str = None,
         end_file_update_time: str = None,
         end_tag_update_time: str = None,
@@ -35,6 +36,7 @@ class ListDatasetFileMetasShrinkRequest(DaraModel):
         top_k: int = None,
         workspace_id: str = None,
     ):
+        self.dataset_file_meta_ids_shrink = dataset_file_meta_ids_shrink
         # The dataset version.
         # 
         # This parameter is required.
@@ -104,6 +106,9 @@ class ListDatasetFileMetasShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.dataset_file_meta_ids_shrink is not None:
+            result['DatasetFileMetaIds'] = self.dataset_file_meta_ids_shrink
+
         if self.dataset_version is not None:
             result['DatasetVersion'] = self.dataset_version
 
@@ -189,6 +194,9 @@ class ListDatasetFileMetasShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DatasetFileMetaIds') is not None:
+            self.dataset_file_meta_ids_shrink = m.get('DatasetFileMetaIds')
+
         if m.get('DatasetVersion') is not None:
             self.dataset_version = m.get('DatasetVersion')
 

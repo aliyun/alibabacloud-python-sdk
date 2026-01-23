@@ -5993,6 +5993,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ListDatasetFileMetasShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dataset_file_meta_ids):
+            request.dataset_file_meta_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_file_meta_ids, 'DatasetFileMetaIds', 'simple')
         if not DaraCore.is_null(tmp_req.query_content_type_include_any):
             request.query_content_type_include_any_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_content_type_include_any, 'QueryContentTypeIncludeAny', 'simple')
         if not DaraCore.is_null(tmp_req.query_file_type_include_any):
@@ -6004,6 +6006,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.query_tags_include_any):
             request.query_tags_include_any_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_tags_include_any, 'QueryTagsIncludeAny', 'simple')
         query = {}
+        if not DaraCore.is_null(request.dataset_file_meta_ids_shrink):
+            query['DatasetFileMetaIds'] = request.dataset_file_meta_ids_shrink
         if not DaraCore.is_null(request.dataset_version):
             query['DatasetVersion'] = request.dataset_version
         if not DaraCore.is_null(request.end_file_update_time):
@@ -6088,6 +6092,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ListDatasetFileMetasShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dataset_file_meta_ids):
+            request.dataset_file_meta_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_file_meta_ids, 'DatasetFileMetaIds', 'simple')
         if not DaraCore.is_null(tmp_req.query_content_type_include_any):
             request.query_content_type_include_any_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_content_type_include_any, 'QueryContentTypeIncludeAny', 'simple')
         if not DaraCore.is_null(tmp_req.query_file_type_include_any):
@@ -6099,6 +6105,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.query_tags_include_any):
             request.query_tags_include_any_shrink = Utils.array_to_string_with_specified_style(tmp_req.query_tags_include_any, 'QueryTagsIncludeAny', 'simple')
         query = {}
+        if not DaraCore.is_null(request.dataset_file_meta_ids_shrink):
+            query['DatasetFileMetaIds'] = request.dataset_file_meta_ids_shrink
         if not DaraCore.is_null(request.dataset_version):
             query['DatasetVersion'] = request.dataset_version
         if not DaraCore.is_null(request.end_file_update_time):
