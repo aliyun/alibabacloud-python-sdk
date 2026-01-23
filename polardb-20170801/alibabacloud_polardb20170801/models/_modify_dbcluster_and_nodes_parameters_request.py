@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ModifyDBClusterAndNodesParametersRequest(DaraModel):
     def __init__(
         self,
+        clear_binlog: bool = None,
         dbcluster_id: str = None,
         dbnode_ids: str = None,
         from_time_service: bool = None,
@@ -20,6 +21,7 @@ class ModifyDBClusterAndNodesParametersRequest(DaraModel):
         resource_owner_id: int = None,
         standby_cluster_id_list_need_to_sync: str = None,
     ):
+        self.clear_binlog = clear_binlog
         # The ID of the cluster.
         # 
         # This parameter is required.
@@ -68,6 +70,9 @@ class ModifyDBClusterAndNodesParametersRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.clear_binlog is not None:
+            result['ClearBinlog'] = self.clear_binlog
+
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
@@ -108,6 +113,9 @@ class ModifyDBClusterAndNodesParametersRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClearBinlog') is not None:
+            self.clear_binlog = m.get('ClearBinlog')
+
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
 

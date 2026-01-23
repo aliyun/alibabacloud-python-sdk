@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ModifyDBClusterParametersRequest(DaraModel):
     def __init__(
         self,
+        clear_binlog: bool = None,
         dbcluster_id: str = None,
         from_time_service: bool = None,
         owner_account: str = None,
@@ -18,6 +19,7 @@ class ModifyDBClusterParametersRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.clear_binlog = clear_binlog
         # The ID of the cluster.
         # 
         # > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to query information about all clusters that are deployed in a specified region, such as the cluster ID.
@@ -76,6 +78,9 @@ class ModifyDBClusterParametersRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.clear_binlog is not None:
+            result['ClearBinlog'] = self.clear_binlog
+
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
@@ -110,6 +115,9 @@ class ModifyDBClusterParametersRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClearBinlog') is not None:
+            self.clear_binlog = m.get('ClearBinlog')
+
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')
 

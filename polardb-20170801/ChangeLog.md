@@ -1,3 +1,8 @@
+2026-01-23 Version: 6.6.1
+- Update API ModifyDBClusterAndNodesParameters: add request parameters ClearBinlog.
+- Update API ModifyDBClusterParameters: add request parameters ClearBinlog.
+
+
 2026-01-22 Version: 6.6.0
 - Support API DescribePolarAgentChatRecords.
 - Support API DescribePolarAgentSessionStatus.

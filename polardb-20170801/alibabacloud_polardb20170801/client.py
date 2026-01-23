@@ -21781,6 +21781,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDBClusterAndNodesParametersResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.clear_binlog):
+            query['ClearBinlog'] = request.clear_binlog
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.dbnode_ids):
@@ -21831,6 +21833,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDBClusterAndNodesParametersResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.clear_binlog):
+            query['ClearBinlog'] = request.clear_binlog
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.dbnode_ids):
@@ -22973,6 +22977,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDBClusterParametersResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.clear_binlog):
+            query['ClearBinlog'] = request.clear_binlog
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.from_time_service):
@@ -23019,6 +23025,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyDBClusterParametersResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.clear_binlog):
+            query['ClearBinlog'] = request.clear_binlog
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.from_time_service):
