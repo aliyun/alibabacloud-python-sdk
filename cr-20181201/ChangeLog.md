@@ -1,3 +1,7 @@
+2026-01-23 Version: 2.1.1
+- Update API ListRepoBuildRule: add response parameters Body.BuildRules.$.DestArtifactType.
+
+
 2025-11-28 Version: 2.1.0
 - Support API CreateScanRule.
 - Support API CreateStorageDomainRoutingRule.

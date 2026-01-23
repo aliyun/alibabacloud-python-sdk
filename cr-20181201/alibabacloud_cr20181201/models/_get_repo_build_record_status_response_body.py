@@ -1,0 +1,61 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class GetRepoBuildRecordStatusResponseBody(DaraModel):
+    def __init__(
+        self,
+        build_status: str = None,
+        code: str = None,
+        is_success: bool = None,
+        request_id: str = None,
+    ):
+        # The status of the image building.
+        self.build_status = build_status
+        # The return value.
+        self.code = code
+        # Indicates whether the request is successful.
+        self.is_success = is_success
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.build_status is not None:
+            result['BuildStatus'] = self.build_status
+
+        if self.code is not None:
+            result['Code'] = self.code
+
+        if self.is_success is not None:
+            result['IsSuccess'] = self.is_success
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BuildStatus') is not None:
+            self.build_status = m.get('BuildStatus')
+
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        if m.get('IsSuccess') is not None:
+            self.is_success = m.get('IsSuccess')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        return self
+
