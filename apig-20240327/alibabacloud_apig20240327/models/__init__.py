@@ -436,6 +436,7 @@ from ._create_mcp_server_request import CreateMcpServerRequestBackendConfig
 from ._create_mcp_server_request import CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices
 from ._create_mcp_server_request import CreateMcpServerRequestGrayMcpServerConfigsBackendConfig
 from ._create_mcp_server_request import CreateMcpServerRequestGrayMcpServerConfigs
+from ._create_mcp_server_request import CreateMcpServerRequestMcpServerConfig
 from ._create_mcp_server_response_body import CreateMcpServerResponseBodyData
 from ._create_plugin_attachment_response_body import CreatePluginAttachmentResponseBodyData
 from ._create_policy_response_body import CreatePolicyResponseBodyData
@@ -606,6 +607,7 @@ from ._update_mcp_server_request import UpdateMcpServerRequestBackendConfig
 from ._update_mcp_server_request import UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices
 from ._update_mcp_server_request import UpdateMcpServerRequestGrayMcpServerConfigsBackendConfig
 from ._update_mcp_server_request import UpdateMcpServerRequestGrayMcpServerConfigs
+from ._update_mcp_server_request import UpdateMcpServerRequestMcpServerConfig
 from ._update_service_request import UpdateServiceRequestHealthCheckConfig
 from ._update_service_request import UpdateServiceRequestOutlierDetectionConfig
 from ._update_service_request import UpdateServiceRequestPorts
@@ -1046,6 +1048,7 @@ __all__ = [
     CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices,
     CreateMcpServerRequestGrayMcpServerConfigsBackendConfig,
     CreateMcpServerRequestGrayMcpServerConfigs,
+    CreateMcpServerRequestMcpServerConfig,
     CreateMcpServerResponseBodyData,
     CreatePluginAttachmentResponseBodyData,
     CreatePolicyResponseBodyData,
@@ -1216,6 +1219,7 @@ __all__ = [
     UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices,
     UpdateMcpServerRequestGrayMcpServerConfigsBackendConfig,
     UpdateMcpServerRequestGrayMcpServerConfigs,
+    UpdateMcpServerRequestMcpServerConfig,
     UpdateServiceRequestHealthCheckConfig,
     UpdateServiceRequestOutlierDetectionConfig,
     UpdateServiceRequestPorts,

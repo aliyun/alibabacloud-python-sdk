@@ -18,6 +18,7 @@ class UpdateMcpServerRequest(DaraModel):
         exposed_uri_path: str = None,
         gray_mcp_server_configs: List[main_models.UpdateMcpServerRequestGrayMcpServerConfigs] = None,
         match: main_models.HttpRouteMatch = None,
+        mcp_server_config: main_models.UpdateMcpServerRequestMcpServerConfig = None,
         mcp_statistics_enable: bool = None,
         protocol: str = None,
         type: str = None,
@@ -37,6 +38,7 @@ class UpdateMcpServerRequest(DaraModel):
         self.gray_mcp_server_configs = gray_mcp_server_configs
         # The route match rule.
         self.match = match
+        self.mcp_server_config = mcp_server_config
         # Specifies if MCP observability is enabled. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
         # The service protocol. Valid values: HTTP, HTTPS, SSE, and StreamableHTTP.
@@ -61,6 +63,8 @@ class UpdateMcpServerRequest(DaraModel):
                     v1.validate()
         if self.match:
             self.match.validate()
+        if self.mcp_server_config:
+            self.mcp_server_config.validate()
 
     def to_map(self):
         result = dict()
@@ -94,6 +98,9 @@ class UpdateMcpServerRequest(DaraModel):
 
         if self.match is not None:
             result['match'] = self.match.to_map()
+
+        if self.mcp_server_config is not None:
+            result['mcpServerConfig'] = self.mcp_server_config.to_map()
 
         if self.mcp_statistics_enable is not None:
             result['mcpStatisticsEnable'] = self.mcp_statistics_enable
@@ -140,6 +147,10 @@ class UpdateMcpServerRequest(DaraModel):
             temp_model = main_models.HttpRouteMatch()
             self.match = temp_model.from_map(m.get('match'))
 
+        if m.get('mcpServerConfig') is not None:
+            temp_model = main_models.UpdateMcpServerRequestMcpServerConfig()
+            self.mcp_server_config = temp_model.from_map(m.get('mcpServerConfig'))
+
         if m.get('mcpStatisticsEnable') is not None:
             self.mcp_statistics_enable = m.get('mcpStatisticsEnable')
 
@@ -148,6 +159,41 @@ class UpdateMcpServerRequest(DaraModel):
 
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        return self
+
+class UpdateMcpServerRequestMcpServerConfig(DaraModel):
+    def __init__(
+        self,
+        mcp_server_spec: str = None,
+        swagger_config: str = None,
+    ):
+        self.mcp_server_spec = mcp_server_spec
+        self.swagger_config = swagger_config
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.mcp_server_spec is not None:
+            result['mcpServerSpec'] = self.mcp_server_spec
+
+        if self.swagger_config is not None:
+            result['swaggerConfig'] = self.swagger_config
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('mcpServerSpec') is not None:
+            self.mcp_server_spec = m.get('mcpServerSpec')
+
+        if m.get('swaggerConfig') is not None:
+            self.swagger_config = m.get('swaggerConfig')
 
         return self
 

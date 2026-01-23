@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from alibabacloud_apig20240327 import models as main_models
 from darabonba.model import DaraModel
 
@@ -65,7 +67,7 @@ class GetConsumerResponseBody(DaraModel):
 class GetConsumerResponseBodyData(DaraModel):
     def __init__(
         self,
-        ak_sk_identity_configs: main_models.AkSkIdentityConfig = None,
+        ak_sk_identity_configs: List[main_models.AkSkIdentityConfig] = None,
         api_key_identity_config: main_models.ApiKeyIdentityConfig = None,
         consumer_id: str = None,
         create_timestamp: int = None,
@@ -99,7 +101,9 @@ class GetConsumerResponseBodyData(DaraModel):
 
     def validate(self):
         if self.ak_sk_identity_configs:
-            self.ak_sk_identity_configs.validate()
+            for v1 in self.ak_sk_identity_configs:
+                 if v1:
+                    v1.validate()
         if self.api_key_identity_config:
             self.api_key_identity_config.validate()
         if self.jwt_identity_config:
@@ -110,8 +114,10 @@ class GetConsumerResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['akSkIdentityConfigs'] = []
         if self.ak_sk_identity_configs is not None:
-            result['akSkIdentityConfigs'] = self.ak_sk_identity_configs.to_map()
+            for k1 in self.ak_sk_identity_configs:
+                result['akSkIdentityConfigs'].append(k1.to_map() if k1 else None)
 
         if self.api_key_identity_config is not None:
             result['apiKeyIdentityConfig'] = self.api_key_identity_config.to_map()
@@ -144,9 +150,11 @@ class GetConsumerResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.ak_sk_identity_configs = []
         if m.get('akSkIdentityConfigs') is not None:
-            temp_model = main_models.AkSkIdentityConfig()
-            self.ak_sk_identity_configs = temp_model.from_map(m.get('akSkIdentityConfigs'))
+            for k1 in m.get('akSkIdentityConfigs'):
+                temp_model = main_models.AkSkIdentityConfig()
+                self.ak_sk_identity_configs.append(temp_model.from_map(k1))
 
         if m.get('apiKeyIdentityConfig') is not None:
             temp_model = main_models.ApiKeyIdentityConfig()

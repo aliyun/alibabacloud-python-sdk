@@ -1351,6 +1351,8 @@ class Client(OpenApiClient):
             body['grayMcpServerConfigs'] = request.gray_mcp_server_configs
         if not DaraCore.is_null(request.match):
             body['match'] = request.match
+        if not DaraCore.is_null(request.mcp_server_config):
+            body['mcpServerConfig'] = request.mcp_server_config
         if not DaraCore.is_null(request.mcp_statistics_enable):
             body['mcpStatisticsEnable'] = request.mcp_statistics_enable
         if not DaraCore.is_null(request.name):
@@ -1405,6 +1407,8 @@ class Client(OpenApiClient):
             body['grayMcpServerConfigs'] = request.gray_mcp_server_configs
         if not DaraCore.is_null(request.match):
             body['match'] = request.match
+        if not DaraCore.is_null(request.mcp_server_config):
+            body['mcpServerConfig'] = request.mcp_server_config
         if not DaraCore.is_null(request.mcp_statistics_enable):
             body['mcpStatisticsEnable'] = request.mcp_statistics_enable
         if not DaraCore.is_null(request.name):
@@ -8622,6 +8626,8 @@ class Client(OpenApiClient):
             body['grayMcpServerConfigs'] = request.gray_mcp_server_configs
         if not DaraCore.is_null(request.match):
             body['match'] = request.match
+        if not DaraCore.is_null(request.mcp_server_config):
+            body['mcpServerConfig'] = request.mcp_server_config
         if not DaraCore.is_null(request.mcp_statistics_enable):
             body['mcpStatisticsEnable'] = request.mcp_statistics_enable
         if not DaraCore.is_null(request.protocol):
@@ -8673,6 +8679,8 @@ class Client(OpenApiClient):
             body['grayMcpServerConfigs'] = request.gray_mcp_server_configs
         if not DaraCore.is_null(request.match):
             body['match'] = request.match
+        if not DaraCore.is_null(request.mcp_server_config):
+            body['mcpServerConfig'] = request.mcp_server_config
         if not DaraCore.is_null(request.mcp_statistics_enable):
             body['mcpStatisticsEnable'] = request.mcp_statistics_enable
         if not DaraCore.is_null(request.protocol):

@@ -1,3 +1,8 @@
+2026-01-23 Version: 6.0.0
+- Update API GetConsumer: update response parameters Body.data.akSkIdentityConfigs' type has changed.
+- Update API GetConsumer: update response parameters Body.data.akSkIdentityConfigs' ref has changed.
+
+
 2026-01-15 Version: 5.8.0
 - Support API GetSecret.
 
