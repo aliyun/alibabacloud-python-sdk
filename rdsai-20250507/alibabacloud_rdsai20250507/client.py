@@ -56,6 +56,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.conversation_id):
             query['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.event_mode):
+            query['EventMode'] = request.event_mode
         if not DaraCore.is_null(request.inputs_shrink):
             query['Inputs'] = request.inputs_shrink
         if not DaraCore.is_null(request.parent_message_id):
@@ -103,6 +105,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.conversation_id):
             query['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.event_mode):
+            query['EventMode'] = request.event_mode
         if not DaraCore.is_null(request.inputs_shrink):
             query['Inputs'] = request.inputs_shrink
         if not DaraCore.is_null(request.parent_message_id):
@@ -150,6 +154,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.conversation_id):
             query['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.event_mode):
+            query['EventMode'] = request.event_mode
         if not DaraCore.is_null(request.inputs_shrink):
             query['Inputs'] = request.inputs_shrink
         if not DaraCore.is_null(request.parent_message_id):
@@ -188,6 +194,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.conversation_id):
             query['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.event_mode):
+            query['EventMode'] = request.event_mode
         if not DaraCore.is_null(request.inputs_shrink):
             query['Inputs'] = request.inputs_shrink
         if not DaraCore.is_null(request.parent_message_id):
@@ -1528,6 +1536,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.conversation_id):
             query['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.event_mode):
+            query['EventMode'] = request.event_mode
         if not DaraCore.is_null(request.first_id):
             query['FirstId'] = request.first_id
         if not DaraCore.is_null(request.limit):
@@ -1560,6 +1570,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.conversation_id):
             query['ConversationId'] = request.conversation_id
+        if not DaraCore.is_null(request.event_mode):
+            query['EventMode'] = request.event_mode
         if not DaraCore.is_null(request.first_id):
             query['FirstId'] = request.first_id
         if not DaraCore.is_null(request.limit):
@@ -2256,6 +2268,104 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyInstanceStorageConfigResponse:
         runtime = RuntimeOptions()
         return await self.modify_instance_storage_config_with_options_async(request, runtime)
+
+    def modify_instances_sslwith_options(
+        self,
+        tmp_req: main_models.ModifyInstancesSSLRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyInstancesSSLResponse:
+        tmp_req.validate()
+        request = main_models.ModifyInstancesSSLShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_names):
+            request.instance_names_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_names, 'InstanceNames', 'json')
+        query = {}
+        if not DaraCore.is_null(request.catype):
+            query['CAType'] = request.catype
+        if not DaraCore.is_null(request.instance_names_shrink):
+            query['InstanceNames'] = request.instance_names_shrink
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sslenabled):
+            query['SSLEnabled'] = request.sslenabled
+        if not DaraCore.is_null(request.server_cert):
+            query['ServerCert'] = request.server_cert
+        if not DaraCore.is_null(request.server_key):
+            query['ServerKey'] = request.server_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyInstancesSSL',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyInstancesSSLResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_instances_sslwith_options_async(
+        self,
+        tmp_req: main_models.ModifyInstancesSSLRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyInstancesSSLResponse:
+        tmp_req.validate()
+        request = main_models.ModifyInstancesSSLShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_names):
+            request.instance_names_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_names, 'InstanceNames', 'json')
+        query = {}
+        if not DaraCore.is_null(request.catype):
+            query['CAType'] = request.catype
+        if not DaraCore.is_null(request.instance_names_shrink):
+            query['InstanceNames'] = request.instance_names_shrink
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.sslenabled):
+            query['SSLEnabled'] = request.sslenabled
+        if not DaraCore.is_null(request.server_cert):
+            query['ServerCert'] = request.server_cert
+        if not DaraCore.is_null(request.server_key):
+            query['ServerKey'] = request.server_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyInstancesSSL',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyInstancesSSLResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_instances_ssl(
+        self,
+        request: main_models.ModifyInstancesSSLRequest,
+    ) -> main_models.ModifyInstancesSSLResponse:
+        runtime = RuntimeOptions()
+        return self.modify_instances_sslwith_options(request, runtime)
+
+    async def modify_instances_ssl_async(
+        self,
+        request: main_models.ModifyInstancesSSLRequest,
+    ) -> main_models.ModifyInstancesSSLResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_instances_sslwith_options_async(request, runtime)
 
     def modify_messages_feedbacks_with_options(
         self,

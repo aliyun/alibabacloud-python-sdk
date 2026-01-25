@@ -8,11 +8,13 @@ class GetMessagesRequest(DaraModel):
     def __init__(
         self,
         conversation_id: str = None,
+        event_mode: str = None,
         first_id: str = None,
         limit: int = None,
     ):
         # The operation that you want to perform. Set the value to **GetMessages**.
         self.conversation_id = conversation_id
+        self.event_mode = event_mode
         # The ID of the conversation.
         self.first_id = first_id
         # The ID of the first message.
@@ -29,6 +31,9 @@ class GetMessagesRequest(DaraModel):
         if self.conversation_id is not None:
             result['ConversationId'] = self.conversation_id
 
+        if self.event_mode is not None:
+            result['EventMode'] = self.event_mode
+
         if self.first_id is not None:
             result['FirstId'] = self.first_id
 
@@ -41,6 +46,9 @@ class GetMessagesRequest(DaraModel):
         m = m or dict()
         if m.get('ConversationId') is not None:
             self.conversation_id = m.get('ConversationId')
+
+        if m.get('EventMode') is not None:
+            self.event_mode = m.get('EventMode')
 
         if m.get('FirstId') is not None:
             self.first_id = m.get('FirstId')

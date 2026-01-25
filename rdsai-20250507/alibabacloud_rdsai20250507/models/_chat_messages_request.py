@@ -9,12 +9,14 @@ class ChatMessagesRequest(DaraModel):
     def __init__(
         self,
         conversation_id: str = None,
+        event_mode: str = None,
         inputs: main_models.ChatMessagesRequestInputs = None,
         parent_message_id: str = None,
         query: str = None,
     ):
         # The query content.
         self.conversation_id = conversation_id
+        self.event_mode = event_mode
         # The ID of the parent message.
         self.inputs = inputs
         # The ID of the conversation.
@@ -36,6 +38,9 @@ class ChatMessagesRequest(DaraModel):
         if self.conversation_id is not None:
             result['ConversationId'] = self.conversation_id
 
+        if self.event_mode is not None:
+            result['EventMode'] = self.event_mode
+
         if self.inputs is not None:
             result['Inputs'] = self.inputs.to_map()
 
@@ -51,6 +56,9 @@ class ChatMessagesRequest(DaraModel):
         m = m or dict()
         if m.get('ConversationId') is not None:
             self.conversation_id = m.get('ConversationId')
+
+        if m.get('EventMode') is not None:
+            self.event_mode = m.get('EventMode')
 
         if m.get('Inputs') is not None:
             temp_model = main_models.ChatMessagesRequestInputs()

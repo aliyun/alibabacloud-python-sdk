@@ -76,6 +76,7 @@ class GetMessagesResponseBodyData(DaraModel):
         answer: str = None,
         conversation_id: str = None,
         created_at: str = None,
+        events: List[main_models.GetMessagesResponseBodyDataEvents] = None,
         feedback: str = None,
         id: str = None,
         query: str = None,
@@ -87,6 +88,7 @@ class GetMessagesResponseBodyData(DaraModel):
         self.conversation_id = conversation_id
         # The creation time of the conversation.
         self.created_at = created_at
+        self.events = events
         # The feedback.
         self.feedback = feedback
         # The message ID.
@@ -97,7 +99,10 @@ class GetMessagesResponseBodyData(DaraModel):
         self.retriever_resources = retriever_resources
 
     def validate(self):
-        pass
+        if self.events:
+            for v1 in self.events:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -112,6 +117,11 @@ class GetMessagesResponseBodyData(DaraModel):
 
         if self.created_at is not None:
             result['CreatedAt'] = self.created_at
+
+        result['Events'] = []
+        if self.events is not None:
+            for k1 in self.events:
+                result['Events'].append(k1.to_map() if k1 else None)
 
         if self.feedback is not None:
             result['Feedback'] = self.feedback
@@ -138,6 +148,12 @@ class GetMessagesResponseBodyData(DaraModel):
         if m.get('CreatedAt') is not None:
             self.created_at = m.get('CreatedAt')
 
+        self.events = []
+        if m.get('Events') is not None:
+            for k1 in m.get('Events'):
+                temp_model = main_models.GetMessagesResponseBodyDataEvents()
+                self.events.append(temp_model.from_map(k1))
+
         if m.get('Feedback') is not None:
             self.feedback = m.get('Feedback')
 
@@ -149,6 +165,41 @@ class GetMessagesResponseBodyData(DaraModel):
 
         if m.get('RetrieverResources') is not None:
             self.retriever_resources = m.get('RetrieverResources')
+
+        return self
+
+class GetMessagesResponseBodyDataEvents(DaraModel):
+    def __init__(
+        self,
+        answer: str = None,
+        event: str = None,
+    ):
+        self.answer = answer
+        self.event = event
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.answer is not None:
+            result['answer'] = self.answer
+
+        if self.event is not None:
+            result['event'] = self.event
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('answer') is not None:
+            self.answer = m.get('answer')
+
+        if m.get('event') is not None:
+            self.event = m.get('event')
 
         return self
 

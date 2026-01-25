@@ -1,3 +1,10 @@
+2026-01-25 Version: 2.1.0
+- Support API ModifyInstancesSSL.
+- Update API ChatMessages: add request parameters EventMode.
+- Update API GetMessages: add request parameters EventMode.
+- Update API GetMessages: add response parameters Body.Data.$.Events.
+
+
 2026-01-12 Version: 2.0.4
 - Update API DescribeInstanceIpWhitelist: add request parameters GroupName.
 

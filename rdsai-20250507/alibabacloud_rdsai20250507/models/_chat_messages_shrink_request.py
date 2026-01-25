@@ -8,12 +8,14 @@ class ChatMessagesShrinkRequest(DaraModel):
     def __init__(
         self,
         conversation_id: str = None,
+        event_mode: str = None,
         inputs_shrink: str = None,
         parent_message_id: str = None,
         query: str = None,
     ):
         # The query content.
         self.conversation_id = conversation_id
+        self.event_mode = event_mode
         # The ID of the parent message.
         self.inputs_shrink = inputs_shrink
         # The ID of the conversation.
@@ -34,6 +36,9 @@ class ChatMessagesShrinkRequest(DaraModel):
         if self.conversation_id is not None:
             result['ConversationId'] = self.conversation_id
 
+        if self.event_mode is not None:
+            result['EventMode'] = self.event_mode
+
         if self.inputs_shrink is not None:
             result['Inputs'] = self.inputs_shrink
 
@@ -49,6 +54,9 @@ class ChatMessagesShrinkRequest(DaraModel):
         m = m or dict()
         if m.get('ConversationId') is not None:
             self.conversation_id = m.get('ConversationId')
+
+        if m.get('EventMode') is not None:
+            self.event_mode = m.get('EventMode')
 
         if m.get('Inputs') is not None:
             self.inputs_shrink = m.get('Inputs')
