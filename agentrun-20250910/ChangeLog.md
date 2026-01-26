@@ -1,3 +1,7 @@
+2026-01-26 Version: 5.3.3
+- Update API ListAgentRuntimes: add request parameters discoveryResourceGroupId.
+
+
 2026-01-22 Version: 5.3.2
 - Update API ListAgentRuntimes: add request parameters resourceGroupId.
 

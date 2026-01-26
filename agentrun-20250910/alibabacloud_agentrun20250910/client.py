@@ -2845,6 +2845,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.agent_runtime_name):
             query['agentRuntimeName'] = request.agent_runtime_name
+        if not DaraCore.is_null(request.discovery_resource_group_id):
+            query['discoveryResourceGroupId'] = request.discovery_resource_group_id
         if not DaraCore.is_null(request.page_number):
             query['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -2885,6 +2887,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.agent_runtime_name):
             query['agentRuntimeName'] = request.agent_runtime_name
+        if not DaraCore.is_null(request.discovery_resource_group_id):
+            query['discoveryResourceGroupId'] = request.discovery_resource_group_id
         if not DaraCore.is_null(request.page_number):
             query['pageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):

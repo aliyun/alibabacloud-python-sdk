@@ -20,10 +20,13 @@ class CreateAgentRuntimeInput(DaraModel):
         description: str = None,
         environment_variables: Dict[str, str] = None,
         execution_role_arn: str = None,
+        external_agent_endpoint_url: str = None,
         health_check_configuration: main_models.HealthCheckConfiguration = None,
         log_configuration: main_models.LogConfiguration = None,
         memory: int = None,
+        nas_config: main_models.NASConfig = None,
         network_configuration: main_models.NetworkConfiguration = None,
+        oss_mount_config: main_models.OSSMountConfig = None,
         port: int = None,
         protocol_configuration: main_models.ProtocolConfiguration = None,
         resource_group_id: str = None,
@@ -56,6 +59,8 @@ class CreateAgentRuntimeInput(DaraModel):
         self.environment_variables = environment_variables
         # 为智能体运行时提供访问云服务权限的执行角色ARN
         self.execution_role_arn = execution_role_arn
+        # 外部注册类型的智能体访问端点地址，用于连接已部署在外部的智能体服务
+        self.external_agent_endpoint_url = external_agent_endpoint_url
         # 智能体运行时的健康检查配置，用于监控运行时实例的健康状态
         self.health_check_configuration = health_check_configuration
         # SLS（简单日志服务）配置
@@ -64,10 +69,14 @@ class CreateAgentRuntimeInput(DaraModel):
         # 
         # This parameter is required.
         self.memory = memory
+        # 文件存储NAS的配置信息，用于挂载NAS文件系统到智能体运行时
+        self.nas_config = nas_config
         # 智能体运行时的网络配置，包括VPC、安全组等网络访问设置
         # 
         # This parameter is required.
         self.network_configuration = network_configuration
+        # 对象存储OSS的挂载配置信息，用于挂载OSS存储桶到智能体运行时
+        self.oss_mount_config = oss_mount_config
         # 智能体运行时监听的端口号，用于接收外部请求
         # 
         # This parameter is required.
@@ -89,8 +98,12 @@ class CreateAgentRuntimeInput(DaraModel):
             self.health_check_configuration.validate()
         if self.log_configuration:
             self.log_configuration.validate()
+        if self.nas_config:
+            self.nas_config.validate()
         if self.network_configuration:
             self.network_configuration.validate()
+        if self.oss_mount_config:
+            self.oss_mount_config.validate()
         if self.protocol_configuration:
             self.protocol_configuration.validate()
 
@@ -129,6 +142,9 @@ class CreateAgentRuntimeInput(DaraModel):
         if self.execution_role_arn is not None:
             result['executionRoleArn'] = self.execution_role_arn
 
+        if self.external_agent_endpoint_url is not None:
+            result['externalAgentEndpointUrl'] = self.external_agent_endpoint_url
+
         if self.health_check_configuration is not None:
             result['healthCheckConfiguration'] = self.health_check_configuration.to_map()
 
@@ -138,8 +154,14 @@ class CreateAgentRuntimeInput(DaraModel):
         if self.memory is not None:
             result['memory'] = self.memory
 
+        if self.nas_config is not None:
+            result['nasConfig'] = self.nas_config.to_map()
+
         if self.network_configuration is not None:
             result['networkConfiguration'] = self.network_configuration.to_map()
+
+        if self.oss_mount_config is not None:
+            result['ossMountConfig'] = self.oss_mount_config.to_map()
 
         if self.port is not None:
             result['port'] = self.port
@@ -192,6 +214,9 @@ class CreateAgentRuntimeInput(DaraModel):
         if m.get('executionRoleArn') is not None:
             self.execution_role_arn = m.get('executionRoleArn')
 
+        if m.get('externalAgentEndpointUrl') is not None:
+            self.external_agent_endpoint_url = m.get('externalAgentEndpointUrl')
+
         if m.get('healthCheckConfiguration') is not None:
             temp_model = main_models.HealthCheckConfiguration()
             self.health_check_configuration = temp_model.from_map(m.get('healthCheckConfiguration'))
@@ -203,9 +228,17 @@ class CreateAgentRuntimeInput(DaraModel):
         if m.get('memory') is not None:
             self.memory = m.get('memory')
 
+        if m.get('nasConfig') is not None:
+            temp_model = main_models.NASConfig()
+            self.nas_config = temp_model.from_map(m.get('nasConfig'))
+
         if m.get('networkConfiguration') is not None:
             temp_model = main_models.NetworkConfiguration()
             self.network_configuration = temp_model.from_map(m.get('networkConfiguration'))
+
+        if m.get('ossMountConfig') is not None:
+            temp_model = main_models.OSSMountConfig()
+            self.oss_mount_config = temp_model.from_map(m.get('ossMountConfig'))
 
         if m.get('port') is not None:
             self.port = m.get('port')
