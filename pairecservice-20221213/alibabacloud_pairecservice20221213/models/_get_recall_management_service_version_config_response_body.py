@@ -110,6 +110,7 @@ class GetRecallManagementServiceVersionConfigResponseBodyRecallConfig(DaraModel)
         description: str = None,
         extended_config: str = None,
         item_condition_array: str = None,
+        item_condition_expression: str = None,
         item_vector_field: str = None,
         item_vector_recall_management_table_id: str = None,
         name: str = None,
@@ -123,6 +124,7 @@ class GetRecallManagementServiceVersionConfigResponseBodyRecallConfig(DaraModel)
         self.description = description
         self.extended_config = extended_config
         self.item_condition_array = item_condition_array
+        self.item_condition_expression = item_condition_expression
         self.item_vector_field = item_vector_field
         self.item_vector_recall_management_table_id = item_vector_recall_management_table_id
         self.name = name
@@ -152,6 +154,9 @@ class GetRecallManagementServiceVersionConfigResponseBodyRecallConfig(DaraModel)
 
         if self.item_condition_array is not None:
             result['ItemConditionArray'] = self.item_condition_array
+
+        if self.item_condition_expression is not None:
+            result['ItemConditionExpression'] = self.item_condition_expression
 
         if self.item_vector_field is not None:
             result['ItemVectorField'] = self.item_vector_field
@@ -194,6 +199,9 @@ class GetRecallManagementServiceVersionConfigResponseBodyRecallConfig(DaraModel)
 
         if m.get('ItemConditionArray') is not None:
             self.item_condition_array = m.get('ItemConditionArray')
+
+        if m.get('ItemConditionExpression') is not None:
+            self.item_condition_expression = m.get('ItemConditionExpression')
 
         if m.get('ItemVectorField') is not None:
             self.item_vector_field = m.get('ItemVectorField')

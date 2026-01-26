@@ -12,12 +12,14 @@ class PublishRecallManagementTableRequest(DaraModel):
         instance_id: str = None,
         mode: str = None,
         partition: Dict[str, str] = None,
+        partitions: Dict[str, str] = None,
         skip_threshold_check: bool = None,
     ):
         # This parameter is required.
         self.instance_id = instance_id
         self.mode = mode
         self.partition = partition
+        self.partitions = partitions
         self.skip_threshold_check = skip_threshold_check
 
     def validate(self):
@@ -37,6 +39,9 @@ class PublishRecallManagementTableRequest(DaraModel):
         if self.partition is not None:
             result['Partition'] = self.partition
 
+        if self.partitions is not None:
+            result['Partitions'] = self.partitions
+
         if self.skip_threshold_check is not None:
             result['SkipThresholdCheck'] = self.skip_threshold_check
 
@@ -52,6 +57,9 @@ class PublishRecallManagementTableRequest(DaraModel):
 
         if m.get('Partition') is not None:
             self.partition = m.get('Partition')
+
+        if m.get('Partitions') is not None:
+            self.partitions = m.get('Partitions')
 
         if m.get('SkipThresholdCheck') is not None:
             self.skip_threshold_check = m.get('SkipThresholdCheck')
