@@ -415,6 +415,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.apply_certificate_with_options_async(request, runtime)
 
+    def apply_custom_hostname_certificate_with_options(
+        self,
+        request: main_models.ApplyCustomHostnameCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ApplyCustomHostnameCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hostname_id):
+            query['HostnameId'] = request.hostname_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ApplyCustomHostnameCertificate',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ApplyCustomHostnameCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_custom_hostname_certificate_with_options_async(
+        self,
+        request: main_models.ApplyCustomHostnameCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ApplyCustomHostnameCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hostname_id):
+            query['HostnameId'] = request.hostname_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ApplyCustomHostnameCertificate',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ApplyCustomHostnameCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_custom_hostname_certificate(
+        self,
+        request: main_models.ApplyCustomHostnameCertificateRequest,
+    ) -> main_models.ApplyCustomHostnameCertificateResponse:
+        runtime = RuntimeOptions()
+        return self.apply_custom_hostname_certificate_with_options(request, runtime)
+
+    async def apply_custom_hostname_certificate_async(
+        self,
+        request: main_models.ApplyCustomHostnameCertificateRequest,
+    ) -> main_models.ApplyCustomHostnameCertificateResponse:
+        runtime = RuntimeOptions()
+        return await self.apply_custom_hostname_certificate_with_options_async(request, runtime)
+
     def batch_create_records_with_options(
         self,
         tmp_req: main_models.BatchCreateRecordsRequest,
@@ -2244,6 +2314,108 @@ class Client(OpenApiClient):
     ) -> main_models.CreateCompressionRuleResponse:
         runtime = RuntimeOptions()
         return await self.create_compression_rule_with_options_async(request, runtime)
+
+    def create_custom_hostname_with_options(
+        self,
+        request: main_models.CreateCustomHostnameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomHostnameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cas_id):
+            query['CasId'] = request.cas_id
+        if not DaraCore.is_null(request.cas_region):
+            query['CasRegion'] = request.cas_region
+        if not DaraCore.is_null(request.cert_type):
+            query['CertType'] = request.cert_type
+        if not DaraCore.is_null(request.certificate):
+            query['Certificate'] = request.certificate
+        if not DaraCore.is_null(request.hostname):
+            query['Hostname'] = request.hostname
+        if not DaraCore.is_null(request.private_key):
+            query['PrivateKey'] = request.private_key
+        if not DaraCore.is_null(request.record_id):
+            query['RecordId'] = request.record_id
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.ssl_flag):
+            query['SslFlag'] = request.ssl_flag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomHostname',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomHostnameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_custom_hostname_with_options_async(
+        self,
+        request: main_models.CreateCustomHostnameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomHostnameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cas_id):
+            query['CasId'] = request.cas_id
+        if not DaraCore.is_null(request.cas_region):
+            query['CasRegion'] = request.cas_region
+        if not DaraCore.is_null(request.cert_type):
+            query['CertType'] = request.cert_type
+        if not DaraCore.is_null(request.certificate):
+            query['Certificate'] = request.certificate
+        if not DaraCore.is_null(request.hostname):
+            query['Hostname'] = request.hostname
+        if not DaraCore.is_null(request.private_key):
+            query['PrivateKey'] = request.private_key
+        if not DaraCore.is_null(request.record_id):
+            query['RecordId'] = request.record_id
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.ssl_flag):
+            query['SslFlag'] = request.ssl_flag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomHostname',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomHostnameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_custom_hostname(
+        self,
+        request: main_models.CreateCustomHostnameRequest,
+    ) -> main_models.CreateCustomHostnameResponse:
+        runtime = RuntimeOptions()
+        return self.create_custom_hostname_with_options(request, runtime)
+
+    async def create_custom_hostname_async(
+        self,
+        request: main_models.CreateCustomHostnameRequest,
+    ) -> main_models.CreateCustomHostnameResponse:
+        runtime = RuntimeOptions()
+        return await self.create_custom_hostname_with_options_async(request, runtime)
 
     def create_custom_scene_policy_with_options(
         self,
@@ -7144,6 +7316,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteCompressionRuleResponse:
         runtime = RuntimeOptions()
         return await self.delete_compression_rule_with_options_async(request, runtime)
+
+    def delete_custom_hostname_with_options(
+        self,
+        request: main_models.DeleteCustomHostnameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomHostnameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hostname_id):
+            query['HostnameId'] = request.hostname_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomHostname',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCustomHostnameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_custom_hostname_with_options_async(
+        self,
+        request: main_models.DeleteCustomHostnameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomHostnameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hostname_id):
+            query['HostnameId'] = request.hostname_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomHostname',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCustomHostnameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_custom_hostname(
+        self,
+        request: main_models.DeleteCustomHostnameRequest,
+    ) -> main_models.DeleteCustomHostnameResponse:
+        runtime = RuntimeOptions()
+        return self.delete_custom_hostname_with_options(request, runtime)
+
+    async def delete_custom_hostname_async(
+        self,
+        request: main_models.DeleteCustomHostnameRequest,
+    ) -> main_models.DeleteCustomHostnameResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_custom_hostname_with_options_async(request, runtime)
 
     def delete_custom_scene_policy_with_options(
         self,
@@ -13063,6 +13305,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_cross_border_optimization_with_options_async(request, runtime)
 
+    def get_custom_hostname_with_options(
+        self,
+        request: main_models.GetCustomHostnameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomHostnameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hostname_id):
+            query['HostnameId'] = request.hostname_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCustomHostname',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCustomHostnameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_custom_hostname_with_options_async(
+        self,
+        request: main_models.GetCustomHostnameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomHostnameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hostname_id):
+            query['HostnameId'] = request.hostname_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCustomHostname',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCustomHostnameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_custom_hostname(
+        self,
+        request: main_models.GetCustomHostnameRequest,
+    ) -> main_models.GetCustomHostnameResponse:
+        runtime = RuntimeOptions()
+        return self.get_custom_hostname_with_options(request, runtime)
+
+    async def get_custom_hostname_async(
+        self,
+        request: main_models.GetCustomHostnameRequest,
+    ) -> main_models.GetCustomHostnameResponse:
+        runtime = RuntimeOptions()
+        return await self.get_custom_hostname_with_options_async(request, runtime)
+
     def get_development_mode_with_options(
         self,
         request: main_models.GetDevelopmentModeRequest,
@@ -18392,6 +18704,100 @@ class Client(OpenApiClient):
     ) -> main_models.ListCompressionRulesResponse:
         runtime = RuntimeOptions()
         return await self.list_compression_rules_with_options_async(request, runtime)
+
+    def list_custom_hostnames_with_options(
+        self,
+        request: main_models.ListCustomHostnamesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCustomHostnamesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hostname):
+            query['Hostname'] = request.hostname
+        if not DaraCore.is_null(request.name_match_type):
+            query['NameMatchType'] = request.name_match_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.record_id):
+            query['RecordId'] = request.record_id
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCustomHostnames',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCustomHostnamesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_custom_hostnames_with_options_async(
+        self,
+        request: main_models.ListCustomHostnamesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCustomHostnamesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hostname):
+            query['Hostname'] = request.hostname
+        if not DaraCore.is_null(request.name_match_type):
+            query['NameMatchType'] = request.name_match_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.record_id):
+            query['RecordId'] = request.record_id
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCustomHostnames',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCustomHostnamesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_custom_hostnames(
+        self,
+        request: main_models.ListCustomHostnamesRequest,
+    ) -> main_models.ListCustomHostnamesResponse:
+        runtime = RuntimeOptions()
+        return self.list_custom_hostnames_with_options(request, runtime)
+
+    async def list_custom_hostnames_async(
+        self,
+        request: main_models.ListCustomHostnamesRequest,
+    ) -> main_models.ListCustomHostnamesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_custom_hostnames_with_options_async(request, runtime)
 
     def list_esaipinfo_with_options(
         self,
@@ -25625,6 +26031,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.update_cross_border_optimization_with_options_async(request, runtime)
 
+    def update_custom_hostname_with_options(
+        self,
+        request: main_models.UpdateCustomHostnameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCustomHostnameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cas_id):
+            query['CasId'] = request.cas_id
+        if not DaraCore.is_null(request.cas_region):
+            query['CasRegion'] = request.cas_region
+        if not DaraCore.is_null(request.cert_type):
+            query['CertType'] = request.cert_type
+        if not DaraCore.is_null(request.certificate):
+            query['Certificate'] = request.certificate
+        if not DaraCore.is_null(request.hostname_id):
+            query['HostnameId'] = request.hostname_id
+        if not DaraCore.is_null(request.private_key):
+            query['PrivateKey'] = request.private_key
+        if not DaraCore.is_null(request.record_id):
+            query['RecordId'] = request.record_id
+        if not DaraCore.is_null(request.ssl_flag):
+            query['SslFlag'] = request.ssl_flag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCustomHostname',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCustomHostnameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_custom_hostname_with_options_async(
+        self,
+        request: main_models.UpdateCustomHostnameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCustomHostnameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cas_id):
+            query['CasId'] = request.cas_id
+        if not DaraCore.is_null(request.cas_region):
+            query['CasRegion'] = request.cas_region
+        if not DaraCore.is_null(request.cert_type):
+            query['CertType'] = request.cert_type
+        if not DaraCore.is_null(request.certificate):
+            query['Certificate'] = request.certificate
+        if not DaraCore.is_null(request.hostname_id):
+            query['HostnameId'] = request.hostname_id
+        if not DaraCore.is_null(request.private_key):
+            query['PrivateKey'] = request.private_key
+        if not DaraCore.is_null(request.record_id):
+            query['RecordId'] = request.record_id
+        if not DaraCore.is_null(request.ssl_flag):
+            query['SslFlag'] = request.ssl_flag
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCustomHostname',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCustomHostnameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_custom_hostname(
+        self,
+        request: main_models.UpdateCustomHostnameRequest,
+    ) -> main_models.UpdateCustomHostnameResponse:
+        runtime = RuntimeOptions()
+        return self.update_custom_hostname_with_options(request, runtime)
+
+    async def update_custom_hostname_async(
+        self,
+        request: main_models.UpdateCustomHostnameRequest,
+    ) -> main_models.UpdateCustomHostnameResponse:
+        runtime = RuntimeOptions()
+        return await self.update_custom_hostname_with_options_async(request, runtime)
+
     def update_custom_scene_policy_with_options(
         self,
         request: main_models.UpdateCustomScenePolicyRequest,
@@ -30898,6 +31402,76 @@ class Client(OpenApiClient):
     ) -> main_models.UploadSiteOriginClientCertificateResponse:
         runtime = RuntimeOptions()
         return await self.upload_site_origin_client_certificate_with_options_async(request, runtime)
+
+    def verify_custom_hostname_with_options(
+        self,
+        request: main_models.VerifyCustomHostnameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyCustomHostnameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hostname_id):
+            query['HostnameId'] = request.hostname_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyCustomHostname',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyCustomHostnameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def verify_custom_hostname_with_options_async(
+        self,
+        request: main_models.VerifyCustomHostnameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.VerifyCustomHostnameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.hostname_id):
+            query['HostnameId'] = request.hostname_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'VerifyCustomHostname',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.VerifyCustomHostnameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def verify_custom_hostname(
+        self,
+        request: main_models.VerifyCustomHostnameRequest,
+    ) -> main_models.VerifyCustomHostnameResponse:
+        runtime = RuntimeOptions()
+        return self.verify_custom_hostname_with_options(request, runtime)
+
+    async def verify_custom_hostname_async(
+        self,
+        request: main_models.VerifyCustomHostnameRequest,
+    ) -> main_models.VerifyCustomHostnameResponse:
+        runtime = RuntimeOptions()
+        return await self.verify_custom_hostname_with_options_async(request, runtime)
 
     def verify_site_with_options(
         self,

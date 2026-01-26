@@ -1,3 +1,13 @@
+2026-01-26 Version: 2.37.0
+- Support API ApplyCustomHostnameCertificate.
+- Support API CreateCustomHostname.
+- Support API DeleteCustomHostname.
+- Support API GetCustomHostname.
+- Support API ListCustomHostnames.
+- Support API UpdateCustomHostname.
+- Support API VerifyCustomHostname.
+
+
 2026-01-22 Version: 2.36.1
 - Update API GetCertificate: add response parameters Body.Result.KeyServerId.
 - Update API ListCertificates: add response parameters Body.Result.$.KeyServerId.

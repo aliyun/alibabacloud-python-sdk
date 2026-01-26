@@ -25,6 +25,9 @@ from ._activate_version_management_response import ActivateVersionManagementResp
 from ._apply_certificate_request import ApplyCertificateRequest
 from ._apply_certificate_response_body import ApplyCertificateResponseBody
 from ._apply_certificate_response import ApplyCertificateResponse
+from ._apply_custom_hostname_certificate_request import ApplyCustomHostnameCertificateRequest
+from ._apply_custom_hostname_certificate_response_body import ApplyCustomHostnameCertificateResponseBody
+from ._apply_custom_hostname_certificate_response import ApplyCustomHostnameCertificateResponse
 from ._batch_create_records_request import BatchCreateRecordsRequest
 from ._batch_create_records_shrink_request import BatchCreateRecordsShrinkRequest
 from ._batch_create_records_response_body import BatchCreateRecordsResponseBody
@@ -84,6 +87,9 @@ from ._create_client_certificate_response import CreateClientCertificateResponse
 from ._create_compression_rule_request import CreateCompressionRuleRequest
 from ._create_compression_rule_response_body import CreateCompressionRuleResponseBody
 from ._create_compression_rule_response import CreateCompressionRuleResponse
+from ._create_custom_hostname_request import CreateCustomHostnameRequest
+from ._create_custom_hostname_response_body import CreateCustomHostnameResponseBody
+from ._create_custom_hostname_response import CreateCustomHostnameResponse
 from ._create_custom_scene_policy_request import CreateCustomScenePolicyRequest
 from ._create_custom_scene_policy_response_body import CreateCustomScenePolicyResponseBody
 from ._create_custom_scene_policy_response import CreateCustomScenePolicyResponse
@@ -252,6 +258,9 @@ from ._delete_client_certificate_response import DeleteClientCertificateResponse
 from ._delete_compression_rule_request import DeleteCompressionRuleRequest
 from ._delete_compression_rule_response_body import DeleteCompressionRuleResponseBody
 from ._delete_compression_rule_response import DeleteCompressionRuleResponse
+from ._delete_custom_hostname_request import DeleteCustomHostnameRequest
+from ._delete_custom_hostname_response_body import DeleteCustomHostnameResponseBody
+from ._delete_custom_hostname_response import DeleteCustomHostnameResponse
 from ._delete_custom_scene_policy_request import DeleteCustomScenePolicyRequest
 from ._delete_custom_scene_policy_response_body import DeleteCustomScenePolicyResponseBody
 from ._delete_custom_scene_policy_response import DeleteCustomScenePolicyResponse
@@ -496,6 +505,9 @@ from ._get_compression_rule_response import GetCompressionRuleResponse
 from ._get_cross_border_optimization_request import GetCrossBorderOptimizationRequest
 from ._get_cross_border_optimization_response_body import GetCrossBorderOptimizationResponseBody
 from ._get_cross_border_optimization_response import GetCrossBorderOptimizationResponse
+from ._get_custom_hostname_request import GetCustomHostnameRequest
+from ._get_custom_hostname_response_body import GetCustomHostnameResponseBody
+from ._get_custom_hostname_response import GetCustomHostnameResponse
 from ._get_development_mode_request import GetDevelopmentModeRequest
 from ._get_development_mode_response_body import GetDevelopmentModeResponseBody
 from ._get_development_mode_response import GetDevelopmentModeResponse
@@ -729,6 +741,9 @@ from ._list_client_certificates_response import ListClientCertificatesResponse
 from ._list_compression_rules_request import ListCompressionRulesRequest
 from ._list_compression_rules_response_body import ListCompressionRulesResponseBody
 from ._list_compression_rules_response import ListCompressionRulesResponse
+from ._list_custom_hostnames_request import ListCustomHostnamesRequest
+from ._list_custom_hostnames_response_body import ListCustomHostnamesResponseBody
+from ._list_custom_hostnames_response import ListCustomHostnamesResponse
 from ._list_esaipinfo_request import ListESAIPInfoRequest
 from ._list_esaipinfo_response_body import ListESAIPInfoResponseBody
 from ._list_esaipinfo_response import ListESAIPInfoResponse
@@ -1014,6 +1029,9 @@ from ._update_compression_rule_response import UpdateCompressionRuleResponse
 from ._update_cross_border_optimization_request import UpdateCrossBorderOptimizationRequest
 from ._update_cross_border_optimization_response_body import UpdateCrossBorderOptimizationResponseBody
 from ._update_cross_border_optimization_response import UpdateCrossBorderOptimizationResponse
+from ._update_custom_hostname_request import UpdateCustomHostnameRequest
+from ._update_custom_hostname_response_body import UpdateCustomHostnameResponseBody
+from ._update_custom_hostname_response import UpdateCustomHostnameResponse
 from ._update_custom_scene_policy_request import UpdateCustomScenePolicyRequest
 from ._update_custom_scene_policy_response_body import UpdateCustomScenePolicyResponseBody
 from ._update_custom_scene_policy_response import UpdateCustomScenePolicyResponse
@@ -1191,6 +1209,9 @@ from ._upload_origin_client_certificate_response import UploadOriginClientCertif
 from ._upload_site_origin_client_certificate_request import UploadSiteOriginClientCertificateRequest
 from ._upload_site_origin_client_certificate_response_body import UploadSiteOriginClientCertificateResponseBody
 from ._upload_site_origin_client_certificate_response import UploadSiteOriginClientCertificateResponse
+from ._verify_custom_hostname_request import VerifyCustomHostnameRequest
+from ._verify_custom_hostname_response_body import VerifyCustomHostnameResponseBody
+from ._verify_custom_hostname_response import VerifyCustomHostnameResponse
 from ._verify_site_request import VerifySiteRequest
 from ._verify_site_response_body import VerifySiteResponseBody
 from ._verify_site_response import VerifySiteResponse
@@ -1307,6 +1328,7 @@ from ._get_certificate_response_body import GetCertificateResponseBodyResult
 from ._get_certificate_quota_response_body import GetCertificateQuotaResponseBodySiteUsage
 from ._get_client_ca_certificate_response_body import GetClientCaCertificateResponseBodyResult
 from ._get_client_certificate_response_body import GetClientCertificateResponseBodyResult
+from ._get_custom_hostname_response_body import GetCustomHostnameResponseBodyCustomHostnameModel
 from ._get_edge_container_app_response_body import GetEdgeContainerAppResponseBodyAppHealthCheck
 from ._get_edge_container_app_response_body import GetEdgeContainerAppResponseBodyApp
 from ._get_edge_container_app_resource_capacity_response_body import GetEdgeContainerAppResourceCapacityResponseBodyRegions
@@ -1394,6 +1416,7 @@ from ._list_certificates_by_record_response_body import ListCertificatesByRecord
 from ._list_client_ca_certificates_response_body import ListClientCaCertificatesResponseBodyResult
 from ._list_client_certificates_response_body import ListClientCertificatesResponseBodyResult
 from ._list_compression_rules_response_body import ListCompressionRulesResponseBodyConfigs
+from ._list_custom_hostnames_response_body import ListCustomHostnamesResponseBodyHostnames
 from ._list_esaipinfo_response_body import ListESAIPInfoResponseBodyContent
 from ._list_edge_container_app_image_secrets_response_body import ListEdgeContainerAppImageSecretsResponseBodyImageSecretList
 from ._list_edge_container_app_records_response_body import ListEdgeContainerAppRecordsResponseBodyRecords
@@ -1537,6 +1560,9 @@ __all__ = [
     ApplyCertificateRequest,
     ApplyCertificateResponseBody,
     ApplyCertificateResponse,
+    ApplyCustomHostnameCertificateRequest,
+    ApplyCustomHostnameCertificateResponseBody,
+    ApplyCustomHostnameCertificateResponse,
     BatchCreateRecordsRequest,
     BatchCreateRecordsShrinkRequest,
     BatchCreateRecordsResponseBody,
@@ -1596,6 +1622,9 @@ __all__ = [
     CreateCompressionRuleRequest,
     CreateCompressionRuleResponseBody,
     CreateCompressionRuleResponse,
+    CreateCustomHostnameRequest,
+    CreateCustomHostnameResponseBody,
+    CreateCustomHostnameResponse,
     CreateCustomScenePolicyRequest,
     CreateCustomScenePolicyResponseBody,
     CreateCustomScenePolicyResponse,
@@ -1764,6 +1793,9 @@ __all__ = [
     DeleteCompressionRuleRequest,
     DeleteCompressionRuleResponseBody,
     DeleteCompressionRuleResponse,
+    DeleteCustomHostnameRequest,
+    DeleteCustomHostnameResponseBody,
+    DeleteCustomHostnameResponse,
     DeleteCustomScenePolicyRequest,
     DeleteCustomScenePolicyResponseBody,
     DeleteCustomScenePolicyResponse,
@@ -2008,6 +2040,9 @@ __all__ = [
     GetCrossBorderOptimizationRequest,
     GetCrossBorderOptimizationResponseBody,
     GetCrossBorderOptimizationResponse,
+    GetCustomHostnameRequest,
+    GetCustomHostnameResponseBody,
+    GetCustomHostnameResponse,
     GetDevelopmentModeRequest,
     GetDevelopmentModeResponseBody,
     GetDevelopmentModeResponse,
@@ -2241,6 +2276,9 @@ __all__ = [
     ListCompressionRulesRequest,
     ListCompressionRulesResponseBody,
     ListCompressionRulesResponse,
+    ListCustomHostnamesRequest,
+    ListCustomHostnamesResponseBody,
+    ListCustomHostnamesResponse,
     ListESAIPInfoRequest,
     ListESAIPInfoResponseBody,
     ListESAIPInfoResponse,
@@ -2526,6 +2564,9 @@ __all__ = [
     UpdateCrossBorderOptimizationRequest,
     UpdateCrossBorderOptimizationResponseBody,
     UpdateCrossBorderOptimizationResponse,
+    UpdateCustomHostnameRequest,
+    UpdateCustomHostnameResponseBody,
+    UpdateCustomHostnameResponse,
     UpdateCustomScenePolicyRequest,
     UpdateCustomScenePolicyResponseBody,
     UpdateCustomScenePolicyResponse,
@@ -2703,6 +2744,9 @@ __all__ = [
     UploadSiteOriginClientCertificateRequest,
     UploadSiteOriginClientCertificateResponseBody,
     UploadSiteOriginClientCertificateResponse,
+    VerifyCustomHostnameRequest,
+    VerifyCustomHostnameResponseBody,
+    VerifyCustomHostnameResponse,
     VerifySiteRequest,
     VerifySiteResponseBody,
     VerifySiteResponse,
@@ -2819,6 +2863,7 @@ __all__ = [
     GetCertificateQuotaResponseBodySiteUsage,
     GetClientCaCertificateResponseBodyResult,
     GetClientCertificateResponseBodyResult,
+    GetCustomHostnameResponseBodyCustomHostnameModel,
     GetEdgeContainerAppResponseBodyAppHealthCheck,
     GetEdgeContainerAppResponseBodyApp,
     GetEdgeContainerAppResourceCapacityResponseBodyRegions,
@@ -2906,6 +2951,7 @@ __all__ = [
     ListClientCaCertificatesResponseBodyResult,
     ListClientCertificatesResponseBodyResult,
     ListCompressionRulesResponseBodyConfigs,
+    ListCustomHostnamesResponseBodyHostnames,
     ListESAIPInfoResponseBodyContent,
     ListEdgeContainerAppImageSecretsResponseBodyImageSecretList,
     ListEdgeContainerAppRecordsResponseBodyRecords,
