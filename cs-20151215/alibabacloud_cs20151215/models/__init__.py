@@ -165,6 +165,9 @@ from ._describe_policy_instances_request import DescribePolicyInstancesRequest
 from ._describe_policy_instances_response import DescribePolicyInstancesResponse
 from ._describe_policy_instances_status_response_body import DescribePolicyInstancesStatusResponseBody
 from ._describe_policy_instances_status_response import DescribePolicyInstancesStatusResponse
+from ._describe_regions_request import DescribeRegionsRequest
+from ._describe_regions_response_body import DescribeRegionsResponseBody
+from ._describe_regions_response import DescribeRegionsResponse
 from ._describe_resources_delete_protection_request import DescribeResourcesDeleteProtectionRequest
 from ._describe_resources_delete_protection_response import DescribeResourcesDeleteProtectionResponse
 from ._describe_subaccount_k8s_cluster_user_config_request import DescribeSubaccountK8sClusterUserConfigRequest
@@ -501,6 +504,7 @@ from ._describe_policy_governance_in_cluster_response_body import DescribePolicy
 from ._describe_policy_governance_in_cluster_response_body import DescribePolicyGovernanceInClusterResponseBodyOnState
 from ._describe_policy_instances_response import DescribePolicyInstancesResponseBody
 from ._describe_policy_instances_status_response_body import DescribePolicyInstancesStatusResponseBodyPolicyInstances
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
 from ._describe_resources_delete_protection_response import DescribeResourcesDeleteProtectionResponseBody
 from ._describe_task_info_response_body import DescribeTaskInfoResponseBodyError
 from ._describe_task_info_response_body import DescribeTaskInfoResponseBodyEvents
@@ -738,6 +742,9 @@ __all__ = [
     DescribePolicyInstancesResponse,
     DescribePolicyInstancesStatusResponseBody,
     DescribePolicyInstancesStatusResponse,
+    DescribeRegionsRequest,
+    DescribeRegionsResponseBody,
+    DescribeRegionsResponse,
     DescribeResourcesDeleteProtectionRequest,
     DescribeResourcesDeleteProtectionResponse,
     DescribeSubaccountK8sClusterUserConfigRequest,
@@ -1074,6 +1081,7 @@ __all__ = [
     DescribePolicyGovernanceInClusterResponseBodyOnState,
     DescribePolicyInstancesResponseBody,
     DescribePolicyInstancesStatusResponseBodyPolicyInstances,
+    DescribeRegionsResponseBodyRegions,
     DescribeResourcesDeleteProtectionResponseBody,
     DescribeTaskInfoResponseBodyError,
     DescribeTaskInfoResponseBodyEvents,

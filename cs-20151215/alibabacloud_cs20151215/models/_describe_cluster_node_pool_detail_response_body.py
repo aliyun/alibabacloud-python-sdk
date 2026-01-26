@@ -1610,9 +1610,11 @@ class DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy(DaraMo
     def __init__(
         self,
         approval_required: bool = None,
+        auto_repair_policy_id: str = None,
         restart_node: bool = None,
     ):
         self.approval_required = approval_required
+        self.auto_repair_policy_id = auto_repair_policy_id
         # Whether to allow restarting nodes.
         self.restart_node = restart_node
 
@@ -1627,6 +1629,9 @@ class DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy(DaraMo
         if self.approval_required is not None:
             result['approval_required'] = self.approval_required
 
+        if self.auto_repair_policy_id is not None:
+            result['auto_repair_policy_id'] = self.auto_repair_policy_id
+
         if self.restart_node is not None:
             result['restart_node'] = self.restart_node
 
@@ -1636,6 +1641,9 @@ class DescribeClusterNodePoolDetailResponseBodyManagementAutoRepairPolicy(DaraMo
         m = m or dict()
         if m.get('approval_required') is not None:
             self.approval_required = m.get('approval_required')
+
+        if m.get('auto_repair_policy_id') is not None:
+            self.auto_repair_policy_id = m.get('auto_repair_policy_id')
 
         if m.get('restart_node') is not None:
             self.restart_node = m.get('restart_node')

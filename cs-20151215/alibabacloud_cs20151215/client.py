@@ -5601,6 +5601,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.describe_policy_instances_status_with_options_async(cluster_id, headers, runtime)
 
+    def describe_regions_with_options(
+        self,
+        request: main_models.DescribeRegionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRegionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accept_language):
+            query['acceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.cluster_type):
+            query['clusterType'] = request.cluster_type
+        if not DaraCore.is_null(request.profile):
+            query['profile'] = request.profile
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRegions',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/regions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRegionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_regions_with_options_async(
+        self,
+        request: main_models.DescribeRegionsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRegionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accept_language):
+            query['acceptLanguage'] = request.accept_language
+        if not DaraCore.is_null(request.cluster_type):
+            query['clusterType'] = request.cluster_type
+        if not DaraCore.is_null(request.profile):
+            query['profile'] = request.profile
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRegions',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/regions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRegionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_regions(
+        self,
+        request: main_models.DescribeRegionsRequest,
+    ) -> main_models.DescribeRegionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_regions_with_options(request, headers, runtime)
+
+    async def describe_regions_async(
+        self,
+        request: main_models.DescribeRegionsRequest,
+    ) -> main_models.DescribeRegionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_regions_with_options_async(request, headers, runtime)
+
     def describe_resources_delete_protection_with_options(
         self,
         cluster_id: str,

@@ -1,3 +1,10 @@
+2026-01-26 Version: 6.4.0
+- Support API DescribeRegions.
+- Update API DescribeClusterNodePoolDetail: add response parameters Body.management.auto_repair_policy.auto_repair_policy_id.
+- Update API DescribeClusterNodePools: add response parameters Body.nodepools.$.management.auto_repair_policy.auto_repair_policy_id.
+- Update API ModifyClusterNodePool: add request parameters body.management.auto_repair_policy.auto_repair_policy_id.
+
+
 2026-01-19 Version: 6.3.3
 - Update API ListClusterKubeconfigStates: add response parameters Body.states.$.cloud_service_name.
 
