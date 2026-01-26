@@ -467,7 +467,7 @@ class DescribeWebCCRulesV2ResponseBodyWebCCRulesRuleDetailCondition(DaraModel):
     def __init__(
         self,
         content: str = None,
-        content_list: str = None,
+        content_list: List[str] = None,
         field: str = None,
         header_name: str = None,
         match_method: str = None,

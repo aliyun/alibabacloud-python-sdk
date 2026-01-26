@@ -1,3 +1,7 @@
+2026-01-26 Version: 4.0.0
+- Update API DescribeWebCCRulesV2: update response parameters Body.WebCCRules.$.RuleDetail.Condition.$.ContentList' type has changed.
+
+
 2026-01-21 Version: 3.2.2
 - Update API DescribeWebPreciseAccessRule: add request parameters Owner.
 - Update API DescribeWebPreciseAccessRule: add response parameters Body.PreciseAccessConfigList.$.RuleList.$.ExpirePeriod.
