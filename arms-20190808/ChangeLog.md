@@ -1,3 +1,7 @@
+2026-01-26 Version: 10.0.4
+- Update API CreateOrUpdateAlertRule: add request parameters aliyunLang.
+
+
 2025-09-23 Version: 10.0.3
 - Update API QueryAppMetadata: add request parameters EndTimeMs.
 - Update API QueryAppMetadata: add request parameters StartTimeMs.
