@@ -113,6 +113,7 @@ class DescribeAccessPointResponseBodyAccessPoint(DaraModel):
         # *   Pending: The access point is being created.
         # *   Deleting: The access point is being deleted.
         self.status = status
+        # The tags of the access point.
         self.tags = tags
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -263,7 +264,9 @@ class DescribeAccessPointResponseBodyAccessPointTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of a tag.
         self.key = key
+        # The value of a tag.
         self.value = value
 
     def validate(self):

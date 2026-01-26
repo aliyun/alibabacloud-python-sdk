@@ -76,10 +76,13 @@ class CreateProtocolMountTargetRequest(DaraModel):
         # 
         # This parameter is required.
         self.protocol_service_id = protocol_service_id
-        # The vSwitch ID of the export directory for the protocol service.
+        # The vSwitch ID of the export directory.
+        # 
+        # If the storage redundancy type of the file system is not zone-redundant (ZRS) and the VpcId is set, this field is required.
         self.v_switch_id = v_switch_id
+        # The list of vSwitch IDs of the export directory.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID of the export directory for the protocol service.
+        # The VPC ID of the export directory.
         self.vpc_id = vpc_id
 
     def validate(self):

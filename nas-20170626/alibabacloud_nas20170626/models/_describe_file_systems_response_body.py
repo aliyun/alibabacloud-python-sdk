@@ -184,11 +184,12 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(DaraModel):
         self.file_system_id = file_system_id
         # The file system type.
         # 
-        # The following information is displayed:
+        # Valid values:
         # 
-        # *   standard: General-purpose NAS file system.
-        # *   extreme: Extreme NAS file system.
-        # *   cpfs: CPFS file system.
+        # *   standard: General-purpose NAS
+        # *   extreme: Extreme NAS
+        # *   cpfs: CPFS (locally redundant storage)
+        # *   cpfsse: CPFS SE (zone-redundant storage)
         self.file_system_type = file_system_type
         # The ID of the key that is managed by Key Management Service (KMS).
         self.kmskey_id = kmskey_id
@@ -216,7 +217,7 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(DaraModel):
         self.packages = packages
         # The protocol type of the file system.
         # 
-        # The following information is displayed:
+        # Valid values:
         # 
         # *   NFS: Network File System.
         # *   SMB: Server Message Block.
@@ -224,7 +225,9 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(DaraModel):
         self.protocol_type = protocol_type
         # The vSwitch ID.
         self.quorum_vsw_id = quorum_vsw_id
+        # Storage redundancy type. Returned only for CPFS SE.
         self.redundancy_type = redundancy_type
+        # A list of IDs for the zone-redundant vSwitches.
         self.redundancy_vswitch_ids = redundancy_vswitch_ids
         # The region ID.
         self.region_id = region_id
@@ -238,13 +241,14 @@ class DescribeFileSystemsResponseBodyFileSystemsFileSystem(DaraModel):
         # - Stopping: The file system is being stopped.
         # - Deleting: The file system is being deleted.
         self.status = status
-        # The type of the storage.
+        # The storage type.
         # 
-        # The following information is displayed:
+        # Valid values:
         # 
-        # *   Valid values for General-purpose NAS file systems: Capacity, Performance, and Premium
-        # *   Valid values for Extreme NAS file systems: standard and advance
-        # *   Valid values for Cloud Parallel File Storage (CPFS) file systems: advance_100 (100 MB/s/TiB baseline) and advance_200 (200 MB/s/TiB baseline)
+        # *   General-purpose NAS: Capacity, Performance, Premium
+        # *   Extreme NAS: standard, advance
+        # *   CPFS: advance_100 (100 MB/s/TiB Baseline), advance_200 (200 MB/s/TiB Baseline), economic
+        # *   CPFS SE: advance_100 (100 MB/s/TiB Baseline)
         self.storage_type = storage_type
         # The features that are supported by the file system.
         self.supported_features = supported_features

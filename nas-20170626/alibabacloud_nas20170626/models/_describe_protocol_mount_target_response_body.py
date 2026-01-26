@@ -100,6 +100,7 @@ class DescribeProtocolMountTargetResponseBodyProtocolMountTargets(DaraModel):
         self.status = status
         # The vSwitch ID of the export directory for the protocol service.
         self.v_switch_id = v_switch_id
+        # A list of IDs for the zone-redundant vSwitches.
         self.v_switch_ids = v_switch_ids
         # The VPC ID of the export directory for the protocol service.
         self.vpc_id = vpc_id

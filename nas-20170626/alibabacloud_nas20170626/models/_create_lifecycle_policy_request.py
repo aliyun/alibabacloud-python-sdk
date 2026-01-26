@@ -21,40 +21,67 @@ class CreateLifecyclePolicyRequest(DaraModel):
         storage_type: str = None,
         transit_rules: List[main_models.CreateLifecyclePolicyRequestTransitRules] = None,
     ):
+        # The description of the lifecycle policy.
+        # 
+        # Format: The name must be 3 to 64 characters in length and must start with a letter. It can contain letters, digits, underscores (_), and hyphens (-).
+        # 
+        # >  Only CPFS for Lingjun supports this parameter.
         self.description = description
         # The ID of the file system.
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
-        # The name of the lifecycle policy. The name must be 3 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        # The name of the lifecycle policy. The name must be 3 to 64 characters in length and must start with a letter. It can contain letters, digits, underscores (_), and hyphens (-).
+        # 
+        # >  Required for General-purpose NAS.
         self.lifecycle_policy_name = lifecycle_policy_name
+        # The policy type.
+        # 
+        # *   Auto (default): The job is automatically triggered.
+        # *   OnDemand: On-demand execution.
         self.lifecycle_policy_type = lifecycle_policy_type
-        # The management rule that is associated with the lifecycle policy.
+        # The management rule associated with the lifecycle policy. Only General-purpose NAS supports this parameter.
         # 
         # Valid values:
         # 
-        # *   DEFAULT_ATIME_14: Files that are not accessed in the last 14 days are dumped to the IA storage medium.
-        # *   DEFAULT_ATIME_30: Files that are not accessed in the last 30 days are dumped to the IA storage medium.
-        # *   DEFAULT_ATIME_60: Files that are not accessed in the last 60 days are dumped to the IA storage medium.
-        # *   DEFAULT_ATIME_90: Files that are not accessed in the last 90 days are dumped to the IA storage medium.
+        # *   DEFAULT_ATIME_14: Files not accessed for 14 days.
+        # *   DEFAULT_ATIME_30: Files not accessed for 30 days.
+        # *   DEFAULT_ATIME_60: Files not accessed for 60 days.
+        # *   DEFAULT_ATIME_90: Files not accessed for 90 days.
+        # *   DEFAULT_ATIME_180: Files not accessed for 180 days. DEFAULT_ATIME_180 is supported only when the StorageType parameter is set to Archive.
+        # 
+        # > 
+        # 
+        # *   If an IA policy already exists for the directory, the new archive policy must have a longer transition period.
+        # 
+        # *   Only General-purpose NAS supports this parameter.
         self.lifecycle_rule_name = lifecycle_rule_name
-        # The absolute path of the directory that is associated with the lifecycle policy.
+        # The absolute path of the directory associated with the lifecycle policy. Only General-purpose NAS supports this parameter.
         # 
-        # If you specify this parameter, you can associate the lifecycle policy with only one directory. The path must start with a forward slash (/) and must be a path that exists in the mount target.
+        # *   Single value only. The path must start with a forward slash (/) and must be a path that exists in the mount target.
         # 
-        # > We recommend that you specify the Paths.N parameter so that you can associate the lifecycle policy with multiple directories.
+        # >  We recommend configuring the Paths.N parameter so that you can associate the policy with multiple directories at a time.
+        # 
+        # *   Path and Paths are mutually exclusive. You must specify one.
         self.path = path
-        # The absolute paths of the directories that are associated with the lifecycle policy.
-        # 
-        # If you specify this parameter, you can associate the lifecycle policy with multiple directories. Each path must start with a forward slash (/) and must be a path that exists in the mount target. Valid values of N: 1 to 10.
+        # The absolute paths of the directories associated with the lifecycle policy.
         self.paths = paths
-        self.retrieve_rules = retrieve_rules
-        # The storage type of the data that is dumped to the IA storage medium.
+        # The file data retrieval rule. Only one rule can be configured.
         # 
-        # Default value: InfrequentAccess (IA).
+        # >  Only CPFS for Lingjun supports this parameter.
+        self.retrieve_rules = retrieve_rules
+        # The storage class.
+        # 
+        # *   InfrequentAccess: the Infrequent Access (IA) storage class.
+        # *   Archive: the Archive storage class.
+        # 
+        # >  General-purpose NAS supports InfrequentAccess and Archive. CPFS for Lingjun only supports InfrequentAccess.
         # 
         # This parameter is required.
         self.storage_type = storage_type
+        # The data transition rule. Only one rule can be configured.
+        # 
+        # >  Supported only for CPFS for Lingjun file systems with LifecyclePolicyType set to Auto.
         self.transit_rules = transit_rules
 
     def validate(self):
@@ -154,7 +181,17 @@ class CreateLifecyclePolicyRequestTransitRules(DaraModel):
         attribute: str = None,
         threshold: str = None,
     ):
+        # Attribute of the rule.
+        # 
+        # Valid values:
+        # 
+        # *   Atime: the access time of the file.
         self.attribute = attribute
+        # Threshold for the rule.
+        # 
+        # Valid values:
+        # 
+        # *   If Attribute is set to Atime, this value represents the number of days since the file was last accessed. Valid values: [1, 365].
         self.threshold = threshold
 
     def validate(self):
@@ -189,7 +226,16 @@ class CreateLifecyclePolicyRequestRetrieveRules(DaraModel):
         attribute: str = None,
         threshold: str = None,
     ):
+        # The attribute of the rule. Valid value:
+        # 
+        # *   RetrieveType: the retrieval method.
         self.attribute = attribute
+        # The threshold of the rule. Valid values:
+        # 
+        # *   RetrieveType
+        # 
+        #     *   AfterVisit: Supported when LifecyclePolicyType is Auto. Represents a best-effort recall on access.
+        #     *   All: Supported when LifecyclePolicyType is OnDemand. Represents retrieving all data.
         self.threshold = threshold
 
     def validate(self):

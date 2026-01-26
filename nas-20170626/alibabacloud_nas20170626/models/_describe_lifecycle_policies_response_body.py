@@ -99,31 +99,37 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePolicies(DaraModel):
         # 
         # The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format.
         self.create_time = create_time
+        # Description
         self.description = description
         # The ID of the file system.
         self.file_system_id = file_system_id
+        # The ID of the lifecycle policy.
         self.lifecycle_policy_id = lifecycle_policy_id
         # The name of the lifecycle policy.
         self.lifecycle_policy_name = lifecycle_policy_name
+        # The type of the lifecycle policy.
         self.lifecycle_policy_type = lifecycle_policy_type
         # The management rule that is associated with the lifecycle policy.
         # 
         # Valid values:
         # 
-        # *   DEFAULT_ATIME_14: Files that are not accessed in the last 14 days are dumped to the IA storage medium.
-        # *   DEFAULT_ATIME_30: Files that are not accessed in the last 30 days are dumped to the IA storage medium.
-        # *   DEFAULT_ATIME_60: Files that are not accessed in the last 60 days are dumped to the IA storage medium.
-        # *   DEFAULT_ATIME_90: Files that are not accessed in the last 90 days are dumped to the IA storage medium.
+        # *   DEFAULT_ATIME_14: Files that are not accessed in the last 14 days.
+        # *   DEFAULT_ATIME_30: Files that are not accessed in the last 30 days.
+        # *   DEFAULT_ATIME_60: Files that are not accessed in the last 60 days.
+        # *   DEFAULT_ATIME_90: Files that are not accessed in the last 90 days.
         self.lifecycle_rule_name = lifecycle_rule_name
         # The absolute path of a directory with which the lifecycle policy is associated.
         self.path = path
-        # The absolute paths to multiple directories associated with the lifecycle policy.
+        # The absolute paths of directories with which the lifecycle policy is associated.
         self.paths = paths
+        # File data retrieval rules.
         self.retrieve_rules = retrieve_rules
-        # The storage type of the data that is dumped to the IA storage medium.
+        # The storage class.
         # 
-        # Default value: InfrequentAccess (IA).
+        # *   InfrequentAccess: the IA storage class.
+        # *   Archive: the Archive storage class.
         self.storage_type = storage_type
+        # Data transition rules.
         self.transit_rules = transit_rules
 
     def validate(self):
@@ -235,7 +241,9 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesTransitRules(DaraMod
         attribute: str = None,
         threshold: str = None,
     ):
+        # Attribute of the rule.
         self.attribute = attribute
+        # Threshold for the rule.
         self.threshold = threshold
 
     def validate(self):
@@ -270,7 +278,9 @@ class DescribeLifecyclePoliciesResponseBodyLifecyclePoliciesRetrieveRules(DaraMo
         attribute: str = None,
         threshold: str = None,
     ):
+        # Attribute of the rule.
         self.attribute = attribute
+        # Threshold for the rule.
         self.threshold = threshold
 
     def validate(self):

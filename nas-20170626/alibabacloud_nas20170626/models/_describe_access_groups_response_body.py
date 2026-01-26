@@ -132,13 +132,13 @@ class DescribeAccessGroupsResponseBodyAccessGroupsAccessGroup(DaraModel):
         # 
         # Valid values:
         # 
-        # *   standard: General-purpose Apsara File Storage NAS (NAS) file system
-        # *   extreme: Extreme NAS file system.
-        # *   cpfs: CPFS file system.
+        # *   standard: General-purpose NAS
+        # *   extreme: Extreme NAS
+        # *   cpfs: CPFS
         self.file_system_type = file_system_type
         # The number of mount targets to which the permission group is attached.
         self.mount_target_count = mount_target_count
-        # The region ID.
+        # Region ID.
         self.region_id = region_id
         # The total number of rules in the permission group.
         self.rule_count = rule_count

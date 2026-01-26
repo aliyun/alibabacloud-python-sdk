@@ -15,8 +15,11 @@ class DeleteLifecyclePolicyRequest(DaraModel):
         # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The ID of the lifecycle policy. Required for the CPFS for Lingjun file systems.
         self.lifecycle_policy_id = lifecycle_policy_id
-        # The name of the lifecycle policy.
+        # The name of the lifecycle policy. The name must be 3 to 64 characters in length and can contain letters, digits, underscores (_), and hyphens (-). The name must start with a letter.
+        # 
+        # >  Optional for General-purpose NAS file systems. If this parameter is provided, it takes precedence over LifecyclePolicyId. If left empty, LifecyclePolicyId is used.
         self.lifecycle_policy_name = lifecycle_policy_name
 
     def validate(self):

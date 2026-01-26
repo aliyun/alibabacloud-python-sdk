@@ -23,15 +23,17 @@ class DescribeFileSystemsRequest(DaraModel):
         # *   Sample ID of a General-purpose NAS file system: 31a8e4\\*\\*\\*\\*.
         # *   The IDs of Extreme NAS file systems must start with extreme-, for example, extreme-0015\\*\\*\\*\\*.
         # *   The IDs of CPFS file systems must start with cpfs-. Example: cpfs-125487\\*\\*\\*\\*.
+        # *   The IDs of CPFS SE file systems must start with cpfsse-. Example: cpfsse-022c71b134\\*\\*\\*\\*.
         self.file_system_id = file_system_id
         # The type of the file system.
         # 
         # Valid values:
         # 
         # *   all (default): All types.
-        # *   standard: General-purpose NAS file system.
-        # *   extreme: Extreme NAS file system.
-        # *   cpfs: CPFS file system.
+        # *   standard: General-purpose NAS
+        # *   extreme: Extreme NAS
+        # *   cpfs: CPFS (locally redundant storage)
+        # *   cpfsse: CPFS SE (zone-redundant storage)
         # 
         # >  Separate multiple data types with commas (,).
         self.file_system_type = file_system_type

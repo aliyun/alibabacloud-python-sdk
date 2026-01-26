@@ -66,6 +66,7 @@ class CreateAccessPointRequest(DaraModel):
         self.posix_user_id = posix_user_id
         # The root directory of the access point. The default value is /. If the directory does not exist, you must also specify the OwnerUserId and OwnerGroupId parameters.
         self.root_directory = root_directory
+        # The tags of the access point.
         self.tag = tag
         # The VPC ID.
         # 
@@ -188,7 +189,18 @@ class CreateAccessPointRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of a tag. Limits:
+        # 
+        # *   Cannot be null or an empty string.
+        # *   Can be up to 128 characters in length.
+        # *   Cannot start with aliyun or acs:.
+        # *   Cannot contain http:// or https://.
         self.key = key
+        # The value of a tag. Limits:
+        # 
+        # *   Cannot be null or an empty string.
+        # *   Can be up to 128 characters in length.
+        # *   Cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

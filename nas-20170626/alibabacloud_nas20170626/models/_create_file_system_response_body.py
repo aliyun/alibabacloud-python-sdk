@@ -10,7 +10,7 @@ class CreateFileSystemResponseBody(DaraModel):
         file_system_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the file system that is created.
+        # The ID of the created file system.
         self.file_system_id = file_system_id
         # The request ID.
         self.request_id = request_id

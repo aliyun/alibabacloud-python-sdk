@@ -16,7 +16,7 @@ class DescribeProtocolServiceResponseBody(DaraModel):
     ):
         # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The information about protocol services.
+        # The information about protocol service list.
         self.protocol_services = protocol_services
         # The request ID.
         self.request_id = request_id
@@ -129,7 +129,9 @@ class DescribeProtocolServiceResponseBodyProtocolServices(DaraModel):
         # *   Stopping: The protocol service is being stopped.
         # *   Stopped: The protocol service is stopped.
         self.status = status
+        # The VSW ID associated with the protocol service.
         self.v_switch_id = v_switch_id
+        # The VPC ID associated with the protocol service.
         self.vpc_id = vpc_id
 
     def validate(self):

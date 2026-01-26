@@ -1,3 +1,7 @@
+2026-01-26 Version: 3.3.0
+- Support API DescribeFilesystemsAssociatedHpnZones.
+
+
 2026-01-08 Version: 3.2.1
 - Update API CreateLifecyclePolicy: add request parameters Description.
 - Update API CreateLifecyclePolicy: add request parameters LifecyclePolicyType.

@@ -17,9 +17,9 @@ class DescribeAccessPointsResponseBody(DaraModel):
     ):
         # The information about the access point.
         self.access_points = access_points
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # A pagination token. It can be used in the next request to retrieve a new page of results. If NextToken is empty, no next page exists.
         self.next_token = next_token
-        # The request ID.
+        # Request ID.
         # 
         # This parameter is required.
         self.request_id = request_id
@@ -136,8 +136,9 @@ class DescribeAccessPointsResponseBodyAccessPoints(DaraModel):
         # 
         # >  You can mount a file system only if the access point is in the Active state.
         self.status = status
+        # The tags of the access point.
         self.tags = tags
-        # The vSwitch ID.
+        # Switch ID.
         self.v_switch_id = v_switch_id
         # The VPC ID.
         self.vpc_id = vpc_id
@@ -278,7 +279,9 @@ class DescribeAccessPointsResponseBodyAccessPointsTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag that is added to the resource.
         self.key = key
+        # Tag value
         self.value = value
 
     def validate(self):

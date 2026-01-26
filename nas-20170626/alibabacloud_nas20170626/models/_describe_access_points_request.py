@@ -18,7 +18,7 @@ class DescribeAccessPointsRequest(DaraModel):
     ):
         # The name of the permission group.
         # 
-        # This parameter is required for a General-purpose File Storage NAS (NAS) file system.
+        # This parameter is required for a General-purpose NAS file system.
         # 
         # The default permission group for virtual private clouds (VPCs) is named DEFAULT_VPC_GROUP_NAME.
         self.access_group = access_group
@@ -28,8 +28,9 @@ class DescribeAccessPointsRequest(DaraModel):
         # 
         # Valid values: 10 to 100. Default value: 10.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
+        # The token used to retrieve the next page of results. Do not specify this parameter for the first request. For subsequent requests, set this value to the NextToken returned in the previous response.
         self.next_token = next_token
+        # The tags of the access point.
         self.tag = tag
 
     def validate(self):
@@ -90,7 +91,23 @@ class DescribeAccessPointsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
+        # The key of the tag.
+        # 
+        # Limits:
+        # 
+        # *   Valid values of N: 1 to 20.
+        # *   Maximum length is 128 characters.
+        # *   Cannot start with aliyun or acs:.
+        # *   Cannot contain http:// or https://.
         self.key = key
+        # The value of the tag.
+        # 
+        # Limits:
+        # 
+        # *   Valid values of N: 1 to 20.
+        # *   Maximum length is 128 characters.
+        # *   Cannot start with aliyun or acs:.
+        # *   Cannot contain http:// or https://.
         self.value = value
 
     def validate(self):

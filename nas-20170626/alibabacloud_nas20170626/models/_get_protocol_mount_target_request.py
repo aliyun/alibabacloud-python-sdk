@@ -14,13 +14,32 @@ class GetProtocolMountTargetRequest(DaraModel):
         next_token: str = None,
         protocol_service_id: str = None,
     ):
+        # A client-generated, case-sensitive token that you can use to ensure the idempotency of the request. The token must be unique for each request.
+        # 
+        # It must be an ASCII string with a maximum length of 64 characters. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+        # 
+        # >  If you do not specify this parameter, the system automatically uses the request ID as the client token. The request ID may be different for each request.
         self.client_token = client_token
+        # The ID of the export directory for the protocol service.
+        # 
         # This parameter is required.
         self.export_id = export_id
+        # The ID of the file system.
+        # 
+        # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
+        # *   The IDs of CPFS for Lingjun file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
+        # *   The IDs of CPFS SE file systems must start with `cpfsse-`. Example: cpfsse-022c71b134\\*\\*\\*\\*.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The number of results for each query.
+        # 
+        # Valid values: 10 to 100. Default value: 20.
         self.max_results = max_results
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The ID of the protocol service.
+        # 
         # This parameter is required.
         self.protocol_service_id = protocol_service_id
 

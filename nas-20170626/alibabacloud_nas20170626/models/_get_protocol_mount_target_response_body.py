@@ -14,8 +14,11 @@ class GetProtocolMountTargetResponseBody(DaraModel):
         protocol_mount_target: main_models.GetProtocolMountTargetResponseBodyProtocolMountTarget = None,
         request_id: str = None,
     ):
+        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # Information of the export directory for the protocol service
         self.protocol_mount_target = protocol_mount_target
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -68,18 +71,49 @@ class GetProtocolMountTargetResponseBodyProtocolMountTarget(DaraModel):
         v_switch_ids: List[str] = None,
         vpc_id: str = None,
     ):
+        # The name of the permission group.
+        # 
+        # Default permission group: DEFAULT\\\_VPC\\\_GROUP\\\_NAME
         self.access_group_name = access_group_name
+        # The time when the export directory was created. Return format: yyyy-MM-dd HH:mm:ss
         self.create_time = create_time
+        # The description of the export directory.
         self.description = description
+        # The ID of the export directory.
         self.export_id = export_id
-        # Fileset ID。
+        # The fileset ID.
         self.fset_id = fset_id
+        # The path of the CPFS directory that was queried.
+        # 
+        # Format:
+        # 
+        # *   Must be 1 to 1,024 characters in length.
+        # *   Must be encoded in UTF-8.
+        # *   Must start and end with a forward slash (/). The root directory is `/`.
         self.path = path
+        # The domain name of the export directory for the protocol service.
         self.protocol_mount_target_domain = protocol_mount_target_domain
+        # The protocol type of the file system.
+        # 
+        # Valid values:
+        # 
+        # *   NFS: Network File System (NFS)
+        # *   SMB: Server Message Block (SMB)
+        # *   cpfs: The protocol type supported by the CPFS file system.
         self.protocol_type = protocol_type
+        # The status of the export directory. Valid values:
+        # 
+        # *   CREATING: The export directory is being created.
+        # *   AVAILABLE : The export directory is available.
+        # *   MODIFYING: The export directory is being modified.
+        # *   DELETING: The export directory is being deleted.
+        # *   STOPPING: The export directory is being stopped.
         self.status = status
+        # The vSwitch ID of the export directory.
         self.v_switch_id = v_switch_id
+        # The vSwitch ID list of the export directory.
         self.v_switch_ids = v_switch_ids
+        # The VPC ID of the export directory.
         self.vpc_id = vpc_id
 
     def validate(self):

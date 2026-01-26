@@ -5346,6 +5346,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_filesets_with_options_async(request, runtime)
 
+    def describe_filesystems_associated_hpn_zones_with_options(
+        self,
+        tmp_req: main_models.DescribeFilesystemsAssociatedHpnZonesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFilesystemsAssociatedHpnZonesResponse:
+        tmp_req.validate()
+        request = main_models.DescribeFilesystemsAssociatedHpnZonesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.filesystems):
+            request.filesystems_shrink = Utils.array_to_string_with_specified_style(tmp_req.filesystems, 'Filesystems', 'json')
+        query = {}
+        if not DaraCore.is_null(request.filesystems_shrink):
+            query['Filesystems'] = request.filesystems_shrink
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFilesystemsAssociatedHpnZones',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFilesystemsAssociatedHpnZonesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_filesystems_associated_hpn_zones_with_options_async(
+        self,
+        tmp_req: main_models.DescribeFilesystemsAssociatedHpnZonesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFilesystemsAssociatedHpnZonesResponse:
+        tmp_req.validate()
+        request = main_models.DescribeFilesystemsAssociatedHpnZonesShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.filesystems):
+            request.filesystems_shrink = Utils.array_to_string_with_specified_style(tmp_req.filesystems, 'Filesystems', 'json')
+        query = {}
+        if not DaraCore.is_null(request.filesystems_shrink):
+            query['Filesystems'] = request.filesystems_shrink
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFilesystemsAssociatedHpnZones',
+            version = '2017-06-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFilesystemsAssociatedHpnZonesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_filesystems_associated_hpn_zones(
+        self,
+        request: main_models.DescribeFilesystemsAssociatedHpnZonesRequest,
+    ) -> main_models.DescribeFilesystemsAssociatedHpnZonesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_filesystems_associated_hpn_zones_with_options(request, runtime)
+
+    async def describe_filesystems_associated_hpn_zones_async(
+        self,
+        request: main_models.DescribeFilesystemsAssociatedHpnZonesRequest,
+    ) -> main_models.DescribeFilesystemsAssociatedHpnZonesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_filesystems_associated_hpn_zones_with_options_async(request, runtime)
+
     def describe_filesystems_vsc_attach_info_with_options(
         self,
         request: main_models.DescribeFilesystemsVscAttachInfoRequest,

@@ -10,8 +10,17 @@ class GetFilesetRequest(DaraModel):
         file_system_id: str = None,
         fset_id: str = None,
     ):
+        # The ID of the file system.
+        # 
+        # *   The IDs of CPFS file systems must start with `cpfs-`. Example: cpfs-125487\\*\\*\\*\\*.
+        # *   The IDs of CPFS for Lingjun file systems must start with `bmcpfs-`. Example: bmcpfs-0015\\*\\*\\*\\*.
+        # 
         # This parameter is required.
         self.file_system_id = file_system_id
+        # The fileset ID.
+        # 
+        # >  This parameter is required for CPFS file systems.
+        # 
         # This parameter is required.
         self.fset_id = fset_id
 

@@ -17,14 +17,28 @@ class DescribeLifecyclePoliciesRequest(DaraModel):
         path: str = None,
         storage_type: str = None,
     ):
+        # The description of the policy.
+        # 
+        # >  Only CPFS for Lingjun supports this parameter.
         self.description = description
         # The ID of the file system.
         self.file_system_id = file_system_id
+        # The ID of the lifecycle policy.
         self.lifecycle_policy_id = lifecycle_policy_id
-        # The name of the lifecycle policy. The name must meet the following conventions:
+        # The name of the lifecycle policy. The naming rules are as follows:
         # 
         # The name must be 3 to 64 characters in length and must start with a letter. It can contain letters, digits, underscores (_), and hyphens (-).
+        # 
+        # >  Optional for General-purpose NAS file systems. If this parameter is provided, it takes precedence over LifecyclePolicyId. If left empty, LifecyclePolicyId is used.
         self.lifecycle_policy_name = lifecycle_policy_name
+        # The type of the lifecycle policy.
+        # 
+        # Valid values:
+        # 
+        # *   Auto: The job is automatically triggered.
+        # *   OnDemand: On-demand execution.
+        # 
+        # >  Only CPFS for Lingjun supports this parameter.
         self.lifecycle_policy_type = lifecycle_policy_type
         # The page number.
         # 
@@ -36,13 +50,16 @@ class DescribeLifecyclePoliciesRequest(DaraModel):
         # 
         # Default value: 10.
         self.page_size = page_size
+        # Filter by path.
+        # 
+        # >  Only CPFS for Lingjun supports this parameter.
         self.path = path
         # The storage class.
         # 
         # *   InfrequentAccess: the Infrequent Access (IA) storage class.
         # *   Archive: the Archive storage class.
         # 
-        # >  If the StorageType parameter is not specified, data retrieval tasks of all types are returned.
+        # >  If StorageType is not specified, all lifecycle policies are returned.
         self.storage_type = storage_type
 
     def validate(self):
