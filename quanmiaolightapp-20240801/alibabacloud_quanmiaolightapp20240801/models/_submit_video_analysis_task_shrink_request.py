@@ -29,6 +29,7 @@ class SubmitVideoAnalysisTaskShrinkRequest(DaraModel):
         video_roles_shrink: str = None,
         video_shot_face_identity_count: int = None,
         video_url: str = None,
+        video_urls_shrink: str = None,
     ):
         self.add_document_param_shrink = add_document_param_shrink
         self.auto_role_recognition_video_url = auto_role_recognition_video_url
@@ -51,8 +52,8 @@ class SubmitVideoAnalysisTaskShrinkRequest(DaraModel):
         self.video_model_id = video_model_id
         self.video_roles_shrink = video_roles_shrink
         self.video_shot_face_identity_count = video_shot_face_identity_count
-        # This parameter is required.
         self.video_url = video_url
+        self.video_urls_shrink = video_urls_shrink
 
     def validate(self):
         pass
@@ -128,6 +129,9 @@ class SubmitVideoAnalysisTaskShrinkRequest(DaraModel):
         if self.video_url is not None:
             result['videoUrl'] = self.video_url
 
+        if self.video_urls_shrink is not None:
+            result['videoUrls'] = self.video_urls_shrink
+
         return result
 
     def from_map(self, m: dict = None):
@@ -197,6 +201,9 @@ class SubmitVideoAnalysisTaskShrinkRequest(DaraModel):
 
         if m.get('videoUrl') is not None:
             self.video_url = m.get('videoUrl')
+
+        if m.get('videoUrls') is not None:
+            self.video_urls_shrink = m.get('videoUrls')
 
         return self
 

@@ -4248,6 +4248,8 @@ class Client(OpenApiClient):
             request.video_caption_info_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_caption_info, 'videoCaptionInfo', 'json')
         if not DaraCore.is_null(tmp_req.video_roles):
             request.video_roles_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
+        if not DaraCore.is_null(tmp_req.video_urls):
+            request.video_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_urls, 'videoUrls', 'json')
         body = {}
         if not DaraCore.is_null(request.add_document_param_shrink):
             body['addDocumentParam'] = request.add_document_param_shrink
@@ -4295,6 +4297,8 @@ class Client(OpenApiClient):
             body['videoShotFaceIdentityCount'] = request.video_shot_face_identity_count
         if not DaraCore.is_null(request.video_url):
             body['videoUrl'] = request.video_url
+        if not DaraCore.is_null(request.video_urls_shrink):
+            body['videoUrls'] = request.video_urls_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -4348,6 +4352,8 @@ class Client(OpenApiClient):
             request.video_caption_info_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_caption_info, 'videoCaptionInfo', 'json')
         if not DaraCore.is_null(tmp_req.video_roles):
             request.video_roles_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
+        if not DaraCore.is_null(tmp_req.video_urls):
+            request.video_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_urls, 'videoUrls', 'json')
         body = {}
         if not DaraCore.is_null(request.add_document_param_shrink):
             body['addDocumentParam'] = request.add_document_param_shrink
@@ -4395,6 +4401,8 @@ class Client(OpenApiClient):
             body['videoShotFaceIdentityCount'] = request.video_shot_face_identity_count
         if not DaraCore.is_null(request.video_url):
             body['videoUrl'] = request.video_url
+        if not DaraCore.is_null(request.video_urls_shrink):
+            body['videoUrls'] = request.video_urls_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -4448,6 +4456,8 @@ class Client(OpenApiClient):
             request.video_caption_info_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_caption_info, 'videoCaptionInfo', 'json')
         if not DaraCore.is_null(tmp_req.video_roles):
             request.video_roles_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
+        if not DaraCore.is_null(tmp_req.video_urls):
+            request.video_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_urls, 'videoUrls', 'json')
         body = {}
         if not DaraCore.is_null(request.add_document_param_shrink):
             body['addDocumentParam'] = request.add_document_param_shrink
@@ -4495,6 +4505,8 @@ class Client(OpenApiClient):
             body['videoShotFaceIdentityCount'] = request.video_shot_face_identity_count
         if not DaraCore.is_null(request.video_url):
             body['videoUrl'] = request.video_url
+        if not DaraCore.is_null(request.video_urls_shrink):
+            body['videoUrls'] = request.video_urls_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -4539,6 +4551,8 @@ class Client(OpenApiClient):
             request.video_caption_info_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_caption_info, 'videoCaptionInfo', 'json')
         if not DaraCore.is_null(tmp_req.video_roles):
             request.video_roles_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
+        if not DaraCore.is_null(tmp_req.video_urls):
+            request.video_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_urls, 'videoUrls', 'json')
         body = {}
         if not DaraCore.is_null(request.add_document_param_shrink):
             body['addDocumentParam'] = request.add_document_param_shrink
@@ -4586,6 +4600,8 @@ class Client(OpenApiClient):
             body['videoShotFaceIdentityCount'] = request.video_shot_face_identity_count
         if not DaraCore.is_null(request.video_url):
             body['videoUrl'] = request.video_url
+        if not DaraCore.is_null(request.video_urls_shrink):
+            body['videoUrls'] = request.video_urls_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -5308,6 +5324,8 @@ class Client(OpenApiClient):
             request.video_caption_info_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_caption_info, 'videoCaptionInfo', 'json')
         if not DaraCore.is_null(tmp_req.video_roles):
             request.video_roles_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
+        if not DaraCore.is_null(tmp_req.video_urls):
+            request.video_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_urls, 'videoUrls', 'json')
         body = {}
         if not DaraCore.is_null(request.add_document_param_shrink):
             body['addDocumentParam'] = request.add_document_param_shrink
@@ -5353,6 +5371,8 @@ class Client(OpenApiClient):
             body['videoShotFaceIdentityCount'] = request.video_shot_face_identity_count
         if not DaraCore.is_null(request.video_url):
             body['videoUrl'] = request.video_url
+        if not DaraCore.is_null(request.video_urls_shrink):
+            body['videoUrls'] = request.video_urls_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -5397,6 +5417,8 @@ class Client(OpenApiClient):
             request.video_caption_info_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_caption_info, 'videoCaptionInfo', 'json')
         if not DaraCore.is_null(tmp_req.video_roles):
             request.video_roles_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_roles, 'videoRoles', 'json')
+        if not DaraCore.is_null(tmp_req.video_urls):
+            request.video_urls_shrink = Utils.array_to_string_with_specified_style(tmp_req.video_urls, 'videoUrls', 'json')
         body = {}
         if not DaraCore.is_null(request.add_document_param_shrink):
             body['addDocumentParam'] = request.add_document_param_shrink
@@ -5442,6 +5464,8 @@ class Client(OpenApiClient):
             body['videoShotFaceIdentityCount'] = request.video_shot_face_identity_count
         if not DaraCore.is_null(request.video_url):
             body['videoUrl'] = request.video_url
+        if not DaraCore.is_null(request.video_urls_shrink):
+            body['videoUrls'] = request.video_urls_shrink
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)

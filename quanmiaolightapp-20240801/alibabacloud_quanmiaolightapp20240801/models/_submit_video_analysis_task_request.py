@@ -32,6 +32,7 @@ class SubmitVideoAnalysisTaskRequest(DaraModel):
         video_roles: List[main_models.SubmitVideoAnalysisTaskRequestVideoRoles] = None,
         video_shot_face_identity_count: int = None,
         video_url: str = None,
+        video_urls: List[str] = None,
     ):
         self.add_document_param = add_document_param
         self.auto_role_recognition_video_url = auto_role_recognition_video_url
@@ -54,8 +55,8 @@ class SubmitVideoAnalysisTaskRequest(DaraModel):
         self.video_model_id = video_model_id
         self.video_roles = video_roles
         self.video_shot_face_identity_count = video_shot_face_identity_count
-        # This parameter is required.
         self.video_url = video_url
+        self.video_urls = video_urls
 
     def validate(self):
         if self.add_document_param:
@@ -148,6 +149,9 @@ class SubmitVideoAnalysisTaskRequest(DaraModel):
         if self.video_url is not None:
             result['videoUrl'] = self.video_url
 
+        if self.video_urls is not None:
+            result['videoUrls'] = self.video_urls
+
         return result
 
     def from_map(self, m: dict = None):
@@ -226,6 +230,9 @@ class SubmitVideoAnalysisTaskRequest(DaraModel):
 
         if m.get('videoUrl') is not None:
             self.video_url = m.get('videoUrl')
+
+        if m.get('videoUrls') is not None:
+            self.video_urls = m.get('videoUrls')
 
         return self
 

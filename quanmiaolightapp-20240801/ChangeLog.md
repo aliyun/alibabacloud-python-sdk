@@ -1,3 +1,8 @@
+2026-01-26 Version: 2.13.5
+- Update API RunVideoAnalysis: add request parameters videoUrls.
+- Update API SubmitVideoAnalysisTask: add request parameters videoUrls.
+
+
 2026-01-14 Version: 2.13.4
 - Update API GetEssayCorrectionTask: add response parameters Body.data.totalUsage.
 - Update API GetEssayCorrectionTask: add response parameters Body.data.results.$.usage.
