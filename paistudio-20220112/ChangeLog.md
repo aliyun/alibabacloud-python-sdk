@@ -2,6 +2,10 @@
 - Support API OperateNode.
 
 
+2026-01-27 Version: 2.3.0
+- Support API OperateNode.
+
+
 2026-01-20 Version: 2.2.5
 - Generated python 2022-01-12 for PaiStudio.
 
