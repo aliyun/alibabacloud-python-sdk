@@ -1,3 +1,11 @@
+2026-01-27 Version: 6.5.0
+- Support API CreateAutoRepairPolicy.
+- Support API DeleteAutoRepairPolicy.
+- Support API DescribeAutoRepairPolicy.
+- Support API ListAutoRepairPolicies.
+- Support API ModifyAutoRepairPolicy.
+
+
 2026-01-26 Version: 6.4.0
 - Support API DescribeRegions.
 - Update API DescribeClusterNodePoolDetail: add response parameters Body.management.auto_repair_policy.auto_repair_policy_id.

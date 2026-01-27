@@ -883,6 +883,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.clean_user_permissions_with_options_async(uid, request, headers, runtime)
 
+    def create_auto_repair_policy_with_options(
+        self,
+        cluster_id: str,
+        request: main_models.CreateAutoRepairPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAutoRepairPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.resource_sub_type):
+            body['resource_sub_type'] = request.resource_sub_type
+        if not DaraCore.is_null(request.resource_type):
+            body['resource_type'] = request.resource_type
+        if not DaraCore.is_null(request.rules):
+            body['rules'] = request.rules
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAutoRepairPolicy',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/auto_repair_policies',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAutoRepairPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_auto_repair_policy_with_options_async(
+        self,
+        cluster_id: str,
+        request: main_models.CreateAutoRepairPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAutoRepairPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.resource_sub_type):
+            body['resource_sub_type'] = request.resource_sub_type
+        if not DaraCore.is_null(request.resource_type):
+            body['resource_type'] = request.resource_type
+        if not DaraCore.is_null(request.rules):
+            body['rules'] = request.rules
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAutoRepairPolicy',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/auto_repair_policies',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAutoRepairPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_auto_repair_policy(
+        self,
+        cluster_id: str,
+        request: main_models.CreateAutoRepairPolicyRequest,
+    ) -> main_models.CreateAutoRepairPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_auto_repair_policy_with_options(cluster_id, request, headers, runtime)
+
+    async def create_auto_repair_policy_async(
+        self,
+        cluster_id: str,
+        request: main_models.CreateAutoRepairPolicyRequest,
+    ) -> main_models.CreateAutoRepairPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_auto_repair_policy_with_options_async(cluster_id, request, headers, runtime)
+
     def create_autoscaling_config_with_options(
         self,
         cluster_id: str,
@@ -2259,6 +2351,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_alert_contact_group_with_options_async(request, headers, runtime)
 
+    def delete_auto_repair_policy_with_options(
+        self,
+        cluster_id: str,
+        policy_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAutoRepairPolicyResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAutoRepairPolicy',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/auto_repair_policies/{DaraURL.percent_encode(policy_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAutoRepairPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_auto_repair_policy_with_options_async(
+        self,
+        cluster_id: str,
+        policy_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAutoRepairPolicyResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAutoRepairPolicy',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/auto_repair_policies/{DaraURL.percent_encode(policy_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAutoRepairPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_auto_repair_policy(
+        self,
+        cluster_id: str,
+        policy_id: str,
+    ) -> main_models.DeleteAutoRepairPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_auto_repair_policy_with_options(cluster_id, policy_id, headers, runtime)
+
+    async def delete_auto_repair_policy_async(
+        self,
+        cluster_id: str,
+        policy_id: str,
+    ) -> main_models.DeleteAutoRepairPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_auto_repair_policy_with_options_async(cluster_id, policy_id, headers, runtime)
+
     def delete_cluster_with_options(
         self,
         cluster_id: str,
@@ -3174,6 +3336,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.describe_addons_with_options_async(request, headers, runtime)
+
+    def describe_auto_repair_policy_with_options(
+        self,
+        cluster_id: str,
+        policy_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAutoRepairPolicyResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAutoRepairPolicy',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/auto_repair_policies/{DaraURL.percent_encode(policy_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAutoRepairPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_auto_repair_policy_with_options_async(
+        self,
+        cluster_id: str,
+        policy_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAutoRepairPolicyResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeAutoRepairPolicy',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/auto_repair_policies/{DaraURL.percent_encode(policy_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAutoRepairPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_auto_repair_policy(
+        self,
+        cluster_id: str,
+        policy_id: str,
+    ) -> main_models.DescribeAutoRepairPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.describe_auto_repair_policy_with_options(cluster_id, policy_id, headers, runtime)
+
+    async def describe_auto_repair_policy_async(
+        self,
+        cluster_id: str,
+        policy_id: str,
+    ) -> main_models.DescribeAutoRepairPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.describe_auto_repair_policy_with_options_async(cluster_id, policy_id, headers, runtime)
 
     def describe_cluster_addon_instance_with_options(
         self,
@@ -7511,6 +7743,72 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_addons_with_options_async(request, headers, runtime)
 
+    def list_auto_repair_policies_with_options(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAutoRepairPoliciesResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAutoRepairPolicies',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/auto_repair_policies',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAutoRepairPoliciesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_auto_repair_policies_with_options_async(
+        self,
+        cluster_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAutoRepairPoliciesResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAutoRepairPolicies',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/auto_repair_policies',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAutoRepairPoliciesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_auto_repair_policies(
+        self,
+        cluster_id: str,
+    ) -> main_models.ListAutoRepairPoliciesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_auto_repair_policies_with_options(cluster_id, headers, runtime)
+
+    async def list_auto_repair_policies_async(
+        self,
+        cluster_id: str,
+    ) -> main_models.ListAutoRepairPoliciesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_auto_repair_policies_with_options_async(cluster_id, headers, runtime)
+
     def list_cluster_addon_instance_resources_with_options(
         self,
         cluster_id: str,
@@ -8342,6 +8640,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.migrate_cluster_with_options_async(cluster_id, request, headers, runtime)
+
+    def modify_auto_repair_policy_with_options(
+        self,
+        cluster_id: str,
+        policy_id: str,
+        request: main_models.ModifyAutoRepairPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAutoRepairPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.rules):
+            body['rules'] = request.rules
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAutoRepairPolicy',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/auto_repair_policies/{DaraURL.percent_encode(policy_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAutoRepairPolicyResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_auto_repair_policy_with_options_async(
+        self,
+        cluster_id: str,
+        policy_id: str,
+        request: main_models.ModifyAutoRepairPolicyRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAutoRepairPolicyResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.rules):
+            body['rules'] = request.rules
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyAutoRepairPolicy',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/auto_repair_policies/{DaraURL.percent_encode(policy_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAutoRepairPolicyResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_auto_repair_policy(
+        self,
+        cluster_id: str,
+        policy_id: str,
+        request: main_models.ModifyAutoRepairPolicyRequest,
+    ) -> main_models.ModifyAutoRepairPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.modify_auto_repair_policy_with_options(cluster_id, policy_id, request, headers, runtime)
+
+    async def modify_auto_repair_policy_async(
+        self,
+        cluster_id: str,
+        policy_id: str,
+        request: main_models.ModifyAutoRepairPolicyRequest,
+    ) -> main_models.ModifyAutoRepairPolicyResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.modify_auto_repair_policy_with_options_async(cluster_id, policy_id, request, headers, runtime)
 
     def modify_cluster_with_options(
         self,
