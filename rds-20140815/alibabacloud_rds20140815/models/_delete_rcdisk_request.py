@@ -15,8 +15,6 @@ class DeleteRCDiskRequest(DaraModel):
         # This parameter is required.
         self.disk_id = disk_id
         # The region ID of the instance.
-        # 
-        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):

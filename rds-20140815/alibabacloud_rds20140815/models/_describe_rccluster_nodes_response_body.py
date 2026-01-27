@@ -123,6 +123,7 @@ class DescribeRCClusterNodesResponseBodyNodes(DaraModel):
         node_name: str = None,
         node_pool_id: str = None,
         node_status: str = None,
+        pod_count: int = None,
         runtime_version: str = None,
         state: str = None,
     ):
@@ -157,6 +158,7 @@ class DescribeRCClusterNodesResponseBodyNodes(DaraModel):
         # *   **Unknown**: The status of the node is unknown.
         # *   **Offline**: The node is offline.
         self.node_status = node_status
+        self.pod_count = pod_count
         # The runtime of the ACK cluster.
         self.runtime_version = runtime_version
         # The node status. Valid values:
@@ -206,6 +208,9 @@ class DescribeRCClusterNodesResponseBodyNodes(DaraModel):
         if self.node_status is not None:
             result['NodeStatus'] = self.node_status
 
+        if self.pod_count is not None:
+            result['PodCount'] = self.pod_count
+
         if self.runtime_version is not None:
             result['RuntimeVersion'] = self.runtime_version
 
@@ -245,6 +250,9 @@ class DescribeRCClusterNodesResponseBodyNodes(DaraModel):
 
         if m.get('NodeStatus') is not None:
             self.node_status = m.get('NodeStatus')
+
+        if m.get('PodCount') is not None:
+            self.pod_count = m.get('PodCount')
 
         if m.get('RuntimeVersion') is not None:
             self.runtime_version = m.get('RuntimeVersion')

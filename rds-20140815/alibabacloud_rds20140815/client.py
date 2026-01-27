@@ -4309,6 +4309,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_gad_instance_member_with_options_async(request, runtime)
 
+    def create_import_task_with_options(
+        self,
+        request: main_models.CreateImportTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateImportTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not DaraCore.is_null(request.estimated_size):
+            query['EstimatedSize'] = request.estimated_size
+        if not DaraCore.is_null(request.host):
+            query['Host'] = request.host
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not DaraCore.is_null(request.source_platform):
+            query['SourcePlatform'] = request.source_platform
+        if not DaraCore.is_null(request.stream_port):
+            query['StreamPort'] = request.stream_port
+        if not DaraCore.is_null(request.user):
+            query['User'] = request.user
+        if not DaraCore.is_null(request.xtrabackup_path):
+            query['XtrabackupPath'] = request.xtrabackup_path
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateImportTask',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateImportTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_import_task_with_options_async(
+        self,
+        request: main_models.CreateImportTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateImportTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not DaraCore.is_null(request.estimated_size):
+            query['EstimatedSize'] = request.estimated_size
+        if not DaraCore.is_null(request.host):
+            query['Host'] = request.host
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not DaraCore.is_null(request.source_platform):
+            query['SourcePlatform'] = request.source_platform
+        if not DaraCore.is_null(request.stream_port):
+            query['StreamPort'] = request.stream_port
+        if not DaraCore.is_null(request.user):
+            query['User'] = request.user
+        if not DaraCore.is_null(request.xtrabackup_path):
+            query['XtrabackupPath'] = request.xtrabackup_path
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateImportTask',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateImportTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_import_task(
+        self,
+        request: main_models.CreateImportTaskRequest,
+    ) -> main_models.CreateImportTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_import_task_with_options(request, runtime)
+
+    async def create_import_task_async(
+        self,
+        request: main_models.CreateImportTaskRequest,
+    ) -> main_models.CreateImportTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_import_task_with_options_async(request, runtime)
+
     def create_masking_rules_with_options(
         self,
         tmp_req: main_models.CreateMaskingRulesRequest,
@@ -5220,6 +5334,88 @@ class Client(OpenApiClient):
     ) -> main_models.CreateRCDiskResponse:
         runtime = RuntimeOptions()
         return await self.create_rcdisk_with_options_async(request, runtime)
+
+    def create_rcimage_with_options(
+        self,
+        request: main_models.CreateRCImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRCImageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_name):
+            query['ImageName'] = request.image_name
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRCImage',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRCImageResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_rcimage_with_options_async(
+        self,
+        request: main_models.CreateRCImageRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRCImageResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.image_name):
+            query['ImageName'] = request.image_name
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.snapshot_id):
+            query['SnapshotId'] = request.snapshot_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateRCImage',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateRCImageResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_rcimage(
+        self,
+        request: main_models.CreateRCImageRequest,
+    ) -> main_models.CreateRCImageResponse:
+        runtime = RuntimeOptions()
+        return self.create_rcimage_with_options(request, runtime)
+
+    async def create_rcimage_async(
+        self,
+        request: main_models.CreateRCImageRequest,
+    ) -> main_models.CreateRCImageResponse:
+        runtime = RuntimeOptions()
+        return await self.create_rcimage_with_options_async(request, runtime)
 
     def create_rcnode_pool_with_options(
         self,
@@ -16065,6 +16261,166 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_host_web_shell_with_options_async(request, runtime)
 
+    def describe_import_task_with_options(
+        self,
+        request: main_models.DescribeImportTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeImportTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeImportTask',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeImportTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_import_task_with_options_async(
+        self,
+        request: main_models.DescribeImportTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeImportTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeImportTask',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeImportTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_import_task(
+        self,
+        request: main_models.DescribeImportTaskRequest,
+    ) -> main_models.DescribeImportTaskResponse:
+        runtime = RuntimeOptions()
+        return self.describe_import_task_with_options(request, runtime)
+
+    async def describe_import_task_async(
+        self,
+        request: main_models.DescribeImportTaskRequest,
+    ) -> main_models.DescribeImportTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_import_task_with_options_async(request, runtime)
+
+    def describe_import_task_validation_with_options(
+        self,
+        request: main_models.DescribeImportTaskValidationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeImportTaskValidationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeImportTaskValidation',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeImportTaskValidationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_import_task_validation_with_options_async(
+        self,
+        request: main_models.DescribeImportTaskValidationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeImportTaskValidationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeImportTaskValidation',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeImportTaskValidationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_import_task_validation(
+        self,
+        request: main_models.DescribeImportTaskValidationRequest,
+    ) -> main_models.DescribeImportTaskValidationResponse:
+        runtime = RuntimeOptions()
+        return self.describe_import_task_validation_with_options(request, runtime)
+
+    async def describe_import_task_validation_async(
+        self,
+        request: main_models.DescribeImportTaskValidationRequest,
+    ) -> main_models.DescribeImportTaskValidationResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_import_task_validation_with_options_async(request, runtime)
+
     def describe_instance_auto_renewal_attribute_with_options(
         self,
         request: main_models.DescribeInstanceAutoRenewalAttributeRequest,
@@ -18656,6 +19012,10 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeRCClusterNodesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.node_pool_id):
+            query['NodePoolId'] = request.node_pool_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -18690,6 +19050,10 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeRCClusterNodesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.node_pool_id):
+            query['NodePoolId'] = request.node_pool_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -20378,6 +20742,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.disk_id):
             query['DiskId'] = request.disk_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -20416,6 +20782,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.disk_id):
             query['DiskId'] = request.disk_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -24266,6 +24634,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListClassesResponse:
         runtime = RuntimeOptions()
         return await self.list_classes_with_options_async(request, runtime)
+
+    def list_import_tasks_with_options(
+        self,
+        request: main_models.ListImportTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListImportTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListImportTasks',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListImportTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_import_tasks_with_options_async(
+        self,
+        request: main_models.ListImportTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListImportTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListImportTasks',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListImportTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_import_tasks(
+        self,
+        request: main_models.ListImportTasksRequest,
+    ) -> main_models.ListImportTasksResponse:
+        runtime = RuntimeOptions()
+        return self.list_import_tasks_with_options(request, runtime)
+
+    async def list_import_tasks_async(
+        self,
+        request: main_models.ListImportTasksRequest,
+    ) -> main_models.ListImportTasksResponse:
+        runtime = RuntimeOptions()
+        return await self.list_import_tasks_with_options_async(request, runtime)
 
     def list_rcvclusters_with_options(
         self,
@@ -28631,6 +29085,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_dbinstance_tdewith_options_async(request, runtime)
 
+    def modify_dbinstance_vector_support_status_with_options(
+        self,
+        request: main_models.ModifyDBInstanceVectorSupportStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBInstanceVectorSupportStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDBInstanceVectorSupportStatus',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDBInstanceVectorSupportStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbinstance_vector_support_status_with_options_async(
+        self,
+        request: main_models.ModifyDBInstanceVectorSupportStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBInstanceVectorSupportStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDBInstanceVectorSupportStatus',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDBInstanceVectorSupportStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbinstance_vector_support_status(
+        self,
+        request: main_models.ModifyDBInstanceVectorSupportStatusRequest,
+    ) -> main_models.ModifyDBInstanceVectorSupportStatusResponse:
+        runtime = RuntimeOptions()
+        return self.modify_dbinstance_vector_support_status_with_options(request, runtime)
+
+    async def modify_dbinstance_vector_support_status_async(
+        self,
+        request: main_models.ModifyDBInstanceVectorSupportStatusRequest,
+    ) -> main_models.ModifyDBInstanceVectorSupportStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_dbinstance_vector_support_status_with_options_async(request, runtime)
+
     def modify_dbnode_with_options(
         self,
         tmp_req: main_models.ModifyDBNodeRequest,
@@ -29951,6 +30479,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_haswitch_config_with_options_async(request, runtime)
 
+    def modify_import_task_with_options(
+        self,
+        request: main_models.ModifyImportTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyImportTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.operation):
+            query['Operation'] = request.operation
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyImportTask',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyImportTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_import_task_with_options_async(
+        self,
+        request: main_models.ModifyImportTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyImportTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.operation):
+            query['Operation'] = request.operation
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyImportTask',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyImportTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_import_task(
+        self,
+        request: main_models.ModifyImportTaskRequest,
+    ) -> main_models.ModifyImportTaskResponse:
+        runtime = RuntimeOptions()
+        return self.modify_import_task_with_options(request, runtime)
+
+    async def modify_import_task_async(
+        self,
+        request: main_models.ModifyImportTaskRequest,
+    ) -> main_models.ModifyImportTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_import_task_with_options_async(request, runtime)
+
     def modify_instance_auto_renewal_attribute_with_options(
         self,
         request: main_models.ModifyInstanceAutoRenewalAttributeRequest,
@@ -30595,6 +31209,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_parameter_group_with_options_async(request, runtime)
 
+    def modify_rcdisk_attribute_with_options(
+        self,
+        request: main_models.ModifyRCDiskAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyRCDiskAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bursting_enabled):
+            query['BurstingEnabled'] = request.bursting_enabled
+        if not DaraCore.is_null(request.delete_with_instance):
+            query['DeleteWithInstance'] = request.delete_with_instance
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not DaraCore.is_null(request.disk_name):
+            query['DiskName'] = request.disk_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyRCDiskAttribute',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyRCDiskAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_rcdisk_attribute_with_options_async(
+        self,
+        request: main_models.ModifyRCDiskAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyRCDiskAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.bursting_enabled):
+            query['BurstingEnabled'] = request.bursting_enabled
+        if not DaraCore.is_null(request.delete_with_instance):
+            query['DeleteWithInstance'] = request.delete_with_instance
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.disk_id):
+            query['DiskId'] = request.disk_id
+        if not DaraCore.is_null(request.disk_name):
+            query['DiskName'] = request.disk_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyRCDiskAttribute',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyRCDiskAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_rcdisk_attribute(
+        self,
+        request: main_models.ModifyRCDiskAttributeRequest,
+    ) -> main_models.ModifyRCDiskAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.modify_rcdisk_attribute_with_options(request, runtime)
+
+    async def modify_rcdisk_attribute_async(
+        self,
+        request: main_models.ModifyRCDiskAttributeRequest,
+    ) -> main_models.ModifyRCDiskAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_rcdisk_attribute_with_options_async(request, runtime)
+
     def modify_rcdisk_charge_type_with_options(
         self,
         request: main_models.ModifyRCDiskChargeTypeRequest,
@@ -30602,6 +31306,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyRCDiskChargeTypeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.auto_use_coupon):
@@ -30614,10 +31320,14 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
         if not DaraCore.is_null(request.promotion_code):
             query['PromotionCode'] = request.promotion_code
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -30644,6 +31354,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyRCDiskChargeTypeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.auto_pay):
+            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.auto_use_coupon):
@@ -30656,10 +31368,14 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
         if not DaraCore.is_null(request.promotion_code):
             query['PromotionCode'] = request.promotion_code
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -33170,6 +33886,8 @@ class Client(OpenApiClient):
             query['ForceStop'] = request.force_stop
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.reboot_time):
+            query['RebootTime'] = request.reboot_time
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -33204,6 +33922,8 @@ class Client(OpenApiClient):
             query['ForceStop'] = request.force_stop
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.reboot_time):
+            query['RebootTime'] = request.reboot_time
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -33256,6 +33976,8 @@ class Client(OpenApiClient):
             query['ForceReboot'] = request.force_reboot
         if not DaraCore.is_null(request.instance_ids_shrink):
             query['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.reboot_time):
+            query['RebootTime'] = request.reboot_time
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -33294,6 +34016,8 @@ class Client(OpenApiClient):
             query['ForceReboot'] = request.force_reboot
         if not DaraCore.is_null(request.instance_ids_shrink):
             query['InstanceIds'] = request.instance_ids_shrink
+        if not DaraCore.is_null(request.reboot_time):
+            query['RebootTime'] = request.reboot_time
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         req = open_api_util_models.OpenApiRequest(
@@ -36192,6 +36916,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.stopped_mode):
+            query['StoppedMode'] = request.stopped_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -36224,6 +36950,8 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.stopped_mode):
+            query['StoppedMode'] = request.stopped_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -36276,6 +37004,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.stopped_mode):
+            query['StoppedMode'] = request.stopped_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -36314,6 +37044,8 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.stopped_mode):
+            query['StoppedMode'] = request.stopped_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -38266,3 +38998,117 @@ class Client(OpenApiClient):
     ) -> main_models.UpgradeDBProxyInstanceKernelVersionResponse:
         runtime = RuntimeOptions()
         return await self.upgrade_dbproxy_instance_kernel_version_with_options_async(request, runtime)
+
+    def validate_import_task_with_options(
+        self,
+        request: main_models.ValidateImportTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ValidateImportTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not DaraCore.is_null(request.estimated_size):
+            query['EstimatedSize'] = request.estimated_size
+        if not DaraCore.is_null(request.host):
+            query['Host'] = request.host
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not DaraCore.is_null(request.source_platform):
+            query['SourcePlatform'] = request.source_platform
+        if not DaraCore.is_null(request.stream_port):
+            query['StreamPort'] = request.stream_port
+        if not DaraCore.is_null(request.user):
+            query['User'] = request.user
+        if not DaraCore.is_null(request.xtrabackup_path):
+            query['XtrabackupPath'] = request.xtrabackup_path
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ValidateImportTask',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ValidateImportTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def validate_import_task_with_options_async(
+        self,
+        request: main_models.ValidateImportTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ValidateImportTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not DaraCore.is_null(request.estimated_size):
+            query['EstimatedSize'] = request.estimated_size
+        if not DaraCore.is_null(request.host):
+            query['Host'] = request.host
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.port):
+            query['Port'] = request.port
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.source_instance_id):
+            query['SourceInstanceId'] = request.source_instance_id
+        if not DaraCore.is_null(request.source_platform):
+            query['SourcePlatform'] = request.source_platform
+        if not DaraCore.is_null(request.stream_port):
+            query['StreamPort'] = request.stream_port
+        if not DaraCore.is_null(request.user):
+            query['User'] = request.user
+        if not DaraCore.is_null(request.xtrabackup_path):
+            query['XtrabackupPath'] = request.xtrabackup_path
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ValidateImportTask',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ValidateImportTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def validate_import_task(
+        self,
+        request: main_models.ValidateImportTaskRequest,
+    ) -> main_models.ValidateImportTaskResponse:
+        runtime = RuntimeOptions()
+        return self.validate_import_task_with_options(request, runtime)
+
+    async def validate_import_task_async(
+        self,
+        request: main_models.ValidateImportTaskRequest,
+    ) -> main_models.ValidateImportTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.validate_import_task_with_options_async(request, runtime)

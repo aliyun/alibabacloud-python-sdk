@@ -11,6 +11,7 @@ class StopRCInstancesShrinkRequest(DaraModel):
         force_stop: bool = None,
         instance_ids_shrink: str = None,
         region_id: str = None,
+        stopped_mode: str = None,
     ):
         # The batch operation mode. Set the value to **AllTogether**. In this mode, if all instances are stopped, a success message is returned. If an instance fails the verification, none of the instances can be stopped and an error message is returned.
         self.batch_optimization = batch_optimization
@@ -23,6 +24,7 @@ class StopRCInstancesShrinkRequest(DaraModel):
         self.instance_ids_shrink = instance_ids_shrink
         # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
+        self.stopped_mode = stopped_mode
 
     def validate(self):
         pass
@@ -44,6 +46,9 @@ class StopRCInstancesShrinkRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.stopped_mode is not None:
+            result['StoppedMode'] = self.stopped_mode
+
         return result
 
     def from_map(self, m: dict = None):
@@ -59,6 +64,9 @@ class StopRCInstancesShrinkRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('StoppedMode') is not None:
+            self.stopped_mode = m.get('StoppedMode')
 
         return self
 

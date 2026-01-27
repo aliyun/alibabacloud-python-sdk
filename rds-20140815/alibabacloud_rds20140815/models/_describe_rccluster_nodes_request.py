@@ -7,11 +7,15 @@ from darabonba.model import DaraModel
 class DescribeRCClusterNodesRequest(DaraModel):
     def __init__(
         self,
+        cluster_id: str = None,
+        node_pool_id: str = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
         vpc_id: str = None,
     ):
+        self.cluster_id = cluster_id
+        self.node_pool_id = node_pool_id
         # The page number.
         self.page_number = page_number
         # The number of entries per page. Valid values: **1 to 100**.
@@ -33,6 +37,12 @@ class DescribeRCClusterNodesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.cluster_id is not None:
+            result['ClusterId'] = self.cluster_id
+
+        if self.node_pool_id is not None:
+            result['NodePoolId'] = self.node_pool_id
+
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
 
@@ -49,6 +59,12 @@ class DescribeRCClusterNodesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClusterId') is not None:
+            self.cluster_id = m.get('ClusterId')
+
+        if m.get('NodePoolId') is not None:
+            self.node_pool_id = m.get('NodePoolId')
+
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
 

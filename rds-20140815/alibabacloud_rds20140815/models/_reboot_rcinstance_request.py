@@ -10,6 +10,7 @@ class RebootRCInstanceRequest(DaraModel):
         dry_run: bool = None,
         force_stop: bool = None,
         instance_id: str = None,
+        reboot_time: str = None,
         region_id: str = None,
     ):
         # Specifies whether to perform only a dry run, without performing the actual request. Valid values:
@@ -28,6 +29,7 @@ class RebootRCInstanceRequest(DaraModel):
         # 
         # This parameter is required.
         self.instance_id = instance_id
+        self.reboot_time = reboot_time
         # The region ID.
         self.region_id = region_id
 
@@ -48,6 +50,9 @@ class RebootRCInstanceRequest(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.reboot_time is not None:
+            result['RebootTime'] = self.reboot_time
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -63,6 +68,9 @@ class RebootRCInstanceRequest(DaraModel):
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
+
+        if m.get('RebootTime') is not None:
+            self.reboot_time = m.get('RebootTime')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

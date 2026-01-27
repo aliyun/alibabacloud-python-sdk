@@ -10,6 +10,7 @@ class StopRCInstanceRequest(DaraModel):
         force_stop: bool = None,
         instance_id: str = None,
         region_id: str = None,
+        stopped_mode: str = None,
     ):
         # Specifies whether to forcefully stop the instance. Valid values:
         # 
@@ -22,6 +23,7 @@ class StopRCInstanceRequest(DaraModel):
         self.instance_id = instance_id
         # The region ID.
         self.region_id = region_id
+        self.stopped_mode = stopped_mode
 
     def validate(self):
         pass
@@ -40,6 +42,9 @@ class StopRCInstanceRequest(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.stopped_mode is not None:
+            result['StoppedMode'] = self.stopped_mode
+
         return result
 
     def from_map(self, m: dict = None):
@@ -52,6 +57,9 @@ class StopRCInstanceRequest(DaraModel):
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
+
+        if m.get('StoppedMode') is not None:
+            self.stopped_mode = m.get('StoppedMode')
 
         return self
 

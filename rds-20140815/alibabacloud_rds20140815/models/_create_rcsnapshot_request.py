@@ -31,8 +31,6 @@ class CreateRCSnapshotRequest(DaraModel):
         # This parameter is deprecated.
         self.instant_access_retention_days = instant_access_retention_days
         # The region ID.
-        # 
-        # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
         # The retention period of the snapshot. Valid values: 1 to 65536. Unit: days. The snapshot is automatically released when its retention period expires.

@@ -1,3 +1,35 @@
+2026-01-27 Version: 15.1.0
+- Support API CreateImportTask.
+- Support API CreateRCImage.
+- Support API DescribeImportTask.
+- Support API DescribeImportTaskValidation.
+- Support API ListImportTasks.
+- Support API ModifyDBInstanceVectorSupportStatus.
+- Support API ModifyImportTask.
+- Support API ModifyRCDiskAttribute.
+- Support API ValidateImportTask.
+- Update API DescribeDBInstanceReplication: add response parameters Body.ImportStatus.
+- Update API DescribeRCClusterNodes: add request parameters ClusterId.
+- Update API DescribeRCClusterNodes: add request parameters NodePoolId.
+- Update API DescribeRCClusterNodes: add response parameters Body.Nodes.$.PodCount.
+- Update API DescribeRCDisks: add response parameters Body.Disks.$.BurstingEnabled.
+- Update API DescribeRCDisks: add response parameters Body.Disks.$.Portable.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.EcsHostName.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.OSName.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.OSType.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.StartTime.
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.StoppedMode.
+- Update API DescribeRCSnapshots: add request parameters InstanceId.
+- Update API DescribeRCSnapshots: add response parameters Body.Snapshots.$.LastModifiedTime.
+- Update API ModifyRCDiskChargeType: add request parameters AutoPay.
+- Update API ModifyRCDiskChargeType: add request parameters Period.
+- Update API ModifyRCDiskChargeType: add request parameters UsedTime.
+- Update API RebootRCInstance: add request parameters RebootTime.
+- Update API RebootRCInstances: add request parameters RebootTime.
+- Update API StopRCInstance: add request parameters StoppedMode.
+- Update API StopRCInstances: add request parameters StoppedMode.
+
+
 2026-01-27 Version: 15.0.0
 - Delete API CreateRCImage.
 - Delete API ModifyDBInstanceVectorSupportStatus.

@@ -12,6 +12,7 @@ class RebootRCInstancesRequest(DaraModel):
         batch_optimization: str = None,
         force_reboot: bool = None,
         instance_ids: List[str] = None,
+        reboot_time: str = None,
         region_id: str = None,
     ):
         # The batch operation mode. Set the value to **AllTogether**. In this mode, if all specified instances are restarted, a success message is returned. If an instance fails the verification, none of the specified instances can be restarted and an error message is returned.
@@ -23,6 +24,7 @@ class RebootRCInstancesRequest(DaraModel):
         self.force_reboot = force_reboot
         # The node IDs.
         self.instance_ids = instance_ids
+        self.reboot_time = reboot_time
         # The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/26243.html) operation to query the most recent region list.
         self.region_id = region_id
 
@@ -43,6 +45,9 @@ class RebootRCInstancesRequest(DaraModel):
         if self.instance_ids is not None:
             result['InstanceIds'] = self.instance_ids
 
+        if self.reboot_time is not None:
+            result['RebootTime'] = self.reboot_time
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -58,6 +63,9 @@ class RebootRCInstancesRequest(DaraModel):
 
         if m.get('InstanceIds') is not None:
             self.instance_ids = m.get('InstanceIds')
+
+        if m.get('RebootTime') is not None:
+            self.reboot_time = m.get('RebootTime')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

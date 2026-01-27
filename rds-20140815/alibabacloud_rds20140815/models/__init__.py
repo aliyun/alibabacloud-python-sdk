@@ -126,6 +126,9 @@ from ._create_gadinstance_response import CreateGADInstanceResponse
 from ._create_gad_instance_member_request import CreateGadInstanceMemberRequest
 from ._create_gad_instance_member_response_body import CreateGadInstanceMemberResponseBody
 from ._create_gad_instance_member_response import CreateGadInstanceMemberResponse
+from ._create_import_task_request import CreateImportTaskRequest
+from ._create_import_task_response_body import CreateImportTaskResponseBody
+from ._create_import_task_response import CreateImportTaskResponse
 from ._create_masking_rules_request import CreateMaskingRulesRequest
 from ._create_masking_rules_shrink_request import CreateMaskingRulesShrinkRequest
 from ._create_masking_rules_response_body import CreateMaskingRulesResponseBody
@@ -152,6 +155,9 @@ from ._create_rcdeployment_set_response import CreateRCDeploymentSetResponse
 from ._create_rcdisk_request import CreateRCDiskRequest
 from ._create_rcdisk_response_body import CreateRCDiskResponseBody
 from ._create_rcdisk_response import CreateRCDiskResponse
+from ._create_rcimage_request import CreateRCImageRequest
+from ._create_rcimage_response_body import CreateRCImageResponseBody
+from ._create_rcimage_response import CreateRCImageResponse
 from ._create_rcnode_pool_request import CreateRCNodePoolRequest
 from ._create_rcnode_pool_shrink_request import CreateRCNodePoolShrinkRequest
 from ._create_rcnode_pool_response_body import CreateRCNodePoolResponseBody
@@ -486,6 +492,12 @@ from ._describe_host_group_elastic_strategy_parameters_response import DescribeH
 from ._describe_host_web_shell_request import DescribeHostWebShellRequest
 from ._describe_host_web_shell_response_body import DescribeHostWebShellResponseBody
 from ._describe_host_web_shell_response import DescribeHostWebShellResponse
+from ._describe_import_task_request import DescribeImportTaskRequest
+from ._describe_import_task_response_body import DescribeImportTaskResponseBody
+from ._describe_import_task_response import DescribeImportTaskResponse
+from ._describe_import_task_validation_request import DescribeImportTaskValidationRequest
+from ._describe_import_task_validation_response_body import DescribeImportTaskValidationResponseBody
+from ._describe_import_task_validation_response import DescribeImportTaskValidationResponse
 from ._describe_instance_auto_renewal_attribute_request import DescribeInstanceAutoRenewalAttributeRequest
 from ._describe_instance_auto_renewal_attribute_response_body import DescribeInstanceAutoRenewalAttributeResponseBody
 from ._describe_instance_auto_renewal_attribute_response import DescribeInstanceAutoRenewalAttributeResponse
@@ -753,6 +765,9 @@ from ._install_rccloud_assistant_response import InstallRCCloudAssistantResponse
 from ._list_classes_request import ListClassesRequest
 from ._list_classes_response_body import ListClassesResponseBody
 from ._list_classes_response import ListClassesResponse
+from ._list_import_tasks_request import ListImportTasksRequest
+from ._list_import_tasks_response_body import ListImportTasksResponseBody
+from ._list_import_tasks_response import ListImportTasksResponse
 from ._list_rcvclusters_request import ListRCVClustersRequest
 from ._list_rcvclusters_response_body import ListRCVClustersResponseBody
 from ._list_rcvclusters_response import ListRCVClustersResponse
@@ -882,6 +897,9 @@ from ._modify_dbinstance_spec_response import ModifyDBInstanceSpecResponse
 from ._modify_dbinstance_tderequest import ModifyDBInstanceTDERequest
 from ._modify_dbinstance_tderesponse_body import ModifyDBInstanceTDEResponseBody
 from ._modify_dbinstance_tderesponse import ModifyDBInstanceTDEResponse
+from ._modify_dbinstance_vector_support_status_request import ModifyDBInstanceVectorSupportStatusRequest
+from ._modify_dbinstance_vector_support_status_response_body import ModifyDBInstanceVectorSupportStatusResponseBody
+from ._modify_dbinstance_vector_support_status_response import ModifyDBInstanceVectorSupportStatusResponse
 from ._modify_dbnode_request import ModifyDBNodeRequest
 from ._modify_dbnode_shrink_request import ModifyDBNodeShrinkRequest
 from ._modify_dbnode_response_body import ModifyDBNodeResponseBody
@@ -921,6 +939,9 @@ from ._modify_hadiagnose_config_response import ModifyHADiagnoseConfigResponse
 from ._modify_haswitch_config_request import ModifyHASwitchConfigRequest
 from ._modify_haswitch_config_response_body import ModifyHASwitchConfigResponseBody
 from ._modify_haswitch_config_response import ModifyHASwitchConfigResponse
+from ._modify_import_task_request import ModifyImportTaskRequest
+from ._modify_import_task_response_body import ModifyImportTaskResponseBody
+from ._modify_import_task_response import ModifyImportTaskResponse
 from ._modify_instance_auto_renewal_attribute_request import ModifyInstanceAutoRenewalAttributeRequest
 from ._modify_instance_auto_renewal_attribute_response_body import ModifyInstanceAutoRenewalAttributeResponseBody
 from ._modify_instance_auto_renewal_attribute_response import ModifyInstanceAutoRenewalAttributeResponse
@@ -940,6 +961,9 @@ from ._modify_parameter_response import ModifyParameterResponse
 from ._modify_parameter_group_request import ModifyParameterGroupRequest
 from ._modify_parameter_group_response_body import ModifyParameterGroupResponseBody
 from ._modify_parameter_group_response import ModifyParameterGroupResponse
+from ._modify_rcdisk_attribute_request import ModifyRCDiskAttributeRequest
+from ._modify_rcdisk_attribute_response_body import ModifyRCDiskAttributeResponseBody
+from ._modify_rcdisk_attribute_response import ModifyRCDiskAttributeResponse
 from ._modify_rcdisk_charge_type_request import ModifyRCDiskChargeTypeRequest
 from ._modify_rcdisk_charge_type_response_body import ModifyRCDiskChargeTypeResponseBody
 from ._modify_rcdisk_charge_type_response import ModifyRCDiskChargeTypeResponse
@@ -1183,6 +1207,9 @@ from ._upgrade_dbinstance_major_version_precheck_response import UpgradeDBInstan
 from ._upgrade_dbproxy_instance_kernel_version_request import UpgradeDBProxyInstanceKernelVersionRequest
 from ._upgrade_dbproxy_instance_kernel_version_response_body import UpgradeDBProxyInstanceKernelVersionResponseBody
 from ._upgrade_dbproxy_instance_kernel_version_response import UpgradeDBProxyInstanceKernelVersionResponse
+from ._validate_import_task_request import ValidateImportTaskRequest
+from ._validate_import_task_response_body import ValidateImportTaskResponseBody
+from ._validate_import_task_response import ValidateImportTaskResponse
 from ._add_tags_to_resource_request import AddTagsToResourceRequestTag
 from ._attach_rcinstances_response_body import AttachRCInstancesResponseBodyResponses
 from ._attach_whitelist_template_to_instance_response_body import AttachWhitelistTemplateToInstanceResponseBodyData
@@ -1547,6 +1574,7 @@ from ._get_dbinstance_topology_response_body import GetDBInstanceTopologyRespons
 from ._get_db_proxy_instance_ssl_response_body import GetDbProxyInstanceSslResponseBodyDbProxyCertListItemsDbProxyCertListItems
 from ._get_db_proxy_instance_ssl_response_body import GetDbProxyInstanceSslResponseBodyDbProxyCertListItems
 from ._list_classes_response_body import ListClassesResponseBodyItems
+from ._list_import_tasks_response_body import ListImportTasksResponseBodyItems
 from ._list_rcvclusters_response_body import ListRCVClustersResponseBodyVClusters
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResourcesTagResource
@@ -1709,6 +1737,9 @@ __all__ = [
     CreateGadInstanceMemberRequest,
     CreateGadInstanceMemberResponseBody,
     CreateGadInstanceMemberResponse,
+    CreateImportTaskRequest,
+    CreateImportTaskResponseBody,
+    CreateImportTaskResponse,
     CreateMaskingRulesRequest,
     CreateMaskingRulesShrinkRequest,
     CreateMaskingRulesResponseBody,
@@ -1735,6 +1766,9 @@ __all__ = [
     CreateRCDiskRequest,
     CreateRCDiskResponseBody,
     CreateRCDiskResponse,
+    CreateRCImageRequest,
+    CreateRCImageResponseBody,
+    CreateRCImageResponse,
     CreateRCNodePoolRequest,
     CreateRCNodePoolShrinkRequest,
     CreateRCNodePoolResponseBody,
@@ -2069,6 +2103,12 @@ __all__ = [
     DescribeHostWebShellRequest,
     DescribeHostWebShellResponseBody,
     DescribeHostWebShellResponse,
+    DescribeImportTaskRequest,
+    DescribeImportTaskResponseBody,
+    DescribeImportTaskResponse,
+    DescribeImportTaskValidationRequest,
+    DescribeImportTaskValidationResponseBody,
+    DescribeImportTaskValidationResponse,
     DescribeInstanceAutoRenewalAttributeRequest,
     DescribeInstanceAutoRenewalAttributeResponseBody,
     DescribeInstanceAutoRenewalAttributeResponse,
@@ -2336,6 +2376,9 @@ __all__ = [
     ListClassesRequest,
     ListClassesResponseBody,
     ListClassesResponse,
+    ListImportTasksRequest,
+    ListImportTasksResponseBody,
+    ListImportTasksResponse,
     ListRCVClustersRequest,
     ListRCVClustersResponseBody,
     ListRCVClustersResponse,
@@ -2465,6 +2508,9 @@ __all__ = [
     ModifyDBInstanceTDERequest,
     ModifyDBInstanceTDEResponseBody,
     ModifyDBInstanceTDEResponse,
+    ModifyDBInstanceVectorSupportStatusRequest,
+    ModifyDBInstanceVectorSupportStatusResponseBody,
+    ModifyDBInstanceVectorSupportStatusResponse,
     ModifyDBNodeRequest,
     ModifyDBNodeShrinkRequest,
     ModifyDBNodeResponseBody,
@@ -2504,6 +2550,9 @@ __all__ = [
     ModifyHASwitchConfigRequest,
     ModifyHASwitchConfigResponseBody,
     ModifyHASwitchConfigResponse,
+    ModifyImportTaskRequest,
+    ModifyImportTaskResponseBody,
+    ModifyImportTaskResponse,
     ModifyInstanceAutoRenewalAttributeRequest,
     ModifyInstanceAutoRenewalAttributeResponseBody,
     ModifyInstanceAutoRenewalAttributeResponse,
@@ -2523,6 +2572,9 @@ __all__ = [
     ModifyParameterGroupRequest,
     ModifyParameterGroupResponseBody,
     ModifyParameterGroupResponse,
+    ModifyRCDiskAttributeRequest,
+    ModifyRCDiskAttributeResponseBody,
+    ModifyRCDiskAttributeResponse,
     ModifyRCDiskChargeTypeRequest,
     ModifyRCDiskChargeTypeResponseBody,
     ModifyRCDiskChargeTypeResponse,
@@ -2766,6 +2818,9 @@ __all__ = [
     UpgradeDBProxyInstanceKernelVersionRequest,
     UpgradeDBProxyInstanceKernelVersionResponseBody,
     UpgradeDBProxyInstanceKernelVersionResponse,
+    ValidateImportTaskRequest,
+    ValidateImportTaskResponseBody,
+    ValidateImportTaskResponse,
     AddTagsToResourceRequestTag,
     AttachRCInstancesResponseBodyResponses,
     AttachWhitelistTemplateToInstanceResponseBodyData,
@@ -3130,6 +3185,7 @@ __all__ = [
     GetDbProxyInstanceSslResponseBodyDbProxyCertListItemsDbProxyCertListItems,
     GetDbProxyInstanceSslResponseBodyDbProxyCertListItems,
     ListClassesResponseBodyItems,
+    ListImportTasksResponseBodyItems,
     ListRCVClustersResponseBodyVClusters,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResourcesTagResource,
