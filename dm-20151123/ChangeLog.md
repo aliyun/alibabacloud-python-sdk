@@ -1,3 +1,6 @@
+2026-01-27 Version: 1.8.3
+- Generated python 2015-11-23 for Dm.
+
 2026-01-16 Version: 1.8.2
 - Update API BatchSendMail: add request parameters DomainAuth.
 - Update API SingleSendMail: add request parameters DomainAuth.
