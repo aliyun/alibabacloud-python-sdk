@@ -1,3 +1,8 @@
+2026-01-27 Version: 5.0.1
+- Update API ListInstance: add response parameters Body.Result.$.zoneCount.
+- Update API ListInstance: add response parameters Body.Result.$.zoneInfos.
+
+
 2026-01-16 Version: 5.0.0
 - Update API EnableKibanaPvlNetwork: add request parameters clientToken.
 - Update API UpdateInstance: add request parameters body.updateType.

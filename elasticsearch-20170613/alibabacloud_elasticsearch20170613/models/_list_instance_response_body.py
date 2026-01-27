@@ -104,6 +104,8 @@ class ListInstanceResponseBodyResult(DaraModel):
         tags: List[main_models.ListInstanceResponseBodyResultTags] = None,
         updated_at: str = None,
         vpc_instance_id: str = None,
+        zone_count: int = None,
+        zone_infos: List[main_models.ListInstanceResponseBodyResultZoneInfos] = None,
     ):
         # The billing method of the instance. Valid values:
         # 
@@ -166,6 +168,8 @@ class ListInstanceResponseBodyResult(DaraModel):
         # Coordination node configuration.
         self.updated_at = updated_at
         self.vpc_instance_id = vpc_instance_id
+        self.zone_count = zone_count
+        self.zone_infos = zone_infos
 
     def validate(self):
         if self.client_node_configuration:
@@ -182,6 +186,10 @@ class ListInstanceResponseBodyResult(DaraModel):
             self.node_spec.validate()
         if self.tags:
             for v1 in self.tags:
+                 if v1:
+                    v1.validate()
+        if self.zone_infos:
+            for v1 in self.zone_infos:
                  if v1:
                     v1.validate()
 
@@ -287,6 +295,14 @@ class ListInstanceResponseBodyResult(DaraModel):
 
         if self.vpc_instance_id is not None:
             result['vpcInstanceId'] = self.vpc_instance_id
+
+        if self.zone_count is not None:
+            result['zoneCount'] = self.zone_count
+
+        result['zoneInfos'] = []
+        if self.zone_infos is not None:
+            for k1 in self.zone_infos:
+                result['zoneInfos'].append(k1.to_map() if k1 else None)
 
         return result
 
@@ -396,6 +412,50 @@ class ListInstanceResponseBodyResult(DaraModel):
 
         if m.get('vpcInstanceId') is not None:
             self.vpc_instance_id = m.get('vpcInstanceId')
+
+        if m.get('zoneCount') is not None:
+            self.zone_count = m.get('zoneCount')
+
+        self.zone_infos = []
+        if m.get('zoneInfos') is not None:
+            for k1 in m.get('zoneInfos'):
+                temp_model = main_models.ListInstanceResponseBodyResultZoneInfos()
+                self.zone_infos.append(temp_model.from_map(k1))
+
+        return self
+
+class ListInstanceResponseBodyResultZoneInfos(DaraModel):
+    def __init__(
+        self,
+        status: str = None,
+        zone_id: str = None,
+    ):
+        self.status = status
+        self.zone_id = zone_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.status is not None:
+            result['status'] = self.status
+
+        if self.zone_id is not None:
+            result['zoneId'] = self.zone_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('status') is not None:
+            self.status = m.get('status')
+
+        if m.get('zoneId') is not None:
+            self.zone_id = m.get('zoneId')
 
         return self
 

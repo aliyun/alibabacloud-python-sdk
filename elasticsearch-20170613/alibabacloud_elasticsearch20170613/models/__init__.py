@@ -758,6 +758,7 @@ from ._list_instance_response_body import ListInstanceResponseBodyResultNetworkC
 from ._list_instance_response_body import ListInstanceResponseBodyResultNetworkConfig
 from ._list_instance_response_body import ListInstanceResponseBodyResultNodeSpec
 from ._list_instance_response_body import ListInstanceResponseBodyResultTags
+from ._list_instance_response_body import ListInstanceResponseBodyResultZoneInfos
 from ._list_instance_response_body import ListInstanceResponseBodyResult
 from ._list_instance_history_events_request import ListInstanceHistoryEventsRequestBody
 from ._list_instance_history_events_shrink_request import ListInstanceHistoryEventsShrinkRequestBody
@@ -1615,6 +1616,7 @@ __all__ = [
     ListInstanceResponseBodyResultNetworkConfig,
     ListInstanceResponseBodyResultNodeSpec,
     ListInstanceResponseBodyResultTags,
+    ListInstanceResponseBodyResultZoneInfos,
     ListInstanceResponseBodyResult,
     ListInstanceHistoryEventsRequestBody,
     ListInstanceHistoryEventsShrinkRequestBody,
