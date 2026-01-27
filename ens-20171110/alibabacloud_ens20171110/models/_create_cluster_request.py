@@ -11,7 +11,6 @@ class CreateClusterRequest(DaraModel):
     def __init__(
         self,
         cluster_type: str = None,
-        cluster_version: str = None,
         container_cidr: str = None,
         control_plane_config: main_models.CreateClusterRequestControlPlaneConfig = None,
         ens_region_id: str = None,
@@ -27,8 +26,6 @@ class CreateClusterRequest(DaraModel):
     ):
         # This parameter is required.
         self.cluster_type = cluster_type
-        # The version of the cluster.
-        self.cluster_version = cluster_version
         self.container_cidr = container_cidr
         self.control_plane_config = control_plane_config
         self.ens_region_id = ens_region_id
@@ -55,9 +52,6 @@ class CreateClusterRequest(DaraModel):
             result = _map
         if self.cluster_type is not None:
             result['ClusterType'] = self.cluster_type
-
-        if self.cluster_version is not None:
-            result['ClusterVersion'] = self.cluster_version
 
         if self.container_cidr is not None:
             result['ContainerCidr'] = self.container_cidr
@@ -101,9 +95,6 @@ class CreateClusterRequest(DaraModel):
         m = m or dict()
         if m.get('ClusterType') is not None:
             self.cluster_type = m.get('ClusterType')
-
-        if m.get('ClusterVersion') is not None:
-            self.cluster_version = m.get('ClusterVersion')
 
         if m.get('ContainerCidr') is not None:
             self.container_cidr = m.get('ContainerCidr')

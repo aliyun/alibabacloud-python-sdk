@@ -1893,8 +1893,6 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cluster_type):
             query['ClusterType'] = request.cluster_type
-        if not DaraCore.is_null(request.cluster_version):
-            query['ClusterVersion'] = request.cluster_version
         if not DaraCore.is_null(request.container_cidr):
             query['ContainerCidr'] = request.container_cidr
         if not DaraCore.is_null(request.control_plane_config_shrink):
@@ -1955,8 +1953,6 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cluster_type):
             query['ClusterType'] = request.cluster_type
-        if not DaraCore.is_null(request.cluster_version):
-            query['ClusterVersion'] = request.cluster_version
         if not DaraCore.is_null(request.container_cidr):
             query['ContainerCidr'] = request.container_cidr
         if not DaraCore.is_null(request.control_plane_config_shrink):
