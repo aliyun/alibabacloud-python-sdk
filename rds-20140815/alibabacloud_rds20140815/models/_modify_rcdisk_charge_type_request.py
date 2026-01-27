@@ -7,31 +7,26 @@ from darabonba.model import DaraModel
 class ModifyRCDiskChargeTypeRequest(DaraModel):
     def __init__(
         self,
-        auto_pay: bool = None,
         auto_renew: str = None,
         auto_use_coupon: bool = None,
         business_info: str = None,
         client_token: str = None,
         instance_id: str = None,
         pay_type: str = None,
-        period: str = None,
         promotion_code: str = None,
         region_id: str = None,
-        used_time: int = None,
     ):
-        self.auto_pay = auto_pay
         self.auto_renew = auto_renew
         self.auto_use_coupon = auto_use_coupon
         self.business_info = business_info
         self.client_token = client_token
         # This parameter is required.
         self.instance_id = instance_id
+        # This parameter is required.
         self.pay_type = pay_type
-        self.period = period
         self.promotion_code = promotion_code
         # This parameter is required.
         self.region_id = region_id
-        self.used_time = used_time
 
     def validate(self):
         pass
@@ -41,9 +36,6 @@ class ModifyRCDiskChargeTypeRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.auto_pay is not None:
-            result['AutoPay'] = self.auto_pay
-
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
 
@@ -62,25 +54,16 @@ class ModifyRCDiskChargeTypeRequest(DaraModel):
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
 
-        if self.period is not None:
-            result['Period'] = self.period
-
         if self.promotion_code is not None:
             result['PromotionCode'] = self.promotion_code
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
-        if self.used_time is not None:
-            result['UsedTime'] = self.used_time
-
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('AutoPay') is not None:
-            self.auto_pay = m.get('AutoPay')
-
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
 
@@ -99,17 +82,11 @@ class ModifyRCDiskChargeTypeRequest(DaraModel):
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
 
-        if m.get('Period') is not None:
-            self.period = m.get('Period')
-
         if m.get('PromotionCode') is not None:
             self.promotion_code = m.get('PromotionCode')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
-
-        if m.get('UsedTime') is not None:
-            self.used_time = m.get('UsedTime')
 
         return self
 

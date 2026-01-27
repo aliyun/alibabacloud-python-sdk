@@ -1,3 +1,24 @@
+2026-01-27 Version: 15.0.0
+- Delete API CreateRCImage.
+- Delete API ModifyDBInstanceVectorSupportStatus.
+- Delete API ModifyRCDiskAttribute.
+- Update API DescribeDBInstanceReplication: delete response parameters Body.ImportStatus.
+- Update API DescribeRCDisks: delete response parameters Body.Disks.$.BurstingEnabled.
+- Update API DescribeRCDisks: delete response parameters Body.Disks.$.Portable.
+- Update API DescribeRCInstances: delete response parameters Body.RCInstances.$.EcsHostName.
+- Update API DescribeRCInstances: delete response parameters Body.RCInstances.$.OSName.
+- Update API DescribeRCInstances: delete response parameters Body.RCInstances.$.OSType.
+- Update API DescribeRCInstances: delete response parameters Body.RCInstances.$.StartTime.
+- Update API DescribeRCInstances: delete response parameters Body.RCInstances.$.StoppedMode.
+- Update API DescribeRCSnapshots: delete request parameters InstanceId.
+- Update API DescribeRCSnapshots: delete response parameters Body.Snapshots.$.LastModifiedTime.
+- Update API ModifyRCDiskChargeType: delete request parameters AutoPay.
+- Update API ModifyRCDiskChargeType: delete request parameters Period.
+- Update API ModifyRCDiskChargeType: delete request parameters UsedTime.
+- Update API StopRCInstance: delete request parameters StoppedMode.
+- Update API StopRCInstances: delete request parameters StoppedMode.
+
+
 2026-01-14 Version: 14.2.0
 - Support API CreateRCImage.
 - Support API ModifyDBInstanceVectorSupportStatus.

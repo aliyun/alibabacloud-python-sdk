@@ -88,7 +88,6 @@ class DescribeRCSnapshotsResponseBodySnapshots(DaraModel):
         description: str = None,
         encrypted: bool = None,
         instant_access: bool = None,
-        last_modified_time: str = None,
         progress: str = None,
         region_id: str = None,
         resource_group_id: str = None,
@@ -125,7 +124,6 @@ class DescribeRCSnapshotsResponseBodySnapshots(DaraModel):
         self.encrypted = encrypted
         # This parameter is deprecated.
         self.instant_access = instant_access
-        self.last_modified_time = last_modified_time
         # The progress of the snapshot creation task in percentage.
         self.progress = progress
         # The region ID.
@@ -198,9 +196,6 @@ class DescribeRCSnapshotsResponseBodySnapshots(DaraModel):
         if self.instant_access is not None:
             result['InstantAccess'] = self.instant_access
 
-        if self.last_modified_time is not None:
-            result['LastModifiedTime'] = self.last_modified_time
-
         if self.progress is not None:
             result['Progress'] = self.progress
 
@@ -263,9 +258,6 @@ class DescribeRCSnapshotsResponseBodySnapshots(DaraModel):
 
         if m.get('InstantAccess') is not None:
             self.instant_access = m.get('InstantAccess')
-
-        if m.get('LastModifiedTime') is not None:
-            self.last_modified_time = m.get('LastModifiedTime')
 
         if m.get('Progress') is not None:
             self.progress = m.get('Progress')

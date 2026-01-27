@@ -88,7 +88,6 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         db_type: str = None,
         deployment_set_id: str = None,
         description: str = None,
-        ecs_host_name: str = None,
         expired_time: str = None,
         gmt_created: str = None,
         host_ip: str = None,
@@ -101,15 +100,11 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         instance_type_family: str = None,
         memory: int = None,
         node_type: str = None,
-        osname: str = None,
-        ostype: str = None,
         public_ip: str = None,
         region_id: str = None,
         security_group_id: str = None,
         spot_strategy: str = None,
-        start_time: str = None,
         status: str = None,
-        stopped_mode: str = None,
         tag_resources: List[main_models.DescribeRCInstancesResponseBodyRCInstancesTagResources] = None,
         tags: List[main_models.DescribeRCInstancesResponseBodyRCInstancesTags] = None,
         vpc_attributes: main_models.DescribeRCInstancesResponseBodyRCInstancesVpcAttributes = None,
@@ -125,7 +120,6 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         self.deployment_set_id = deployment_set_id
         # The instance description.
         self.description = description
-        self.ecs_host_name = ecs_host_name
         self.expired_time = expired_time
         # The time when the task was created. The time is displayed in GMT.
         self.gmt_created = gmt_created
@@ -142,14 +136,11 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         self.instance_type_family = instance_type_family
         self.memory = memory
         self.node_type = node_type
-        self.osname = osname
-        self.ostype = ostype
         self.public_ip = public_ip
         # The region ID.
         self.region_id = region_id
         self.security_group_id = security_group_id
         self.spot_strategy = spot_strategy
-        self.start_time = start_time
         # The instance status. Valid values:
         # 
         # *   **Pending**
@@ -160,7 +151,6 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         # 
         # >  If the value returned for the DescribeRCInstances operation is different from the value that is returned for the **DescribeRCInstanceAttribute** operation, the value returned for the **DescribeRCInstanceAttribute** operation shall prevail.
         self.status = status
-        self.stopped_mode = stopped_mode
         self.tag_resources = tag_resources
         self.tags = tags
         self.vpc_attributes = vpc_attributes
@@ -203,9 +193,6 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
-        if self.ecs_host_name is not None:
-            result['EcsHostName'] = self.ecs_host_name
-
         if self.expired_time is not None:
             result['ExpiredTime'] = self.expired_time
 
@@ -242,12 +229,6 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         if self.node_type is not None:
             result['NodeType'] = self.node_type
 
-        if self.osname is not None:
-            result['OSName'] = self.osname
-
-        if self.ostype is not None:
-            result['OSType'] = self.ostype
-
         if self.public_ip is not None:
             result['PublicIp'] = self.public_ip
 
@@ -260,14 +241,8 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         if self.spot_strategy is not None:
             result['SpotStrategy'] = self.spot_strategy
 
-        if self.start_time is not None:
-            result['StartTime'] = self.start_time
-
         if self.status is not None:
             result['Status'] = self.status
-
-        if self.stopped_mode is not None:
-            result['StoppedMode'] = self.stopped_mode
 
         result['TagResources'] = []
         if self.tag_resources is not None:
@@ -310,9 +285,6 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
-        if m.get('EcsHostName') is not None:
-            self.ecs_host_name = m.get('EcsHostName')
-
         if m.get('ExpiredTime') is not None:
             self.expired_time = m.get('ExpiredTime')
 
@@ -349,12 +321,6 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         if m.get('NodeType') is not None:
             self.node_type = m.get('NodeType')
 
-        if m.get('OSName') is not None:
-            self.osname = m.get('OSName')
-
-        if m.get('OSType') is not None:
-            self.ostype = m.get('OSType')
-
         if m.get('PublicIp') is not None:
             self.public_ip = m.get('PublicIp')
 
@@ -367,14 +333,8 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         if m.get('SpotStrategy') is not None:
             self.spot_strategy = m.get('SpotStrategy')
 
-        if m.get('StartTime') is not None:
-            self.start_time = m.get('StartTime')
-
         if m.get('Status') is not None:
             self.status = m.get('Status')
-
-        if m.get('StoppedMode') is not None:
-            self.stopped_mode = m.get('StoppedMode')
 
         self.tag_resources = []
         if m.get('TagResources') is not None:

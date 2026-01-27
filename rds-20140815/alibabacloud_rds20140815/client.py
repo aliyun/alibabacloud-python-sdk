@@ -5221,88 +5221,6 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_rcdisk_with_options_async(request, runtime)
 
-    def create_rcimage_with_options(
-        self,
-        request: main_models.CreateRCImageRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.CreateRCImageResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.image_name):
-            query['ImageName'] = request.image_name
-        if not DaraCore.is_null(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.snapshot_id):
-            query['SnapshotId'] = request.snapshot_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'CreateRCImage',
-            version = '2014-08-15',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.CreateRCImageResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def create_rcimage_with_options_async(
-        self,
-        request: main_models.CreateRCImageRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.CreateRCImageResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.image_name):
-            query['ImageName'] = request.image_name
-        if not DaraCore.is_null(request.instance_id):
-            query['InstanceId'] = request.instance_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.snapshot_id):
-            query['SnapshotId'] = request.snapshot_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'CreateRCImage',
-            version = '2014-08-15',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.CreateRCImageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def create_rcimage(
-        self,
-        request: main_models.CreateRCImageRequest,
-    ) -> main_models.CreateRCImageResponse:
-        runtime = RuntimeOptions()
-        return self.create_rcimage_with_options(request, runtime)
-
-    async def create_rcimage_async(
-        self,
-        request: main_models.CreateRCImageRequest,
-    ) -> main_models.CreateRCImageResponse:
-        runtime = RuntimeOptions()
-        return await self.create_rcimage_with_options_async(request, runtime)
-
     def create_rcnode_pool_with_options(
         self,
         tmp_req: main_models.CreateRCNodePoolRequest,
@@ -20460,8 +20378,6 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.disk_id):
             query['DiskId'] = request.disk_id
-        if not DaraCore.is_null(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -20500,8 +20416,6 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.disk_id):
             query['DiskId'] = request.disk_id
-        if not DaraCore.is_null(request.instance_id):
-            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -28717,80 +28631,6 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_dbinstance_tdewith_options_async(request, runtime)
 
-    def modify_dbinstance_vector_support_status_with_options(
-        self,
-        request: main_models.ModifyDBInstanceVectorSupportStatusRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.ModifyDBInstanceVectorSupportStatusResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not DaraCore.is_null(request.status):
-            query['Status'] = request.status
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'ModifyDBInstanceVectorSupportStatus',
-            version = '2014-08-15',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.ModifyDBInstanceVectorSupportStatusResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_dbinstance_vector_support_status_with_options_async(
-        self,
-        request: main_models.ModifyDBInstanceVectorSupportStatusRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.ModifyDBInstanceVectorSupportStatusResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.dbinstance_id):
-            query['DBInstanceId'] = request.dbinstance_id
-        if not DaraCore.is_null(request.status):
-            query['Status'] = request.status
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'ModifyDBInstanceVectorSupportStatus',
-            version = '2014-08-15',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.ModifyDBInstanceVectorSupportStatusResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_dbinstance_vector_support_status(
-        self,
-        request: main_models.ModifyDBInstanceVectorSupportStatusRequest,
-    ) -> main_models.ModifyDBInstanceVectorSupportStatusResponse:
-        runtime = RuntimeOptions()
-        return self.modify_dbinstance_vector_support_status_with_options(request, runtime)
-
-    async def modify_dbinstance_vector_support_status_async(
-        self,
-        request: main_models.ModifyDBInstanceVectorSupportStatusRequest,
-    ) -> main_models.ModifyDBInstanceVectorSupportStatusResponse:
-        runtime = RuntimeOptions()
-        return await self.modify_dbinstance_vector_support_status_with_options_async(request, runtime)
-
     def modify_dbnode_with_options(
         self,
         tmp_req: main_models.ModifyDBNodeRequest,
@@ -30755,96 +30595,6 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_parameter_group_with_options_async(request, runtime)
 
-    def modify_rcdisk_attribute_with_options(
-        self,
-        request: main_models.ModifyRCDiskAttributeRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.ModifyRCDiskAttributeResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.bursting_enabled):
-            query['BurstingEnabled'] = request.bursting_enabled
-        if not DaraCore.is_null(request.delete_with_instance):
-            query['DeleteWithInstance'] = request.delete_with_instance
-        if not DaraCore.is_null(request.description):
-            query['Description'] = request.description
-        if not DaraCore.is_null(request.disk_id):
-            query['DiskId'] = request.disk_id
-        if not DaraCore.is_null(request.disk_name):
-            query['DiskName'] = request.disk_name
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'ModifyRCDiskAttribute',
-            version = '2014-08-15',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.ModifyRCDiskAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def modify_rcdisk_attribute_with_options_async(
-        self,
-        request: main_models.ModifyRCDiskAttributeRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.ModifyRCDiskAttributeResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.bursting_enabled):
-            query['BurstingEnabled'] = request.bursting_enabled
-        if not DaraCore.is_null(request.delete_with_instance):
-            query['DeleteWithInstance'] = request.delete_with_instance
-        if not DaraCore.is_null(request.description):
-            query['Description'] = request.description
-        if not DaraCore.is_null(request.disk_id):
-            query['DiskId'] = request.disk_id
-        if not DaraCore.is_null(request.disk_name):
-            query['DiskName'] = request.disk_name
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'ModifyRCDiskAttribute',
-            version = '2014-08-15',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.ModifyRCDiskAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def modify_rcdisk_attribute(
-        self,
-        request: main_models.ModifyRCDiskAttributeRequest,
-    ) -> main_models.ModifyRCDiskAttributeResponse:
-        runtime = RuntimeOptions()
-        return self.modify_rcdisk_attribute_with_options(request, runtime)
-
-    async def modify_rcdisk_attribute_async(
-        self,
-        request: main_models.ModifyRCDiskAttributeRequest,
-    ) -> main_models.ModifyRCDiskAttributeResponse:
-        runtime = RuntimeOptions()
-        return await self.modify_rcdisk_attribute_with_options_async(request, runtime)
-
     def modify_rcdisk_charge_type_with_options(
         self,
         request: main_models.ModifyRCDiskChargeTypeRequest,
@@ -30852,8 +30602,6 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyRCDiskChargeTypeResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.auto_pay):
-            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.auto_use_coupon):
@@ -30866,14 +30614,10 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
-        if not DaraCore.is_null(request.period):
-            query['Period'] = request.period
         if not DaraCore.is_null(request.promotion_code):
             query['PromotionCode'] = request.promotion_code
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.used_time):
-            query['UsedTime'] = request.used_time
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -30900,8 +30644,6 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyRCDiskChargeTypeResponse:
         request.validate()
         query = {}
-        if not DaraCore.is_null(request.auto_pay):
-            query['AutoPay'] = request.auto_pay
         if not DaraCore.is_null(request.auto_renew):
             query['AutoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.auto_use_coupon):
@@ -30914,14 +30656,10 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
-        if not DaraCore.is_null(request.period):
-            query['Period'] = request.period
         if not DaraCore.is_null(request.promotion_code):
             query['PromotionCode'] = request.promotion_code
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.used_time):
-            query['UsedTime'] = request.used_time
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -36454,8 +36192,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.stopped_mode):
-            query['StoppedMode'] = request.stopped_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -36488,8 +36224,6 @@ class Client(OpenApiClient):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.stopped_mode):
-            query['StoppedMode'] = request.stopped_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -36542,8 +36276,6 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.stopped_mode):
-            query['StoppedMode'] = request.stopped_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -36582,8 +36314,6 @@ class Client(OpenApiClient):
             query['InstanceIds'] = request.instance_ids_shrink
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.stopped_mode):
-            query['StoppedMode'] = request.stopped_mode
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

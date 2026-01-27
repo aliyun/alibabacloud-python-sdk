@@ -23,6 +23,8 @@ class DetachRCDiskRequest(DaraModel):
         # This parameter is required.
         self.instance_id = instance_id
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
+        # 
+        # This parameter is required.
         self.region_id = region_id
 
     def validate(self):
