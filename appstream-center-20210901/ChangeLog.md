@@ -1,3 +1,7 @@
+2026-01-27 Version: 4.7.8
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.VirtualKubeletIp.
+
+
 2026-01-21 Version: 4.7.7
 - Update API ModifyBrowserInstanceGroup: add request parameters Policy.ClipboardPolicy.ClipboardSizeUnit.
 

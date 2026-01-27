@@ -104,6 +104,7 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         system_disk_category: str = None,
         system_disk_performance_level: str = None,
         system_disk_size: int = None,
+        virtual_kubelet_ip: str = None,
         virtual_node_pool_id: str = None,
         wuying_server_id: str = None,
         wuying_server_name: str = None,
@@ -148,6 +149,7 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         self.system_disk_performance_level = system_disk_performance_level
         # The size of the system disk. Unit: GiB.
         self.system_disk_size = system_disk_size
+        self.virtual_kubelet_ip = virtual_kubelet_ip
         self.virtual_node_pool_id = virtual_node_pool_id
         # The ID of the workstation.
         self.wuying_server_id = wuying_server_id
@@ -241,6 +243,9 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
         if self.system_disk_size is not None:
             result['SystemDiskSize'] = self.system_disk_size
 
+        if self.virtual_kubelet_ip is not None:
+            result['VirtualKubeletIp'] = self.virtual_kubelet_ip
+
         if self.virtual_node_pool_id is not None:
             result['VirtualNodePoolId'] = self.virtual_node_pool_id
 
@@ -326,6 +331,9 @@ class ListWuyingServerResponseBodyWuyingServerList(DaraModel):
 
         if m.get('SystemDiskSize') is not None:
             self.system_disk_size = m.get('SystemDiskSize')
+
+        if m.get('VirtualKubeletIp') is not None:
+            self.virtual_kubelet_ip = m.get('VirtualKubeletIp')
 
         if m.get('VirtualNodePoolId') is not None:
             self.virtual_node_pool_id = m.get('VirtualNodePoolId')
