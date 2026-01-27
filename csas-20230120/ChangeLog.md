@@ -1,3 +1,18 @@
+2026-01-27 Version: 1.10.18
+- Update API CreatePrivateAccessApplication: add request parameters AddressGroups.
+- Update API CreatePrivateAccessApplication: add request parameters ConfigMode.
+- Update API GetPrivateAccessApplication: add response parameters Body.Application.AddressGroups.
+- Update API GetPrivateAccessApplication: add response parameters Body.Application.ConfigMode.
+- Update API ListPrivateAccessApplications: add response parameters Body.Applications.$.AddressGroups.
+- Update API ListPrivateAccessApplications: add response parameters Body.Applications.$.ConfigMode.
+- Update API ListUserApplications: add response parameters Body.Applications.$.AddressGroups.
+- Update API ListUserApplications: add response parameters Body.Applications.$.ConfigMode.
+- Update API UpdatePrivateAccessApplication: add request parameters AddressGroups.
+- Update API UpdatePrivateAccessApplication: add request parameters ConfigMode.
+- Update API UpdatePrivateAccessApplication: add request parameters Name.
+- Update API UpdatePrivateAccessPolicy: add request parameters Name.
+
+
 2025-12-03 Version: 1.10.17
 - Update API CreatePrivateAccessPolicy: add request parameters ValidFrom.
 - Update API CreatePrivateAccessPolicy: add request parameters ValidTimeStatus.
