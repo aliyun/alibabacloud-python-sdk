@@ -1,0 +1,245 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._oss_upload_credential import OssUploadCredential
+from ._approve_fota_update_request import ApproveFotaUpdateRequest
+from ._approve_fota_update_response_body import ApproveFotaUpdateResponseBody
+from ._approve_fota_update_response import ApproveFotaUpdateResponse
+from ._change_password_request import ChangePasswordRequest
+from ._change_password_response_body import ChangePasswordResponseBody
+from ._change_password_response import ChangePasswordResponse
+from ._delete_finger_print_template_request import DeleteFingerPrintTemplateRequest
+from ._delete_finger_print_template_response_body import DeleteFingerPrintTemplateResponseBody
+from ._delete_finger_print_template_response import DeleteFingerPrintTemplateResponse
+from ._describe_directories_request import DescribeDirectoriesRequest
+from ._describe_directories_response_body import DescribeDirectoriesResponseBody
+from ._describe_directories_response import DescribeDirectoriesResponse
+from ._describe_finger_print_templates_request import DescribeFingerPrintTemplatesRequest
+from ._describe_finger_print_templates_response_body import DescribeFingerPrintTemplatesResponseBody
+from ._describe_finger_print_templates_response import DescribeFingerPrintTemplatesResponse
+from ._describe_global_desktops_request import DescribeGlobalDesktopsRequest
+from ._describe_global_desktops_response_body import DescribeGlobalDesktopsResponseBody
+from ._describe_global_desktops_response import DescribeGlobalDesktopsResponse
+from ._describe_office_sites_request import DescribeOfficeSitesRequest
+from ._describe_office_sites_response_body import DescribeOfficeSitesResponseBody
+from ._describe_office_sites_response import DescribeOfficeSitesResponse
+from ._describe_regions_request import DescribeRegionsRequest
+from ._describe_regions_response_body import DescribeRegionsResponseBody
+from ._describe_regions_response import DescribeRegionsResponse
+from ._describe_snapshots_request import DescribeSnapshotsRequest
+from ._describe_snapshots_response_body import DescribeSnapshotsResponseBody
+from ._describe_snapshots_response import DescribeSnapshotsResponse
+from ._describe_user_resources_request import DescribeUserResourcesRequest
+from ._describe_user_resources_response_body import DescribeUserResourcesResponseBody
+from ._describe_user_resources_response import DescribeUserResourcesResponse
+from ._encrypt_password_request import EncryptPasswordRequest
+from ._encrypt_password_response_body import EncryptPasswordResponseBody
+from ._encrypt_password_response import EncryptPasswordResponse
+from ._get_cloud_drive_service_mount_token_request import GetCloudDriveServiceMountTokenRequest
+from ._get_cloud_drive_service_mount_token_response_body import GetCloudDriveServiceMountTokenResponseBody
+from ._get_cloud_drive_service_mount_token_response import GetCloudDriveServiceMountTokenResponse
+from ._get_connection_ticket_request import GetConnectionTicketRequest
+from ._get_connection_ticket_response_body import GetConnectionTicketResponseBody
+from ._get_connection_ticket_response import GetConnectionTicketResponse
+from ._get_login_token_request import GetLoginTokenRequest
+from ._get_login_token_shrink_request import GetLoginTokenShrinkRequest
+from ._get_login_token_response_body import GetLoginTokenResponseBody
+from ._get_login_token_response import GetLoginTokenResponse
+from ._is_keep_alive_request import IsKeepAliveRequest
+from ._is_keep_alive_response_body import IsKeepAliveResponseBody
+from ._is_keep_alive_response import IsKeepAliveResponse
+from ._query_eds_agent_report_config_request import QueryEdsAgentReportConfigRequest
+from ._query_eds_agent_report_config_response_body import QueryEdsAgentReportConfigResponseBody
+from ._query_eds_agent_report_config_response import QueryEdsAgentReportConfigResponse
+from ._reboot_desktops_request import RebootDesktopsRequest
+from ._reboot_desktops_response_body import RebootDesktopsResponseBody
+from ._reboot_desktops_response import RebootDesktopsResponse
+from ._refresh_login_token_request import RefreshLoginTokenRequest
+from ._refresh_login_token_response_body import RefreshLoginTokenResponseBody
+from ._refresh_login_token_response import RefreshLoginTokenResponse
+from ._report_eds_agent_info_request import ReportEdsAgentInfoRequest
+from ._report_eds_agent_info_response_body import ReportEdsAgentInfoResponseBody
+from ._report_eds_agent_info_response import ReportEdsAgentInfoResponse
+from ._report_session_status_request import ReportSessionStatusRequest
+from ._report_session_status_response_body import ReportSessionStatusResponseBody
+from ._report_session_status_response import ReportSessionStatusResponse
+from ._reset_password_request import ResetPasswordRequest
+from ._reset_password_response_body import ResetPasswordResponseBody
+from ._reset_password_response import ResetPasswordResponse
+from ._reset_snapshot_request import ResetSnapshotRequest
+from ._reset_snapshot_response_body import ResetSnapshotResponseBody
+from ._reset_snapshot_response import ResetSnapshotResponse
+from ._send_token_code_request import SendTokenCodeRequest
+from ._send_token_code_response_body import SendTokenCodeResponseBody
+from ._send_token_code_response import SendTokenCodeResponse
+from ._set_finger_print_template_request import SetFingerPrintTemplateRequest
+from ._set_finger_print_template_response_body import SetFingerPrintTemplateResponseBody
+from ._set_finger_print_template_response import SetFingerPrintTemplateResponse
+from ._set_finger_print_template_description_request import SetFingerPrintTemplateDescriptionRequest
+from ._set_finger_print_template_description_response_body import SetFingerPrintTemplateDescriptionResponseBody
+from ._set_finger_print_template_description_response import SetFingerPrintTemplateDescriptionResponse
+from ._start_desktops_request import StartDesktopsRequest
+from ._start_desktops_response_body import StartDesktopsResponseBody
+from ._start_desktops_response import StartDesktopsResponse
+from ._start_record_content_request import StartRecordContentRequest
+from ._start_record_content_response_body import StartRecordContentResponseBody
+from ._start_record_content_response import StartRecordContentResponse
+from ._stop_desktops_request import StopDesktopsRequest
+from ._stop_desktops_response_body import StopDesktopsResponseBody
+from ._stop_desktops_response import StopDesktopsResponse
+from ._stop_record_content_request import StopRecordContentRequest
+from ._stop_record_content_response_body import StopRecordContentResponseBody
+from ._stop_record_content_response import StopRecordContentResponse
+from ._unbind_user_desktop_request import UnbindUserDesktopRequest
+from ._unbind_user_desktop_response_body import UnbindUserDesktopResponseBody
+from ._unbind_user_desktop_response import UnbindUserDesktopResponse
+from ._verify_credential_request import VerifyCredentialRequest
+from ._verify_credential_response_body import VerifyCredentialResponseBody
+from ._verify_credential_response import VerifyCredentialResponse
+from ._describe_directories_response_body import DescribeDirectoriesResponseBodyDirectories
+from ._describe_finger_print_templates_response_body import DescribeFingerPrintTemplatesResponseBodyFingerPrintTemplates
+from ._describe_global_desktops_response_body import DescribeGlobalDesktopsResponseBodyDesktopsClients
+from ._describe_global_desktops_response_body import DescribeGlobalDesktopsResponseBodyDesktopsDesktopTimers
+from ._describe_global_desktops_response_body import DescribeGlobalDesktopsResponseBodyDesktopsDisks
+from ._describe_global_desktops_response_body import DescribeGlobalDesktopsResponseBodyDesktopsFotaUpdate
+from ._describe_global_desktops_response_body import DescribeGlobalDesktopsResponseBodyDesktopsSessions
+from ._describe_global_desktops_response_body import DescribeGlobalDesktopsResponseBodyDesktops
+from ._describe_office_sites_response_body import DescribeOfficeSitesResponseBodyOfficeSites
+from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
+from ._describe_snapshots_response_body import DescribeSnapshotsResponseBodySnapshots
+from ._describe_user_resources_response_body import DescribeUserResourcesResponseBodyResourcesClients
+from ._describe_user_resources_response_body import DescribeUserResourcesResponseBodyResourcesDesktopDurationList
+from ._describe_user_resources_response_body import DescribeUserResourcesResponseBodyResourcesDesktopTimers
+from ._describe_user_resources_response_body import DescribeUserResourcesResponseBodyResourcesFotaUpdate
+from ._describe_user_resources_response_body import DescribeUserResourcesResponseBodyResourcesOsUpdatePackages
+from ._describe_user_resources_response_body import DescribeUserResourcesResponseBodyResourcesOsUpdate
+from ._describe_user_resources_response_body import DescribeUserResourcesResponseBodyResourcesSessions
+from ._describe_user_resources_response_body import DescribeUserResourcesResponseBodyResources
+from ._get_cloud_drive_service_mount_token_response_body import GetCloudDriveServiceMountTokenResponseBodyToken
+from ._get_connection_ticket_request import GetConnectionTicketRequestTag
+from ._get_login_token_response_body import GetLoginTokenResponseBodyPasswordStrategy
+from ._get_login_token_response_body import GetLoginTokenResponseBodyRiskVerifyInfo
+from ._query_eds_agent_report_config_response_body import QueryEdsAgentReportConfigResponseBodyData
+
+__all__ = [
+    OssUploadCredential,
+    ApproveFotaUpdateRequest,
+    ApproveFotaUpdateResponseBody,
+    ApproveFotaUpdateResponse,
+    ChangePasswordRequest,
+    ChangePasswordResponseBody,
+    ChangePasswordResponse,
+    DeleteFingerPrintTemplateRequest,
+    DeleteFingerPrintTemplateResponseBody,
+    DeleteFingerPrintTemplateResponse,
+    DescribeDirectoriesRequest,
+    DescribeDirectoriesResponseBody,
+    DescribeDirectoriesResponse,
+    DescribeFingerPrintTemplatesRequest,
+    DescribeFingerPrintTemplatesResponseBody,
+    DescribeFingerPrintTemplatesResponse,
+    DescribeGlobalDesktopsRequest,
+    DescribeGlobalDesktopsResponseBody,
+    DescribeGlobalDesktopsResponse,
+    DescribeOfficeSitesRequest,
+    DescribeOfficeSitesResponseBody,
+    DescribeOfficeSitesResponse,
+    DescribeRegionsRequest,
+    DescribeRegionsResponseBody,
+    DescribeRegionsResponse,
+    DescribeSnapshotsRequest,
+    DescribeSnapshotsResponseBody,
+    DescribeSnapshotsResponse,
+    DescribeUserResourcesRequest,
+    DescribeUserResourcesResponseBody,
+    DescribeUserResourcesResponse,
+    EncryptPasswordRequest,
+    EncryptPasswordResponseBody,
+    EncryptPasswordResponse,
+    GetCloudDriveServiceMountTokenRequest,
+    GetCloudDriveServiceMountTokenResponseBody,
+    GetCloudDriveServiceMountTokenResponse,
+    GetConnectionTicketRequest,
+    GetConnectionTicketResponseBody,
+    GetConnectionTicketResponse,
+    GetLoginTokenRequest,
+    GetLoginTokenShrinkRequest,
+    GetLoginTokenResponseBody,
+    GetLoginTokenResponse,
+    IsKeepAliveRequest,
+    IsKeepAliveResponseBody,
+    IsKeepAliveResponse,
+    QueryEdsAgentReportConfigRequest,
+    QueryEdsAgentReportConfigResponseBody,
+    QueryEdsAgentReportConfigResponse,
+    RebootDesktopsRequest,
+    RebootDesktopsResponseBody,
+    RebootDesktopsResponse,
+    RefreshLoginTokenRequest,
+    RefreshLoginTokenResponseBody,
+    RefreshLoginTokenResponse,
+    ReportEdsAgentInfoRequest,
+    ReportEdsAgentInfoResponseBody,
+    ReportEdsAgentInfoResponse,
+    ReportSessionStatusRequest,
+    ReportSessionStatusResponseBody,
+    ReportSessionStatusResponse,
+    ResetPasswordRequest,
+    ResetPasswordResponseBody,
+    ResetPasswordResponse,
+    ResetSnapshotRequest,
+    ResetSnapshotResponseBody,
+    ResetSnapshotResponse,
+    SendTokenCodeRequest,
+    SendTokenCodeResponseBody,
+    SendTokenCodeResponse,
+    SetFingerPrintTemplateRequest,
+    SetFingerPrintTemplateResponseBody,
+    SetFingerPrintTemplateResponse,
+    SetFingerPrintTemplateDescriptionRequest,
+    SetFingerPrintTemplateDescriptionResponseBody,
+    SetFingerPrintTemplateDescriptionResponse,
+    StartDesktopsRequest,
+    StartDesktopsResponseBody,
+    StartDesktopsResponse,
+    StartRecordContentRequest,
+    StartRecordContentResponseBody,
+    StartRecordContentResponse,
+    StopDesktopsRequest,
+    StopDesktopsResponseBody,
+    StopDesktopsResponse,
+    StopRecordContentRequest,
+    StopRecordContentResponseBody,
+    StopRecordContentResponse,
+    UnbindUserDesktopRequest,
+    UnbindUserDesktopResponseBody,
+    UnbindUserDesktopResponse,
+    VerifyCredentialRequest,
+    VerifyCredentialResponseBody,
+    VerifyCredentialResponse,
+    DescribeDirectoriesResponseBodyDirectories,
+    DescribeFingerPrintTemplatesResponseBodyFingerPrintTemplates,
+    DescribeGlobalDesktopsResponseBodyDesktopsClients,
+    DescribeGlobalDesktopsResponseBodyDesktopsDesktopTimers,
+    DescribeGlobalDesktopsResponseBodyDesktopsDisks,
+    DescribeGlobalDesktopsResponseBodyDesktopsFotaUpdate,
+    DescribeGlobalDesktopsResponseBodyDesktopsSessions,
+    DescribeGlobalDesktopsResponseBodyDesktops,
+    DescribeOfficeSitesResponseBodyOfficeSites,
+    DescribeRegionsResponseBodyRegions,
+    DescribeSnapshotsResponseBodySnapshots,
+    DescribeUserResourcesResponseBodyResourcesClients,
+    DescribeUserResourcesResponseBodyResourcesDesktopDurationList,
+    DescribeUserResourcesResponseBodyResourcesDesktopTimers,
+    DescribeUserResourcesResponseBodyResourcesFotaUpdate,
+    DescribeUserResourcesResponseBodyResourcesOsUpdatePackages,
+    DescribeUserResourcesResponseBodyResourcesOsUpdate,
+    DescribeUserResourcesResponseBodyResourcesSessions,
+    DescribeUserResourcesResponseBodyResources,
+    GetCloudDriveServiceMountTokenResponseBodyToken,
+    GetConnectionTicketRequestTag,
+    GetLoginTokenResponseBodyPasswordStrategy,
+    GetLoginTokenResponseBodyRiskVerifyInfo,
+    QueryEdsAgentReportConfigResponseBodyData
+]

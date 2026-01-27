@@ -1,3 +1,11 @@
+2026-01-27 Version: 1.2.10
+- Update API DescribeOfficeSites: add request parameters Uuid.
+- Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.AliUid.
+- Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.BizType.
+- Update API GetConnectionTicket: add request parameters TicketBlackList.
+- Update API GetConnectionTicket: add response parameters Body.DesktopId.
+
+
 2025-10-17 Version: 1.2.9
 - Update API GetConnectionTicket: add request parameters AccessType.
 - Update API GetConnectionTicket: add response parameters Body.P2PToken.
