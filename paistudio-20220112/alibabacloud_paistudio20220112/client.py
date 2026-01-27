@@ -4250,6 +4250,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_training_jobs_with_options_async(request, headers, runtime)
 
+    def operate_node_with_options(
+        self,
+        node_id: str,
+        request: main_models.OperateNodeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateNodeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.operation):
+            body['Operation'] = request.operation
+        if not DaraCore.is_null(request.operation_parameters):
+            body['OperationParameters'] = request.operation_parameters
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateNode',
+            version = '2022-01-12',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/nodes/{DaraURL.percent_encode(node_id)}',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateNodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_node_with_options_async(
+        self,
+        node_id: str,
+        request: main_models.OperateNodeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateNodeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.operation):
+            body['Operation'] = request.operation
+        if not DaraCore.is_null(request.operation_parameters):
+            body['OperationParameters'] = request.operation_parameters
+        if not DaraCore.is_null(request.resource_group_id):
+            body['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateNode',
+            version = '2022-01-12',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/nodes/{DaraURL.percent_encode(node_id)}',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateNodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_node(
+        self,
+        node_id: str,
+        request: main_models.OperateNodeRequest,
+    ) -> main_models.OperateNodeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.operate_node_with_options(node_id, request, headers, runtime)
+
+    async def operate_node_async(
+        self,
+        node_id: str,
+        request: main_models.OperateNodeRequest,
+    ) -> main_models.OperateNodeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.operate_node_with_options_async(node_id, request, headers, runtime)
+
     def scale_quota_with_options(
         self,
         quota_id: str,

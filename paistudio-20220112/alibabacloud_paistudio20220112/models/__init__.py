@@ -42,6 +42,7 @@ from ._node_operation_result import NodeOperationResult
 from ._node_pod_info import NodePodInfo
 from ._node_snapshot import NodeSnapshot
 from ._node_spec import NodeSpec
+from ._node_statistics import NodeStatistics
 from ._node_type import NodeType
 from ._node_type_statistic import NodeTypeStatistic
 from ._node_uncordon_parameters import NodeUncordonParameters
@@ -76,6 +77,8 @@ from ._scheduling_rule import SchedulingRule
 from ._self_quota_preemption_config import SelfQuotaPreemptionConfig
 from ._spot_price_item import SpotPriceItem
 from ._spot_stock_preview import SpotStockPreview
+from ._statistics_details import StatisticsDetails
+from ._statistics_resources import StatisticsResources
 from ._sub_quota_preemption_config import SubQuotaPreemptionConfig
 from ._task import Task
 from ._task_instance import TaskInstance
@@ -217,6 +220,9 @@ from ._list_training_jobs_request import ListTrainingJobsRequest
 from ._list_training_jobs_shrink_request import ListTrainingJobsShrinkRequest
 from ._list_training_jobs_response_body import ListTrainingJobsResponseBody
 from ._list_training_jobs_response import ListTrainingJobsResponse
+from ._operate_node_request import OperateNodeRequest
+from ._operate_node_response_body import OperateNodeResponseBody
+from ._operate_node_response import OperateNodeResponse
 from ._scale_quota_request import ScaleQuotaRequest
 from ._scale_quota_response_body import ScaleQuotaResponseBody
 from ._scale_quota_response import ScaleQuotaResponse
@@ -253,6 +259,8 @@ from ._algorithm_spec import AlgorithmSpecProgressDefinitionsRemainingTime
 from ._algorithm_spec import AlgorithmSpecProgressDefinitions
 from ._features import FeaturesQuota
 from ._node_snapshot import NodeSnapshotWorkloads
+from ._node_statistics import NodeStatisticsGPUDetails
+from ._node_statistics import NodeStatisticsHyperNodeDetails
 from ._quota_user import QuotaUserResources
 from ._create_resource_group_request import CreateResourceGroupRequestTag
 from ._create_training_job_request import CreateTrainingJobRequestComputeResourceInstanceSpec
@@ -354,6 +362,7 @@ __all__ = [
     NodePodInfo,
     NodeSnapshot,
     NodeSpec,
+    NodeStatistics,
     NodeType,
     NodeTypeStatistic,
     NodeUncordonParameters,
@@ -388,6 +397,8 @@ __all__ = [
     SelfQuotaPreemptionConfig,
     SpotPriceItem,
     SpotStockPreview,
+    StatisticsDetails,
+    StatisticsResources,
     SubQuotaPreemptionConfig,
     Task,
     TaskInstance,
@@ -529,6 +540,9 @@ __all__ = [
     ListTrainingJobsShrinkRequest,
     ListTrainingJobsResponseBody,
     ListTrainingJobsResponse,
+    OperateNodeRequest,
+    OperateNodeResponseBody,
+    OperateNodeResponse,
     ScaleQuotaRequest,
     ScaleQuotaResponseBody,
     ScaleQuotaResponse,
@@ -565,6 +579,8 @@ __all__ = [
     AlgorithmSpecProgressDefinitions,
     FeaturesQuota,
     NodeSnapshotWorkloads,
+    NodeStatisticsGPUDetails,
+    NodeStatisticsHyperNodeDetails,
     QuotaUserResources,
     CreateResourceGroupRequestTag,
     CreateTrainingJobRequestComputeResourceInstanceSpec,
