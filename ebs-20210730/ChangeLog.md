@@ -1,3 +1,8 @@
+2026-01-27 Version: 4.2.0
+- Support API CreateApp.
+- Support API DeleteApp.
+
+
 2025-11-05 Version: 4.1.0
 - Support API ListReplicaEdgeSupported.
 
