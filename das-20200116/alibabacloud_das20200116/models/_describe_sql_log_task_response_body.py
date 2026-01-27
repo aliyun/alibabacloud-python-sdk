@@ -240,7 +240,11 @@ class DescribeSqlLogTaskResponseBodyDataQueries(DaraModel):
     def __init__(
         self,
         account_name: str = None,
+        affect_columns: str = None,
+        client_ip: str = None,
+        client_port: int = None,
         collection: str = None,
+        connection_id: str = None,
         consume: int = None,
         cpu_time: int = None,
         dbname: str = None,
@@ -254,10 +258,13 @@ class DescribeSqlLogTaskResponseBodyDataQueries(DaraModel):
         origin_time: int = None,
         parallel_degree: str = None,
         parallel_queue_time: str = None,
+        params: str = None,
         physic_async_read: int = None,
         physic_read: int = None,
         physic_sync_read: int = None,
+        protected: str = None,
         return_rows: int = None,
+        row_key: str = None,
         rows: int = None,
         scan_rows: int = None,
         scnt: int = None,
@@ -266,6 +273,7 @@ class DescribeSqlLogTaskResponseBodyDataQueries(DaraModel):
         sql_text: str = None,
         sql_type: str = None,
         state: str = None,
+        table_name: str = None,
         thread_id: int = None,
         trace_id: str = None,
         trx_id: str = None,
@@ -276,7 +284,11 @@ class DescribeSqlLogTaskResponseBodyDataQueries(DaraModel):
     ):
         # The database account.
         self.account_name = account_name
+        self.affect_columns = affect_columns
+        self.client_ip = client_ip
+        self.client_port = client_port
         self.collection = collection
+        self.connection_id = connection_id
         # The execution duration. Unit: millisecond.
         self.consume = consume
         # The CPU execution time. Unit: microsecond.
@@ -303,14 +315,17 @@ class DescribeSqlLogTaskResponseBodyDataQueries(DaraModel):
         self.parallel_degree = parallel_degree
         # The degree of parallelism (DOP) value of the PolarDB for MySQL instance.
         self.parallel_queue_time = parallel_queue_time
+        self.params = params
         # The number of physical asynchronous reads.
         self.physic_async_read = physic_async_read
         # The total number of physical reads.
         self.physic_read = physic_read
         # The number of physical synchronous reads.
         self.physic_sync_read = physic_sync_read
+        self.protected = protected
         # The number of rows returned.
         self.return_rows = return_rows
+        self.row_key = row_key
         # The total number of rows updated or returned by the CNs of the PolarDB-X 2.0 instance.
         self.rows = rows
         # The number of rows scanned.
@@ -333,6 +348,7 @@ class DescribeSqlLogTaskResponseBodyDataQueries(DaraModel):
         # *   **0**: The execution was successful.
         # *   **1**: The execution failed.
         self.state = state
+        self.table_name = table_name
         # The thread ID.
         self.thread_id = thread_id
         # The trace ID of the PolarDB-X 2.0 instance, which is the execution ID of the SQL statement on the DN.
@@ -362,8 +378,20 @@ class DescribeSqlLogTaskResponseBodyDataQueries(DaraModel):
         if self.account_name is not None:
             result['AccountName'] = self.account_name
 
+        if self.affect_columns is not None:
+            result['AffectColumns'] = self.affect_columns
+
+        if self.client_ip is not None:
+            result['ClientIp'] = self.client_ip
+
+        if self.client_port is not None:
+            result['ClientPort'] = self.client_port
+
         if self.collection is not None:
             result['Collection'] = self.collection
+
+        if self.connection_id is not None:
+            result['ConnectionId'] = self.connection_id
 
         if self.consume is not None:
             result['Consume'] = self.consume
@@ -404,6 +432,9 @@ class DescribeSqlLogTaskResponseBodyDataQueries(DaraModel):
         if self.parallel_queue_time is not None:
             result['ParallelQueueTime'] = self.parallel_queue_time
 
+        if self.params is not None:
+            result['Params'] = self.params
+
         if self.physic_async_read is not None:
             result['PhysicAsyncRead'] = self.physic_async_read
 
@@ -413,8 +444,14 @@ class DescribeSqlLogTaskResponseBodyDataQueries(DaraModel):
         if self.physic_sync_read is not None:
             result['PhysicSyncRead'] = self.physic_sync_read
 
+        if self.protected is not None:
+            result['Protected'] = self.protected
+
         if self.return_rows is not None:
             result['ReturnRows'] = self.return_rows
+
+        if self.row_key is not None:
+            result['RowKey'] = self.row_key
 
         if self.rows is not None:
             result['Rows'] = self.rows
@@ -439,6 +476,9 @@ class DescribeSqlLogTaskResponseBodyDataQueries(DaraModel):
 
         if self.state is not None:
             result['State'] = self.state
+
+        if self.table_name is not None:
+            result['TableName'] = self.table_name
 
         if self.thread_id is not None:
             result['ThreadId'] = self.thread_id
@@ -468,8 +508,20 @@ class DescribeSqlLogTaskResponseBodyDataQueries(DaraModel):
         if m.get('AccountName') is not None:
             self.account_name = m.get('AccountName')
 
+        if m.get('AffectColumns') is not None:
+            self.affect_columns = m.get('AffectColumns')
+
+        if m.get('ClientIp') is not None:
+            self.client_ip = m.get('ClientIp')
+
+        if m.get('ClientPort') is not None:
+            self.client_port = m.get('ClientPort')
+
         if m.get('Collection') is not None:
             self.collection = m.get('Collection')
+
+        if m.get('ConnectionId') is not None:
+            self.connection_id = m.get('ConnectionId')
 
         if m.get('Consume') is not None:
             self.consume = m.get('Consume')
@@ -510,6 +562,9 @@ class DescribeSqlLogTaskResponseBodyDataQueries(DaraModel):
         if m.get('ParallelQueueTime') is not None:
             self.parallel_queue_time = m.get('ParallelQueueTime')
 
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+
         if m.get('PhysicAsyncRead') is not None:
             self.physic_async_read = m.get('PhysicAsyncRead')
 
@@ -519,8 +574,14 @@ class DescribeSqlLogTaskResponseBodyDataQueries(DaraModel):
         if m.get('PhysicSyncRead') is not None:
             self.physic_sync_read = m.get('PhysicSyncRead')
 
+        if m.get('Protected') is not None:
+            self.protected = m.get('Protected')
+
         if m.get('ReturnRows') is not None:
             self.return_rows = m.get('ReturnRows')
+
+        if m.get('RowKey') is not None:
+            self.row_key = m.get('RowKey')
 
         if m.get('Rows') is not None:
             self.rows = m.get('Rows')
@@ -545,6 +606,9 @@ class DescribeSqlLogTaskResponseBodyDataQueries(DaraModel):
 
         if m.get('State') is not None:
             self.state = m.get('State')
+
+        if m.get('TableName') is not None:
+            self.table_name = m.get('TableName')
 
         if m.get('ThreadId') is not None:
             self.thread_id = m.get('ThreadId')

@@ -1,3 +1,21 @@
+2026-01-27 Version: 2.11.4
+- Update API DescribeSqlLogRecords: add response parameters Body.Data.Items.SQLLogRecord.$.AffectColumns.
+- Update API DescribeSqlLogRecords: add response parameters Body.Data.Items.SQLLogRecord.$.ClientIp.
+- Update API DescribeSqlLogRecords: add response parameters Body.Data.Items.SQLLogRecord.$.ClientPort.
+- Update API DescribeSqlLogRecords: add response parameters Body.Data.Items.SQLLogRecord.$.ConnectionId.
+- Update API DescribeSqlLogRecords: add response parameters Body.Data.Items.SQLLogRecord.$.Params.
+- Update API DescribeSqlLogRecords: add response parameters Body.Data.Items.SQLLogRecord.$.Protocol.
+- Update API DescribeSqlLogRecords: add response parameters Body.Data.Items.SQLLogRecord.$.RowKey.
+- Update API DescribeSqlLogTask: add response parameters Body.Data.Queries.$.AffectColumns.
+- Update API DescribeSqlLogTask: add response parameters Body.Data.Queries.$.ClientIp.
+- Update API DescribeSqlLogTask: add response parameters Body.Data.Queries.$.ClientPort.
+- Update API DescribeSqlLogTask: add response parameters Body.Data.Queries.$.ConnectionId.
+- Update API DescribeSqlLogTask: add response parameters Body.Data.Queries.$.Params.
+- Update API DescribeSqlLogTask: add response parameters Body.Data.Queries.$.Protected.
+- Update API DescribeSqlLogTask: add response parameters Body.Data.Queries.$.RowKey.
+- Update API DescribeSqlLogTask: add response parameters Body.Data.Queries.$.TableName.
+
+
 2026-01-15 Version: 2.11.3
 - Update API GetInstanceGroupInspectReportDetail: add request parameters AgentId.
 
