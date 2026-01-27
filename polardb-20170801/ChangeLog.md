@@ -1,3 +1,10 @@
+2026-01-27 Version: 6.6.2
+- Update API CreateApplication: add request parameters MemApplicationSpec.
+- Update API CreateApplication: add request parameters SecurityGroupId.
+- Update API DescribeApplicationAttribute: add response parameters Body.MemApplicationAttribute.
+- Update API DescribeApplications: add request parameters ApplicationTypes.
+
+
 2026-01-23 Version: 6.6.1
 - Update API ModifyDBClusterAndNodesParameters: add request parameters ClearBinlog.
 - Update API ModifyDBClusterParameters: add request parameters ClearBinlog.

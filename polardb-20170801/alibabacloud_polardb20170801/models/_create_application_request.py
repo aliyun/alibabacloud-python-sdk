@@ -20,12 +20,14 @@ class CreateApplicationRequest(DaraModel):
         description: str = None,
         dry_run: bool = None,
         endpoints: List[main_models.CreateApplicationRequestEndpoints] = None,
+        mem_application_spec: main_models.CreateApplicationRequestMemApplicationSpec = None,
         pay_type: str = None,
         period: str = None,
         polar_fsinstance_id: str = None,
         promotion_code: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        security_group_id: str = None,
         used_time: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -43,12 +45,14 @@ class CreateApplicationRequest(DaraModel):
         self.description = description
         self.dry_run = dry_run
         self.endpoints = endpoints
+        self.mem_application_spec = mem_application_spec
         self.pay_type = pay_type
         self.period = period
         self.polar_fsinstance_id = polar_fsinstance_id
         self.promotion_code = promotion_code
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        self.security_group_id = security_group_id
         self.used_time = used_time
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
@@ -63,6 +67,8 @@ class CreateApplicationRequest(DaraModel):
             for v1 in self.endpoints:
                  if v1:
                     v1.validate()
+        if self.mem_application_spec:
+            self.mem_application_spec.validate()
 
     def to_map(self):
         result = dict()
@@ -103,6 +109,9 @@ class CreateApplicationRequest(DaraModel):
             for k1 in self.endpoints:
                 result['Endpoints'].append(k1.to_map() if k1 else None)
 
+        if self.mem_application_spec is not None:
+            result['MemApplicationSpec'] = self.mem_application_spec.to_map()
+
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
 
@@ -120,6 +129,9 @@ class CreateApplicationRequest(DaraModel):
 
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
 
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
@@ -173,6 +185,10 @@ class CreateApplicationRequest(DaraModel):
                 temp_model = main_models.CreateApplicationRequestEndpoints()
                 self.endpoints.append(temp_model.from_map(k1))
 
+        if m.get('MemApplicationSpec') is not None:
+            temp_model = main_models.CreateApplicationRequestMemApplicationSpec()
+            self.mem_application_spec = temp_model.from_map(m.get('MemApplicationSpec'))
+
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
 
@@ -191,6 +207,9 @@ class CreateApplicationRequest(DaraModel):
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
 
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
+
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')
 
@@ -202,6 +221,81 @@ class CreateApplicationRequest(DaraModel):
 
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
+
+        return self
+
+class CreateApplicationRequestMemApplicationSpec(DaraModel):
+    def __init__(
+        self,
+        db_name: str = None,
+        db_password: str = None,
+        db_user: str = None,
+        embedder_model: str = None,
+        llm_model: str = None,
+        project_name: str = None,
+        reranker_model: str = None,
+    ):
+        self.db_name = db_name
+        self.db_password = db_password
+        self.db_user = db_user
+        self.embedder_model = embedder_model
+        self.llm_model = llm_model
+        self.project_name = project_name
+        self.reranker_model = reranker_model
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+
+        if self.db_password is not None:
+            result['DbPassword'] = self.db_password
+
+        if self.db_user is not None:
+            result['DbUser'] = self.db_user
+
+        if self.embedder_model is not None:
+            result['EmbedderModel'] = self.embedder_model
+
+        if self.llm_model is not None:
+            result['LlmModel'] = self.llm_model
+
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+
+        if self.reranker_model is not None:
+            result['RerankerModel'] = self.reranker_model
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+
+        if m.get('DbPassword') is not None:
+            self.db_password = m.get('DbPassword')
+
+        if m.get('DbUser') is not None:
+            self.db_user = m.get('DbUser')
+
+        if m.get('EmbedderModel') is not None:
+            self.embedder_model = m.get('EmbedderModel')
+
+        if m.get('LlmModel') is not None:
+            self.llm_model = m.get('LlmModel')
+
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+
+        if m.get('RerankerModel') is not None:
+            self.reranker_model = m.get('RerankerModel')
 
         return self
 

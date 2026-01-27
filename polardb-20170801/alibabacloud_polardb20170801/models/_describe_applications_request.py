@@ -8,12 +8,14 @@ class DescribeApplicationsRequest(DaraModel):
     def __init__(
         self,
         application_ids: str = None,
+        application_types: str = None,
         dbcluster_id: str = None,
         page_number: int = None,
         page_size: int = None,
         region_id: str = None,
     ):
         self.application_ids = application_ids
+        self.application_types = application_types
         self.dbcluster_id = dbcluster_id
         self.page_number = page_number
         self.page_size = page_size
@@ -30,6 +32,9 @@ class DescribeApplicationsRequest(DaraModel):
             result = _map
         if self.application_ids is not None:
             result['ApplicationIds'] = self.application_ids
+
+        if self.application_types is not None:
+            result['ApplicationTypes'] = self.application_types
 
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
@@ -49,6 +54,9 @@ class DescribeApplicationsRequest(DaraModel):
         m = m or dict()
         if m.get('ApplicationIds') is not None:
             self.application_ids = m.get('ApplicationIds')
+
+        if m.get('ApplicationTypes') is not None:
+            self.application_types = m.get('ApplicationTypes')
 
         if m.get('DBClusterId') is not None:
             self.dbcluster_id = m.get('DBClusterId')

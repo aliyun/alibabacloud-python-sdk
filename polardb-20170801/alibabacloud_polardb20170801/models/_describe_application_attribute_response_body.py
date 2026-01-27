@@ -23,6 +23,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         lock_mode: str = None,
         maintain_end_time: str = None,
         maintain_start_time: str = None,
+        mem_application_attribute: main_models.DescribeApplicationAttributeResponseBodyMemApplicationAttribute = None,
         pay_type: str = None,
         polar_fsinstance_id: str = None,
         region_id: str = None,
@@ -50,6 +51,7 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
         self.lock_mode = lock_mode
         self.maintain_end_time = maintain_end_time
         self.maintain_start_time = maintain_start_time
+        self.mem_application_attribute = mem_application_attribute
         self.pay_type = pay_type
         self.polar_fsinstance_id = polar_fsinstance_id
         self.region_id = region_id
@@ -75,6 +77,8 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
             for v1 in self.endpoints:
                  if v1:
                     v1.validate()
+        if self.mem_application_attribute:
+            self.mem_application_attribute.validate()
         if self.security_groups:
             for v1 in self.security_groups:
                  if v1:
@@ -131,6 +135,9 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 
         if self.maintain_start_time is not None:
             result['MaintainStartTime'] = self.maintain_start_time
+
+        if self.mem_application_attribute is not None:
+            result['MemApplicationAttribute'] = self.mem_application_attribute.to_map()
 
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
@@ -223,6 +230,10 @@ class DescribeApplicationAttributeResponseBody(DaraModel):
 
         if m.get('MaintainStartTime') is not None:
             self.maintain_start_time = m.get('MaintainStartTime')
+
+        if m.get('MemApplicationAttribute') is not None:
+            temp_model = main_models.DescribeApplicationAttributeResponseBodyMemApplicationAttribute()
+            self.mem_application_attribute = temp_model.from_map(m.get('MemApplicationAttribute'))
 
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
@@ -378,6 +389,73 @@ class DescribeApplicationAttributeResponseBodySecurityGroups(DaraModel):
 
         if m.get('SecurityGroupName') is not None:
             self.security_group_name = m.get('SecurityGroupName')
+
+        return self
+
+class DescribeApplicationAttributeResponseBodyMemApplicationAttribute(DaraModel):
+    def __init__(
+        self,
+        db_name: str = None,
+        embedder_model_name: str = None,
+        llm_model_name: str = None,
+        project_name: str = None,
+        reranker_model_name: str = None,
+        user_name: str = None,
+    ):
+        self.db_name = db_name
+        self.embedder_model_name = embedder_model_name
+        self.llm_model_name = llm_model_name
+        self.project_name = project_name
+        self.reranker_model_name = reranker_model_name
+        self.user_name = user_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.db_name is not None:
+            result['DbName'] = self.db_name
+
+        if self.embedder_model_name is not None:
+            result['EmbedderModelName'] = self.embedder_model_name
+
+        if self.llm_model_name is not None:
+            result['LlmModelName'] = self.llm_model_name
+
+        if self.project_name is not None:
+            result['ProjectName'] = self.project_name
+
+        if self.reranker_model_name is not None:
+            result['RerankerModelName'] = self.reranker_model_name
+
+        if self.user_name is not None:
+            result['UserName'] = self.user_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DbName') is not None:
+            self.db_name = m.get('DbName')
+
+        if m.get('EmbedderModelName') is not None:
+            self.embedder_model_name = m.get('EmbedderModelName')
+
+        if m.get('LlmModelName') is not None:
+            self.llm_model_name = m.get('LlmModelName')
+
+        if m.get('ProjectName') is not None:
+            self.project_name = m.get('ProjectName')
+
+        if m.get('RerankerModelName') is not None:
+            self.reranker_model_name = m.get('RerankerModelName')
+
+        if m.get('UserName') is not None:
+            self.user_name = m.get('UserName')
 
         return self
 

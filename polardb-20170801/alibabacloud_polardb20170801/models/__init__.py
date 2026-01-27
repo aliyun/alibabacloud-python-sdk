@@ -871,6 +871,7 @@ from ._add_polar_fs_quota_request import AddPolarFsQuotaRequestQuotas
 from ._create_ainodes_request import CreateAINodesRequestDBNodes
 from ._create_application_request import CreateApplicationRequestComponents
 from ._create_application_request import CreateApplicationRequestEndpoints
+from ._create_application_request import CreateApplicationRequestMemApplicationSpec
 from ._create_application_response_body import CreateApplicationResponseBodyComponents
 from ._create_dbcluster_request import CreateDBClusterRequestTag
 from ._create_dbendpoint_address_request import CreateDBEndpointAddressRequestZoneInfo
@@ -907,6 +908,7 @@ from ._describe_application_attribute_response_body import DescribeApplicationAt
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyComponentsTopology
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyComponents
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyEndpoints
+from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodyMemApplicationAttribute
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodySecurityGroups
 from ._describe_application_attribute_response_body import DescribeApplicationAttributeResponseBodySecurityIPArrays
 from ._describe_application_parameters_response_body import DescribeApplicationParametersResponseBodyParameterTemplatesComponentParameterTemplatesParameters
@@ -1986,6 +1988,7 @@ __all__ = [
     CreateAINodesRequestDBNodes,
     CreateApplicationRequestComponents,
     CreateApplicationRequestEndpoints,
+    CreateApplicationRequestMemApplicationSpec,
     CreateApplicationResponseBodyComponents,
     CreateDBClusterRequestTag,
     CreateDBEndpointAddressRequestZoneInfo,
@@ -2022,6 +2025,7 @@ __all__ = [
     DescribeApplicationAttributeResponseBodyComponentsTopology,
     DescribeApplicationAttributeResponseBodyComponents,
     DescribeApplicationAttributeResponseBodyEndpoints,
+    DescribeApplicationAttributeResponseBodyMemApplicationAttribute,
     DescribeApplicationAttributeResponseBodySecurityGroups,
     DescribeApplicationAttributeResponseBodySecurityIPArrays,
     DescribeApplicationParametersResponseBodyParameterTemplatesComponentParameterTemplatesParameters,

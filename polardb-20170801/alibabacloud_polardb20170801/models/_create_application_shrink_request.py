@@ -17,12 +17,14 @@ class CreateApplicationShrinkRequest(DaraModel):
         description: str = None,
         dry_run: bool = None,
         endpoints_shrink: str = None,
+        mem_application_spec_shrink: str = None,
         pay_type: str = None,
         period: str = None,
         polar_fsinstance_id: str = None,
         promotion_code: str = None,
         region_id: str = None,
         resource_group_id: str = None,
+        security_group_id: str = None,
         used_time: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
@@ -40,12 +42,14 @@ class CreateApplicationShrinkRequest(DaraModel):
         self.description = description
         self.dry_run = dry_run
         self.endpoints_shrink = endpoints_shrink
+        self.mem_application_spec_shrink = mem_application_spec_shrink
         self.pay_type = pay_type
         self.period = period
         self.polar_fsinstance_id = polar_fsinstance_id
         self.promotion_code = promotion_code
         self.region_id = region_id
         self.resource_group_id = resource_group_id
+        self.security_group_id = security_group_id
         self.used_time = used_time
         self.v_switch_id = v_switch_id
         self.vpc_id = vpc_id
@@ -89,6 +93,9 @@ class CreateApplicationShrinkRequest(DaraModel):
         if self.endpoints_shrink is not None:
             result['Endpoints'] = self.endpoints_shrink
 
+        if self.mem_application_spec_shrink is not None:
+            result['MemApplicationSpec'] = self.mem_application_spec_shrink
+
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
 
@@ -106,6 +113,9 @@ class CreateApplicationShrinkRequest(DaraModel):
 
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
+
+        if self.security_group_id is not None:
+            result['SecurityGroupId'] = self.security_group_id
 
         if self.used_time is not None:
             result['UsedTime'] = self.used_time
@@ -153,6 +163,9 @@ class CreateApplicationShrinkRequest(DaraModel):
         if m.get('Endpoints') is not None:
             self.endpoints_shrink = m.get('Endpoints')
 
+        if m.get('MemApplicationSpec') is not None:
+            self.mem_application_spec_shrink = m.get('MemApplicationSpec')
+
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
 
@@ -170,6 +183,9 @@ class CreateApplicationShrinkRequest(DaraModel):
 
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')
+
+        if m.get('SecurityGroupId') is not None:
+            self.security_group_id = m.get('SecurityGroupId')
 
         if m.get('UsedTime') is not None:
             self.used_time = m.get('UsedTime')

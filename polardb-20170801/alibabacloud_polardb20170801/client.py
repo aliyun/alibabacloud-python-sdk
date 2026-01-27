@@ -2406,6 +2406,8 @@ class Client(OpenApiClient):
             request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
         if not DaraCore.is_null(tmp_req.endpoints):
             request.endpoints_shrink = Utils.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
+        if not DaraCore.is_null(tmp_req.mem_application_spec):
+            request.mem_application_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.mem_application_spec, 'MemApplicationSpec', 'json')
         query = {}
         if not DaraCore.is_null(request.application_type):
             query['ApplicationType'] = request.application_type
@@ -2427,6 +2429,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.endpoints_shrink):
             query['Endpoints'] = request.endpoints_shrink
+        if not DaraCore.is_null(request.mem_application_spec_shrink):
+            query['MemApplicationSpec'] = request.mem_application_spec_shrink
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.period):
@@ -2439,6 +2443,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
         if not DaraCore.is_null(request.used_time):
             query['UsedTime'] = request.used_time
         if not DaraCore.is_null(request.v_switch_id):
@@ -2478,6 +2484,8 @@ class Client(OpenApiClient):
             request.components_shrink = Utils.array_to_string_with_specified_style(tmp_req.components, 'Components', 'json')
         if not DaraCore.is_null(tmp_req.endpoints):
             request.endpoints_shrink = Utils.array_to_string_with_specified_style(tmp_req.endpoints, 'Endpoints', 'json')
+        if not DaraCore.is_null(tmp_req.mem_application_spec):
+            request.mem_application_spec_shrink = Utils.array_to_string_with_specified_style(tmp_req.mem_application_spec, 'MemApplicationSpec', 'json')
         query = {}
         if not DaraCore.is_null(request.application_type):
             query['ApplicationType'] = request.application_type
@@ -2499,6 +2507,8 @@ class Client(OpenApiClient):
             query['DryRun'] = request.dry_run
         if not DaraCore.is_null(request.endpoints_shrink):
             query['Endpoints'] = request.endpoints_shrink
+        if not DaraCore.is_null(request.mem_application_spec_shrink):
+            query['MemApplicationSpec'] = request.mem_application_spec_shrink
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.period):
@@ -2511,6 +2521,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.security_group_id):
+            query['SecurityGroupId'] = request.security_group_id
         if not DaraCore.is_null(request.used_time):
             query['UsedTime'] = request.used_time
         if not DaraCore.is_null(request.v_switch_id):
@@ -8805,6 +8817,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_ids):
             query['ApplicationIds'] = request.application_ids
+        if not DaraCore.is_null(request.application_types):
+            query['ApplicationTypes'] = request.application_types
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.page_number):
@@ -8841,6 +8855,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_ids):
             query['ApplicationIds'] = request.application_ids
+        if not DaraCore.is_null(request.application_types):
+            query['ApplicationTypes'] = request.application_types
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.page_number):
