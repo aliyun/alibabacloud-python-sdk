@@ -1,3 +1,7 @@
+2026-01-27 Version: 6.5.1
+- Update API ModifyNodePoolNodeConfig: add request parameters body.node_names.
+
+
 2026-01-27 Version: 6.5.0
 - Support API CreateAutoRepairPolicy.
 - Support API DeleteAutoRepairPolicy.

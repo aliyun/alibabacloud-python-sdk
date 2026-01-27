@@ -9165,6 +9165,8 @@ class Client(OpenApiClient):
             body['containerd_config'] = request.containerd_config
         if not DaraCore.is_null(request.kubelet_config):
             body['kubelet_config'] = request.kubelet_config
+        if not DaraCore.is_null(request.node_names):
+            body['node_names'] = request.node_names
         if not DaraCore.is_null(request.os_config):
             body['os_config'] = request.os_config
         if not DaraCore.is_null(request.rolling_policy):
@@ -9203,6 +9205,8 @@ class Client(OpenApiClient):
             body['containerd_config'] = request.containerd_config
         if not DaraCore.is_null(request.kubelet_config):
             body['kubelet_config'] = request.kubelet_config
+        if not DaraCore.is_null(request.node_names):
+            body['node_names'] = request.node_names
         if not DaraCore.is_null(request.os_config):
             body['os_config'] = request.os_config
         if not DaraCore.is_null(request.rolling_policy):

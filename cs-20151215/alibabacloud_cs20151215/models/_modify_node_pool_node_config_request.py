@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict, Any
+from typing import List, Dict, Any
 
 from alibabacloud_cs20151215 import models as main_models
 from darabonba.model import DaraModel
@@ -12,6 +12,7 @@ class ModifyNodePoolNodeConfigRequest(DaraModel):
         self,
         containerd_config: main_models.ContainerdConfig = None,
         kubelet_config: main_models.KubeletConfig = None,
+        node_names: List[str] = None,
         os_config: main_models.ModifyNodePoolNodeConfigRequestOsConfig = None,
         rolling_policy: main_models.ModifyNodePoolNodeConfigRequestRollingPolicy = None,
     ):
@@ -19,6 +20,7 @@ class ModifyNodePoolNodeConfigRequest(DaraModel):
         self.containerd_config = containerd_config
         # The kubelet configurations.
         self.kubelet_config = kubelet_config
+        self.node_names = node_names
         # The OS configuration.
         self.os_config = os_config
         # The rolling policy configuration.
@@ -45,6 +47,9 @@ class ModifyNodePoolNodeConfigRequest(DaraModel):
         if self.kubelet_config is not None:
             result['kubelet_config'] = self.kubelet_config.to_map()
 
+        if self.node_names is not None:
+            result['node_names'] = self.node_names
+
         if self.os_config is not None:
             result['os_config'] = self.os_config.to_map()
 
@@ -62,6 +67,9 @@ class ModifyNodePoolNodeConfigRequest(DaraModel):
         if m.get('kubelet_config') is not None:
             temp_model = main_models.KubeletConfig()
             self.kubelet_config = temp_model.from_map(m.get('kubelet_config'))
+
+        if m.get('node_names') is not None:
+            self.node_names = m.get('node_names')
 
         if m.get('os_config') is not None:
             temp_model = main_models.ModifyNodePoolNodeConfigRequestOsConfig()
