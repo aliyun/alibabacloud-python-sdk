@@ -68,8 +68,10 @@ class ModifyFileSystemRequest(DaraModel):
 class ModifyFileSystemRequestOptions(DaraModel):
     def __init__(
         self,
+        enable_abe: bool = None,
         enable_oplock: bool = None,
     ):
+        self.enable_abe = enable_abe
         # Specifies whether to enable the oplock feature. Valid values:
         # 
         # *   true: enables the feature.
@@ -86,6 +88,9 @@ class ModifyFileSystemRequestOptions(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.enable_abe is not None:
+            result['EnableABE'] = self.enable_abe
+
         if self.enable_oplock is not None:
             result['EnableOplock'] = self.enable_oplock
 
@@ -93,6 +98,9 @@ class ModifyFileSystemRequestOptions(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EnableABE') is not None:
+            self.enable_abe = m.get('EnableABE')
+
         if m.get('EnableOplock') is not None:
             self.enable_oplock = m.get('EnableOplock')
 

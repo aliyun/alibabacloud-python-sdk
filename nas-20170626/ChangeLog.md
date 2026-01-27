@@ -1,3 +1,12 @@
+2026-01-27 Version: 3.3.1
+- Update API DescribeFileSystems: add response parameters Body.FileSystems.$.Options.EnableABE.
+- Update API GetDirectoryOrFileProperties: add response parameters Body.Entry.OfflineDuration.
+- Update API GetDirectoryOrFileProperties: add response parameters Body.Entry.OfflineUnchangedDuration.
+- Update API ListDirectoriesAndFiles: add response parameters Body.Entries.$.OfflineDuration.
+- Update API ListDirectoriesAndFiles: add response parameters Body.Entries.$.OfflineUnchangedDuration.
+- Update API ModifyFileSystem: add request parameters Options.EnableABE.
+
+
 2026-01-26 Version: 3.3.0
 - Support API DescribeFilesystemsAssociatedHpnZones.
 

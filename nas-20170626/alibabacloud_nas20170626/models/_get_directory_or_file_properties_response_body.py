@@ -54,6 +54,8 @@ class GetDirectoryOrFilePropertiesResponseBodyEntry(DaraModel):
         inode: str = None,
         mtime: str = None,
         name: str = None,
+        offline_duration: int = None,
+        offline_unchanged_duration: int = None,
         retrieve_time: str = None,
         size: int = None,
         storage_type: str = None,
@@ -99,6 +101,8 @@ class GetDirectoryOrFilePropertiesResponseBodyEntry(DaraModel):
         self.mtime = mtime
         # The name of the file or directory.
         self.name = name
+        self.offline_duration = offline_duration
+        self.offline_unchanged_duration = offline_unchanged_duration
         # The time when the last data retrieval task was run.
         # 
         # The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
@@ -157,6 +161,12 @@ class GetDirectoryOrFilePropertiesResponseBodyEntry(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.offline_duration is not None:
+            result['OfflineDuration'] = self.offline_duration
+
+        if self.offline_unchanged_duration is not None:
+            result['OfflineUnchangedDuration'] = self.offline_unchanged_duration
+
         if self.retrieve_time is not None:
             result['RetrieveTime'] = self.retrieve_time
 
@@ -193,6 +203,12 @@ class GetDirectoryOrFilePropertiesResponseBodyEntry(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('OfflineDuration') is not None:
+            self.offline_duration = m.get('OfflineDuration')
+
+        if m.get('OfflineUnchangedDuration') is not None:
+            self.offline_unchanged_duration = m.get('OfflineUnchangedDuration')
 
         if m.get('RetrieveTime') is not None:
             self.retrieve_time = m.get('RetrieveTime')

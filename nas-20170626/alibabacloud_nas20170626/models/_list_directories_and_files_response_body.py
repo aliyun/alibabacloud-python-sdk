@@ -72,6 +72,8 @@ class ListDirectoriesAndFilesResponseBodyEntries(DaraModel):
         inode: str = None,
         mtime: str = None,
         name: str = None,
+        offline_duration: int = None,
+        offline_unchanged_duration: int = None,
         owner: str = None,
         retrieve_time: str = None,
         size: int = None,
@@ -120,6 +122,8 @@ class ListDirectoriesAndFilesResponseBodyEntries(DaraModel):
         self.mtime = mtime
         # The name of the file or directory.
         self.name = name
+        self.offline_duration = offline_duration
+        self.offline_unchanged_duration = offline_unchanged_duration
         # The ID of the portable account. This parameter is returned and valid only if the value of the ProtocolType parameter is SMB and RAM-based access control is enabled.
         self.owner = owner
         # The time when the last data retrieval task was run.
@@ -183,6 +187,12 @@ class ListDirectoriesAndFilesResponseBodyEntries(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.offline_duration is not None:
+            result['OfflineDuration'] = self.offline_duration
+
+        if self.offline_unchanged_duration is not None:
+            result['OfflineUnchangedDuration'] = self.offline_unchanged_duration
+
         if self.owner is not None:
             result['Owner'] = self.owner
 
@@ -225,6 +235,12 @@ class ListDirectoriesAndFilesResponseBodyEntries(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('OfflineDuration') is not None:
+            self.offline_duration = m.get('OfflineDuration')
+
+        if m.get('OfflineUnchangedDuration') is not None:
+            self.offline_unchanged_duration = m.get('OfflineUnchangedDuration')
 
         if m.get('Owner') is not None:
             self.owner = m.get('Owner')
