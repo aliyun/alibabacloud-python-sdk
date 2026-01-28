@@ -331,6 +331,7 @@ from ._proxy_config import ProxyConfigPolicies
 from ._template import TemplateMcpOptions
 from ._template import TemplateMcpState
 from ._vector_store_config import VectorStoreConfigConfig
+from ._vector_store_config import VectorStoreConfigMysqlConfig
 from ._get_access_token_response_body import GetAccessTokenResponseBodyData
 from ._list_model_providers_response_body import ListModelProvidersResponseBodyDataItems
 from ._list_model_providers_response_body import ListModelProvidersResponseBodyData
@@ -665,6 +666,7 @@ __all__ = [
     TemplateMcpOptions,
     TemplateMcpState,
     VectorStoreConfigConfig,
+    VectorStoreConfigMysqlConfig,
     GetAccessTokenResponseBodyData,
     ListModelProvidersResponseBodyDataItems,
     ListModelProvidersResponseBodyData
