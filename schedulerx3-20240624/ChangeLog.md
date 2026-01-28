@@ -1,3 +1,14 @@
+2026-01-28 Version: 1.6.0
+- Support API CreateDatasource.
+- Support API DeleteDatasource.
+- Support API ListDatasources.
+- Support API OperateConnectDatasource.
+- Support API UpdateDatasource.
+- Support API UpdateJobExecution.
+- Update API GetCluster: add response parameters Body.Data.IpWhitelist.
+- Update API UpdateCluster: add request parameters IpWhitelist.
+
+
 2025-12-25 Version: 1.5.0
 - Support API CreateCalendar.
 - Support API CreateWorkflow.

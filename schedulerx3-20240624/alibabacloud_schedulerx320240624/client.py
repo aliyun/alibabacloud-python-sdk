@@ -338,6 +338,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_cluster_with_options_async(request, runtime)
 
+    def create_datasource_with_options(
+        self,
+        request: main_models.CreateDatasourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDatasourceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.connection_params):
+            body['ConnectionParams'] = request.connection_params
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.password):
+            body['Password'] = request.password
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDatasource',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDatasourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_datasource_with_options_async(
+        self,
+        request: main_models.CreateDatasourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDatasourceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.connection_params):
+            body['ConnectionParams'] = request.connection_params
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.password):
+            body['Password'] = request.password
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDatasource',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDatasourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_datasource(
+        self,
+        request: main_models.CreateDatasourceRequest,
+    ) -> main_models.CreateDatasourceResponse:
+        runtime = RuntimeOptions()
+        return self.create_datasource_with_options(request, runtime)
+
+    async def create_datasource_async(
+        self,
+        request: main_models.CreateDatasourceRequest,
+    ) -> main_models.CreateDatasourceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_datasource_with_options_async(request, runtime)
+
     def create_executors_with_options(
         self,
         request: main_models.CreateExecutorsRequest,
@@ -941,6 +1031,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteClusterResponse:
         runtime = RuntimeOptions()
         return await self.delete_cluster_with_options_async(request, runtime)
+
+    def delete_datasource_with_options(
+        self,
+        request: main_models.DeleteDatasourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDatasourceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDatasource',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDatasourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_datasource_with_options_async(
+        self,
+        request: main_models.DeleteDatasourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDatasourceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDatasource',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDatasourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_datasource(
+        self,
+        request: main_models.DeleteDatasourceRequest,
+    ) -> main_models.DeleteDatasourceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_datasource_with_options(request, runtime)
+
+    async def delete_datasource_async(
+        self,
+        request: main_models.DeleteDatasourceRequest,
+    ) -> main_models.DeleteDatasourceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_datasource_with_options_async(request, runtime)
 
     def delete_jobs_with_options(
         self,
@@ -3062,6 +3226,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_clusters_with_options_async(request, runtime)
 
+    def list_datasources_with_options(
+        self,
+        request: main_models.ListDatasourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDatasourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDatasources',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDatasourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_datasources_with_options_async(
+        self,
+        request: main_models.ListDatasourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDatasourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDatasources',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDatasourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_datasources(
+        self,
+        request: main_models.ListDatasourcesRequest,
+    ) -> main_models.ListDatasourcesResponse:
+        runtime = RuntimeOptions()
+        return self.list_datasources_with_options(request, runtime)
+
+    async def list_datasources_async(
+        self,
+        request: main_models.ListDatasourcesRequest,
+    ) -> main_models.ListDatasourcesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_datasources_with_options_async(request, runtime)
+
     def list_executors_with_options(
         self,
         request: main_models.ListExecutorsRequest,
@@ -4205,6 +4463,88 @@ class Client(OpenApiClient):
     ) -> main_models.OperateBackfillWorkflowResponse:
         runtime = RuntimeOptions()
         return await self.operate_backfill_workflow_with_options_async(request, runtime)
+
+    def operate_connect_datasource_with_options(
+        self,
+        request: main_models.OperateConnectDatasourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateConnectDatasourceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.connection_params):
+            body['ConnectionParams'] = request.connection_params
+        if not DaraCore.is_null(request.password):
+            body['Password'] = request.password
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateConnectDatasource',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateConnectDatasourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_connect_datasource_with_options_async(
+        self,
+        request: main_models.OperateConnectDatasourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateConnectDatasourceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.connection_params):
+            body['ConnectionParams'] = request.connection_params
+        if not DaraCore.is_null(request.password):
+            body['Password'] = request.password
+        if not DaraCore.is_null(request.type):
+            body['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateConnectDatasource',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateConnectDatasourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_connect_datasource(
+        self,
+        request: main_models.OperateConnectDatasourceRequest,
+    ) -> main_models.OperateConnectDatasourceResponse:
+        runtime = RuntimeOptions()
+        return self.operate_connect_datasource_with_options(request, runtime)
+
+    async def operate_connect_datasource_async(
+        self,
+        request: main_models.OperateConnectDatasourceRequest,
+    ) -> main_models.OperateConnectDatasourceResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_connect_datasource_with_options_async(request, runtime)
 
     def operate_designate_executors_with_options(
         self,
@@ -6158,13 +6498,15 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpdateClusterResponse:
         request.validate()
-        query = {}
+        body = {}
         if not DaraCore.is_null(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
+            body['ClusterId'] = request.cluster_id
         if not DaraCore.is_null(request.cluster_name):
-            query['ClusterName'] = request.cluster_name
+            body['ClusterName'] = request.cluster_name
+        if not DaraCore.is_null(request.ip_whitelist):
+            body['IpWhitelist'] = request.ip_whitelist
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'UpdateCluster',
@@ -6188,13 +6530,15 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.UpdateClusterResponse:
         request.validate()
-        query = {}
+        body = {}
         if not DaraCore.is_null(request.cluster_id):
-            query['ClusterId'] = request.cluster_id
+            body['ClusterId'] = request.cluster_id
         if not DaraCore.is_null(request.cluster_name):
-            query['ClusterName'] = request.cluster_name
+            body['ClusterName'] = request.cluster_name
+        if not DaraCore.is_null(request.ip_whitelist):
+            body['IpWhitelist'] = request.ip_whitelist
         req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
+            body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
             action = 'UpdateCluster',
@@ -6225,6 +6569,96 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateClusterResponse:
         runtime = RuntimeOptions()
         return await self.update_cluster_with_options_async(request, runtime)
+
+    def update_datasource_with_options(
+        self,
+        request: main_models.UpdateDatasourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDatasourceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.connection_params):
+            body['ConnectionParams'] = request.connection_params
+        if not DaraCore.is_null(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.password):
+            body['Password'] = request.password
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDatasource',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDatasourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_datasource_with_options_async(
+        self,
+        request: main_models.UpdateDatasourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDatasourceResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.connection_params):
+            body['ConnectionParams'] = request.connection_params
+        if not DaraCore.is_null(request.datasource_id):
+            body['DatasourceId'] = request.datasource_id
+        if not DaraCore.is_null(request.description):
+            body['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['Name'] = request.name
+        if not DaraCore.is_null(request.password):
+            body['Password'] = request.password
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDatasource',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDatasourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_datasource(
+        self,
+        request: main_models.UpdateDatasourceRequest,
+    ) -> main_models.UpdateDatasourceResponse:
+        runtime = RuntimeOptions()
+        return self.update_datasource_with_options(request, runtime)
+
+    async def update_datasource_async(
+        self,
+        request: main_models.UpdateDatasourceRequest,
+    ) -> main_models.UpdateDatasourceResponse:
+        runtime = RuntimeOptions()
+        return await self.update_datasource_with_options_async(request, runtime)
 
     def update_executors_with_options(
         self,
@@ -6485,6 +6919,88 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateJobResponse:
         runtime = RuntimeOptions()
         return await self.update_job_with_options_async(request, runtime)
+
+    def update_job_execution_with_options(
+        self,
+        request: main_models.UpdateJobExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateJobExecutionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.job_execution_id):
+            body['JobExecutionId'] = request.job_execution_id
+        if not DaraCore.is_null(request.schedule_time):
+            body['ScheduleTime'] = request.schedule_time
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateJobExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateJobExecutionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_job_execution_with_options_async(
+        self,
+        request: main_models.UpdateJobExecutionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateJobExecutionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.app_name):
+            body['AppName'] = request.app_name
+        if not DaraCore.is_null(request.cluster_id):
+            body['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.job_execution_id):
+            body['JobExecutionId'] = request.job_execution_id
+        if not DaraCore.is_null(request.schedule_time):
+            body['ScheduleTime'] = request.schedule_time
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateJobExecution',
+            version = '2024-06-24',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateJobExecutionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_job_execution(
+        self,
+        request: main_models.UpdateJobExecutionRequest,
+    ) -> main_models.UpdateJobExecutionResponse:
+        runtime = RuntimeOptions()
+        return self.update_job_execution_with_options(request, runtime)
+
+    async def update_job_execution_async(
+        self,
+        request: main_models.UpdateJobExecutionRequest,
+    ) -> main_models.UpdateJobExecutionResponse:
+        runtime = RuntimeOptions()
+        return await self.update_job_execution_with_options_async(request, runtime)
 
     def update_job_script_with_options(
         self,

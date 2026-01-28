@@ -9,11 +9,12 @@ class UpdateClusterRequest(DaraModel):
         self,
         cluster_id: str = None,
         cluster_name: str = None,
+        ip_whitelist: str = None,
     ):
         # This parameter is required.
         self.cluster_id = cluster_id
-        # This parameter is required.
         self.cluster_name = cluster_name
+        self.ip_whitelist = ip_whitelist
 
     def validate(self):
         pass
@@ -29,6 +30,9 @@ class UpdateClusterRequest(DaraModel):
         if self.cluster_name is not None:
             result['ClusterName'] = self.cluster_name
 
+        if self.ip_whitelist is not None:
+            result['IpWhitelist'] = self.ip_whitelist
+
         return result
 
     def from_map(self, m: dict = None):
@@ -38,6 +42,9 @@ class UpdateClusterRequest(DaraModel):
 
         if m.get('ClusterName') is not None:
             self.cluster_name = m.get('ClusterName')
+
+        if m.get('IpWhitelist') is not None:
+            self.ip_whitelist = m.get('IpWhitelist')
 
         return self
 

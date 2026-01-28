@@ -11,7 +11,6 @@ class ExportWorkflowsShrinkRequest(DaraModel):
         cluster_id: str = None,
         workflow_id_shrink: str = None,
     ):
-        # This parameter is required.
         self.app_name = app_name
         # A short description of struct
         # 

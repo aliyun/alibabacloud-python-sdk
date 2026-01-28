@@ -2,23 +2,23 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from darabonba.model import DaraModel
 
-class ExportWorkflowsRequest(DaraModel):
+class UpdateJobExecutionRequest(DaraModel):
     def __init__(
         self,
         app_name: str = None,
         cluster_id: str = None,
-        workflow_id: List[int] = None,
+        job_execution_id: str = None,
+        schedule_time: int = None,
     ):
+        # This parameter is required.
         self.app_name = app_name
-        # A short description of struct
-        # 
         # This parameter is required.
         self.cluster_id = cluster_id
-        self.workflow_id = workflow_id
+        # This parameter is required.
+        self.job_execution_id = job_execution_id
+        self.schedule_time = schedule_time
 
     def validate(self):
         pass
@@ -34,8 +34,11 @@ class ExportWorkflowsRequest(DaraModel):
         if self.cluster_id is not None:
             result['ClusterId'] = self.cluster_id
 
-        if self.workflow_id is not None:
-            result['WorkflowId'] = self.workflow_id
+        if self.job_execution_id is not None:
+            result['JobExecutionId'] = self.job_execution_id
+
+        if self.schedule_time is not None:
+            result['ScheduleTime'] = self.schedule_time
 
         return result
 
@@ -47,8 +50,11 @@ class ExportWorkflowsRequest(DaraModel):
         if m.get('ClusterId') is not None:
             self.cluster_id = m.get('ClusterId')
 
-        if m.get('WorkflowId') is not None:
-            self.workflow_id = m.get('WorkflowId')
+        if m.get('JobExecutionId') is not None:
+            self.job_execution_id = m.get('JobExecutionId')
+
+        if m.get('ScheduleTime') is not None:
+            self.schedule_time = m.get('ScheduleTime')
 
         return self
 

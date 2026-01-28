@@ -82,6 +82,7 @@ class GetClusterResponseBodyData(DaraModel):
         engine_version: str = None,
         internet_domain: str = None,
         intranet_domain: str = None,
+        ip_whitelist: str = None,
         job_num: int = None,
         kube_config: str = None,
         max_job_num: int = None,
@@ -107,6 +108,7 @@ class GetClusterResponseBodyData(DaraModel):
         self.engine_version = engine_version
         self.internet_domain = internet_domain
         self.intranet_domain = intranet_domain
+        self.ip_whitelist = ip_whitelist
         self.job_num = job_num
         self.kube_config = kube_config
         self.max_job_num = max_job_num
@@ -163,6 +165,9 @@ class GetClusterResponseBodyData(DaraModel):
 
         if self.intranet_domain is not None:
             result['IntranetDomain'] = self.intranet_domain
+
+        if self.ip_whitelist is not None:
+            result['IpWhitelist'] = self.ip_whitelist
 
         if self.job_num is not None:
             result['JobNum'] = self.job_num
@@ -241,6 +246,9 @@ class GetClusterResponseBodyData(DaraModel):
 
         if m.get('IntranetDomain') is not None:
             self.intranet_domain = m.get('IntranetDomain')
+
+        if m.get('IpWhitelist') is not None:
+            self.ip_whitelist = m.get('IpWhitelist')
 
         if m.get('JobNum') is not None:
             self.job_num = m.get('JobNum')

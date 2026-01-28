@@ -12,6 +12,9 @@ from ._create_cluster_request import CreateClusterRequest
 from ._create_cluster_shrink_request import CreateClusterShrinkRequest
 from ._create_cluster_response_body import CreateClusterResponseBody
 from ._create_cluster_response import CreateClusterResponse
+from ._create_datasource_request import CreateDatasourceRequest
+from ._create_datasource_response_body import CreateDatasourceResponseBody
+from ._create_datasource_response import CreateDatasourceResponse
 from ._create_executors_request import CreateExecutorsRequest
 from ._create_executors_response_body import CreateExecutorsResponseBody
 from ._create_executors_response import CreateExecutorsResponse
@@ -31,6 +34,9 @@ from ._delete_calendar_response import DeleteCalendarResponse
 from ._delete_cluster_request import DeleteClusterRequest
 from ._delete_cluster_response_body import DeleteClusterResponseBody
 from ._delete_cluster_response import DeleteClusterResponse
+from ._delete_datasource_request import DeleteDatasourceRequest
+from ._delete_datasource_response_body import DeleteDatasourceResponseBody
+from ._delete_datasource_response import DeleteDatasourceResponse
 from ._delete_jobs_request import DeleteJobsRequest
 from ._delete_jobs_shrink_request import DeleteJobsShrinkRequest
 from ._delete_jobs_response_body import DeleteJobsResponseBody
@@ -117,6 +123,9 @@ from ._list_calendars_response import ListCalendarsResponse
 from ._list_clusters_request import ListClustersRequest
 from ._list_clusters_response_body import ListClustersResponseBody
 from ._list_clusters_response import ListClustersResponse
+from ._list_datasources_request import ListDatasourcesRequest
+from ._list_datasources_response_body import ListDatasourcesResponseBody
+from ._list_datasources_response import ListDatasourcesResponse
 from ._list_executors_request import ListExecutorsRequest
 from ._list_executors_response_body import ListExecutorsResponseBody
 from ._list_executors_response import ListExecutorsResponse
@@ -157,6 +166,9 @@ from ._list_workflows_response import ListWorkflowsResponse
 from ._operate_backfill_workflow_request import OperateBackfillWorkflowRequest
 from ._operate_backfill_workflow_response_body import OperateBackfillWorkflowResponseBody
 from ._operate_backfill_workflow_response import OperateBackfillWorkflowResponse
+from ._operate_connect_datasource_request import OperateConnectDatasourceRequest
+from ._operate_connect_datasource_response_body import OperateConnectDatasourceResponseBody
+from ._operate_connect_datasource_response import OperateConnectDatasourceResponse
 from ._operate_designate_executors_request import OperateDesignateExecutorsRequest
 from ._operate_designate_executors_shrink_request import OperateDesignateExecutorsShrinkRequest
 from ._operate_designate_executors_response_body import OperateDesignateExecutorsResponseBody
@@ -237,6 +249,9 @@ from ._update_calendar_response import UpdateCalendarResponse
 from ._update_cluster_request import UpdateClusterRequest
 from ._update_cluster_response_body import UpdateClusterResponseBody
 from ._update_cluster_response import UpdateClusterResponse
+from ._update_datasource_request import UpdateDatasourceRequest
+from ._update_datasource_response_body import UpdateDatasourceResponseBody
+from ._update_datasource_response import UpdateDatasourceResponse
 from ._update_executors_request import UpdateExecutorsRequest
 from ._update_executors_response_body import UpdateExecutorsResponseBody
 from ._update_executors_response import UpdateExecutorsResponse
@@ -244,6 +259,9 @@ from ._update_job_request import UpdateJobRequest
 from ._update_job_shrink_request import UpdateJobShrinkRequest
 from ._update_job_response_body import UpdateJobResponseBody
 from ._update_job_response import UpdateJobResponse
+from ._update_job_execution_request import UpdateJobExecutionRequest
+from ._update_job_execution_response_body import UpdateJobExecutionResponseBody
+from ._update_job_execution_response import UpdateJobExecutionResponse
 from ._update_job_script_request import UpdateJobScriptRequest
 from ._update_job_script_response_body import UpdateJobScriptResponseBody
 from ._update_job_script_response import UpdateJobScriptResponse
@@ -262,6 +280,7 @@ from ._create_cluster_request import CreateClusterRequestTag
 from ._create_cluster_request import CreateClusterRequestVSwitches
 from ._create_cluster_shrink_request import CreateClusterShrinkRequestTag
 from ._create_cluster_response_body import CreateClusterResponseBodyData
+from ._create_datasource_response_body import CreateDatasourceResponseBodyData
 from ._create_executors_response_body import CreateExecutorsResponseBodyData
 from ._create_job_request import CreateJobRequestCoordinate
 from ._create_job_request import CreateJobRequestNoticeConfig
@@ -309,6 +328,8 @@ from ._list_clusters_request import ListClustersRequestTag
 from ._list_clusters_response_body import ListClustersResponseBodyDataRecordsVSwitches
 from ._list_clusters_response_body import ListClustersResponseBodyDataRecords
 from ._list_clusters_response_body import ListClustersResponseBodyData
+from ._list_datasources_response_body import ListDatasourcesResponseBodyDataRecords
+from ._list_datasources_response_body import ListDatasourcesResponseBodyData
 from ._list_executors_response_body import ListExecutorsResponseBodyData
 from ._list_job_executions_response_body import ListJobExecutionsResponseBodyDataRecords
 from ._list_job_executions_response_body import ListJobExecutionsResponseBodyData
@@ -348,6 +369,9 @@ __all__ = [
     CreateClusterShrinkRequest,
     CreateClusterResponseBody,
     CreateClusterResponse,
+    CreateDatasourceRequest,
+    CreateDatasourceResponseBody,
+    CreateDatasourceResponse,
     CreateExecutorsRequest,
     CreateExecutorsResponseBody,
     CreateExecutorsResponse,
@@ -367,6 +391,9 @@ __all__ = [
     DeleteClusterRequest,
     DeleteClusterResponseBody,
     DeleteClusterResponse,
+    DeleteDatasourceRequest,
+    DeleteDatasourceResponseBody,
+    DeleteDatasourceResponse,
     DeleteJobsRequest,
     DeleteJobsShrinkRequest,
     DeleteJobsResponseBody,
@@ -453,6 +480,9 @@ __all__ = [
     ListClustersRequest,
     ListClustersResponseBody,
     ListClustersResponse,
+    ListDatasourcesRequest,
+    ListDatasourcesResponseBody,
+    ListDatasourcesResponse,
     ListExecutorsRequest,
     ListExecutorsResponseBody,
     ListExecutorsResponse,
@@ -493,6 +523,9 @@ __all__ = [
     OperateBackfillWorkflowRequest,
     OperateBackfillWorkflowResponseBody,
     OperateBackfillWorkflowResponse,
+    OperateConnectDatasourceRequest,
+    OperateConnectDatasourceResponseBody,
+    OperateConnectDatasourceResponse,
     OperateDesignateExecutorsRequest,
     OperateDesignateExecutorsShrinkRequest,
     OperateDesignateExecutorsResponseBody,
@@ -573,6 +606,9 @@ __all__ = [
     UpdateClusterRequest,
     UpdateClusterResponseBody,
     UpdateClusterResponse,
+    UpdateDatasourceRequest,
+    UpdateDatasourceResponseBody,
+    UpdateDatasourceResponse,
     UpdateExecutorsRequest,
     UpdateExecutorsResponseBody,
     UpdateExecutorsResponse,
@@ -580,6 +616,9 @@ __all__ = [
     UpdateJobShrinkRequest,
     UpdateJobResponseBody,
     UpdateJobResponse,
+    UpdateJobExecutionRequest,
+    UpdateJobExecutionResponseBody,
+    UpdateJobExecutionResponse,
     UpdateJobScriptRequest,
     UpdateJobScriptResponseBody,
     UpdateJobScriptResponse,
@@ -598,6 +637,7 @@ __all__ = [
     CreateClusterRequestVSwitches,
     CreateClusterShrinkRequestTag,
     CreateClusterResponseBodyData,
+    CreateDatasourceResponseBodyData,
     CreateExecutorsResponseBodyData,
     CreateJobRequestCoordinate,
     CreateJobRequestNoticeConfig,
@@ -645,6 +685,8 @@ __all__ = [
     ListClustersResponseBodyDataRecordsVSwitches,
     ListClustersResponseBodyDataRecords,
     ListClustersResponseBodyData,
+    ListDatasourcesResponseBodyDataRecords,
+    ListDatasourcesResponseBodyData,
     ListExecutorsResponseBodyData,
     ListJobExecutionsResponseBodyDataRecords,
     ListJobExecutionsResponseBodyData,
