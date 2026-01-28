@@ -19,6 +19,12 @@ from ._dltable_input import DLTableInput
 from ._dltablebase_info import DLTablebaseInfo
 from ._foreign_instance import ForeignInstance
 from ._foreign_instance_cred_info import ForeignInstanceCredInfo
+from ._one_meta_database_object import OneMetaDatabaseObject
+from ._one_meta_table_base_info import OneMetaTableBaseInfo
+from ._one_meta_table_column import OneMetaTableColumn
+from ._one_meta_table_column_engine_meta import OneMetaTableColumnEngineMeta
+from ._one_meta_table_engine_meta import OneMetaTableEngineMeta
+from ._one_meta_table_index import OneMetaTableIndex
 from ._partition_error import PartitionError
 from ._add_user_to_data_agent_workspace_request import AddUserToDataAgentWorkspaceRequest
 from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentWorkspaceResponseBody
@@ -269,6 +275,12 @@ __all__ = [
     DLTablebaseInfo,
     ForeignInstance,
     ForeignInstanceCredInfo,
+    OneMetaDatabaseObject,
+    OneMetaTableBaseInfo,
+    OneMetaTableColumn,
+    OneMetaTableColumnEngineMeta,
+    OneMetaTableEngineMeta,
+    OneMetaTableIndex,
     PartitionError,
     AddUserToDataAgentWorkspaceRequest,
     AddUserToDataAgentWorkspaceResponseBody,

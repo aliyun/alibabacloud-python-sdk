@@ -1,3 +1,9 @@
+2026-01-28 Version: 1.8.5
+- Update API CreateDataAgentSession: add request parameters SessionConfig.UserOssBucket.
+- Update API CreateDataAgentSession: add response parameters Body.Data.SessionConfig.UserOssBucket.
+- Update API DescribeDataAgentSession: add response parameters Body.Data.SessionConfig.UserOssBucket.
+
+
 2026-01-20 Version: 1.8.4
 - Update API DescribeCustomAgent: add response parameters Body.Data.DMSUnit.
 - Update API DescribeCustomAgent: add response parameters Body.Data.IsScheduleTask.

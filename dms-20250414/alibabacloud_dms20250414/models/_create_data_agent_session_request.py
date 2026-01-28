@@ -77,6 +77,7 @@ class CreateDataAgentSessionRequestSessionConfig(DaraModel):
         language: str = None,
         mcp_server_ids: List[str] = None,
         mode: str = None,
+        user_oss_bucket: str = None,
     ):
         self.custom_agent_id = custom_agent_id
         self.custom_agent_stage = custom_agent_stage
@@ -84,6 +85,7 @@ class CreateDataAgentSessionRequestSessionConfig(DaraModel):
         self.language = language
         self.mcp_server_ids = mcp_server_ids
         self.mode = mode
+        self.user_oss_bucket = user_oss_bucket
 
     def validate(self):
         pass
@@ -111,6 +113,9 @@ class CreateDataAgentSessionRequestSessionConfig(DaraModel):
         if self.mode is not None:
             result['Mode'] = self.mode
 
+        if self.user_oss_bucket is not None:
+            result['UserOssBucket'] = self.user_oss_bucket
+
         return result
 
     def from_map(self, m: dict = None):
@@ -132,6 +137,9 @@ class CreateDataAgentSessionRequestSessionConfig(DaraModel):
 
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
+
+        if m.get('UserOssBucket') is not None:
+            self.user_oss_bucket = m.get('UserOssBucket')
 
         return self
 
