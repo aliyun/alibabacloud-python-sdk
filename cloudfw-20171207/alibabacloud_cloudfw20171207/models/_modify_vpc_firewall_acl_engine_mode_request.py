@@ -12,6 +12,7 @@ class ModifyVpcFirewallAclEngineModeRequest(DaraModel):
         vpc_firewall_id: str = None,
     ):
         self.member_uid = member_uid
+        # This parameter is required.
         self.strict_mode = strict_mode
         # This parameter is required.
         self.vpc_firewall_id = vpc_firewall_id
