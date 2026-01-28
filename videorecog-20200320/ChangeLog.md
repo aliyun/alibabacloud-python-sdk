@@ -1,3 +1,6 @@
+2026-01-28 Version: 3.0.11
+- Generated python 2020-03-20 for videorecog.
+
 2025-08-25 Version: 3.0.10
 - Generated python 2020-03-20 for videorecog.
 

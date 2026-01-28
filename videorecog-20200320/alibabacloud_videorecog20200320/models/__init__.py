@@ -1,0 +1,107 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._detect_video_shot_request import DetectVideoShotRequest
+from ._detect_video_shot_advance_request import DetectVideoShotAdvanceRequest
+from ._detect_video_shot_response_body import DetectVideoShotResponseBody
+from ._detect_video_shot_response import DetectVideoShotResponse
+from ._evaluate_video_quality_request import EvaluateVideoQualityRequest
+from ._evaluate_video_quality_advance_request import EvaluateVideoQualityAdvanceRequest
+from ._evaluate_video_quality_response_body import EvaluateVideoQualityResponseBody
+from ._evaluate_video_quality_response import EvaluateVideoQualityResponse
+from ._generate_video_cover_request import GenerateVideoCoverRequest
+from ._generate_video_cover_advance_request import GenerateVideoCoverAdvanceRequest
+from ._generate_video_cover_response_body import GenerateVideoCoverResponseBody
+from ._generate_video_cover_response import GenerateVideoCoverResponse
+from ._get_async_job_result_request import GetAsyncJobResultRequest
+from ._get_async_job_result_response_body import GetAsyncJobResultResponseBody
+from ._get_async_job_result_response import GetAsyncJobResultResponse
+from ._recognize_video_cast_crew_list_request import RecognizeVideoCastCrewListRequest
+from ._recognize_video_cast_crew_list_advance_request import RecognizeVideoCastCrewListAdvanceRequest
+from ._recognize_video_cast_crew_list_shrink_request import RecognizeVideoCastCrewListShrinkRequest
+from ._recognize_video_cast_crew_list_response_body import RecognizeVideoCastCrewListResponseBody
+from ._recognize_video_cast_crew_list_response import RecognizeVideoCastCrewListResponse
+from ._split_video_parts_request import SplitVideoPartsRequest
+from ._split_video_parts_advance_request import SplitVideoPartsAdvanceRequest
+from ._split_video_parts_response_body import SplitVideoPartsResponseBody
+from ._split_video_parts_response import SplitVideoPartsResponse
+from ._understand_video_content_request import UnderstandVideoContentRequest
+from ._understand_video_content_advance_request import UnderstandVideoContentAdvanceRequest
+from ._understand_video_content_response_body import UnderstandVideoContentResponseBody
+from ._understand_video_content_response import UnderstandVideoContentResponse
+from ._detect_video_shot_response_body import DetectVideoShotResponseBodyData
+from ._evaluate_video_quality_response_body import EvaluateVideoQualityResponseBodyDataVideoQualityInfo
+from ._evaluate_video_quality_response_body import EvaluateVideoQualityResponseBodyData
+from ._generate_video_cover_response_body import GenerateVideoCoverResponseBodyDataOutputs
+from ._generate_video_cover_response_body import GenerateVideoCoverResponseBodyData
+from ._get_async_job_result_response_body import GetAsyncJobResultResponseBodyData
+from ._recognize_video_cast_crew_list_request import RecognizeVideoCastCrewListRequestParams
+from ._recognize_video_cast_crew_list_advance_request import RecognizeVideoCastCrewListAdvanceRequestParams
+from ._recognize_video_cast_crew_list_response_body import RecognizeVideoCastCrewListResponseBodyDataCastResults
+from ._recognize_video_cast_crew_list_response_body import RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition
+from ._recognize_video_cast_crew_list_response_body import RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo
+from ._recognize_video_cast_crew_list_response_body import RecognizeVideoCastCrewListResponseBodyDataOcrResults
+from ._recognize_video_cast_crew_list_response_body import RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults
+from ._recognize_video_cast_crew_list_response_body import RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosition
+from ._recognize_video_cast_crew_list_response_body import RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo
+from ._recognize_video_cast_crew_list_response_body import RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults
+from ._recognize_video_cast_crew_list_response_body import RecognizeVideoCastCrewListResponseBodyData
+from ._split_video_parts_response_body import SplitVideoPartsResponseBodyDataElements
+from ._split_video_parts_response_body import SplitVideoPartsResponseBodyDataSplitVideoPartResults
+from ._split_video_parts_response_body import SplitVideoPartsResponseBodyData
+from ._understand_video_content_response_body import UnderstandVideoContentResponseBodyDataVideoInfo
+from ._understand_video_content_response_body import UnderstandVideoContentResponseBodyData
+
+__all__ = [
+    DetectVideoShotRequest,
+    DetectVideoShotAdvanceRequest,
+    DetectVideoShotResponseBody,
+    DetectVideoShotResponse,
+    EvaluateVideoQualityRequest,
+    EvaluateVideoQualityAdvanceRequest,
+    EvaluateVideoQualityResponseBody,
+    EvaluateVideoQualityResponse,
+    GenerateVideoCoverRequest,
+    GenerateVideoCoverAdvanceRequest,
+    GenerateVideoCoverResponseBody,
+    GenerateVideoCoverResponse,
+    GetAsyncJobResultRequest,
+    GetAsyncJobResultResponseBody,
+    GetAsyncJobResultResponse,
+    RecognizeVideoCastCrewListRequest,
+    RecognizeVideoCastCrewListAdvanceRequest,
+    RecognizeVideoCastCrewListShrinkRequest,
+    RecognizeVideoCastCrewListResponseBody,
+    RecognizeVideoCastCrewListResponse,
+    SplitVideoPartsRequest,
+    SplitVideoPartsAdvanceRequest,
+    SplitVideoPartsResponseBody,
+    SplitVideoPartsResponse,
+    UnderstandVideoContentRequest,
+    UnderstandVideoContentAdvanceRequest,
+    UnderstandVideoContentResponseBody,
+    UnderstandVideoContentResponse,
+    DetectVideoShotResponseBodyData,
+    EvaluateVideoQualityResponseBodyDataVideoQualityInfo,
+    EvaluateVideoQualityResponseBodyData,
+    GenerateVideoCoverResponseBodyDataOutputs,
+    GenerateVideoCoverResponseBodyData,
+    GetAsyncJobResultResponseBodyData,
+    RecognizeVideoCastCrewListRequestParams,
+    RecognizeVideoCastCrewListAdvanceRequestParams,
+    RecognizeVideoCastCrewListResponseBodyDataCastResults,
+    RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfoPosition,
+    RecognizeVideoCastCrewListResponseBodyDataOcrResultsDetailInfo,
+    RecognizeVideoCastCrewListResponseBodyDataOcrResults,
+    RecognizeVideoCastCrewListResponseBodyDataSubtitlesResults,
+    RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfoPosition,
+    RecognizeVideoCastCrewListResponseBodyDataVideoOcrResultsDetailInfo,
+    RecognizeVideoCastCrewListResponseBodyDataVideoOcrResults,
+    RecognizeVideoCastCrewListResponseBodyData,
+    SplitVideoPartsResponseBodyDataElements,
+    SplitVideoPartsResponseBodyDataSplitVideoPartResults,
+    SplitVideoPartsResponseBodyData,
+    UnderstandVideoContentResponseBodyDataVideoInfo,
+    UnderstandVideoContentResponseBodyData
+]
