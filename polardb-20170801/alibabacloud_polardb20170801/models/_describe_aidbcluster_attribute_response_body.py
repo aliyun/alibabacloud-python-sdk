@@ -11,6 +11,7 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
     def __init__(
         self,
         ai_node_type: str = None,
+        api_key: str = None,
         creation_time: str = None,
         dbcluster_description: str = None,
         dbcluster_id: str = None,
@@ -41,6 +42,7 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         zone_ids: str = None,
     ):
         self.ai_node_type = ai_node_type
+        self.api_key = api_key
         self.creation_time = creation_time
         self.dbcluster_description = dbcluster_description
         self.dbcluster_id = dbcluster_id
@@ -92,6 +94,9 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
             result = _map
         if self.ai_node_type is not None:
             result['AiNodeType'] = self.ai_node_type
+
+        if self.api_key is not None:
+            result['ApiKey'] = self.api_key
 
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
@@ -189,6 +194,9 @@ class DescribeAIDBClusterAttributeResponseBody(DaraModel):
         m = m or dict()
         if m.get('AiNodeType') is not None:
             self.ai_node_type = m.get('AiNodeType')
+
+        if m.get('ApiKey') is not None:
+            self.api_key = m.get('ApiKey')
 
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')

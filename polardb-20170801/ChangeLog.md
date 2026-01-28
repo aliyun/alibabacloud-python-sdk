@@ -1,3 +1,7 @@
+2026-01-28 Version: 6.6.3
+- Update API DescribeAIDBClusterAttribute: add response parameters Body.ApiKey.
+
+
 2026-01-27 Version: 6.6.2
 - Update API CreateApplication: add request parameters MemApplicationSpec.
 - Update API CreateApplication: add request parameters SecurityGroupId.
