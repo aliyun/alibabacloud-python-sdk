@@ -1,3 +1,6 @@
+2026-01-28 Version: 7.5.2
+- Generated python 2014-05-26 for Ecs.
+
 2026-01-08 Version: 7.5.1
 - Update API RunInstances: add request parameters NetworkInterface.$.SecondaryPrivateIpAddressCount.
 

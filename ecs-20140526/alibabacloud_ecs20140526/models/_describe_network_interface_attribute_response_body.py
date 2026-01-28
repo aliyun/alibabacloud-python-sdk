@@ -56,9 +56,9 @@ class DescribeNetworkInterfaceAttributeResponseBody(DaraModel):
         self.bond_interface_specification = bond_interface_specification
         # The connection tracking configurations of the ENI.
         # 
-        # Before you use this parameter, learn about how to manage connection timeout periods. For more information, see [Manage connection timeout periods](https://help.aliyun.com/document_detail/2865958.html).
+        # Before you use the parameter, familiarize yourself with how to manage the timeout periods of connections. For more information, see [Mange connection timeout periods](https://help.aliyun.com/document_detail/2865958.html).
         # 
-        # >  This parameter is returned only if `Attribute` is set to `connectionTrackingConfiguration`.
+        # >  This parameter is returned only when the value of the input parameter `Attribute` is: `connectionTrackingConfiguration`.
         self.connection_tracking_configuration = connection_tracking_configuration
         # The time when the ENI was created.
         self.creation_time = creation_time
