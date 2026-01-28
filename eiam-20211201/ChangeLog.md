@@ -1,3 +1,33 @@
+2026-01-28 Version: 2.10.0
+- Support API AddApplicationToAuthorizationRule.
+- Support API AddGroupToAuthorizationRule.
+- Support API AddUserToAuthorizationRule.
+- Support API CreateAuthorizationResource.
+- Support API CreateAuthorizationRule.
+- Support API DeleteAuthorizationResource.
+- Support API DeleteAuthorizationRule.
+- Support API DisableAuthorizationRule.
+- Support API EnableAuthorizationRule.
+- Support API GetAuthorizationResource.
+- Support API GetAuthorizationRule.
+- Support API ListApplicationsForAuthorizationRule.
+- Support API ListAuthorizationResources.
+- Support API ListAuthorizationRules.
+- Support API ListAuthorizationRulesForApplication.
+- Support API ListAuthorizationRulesForGroup.
+- Support API ListAuthorizationRulesForUser.
+- Support API ListGroupsForAuthorizationRule.
+- Support API ListUsersForAuthorizationRule.
+- Support API RemoveApplicationFromAuthorizationRule.
+- Support API RemoveGroupFromAuthorizationRule.
+- Support API RemoveUserFromAuthorizationRule.
+- Support API UpdateAuthorizationRule.
+- Support API UpdateAuthorizationRuleApplicationAttachment.
+- Support API UpdateAuthorizationRuleDescription.
+- Support API UpdateAuthorizationRuleGroupAttachment.
+- Support API UpdateAuthorizationRuleUserAttachment.
+
+
 2026-01-19 Version: 2.9.0
 - Support API AuthorizeResourceServerScopesToClient.
 - Support API AuthorizeResourceServerScopesToGroup.

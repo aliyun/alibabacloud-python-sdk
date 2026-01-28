@@ -44,8 +44,6 @@ class CreateApplicationClientSecretResponseBody(DaraModel):
 
         return self
 
-
-
 class CreateApplicationClientSecretResponseBodyApplicationClientSecret(DaraModel):
     def __init__(
         self,

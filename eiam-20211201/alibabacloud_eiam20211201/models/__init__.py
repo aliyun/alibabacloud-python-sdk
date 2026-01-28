@@ -5,9 +5,18 @@ from __future__ import annotations
 from ._add_application_account_to_user_request import AddApplicationAccountToUserRequest
 from ._add_application_account_to_user_response_body import AddApplicationAccountToUserResponseBody
 from ._add_application_account_to_user_response import AddApplicationAccountToUserResponse
+from ._add_application_to_authorization_rule_request import AddApplicationToAuthorizationRuleRequest
+from ._add_application_to_authorization_rule_response_body import AddApplicationToAuthorizationRuleResponseBody
+from ._add_application_to_authorization_rule_response import AddApplicationToAuthorizationRuleResponse
 from ._add_custom_privacy_policies_to_brand_request import AddCustomPrivacyPoliciesToBrandRequest
 from ._add_custom_privacy_policies_to_brand_response_body import AddCustomPrivacyPoliciesToBrandResponseBody
 from ._add_custom_privacy_policies_to_brand_response import AddCustomPrivacyPoliciesToBrandResponse
+from ._add_group_to_authorization_rule_request import AddGroupToAuthorizationRuleRequest
+from ._add_group_to_authorization_rule_response_body import AddGroupToAuthorizationRuleResponseBody
+from ._add_group_to_authorization_rule_response import AddGroupToAuthorizationRuleResponse
+from ._add_user_to_authorization_rule_request import AddUserToAuthorizationRuleRequest
+from ._add_user_to_authorization_rule_response_body import AddUserToAuthorizationRuleResponseBody
+from ._add_user_to_authorization_rule_response import AddUserToAuthorizationRuleResponse
 from ._add_user_to_organizational_units_request import AddUserToOrganizationalUnitsRequest
 from ._add_user_to_organizational_units_response_body import AddUserToOrganizationalUnitsResponseBody
 from ._add_user_to_organizational_units_response import AddUserToOrganizationalUnitsResponse
@@ -56,6 +65,12 @@ from ._create_application_role_response import CreateApplicationRoleResponse
 from ._create_application_token_request import CreateApplicationTokenRequest
 from ._create_application_token_response_body import CreateApplicationTokenResponseBody
 from ._create_application_token_response import CreateApplicationTokenResponse
+from ._create_authorization_resource_request import CreateAuthorizationResourceRequest
+from ._create_authorization_resource_response_body import CreateAuthorizationResourceResponseBody
+from ._create_authorization_resource_response import CreateAuthorizationResourceResponse
+from ._create_authorization_rule_request import CreateAuthorizationRuleRequest
+from ._create_authorization_rule_response_body import CreateAuthorizationRuleResponseBody
+from ._create_authorization_rule_response import CreateAuthorizationRuleResponse
 from ._create_brand_request import CreateBrandRequest
 from ._create_brand_response_body import CreateBrandResponseBody
 from ._create_brand_response import CreateBrandResponse
@@ -125,6 +140,12 @@ from ._delete_application_role_response import DeleteApplicationRoleResponse
 from ._delete_application_token_request import DeleteApplicationTokenRequest
 from ._delete_application_token_response_body import DeleteApplicationTokenResponseBody
 from ._delete_application_token_response import DeleteApplicationTokenResponse
+from ._delete_authorization_resource_request import DeleteAuthorizationResourceRequest
+from ._delete_authorization_resource_response_body import DeleteAuthorizationResourceResponseBody
+from ._delete_authorization_resource_response import DeleteAuthorizationResourceResponse
+from ._delete_authorization_rule_request import DeleteAuthorizationRuleRequest
+from ._delete_authorization_rule_response_body import DeleteAuthorizationRuleResponseBody
+from ._delete_authorization_rule_response import DeleteAuthorizationRuleResponse
 from ._delete_brand_request import DeleteBrandRequest
 from ._delete_brand_response_body import DeleteBrandResponseBody
 from ._delete_brand_response import DeleteBrandResponse
@@ -212,6 +233,9 @@ from ._disable_application_sso_response import DisableApplicationSsoResponse
 from ._disable_application_token_request import DisableApplicationTokenRequest
 from ._disable_application_token_response_body import DisableApplicationTokenResponseBody
 from ._disable_application_token_response import DisableApplicationTokenResponse
+from ._disable_authorization_rule_request import DisableAuthorizationRuleRequest
+from ._disable_authorization_rule_response_body import DisableAuthorizationRuleResponseBody
+from ._disable_authorization_rule_response import DisableAuthorizationRuleResponse
 from ._disable_brand_request import DisableBrandRequest
 from ._disable_brand_response_body import DisableBrandResponseBody
 from ._disable_brand_response import DisableBrandResponse
@@ -281,6 +305,9 @@ from ._enable_application_sso_response import EnableApplicationSsoResponse
 from ._enable_application_token_request import EnableApplicationTokenRequest
 from ._enable_application_token_response_body import EnableApplicationTokenResponseBody
 from ._enable_application_token_response import EnableApplicationTokenResponse
+from ._enable_authorization_rule_request import EnableAuthorizationRuleRequest
+from ._enable_authorization_rule_response_body import EnableAuthorizationRuleResponseBody
+from ._enable_authorization_rule_response import EnableAuthorizationRuleResponse
 from ._enable_brand_request import EnableBrandRequest
 from ._enable_brand_response_body import EnableBrandResponseBody
 from ._enable_brand_response import EnableBrandResponse
@@ -359,6 +386,12 @@ from ._get_application_sso_config_response import GetApplicationSsoConfigRespons
 from ._get_application_template_request import GetApplicationTemplateRequest
 from ._get_application_template_response_body import GetApplicationTemplateResponseBody
 from ._get_application_template_response import GetApplicationTemplateResponse
+from ._get_authorization_resource_request import GetAuthorizationResourceRequest
+from ._get_authorization_resource_response_body import GetAuthorizationResourceResponseBody
+from ._get_authorization_resource_response import GetAuthorizationResourceResponse
+from ._get_authorization_rule_request import GetAuthorizationRuleRequest
+from ._get_authorization_rule_response_body import GetAuthorizationRuleResponseBody
+from ._get_authorization_rule_response import GetAuthorizationRuleResponse
 from ._get_brand_request import GetBrandRequest
 from ._get_brand_response_body import GetBrandResponseBody
 from ._get_brand_response import GetBrandResponse
@@ -467,6 +500,9 @@ from ._list_application_tokens_response import ListApplicationTokensResponse
 from ._list_applications_request import ListApplicationsRequest
 from ._list_applications_response_body import ListApplicationsResponseBody
 from ._list_applications_response import ListApplicationsResponse
+from ._list_applications_for_authorization_rule_request import ListApplicationsForAuthorizationRuleRequest
+from ._list_applications_for_authorization_rule_response_body import ListApplicationsForAuthorizationRuleResponseBody
+from ._list_applications_for_authorization_rule_response import ListApplicationsForAuthorizationRuleResponse
 from ._list_applications_for_group_request import ListApplicationsForGroupRequest
 from ._list_applications_for_group_response_body import ListApplicationsForGroupResponseBody
 from ._list_applications_for_group_response import ListApplicationsForGroupResponse
@@ -482,6 +518,21 @@ from ._list_applications_for_organizational_unit_response import ListApplication
 from ._list_applications_for_user_request import ListApplicationsForUserRequest
 from ._list_applications_for_user_response_body import ListApplicationsForUserResponseBody
 from ._list_applications_for_user_response import ListApplicationsForUserResponse
+from ._list_authorization_resources_request import ListAuthorizationResourcesRequest
+from ._list_authorization_resources_response_body import ListAuthorizationResourcesResponseBody
+from ._list_authorization_resources_response import ListAuthorizationResourcesResponse
+from ._list_authorization_rules_request import ListAuthorizationRulesRequest
+from ._list_authorization_rules_response_body import ListAuthorizationRulesResponseBody
+from ._list_authorization_rules_response import ListAuthorizationRulesResponse
+from ._list_authorization_rules_for_application_request import ListAuthorizationRulesForApplicationRequest
+from ._list_authorization_rules_for_application_response_body import ListAuthorizationRulesForApplicationResponseBody
+from ._list_authorization_rules_for_application_response import ListAuthorizationRulesForApplicationResponse
+from ._list_authorization_rules_for_group_request import ListAuthorizationRulesForGroupRequest
+from ._list_authorization_rules_for_group_response_body import ListAuthorizationRulesForGroupResponseBody
+from ._list_authorization_rules_for_group_response import ListAuthorizationRulesForGroupResponse
+from ._list_authorization_rules_for_user_request import ListAuthorizationRulesForUserRequest
+from ._list_authorization_rules_for_user_response_body import ListAuthorizationRulesForUserResponseBody
+from ._list_authorization_rules_for_user_response import ListAuthorizationRulesForUserResponse
 from ._list_brands_request import ListBrandsRequest
 from ._list_brands_response_body import ListBrandsResponseBody
 from ._list_brands_response import ListBrandsResponse
@@ -532,6 +583,9 @@ from ._list_groups_response import ListGroupsResponse
 from ._list_groups_for_application_request import ListGroupsForApplicationRequest
 from ._list_groups_for_application_response_body import ListGroupsForApplicationResponseBody
 from ._list_groups_for_application_response import ListGroupsForApplicationResponse
+from ._list_groups_for_authorization_rule_request import ListGroupsForAuthorizationRuleRequest
+from ._list_groups_for_authorization_rule_response_body import ListGroupsForAuthorizationRuleResponseBody
+from ._list_groups_for_authorization_rule_response import ListGroupsForAuthorizationRuleResponse
 from ._list_groups_for_resource_server_request import ListGroupsForResourceServerRequest
 from ._list_groups_for_resource_server_response_body import ListGroupsForResourceServerResponseBody
 from ._list_groups_for_resource_server_response import ListGroupsForResourceServerResponse
@@ -590,6 +644,9 @@ from ._list_users_response import ListUsersResponse
 from ._list_users_for_application_request import ListUsersForApplicationRequest
 from ._list_users_for_application_response_body import ListUsersForApplicationResponseBody
 from ._list_users_for_application_response import ListUsersForApplicationResponse
+from ._list_users_for_authorization_rule_request import ListUsersForAuthorizationRuleRequest
+from ._list_users_for_authorization_rule_response_body import ListUsersForAuthorizationRuleResponseBody
+from ._list_users_for_authorization_rule_response import ListUsersForAuthorizationRuleResponse
 from ._list_users_for_group_request import ListUsersForGroupRequest
 from ._list_users_for_group_response_body import ListUsersForGroupResponseBody
 from ._list_users_for_group_response import ListUsersForGroupResponse
@@ -608,9 +665,18 @@ from ._obtain_domain_proxy_token_response import ObtainDomainProxyTokenResponse
 from ._remove_application_account_from_user_request import RemoveApplicationAccountFromUserRequest
 from ._remove_application_account_from_user_response_body import RemoveApplicationAccountFromUserResponseBody
 from ._remove_application_account_from_user_response import RemoveApplicationAccountFromUserResponse
+from ._remove_application_from_authorization_rule_request import RemoveApplicationFromAuthorizationRuleRequest
+from ._remove_application_from_authorization_rule_response_body import RemoveApplicationFromAuthorizationRuleResponseBody
+from ._remove_application_from_authorization_rule_response import RemoveApplicationFromAuthorizationRuleResponse
 from ._remove_custom_privacy_policies_from_brand_request import RemoveCustomPrivacyPoliciesFromBrandRequest
 from ._remove_custom_privacy_policies_from_brand_response_body import RemoveCustomPrivacyPoliciesFromBrandResponseBody
 from ._remove_custom_privacy_policies_from_brand_response import RemoveCustomPrivacyPoliciesFromBrandResponse
+from ._remove_group_from_authorization_rule_request import RemoveGroupFromAuthorizationRuleRequest
+from ._remove_group_from_authorization_rule_response_body import RemoveGroupFromAuthorizationRuleResponseBody
+from ._remove_group_from_authorization_rule_response import RemoveGroupFromAuthorizationRuleResponse
+from ._remove_user_from_authorization_rule_request import RemoveUserFromAuthorizationRuleRequest
+from ._remove_user_from_authorization_rule_response_body import RemoveUserFromAuthorizationRuleResponseBody
+from ._remove_user_from_authorization_rule_response import RemoveUserFromAuthorizationRuleResponse
 from ._remove_user_from_organizational_units_request import RemoveUserFromOrganizationalUnitsRequest
 from ._remove_user_from_organizational_units_response_body import RemoveUserFromOrganizationalUnitsResponseBody
 from ._remove_user_from_organizational_units_response import RemoveUserFromOrganizationalUnitsResponse
@@ -731,6 +797,21 @@ from ._update_application_sso_form_params_response import UpdateApplicationSsoFo
 from ._update_application_token_expiration_time_request import UpdateApplicationTokenExpirationTimeRequest
 from ._update_application_token_expiration_time_response_body import UpdateApplicationTokenExpirationTimeResponseBody
 from ._update_application_token_expiration_time_response import UpdateApplicationTokenExpirationTimeResponse
+from ._update_authorization_rule_request import UpdateAuthorizationRuleRequest
+from ._update_authorization_rule_response_body import UpdateAuthorizationRuleResponseBody
+from ._update_authorization_rule_response import UpdateAuthorizationRuleResponse
+from ._update_authorization_rule_application_attachment_request import UpdateAuthorizationRuleApplicationAttachmentRequest
+from ._update_authorization_rule_application_attachment_response_body import UpdateAuthorizationRuleApplicationAttachmentResponseBody
+from ._update_authorization_rule_application_attachment_response import UpdateAuthorizationRuleApplicationAttachmentResponse
+from ._update_authorization_rule_description_request import UpdateAuthorizationRuleDescriptionRequest
+from ._update_authorization_rule_description_response_body import UpdateAuthorizationRuleDescriptionResponseBody
+from ._update_authorization_rule_description_response import UpdateAuthorizationRuleDescriptionResponse
+from ._update_authorization_rule_group_attachment_request import UpdateAuthorizationRuleGroupAttachmentRequest
+from ._update_authorization_rule_group_attachment_response_body import UpdateAuthorizationRuleGroupAttachmentResponseBody
+from ._update_authorization_rule_group_attachment_response import UpdateAuthorizationRuleGroupAttachmentResponse
+from ._update_authorization_rule_user_attachment_request import UpdateAuthorizationRuleUserAttachmentRequest
+from ._update_authorization_rule_user_attachment_response_body import UpdateAuthorizationRuleUserAttachmentResponseBody
+from ._update_authorization_rule_user_attachment_response import UpdateAuthorizationRuleUserAttachmentResponse
 from ._update_brand_request import UpdateBrandRequest
 from ._update_brand_response_body import UpdateBrandResponseBody
 from ._update_brand_response import UpdateBrandResponse
@@ -806,6 +887,9 @@ from ._update_user_description_response import UpdateUserDescriptionResponse
 from ._update_user_password_request import UpdateUserPasswordRequest
 from ._update_user_password_response_body import UpdateUserPasswordResponseBody
 from ._update_user_password_response import UpdateUserPasswordResponse
+from ._add_application_to_authorization_rule_request import AddApplicationToAuthorizationRuleRequestValidityPeriod
+from ._add_group_to_authorization_rule_request import AddGroupToAuthorizationRuleRequestValidityPeriod
+from ._add_user_to_authorization_rule_request import AddUserToAuthorizationRuleRequestValidityPeriod
 from ._create_application_client_secret_response_body import CreateApplicationClientSecretResponseBodyApplicationClientSecret
 from ._create_application_federated_credential_request import CreateApplicationFederatedCredentialRequestAttributeMappings
 from ._create_application_token_response_body import CreateApplicationTokenResponseBodyApplicationTokens
@@ -864,6 +948,8 @@ from ._get_application_sso_config_response_body import GetApplicationSsoConfigRe
 from ._get_application_sso_config_response_body import GetApplicationSsoConfigResponseBodyApplicationSsoConfig
 from ._get_application_template_response_body import GetApplicationTemplateResponseBodyApplicationTemplateSaleInfo
 from ._get_application_template_response_body import GetApplicationTemplateResponseBodyApplicationTemplate
+from ._get_authorization_resource_response_body import GetAuthorizationResourceResponseBodyAuthorizationResource
+from ._get_authorization_rule_response_body import GetAuthorizationRuleResponseBodyAuthorizationRule
 from ._get_brand_response_body import GetBrandResponseBodyBrand
 from ._get_client_public_key_response_body import GetClientPublicKeyResponseBodyClientPublicKey
 from ._get_cloud_account_response_body import GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResultErrorReason
@@ -974,6 +1060,9 @@ from ._list_application_roles_response_body import ListApplicationRolesResponseB
 from ._list_application_supported_provision_protocol_types_response_body import ListApplicationSupportedProvisionProtocolTypesResponseBodyApplicationSupportedProvisionProtocolType
 from ._list_application_tokens_response_body import ListApplicationTokensResponseBodyApplicationTokens
 from ._list_applications_response_body import ListApplicationsResponseBodyApplications
+from ._list_applications_for_authorization_rule_request import ListApplicationsForAuthorizationRuleRequestFilter
+from ._list_applications_for_authorization_rule_response_body import ListApplicationsForAuthorizationRuleResponseBodyApplicationsValidityPeriod
+from ._list_applications_for_authorization_rule_response_body import ListApplicationsForAuthorizationRuleResponseBodyApplications
 from ._list_applications_for_group_response_body import ListApplicationsForGroupResponseBodyApplicationsApplicationRoles
 from ._list_applications_for_group_response_body import ListApplicationsForGroupResponseBodyApplications
 from ._list_applications_for_network_access_endpoint_response_body import ListApplicationsForNetworkAccessEndpointResponseBodyApplicationsForNetworkAccessEndpoint
@@ -982,6 +1071,16 @@ from ._list_applications_for_organizational_unit_response_body import ListApplic
 from ._list_applications_for_organizational_unit_response_body import ListApplicationsForOrganizationalUnitResponseBodyApplications
 from ._list_applications_for_user_response_body import ListApplicationsForUserResponseBodyApplicationsApplicationRoles
 from ._list_applications_for_user_response_body import ListApplicationsForUserResponseBodyApplications
+from ._list_authorization_resources_request import ListAuthorizationResourcesRequestFilter
+from ._list_authorization_resources_response_body import ListAuthorizationResourcesResponseBodyAuthorizationResources
+from ._list_authorization_rules_request import ListAuthorizationRulesRequestFilter
+from ._list_authorization_rules_response_body import ListAuthorizationRulesResponseBodyAuthorizationRules
+from ._list_authorization_rules_for_application_response_body import ListAuthorizationRulesForApplicationResponseBodyAuthorizationRulesValidityPeriod
+from ._list_authorization_rules_for_application_response_body import ListAuthorizationRulesForApplicationResponseBodyAuthorizationRules
+from ._list_authorization_rules_for_group_response_body import ListAuthorizationRulesForGroupResponseBodyAuthorizationRulesValidityPeriod
+from ._list_authorization_rules_for_group_response_body import ListAuthorizationRulesForGroupResponseBodyAuthorizationRules
+from ._list_authorization_rules_for_user_response_body import ListAuthorizationRulesForUserResponseBodyAuthorizationRulesValidityPeriod
+from ._list_authorization_rules_for_user_response_body import ListAuthorizationRulesForUserResponseBodyAuthorizationRules
 from ._list_brands_response_body import ListBrandsResponseBodyBrands
 from ._list_client_public_keys_response_body import ListClientPublicKeysResponseBodyClientPublicKeys
 from ._list_cloud_account_roles_request import ListCloudAccountRolesRequestFilter
@@ -1034,6 +1133,9 @@ from ._list_federated_credential_providers_response_body import ListFederatedCre
 from ._list_groups_response_body import ListGroupsResponseBodyGroups
 from ._list_groups_for_application_response_body import ListGroupsForApplicationResponseBodyGroupsApplicationRoles
 from ._list_groups_for_application_response_body import ListGroupsForApplicationResponseBodyGroups
+from ._list_groups_for_authorization_rule_request import ListGroupsForAuthorizationRuleRequestFilter
+from ._list_groups_for_authorization_rule_response_body import ListGroupsForAuthorizationRuleResponseBodyGroupsValidityPeriod
+from ._list_groups_for_authorization_rule_response_body import ListGroupsForAuthorizationRuleResponseBodyGroups
 from ._list_groups_for_resource_server_request import ListGroupsForResourceServerRequestFilter
 from ._list_groups_for_resource_server_response_body import ListGroupsForResourceServerResponseBodyGroupsResourceServerScopes
 from ._list_groups_for_resource_server_response_body import ListGroupsForResourceServerResponseBodyGroups
@@ -1094,6 +1196,9 @@ from ._list_user_authn_source_mappings_response_body import ListUserAuthnSourceM
 from ._list_users_response_body import ListUsersResponseBodyUsers
 from ._list_users_for_application_response_body import ListUsersForApplicationResponseBodyUsersApplicationRoles
 from ._list_users_for_application_response_body import ListUsersForApplicationResponseBodyUsers
+from ._list_users_for_authorization_rule_request import ListUsersForAuthorizationRuleRequestFilter
+from ._list_users_for_authorization_rule_response_body import ListUsersForAuthorizationRuleResponseBodyUsersValidityPeriod
+from ._list_users_for_authorization_rule_response_body import ListUsersForAuthorizationRuleResponseBodyUsers
 from ._list_users_for_group_response_body import ListUsersForGroupResponseBodyUsers
 from ._list_users_for_resource_server_request import ListUsersForResourceServerRequestFilter
 from ._list_users_for_resource_server_response_body import ListUsersForResourceServerResponseBodyUsersResourceServerScopes
@@ -1119,6 +1224,9 @@ from ._set_password_complexity_configuration_request import SetPasswordComplexit
 from ._update_application_advanced_config_request import UpdateApplicationAdvancedConfigRequestScimServerAdvancedConfig
 from ._update_application_federated_credential_request import UpdateApplicationFederatedCredentialRequestAttributeMappings
 from ._update_application_sso_form_params_request import UpdateApplicationSsoFormParamsRequestApplicationTemplateParams
+from ._update_authorization_rule_application_attachment_request import UpdateAuthorizationRuleApplicationAttachmentRequestValidityPeriod
+from ._update_authorization_rule_group_attachment_request import UpdateAuthorizationRuleGroupAttachmentRequestValidityPeriod
+from ._update_authorization_rule_user_attachment_request import UpdateAuthorizationRuleUserAttachmentRequestValidityPeriod
 from ._update_conditional_access_policy_request import UpdateConditionalAccessPolicyRequestConditionsConfigApplications
 from ._update_conditional_access_policy_request import UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones
 from ._update_conditional_access_policy_request import UpdateConditionalAccessPolicyRequestConditionsConfigUsers
@@ -1144,9 +1252,18 @@ __all__ = [
     AddApplicationAccountToUserRequest,
     AddApplicationAccountToUserResponseBody,
     AddApplicationAccountToUserResponse,
+    AddApplicationToAuthorizationRuleRequest,
+    AddApplicationToAuthorizationRuleResponseBody,
+    AddApplicationToAuthorizationRuleResponse,
     AddCustomPrivacyPoliciesToBrandRequest,
     AddCustomPrivacyPoliciesToBrandResponseBody,
     AddCustomPrivacyPoliciesToBrandResponse,
+    AddGroupToAuthorizationRuleRequest,
+    AddGroupToAuthorizationRuleResponseBody,
+    AddGroupToAuthorizationRuleResponse,
+    AddUserToAuthorizationRuleRequest,
+    AddUserToAuthorizationRuleResponseBody,
+    AddUserToAuthorizationRuleResponse,
     AddUserToOrganizationalUnitsRequest,
     AddUserToOrganizationalUnitsResponseBody,
     AddUserToOrganizationalUnitsResponse,
@@ -1195,6 +1312,12 @@ __all__ = [
     CreateApplicationTokenRequest,
     CreateApplicationTokenResponseBody,
     CreateApplicationTokenResponse,
+    CreateAuthorizationResourceRequest,
+    CreateAuthorizationResourceResponseBody,
+    CreateAuthorizationResourceResponse,
+    CreateAuthorizationRuleRequest,
+    CreateAuthorizationRuleResponseBody,
+    CreateAuthorizationRuleResponse,
     CreateBrandRequest,
     CreateBrandResponseBody,
     CreateBrandResponse,
@@ -1264,6 +1387,12 @@ __all__ = [
     DeleteApplicationTokenRequest,
     DeleteApplicationTokenResponseBody,
     DeleteApplicationTokenResponse,
+    DeleteAuthorizationResourceRequest,
+    DeleteAuthorizationResourceResponseBody,
+    DeleteAuthorizationResourceResponse,
+    DeleteAuthorizationRuleRequest,
+    DeleteAuthorizationRuleResponseBody,
+    DeleteAuthorizationRuleResponse,
     DeleteBrandRequest,
     DeleteBrandResponseBody,
     DeleteBrandResponse,
@@ -1351,6 +1480,9 @@ __all__ = [
     DisableApplicationTokenRequest,
     DisableApplicationTokenResponseBody,
     DisableApplicationTokenResponse,
+    DisableAuthorizationRuleRequest,
+    DisableAuthorizationRuleResponseBody,
+    DisableAuthorizationRuleResponse,
     DisableBrandRequest,
     DisableBrandResponseBody,
     DisableBrandResponse,
@@ -1420,6 +1552,9 @@ __all__ = [
     EnableApplicationTokenRequest,
     EnableApplicationTokenResponseBody,
     EnableApplicationTokenResponse,
+    EnableAuthorizationRuleRequest,
+    EnableAuthorizationRuleResponseBody,
+    EnableAuthorizationRuleResponse,
     EnableBrandRequest,
     EnableBrandResponseBody,
     EnableBrandResponse,
@@ -1498,6 +1633,12 @@ __all__ = [
     GetApplicationTemplateRequest,
     GetApplicationTemplateResponseBody,
     GetApplicationTemplateResponse,
+    GetAuthorizationResourceRequest,
+    GetAuthorizationResourceResponseBody,
+    GetAuthorizationResourceResponse,
+    GetAuthorizationRuleRequest,
+    GetAuthorizationRuleResponseBody,
+    GetAuthorizationRuleResponse,
     GetBrandRequest,
     GetBrandResponseBody,
     GetBrandResponse,
@@ -1606,6 +1747,9 @@ __all__ = [
     ListApplicationsRequest,
     ListApplicationsResponseBody,
     ListApplicationsResponse,
+    ListApplicationsForAuthorizationRuleRequest,
+    ListApplicationsForAuthorizationRuleResponseBody,
+    ListApplicationsForAuthorizationRuleResponse,
     ListApplicationsForGroupRequest,
     ListApplicationsForGroupResponseBody,
     ListApplicationsForGroupResponse,
@@ -1621,6 +1765,21 @@ __all__ = [
     ListApplicationsForUserRequest,
     ListApplicationsForUserResponseBody,
     ListApplicationsForUserResponse,
+    ListAuthorizationResourcesRequest,
+    ListAuthorizationResourcesResponseBody,
+    ListAuthorizationResourcesResponse,
+    ListAuthorizationRulesRequest,
+    ListAuthorizationRulesResponseBody,
+    ListAuthorizationRulesResponse,
+    ListAuthorizationRulesForApplicationRequest,
+    ListAuthorizationRulesForApplicationResponseBody,
+    ListAuthorizationRulesForApplicationResponse,
+    ListAuthorizationRulesForGroupRequest,
+    ListAuthorizationRulesForGroupResponseBody,
+    ListAuthorizationRulesForGroupResponse,
+    ListAuthorizationRulesForUserRequest,
+    ListAuthorizationRulesForUserResponseBody,
+    ListAuthorizationRulesForUserResponse,
     ListBrandsRequest,
     ListBrandsResponseBody,
     ListBrandsResponse,
@@ -1671,6 +1830,9 @@ __all__ = [
     ListGroupsForApplicationRequest,
     ListGroupsForApplicationResponseBody,
     ListGroupsForApplicationResponse,
+    ListGroupsForAuthorizationRuleRequest,
+    ListGroupsForAuthorizationRuleResponseBody,
+    ListGroupsForAuthorizationRuleResponse,
     ListGroupsForResourceServerRequest,
     ListGroupsForResourceServerResponseBody,
     ListGroupsForResourceServerResponse,
@@ -1729,6 +1891,9 @@ __all__ = [
     ListUsersForApplicationRequest,
     ListUsersForApplicationResponseBody,
     ListUsersForApplicationResponse,
+    ListUsersForAuthorizationRuleRequest,
+    ListUsersForAuthorizationRuleResponseBody,
+    ListUsersForAuthorizationRuleResponse,
     ListUsersForGroupRequest,
     ListUsersForGroupResponseBody,
     ListUsersForGroupResponse,
@@ -1747,9 +1912,18 @@ __all__ = [
     RemoveApplicationAccountFromUserRequest,
     RemoveApplicationAccountFromUserResponseBody,
     RemoveApplicationAccountFromUserResponse,
+    RemoveApplicationFromAuthorizationRuleRequest,
+    RemoveApplicationFromAuthorizationRuleResponseBody,
+    RemoveApplicationFromAuthorizationRuleResponse,
     RemoveCustomPrivacyPoliciesFromBrandRequest,
     RemoveCustomPrivacyPoliciesFromBrandResponseBody,
     RemoveCustomPrivacyPoliciesFromBrandResponse,
+    RemoveGroupFromAuthorizationRuleRequest,
+    RemoveGroupFromAuthorizationRuleResponseBody,
+    RemoveGroupFromAuthorizationRuleResponse,
+    RemoveUserFromAuthorizationRuleRequest,
+    RemoveUserFromAuthorizationRuleResponseBody,
+    RemoveUserFromAuthorizationRuleResponse,
     RemoveUserFromOrganizationalUnitsRequest,
     RemoveUserFromOrganizationalUnitsResponseBody,
     RemoveUserFromOrganizationalUnitsResponse,
@@ -1870,6 +2044,21 @@ __all__ = [
     UpdateApplicationTokenExpirationTimeRequest,
     UpdateApplicationTokenExpirationTimeResponseBody,
     UpdateApplicationTokenExpirationTimeResponse,
+    UpdateAuthorizationRuleRequest,
+    UpdateAuthorizationRuleResponseBody,
+    UpdateAuthorizationRuleResponse,
+    UpdateAuthorizationRuleApplicationAttachmentRequest,
+    UpdateAuthorizationRuleApplicationAttachmentResponseBody,
+    UpdateAuthorizationRuleApplicationAttachmentResponse,
+    UpdateAuthorizationRuleDescriptionRequest,
+    UpdateAuthorizationRuleDescriptionResponseBody,
+    UpdateAuthorizationRuleDescriptionResponse,
+    UpdateAuthorizationRuleGroupAttachmentRequest,
+    UpdateAuthorizationRuleGroupAttachmentResponseBody,
+    UpdateAuthorizationRuleGroupAttachmentResponse,
+    UpdateAuthorizationRuleUserAttachmentRequest,
+    UpdateAuthorizationRuleUserAttachmentResponseBody,
+    UpdateAuthorizationRuleUserAttachmentResponse,
     UpdateBrandRequest,
     UpdateBrandResponseBody,
     UpdateBrandResponse,
@@ -1945,6 +2134,9 @@ __all__ = [
     UpdateUserPasswordRequest,
     UpdateUserPasswordResponseBody,
     UpdateUserPasswordResponse,
+    AddApplicationToAuthorizationRuleRequestValidityPeriod,
+    AddGroupToAuthorizationRuleRequestValidityPeriod,
+    AddUserToAuthorizationRuleRequestValidityPeriod,
     CreateApplicationClientSecretResponseBodyApplicationClientSecret,
     CreateApplicationFederatedCredentialRequestAttributeMappings,
     CreateApplicationTokenResponseBodyApplicationTokens,
@@ -2003,6 +2195,8 @@ __all__ = [
     GetApplicationSsoConfigResponseBodyApplicationSsoConfig,
     GetApplicationTemplateResponseBodyApplicationTemplateSaleInfo,
     GetApplicationTemplateResponseBodyApplicationTemplate,
+    GetAuthorizationResourceResponseBodyAuthorizationResource,
+    GetAuthorizationRuleResponseBodyAuthorizationRule,
     GetBrandResponseBodyBrand,
     GetClientPublicKeyResponseBodyClientPublicKey,
     GetCloudAccountResponseBodyCloudAccountCloudAccountHealthCheckResultErrorReason,
@@ -2113,6 +2307,9 @@ __all__ = [
     ListApplicationSupportedProvisionProtocolTypesResponseBodyApplicationSupportedProvisionProtocolType,
     ListApplicationTokensResponseBodyApplicationTokens,
     ListApplicationsResponseBodyApplications,
+    ListApplicationsForAuthorizationRuleRequestFilter,
+    ListApplicationsForAuthorizationRuleResponseBodyApplicationsValidityPeriod,
+    ListApplicationsForAuthorizationRuleResponseBodyApplications,
     ListApplicationsForGroupResponseBodyApplicationsApplicationRoles,
     ListApplicationsForGroupResponseBodyApplications,
     ListApplicationsForNetworkAccessEndpointResponseBodyApplicationsForNetworkAccessEndpoint,
@@ -2121,6 +2318,16 @@ __all__ = [
     ListApplicationsForOrganizationalUnitResponseBodyApplications,
     ListApplicationsForUserResponseBodyApplicationsApplicationRoles,
     ListApplicationsForUserResponseBodyApplications,
+    ListAuthorizationResourcesRequestFilter,
+    ListAuthorizationResourcesResponseBodyAuthorizationResources,
+    ListAuthorizationRulesRequestFilter,
+    ListAuthorizationRulesResponseBodyAuthorizationRules,
+    ListAuthorizationRulesForApplicationResponseBodyAuthorizationRulesValidityPeriod,
+    ListAuthorizationRulesForApplicationResponseBodyAuthorizationRules,
+    ListAuthorizationRulesForGroupResponseBodyAuthorizationRulesValidityPeriod,
+    ListAuthorizationRulesForGroupResponseBodyAuthorizationRules,
+    ListAuthorizationRulesForUserResponseBodyAuthorizationRulesValidityPeriod,
+    ListAuthorizationRulesForUserResponseBodyAuthorizationRules,
     ListBrandsResponseBodyBrands,
     ListClientPublicKeysResponseBodyClientPublicKeys,
     ListCloudAccountRolesRequestFilter,
@@ -2173,6 +2380,9 @@ __all__ = [
     ListGroupsResponseBodyGroups,
     ListGroupsForApplicationResponseBodyGroupsApplicationRoles,
     ListGroupsForApplicationResponseBodyGroups,
+    ListGroupsForAuthorizationRuleRequestFilter,
+    ListGroupsForAuthorizationRuleResponseBodyGroupsValidityPeriod,
+    ListGroupsForAuthorizationRuleResponseBodyGroups,
     ListGroupsForResourceServerRequestFilter,
     ListGroupsForResourceServerResponseBodyGroupsResourceServerScopes,
     ListGroupsForResourceServerResponseBodyGroups,
@@ -2233,6 +2443,9 @@ __all__ = [
     ListUsersResponseBodyUsers,
     ListUsersForApplicationResponseBodyUsersApplicationRoles,
     ListUsersForApplicationResponseBodyUsers,
+    ListUsersForAuthorizationRuleRequestFilter,
+    ListUsersForAuthorizationRuleResponseBodyUsersValidityPeriod,
+    ListUsersForAuthorizationRuleResponseBodyUsers,
     ListUsersForGroupResponseBodyUsers,
     ListUsersForResourceServerRequestFilter,
     ListUsersForResourceServerResponseBodyUsersResourceServerScopes,
@@ -2258,6 +2471,9 @@ __all__ = [
     UpdateApplicationAdvancedConfigRequestScimServerAdvancedConfig,
     UpdateApplicationFederatedCredentialRequestAttributeMappings,
     UpdateApplicationSsoFormParamsRequestApplicationTemplateParams,
+    UpdateAuthorizationRuleApplicationAttachmentRequestValidityPeriod,
+    UpdateAuthorizationRuleGroupAttachmentRequestValidityPeriod,
+    UpdateAuthorizationRuleUserAttachmentRequestValidityPeriod,
     UpdateConditionalAccessPolicyRequestConditionsConfigApplications,
     UpdateConditionalAccessPolicyRequestConditionsConfigNetworkZones,
     UpdateConditionalAccessPolicyRequestConditionsConfigUsers,

@@ -122,6 +122,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.add_application_account_to_user_with_options_async(request, runtime)
 
+    def add_application_to_authorization_rule_with_options(
+        self,
+        request: main_models.AddApplicationToAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddApplicationToAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.validity_period):
+            query['ValidityPeriod'] = request.validity_period
+        if not DaraCore.is_null(request.validity_type):
+            query['ValidityType'] = request.validity_type
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddApplicationToAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddApplicationToAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_application_to_authorization_rule_with_options_async(
+        self,
+        request: main_models.AddApplicationToAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddApplicationToAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.validity_period):
+            query['ValidityPeriod'] = request.validity_period
+        if not DaraCore.is_null(request.validity_type):
+            query['ValidityType'] = request.validity_type
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddApplicationToAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddApplicationToAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_application_to_authorization_rule(
+        self,
+        request: main_models.AddApplicationToAuthorizationRuleRequest,
+    ) -> main_models.AddApplicationToAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return self.add_application_to_authorization_rule_with_options(request, runtime)
+
+    async def add_application_to_authorization_rule_async(
+        self,
+        request: main_models.AddApplicationToAuthorizationRuleRequest,
+    ) -> main_models.AddApplicationToAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.add_application_to_authorization_rule_with_options_async(request, runtime)
+
     def add_custom_privacy_policies_to_brand_with_options(
         self,
         request: main_models.AddCustomPrivacyPoliciesToBrandRequest,
@@ -199,6 +293,194 @@ class Client(OpenApiClient):
     ) -> main_models.AddCustomPrivacyPoliciesToBrandResponse:
         runtime = RuntimeOptions()
         return await self.add_custom_privacy_policies_to_brand_with_options_async(request, runtime)
+
+    def add_group_to_authorization_rule_with_options(
+        self,
+        request: main_models.AddGroupToAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddGroupToAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.group_id):
+            query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.validity_period):
+            query['ValidityPeriod'] = request.validity_period
+        if not DaraCore.is_null(request.validity_type):
+            query['ValidityType'] = request.validity_type
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddGroupToAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddGroupToAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_group_to_authorization_rule_with_options_async(
+        self,
+        request: main_models.AddGroupToAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddGroupToAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.group_id):
+            query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.validity_period):
+            query['ValidityPeriod'] = request.validity_period
+        if not DaraCore.is_null(request.validity_type):
+            query['ValidityType'] = request.validity_type
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddGroupToAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddGroupToAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_group_to_authorization_rule(
+        self,
+        request: main_models.AddGroupToAuthorizationRuleRequest,
+    ) -> main_models.AddGroupToAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return self.add_group_to_authorization_rule_with_options(request, runtime)
+
+    async def add_group_to_authorization_rule_async(
+        self,
+        request: main_models.AddGroupToAuthorizationRuleRequest,
+    ) -> main_models.AddGroupToAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.add_group_to_authorization_rule_with_options_async(request, runtime)
+
+    def add_user_to_authorization_rule_with_options(
+        self,
+        request: main_models.AddUserToAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddUserToAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.validity_period):
+            query['ValidityPeriod'] = request.validity_period
+        if not DaraCore.is_null(request.validity_type):
+            query['ValidityType'] = request.validity_type
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddUserToAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddUserToAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_user_to_authorization_rule_with_options_async(
+        self,
+        request: main_models.AddUserToAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddUserToAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.validity_period):
+            query['ValidityPeriod'] = request.validity_period
+        if not DaraCore.is_null(request.validity_type):
+            query['ValidityType'] = request.validity_type
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddUserToAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddUserToAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_user_to_authorization_rule(
+        self,
+        request: main_models.AddUserToAuthorizationRuleRequest,
+    ) -> main_models.AddUserToAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return self.add_user_to_authorization_rule_with_options(request, runtime)
+
+    async def add_user_to_authorization_rule_async(
+        self,
+        request: main_models.AddUserToAuthorizationRuleRequest,
+    ) -> main_models.AddUserToAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.add_user_to_authorization_rule_with_options_async(request, runtime)
 
     def add_user_to_organizational_units_with_options(
         self,
@@ -1539,6 +1821,190 @@ class Client(OpenApiClient):
     ) -> main_models.CreateApplicationTokenResponse:
         runtime = RuntimeOptions()
         return await self.create_application_token_with_options_async(request, runtime)
+
+    def create_authorization_resource_with_options(
+        self,
+        request: main_models.CreateAuthorizationResourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAuthorizationResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_resource_entity_id):
+            query['AuthorizationResourceEntityId'] = request.authorization_resource_entity_id
+        if not DaraCore.is_null(request.authorization_resource_entity_type):
+            query['AuthorizationResourceEntityType'] = request.authorization_resource_entity_type
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAuthorizationResource',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAuthorizationResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_authorization_resource_with_options_async(
+        self,
+        request: main_models.CreateAuthorizationResourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAuthorizationResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_resource_entity_id):
+            query['AuthorizationResourceEntityId'] = request.authorization_resource_entity_id
+        if not DaraCore.is_null(request.authorization_resource_entity_type):
+            query['AuthorizationResourceEntityType'] = request.authorization_resource_entity_type
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAuthorizationResource',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAuthorizationResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_authorization_resource(
+        self,
+        request: main_models.CreateAuthorizationResourceRequest,
+    ) -> main_models.CreateAuthorizationResourceResponse:
+        runtime = RuntimeOptions()
+        return self.create_authorization_resource_with_options(request, runtime)
+
+    async def create_authorization_resource_async(
+        self,
+        request: main_models.CreateAuthorizationResourceRequest,
+    ) -> main_models.CreateAuthorizationResourceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_authorization_resource_with_options_async(request, runtime)
+
+    def create_authorization_rule_with_options(
+        self,
+        request: main_models.CreateAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_resource_scope):
+            query['AuthorizationResourceScope'] = request.authorization_resource_scope
+        if not DaraCore.is_null(request.authorization_rule_name):
+            query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_authorization_rule_with_options_async(
+        self,
+        request: main_models.CreateAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_resource_scope):
+            query['AuthorizationResourceScope'] = request.authorization_resource_scope
+        if not DaraCore.is_null(request.authorization_rule_name):
+            query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_authorization_rule(
+        self,
+        request: main_models.CreateAuthorizationRuleRequest,
+    ) -> main_models.CreateAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return self.create_authorization_rule_with_options(request, runtime)
+
+    async def create_authorization_rule_async(
+        self,
+        request: main_models.CreateAuthorizationRuleRequest,
+    ) -> main_models.CreateAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.create_authorization_rule_with_options_async(request, runtime)
 
     def create_brand_with_options(
         self,
@@ -3573,6 +4039,158 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteApplicationTokenResponse:
         runtime = RuntimeOptions()
         return await self.delete_application_token_with_options_async(request, runtime)
+
+    def delete_authorization_resource_with_options(
+        self,
+        request: main_models.DeleteAuthorizationResourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAuthorizationResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_resource_id):
+            query['AuthorizationResourceId'] = request.authorization_resource_id
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAuthorizationResource',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAuthorizationResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_authorization_resource_with_options_async(
+        self,
+        request: main_models.DeleteAuthorizationResourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAuthorizationResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_resource_id):
+            query['AuthorizationResourceId'] = request.authorization_resource_id
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAuthorizationResource',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAuthorizationResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_authorization_resource(
+        self,
+        request: main_models.DeleteAuthorizationResourceRequest,
+    ) -> main_models.DeleteAuthorizationResourceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_authorization_resource_with_options(request, runtime)
+
+    async def delete_authorization_resource_async(
+        self,
+        request: main_models.DeleteAuthorizationResourceRequest,
+    ) -> main_models.DeleteAuthorizationResourceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_authorization_resource_with_options_async(request, runtime)
+
+    def delete_authorization_rule_with_options(
+        self,
+        request: main_models.DeleteAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_authorization_rule_with_options_async(
+        self,
+        request: main_models.DeleteAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_authorization_rule(
+        self,
+        request: main_models.DeleteAuthorizationRuleRequest,
+    ) -> main_models.DeleteAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return self.delete_authorization_rule_with_options(request, runtime)
+
+    async def delete_authorization_rule_async(
+        self,
+        request: main_models.DeleteAuthorizationRuleRequest,
+    ) -> main_models.DeleteAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_authorization_rule_with_options_async(request, runtime)
 
     def delete_brand_with_options(
         self,
@@ -5748,6 +6366,88 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.disable_application_token_with_options_async(request, runtime)
 
+    def disable_authorization_rule_with_options(
+        self,
+        request: main_models.DisableAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_authorization_rule_with_options_async(
+        self,
+        request: main_models.DisableAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_authorization_rule(
+        self,
+        request: main_models.DisableAuthorizationRuleRequest,
+    ) -> main_models.DisableAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return self.disable_authorization_rule_with_options(request, runtime)
+
+    async def disable_authorization_rule_async(
+        self,
+        request: main_models.DisableAuthorizationRuleRequest,
+    ) -> main_models.DisableAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.disable_authorization_rule_with_options_async(request, runtime)
+
     def disable_brand_with_options(
         self,
         request: main_models.DisableBrandRequest,
@@ -7477,6 +8177,88 @@ class Client(OpenApiClient):
     ) -> main_models.EnableApplicationTokenResponse:
         runtime = RuntimeOptions()
         return await self.enable_application_token_with_options_async(request, runtime)
+
+    def enable_authorization_rule_with_options(
+        self,
+        request: main_models.EnableAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_authorization_rule_with_options_async(
+        self,
+        request: main_models.EnableAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_authorization_rule(
+        self,
+        request: main_models.EnableAuthorizationRuleRequest,
+    ) -> main_models.EnableAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return self.enable_authorization_rule_with_options(request, runtime)
+
+    async def enable_authorization_rule_async(
+        self,
+        request: main_models.EnableAuthorizationRuleRequest,
+    ) -> main_models.EnableAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_authorization_rule_with_options_async(request, runtime)
 
     def enable_brand_with_options(
         self,
@@ -9425,6 +10207,158 @@ class Client(OpenApiClient):
     ) -> main_models.GetApplicationTemplateResponse:
         runtime = RuntimeOptions()
         return await self.get_application_template_with_options_async(request, runtime)
+
+    def get_authorization_resource_with_options(
+        self,
+        request: main_models.GetAuthorizationResourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAuthorizationResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_resource_id):
+            query['AuthorizationResourceId'] = request.authorization_resource_id
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAuthorizationResource',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAuthorizationResourceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_authorization_resource_with_options_async(
+        self,
+        request: main_models.GetAuthorizationResourceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAuthorizationResourceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_resource_id):
+            query['AuthorizationResourceId'] = request.authorization_resource_id
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAuthorizationResource',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAuthorizationResourceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_authorization_resource(
+        self,
+        request: main_models.GetAuthorizationResourceRequest,
+    ) -> main_models.GetAuthorizationResourceResponse:
+        runtime = RuntimeOptions()
+        return self.get_authorization_resource_with_options(request, runtime)
+
+    async def get_authorization_resource_async(
+        self,
+        request: main_models.GetAuthorizationResourceRequest,
+    ) -> main_models.GetAuthorizationResourceResponse:
+        runtime = RuntimeOptions()
+        return await self.get_authorization_resource_with_options_async(request, runtime)
+
+    def get_authorization_rule_with_options(
+        self,
+        request: main_models.GetAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_authorization_rule_with_options_async(
+        self,
+        request: main_models.GetAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_authorization_rule(
+        self,
+        request: main_models.GetAuthorizationRuleRequest,
+    ) -> main_models.GetAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return self.get_authorization_rule_with_options(request, runtime)
+
+    async def get_authorization_rule_async(
+        self,
+        request: main_models.GetAuthorizationRuleRequest,
+    ) -> main_models.GetAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.get_authorization_rule_with_options_async(request, runtime)
 
     def get_brand_with_options(
         self,
@@ -12162,6 +13096,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_applications_with_options_async(request, runtime)
 
+    def list_applications_for_authorization_rule_with_options(
+        self,
+        request: main_models.ListApplicationsForAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApplicationsForAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApplicationsForAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApplicationsForAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_applications_for_authorization_rule_with_options_async(
+        self,
+        request: main_models.ListApplicationsForAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApplicationsForAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApplicationsForAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApplicationsForAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_applications_for_authorization_rule(
+        self,
+        request: main_models.ListApplicationsForAuthorizationRuleRequest,
+    ) -> main_models.ListApplicationsForAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return self.list_applications_for_authorization_rule_with_options(request, runtime)
+
+    async def list_applications_for_authorization_rule_async(
+        self,
+        request: main_models.ListApplicationsForAuthorizationRuleRequest,
+    ) -> main_models.ListApplicationsForAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.list_applications_for_authorization_rule_with_options_async(request, runtime)
+
     def list_applications_for_group_with_options(
         self,
         request: main_models.ListApplicationsForGroupRequest,
@@ -12591,6 +13611,420 @@ class Client(OpenApiClient):
     ) -> main_models.ListApplicationsForUserResponse:
         runtime = RuntimeOptions()
         return await self.list_applications_for_user_with_options_async(request, runtime)
+
+    def list_authorization_resources_with_options(
+        self,
+        request: main_models.ListAuthorizationResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthorizationResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthorizationResources',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthorizationResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_authorization_resources_with_options_async(
+        self,
+        request: main_models.ListAuthorizationResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthorizationResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthorizationResources',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthorizationResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_authorization_resources(
+        self,
+        request: main_models.ListAuthorizationResourcesRequest,
+    ) -> main_models.ListAuthorizationResourcesResponse:
+        runtime = RuntimeOptions()
+        return self.list_authorization_resources_with_options(request, runtime)
+
+    async def list_authorization_resources_async(
+        self,
+        request: main_models.ListAuthorizationResourcesRequest,
+    ) -> main_models.ListAuthorizationResourcesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_authorization_resources_with_options_async(request, runtime)
+
+    def list_authorization_rules_with_options(
+        self,
+        request: main_models.ListAuthorizationRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthorizationRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthorizationRules',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthorizationRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_authorization_rules_with_options_async(
+        self,
+        request: main_models.ListAuthorizationRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthorizationRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthorizationRules',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthorizationRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_authorization_rules(
+        self,
+        request: main_models.ListAuthorizationRulesRequest,
+    ) -> main_models.ListAuthorizationRulesResponse:
+        runtime = RuntimeOptions()
+        return self.list_authorization_rules_with_options(request, runtime)
+
+    async def list_authorization_rules_async(
+        self,
+        request: main_models.ListAuthorizationRulesRequest,
+    ) -> main_models.ListAuthorizationRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_authorization_rules_with_options_async(request, runtime)
+
+    def list_authorization_rules_for_application_with_options(
+        self,
+        request: main_models.ListAuthorizationRulesForApplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthorizationRulesForApplicationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthorizationRulesForApplication',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthorizationRulesForApplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_authorization_rules_for_application_with_options_async(
+        self,
+        request: main_models.ListAuthorizationRulesForApplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthorizationRulesForApplicationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthorizationRulesForApplication',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthorizationRulesForApplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_authorization_rules_for_application(
+        self,
+        request: main_models.ListAuthorizationRulesForApplicationRequest,
+    ) -> main_models.ListAuthorizationRulesForApplicationResponse:
+        runtime = RuntimeOptions()
+        return self.list_authorization_rules_for_application_with_options(request, runtime)
+
+    async def list_authorization_rules_for_application_async(
+        self,
+        request: main_models.ListAuthorizationRulesForApplicationRequest,
+    ) -> main_models.ListAuthorizationRulesForApplicationResponse:
+        runtime = RuntimeOptions()
+        return await self.list_authorization_rules_for_application_with_options_async(request, runtime)
+
+    def list_authorization_rules_for_group_with_options(
+        self,
+        request: main_models.ListAuthorizationRulesForGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthorizationRulesForGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.group_id):
+            query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthorizationRulesForGroup',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthorizationRulesForGroupResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_authorization_rules_for_group_with_options_async(
+        self,
+        request: main_models.ListAuthorizationRulesForGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthorizationRulesForGroupResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.group_id):
+            query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthorizationRulesForGroup',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthorizationRulesForGroupResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_authorization_rules_for_group(
+        self,
+        request: main_models.ListAuthorizationRulesForGroupRequest,
+    ) -> main_models.ListAuthorizationRulesForGroupResponse:
+        runtime = RuntimeOptions()
+        return self.list_authorization_rules_for_group_with_options(request, runtime)
+
+    async def list_authorization_rules_for_group_async(
+        self,
+        request: main_models.ListAuthorizationRulesForGroupRequest,
+    ) -> main_models.ListAuthorizationRulesForGroupResponse:
+        runtime = RuntimeOptions()
+        return await self.list_authorization_rules_for_group_with_options_async(request, runtime)
+
+    def list_authorization_rules_for_user_with_options(
+        self,
+        request: main_models.ListAuthorizationRulesForUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthorizationRulesForUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthorizationRulesForUser',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthorizationRulesForUserResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_authorization_rules_for_user_with_options_async(
+        self,
+        request: main_models.ListAuthorizationRulesForUserRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAuthorizationRulesForUserResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAuthorizationRulesForUser',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAuthorizationRulesForUserResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_authorization_rules_for_user(
+        self,
+        request: main_models.ListAuthorizationRulesForUserRequest,
+    ) -> main_models.ListAuthorizationRulesForUserResponse:
+        runtime = RuntimeOptions()
+        return self.list_authorization_rules_for_user_with_options(request, runtime)
+
+    async def list_authorization_rules_for_user_async(
+        self,
+        request: main_models.ListAuthorizationRulesForUserRequest,
+    ) -> main_models.ListAuthorizationRulesForUserResponse:
+        runtime = RuntimeOptions()
+        return await self.list_authorization_rules_for_user_with_options_async(request, runtime)
 
     def list_brands_with_options(
         self,
@@ -13945,6 +15379,92 @@ class Client(OpenApiClient):
     ) -> main_models.ListGroupsForApplicationResponse:
         runtime = RuntimeOptions()
         return await self.list_groups_for_application_with_options_async(request, runtime)
+
+    def list_groups_for_authorization_rule_with_options(
+        self,
+        request: main_models.ListGroupsForAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGroupsForAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGroupsForAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGroupsForAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_groups_for_authorization_rule_with_options_async(
+        self,
+        request: main_models.ListGroupsForAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListGroupsForAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListGroupsForAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListGroupsForAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_groups_for_authorization_rule(
+        self,
+        request: main_models.ListGroupsForAuthorizationRuleRequest,
+    ) -> main_models.ListGroupsForAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return self.list_groups_for_authorization_rule_with_options(request, runtime)
+
+    async def list_groups_for_authorization_rule_async(
+        self,
+        request: main_models.ListGroupsForAuthorizationRuleRequest,
+    ) -> main_models.ListGroupsForAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.list_groups_for_authorization_rule_with_options_async(request, runtime)
 
     def list_groups_for_resource_server_with_options(
         self,
@@ -15634,6 +17154,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_users_for_application_with_options_async(request, runtime)
 
+    def list_users_for_authorization_rule_with_options(
+        self,
+        request: main_models.ListUsersForAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUsersForAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUsersForAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUsersForAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_users_for_authorization_rule_with_options_async(
+        self,
+        request: main_models.ListUsersForAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListUsersForAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListUsersForAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListUsersForAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_users_for_authorization_rule(
+        self,
+        request: main_models.ListUsersForAuthorizationRuleRequest,
+    ) -> main_models.ListUsersForAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return self.list_users_for_authorization_rule_with_options(request, runtime)
+
+    async def list_users_for_authorization_rule_async(
+        self,
+        request: main_models.ListUsersForAuthorizationRuleRequest,
+    ) -> main_models.ListUsersForAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.list_users_for_authorization_rule_with_options_async(request, runtime)
+
     def list_users_for_group_with_options(
         self,
         request: main_models.ListUsersForGroupRequest,
@@ -16122,6 +17728,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.remove_application_account_from_user_with_options_async(request, runtime)
 
+    def remove_application_from_authorization_rule_with_options(
+        self,
+        request: main_models.RemoveApplicationFromAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveApplicationFromAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveApplicationFromAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveApplicationFromAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_application_from_authorization_rule_with_options_async(
+        self,
+        request: main_models.RemoveApplicationFromAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveApplicationFromAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveApplicationFromAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveApplicationFromAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_application_from_authorization_rule(
+        self,
+        request: main_models.RemoveApplicationFromAuthorizationRuleRequest,
+    ) -> main_models.RemoveApplicationFromAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return self.remove_application_from_authorization_rule_with_options(request, runtime)
+
+    async def remove_application_from_authorization_rule_async(
+        self,
+        request: main_models.RemoveApplicationFromAuthorizationRuleRequest,
+    ) -> main_models.RemoveApplicationFromAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_application_from_authorization_rule_with_options_async(request, runtime)
+
     def remove_custom_privacy_policies_from_brand_with_options(
         self,
         request: main_models.RemoveCustomPrivacyPoliciesFromBrandRequest,
@@ -16199,6 +17883,162 @@ class Client(OpenApiClient):
     ) -> main_models.RemoveCustomPrivacyPoliciesFromBrandResponse:
         runtime = RuntimeOptions()
         return await self.remove_custom_privacy_policies_from_brand_with_options_async(request, runtime)
+
+    def remove_group_from_authorization_rule_with_options(
+        self,
+        request: main_models.RemoveGroupFromAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveGroupFromAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.group_id):
+            query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveGroupFromAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveGroupFromAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_group_from_authorization_rule_with_options_async(
+        self,
+        request: main_models.RemoveGroupFromAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveGroupFromAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.group_id):
+            query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveGroupFromAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveGroupFromAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_group_from_authorization_rule(
+        self,
+        request: main_models.RemoveGroupFromAuthorizationRuleRequest,
+    ) -> main_models.RemoveGroupFromAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return self.remove_group_from_authorization_rule_with_options(request, runtime)
+
+    async def remove_group_from_authorization_rule_async(
+        self,
+        request: main_models.RemoveGroupFromAuthorizationRuleRequest,
+    ) -> main_models.RemoveGroupFromAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_group_from_authorization_rule_with_options_async(request, runtime)
+
+    def remove_user_from_authorization_rule_with_options(
+        self,
+        request: main_models.RemoveUserFromAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveUserFromAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveUserFromAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveUserFromAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def remove_user_from_authorization_rule_with_options_async(
+        self,
+        request: main_models.RemoveUserFromAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveUserFromAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RemoveUserFromAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RemoveUserFromAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def remove_user_from_authorization_rule(
+        self,
+        request: main_models.RemoveUserFromAuthorizationRuleRequest,
+    ) -> main_models.RemoveUserFromAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return self.remove_user_from_authorization_rule_with_options(request, runtime)
+
+    async def remove_user_from_authorization_rule_async(
+        self,
+        request: main_models.RemoveUserFromAuthorizationRuleRequest,
+    ) -> main_models.RemoveUserFromAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.remove_user_from_authorization_rule_with_options_async(request, runtime)
 
     def remove_user_from_organizational_units_with_options(
         self,
@@ -19503,6 +21343,464 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateApplicationTokenExpirationTimeResponse:
         runtime = RuntimeOptions()
         return await self.update_application_token_expiration_time_with_options_async(request, runtime)
+
+    def update_authorization_rule_with_options(
+        self,
+        request: main_models.UpdateAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_resource_scope):
+            query['AuthorizationResourceScope'] = request.authorization_resource_scope
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.authorization_rule_name):
+            query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_authorization_rule_with_options_async(
+        self,
+        request: main_models.UpdateAuthorizationRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_resource_scope):
+            query['AuthorizationResourceScope'] = request.authorization_resource_scope
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.authorization_rule_name):
+            query['AuthorizationRuleName'] = request.authorization_rule_name
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationRule',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_authorization_rule(
+        self,
+        request: main_models.UpdateAuthorizationRuleRequest,
+    ) -> main_models.UpdateAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return self.update_authorization_rule_with_options(request, runtime)
+
+    async def update_authorization_rule_async(
+        self,
+        request: main_models.UpdateAuthorizationRuleRequest,
+    ) -> main_models.UpdateAuthorizationRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.update_authorization_rule_with_options_async(request, runtime)
+
+    def update_authorization_rule_application_attachment_with_options(
+        self,
+        request: main_models.UpdateAuthorizationRuleApplicationAttachmentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationRuleApplicationAttachmentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.validity_period):
+            query['ValidityPeriod'] = request.validity_period
+        if not DaraCore.is_null(request.validity_type):
+            query['ValidityType'] = request.validity_type
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationRuleApplicationAttachment',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationRuleApplicationAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_authorization_rule_application_attachment_with_options_async(
+        self,
+        request: main_models.UpdateAuthorizationRuleApplicationAttachmentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationRuleApplicationAttachmentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.validity_period):
+            query['ValidityPeriod'] = request.validity_period
+        if not DaraCore.is_null(request.validity_type):
+            query['ValidityType'] = request.validity_type
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationRuleApplicationAttachment',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationRuleApplicationAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_authorization_rule_application_attachment(
+        self,
+        request: main_models.UpdateAuthorizationRuleApplicationAttachmentRequest,
+    ) -> main_models.UpdateAuthorizationRuleApplicationAttachmentResponse:
+        runtime = RuntimeOptions()
+        return self.update_authorization_rule_application_attachment_with_options(request, runtime)
+
+    async def update_authorization_rule_application_attachment_async(
+        self,
+        request: main_models.UpdateAuthorizationRuleApplicationAttachmentRequest,
+    ) -> main_models.UpdateAuthorizationRuleApplicationAttachmentResponse:
+        runtime = RuntimeOptions()
+        return await self.update_authorization_rule_application_attachment_with_options_async(request, runtime)
+
+    def update_authorization_rule_description_with_options(
+        self,
+        request: main_models.UpdateAuthorizationRuleDescriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationRuleDescriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationRuleDescription',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationRuleDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_authorization_rule_description_with_options_async(
+        self,
+        request: main_models.UpdateAuthorizationRuleDescriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationRuleDescriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationRuleDescription',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationRuleDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_authorization_rule_description(
+        self,
+        request: main_models.UpdateAuthorizationRuleDescriptionRequest,
+    ) -> main_models.UpdateAuthorizationRuleDescriptionResponse:
+        runtime = RuntimeOptions()
+        return self.update_authorization_rule_description_with_options(request, runtime)
+
+    async def update_authorization_rule_description_async(
+        self,
+        request: main_models.UpdateAuthorizationRuleDescriptionRequest,
+    ) -> main_models.UpdateAuthorizationRuleDescriptionResponse:
+        runtime = RuntimeOptions()
+        return await self.update_authorization_rule_description_with_options_async(request, runtime)
+
+    def update_authorization_rule_group_attachment_with_options(
+        self,
+        request: main_models.UpdateAuthorizationRuleGroupAttachmentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationRuleGroupAttachmentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.group_id):
+            query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.validity_period):
+            query['ValidityPeriod'] = request.validity_period
+        if not DaraCore.is_null(request.validity_type):
+            query['ValidityType'] = request.validity_type
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationRuleGroupAttachment',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationRuleGroupAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_authorization_rule_group_attachment_with_options_async(
+        self,
+        request: main_models.UpdateAuthorizationRuleGroupAttachmentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationRuleGroupAttachmentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.group_id):
+            query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.validity_period):
+            query['ValidityPeriod'] = request.validity_period
+        if not DaraCore.is_null(request.validity_type):
+            query['ValidityType'] = request.validity_type
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationRuleGroupAttachment',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationRuleGroupAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_authorization_rule_group_attachment(
+        self,
+        request: main_models.UpdateAuthorizationRuleGroupAttachmentRequest,
+    ) -> main_models.UpdateAuthorizationRuleGroupAttachmentResponse:
+        runtime = RuntimeOptions()
+        return self.update_authorization_rule_group_attachment_with_options(request, runtime)
+
+    async def update_authorization_rule_group_attachment_async(
+        self,
+        request: main_models.UpdateAuthorizationRuleGroupAttachmentRequest,
+    ) -> main_models.UpdateAuthorizationRuleGroupAttachmentResponse:
+        runtime = RuntimeOptions()
+        return await self.update_authorization_rule_group_attachment_with_options_async(request, runtime)
+
+    def update_authorization_rule_user_attachment_with_options(
+        self,
+        request: main_models.UpdateAuthorizationRuleUserAttachmentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationRuleUserAttachmentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.validity_period):
+            query['ValidityPeriod'] = request.validity_period
+        if not DaraCore.is_null(request.validity_type):
+            query['ValidityType'] = request.validity_type
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationRuleUserAttachment',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationRuleUserAttachmentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_authorization_rule_user_attachment_with_options_async(
+        self,
+        request: main_models.UpdateAuthorizationRuleUserAttachmentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAuthorizationRuleUserAttachmentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.authorization_rule_id):
+            query['AuthorizationRuleId'] = request.authorization_rule_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.validity_period):
+            query['ValidityPeriod'] = request.validity_period
+        if not DaraCore.is_null(request.validity_type):
+            query['ValidityType'] = request.validity_type
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['ClientToken'] = request.client_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateAuthorizationRuleUserAttachment',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateAuthorizationRuleUserAttachmentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_authorization_rule_user_attachment(
+        self,
+        request: main_models.UpdateAuthorizationRuleUserAttachmentRequest,
+    ) -> main_models.UpdateAuthorizationRuleUserAttachmentResponse:
+        runtime = RuntimeOptions()
+        return self.update_authorization_rule_user_attachment_with_options(request, runtime)
+
+    async def update_authorization_rule_user_attachment_async(
+        self,
+        request: main_models.UpdateAuthorizationRuleUserAttachmentRequest,
+    ) -> main_models.UpdateAuthorizationRuleUserAttachmentResponse:
+        runtime = RuntimeOptions()
+        return await self.update_authorization_rule_user_attachment_with_options_async(request, runtime)
 
     def update_brand_with_options(
         self,
