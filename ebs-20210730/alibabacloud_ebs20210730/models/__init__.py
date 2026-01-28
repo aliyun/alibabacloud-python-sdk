@@ -124,6 +124,9 @@ from ._list_reports_response import ListReportsResponse
 from ._list_tag_resources_request import ListTagResourcesRequest
 from ._list_tag_resources_response_body import ListTagResourcesResponseBody
 from ._list_tag_resources_response import ListTagResourcesResponse
+from ._modify_app_request import ModifyAppRequest
+from ._modify_app_response_body import ModifyAppResponseBody
+from ._modify_app_response import ModifyAppResponse
 from ._modify_dedicated_block_storage_cluster_attribute_request import ModifyDedicatedBlockStorageClusterAttributeRequest
 from ._modify_dedicated_block_storage_cluster_attribute_response_body import ModifyDedicatedBlockStorageClusterAttributeResponseBody
 from ._modify_dedicated_block_storage_cluster_attribute_response import ModifyDedicatedBlockStorageClusterAttributeResponse
@@ -241,6 +244,7 @@ from ._list_replica_edge_supported_response_body import ListReplicaEdgeSupported
 from ._list_reports_response_body import ListReportsResponseBodyHistoryReports
 from ._list_tag_resources_request import ListTagResourcesRequestTag
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._modify_app_request import ModifyAppRequestAppTags
 from ._query_dedicated_block_storage_cluster_inventory_data_response_body import QueryDedicatedBlockStorageClusterInventoryDataResponseBodyDataMonitorItems
 from ._query_dedicated_block_storage_cluster_inventory_data_response_body import QueryDedicatedBlockStorageClusterInventoryDataResponseBodyData
 from ._tag_resources_request import TagResourcesRequestTag
@@ -375,6 +379,9 @@ __all__ = [
     ListTagResourcesRequest,
     ListTagResourcesResponseBody,
     ListTagResourcesResponse,
+    ModifyAppRequest,
+    ModifyAppResponseBody,
+    ModifyAppResponse,
     ModifyDedicatedBlockStorageClusterAttributeRequest,
     ModifyDedicatedBlockStorageClusterAttributeResponseBody,
     ModifyDedicatedBlockStorageClusterAttributeResponse,
@@ -492,6 +499,7 @@ __all__ = [
     ListReportsResponseBodyHistoryReports,
     ListTagResourcesRequestTag,
     ListTagResourcesResponseBodyTagResources,
+    ModifyAppRequestAppTags,
     QueryDedicatedBlockStorageClusterInventoryDataResponseBodyDataMonitorItems,
     QueryDedicatedBlockStorageClusterInventoryDataResponseBodyData,
     TagResourcesRequestTag,

@@ -3722,6 +3722,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
+    def modify_app_with_options(
+        self,
+        request: main_models.ModifyAppRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAppResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.app_tags):
+            query['AppTags'] = request.app_tags
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.owner):
+            query['Owner'] = request.owner
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.report_send_enabled):
+            query['ReportSendEnabled'] = request.report_send_enabled
+        if not DaraCore.is_null(request.subscribe_period):
+            query['SubscribePeriod'] = request.subscribe_period
+        if not DaraCore.is_null(request.subscribe_status):
+            query['SubscribeStatus'] = request.subscribe_status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyApp',
+            version = '2021-07-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAppResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_app_with_options_async(
+        self,
+        request: main_models.ModifyAppRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyAppResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.app_name):
+            query['AppName'] = request.app_name
+        if not DaraCore.is_null(request.app_tags):
+            query['AppTags'] = request.app_tags
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.owner):
+            query['Owner'] = request.owner
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.report_send_enabled):
+            query['ReportSendEnabled'] = request.report_send_enabled
+        if not DaraCore.is_null(request.subscribe_period):
+            query['SubscribePeriod'] = request.subscribe_period
+        if not DaraCore.is_null(request.subscribe_status):
+            query['SubscribeStatus'] = request.subscribe_status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyApp',
+            version = '2021-07-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyAppResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_app(
+        self,
+        request: main_models.ModifyAppRequest,
+    ) -> main_models.ModifyAppResponse:
+        runtime = RuntimeOptions()
+        return self.modify_app_with_options(request, runtime)
+
+    async def modify_app_async(
+        self,
+        request: main_models.ModifyAppRequest,
+    ) -> main_models.ModifyAppResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_app_with_options_async(request, runtime)
+
     def modify_dedicated_block_storage_cluster_attribute_with_options(
         self,
         request: main_models.ModifyDedicatedBlockStorageClusterAttributeRequest,
