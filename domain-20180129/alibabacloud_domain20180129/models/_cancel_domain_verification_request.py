@@ -1,0 +1,73 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class CancelDomainVerificationRequest(DaraModel):
+    def __init__(
+        self,
+        action_type: str = None,
+        instance_id: str = None,
+        lang: str = None,
+        user_client_ip: str = None,
+    ):
+        # The action type. Valid values:
+        # 
+        # *   **DOMAINAUDIT**: review a domain name review.
+        # *   **AUDITCONTACT**: review a contact.
+        # 
+        # This parameter is required.
+        self.action_type = action_type
+        # Thee instance ID of the domain name. You can call the [QueryDomainList](https://help.aliyun.com/document_detail/67712.html) operation to query the instance ID.
+        # 
+        # This parameter is required.
+        self.instance_id = instance_id
+        # The language of the error message to return if the request fails. Valid values:
+        # 
+        # *   **zh**: Chinese.
+        # *   **en**: English.
+        # 
+        # Default value: **en**.
+        self.lang = lang
+        # The IP address of the client. Set the value to **127.0.0.1**.
+        self.user_client_ip = user_client_ip
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.action_type is not None:
+            result['ActionType'] = self.action_type
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.lang is not None:
+            result['Lang'] = self.lang
+
+        if self.user_client_ip is not None:
+            result['UserClientIp'] = self.user_client_ip
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ActionType') is not None:
+            self.action_type = m.get('ActionType')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+
+        if m.get('UserClientIp') is not None:
+            self.user_client_ip = m.get('UserClientIp')
+
+        return self
+

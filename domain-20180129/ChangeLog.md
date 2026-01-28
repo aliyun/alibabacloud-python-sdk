@@ -1,3 +1,10 @@
+2026-01-28 Version: 5.0.1
+- Update API QueryDomainGroupList: add request parameters OrderByType.
+- Update API QueryDomainGroupList: add request parameters OrderKeyType.
+- Update API QueryDomainList: add request parameters Dns.
+- Update API QueryDomainList: add response parameters Body.Data.$.DnsList.
+
+
 2025-11-06 Version: 5.0.0
 - Support API QueryDomainRealTimePrice.
 - Update API QueryChangeLogList: add response parameters Body.Data.$.Remark.
