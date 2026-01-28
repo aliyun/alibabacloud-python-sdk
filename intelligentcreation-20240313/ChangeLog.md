@@ -1,3 +1,7 @@
+2026-01-28 Version: 2.17.0
+- Support API BatchDeletePracticeTask.
+
+
 2026-01-14 Version: 2.16.2
 - Update API ListAICoachTaskPage: add response parameters Body.total.
 

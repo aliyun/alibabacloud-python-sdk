@@ -35,6 +35,10 @@ from ._batch_add_document_response import BatchAddDocumentResponse
 from ._batch_create_aicoach_task_request import BatchCreateAICoachTaskRequest
 from ._batch_create_aicoach_task_response_body import BatchCreateAICoachTaskResponseBody
 from ._batch_create_aicoach_task_response import BatchCreateAICoachTaskResponse
+from ._batch_delete_practice_task_request import BatchDeletePracticeTaskRequest
+from ._batch_delete_practice_task_shrink_request import BatchDeletePracticeTaskShrinkRequest
+from ._batch_delete_practice_task_response_body import BatchDeletePracticeTaskResponseBody
+from ._batch_delete_practice_task_response import BatchDeletePracticeTaskResponse
 from ._batch_get_project_task_request import BatchGetProjectTaskRequest
 from ._batch_get_project_task_shrink_request import BatchGetProjectTaskShrinkRequest
 from ._batch_get_project_task_response_body import BatchGetProjectTaskResponseBody
@@ -237,6 +241,7 @@ from ._update_agent_request import UpdateAgentRequest
 from ._update_agent_response_body import UpdateAgentResponseBody
 from ._update_agent_response import UpdateAgentResponse
 from ._batch_create_aicoach_task_request import BatchCreateAICoachTaskRequestStudentList
+from ._batch_delete_practice_task_response_body import BatchDeletePracticeTaskResponseBodyResults
 from ._batch_get_project_task_response_body import BatchGetProjectTaskResponseBodyResultList
 from ._batch_get_train_task_response_body import BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial
 from ._batch_get_train_task_response_body import BatchGetTrainTaskResponseBodyVoiceList
@@ -349,6 +354,10 @@ __all__ = [
     BatchCreateAICoachTaskRequest,
     BatchCreateAICoachTaskResponseBody,
     BatchCreateAICoachTaskResponse,
+    BatchDeletePracticeTaskRequest,
+    BatchDeletePracticeTaskShrinkRequest,
+    BatchDeletePracticeTaskResponseBody,
+    BatchDeletePracticeTaskResponse,
     BatchGetProjectTaskRequest,
     BatchGetProjectTaskShrinkRequest,
     BatchGetProjectTaskResponseBody,
@@ -551,6 +560,7 @@ __all__ = [
     UpdateAgentResponseBody,
     UpdateAgentResponse,
     BatchCreateAICoachTaskRequestStudentList,
+    BatchDeletePracticeTaskResponseBodyResults,
     BatchGetProjectTaskResponseBodyResultList,
     BatchGetTrainTaskResponseBodyVoiceListVoiceMaterial,
     BatchGetTrainTaskResponseBodyVoiceList,

@@ -296,6 +296,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.batch_create_aicoach_task_with_options_async(request, headers, runtime)
 
+    def batch_delete_practice_task_with_options(
+        self,
+        tmp_req: main_models.BatchDeletePracticeTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeletePracticeTaskResponse:
+        tmp_req.validate()
+        request = main_models.BatchDeletePracticeTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.task_ids):
+            request.task_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_ids, 'taskIds', 'simple')
+        query = {}
+        if not DaraCore.is_null(request.idempotent_id):
+            query['idempotentId'] = request.idempotent_id
+        if not DaraCore.is_null(request.task_ids_shrink):
+            query['taskIds'] = request.task_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchDeletePracticeTask',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/batchDeletePracticeTask',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchDeletePracticeTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def batch_delete_practice_task_with_options_async(
+        self,
+        tmp_req: main_models.BatchDeletePracticeTaskRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.BatchDeletePracticeTaskResponse:
+        tmp_req.validate()
+        request = main_models.BatchDeletePracticeTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.task_ids):
+            request.task_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_ids, 'taskIds', 'simple')
+        query = {}
+        if not DaraCore.is_null(request.idempotent_id):
+            query['idempotentId'] = request.idempotent_id
+        if not DaraCore.is_null(request.task_ids_shrink):
+            query['taskIds'] = request.task_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'BatchDeletePracticeTask',
+            version = '2024-03-13',
+            protocol = 'HTTPS',
+            pathname = f'/yic/yic-console/openService/v1/aicoach/batchDeletePracticeTask',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.BatchDeletePracticeTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def batch_delete_practice_task(
+        self,
+        request: main_models.BatchDeletePracticeTaskRequest,
+    ) -> main_models.BatchDeletePracticeTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.batch_delete_practice_task_with_options(request, headers, runtime)
+
+    async def batch_delete_practice_task_async(
+        self,
+        request: main_models.BatchDeletePracticeTaskRequest,
+    ) -> main_models.BatchDeletePracticeTaskResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.batch_delete_practice_task_with_options_async(request, headers, runtime)
+
     def batch_get_project_task_with_options(
         self,
         tmp_req: main_models.BatchGetProjectTaskRequest,
