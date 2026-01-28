@@ -80,6 +80,7 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(DaraModel):
         ext_storage_size: int = None,
         ext_storage_type: str = None,
         is_expired: str = None,
+        lb_kind: str = None,
         lock_mode: str = None,
         lock_reason: str = None,
         maintain_auto_type: bool = None,
@@ -223,6 +224,7 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(DaraModel):
         # *   **true**
         # *   **false**
         self.is_expired = is_expired
+        self.lb_kind = lb_kind
         # The lock mode of the cluster. Valid values:
         # 
         # *   **Unlock**: The cluster is not locked.
@@ -408,6 +410,9 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(DaraModel):
         if self.is_expired is not None:
             result['IsExpired'] = self.is_expired
 
+        if self.lb_kind is not None:
+            result['LbKind'] = self.lb_kind
+
         if self.lock_mode is not None:
             result['LockMode'] = self.lock_mode
 
@@ -579,6 +584,9 @@ class DescribeDBClusterAttributeResponseBodyDBCluster(DaraModel):
 
         if m.get('IsExpired') is not None:
             self.is_expired = m.get('IsExpired')
+
+        if m.get('LbKind') is not None:
+            self.lb_kind = m.get('LbKind')
 
         if m.get('LockMode') is not None:
             self.lock_mode = m.get('LockMode')
