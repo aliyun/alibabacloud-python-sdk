@@ -1,3 +1,10 @@
+2026-01-28 Version: 8.5.5
+- Update API UploadDataSync: add response parameters Body.Data.$.TyxmPlusCount.
+- Update API UploadDataSync: add response parameters Body.Data.$.TyxmTurboCount.
+- Update API UploadDataSyncForLLM: add response parameters Body.Data.$.TyxmPlusCount.
+- Update API UploadDataSyncForLLM: add response parameters Body.Data.$.TyxmTurboCount.
+
+
 2026-01-23 Version: 8.5.4
 - Generated python 2019-01-15 for Qualitycheck.
 

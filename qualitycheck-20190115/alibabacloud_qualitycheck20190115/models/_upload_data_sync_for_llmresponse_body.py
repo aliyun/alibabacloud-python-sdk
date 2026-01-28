@@ -108,9 +108,13 @@ class UploadDataSyncForLLMResponseBodyDataResultInfo(DaraModel):
         self,
         rules: main_models.UploadDataSyncForLLMResponseBodyDataResultInfoRules = None,
         score: int = None,
+        tyxm_plus_count: str = None,
+        tyxm_turbo_count: str = None,
     ):
         self.rules = rules
         self.score = score
+        self.tyxm_plus_count = tyxm_plus_count
+        self.tyxm_turbo_count = tyxm_turbo_count
 
     def validate(self):
         if self.rules:
@@ -127,6 +131,12 @@ class UploadDataSyncForLLMResponseBodyDataResultInfo(DaraModel):
         if self.score is not None:
             result['Score'] = self.score
 
+        if self.tyxm_plus_count is not None:
+            result['TyxmPlusCount'] = self.tyxm_plus_count
+
+        if self.tyxm_turbo_count is not None:
+            result['TyxmTurboCount'] = self.tyxm_turbo_count
+
         return result
 
     def from_map(self, m: dict = None):
@@ -137,6 +147,12 @@ class UploadDataSyncForLLMResponseBodyDataResultInfo(DaraModel):
 
         if m.get('Score') is not None:
             self.score = m.get('Score')
+
+        if m.get('TyxmPlusCount') is not None:
+            self.tyxm_plus_count = m.get('TyxmPlusCount')
+
+        if m.get('TyxmTurboCount') is not None:
+            self.tyxm_turbo_count = m.get('TyxmTurboCount')
 
         return self
 
