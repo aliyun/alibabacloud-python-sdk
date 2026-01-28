@@ -1,3 +1,7 @@
+2026-01-28 Version: 1.2.1
+- Update API GetEmbodiedAIPlatformResourceUsageInfo: add response parameters Body.GpuDetails.$.AllocatedUnit.
+
+
 2026-01-22 Version: 1.2.0
 - Support API GetEmbodiedAIPlatformResourceUsageInfo.
 - Support API ResetEmbodiedAIPlatformPassword.

@@ -221,9 +221,11 @@ class GetEmbodiedAIPlatformResourceUsageInfoResponseBodySlbTraffic(DaraModel):
 class GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails(DaraModel):
     def __init__(
         self,
+        allocated_unit: int = None,
         gpu_model: str = None,
         total_count: int = None,
     ):
+        self.allocated_unit = allocated_unit
         self.gpu_model = gpu_model
         self.total_count = total_count
 
@@ -235,6 +237,9 @@ class GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.allocated_unit is not None:
+            result['AllocatedUnit'] = self.allocated_unit
+
         if self.gpu_model is not None:
             result['GpuModel'] = self.gpu_model
 
@@ -245,6 +250,9 @@ class GetEmbodiedAIPlatformResourceUsageInfoResponseBodyGpuDetails(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AllocatedUnit') is not None:
+            self.allocated_unit = m.get('AllocatedUnit')
+
         if m.get('GpuModel') is not None:
             self.gpu_model = m.get('GpuModel')
 
