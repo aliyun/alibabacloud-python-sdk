@@ -1,6 +1,9 @@
 2026-01-28 Version: 8.0.1
 - Generated python 2017-12-07 for Cloudfw.
 
+2026-01-28 Version: 8.0.1
+- Generated python 2017-12-07 for Cloudfw.
+
 2026-01-21 Version: 8.0.0
 - Support API DescribeRegionResourceTypeAutoEnable.
 - Support API SetAutoProtectNewAssets.
