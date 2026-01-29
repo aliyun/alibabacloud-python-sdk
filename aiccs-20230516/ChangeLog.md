@@ -1,3 +1,16 @@
+2026-01-29 Version: 1.2.1
+- Update API CallNumberDetail: add response parameters Body.Model.AiBill.
+- Update API CallNumberDetail: add response parameters Body.Model.AnswerTransferType.
+- Update API CallNumberDetail: add response parameters Body.Model.BridgeBill.
+- Update API CallNumberDetail: add response parameters Body.Model.ClientUrl.
+- Update API CallNumberDetail: add response parameters Body.Model.CreateTime.
+- Update API CallNumberDetail: add response parameters Body.Model.Duration.
+- Update API CallNumberDetail: add response parameters Body.Model.GatewayId.
+- Update API CallNumberDetail: add response parameters Body.Model.Params.
+- Update API CallNumberDetail: add response parameters Body.Model.Remark.
+- Update API CallNumberDetail: add response parameters Body.Model.Sid.
+
+
 2026-01-14 Version: 1.2.0
 - Support API AddAgent.
 - Support API AddAgentGroup.

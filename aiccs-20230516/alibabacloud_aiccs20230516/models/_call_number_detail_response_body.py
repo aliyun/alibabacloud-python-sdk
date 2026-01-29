@@ -85,30 +85,54 @@ class CallNumberDetailResponseBody(DaraModel):
 class CallNumberDetailResponseBodyModel(DaraModel):
     def __init__(
         self,
+        ai_bill: int = None,
+        answer_transfer_type: int = None,
         batch_id: str = None,
         bill: int = None,
+        bridge_bill: int = None,
         call_id: str = None,
         call_type: int = None,
+        client_url: str = None,
+        create_time: str = None,
+        duration: int = None,
+        gateway_id: int = None,
         id: int = None,
         intent_tag: str = None,
         keywords: str = None,
         number: str = None,
         number_md_5: str = None,
+        params: str = None,
         personality_tag: str = None,
+        remark: str = None,
+        sid: int = None,
         status_code: int = None,
         tag: str = None,
         task_id: int = None,
         template_id: int = None,
         transfer_status: int = None,
     ):
+        # ai计费时长
+        self.ai_bill = ai_bill
+        # 接通转接类型 1-不转人工；2-接通转人工；3-智能转人工
+        self.answer_transfer_type = answer_transfer_type
         # 导入号码时返回的批次号
         self.batch_id = batch_id
         # 通话时长，单位为毫秒，实际计费需向上取整转换为秒
         self.bill = bill
+        # 转接计费时长
+        self.bridge_bill = bridge_bill
         # 每次呼叫的唯一标识
         self.call_id = call_id
         # 可选项 1-AI外呼，6-语音通知
         self.call_type = call_type
+        # 客户详情url
+        self.client_url = client_url
+        # 创建时间 格式 2026-01-01 00:00:00
+        self.create_time = create_time
+        # 通话轮次
+        self.duration = duration
+        # 线路id
+        self.gateway_id = gateway_id
         # 号码编号
         self.id = id
         # 意向标签
@@ -119,8 +143,14 @@ class CallNumberDetailResponseBodyModel(DaraModel):
         self.number = number
         # 外呼号码MD5
         self.number_md_5 = number_md_5
+        # 自定义参数 json
+        self.params = params
         # 个性标签
         self.personality_tag = personality_tag
+        # 备注信息
+        self.remark = remark
+        # 坐席id
+        self.sid = sid
         # 外呼状态编码
         self.status_code = status_code
         # 用户自定义标签
@@ -140,17 +170,38 @@ class CallNumberDetailResponseBodyModel(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.ai_bill is not None:
+            result['AiBill'] = self.ai_bill
+
+        if self.answer_transfer_type is not None:
+            result['AnswerTransferType'] = self.answer_transfer_type
+
         if self.batch_id is not None:
             result['BatchId'] = self.batch_id
 
         if self.bill is not None:
             result['Bill'] = self.bill
 
+        if self.bridge_bill is not None:
+            result['BridgeBill'] = self.bridge_bill
+
         if self.call_id is not None:
             result['CallId'] = self.call_id
 
         if self.call_type is not None:
             result['CallType'] = self.call_type
+
+        if self.client_url is not None:
+            result['ClientUrl'] = self.client_url
+
+        if self.create_time is not None:
+            result['CreateTime'] = self.create_time
+
+        if self.duration is not None:
+            result['Duration'] = self.duration
+
+        if self.gateway_id is not None:
+            result['GatewayId'] = self.gateway_id
 
         if self.id is not None:
             result['Id'] = self.id
@@ -167,8 +218,17 @@ class CallNumberDetailResponseBodyModel(DaraModel):
         if self.number_md_5 is not None:
             result['NumberMd5'] = self.number_md_5
 
+        if self.params is not None:
+            result['Params'] = self.params
+
         if self.personality_tag is not None:
             result['PersonalityTag'] = self.personality_tag
+
+        if self.remark is not None:
+            result['Remark'] = self.remark
+
+        if self.sid is not None:
+            result['Sid'] = self.sid
 
         if self.status_code is not None:
             result['StatusCode'] = self.status_code
@@ -189,17 +249,38 @@ class CallNumberDetailResponseBodyModel(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AiBill') is not None:
+            self.ai_bill = m.get('AiBill')
+
+        if m.get('AnswerTransferType') is not None:
+            self.answer_transfer_type = m.get('AnswerTransferType')
+
         if m.get('BatchId') is not None:
             self.batch_id = m.get('BatchId')
 
         if m.get('Bill') is not None:
             self.bill = m.get('Bill')
 
+        if m.get('BridgeBill') is not None:
+            self.bridge_bill = m.get('BridgeBill')
+
         if m.get('CallId') is not None:
             self.call_id = m.get('CallId')
 
         if m.get('CallType') is not None:
             self.call_type = m.get('CallType')
+
+        if m.get('ClientUrl') is not None:
+            self.client_url = m.get('ClientUrl')
+
+        if m.get('CreateTime') is not None:
+            self.create_time = m.get('CreateTime')
+
+        if m.get('Duration') is not None:
+            self.duration = m.get('Duration')
+
+        if m.get('GatewayId') is not None:
+            self.gateway_id = m.get('GatewayId')
 
         if m.get('Id') is not None:
             self.id = m.get('Id')
@@ -216,8 +297,17 @@ class CallNumberDetailResponseBodyModel(DaraModel):
         if m.get('NumberMd5') is not None:
             self.number_md_5 = m.get('NumberMd5')
 
+        if m.get('Params') is not None:
+            self.params = m.get('Params')
+
         if m.get('PersonalityTag') is not None:
             self.personality_tag = m.get('PersonalityTag')
+
+        if m.get('Remark') is not None:
+            self.remark = m.get('Remark')
+
+        if m.get('Sid') is not None:
+            self.sid = m.get('Sid')
 
         if m.get('StatusCode') is not None:
             self.status_code = m.get('StatusCode')
