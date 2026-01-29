@@ -1,3 +1,10 @@
+2026-01-29 Version: 5.1.1
+- Update API DescribeSavingsPlansCoverageDetail: add request parameters FilterParam.
+- Update API DescribeSavingsPlansCoverageTotal: add request parameters FilterParam.
+- Update API DescribeSavingsPlansUsageDetail: add request parameters FilterParam.
+- Update API DescribeSavingsPlansUsageTotal: add request parameters FilterParam.
+
+
 2025-09-24 Version: 5.1.0
 - Support API PayOrder.
 - Update API ApplyInvoice: add request parameters emails.
