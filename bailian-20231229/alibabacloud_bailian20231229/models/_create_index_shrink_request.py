@@ -28,9 +28,11 @@ class CreateIndexShrinkRequest(DaraModel):
         structure_type: str = None,
         table_ids_shrink: str = None,
         chunk_mode: str = None,
+        connect_id: str = None,
         database: str = None,
         datasource_code: str = None,
         enable_headers: bool = None,
+        knowledge_scene: str = None,
         meta_extract_columns_shrink: str = None,
         pipeline_commercial_cu: int = None,
         pipeline_commercial_type: str = None,
@@ -128,6 +130,7 @@ class CreateIndexShrinkRequest(DaraModel):
         self.table_ids_shrink = table_ids_shrink
         # > This parameter is not available. Do not specify this parameter.
         self.chunk_mode = chunk_mode
+        self.connect_id = connect_id
         self.database = database
         self.datasource_code = datasource_code
         # Whether to treat the first row of all .xlsx and .xls files as headers and concatenate them into each text chunk. This prevents the models from mistakenly interpreting headers as regular data rows.
@@ -141,6 +144,7 @@ class CreateIndexShrinkRequest(DaraModel):
         # 
         # Default value: false.
         self.enable_headers = enable_headers
+        self.knowledge_scene = knowledge_scene
         # The metadata extraction configurations. Metadata refers to a set of additional attributes associated with unstructured data, which are integrated into text chunks in key-value pairs. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html).
         self.meta_extract_columns_shrink = meta_extract_columns_shrink
         self.pipeline_commercial_cu = pipeline_commercial_cu
@@ -219,6 +223,9 @@ class CreateIndexShrinkRequest(DaraModel):
         if self.chunk_mode is not None:
             result['chunkMode'] = self.chunk_mode
 
+        if self.connect_id is not None:
+            result['connectId'] = self.connect_id
+
         if self.database is not None:
             result['database'] = self.database
 
@@ -227,6 +234,9 @@ class CreateIndexShrinkRequest(DaraModel):
 
         if self.enable_headers is not None:
             result['enableHeaders'] = self.enable_headers
+
+        if self.knowledge_scene is not None:
+            result['knowledgeScene'] = self.knowledge_scene
 
         if self.meta_extract_columns_shrink is not None:
             result['metaExtractColumns'] = self.meta_extract_columns_shrink
@@ -310,6 +320,9 @@ class CreateIndexShrinkRequest(DaraModel):
         if m.get('chunkMode') is not None:
             self.chunk_mode = m.get('chunkMode')
 
+        if m.get('connectId') is not None:
+            self.connect_id = m.get('connectId')
+
         if m.get('database') is not None:
             self.database = m.get('database')
 
@@ -318,6 +331,9 @@ class CreateIndexShrinkRequest(DaraModel):
 
         if m.get('enableHeaders') is not None:
             self.enable_headers = m.get('enableHeaders')
+
+        if m.get('knowledgeScene') is not None:
+            self.knowledge_scene = m.get('knowledgeScene')
 
         if m.get('metaExtractColumns') is not None:
             self.meta_extract_columns_shrink = m.get('metaExtractColumns')

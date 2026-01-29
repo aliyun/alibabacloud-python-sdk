@@ -31,9 +31,11 @@ class CreateIndexRequest(DaraModel):
         structure_type: str = None,
         table_ids: List[str] = None,
         chunk_mode: str = None,
+        connect_id: str = None,
         database: str = None,
         datasource_code: str = None,
         enable_headers: bool = None,
+        knowledge_scene: str = None,
         meta_extract_columns: List[main_models.CreateIndexRequestMetaExtractColumns] = None,
         pipeline_commercial_cu: int = None,
         pipeline_commercial_type: str = None,
@@ -131,6 +133,7 @@ class CreateIndexRequest(DaraModel):
         self.table_ids = table_ids
         # > This parameter is not available. Do not specify this parameter.
         self.chunk_mode = chunk_mode
+        self.connect_id = connect_id
         self.database = database
         self.datasource_code = datasource_code
         # Whether to treat the first row of all .xlsx and .xls files as headers and concatenate them into each text chunk. This prevents the models from mistakenly interpreting headers as regular data rows.
@@ -144,6 +147,7 @@ class CreateIndexRequest(DaraModel):
         # 
         # Default value: false.
         self.enable_headers = enable_headers
+        self.knowledge_scene = knowledge_scene
         # The metadata extraction configurations. Metadata refers to a set of additional attributes associated with unstructured data, which are integrated into text chunks in key-value pairs. For more information, see [Knowledge base](https://help.aliyun.com/document_detail/2807740.html).
         self.meta_extract_columns = meta_extract_columns
         self.pipeline_commercial_cu = pipeline_commercial_cu
@@ -233,6 +237,9 @@ class CreateIndexRequest(DaraModel):
         if self.chunk_mode is not None:
             result['chunkMode'] = self.chunk_mode
 
+        if self.connect_id is not None:
+            result['connectId'] = self.connect_id
+
         if self.database is not None:
             result['database'] = self.database
 
@@ -241,6 +248,9 @@ class CreateIndexRequest(DaraModel):
 
         if self.enable_headers is not None:
             result['enableHeaders'] = self.enable_headers
+
+        if self.knowledge_scene is not None:
+            result['knowledgeScene'] = self.knowledge_scene
 
         result['metaExtractColumns'] = []
         if self.meta_extract_columns is not None:
@@ -330,6 +340,9 @@ class CreateIndexRequest(DaraModel):
         if m.get('chunkMode') is not None:
             self.chunk_mode = m.get('chunkMode')
 
+        if m.get('connectId') is not None:
+            self.connect_id = m.get('connectId')
+
         if m.get('database') is not None:
             self.database = m.get('database')
 
@@ -338,6 +351,9 @@ class CreateIndexRequest(DaraModel):
 
         if m.get('enableHeaders') is not None:
             self.enable_headers = m.get('enableHeaders')
+
+        if m.get('knowledgeScene') is not None:
+            self.knowledge_scene = m.get('knowledgeScene')
 
         self.meta_extract_columns = []
         if m.get('metaExtractColumns') is not None:

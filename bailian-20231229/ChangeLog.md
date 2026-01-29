@@ -1,3 +1,8 @@
+2026-01-29 Version: 2.8.1
+- Update API CreateIndex: add request parameters connectId.
+- Update API CreateIndex: add request parameters knowledgeScene.
+
+
 2026-01-22 Version: 2.8.0
 - Support API UpdateIndex.
 
