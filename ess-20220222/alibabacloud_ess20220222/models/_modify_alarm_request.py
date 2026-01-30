@@ -45,7 +45,7 @@ class ModifyAlarmRequest(DaraModel):
         self.comparison_operator = comparison_operator
         # The description of the event-triggered task.
         self.description = description
-        # Details of the dimensions.
+        # The metric dimensions.
         self.dimensions = dimensions
         # The effective period of the event-triggered task.
         # 
@@ -104,9 +104,9 @@ class ModifyAlarmRequest(DaraModel):
         # 
         # For more information, see [Event-triggered task for system monitoring](https://help.aliyun.com/document_detail/74854.html).
         self.metric_name = metric_name
-        # The metric type. Valid values:
+        # The metric type. Valid Values:
         # 
-        # *   system: a system metric of CloudMonitor
+        # *   system: a system metric of CloudMonitor.
         # *   custom: a custom metric that is reported to CloudMonitor.
         self.metric_type = metric_type
         # The name of the event-triggered task.
@@ -400,36 +400,37 @@ class ModifyAlarmRequestDimensions(DaraModel):
         dimension_key: str = None,
         dimension_value: str = None,
     ):
-        # The key of the dimension. The valid values vary based on the metric type.
+        # The key of dimension N that you want to associate with the metric. The valid values of Dimension.N.DimensionKey vary based on the value of MetricType.
         # 
-        # *   If you set the MetricType parameter to custom, you can specify this parameter based on your business requirements.
+        # *   If you set MetricType to custom, you can specify this parameter based on your business requirements.
         # 
-        # *   If you set the MetricType parameter to system, this parameter has the following valid values:
+        # *   If you set MetricType to system, this parameter has the following valid values:
         # 
-        #     *   user_id: the ID of your Alibaba Cloud account
-        #     *   scaling_group: the scaling group that you want to monitor
-        #     *   device: the type of the NIC
-        #     *   state: the status of the TCP connection
+        #     *   user_id: the ID of your Alibaba Cloud account.
+        #     *   scaling_group: the scaling group that is monitored by the event-triggered task.
+        #     *   device: the NIC type.
+        #     *   state: the status of the TCP connection.
+        #     *   rulePool: the specified server group for the ALB qps metric.
         self.dimension_key = dimension_key
-        # The value of the dimension. The valid values vary based on the value of the DimensionKey parameter.
+        # The dimension value of the metric. The valid values of this parameter vary based on the value of Dimensions.DimensionKey.
         # 
-        # *   If you set the MetricType parameter to custom, you can specify this parameter based on your business requirements.
+        # *   If you set MetricType to custom, you can specify this parameter based on your business requirements.
         # 
-        # *   If you set the MetricType parameter to system, this parameter has the following valid values:
+        # *   If you set MetricType to system, Dimension.N.DimensionValue has the following valid values:
         # 
-        #     *   If you set the DimensionKey parameter to user_id, the system specifies the value
+        #     *   user_id: The system specifies the value.
         # 
-        #     *   scaling_group: The system specifies the value of the DimensionValue parameter.
+        #     *   scaling_group: The system specifies the value.
         # 
-        #     *   If you set the DimensionKey parameter to device, you can set the DimensionValue parameter to eth0 or eth1.
+        #     *   device:
         # 
-        #         *   For instances that reside in the classic network type, eth0 specifies the internal NIC. Only one eth0 NIC exists on each instance that resides in a VPC.
-        #         *   For instances that reside in the classic network, eth1 specifies the public NIC.
+        #         *   eth0: For classic network instances, eth0 indicates the internal network network interface controller. Only one eth0 NIC exists on each instance that resides in VPCs.
+        #         *   eth1: For classic network instances, eth1 represents the Internet network interface controller.
         # 
-        #     *   If you set the DimensionKey parameter to state, you can set the DimensionValue parameter to TCP_TOTAL or ESTABLISHED.
+        #     *   state:
         # 
         #         *   TCP_TOTAL specifies the total number of TCP connections.
-        #         *   ESTABLISHED specifies the number of established TCP connections.
+        #         *   ESTABLISHED specifies the number of TCP connections that are established.
         self.dimension_value = dimension_value
 
     def validate(self):

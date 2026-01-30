@@ -13,7 +13,9 @@ class QueryPredictiveValueResponseBody(DaraModel):
         predictive_values: main_models.QueryPredictiveValueResponseBodyPredictiveValues = None,
         request_id: str = None,
     ):
+        # The number of predicted instances in the scaling group.
         self.predictive_values = predictive_values
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -85,7 +87,9 @@ class QueryPredictiveValueResponseBodyPredictiveValuesPredictiveValue(DaraModel)
         time: str = None,
         value: int = None,
     ):
+        # The point in time, in the ISO 8601 standard, in the yyyy-MM-ddTHH:mmZ format.
         self.time = time
+        # The number of instances.
         self.value = value
 
     def validate(self):

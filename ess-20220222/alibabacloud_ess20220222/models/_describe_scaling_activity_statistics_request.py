@@ -16,15 +16,28 @@ class DescribeScalingActivityStatisticsRequest(DaraModel):
         scaling_group_id: str = None,
         start_time: str = None,
     ):
+        # The end time of the statistical interval. The time follows the ISO 8601 standard and uses UTC time.
+        # 
         # This parameter is required.
         self.end_time = end_time
+        # The name of the metric on which the scaling activity is counted. Valid values:
+        # 
+        # *   ScalingActivityStatus: collects statistics on the distribution of scaling activities in different states within a time range.
+        # *   ScalingActivityErrorCodes: the distribution of error codes in failed scaling activities within a time range.
+        # 
+        # Default value: ScalingActivityStatus.
         self.metric_type = metric_type
         self.owner_id = owner_id
+        # The region ID.
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the scaling group.
         self.scaling_group_id = scaling_group_id
+        # The start time of the statistical interval. The time follows the ISO 8601 standard and uses UTC time.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

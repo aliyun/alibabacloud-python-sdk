@@ -10,8 +10,12 @@ class DeleteDiagnoseReportRequest(DaraModel):
         region_id: str = None,
         report_id: str = None,
     ):
+        # The region ID
+        # 
         # This parameter is required.
         self.region_id = region_id
+        # The ID of the diagnostic report.
+        # 
         # This parameter is required.
         self.report_id = report_id
 

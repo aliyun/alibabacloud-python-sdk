@@ -263,9 +263,9 @@ class CreateScalingGroupRequest(DaraModel):
         # 
         # ScalingPolicy specifies the reclaim mode of the scaling group. RemovePolicy of the RemoveInstances operation specifies the specific instance removal action. For more information, see [RemoveInstances](https://help.aliyun.com/document_detail/25955.html).
         self.scaling_policy = scaling_policy
-        # The server groups.
+        # The information about the server groups.
         # 
-        # >  You cannot use AlbServerGroups and ServerGroups to specify the same server group.
+        # > You cannot use AlbServerGroups and ServerGroups to specify the same server group.
         self.server_groups = server_groups
         # The allocation policy of preemptible instances. You can use this parameter to individually specify the allocation policy of preemptible instances. This parameter takes effect only if you set the `MultiAZPolicy` parameter to `COMPOSABLE`. Valid values:
         # 
@@ -290,7 +290,7 @@ class CreateScalingGroupRequest(DaraModel):
         self.stop_instance_timeout = stop_instance_timeout
         # > This parameter is unavailable.
         self.sync_alarm_rule_to_cms = sync_alarm_rule_to_cms
-        # The information about the tags of the scaling group.
+        # The collection of tag information for the scaling group.
         self.tags = tags
         # The backend vServer group that you want to associate with the scaling group.
         self.vserver_groups = vserver_groups
@@ -847,14 +847,17 @@ class CreateScalingGroupRequestServerGroups(DaraModel):
         self.port = port
         # The ID of the server group.
         self.server_group_id = server_group_id
-        # The type of the server group. Valid values:
+        # The type of server group N. Valid Values:
         # 
         # *   ALB
         # *   NLB
+        # *   GWLB
         self.type = type
         # The weight of each ECS instance as a backend server in the server group. Valid values: 0 to 100.
         # 
-        # If you increase the weight for an ECS instance, the number of requests that are forwarded to the ECS instance also increases. If you set the weight for an ECS instance to 0, no requests are forwarded to the ECS instance.
+        # The higher the weight, the more access requests the instance will be assigned. If the weight is 0, the instance will not receive any access requests.
+        # 
+        # > For ALB and NLB types, this parameter is required. GWLB type cannot be set.
         self.weight = weight
 
     def validate(self):

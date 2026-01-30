@@ -15,15 +15,27 @@ class QueryPredictiveTaskInfoRequest(DaraModel):
         scaling_rule_id: str = None,
         start_time: str = None,
     ):
+        # The end time of the prediction task. The time follows the ISO8601 standard and uses UTC time.
+        # 
+        # Format: yyyy-MM-ddTHH:mmZ.
+        # 
         # This parameter is required.
         self.end_time = end_time
         self.owner_id = owner_id
+        # The region ID
+        # 
         # This parameter is required.
         self.region_id = region_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        # The ID of the prediction scaling rule.
+        # 
         # This parameter is required.
         self.scaling_rule_id = scaling_rule_id
+        # The start time of the prediction task. The time follows the ISO8601 standard and uses UTC time.
+        # 
+        # Format: yyyy-MM-ddTHH:mmZ.
+        # 
         # This parameter is required.
         self.start_time = start_time
 

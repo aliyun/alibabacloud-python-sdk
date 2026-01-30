@@ -1,3 +1,9 @@
+2026-01-30 Version: 1.12.2
+- Update API CreateScalingConfiguration: add request parameters NetworkInterfaces.$.SecondaryPrivateIpAddressCount.
+- Update API DescribeScalingConfigurations: add response parameters Body.ScalingConfigurations.$.NetworkInterfaces.$.SecondaryPrivateIpAddressCount.
+- Update API ModifyScalingConfiguration: add request parameters NetworkInterfaces.$.SecondaryPrivateIpAddressCount.
+
+
 2025-12-25 Version: 1.12.1
 - Generated python 2022-02-22 for Ess.
 

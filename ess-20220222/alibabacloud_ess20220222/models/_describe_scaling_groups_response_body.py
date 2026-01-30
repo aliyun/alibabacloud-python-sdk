@@ -303,9 +303,9 @@ class DescribeScalingGroupsResponseBodyScalingGroups(DaraModel):
         # 
         # For more information, see [RemoveInstances](https://help.aliyun.com/document_detail/25955.html).
         self.scaling_policy = scaling_policy
-        # The server groups.
+        # The information about the server groups.
         # 
-        # >  You can use this parameter to obtain information about ALB server groups and Network Load Balancer (NLB) server groups attached to the scaling group.
+        # >  You can use this parameter to obtain the information about the ALB, NLB, and GWLB server groups associated with a scaling group.
         self.server_groups = server_groups
         # The allocation policy of preemptible instances. This parameter indicates the manner in which Auto Scaling selects instance types to create the required number of preemptible instances. This parameter takes effect only if you set `MultiAZPolicy` to `COMPOSABLE`. Valid values:
         # 
@@ -973,7 +973,7 @@ class DescribeScalingGroupsResponseBodyScalingGroupsServerGroups(DaraModel):
         type: str = None,
         weight: int = None,
     ):
-        # The port number used by an ECS instance as a backend server in the server group.
+        # The port number used by each ECS instance in the server group.
         self.port = port
         # The ID of the server group.
         self.server_group_id = server_group_id
@@ -981,6 +981,7 @@ class DescribeScalingGroupsResponseBodyScalingGroupsServerGroups(DaraModel):
         # 
         # *   ALB
         # *   NLB
+        # *   GWLB
         self.type = type
         # The weight of an ECS instance as a backend server in the server group.
         self.weight = weight

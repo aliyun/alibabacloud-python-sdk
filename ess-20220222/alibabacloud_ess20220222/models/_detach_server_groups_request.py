@@ -116,6 +116,8 @@ class DetachServerGroupsRequestServerGroups(DaraModel):
         type: str = None,
     ):
         # The port used by ECS instances or elastic container instances as backend servers of the server group.
+        # 
+        # >  For ALB and NLB types, this parameter is required. GWLB type cannot set this parameter and the default value is 6081.
         self.port = port
         # The ID of the server group.
         # 
@@ -125,6 +127,7 @@ class DetachServerGroupsRequestServerGroups(DaraModel):
         # 
         # *   ALB
         # *   NLB
+        # *   GWLB
         # 
         # This parameter is required.
         self.type = type

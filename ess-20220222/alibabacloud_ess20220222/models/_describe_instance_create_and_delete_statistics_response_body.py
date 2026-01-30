@@ -13,7 +13,9 @@ class DescribeInstanceCreateAndDeleteStatisticsResponseBody(DaraModel):
         instance_create_and_delete_statistics: main_models.DescribeInstanceCreateAndDeleteStatisticsResponseBodyInstanceCreateAndDeleteStatistics = None,
         request_id: str = None,
     ):
+        # Metrics for instance creation and deletion.
         self.instance_create_and_delete_statistics = instance_create_and_delete_statistics
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -88,10 +90,15 @@ class DescribeInstanceCreateAndDeleteStatisticsResponseBodyInstanceCreateAndDele
         stopped_vm_count: int = None,
         time: str = None,
     ):
+        # The number of new instances.
         self.created_vm_count = created_vm_count
+        # The number of released instances.
         self.destroyed_vm_count = destroyed_vm_count
+        # The number of instances that are started from economical mode.
         self.started_vm_count = started_vm_count
+        # The number of instances that are stopped in economical mode.
         self.stopped_vm_count = stopped_vm_count
+        # The time when the statistics are generated. The time is in UTC. Format: yyyyMMddHH.
         self.time = time
 
     def validate(self):

@@ -14,8 +14,11 @@ class DescribeScalingActivityStatisticsResponseBody(DaraModel):
         scaling_activity_error_code_statistics: main_models.DescribeScalingActivityStatisticsResponseBodyScalingActivityErrorCodeStatistics = None,
         scaling_activity_status_statistics: main_models.DescribeScalingActivityStatisticsResponseBodyScalingActivityStatusStatistics = None,
     ):
+        # Request ID.
         self.request_id = request_id
+        # The error message statistics of the scaling activity.
         self.scaling_activity_error_code_statistics = scaling_activity_error_code_statistics
+        # The statistical metrics of the scaling activity status.
         self.scaling_activity_status_statistics = scaling_activity_status_statistics
 
     def validate(self):
@@ -98,9 +101,13 @@ class DescribeScalingActivityStatisticsResponseBodyScalingActivityStatusStatisti
         time: str = None,
         warning_activity_count: int = None,
     ):
+        # The number of failed scaling activities.
         self.failed_activity_count = failed_activity_count
+        # The number of successful scaling activities.
         self.success_activity_count = success_activity_count
+        # The time when the statistics are generated. The time is in UTC. Format: yyyyMMddHH.
         self.time = time
+        # The number of partially executed scaling activities.
         self.warning_activity_count = warning_activity_count
 
     def validate(self):
@@ -183,8 +190,11 @@ class DescribeScalingActivityStatisticsResponseBodyScalingActivityErrorCodeStati
         error_code: str = None,
         time: str = None,
     ):
+        # The number of failed scaling activities.
         self.count = count
+        # Scaling Activity Error Codes
         self.error_code = error_code
+        # The time when the statistics are generated. The time is in UTC. Format: yyyyMMddHH.
         self.time = time
 
     def validate(self):

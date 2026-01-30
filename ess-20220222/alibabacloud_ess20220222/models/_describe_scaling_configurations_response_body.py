@@ -1085,6 +1085,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInter
         instance_type: str = None,
         ipv_6address_count: int = None,
         network_interface_traffic_mode: str = None,
+        secondary_private_ip_address_count: int = None,
         security_group_ids: List[str] = None,
     ):
         # The ENI type. Valid values:
@@ -1099,6 +1100,7 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInter
         # *   Standard: The TCP communication mode is used.
         # *   HighPerformance: The Elastic RDMA Interface (ERI) is enabled and the remote direct memory access (RDMA) communication mode is used.
         self.network_interface_traffic_mode = network_interface_traffic_mode
+        self.secondary_private_ip_address_count = secondary_private_ip_address_count
         # The IDs of the security groups to which the ENIs belong.
         self.security_group_ids = security_group_ids
 
@@ -1119,6 +1121,9 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInter
         if self.network_interface_traffic_mode is not None:
             result['NetworkInterfaceTrafficMode'] = self.network_interface_traffic_mode
 
+        if self.secondary_private_ip_address_count is not None:
+            result['SecondaryPrivateIpAddressCount'] = self.secondary_private_ip_address_count
+
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids
 
@@ -1134,6 +1139,9 @@ class DescribeScalingConfigurationsResponseBodyScalingConfigurationsNetworkInter
 
         if m.get('NetworkInterfaceTrafficMode') is not None:
             self.network_interface_traffic_mode = m.get('NetworkInterfaceTrafficMode')
+
+        if m.get('SecondaryPrivateIpAddressCount') is not None:
+            self.secondary_private_ip_address_count = m.get('SecondaryPrivateIpAddressCount')
 
         if m.get('SecurityGroupIds') is not None:
             self.security_group_ids = m.get('SecurityGroupIds')

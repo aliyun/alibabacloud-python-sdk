@@ -157,7 +157,7 @@ class ModifyScalingConfigurationRequest(DaraModel):
         self.instance_name = instance_name
         # The intelligent configuration settings, which determine the available instance types.
         self.instance_pattern_infos = instance_pattern_infos
-        # The instance types.
+        # Details of the instance types.
         self.instance_type_overrides = instance_type_overrides
         # The instance types. If you specify InstanceTypes, InstanceType is ignored.
         # 
@@ -252,7 +252,7 @@ class ModifyScalingConfigurationRequest(DaraModel):
         self.spot_duration = spot_duration
         # The interruption mode of the preemptible instance. Default value: Terminate. Set the value to Terminate. This value specifies that the preemptible instance is to be released.
         self.spot_interruption_behavior = spot_interruption_behavior
-        # The preemptible instance types.
+        # The information about spot instance types.
         self.spot_price_limits = spot_price_limits
         # The preemption policy of pay-as-you-go instances. Valid values:
         # 
@@ -728,9 +728,9 @@ class ModifyScalingConfigurationRequestSpotPriceLimits(DaraModel):
         instance_type: str = None,
         price_limit: float = None,
     ):
-        # The instance type of the preemptible instance. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
+        # The instance type of the spot instances. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
         self.instance_type = instance_type
-        # The price limit of the preemptible instance. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
+        # The price limit of the spot instances. This parameter takes effect only if you set SpotStrategy to SpotWithPriceLimit.
         self.price_limit = price_limit
 
     def validate(self):
@@ -839,6 +839,7 @@ class ModifyScalingConfigurationRequestNetworkInterfaces(DaraModel):
         instance_type: str = None,
         ipv_6address_count: int = None,
         network_interface_traffic_mode: str = None,
+        secondary_private_ip_address_count: int = None,
         security_group_ids: List[str] = None,
     ):
         # The ENI type. If you specify this parameter, you must use NetworkInterfaces to specify a primary ENI. In addition, you cannot specify SecurityGroupId or SecurityGroupIds. Valid values:
@@ -863,6 +864,7 @@ class ModifyScalingConfigurationRequestNetworkInterfaces(DaraModel):
         # 
         # >  The number of ERIs on an instance cannot exceed the maximum number of ERIs supported by the instance type. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
         self.network_interface_traffic_mode = network_interface_traffic_mode
+        self.secondary_private_ip_address_count = secondary_private_ip_address_count
         # The IDs of the security groups to which you want to assign the ENI.
         self.security_group_ids = security_group_ids
 
@@ -883,6 +885,9 @@ class ModifyScalingConfigurationRequestNetworkInterfaces(DaraModel):
         if self.network_interface_traffic_mode is not None:
             result['NetworkInterfaceTrafficMode'] = self.network_interface_traffic_mode
 
+        if self.secondary_private_ip_address_count is not None:
+            result['SecondaryPrivateIpAddressCount'] = self.secondary_private_ip_address_count
+
         if self.security_group_ids is not None:
             result['SecurityGroupIds'] = self.security_group_ids
 
@@ -899,6 +904,9 @@ class ModifyScalingConfigurationRequestNetworkInterfaces(DaraModel):
         if m.get('NetworkInterfaceTrafficMode') is not None:
             self.network_interface_traffic_mode = m.get('NetworkInterfaceTrafficMode')
 
+        if m.get('SecondaryPrivateIpAddressCount') is not None:
+            self.secondary_private_ip_address_count = m.get('SecondaryPrivateIpAddressCount')
+
         if m.get('SecurityGroupIds') is not None:
             self.security_group_ids = m.get('SecurityGroupIds')
 
@@ -910,29 +918,29 @@ class ModifyScalingConfigurationRequestInstanceTypeOverrides(DaraModel):
         instance_type: str = None,
         weighted_capacity: int = None,
     ):
-        # The instance type. If you want to specify the capacity of instance types in the scaling configuration, specify InstanceType and WeightedCapacity at the same time.
+        # The instance type. If you want to specify the weight of the instance type in the scaling configuration, you must specify InstanceTypeOverride.WeightedCapacity after you specify this parameter.
         # 
-        # You can use InstanceType to specify multiple instance types and WeightedCapacity to specify the weights of the instance types.
+        # This parameter specifies instance types. You can use this parameter to specify multiple instance types and use InstanceTypeOverride.WeightedCapacity to specify weights for the instance types.
         # 
-        # > If you specify InstanceType, you cannot specify InstanceTypes.
+        # >  If you specify this parameter, you cannot specify instanceTypes.
         # 
-        # You can use InstanceType to specify only instance types that are available for purchase.
+        # You can use this parameter to specify any instance types that are available for purchase.
         self.instance_type = instance_type
-        # The weight of the instance type. The weight specifies the capacity of an instance of the specified instance type in the scaling group. If you want Auto Scaling to scale instances in the scaling group based on the weighted capacity of the instances, specify WeightedCapacity after you specify InstanceType.
+        # The weight of the instance type. If you want to trigger scale-outs based on instance capacities, you can specify this parameter after you specify LaunchTemplateOverride.InstanceType.
         # 
-        # A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
+        # The weight specifies the capacity of an instance of the specified instance type in the scaling group. A higher weight specifies that a smaller number of instances of the specified instance type are required to meet the expected capacity requirement.
         # 
-        # Performance metrics, such as the number of vCPUs and the memory size of each instance type, may vary. You can specify different weights for different instance types based on your business requirements.
+        # Performance metrics such as the number of vCPUs and the memory size of each instance type may vary. You can specify different weights for different instance types based on your business requirements.
         # 
-        # Example:
+        # Sample capacity configurations:
         # 
-        # *   Current capacity: 0
-        # *   Expected capacity: 6
-        # *   Capacity of ecs.c5.xlarge: 4
+        # *   Current capacity: 0.
+        # *   Expected capacity: 6.
+        # *   Capacity of ecs.c5.xlarge: 4.
         # 
-        # To meet the expected capacity requirement, Auto Scaling must create and add two ecs.c5.xlarge instances.
+        # To reach the expected capacity, Auto Scaling must scale out two instances of ecs.c5.xlarge.
         # 
-        # > The capacity of the scaling group cannot exceed the sum of the maximum number of instances that is specified by MaxSize and the maximum weight of the instance types.
+        # >  The total capacity of the scaling group is constrained and cannot surpass the combined total of the maximum group size defined by MaxSize and the highest weight assigned to any instance type.
         # 
         # Valid values of WeightedCapacity: 1 to 500.
         self.weighted_capacity = weighted_capacity
