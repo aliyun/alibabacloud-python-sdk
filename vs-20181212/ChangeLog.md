@@ -1,3 +1,7 @@
+2026-01-30 Version: 3.6.0
+- Support API ModifyRenderingChargeType.
+
+
 2025-12-16 Version: 3.5.1
 - Update API ListCloudApps: add request parameters LatestVersionOnly.
 - Update API ListCloudApps: add request parameters PkgLabel.
