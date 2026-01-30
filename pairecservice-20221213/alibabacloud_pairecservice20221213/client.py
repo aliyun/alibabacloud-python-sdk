@@ -9437,6 +9437,174 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_feature_consistency_check_jobs_with_options_async(request, headers, runtime)
 
+    def list_instance_resource_schemas_with_options(
+        self,
+        instance_id: str,
+        resource_id: str,
+        request: main_models.ListInstanceResourceSchemasRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceResourceSchemasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceResourceSchemas',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/resources/{DaraURL.percent_encode(resource_id)}/schemas',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceResourceSchemasResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_resource_schemas_with_options_async(
+        self,
+        instance_id: str,
+        resource_id: str,
+        request: main_models.ListInstanceResourceSchemasRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceResourceSchemasResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.schema_name):
+            query['SchemaName'] = request.schema_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceResourceSchemas',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/resources/{DaraURL.percent_encode(resource_id)}/schemas',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceResourceSchemasResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_resource_schemas(
+        self,
+        instance_id: str,
+        resource_id: str,
+        request: main_models.ListInstanceResourceSchemasRequest,
+    ) -> main_models.ListInstanceResourceSchemasResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_instance_resource_schemas_with_options(instance_id, resource_id, request, headers, runtime)
+
+    async def list_instance_resource_schemas_async(
+        self,
+        instance_id: str,
+        resource_id: str,
+        request: main_models.ListInstanceResourceSchemasRequest,
+    ) -> main_models.ListInstanceResourceSchemasResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_instance_resource_schemas_with_options_async(instance_id, resource_id, request, headers, runtime)
+
+    def list_instance_resource_tables_with_options(
+        self,
+        instance_id: str,
+        resource_id: str,
+        request: main_models.ListInstanceResourceTablesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceResourceTablesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.maxcompute_schema):
+            query['MaxcomputeSchema'] = request.maxcompute_schema
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceResourceTables',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/resources/{DaraURL.percent_encode(resource_id)}/tables',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceResourceTablesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instance_resource_tables_with_options_async(
+        self,
+        instance_id: str,
+        resource_id: str,
+        request: main_models.ListInstanceResourceTablesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceResourceTablesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.maxcompute_schema):
+            query['MaxcomputeSchema'] = request.maxcompute_schema
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstanceResourceTables',
+            version = '2022-12-13',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/instances/{DaraURL.percent_encode(instance_id)}/resources/{DaraURL.percent_encode(resource_id)}/tables',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstanceResourceTablesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instance_resource_tables(
+        self,
+        instance_id: str,
+        resource_id: str,
+        request: main_models.ListInstanceResourceTablesRequest,
+    ) -> main_models.ListInstanceResourceTablesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_instance_resource_tables_with_options(instance_id, resource_id, request, headers, runtime)
+
+    async def list_instance_resource_tables_async(
+        self,
+        instance_id: str,
+        resource_id: str,
+        request: main_models.ListInstanceResourceTablesRequest,
+    ) -> main_models.ListInstanceResourceTablesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_instance_resource_tables_with_options_async(instance_id, resource_id, request, headers, runtime)
+
     def list_instance_resources_with_options(
         self,
         instance_id: str,

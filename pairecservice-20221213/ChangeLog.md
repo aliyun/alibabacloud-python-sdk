@@ -1,3 +1,8 @@
+2026-01-30 Version: 4.1.0
+- Support API ListInstanceResourceSchemas.
+- Support API ListInstanceResourceTables.
+
+
 2026-01-26 Version: 4.0.2
 - Update API PublishRecallManagementTable: add request parameters body.Partitions.
 
