@@ -76,6 +76,9 @@ from ._get_purchase_control_record_response import GetPurchaseControlRecordRespo
 from ._get_shutdown_policy_record_request import GetShutdownPolicyRecordRequest
 from ._get_shutdown_policy_record_response_body import GetShutdownPolicyRecordResponseBody
 from ._get_shutdown_policy_record_response import GetShutdownPolicyRecordResponse
+from ._get_tier_2coupon_approval_detail_request import GetTier2CouponApprovalDetailRequest
+from ._get_tier_2coupon_approval_detail_response_body import GetTier2CouponApprovalDetailResponseBody
+from ._get_tier_2coupon_approval_detail_response import GetTier2CouponApprovalDetailResponse
 from ._get_unassociated_customer_request import GetUnassociatedCustomerRequest
 from ._get_unassociated_customer_response_body import GetUnassociatedCustomerResponseBody
 from ._get_unassociated_customer_response import GetUnassociatedCustomerResponse
@@ -93,6 +96,12 @@ from ._list_coupon_usage_response import ListCouponUsageResponse
 from ._list_export_tasks_request import ListExportTasksRequest
 from ._list_export_tasks_response_body import ListExportTasksResponseBody
 from ._list_export_tasks_response import ListExportTasksResponse
+from ._list_tier_2coupon_approval_request import ListTier2CouponApprovalRequest
+from ._list_tier_2coupon_approval_response_body import ListTier2CouponApprovalResponseBody
+from ._list_tier_2coupon_approval_response import ListTier2CouponApprovalResponse
+from ._process_approval_request import ProcessApprovalRequest
+from ._process_approval_response_body import ProcessApprovalResponseBody
+from ._process_approval_response import ProcessApprovalResponse
 from ._query_reversed_deduction_history_request import QueryReversedDeductionHistoryRequest
 from ._query_reversed_deduction_history_response_body import QueryReversedDeductionHistoryResponseBody
 from ._query_reversed_deduction_history_response import QueryReversedDeductionHistoryResponse
@@ -135,6 +144,9 @@ from ._get_invite_status_response_body import GetInviteStatusResponseBodyData
 from ._get_monthly_bill_response_body import GetMonthlyBillResponseBodyData
 from ._get_purchase_control_record_response_body import GetPurchaseControlRecordResponseBodyData
 from ._get_shutdown_policy_record_response_body import GetShutdownPolicyRecordResponseBodyData
+from ._get_tier_2coupon_approval_detail_response_body import GetTier2CouponApprovalDetailResponseBodyDataApplicantInfo
+from ._get_tier_2coupon_approval_detail_response_body import GetTier2CouponApprovalDetailResponseBodyDataCouponReceiptUidList
+from ._get_tier_2coupon_approval_detail_response_body import GetTier2CouponApprovalDetailResponseBodyData
 from ._get_unassociated_customer_response_body import GetUnassociatedCustomerResponseBodyInviteInfoListInviteInfo
 from ._get_unassociated_customer_response_body import GetUnassociatedCustomerResponseBodyInviteInfoList
 from ._get_unassociated_customer_response_body import GetUnassociatedCustomerResponseBodyPageInfo
@@ -146,6 +158,7 @@ from ._issue_coupon_for_customer_response_body import IssueCouponForCustomerResp
 from ._list_coupon_usage_response_body import ListCouponUsageResponseBodyData
 from ._list_coupon_usage_response_body import ListCouponUsageResponseBodyPageInfo
 from ._list_export_tasks_response_body import ListExportTasksResponseBodyData
+from ._list_tier_2coupon_approval_response_body import ListTier2CouponApprovalResponseBodyData
 from ._query_reversed_deduction_history_response_body import QueryReversedDeductionHistoryResponseBodyData
 from ._quota_list_export_paged_response_body import QuotaListExportPagedResponseBodyData
 
@@ -224,6 +237,9 @@ __all__ = [
     GetShutdownPolicyRecordRequest,
     GetShutdownPolicyRecordResponseBody,
     GetShutdownPolicyRecordResponse,
+    GetTier2CouponApprovalDetailRequest,
+    GetTier2CouponApprovalDetailResponseBody,
+    GetTier2CouponApprovalDetailResponse,
     GetUnassociatedCustomerRequest,
     GetUnassociatedCustomerResponseBody,
     GetUnassociatedCustomerResponse,
@@ -241,6 +257,12 @@ __all__ = [
     ListExportTasksRequest,
     ListExportTasksResponseBody,
     ListExportTasksResponse,
+    ListTier2CouponApprovalRequest,
+    ListTier2CouponApprovalResponseBody,
+    ListTier2CouponApprovalResponse,
+    ProcessApprovalRequest,
+    ProcessApprovalResponseBody,
+    ProcessApprovalResponse,
     QueryReversedDeductionHistoryRequest,
     QueryReversedDeductionHistoryResponseBody,
     QueryReversedDeductionHistoryResponse,
@@ -283,6 +305,9 @@ __all__ = [
     GetMonthlyBillResponseBodyData,
     GetPurchaseControlRecordResponseBodyData,
     GetShutdownPolicyRecordResponseBodyData,
+    GetTier2CouponApprovalDetailResponseBodyDataApplicantInfo,
+    GetTier2CouponApprovalDetailResponseBodyDataCouponReceiptUidList,
+    GetTier2CouponApprovalDetailResponseBodyData,
     GetUnassociatedCustomerResponseBodyInviteInfoListInviteInfo,
     GetUnassociatedCustomerResponseBodyInviteInfoList,
     GetUnassociatedCustomerResponseBodyPageInfo,
@@ -294,6 +319,7 @@ __all__ = [
     ListCouponUsageResponseBodyData,
     ListCouponUsageResponseBodyPageInfo,
     ListExportTasksResponseBodyData,
+    ListTier2CouponApprovalResponseBodyData,
     QueryReversedDeductionHistoryResponseBodyData,
     QuotaListExportPagedResponseBodyData
 ]

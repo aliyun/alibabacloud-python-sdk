@@ -1962,6 +1962,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_shutdown_policy_record_with_options_async(request, runtime)
 
+    def get_tier_2coupon_approval_detail_with_options(
+        self,
+        request: main_models.GetTier2CouponApprovalDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTier2CouponApprovalDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_sheet_id):
+            query['ApplicationSheetId'] = request.application_sheet_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTier2CouponApprovalDetail',
+            version = '2022-12-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTier2CouponApprovalDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_tier_2coupon_approval_detail_with_options_async(
+        self,
+        request: main_models.GetTier2CouponApprovalDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTier2CouponApprovalDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_sheet_id):
+            query['ApplicationSheetId'] = request.application_sheet_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTier2CouponApprovalDetail',
+            version = '2022-12-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTier2CouponApprovalDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_tier_2coupon_approval_detail(
+        self,
+        request: main_models.GetTier2CouponApprovalDetailRequest,
+    ) -> main_models.GetTier2CouponApprovalDetailResponse:
+        runtime = RuntimeOptions()
+        return self.get_tier_2coupon_approval_detail_with_options(request, runtime)
+
+    async def get_tier_2coupon_approval_detail_async(
+        self,
+        request: main_models.GetTier2CouponApprovalDetailRequest,
+    ) -> main_models.GetTier2CouponApprovalDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.get_tier_2coupon_approval_detail_with_options_async(request, runtime)
+
     def get_unassociated_customer_with_options(
         self,
         request: main_models.GetUnassociatedCustomerRequest,
@@ -2413,6 +2483,174 @@ class Client(OpenApiClient):
     ) -> main_models.ListExportTasksResponse:
         runtime = RuntimeOptions()
         return await self.list_export_tasks_with_options_async(request, runtime)
+
+    def list_tier_2coupon_approval_with_options(
+        self,
+        request: main_models.ListTier2CouponApprovalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTier2CouponApprovalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_sheet_id):
+            query['ApplicationSheetId'] = request.application_sheet_id
+        if not DaraCore.is_null(request.approval_status):
+            query['ApprovalStatus'] = request.approval_status
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.t_2partner_name):
+            query['T2PartnerName'] = request.t_2partner_name
+        if not DaraCore.is_null(request.t_2partner_uid):
+            query['T2PartnerUid'] = request.t_2partner_uid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTier2CouponApproval',
+            version = '2022-12-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTier2CouponApprovalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_tier_2coupon_approval_with_options_async(
+        self,
+        request: main_models.ListTier2CouponApprovalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTier2CouponApprovalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_sheet_id):
+            query['ApplicationSheetId'] = request.application_sheet_id
+        if not DaraCore.is_null(request.approval_status):
+            query['ApprovalStatus'] = request.approval_status
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.t_2partner_name):
+            query['T2PartnerName'] = request.t_2partner_name
+        if not DaraCore.is_null(request.t_2partner_uid):
+            query['T2PartnerUid'] = request.t_2partner_uid
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListTier2CouponApproval',
+            version = '2022-12-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListTier2CouponApprovalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_tier_2coupon_approval(
+        self,
+        request: main_models.ListTier2CouponApprovalRequest,
+    ) -> main_models.ListTier2CouponApprovalResponse:
+        runtime = RuntimeOptions()
+        return self.list_tier_2coupon_approval_with_options(request, runtime)
+
+    async def list_tier_2coupon_approval_async(
+        self,
+        request: main_models.ListTier2CouponApprovalRequest,
+    ) -> main_models.ListTier2CouponApprovalResponse:
+        runtime = RuntimeOptions()
+        return await self.list_tier_2coupon_approval_with_options_async(request, runtime)
+
+    def process_approval_with_options(
+        self,
+        request: main_models.ProcessApprovalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ProcessApprovalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_sheet_id):
+            query['ApplicationSheetId'] = request.application_sheet_id
+        if not DaraCore.is_null(request.approval_action):
+            query['ApprovalAction'] = request.approval_action
+        if not DaraCore.is_null(request.approval_comments):
+            query['ApprovalComments'] = request.approval_comments
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ProcessApproval',
+            version = '2022-12-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ProcessApprovalResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def process_approval_with_options_async(
+        self,
+        request: main_models.ProcessApprovalRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ProcessApprovalResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_sheet_id):
+            query['ApplicationSheetId'] = request.application_sheet_id
+        if not DaraCore.is_null(request.approval_action):
+            query['ApprovalAction'] = request.approval_action
+        if not DaraCore.is_null(request.approval_comments):
+            query['ApprovalComments'] = request.approval_comments
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ProcessApproval',
+            version = '2022-12-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ProcessApprovalResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def process_approval(
+        self,
+        request: main_models.ProcessApprovalRequest,
+    ) -> main_models.ProcessApprovalResponse:
+        runtime = RuntimeOptions()
+        return self.process_approval_with_options(request, runtime)
+
+    async def process_approval_async(
+        self,
+        request: main_models.ProcessApprovalRequest,
+    ) -> main_models.ProcessApprovalResponse:
+        runtime = RuntimeOptions()
+        return await self.process_approval_with_options_async(request, runtime)
 
     def query_reversed_deduction_history_with_options(
         self,

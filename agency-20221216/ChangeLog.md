@@ -1,3 +1,9 @@
+2026-01-30 Version: 1.9.0
+- Support API GetTier2CouponApprovalDetail.
+- Support API ListTier2CouponApproval.
+- Support API ProcessApproval.
+
+
 2026-01-23 Version: 1.8.1
 - Update API IssueCouponForCustomer: add request parameters ApplicationReason.
 - Update API ListCouponUsage: add request parameters T2PartnerUid.
