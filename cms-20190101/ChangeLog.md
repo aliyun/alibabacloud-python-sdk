@@ -1,3 +1,10 @@
+2026-01-30 Version: 4.0.8
+- Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.max_tls_version.
+- Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.server_name.
+- Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.supported_cipher_suits.
+- Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.use_ssl.
+
+
 2026-01-21 Version: 4.0.7
 - Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.private_crt_file_name.
 - Update API DescribeSiteMonitorAttribute: add response parameters Body.SiteMonitors.OptionJson.use_private_crt.

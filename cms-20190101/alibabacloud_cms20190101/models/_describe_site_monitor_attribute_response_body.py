@@ -314,6 +314,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(DaraModel):
         ip_network: str = None,
         is_base_64encode: str = None,
         match_rule: int = None,
+        max_tls_version: str = None,
         min_tls_version: str = None,
         password: str = None,
         ping_num: int = None,
@@ -332,8 +333,10 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(DaraModel):
         safe_link: int = None,
         screen_shot: bool = None,
         scroll_end: bool = None,
+        server_name: str = None,
         steps: main_models.DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonSteps = None,
         strict_mode: bool = None,
+        supported_cipher_suits: str = None,
         time_out: int = None,
         trace_region: str = None,
         trace_type: str = None,
@@ -341,6 +344,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(DaraModel):
         traffic_hijack_element_count: int = None,
         traffic_hijack_element_whitelist: main_models.DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonTrafficHijackElementWhitelist = None,
         use_private_crt: bool = None,
+        use_ssl: bool = None,
         username: str = None,
         wait_time_after_completion: int = None,
     ):
@@ -437,6 +441,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(DaraModel):
         # *   0: The alert rule is included.
         # *   1: The alert rule is excluded.
         self.match_rule = match_rule
+        self.max_tls_version = max_tls_version
         # The minimum TLS version. By default, TLS 1.2 and later versions are supported. TLS 1.0 and 1.1 are disabled. If you still require TLS 1.0 or 1.1, you can change the configuration.
         self.min_tls_version = min_tls_version
         # The password of the SMTP, POP3, or FTP protocol.
@@ -481,9 +486,11 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(DaraModel):
         self.screen_shot = screen_shot
         # Indicates whether to scroll to the bottom of the page after opening the page. This parameter is valid for a browser test task.
         self.scroll_end = scroll_end
+        self.server_name = server_name
         self.steps = steps
         # Indicates whether to allow the loading failures of some page elements. Valid values: false and true.
         self.strict_mode = strict_mode
+        self.supported_cipher_suits = supported_cipher_suits
         # The timeout period. Unit: milliseconds.
         self.time_out = time_out
         self.trace_region = trace_region
@@ -495,6 +502,7 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(DaraModel):
         # The traffic hijacking whitelist. When redirection occurs, if the URL of the resource loaded by the browser does not match any expression in the whitelist, traffic hijacking is considered to have occurred.
         self.traffic_hijack_element_whitelist = traffic_hijack_element_whitelist
         self.use_private_crt = use_private_crt
+        self.use_ssl = use_ssl
         # The username of the FTP, SMTP, or POP3 protocol.
         self.username = username
         # The additional waiting time after a page is opened in a browser test task.
@@ -629,6 +637,9 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(DaraModel):
         if self.match_rule is not None:
             result['match_rule'] = self.match_rule
 
+        if self.max_tls_version is not None:
+            result['max_tls_version'] = self.max_tls_version
+
         if self.min_tls_version is not None:
             result['min_tls_version'] = self.min_tls_version
 
@@ -683,11 +694,17 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(DaraModel):
         if self.scroll_end is not None:
             result['scroll_end'] = self.scroll_end
 
+        if self.server_name is not None:
+            result['server_name'] = self.server_name
+
         if self.steps is not None:
             result['steps'] = self.steps.to_map()
 
         if self.strict_mode is not None:
             result['strict_mode'] = self.strict_mode
+
+        if self.supported_cipher_suits is not None:
+            result['supported_cipher_suits'] = self.supported_cipher_suits
 
         if self.time_out is not None:
             result['time_out'] = self.time_out
@@ -709,6 +726,9 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(DaraModel):
 
         if self.use_private_crt is not None:
             result['use_private_crt'] = self.use_private_crt
+
+        if self.use_ssl is not None:
+            result['use_ssl'] = self.use_ssl
 
         if self.username is not None:
             result['username'] = self.username
@@ -825,6 +845,9 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(DaraModel):
         if m.get('match_rule') is not None:
             self.match_rule = m.get('match_rule')
 
+        if m.get('max_tls_version') is not None:
+            self.max_tls_version = m.get('max_tls_version')
+
         if m.get('min_tls_version') is not None:
             self.min_tls_version = m.get('min_tls_version')
 
@@ -880,12 +903,18 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(DaraModel):
         if m.get('scroll_end') is not None:
             self.scroll_end = m.get('scroll_end')
 
+        if m.get('server_name') is not None:
+            self.server_name = m.get('server_name')
+
         if m.get('steps') is not None:
             temp_model = main_models.DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJsonSteps()
             self.steps = temp_model.from_map(m.get('steps'))
 
         if m.get('strict_mode') is not None:
             self.strict_mode = m.get('strict_mode')
+
+        if m.get('supported_cipher_suits') is not None:
+            self.supported_cipher_suits = m.get('supported_cipher_suits')
 
         if m.get('time_out') is not None:
             self.time_out = m.get('time_out')
@@ -909,6 +938,9 @@ class DescribeSiteMonitorAttributeResponseBodySiteMonitorsOptionJson(DaraModel):
 
         if m.get('use_private_crt') is not None:
             self.use_private_crt = m.get('use_private_crt')
+
+        if m.get('use_ssl') is not None:
+            self.use_ssl = m.get('use_ssl')
 
         if m.get('username') is not None:
             self.username = m.get('username')
