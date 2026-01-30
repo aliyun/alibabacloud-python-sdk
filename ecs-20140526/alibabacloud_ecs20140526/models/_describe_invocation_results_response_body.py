@@ -207,6 +207,8 @@ class DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocation
         invoke_record_status: str = None,
         launcher: str = None,
         oss_output_delivery: str = None,
+        oss_output_error_code: str = None,
+        oss_output_error_info: str = None,
         oss_output_status: str = None,
         oss_output_uri: str = None,
         output: str = None,
@@ -309,6 +311,8 @@ class DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocation
         self.launcher = launcher
         # The tags of the command task.
         self.oss_output_delivery = oss_output_delivery
+        self.oss_output_error_code = oss_output_error_code
+        self.oss_output_error_info = oss_output_error_info
         # The execution results.
         self.oss_output_status = oss_output_status
         # A pagination token. It can be used in the next request to retrieve a new page of results.
@@ -403,6 +407,12 @@ class DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocation
         if self.oss_output_delivery is not None:
             result['OssOutputDelivery'] = self.oss_output_delivery
 
+        if self.oss_output_error_code is not None:
+            result['OssOutputErrorCode'] = self.oss_output_error_code
+
+        if self.oss_output_error_info is not None:
+            result['OssOutputErrorInfo'] = self.oss_output_error_info
+
         if self.oss_output_status is not None:
             result['OssOutputStatus'] = self.oss_output_status
 
@@ -475,6 +485,12 @@ class DescribeInvocationResultsResponseBodyInvocationInvocationResultsInvocation
 
         if m.get('OssOutputDelivery') is not None:
             self.oss_output_delivery = m.get('OssOutputDelivery')
+
+        if m.get('OssOutputErrorCode') is not None:
+            self.oss_output_error_code = m.get('OssOutputErrorCode')
+
+        if m.get('OssOutputErrorInfo') is not None:
+            self.oss_output_error_info = m.get('OssOutputErrorInfo')
 
         if m.get('OssOutputStatus') is not None:
             self.oss_output_status = m.get('OssOutputStatus')

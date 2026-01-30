@@ -9,6 +9,7 @@ from darabonba.model import DaraModel
 class ModifyInvocationAttributeShrinkRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
         command_content: str = None,
         content_encoding: str = None,
         enable_parameter: bool = None,
@@ -22,6 +23,7 @@ class ModifyInvocationAttributeShrinkRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.client_token = client_token
         # The content of the command after modification. The command content can be plaintext or Base64-encoded. Take note of the following items:
         # 
         # *   You can specify whether to retain the command after the command is run when you created the command. If you specified to retain the command, the Base64-encoded command content cannot exceed 18 KB in size. If you specified not to retain the command, the Base64-encoded command content cannot exceed 24 KB in size.
@@ -133,6 +135,9 @@ class ModifyInvocationAttributeShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.command_content is not None:
             result['CommandContent'] = self.command_content
 
@@ -173,6 +178,9 @@ class ModifyInvocationAttributeShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('CommandContent') is not None:
             self.command_content = m.get('CommandContent')
 

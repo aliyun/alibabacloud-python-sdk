@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class StartTerminalSessionRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
         command_line: str = None,
         connection_type: str = None,
         encryption_options: main_models.StartTerminalSessionRequestEncryptionOptions = None,
@@ -24,6 +25,7 @@ class StartTerminalSessionRequest(DaraModel):
         target_server: str = None,
         username: str = None,
     ):
+        self.client_token = client_token
         # The command to run after the session is initiated. The command length cannot exceed 512 characters.
         # 
         # >  If you specify the `CommandLine` parameter, you cannot specify the `PortNumber` or `TargetServer` parameter.
@@ -67,6 +69,9 @@ class StartTerminalSessionRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.command_line is not None:
             result['CommandLine'] = self.command_line
 
@@ -110,6 +115,9 @@ class StartTerminalSessionRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('CommandLine') is not None:
             self.command_line = m.get('CommandLine')
 

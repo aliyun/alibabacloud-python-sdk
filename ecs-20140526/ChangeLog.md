@@ -1,3 +1,7 @@
+2026-01-30 Version: 7.5.4
+- Update API DescribeTasks: add request parameters TaskGroupId.
+
+
 2026-01-28 Version: 7.5.2
 - Generated python 2014-05-26 for Ecs.
 

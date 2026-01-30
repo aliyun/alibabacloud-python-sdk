@@ -20,6 +20,7 @@ class DescribeTasksRequest(DaraModel):
         resource_owner_id: int = None,
         start_time: str = None,
         task_action: str = None,
+        task_group_id: str = None,
         task_ids: str = None,
         task_status: str = None,
     ):
@@ -57,6 +58,7 @@ class DescribeTasksRequest(DaraModel):
         # *   ModifyDiskSpec
         # *   ArchiveSnapshot
         self.task_action = task_action
+        self.task_group_id = task_group_id
         # The task IDs. You can specify up to 100 task IDs at a time. Separate the task IDs with commas (,).
         self.task_ids = task_ids
         # The task status. Valid values:
@@ -111,6 +113,9 @@ class DescribeTasksRequest(DaraModel):
         if self.task_action is not None:
             result['TaskAction'] = self.task_action
 
+        if self.task_group_id is not None:
+            result['TaskGroupId'] = self.task_group_id
+
         if self.task_ids is not None:
             result['TaskIds'] = self.task_ids
 
@@ -153,6 +158,9 @@ class DescribeTasksRequest(DaraModel):
 
         if m.get('TaskAction') is not None:
             self.task_action = m.get('TaskAction')
+
+        if m.get('TaskGroupId') is not None:
+            self.task_group_id = m.get('TaskGroupId')
 
         if m.get('TaskIds') is not None:
             self.task_ids = m.get('TaskIds')

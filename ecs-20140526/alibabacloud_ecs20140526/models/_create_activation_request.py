@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class CreateActivationRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
         description: str = None,
         instance_count: int = None,
         instance_name: str = None,
@@ -23,6 +24,7 @@ class CreateActivationRequest(DaraModel):
         tag: List[main_models.CreateActivationRequestTag] = None,
         time_to_live_in_hours: int = None,
     ):
+        self.client_token = client_token
         # The description of the activation code. The description must be 1 to 100 characters in length.
         self.description = description
         # The maximum number of times that you can use the activation code to register managed instances. Valid values: 1 to 1000.
@@ -65,6 +67,9 @@ class CreateActivationRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.description is not None:
             result['Description'] = self.description
 
@@ -107,6 +112,9 @@ class CreateActivationRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('Description') is not None:
             self.description = m.get('Description')
 

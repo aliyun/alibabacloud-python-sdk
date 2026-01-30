@@ -616,6 +616,8 @@ class DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeI
         instance_id: str = None,
         instance_invoke_status: str = None,
         invocation_status: str = None,
+        oss_output_error_code: str = None,
+        oss_output_error_info: str = None,
         oss_output_status: str = None,
         oss_output_uri: str = None,
         output: str = None,
@@ -647,6 +649,8 @@ class DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeI
         # 
         # The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
         self.invocation_status = invocation_status
+        self.oss_output_error_code = oss_output_error_code
+        self.oss_output_error_info = oss_output_error_info
         # The overall execution status of the command task. The value of this parameter depends on the execution status of the command task on all the involved instances. Valid values:
         # 
         # *   Pending: The command is being verified or sent. When the execution state on at least one instance is Pending, the overall execution state is Pending.
@@ -731,6 +735,12 @@ class DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeI
         if self.invocation_status is not None:
             result['InvocationStatus'] = self.invocation_status
 
+        if self.oss_output_error_code is not None:
+            result['OssOutputErrorCode'] = self.oss_output_error_code
+
+        if self.oss_output_error_info is not None:
+            result['OssOutputErrorInfo'] = self.oss_output_error_info
+
         if self.oss_output_status is not None:
             result['OssOutputStatus'] = self.oss_output_status
 
@@ -785,6 +795,12 @@ class DescribeInvocationsResponseBodyInvocationsInvocationInvokeInstancesInvokeI
 
         if m.get('InvocationStatus') is not None:
             self.invocation_status = m.get('InvocationStatus')
+
+        if m.get('OssOutputErrorCode') is not None:
+            self.oss_output_error_code = m.get('OssOutputErrorCode')
+
+        if m.get('OssOutputErrorInfo') is not None:
+            self.oss_output_error_info = m.get('OssOutputErrorInfo')
 
         if m.get('OssOutputStatus') is not None:
             self.oss_output_status = m.get('OssOutputStatus')

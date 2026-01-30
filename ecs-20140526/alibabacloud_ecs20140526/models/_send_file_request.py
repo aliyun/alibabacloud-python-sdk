@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class SendFileRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
         content: str = None,
         content_type: str = None,
         description: str = None,
@@ -29,6 +30,7 @@ class SendFileRequest(DaraModel):
         target_dir: str = None,
         timeout: int = None,
     ):
+        self.client_token = client_token
         # The content of the file. The file must not exceed 32 KB in size after it is encoded in Base64.
         # 
         # *   If `ContentType` is set to `PlainText`, the value of Content is in plaintext.
@@ -110,6 +112,9 @@ class SendFileRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.content is not None:
             result['Content'] = self.content
 
@@ -170,6 +175,9 @@ class SendFileRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('Content') is not None:
             self.content = m.get('Content')
 

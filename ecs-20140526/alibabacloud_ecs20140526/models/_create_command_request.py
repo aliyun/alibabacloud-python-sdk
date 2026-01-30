@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class CreateCommandRequest(DaraModel):
     def __init__(
         self,
+        client_token: str = None,
         command_content: str = None,
         content_encoding: str = None,
         description: str = None,
@@ -27,6 +28,7 @@ class CreateCommandRequest(DaraModel):
         type: str = None,
         working_dir: str = None,
     ):
+        self.client_token = client_token
         # The Base64-encoded content of the command. Take note of the following items:
         # 
         # *   The value must be Base64-encoded and cannot exceed 18 KB in size.
@@ -132,6 +134,9 @@ class CreateCommandRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
         if self.command_content is not None:
             result['CommandContent'] = self.command_content
 
@@ -186,6 +191,9 @@ class CreateCommandRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
         if m.get('CommandContent') is not None:
             self.command_content = m.get('CommandContent')
 
