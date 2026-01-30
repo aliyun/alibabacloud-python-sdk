@@ -58,6 +58,7 @@ class GetJobResponseBodyJobInfo(DaraModel):
         job_id: str = None,
         job_name: str = None,
         job_scheduler: str = None,
+        security_policy: main_models.GetJobResponseBodyJobInfoSecurityPolicy = None,
         start_time: str = None,
         status: str = None,
         tasks: List[main_models.GetJobResponseBodyJobInfoTasks] = None,
@@ -79,6 +80,7 @@ class GetJobResponseBodyJobInfo(DaraModel):
         self.job_name = job_name
         # The type of the job scheduler.
         self.job_scheduler = job_scheduler
+        self.security_policy = security_policy
         # The time when the job started.
         self.start_time = start_time
         # The job status. Valid values:
@@ -103,6 +105,8 @@ class GetJobResponseBodyJobInfo(DaraModel):
             self.dependency_policy.validate()
         if self.deployment_policy:
             self.deployment_policy.validate()
+        if self.security_policy:
+            self.security_policy.validate()
         if self.tasks:
             for v1 in self.tasks:
                  if v1:
@@ -139,6 +143,9 @@ class GetJobResponseBodyJobInfo(DaraModel):
 
         if self.job_scheduler is not None:
             result['JobScheduler'] = self.job_scheduler
+
+        if self.security_policy is not None:
+            result['SecurityPolicy'] = self.security_policy.to_map()
 
         if self.start_time is not None:
             result['StartTime'] = self.start_time
@@ -183,6 +190,10 @@ class GetJobResponseBodyJobInfo(DaraModel):
 
         if m.get('JobScheduler') is not None:
             self.job_scheduler = m.get('JobScheduler')
+
+        if m.get('SecurityPolicy') is not None:
+            temp_model = main_models.GetJobResponseBodyJobInfoSecurityPolicy()
+            self.security_policy = temp_model.from_map(m.get('SecurityPolicy'))
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
@@ -282,12 +293,14 @@ class GetJobResponseBodyJobInfoTasksTaskSpec(DaraModel):
         resource: main_models.GetJobResponseBodyJobInfoTasksTaskSpecResource = None,
         retry_policy: main_models.GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy = None,
         task_executor: List[main_models.GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor] = None,
+        volume_mount: List[main_models.GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount] = None,
     ):
         # The resource information.
         self.resource = resource
         self.retry_policy = retry_policy
         # The task execution configurations.
         self.task_executor = task_executor
+        self.volume_mount = volume_mount
 
     def validate(self):
         if self.resource:
@@ -296,6 +309,10 @@ class GetJobResponseBodyJobInfoTasksTaskSpec(DaraModel):
             self.retry_policy.validate()
         if self.task_executor:
             for v1 in self.task_executor:
+                 if v1:
+                    v1.validate()
+        if self.volume_mount:
+            for v1 in self.volume_mount:
                  if v1:
                     v1.validate()
 
@@ -315,6 +332,11 @@ class GetJobResponseBodyJobInfoTasksTaskSpec(DaraModel):
             for k1 in self.task_executor:
                 result['TaskExecutor'].append(k1.to_map() if k1 else None)
 
+        result['VolumeMount'] = []
+        if self.volume_mount is not None:
+            for k1 in self.volume_mount:
+                result['VolumeMount'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -332,6 +354,55 @@ class GetJobResponseBodyJobInfoTasksTaskSpec(DaraModel):
             for k1 in m.get('TaskExecutor'):
                 temp_model = main_models.GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor()
                 self.task_executor.append(temp_model.from_map(k1))
+
+        self.volume_mount = []
+        if m.get('VolumeMount') is not None:
+            for k1 in m.get('VolumeMount'):
+                temp_model = main_models.GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount()
+                self.volume_mount.append(temp_model.from_map(k1))
+
+        return self
+
+class GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount(DaraModel):
+    def __init__(
+        self,
+        mount_options: str = None,
+        mount_path: str = None,
+        volume_driver: str = None,
+    ):
+        self.mount_options = mount_options
+        self.mount_path = mount_path
+        self.volume_driver = volume_driver
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.mount_options is not None:
+            result['MountOptions'] = self.mount_options
+
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
+
+        if self.volume_driver is not None:
+            result['VolumeDriver'] = self.volume_driver
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MountOptions') is not None:
+            self.mount_options = m.get('MountOptions')
+
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+
+        if m.get('VolumeDriver') is not None:
+            self.volume_driver = m.get('VolumeDriver')
 
         return self
 
@@ -764,6 +835,62 @@ class GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec(DaraModel):
 
         if m.get('IndexStep') is not None:
             self.index_step = m.get('IndexStep')
+
+        return self
+
+class GetJobResponseBodyJobInfoSecurityPolicy(DaraModel):
+    def __init__(
+        self,
+        security_group: main_models.GetJobResponseBodyJobInfoSecurityPolicySecurityGroup = None,
+    ):
+        self.security_group = security_group
+
+    def validate(self):
+        if self.security_group:
+            self.security_group.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.security_group is not None:
+            result['SecurityGroup'] = self.security_group.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityGroup') is not None:
+            temp_model = main_models.GetJobResponseBodyJobInfoSecurityPolicySecurityGroup()
+            self.security_group = temp_model.from_map(m.get('SecurityGroup'))
+
+        return self
+
+class GetJobResponseBodyJobInfoSecurityPolicySecurityGroup(DaraModel):
+    def __init__(
+        self,
+        security_group_ids: List[str] = None,
+    ):
+        self.security_group_ids = security_group_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.security_group_ids is not None:
+            result['SecurityGroupIds'] = self.security_group_ids
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids = m.get('SecurityGroupIds')
 
         return self
 

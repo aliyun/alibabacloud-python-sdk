@@ -1,3 +1,6 @@
+2026-01-30 Version: 3.5.2
+- Generated python 2023-07-01 for EhpcInstant.
+
 2026-01-22 Version: 3.5.0
 - Support API DescribeJobResults.
 

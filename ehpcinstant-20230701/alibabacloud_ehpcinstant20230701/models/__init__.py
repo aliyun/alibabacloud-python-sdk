@@ -156,6 +156,8 @@ from ._get_job_response_body import GetJobResponseBodyJobInfoDependencyPolicy
 from ._get_job_response_body import GetJobResponseBodyJobInfoDeploymentPolicyNetwork
 from ._get_job_response_body import GetJobResponseBodyJobInfoDeploymentPolicyTags
 from ._get_job_response_body import GetJobResponseBodyJobInfoDeploymentPolicy
+from ._get_job_response_body import GetJobResponseBodyJobInfoSecurityPolicySecurityGroup
+from ._get_job_response_body import GetJobResponseBodyJobInfoSecurityPolicy
 from ._get_job_response_body import GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec
 from ._get_job_response_body import GetJobResponseBodyJobInfoTasksExecutorPolicy
 from ._get_job_response_body import GetJobResponseBodyJobInfoTasksExecutorStatus
@@ -165,6 +167,7 @@ from ._get_job_response_body import GetJobResponseBodyJobInfoTasksTaskSpecRetryP
 from ._get_job_response_body import GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy
 from ._get_job_response_body import GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM
 from ._get_job_response_body import GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor
+from ._get_job_response_body import GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount
 from ._get_job_response_body import GetJobResponseBodyJobInfoTasksTaskSpec
 from ._get_job_response_body import GetJobResponseBodyJobInfoTasks
 from ._get_job_response_body import GetJobResponseBodyJobInfo
@@ -350,6 +353,8 @@ __all__ = [
     GetJobResponseBodyJobInfoDeploymentPolicyNetwork,
     GetJobResponseBodyJobInfoDeploymentPolicyTags,
     GetJobResponseBodyJobInfoDeploymentPolicy,
+    GetJobResponseBodyJobInfoSecurityPolicySecurityGroup,
+    GetJobResponseBodyJobInfoSecurityPolicy,
     GetJobResponseBodyJobInfoTasksExecutorPolicyArraySpec,
     GetJobResponseBodyJobInfoTasksExecutorPolicy,
     GetJobResponseBodyJobInfoTasksExecutorStatus,
@@ -359,6 +364,7 @@ __all__ = [
     GetJobResponseBodyJobInfoTasksTaskSpecRetryPolicy,
     GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutorVM,
     GetJobResponseBodyJobInfoTasksTaskSpecTaskExecutor,
+    GetJobResponseBodyJobInfoTasksTaskSpecVolumeMount,
     GetJobResponseBodyJobInfoTasksTaskSpec,
     GetJobResponseBodyJobInfoTasks,
     GetJobResponseBodyJobInfo,
