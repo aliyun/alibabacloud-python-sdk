@@ -9,6 +9,7 @@ class UpdateResourceInstanceRequest(DaraModel):
         self,
         action: str = None,
         new_disk_size: str = None,
+        reason: str = None,
     ):
         # The operation that updates the scheduling state of the instance in a dedicated resource group. Valid values:
         # 
@@ -19,6 +20,7 @@ class UpdateResourceInstanceRequest(DaraModel):
         # This parameter is required.
         self.action = action
         self.new_disk_size = new_disk_size
+        self.reason = reason
 
     def validate(self):
         pass
@@ -34,6 +36,9 @@ class UpdateResourceInstanceRequest(DaraModel):
         if self.new_disk_size is not None:
             result['NewDiskSize'] = self.new_disk_size
 
+        if self.reason is not None:
+            result['Reason'] = self.reason
+
         return result
 
     def from_map(self, m: dict = None):
@@ -43,6 +48,9 @@ class UpdateResourceInstanceRequest(DaraModel):
 
         if m.get('NewDiskSize') is not None:
             self.new_disk_size = m.get('NewDiskSize')
+
+        if m.get('Reason') is not None:
+            self.reason = m.get('Reason')
 
         return self
 

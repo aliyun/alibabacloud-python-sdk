@@ -32,6 +32,8 @@ class ResourceInstance(DaraModel):
         instance_used_gpu_memory: str = None,
         instance_used_memory: str = None,
         labels: List[main_models.ResourceInstanceLabels] = None,
+        last_cordon_operator: str = None,
+        last_cordon_reason: str = None,
         region: str = None,
         resource_id: str = None,
         zone: str = None,
@@ -58,6 +60,8 @@ class ResourceInstance(DaraModel):
         self.instance_used_gpu_memory = instance_used_gpu_memory
         self.instance_used_memory = instance_used_memory
         self.labels = labels
+        self.last_cordon_operator = last_cordon_operator
+        self.last_cordon_reason = last_cordon_reason
         self.region = region
         self.resource_id = resource_id
         self.zone = zone
@@ -141,6 +145,12 @@ class ResourceInstance(DaraModel):
             for k1 in self.labels:
                 result['Labels'].append(k1.to_map() if k1 else None)
 
+        if self.last_cordon_operator is not None:
+            result['LastCordonOperator'] = self.last_cordon_operator
+
+        if self.last_cordon_reason is not None:
+            result['LastCordonReason'] = self.last_cordon_reason
+
         if self.region is not None:
             result['Region'] = self.region
 
@@ -222,6 +232,12 @@ class ResourceInstance(DaraModel):
             for k1 in m.get('Labels'):
                 temp_model = main_models.ResourceInstanceLabels()
                 self.labels.append(temp_model.from_map(k1))
+
+        if m.get('LastCordonOperator') is not None:
+            self.last_cordon_operator = m.get('LastCordonOperator')
+
+        if m.get('LastCordonReason') is not None:
+            self.last_cordon_reason = m.get('LastCordonReason')
 
         if m.get('Region') is not None:
             self.region = m.get('Region')
