@@ -1242,6 +1242,8 @@ class Client(OpenApiClient):
             body['mcpRouteConfig'] = request.mcp_route_config
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.policy_configs):
+            body['policyConfigs'] = request.policy_configs
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -1287,6 +1289,8 @@ class Client(OpenApiClient):
             body['mcpRouteConfig'] = request.mcp_route_config
         if not DaraCore.is_null(request.name):
             body['name'] = request.name
+        if not DaraCore.is_null(request.policy_configs):
+            body['policyConfigs'] = request.policy_configs
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             body = Utils.parse_to_map(body)
@@ -1836,6 +1840,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateServiceResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
         body = {}
         if not DaraCore.is_null(request.gateway_id):
             body['gatewayId'] = request.gateway_id
@@ -1847,6 +1854,7 @@ class Client(OpenApiClient):
             body['sourceType'] = request.source_type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -1872,6 +1880,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateServiceResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['clientToken'] = request.client_token
         body = {}
         if not DaraCore.is_null(request.gateway_id):
             body['gatewayId'] = request.gateway_id
@@ -1883,6 +1894,7 @@ class Client(OpenApiClient):
             body['sourceType'] = request.source_type
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(

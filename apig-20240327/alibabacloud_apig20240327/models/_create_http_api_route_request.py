@@ -18,6 +18,7 @@ class CreateHttpApiRouteRequest(DaraModel):
         match: main_models.HttpRouteMatch = None,
         mcp_route_config: main_models.CreateHttpApiRouteRequestMcpRouteConfig = None,
         name: str = None,
+        policy_configs: List[main_models.HttpApiPolicyConfigs] = None,
     ):
         # The backend service configurations of the route.
         self.backend_config = backend_config
@@ -33,6 +34,7 @@ class CreateHttpApiRouteRequest(DaraModel):
         self.mcp_route_config = mcp_route_config
         # The route name.
         self.name = name
+        self.policy_configs = policy_configs
 
     def validate(self):
         if self.backend_config:
@@ -45,6 +47,10 @@ class CreateHttpApiRouteRequest(DaraModel):
             self.match.validate()
         if self.mcp_route_config:
             self.mcp_route_config.validate()
+        if self.policy_configs:
+            for v1 in self.policy_configs:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -76,6 +82,11 @@ class CreateHttpApiRouteRequest(DaraModel):
 
         if self.name is not None:
             result['name'] = self.name
+
+        result['policyConfigs'] = []
+        if self.policy_configs is not None:
+            for k1 in self.policy_configs:
+                result['policyConfigs'].append(k1.to_map() if k1 else None)
 
         return result
 
@@ -110,6 +121,12 @@ class CreateHttpApiRouteRequest(DaraModel):
 
         if m.get('name') is not None:
             self.name = m.get('name')
+
+        self.policy_configs = []
+        if m.get('policyConfigs') is not None:
+            for k1 in m.get('policyConfigs'):
+                temp_model = main_models.HttpApiPolicyConfigs()
+                self.policy_configs.append(temp_model.from_map(k1))
 
         return self
 

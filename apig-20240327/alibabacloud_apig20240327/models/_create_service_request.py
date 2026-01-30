@@ -14,6 +14,7 @@ class CreateServiceRequest(DaraModel):
         resource_group_id: str = None,
         service_configs: List[main_models.CreateServiceRequestServiceConfigs] = None,
         source_type: str = None,
+        client_token: str = None,
     ):
         # The gateway instance ID.
         self.gateway_id = gateway_id
@@ -39,6 +40,7 @@ class CreateServiceRequest(DaraModel):
         # *   VIP
         # *   MSE_NACOS
         self.source_type = source_type
+        self.client_token = client_token
 
     def validate(self):
         if self.service_configs:
@@ -65,6 +67,9 @@ class CreateServiceRequest(DaraModel):
         if self.source_type is not None:
             result['sourceType'] = self.source_type
 
+        if self.client_token is not None:
+            result['clientToken'] = self.client_token
+
         return result
 
     def from_map(self, m: dict = None):
@@ -84,6 +89,9 @@ class CreateServiceRequest(DaraModel):
         if m.get('sourceType') is not None:
             self.source_type = m.get('sourceType')
 
+        if m.get('clientToken') is not None:
+            self.client_token = m.get('clientToken')
+
         return self
 
 class CreateServiceRequestServiceConfigs(DaraModel):
@@ -93,11 +101,13 @@ class CreateServiceRequestServiceConfigs(DaraModel):
         agent_service_config: main_models.AgentServiceConfig = None,
         ai_service_config: main_models.AiServiceConfig = None,
         dns_servers: List[str] = None,
+        express_type: str = None,
         group_name: str = None,
         name: str = None,
         namespace: str = None,
         qualifier: str = None,
         source_id: str = None,
+        validation_options: main_models.CreateServiceRequestServiceConfigsValidationOptions = None,
     ):
         # The list of domain names or fixed addresses.
         self.addresses = addresses
@@ -106,6 +116,7 @@ class CreateServiceRequestServiceConfigs(DaraModel):
         self.ai_service_config = ai_service_config
         # The list of DNS service addresses.
         self.dns_servers = dns_servers
+        self.express_type = express_type
         # The service group name. This parameter is required if sourceType is set to MSE_NACOS.
         self.group_name = group_name
         # The service name.
@@ -118,12 +129,15 @@ class CreateServiceRequestServiceConfigs(DaraModel):
         # The function version or alias.
         self.qualifier = qualifier
         self.source_id = source_id
+        self.validation_options = validation_options
 
     def validate(self):
         if self.agent_service_config:
             self.agent_service_config.validate()
         if self.ai_service_config:
             self.ai_service_config.validate()
+        if self.validation_options:
+            self.validation_options.validate()
 
     def to_map(self):
         result = dict()
@@ -142,6 +156,9 @@ class CreateServiceRequestServiceConfigs(DaraModel):
         if self.dns_servers is not None:
             result['dnsServers'] = self.dns_servers
 
+        if self.express_type is not None:
+            result['expressType'] = self.express_type
+
         if self.group_name is not None:
             result['groupName'] = self.group_name
 
@@ -156,6 +173,9 @@ class CreateServiceRequestServiceConfigs(DaraModel):
 
         if self.source_id is not None:
             result['sourceId'] = self.source_id
+
+        if self.validation_options is not None:
+            result['validationOptions'] = self.validation_options.to_map()
 
         return result
 
@@ -175,6 +195,9 @@ class CreateServiceRequestServiceConfigs(DaraModel):
         if m.get('dnsServers') is not None:
             self.dns_servers = m.get('dnsServers')
 
+        if m.get('expressType') is not None:
+            self.express_type = m.get('expressType')
+
         if m.get('groupName') is not None:
             self.group_name = m.get('groupName')
 
@@ -189,6 +212,37 @@ class CreateServiceRequestServiceConfigs(DaraModel):
 
         if m.get('sourceId') is not None:
             self.source_id = m.get('sourceId')
+
+        if m.get('validationOptions') is not None:
+            temp_model = main_models.CreateServiceRequestServiceConfigsValidationOptions()
+            self.validation_options = temp_model.from_map(m.get('validationOptions'))
+
+        return self
+
+class CreateServiceRequestServiceConfigsValidationOptions(DaraModel):
+    def __init__(
+        self,
+        skip_verify_aichat_completion: bool = None,
+    ):
+        self.skip_verify_aichat_completion = skip_verify_aichat_completion
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.skip_verify_aichat_completion is not None:
+            result['skipVerifyAIChatCompletion'] = self.skip_verify_aichat_completion
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('skipVerifyAIChatCompletion') is not None:
+            self.skip_verify_aichat_completion = m.get('skipVerifyAIChatCompletion')
 
         return self
 

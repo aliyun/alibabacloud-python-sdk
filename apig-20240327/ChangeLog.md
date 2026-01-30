@@ -1,3 +1,10 @@
+2026-01-30 Version: 6.0.1
+- Update API CreateHttpApiRoute: add request parameters body.policyConfigs.
+- Update API CreateService: add request parameters clientToken.
+- Update API CreateService: add request parameters body.serviceConfigs.$.expressType.
+- Update API CreateService: add request parameters body.serviceConfigs.$.validationOptions.
+
+
 2026-01-23 Version: 6.0.0
 - Update API GetConsumer: update response parameters Body.data.akSkIdentityConfigs' type has changed.
 - Update API GetConsumer: update response parameters Body.data.akSkIdentityConfigs' ref has changed.

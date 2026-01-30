@@ -29,6 +29,7 @@ from ._http_api_mock_contract import HttpApiMockContract
 from ._http_api_operation import HttpApiOperation
 from ._http_api_operation_info import HttpApiOperationInfo
 from ._http_api_parameter import HttpApiParameter
+from ._http_api_policy_configs import HttpApiPolicyConfigs
 from ._http_api_publish_revision_info import HttpApiPublishRevisionInfo
 from ._http_api_request_contract import HttpApiRequestContract
 from ._http_api_response_contract import HttpApiResponseContract
@@ -55,6 +56,7 @@ from ._service_linked_role import ServiceLinkedRole
 from ._ssl_cert_meta_info import SslCertMetaInfo
 from ._sub_domain_info import SubDomainInfo
 from ._tls_cipher_suites_config import TlsCipherSuitesConfig
+from ._validation_options import ValidationOptions
 from ._http_api_api_info_deploy_cnt_map_value import HttpApiApiInfoDeployCntMapValue
 from ._add_gateway_security_group_rule_request import AddGatewaySecurityGroupRuleRequest
 from ._add_gateway_security_group_rule_response_body import AddGatewaySecurityGroupRuleResponseBody
@@ -338,11 +340,13 @@ from ._update_service_version_response import UpdateServiceVersionResponse
 from ._upgrade_gateway_request import UpgradeGatewayRequest
 from ._upgrade_gateway_response_body import UpgradeGatewayResponseBody
 from ._upgrade_gateway_response import UpgradeGatewayResponse
+from ._agent_service_config import AgentServiceConfigCustomConfig
 from ._agent_service_config import AgentServiceConfigDashScopeConfigAppCredentials
 from ._agent_service_config import AgentServiceConfigDashScopeConfig
 from ._agent_service_config import AgentServiceConfigDifyConfig
 from ._ai_service_config import AiServiceConfigBedrockServiceConfig
 from ._ai_service_config import AiServiceConfigPaiEASServiceConfig
+from ._ai_service_config import AiServiceConfigVertexServiceConfig
 from ._api_key_identity_config import ApiKeyIdentityConfigApikeySource
 from ._api_key_identity_config import ApiKeyIdentityConfigCredentials
 from ._api_route_conflict_info import ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo
@@ -379,6 +383,42 @@ from ._http_api_deploy_config import HttpApiDeployConfigPolicyConfigsAiTokenRate
 from ._http_api_deploy_config import HttpApiDeployConfigPolicyConfigs
 from ._http_api_deploy_config import HttpApiDeployConfigServiceConfigs
 from ._http_api_deploy_config import HttpApiDeployConfigSubDomains
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiCacheConfigEmbeddingConfig
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiCacheConfigPluginStatus
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiCacheConfigRedisConfig
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiCacheConfigVectorConfig
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiCacheConfig
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiFallbackConfigServiceConfigs
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiFallbackConfig
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiNetworkSearchConfigPluginStatus
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiNetworkSearchConfigSearchEngineConfig
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiNetworkSearchConfigSearchFrom
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiNetworkSearchConfigSearchRewrite
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiNetworkSearchConfig
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiSecurityGuardConfigConsumerRequestCheckService
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiSecurityGuardConfigConsumerResponseCheckService
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiSecurityGuardConfigConsumerRiskLevel
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiSecurityGuardConfigPluginStatus
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiSecurityGuardConfigRiskConfigConsumerRules
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiSecurityGuardConfigRiskConfig
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiSecurityGuardConfig
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiStatisticsConfig
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiTokenRateLimitConfigGlobalRules
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiTokenRateLimitConfigPluginStatus
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiTokenRateLimitConfigRedisConfig
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiTokenRateLimitConfigRules
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiTokenRateLimitConfig
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiToolSelectionConfigEnableConditions
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiToolSelectionConfigPluginStatus
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingContextSelection
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingModelService
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingPromptConfig
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingTriggerConditions
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiToolSelectionConfigQueryRewriting
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiToolSelectionConfigToolRerankingModelService
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiToolSelectionConfigToolReranking
+from ._http_api_policy_configs import HttpApiPolicyConfigsAiToolSelectionConfig
+from ._http_api_policy_configs import HttpApiPolicyConfigsSemanticRouterConfig
 from ._http_api_publish_revision_info import HttpApiPublishRevisionInfoCloudProductConfigContainerServiceConfigs
 from ._http_api_publish_revision_info import HttpApiPublishRevisionInfoCloudProductConfigFunctionConfigs
 from ._http_api_publish_revision_info import HttpApiPublishRevisionInfoCloudProductConfigMseNacosConfigs
@@ -442,6 +482,7 @@ from ._create_plugin_attachment_response_body import CreatePluginAttachmentRespo
 from ._create_policy_response_body import CreatePolicyResponseBodyData
 from ._create_policy_attachment_response_body import CreatePolicyAttachmentResponseBodyData
 from ._create_secret_response_body import CreateSecretResponseBodyData
+from ._create_service_request import CreateServiceRequestServiceConfigsValidationOptions
 from ._create_service_request import CreateServiceRequestServiceConfigs
 from ._create_service_response_body import CreateServiceResponseBodyData
 from ._create_service_version_request import CreateServiceVersionRequestLabels
@@ -641,6 +682,7 @@ __all__ = [
     HttpApiOperation,
     HttpApiOperationInfo,
     HttpApiParameter,
+    HttpApiPolicyConfigs,
     HttpApiPublishRevisionInfo,
     HttpApiRequestContract,
     HttpApiResponseContract,
@@ -667,6 +709,7 @@ __all__ = [
     SslCertMetaInfo,
     SubDomainInfo,
     TlsCipherSuitesConfig,
+    ValidationOptions,
     HttpApiApiInfoDeployCntMapValue,
     AddGatewaySecurityGroupRuleRequest,
     AddGatewaySecurityGroupRuleResponseBody,
@@ -950,11 +993,13 @@ __all__ = [
     UpgradeGatewayRequest,
     UpgradeGatewayResponseBody,
     UpgradeGatewayResponse,
+    AgentServiceConfigCustomConfig,
     AgentServiceConfigDashScopeConfigAppCredentials,
     AgentServiceConfigDashScopeConfig,
     AgentServiceConfigDifyConfig,
     AiServiceConfigBedrockServiceConfig,
     AiServiceConfigPaiEASServiceConfig,
+    AiServiceConfigVertexServiceConfig,
     ApiKeyIdentityConfigApikeySource,
     ApiKeyIdentityConfigCredentials,
     ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo,
@@ -991,6 +1036,42 @@ __all__ = [
     HttpApiDeployConfigPolicyConfigs,
     HttpApiDeployConfigServiceConfigs,
     HttpApiDeployConfigSubDomains,
+    HttpApiPolicyConfigsAiCacheConfigEmbeddingConfig,
+    HttpApiPolicyConfigsAiCacheConfigPluginStatus,
+    HttpApiPolicyConfigsAiCacheConfigRedisConfig,
+    HttpApiPolicyConfigsAiCacheConfigVectorConfig,
+    HttpApiPolicyConfigsAiCacheConfig,
+    HttpApiPolicyConfigsAiFallbackConfigServiceConfigs,
+    HttpApiPolicyConfigsAiFallbackConfig,
+    HttpApiPolicyConfigsAiNetworkSearchConfigPluginStatus,
+    HttpApiPolicyConfigsAiNetworkSearchConfigSearchEngineConfig,
+    HttpApiPolicyConfigsAiNetworkSearchConfigSearchFrom,
+    HttpApiPolicyConfigsAiNetworkSearchConfigSearchRewrite,
+    HttpApiPolicyConfigsAiNetworkSearchConfig,
+    HttpApiPolicyConfigsAiSecurityGuardConfigConsumerRequestCheckService,
+    HttpApiPolicyConfigsAiSecurityGuardConfigConsumerResponseCheckService,
+    HttpApiPolicyConfigsAiSecurityGuardConfigConsumerRiskLevel,
+    HttpApiPolicyConfigsAiSecurityGuardConfigPluginStatus,
+    HttpApiPolicyConfigsAiSecurityGuardConfigRiskConfigConsumerRules,
+    HttpApiPolicyConfigsAiSecurityGuardConfigRiskConfig,
+    HttpApiPolicyConfigsAiSecurityGuardConfig,
+    HttpApiPolicyConfigsAiStatisticsConfig,
+    HttpApiPolicyConfigsAiTokenRateLimitConfigGlobalRules,
+    HttpApiPolicyConfigsAiTokenRateLimitConfigPluginStatus,
+    HttpApiPolicyConfigsAiTokenRateLimitConfigRedisConfig,
+    HttpApiPolicyConfigsAiTokenRateLimitConfigRules,
+    HttpApiPolicyConfigsAiTokenRateLimitConfig,
+    HttpApiPolicyConfigsAiToolSelectionConfigEnableConditions,
+    HttpApiPolicyConfigsAiToolSelectionConfigPluginStatus,
+    HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingContextSelection,
+    HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingModelService,
+    HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingPromptConfig,
+    HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingTriggerConditions,
+    HttpApiPolicyConfigsAiToolSelectionConfigQueryRewriting,
+    HttpApiPolicyConfigsAiToolSelectionConfigToolRerankingModelService,
+    HttpApiPolicyConfigsAiToolSelectionConfigToolReranking,
+    HttpApiPolicyConfigsAiToolSelectionConfig,
+    HttpApiPolicyConfigsSemanticRouterConfig,
     HttpApiPublishRevisionInfoCloudProductConfigContainerServiceConfigs,
     HttpApiPublishRevisionInfoCloudProductConfigFunctionConfigs,
     HttpApiPublishRevisionInfoCloudProductConfigMseNacosConfigs,
@@ -1054,6 +1135,7 @@ __all__ = [
     CreatePolicyResponseBodyData,
     CreatePolicyAttachmentResponseBodyData,
     CreateSecretResponseBodyData,
+    CreateServiceRequestServiceConfigsValidationOptions,
     CreateServiceRequestServiceConfigs,
     CreateServiceResponseBodyData,
     CreateServiceVersionRequestLabels,

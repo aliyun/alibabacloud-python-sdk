@@ -11,22 +11,28 @@ class AgentServiceConfig(DaraModel):
     def __init__(
         self,
         address: str = None,
+        custom_config: main_models.AgentServiceConfigCustomConfig = None,
         dash_scope_config: main_models.AgentServiceConfigDashScopeConfig = None,
         dify_config: main_models.AgentServiceConfigDifyConfig = None,
         enable_health_check: bool = None,
+        enable_outlier_detection: bool = None,
         protocols: List[str] = None,
         provider: str = None,
     ):
         # This parameter is required.
         self.address = address
+        self.custom_config = custom_config
         self.dash_scope_config = dash_scope_config
         self.dify_config = dify_config
         self.enable_health_check = enable_health_check
+        self.enable_outlier_detection = enable_outlier_detection
         self.protocols = protocols
         # This parameter is required.
         self.provider = provider
 
     def validate(self):
+        if self.custom_config:
+            self.custom_config.validate()
         if self.dash_scope_config:
             self.dash_scope_config.validate()
         if self.dify_config:
@@ -40,6 +46,9 @@ class AgentServiceConfig(DaraModel):
         if self.address is not None:
             result['address'] = self.address
 
+        if self.custom_config is not None:
+            result['customConfig'] = self.custom_config.to_map()
+
         if self.dash_scope_config is not None:
             result['dashScopeConfig'] = self.dash_scope_config.to_map()
 
@@ -48,6 +57,9 @@ class AgentServiceConfig(DaraModel):
 
         if self.enable_health_check is not None:
             result['enableHealthCheck'] = self.enable_health_check
+
+        if self.enable_outlier_detection is not None:
+            result['enableOutlierDetection'] = self.enable_outlier_detection
 
         if self.protocols is not None:
             result['protocols'] = self.protocols
@@ -62,6 +74,10 @@ class AgentServiceConfig(DaraModel):
         if m.get('address') is not None:
             self.address = m.get('address')
 
+        if m.get('customConfig') is not None:
+            temp_model = main_models.AgentServiceConfigCustomConfig()
+            self.custom_config = temp_model.from_map(m.get('customConfig'))
+
         if m.get('dashScopeConfig') is not None:
             temp_model = main_models.AgentServiceConfigDashScopeConfig()
             self.dash_scope_config = temp_model.from_map(m.get('dashScopeConfig'))
@@ -72,6 +88,9 @@ class AgentServiceConfig(DaraModel):
 
         if m.get('enableHealthCheck') is not None:
             self.enable_health_check = m.get('enableHealthCheck')
+
+        if m.get('enableOutlierDetection') is not None:
+            self.enable_outlier_detection = m.get('enableOutlierDetection')
 
         if m.get('protocols') is not None:
             self.protocols = m.get('protocols')
@@ -151,8 +170,6 @@ class AgentServiceConfigDashScopeConfig(DaraModel):
 
         return self
 
-
-
 class AgentServiceConfigDashScopeConfigAppCredentials(DaraModel):
     def __init__(
         self,
@@ -185,6 +202,43 @@ class AgentServiceConfigDashScopeConfigAppCredentials(DaraModel):
 
         if m.get('appId') is not None:
             self.app_id = m.get('appId')
+
+        return self
+
+
+
+class AgentServiceConfigCustomConfig(DaraModel):
+    def __init__(
+        self,
+        api_key: str = None,
+        api_key_generate_mode: str = None,
+    ):
+        self.api_key = api_key
+        self.api_key_generate_mode = api_key_generate_mode
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.api_key is not None:
+            result['apiKey'] = self.api_key
+
+        if self.api_key_generate_mode is not None:
+            result['apiKeyGenerateMode'] = self.api_key_generate_mode
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('apiKey') is not None:
+            self.api_key = m.get('apiKey')
+
+        if m.get('apiKeyGenerateMode') is not None:
+            self.api_key_generate_mode = m.get('apiKeyGenerateMode')
 
         return self
 
