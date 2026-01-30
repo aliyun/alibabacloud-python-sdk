@@ -9057,6 +9057,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -9085,6 +9087,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cluster_id):
             query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
