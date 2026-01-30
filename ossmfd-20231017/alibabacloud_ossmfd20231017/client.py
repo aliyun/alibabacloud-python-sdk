@@ -1,24 +1,23 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
 from typing import Dict
-from Tea.core import TeaCore
 
+from alibabacloud_ossmfd20231017 import models as main_models
+from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
-from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_tea_util import models as util_models
-from alibabacloud_ossmfd20231017 import models as oss_mfd_20231017_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_tea_openapi.utils import Utils
+from darabonba.core import DaraCore as DaraCore
+from darabonba.runtime import RuntimeOptions
 
-
+"""
+"""
 class Client(OpenApiClient):
-    """
-    *\
-    """
+
     def __init__(
-        self, 
-        config: open_api_models.Config,
+        self,
+        config: open_api_util_models.Config,
     ):
         super().__init__(config)
         self._endpoint_rule = ''
@@ -35,1648 +34,1274 @@ class Client(OpenApiClient):
         endpoint_map: Dict[str, str],
         endpoint: str,
     ) -> str:
-        if not UtilClient.empty(endpoint):
+        if not DaraCore.is_null(endpoint):
             return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+        if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
     def check_mfd_service_open_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.CheckMfdServiceOpenResponse:
-        """
-        @summary 检查服务是否开通
-        
-        @param request: CheckMfdServiceOpenRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckMfdServiceOpenResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='CheckMfdServiceOpen',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckMfdServiceOpenResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'CheckMfdServiceOpen',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.CheckMfdServiceOpenResponse(),
+        return DaraCore.from_map(
+            main_models.CheckMfdServiceOpenResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def check_mfd_service_open_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.CheckMfdServiceOpenResponse:
-        """
-        @summary 检查服务是否开通
-        
-        @param request: CheckMfdServiceOpenRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckMfdServiceOpenResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='CheckMfdServiceOpen',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckMfdServiceOpenResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'CheckMfdServiceOpen',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.CheckMfdServiceOpenResponse(),
+        return DaraCore.from_map(
+            main_models.CheckMfdServiceOpenResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def check_mfd_service_open(self) -> oss_mfd_20231017_models.CheckMfdServiceOpenResponse:
-        """
-        @summary 检查服务是否开通
-        
-        @return: CheckMfdServiceOpenResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def check_mfd_service_open(self) -> main_models.CheckMfdServiceOpenResponse:
+        runtime = RuntimeOptions()
         return self.check_mfd_service_open_with_options(runtime)
 
-    async def check_mfd_service_open_async(self) -> oss_mfd_20231017_models.CheckMfdServiceOpenResponse:
-        """
-        @summary 检查服务是否开通
-        
-        @return: CheckMfdServiceOpenResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def check_mfd_service_open_async(self) -> main_models.CheckMfdServiceOpenResponse:
+        runtime = RuntimeOptions()
         return await self.check_mfd_service_open_with_options_async(runtime)
 
     def create_oss_bucket_scan_task_with_options(
         self,
-        request: oss_mfd_20231017_models.CreateOssBucketScanTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.CreateOssBucketScanTaskResponse:
-        """
-        @summary 创建bucket扫描任务
-        
-        @param request: CreateOssBucketScanTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateOssBucketScanTaskResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateOssBucketScanTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOssBucketScanTaskResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.all_key_prefix):
+        if not DaraCore.is_null(request.all_key_prefix):
             query['AllKeyPrefix'] = request.all_key_prefix
-        if not UtilClient.is_unset(request.bucket_name_list):
+        if not DaraCore.is_null(request.bucket_name_list):
             query['BucketNameList'] = request.bucket_name_list
-        if not UtilClient.is_unset(request.decompress_max_file_count):
+        if not DaraCore.is_null(request.decompress_max_file_count):
             query['DecompressMaxFileCount'] = request.decompress_max_file_count
-        if not UtilClient.is_unset(request.decompress_max_layer):
+        if not DaraCore.is_null(request.decompress_max_layer):
             query['DecompressMaxLayer'] = request.decompress_max_layer
-        if not UtilClient.is_unset(request.decryption_list):
+        if not DaraCore.is_null(request.decryption_list):
             query['DecryptionList'] = request.decryption_list
-        if not UtilClient.is_unset(request.exclude_key_suffix_list):
+        if not DaraCore.is_null(request.exclude_key_suffix_list):
             query['ExcludeKeySuffixList'] = request.exclude_key_suffix_list
-        if not UtilClient.is_unset(request.key_prefix_list):
+        if not DaraCore.is_null(request.key_prefix_list):
             query['KeyPrefixList'] = request.key_prefix_list
-        if not UtilClient.is_unset(request.key_suffix_list):
+        if not DaraCore.is_null(request.key_suffix_list):
             query['KeySuffixList'] = request.key_suffix_list
-        if not UtilClient.is_unset(request.last_modified_start_time):
+        if not DaraCore.is_null(request.last_modified_start_time):
             query['LastModifiedStartTime'] = request.last_modified_start_time
-        if not UtilClient.is_unset(request.scan_mode):
+        if not DaraCore.is_null(request.scan_mode):
             query['ScanMode'] = request.scan_mode
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateOssBucketScanTask',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateOssBucketScanTask',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.CreateOssBucketScanTaskResponse(),
+        return DaraCore.from_map(
+            main_models.CreateOssBucketScanTaskResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_oss_bucket_scan_task_with_options_async(
         self,
-        request: oss_mfd_20231017_models.CreateOssBucketScanTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.CreateOssBucketScanTaskResponse:
-        """
-        @summary 创建bucket扫描任务
-        
-        @param request: CreateOssBucketScanTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateOssBucketScanTaskResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateOssBucketScanTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOssBucketScanTaskResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.all_key_prefix):
+        if not DaraCore.is_null(request.all_key_prefix):
             query['AllKeyPrefix'] = request.all_key_prefix
-        if not UtilClient.is_unset(request.bucket_name_list):
+        if not DaraCore.is_null(request.bucket_name_list):
             query['BucketNameList'] = request.bucket_name_list
-        if not UtilClient.is_unset(request.decompress_max_file_count):
+        if not DaraCore.is_null(request.decompress_max_file_count):
             query['DecompressMaxFileCount'] = request.decompress_max_file_count
-        if not UtilClient.is_unset(request.decompress_max_layer):
+        if not DaraCore.is_null(request.decompress_max_layer):
             query['DecompressMaxLayer'] = request.decompress_max_layer
-        if not UtilClient.is_unset(request.decryption_list):
+        if not DaraCore.is_null(request.decryption_list):
             query['DecryptionList'] = request.decryption_list
-        if not UtilClient.is_unset(request.exclude_key_suffix_list):
+        if not DaraCore.is_null(request.exclude_key_suffix_list):
             query['ExcludeKeySuffixList'] = request.exclude_key_suffix_list
-        if not UtilClient.is_unset(request.key_prefix_list):
+        if not DaraCore.is_null(request.key_prefix_list):
             query['KeyPrefixList'] = request.key_prefix_list
-        if not UtilClient.is_unset(request.key_suffix_list):
+        if not DaraCore.is_null(request.key_suffix_list):
             query['KeySuffixList'] = request.key_suffix_list
-        if not UtilClient.is_unset(request.last_modified_start_time):
+        if not DaraCore.is_null(request.last_modified_start_time):
             query['LastModifiedStartTime'] = request.last_modified_start_time
-        if not UtilClient.is_unset(request.scan_mode):
+        if not DaraCore.is_null(request.scan_mode):
             query['ScanMode'] = request.scan_mode
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateOssBucketScanTask',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateOssBucketScanTask',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.CreateOssBucketScanTaskResponse(),
+        return DaraCore.from_map(
+            main_models.CreateOssBucketScanTaskResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_oss_bucket_scan_task(
         self,
-        request: oss_mfd_20231017_models.CreateOssBucketScanTaskRequest,
-    ) -> oss_mfd_20231017_models.CreateOssBucketScanTaskResponse:
-        """
-        @summary 创建bucket扫描任务
-        
-        @param request: CreateOssBucketScanTaskRequest
-        @return: CreateOssBucketScanTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateOssBucketScanTaskRequest,
+    ) -> main_models.CreateOssBucketScanTaskResponse:
+        runtime = RuntimeOptions()
         return self.create_oss_bucket_scan_task_with_options(request, runtime)
 
     async def create_oss_bucket_scan_task_async(
         self,
-        request: oss_mfd_20231017_models.CreateOssBucketScanTaskRequest,
-    ) -> oss_mfd_20231017_models.CreateOssBucketScanTaskResponse:
-        """
-        @summary 创建bucket扫描任务
-        
-        @param request: CreateOssBucketScanTaskRequest
-        @return: CreateOssBucketScanTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateOssBucketScanTaskRequest,
+    ) -> main_models.CreateOssBucketScanTaskResponse:
+        runtime = RuntimeOptions()
         return await self.create_oss_bucket_scan_task_with_options_async(request, runtime)
 
     def create_oss_scan_config_with_options(
         self,
-        request: oss_mfd_20231017_models.CreateOssScanConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.CreateOssScanConfigResponse:
-        """
-        @summary 创建Bucket检测策略配置
-        
-        @param request: CreateOssScanConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateOssScanConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateOssScanConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOssScanConfigResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.all_key_prefix):
+        if not DaraCore.is_null(request.all_key_prefix):
             query['AllKeyPrefix'] = request.all_key_prefix
-        if not UtilClient.is_unset(request.bucket_name):
+        if not DaraCore.is_null(request.bucket_name):
             query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.decompress_max_file_count):
+        if not DaraCore.is_null(request.decompress_max_file_count):
             query['DecompressMaxFileCount'] = request.decompress_max_file_count
-        if not UtilClient.is_unset(request.decompress_max_layer):
+        if not DaraCore.is_null(request.decompress_max_layer):
             query['DecompressMaxLayer'] = request.decompress_max_layer
-        if not UtilClient.is_unset(request.decryption_list):
+        if not DaraCore.is_null(request.decryption_list):
             query['DecryptionList'] = request.decryption_list
-        if not UtilClient.is_unset(request.enable):
+        if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.key_prefix_list):
+        if not DaraCore.is_null(request.key_prefix_list):
             query['KeyPrefixList'] = request.key_prefix_list
-        if not UtilClient.is_unset(request.key_suffix_list):
+        if not DaraCore.is_null(request.key_suffix_list):
             query['KeySuffixList'] = request.key_suffix_list
-        if not UtilClient.is_unset(request.last_modified_start_time):
+        if not DaraCore.is_null(request.last_modified_start_time):
             query['LastModifiedStartTime'] = request.last_modified_start_time
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.real_time_incr):
+        if not DaraCore.is_null(request.real_time_incr):
             query['RealTimeIncr'] = request.real_time_incr
-        if not UtilClient.is_unset(request.scan_day_list):
+        if not DaraCore.is_null(request.scan_day_list):
             query['ScanDayList'] = request.scan_day_list
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateOssScanConfig',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateOssScanConfig',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.CreateOssScanConfigResponse(),
+        return DaraCore.from_map(
+            main_models.CreateOssScanConfigResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_oss_scan_config_with_options_async(
         self,
-        request: oss_mfd_20231017_models.CreateOssScanConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.CreateOssScanConfigResponse:
-        """
-        @summary 创建Bucket检测策略配置
-        
-        @param request: CreateOssScanConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateOssScanConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateOssScanConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOssScanConfigResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.all_key_prefix):
+        if not DaraCore.is_null(request.all_key_prefix):
             query['AllKeyPrefix'] = request.all_key_prefix
-        if not UtilClient.is_unset(request.bucket_name):
+        if not DaraCore.is_null(request.bucket_name):
             query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.decompress_max_file_count):
+        if not DaraCore.is_null(request.decompress_max_file_count):
             query['DecompressMaxFileCount'] = request.decompress_max_file_count
-        if not UtilClient.is_unset(request.decompress_max_layer):
+        if not DaraCore.is_null(request.decompress_max_layer):
             query['DecompressMaxLayer'] = request.decompress_max_layer
-        if not UtilClient.is_unset(request.decryption_list):
+        if not DaraCore.is_null(request.decryption_list):
             query['DecryptionList'] = request.decryption_list
-        if not UtilClient.is_unset(request.enable):
+        if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.key_prefix_list):
+        if not DaraCore.is_null(request.key_prefix_list):
             query['KeyPrefixList'] = request.key_prefix_list
-        if not UtilClient.is_unset(request.key_suffix_list):
+        if not DaraCore.is_null(request.key_suffix_list):
             query['KeySuffixList'] = request.key_suffix_list
-        if not UtilClient.is_unset(request.last_modified_start_time):
+        if not DaraCore.is_null(request.last_modified_start_time):
             query['LastModifiedStartTime'] = request.last_modified_start_time
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.real_time_incr):
+        if not DaraCore.is_null(request.real_time_incr):
             query['RealTimeIncr'] = request.real_time_incr
-        if not UtilClient.is_unset(request.scan_day_list):
+        if not DaraCore.is_null(request.scan_day_list):
             query['ScanDayList'] = request.scan_day_list
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateOssScanConfig',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateOssScanConfig',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.CreateOssScanConfigResponse(),
+        return DaraCore.from_map(
+            main_models.CreateOssScanConfigResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_oss_scan_config(
         self,
-        request: oss_mfd_20231017_models.CreateOssScanConfigRequest,
-    ) -> oss_mfd_20231017_models.CreateOssScanConfigResponse:
-        """
-        @summary 创建Bucket检测策略配置
-        
-        @param request: CreateOssScanConfigRequest
-        @return: CreateOssScanConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateOssScanConfigRequest,
+    ) -> main_models.CreateOssScanConfigResponse:
+        runtime = RuntimeOptions()
         return self.create_oss_scan_config_with_options(request, runtime)
 
     async def create_oss_scan_config_async(
         self,
-        request: oss_mfd_20231017_models.CreateOssScanConfigRequest,
-    ) -> oss_mfd_20231017_models.CreateOssScanConfigResponse:
-        """
-        @summary 创建Bucket检测策略配置
-        
-        @param request: CreateOssScanConfigRequest
-        @return: CreateOssScanConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateOssScanConfigRequest,
+    ) -> main_models.CreateOssScanConfigResponse:
+        runtime = RuntimeOptions()
         return await self.create_oss_scan_config_with_options_async(request, runtime)
 
     def describe_export_info_with_options(
         self,
-        request: oss_mfd_20231017_models.DescribeExportInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.DescribeExportInfoResponse:
-        """
-        @summary 查询导出信息
-        
-        @param request: DescribeExportInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeExportInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeExportInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeExportInfoResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.export_id):
+        if not DaraCore.is_null(request.export_id):
             query['ExportId'] = request.export_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeExportInfo',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeExportInfo',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.DescribeExportInfoResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeExportInfoResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_export_info_with_options_async(
         self,
-        request: oss_mfd_20231017_models.DescribeExportInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.DescribeExportInfoResponse:
-        """
-        @summary 查询导出信息
-        
-        @param request: DescribeExportInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeExportInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeExportInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeExportInfoResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.export_id):
+        if not DaraCore.is_null(request.export_id):
             query['ExportId'] = request.export_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeExportInfo',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeExportInfo',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.DescribeExportInfoResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeExportInfoResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_export_info(
         self,
-        request: oss_mfd_20231017_models.DescribeExportInfoRequest,
-    ) -> oss_mfd_20231017_models.DescribeExportInfoResponse:
-        """
-        @summary 查询导出信息
-        
-        @param request: DescribeExportInfoRequest
-        @return: DescribeExportInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeExportInfoRequest,
+    ) -> main_models.DescribeExportInfoResponse:
+        runtime = RuntimeOptions()
         return self.describe_export_info_with_options(request, runtime)
 
     async def describe_export_info_async(
         self,
-        request: oss_mfd_20231017_models.DescribeExportInfoRequest,
-    ) -> oss_mfd_20231017_models.DescribeExportInfoResponse:
-        """
-        @summary 查询导出信息
-        
-        @param request: DescribeExportInfoRequest
-        @return: DescribeExportInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeExportInfoRequest,
+    ) -> main_models.DescribeExportInfoResponse:
+        runtime = RuntimeOptions()
         return await self.describe_export_info_with_options_async(request, runtime)
 
     def describe_service_linked_role_status_with_options(
         self,
-        request: oss_mfd_20231017_models.DescribeServiceLinkedRoleStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.DescribeServiceLinkedRoleStatusResponse:
-        """
-        @summary 查询您是否已创建云安全中心服务关联角色
-        
-        @param request: DescribeServiceLinkedRoleStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeServiceLinkedRoleStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeServiceLinkedRoleStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeServiceLinkedRoleStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.service_linked_role):
+        if not DaraCore.is_null(request.service_linked_role):
             query['ServiceLinkedRole'] = request.service_linked_role
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeServiceLinkedRoleStatus',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeServiceLinkedRoleStatus',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.DescribeServiceLinkedRoleStatusResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeServiceLinkedRoleStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_service_linked_role_status_with_options_async(
         self,
-        request: oss_mfd_20231017_models.DescribeServiceLinkedRoleStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.DescribeServiceLinkedRoleStatusResponse:
-        """
-        @summary 查询您是否已创建云安全中心服务关联角色
-        
-        @param request: DescribeServiceLinkedRoleStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeServiceLinkedRoleStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DescribeServiceLinkedRoleStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeServiceLinkedRoleStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.service_linked_role):
+        if not DaraCore.is_null(request.service_linked_role):
             query['ServiceLinkedRole'] = request.service_linked_role
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeServiceLinkedRoleStatus',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeServiceLinkedRoleStatus',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.DescribeServiceLinkedRoleStatusResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeServiceLinkedRoleStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_service_linked_role_status(
         self,
-        request: oss_mfd_20231017_models.DescribeServiceLinkedRoleStatusRequest,
-    ) -> oss_mfd_20231017_models.DescribeServiceLinkedRoleStatusResponse:
-        """
-        @summary 查询您是否已创建云安全中心服务关联角色
-        
-        @param request: DescribeServiceLinkedRoleStatusRequest
-        @return: DescribeServiceLinkedRoleStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeServiceLinkedRoleStatusRequest,
+    ) -> main_models.DescribeServiceLinkedRoleStatusResponse:
+        runtime = RuntimeOptions()
         return self.describe_service_linked_role_status_with_options(request, runtime)
 
     async def describe_service_linked_role_status_async(
         self,
-        request: oss_mfd_20231017_models.DescribeServiceLinkedRoleStatusRequest,
-    ) -> oss_mfd_20231017_models.DescribeServiceLinkedRoleStatusResponse:
-        """
-        @summary 查询您是否已创建云安全中心服务关联角色
-        
-        @param request: DescribeServiceLinkedRoleStatusRequest
-        @return: DescribeServiceLinkedRoleStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeServiceLinkedRoleStatusRequest,
+    ) -> main_models.DescribeServiceLinkedRoleStatusResponse:
+        runtime = RuntimeOptions()
         return await self.describe_service_linked_role_status_with_options_async(request, runtime)
 
     def export_record_with_options(
         self,
-        request: oss_mfd_20231017_models.ExportRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.ExportRecordResponse:
-        """
-        @summary 导出恶意文件列表
-        
-        @param request: ExportRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ExportRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ExportRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExportRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.export_type):
+        if not DaraCore.is_null(request.export_type):
             query['ExportType'] = request.export_type
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.params):
+        if not DaraCore.is_null(request.params):
             query['Params'] = request.params
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ExportRecord',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ExportRecord',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.ExportRecordResponse(),
+        return DaraCore.from_map(
+            main_models.ExportRecordResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def export_record_with_options_async(
         self,
-        request: oss_mfd_20231017_models.ExportRecordRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.ExportRecordResponse:
-        """
-        @summary 导出恶意文件列表
-        
-        @param request: ExportRecordRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ExportRecordResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ExportRecordRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExportRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.export_type):
+        if not DaraCore.is_null(request.export_type):
             query['ExportType'] = request.export_type
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.params):
+        if not DaraCore.is_null(request.params):
             query['Params'] = request.params
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ExportRecord',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ExportRecord',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.ExportRecordResponse(),
+        return DaraCore.from_map(
+            main_models.ExportRecordResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def export_record(
         self,
-        request: oss_mfd_20231017_models.ExportRecordRequest,
-    ) -> oss_mfd_20231017_models.ExportRecordResponse:
-        """
-        @summary 导出恶意文件列表
-        
-        @param request: ExportRecordRequest
-        @return: ExportRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ExportRecordRequest,
+    ) -> main_models.ExportRecordResponse:
+        runtime = RuntimeOptions()
         return self.export_record_with_options(request, runtime)
 
     async def export_record_async(
         self,
-        request: oss_mfd_20231017_models.ExportRecordRequest,
-    ) -> oss_mfd_20231017_models.ExportRecordResponse:
-        """
-        @summary 导出恶意文件列表
-        
-        @param request: ExportRecordRequest
-        @return: ExportRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ExportRecordRequest,
+    ) -> main_models.ExportRecordResponse:
+        runtime = RuntimeOptions()
         return await self.export_record_with_options_async(request, runtime)
 
     def get_file_detect_report_with_options(
         self,
-        request: oss_mfd_20231017_models.GetFileDetectReportRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.GetFileDetectReportResponse:
-        """
-        @summary 获取沙箱检测报告。
-        
-        @param request: GetFileDetectReportRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetFileDetectReportResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetFileDetectReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFileDetectReportResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.event_id):
+        if not DaraCore.is_null(request.event_id):
             query['EventId'] = request.event_id
-        if not UtilClient.is_unset(request.field):
+        if not DaraCore.is_null(request.field):
             query['Field'] = request.field
-        if not UtilClient.is_unset(request.file_hash):
+        if not DaraCore.is_null(request.file_hash):
             query['FileHash'] = request.file_hash
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.source_type):
+        if not DaraCore.is_null(request.source_type):
             query['SourceType'] = request.source_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetFileDetectReport',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetFileDetectReport',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.GetFileDetectReportResponse(),
+        return DaraCore.from_map(
+            main_models.GetFileDetectReportResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_file_detect_report_with_options_async(
         self,
-        request: oss_mfd_20231017_models.GetFileDetectReportRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.GetFileDetectReportResponse:
-        """
-        @summary 获取沙箱检测报告。
-        
-        @param request: GetFileDetectReportRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetFileDetectReportResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetFileDetectReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFileDetectReportResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.event_id):
+        if not DaraCore.is_null(request.event_id):
             query['EventId'] = request.event_id
-        if not UtilClient.is_unset(request.field):
+        if not DaraCore.is_null(request.field):
             query['Field'] = request.field
-        if not UtilClient.is_unset(request.file_hash):
+        if not DaraCore.is_null(request.file_hash):
             query['FileHash'] = request.file_hash
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.source_type):
+        if not DaraCore.is_null(request.source_type):
             query['SourceType'] = request.source_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetFileDetectReport',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetFileDetectReport',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.GetFileDetectReportResponse(),
+        return DaraCore.from_map(
+            main_models.GetFileDetectReportResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_file_detect_report(
         self,
-        request: oss_mfd_20231017_models.GetFileDetectReportRequest,
-    ) -> oss_mfd_20231017_models.GetFileDetectReportResponse:
-        """
-        @summary 获取沙箱检测报告。
-        
-        @param request: GetFileDetectReportRequest
-        @return: GetFileDetectReportResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetFileDetectReportRequest,
+    ) -> main_models.GetFileDetectReportResponse:
+        runtime = RuntimeOptions()
         return self.get_file_detect_report_with_options(request, runtime)
 
     async def get_file_detect_report_async(
         self,
-        request: oss_mfd_20231017_models.GetFileDetectReportRequest,
-    ) -> oss_mfd_20231017_models.GetFileDetectReportResponse:
-        """
-        @summary 获取沙箱检测报告。
-        
-        @param request: GetFileDetectReportRequest
-        @return: GetFileDetectReportResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetFileDetectReportRequest,
+    ) -> main_models.GetFileDetectReportResponse:
+        runtime = RuntimeOptions()
         return await self.get_file_detect_report_with_options_async(request, runtime)
 
     def get_oss_bucket_scan_statistic_with_options(
         self,
-        request: oss_mfd_20231017_models.GetOssBucketScanStatisticRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.GetOssBucketScanStatisticResponse:
-        """
-        @summary 获取bucket检测统计信息
-        
-        @param request: GetOssBucketScanStatisticRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetOssBucketScanStatisticResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetOssBucketScanStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOssBucketScanStatisticResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bucket_name_list):
+        if not DaraCore.is_null(request.bucket_name_list):
             query['BucketNameList'] = request.bucket_name_list
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetOssBucketScanStatistic',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetOssBucketScanStatistic',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.GetOssBucketScanStatisticResponse(),
+        return DaraCore.from_map(
+            main_models.GetOssBucketScanStatisticResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_oss_bucket_scan_statistic_with_options_async(
         self,
-        request: oss_mfd_20231017_models.GetOssBucketScanStatisticRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.GetOssBucketScanStatisticResponse:
-        """
-        @summary 获取bucket检测统计信息
-        
-        @param request: GetOssBucketScanStatisticRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetOssBucketScanStatisticResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetOssBucketScanStatisticRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOssBucketScanStatisticResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bucket_name_list):
+        if not DaraCore.is_null(request.bucket_name_list):
             query['BucketNameList'] = request.bucket_name_list
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetOssBucketScanStatistic',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetOssBucketScanStatistic',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.GetOssBucketScanStatisticResponse(),
+        return DaraCore.from_map(
+            main_models.GetOssBucketScanStatisticResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_oss_bucket_scan_statistic(
         self,
-        request: oss_mfd_20231017_models.GetOssBucketScanStatisticRequest,
-    ) -> oss_mfd_20231017_models.GetOssBucketScanStatisticResponse:
-        """
-        @summary 获取bucket检测统计信息
-        
-        @param request: GetOssBucketScanStatisticRequest
-        @return: GetOssBucketScanStatisticResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetOssBucketScanStatisticRequest,
+    ) -> main_models.GetOssBucketScanStatisticResponse:
+        runtime = RuntimeOptions()
         return self.get_oss_bucket_scan_statistic_with_options(request, runtime)
 
     async def get_oss_bucket_scan_statistic_async(
         self,
-        request: oss_mfd_20231017_models.GetOssBucketScanStatisticRequest,
-    ) -> oss_mfd_20231017_models.GetOssBucketScanStatisticResponse:
-        """
-        @summary 获取bucket检测统计信息
-        
-        @param request: GetOssBucketScanStatisticRequest
-        @return: GetOssBucketScanStatisticResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetOssBucketScanStatisticRequest,
+    ) -> main_models.GetOssBucketScanStatisticResponse:
+        runtime = RuntimeOptions()
         return await self.get_oss_bucket_scan_statistic_with_options_async(request, runtime)
 
     def get_oss_scan_config_with_options(
         self,
-        request: oss_mfd_20231017_models.GetOssScanConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.GetOssScanConfigResponse:
-        """
-        @summary 获取Bucket检测配置
-        
-        @param request: GetOssScanConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetOssScanConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetOssScanConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOssScanConfigResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bucket_name):
+        if not DaraCore.is_null(request.bucket_name):
             query['BucketName'] = request.bucket_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetOssScanConfig',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetOssScanConfig',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.GetOssScanConfigResponse(),
+        return DaraCore.from_map(
+            main_models.GetOssScanConfigResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_oss_scan_config_with_options_async(
         self,
-        request: oss_mfd_20231017_models.GetOssScanConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.GetOssScanConfigResponse:
-        """
-        @summary 获取Bucket检测配置
-        
-        @param request: GetOssScanConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetOssScanConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetOssScanConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetOssScanConfigResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bucket_name):
+        if not DaraCore.is_null(request.bucket_name):
             query['BucketName'] = request.bucket_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetOssScanConfig',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetOssScanConfig',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.GetOssScanConfigResponse(),
+        return DaraCore.from_map(
+            main_models.GetOssScanConfigResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_oss_scan_config(
         self,
-        request: oss_mfd_20231017_models.GetOssScanConfigRequest,
-    ) -> oss_mfd_20231017_models.GetOssScanConfigResponse:
-        """
-        @summary 获取Bucket检测配置
-        
-        @param request: GetOssScanConfigRequest
-        @return: GetOssScanConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetOssScanConfigRequest,
+    ) -> main_models.GetOssScanConfigResponse:
+        runtime = RuntimeOptions()
         return self.get_oss_scan_config_with_options(request, runtime)
 
     async def get_oss_scan_config_async(
         self,
-        request: oss_mfd_20231017_models.GetOssScanConfigRequest,
-    ) -> oss_mfd_20231017_models.GetOssScanConfigResponse:
-        """
-        @summary 获取Bucket检测配置
-        
-        @param request: GetOssScanConfigRequest
-        @return: GetOssScanConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetOssScanConfigRequest,
+    ) -> main_models.GetOssScanConfigResponse:
+        runtime = RuntimeOptions()
         return await self.get_oss_scan_config_with_options_async(request, runtime)
 
     def list_object_scan_event_with_options(
         self,
-        request: oss_mfd_20231017_models.ListObjectScanEventRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.ListObjectScanEventResponse:
-        """
-        @summary 获取文件检测告警列表
-        
-        @param request: ListObjectScanEventRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListObjectScanEventResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListObjectScanEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListObjectScanEventResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bucket_name):
+        if not DaraCore.is_null(request.batch_type):
+            query['BatchType'] = request.batch_type
+        if not DaraCore.is_null(request.bucket_name):
             query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.event_name):
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.event_name):
             query['EventName'] = request.event_name
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.md_5):
+        if not DaraCore.is_null(request.md_5):
             query['Md5'] = request.md_5
-        if not UtilClient.is_unset(request.oss_key):
+        if not DaraCore.is_null(request.oss_key):
             query['OssKey'] = request.oss_key
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.parent_event_id):
+        if not DaraCore.is_null(request.parent_event_id):
             query['ParentEventId'] = request.parent_event_id
-        if not UtilClient.is_unset(request.risk_level):
+        if not DaraCore.is_null(request.risk_level):
             query['RiskLevel'] = request.risk_level
-        if not UtilClient.is_unset(request.source):
+        if not DaraCore.is_null(request.source):
             query['Source'] = request.source
-        if not UtilClient.is_unset(request.time_end):
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.time_end):
             query['TimeEnd'] = request.time_end
-        if not UtilClient.is_unset(request.time_start):
+        if not DaraCore.is_null(request.time_start):
             query['TimeStart'] = request.time_start
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListObjectScanEvent',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListObjectScanEvent',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.ListObjectScanEventResponse(),
+        return DaraCore.from_map(
+            main_models.ListObjectScanEventResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_object_scan_event_with_options_async(
         self,
-        request: oss_mfd_20231017_models.ListObjectScanEventRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.ListObjectScanEventResponse:
-        """
-        @summary 获取文件检测告警列表
-        
-        @param request: ListObjectScanEventRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListObjectScanEventResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListObjectScanEventRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListObjectScanEventResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bucket_name):
+        if not DaraCore.is_null(request.batch_type):
+            query['BatchType'] = request.batch_type
+        if not DaraCore.is_null(request.bucket_name):
             query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.event_name):
+        if not DaraCore.is_null(request.event_id):
+            query['EventId'] = request.event_id
+        if not DaraCore.is_null(request.event_name):
             query['EventName'] = request.event_name
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.md_5):
+        if not DaraCore.is_null(request.md_5):
             query['Md5'] = request.md_5
-        if not UtilClient.is_unset(request.oss_key):
+        if not DaraCore.is_null(request.oss_key):
             query['OssKey'] = request.oss_key
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.parent_event_id):
+        if not DaraCore.is_null(request.parent_event_id):
             query['ParentEventId'] = request.parent_event_id
-        if not UtilClient.is_unset(request.risk_level):
+        if not DaraCore.is_null(request.risk_level):
             query['RiskLevel'] = request.risk_level
-        if not UtilClient.is_unset(request.source):
+        if not DaraCore.is_null(request.source):
             query['Source'] = request.source
-        if not UtilClient.is_unset(request.time_end):
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        if not DaraCore.is_null(request.time_end):
             query['TimeEnd'] = request.time_end
-        if not UtilClient.is_unset(request.time_start):
+        if not DaraCore.is_null(request.time_start):
             query['TimeStart'] = request.time_start
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListObjectScanEvent',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListObjectScanEvent',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.ListObjectScanEventResponse(),
+        return DaraCore.from_map(
+            main_models.ListObjectScanEventResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_object_scan_event(
         self,
-        request: oss_mfd_20231017_models.ListObjectScanEventRequest,
-    ) -> oss_mfd_20231017_models.ListObjectScanEventResponse:
-        """
-        @summary 获取文件检测告警列表
-        
-        @param request: ListObjectScanEventRequest
-        @return: ListObjectScanEventResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListObjectScanEventRequest,
+    ) -> main_models.ListObjectScanEventResponse:
+        runtime = RuntimeOptions()
         return self.list_object_scan_event_with_options(request, runtime)
 
     async def list_object_scan_event_async(
         self,
-        request: oss_mfd_20231017_models.ListObjectScanEventRequest,
-    ) -> oss_mfd_20231017_models.ListObjectScanEventResponse:
-        """
-        @summary 获取文件检测告警列表
-        
-        @param request: ListObjectScanEventRequest
-        @return: ListObjectScanEventResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListObjectScanEventRequest,
+    ) -> main_models.ListObjectScanEventResponse:
+        runtime = RuntimeOptions()
         return await self.list_object_scan_event_with_options_async(request, runtime)
 
     def list_oss_bucket_with_options(
         self,
-        request: oss_mfd_20231017_models.ListOssBucketRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.ListOssBucketResponse:
-        """
-        @summary 列举用户所有的bucket
-        
-        @param request: ListOssBucketRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListOssBucketResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListOssBucketRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOssBucketResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bucket_name):
+        if not DaraCore.is_null(request.bucket_name):
             query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListOssBucket',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListOssBucket',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.ListOssBucketResponse(),
+        return DaraCore.from_map(
+            main_models.ListOssBucketResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_oss_bucket_with_options_async(
         self,
-        request: oss_mfd_20231017_models.ListOssBucketRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.ListOssBucketResponse:
-        """
-        @summary 列举用户所有的bucket
-        
-        @param request: ListOssBucketRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListOssBucketResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListOssBucketRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOssBucketResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bucket_name):
+        if not DaraCore.is_null(request.bucket_name):
             query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListOssBucket',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListOssBucket',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.ListOssBucketResponse(),
+        return DaraCore.from_map(
+            main_models.ListOssBucketResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_oss_bucket(
         self,
-        request: oss_mfd_20231017_models.ListOssBucketRequest,
-    ) -> oss_mfd_20231017_models.ListOssBucketResponse:
-        """
-        @summary 列举用户所有的bucket
-        
-        @param request: ListOssBucketRequest
-        @return: ListOssBucketResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListOssBucketRequest,
+    ) -> main_models.ListOssBucketResponse:
+        runtime = RuntimeOptions()
         return self.list_oss_bucket_with_options(request, runtime)
 
     async def list_oss_bucket_async(
         self,
-        request: oss_mfd_20231017_models.ListOssBucketRequest,
-    ) -> oss_mfd_20231017_models.ListOssBucketResponse:
-        """
-        @summary 列举用户所有的bucket
-        
-        @param request: ListOssBucketRequest
-        @return: ListOssBucketResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListOssBucketRequest,
+    ) -> main_models.ListOssBucketResponse:
+        runtime = RuntimeOptions()
         return await self.list_oss_bucket_with_options_async(request, runtime)
 
     def list_oss_bucket_scan_info_with_options(
         self,
-        request: oss_mfd_20231017_models.ListOssBucketScanInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.ListOssBucketScanInfoResponse:
-        """
-        @summary 获取bucket详情
-        
-        @param request: ListOssBucketScanInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListOssBucketScanInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListOssBucketScanInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOssBucketScanInfoResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bucket_name):
+        if not DaraCore.is_null(request.bucket_name):
             query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.fuzz_bucket_name):
+        if not DaraCore.is_null(request.fuzz_bucket_name):
             query['FuzzBucketName'] = request.fuzz_bucket_name
-        if not UtilClient.is_unset(request.has_risk):
+        if not DaraCore.is_null(request.has_risk):
             query['HasRisk'] = request.has_risk
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListOssBucketScanInfo',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListOssBucketScanInfo',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.ListOssBucketScanInfoResponse(),
+        return DaraCore.from_map(
+            main_models.ListOssBucketScanInfoResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_oss_bucket_scan_info_with_options_async(
         self,
-        request: oss_mfd_20231017_models.ListOssBucketScanInfoRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.ListOssBucketScanInfoResponse:
-        """
-        @summary 获取bucket详情
-        
-        @param request: ListOssBucketScanInfoRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListOssBucketScanInfoResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListOssBucketScanInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListOssBucketScanInfoResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bucket_name):
+        if not DaraCore.is_null(request.bucket_name):
             query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.current_page):
+        if not DaraCore.is_null(request.current_page):
             query['CurrentPage'] = request.current_page
-        if not UtilClient.is_unset(request.fuzz_bucket_name):
+        if not DaraCore.is_null(request.fuzz_bucket_name):
             query['FuzzBucketName'] = request.fuzz_bucket_name
-        if not UtilClient.is_unset(request.has_risk):
+        if not DaraCore.is_null(request.has_risk):
             query['HasRisk'] = request.has_risk
-        if not UtilClient.is_unset(request.lang):
+        if not DaraCore.is_null(request.lang):
             query['Lang'] = request.lang
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListOssBucketScanInfo',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListOssBucketScanInfo',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.ListOssBucketScanInfoResponse(),
+        return DaraCore.from_map(
+            main_models.ListOssBucketScanInfoResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_oss_bucket_scan_info(
         self,
-        request: oss_mfd_20231017_models.ListOssBucketScanInfoRequest,
-    ) -> oss_mfd_20231017_models.ListOssBucketScanInfoResponse:
-        """
-        @summary 获取bucket详情
-        
-        @param request: ListOssBucketScanInfoRequest
-        @return: ListOssBucketScanInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListOssBucketScanInfoRequest,
+    ) -> main_models.ListOssBucketScanInfoResponse:
+        runtime = RuntimeOptions()
         return self.list_oss_bucket_scan_info_with_options(request, runtime)
 
     async def list_oss_bucket_scan_info_async(
         self,
-        request: oss_mfd_20231017_models.ListOssBucketScanInfoRequest,
-    ) -> oss_mfd_20231017_models.ListOssBucketScanInfoResponse:
-        """
-        @summary 获取bucket详情
-        
-        @param request: ListOssBucketScanInfoRequest
-        @return: ListOssBucketScanInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListOssBucketScanInfoRequest,
+    ) -> main_models.ListOssBucketScanInfoResponse:
+        runtime = RuntimeOptions()
         return await self.list_oss_bucket_scan_info_with_options_async(request, runtime)
 
     def list_support_object_suffix_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.ListSupportObjectSuffixResponse:
-        """
-        @summary 获取支持的文件后缀
-        
-        @param request: ListSupportObjectSuffixRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListSupportObjectSuffixResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='ListSupportObjectSuffix',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSupportObjectSuffixResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'ListSupportObjectSuffix',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.ListSupportObjectSuffixResponse(),
+        return DaraCore.from_map(
+            main_models.ListSupportObjectSuffixResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_support_object_suffix_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.ListSupportObjectSuffixResponse:
-        """
-        @summary 获取支持的文件后缀
-        
-        @param request: ListSupportObjectSuffixRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListSupportObjectSuffixResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='ListSupportObjectSuffix',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSupportObjectSuffixResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'ListSupportObjectSuffix',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.ListSupportObjectSuffixResponse(),
+        return DaraCore.from_map(
+            main_models.ListSupportObjectSuffixResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_support_object_suffix(self) -> oss_mfd_20231017_models.ListSupportObjectSuffixResponse:
-        """
-        @summary 获取支持的文件后缀
-        
-        @return: ListSupportObjectSuffixResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def list_support_object_suffix(self) -> main_models.ListSupportObjectSuffixResponse:
+        runtime = RuntimeOptions()
         return self.list_support_object_suffix_with_options(runtime)
 
-    async def list_support_object_suffix_async(self) -> oss_mfd_20231017_models.ListSupportObjectSuffixResponse:
-        """
-        @summary 获取支持的文件后缀
-        
-        @return: ListSupportObjectSuffixResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def list_support_object_suffix_async(self) -> main_models.ListSupportObjectSuffixResponse:
+        runtime = RuntimeOptions()
         return await self.list_support_object_suffix_with_options_async(runtime)
 
     def operate_bucket_scan_task_with_options(
         self,
-        request: oss_mfd_20231017_models.OperateBucketScanTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.OperateBucketScanTaskResponse:
-        """
-        @summary 操作oss检测任务
-        
-        @param request: OperateBucketScanTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OperateBucketScanTaskResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.OperateBucketScanTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateBucketScanTaskResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bucket_name):
+        if not DaraCore.is_null(request.bucket_name):
             query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.operate_code):
+        if not DaraCore.is_null(request.operate_code):
             query['OperateCode'] = request.operate_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='OperateBucketScanTask',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'OperateBucketScanTask',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.OperateBucketScanTaskResponse(),
+        return DaraCore.from_map(
+            main_models.OperateBucketScanTaskResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def operate_bucket_scan_task_with_options_async(
         self,
-        request: oss_mfd_20231017_models.OperateBucketScanTaskRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.OperateBucketScanTaskResponse:
-        """
-        @summary 操作oss检测任务
-        
-        @param request: OperateBucketScanTaskRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: OperateBucketScanTaskResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.OperateBucketScanTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateBucketScanTaskResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.bucket_name):
+        if not DaraCore.is_null(request.bucket_name):
             query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.operate_code):
+        if not DaraCore.is_null(request.operate_code):
             query['OperateCode'] = request.operate_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='OperateBucketScanTask',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'OperateBucketScanTask',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.OperateBucketScanTaskResponse(),
+        return DaraCore.from_map(
+            main_models.OperateBucketScanTaskResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def operate_bucket_scan_task(
         self,
-        request: oss_mfd_20231017_models.OperateBucketScanTaskRequest,
-    ) -> oss_mfd_20231017_models.OperateBucketScanTaskResponse:
-        """
-        @summary 操作oss检测任务
-        
-        @param request: OperateBucketScanTaskRequest
-        @return: OperateBucketScanTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.OperateBucketScanTaskRequest,
+    ) -> main_models.OperateBucketScanTaskResponse:
+        runtime = RuntimeOptions()
         return self.operate_bucket_scan_task_with_options(request, runtime)
 
     async def operate_bucket_scan_task_async(
         self,
-        request: oss_mfd_20231017_models.OperateBucketScanTaskRequest,
-    ) -> oss_mfd_20231017_models.OperateBucketScanTaskResponse:
-        """
-        @summary 操作oss检测任务
-        
-        @param request: OperateBucketScanTaskRequest
-        @return: OperateBucketScanTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.OperateBucketScanTaskRequest,
+    ) -> main_models.OperateBucketScanTaskResponse:
+        runtime = RuntimeOptions()
         return await self.operate_bucket_scan_task_with_options_async(request, runtime)
 
     def update_oss_scan_config_with_options(
         self,
-        request: oss_mfd_20231017_models.UpdateOssScanConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.UpdateOssScanConfigResponse:
-        """
-        @summary 修改Bucket检测配置
-        
-        @param request: UpdateOssScanConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateOssScanConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateOssScanConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateOssScanConfigResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.all_key_prefix):
+        if not DaraCore.is_null(request.all_key_prefix):
             query['AllKeyPrefix'] = request.all_key_prefix
-        if not UtilClient.is_unset(request.bucket_name):
+        if not DaraCore.is_null(request.bucket_name):
             query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.decompress_max_file_count):
+        if not DaraCore.is_null(request.decompress_max_file_count):
             query['DecompressMaxFileCount'] = request.decompress_max_file_count
-        if not UtilClient.is_unset(request.decompress_max_layer):
+        if not DaraCore.is_null(request.decompress_max_layer):
             query['DecompressMaxLayer'] = request.decompress_max_layer
-        if not UtilClient.is_unset(request.decryption_list):
+        if not DaraCore.is_null(request.decryption_list):
             query['DecryptionList'] = request.decryption_list
-        if not UtilClient.is_unset(request.enable):
+        if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.key_prefix_list):
+        if not DaraCore.is_null(request.key_prefix_list):
             query['KeyPrefixList'] = request.key_prefix_list
-        if not UtilClient.is_unset(request.key_suffix_list):
+        if not DaraCore.is_null(request.key_suffix_list):
             query['KeySuffixList'] = request.key_suffix_list
-        if not UtilClient.is_unset(request.last_modified_start_time):
+        if not DaraCore.is_null(request.last_modified_start_time):
             query['LastModifiedStartTime'] = request.last_modified_start_time
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.real_time_incr):
+        if not DaraCore.is_null(request.real_time_incr):
             query['RealTimeIncr'] = request.real_time_incr
-        if not UtilClient.is_unset(request.scan_day_list):
+        if not DaraCore.is_null(request.scan_day_list):
             query['ScanDayList'] = request.scan_day_list
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateOssScanConfig',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateOssScanConfig',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.UpdateOssScanConfigResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateOssScanConfigResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_oss_scan_config_with_options_async(
         self,
-        request: oss_mfd_20231017_models.UpdateOssScanConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> oss_mfd_20231017_models.UpdateOssScanConfigResponse:
-        """
-        @summary 修改Bucket检测配置
-        
-        @param request: UpdateOssScanConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateOssScanConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateOssScanConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateOssScanConfigResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.all_key_prefix):
+        if not DaraCore.is_null(request.all_key_prefix):
             query['AllKeyPrefix'] = request.all_key_prefix
-        if not UtilClient.is_unset(request.bucket_name):
+        if not DaraCore.is_null(request.bucket_name):
             query['BucketName'] = request.bucket_name
-        if not UtilClient.is_unset(request.decompress_max_file_count):
+        if not DaraCore.is_null(request.decompress_max_file_count):
             query['DecompressMaxFileCount'] = request.decompress_max_file_count
-        if not UtilClient.is_unset(request.decompress_max_layer):
+        if not DaraCore.is_null(request.decompress_max_layer):
             query['DecompressMaxLayer'] = request.decompress_max_layer
-        if not UtilClient.is_unset(request.decryption_list):
+        if not DaraCore.is_null(request.decryption_list):
             query['DecryptionList'] = request.decryption_list
-        if not UtilClient.is_unset(request.enable):
+        if not DaraCore.is_null(request.enable):
             query['Enable'] = request.enable
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             query['Id'] = request.id
-        if not UtilClient.is_unset(request.key_prefix_list):
+        if not DaraCore.is_null(request.key_prefix_list):
             query['KeyPrefixList'] = request.key_prefix_list
-        if not UtilClient.is_unset(request.key_suffix_list):
+        if not DaraCore.is_null(request.key_suffix_list):
             query['KeySuffixList'] = request.key_suffix_list
-        if not UtilClient.is_unset(request.last_modified_start_time):
+        if not DaraCore.is_null(request.last_modified_start_time):
             query['LastModifiedStartTime'] = request.last_modified_start_time
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.real_time_incr):
+        if not DaraCore.is_null(request.real_time_incr):
             query['RealTimeIncr'] = request.real_time_incr
-        if not UtilClient.is_unset(request.scan_day_list):
+        if not DaraCore.is_null(request.scan_day_list):
             query['ScanDayList'] = request.scan_day_list
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateOssScanConfig',
-            version='2023-10-17',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateOssScanConfig',
+            version = '2023-10-17',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            oss_mfd_20231017_models.UpdateOssScanConfigResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateOssScanConfigResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_oss_scan_config(
         self,
-        request: oss_mfd_20231017_models.UpdateOssScanConfigRequest,
-    ) -> oss_mfd_20231017_models.UpdateOssScanConfigResponse:
-        """
-        @summary 修改Bucket检测配置
-        
-        @param request: UpdateOssScanConfigRequest
-        @return: UpdateOssScanConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateOssScanConfigRequest,
+    ) -> main_models.UpdateOssScanConfigResponse:
+        runtime = RuntimeOptions()
         return self.update_oss_scan_config_with_options(request, runtime)
 
     async def update_oss_scan_config_async(
         self,
-        request: oss_mfd_20231017_models.UpdateOssScanConfigRequest,
-    ) -> oss_mfd_20231017_models.UpdateOssScanConfigResponse:
-        """
-        @summary 修改Bucket检测配置
-        
-        @param request: UpdateOssScanConfigRequest
-        @return: UpdateOssScanConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateOssScanConfigRequest,
+    ) -> main_models.UpdateOssScanConfigResponse:
+        runtime = RuntimeOptions()
         return await self.update_oss_scan_config_with_options_async(request, runtime)
