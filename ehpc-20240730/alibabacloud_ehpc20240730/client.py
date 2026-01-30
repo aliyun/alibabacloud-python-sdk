@@ -696,6 +696,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_queue_with_options_async(request, runtime)
 
+    def create_reserved_node_pool_with_options(
+        self,
+        request: main_models.CreateReservedNodePoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateReservedNodePoolResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.count):
+            query['Count'] = request.count
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.host_postfix):
+            query['HostPostfix'] = request.host_postfix
+        if not DaraCore.is_null(request.host_prefix):
+            query['HostPrefix'] = request.host_prefix
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateReservedNodePool',
+            version = '2024-07-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateReservedNodePoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_reserved_node_pool_with_options_async(
+        self,
+        request: main_models.CreateReservedNodePoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateReservedNodePoolResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.count):
+            query['Count'] = request.count
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.host_postfix):
+            query['HostPostfix'] = request.host_postfix
+        if not DaraCore.is_null(request.host_prefix):
+            query['HostPrefix'] = request.host_prefix
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateReservedNodePool',
+            version = '2024-07-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateReservedNodePoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_reserved_node_pool(
+        self,
+        request: main_models.CreateReservedNodePoolRequest,
+    ) -> main_models.CreateReservedNodePoolResponse:
+        runtime = RuntimeOptions()
+        return self.create_reserved_node_pool_with_options(request, runtime)
+
+    async def create_reserved_node_pool_async(
+        self,
+        request: main_models.CreateReservedNodePoolRequest,
+    ) -> main_models.CreateReservedNodePoolResponse:
+        runtime = RuntimeOptions()
+        return await self.create_reserved_node_pool_with_options_async(request, runtime)
+
     def create_users_with_options(
         self,
         tmp_req: main_models.CreateUsersRequest,
@@ -1011,6 +1105,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteQueuesResponse:
         runtime = RuntimeOptions()
         return await self.delete_queues_with_options_async(request, runtime)
+
+    def delete_reserved_node_pool_with_options(
+        self,
+        request: main_models.DeleteReservedNodePoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteReservedNodePoolResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteReservedNodePool',
+            version = '2024-07-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteReservedNodePoolResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_reserved_node_pool_with_options_async(
+        self,
+        request: main_models.DeleteReservedNodePoolRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteReservedNodePoolResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cluster_id):
+            query['ClusterId'] = request.cluster_id
+        if not DaraCore.is_null(request.id):
+            query['Id'] = request.id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteReservedNodePool',
+            version = '2024-07-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteReservedNodePoolResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_reserved_node_pool(
+        self,
+        request: main_models.DeleteReservedNodePoolRequest,
+    ) -> main_models.DeleteReservedNodePoolResponse:
+        runtime = RuntimeOptions()
+        return self.delete_reserved_node_pool_with_options(request, runtime)
+
+    async def delete_reserved_node_pool_async(
+        self,
+        request: main_models.DeleteReservedNodePoolRequest,
+    ) -> main_models.DeleteReservedNodePoolResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_reserved_node_pool_with_options_async(request, runtime)
 
     def delete_users_with_options(
         self,

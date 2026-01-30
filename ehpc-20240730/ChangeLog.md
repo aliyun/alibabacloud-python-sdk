@@ -1,3 +1,8 @@
+2026-01-30 Version: 2.3.0
+- Support API CreateReservedNodePool.
+- Support API DeleteReservedNodePool.
+
+
 2026-01-21 Version: 2.2.3
 - Update API CreateNodes: add request parameters MinCount.
 

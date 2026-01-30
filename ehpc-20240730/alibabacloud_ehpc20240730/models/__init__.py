@@ -30,6 +30,9 @@ from ._create_queue_request import CreateQueueRequest
 from ._create_queue_shrink_request import CreateQueueShrinkRequest
 from ._create_queue_response_body import CreateQueueResponseBody
 from ._create_queue_response import CreateQueueResponse
+from ._create_reserved_node_pool_request import CreateReservedNodePoolRequest
+from ._create_reserved_node_pool_response_body import CreateReservedNodePoolResponseBody
+from ._create_reserved_node_pool_response import CreateReservedNodePoolResponse
 from ._create_users_request import CreateUsersRequest
 from ._create_users_shrink_request import CreateUsersShrinkRequest
 from ._create_users_response_body import CreateUsersResponseBody
@@ -45,6 +48,9 @@ from ._delete_queues_request import DeleteQueuesRequest
 from ._delete_queues_shrink_request import DeleteQueuesShrinkRequest
 from ._delete_queues_response_body import DeleteQueuesResponseBody
 from ._delete_queues_response import DeleteQueuesResponse
+from ._delete_reserved_node_pool_request import DeleteReservedNodePoolRequest
+from ._delete_reserved_node_pool_response_body import DeleteReservedNodePoolResponseBody
+from ._delete_reserved_node_pool_response import DeleteReservedNodePoolResponse
 from ._delete_users_request import DeleteUsersRequest
 from ._delete_users_shrink_request import DeleteUsersShrinkRequest
 from ._delete_users_response_body import DeleteUsersResponseBody
@@ -286,6 +292,9 @@ __all__ = [
     CreateQueueShrinkRequest,
     CreateQueueResponseBody,
     CreateQueueResponse,
+    CreateReservedNodePoolRequest,
+    CreateReservedNodePoolResponseBody,
+    CreateReservedNodePoolResponse,
     CreateUsersRequest,
     CreateUsersShrinkRequest,
     CreateUsersResponseBody,
@@ -301,6 +310,9 @@ __all__ = [
     DeleteQueuesShrinkRequest,
     DeleteQueuesResponseBody,
     DeleteQueuesResponse,
+    DeleteReservedNodePoolRequest,
+    DeleteReservedNodePoolResponseBody,
+    DeleteReservedNodePoolResponse,
     DeleteUsersRequest,
     DeleteUsersShrinkRequest,
     DeleteUsersResponseBody,
