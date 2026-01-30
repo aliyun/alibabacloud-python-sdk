@@ -3482,6 +3482,8 @@ class Client(OpenApiClient):
             query['DocumentNumber'] = request.document_number
         if not DaraCore.is_null(request.edit_ocr_result):
             query['EditOcrResult'] = request.edit_ocr_result
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
         if not DaraCore.is_null(request.experience_code):
             query['ExperienceCode'] = request.experience_code
         if not DaraCore.is_null(request.face_group_codes):
@@ -3508,6 +3510,8 @@ class Client(OpenApiClient):
             query['MerchantUserId'] = request.merchant_user_id
         if not DaraCore.is_null(request.meta_info):
             query['MetaInfo'] = request.meta_info
+        if not DaraCore.is_null(request.mobile):
+            query['Mobile'] = request.mobile
         if not DaraCore.is_null(request.model):
             query['Model'] = request.model
         if not DaraCore.is_null(request.ocr):
@@ -3614,6 +3618,8 @@ class Client(OpenApiClient):
             query['DocumentNumber'] = request.document_number
         if not DaraCore.is_null(request.edit_ocr_result):
             query['EditOcrResult'] = request.edit_ocr_result
+        if not DaraCore.is_null(request.email):
+            query['Email'] = request.email
         if not DaraCore.is_null(request.experience_code):
             query['ExperienceCode'] = request.experience_code
         if not DaraCore.is_null(request.face_group_codes):
@@ -3640,6 +3646,8 @@ class Client(OpenApiClient):
             query['MerchantUserId'] = request.merchant_user_id
         if not DaraCore.is_null(request.meta_info):
             query['MetaInfo'] = request.meta_info
+        if not DaraCore.is_null(request.mobile):
+            query['Mobile'] = request.mobile
         if not DaraCore.is_null(request.model):
             query['Model'] = request.model
         if not DaraCore.is_null(request.ocr):

@@ -26,6 +26,7 @@ class InitializeRequest(DaraModel):
         doc_video: str = None,
         document_number: str = None,
         edit_ocr_result: str = None,
+        email: str = None,
         experience_code: str = None,
         face_group_codes: str = None,
         face_picture_base_64: str = None,
@@ -40,6 +41,7 @@ class InitializeRequest(DaraModel):
         merchant_biz_id: str = None,
         merchant_user_id: str = None,
         meta_info: str = None,
+        mobile: str = None,
         model: str = None,
         ocr: str = None,
         pages: str = None,
@@ -120,6 +122,7 @@ class InitializeRequest(DaraModel):
         # 
         # - **1** (default): Editable
         self.edit_ocr_result = edit_ocr_result
+        self.email = email
         # Experience code
         self.experience_code = experience_code
         # Face library to be compared
@@ -159,6 +162,7 @@ class InitializeRequest(DaraModel):
         self.merchant_user_id = merchant_user_id
         # Metainfo environment parameter, which needs to be obtained through the client SDK.
         self.meta_info = meta_info
+        self.mobile = mobile
         # The type of liveness detection to be performed:
         # 
         # - **LIVENESS** (default): Blinking action liveness detection.
@@ -307,6 +311,9 @@ class InitializeRequest(DaraModel):
         if self.edit_ocr_result is not None:
             result['EditOcrResult'] = self.edit_ocr_result
 
+        if self.email is not None:
+            result['Email'] = self.email
+
         if self.experience_code is not None:
             result['ExperienceCode'] = self.experience_code
 
@@ -348,6 +355,9 @@ class InitializeRequest(DaraModel):
 
         if self.meta_info is not None:
             result['MetaInfo'] = self.meta_info
+
+        if self.mobile is not None:
+            result['Mobile'] = self.mobile
 
         if self.model is not None:
             result['Model'] = self.model
@@ -461,6 +471,9 @@ class InitializeRequest(DaraModel):
         if m.get('EditOcrResult') is not None:
             self.edit_ocr_result = m.get('EditOcrResult')
 
+        if m.get('Email') is not None:
+            self.email = m.get('Email')
+
         if m.get('ExperienceCode') is not None:
             self.experience_code = m.get('ExperienceCode')
 
@@ -502,6 +515,9 @@ class InitializeRequest(DaraModel):
 
         if m.get('MetaInfo') is not None:
             self.meta_info = m.get('MetaInfo')
+
+        if m.get('Mobile') is not None:
+            self.mobile = m.get('Mobile')
 
         if m.get('Model') is not None:
             self.model = m.get('Model')

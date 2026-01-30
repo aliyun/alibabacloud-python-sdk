@@ -71,6 +71,7 @@ class CheckResultResponseBodyResult(DaraModel):
         ext_id_info: str = None,
         ext_info: str = None,
         ext_risk_info: str = None,
+        ext_source_info: str = None,
         passed: str = None,
         sub_code: str = None,
     ):
@@ -86,6 +87,7 @@ class CheckResultResponseBodyResult(DaraModel):
         self.ext_info = ext_info
         # Risk information.
         self.ext_risk_info = ext_risk_info
+        self.ext_source_info = ext_source_info
         # Whether the authentication is passed.
         # 
         # - Y: Passed
@@ -120,6 +122,9 @@ class CheckResultResponseBodyResult(DaraModel):
         if self.ext_risk_info is not None:
             result['ExtRiskInfo'] = self.ext_risk_info
 
+        if self.ext_source_info is not None:
+            result['ExtSourceInfo'] = self.ext_source_info
+
         if self.passed is not None:
             result['Passed'] = self.passed
 
@@ -147,6 +152,9 @@ class CheckResultResponseBodyResult(DaraModel):
 
         if m.get('ExtRiskInfo') is not None:
             self.ext_risk_info = m.get('ExtRiskInfo')
+
+        if m.get('ExtSourceInfo') is not None:
+            self.ext_source_info = m.get('ExtSourceInfo')
 
         if m.get('Passed') is not None:
             self.passed = m.get('Passed')
