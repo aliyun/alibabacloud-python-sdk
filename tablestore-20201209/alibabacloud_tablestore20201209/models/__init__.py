@@ -70,7 +70,7 @@ from ._create_instance_request import CreateInstanceRequestTags
 from ._create_vcuinstance_request import CreateVCUInstanceRequestTags
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
 from ._get_instance_response_body import GetInstanceResponseBodyTags
-from ._list_cluster_type_response_body import ListClusterTypeResponseBodyClusterTypeDetailList
+from ._list_cluster_type_response_body import ListClusterTypeResponseBodyClusterTypeInfos
 from ._list_instances_request import ListInstancesRequestTag
 from ._list_instances_response_body import ListInstancesResponseBodyInstances
 from ._list_tag_resources_request import ListTagResourcesRequestTags
@@ -148,7 +148,7 @@ __all__ = [
     CreateVCUInstanceRequestTags,
     DescribeRegionsResponseBodyRegions,
     GetInstanceResponseBodyTags,
-    ListClusterTypeResponseBodyClusterTypeDetailList,
+    ListClusterTypeResponseBodyClusterTypeInfos,
     ListInstancesRequestTag,
     ListInstancesResponseBodyInstances,
     ListTagResourcesRequestTags,

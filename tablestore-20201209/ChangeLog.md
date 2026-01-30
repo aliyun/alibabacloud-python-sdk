@@ -1,3 +1,10 @@
+2026-01-30 Version: 3.0.0
+- Update API ListClusterType: add response parameters Body.ClusterTypeInfos.
+- Update API ListClusterType: add response parameters Body.ClusterTypes.
+- Update API ListClusterType: delete response parameters Body.ClusterTypeDetailList.
+- Update API ListClusterType: delete response parameters Body.ClusterTypeList.
+
+
 2026-01-13 Version: 2.0.0
 - Support API BindInstance2Vpc.
 - Support API DeleteVCUInstance.

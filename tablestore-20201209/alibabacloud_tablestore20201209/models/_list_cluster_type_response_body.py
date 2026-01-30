@@ -10,17 +10,17 @@ from darabonba.model import DaraModel
 class ListClusterTypeResponseBody(DaraModel):
     def __init__(
         self,
-        cluster_type_detail_list: List[main_models.ListClusterTypeResponseBodyClusterTypeDetailList] = None,
-        cluster_type_list: List[str] = None,
+        cluster_type_infos: List[main_models.ListClusterTypeResponseBodyClusterTypeInfos] = None,
+        cluster_types: List[str] = None,
         request_id: str = None,
     ):
-        self.cluster_type_detail_list = cluster_type_detail_list
-        self.cluster_type_list = cluster_type_list
+        self.cluster_type_infos = cluster_type_infos
+        self.cluster_types = cluster_types
         self.request_id = request_id
 
     def validate(self):
-        if self.cluster_type_detail_list:
-            for v1 in self.cluster_type_detail_list:
+        if self.cluster_type_infos:
+            for v1 in self.cluster_type_infos:
                  if v1:
                     v1.validate()
 
@@ -29,13 +29,13 @@ class ListClusterTypeResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        result['ClusterTypeDetailList'] = []
-        if self.cluster_type_detail_list is not None:
-            for k1 in self.cluster_type_detail_list:
-                result['ClusterTypeDetailList'].append(k1.to_map() if k1 else None)
+        result['ClusterTypeInfos'] = []
+        if self.cluster_type_infos is not None:
+            for k1 in self.cluster_type_infos:
+                result['ClusterTypeInfos'].append(k1.to_map() if k1 else None)
 
-        if self.cluster_type_list is not None:
-            result['ClusterTypeList'] = self.cluster_type_list
+        if self.cluster_types is not None:
+            result['ClusterTypes'] = self.cluster_types
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -44,21 +44,21 @@ class ListClusterTypeResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.cluster_type_detail_list = []
-        if m.get('ClusterTypeDetailList') is not None:
-            for k1 in m.get('ClusterTypeDetailList'):
-                temp_model = main_models.ListClusterTypeResponseBodyClusterTypeDetailList()
-                self.cluster_type_detail_list.append(temp_model.from_map(k1))
+        self.cluster_type_infos = []
+        if m.get('ClusterTypeInfos') is not None:
+            for k1 in m.get('ClusterTypeInfos'):
+                temp_model = main_models.ListClusterTypeResponseBodyClusterTypeInfos()
+                self.cluster_type_infos.append(temp_model.from_map(k1))
 
-        if m.get('ClusterTypeList') is not None:
-            self.cluster_type_list = m.get('ClusterTypeList')
+        if m.get('ClusterTypes') is not None:
+            self.cluster_types = m.get('ClusterTypes')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
         return self
 
-class ListClusterTypeResponseBodyClusterTypeDetailList(DaraModel):
+class ListClusterTypeResponseBodyClusterTypeInfos(DaraModel):
     def __init__(
         self,
         cluster_type: str = None,
