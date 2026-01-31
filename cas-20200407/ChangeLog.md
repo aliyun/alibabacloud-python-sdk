@@ -1,3 +1,18 @@
+2026-01-31 Version: 3.1.0
+- Support API ApplyCertificate.
+- Support API CancelPendingCertificate.
+- Support API DeleteInstance.
+- Support API GetCertificateDetail.
+- Support API GetInstanceDetail.
+- Support API GetInstanceSummary.
+- Support API GetTaskAttribute.
+- Support API ListCertificates.
+- Support API ListInstances.
+- Support API RefundInstance.
+- Support API RevokeCertificate.
+- Support API UpdateInstance.
+
+
 2026-01-06 Version: 3.0.5
 - Update API Decrypt: add request parameters WarehouseId.
 - Update API Encrypt: add request parameters WarehouseId.

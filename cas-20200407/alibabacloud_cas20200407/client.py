@@ -93,6 +93,76 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def apply_certificate_with_options(
+        self,
+        request: main_models.ApplyCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ApplyCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ApplyCertificate',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ApplyCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_certificate_with_options_async(
+        self,
+        request: main_models.ApplyCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ApplyCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ApplyCertificate',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ApplyCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_certificate(
+        self,
+        request: main_models.ApplyCertificateRequest,
+    ) -> main_models.ApplyCertificateResponse:
+        runtime = RuntimeOptions()
+        return self.apply_certificate_with_options(request, runtime)
+
+    async def apply_certificate_async(
+        self,
+        request: main_models.ApplyCertificateRequest,
+    ) -> main_models.ApplyCertificateResponse:
+        runtime = RuntimeOptions()
+        return await self.apply_certificate_with_options_async(request, runtime)
+
     def cancel_certificate_for_package_request_with_options(
         self,
         request: main_models.CancelCertificateForPackageRequestRequest,
@@ -232,6 +302,76 @@ class Client(OpenApiClient):
     ) -> main_models.CancelOrderRequestResponse:
         runtime = RuntimeOptions()
         return await self.cancel_order_request_with_options_async(request, runtime)
+
+    def cancel_pending_certificate_with_options(
+        self,
+        request: main_models.CancelPendingCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelPendingCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelPendingCertificate',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelPendingCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def cancel_pending_certificate_with_options_async(
+        self,
+        request: main_models.CancelPendingCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelPendingCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CancelPendingCertificate',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CancelPendingCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def cancel_pending_certificate(
+        self,
+        request: main_models.CancelPendingCertificateRequest,
+    ) -> main_models.CancelPendingCertificateResponse:
+        runtime = RuntimeOptions()
+        return self.cancel_pending_certificate_with_options(request, runtime)
+
+    async def cancel_pending_certificate_async(
+        self,
+        request: main_models.CancelPendingCertificateRequest,
+    ) -> main_models.CancelPendingCertificateResponse:
+        runtime = RuntimeOptions()
+        return await self.cancel_pending_certificate_with_options_async(request, runtime)
 
     def create_certificate_for_package_request_with_options(
         self,
@@ -1019,6 +1159,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_deployment_job_with_options_async(request, runtime)
 
+    def delete_instance_with_options(
+        self,
+        request: main_models.DeleteInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteInstance',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_instance_with_options_async(
+        self,
+        request: main_models.DeleteInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteInstance',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_instance(
+        self,
+        request: main_models.DeleteInstanceRequest,
+    ) -> main_models.DeleteInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_instance_with_options(request, runtime)
+
+    async def delete_instance_async(
+        self,
+        request: main_models.DeleteInstanceRequest,
+    ) -> main_models.DeleteInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_instance_with_options_async(request, runtime)
+
     def delete_pcacert_with_options(
         self,
         request: main_models.DeletePCACertRequest,
@@ -1723,6 +1933,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_cert_warehouse_quota_with_options_async(runtime)
 
+    def get_certificate_detail_with_options(
+        self,
+        request: main_models.GetCertificateDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCertificateDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCertificateDetail',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCertificateDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_certificate_detail_with_options_async(
+        self,
+        request: main_models.GetCertificateDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCertificateDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.certificate_id):
+            query['CertificateId'] = request.certificate_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCertificateDetail',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCertificateDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_certificate_detail(
+        self,
+        request: main_models.GetCertificateDetailRequest,
+    ) -> main_models.GetCertificateDetailResponse:
+        runtime = RuntimeOptions()
+        return self.get_certificate_detail_with_options(request, runtime)
+
+    async def get_certificate_detail_async(
+        self,
+        request: main_models.GetCertificateDetailRequest,
+    ) -> main_models.GetCertificateDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.get_certificate_detail_with_options_async(request, runtime)
+
     def get_csr_detail_with_options(
         self,
         request: main_models.GetCsrDetailRequest,
@@ -1792,6 +2072,220 @@ class Client(OpenApiClient):
     ) -> main_models.GetCsrDetailResponse:
         runtime = RuntimeOptions()
         return await self.get_csr_detail_with_options_async(request, runtime)
+
+    def get_instance_detail_with_options(
+        self,
+        request: main_models.GetInstanceDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceDetail',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_detail_with_options_async(
+        self,
+        request: main_models.GetInstanceDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceDetail',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_detail(
+        self,
+        request: main_models.GetInstanceDetailRequest,
+    ) -> main_models.GetInstanceDetailResponse:
+        runtime = RuntimeOptions()
+        return self.get_instance_detail_with_options(request, runtime)
+
+    async def get_instance_detail_async(
+        self,
+        request: main_models.GetInstanceDetailRequest,
+    ) -> main_models.GetInstanceDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.get_instance_detail_with_options_async(request, runtime)
+
+    def get_instance_summary_with_options(
+        self,
+        request: main_models.GetInstanceSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceSummaryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceSummary',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceSummaryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_summary_with_options_async(
+        self,
+        request: main_models.GetInstanceSummaryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceSummaryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceSummary',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceSummaryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_summary(
+        self,
+        request: main_models.GetInstanceSummaryRequest,
+    ) -> main_models.GetInstanceSummaryResponse:
+        runtime = RuntimeOptions()
+        return self.get_instance_summary_with_options(request, runtime)
+
+    async def get_instance_summary_async(
+        self,
+        request: main_models.GetInstanceSummaryRequest,
+    ) -> main_models.GetInstanceSummaryResponse:
+        runtime = RuntimeOptions()
+        return await self.get_instance_summary_with_options_async(request, runtime)
+
+    def get_task_attribute_with_options(
+        self,
+        request: main_models.GetTaskAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTaskAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTaskAttribute',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTaskAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_task_attribute_with_options_async(
+        self,
+        request: main_models.GetTaskAttributeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetTaskAttributeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetTaskAttribute',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetTaskAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_task_attribute(
+        self,
+        request: main_models.GetTaskAttributeRequest,
+    ) -> main_models.GetTaskAttributeResponse:
+        runtime = RuntimeOptions()
+        return self.get_task_attribute_with_options(request, runtime)
+
+    async def get_task_attribute_async(
+        self,
+        request: main_models.GetTaskAttributeRequest,
+    ) -> main_models.GetTaskAttributeResponse:
+        runtime = RuntimeOptions()
+        return await self.get_task_attribute_with_options_async(request, runtime)
 
     def get_user_certificate_detail_with_options(
         self,
@@ -2046,6 +2540,100 @@ class Client(OpenApiClient):
     ) -> main_models.ListCertWarehouseResponse:
         runtime = RuntimeOptions()
         return await self.list_cert_warehouse_with_options_async(request, runtime)
+
+    def list_certificates_with_options(
+        self,
+        request: main_models.ListCertificatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCertificatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.certificate_source):
+            query['CertificateSource'] = request.certificate_source
+        if not DaraCore.is_null(request.certificate_status):
+            query['CertificateStatus'] = request.certificate_status
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.show_size):
+            query['ShowSize'] = request.show_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCertificates',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCertificatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_certificates_with_options_async(
+        self,
+        request: main_models.ListCertificatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCertificatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.certificate_source):
+            query['CertificateSource'] = request.certificate_source
+        if not DaraCore.is_null(request.certificate_status):
+            query['CertificateStatus'] = request.certificate_status
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.show_size):
+            query['ShowSize'] = request.show_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCertificates',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCertificatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_certificates(
+        self,
+        request: main_models.ListCertificatesRequest,
+    ) -> main_models.ListCertificatesResponse:
+        runtime = RuntimeOptions()
+        return self.list_certificates_with_options(request, runtime)
+
+    async def list_certificates_async(
+        self,
+        request: main_models.ListCertificatesRequest,
+    ) -> main_models.ListCertificatesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_certificates_with_options_async(request, runtime)
 
     def list_cloud_access_with_options(
         self,
@@ -2613,6 +3201,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_deployment_job_resource_with_options_async(request, runtime)
 
+    def list_instances_with_options(
+        self,
+        request: main_models.ListInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.brand):
+            query['Brand'] = request.brand
+        if not DaraCore.is_null(request.certificate_status):
+            query['CertificateStatus'] = request.certificate_status
+        if not DaraCore.is_null(request.certificate_type):
+            query['CertificateType'] = request.certificate_type
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.show_size):
+            query['ShowSize'] = request.show_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstances',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_instances_with_options_async(
+        self,
+        request: main_models.ListInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.brand):
+            query['Brand'] = request.brand
+        if not DaraCore.is_null(request.certificate_status):
+            query['CertificateStatus'] = request.certificate_status
+        if not DaraCore.is_null(request.certificate_type):
+            query['CertificateType'] = request.certificate_type
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.instance_type):
+            query['InstanceType'] = request.instance_type
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.show_size):
+            query['ShowSize'] = request.show_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListInstances',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_instances(
+        self,
+        request: main_models.ListInstancesRequest,
+    ) -> main_models.ListInstancesResponse:
+        runtime = RuntimeOptions()
+        return self.list_instances_with_options(request, runtime)
+
+    async def list_instances_async(
+        self,
+        request: main_models.ListInstancesRequest,
+    ) -> main_models.ListInstancesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_instances_with_options_async(request, runtime)
+
     def list_user_certificate_order_with_options(
         self,
         request: main_models.ListUserCertificateOrderRequest,
@@ -2871,6 +3561,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.move_resource_group_with_options_async(request, runtime)
 
+    def refund_instance_with_options(
+        self,
+        request: main_models.RefundInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RefundInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RefundInstance',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RefundInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def refund_instance_with_options_async(
+        self,
+        request: main_models.RefundInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RefundInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RefundInstance',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RefundInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def refund_instance(
+        self,
+        request: main_models.RefundInstanceRequest,
+    ) -> main_models.RefundInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.refund_instance_with_options(request, runtime)
+
+    async def refund_instance_async(
+        self,
+        request: main_models.RefundInstanceRequest,
+    ) -> main_models.RefundInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.refund_instance_with_options_async(request, runtime)
+
     def renew_certificate_order_for_package_request_with_options(
         self,
         request: main_models.RenewCertificateOrderForPackageRequestRequest,
@@ -2948,6 +3708,76 @@ class Client(OpenApiClient):
     ) -> main_models.RenewCertificateOrderForPackageRequestResponse:
         runtime = RuntimeOptions()
         return await self.renew_certificate_order_for_package_request_with_options_async(request, runtime)
+
+    def revoke_certificate_with_options(
+        self,
+        request: main_models.RevokeCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeCertificate',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeCertificateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def revoke_certificate_with_options_async(
+        self,
+        request: main_models.RevokeCertificateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RevokeCertificateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RevokeCertificate',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RevokeCertificateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def revoke_certificate(
+        self,
+        request: main_models.RevokeCertificateRequest,
+    ) -> main_models.RevokeCertificateResponse:
+        runtime = RuntimeOptions()
+        return self.revoke_certificate_with_options(request, runtime)
+
+    async def revoke_certificate_async(
+        self,
+        request: main_models.RevokeCertificateRequest,
+    ) -> main_models.RevokeCertificateResponse:
+        runtime = RuntimeOptions()
+        return await self.revoke_certificate_with_options_async(request, runtime)
 
     def sign_with_options(
         self,
@@ -3276,6 +4106,132 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateDeploymentJobStatusResponse:
         runtime = RuntimeOptions()
         return await self.update_deployment_job_status_with_options_async(request, runtime)
+
+    def update_instance_with_options(
+        self,
+        request: main_models.UpdateInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_reissue):
+            query['AutoReissue'] = request.auto_reissue
+        if not DaraCore.is_null(request.certificate_name):
+            query['CertificateName'] = request.certificate_name
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.company_id):
+            query['CompanyId'] = request.company_id
+        if not DaraCore.is_null(request.contact_id_list):
+            query['ContactIdList'] = request.contact_id_list
+        if not DaraCore.is_null(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not DaraCore.is_null(request.csr):
+            query['Csr'] = request.csr
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
+        if not DaraCore.is_null(request.generate_csr_method):
+            query['GenerateCsrMethod'] = request.generate_csr_method
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.key_algorithm):
+            query['KeyAlgorithm'] = request.key_algorithm
+        if not DaraCore.is_null(request.province):
+            query['Province'] = request.province
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.validation_method):
+            query['ValidationMethod'] = request.validation_method
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInstance',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInstanceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_instance_with_options_async(
+        self,
+        request: main_models.UpdateInstanceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateInstanceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auto_reissue):
+            query['AutoReissue'] = request.auto_reissue
+        if not DaraCore.is_null(request.certificate_name):
+            query['CertificateName'] = request.certificate_name
+        if not DaraCore.is_null(request.city):
+            query['City'] = request.city
+        if not DaraCore.is_null(request.company_id):
+            query['CompanyId'] = request.company_id
+        if not DaraCore.is_null(request.contact_id_list):
+            query['ContactIdList'] = request.contact_id_list
+        if not DaraCore.is_null(request.country_code):
+            query['CountryCode'] = request.country_code
+        if not DaraCore.is_null(request.csr):
+            query['Csr'] = request.csr
+        if not DaraCore.is_null(request.domain):
+            query['Domain'] = request.domain
+        if not DaraCore.is_null(request.generate_csr_method):
+            query['GenerateCsrMethod'] = request.generate_csr_method
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.key_algorithm):
+            query['KeyAlgorithm'] = request.key_algorithm
+        if not DaraCore.is_null(request.province):
+            query['Province'] = request.province
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.tags):
+            query['Tags'] = request.tags
+        if not DaraCore.is_null(request.validation_method):
+            query['ValidationMethod'] = request.validation_method
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateInstance',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateInstanceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_instance(
+        self,
+        request: main_models.UpdateInstanceRequest,
+    ) -> main_models.UpdateInstanceResponse:
+        runtime = RuntimeOptions()
+        return self.update_instance_with_options(request, runtime)
+
+    async def update_instance_async(
+        self,
+        request: main_models.UpdateInstanceRequest,
+    ) -> main_models.UpdateInstanceResponse:
+        runtime = RuntimeOptions()
+        return await self.update_instance_with_options_async(request, runtime)
 
     def update_worker_resource_status_with_options(
         self,
