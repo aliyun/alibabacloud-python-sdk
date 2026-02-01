@@ -1,24 +1,26 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
-from typing import Dict
-from Tea.core import TeaCore
+from __future__ import annotations
 
+import json
+
+from typing import Dict, Generator, AsyncGenerator
+
+from alibabacloud_sysom20231230 import models as main_models
+from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
-from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_sysom20231230 import models as sys_om20231230_models
-from alibabacloud_tea_util import models as util_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_tea_openapi.utils import Utils
+from darabonba.core import DaraCore as DaraCore
+from darabonba.core import DaraCore
+from darabonba.runtime import RuntimeOptions
 
-
+"""
+"""
 class Client(OpenApiClient):
-    """
-    *\
-    """
+
     def __init__(
-        self, 
-        config: open_api_models.Config,
+        self,
+        config: open_api_util_models.Config,
     ):
         super().__init__(config)
         self._endpoint_rule = ''
@@ -35,7324 +37,5646 @@ class Client(OpenApiClient):
         endpoint_map: Dict[str, str],
         endpoint: str,
     ) -> str:
-        if not UtilClient.empty(endpoint):
+        if not DaraCore.is_null(endpoint):
             return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+        if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
     def auth_diagnosis_with_options(
         self,
-        request: sys_om20231230_models.AuthDiagnosisRequest,
+        request: main_models.AuthDiagnosisRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.AuthDiagnosisResponse:
-        """
-        @summary 授权 SysOM 对某个机器进行诊断
-        
-        @param request: AuthDiagnosisRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AuthDiagnosisResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.AuthDiagnosisResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.auto_create_role):
+        if not DaraCore.is_null(request.auto_create_role):
             body['autoCreateRole'] = request.auto_create_role
-        if not UtilClient.is_unset(request.auto_install_agent):
+        if not DaraCore.is_null(request.auto_install_agent):
             body['autoInstallAgent'] = request.auto_install_agent
-        if not UtilClient.is_unset(request.instances):
+        if not DaraCore.is_null(request.instances):
             body['instances'] = request.instances
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='AuthDiagnosis',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/diagnosis/auth',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AuthDiagnosis',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/diagnosis/auth',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.AuthDiagnosisResponse(),
+        return DaraCore.from_map(
+            main_models.AuthDiagnosisResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def auth_diagnosis_with_options_async(
         self,
-        request: sys_om20231230_models.AuthDiagnosisRequest,
+        request: main_models.AuthDiagnosisRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.AuthDiagnosisResponse:
-        """
-        @summary 授权 SysOM 对某个机器进行诊断
-        
-        @param request: AuthDiagnosisRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AuthDiagnosisResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.AuthDiagnosisResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.auto_create_role):
+        if not DaraCore.is_null(request.auto_create_role):
             body['autoCreateRole'] = request.auto_create_role
-        if not UtilClient.is_unset(request.auto_install_agent):
+        if not DaraCore.is_null(request.auto_install_agent):
             body['autoInstallAgent'] = request.auto_install_agent
-        if not UtilClient.is_unset(request.instances):
+        if not DaraCore.is_null(request.instances):
             body['instances'] = request.instances
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='AuthDiagnosis',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/diagnosis/auth',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AuthDiagnosis',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/diagnosis/auth',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.AuthDiagnosisResponse(),
+        return DaraCore.from_map(
+            main_models.AuthDiagnosisResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def auth_diagnosis(
         self,
-        request: sys_om20231230_models.AuthDiagnosisRequest,
-    ) -> sys_om20231230_models.AuthDiagnosisResponse:
-        """
-        @summary 授权 SysOM 对某个机器进行诊断
-        
-        @param request: AuthDiagnosisRequest
-        @return: AuthDiagnosisResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AuthDiagnosisRequest,
+    ) -> main_models.AuthDiagnosisResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.auth_diagnosis_with_options(request, headers, runtime)
 
     async def auth_diagnosis_async(
         self,
-        request: sys_om20231230_models.AuthDiagnosisRequest,
-    ) -> sys_om20231230_models.AuthDiagnosisResponse:
-        """
-        @summary 授权 SysOM 对某个机器进行诊断
-        
-        @param request: AuthDiagnosisRequest
-        @return: AuthDiagnosisResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AuthDiagnosisRequest,
+    ) -> main_models.AuthDiagnosisResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.auth_diagnosis_with_options_async(request, headers, runtime)
 
     def check_instance_support_with_options(
         self,
-        request: sys_om20231230_models.CheckInstanceSupportRequest,
+        request: main_models.CheckInstanceSupportRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.CheckInstanceSupportResponse:
-        """
-        @summary 检查目标实例是否被 SysOM 支持
-        
-        @param request: CheckInstanceSupportRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckInstanceSupportResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckInstanceSupportResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.instances):
+        if not DaraCore.is_null(request.instances):
             body['instances'] = request.instances
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             body['region'] = request.region
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CheckInstanceSupport',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/supportInstanceList/checkInstanceSupport',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CheckInstanceSupport',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/supportInstanceList/checkInstanceSupport',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.CheckInstanceSupportResponse(),
+        return DaraCore.from_map(
+            main_models.CheckInstanceSupportResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def check_instance_support_with_options_async(
         self,
-        request: sys_om20231230_models.CheckInstanceSupportRequest,
+        request: main_models.CheckInstanceSupportRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.CheckInstanceSupportResponse:
-        """
-        @summary 检查目标实例是否被 SysOM 支持
-        
-        @param request: CheckInstanceSupportRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckInstanceSupportResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckInstanceSupportResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.instances):
+        if not DaraCore.is_null(request.instances):
             body['instances'] = request.instances
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             body['region'] = request.region
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CheckInstanceSupport',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/supportInstanceList/checkInstanceSupport',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CheckInstanceSupport',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/supportInstanceList/checkInstanceSupport',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.CheckInstanceSupportResponse(),
+        return DaraCore.from_map(
+            main_models.CheckInstanceSupportResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def check_instance_support(
         self,
-        request: sys_om20231230_models.CheckInstanceSupportRequest,
-    ) -> sys_om20231230_models.CheckInstanceSupportResponse:
-        """
-        @summary 检查目标实例是否被 SysOM 支持
-        
-        @param request: CheckInstanceSupportRequest
-        @return: CheckInstanceSupportResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CheckInstanceSupportRequest,
+    ) -> main_models.CheckInstanceSupportResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.check_instance_support_with_options(request, headers, runtime)
 
     async def check_instance_support_async(
         self,
-        request: sys_om20231230_models.CheckInstanceSupportRequest,
-    ) -> sys_om20231230_models.CheckInstanceSupportResponse:
-        """
-        @summary 检查目标实例是否被 SysOM 支持
-        
-        @param request: CheckInstanceSupportRequest
-        @return: CheckInstanceSupportResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CheckInstanceSupportRequest,
+    ) -> main_models.CheckInstanceSupportResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.check_instance_support_with_options_async(request, headers, runtime)
 
     def create_alert_strategy_with_options(
         self,
-        request: sys_om20231230_models.CreateAlertStrategyRequest,
+        request: main_models.CreateAlertStrategyRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.CreateAlertStrategyResponse:
-        """
-        @summary 新增推送告警的策略
-        
-        @param request: CreateAlertStrategyRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAlertStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAlertStrategyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.enabled):
+        if not DaraCore.is_null(request.enabled):
             body['enabled'] = request.enabled
-        if not UtilClient.is_unset(request.k_8s_label):
+        if not DaraCore.is_null(request.k_8s_label):
             body['k8sLabel'] = request.k_8s_label
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             body['name'] = request.name
-        if not UtilClient.is_unset(request.strategy):
+        if not DaraCore.is_null(request.strategy):
             body['strategy'] = request.strategy
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateAlertStrategy',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/alertPusher/alert/createStrategy',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateAlertStrategy',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/createStrategy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.CreateAlertStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.CreateAlertStrategyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_alert_strategy_with_options_async(
         self,
-        request: sys_om20231230_models.CreateAlertStrategyRequest,
+        request: main_models.CreateAlertStrategyRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.CreateAlertStrategyResponse:
-        """
-        @summary 新增推送告警的策略
-        
-        @param request: CreateAlertStrategyRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAlertStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAlertStrategyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.enabled):
+        if not DaraCore.is_null(request.enabled):
             body['enabled'] = request.enabled
-        if not UtilClient.is_unset(request.k_8s_label):
+        if not DaraCore.is_null(request.k_8s_label):
             body['k8sLabel'] = request.k_8s_label
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             body['name'] = request.name
-        if not UtilClient.is_unset(request.strategy):
+        if not DaraCore.is_null(request.strategy):
             body['strategy'] = request.strategy
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateAlertStrategy',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/alertPusher/alert/createStrategy',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateAlertStrategy',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/createStrategy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.CreateAlertStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.CreateAlertStrategyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_alert_strategy(
         self,
-        request: sys_om20231230_models.CreateAlertStrategyRequest,
-    ) -> sys_om20231230_models.CreateAlertStrategyResponse:
-        """
-        @summary 新增推送告警的策略
-        
-        @param request: CreateAlertStrategyRequest
-        @return: CreateAlertStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateAlertStrategyRequest,
+    ) -> main_models.CreateAlertStrategyResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.create_alert_strategy_with_options(request, headers, runtime)
 
     async def create_alert_strategy_async(
         self,
-        request: sys_om20231230_models.CreateAlertStrategyRequest,
-    ) -> sys_om20231230_models.CreateAlertStrategyResponse:
-        """
-        @summary 新增推送告警的策略
-        
-        @param request: CreateAlertStrategyRequest
-        @return: CreateAlertStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateAlertStrategyRequest,
+    ) -> main_models.CreateAlertStrategyResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.create_alert_strategy_with_options_async(request, headers, runtime)
 
     def create_vmcore_diagnosis_task_with_options(
         self,
-        request: sys_om20231230_models.CreateVmcoreDiagnosisTaskRequest,
+        request: main_models.CreateVmcoreDiagnosisTaskRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.CreateVmcoreDiagnosisTaskResponse:
-        """
-        @summary 创建宕机诊断任务
-        
-        @param request: CreateVmcoreDiagnosisTaskRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateVmcoreDiagnosisTaskResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVmcoreDiagnosisTaskResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.debuginfo_common_url):
+        if not DaraCore.is_null(request.debuginfo_common_url):
             body['debuginfoCommonUrl'] = request.debuginfo_common_url
-        if not UtilClient.is_unset(request.debuginfo_url):
+        if not DaraCore.is_null(request.debuginfo_url):
             body['debuginfoUrl'] = request.debuginfo_url
-        if not UtilClient.is_unset(request.dmesg_url):
+        if not DaraCore.is_null(request.dmesg_url):
             body['dmesgUrl'] = request.dmesg_url
-        if not UtilClient.is_unset(request.task_type):
+        if not DaraCore.is_null(request.task_type):
             body['taskType'] = request.task_type
-        if not UtilClient.is_unset(request.vmcore_url):
+        if not DaraCore.is_null(request.vmcore_url):
             body['vmcoreUrl'] = request.vmcore_url
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateVmcoreDiagnosisTask',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/crashAgent/diagnosis/createDiagnosisTask',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateVmcoreDiagnosisTask',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/crashAgent/diagnosis/createDiagnosisTask',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.CreateVmcoreDiagnosisTaskResponse(),
+        return DaraCore.from_map(
+            main_models.CreateVmcoreDiagnosisTaskResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_vmcore_diagnosis_task_with_options_async(
         self,
-        request: sys_om20231230_models.CreateVmcoreDiagnosisTaskRequest,
+        request: main_models.CreateVmcoreDiagnosisTaskRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.CreateVmcoreDiagnosisTaskResponse:
-        """
-        @summary 创建宕机诊断任务
-        
-        @param request: CreateVmcoreDiagnosisTaskRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateVmcoreDiagnosisTaskResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateVmcoreDiagnosisTaskResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.debuginfo_common_url):
+        if not DaraCore.is_null(request.debuginfo_common_url):
             body['debuginfoCommonUrl'] = request.debuginfo_common_url
-        if not UtilClient.is_unset(request.debuginfo_url):
+        if not DaraCore.is_null(request.debuginfo_url):
             body['debuginfoUrl'] = request.debuginfo_url
-        if not UtilClient.is_unset(request.dmesg_url):
+        if not DaraCore.is_null(request.dmesg_url):
             body['dmesgUrl'] = request.dmesg_url
-        if not UtilClient.is_unset(request.task_type):
+        if not DaraCore.is_null(request.task_type):
             body['taskType'] = request.task_type
-        if not UtilClient.is_unset(request.vmcore_url):
+        if not DaraCore.is_null(request.vmcore_url):
             body['vmcoreUrl'] = request.vmcore_url
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='CreateVmcoreDiagnosisTask',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/crashAgent/diagnosis/createDiagnosisTask',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateVmcoreDiagnosisTask',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/crashAgent/diagnosis/createDiagnosisTask',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.CreateVmcoreDiagnosisTaskResponse(),
+        return DaraCore.from_map(
+            main_models.CreateVmcoreDiagnosisTaskResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_vmcore_diagnosis_task(
         self,
-        request: sys_om20231230_models.CreateVmcoreDiagnosisTaskRequest,
-    ) -> sys_om20231230_models.CreateVmcoreDiagnosisTaskResponse:
-        """
-        @summary 创建宕机诊断任务
-        
-        @param request: CreateVmcoreDiagnosisTaskRequest
-        @return: CreateVmcoreDiagnosisTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateVmcoreDiagnosisTaskRequest,
+    ) -> main_models.CreateVmcoreDiagnosisTaskResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.create_vmcore_diagnosis_task_with_options(request, headers, runtime)
 
     async def create_vmcore_diagnosis_task_async(
         self,
-        request: sys_om20231230_models.CreateVmcoreDiagnosisTaskRequest,
-    ) -> sys_om20231230_models.CreateVmcoreDiagnosisTaskResponse:
-        """
-        @summary 创建宕机诊断任务
-        
-        @param request: CreateVmcoreDiagnosisTaskRequest
-        @return: CreateVmcoreDiagnosisTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateVmcoreDiagnosisTaskRequest,
+    ) -> main_models.CreateVmcoreDiagnosisTaskResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.create_vmcore_diagnosis_task_with_options_async(request, headers, runtime)
 
     def delete_alert_strategy_with_options(
         self,
-        request: sys_om20231230_models.DeleteAlertStrategyRequest,
+        request: main_models.DeleteAlertStrategyRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.DeleteAlertStrategyResponse:
-        """
-        @summary 用户删除推送告警的策略
-        
-        @param request: DeleteAlertStrategyRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAlertStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAlertStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             query['id'] = request.id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteAlertStrategy',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/alertPusher/alert/deleteStrategy',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteAlertStrategy',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/deleteStrategy',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.DeleteAlertStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteAlertStrategyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_alert_strategy_with_options_async(
         self,
-        request: sys_om20231230_models.DeleteAlertStrategyRequest,
+        request: main_models.DeleteAlertStrategyRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.DeleteAlertStrategyResponse:
-        """
-        @summary 用户删除推送告警的策略
-        
-        @param request: DeleteAlertStrategyRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAlertStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAlertStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             query['id'] = request.id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteAlertStrategy',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/alertPusher/alert/deleteStrategy',
-            method='DELETE',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteAlertStrategy',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/deleteStrategy',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.DeleteAlertStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteAlertStrategyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_alert_strategy(
         self,
-        request: sys_om20231230_models.DeleteAlertStrategyRequest,
-    ) -> sys_om20231230_models.DeleteAlertStrategyResponse:
-        """
-        @summary 用户删除推送告警的策略
-        
-        @param request: DeleteAlertStrategyRequest
-        @return: DeleteAlertStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteAlertStrategyRequest,
+    ) -> main_models.DeleteAlertStrategyResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.delete_alert_strategy_with_options(request, headers, runtime)
 
     async def delete_alert_strategy_async(
         self,
-        request: sys_om20231230_models.DeleteAlertStrategyRequest,
-    ) -> sys_om20231230_models.DeleteAlertStrategyResponse:
-        """
-        @summary 用户删除推送告警的策略
-        
-        @param request: DeleteAlertStrategyRequest
-        @return: DeleteAlertStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteAlertStrategyRequest,
+    ) -> main_models.DeleteAlertStrategyResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.delete_alert_strategy_with_options_async(request, headers, runtime)
 
     def describe_metric_list_with_options(
         self,
-        request: sys_om20231230_models.DescribeMetricListRequest,
+        request: main_models.DescribeMetricListRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.DescribeMetricListResponse:
-        """
-        @summary 查询指标
-        
-        @param request: DescribeMetricListRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeMetricListResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMetricListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.metric_name):
+        if not DaraCore.is_null(request.metric_name):
             query['metricName'] = request.metric_name
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['startTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeMetricList',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/proxy/get/describeMetricList',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeMetricList',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/proxy/get/describeMetricList',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.DescribeMetricListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeMetricListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def describe_metric_list_with_options_async(
         self,
-        request: sys_om20231230_models.DescribeMetricListRequest,
+        request: main_models.DescribeMetricListRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.DescribeMetricListResponse:
-        """
-        @summary 查询指标
-        
-        @param request: DescribeMetricListRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DescribeMetricListResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeMetricListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['endTime'] = request.end_time
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.metric_name):
+        if not DaraCore.is_null(request.metric_name):
             query['metricName'] = request.metric_name
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['startTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DescribeMetricList',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/proxy/get/describeMetricList',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DescribeMetricList',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/proxy/get/describeMetricList',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.DescribeMetricListResponse(),
+        return DaraCore.from_map(
+            main_models.DescribeMetricListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def describe_metric_list(
         self,
-        request: sys_om20231230_models.DescribeMetricListRequest,
-    ) -> sys_om20231230_models.DescribeMetricListResponse:
-        """
-        @summary 查询指标
-        
-        @param request: DescribeMetricListRequest
-        @return: DescribeMetricListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeMetricListRequest,
+    ) -> main_models.DescribeMetricListResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.describe_metric_list_with_options(request, headers, runtime)
 
     async def describe_metric_list_async(
         self,
-        request: sys_om20231230_models.DescribeMetricListRequest,
-    ) -> sys_om20231230_models.DescribeMetricListResponse:
-        """
-        @summary 查询指标
-        
-        @param request: DescribeMetricListRequest
-        @return: DescribeMetricListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DescribeMetricListRequest,
+    ) -> main_models.DescribeMetricListResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.describe_metric_list_with_options_async(request, headers, runtime)
 
     def generate_copilot_response_with_options(
         self,
-        request: sys_om20231230_models.GenerateCopilotResponseRequest,
+        request: main_models.GenerateCopilotResponseRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GenerateCopilotResponseResponse:
-        """
-        @summary 获取copilot服务的返回结果
-        
-        @param request: GenerateCopilotResponseRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GenerateCopilotResponseResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateCopilotResponseResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.llm_param_string):
+        if not DaraCore.is_null(request.llm_param_string):
             body['llmParamString'] = request.llm_param_string
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GenerateCopilotResponse',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/copilot/generate_copilot_response',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GenerateCopilotResponse',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/generate_copilot_response',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GenerateCopilotResponseResponse(),
+        return DaraCore.from_map(
+            main_models.GenerateCopilotResponseResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def generate_copilot_response_with_options_async(
         self,
-        request: sys_om20231230_models.GenerateCopilotResponseRequest,
+        request: main_models.GenerateCopilotResponseRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GenerateCopilotResponseResponse:
-        """
-        @summary 获取copilot服务的返回结果
-        
-        @param request: GenerateCopilotResponseRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GenerateCopilotResponseResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateCopilotResponseResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.llm_param_string):
+        if not DaraCore.is_null(request.llm_param_string):
             body['llmParamString'] = request.llm_param_string
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GenerateCopilotResponse',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/copilot/generate_copilot_response',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GenerateCopilotResponse',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/generate_copilot_response',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GenerateCopilotResponseResponse(),
+        return DaraCore.from_map(
+            main_models.GenerateCopilotResponseResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def generate_copilot_response(
         self,
-        request: sys_om20231230_models.GenerateCopilotResponseRequest,
-    ) -> sys_om20231230_models.GenerateCopilotResponseResponse:
-        """
-        @summary 获取copilot服务的返回结果
-        
-        @param request: GenerateCopilotResponseRequest
-        @return: GenerateCopilotResponseResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GenerateCopilotResponseRequest,
+    ) -> main_models.GenerateCopilotResponseResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.generate_copilot_response_with_options(request, headers, runtime)
 
     async def generate_copilot_response_async(
         self,
-        request: sys_om20231230_models.GenerateCopilotResponseRequest,
-    ) -> sys_om20231230_models.GenerateCopilotResponseResponse:
-        """
-        @summary 获取copilot服务的返回结果
-        
-        @param request: GenerateCopilotResponseRequest
-        @return: GenerateCopilotResponseResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GenerateCopilotResponseRequest,
+    ) -> main_models.GenerateCopilotResponseResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.generate_copilot_response_with_options_async(request, headers, runtime)
 
+    def generate_copilot_stream_response_with_sse(
+        self,
+        request: main_models.GenerateCopilotStreamResponseRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.GenerateCopilotStreamResponseResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.llm_param_string):
+            body['llmParamString'] = request.llm_param_string
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateCopilotStreamResponse',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/generate_copilot_stream_response',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            data = json.loads(resp.event.data)
+            yield  DaraCore.from_map(
+                main_models.GenerateCopilotStreamResponseResponse(),
+                {
+                'statusCode': resp.status_code,
+                'headers': resp.headers,
+                'body': DaraCore.merge({
+                    'RequestId': resp.event.id,
+                    'Message': resp.event.event
+                }, data)
+            })
+
+    async def generate_copilot_stream_response_with_sse_async(
+        self,
+        request: main_models.GenerateCopilotStreamResponseRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.GenerateCopilotStreamResponseResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.llm_param_string):
+            body['llmParamString'] = request.llm_param_string
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GenerateCopilotStreamResponse',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/generate_copilot_stream_response',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            data = json.loads(resp.event.data)
+            yield  DaraCore.from_map(
+                main_models.GenerateCopilotStreamResponseResponse(),
+                {
+                'statusCode': resp.status_code,
+                'headers': resp.headers,
+                'body': DaraCore.merge({
+                    'RequestId': resp.event.id,
+                    'Message': resp.event.event
+                }, data)
+            })
+
     def generate_copilot_stream_response_with_options(
         self,
-        request: sys_om20231230_models.GenerateCopilotStreamResponseRequest,
+        request: main_models.GenerateCopilotStreamResponseRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GenerateCopilotStreamResponseResponse:
-        """
-        @summary 流式copilot服务接口
-        
-        @param request: GenerateCopilotStreamResponseRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GenerateCopilotStreamResponseResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateCopilotStreamResponseResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.llm_param_string):
+        if not DaraCore.is_null(request.llm_param_string):
             body['llmParamString'] = request.llm_param_string
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GenerateCopilotStreamResponse',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/copilot/generate_copilot_stream_response',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GenerateCopilotStreamResponse',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/generate_copilot_stream_response',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GenerateCopilotStreamResponseResponse(),
+        return DaraCore.from_map(
+            main_models.GenerateCopilotStreamResponseResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def generate_copilot_stream_response_with_options_async(
         self,
-        request: sys_om20231230_models.GenerateCopilotStreamResponseRequest,
+        request: main_models.GenerateCopilotStreamResponseRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GenerateCopilotStreamResponseResponse:
-        """
-        @summary 流式copilot服务接口
-        
-        @param request: GenerateCopilotStreamResponseRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GenerateCopilotStreamResponseResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GenerateCopilotStreamResponseResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.llm_param_string):
+        if not DaraCore.is_null(request.llm_param_string):
             body['llmParamString'] = request.llm_param_string
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GenerateCopilotStreamResponse',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/copilot/generate_copilot_stream_response',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GenerateCopilotStreamResponse',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/generate_copilot_stream_response',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GenerateCopilotStreamResponseResponse(),
+        return DaraCore.from_map(
+            main_models.GenerateCopilotStreamResponseResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def generate_copilot_stream_response(
         self,
-        request: sys_om20231230_models.GenerateCopilotStreamResponseRequest,
-    ) -> sys_om20231230_models.GenerateCopilotStreamResponseResponse:
-        """
-        @summary 流式copilot服务接口
-        
-        @param request: GenerateCopilotStreamResponseRequest
-        @return: GenerateCopilotStreamResponseResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GenerateCopilotStreamResponseRequest,
+    ) -> main_models.GenerateCopilotStreamResponseResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.generate_copilot_stream_response_with_options(request, headers, runtime)
 
     async def generate_copilot_stream_response_async(
         self,
-        request: sys_om20231230_models.GenerateCopilotStreamResponseRequest,
-    ) -> sys_om20231230_models.GenerateCopilotStreamResponseResponse:
-        """
-        @summary 流式copilot服务接口
-        
-        @param request: GenerateCopilotStreamResponseRequest
-        @return: GenerateCopilotStreamResponseResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GenerateCopilotStreamResponseRequest,
+    ) -> main_models.GenerateCopilotStreamResponseResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.generate_copilot_stream_response_with_options_async(request, headers, runtime)
 
     def get_aiquery_result_with_options(
         self,
-        request: sys_om20231230_models.GetAIQueryResultRequest,
+        request: main_models.GetAIQueryResultRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetAIQueryResultResponse:
-        """
-        @summary 查看AI Infra分析结果
-        
-        @param request: GetAIQueryResultRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAIQueryResultResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAIQueryResultResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.analysis_id):
+        if not DaraCore.is_null(request.analysis_id):
             body['analysisId'] = request.analysis_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetAIQueryResult',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/app_observ/aiAnalysis/query_result',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAIQueryResult',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/app_observ/aiAnalysis/query_result',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAIQueryResultResponse(),
+        return DaraCore.from_map(
+            main_models.GetAIQueryResultResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_aiquery_result_with_options_async(
         self,
-        request: sys_om20231230_models.GetAIQueryResultRequest,
+        request: main_models.GetAIQueryResultRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetAIQueryResultResponse:
-        """
-        @summary 查看AI Infra分析结果
-        
-        @param request: GetAIQueryResultRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAIQueryResultResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAIQueryResultResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.analysis_id):
+        if not DaraCore.is_null(request.analysis_id):
             body['analysisId'] = request.analysis_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetAIQueryResult',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/app_observ/aiAnalysis/query_result',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAIQueryResult',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/app_observ/aiAnalysis/query_result',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAIQueryResultResponse(),
+        return DaraCore.from_map(
+            main_models.GetAIQueryResultResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_aiquery_result(
         self,
-        request: sys_om20231230_models.GetAIQueryResultRequest,
-    ) -> sys_om20231230_models.GetAIQueryResultResponse:
-        """
-        @summary 查看AI Infra分析结果
-        
-        @param request: GetAIQueryResultRequest
-        @return: GetAIQueryResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAIQueryResultRequest,
+    ) -> main_models.GetAIQueryResultResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_aiquery_result_with_options(request, headers, runtime)
 
     async def get_aiquery_result_async(
         self,
-        request: sys_om20231230_models.GetAIQueryResultRequest,
-    ) -> sys_om20231230_models.GetAIQueryResultResponse:
-        """
-        @summary 查看AI Infra分析结果
-        
-        @param request: GetAIQueryResultRequest
-        @return: GetAIQueryResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAIQueryResultRequest,
+    ) -> main_models.GetAIQueryResultResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_aiquery_result_with_options_async(request, headers, runtime)
 
     def get_abnormal_events_count_with_options(
         self,
-        request: sys_om20231230_models.GetAbnormalEventsCountRequest,
+        request: main_models.GetAbnormalEventsCountRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetAbnormalEventsCountResponse:
-        """
-        @summary 获取节点/Pod不同等级异常事件的数量
-        
-        @param request: GetAbnormalEventsCountRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAbnormalEventsCountResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAbnormalEventsCountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.end):
+        if not DaraCore.is_null(request.end):
             query['end'] = request.end
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.level):
+        if not DaraCore.is_null(request.level):
             query['level'] = request.level
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['namespace'] = request.namespace
-        if not UtilClient.is_unset(request.pod):
+        if not DaraCore.is_null(request.pod):
             query['pod'] = request.pod
-        if not UtilClient.is_unset(request.show_pod):
+        if not DaraCore.is_null(request.show_pod):
             query['showPod'] = request.show_pod
-        if not UtilClient.is_unset(request.start):
+        if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAbnormalEventsCount',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/range/abnormaly_events_count',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAbnormalEventsCount',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/range/abnormaly_events_count',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAbnormalEventsCountResponse(),
+        return DaraCore.from_map(
+            main_models.GetAbnormalEventsCountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_abnormal_events_count_with_options_async(
         self,
-        request: sys_om20231230_models.GetAbnormalEventsCountRequest,
+        request: main_models.GetAbnormalEventsCountRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetAbnormalEventsCountResponse:
-        """
-        @summary 获取节点/Pod不同等级异常事件的数量
-        
-        @param request: GetAbnormalEventsCountRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAbnormalEventsCountResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAbnormalEventsCountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.end):
+        if not DaraCore.is_null(request.end):
             query['end'] = request.end
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.level):
+        if not DaraCore.is_null(request.level):
             query['level'] = request.level
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['namespace'] = request.namespace
-        if not UtilClient.is_unset(request.pod):
+        if not DaraCore.is_null(request.pod):
             query['pod'] = request.pod
-        if not UtilClient.is_unset(request.show_pod):
+        if not DaraCore.is_null(request.show_pod):
             query['showPod'] = request.show_pod
-        if not UtilClient.is_unset(request.start):
+        if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAbnormalEventsCount',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/range/abnormaly_events_count',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAbnormalEventsCount',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/range/abnormaly_events_count',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAbnormalEventsCountResponse(),
+        return DaraCore.from_map(
+            main_models.GetAbnormalEventsCountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_abnormal_events_count(
         self,
-        request: sys_om20231230_models.GetAbnormalEventsCountRequest,
-    ) -> sys_om20231230_models.GetAbnormalEventsCountResponse:
-        """
-        @summary 获取节点/Pod不同等级异常事件的数量
-        
-        @param request: GetAbnormalEventsCountRequest
-        @return: GetAbnormalEventsCountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAbnormalEventsCountRequest,
+    ) -> main_models.GetAbnormalEventsCountResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_abnormal_events_count_with_options(request, headers, runtime)
 
     async def get_abnormal_events_count_async(
         self,
-        request: sys_om20231230_models.GetAbnormalEventsCountRequest,
-    ) -> sys_om20231230_models.GetAbnormalEventsCountResponse:
-        """
-        @summary 获取节点/Pod不同等级异常事件的数量
-        
-        @param request: GetAbnormalEventsCountRequest
-        @return: GetAbnormalEventsCountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAbnormalEventsCountRequest,
+    ) -> main_models.GetAbnormalEventsCountResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_abnormal_events_count_with_options_async(request, headers, runtime)
 
     def get_agent_with_options(
         self,
-        request: sys_om20231230_models.GetAgentRequest,
+        request: main_models.GetAgentRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetAgentResponse:
-        """
-        @summary 获取某个组件的详情
-        
-        @param request: GetAgentRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAgentResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.agent_id):
+        if not DaraCore.is_null(request.agent_id):
             query['agent_id'] = request.agent_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAgent',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/get_agent',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAgent',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/get_agent',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAgentResponse(),
+        return DaraCore.from_map(
+            main_models.GetAgentResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_agent_with_options_async(
         self,
-        request: sys_om20231230_models.GetAgentRequest,
+        request: main_models.GetAgentRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetAgentResponse:
-        """
-        @summary 获取某个组件的详情
-        
-        @param request: GetAgentRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAgentResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.agent_id):
+        if not DaraCore.is_null(request.agent_id):
             query['agent_id'] = request.agent_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAgent',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/get_agent',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAgent',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/get_agent',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAgentResponse(),
+        return DaraCore.from_map(
+            main_models.GetAgentResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_agent(
         self,
-        request: sys_om20231230_models.GetAgentRequest,
-    ) -> sys_om20231230_models.GetAgentResponse:
-        """
-        @summary 获取某个组件的详情
-        
-        @param request: GetAgentRequest
-        @return: GetAgentResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAgentRequest,
+    ) -> main_models.GetAgentResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_agent_with_options(request, headers, runtime)
 
     async def get_agent_async(
         self,
-        request: sys_om20231230_models.GetAgentRequest,
-    ) -> sys_om20231230_models.GetAgentResponse:
-        """
-        @summary 获取某个组件的详情
-        
-        @param request: GetAgentRequest
-        @return: GetAgentResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAgentRequest,
+    ) -> main_models.GetAgentResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_agent_with_options_async(request, headers, runtime)
 
     def get_agent_task_with_options(
         self,
-        request: sys_om20231230_models.GetAgentTaskRequest,
+        request: main_models.GetAgentTaskRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetAgentTaskResponse:
-        """
-        @summary 获取Agent安装任务执行状态
-        
-        @param request: GetAgentTaskRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAgentTaskResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentTaskResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.task_id):
+        if not DaraCore.is_null(request.task_id):
             query['task_id'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAgentTask',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/get_agent_task',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAgentTask',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/get_agent_task',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAgentTaskResponse(),
+        return DaraCore.from_map(
+            main_models.GetAgentTaskResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_agent_task_with_options_async(
         self,
-        request: sys_om20231230_models.GetAgentTaskRequest,
+        request: main_models.GetAgentTaskRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetAgentTaskResponse:
-        """
-        @summary 获取Agent安装任务执行状态
-        
-        @param request: GetAgentTaskRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAgentTaskResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAgentTaskResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.task_id):
+        if not DaraCore.is_null(request.task_id):
             query['task_id'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAgentTask',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/get_agent_task',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAgentTask',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/get_agent_task',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAgentTaskResponse(),
+        return DaraCore.from_map(
+            main_models.GetAgentTaskResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_agent_task(
         self,
-        request: sys_om20231230_models.GetAgentTaskRequest,
-    ) -> sys_om20231230_models.GetAgentTaskResponse:
-        """
-        @summary 获取Agent安装任务执行状态
-        
-        @param request: GetAgentTaskRequest
-        @return: GetAgentTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAgentTaskRequest,
+    ) -> main_models.GetAgentTaskResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_agent_task_with_options(request, headers, runtime)
 
     async def get_agent_task_async(
         self,
-        request: sys_om20231230_models.GetAgentTaskRequest,
-    ) -> sys_om20231230_models.GetAgentTaskResponse:
-        """
-        @summary 获取Agent安装任务执行状态
-        
-        @param request: GetAgentTaskRequest
-        @return: GetAgentTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAgentTaskRequest,
+    ) -> main_models.GetAgentTaskResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_agent_task_with_options_async(request, headers, runtime)
 
     def get_alert_strategy_with_options(
         self,
-        request: sys_om20231230_models.GetAlertStrategyRequest,
+        request: main_models.GetAlertStrategyRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetAlertStrategyResponse:
-        """
-        @summary 根据策略id，获取用户的一条告警
-        
-        @param request: GetAlertStrategyRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAlertStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAlertStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             query['id'] = request.id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAlertStrategy',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/alertPusher/alert/getStrategy',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAlertStrategy',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/getStrategy',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAlertStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.GetAlertStrategyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_alert_strategy_with_options_async(
         self,
-        request: sys_om20231230_models.GetAlertStrategyRequest,
+        request: main_models.GetAlertStrategyRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetAlertStrategyResponse:
-        """
-        @summary 根据策略id，获取用户的一条告警
-        
-        @param request: GetAlertStrategyRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAlertStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAlertStrategyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             query['id'] = request.id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAlertStrategy',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/alertPusher/alert/getStrategy',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAlertStrategy',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/getStrategy',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetAlertStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.GetAlertStrategyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_alert_strategy(
         self,
-        request: sys_om20231230_models.GetAlertStrategyRequest,
-    ) -> sys_om20231230_models.GetAlertStrategyResponse:
-        """
-        @summary 根据策略id，获取用户的一条告警
-        
-        @param request: GetAlertStrategyRequest
-        @return: GetAlertStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAlertStrategyRequest,
+    ) -> main_models.GetAlertStrategyResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_alert_strategy_with_options(request, headers, runtime)
 
     async def get_alert_strategy_async(
         self,
-        request: sys_om20231230_models.GetAlertStrategyRequest,
-    ) -> sys_om20231230_models.GetAlertStrategyResponse:
-        """
-        @summary 根据策略id，获取用户的一条告警
-        
-        @param request: GetAlertStrategyRequest
-        @return: GetAlertStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAlertStrategyRequest,
+    ) -> main_models.GetAlertStrategyResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_alert_strategy_with_options_async(request, headers, runtime)
 
     def get_copilot_history_with_options(
         self,
-        request: sys_om20231230_models.GetCopilotHistoryRequest,
+        request: main_models.GetCopilotHistoryRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetCopilotHistoryResponse:
-        """
-        @summary 获取copilot历史聊天记录
-        
-        @param request: GetCopilotHistoryRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetCopilotHistoryResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCopilotHistoryResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.count):
+        if not DaraCore.is_null(request.count):
             body['count'] = request.count
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetCopilotHistory',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/copilot/get_copilot_history',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetCopilotHistory',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/get_copilot_history',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetCopilotHistoryResponse(),
+        return DaraCore.from_map(
+            main_models.GetCopilotHistoryResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_copilot_history_with_options_async(
         self,
-        request: sys_om20231230_models.GetCopilotHistoryRequest,
+        request: main_models.GetCopilotHistoryRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetCopilotHistoryResponse:
-        """
-        @summary 获取copilot历史聊天记录
-        
-        @param request: GetCopilotHistoryRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetCopilotHistoryResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCopilotHistoryResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.count):
+        if not DaraCore.is_null(request.count):
             body['count'] = request.count
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetCopilotHistory',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/copilot/get_copilot_history',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetCopilotHistory',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/copilot/get_copilot_history',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetCopilotHistoryResponse(),
+        return DaraCore.from_map(
+            main_models.GetCopilotHistoryResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_copilot_history(
         self,
-        request: sys_om20231230_models.GetCopilotHistoryRequest,
-    ) -> sys_om20231230_models.GetCopilotHistoryResponse:
-        """
-        @summary 获取copilot历史聊天记录
-        
-        @param request: GetCopilotHistoryRequest
-        @return: GetCopilotHistoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetCopilotHistoryRequest,
+    ) -> main_models.GetCopilotHistoryResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_copilot_history_with_options(request, headers, runtime)
 
     async def get_copilot_history_async(
         self,
-        request: sys_om20231230_models.GetCopilotHistoryRequest,
-    ) -> sys_om20231230_models.GetCopilotHistoryResponse:
-        """
-        @summary 获取copilot历史聊天记录
-        
-        @param request: GetCopilotHistoryRequest
-        @return: GetCopilotHistoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetCopilotHistoryRequest,
+    ) -> main_models.GetCopilotHistoryResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_copilot_history_with_options_async(request, headers, runtime)
 
     def get_diagnosis_result_with_options(
         self,
-        request: sys_om20231230_models.GetDiagnosisResultRequest,
+        request: main_models.GetDiagnosisResultRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetDiagnosisResultResponse:
-        """
-        @summary 获取诊断结果
-        
-        @param request: GetDiagnosisResultRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetDiagnosisResultResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDiagnosisResultResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.task_id):
+        if not DaraCore.is_null(request.task_id):
             query['task_id'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetDiagnosisResult',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/diagnosis/get_diagnosis_results',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetDiagnosisResult',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/diagnosis/get_diagnosis_results',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetDiagnosisResultResponse(),
+        return DaraCore.from_map(
+            main_models.GetDiagnosisResultResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_diagnosis_result_with_options_async(
         self,
-        request: sys_om20231230_models.GetDiagnosisResultRequest,
+        request: main_models.GetDiagnosisResultRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetDiagnosisResultResponse:
-        """
-        @summary 获取诊断结果
-        
-        @param request: GetDiagnosisResultRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetDiagnosisResultResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDiagnosisResultResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.task_id):
+        if not DaraCore.is_null(request.task_id):
             query['task_id'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetDiagnosisResult',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/diagnosis/get_diagnosis_results',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetDiagnosisResult',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/diagnosis/get_diagnosis_results',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetDiagnosisResultResponse(),
+        return DaraCore.from_map(
+            main_models.GetDiagnosisResultResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_diagnosis_result(
         self,
-        request: sys_om20231230_models.GetDiagnosisResultRequest,
-    ) -> sys_om20231230_models.GetDiagnosisResultResponse:
-        """
-        @summary 获取诊断结果
-        
-        @param request: GetDiagnosisResultRequest
-        @return: GetDiagnosisResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetDiagnosisResultRequest,
+    ) -> main_models.GetDiagnosisResultResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_diagnosis_result_with_options(request, headers, runtime)
 
     async def get_diagnosis_result_async(
         self,
-        request: sys_om20231230_models.GetDiagnosisResultRequest,
-    ) -> sys_om20231230_models.GetDiagnosisResultResponse:
-        """
-        @summary 获取诊断结果
-        
-        @param request: GetDiagnosisResultRequest
-        @return: GetDiagnosisResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetDiagnosisResultRequest,
+    ) -> main_models.GetDiagnosisResultResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_diagnosis_result_with_options_async(request, headers, runtime)
 
     def get_health_percentage_with_options(
         self,
-        request: sys_om20231230_models.GetHealthPercentageRequest,
+        request: main_models.GetHealthPercentageRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetHealthPercentageResponse:
-        """
-        @summary 获取一段时间的节点/pod健康度比例
-        
-        @param request: GetHealthPercentageRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHealthPercentageResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHealthPercentageResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.end):
+        if not DaraCore.is_null(request.end):
             query['end'] = request.end
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.start):
+        if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetHealthPercentage',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/range/health_percentage',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHealthPercentage',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/range/health_percentage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHealthPercentageResponse(),
+        return DaraCore.from_map(
+            main_models.GetHealthPercentageResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_health_percentage_with_options_async(
         self,
-        request: sys_om20231230_models.GetHealthPercentageRequest,
+        request: main_models.GetHealthPercentageRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetHealthPercentageResponse:
-        """
-        @summary 获取一段时间的节点/pod健康度比例
-        
-        @param request: GetHealthPercentageRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHealthPercentageResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHealthPercentageResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.end):
+        if not DaraCore.is_null(request.end):
             query['end'] = request.end
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.start):
+        if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetHealthPercentage',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/range/health_percentage',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHealthPercentage',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/range/health_percentage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHealthPercentageResponse(),
+        return DaraCore.from_map(
+            main_models.GetHealthPercentageResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_health_percentage(
         self,
-        request: sys_om20231230_models.GetHealthPercentageRequest,
-    ) -> sys_om20231230_models.GetHealthPercentageResponse:
-        """
-        @summary 获取一段时间的节点/pod健康度比例
-        
-        @param request: GetHealthPercentageRequest
-        @return: GetHealthPercentageResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHealthPercentageRequest,
+    ) -> main_models.GetHealthPercentageResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_health_percentage_with_options(request, headers, runtime)
 
     async def get_health_percentage_async(
         self,
-        request: sys_om20231230_models.GetHealthPercentageRequest,
-    ) -> sys_om20231230_models.GetHealthPercentageResponse:
-        """
-        @summary 获取一段时间的节点/pod健康度比例
-        
-        @param request: GetHealthPercentageRequest
-        @return: GetHealthPercentageResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHealthPercentageRequest,
+    ) -> main_models.GetHealthPercentageResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_health_percentage_with_options_async(request, headers, runtime)
 
     def get_host_count_with_options(
         self,
-        request: sys_om20231230_models.GetHostCountRequest,
+        request: main_models.GetHostCountRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetHostCountResponse:
-        """
-        @summary 获取集群节点数量
-        
-        @param request: GetHostCountRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHostCountResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHostCountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.end):
+        if not DaraCore.is_null(request.end):
             query['end'] = request.end
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.start):
+        if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetHostCount',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/range/host_count',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHostCount',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/range/host_count',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHostCountResponse(),
+        return DaraCore.from_map(
+            main_models.GetHostCountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_host_count_with_options_async(
         self,
-        request: sys_om20231230_models.GetHostCountRequest,
+        request: main_models.GetHostCountRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetHostCountResponse:
-        """
-        @summary 获取集群节点数量
-        
-        @param request: GetHostCountRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHostCountResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHostCountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.end):
+        if not DaraCore.is_null(request.end):
             query['end'] = request.end
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.start):
+        if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetHostCount',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/range/host_count',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHostCount',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/range/host_count',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHostCountResponse(),
+        return DaraCore.from_map(
+            main_models.GetHostCountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_host_count(
         self,
-        request: sys_om20231230_models.GetHostCountRequest,
-    ) -> sys_om20231230_models.GetHostCountResponse:
-        """
-        @summary 获取集群节点数量
-        
-        @param request: GetHostCountRequest
-        @return: GetHostCountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHostCountRequest,
+    ) -> main_models.GetHostCountResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_host_count_with_options(request, headers, runtime)
 
     async def get_host_count_async(
         self,
-        request: sys_om20231230_models.GetHostCountRequest,
-    ) -> sys_om20231230_models.GetHostCountResponse:
-        """
-        @summary 获取集群节点数量
-        
-        @param request: GetHostCountRequest
-        @return: GetHostCountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHostCountRequest,
+    ) -> main_models.GetHostCountResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_host_count_with_options_async(request, headers, runtime)
 
     def get_hot_spot_uniq_list_with_options(
         self,
-        request: sys_om20231230_models.GetHotSpotUniqListRequest,
+        request: main_models.GetHotSpotUniqListRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetHotSpotUniqListResponse:
-        """
-        @summary 获取实例下的某个字段列表
-        
-        @param request: GetHotSpotUniqListRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHotSpotUniqListResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHotSpotUniqListResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.beg_end):
+        if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
-        if not UtilClient.is_unset(request.beg_start):
+        if not DaraCore.is_null(request.beg_start):
             body['beg_start'] = request.beg_start
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             body['instance'] = request.instance
-        if not UtilClient.is_unset(request.pid):
+        if not DaraCore.is_null(request.pid):
             body['pid'] = request.pid
-        if not UtilClient.is_unset(request.table):
+        if not DaraCore.is_null(request.table):
             body['table'] = request.table
-        if not UtilClient.is_unset(request.uniq):
+        if not DaraCore.is_null(request.uniq):
             body['uniq'] = request.uniq
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetHotSpotUniqList',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/livetrace_proxy/hotspot_uniq_list',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHotSpotUniqList',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/livetrace_proxy/hotspot_uniq_list',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotSpotUniqListResponse(),
+        return DaraCore.from_map(
+            main_models.GetHotSpotUniqListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_hot_spot_uniq_list_with_options_async(
         self,
-        request: sys_om20231230_models.GetHotSpotUniqListRequest,
+        request: main_models.GetHotSpotUniqListRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetHotSpotUniqListResponse:
-        """
-        @summary 获取实例下的某个字段列表
-        
-        @param request: GetHotSpotUniqListRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHotSpotUniqListResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHotSpotUniqListResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.beg_end):
+        if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
-        if not UtilClient.is_unset(request.beg_start):
+        if not DaraCore.is_null(request.beg_start):
             body['beg_start'] = request.beg_start
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             body['instance'] = request.instance
-        if not UtilClient.is_unset(request.pid):
+        if not DaraCore.is_null(request.pid):
             body['pid'] = request.pid
-        if not UtilClient.is_unset(request.table):
+        if not DaraCore.is_null(request.table):
             body['table'] = request.table
-        if not UtilClient.is_unset(request.uniq):
+        if not DaraCore.is_null(request.uniq):
             body['uniq'] = request.uniq
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetHotSpotUniqList',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/livetrace_proxy/hotspot_uniq_list',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHotSpotUniqList',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/livetrace_proxy/hotspot_uniq_list',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotSpotUniqListResponse(),
+        return DaraCore.from_map(
+            main_models.GetHotSpotUniqListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_hot_spot_uniq_list(
         self,
-        request: sys_om20231230_models.GetHotSpotUniqListRequest,
-    ) -> sys_om20231230_models.GetHotSpotUniqListResponse:
-        """
-        @summary 获取实例下的某个字段列表
-        
-        @param request: GetHotSpotUniqListRequest
-        @return: GetHotSpotUniqListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHotSpotUniqListRequest,
+    ) -> main_models.GetHotSpotUniqListResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_hot_spot_uniq_list_with_options(request, headers, runtime)
 
     async def get_hot_spot_uniq_list_async(
         self,
-        request: sys_om20231230_models.GetHotSpotUniqListRequest,
-    ) -> sys_om20231230_models.GetHotSpotUniqListResponse:
-        """
-        @summary 获取实例下的某个字段列表
-        
-        @param request: GetHotSpotUniqListRequest
-        @return: GetHotSpotUniqListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHotSpotUniqListRequest,
+    ) -> main_models.GetHotSpotUniqListResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_hot_spot_uniq_list_with_options_async(request, headers, runtime)
 
     def get_hotspot_analysis_with_options(
         self,
-        request: sys_om20231230_models.GetHotspotAnalysisRequest,
+        request: main_models.GetHotspotAnalysisRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetHotspotAnalysisResponse:
-        """
-        @summary 获取热定分析结果
-        
-        @param request: GetHotspotAnalysisRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHotspotAnalysisResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHotspotAnalysisResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.app_type):
+        if not DaraCore.is_null(request.app_type):
             body['appType'] = request.app_type
-        if not UtilClient.is_unset(request.beg_end):
+        if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
-        if not UtilClient.is_unset(request.beg_start):
+        if not DaraCore.is_null(request.beg_start):
             body['beg_start'] = request.beg_start
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             body['instance'] = request.instance
-        if not UtilClient.is_unset(request.pid):
+        if not DaraCore.is_null(request.pid):
             body['pid'] = request.pid
-        if not UtilClient.is_unset(request.table):
+        if not DaraCore.is_null(request.table):
             body['table'] = request.table
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetHotspotAnalysis',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/proxy/post/livetrace_hotspot_analysis',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHotspotAnalysis',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/proxy/post/livetrace_hotspot_analysis',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotspotAnalysisResponse(),
+        return DaraCore.from_map(
+            main_models.GetHotspotAnalysisResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_hotspot_analysis_with_options_async(
         self,
-        request: sys_om20231230_models.GetHotspotAnalysisRequest,
+        request: main_models.GetHotspotAnalysisRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetHotspotAnalysisResponse:
-        """
-        @summary 获取热定分析结果
-        
-        @param request: GetHotspotAnalysisRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHotspotAnalysisResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHotspotAnalysisResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.app_type):
+        if not DaraCore.is_null(request.app_type):
             body['appType'] = request.app_type
-        if not UtilClient.is_unset(request.beg_end):
+        if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
-        if not UtilClient.is_unset(request.beg_start):
+        if not DaraCore.is_null(request.beg_start):
             body['beg_start'] = request.beg_start
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             body['instance'] = request.instance
-        if not UtilClient.is_unset(request.pid):
+        if not DaraCore.is_null(request.pid):
             body['pid'] = request.pid
-        if not UtilClient.is_unset(request.table):
+        if not DaraCore.is_null(request.table):
             body['table'] = request.table
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetHotspotAnalysis',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/proxy/post/livetrace_hotspot_analysis',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHotspotAnalysis',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/proxy/post/livetrace_hotspot_analysis',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotspotAnalysisResponse(),
+        return DaraCore.from_map(
+            main_models.GetHotspotAnalysisResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_hotspot_analysis(
         self,
-        request: sys_om20231230_models.GetHotspotAnalysisRequest,
-    ) -> sys_om20231230_models.GetHotspotAnalysisResponse:
-        """
-        @summary 获取热定分析结果
-        
-        @param request: GetHotspotAnalysisRequest
-        @return: GetHotspotAnalysisResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHotspotAnalysisRequest,
+    ) -> main_models.GetHotspotAnalysisResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_hotspot_analysis_with_options(request, headers, runtime)
 
     async def get_hotspot_analysis_async(
         self,
-        request: sys_om20231230_models.GetHotspotAnalysisRequest,
-    ) -> sys_om20231230_models.GetHotspotAnalysisResponse:
-        """
-        @summary 获取热定分析结果
-        
-        @param request: GetHotspotAnalysisRequest
-        @return: GetHotspotAnalysisResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHotspotAnalysisRequest,
+    ) -> main_models.GetHotspotAnalysisResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_hotspot_analysis_with_options_async(request, headers, runtime)
 
     def get_hotspot_compare_with_options(
         self,
-        request: sys_om20231230_models.GetHotspotCompareRequest,
+        request: main_models.GetHotspotCompareRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetHotspotCompareResponse:
-        """
-        @summary 热点对比
-        
-        @param request: GetHotspotCompareRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHotspotCompareResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHotspotCompareResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.beg_1end):
+        if not DaraCore.is_null(request.beg_1end):
             body['beg1_end'] = request.beg_1end
-        if not UtilClient.is_unset(request.beg_1start):
+        if not DaraCore.is_null(request.beg_1start):
             body['beg1_start'] = request.beg_1start
-        if not UtilClient.is_unset(request.beg_2end):
+        if not DaraCore.is_null(request.beg_2end):
             body['beg2_end'] = request.beg_2end
-        if not UtilClient.is_unset(request.beg_2start):
+        if not DaraCore.is_null(request.beg_2start):
             body['beg2_start'] = request.beg_2start
-        if not UtilClient.is_unset(request.hot_type):
+        if not DaraCore.is_null(request.hot_type):
             body['hot_type'] = request.hot_type
-        if not UtilClient.is_unset(request.instance_1):
+        if not DaraCore.is_null(request.instance_1):
             body['instance1'] = request.instance_1
-        if not UtilClient.is_unset(request.instance_2):
+        if not DaraCore.is_null(request.instance_2):
             body['instance2'] = request.instance_2
-        if not UtilClient.is_unset(request.pid_1):
+        if not DaraCore.is_null(request.pid_1):
             body['pid1'] = request.pid_1
-        if not UtilClient.is_unset(request.pid_2):
+        if not DaraCore.is_null(request.pid_2):
             body['pid2'] = request.pid_2
-        if not UtilClient.is_unset(request.table):
+        if not DaraCore.is_null(request.table):
             body['table'] = request.table
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetHotspotCompare',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/proxy/post/livetrace_hotspot_compare',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHotspotCompare',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/proxy/post/livetrace_hotspot_compare',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotspotCompareResponse(),
+        return DaraCore.from_map(
+            main_models.GetHotspotCompareResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_hotspot_compare_with_options_async(
         self,
-        request: sys_om20231230_models.GetHotspotCompareRequest,
+        request: main_models.GetHotspotCompareRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetHotspotCompareResponse:
-        """
-        @summary 热点对比
-        
-        @param request: GetHotspotCompareRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHotspotCompareResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHotspotCompareResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.beg_1end):
+        if not DaraCore.is_null(request.beg_1end):
             body['beg1_end'] = request.beg_1end
-        if not UtilClient.is_unset(request.beg_1start):
+        if not DaraCore.is_null(request.beg_1start):
             body['beg1_start'] = request.beg_1start
-        if not UtilClient.is_unset(request.beg_2end):
+        if not DaraCore.is_null(request.beg_2end):
             body['beg2_end'] = request.beg_2end
-        if not UtilClient.is_unset(request.beg_2start):
+        if not DaraCore.is_null(request.beg_2start):
             body['beg2_start'] = request.beg_2start
-        if not UtilClient.is_unset(request.hot_type):
+        if not DaraCore.is_null(request.hot_type):
             body['hot_type'] = request.hot_type
-        if not UtilClient.is_unset(request.instance_1):
+        if not DaraCore.is_null(request.instance_1):
             body['instance1'] = request.instance_1
-        if not UtilClient.is_unset(request.instance_2):
+        if not DaraCore.is_null(request.instance_2):
             body['instance2'] = request.instance_2
-        if not UtilClient.is_unset(request.pid_1):
+        if not DaraCore.is_null(request.pid_1):
             body['pid1'] = request.pid_1
-        if not UtilClient.is_unset(request.pid_2):
+        if not DaraCore.is_null(request.pid_2):
             body['pid2'] = request.pid_2
-        if not UtilClient.is_unset(request.table):
+        if not DaraCore.is_null(request.table):
             body['table'] = request.table
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetHotspotCompare',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/proxy/post/livetrace_hotspot_compare',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHotspotCompare',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/proxy/post/livetrace_hotspot_compare',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotspotCompareResponse(),
+        return DaraCore.from_map(
+            main_models.GetHotspotCompareResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_hotspot_compare(
         self,
-        request: sys_om20231230_models.GetHotspotCompareRequest,
-    ) -> sys_om20231230_models.GetHotspotCompareResponse:
-        """
-        @summary 热点对比
-        
-        @param request: GetHotspotCompareRequest
-        @return: GetHotspotCompareResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHotspotCompareRequest,
+    ) -> main_models.GetHotspotCompareResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_hotspot_compare_with_options(request, headers, runtime)
 
     async def get_hotspot_compare_async(
         self,
-        request: sys_om20231230_models.GetHotspotCompareRequest,
-    ) -> sys_om20231230_models.GetHotspotCompareResponse:
-        """
-        @summary 热点对比
-        
-        @param request: GetHotspotCompareRequest
-        @return: GetHotspotCompareResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHotspotCompareRequest,
+    ) -> main_models.GetHotspotCompareResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_hotspot_compare_with_options_async(request, headers, runtime)
 
     def get_hotspot_instance_list_with_options(
         self,
-        request: sys_om20231230_models.GetHotspotInstanceListRequest,
+        request: main_models.GetHotspotInstanceListRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetHotspotInstanceListResponse:
-        """
-        @summary 获取热点实例列表
-        
-        @param request: GetHotspotInstanceListRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHotspotInstanceListResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHotspotInstanceListResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.beg_end):
+        if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
-        if not UtilClient.is_unset(request.beg_start):
+        if not DaraCore.is_null(request.beg_start):
             body['beg_start'] = request.beg_start
-        if not UtilClient.is_unset(request.table):
+        if not DaraCore.is_null(request.table):
             body['table'] = request.table
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetHotspotInstanceList',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/proxy/post/livetrace_hotspot_instance_list',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHotspotInstanceList',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/proxy/post/livetrace_hotspot_instance_list',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotspotInstanceListResponse(),
+        return DaraCore.from_map(
+            main_models.GetHotspotInstanceListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_hotspot_instance_list_with_options_async(
         self,
-        request: sys_om20231230_models.GetHotspotInstanceListRequest,
+        request: main_models.GetHotspotInstanceListRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetHotspotInstanceListResponse:
-        """
-        @summary 获取热点实例列表
-        
-        @param request: GetHotspotInstanceListRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHotspotInstanceListResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHotspotInstanceListResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.beg_end):
+        if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
-        if not UtilClient.is_unset(request.beg_start):
+        if not DaraCore.is_null(request.beg_start):
             body['beg_start'] = request.beg_start
-        if not UtilClient.is_unset(request.table):
+        if not DaraCore.is_null(request.table):
             body['table'] = request.table
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetHotspotInstanceList',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/proxy/post/livetrace_hotspot_instance_list',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHotspotInstanceList',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/proxy/post/livetrace_hotspot_instance_list',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotspotInstanceListResponse(),
+        return DaraCore.from_map(
+            main_models.GetHotspotInstanceListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_hotspot_instance_list(
         self,
-        request: sys_om20231230_models.GetHotspotInstanceListRequest,
-    ) -> sys_om20231230_models.GetHotspotInstanceListResponse:
-        """
-        @summary 获取热点实例列表
-        
-        @param request: GetHotspotInstanceListRequest
-        @return: GetHotspotInstanceListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHotspotInstanceListRequest,
+    ) -> main_models.GetHotspotInstanceListResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_hotspot_instance_list_with_options(request, headers, runtime)
 
     async def get_hotspot_instance_list_async(
         self,
-        request: sys_om20231230_models.GetHotspotInstanceListRequest,
-    ) -> sys_om20231230_models.GetHotspotInstanceListResponse:
-        """
-        @summary 获取热点实例列表
-        
-        @param request: GetHotspotInstanceListRequest
-        @return: GetHotspotInstanceListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHotspotInstanceListRequest,
+    ) -> main_models.GetHotspotInstanceListResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_hotspot_instance_list_with_options_async(request, headers, runtime)
 
     def get_hotspot_pid_list_with_options(
         self,
-        request: sys_om20231230_models.GetHotspotPidListRequest,
+        request: main_models.GetHotspotPidListRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetHotspotPidListResponse:
-        """
-        @summary 获取某个实例的pid列表
-        
-        @param request: GetHotspotPidListRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHotspotPidListResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHotspotPidListResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.beg_end):
+        if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
-        if not UtilClient.is_unset(request.beg_start):
+        if not DaraCore.is_null(request.beg_start):
             body['beg_start'] = request.beg_start
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             body['instance'] = request.instance
-        if not UtilClient.is_unset(request.table):
+        if not DaraCore.is_null(request.table):
             body['table'] = request.table
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetHotspotPidList',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/proxy/post/livetrace_hotspot_pid_list',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHotspotPidList',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/proxy/post/livetrace_hotspot_pid_list',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotspotPidListResponse(),
+        return DaraCore.from_map(
+            main_models.GetHotspotPidListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_hotspot_pid_list_with_options_async(
         self,
-        request: sys_om20231230_models.GetHotspotPidListRequest,
+        request: main_models.GetHotspotPidListRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetHotspotPidListResponse:
-        """
-        @summary 获取某个实例的pid列表
-        
-        @param request: GetHotspotPidListRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHotspotPidListResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHotspotPidListResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.beg_end):
+        if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
-        if not UtilClient.is_unset(request.beg_start):
+        if not DaraCore.is_null(request.beg_start):
             body['beg_start'] = request.beg_start
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             body['instance'] = request.instance
-        if not UtilClient.is_unset(request.table):
+        if not DaraCore.is_null(request.table):
             body['table'] = request.table
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetHotspotPidList',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/proxy/post/livetrace_hotspot_pid_list',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHotspotPidList',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/proxy/post/livetrace_hotspot_pid_list',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotspotPidListResponse(),
+        return DaraCore.from_map(
+            main_models.GetHotspotPidListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_hotspot_pid_list(
         self,
-        request: sys_om20231230_models.GetHotspotPidListRequest,
-    ) -> sys_om20231230_models.GetHotspotPidListResponse:
-        """
-        @summary 获取某个实例的pid列表
-        
-        @param request: GetHotspotPidListRequest
-        @return: GetHotspotPidListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHotspotPidListRequest,
+    ) -> main_models.GetHotspotPidListResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_hotspot_pid_list_with_options(request, headers, runtime)
 
     async def get_hotspot_pid_list_async(
         self,
-        request: sys_om20231230_models.GetHotspotPidListRequest,
-    ) -> sys_om20231230_models.GetHotspotPidListResponse:
-        """
-        @summary 获取某个实例的pid列表
-        
-        @param request: GetHotspotPidListRequest
-        @return: GetHotspotPidListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHotspotPidListRequest,
+    ) -> main_models.GetHotspotPidListResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_hotspot_pid_list_with_options_async(request, headers, runtime)
 
     def get_hotspot_tracking_with_options(
         self,
-        request: sys_om20231230_models.GetHotspotTrackingRequest,
+        request: main_models.GetHotspotTrackingRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetHotspotTrackingResponse:
-        """
-        @summary 发起热点追踪
-        
-        @param request: GetHotspotTrackingRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHotspotTrackingResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHotspotTrackingResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.beg_end):
+        if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
-        if not UtilClient.is_unset(request.beg_start):
+        if not DaraCore.is_null(request.beg_start):
             body['beg_start'] = request.beg_start
-        if not UtilClient.is_unset(request.hot_type):
+        if not DaraCore.is_null(request.hot_type):
             body['hot_type'] = request.hot_type
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             body['instance'] = request.instance
-        if not UtilClient.is_unset(request.pid):
+        if not DaraCore.is_null(request.pid):
             body['pid'] = request.pid
-        if not UtilClient.is_unset(request.table):
+        if not DaraCore.is_null(request.table):
             body['table'] = request.table
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetHotspotTracking',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/proxy/post/livetrace_hotspot_tracking',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHotspotTracking',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/proxy/post/livetrace_hotspot_tracking',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotspotTrackingResponse(),
+        return DaraCore.from_map(
+            main_models.GetHotspotTrackingResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_hotspot_tracking_with_options_async(
         self,
-        request: sys_om20231230_models.GetHotspotTrackingRequest,
+        request: main_models.GetHotspotTrackingRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetHotspotTrackingResponse:
-        """
-        @summary 发起热点追踪
-        
-        @param request: GetHotspotTrackingRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHotspotTrackingResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHotspotTrackingResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.beg_end):
+        if not DaraCore.is_null(request.beg_end):
             body['beg_end'] = request.beg_end
-        if not UtilClient.is_unset(request.beg_start):
+        if not DaraCore.is_null(request.beg_start):
             body['beg_start'] = request.beg_start
-        if not UtilClient.is_unset(request.hot_type):
+        if not DaraCore.is_null(request.hot_type):
             body['hot_type'] = request.hot_type
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             body['instance'] = request.instance
-        if not UtilClient.is_unset(request.pid):
+        if not DaraCore.is_null(request.pid):
             body['pid'] = request.pid
-        if not UtilClient.is_unset(request.table):
+        if not DaraCore.is_null(request.table):
             body['table'] = request.table
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='GetHotspotTracking',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/proxy/post/livetrace_hotspot_tracking',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHotspotTracking',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/proxy/post/livetrace_hotspot_tracking',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetHotspotTrackingResponse(),
+        return DaraCore.from_map(
+            main_models.GetHotspotTrackingResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_hotspot_tracking(
         self,
-        request: sys_om20231230_models.GetHotspotTrackingRequest,
-    ) -> sys_om20231230_models.GetHotspotTrackingResponse:
-        """
-        @summary 发起热点追踪
-        
-        @param request: GetHotspotTrackingRequest
-        @return: GetHotspotTrackingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHotspotTrackingRequest,
+    ) -> main_models.GetHotspotTrackingResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_hotspot_tracking_with_options(request, headers, runtime)
 
     async def get_hotspot_tracking_async(
         self,
-        request: sys_om20231230_models.GetHotspotTrackingRequest,
-    ) -> sys_om20231230_models.GetHotspotTrackingResponse:
-        """
-        @summary 发起热点追踪
-        
-        @param request: GetHotspotTrackingRequest
-        @return: GetHotspotTrackingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHotspotTrackingRequest,
+    ) -> main_models.GetHotspotTrackingResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_hotspot_tracking_with_options_async(request, headers, runtime)
 
     def get_instant_score_with_options(
         self,
-        request: sys_om20231230_models.GetInstantScoreRequest,
+        request: main_models.GetInstantScoreRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetInstantScoreResponse:
-        """
-        @summary 获取实时集群/节点健康度分数
-        
-        @param request: GetInstantScoreRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetInstantScoreResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstantScoreResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetInstantScore',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/instant/score',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetInstantScore',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/instant/score',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetInstantScoreResponse(),
+        return DaraCore.from_map(
+            main_models.GetInstantScoreResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_instant_score_with_options_async(
         self,
-        request: sys_om20231230_models.GetInstantScoreRequest,
+        request: main_models.GetInstantScoreRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetInstantScoreResponse:
-        """
-        @summary 获取实时集群/节点健康度分数
-        
-        @param request: GetInstantScoreRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetInstantScoreResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstantScoreResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetInstantScore',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/instant/score',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetInstantScore',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/instant/score',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetInstantScoreResponse(),
+        return DaraCore.from_map(
+            main_models.GetInstantScoreResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_instant_score(
         self,
-        request: sys_om20231230_models.GetInstantScoreRequest,
-    ) -> sys_om20231230_models.GetInstantScoreResponse:
-        """
-        @summary 获取实时集群/节点健康度分数
-        
-        @param request: GetInstantScoreRequest
-        @return: GetInstantScoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetInstantScoreRequest,
+    ) -> main_models.GetInstantScoreResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_instant_score_with_options(request, headers, runtime)
 
     async def get_instant_score_async(
         self,
-        request: sys_om20231230_models.GetInstantScoreRequest,
-    ) -> sys_om20231230_models.GetInstantScoreResponse:
-        """
-        @summary 获取实时集群/节点健康度分数
-        
-        @param request: GetInstantScoreRequest
-        @return: GetInstantScoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetInstantScoreRequest,
+    ) -> main_models.GetInstantScoreResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_instant_score_with_options_async(request, headers, runtime)
 
     def get_list_record_with_options(
         self,
-        request: sys_om20231230_models.GetListRecordRequest,
+        request: main_models.GetListRecordRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetListRecordResponse:
-        """
-        @summary AI Infra获取分析记录列表
-        
-        @param request: GetListRecordRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetListRecordResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetListRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetListRecord',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/app_observ/aiAnalysis/list_record',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetListRecord',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/app_observ/aiAnalysis/list_record',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetListRecordResponse(),
+        return DaraCore.from_map(
+            main_models.GetListRecordResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_list_record_with_options_async(
         self,
-        request: sys_om20231230_models.GetListRecordRequest,
+        request: main_models.GetListRecordRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetListRecordResponse:
-        """
-        @summary AI Infra获取分析记录列表
-        
-        @param request: GetListRecordRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetListRecordResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetListRecordResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetListRecord',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/app_observ/aiAnalysis/list_record',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetListRecord',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/app_observ/aiAnalysis/list_record',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetListRecordResponse(),
+        return DaraCore.from_map(
+            main_models.GetListRecordResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_list_record(
         self,
-        request: sys_om20231230_models.GetListRecordRequest,
-    ) -> sys_om20231230_models.GetListRecordResponse:
-        """
-        @summary AI Infra获取分析记录列表
-        
-        @param request: GetListRecordRequest
-        @return: GetListRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetListRecordRequest,
+    ) -> main_models.GetListRecordResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_list_record_with_options(request, headers, runtime)
 
     async def get_list_record_async(
         self,
-        request: sys_om20231230_models.GetListRecordRequest,
-    ) -> sys_om20231230_models.GetListRecordResponse:
-        """
-        @summary AI Infra获取分析记录列表
-        
-        @param request: GetListRecordRequest
-        @return: GetListRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetListRecordRequest,
+    ) -> main_models.GetListRecordResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_list_record_with_options_async(request, headers, runtime)
 
     def get_problem_percentage_with_options(
         self,
-        request: sys_om20231230_models.GetProblemPercentageRequest,
+        request: main_models.GetProblemPercentageRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetProblemPercentageResponse:
-        """
-        @summary 获取一定时间内集群中节点/节点中pod异常问题占比
-        
-        @param request: GetProblemPercentageRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetProblemPercentageResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProblemPercentageResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.end):
+        if not DaraCore.is_null(request.end):
             query['end'] = request.end
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.start):
+        if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetProblemPercentage',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/range/problem_percentage',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetProblemPercentage',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/range/problem_percentage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetProblemPercentageResponse(),
+        return DaraCore.from_map(
+            main_models.GetProblemPercentageResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_problem_percentage_with_options_async(
         self,
-        request: sys_om20231230_models.GetProblemPercentageRequest,
+        request: main_models.GetProblemPercentageRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetProblemPercentageResponse:
-        """
-        @summary 获取一定时间内集群中节点/节点中pod异常问题占比
-        
-        @param request: GetProblemPercentageRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetProblemPercentageResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetProblemPercentageResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.end):
+        if not DaraCore.is_null(request.end):
             query['end'] = request.end
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.start):
+        if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetProblemPercentage',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/range/problem_percentage',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetProblemPercentage',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/range/problem_percentage',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetProblemPercentageResponse(),
+        return DaraCore.from_map(
+            main_models.GetProblemPercentageResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_problem_percentage(
         self,
-        request: sys_om20231230_models.GetProblemPercentageRequest,
-    ) -> sys_om20231230_models.GetProblemPercentageResponse:
-        """
-        @summary 获取一定时间内集群中节点/节点中pod异常问题占比
-        
-        @param request: GetProblemPercentageRequest
-        @return: GetProblemPercentageResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetProblemPercentageRequest,
+    ) -> main_models.GetProblemPercentageResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_problem_percentage_with_options(request, headers, runtime)
 
     async def get_problem_percentage_async(
         self,
-        request: sys_om20231230_models.GetProblemPercentageRequest,
-    ) -> sys_om20231230_models.GetProblemPercentageResponse:
-        """
-        @summary 获取一定时间内集群中节点/节点中pod异常问题占比
-        
-        @param request: GetProblemPercentageRequest
-        @return: GetProblemPercentageResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetProblemPercentageRequest,
+    ) -> main_models.GetProblemPercentageResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_problem_percentage_with_options_async(request, headers, runtime)
 
     def get_range_score_with_options(
         self,
-        request: sys_om20231230_models.GetRangeScoreRequest,
+        request: main_models.GetRangeScoreRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetRangeScoreResponse:
-        """
-        @summary 获取健康分趋势
-        
-        @param request: GetRangeScoreRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetRangeScoreResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRangeScoreResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.end):
+        if not DaraCore.is_null(request.end):
             query['end'] = request.end
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.start):
+        if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetRangeScore',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/range/score',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetRangeScore',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/range/score',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetRangeScoreResponse(),
+        return DaraCore.from_map(
+            main_models.GetRangeScoreResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_range_score_with_options_async(
         self,
-        request: sys_om20231230_models.GetRangeScoreRequest,
+        request: main_models.GetRangeScoreRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetRangeScoreResponse:
-        """
-        @summary 获取健康分趋势
-        
-        @param request: GetRangeScoreRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetRangeScoreResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRangeScoreResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.end):
+        if not DaraCore.is_null(request.end):
             query['end'] = request.end
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.start):
+        if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetRangeScore',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/range/score',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetRangeScore',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/range/score',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetRangeScoreResponse(),
+        return DaraCore.from_map(
+            main_models.GetRangeScoreResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_range_score(
         self,
-        request: sys_om20231230_models.GetRangeScoreRequest,
-    ) -> sys_om20231230_models.GetRangeScoreResponse:
-        """
-        @summary 获取健康分趋势
-        
-        @param request: GetRangeScoreRequest
-        @return: GetRangeScoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetRangeScoreRequest,
+    ) -> main_models.GetRangeScoreResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_range_score_with_options(request, headers, runtime)
 
     async def get_range_score_async(
         self,
-        request: sys_om20231230_models.GetRangeScoreRequest,
-    ) -> sys_om20231230_models.GetRangeScoreResponse:
-        """
-        @summary 获取健康分趋势
-        
-        @param request: GetRangeScoreRequest
-        @return: GetRangeScoreResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetRangeScoreRequest,
+    ) -> main_models.GetRangeScoreResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_range_score_with_options_async(request, headers, runtime)
 
     def get_resources_with_options(
         self,
-        request: sys_om20231230_models.GetResourcesRequest,
+        request: main_models.GetResourcesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetResourcesResponse:
-        """
-        @summary 获取集群/节点资源实时使用情况
-        
-        @param request: GetResourcesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetResources',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/instant/resource',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetResources',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/instant/resource',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.GetResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_resources_with_options_async(
         self,
-        request: sys_om20231230_models.GetResourcesRequest,
+        request: main_models.GetResourcesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetResourcesResponse:
-        """
-        @summary 获取集群/节点资源实时使用情况
-        
-        @param request: GetResourcesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetResources',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/instant/resource',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetResources',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/instant/resource',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.GetResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_resources(
         self,
-        request: sys_om20231230_models.GetResourcesRequest,
-    ) -> sys_om20231230_models.GetResourcesResponse:
-        """
-        @summary 获取集群/节点资源实时使用情况
-        
-        @param request: GetResourcesRequest
-        @return: GetResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetResourcesRequest,
+    ) -> main_models.GetResourcesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_resources_with_options(request, headers, runtime)
 
     async def get_resources_async(
         self,
-        request: sys_om20231230_models.GetResourcesRequest,
-    ) -> sys_om20231230_models.GetResourcesResponse:
-        """
-        @summary 获取集群/节点资源实时使用情况
-        
-        @param request: GetResourcesRequest
-        @return: GetResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetResourcesRequest,
+    ) -> main_models.GetResourcesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_resources_with_options_async(request, headers, runtime)
 
     def get_service_func_status_with_options(
         self,
-        tmp_req: sys_om20231230_models.GetServiceFuncStatusRequest,
+        tmp_req: main_models.GetServiceFuncStatusRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetServiceFuncStatusResponse:
-        """
-        @summary 获取功能模块配置
-        
-        @param tmp_req: GetServiceFuncStatusRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetServiceFuncStatusResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = sys_om20231230_models.GetServiceFuncStatusShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.params):
-            request.params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.params, 'params', 'json')
+        runtime: RuntimeOptions,
+    ) -> main_models.GetServiceFuncStatusResponse:
+        tmp_req.validate()
+        request = main_models.GetServiceFuncStatusShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'params', 'json')
         query = {}
-        if not UtilClient.is_unset(request.channel):
+        if not DaraCore.is_null(request.channel):
             query['channel'] = request.channel
-        if not UtilClient.is_unset(request.params_shrink):
+        if not DaraCore.is_null(request.params_shrink):
             query['params'] = request.params_shrink
-        if not UtilClient.is_unset(request.service_name):
+        if not DaraCore.is_null(request.service_name):
             query['service_name'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetServiceFuncStatus',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/func-switch/get-service-func-status',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetServiceFuncStatus',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/func-switch/get-service-func-status',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetServiceFuncStatusResponse(),
+        return DaraCore.from_map(
+            main_models.GetServiceFuncStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_service_func_status_with_options_async(
         self,
-        tmp_req: sys_om20231230_models.GetServiceFuncStatusRequest,
+        tmp_req: main_models.GetServiceFuncStatusRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetServiceFuncStatusResponse:
-        """
-        @summary 获取功能模块配置
-        
-        @param tmp_req: GetServiceFuncStatusRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetServiceFuncStatusResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = sys_om20231230_models.GetServiceFuncStatusShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.params):
-            request.params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.params, 'params', 'json')
+        runtime: RuntimeOptions,
+    ) -> main_models.GetServiceFuncStatusResponse:
+        tmp_req.validate()
+        request = main_models.GetServiceFuncStatusShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'params', 'json')
         query = {}
-        if not UtilClient.is_unset(request.channel):
+        if not DaraCore.is_null(request.channel):
             query['channel'] = request.channel
-        if not UtilClient.is_unset(request.params_shrink):
+        if not DaraCore.is_null(request.params_shrink):
             query['params'] = request.params_shrink
-        if not UtilClient.is_unset(request.service_name):
+        if not DaraCore.is_null(request.service_name):
             query['service_name'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetServiceFuncStatus',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/func-switch/get-service-func-status',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetServiceFuncStatus',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/func-switch/get-service-func-status',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetServiceFuncStatusResponse(),
+        return DaraCore.from_map(
+            main_models.GetServiceFuncStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_service_func_status(
         self,
-        request: sys_om20231230_models.GetServiceFuncStatusRequest,
-    ) -> sys_om20231230_models.GetServiceFuncStatusResponse:
-        """
-        @summary 获取功能模块配置
-        
-        @param request: GetServiceFuncStatusRequest
-        @return: GetServiceFuncStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetServiceFuncStatusRequest,
+    ) -> main_models.GetServiceFuncStatusResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_service_func_status_with_options(request, headers, runtime)
 
     async def get_service_func_status_async(
         self,
-        request: sys_om20231230_models.GetServiceFuncStatusRequest,
-    ) -> sys_om20231230_models.GetServiceFuncStatusResponse:
-        """
-        @summary 获取功能模块配置
-        
-        @param request: GetServiceFuncStatusRequest
-        @return: GetServiceFuncStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetServiceFuncStatusRequest,
+    ) -> main_models.GetServiceFuncStatusResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_service_func_status_with_options_async(request, headers, runtime)
 
     def get_vmcore_diagnosis_task_with_options(
         self,
-        request: sys_om20231230_models.GetVmcoreDiagnosisTaskRequest,
+        request: main_models.GetVmcoreDiagnosisTaskRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetVmcoreDiagnosisTaskResponse:
-        """
-        @summary 查询宕机诊断任务结果
-        
-        @param request: GetVmcoreDiagnosisTaskRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetVmcoreDiagnosisTaskResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVmcoreDiagnosisTaskResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.task_id):
+        if not DaraCore.is_null(request.task_id):
             query['taskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetVmcoreDiagnosisTask',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/crashAgent/diagnosis/queryTask',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetVmcoreDiagnosisTask',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/crashAgent/diagnosis/queryTask',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetVmcoreDiagnosisTaskResponse(),
+        return DaraCore.from_map(
+            main_models.GetVmcoreDiagnosisTaskResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_vmcore_diagnosis_task_with_options_async(
         self,
-        request: sys_om20231230_models.GetVmcoreDiagnosisTaskRequest,
+        request: main_models.GetVmcoreDiagnosisTaskRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.GetVmcoreDiagnosisTaskResponse:
-        """
-        @summary 查询宕机诊断任务结果
-        
-        @param request: GetVmcoreDiagnosisTaskRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetVmcoreDiagnosisTaskResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.GetVmcoreDiagnosisTaskResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.task_id):
+        if not DaraCore.is_null(request.task_id):
             query['taskId'] = request.task_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetVmcoreDiagnosisTask',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/crashAgent/diagnosis/queryTask',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetVmcoreDiagnosisTask',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/crashAgent/diagnosis/queryTask',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.GetVmcoreDiagnosisTaskResponse(),
+        return DaraCore.from_map(
+            main_models.GetVmcoreDiagnosisTaskResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_vmcore_diagnosis_task(
         self,
-        request: sys_om20231230_models.GetVmcoreDiagnosisTaskRequest,
-    ) -> sys_om20231230_models.GetVmcoreDiagnosisTaskResponse:
-        """
-        @summary 查询宕机诊断任务结果
-        
-        @param request: GetVmcoreDiagnosisTaskRequest
-        @return: GetVmcoreDiagnosisTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetVmcoreDiagnosisTaskRequest,
+    ) -> main_models.GetVmcoreDiagnosisTaskResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.get_vmcore_diagnosis_task_with_options(request, headers, runtime)
 
     async def get_vmcore_diagnosis_task_async(
         self,
-        request: sys_om20231230_models.GetVmcoreDiagnosisTaskRequest,
-    ) -> sys_om20231230_models.GetVmcoreDiagnosisTaskResponse:
-        """
-        @summary 查询宕机诊断任务结果
-        
-        @param request: GetVmcoreDiagnosisTaskRequest
-        @return: GetVmcoreDiagnosisTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetVmcoreDiagnosisTaskRequest,
+    ) -> main_models.GetVmcoreDiagnosisTaskResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.get_vmcore_diagnosis_task_with_options_async(request, headers, runtime)
 
     def initial_sysom_with_options(
         self,
-        request: sys_om20231230_models.InitialSysomRequest,
+        request: main_models.InitialSysomRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.InitialSysomResponse:
-        """
-        @summary 初始化SysOM，确保角色存在
-        
-        @param request: InitialSysomRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InitialSysomResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.InitialSysomResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.check_only):
+        if not DaraCore.is_null(request.check_only):
             body['check_only'] = request.check_only
-        if not UtilClient.is_unset(request.source):
+        if not DaraCore.is_null(request.source):
             body['source'] = request.source
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='InitialSysom',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/initial',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InitialSysom',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/initial',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.InitialSysomResponse(),
+        return DaraCore.from_map(
+            main_models.InitialSysomResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def initial_sysom_with_options_async(
         self,
-        request: sys_om20231230_models.InitialSysomRequest,
+        request: main_models.InitialSysomRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.InitialSysomResponse:
-        """
-        @summary 初始化SysOM，确保角色存在
-        
-        @param request: InitialSysomRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InitialSysomResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.InitialSysomResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.check_only):
+        if not DaraCore.is_null(request.check_only):
             body['check_only'] = request.check_only
-        if not UtilClient.is_unset(request.source):
+        if not DaraCore.is_null(request.source):
             body['source'] = request.source
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='InitialSysom',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/initial',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InitialSysom',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/initial',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.InitialSysomResponse(),
+        return DaraCore.from_map(
+            main_models.InitialSysomResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def initial_sysom(
         self,
-        request: sys_om20231230_models.InitialSysomRequest,
-    ) -> sys_om20231230_models.InitialSysomResponse:
-        """
-        @summary 初始化SysOM，确保角色存在
-        
-        @param request: InitialSysomRequest
-        @return: InitialSysomResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InitialSysomRequest,
+    ) -> main_models.InitialSysomResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.initial_sysom_with_options(request, headers, runtime)
 
     async def initial_sysom_async(
         self,
-        request: sys_om20231230_models.InitialSysomRequest,
-    ) -> sys_om20231230_models.InitialSysomResponse:
-        """
-        @summary 初始化SysOM，确保角色存在
-        
-        @param request: InitialSysomRequest
-        @return: InitialSysomResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InitialSysomRequest,
+    ) -> main_models.InitialSysomResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.initial_sysom_with_options_async(request, headers, runtime)
 
     def install_agent_with_options(
         self,
-        request: sys_om20231230_models.InstallAgentRequest,
+        request: main_models.InstallAgentRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.InstallAgentResponse:
-        """
-        @summary 在指定的实例上安装 Agent
-        
-        @param request: InstallAgentRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InstallAgentResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallAgentResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.agent_id):
+        if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
-        if not UtilClient.is_unset(request.agent_version):
+        if not DaraCore.is_null(request.agent_version):
             body['agent_version'] = request.agent_version
-        if not UtilClient.is_unset(request.install_type):
+        if not DaraCore.is_null(request.install_type):
             body['install_type'] = request.install_type
-        if not UtilClient.is_unset(request.instances):
+        if not DaraCore.is_null(request.instances):
             body['instances'] = request.instances
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='InstallAgent',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/install_agent',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InstallAgent',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/install_agent',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.InstallAgentResponse(),
+        return DaraCore.from_map(
+            main_models.InstallAgentResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def install_agent_with_options_async(
         self,
-        request: sys_om20231230_models.InstallAgentRequest,
+        request: main_models.InstallAgentRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.InstallAgentResponse:
-        """
-        @summary 在指定的实例上安装 Agent
-        
-        @param request: InstallAgentRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InstallAgentResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallAgentResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.agent_id):
+        if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
-        if not UtilClient.is_unset(request.agent_version):
+        if not DaraCore.is_null(request.agent_version):
             body['agent_version'] = request.agent_version
-        if not UtilClient.is_unset(request.install_type):
+        if not DaraCore.is_null(request.install_type):
             body['install_type'] = request.install_type
-        if not UtilClient.is_unset(request.instances):
+        if not DaraCore.is_null(request.instances):
             body['instances'] = request.instances
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='InstallAgent',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/install_agent',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InstallAgent',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/install_agent',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.InstallAgentResponse(),
+        return DaraCore.from_map(
+            main_models.InstallAgentResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def install_agent(
         self,
-        request: sys_om20231230_models.InstallAgentRequest,
-    ) -> sys_om20231230_models.InstallAgentResponse:
-        """
-        @summary 在指定的实例上安装 Agent
-        
-        @param request: InstallAgentRequest
-        @return: InstallAgentResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InstallAgentRequest,
+    ) -> main_models.InstallAgentResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.install_agent_with_options(request, headers, runtime)
 
     async def install_agent_async(
         self,
-        request: sys_om20231230_models.InstallAgentRequest,
-    ) -> sys_om20231230_models.InstallAgentResponse:
-        """
-        @summary 在指定的实例上安装 Agent
-        
-        @param request: InstallAgentRequest
-        @return: InstallAgentResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InstallAgentRequest,
+    ) -> main_models.InstallAgentResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.install_agent_with_options_async(request, headers, runtime)
 
     def install_agent_for_cluster_with_options(
         self,
-        request: sys_om20231230_models.InstallAgentForClusterRequest,
+        request: main_models.InstallAgentForClusterRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.InstallAgentForClusterResponse:
-        """
-        @summary 给集群安装组件
-        
-        @param request: InstallAgentForClusterRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InstallAgentForClusterResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallAgentForClusterResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.agent_id):
+        if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
-        if not UtilClient.is_unset(request.agent_version):
+        if not DaraCore.is_null(request.agent_version):
             body['agent_version'] = request.agent_version
-        if not UtilClient.is_unset(request.cluster_id):
+        if not DaraCore.is_null(request.cluster_id):
             body['cluster_id'] = request.cluster_id
-        if not UtilClient.is_unset(request.config_id):
+        if not DaraCore.is_null(request.config_id):
             body['config_id'] = request.config_id
-        if not UtilClient.is_unset(request.grayscale_config):
+        if not DaraCore.is_null(request.grayscale_config):
             body['grayscale_config'] = request.grayscale_config
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='InstallAgentForCluster',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/install_agent_by_cluster',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InstallAgentForCluster',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/install_agent_by_cluster',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.InstallAgentForClusterResponse(),
+        return DaraCore.from_map(
+            main_models.InstallAgentForClusterResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def install_agent_for_cluster_with_options_async(
         self,
-        request: sys_om20231230_models.InstallAgentForClusterRequest,
+        request: main_models.InstallAgentForClusterRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.InstallAgentForClusterResponse:
-        """
-        @summary 给集群安装组件
-        
-        @param request: InstallAgentForClusterRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InstallAgentForClusterResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.InstallAgentForClusterResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.agent_id):
+        if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
-        if not UtilClient.is_unset(request.agent_version):
+        if not DaraCore.is_null(request.agent_version):
             body['agent_version'] = request.agent_version
-        if not UtilClient.is_unset(request.cluster_id):
+        if not DaraCore.is_null(request.cluster_id):
             body['cluster_id'] = request.cluster_id
-        if not UtilClient.is_unset(request.config_id):
+        if not DaraCore.is_null(request.config_id):
             body['config_id'] = request.config_id
-        if not UtilClient.is_unset(request.grayscale_config):
+        if not DaraCore.is_null(request.grayscale_config):
             body['grayscale_config'] = request.grayscale_config
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='InstallAgentForCluster',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/install_agent_by_cluster',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InstallAgentForCluster',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/install_agent_by_cluster',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.InstallAgentForClusterResponse(),
+        return DaraCore.from_map(
+            main_models.InstallAgentForClusterResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def install_agent_for_cluster(
         self,
-        request: sys_om20231230_models.InstallAgentForClusterRequest,
-    ) -> sys_om20231230_models.InstallAgentForClusterResponse:
-        """
-        @summary 给集群安装组件
-        
-        @param request: InstallAgentForClusterRequest
-        @return: InstallAgentForClusterResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InstallAgentForClusterRequest,
+    ) -> main_models.InstallAgentForClusterResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.install_agent_for_cluster_with_options(request, headers, runtime)
 
     async def install_agent_for_cluster_async(
         self,
-        request: sys_om20231230_models.InstallAgentForClusterRequest,
-    ) -> sys_om20231230_models.InstallAgentForClusterResponse:
-        """
-        @summary 给集群安装组件
-        
-        @param request: InstallAgentForClusterRequest
-        @return: InstallAgentForClusterResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InstallAgentForClusterRequest,
+    ) -> main_models.InstallAgentForClusterResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.install_agent_for_cluster_with_options_async(request, headers, runtime)
 
     def invoke_anomaly_diagnosis_with_options(
         self,
-        request: sys_om20231230_models.InvokeAnomalyDiagnosisRequest,
+        request: main_models.InvokeAnomalyDiagnosisRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.InvokeAnomalyDiagnosisResponse:
-        """
-        @summary 异常项诊断跳转
-        
-        @param request: InvokeAnomalyDiagnosisRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InvokeAnomalyDiagnosisResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.InvokeAnomalyDiagnosisResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.uuid):
+        if not DaraCore.is_null(request.uuid):
             query['uuid'] = request.uuid
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='InvokeAnomalyDiagnosis',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/diagnosis/invoke_anomaly_diagnose',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InvokeAnomalyDiagnosis',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/diagnosis/invoke_anomaly_diagnose',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.InvokeAnomalyDiagnosisResponse(),
+        return DaraCore.from_map(
+            main_models.InvokeAnomalyDiagnosisResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def invoke_anomaly_diagnosis_with_options_async(
         self,
-        request: sys_om20231230_models.InvokeAnomalyDiagnosisRequest,
+        request: main_models.InvokeAnomalyDiagnosisRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.InvokeAnomalyDiagnosisResponse:
-        """
-        @summary 异常项诊断跳转
-        
-        @param request: InvokeAnomalyDiagnosisRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InvokeAnomalyDiagnosisResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.InvokeAnomalyDiagnosisResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.uuid):
+        if not DaraCore.is_null(request.uuid):
             query['uuid'] = request.uuid
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='InvokeAnomalyDiagnosis',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/diagnosis/invoke_anomaly_diagnose',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InvokeAnomalyDiagnosis',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/diagnosis/invoke_anomaly_diagnose',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.InvokeAnomalyDiagnosisResponse(),
+        return DaraCore.from_map(
+            main_models.InvokeAnomalyDiagnosisResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def invoke_anomaly_diagnosis(
         self,
-        request: sys_om20231230_models.InvokeAnomalyDiagnosisRequest,
-    ) -> sys_om20231230_models.InvokeAnomalyDiagnosisResponse:
-        """
-        @summary 异常项诊断跳转
-        
-        @param request: InvokeAnomalyDiagnosisRequest
-        @return: InvokeAnomalyDiagnosisResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InvokeAnomalyDiagnosisRequest,
+    ) -> main_models.InvokeAnomalyDiagnosisResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.invoke_anomaly_diagnosis_with_options(request, headers, runtime)
 
     async def invoke_anomaly_diagnosis_async(
         self,
-        request: sys_om20231230_models.InvokeAnomalyDiagnosisRequest,
-    ) -> sys_om20231230_models.InvokeAnomalyDiagnosisResponse:
-        """
-        @summary 异常项诊断跳转
-        
-        @param request: InvokeAnomalyDiagnosisRequest
-        @return: InvokeAnomalyDiagnosisResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InvokeAnomalyDiagnosisRequest,
+    ) -> main_models.InvokeAnomalyDiagnosisResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.invoke_anomaly_diagnosis_with_options_async(request, headers, runtime)
 
     def invoke_diagnosis_with_options(
         self,
-        request: sys_om20231230_models.InvokeDiagnosisRequest,
+        request: main_models.InvokeDiagnosisRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.InvokeDiagnosisResponse:
-        """
-        @summary 发起诊断
-        
-        @param request: InvokeDiagnosisRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InvokeDiagnosisResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.InvokeDiagnosisResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.channel):
+        if not DaraCore.is_null(request.channel):
             body['channel'] = request.channel
-        if not UtilClient.is_unset(request.params):
+        if not DaraCore.is_null(request.params):
             body['params'] = request.params
-        if not UtilClient.is_unset(request.service_name):
+        if not DaraCore.is_null(request.service_name):
             body['service_name'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='InvokeDiagnosis',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/diagnosis/invoke_diagnosis',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InvokeDiagnosis',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/diagnosis/invoke_diagnosis',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.InvokeDiagnosisResponse(),
+        return DaraCore.from_map(
+            main_models.InvokeDiagnosisResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def invoke_diagnosis_with_options_async(
         self,
-        request: sys_om20231230_models.InvokeDiagnosisRequest,
+        request: main_models.InvokeDiagnosisRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.InvokeDiagnosisResponse:
-        """
-        @summary 发起诊断
-        
-        @param request: InvokeDiagnosisRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InvokeDiagnosisResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.InvokeDiagnosisResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.channel):
+        if not DaraCore.is_null(request.channel):
             body['channel'] = request.channel
-        if not UtilClient.is_unset(request.params):
+        if not DaraCore.is_null(request.params):
             body['params'] = request.params
-        if not UtilClient.is_unset(request.service_name):
+        if not DaraCore.is_null(request.service_name):
             body['service_name'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='InvokeDiagnosis',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/diagnosis/invoke_diagnosis',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InvokeDiagnosis',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/diagnosis/invoke_diagnosis',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.InvokeDiagnosisResponse(),
+        return DaraCore.from_map(
+            main_models.InvokeDiagnosisResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def invoke_diagnosis(
         self,
-        request: sys_om20231230_models.InvokeDiagnosisRequest,
-    ) -> sys_om20231230_models.InvokeDiagnosisResponse:
-        """
-        @summary 发起诊断
-        
-        @param request: InvokeDiagnosisRequest
-        @return: InvokeDiagnosisResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InvokeDiagnosisRequest,
+    ) -> main_models.InvokeDiagnosisResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.invoke_diagnosis_with_options(request, headers, runtime)
 
     async def invoke_diagnosis_async(
         self,
-        request: sys_om20231230_models.InvokeDiagnosisRequest,
-    ) -> sys_om20231230_models.InvokeDiagnosisResponse:
-        """
-        @summary 发起诊断
-        
-        @param request: InvokeDiagnosisRequest
-        @return: InvokeDiagnosisResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InvokeDiagnosisRequest,
+    ) -> main_models.InvokeDiagnosisResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.invoke_diagnosis_with_options_async(request, headers, runtime)
 
     def list_abnormaly_events_with_options(
         self,
-        request: sys_om20231230_models.ListAbnormalyEventsRequest,
+        request: main_models.ListAbnormalyEventsRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListAbnormalyEventsResponse:
-        """
-        @summary 获取一定时间段内的异常事件
-        
-        @param request: ListAbnormalyEventsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAbnormalyEventsResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAbnormalyEventsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.end):
+        if not DaraCore.is_null(request.end):
             query['end'] = request.end
-        if not UtilClient.is_unset(request.event):
+        if not DaraCore.is_null(request.event):
             query['event'] = request.event
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.level):
+        if not DaraCore.is_null(request.level):
             query['level'] = request.level
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['namespace'] = request.namespace
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.pod):
+        if not DaraCore.is_null(request.pod):
             query['pod'] = request.pod
-        if not UtilClient.is_unset(request.show_pod):
+        if not DaraCore.is_null(request.show_pod):
             query['showPod'] = request.show_pod
-        if not UtilClient.is_unset(request.start):
+        if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAbnormalyEvents',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/range/abnormaly_events',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAbnormalyEvents',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/range/abnormaly_events',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAbnormalyEventsResponse(),
+        return DaraCore.from_map(
+            main_models.ListAbnormalyEventsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_abnormaly_events_with_options_async(
         self,
-        request: sys_om20231230_models.ListAbnormalyEventsRequest,
+        request: main_models.ListAbnormalyEventsRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListAbnormalyEventsResponse:
-        """
-        @summary 获取一定时间段内的异常事件
-        
-        @param request: ListAbnormalyEventsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAbnormalyEventsResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAbnormalyEventsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.end):
+        if not DaraCore.is_null(request.end):
             query['end'] = request.end
-        if not UtilClient.is_unset(request.event):
+        if not DaraCore.is_null(request.event):
             query['event'] = request.event
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.level):
+        if not DaraCore.is_null(request.level):
             query['level'] = request.level
-        if not UtilClient.is_unset(request.namespace):
+        if not DaraCore.is_null(request.namespace):
             query['namespace'] = request.namespace
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.pod):
+        if not DaraCore.is_null(request.pod):
             query['pod'] = request.pod
-        if not UtilClient.is_unset(request.show_pod):
+        if not DaraCore.is_null(request.show_pod):
             query['showPod'] = request.show_pod
-        if not UtilClient.is_unset(request.start):
+        if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAbnormalyEvents',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/range/abnormaly_events',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAbnormalyEvents',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/range/abnormaly_events',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAbnormalyEventsResponse(),
+        return DaraCore.from_map(
+            main_models.ListAbnormalyEventsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_abnormaly_events(
         self,
-        request: sys_om20231230_models.ListAbnormalyEventsRequest,
-    ) -> sys_om20231230_models.ListAbnormalyEventsResponse:
-        """
-        @summary 获取一定时间段内的异常事件
-        
-        @param request: ListAbnormalyEventsRequest
-        @return: ListAbnormalyEventsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAbnormalyEventsRequest,
+    ) -> main_models.ListAbnormalyEventsResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_abnormaly_events_with_options(request, headers, runtime)
 
     async def list_abnormaly_events_async(
         self,
-        request: sys_om20231230_models.ListAbnormalyEventsRequest,
-    ) -> sys_om20231230_models.ListAbnormalyEventsResponse:
-        """
-        @summary 获取一定时间段内的异常事件
-        
-        @param request: ListAbnormalyEventsRequest
-        @return: ListAbnormalyEventsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAbnormalyEventsRequest,
+    ) -> main_models.ListAbnormalyEventsResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_abnormaly_events_with_options_async(request, headers, runtime)
 
     def list_agent_install_records_with_options(
         self,
-        request: sys_om20231230_models.ListAgentInstallRecordsRequest,
+        request: main_models.ListAgentInstallRecordsRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListAgentInstallRecordsResponse:
-        """
-        @summary 列出 Agent 的安装记录
-        
-        @param request: ListAgentInstallRecordsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAgentInstallRecordsResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentInstallRecordsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             query['instance_id'] = request.instance_id
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.plugin_id):
+        if not DaraCore.is_null(request.plugin_id):
             query['plugin_id'] = request.plugin_id
-        if not UtilClient.is_unset(request.plugin_version):
+        if not DaraCore.is_null(request.plugin_version):
             query['plugin_version'] = request.plugin_version
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAgentInstallRecords',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/list_agent_install_list',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAgentInstallRecords',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/list_agent_install_list',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAgentInstallRecordsResponse(),
+        return DaraCore.from_map(
+            main_models.ListAgentInstallRecordsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_agent_install_records_with_options_async(
         self,
-        request: sys_om20231230_models.ListAgentInstallRecordsRequest,
+        request: main_models.ListAgentInstallRecordsRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListAgentInstallRecordsResponse:
-        """
-        @summary 列出 Agent 的安装记录
-        
-        @param request: ListAgentInstallRecordsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAgentInstallRecordsResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentInstallRecordsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             query['instance_id'] = request.instance_id
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.plugin_id):
+        if not DaraCore.is_null(request.plugin_id):
             query['plugin_id'] = request.plugin_id
-        if not UtilClient.is_unset(request.plugin_version):
+        if not DaraCore.is_null(request.plugin_version):
             query['plugin_version'] = request.plugin_version
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAgentInstallRecords',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/list_agent_install_list',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAgentInstallRecords',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/list_agent_install_list',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAgentInstallRecordsResponse(),
+        return DaraCore.from_map(
+            main_models.ListAgentInstallRecordsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_agent_install_records(
         self,
-        request: sys_om20231230_models.ListAgentInstallRecordsRequest,
-    ) -> sys_om20231230_models.ListAgentInstallRecordsResponse:
-        """
-        @summary 列出 Agent 的安装记录
-        
-        @param request: ListAgentInstallRecordsRequest
-        @return: ListAgentInstallRecordsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAgentInstallRecordsRequest,
+    ) -> main_models.ListAgentInstallRecordsResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_agent_install_records_with_options(request, headers, runtime)
 
     async def list_agent_install_records_async(
         self,
-        request: sys_om20231230_models.ListAgentInstallRecordsRequest,
-    ) -> sys_om20231230_models.ListAgentInstallRecordsResponse:
-        """
-        @summary 列出 Agent 的安装记录
-        
-        @param request: ListAgentInstallRecordsRequest
-        @return: ListAgentInstallRecordsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAgentInstallRecordsRequest,
+    ) -> main_models.ListAgentInstallRecordsResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_agent_install_records_with_options_async(request, headers, runtime)
 
     def list_agents_with_options(
         self,
-        request: sys_om20231230_models.ListAgentsRequest,
+        request: main_models.ListAgentsRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListAgentsResponse:
-        """
-        @summary 获取 Agent 列表
-        
-        @param request: ListAgentsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAgentsResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['name'] = request.name
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAgents',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/list_agents',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAgents',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/list_agents',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAgentsResponse(),
+        return DaraCore.from_map(
+            main_models.ListAgentsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_agents_with_options_async(
         self,
-        request: sys_om20231230_models.ListAgentsRequest,
+        request: main_models.ListAgentsRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListAgentsResponse:
-        """
-        @summary 获取 Agent 列表
-        
-        @param request: ListAgentsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAgentsResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAgentsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['name'] = request.name
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.type):
+        if not DaraCore.is_null(request.type):
             query['type'] = request.type
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAgents',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/list_agents',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAgents',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/list_agents',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAgentsResponse(),
+        return DaraCore.from_map(
+            main_models.ListAgentsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_agents(
         self,
-        request: sys_om20231230_models.ListAgentsRequest,
-    ) -> sys_om20231230_models.ListAgentsResponse:
-        """
-        @summary 获取 Agent 列表
-        
-        @param request: ListAgentsRequest
-        @return: ListAgentsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAgentsRequest,
+    ) -> main_models.ListAgentsResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_agents_with_options(request, headers, runtime)
 
     async def list_agents_async(
         self,
-        request: sys_om20231230_models.ListAgentsRequest,
-    ) -> sys_om20231230_models.ListAgentsResponse:
-        """
-        @summary 获取 Agent 列表
-        
-        @param request: ListAgentsRequest
-        @return: ListAgentsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAgentsRequest,
+    ) -> main_models.ListAgentsResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_agents_with_options_async(request, headers, runtime)
 
     def list_alert_items_with_options(
         self,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListAlertItemsResponse:
-        """
-        @summary 获取所有告警项
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAlertItemsResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertItemsResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
         )
-        params = open_api_models.Params(
-            action='ListAlertItems',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/alertPusher/alert/listItems',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAlertItems',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/listItems',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAlertItemsResponse(),
+        return DaraCore.from_map(
+            main_models.ListAlertItemsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_alert_items_with_options_async(
         self,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListAlertItemsResponse:
-        """
-        @summary 获取所有告警项
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAlertItemsResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertItemsResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
         )
-        params = open_api_models.Params(
-            action='ListAlertItems',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/alertPusher/alert/listItems',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAlertItems',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/listItems',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAlertItemsResponse(),
+        return DaraCore.from_map(
+            main_models.ListAlertItemsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_alert_items(self) -> sys_om20231230_models.ListAlertItemsResponse:
-        """
-        @summary 获取所有告警项
-        
-        @return: ListAlertItemsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def list_alert_items(self) -> main_models.ListAlertItemsResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_alert_items_with_options(headers, runtime)
 
-    async def list_alert_items_async(self) -> sys_om20231230_models.ListAlertItemsResponse:
-        """
-        @summary 获取所有告警项
-        
-        @return: ListAlertItemsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def list_alert_items_async(self) -> main_models.ListAlertItemsResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_alert_items_with_options_async(headers, runtime)
 
     def list_alert_strategies_with_options(
         self,
-        request: sys_om20231230_models.ListAlertStrategiesRequest,
+        request: main_models.ListAlertStrategiesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListAlertStrategiesResponse:
-        """
-        @summary 用于获取用户所有推送告警的策略
-        
-        @param request: ListAlertStrategiesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAlertStrategiesResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertStrategiesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['name'] = request.name
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAlertStrategies',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/alertPusher/alert/listStrategies',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAlertStrategies',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/listStrategies',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAlertStrategiesResponse(),
+        return DaraCore.from_map(
+            main_models.ListAlertStrategiesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_alert_strategies_with_options_async(
         self,
-        request: sys_om20231230_models.ListAlertStrategiesRequest,
+        request: main_models.ListAlertStrategiesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListAlertStrategiesResponse:
-        """
-        @summary 用于获取用户所有推送告警的策略
-        
-        @param request: ListAlertStrategiesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAlertStrategiesResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAlertStrategiesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['name'] = request.name
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAlertStrategies',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/alertPusher/alert/listStrategies',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAlertStrategies',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/listStrategies',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAlertStrategiesResponse(),
+        return DaraCore.from_map(
+            main_models.ListAlertStrategiesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_alert_strategies(
         self,
-        request: sys_om20231230_models.ListAlertStrategiesRequest,
-    ) -> sys_om20231230_models.ListAlertStrategiesResponse:
-        """
-        @summary 用于获取用户所有推送告警的策略
-        
-        @param request: ListAlertStrategiesRequest
-        @return: ListAlertStrategiesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAlertStrategiesRequest,
+    ) -> main_models.ListAlertStrategiesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_alert_strategies_with_options(request, headers, runtime)
 
     async def list_alert_strategies_async(
         self,
-        request: sys_om20231230_models.ListAlertStrategiesRequest,
-    ) -> sys_om20231230_models.ListAlertStrategiesResponse:
-        """
-        @summary 用于获取用户所有推送告警的策略
-        
-        @param request: ListAlertStrategiesRequest
-        @return: ListAlertStrategiesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAlertStrategiesRequest,
+    ) -> main_models.ListAlertStrategiesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_alert_strategies_with_options_async(request, headers, runtime)
 
     def list_all_instances_with_options(
         self,
-        request: sys_om20231230_models.ListAllInstancesRequest,
+        request: main_models.ListAllInstancesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListAllInstancesResponse:
-        """
-        @summary 此接口用于获取已纳管/未纳管实例列表并带有实例信息
-        
-        @param request: ListAllInstancesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAllInstancesResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAllInstancesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.filters):
+        if not DaraCore.is_null(request.filters):
             query['filters'] = request.filters
-        if not UtilClient.is_unset(request.instance_type):
+        if not DaraCore.is_null(request.instance_type):
             query['instanceType'] = request.instance_type
-        if not UtilClient.is_unset(request.managed_type):
+        if not DaraCore.is_null(request.managed_type):
             query['managedType'] = request.managed_type
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.plugin_id):
+        if not DaraCore.is_null(request.plugin_id):
             query['pluginId'] = request.plugin_id
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAllInstances',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/instance/listAllInstances',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAllInstances',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/instance/listAllInstances',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAllInstancesResponse(),
+        return DaraCore.from_map(
+            main_models.ListAllInstancesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_all_instances_with_options_async(
         self,
-        request: sys_om20231230_models.ListAllInstancesRequest,
+        request: main_models.ListAllInstancesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListAllInstancesResponse:
-        """
-        @summary 此接口用于获取已纳管/未纳管实例列表并带有实例信息
-        
-        @param request: ListAllInstancesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAllInstancesResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAllInstancesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.filters):
+        if not DaraCore.is_null(request.filters):
             query['filters'] = request.filters
-        if not UtilClient.is_unset(request.instance_type):
+        if not DaraCore.is_null(request.instance_type):
             query['instanceType'] = request.instance_type
-        if not UtilClient.is_unset(request.managed_type):
+        if not DaraCore.is_null(request.managed_type):
             query['managedType'] = request.managed_type
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['maxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['nextToken'] = request.next_token
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.plugin_id):
+        if not DaraCore.is_null(request.plugin_id):
             query['pluginId'] = request.plugin_id
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAllInstances',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/instance/listAllInstances',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAllInstances',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/instance/listAllInstances',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListAllInstancesResponse(),
+        return DaraCore.from_map(
+            main_models.ListAllInstancesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_all_instances(
         self,
-        request: sys_om20231230_models.ListAllInstancesRequest,
-    ) -> sys_om20231230_models.ListAllInstancesResponse:
-        """
-        @summary 此接口用于获取已纳管/未纳管实例列表并带有实例信息
-        
-        @param request: ListAllInstancesRequest
-        @return: ListAllInstancesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAllInstancesRequest,
+    ) -> main_models.ListAllInstancesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_all_instances_with_options(request, headers, runtime)
 
     async def list_all_instances_async(
         self,
-        request: sys_om20231230_models.ListAllInstancesRequest,
-    ) -> sys_om20231230_models.ListAllInstancesResponse:
-        """
-        @summary 此接口用于获取已纳管/未纳管实例列表并带有实例信息
-        
-        @param request: ListAllInstancesRequest
-        @return: ListAllInstancesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAllInstancesRequest,
+    ) -> main_models.ListAllInstancesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_all_instances_with_options_async(request, headers, runtime)
 
     def list_cluster_agent_install_records_with_options(
         self,
-        request: sys_om20231230_models.ListClusterAgentInstallRecordsRequest,
+        request: main_models.ListClusterAgentInstallRecordsRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListClusterAgentInstallRecordsResponse:
-        """
-        @summary 获取集群组件安装记录
-        
-        @param request: ListClusterAgentInstallRecordsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListClusterAgentInstallRecordsResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListClusterAgentInstallRecordsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.agent_config_id):
+        if not DaraCore.is_null(request.agent_config_id):
             query['agent_config_id'] = request.agent_config_id
-        if not UtilClient.is_unset(request.cluster_id):
+        if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.plugin_id):
+        if not DaraCore.is_null(request.plugin_id):
             query['plugin_id'] = request.plugin_id
-        if not UtilClient.is_unset(request.plugin_version):
+        if not DaraCore.is_null(request.plugin_version):
             query['plugin_version'] = request.plugin_version
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListClusterAgentInstallRecords',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/list_cluster_agent_install_list',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListClusterAgentInstallRecords',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/list_cluster_agent_install_list',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListClusterAgentInstallRecordsResponse(),
+        return DaraCore.from_map(
+            main_models.ListClusterAgentInstallRecordsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_cluster_agent_install_records_with_options_async(
         self,
-        request: sys_om20231230_models.ListClusterAgentInstallRecordsRequest,
+        request: main_models.ListClusterAgentInstallRecordsRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListClusterAgentInstallRecordsResponse:
-        """
-        @summary 获取集群组件安装记录
-        
-        @param request: ListClusterAgentInstallRecordsRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListClusterAgentInstallRecordsResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListClusterAgentInstallRecordsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.agent_config_id):
+        if not DaraCore.is_null(request.agent_config_id):
             query['agent_config_id'] = request.agent_config_id
-        if not UtilClient.is_unset(request.cluster_id):
+        if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.plugin_id):
+        if not DaraCore.is_null(request.plugin_id):
             query['plugin_id'] = request.plugin_id
-        if not UtilClient.is_unset(request.plugin_version):
+        if not DaraCore.is_null(request.plugin_version):
             query['plugin_version'] = request.plugin_version
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListClusterAgentInstallRecords',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/list_cluster_agent_install_list',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListClusterAgentInstallRecords',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/list_cluster_agent_install_list',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListClusterAgentInstallRecordsResponse(),
+        return DaraCore.from_map(
+            main_models.ListClusterAgentInstallRecordsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_cluster_agent_install_records(
         self,
-        request: sys_om20231230_models.ListClusterAgentInstallRecordsRequest,
-    ) -> sys_om20231230_models.ListClusterAgentInstallRecordsResponse:
-        """
-        @summary 获取集群组件安装记录
-        
-        @param request: ListClusterAgentInstallRecordsRequest
-        @return: ListClusterAgentInstallRecordsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListClusterAgentInstallRecordsRequest,
+    ) -> main_models.ListClusterAgentInstallRecordsResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_cluster_agent_install_records_with_options(request, headers, runtime)
 
     async def list_cluster_agent_install_records_async(
         self,
-        request: sys_om20231230_models.ListClusterAgentInstallRecordsRequest,
-    ) -> sys_om20231230_models.ListClusterAgentInstallRecordsResponse:
-        """
-        @summary 获取集群组件安装记录
-        
-        @param request: ListClusterAgentInstallRecordsRequest
-        @return: ListClusterAgentInstallRecordsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListClusterAgentInstallRecordsRequest,
+    ) -> main_models.ListClusterAgentInstallRecordsResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_cluster_agent_install_records_with_options_async(request, headers, runtime)
 
     def list_clusters_with_options(
         self,
-        request: sys_om20231230_models.ListClustersRequest,
+        request: main_models.ListClustersRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListClustersResponse:
-        """
-        @summary 获取当前用户的所有集群
-        
-        @param request: ListClustersRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListClustersResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListClustersResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster_id):
+        if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
-        if not UtilClient.is_unset(request.cluster_status):
+        if not DaraCore.is_null(request.cluster_status):
             query['cluster_status'] = request.cluster_status
-        if not UtilClient.is_unset(request.cluster_type):
+        if not DaraCore.is_null(request.cluster_type):
             query['cluster_type'] = request.cluster_type
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             query['id'] = request.id
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['name'] = request.name
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListClusters',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/cluster/list_clusters',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListClusters',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/cluster/list_clusters',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListClustersResponse(),
+        return DaraCore.from_map(
+            main_models.ListClustersResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_clusters_with_options_async(
         self,
-        request: sys_om20231230_models.ListClustersRequest,
+        request: main_models.ListClustersRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListClustersResponse:
-        """
-        @summary 获取当前用户的所有集群
-        
-        @param request: ListClustersRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListClustersResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListClustersResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster_id):
+        if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
-        if not UtilClient.is_unset(request.cluster_status):
+        if not DaraCore.is_null(request.cluster_status):
             query['cluster_status'] = request.cluster_status
-        if not UtilClient.is_unset(request.cluster_type):
+        if not DaraCore.is_null(request.cluster_type):
             query['cluster_type'] = request.cluster_type
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             query['id'] = request.id
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['name'] = request.name
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListClusters',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/cluster/list_clusters',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListClusters',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/cluster/list_clusters',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListClustersResponse(),
+        return DaraCore.from_map(
+            main_models.ListClustersResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_clusters(
         self,
-        request: sys_om20231230_models.ListClustersRequest,
-    ) -> sys_om20231230_models.ListClustersResponse:
-        """
-        @summary 获取当前用户的所有集群
-        
-        @param request: ListClustersRequest
-        @return: ListClustersResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListClustersRequest,
+    ) -> main_models.ListClustersResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_clusters_with_options(request, headers, runtime)
 
     async def list_clusters_async(
         self,
-        request: sys_om20231230_models.ListClustersRequest,
-    ) -> sys_om20231230_models.ListClustersResponse:
-        """
-        @summary 获取当前用户的所有集群
-        
-        @param request: ListClustersRequest
-        @return: ListClustersResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListClustersRequest,
+    ) -> main_models.ListClustersResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_clusters_with_options_async(request, headers, runtime)
 
     def list_diagnosis_with_options(
         self,
-        request: sys_om20231230_models.ListDiagnosisRequest,
+        request: main_models.ListDiagnosisRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListDiagnosisResponse:
-        """
-        @summary 获取诊断历史记录列表
-        
-        @param request: ListDiagnosisRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListDiagnosisResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDiagnosisResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.params):
+        if not DaraCore.is_null(request.params):
             query['params'] = request.params
-        if not UtilClient.is_unset(request.service_name):
+        if not DaraCore.is_null(request.service_name):
             query['service_name'] = request.service_name
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDiagnosis',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/diagnosis/list_diagnosis',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListDiagnosis',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/diagnosis/list_diagnosis',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListDiagnosisResponse(),
+        return DaraCore.from_map(
+            main_models.ListDiagnosisResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_diagnosis_with_options_async(
         self,
-        request: sys_om20231230_models.ListDiagnosisRequest,
+        request: main_models.ListDiagnosisRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListDiagnosisResponse:
-        """
-        @summary 获取诊断历史记录列表
-        
-        @param request: ListDiagnosisRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListDiagnosisResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDiagnosisResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.params):
+        if not DaraCore.is_null(request.params):
             query['params'] = request.params
-        if not UtilClient.is_unset(request.service_name):
+        if not DaraCore.is_null(request.service_name):
             query['service_name'] = request.service_name
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDiagnosis',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/diagnosis/list_diagnosis',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListDiagnosis',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/diagnosis/list_diagnosis',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListDiagnosisResponse(),
+        return DaraCore.from_map(
+            main_models.ListDiagnosisResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_diagnosis(
         self,
-        request: sys_om20231230_models.ListDiagnosisRequest,
-    ) -> sys_om20231230_models.ListDiagnosisResponse:
-        """
-        @summary 获取诊断历史记录列表
-        
-        @param request: ListDiagnosisRequest
-        @return: ListDiagnosisResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListDiagnosisRequest,
+    ) -> main_models.ListDiagnosisResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_diagnosis_with_options(request, headers, runtime)
 
     async def list_diagnosis_async(
         self,
-        request: sys_om20231230_models.ListDiagnosisRequest,
-    ) -> sys_om20231230_models.ListDiagnosisResponse:
-        """
-        @summary 获取诊断历史记录列表
-        
-        @param request: ListDiagnosisRequest
-        @return: ListDiagnosisResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListDiagnosisRequest,
+    ) -> main_models.ListDiagnosisResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_diagnosis_with_options_async(request, headers, runtime)
 
     def list_instance_health_with_options(
         self,
-        request: sys_om20231230_models.ListInstanceHealthRequest,
+        request: main_models.ListInstanceHealthRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListInstanceHealthResponse:
-        """
-        @summary 获取一定时间内集群节点/Pod健康度列表
-        
-        @param request: ListInstanceHealthRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListInstanceHealthResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceHealthResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.end):
+        if not DaraCore.is_null(request.end):
             query['end'] = request.end
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.start):
+        if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstanceHealth',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/range/instance_health_list',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListInstanceHealth',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/range/instance_health_list',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListInstanceHealthResponse(),
+        return DaraCore.from_map(
+            main_models.ListInstanceHealthResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_instance_health_with_options_async(
         self,
-        request: sys_om20231230_models.ListInstanceHealthRequest,
+        request: main_models.ListInstanceHealthRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListInstanceHealthResponse:
-        """
-        @summary 获取一定时间内集群节点/Pod健康度列表
-        
-        @param request: ListInstanceHealthRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListInstanceHealthResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceHealthResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster):
+        if not DaraCore.is_null(request.cluster):
             query['cluster'] = request.cluster
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.end):
+        if not DaraCore.is_null(request.end):
             query['end'] = request.end
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.start):
+        if not DaraCore.is_null(request.start):
             query['start'] = request.start
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstanceHealth',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/cluster_health/range/instance_health_list',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListInstanceHealth',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/cluster_health/range/instance_health_list',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListInstanceHealthResponse(),
+        return DaraCore.from_map(
+            main_models.ListInstanceHealthResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_instance_health(
         self,
-        request: sys_om20231230_models.ListInstanceHealthRequest,
-    ) -> sys_om20231230_models.ListInstanceHealthResponse:
-        """
-        @summary 获取一定时间内集群节点/Pod健康度列表
-        
-        @param request: ListInstanceHealthRequest
-        @return: ListInstanceHealthResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListInstanceHealthRequest,
+    ) -> main_models.ListInstanceHealthResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_instance_health_with_options(request, headers, runtime)
 
     async def list_instance_health_async(
         self,
-        request: sys_om20231230_models.ListInstanceHealthRequest,
-    ) -> sys_om20231230_models.ListInstanceHealthResponse:
-        """
-        @summary 获取一定时间内集群节点/Pod健康度列表
-        
-        @param request: ListInstanceHealthRequest
-        @return: ListInstanceHealthResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListInstanceHealthRequest,
+    ) -> main_models.ListInstanceHealthResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_instance_health_with_options_async(request, headers, runtime)
 
     def list_instance_status_with_options(
         self,
-        request: sys_om20231230_models.ListInstanceStatusRequest,
+        request: main_models.ListInstanceStatusRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListInstanceStatusResponse:
-        """
-        @summary 获取实例状态
-        
-        @param request: ListInstanceStatusRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListInstanceStatusResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstanceStatus',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/instance/list_instance_status',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListInstanceStatus',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/instance/list_instance_status',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListInstanceStatusResponse(),
+        return DaraCore.from_map(
+            main_models.ListInstanceStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_instance_status_with_options_async(
         self,
-        request: sys_om20231230_models.ListInstanceStatusRequest,
+        request: main_models.ListInstanceStatusRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListInstanceStatusResponse:
-        """
-        @summary 获取实例状态
-        
-        @param request: ListInstanceStatusRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListInstanceStatusResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstanceStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstanceStatus',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/instance/list_instance_status',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListInstanceStatus',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/instance/list_instance_status',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListInstanceStatusResponse(),
+        return DaraCore.from_map(
+            main_models.ListInstanceStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_instance_status(
         self,
-        request: sys_om20231230_models.ListInstanceStatusRequest,
-    ) -> sys_om20231230_models.ListInstanceStatusResponse:
-        """
-        @summary 获取实例状态
-        
-        @param request: ListInstanceStatusRequest
-        @return: ListInstanceStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListInstanceStatusRequest,
+    ) -> main_models.ListInstanceStatusResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_instance_status_with_options(request, headers, runtime)
 
     async def list_instance_status_async(
         self,
-        request: sys_om20231230_models.ListInstanceStatusRequest,
-    ) -> sys_om20231230_models.ListInstanceStatusResponse:
-        """
-        @summary 获取实例状态
-        
-        @param request: ListInstanceStatusRequest
-        @return: ListInstanceStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListInstanceStatusRequest,
+    ) -> main_models.ListInstanceStatusResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_instance_status_with_options_async(request, headers, runtime)
 
     def list_instances_with_options(
         self,
-        request: sys_om20231230_models.ListInstancesRequest,
+        request: main_models.ListInstancesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListInstancesResponse:
-        """
-        @summary 获取实例列表
-        
-        @param request: ListInstancesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListInstancesResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstancesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster_id):
+        if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstances',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/instance/list_instances',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListInstances',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/instance/list_instances',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListInstancesResponse(),
+        return DaraCore.from_map(
+            main_models.ListInstancesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_instances_with_options_async(
         self,
-        request: sys_om20231230_models.ListInstancesRequest,
+        request: main_models.ListInstancesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListInstancesResponse:
-        """
-        @summary 获取实例列表
-        
-        @param request: ListInstancesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListInstancesResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstancesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster_id):
+        if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstances',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/instance/list_instances',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListInstances',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/instance/list_instances',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListInstancesResponse(),
+        return DaraCore.from_map(
+            main_models.ListInstancesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_instances(
         self,
-        request: sys_om20231230_models.ListInstancesRequest,
-    ) -> sys_om20231230_models.ListInstancesResponse:
-        """
-        @summary 获取实例列表
-        
-        @param request: ListInstancesRequest
-        @return: ListInstancesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListInstancesRequest,
+    ) -> main_models.ListInstancesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_instances_with_options(request, headers, runtime)
 
     async def list_instances_async(
         self,
-        request: sys_om20231230_models.ListInstancesRequest,
-    ) -> sys_om20231230_models.ListInstancesResponse:
-        """
-        @summary 获取实例列表
-        
-        @param request: ListInstancesRequest
-        @return: ListInstancesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListInstancesRequest,
+    ) -> main_models.ListInstancesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_instances_with_options_async(request, headers, runtime)
 
     def list_instances_ecs_info_list_with_options(
         self,
-        request: sys_om20231230_models.ListInstancesEcsInfoListRequest,
+        request: main_models.ListInstancesEcsInfoListRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListInstancesEcsInfoListResponse:
-        """
-        @summary 获取ecs信息的列表，如标签列表，公网ip列表等
-        
-        @param request: ListInstancesEcsInfoListRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListInstancesEcsInfoListResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstancesEcsInfoListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.info_type):
+        if not DaraCore.is_null(request.info_type):
             query['info_type'] = request.info_type
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             query['instance_id'] = request.instance_id
-        if not UtilClient.is_unset(request.managed_type):
+        if not DaraCore.is_null(request.managed_type):
             query['managed_type'] = request.managed_type
-        if not UtilClient.is_unset(request.plugin_id):
+        if not DaraCore.is_null(request.plugin_id):
             query['plugin_id'] = request.plugin_id
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstancesEcsInfoList',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/instance/listInstancesEcsInfoList',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListInstancesEcsInfoList',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/instance/listInstancesEcsInfoList',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListInstancesEcsInfoListResponse(),
+        return DaraCore.from_map(
+            main_models.ListInstancesEcsInfoListResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_instances_ecs_info_list_with_options_async(
         self,
-        request: sys_om20231230_models.ListInstancesEcsInfoListRequest,
+        request: main_models.ListInstancesEcsInfoListRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListInstancesEcsInfoListResponse:
-        """
-        @summary 获取ecs信息的列表，如标签列表，公网ip列表等
-        
-        @param request: ListInstancesEcsInfoListRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListInstancesEcsInfoListResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstancesEcsInfoListResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.info_type):
+        if not DaraCore.is_null(request.info_type):
             query['info_type'] = request.info_type
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             query['instance_id'] = request.instance_id
-        if not UtilClient.is_unset(request.managed_type):
+        if not DaraCore.is_null(request.managed_type):
             query['managed_type'] = request.managed_type
-        if not UtilClient.is_unset(request.plugin_id):
+        if not DaraCore.is_null(request.plugin_id):
             query['plugin_id'] = request.plugin_id
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstancesEcsInfoList',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/instance/listInstancesEcsInfoList',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListInstancesEcsInfoList',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/instance/listInstancesEcsInfoList',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListInstancesEcsInfoListResponse(),
+        return DaraCore.from_map(
+            main_models.ListInstancesEcsInfoListResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_instances_ecs_info_list(
         self,
-        request: sys_om20231230_models.ListInstancesEcsInfoListRequest,
-    ) -> sys_om20231230_models.ListInstancesEcsInfoListResponse:
-        """
-        @summary 获取ecs信息的列表，如标签列表，公网ip列表等
-        
-        @param request: ListInstancesEcsInfoListRequest
-        @return: ListInstancesEcsInfoListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListInstancesEcsInfoListRequest,
+    ) -> main_models.ListInstancesEcsInfoListResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_instances_ecs_info_list_with_options(request, headers, runtime)
 
     async def list_instances_ecs_info_list_async(
         self,
-        request: sys_om20231230_models.ListInstancesEcsInfoListRequest,
-    ) -> sys_om20231230_models.ListInstancesEcsInfoListResponse:
-        """
-        @summary 获取ecs信息的列表，如标签列表，公网ip列表等
-        
-        @param request: ListInstancesEcsInfoListRequest
-        @return: ListInstancesEcsInfoListResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListInstancesEcsInfoListRequest,
+    ) -> main_models.ListInstancesEcsInfoListResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_instances_ecs_info_list_with_options_async(request, headers, runtime)
 
     def list_instances_with_ecs_info_with_options(
         self,
-        tmp_req: sys_om20231230_models.ListInstancesWithEcsInfoRequest,
+        tmp_req: main_models.ListInstancesWithEcsInfoRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListInstancesWithEcsInfoResponse:
-        """
-        @summary 获取已纳管/未纳管实例信息，信息中包含ECS信息
-        
-        @param tmp_req: ListInstancesWithEcsInfoRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListInstancesWithEcsInfoResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = sys_om20231230_models.ListInstancesWithEcsInfoShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.instance_tag):
-            request.instance_tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_tag, 'instance_tag', 'json')
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstancesWithEcsInfoResponse:
+        tmp_req.validate()
+        request = main_models.ListInstancesWithEcsInfoShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_tag):
+            request.instance_tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_tag, 'instance_tag', 'json')
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.health_status):
+        if not DaraCore.is_null(request.health_status):
             query['health_status'] = request.health_status
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             query['instance_id'] = request.instance_id
-        if not UtilClient.is_unset(request.instance_id_name):
+        if not DaraCore.is_null(request.instance_id_name):
             query['instance_id_name'] = request.instance_id_name
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             query['instance_name'] = request.instance_name
-        if not UtilClient.is_unset(request.instance_tag_shrink):
+        if not DaraCore.is_null(request.instance_tag_shrink):
             query['instance_tag'] = request.instance_tag_shrink
-        if not UtilClient.is_unset(request.is_managed):
+        if not DaraCore.is_null(request.is_managed):
             query['is_managed'] = request.is_managed
-        if not UtilClient.is_unset(request.os_name):
+        if not DaraCore.is_null(request.os_name):
             query['os_name'] = request.os_name
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.private_ip):
+        if not DaraCore.is_null(request.private_ip):
             query['private_ip'] = request.private_ip
-        if not UtilClient.is_unset(request.public_ip):
+        if not DaraCore.is_null(request.public_ip):
             query['public_ip'] = request.public_ip
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['resource_group_id'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_group_id_name):
+        if not DaraCore.is_null(request.resource_group_id_name):
             query['resource_group_id_name'] = request.resource_group_id_name
-        if not UtilClient.is_unset(request.resource_group_name):
+        if not DaraCore.is_null(request.resource_group_name):
             query['resource_group_name'] = request.resource_group_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstancesWithEcsInfo',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/instance/listInstancesWithEcsInfo',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListInstancesWithEcsInfo',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/instance/listInstancesWithEcsInfo',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListInstancesWithEcsInfoResponse(),
+        return DaraCore.from_map(
+            main_models.ListInstancesWithEcsInfoResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_instances_with_ecs_info_with_options_async(
         self,
-        tmp_req: sys_om20231230_models.ListInstancesWithEcsInfoRequest,
+        tmp_req: main_models.ListInstancesWithEcsInfoRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListInstancesWithEcsInfoResponse:
-        """
-        @summary 获取已纳管/未纳管实例信息，信息中包含ECS信息
-        
-        @param tmp_req: ListInstancesWithEcsInfoRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListInstancesWithEcsInfoResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = sys_om20231230_models.ListInstancesWithEcsInfoShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.instance_tag):
-            request.instance_tag_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.instance_tag, 'instance_tag', 'json')
+        runtime: RuntimeOptions,
+    ) -> main_models.ListInstancesWithEcsInfoResponse:
+        tmp_req.validate()
+        request = main_models.ListInstancesWithEcsInfoShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.instance_tag):
+            request.instance_tag_shrink = Utils.array_to_string_with_specified_style(tmp_req.instance_tag, 'instance_tag', 'json')
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.health_status):
+        if not DaraCore.is_null(request.health_status):
             query['health_status'] = request.health_status
-        if not UtilClient.is_unset(request.instance_id):
+        if not DaraCore.is_null(request.instance_id):
             query['instance_id'] = request.instance_id
-        if not UtilClient.is_unset(request.instance_id_name):
+        if not DaraCore.is_null(request.instance_id_name):
             query['instance_id_name'] = request.instance_id_name
-        if not UtilClient.is_unset(request.instance_name):
+        if not DaraCore.is_null(request.instance_name):
             query['instance_name'] = request.instance_name
-        if not UtilClient.is_unset(request.instance_tag_shrink):
+        if not DaraCore.is_null(request.instance_tag_shrink):
             query['instance_tag'] = request.instance_tag_shrink
-        if not UtilClient.is_unset(request.is_managed):
+        if not DaraCore.is_null(request.is_managed):
             query['is_managed'] = request.is_managed
-        if not UtilClient.is_unset(request.os_name):
+        if not DaraCore.is_null(request.os_name):
             query['os_name'] = request.os_name
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.private_ip):
+        if not DaraCore.is_null(request.private_ip):
             query['private_ip'] = request.private_ip
-        if not UtilClient.is_unset(request.public_ip):
+        if not DaraCore.is_null(request.public_ip):
             query['public_ip'] = request.public_ip
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['resource_group_id'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_group_id_name):
+        if not DaraCore.is_null(request.resource_group_id_name):
             query['resource_group_id_name'] = request.resource_group_id_name
-        if not UtilClient.is_unset(request.resource_group_name):
+        if not DaraCore.is_null(request.resource_group_name):
             query['resource_group_name'] = request.resource_group_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListInstancesWithEcsInfo',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/instance/listInstancesWithEcsInfo',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListInstancesWithEcsInfo',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/instance/listInstancesWithEcsInfo',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListInstancesWithEcsInfoResponse(),
+        return DaraCore.from_map(
+            main_models.ListInstancesWithEcsInfoResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_instances_with_ecs_info(
         self,
-        request: sys_om20231230_models.ListInstancesWithEcsInfoRequest,
-    ) -> sys_om20231230_models.ListInstancesWithEcsInfoResponse:
-        """
-        @summary 获取已纳管/未纳管实例信息，信息中包含ECS信息
-        
-        @param request: ListInstancesWithEcsInfoRequest
-        @return: ListInstancesWithEcsInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListInstancesWithEcsInfoRequest,
+    ) -> main_models.ListInstancesWithEcsInfoResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_instances_with_ecs_info_with_options(request, headers, runtime)
 
     async def list_instances_with_ecs_info_async(
         self,
-        request: sys_om20231230_models.ListInstancesWithEcsInfoRequest,
-    ) -> sys_om20231230_models.ListInstancesWithEcsInfoResponse:
-        """
-        @summary 获取已纳管/未纳管实例信息，信息中包含ECS信息
-        
-        @param request: ListInstancesWithEcsInfoRequest
-        @return: ListInstancesWithEcsInfoResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListInstancesWithEcsInfoRequest,
+    ) -> main_models.ListInstancesWithEcsInfoResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_instances_with_ecs_info_with_options_async(request, headers, runtime)
 
     def list_plugins_instances_with_options(
         self,
-        request: sys_om20231230_models.ListPluginsInstancesRequest,
+        request: main_models.ListPluginsInstancesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListPluginsInstancesResponse:
-        """
-        @summary 获取插件的安装/更新/卸载实例列表
-        
-        @param request: ListPluginsInstancesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListPluginsInstancesResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPluginsInstancesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.instance_id_name):
+        if not DaraCore.is_null(request.instance_id_name):
             query['instance_id_name'] = request.instance_id_name
-        if not UtilClient.is_unset(request.instance_tag):
+        if not DaraCore.is_null(request.instance_tag):
             query['instance_tag'] = request.instance_tag
-        if not UtilClient.is_unset(request.operation_type):
+        if not DaraCore.is_null(request.operation_type):
             query['operation_type'] = request.operation_type
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.plugin_id):
+        if not DaraCore.is_null(request.plugin_id):
             query['plugin_id'] = request.plugin_id
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListPluginsInstances',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/listPluginsInstances',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListPluginsInstances',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/listPluginsInstances',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListPluginsInstancesResponse(),
+        return DaraCore.from_map(
+            main_models.ListPluginsInstancesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_plugins_instances_with_options_async(
         self,
-        request: sys_om20231230_models.ListPluginsInstancesRequest,
+        request: main_models.ListPluginsInstancesRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListPluginsInstancesResponse:
-        """
-        @summary 获取插件的安装/更新/卸载实例列表
-        
-        @param request: ListPluginsInstancesRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListPluginsInstancesResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPluginsInstancesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.instance_id_name):
+        if not DaraCore.is_null(request.instance_id_name):
             query['instance_id_name'] = request.instance_id_name
-        if not UtilClient.is_unset(request.instance_tag):
+        if not DaraCore.is_null(request.instance_tag):
             query['instance_tag'] = request.instance_tag
-        if not UtilClient.is_unset(request.operation_type):
+        if not DaraCore.is_null(request.operation_type):
             query['operation_type'] = request.operation_type
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        if not UtilClient.is_unset(request.plugin_id):
+        if not DaraCore.is_null(request.plugin_id):
             query['plugin_id'] = request.plugin_id
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['region'] = request.region
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListPluginsInstances',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/listPluginsInstances',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListPluginsInstances',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/listPluginsInstances',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListPluginsInstancesResponse(),
+        return DaraCore.from_map(
+            main_models.ListPluginsInstancesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_plugins_instances(
         self,
-        request: sys_om20231230_models.ListPluginsInstancesRequest,
-    ) -> sys_om20231230_models.ListPluginsInstancesResponse:
-        """
-        @summary 获取插件的安装/更新/卸载实例列表
-        
-        @param request: ListPluginsInstancesRequest
-        @return: ListPluginsInstancesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListPluginsInstancesRequest,
+    ) -> main_models.ListPluginsInstancesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_plugins_instances_with_options(request, headers, runtime)
 
     async def list_plugins_instances_async(
         self,
-        request: sys_om20231230_models.ListPluginsInstancesRequest,
-    ) -> sys_om20231230_models.ListPluginsInstancesResponse:
-        """
-        @summary 获取插件的安装/更新/卸载实例列表
-        
-        @param request: ListPluginsInstancesRequest
-        @return: ListPluginsInstancesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListPluginsInstancesRequest,
+    ) -> main_models.ListPluginsInstancesResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_plugins_instances_with_options_async(request, headers, runtime)
 
     def list_pods_of_instance_with_options(
         self,
-        request: sys_om20231230_models.ListPodsOfInstanceRequest,
+        request: main_models.ListPodsOfInstanceRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListPodsOfInstanceResponse:
-        """
-        @summary 获取实例中的pod列表
-        
-        @param request: ListPodsOfInstanceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListPodsOfInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPodsOfInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster_id):
+        if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListPodsOfInstance',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/instance/list_pod_of_instance',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListPodsOfInstance',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/instance/list_pod_of_instance',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListPodsOfInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.ListPodsOfInstanceResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_pods_of_instance_with_options_async(
         self,
-        request: sys_om20231230_models.ListPodsOfInstanceRequest,
+        request: main_models.ListPodsOfInstanceRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListPodsOfInstanceResponse:
-        """
-        @summary 获取实例中的pod列表
-        
-        @param request: ListPodsOfInstanceRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListPodsOfInstanceResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPodsOfInstanceResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.cluster_id):
+        if not DaraCore.is_null(request.cluster_id):
             query['cluster_id'] = request.cluster_id
-        if not UtilClient.is_unset(request.current):
+        if not DaraCore.is_null(request.current):
             query['current'] = request.current
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             query['instance'] = request.instance
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['pageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListPodsOfInstance',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/instance/list_pod_of_instance',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListPodsOfInstance',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/instance/list_pod_of_instance',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListPodsOfInstanceResponse(),
+        return DaraCore.from_map(
+            main_models.ListPodsOfInstanceResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_pods_of_instance(
         self,
-        request: sys_om20231230_models.ListPodsOfInstanceRequest,
-    ) -> sys_om20231230_models.ListPodsOfInstanceResponse:
-        """
-        @summary 获取实例中的pod列表
-        
-        @param request: ListPodsOfInstanceRequest
-        @return: ListPodsOfInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListPodsOfInstanceRequest,
+    ) -> main_models.ListPodsOfInstanceResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_pods_of_instance_with_options(request, headers, runtime)
 
     async def list_pods_of_instance_async(
         self,
-        request: sys_om20231230_models.ListPodsOfInstanceRequest,
-    ) -> sys_om20231230_models.ListPodsOfInstanceResponse:
-        """
-        @summary 获取实例中的pod列表
-        
-        @param request: ListPodsOfInstanceRequest
-        @return: ListPodsOfInstanceResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListPodsOfInstanceRequest,
+    ) -> main_models.ListPodsOfInstanceResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_pods_of_instance_with_options_async(request, headers, runtime)
 
     def list_regions_with_options(
         self,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListRegionsResponse:
-        """
-        @summary 列出所有纳管了机器的区域
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListRegionsResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRegionsResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
         )
-        params = open_api_models.Params(
-            action='ListRegions',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/instance/list_regions',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListRegions',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/instance/list_regions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListRegionsResponse(),
+        return DaraCore.from_map(
+            main_models.ListRegionsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_regions_with_options_async(
         self,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListRegionsResponse:
-        """
-        @summary 列出所有纳管了机器的区域
-        
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListRegionsResponse
-        """
-        req = open_api_models.OpenApiRequest(
-            headers=headers
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRegionsResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
         )
-        params = open_api_models.Params(
-            action='ListRegions',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/instance/list_regions',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListRegions',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/instance/list_regions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListRegionsResponse(),
+        return DaraCore.from_map(
+            main_models.ListRegionsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_regions(self) -> sys_om20231230_models.ListRegionsResponse:
-        """
-        @summary 列出所有纳管了机器的区域
-        
-        @return: ListRegionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def list_regions(self) -> main_models.ListRegionsResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_regions_with_options(headers, runtime)
 
-    async def list_regions_async(self) -> sys_om20231230_models.ListRegionsResponse:
-        """
-        @summary 列出所有纳管了机器的区域
-        
-        @return: ListRegionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def list_regions_async(self) -> main_models.ListRegionsResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_regions_with_options_async(headers, runtime)
 
     def list_vmcore_diagnosis_task_with_options(
         self,
-        request: sys_om20231230_models.ListVmcoreDiagnosisTaskRequest,
+        request: main_models.ListVmcoreDiagnosisTaskRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListVmcoreDiagnosisTaskResponse:
-        """
-        @summary 查询历史宕机诊断任务
-        
-        @param request: ListVmcoreDiagnosisTaskRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListVmcoreDiagnosisTaskResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVmcoreDiagnosisTaskResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.days):
+        if not DaraCore.is_null(request.days):
             query['days'] = request.days
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListVmcoreDiagnosisTask',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/crashAgent/diagnosis/queryTaskList',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListVmcoreDiagnosisTask',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/crashAgent/diagnosis/queryTaskList',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListVmcoreDiagnosisTaskResponse(),
+        return DaraCore.from_map(
+            main_models.ListVmcoreDiagnosisTaskResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_vmcore_diagnosis_task_with_options_async(
         self,
-        request: sys_om20231230_models.ListVmcoreDiagnosisTaskRequest,
+        request: main_models.ListVmcoreDiagnosisTaskRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.ListVmcoreDiagnosisTaskResponse:
-        """
-        @summary 查询历史宕机诊断任务
-        
-        @param request: ListVmcoreDiagnosisTaskRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListVmcoreDiagnosisTaskResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.ListVmcoreDiagnosisTaskResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.days):
+        if not DaraCore.is_null(request.days):
             query['days'] = request.days
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListVmcoreDiagnosisTask',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/crashAgent/diagnosis/queryTaskList',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListVmcoreDiagnosisTask',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/crashAgent/diagnosis/queryTaskList',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.ListVmcoreDiagnosisTaskResponse(),
+        return DaraCore.from_map(
+            main_models.ListVmcoreDiagnosisTaskResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_vmcore_diagnosis_task(
         self,
-        request: sys_om20231230_models.ListVmcoreDiagnosisTaskRequest,
-    ) -> sys_om20231230_models.ListVmcoreDiagnosisTaskResponse:
-        """
-        @summary 查询历史宕机诊断任务
-        
-        @param request: ListVmcoreDiagnosisTaskRequest
-        @return: ListVmcoreDiagnosisTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListVmcoreDiagnosisTaskRequest,
+    ) -> main_models.ListVmcoreDiagnosisTaskResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.list_vmcore_diagnosis_task_with_options(request, headers, runtime)
 
     async def list_vmcore_diagnosis_task_async(
         self,
-        request: sys_om20231230_models.ListVmcoreDiagnosisTaskRequest,
-    ) -> sys_om20231230_models.ListVmcoreDiagnosisTaskResponse:
-        """
-        @summary 查询历史宕机诊断任务
-        
-        @param request: ListVmcoreDiagnosisTaskRequest
-        @return: ListVmcoreDiagnosisTaskResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListVmcoreDiagnosisTaskRequest,
+    ) -> main_models.ListVmcoreDiagnosisTaskResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.list_vmcore_diagnosis_task_with_options_async(request, headers, runtime)
 
     def start_aianalysis_with_options(
         self,
-        request: sys_om20231230_models.StartAIAnalysisRequest,
+        request: main_models.StartAIAnalysisRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.StartAIAnalysisResponse:
-        """
-        @summary 启动AI作业分析
-        
-        @param request: StartAIAnalysisRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StartAIAnalysisResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.StartAIAnalysisResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.analysis_tool):
+        if not DaraCore.is_null(request.analysis_tool):
             body['analysisTool'] = request.analysis_tool
-        if not UtilClient.is_unset(request.analysis_params):
+        if not DaraCore.is_null(request.analysis_params):
             body['analysis_params'] = request.analysis_params
-        if not UtilClient.is_unset(request.channel):
+        if not DaraCore.is_null(request.channel):
             body['channel'] = request.channel
-        if not UtilClient.is_unset(request.comms):
+        if not DaraCore.is_null(request.comms):
             body['comms'] = request.comms
-        if not UtilClient.is_unset(request.created_by):
+        if not DaraCore.is_null(request.created_by):
             body['created_by'] = request.created_by
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             body['instance'] = request.instance
-        if not UtilClient.is_unset(request.instance_type):
+        if not DaraCore.is_null(request.instance_type):
             body['instance_type'] = request.instance_type
-        if not UtilClient.is_unset(request.iteration_func):
+        if not DaraCore.is_null(request.iteration_func):
             body['iteration_func'] = request.iteration_func
-        if not UtilClient.is_unset(request.iteration_mod):
+        if not DaraCore.is_null(request.iteration_mod):
             body['iteration_mod'] = request.iteration_mod
-        if not UtilClient.is_unset(request.iteration_range):
+        if not DaraCore.is_null(request.iteration_range):
             body['iteration_range'] = request.iteration_range
-        if not UtilClient.is_unset(request.pids):
+        if not DaraCore.is_null(request.pids):
             body['pids'] = request.pids
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             body['region'] = request.region
-        if not UtilClient.is_unset(request.timeout):
+        if not DaraCore.is_null(request.timeout):
             body['timeout'] = request.timeout
-        if not UtilClient.is_unset(request.uid):
+        if not DaraCore.is_null(request.uid):
             body['uid'] = request.uid
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='StartAIAnalysis',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/proxy/post/start_ai_analysis',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'StartAIAnalysis',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/proxy/post/start_ai_analysis',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.StartAIAnalysisResponse(),
+        return DaraCore.from_map(
+            main_models.StartAIAnalysisResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def start_aianalysis_with_options_async(
         self,
-        request: sys_om20231230_models.StartAIAnalysisRequest,
+        request: main_models.StartAIAnalysisRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.StartAIAnalysisResponse:
-        """
-        @summary 启动AI作业分析
-        
-        @param request: StartAIAnalysisRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StartAIAnalysisResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.StartAIAnalysisResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.analysis_tool):
+        if not DaraCore.is_null(request.analysis_tool):
             body['analysisTool'] = request.analysis_tool
-        if not UtilClient.is_unset(request.analysis_params):
+        if not DaraCore.is_null(request.analysis_params):
             body['analysis_params'] = request.analysis_params
-        if not UtilClient.is_unset(request.channel):
+        if not DaraCore.is_null(request.channel):
             body['channel'] = request.channel
-        if not UtilClient.is_unset(request.comms):
+        if not DaraCore.is_null(request.comms):
             body['comms'] = request.comms
-        if not UtilClient.is_unset(request.created_by):
+        if not DaraCore.is_null(request.created_by):
             body['created_by'] = request.created_by
-        if not UtilClient.is_unset(request.instance):
+        if not DaraCore.is_null(request.instance):
             body['instance'] = request.instance
-        if not UtilClient.is_unset(request.instance_type):
+        if not DaraCore.is_null(request.instance_type):
             body['instance_type'] = request.instance_type
-        if not UtilClient.is_unset(request.iteration_func):
+        if not DaraCore.is_null(request.iteration_func):
             body['iteration_func'] = request.iteration_func
-        if not UtilClient.is_unset(request.iteration_mod):
+        if not DaraCore.is_null(request.iteration_mod):
             body['iteration_mod'] = request.iteration_mod
-        if not UtilClient.is_unset(request.iteration_range):
+        if not DaraCore.is_null(request.iteration_range):
             body['iteration_range'] = request.iteration_range
-        if not UtilClient.is_unset(request.pids):
+        if not DaraCore.is_null(request.pids):
             body['pids'] = request.pids
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             body['region'] = request.region
-        if not UtilClient.is_unset(request.timeout):
+        if not DaraCore.is_null(request.timeout):
             body['timeout'] = request.timeout
-        if not UtilClient.is_unset(request.uid):
+        if not DaraCore.is_null(request.uid):
             body['uid'] = request.uid
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='StartAIAnalysis',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/proxy/post/start_ai_analysis',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'StartAIAnalysis',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/proxy/post/start_ai_analysis',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.StartAIAnalysisResponse(),
+        return DaraCore.from_map(
+            main_models.StartAIAnalysisResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def start_aianalysis(
         self,
-        request: sys_om20231230_models.StartAIAnalysisRequest,
-    ) -> sys_om20231230_models.StartAIAnalysisResponse:
-        """
-        @summary 启动AI作业分析
-        
-        @param request: StartAIAnalysisRequest
-        @return: StartAIAnalysisResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.StartAIAnalysisRequest,
+    ) -> main_models.StartAIAnalysisResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.start_aianalysis_with_options(request, headers, runtime)
 
     async def start_aianalysis_async(
         self,
-        request: sys_om20231230_models.StartAIAnalysisRequest,
-    ) -> sys_om20231230_models.StartAIAnalysisResponse:
-        """
-        @summary 启动AI作业分析
-        
-        @param request: StartAIAnalysisRequest
-        @return: StartAIAnalysisResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.StartAIAnalysisRequest,
+    ) -> main_models.StartAIAnalysisResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.start_aianalysis_with_options_async(request, headers, runtime)
 
     def start_aidiff_analysis_with_options(
         self,
-        request: sys_om20231230_models.StartAIDiffAnalysisRequest,
+        request: main_models.StartAIDiffAnalysisRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.StartAIDiffAnalysisResponse:
-        """
-        @summary 查看AI Infra差分分析结果
-        
-        @param request: StartAIDiffAnalysisRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StartAIDiffAnalysisResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.StartAIDiffAnalysisResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.task_1):
+        if not DaraCore.is_null(request.task_1):
             body['task1'] = request.task_1
-        if not UtilClient.is_unset(request.task_2):
+        if not DaraCore.is_null(request.task_2):
             body['task2'] = request.task_2
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='StartAIDiffAnalysis',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/appObserv/aiAnalysis/diffAnalysis',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'StartAIDiffAnalysis',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/appObserv/aiAnalysis/diffAnalysis',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.StartAIDiffAnalysisResponse(),
+        return DaraCore.from_map(
+            main_models.StartAIDiffAnalysisResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def start_aidiff_analysis_with_options_async(
         self,
-        request: sys_om20231230_models.StartAIDiffAnalysisRequest,
+        request: main_models.StartAIDiffAnalysisRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.StartAIDiffAnalysisResponse:
-        """
-        @summary 查看AI Infra差分分析结果
-        
-        @param request: StartAIDiffAnalysisRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: StartAIDiffAnalysisResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.StartAIDiffAnalysisResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.task_1):
+        if not DaraCore.is_null(request.task_1):
             body['task1'] = request.task_1
-        if not UtilClient.is_unset(request.task_2):
+        if not DaraCore.is_null(request.task_2):
             body['task2'] = request.task_2
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='StartAIDiffAnalysis',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/appObserv/aiAnalysis/diffAnalysis',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'StartAIDiffAnalysis',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/appObserv/aiAnalysis/diffAnalysis',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.StartAIDiffAnalysisResponse(),
+        return DaraCore.from_map(
+            main_models.StartAIDiffAnalysisResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def start_aidiff_analysis(
         self,
-        request: sys_om20231230_models.StartAIDiffAnalysisRequest,
-    ) -> sys_om20231230_models.StartAIDiffAnalysisResponse:
-        """
-        @summary 查看AI Infra差分分析结果
-        
-        @param request: StartAIDiffAnalysisRequest
-        @return: StartAIDiffAnalysisResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.StartAIDiffAnalysisRequest,
+    ) -> main_models.StartAIDiffAnalysisResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.start_aidiff_analysis_with_options(request, headers, runtime)
 
     async def start_aidiff_analysis_async(
         self,
-        request: sys_om20231230_models.StartAIDiffAnalysisRequest,
-    ) -> sys_om20231230_models.StartAIDiffAnalysisResponse:
-        """
-        @summary 查看AI Infra差分分析结果
-        
-        @param request: StartAIDiffAnalysisRequest
-        @return: StartAIDiffAnalysisResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.StartAIDiffAnalysisRequest,
+    ) -> main_models.StartAIDiffAnalysisResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.start_aidiff_analysis_with_options_async(request, headers, runtime)
 
     def uninstall_agent_with_options(
         self,
-        request: sys_om20231230_models.UninstallAgentRequest,
+        request: main_models.UninstallAgentRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.UninstallAgentResponse:
-        """
-        @summary 卸载 SysOM Agent
-        
-        @param request: UninstallAgentRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UninstallAgentResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UninstallAgentResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.agent_id):
+        if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
-        if not UtilClient.is_unset(request.agent_version):
+        if not DaraCore.is_null(request.agent_version):
             body['agent_version'] = request.agent_version
-        if not UtilClient.is_unset(request.instances):
+        if not DaraCore.is_null(request.instances):
             body['instances'] = request.instances
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UninstallAgent',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/uninstall_agent',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UninstallAgent',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/uninstall_agent',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UninstallAgentResponse(),
+        return DaraCore.from_map(
+            main_models.UninstallAgentResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def uninstall_agent_with_options_async(
         self,
-        request: sys_om20231230_models.UninstallAgentRequest,
+        request: main_models.UninstallAgentRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.UninstallAgentResponse:
-        """
-        @summary 卸载 SysOM Agent
-        
-        @param request: UninstallAgentRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UninstallAgentResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UninstallAgentResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.agent_id):
+        if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
-        if not UtilClient.is_unset(request.agent_version):
+        if not DaraCore.is_null(request.agent_version):
             body['agent_version'] = request.agent_version
-        if not UtilClient.is_unset(request.instances):
+        if not DaraCore.is_null(request.instances):
             body['instances'] = request.instances
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UninstallAgent',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/uninstall_agent',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UninstallAgent',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/uninstall_agent',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UninstallAgentResponse(),
+        return DaraCore.from_map(
+            main_models.UninstallAgentResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def uninstall_agent(
         self,
-        request: sys_om20231230_models.UninstallAgentRequest,
-    ) -> sys_om20231230_models.UninstallAgentResponse:
-        """
-        @summary 卸载 SysOM Agent
-        
-        @param request: UninstallAgentRequest
-        @return: UninstallAgentResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UninstallAgentRequest,
+    ) -> main_models.UninstallAgentResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.uninstall_agent_with_options(request, headers, runtime)
 
     async def uninstall_agent_async(
         self,
-        request: sys_om20231230_models.UninstallAgentRequest,
-    ) -> sys_om20231230_models.UninstallAgentResponse:
-        """
-        @summary 卸载 SysOM Agent
-        
-        @param request: UninstallAgentRequest
-        @return: UninstallAgentResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UninstallAgentRequest,
+    ) -> main_models.UninstallAgentResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.uninstall_agent_with_options_async(request, headers, runtime)
 
     def uninstall_agent_for_cluster_with_options(
         self,
-        request: sys_om20231230_models.UninstallAgentForClusterRequest,
+        request: main_models.UninstallAgentForClusterRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.UninstallAgentForClusterResponse:
-        """
-        @summary 给集群卸载组件
-        
-        @param request: UninstallAgentForClusterRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UninstallAgentForClusterResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UninstallAgentForClusterResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.agent_id):
+        if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
-        if not UtilClient.is_unset(request.agent_version):
+        if not DaraCore.is_null(request.agent_version):
             body['agent_version'] = request.agent_version
-        if not UtilClient.is_unset(request.cluster_id):
+        if not DaraCore.is_null(request.cluster_id):
             body['cluster_id'] = request.cluster_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UninstallAgentForCluster',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/uninstall_agent_by_cluster',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UninstallAgentForCluster',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/uninstall_agent_by_cluster',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UninstallAgentForClusterResponse(),
+        return DaraCore.from_map(
+            main_models.UninstallAgentForClusterResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def uninstall_agent_for_cluster_with_options_async(
         self,
-        request: sys_om20231230_models.UninstallAgentForClusterRequest,
+        request: main_models.UninstallAgentForClusterRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.UninstallAgentForClusterResponse:
-        """
-        @summary 给集群卸载组件
-        
-        @param request: UninstallAgentForClusterRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UninstallAgentForClusterResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UninstallAgentForClusterResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.agent_id):
+        if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
-        if not UtilClient.is_unset(request.agent_version):
+        if not DaraCore.is_null(request.agent_version):
             body['agent_version'] = request.agent_version
-        if not UtilClient.is_unset(request.cluster_id):
+        if not DaraCore.is_null(request.cluster_id):
             body['cluster_id'] = request.cluster_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UninstallAgentForCluster',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/uninstall_agent_by_cluster',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UninstallAgentForCluster',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/uninstall_agent_by_cluster',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UninstallAgentForClusterResponse(),
+        return DaraCore.from_map(
+            main_models.UninstallAgentForClusterResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def uninstall_agent_for_cluster(
         self,
-        request: sys_om20231230_models.UninstallAgentForClusterRequest,
-    ) -> sys_om20231230_models.UninstallAgentForClusterResponse:
-        """
-        @summary 给集群卸载组件
-        
-        @param request: UninstallAgentForClusterRequest
-        @return: UninstallAgentForClusterResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UninstallAgentForClusterRequest,
+    ) -> main_models.UninstallAgentForClusterResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.uninstall_agent_for_cluster_with_options(request, headers, runtime)
 
     async def uninstall_agent_for_cluster_async(
         self,
-        request: sys_om20231230_models.UninstallAgentForClusterRequest,
-    ) -> sys_om20231230_models.UninstallAgentForClusterResponse:
-        """
-        @summary 给集群卸载组件
-        
-        @param request: UninstallAgentForClusterRequest
-        @return: UninstallAgentForClusterResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UninstallAgentForClusterRequest,
+    ) -> main_models.UninstallAgentForClusterResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.uninstall_agent_for_cluster_with_options_async(request, headers, runtime)
 
     def update_alert_enabled_with_options(
         self,
-        request: sys_om20231230_models.UpdateAlertEnabledRequest,
+        request: main_models.UpdateAlertEnabledRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.UpdateAlertEnabledResponse:
-        """
-        @summary 用户更新推送告警策略的状态
-        
-        @param request: UpdateAlertEnabledRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAlertEnabledResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertEnabledResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.enabled):
+        if not DaraCore.is_null(request.enabled):
             body['enabled'] = request.enabled
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             body['id'] = request.id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateAlertEnabled',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/alertPusher/alert/updateEnabled',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateAlertEnabled',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/updateEnabled',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UpdateAlertEnabledResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateAlertEnabledResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_alert_enabled_with_options_async(
         self,
-        request: sys_om20231230_models.UpdateAlertEnabledRequest,
+        request: main_models.UpdateAlertEnabledRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.UpdateAlertEnabledResponse:
-        """
-        @summary 用户更新推送告警策略的状态
-        
-        @param request: UpdateAlertEnabledRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAlertEnabledResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertEnabledResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.enabled):
+        if not DaraCore.is_null(request.enabled):
             body['enabled'] = request.enabled
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             body['id'] = request.id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateAlertEnabled',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/alertPusher/alert/updateEnabled',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateAlertEnabled',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/updateEnabled',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UpdateAlertEnabledResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateAlertEnabledResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_alert_enabled(
         self,
-        request: sys_om20231230_models.UpdateAlertEnabledRequest,
-    ) -> sys_om20231230_models.UpdateAlertEnabledResponse:
-        """
-        @summary 用户更新推送告警策略的状态
-        
-        @param request: UpdateAlertEnabledRequest
-        @return: UpdateAlertEnabledResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateAlertEnabledRequest,
+    ) -> main_models.UpdateAlertEnabledResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.update_alert_enabled_with_options(request, headers, runtime)
 
     async def update_alert_enabled_async(
         self,
-        request: sys_om20231230_models.UpdateAlertEnabledRequest,
-    ) -> sys_om20231230_models.UpdateAlertEnabledResponse:
-        """
-        @summary 用户更新推送告警策略的状态
-        
-        @param request: UpdateAlertEnabledRequest
-        @return: UpdateAlertEnabledResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateAlertEnabledRequest,
+    ) -> main_models.UpdateAlertEnabledResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.update_alert_enabled_with_options_async(request, headers, runtime)
 
     def update_alert_strategy_with_options(
         self,
-        request: sys_om20231230_models.UpdateAlertStrategyRequest,
+        request: main_models.UpdateAlertStrategyRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.UpdateAlertStrategyResponse:
-        """
-        @summary 更新推送告警策略
-        
-        @param request: UpdateAlertStrategyRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAlertStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertStrategyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.enabled):
+        if not DaraCore.is_null(request.enabled):
             body['enabled'] = request.enabled
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             body['id'] = request.id
-        if not UtilClient.is_unset(request.k_8s_label):
+        if not DaraCore.is_null(request.k_8s_label):
             body['k8sLabel'] = request.k_8s_label
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             body['name'] = request.name
-        if not UtilClient.is_unset(request.strategy):
+        if not DaraCore.is_null(request.strategy):
             body['strategy'] = request.strategy
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateAlertStrategy',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/alertPusher/alert/updateStrategy',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateAlertStrategy',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/updateStrategy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UpdateAlertStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateAlertStrategyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_alert_strategy_with_options_async(
         self,
-        request: sys_om20231230_models.UpdateAlertStrategyRequest,
+        request: main_models.UpdateAlertStrategyRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.UpdateAlertStrategyResponse:
-        """
-        @summary 更新推送告警策略
-        
-        @param request: UpdateAlertStrategyRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAlertStrategyResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAlertStrategyResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.enabled):
+        if not DaraCore.is_null(request.enabled):
             body['enabled'] = request.enabled
-        if not UtilClient.is_unset(request.id):
+        if not DaraCore.is_null(request.id):
             body['id'] = request.id
-        if not UtilClient.is_unset(request.k_8s_label):
+        if not DaraCore.is_null(request.k_8s_label):
             body['k8sLabel'] = request.k_8s_label
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             body['name'] = request.name
-        if not UtilClient.is_unset(request.strategy):
+        if not DaraCore.is_null(request.strategy):
             body['strategy'] = request.strategy
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateAlertStrategy',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/alertPusher/alert/updateStrategy',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateAlertStrategy',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/alertPusher/alert/updateStrategy',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UpdateAlertStrategyResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateAlertStrategyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_alert_strategy(
         self,
-        request: sys_om20231230_models.UpdateAlertStrategyRequest,
-    ) -> sys_om20231230_models.UpdateAlertStrategyResponse:
-        """
-        @summary 更新推送告警策略
-        
-        @param request: UpdateAlertStrategyRequest
-        @return: UpdateAlertStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateAlertStrategyRequest,
+    ) -> main_models.UpdateAlertStrategyResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.update_alert_strategy_with_options(request, headers, runtime)
 
     async def update_alert_strategy_async(
         self,
-        request: sys_om20231230_models.UpdateAlertStrategyRequest,
-    ) -> sys_om20231230_models.UpdateAlertStrategyResponse:
-        """
-        @summary 更新推送告警策略
-        
-        @param request: UpdateAlertStrategyRequest
-        @return: UpdateAlertStrategyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateAlertStrategyRequest,
+    ) -> main_models.UpdateAlertStrategyResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.update_alert_strategy_with_options_async(request, headers, runtime)
 
     def update_events_attention_with_options(
         self,
-        request: sys_om20231230_models.UpdateEventsAttentionRequest,
+        request: main_models.UpdateEventsAttentionRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.UpdateEventsAttentionResponse:
-        """
-        @summary 异常项关注度更新
-        
-        @param request: UpdateEventsAttentionRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateEventsAttentionResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEventsAttentionResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.mode):
+        if not DaraCore.is_null(request.mode):
             body['mode'] = request.mode
-        if not UtilClient.is_unset(request.range):
+        if not DaraCore.is_null(request.range):
             body['range'] = request.range
-        if not UtilClient.is_unset(request.uuid):
+        if not DaraCore.is_null(request.uuid):
             body['uuid'] = request.uuid
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateEventsAttention',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/proxy/post/cluster_update_events_attention',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateEventsAttention',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/proxy/post/cluster_update_events_attention',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UpdateEventsAttentionResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateEventsAttentionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_events_attention_with_options_async(
         self,
-        request: sys_om20231230_models.UpdateEventsAttentionRequest,
+        request: main_models.UpdateEventsAttentionRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.UpdateEventsAttentionResponse:
-        """
-        @summary 异常项关注度更新
-        
-        @param request: UpdateEventsAttentionRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateEventsAttentionResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateEventsAttentionResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.mode):
+        if not DaraCore.is_null(request.mode):
             body['mode'] = request.mode
-        if not UtilClient.is_unset(request.range):
+        if not DaraCore.is_null(request.range):
             body['range'] = request.range
-        if not UtilClient.is_unset(request.uuid):
+        if not DaraCore.is_null(request.uuid):
             body['uuid'] = request.uuid
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpdateEventsAttention',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/openapi/proxy/post/cluster_update_events_attention',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateEventsAttention',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/openapi/proxy/post/cluster_update_events_attention',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UpdateEventsAttentionResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateEventsAttentionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_events_attention(
         self,
-        request: sys_om20231230_models.UpdateEventsAttentionRequest,
-    ) -> sys_om20231230_models.UpdateEventsAttentionResponse:
-        """
-        @summary 异常项关注度更新
-        
-        @param request: UpdateEventsAttentionRequest
-        @return: UpdateEventsAttentionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateEventsAttentionRequest,
+    ) -> main_models.UpdateEventsAttentionResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.update_events_attention_with_options(request, headers, runtime)
 
     async def update_events_attention_async(
         self,
-        request: sys_om20231230_models.UpdateEventsAttentionRequest,
-    ) -> sys_om20231230_models.UpdateEventsAttentionResponse:
-        """
-        @summary 异常项关注度更新
-        
-        @param request: UpdateEventsAttentionRequest
-        @return: UpdateEventsAttentionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateEventsAttentionRequest,
+    ) -> main_models.UpdateEventsAttentionResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.update_events_attention_with_options_async(request, headers, runtime)
 
     def update_func_switch_record_with_options(
         self,
-        tmp_req: sys_om20231230_models.UpdateFuncSwitchRecordRequest,
+        tmp_req: main_models.UpdateFuncSwitchRecordRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.UpdateFuncSwitchRecordResponse:
-        """
-        @summary 获取功能模块配置
-        
-        @param tmp_req: UpdateFuncSwitchRecordRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateFuncSwitchRecordResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = sys_om20231230_models.UpdateFuncSwitchRecordShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.params):
-            request.params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.params, 'params', 'json')
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFuncSwitchRecordResponse:
+        tmp_req.validate()
+        request = main_models.UpdateFuncSwitchRecordShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'params', 'json')
         query = {}
-        if not UtilClient.is_unset(request.channel):
+        if not DaraCore.is_null(request.channel):
             query['channel'] = request.channel
-        if not UtilClient.is_unset(request.params_shrink):
+        if not DaraCore.is_null(request.params_shrink):
             query['params'] = request.params_shrink
-        if not UtilClient.is_unset(request.service_name):
+        if not DaraCore.is_null(request.service_name):
             query['service_name'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateFuncSwitchRecord',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/func-switch/update-service-func-switch',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateFuncSwitchRecord',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/func-switch/update-service-func-switch',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UpdateFuncSwitchRecordResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateFuncSwitchRecordResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_func_switch_record_with_options_async(
         self,
-        tmp_req: sys_om20231230_models.UpdateFuncSwitchRecordRequest,
+        tmp_req: main_models.UpdateFuncSwitchRecordRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.UpdateFuncSwitchRecordResponse:
-        """
-        @summary 获取功能模块配置
-        
-        @param tmp_req: UpdateFuncSwitchRecordRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateFuncSwitchRecordResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = sys_om20231230_models.UpdateFuncSwitchRecordShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.params):
-            request.params_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.params, 'params', 'json')
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFuncSwitchRecordResponse:
+        tmp_req.validate()
+        request = main_models.UpdateFuncSwitchRecordShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.params):
+            request.params_shrink = Utils.array_to_string_with_specified_style(tmp_req.params, 'params', 'json')
         query = {}
-        if not UtilClient.is_unset(request.channel):
+        if not DaraCore.is_null(request.channel):
             query['channel'] = request.channel
-        if not UtilClient.is_unset(request.params_shrink):
+        if not DaraCore.is_null(request.params_shrink):
             query['params'] = request.params_shrink
-        if not UtilClient.is_unset(request.service_name):
+        if not DaraCore.is_null(request.service_name):
             query['service_name'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateFuncSwitchRecord',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/func-switch/update-service-func-switch',
-            method='GET',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateFuncSwitchRecord',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/func-switch/update-service-func-switch',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UpdateFuncSwitchRecordResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateFuncSwitchRecordResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_func_switch_record(
         self,
-        request: sys_om20231230_models.UpdateFuncSwitchRecordRequest,
-    ) -> sys_om20231230_models.UpdateFuncSwitchRecordResponse:
-        """
-        @summary 获取功能模块配置
-        
-        @param request: UpdateFuncSwitchRecordRequest
-        @return: UpdateFuncSwitchRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateFuncSwitchRecordRequest,
+    ) -> main_models.UpdateFuncSwitchRecordResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.update_func_switch_record_with_options(request, headers, runtime)
 
     async def update_func_switch_record_async(
         self,
-        request: sys_om20231230_models.UpdateFuncSwitchRecordRequest,
-    ) -> sys_om20231230_models.UpdateFuncSwitchRecordResponse:
-        """
-        @summary 获取功能模块配置
-        
-        @param request: UpdateFuncSwitchRecordRequest
-        @return: UpdateFuncSwitchRecordResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateFuncSwitchRecordRequest,
+    ) -> main_models.UpdateFuncSwitchRecordResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.update_func_switch_record_with_options_async(request, headers, runtime)
 
     def upgrade_agent_with_options(
         self,
-        request: sys_om20231230_models.UpgradeAgentRequest,
+        request: main_models.UpgradeAgentRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.UpgradeAgentResponse:
-        """
-        @summary 更新 SysOM Agent
-        
-        @param request: UpgradeAgentRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpgradeAgentResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradeAgentResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.agent_id):
+        if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
-        if not UtilClient.is_unset(request.agent_version):
+        if not DaraCore.is_null(request.agent_version):
             body['agent_version'] = request.agent_version
-        if not UtilClient.is_unset(request.instances):
+        if not DaraCore.is_null(request.instances):
             body['instances'] = request.instances
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpgradeAgent',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/upgrade_agent',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpgradeAgent',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/upgrade_agent',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UpgradeAgentResponse(),
+        return DaraCore.from_map(
+            main_models.UpgradeAgentResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def upgrade_agent_with_options_async(
         self,
-        request: sys_om20231230_models.UpgradeAgentRequest,
+        request: main_models.UpgradeAgentRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.UpgradeAgentResponse:
-        """
-        @summary 更新 SysOM Agent
-        
-        @param request: UpgradeAgentRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpgradeAgentResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradeAgentResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.agent_id):
+        if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
-        if not UtilClient.is_unset(request.agent_version):
+        if not DaraCore.is_null(request.agent_version):
             body['agent_version'] = request.agent_version
-        if not UtilClient.is_unset(request.instances):
+        if not DaraCore.is_null(request.instances):
             body['instances'] = request.instances
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpgradeAgent',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/upgrade_agent',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpgradeAgent',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/upgrade_agent',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UpgradeAgentResponse(),
+        return DaraCore.from_map(
+            main_models.UpgradeAgentResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def upgrade_agent(
         self,
-        request: sys_om20231230_models.UpgradeAgentRequest,
-    ) -> sys_om20231230_models.UpgradeAgentResponse:
-        """
-        @summary 更新 SysOM Agent
-        
-        @param request: UpgradeAgentRequest
-        @return: UpgradeAgentResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpgradeAgentRequest,
+    ) -> main_models.UpgradeAgentResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.upgrade_agent_with_options(request, headers, runtime)
 
     async def upgrade_agent_async(
         self,
-        request: sys_om20231230_models.UpgradeAgentRequest,
-    ) -> sys_om20231230_models.UpgradeAgentResponse:
-        """
-        @summary 更新 SysOM Agent
-        
-        @param request: UpgradeAgentRequest
-        @return: UpgradeAgentResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpgradeAgentRequest,
+    ) -> main_models.UpgradeAgentResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.upgrade_agent_with_options_async(request, headers, runtime)
 
     def upgrade_agent_for_cluster_with_options(
         self,
-        request: sys_om20231230_models.UpgradeAgentForClusterRequest,
+        request: main_models.UpgradeAgentForClusterRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.UpgradeAgentForClusterResponse:
-        """
-        @summary 给集群更新组件
-        
-        @param request: UpgradeAgentForClusterRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpgradeAgentForClusterResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradeAgentForClusterResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.agent_id):
+        if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
-        if not UtilClient.is_unset(request.agent_version):
+        if not DaraCore.is_null(request.agent_version):
             body['agent_version'] = request.agent_version
-        if not UtilClient.is_unset(request.cluster_id):
+        if not DaraCore.is_null(request.cluster_id):
             body['cluster_id'] = request.cluster_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpgradeAgentForCluster',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/upgrade_agent_by_cluster',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpgradeAgentForCluster',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/upgrade_agent_by_cluster',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UpgradeAgentForClusterResponse(),
+        return DaraCore.from_map(
+            main_models.UpgradeAgentForClusterResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def upgrade_agent_for_cluster_with_options_async(
         self,
-        request: sys_om20231230_models.UpgradeAgentForClusterRequest,
+        request: main_models.UpgradeAgentForClusterRequest,
         headers: Dict[str, str],
-        runtime: util_models.RuntimeOptions,
-    ) -> sys_om20231230_models.UpgradeAgentForClusterResponse:
-        """
-        @summary 给集群更新组件
-        
-        @param request: UpgradeAgentForClusterRequest
-        @param headers: map
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpgradeAgentForClusterResponse
-        """
-        UtilClient.validate_model(request)
+        runtime: RuntimeOptions,
+    ) -> main_models.UpgradeAgentForClusterResponse:
+        request.validate()
         body = {}
-        if not UtilClient.is_unset(request.agent_id):
+        if not DaraCore.is_null(request.agent_id):
             body['agent_id'] = request.agent_id
-        if not UtilClient.is_unset(request.agent_version):
+        if not DaraCore.is_null(request.agent_version):
             body['agent_version'] = request.agent_version
-        if not UtilClient.is_unset(request.cluster_id):
+        if not DaraCore.is_null(request.cluster_id):
             body['cluster_id'] = request.cluster_id
-        req = open_api_models.OpenApiRequest(
-            headers=headers,
-            body=OpenApiUtilClient.parse_to_map(body)
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
         )
-        params = open_api_models.Params(
-            action='UpgradeAgentForCluster',
-            version='2023-12-30',
-            protocol='HTTPS',
-            pathname=f'/api/v1/am/agent/upgrade_agent_by_cluster',
-            method='POST',
-            auth_type='AK',
-            style='ROA',
-            req_body_type='json',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpgradeAgentForCluster',
+            version = '2023-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/am/agent/upgrade_agent_by_cluster',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            sys_om20231230_models.UpgradeAgentForClusterResponse(),
+        return DaraCore.from_map(
+            main_models.UpgradeAgentForClusterResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def upgrade_agent_for_cluster(
         self,
-        request: sys_om20231230_models.UpgradeAgentForClusterRequest,
-    ) -> sys_om20231230_models.UpgradeAgentForClusterResponse:
-        """
-        @summary 给集群更新组件
-        
-        @param request: UpgradeAgentForClusterRequest
-        @return: UpgradeAgentForClusterResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpgradeAgentForClusterRequest,
+    ) -> main_models.UpgradeAgentForClusterResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return self.upgrade_agent_for_cluster_with_options(request, headers, runtime)
 
     async def upgrade_agent_for_cluster_async(
         self,
-        request: sys_om20231230_models.UpgradeAgentForClusterRequest,
-    ) -> sys_om20231230_models.UpgradeAgentForClusterResponse:
-        """
-        @summary 给集群更新组件
-        
-        @param request: UpgradeAgentForClusterRequest
-        @return: UpgradeAgentForClusterResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpgradeAgentForClusterRequest,
+    ) -> main_models.UpgradeAgentForClusterResponse:
+        runtime = RuntimeOptions()
         headers = {}
         return await self.upgrade_agent_for_cluster_with_options_async(request, headers, runtime)

@@ -1,0 +1,547 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._auth_diagnosis_request import AuthDiagnosisRequest
+from ._auth_diagnosis_response_body import AuthDiagnosisResponseBody
+from ._auth_diagnosis_response import AuthDiagnosisResponse
+from ._check_instance_support_request import CheckInstanceSupportRequest
+from ._check_instance_support_response_body import CheckInstanceSupportResponseBody
+from ._check_instance_support_response import CheckInstanceSupportResponse
+from ._create_alert_strategy_request import CreateAlertStrategyRequest
+from ._create_alert_strategy_response_body import CreateAlertStrategyResponseBody
+from ._create_alert_strategy_response import CreateAlertStrategyResponse
+from ._create_vmcore_diagnosis_task_request import CreateVmcoreDiagnosisTaskRequest
+from ._create_vmcore_diagnosis_task_response_body import CreateVmcoreDiagnosisTaskResponseBody
+from ._create_vmcore_diagnosis_task_response import CreateVmcoreDiagnosisTaskResponse
+from ._delete_alert_strategy_request import DeleteAlertStrategyRequest
+from ._delete_alert_strategy_response_body import DeleteAlertStrategyResponseBody
+from ._delete_alert_strategy_response import DeleteAlertStrategyResponse
+from ._describe_metric_list_request import DescribeMetricListRequest
+from ._describe_metric_list_response_body import DescribeMetricListResponseBody
+from ._describe_metric_list_response import DescribeMetricListResponse
+from ._generate_copilot_response_request import GenerateCopilotResponseRequest
+from ._generate_copilot_response_response_body import GenerateCopilotResponseResponseBody
+from ._generate_copilot_response_response import GenerateCopilotResponseResponse
+from ._generate_copilot_stream_response_request import GenerateCopilotStreamResponseRequest
+from ._generate_copilot_stream_response_response_body import GenerateCopilotStreamResponseResponseBody
+from ._generate_copilot_stream_response_response import GenerateCopilotStreamResponseResponse
+from ._get_aiquery_result_request import GetAIQueryResultRequest
+from ._get_aiquery_result_response_body import GetAIQueryResultResponseBody
+from ._get_aiquery_result_response import GetAIQueryResultResponse
+from ._get_abnormal_events_count_request import GetAbnormalEventsCountRequest
+from ._get_abnormal_events_count_response_body import GetAbnormalEventsCountResponseBody
+from ._get_abnormal_events_count_response import GetAbnormalEventsCountResponse
+from ._get_agent_request import GetAgentRequest
+from ._get_agent_response_body import GetAgentResponseBody
+from ._get_agent_response import GetAgentResponse
+from ._get_agent_task_request import GetAgentTaskRequest
+from ._get_agent_task_response_body import GetAgentTaskResponseBody
+from ._get_agent_task_response import GetAgentTaskResponse
+from ._get_alert_strategy_request import GetAlertStrategyRequest
+from ._get_alert_strategy_response_body import GetAlertStrategyResponseBody
+from ._get_alert_strategy_response import GetAlertStrategyResponse
+from ._get_copilot_history_request import GetCopilotHistoryRequest
+from ._get_copilot_history_response_body import GetCopilotHistoryResponseBody
+from ._get_copilot_history_response import GetCopilotHistoryResponse
+from ._get_diagnosis_result_request import GetDiagnosisResultRequest
+from ._get_diagnosis_result_response_body import GetDiagnosisResultResponseBody
+from ._get_diagnosis_result_response import GetDiagnosisResultResponse
+from ._get_health_percentage_request import GetHealthPercentageRequest
+from ._get_health_percentage_response_body import GetHealthPercentageResponseBody
+from ._get_health_percentage_response import GetHealthPercentageResponse
+from ._get_host_count_request import GetHostCountRequest
+from ._get_host_count_response_body import GetHostCountResponseBody
+from ._get_host_count_response import GetHostCountResponse
+from ._get_hot_spot_uniq_list_request import GetHotSpotUniqListRequest
+from ._get_hot_spot_uniq_list_response_body import GetHotSpotUniqListResponseBody
+from ._get_hot_spot_uniq_list_response import GetHotSpotUniqListResponse
+from ._get_hotspot_analysis_request import GetHotspotAnalysisRequest
+from ._get_hotspot_analysis_response_body import GetHotspotAnalysisResponseBody
+from ._get_hotspot_analysis_response import GetHotspotAnalysisResponse
+from ._get_hotspot_compare_request import GetHotspotCompareRequest
+from ._get_hotspot_compare_response_body import GetHotspotCompareResponseBody
+from ._get_hotspot_compare_response import GetHotspotCompareResponse
+from ._get_hotspot_instance_list_request import GetHotspotInstanceListRequest
+from ._get_hotspot_instance_list_response_body import GetHotspotInstanceListResponseBody
+from ._get_hotspot_instance_list_response import GetHotspotInstanceListResponse
+from ._get_hotspot_pid_list_request import GetHotspotPidListRequest
+from ._get_hotspot_pid_list_response_body import GetHotspotPidListResponseBody
+from ._get_hotspot_pid_list_response import GetHotspotPidListResponse
+from ._get_hotspot_tracking_request import GetHotspotTrackingRequest
+from ._get_hotspot_tracking_response_body import GetHotspotTrackingResponseBody
+from ._get_hotspot_tracking_response import GetHotspotTrackingResponse
+from ._get_instant_score_request import GetInstantScoreRequest
+from ._get_instant_score_response_body import GetInstantScoreResponseBody
+from ._get_instant_score_response import GetInstantScoreResponse
+from ._get_list_record_request import GetListRecordRequest
+from ._get_list_record_response_body import GetListRecordResponseBody
+from ._get_list_record_response import GetListRecordResponse
+from ._get_problem_percentage_request import GetProblemPercentageRequest
+from ._get_problem_percentage_response_body import GetProblemPercentageResponseBody
+from ._get_problem_percentage_response import GetProblemPercentageResponse
+from ._get_range_score_request import GetRangeScoreRequest
+from ._get_range_score_response_body import GetRangeScoreResponseBody
+from ._get_range_score_response import GetRangeScoreResponse
+from ._get_resources_request import GetResourcesRequest
+from ._get_resources_response_body import GetResourcesResponseBody
+from ._get_resources_response import GetResourcesResponse
+from ._get_service_func_status_request import GetServiceFuncStatusRequest
+from ._get_service_func_status_shrink_request import GetServiceFuncStatusShrinkRequest
+from ._get_service_func_status_response_body import GetServiceFuncStatusResponseBody
+from ._get_service_func_status_response import GetServiceFuncStatusResponse
+from ._get_vmcore_diagnosis_task_request import GetVmcoreDiagnosisTaskRequest
+from ._get_vmcore_diagnosis_task_response_body import GetVmcoreDiagnosisTaskResponseBody
+from ._get_vmcore_diagnosis_task_response import GetVmcoreDiagnosisTaskResponse
+from ._initial_sysom_request import InitialSysomRequest
+from ._initial_sysom_response_body import InitialSysomResponseBody
+from ._initial_sysom_response import InitialSysomResponse
+from ._install_agent_request import InstallAgentRequest
+from ._install_agent_response_body import InstallAgentResponseBody
+from ._install_agent_response import InstallAgentResponse
+from ._install_agent_for_cluster_request import InstallAgentForClusterRequest
+from ._install_agent_for_cluster_response_body import InstallAgentForClusterResponseBody
+from ._install_agent_for_cluster_response import InstallAgentForClusterResponse
+from ._invoke_anomaly_diagnosis_request import InvokeAnomalyDiagnosisRequest
+from ._invoke_anomaly_diagnosis_response_body import InvokeAnomalyDiagnosisResponseBody
+from ._invoke_anomaly_diagnosis_response import InvokeAnomalyDiagnosisResponse
+from ._invoke_diagnosis_request import InvokeDiagnosisRequest
+from ._invoke_diagnosis_response_body import InvokeDiagnosisResponseBody
+from ._invoke_diagnosis_response import InvokeDiagnosisResponse
+from ._list_abnormaly_events_request import ListAbnormalyEventsRequest
+from ._list_abnormaly_events_response_body import ListAbnormalyEventsResponseBody
+from ._list_abnormaly_events_response import ListAbnormalyEventsResponse
+from ._list_agent_install_records_request import ListAgentInstallRecordsRequest
+from ._list_agent_install_records_response_body import ListAgentInstallRecordsResponseBody
+from ._list_agent_install_records_response import ListAgentInstallRecordsResponse
+from ._list_agents_request import ListAgentsRequest
+from ._list_agents_response_body import ListAgentsResponseBody
+from ._list_agents_response import ListAgentsResponse
+from ._list_alert_items_response_body import ListAlertItemsResponseBody
+from ._list_alert_items_response import ListAlertItemsResponse
+from ._list_alert_strategies_request import ListAlertStrategiesRequest
+from ._list_alert_strategies_response_body import ListAlertStrategiesResponseBody
+from ._list_alert_strategies_response import ListAlertStrategiesResponse
+from ._list_all_instances_request import ListAllInstancesRequest
+from ._list_all_instances_response_body import ListAllInstancesResponseBody
+from ._list_all_instances_response import ListAllInstancesResponse
+from ._list_cluster_agent_install_records_request import ListClusterAgentInstallRecordsRequest
+from ._list_cluster_agent_install_records_response_body import ListClusterAgentInstallRecordsResponseBody
+from ._list_cluster_agent_install_records_response import ListClusterAgentInstallRecordsResponse
+from ._list_clusters_request import ListClustersRequest
+from ._list_clusters_response_body import ListClustersResponseBody
+from ._list_clusters_response import ListClustersResponse
+from ._list_diagnosis_request import ListDiagnosisRequest
+from ._list_diagnosis_response_body import ListDiagnosisResponseBody
+from ._list_diagnosis_response import ListDiagnosisResponse
+from ._list_instance_health_request import ListInstanceHealthRequest
+from ._list_instance_health_response_body import ListInstanceHealthResponseBody
+from ._list_instance_health_response import ListInstanceHealthResponse
+from ._list_instance_status_request import ListInstanceStatusRequest
+from ._list_instance_status_response_body import ListInstanceStatusResponseBody
+from ._list_instance_status_response import ListInstanceStatusResponse
+from ._list_instances_request import ListInstancesRequest
+from ._list_instances_response_body import ListInstancesResponseBody
+from ._list_instances_response import ListInstancesResponse
+from ._list_instances_ecs_info_list_request import ListInstancesEcsInfoListRequest
+from ._list_instances_ecs_info_list_response_body import ListInstancesEcsInfoListResponseBody
+from ._list_instances_ecs_info_list_response import ListInstancesEcsInfoListResponse
+from ._list_instances_with_ecs_info_request import ListInstancesWithEcsInfoRequest
+from ._list_instances_with_ecs_info_shrink_request import ListInstancesWithEcsInfoShrinkRequest
+from ._list_instances_with_ecs_info_response_body import ListInstancesWithEcsInfoResponseBody
+from ._list_instances_with_ecs_info_response import ListInstancesWithEcsInfoResponse
+from ._list_plugins_instances_request import ListPluginsInstancesRequest
+from ._list_plugins_instances_response_body import ListPluginsInstancesResponseBody
+from ._list_plugins_instances_response import ListPluginsInstancesResponse
+from ._list_pods_of_instance_request import ListPodsOfInstanceRequest
+from ._list_pods_of_instance_response_body import ListPodsOfInstanceResponseBody
+from ._list_pods_of_instance_response import ListPodsOfInstanceResponse
+from ._list_regions_response_body import ListRegionsResponseBody
+from ._list_regions_response import ListRegionsResponse
+from ._list_vmcore_diagnosis_task_request import ListVmcoreDiagnosisTaskRequest
+from ._list_vmcore_diagnosis_task_response_body import ListVmcoreDiagnosisTaskResponseBody
+from ._list_vmcore_diagnosis_task_response import ListVmcoreDiagnosisTaskResponse
+from ._start_aianalysis_request import StartAIAnalysisRequest
+from ._start_aianalysis_response_body import StartAIAnalysisResponseBody
+from ._start_aianalysis_response import StartAIAnalysisResponse
+from ._start_aidiff_analysis_request import StartAIDiffAnalysisRequest
+from ._start_aidiff_analysis_response_body import StartAIDiffAnalysisResponseBody
+from ._start_aidiff_analysis_response import StartAIDiffAnalysisResponse
+from ._uninstall_agent_request import UninstallAgentRequest
+from ._uninstall_agent_response_body import UninstallAgentResponseBody
+from ._uninstall_agent_response import UninstallAgentResponse
+from ._uninstall_agent_for_cluster_request import UninstallAgentForClusterRequest
+from ._uninstall_agent_for_cluster_response_body import UninstallAgentForClusterResponseBody
+from ._uninstall_agent_for_cluster_response import UninstallAgentForClusterResponse
+from ._update_alert_enabled_request import UpdateAlertEnabledRequest
+from ._update_alert_enabled_response_body import UpdateAlertEnabledResponseBody
+from ._update_alert_enabled_response import UpdateAlertEnabledResponse
+from ._update_alert_strategy_request import UpdateAlertStrategyRequest
+from ._update_alert_strategy_response_body import UpdateAlertStrategyResponseBody
+from ._update_alert_strategy_response import UpdateAlertStrategyResponse
+from ._update_events_attention_request import UpdateEventsAttentionRequest
+from ._update_events_attention_response_body import UpdateEventsAttentionResponseBody
+from ._update_events_attention_response import UpdateEventsAttentionResponse
+from ._update_func_switch_record_request import UpdateFuncSwitchRecordRequest
+from ._update_func_switch_record_shrink_request import UpdateFuncSwitchRecordShrinkRequest
+from ._update_func_switch_record_response_body import UpdateFuncSwitchRecordResponseBody
+from ._update_func_switch_record_response import UpdateFuncSwitchRecordResponse
+from ._upgrade_agent_request import UpgradeAgentRequest
+from ._upgrade_agent_response_body import UpgradeAgentResponseBody
+from ._upgrade_agent_response import UpgradeAgentResponse
+from ._upgrade_agent_for_cluster_request import UpgradeAgentForClusterRequest
+from ._upgrade_agent_for_cluster_response_body import UpgradeAgentForClusterResponseBody
+from ._upgrade_agent_for_cluster_response import UpgradeAgentForClusterResponse
+from ._auth_diagnosis_request import AuthDiagnosisRequestInstances
+from ._check_instance_support_response_body import CheckInstanceSupportResponseBodyData
+from ._create_alert_strategy_request import CreateAlertStrategyRequestStrategy
+from ._create_vmcore_diagnosis_task_response_body import CreateVmcoreDiagnosisTaskResponseBodyData
+from ._describe_metric_list_response_body import DescribeMetricListResponseBodyData
+from ._get_abnormal_events_count_response_body import GetAbnormalEventsCountResponseBodyData
+from ._get_agent_response_body import GetAgentResponseBodyDataVersions
+from ._get_agent_response_body import GetAgentResponseBodyData
+from ._get_agent_task_response_body import GetAgentTaskResponseBodyDataJobs
+from ._get_agent_task_response_body import GetAgentTaskResponseBodyData
+from ._get_alert_strategy_response_body import GetAlertStrategyResponseBodyDataStrategy
+from ._get_alert_strategy_response_body import GetAlertStrategyResponseBodyData
+from ._get_copilot_history_response_body import GetCopilotHistoryResponseBodyData
+from ._get_diagnosis_result_response_body import GetDiagnosisResultResponseBodyData
+from ._get_health_percentage_response_body import GetHealthPercentageResponseBodyData
+from ._get_host_count_response_body import GetHostCountResponseBodyData
+from ._get_hot_spot_uniq_list_response_body import GetHotSpotUniqListResponseBodyData
+from ._get_hotspot_compare_response_body import GetHotspotCompareResponseBodyDataFlame
+from ._get_hotspot_compare_response_body import GetHotspotCompareResponseBodyDataSeriesInstance1
+from ._get_hotspot_compare_response_body import GetHotspotCompareResponseBodyDataSeriesInstance2
+from ._get_hotspot_compare_response_body import GetHotspotCompareResponseBodyData
+from ._get_hotspot_instance_list_response_body import GetHotspotInstanceListResponseBodyData
+from ._get_hotspot_pid_list_response_body import GetHotspotPidListResponseBodyData
+from ._get_hotspot_tracking_response_body import GetHotspotTrackingResponseBodyDataFlame
+from ._get_hotspot_tracking_response_body import GetHotspotTrackingResponseBodyDataSeries
+from ._get_hotspot_tracking_response_body import GetHotspotTrackingResponseBodyData
+from ._get_instant_score_response_body import GetInstantScoreResponseBodyData
+from ._get_list_record_response_body import GetListRecordResponseBodyData
+from ._get_problem_percentage_response_body import GetProblemPercentageResponseBodyData
+from ._get_range_score_response_body import GetRangeScoreResponseBodyData
+from ._get_resources_response_body import GetResourcesResponseBodyData
+from ._get_service_func_status_request import GetServiceFuncStatusRequestParams
+from ._get_service_func_status_response_body import GetServiceFuncStatusResponseBodyDataArgs
+from ._get_service_func_status_response_body import GetServiceFuncStatusResponseBodyData
+from ._get_vmcore_diagnosis_task_response_body import GetVmcoreDiagnosisTaskResponseBodyDataUrls
+from ._get_vmcore_diagnosis_task_response_body import GetVmcoreDiagnosisTaskResponseBodyData
+from ._initial_sysom_response_body import InitialSysomResponseBodyData
+from ._install_agent_request import InstallAgentRequestInstances
+from ._install_agent_response_body import InstallAgentResponseBodyData
+from ._install_agent_for_cluster_response_body import InstallAgentForClusterResponseBodyData
+from ._invoke_diagnosis_response_body import InvokeDiagnosisResponseBodyData
+from ._list_abnormaly_events_response_body import ListAbnormalyEventsResponseBodyDataOptsResult
+from ._list_abnormaly_events_response_body import ListAbnormalyEventsResponseBodyDataOpts
+from ._list_abnormaly_events_response_body import ListAbnormalyEventsResponseBodyDataRawMetrics
+from ._list_abnormaly_events_response_body import ListAbnormalyEventsResponseBodyData
+from ._list_agent_install_records_response_body import ListAgentInstallRecordsResponseBodyData
+from ._list_agents_response_body import ListAgentsResponseBodyDataVersions
+from ._list_agents_response_body import ListAgentsResponseBodyData
+from ._list_alert_strategies_response_body import ListAlertStrategiesResponseBodyDataStrategy
+from ._list_alert_strategies_response_body import ListAlertStrategiesResponseBodyData
+from ._list_all_instances_response_body import ListAllInstancesResponseBodyDataAttributes
+from ._list_all_instances_response_body import ListAllInstancesResponseBodyData
+from ._list_cluster_agent_install_records_response_body import ListClusterAgentInstallRecordsResponseBodyData
+from ._list_clusters_response_body import ListClustersResponseBodyData
+from ._list_diagnosis_response_body import ListDiagnosisResponseBodyData
+from ._list_instance_health_response_body import ListInstanceHealthResponseBodyData
+from ._list_instance_status_response_body import ListInstanceStatusResponseBodyData
+from ._list_instances_response_body import ListInstancesResponseBodyData
+from ._list_instances_ecs_info_list_response_body import ListInstancesEcsInfoListResponseBodyData
+from ._list_instances_with_ecs_info_request import ListInstancesWithEcsInfoRequestInstanceTag
+from ._list_instances_with_ecs_info_response_body import ListInstancesWithEcsInfoResponseBodyDataInstanceTag
+from ._list_instances_with_ecs_info_response_body import ListInstancesWithEcsInfoResponseBodyData
+from ._list_plugins_instances_response_body import ListPluginsInstancesResponseBodyDataInstanceTag
+from ._list_plugins_instances_response_body import ListPluginsInstancesResponseBodyData
+from ._list_pods_of_instance_response_body import ListPodsOfInstanceResponseBodyData
+from ._list_vmcore_diagnosis_task_response_body import ListVmcoreDiagnosisTaskResponseBodyData
+from ._start_aianalysis_response_body import StartAIAnalysisResponseBodyData
+from ._start_aidiff_analysis_request import StartAIDiffAnalysisRequestTask1
+from ._start_aidiff_analysis_request import StartAIDiffAnalysisRequestTask2
+from ._uninstall_agent_request import UninstallAgentRequestInstances
+from ._uninstall_agent_response_body import UninstallAgentResponseBodyData
+from ._uninstall_agent_for_cluster_response_body import UninstallAgentForClusterResponseBodyData
+from ._update_alert_strategy_request import UpdateAlertStrategyRequestStrategy
+from ._update_events_attention_response_body import UpdateEventsAttentionResponseBodyData
+from ._update_func_switch_record_request import UpdateFuncSwitchRecordRequestParamsArgs
+from ._update_func_switch_record_request import UpdateFuncSwitchRecordRequestParams
+from ._update_func_switch_record_response_body import UpdateFuncSwitchRecordResponseBodyData
+from ._upgrade_agent_request import UpgradeAgentRequestInstances
+from ._upgrade_agent_response_body import UpgradeAgentResponseBodyData
+from ._upgrade_agent_for_cluster_response_body import UpgradeAgentForClusterResponseBodyData
+
+__all__ = [
+    AuthDiagnosisRequest,
+    AuthDiagnosisResponseBody,
+    AuthDiagnosisResponse,
+    CheckInstanceSupportRequest,
+    CheckInstanceSupportResponseBody,
+    CheckInstanceSupportResponse,
+    CreateAlertStrategyRequest,
+    CreateAlertStrategyResponseBody,
+    CreateAlertStrategyResponse,
+    CreateVmcoreDiagnosisTaskRequest,
+    CreateVmcoreDiagnosisTaskResponseBody,
+    CreateVmcoreDiagnosisTaskResponse,
+    DeleteAlertStrategyRequest,
+    DeleteAlertStrategyResponseBody,
+    DeleteAlertStrategyResponse,
+    DescribeMetricListRequest,
+    DescribeMetricListResponseBody,
+    DescribeMetricListResponse,
+    GenerateCopilotResponseRequest,
+    GenerateCopilotResponseResponseBody,
+    GenerateCopilotResponseResponse,
+    GenerateCopilotStreamResponseRequest,
+    GenerateCopilotStreamResponseResponseBody,
+    GenerateCopilotStreamResponseResponse,
+    GetAIQueryResultRequest,
+    GetAIQueryResultResponseBody,
+    GetAIQueryResultResponse,
+    GetAbnormalEventsCountRequest,
+    GetAbnormalEventsCountResponseBody,
+    GetAbnormalEventsCountResponse,
+    GetAgentRequest,
+    GetAgentResponseBody,
+    GetAgentResponse,
+    GetAgentTaskRequest,
+    GetAgentTaskResponseBody,
+    GetAgentTaskResponse,
+    GetAlertStrategyRequest,
+    GetAlertStrategyResponseBody,
+    GetAlertStrategyResponse,
+    GetCopilotHistoryRequest,
+    GetCopilotHistoryResponseBody,
+    GetCopilotHistoryResponse,
+    GetDiagnosisResultRequest,
+    GetDiagnosisResultResponseBody,
+    GetDiagnosisResultResponse,
+    GetHealthPercentageRequest,
+    GetHealthPercentageResponseBody,
+    GetHealthPercentageResponse,
+    GetHostCountRequest,
+    GetHostCountResponseBody,
+    GetHostCountResponse,
+    GetHotSpotUniqListRequest,
+    GetHotSpotUniqListResponseBody,
+    GetHotSpotUniqListResponse,
+    GetHotspotAnalysisRequest,
+    GetHotspotAnalysisResponseBody,
+    GetHotspotAnalysisResponse,
+    GetHotspotCompareRequest,
+    GetHotspotCompareResponseBody,
+    GetHotspotCompareResponse,
+    GetHotspotInstanceListRequest,
+    GetHotspotInstanceListResponseBody,
+    GetHotspotInstanceListResponse,
+    GetHotspotPidListRequest,
+    GetHotspotPidListResponseBody,
+    GetHotspotPidListResponse,
+    GetHotspotTrackingRequest,
+    GetHotspotTrackingResponseBody,
+    GetHotspotTrackingResponse,
+    GetInstantScoreRequest,
+    GetInstantScoreResponseBody,
+    GetInstantScoreResponse,
+    GetListRecordRequest,
+    GetListRecordResponseBody,
+    GetListRecordResponse,
+    GetProblemPercentageRequest,
+    GetProblemPercentageResponseBody,
+    GetProblemPercentageResponse,
+    GetRangeScoreRequest,
+    GetRangeScoreResponseBody,
+    GetRangeScoreResponse,
+    GetResourcesRequest,
+    GetResourcesResponseBody,
+    GetResourcesResponse,
+    GetServiceFuncStatusRequest,
+    GetServiceFuncStatusShrinkRequest,
+    GetServiceFuncStatusResponseBody,
+    GetServiceFuncStatusResponse,
+    GetVmcoreDiagnosisTaskRequest,
+    GetVmcoreDiagnosisTaskResponseBody,
+    GetVmcoreDiagnosisTaskResponse,
+    InitialSysomRequest,
+    InitialSysomResponseBody,
+    InitialSysomResponse,
+    InstallAgentRequest,
+    InstallAgentResponseBody,
+    InstallAgentResponse,
+    InstallAgentForClusterRequest,
+    InstallAgentForClusterResponseBody,
+    InstallAgentForClusterResponse,
+    InvokeAnomalyDiagnosisRequest,
+    InvokeAnomalyDiagnosisResponseBody,
+    InvokeAnomalyDiagnosisResponse,
+    InvokeDiagnosisRequest,
+    InvokeDiagnosisResponseBody,
+    InvokeDiagnosisResponse,
+    ListAbnormalyEventsRequest,
+    ListAbnormalyEventsResponseBody,
+    ListAbnormalyEventsResponse,
+    ListAgentInstallRecordsRequest,
+    ListAgentInstallRecordsResponseBody,
+    ListAgentInstallRecordsResponse,
+    ListAgentsRequest,
+    ListAgentsResponseBody,
+    ListAgentsResponse,
+    ListAlertItemsResponseBody,
+    ListAlertItemsResponse,
+    ListAlertStrategiesRequest,
+    ListAlertStrategiesResponseBody,
+    ListAlertStrategiesResponse,
+    ListAllInstancesRequest,
+    ListAllInstancesResponseBody,
+    ListAllInstancesResponse,
+    ListClusterAgentInstallRecordsRequest,
+    ListClusterAgentInstallRecordsResponseBody,
+    ListClusterAgentInstallRecordsResponse,
+    ListClustersRequest,
+    ListClustersResponseBody,
+    ListClustersResponse,
+    ListDiagnosisRequest,
+    ListDiagnosisResponseBody,
+    ListDiagnosisResponse,
+    ListInstanceHealthRequest,
+    ListInstanceHealthResponseBody,
+    ListInstanceHealthResponse,
+    ListInstanceStatusRequest,
+    ListInstanceStatusResponseBody,
+    ListInstanceStatusResponse,
+    ListInstancesRequest,
+    ListInstancesResponseBody,
+    ListInstancesResponse,
+    ListInstancesEcsInfoListRequest,
+    ListInstancesEcsInfoListResponseBody,
+    ListInstancesEcsInfoListResponse,
+    ListInstancesWithEcsInfoRequest,
+    ListInstancesWithEcsInfoShrinkRequest,
+    ListInstancesWithEcsInfoResponseBody,
+    ListInstancesWithEcsInfoResponse,
+    ListPluginsInstancesRequest,
+    ListPluginsInstancesResponseBody,
+    ListPluginsInstancesResponse,
+    ListPodsOfInstanceRequest,
+    ListPodsOfInstanceResponseBody,
+    ListPodsOfInstanceResponse,
+    ListRegionsResponseBody,
+    ListRegionsResponse,
+    ListVmcoreDiagnosisTaskRequest,
+    ListVmcoreDiagnosisTaskResponseBody,
+    ListVmcoreDiagnosisTaskResponse,
+    StartAIAnalysisRequest,
+    StartAIAnalysisResponseBody,
+    StartAIAnalysisResponse,
+    StartAIDiffAnalysisRequest,
+    StartAIDiffAnalysisResponseBody,
+    StartAIDiffAnalysisResponse,
+    UninstallAgentRequest,
+    UninstallAgentResponseBody,
+    UninstallAgentResponse,
+    UninstallAgentForClusterRequest,
+    UninstallAgentForClusterResponseBody,
+    UninstallAgentForClusterResponse,
+    UpdateAlertEnabledRequest,
+    UpdateAlertEnabledResponseBody,
+    UpdateAlertEnabledResponse,
+    UpdateAlertStrategyRequest,
+    UpdateAlertStrategyResponseBody,
+    UpdateAlertStrategyResponse,
+    UpdateEventsAttentionRequest,
+    UpdateEventsAttentionResponseBody,
+    UpdateEventsAttentionResponse,
+    UpdateFuncSwitchRecordRequest,
+    UpdateFuncSwitchRecordShrinkRequest,
+    UpdateFuncSwitchRecordResponseBody,
+    UpdateFuncSwitchRecordResponse,
+    UpgradeAgentRequest,
+    UpgradeAgentResponseBody,
+    UpgradeAgentResponse,
+    UpgradeAgentForClusterRequest,
+    UpgradeAgentForClusterResponseBody,
+    UpgradeAgentForClusterResponse,
+    AuthDiagnosisRequestInstances,
+    CheckInstanceSupportResponseBodyData,
+    CreateAlertStrategyRequestStrategy,
+    CreateVmcoreDiagnosisTaskResponseBodyData,
+    DescribeMetricListResponseBodyData,
+    GetAbnormalEventsCountResponseBodyData,
+    GetAgentResponseBodyDataVersions,
+    GetAgentResponseBodyData,
+    GetAgentTaskResponseBodyDataJobs,
+    GetAgentTaskResponseBodyData,
+    GetAlertStrategyResponseBodyDataStrategy,
+    GetAlertStrategyResponseBodyData,
+    GetCopilotHistoryResponseBodyData,
+    GetDiagnosisResultResponseBodyData,
+    GetHealthPercentageResponseBodyData,
+    GetHostCountResponseBodyData,
+    GetHotSpotUniqListResponseBodyData,
+    GetHotspotCompareResponseBodyDataFlame,
+    GetHotspotCompareResponseBodyDataSeriesInstance1,
+    GetHotspotCompareResponseBodyDataSeriesInstance2,
+    GetHotspotCompareResponseBodyData,
+    GetHotspotInstanceListResponseBodyData,
+    GetHotspotPidListResponseBodyData,
+    GetHotspotTrackingResponseBodyDataFlame,
+    GetHotspotTrackingResponseBodyDataSeries,
+    GetHotspotTrackingResponseBodyData,
+    GetInstantScoreResponseBodyData,
+    GetListRecordResponseBodyData,
+    GetProblemPercentageResponseBodyData,
+    GetRangeScoreResponseBodyData,
+    GetResourcesResponseBodyData,
+    GetServiceFuncStatusRequestParams,
+    GetServiceFuncStatusResponseBodyDataArgs,
+    GetServiceFuncStatusResponseBodyData,
+    GetVmcoreDiagnosisTaskResponseBodyDataUrls,
+    GetVmcoreDiagnosisTaskResponseBodyData,
+    InitialSysomResponseBodyData,
+    InstallAgentRequestInstances,
+    InstallAgentResponseBodyData,
+    InstallAgentForClusterResponseBodyData,
+    InvokeDiagnosisResponseBodyData,
+    ListAbnormalyEventsResponseBodyDataOptsResult,
+    ListAbnormalyEventsResponseBodyDataOpts,
+    ListAbnormalyEventsResponseBodyDataRawMetrics,
+    ListAbnormalyEventsResponseBodyData,
+    ListAgentInstallRecordsResponseBodyData,
+    ListAgentsResponseBodyDataVersions,
+    ListAgentsResponseBodyData,
+    ListAlertStrategiesResponseBodyDataStrategy,
+    ListAlertStrategiesResponseBodyData,
+    ListAllInstancesResponseBodyDataAttributes,
+    ListAllInstancesResponseBodyData,
+    ListClusterAgentInstallRecordsResponseBodyData,
+    ListClustersResponseBodyData,
+    ListDiagnosisResponseBodyData,
+    ListInstanceHealthResponseBodyData,
+    ListInstanceStatusResponseBodyData,
+    ListInstancesResponseBodyData,
+    ListInstancesEcsInfoListResponseBodyData,
+    ListInstancesWithEcsInfoRequestInstanceTag,
+    ListInstancesWithEcsInfoResponseBodyDataInstanceTag,
+    ListInstancesWithEcsInfoResponseBodyData,
+    ListPluginsInstancesResponseBodyDataInstanceTag,
+    ListPluginsInstancesResponseBodyData,
+    ListPodsOfInstanceResponseBodyData,
+    ListVmcoreDiagnosisTaskResponseBodyData,
+    StartAIAnalysisResponseBodyData,
+    StartAIDiffAnalysisRequestTask1,
+    StartAIDiffAnalysisRequestTask2,
+    UninstallAgentRequestInstances,
+    UninstallAgentResponseBodyData,
+    UninstallAgentForClusterResponseBodyData,
+    UpdateAlertStrategyRequestStrategy,
+    UpdateEventsAttentionResponseBodyData,
+    UpdateFuncSwitchRecordRequestParamsArgs,
+    UpdateFuncSwitchRecordRequestParams,
+    UpdateFuncSwitchRecordResponseBodyData,
+    UpgradeAgentRequestInstances,
+    UpgradeAgentResponseBodyData,
+    UpgradeAgentForClusterResponseBodyData
+]

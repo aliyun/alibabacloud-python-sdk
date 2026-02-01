@@ -1,3 +1,8 @@
+2026-02-01 Version: 1.14.1
+- Update API GetAgentTask: add response parameters Body.data.jobs.$.errorCode.
+- Update API GetAgentTask: add response parameters Body.data.jobs.$.errorMessage.
+
+
 2025-12-03 Version: 1.14.0
 - Support API CreateVmcoreDiagnosisTask.
 - Support API GetVmcoreDiagnosisTask.
