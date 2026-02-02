@@ -49,6 +49,9 @@ from ._delete_disk_replica_pair_response import DeleteDiskReplicaPairResponse
 from ._delete_enterprise_snapshot_policy_request import DeleteEnterpriseSnapshotPolicyRequest
 from ._delete_enterprise_snapshot_policy_response_body import DeleteEnterpriseSnapshotPolicyResponseBody
 from ._delete_enterprise_snapshot_policy_response import DeleteEnterpriseSnapshotPolicyResponse
+from ._describe_apps_request import DescribeAppsRequest
+from ._describe_apps_response_body import DescribeAppsResponseBody
+from ._describe_apps_response import DescribeAppsResponse
 from ._describe_dedicated_block_storage_cluster_disks_request import DescribeDedicatedBlockStorageClusterDisksRequest
 from ._describe_dedicated_block_storage_cluster_disks_response_body import DescribeDedicatedBlockStorageClusterDisksResponseBody
 from ._describe_dedicated_block_storage_cluster_disks_response import DescribeDedicatedBlockStorageClusterDisksResponse
@@ -201,6 +204,8 @@ from ._create_enterprise_snapshot_policy_request import CreateEnterpriseSnapshot
 from ._create_enterprise_snapshot_policy_request import CreateEnterpriseSnapshotPolicyRequestStorageRule
 from ._create_enterprise_snapshot_policy_request import CreateEnterpriseSnapshotPolicyRequestTag
 from ._create_enterprise_snapshot_policy_shrink_request import CreateEnterpriseSnapshotPolicyShrinkRequestTag
+from ._describe_apps_response_body import DescribeAppsResponseBodyAppInfosAppTags
+from ._describe_apps_response_body import DescribeAppsResponseBodyAppInfos
 from ._describe_dedicated_block_storage_cluster_disks_response_body import DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags
 from ._describe_dedicated_block_storage_cluster_disks_response_body import DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk
 from ._describe_dedicated_block_storage_cluster_disks_response_body import DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks
@@ -304,6 +309,9 @@ __all__ = [
     DeleteEnterpriseSnapshotPolicyRequest,
     DeleteEnterpriseSnapshotPolicyResponseBody,
     DeleteEnterpriseSnapshotPolicyResponse,
+    DescribeAppsRequest,
+    DescribeAppsResponseBody,
+    DescribeAppsResponse,
     DescribeDedicatedBlockStorageClusterDisksRequest,
     DescribeDedicatedBlockStorageClusterDisksResponseBody,
     DescribeDedicatedBlockStorageClusterDisksResponse,
@@ -456,6 +464,8 @@ __all__ = [
     CreateEnterpriseSnapshotPolicyRequestStorageRule,
     CreateEnterpriseSnapshotPolicyRequestTag,
     CreateEnterpriseSnapshotPolicyShrinkRequestTag,
+    DescribeAppsResponseBodyAppInfosAppTags,
+    DescribeAppsResponseBodyAppInfos,
     DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDiskTags,
     DescribeDedicatedBlockStorageClusterDisksResponseBodyDisksDisk,
     DescribeDedicatedBlockStorageClusterDisksResponseBodyDisks,

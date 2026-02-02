@@ -1,3 +1,7 @@
+2026-02-02 Version: 4.4.0
+- Support API DescribeApps.
+
+
 2026-01-28 Version: 4.3.0
 - Support API ModifyApp.
 

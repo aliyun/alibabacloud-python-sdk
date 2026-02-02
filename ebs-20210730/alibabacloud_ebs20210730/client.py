@@ -1460,6 +1460,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_enterprise_snapshot_policy_with_options_async(request, runtime)
 
+    def describe_apps_with_options(
+        self,
+        request: main_models.DescribeAppsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAppsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_ids):
+            query['AppIds'] = request.app_ids
+        if not DaraCore.is_null(request.app_names):
+            query['AppNames'] = request.app_names
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.owner):
+            query['Owner'] = request.owner
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApps',
+            version = '2021-07-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAppsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_apps_with_options_async(
+        self,
+        request: main_models.DescribeAppsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeAppsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_ids):
+            query['AppIds'] = request.app_ids
+        if not DaraCore.is_null(request.app_names):
+            query['AppNames'] = request.app_names
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.owner):
+            query['Owner'] = request.owner
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeApps',
+            version = '2021-07-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeAppsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_apps(
+        self,
+        request: main_models.DescribeAppsRequest,
+    ) -> main_models.DescribeAppsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_apps_with_options(request, runtime)
+
+    async def describe_apps_async(
+        self,
+        request: main_models.DescribeAppsRequest,
+    ) -> main_models.DescribeAppsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_apps_with_options_async(request, runtime)
+
     def describe_dedicated_block_storage_cluster_disks_with_options(
         self,
         request: main_models.DescribeDedicatedBlockStorageClusterDisksRequest,
