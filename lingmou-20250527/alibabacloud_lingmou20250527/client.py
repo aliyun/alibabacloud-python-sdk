@@ -821,6 +821,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateTrainPicAvatarResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['bizType'] = request.biz_type
         if not DaraCore.is_null(request.gender):
             query['gender'] = request.gender
         if not DaraCore.is_null(request.generate_assets):
@@ -861,6 +863,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateTrainPicAvatarResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.biz_type):
+            query['bizType'] = request.biz_type
         if not DaraCore.is_null(request.gender):
             query['gender'] = request.gender
         if not DaraCore.is_null(request.generate_assets):

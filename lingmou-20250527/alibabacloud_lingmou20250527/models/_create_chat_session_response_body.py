@@ -15,11 +15,17 @@ class CreateChatSessionResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # 响应码。
         self.code = code
+        # 响应数据。
         self.data = data
+        # http响应码
         self.http_status_code = http_status_code
+        # 状态码描述。
         self.message = message
+        # 请求ID
         self.request_id = request_id
+        # 请求是否成功
         self.success = success
 
     def validate(self):
@@ -81,8 +87,11 @@ class CreateChatSessionResponseBodyData(DaraModel):
         rtc_params: main_models.CreateChatSessionResponseBodyDataRtcParams = None,
         session_id: str = None,
     ):
+        # 端渲染数字人资产信息。
         self.avatar_assets = avatar_assets
+        # RTC入参。
         self.rtc_params = rtc_params
+        # 会话ID
         self.session_id = session_id
 
     def validate(self):
@@ -135,14 +144,23 @@ class CreateChatSessionResponseBodyDataRtcParams(DaraModel):
         timestamp: int = None,
         token: str = None,
     ):
+        # 应用id。
         self.app_id = app_id
+        # 数字人侧用户ID。
         self.avatar_user_id = avatar_user_id
+        # RTC通道ID。
         self.channel = channel
+        # 客户端侧用户ID。
         self.client_user_id = client_user_id
+        # RTC服务地址。
         self.gslb = gslb
+        # 随机串。
         self.nonce = nonce
+        # 服务端侧用户ID。
         self.server_user_id = server_user_id
+        # 过期时间戳。
         self.timestamp = timestamp
+        # 访问凭证token。
         self.token = token
 
     def validate(self):
@@ -222,10 +240,15 @@ class CreateChatSessionResponseBodyDataAvatarAssets(DaraModel):
         type: str = None,
         url: str = None,
     ):
+        # 资产MD5值。
         self.md_5 = md_5
+        # 支持的SDK最低版本。
         self.min_required_version = min_required_version
+        # SDK使用的密钥。
         self.secret = secret
+        # 资产类型。
         self.type = type
+        # 资产下载链接。
         self.url = url
 
     def validate(self):

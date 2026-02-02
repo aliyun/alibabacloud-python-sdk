@@ -1,3 +1,7 @@
+2026-02-02 Version: 1.5.4
+- Update API CreateTrainPicAvatar: add request parameters bizType.
+
+
 2026-01-06 Version: 1.5.3
 - Generated python 2025-05-27 for LingMou.
 

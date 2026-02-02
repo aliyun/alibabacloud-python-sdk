@@ -184,6 +184,7 @@ class ListPrivateTTSVoicesCustomResponseBodyDataData(DaraModel):
         self.common = common
         self.create_time = create_time
         self.description = description
+        # 错误码。
         self.error_code = error_code
         self.error_detail = error_detail
         self.gender = gender

@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreateTrainPicAvatarRequest(DaraModel):
     def __init__(
         self,
+        biz_type: str = None,
         gender: str = None,
         generate_assets: bool = None,
         image_oss_path: str = None,
@@ -14,6 +15,7 @@ class CreateTrainPicAvatarRequest(DaraModel):
         template_id: str = None,
         transparent: bool = None,
     ):
+        self.biz_type = biz_type
         # This parameter is required.
         self.gender = gender
         self.generate_assets = generate_assets
@@ -32,6 +34,9 @@ class CreateTrainPicAvatarRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.biz_type is not None:
+            result['bizType'] = self.biz_type
+
         if self.gender is not None:
             result['gender'] = self.gender
 
@@ -54,6 +59,9 @@ class CreateTrainPicAvatarRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('bizType') is not None:
+            self.biz_type = m.get('bizType')
+
         if m.get('gender') is not None:
             self.gender = m.get('gender')
 
