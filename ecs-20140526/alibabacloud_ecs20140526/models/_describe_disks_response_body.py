@@ -160,6 +160,7 @@ class DescribeDisksResponseBodyDisksDisk(DaraModel):
         resource_group_id: str = None,
         serial_number: str = None,
         size: int = None,
+        source_disk_id: str = None,
         source_snapshot_id: str = None,
         status: str = None,
         storage_cluster_id: str = None,
@@ -298,6 +299,7 @@ class DescribeDisksResponseBodyDisksDisk(DaraModel):
         self.serial_number = serial_number
         # The size of the disk. Unit: GiB.
         self.size = size
+        self.source_disk_id = source_disk_id
         # The ID of the snapshot that was used to create the cloud disk.
         # 
         # This parameter is empty unless the cloud disk was created from a snapshot. The value of this parameter remains unchanged throughout the lifecycle of the cloud disk.
@@ -464,6 +466,9 @@ class DescribeDisksResponseBodyDisksDisk(DaraModel):
         if self.size is not None:
             result['Size'] = self.size
 
+        if self.source_disk_id is not None:
+            result['SourceDiskId'] = self.source_disk_id
+
         if self.source_snapshot_id is not None:
             result['SourceSnapshotId'] = self.source_snapshot_id
 
@@ -618,6 +623,9 @@ class DescribeDisksResponseBodyDisksDisk(DaraModel):
 
         if m.get('Size') is not None:
             self.size = m.get('Size')
+
+        if m.get('SourceDiskId') is not None:
+            self.source_disk_id = m.get('SourceDiskId')
 
         if m.get('SourceSnapshotId') is not None:
             self.source_snapshot_id = m.get('SourceSnapshotId')

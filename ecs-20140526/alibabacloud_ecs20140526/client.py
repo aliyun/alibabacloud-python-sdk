@@ -6945,6 +6945,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_physical_connection_with_options_async(request, runtime)
 
+    def create_plan_maintenance_window_with_options(
+        self,
+        tmp_req: main_models.CreatePlanMaintenanceWindowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePlanMaintenanceWindowResponse:
+        tmp_req.validate()
+        request = main_models.CreatePlanMaintenanceWindowShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.target_resource):
+            request.target_resource_shrink = Utils.array_to_string_with_specified_style(tmp_req.target_resource, 'TargetResource', 'json')
+        if not DaraCore.is_null(tmp_req.time_period):
+            request.time_period_shrink = Utils.array_to_string_with_specified_style(tmp_req.time_period, 'TimePeriod', 'json')
+        query = {}
+        if not DaraCore.is_null(request.enable):
+            query['Enable'] = request.enable
+        if not DaraCore.is_null(request.plan_window_name):
+            query['PlanWindowName'] = request.plan_window_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.support_maintenance_action):
+            query['SupportMaintenanceAction'] = request.support_maintenance_action
+        if not DaraCore.is_null(request.target_resource_shrink):
+            query['TargetResource'] = request.target_resource_shrink
+        if not DaraCore.is_null(request.time_period_shrink):
+            query['TimePeriod'] = request.time_period_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePlanMaintenanceWindow',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePlanMaintenanceWindowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_plan_maintenance_window_with_options_async(
+        self,
+        tmp_req: main_models.CreatePlanMaintenanceWindowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePlanMaintenanceWindowResponse:
+        tmp_req.validate()
+        request = main_models.CreatePlanMaintenanceWindowShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.target_resource):
+            request.target_resource_shrink = Utils.array_to_string_with_specified_style(tmp_req.target_resource, 'TargetResource', 'json')
+        if not DaraCore.is_null(tmp_req.time_period):
+            request.time_period_shrink = Utils.array_to_string_with_specified_style(tmp_req.time_period, 'TimePeriod', 'json')
+        query = {}
+        if not DaraCore.is_null(request.enable):
+            query['Enable'] = request.enable
+        if not DaraCore.is_null(request.plan_window_name):
+            query['PlanWindowName'] = request.plan_window_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.support_maintenance_action):
+            query['SupportMaintenanceAction'] = request.support_maintenance_action
+        if not DaraCore.is_null(request.target_resource_shrink):
+            query['TargetResource'] = request.target_resource_shrink
+        if not DaraCore.is_null(request.time_period_shrink):
+            query['TimePeriod'] = request.time_period_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreatePlanMaintenanceWindow',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreatePlanMaintenanceWindowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_plan_maintenance_window(
+        self,
+        request: main_models.CreatePlanMaintenanceWindowRequest,
+    ) -> main_models.CreatePlanMaintenanceWindowResponse:
+        runtime = RuntimeOptions()
+        return self.create_plan_maintenance_window_with_options(request, runtime)
+
+    async def create_plan_maintenance_window_async(
+        self,
+        request: main_models.CreatePlanMaintenanceWindowRequest,
+    ) -> main_models.CreatePlanMaintenanceWindowResponse:
+        runtime = RuntimeOptions()
+        return await self.create_plan_maintenance_window_with_options_async(request, runtime)
+
     def create_port_range_list_with_options(
         self,
         request: main_models.CreatePortRangeListRequest,
@@ -10910,6 +11012,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeletePhysicalConnectionResponse:
         runtime = RuntimeOptions()
         return await self.delete_physical_connection_with_options_async(request, runtime)
+
+    def delete_plan_maintenance_window_with_options(
+        self,
+        request: main_models.DeletePlanMaintenanceWindowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePlanMaintenanceWindowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.plan_window_id):
+            query['PlanWindowId'] = request.plan_window_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePlanMaintenanceWindow',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePlanMaintenanceWindowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_plan_maintenance_window_with_options_async(
+        self,
+        request: main_models.DeletePlanMaintenanceWindowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePlanMaintenanceWindowResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.plan_window_id):
+            query['PlanWindowId'] = request.plan_window_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeletePlanMaintenanceWindow',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeletePlanMaintenanceWindowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_plan_maintenance_window(
+        self,
+        request: main_models.DeletePlanMaintenanceWindowRequest,
+    ) -> main_models.DeletePlanMaintenanceWindowResponse:
+        runtime = RuntimeOptions()
+        return self.delete_plan_maintenance_window_with_options(request, runtime)
+
+    async def delete_plan_maintenance_window_async(
+        self,
+        request: main_models.DeletePlanMaintenanceWindowRequest,
+    ) -> main_models.DeletePlanMaintenanceWindowResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_plan_maintenance_window_with_options_async(request, runtime)
 
     def delete_port_range_list_with_options(
         self,
@@ -20846,6 +21022,112 @@ class Client(OpenApiClient):
     ) -> main_models.DescribePhysicalConnectionsResponse:
         runtime = RuntimeOptions()
         return await self.describe_physical_connections_with_options_async(request, runtime)
+
+    def describe_plan_maintenance_windows_with_options(
+        self,
+        tmp_req: main_models.DescribePlanMaintenanceWindowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePlanMaintenanceWindowsResponse:
+        tmp_req.validate()
+        request = main_models.DescribePlanMaintenanceWindowsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.target_resource_tags):
+            request.target_resource_tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.target_resource_tags, 'TargetResourceTags', 'json')
+        query = {}
+        if not DaraCore.is_null(request.enable):
+            query['Enable'] = request.enable
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.plan_window_id):
+            query['PlanWindowId'] = request.plan_window_id
+        if not DaraCore.is_null(request.plan_window_name):
+            query['PlanWindowName'] = request.plan_window_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.target_resource_group_id):
+            query['TargetResourceGroupId'] = request.target_resource_group_id
+        if not DaraCore.is_null(request.target_resource_tags_shrink):
+            query['TargetResourceTags'] = request.target_resource_tags_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePlanMaintenanceWindows',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePlanMaintenanceWindowsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_plan_maintenance_windows_with_options_async(
+        self,
+        tmp_req: main_models.DescribePlanMaintenanceWindowsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePlanMaintenanceWindowsResponse:
+        tmp_req.validate()
+        request = main_models.DescribePlanMaintenanceWindowsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.target_resource_tags):
+            request.target_resource_tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.target_resource_tags, 'TargetResourceTags', 'json')
+        query = {}
+        if not DaraCore.is_null(request.enable):
+            query['Enable'] = request.enable
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.plan_window_id):
+            query['PlanWindowId'] = request.plan_window_id
+        if not DaraCore.is_null(request.plan_window_name):
+            query['PlanWindowName'] = request.plan_window_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.target_resource_group_id):
+            query['TargetResourceGroupId'] = request.target_resource_group_id
+        if not DaraCore.is_null(request.target_resource_tags_shrink):
+            query['TargetResourceTags'] = request.target_resource_tags_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribePlanMaintenanceWindows',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePlanMaintenanceWindowsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_plan_maintenance_windows(
+        self,
+        request: main_models.DescribePlanMaintenanceWindowsRequest,
+    ) -> main_models.DescribePlanMaintenanceWindowsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_plan_maintenance_windows_with_options(request, runtime)
+
+    async def describe_plan_maintenance_windows_async(
+        self,
+        request: main_models.DescribePlanMaintenanceWindowsRequest,
+    ) -> main_models.DescribePlanMaintenanceWindowsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_plan_maintenance_windows_with_options_async(request, runtime)
 
     def describe_port_range_list_associations_with_options(
         self,
@@ -33488,6 +33770,112 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyPhysicalConnectionAttributeResponse:
         runtime = RuntimeOptions()
         return await self.modify_physical_connection_attribute_with_options_async(request, runtime)
+
+    def modify_plan_maintenance_window_with_options(
+        self,
+        tmp_req: main_models.ModifyPlanMaintenanceWindowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyPlanMaintenanceWindowResponse:
+        tmp_req.validate()
+        request = main_models.ModifyPlanMaintenanceWindowShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.target_resource):
+            request.target_resource_shrink = Utils.array_to_string_with_specified_style(tmp_req.target_resource, 'TargetResource', 'json')
+        if not DaraCore.is_null(tmp_req.time_period):
+            request.time_period_shrink = Utils.array_to_string_with_specified_style(tmp_req.time_period, 'TimePeriod', 'json')
+        query = {}
+        if not DaraCore.is_null(request.enable):
+            query['Enable'] = request.enable
+        if not DaraCore.is_null(request.plan_window_id):
+            query['PlanWindowId'] = request.plan_window_id
+        if not DaraCore.is_null(request.plan_window_name):
+            query['PlanWindowName'] = request.plan_window_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.support_maintenance_action):
+            query['SupportMaintenanceAction'] = request.support_maintenance_action
+        if not DaraCore.is_null(request.target_resource_shrink):
+            query['TargetResource'] = request.target_resource_shrink
+        if not DaraCore.is_null(request.time_period_shrink):
+            query['TimePeriod'] = request.time_period_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyPlanMaintenanceWindow',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyPlanMaintenanceWindowResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_plan_maintenance_window_with_options_async(
+        self,
+        tmp_req: main_models.ModifyPlanMaintenanceWindowRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyPlanMaintenanceWindowResponse:
+        tmp_req.validate()
+        request = main_models.ModifyPlanMaintenanceWindowShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.target_resource):
+            request.target_resource_shrink = Utils.array_to_string_with_specified_style(tmp_req.target_resource, 'TargetResource', 'json')
+        if not DaraCore.is_null(tmp_req.time_period):
+            request.time_period_shrink = Utils.array_to_string_with_specified_style(tmp_req.time_period, 'TimePeriod', 'json')
+        query = {}
+        if not DaraCore.is_null(request.enable):
+            query['Enable'] = request.enable
+        if not DaraCore.is_null(request.plan_window_id):
+            query['PlanWindowId'] = request.plan_window_id
+        if not DaraCore.is_null(request.plan_window_name):
+            query['PlanWindowName'] = request.plan_window_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.support_maintenance_action):
+            query['SupportMaintenanceAction'] = request.support_maintenance_action
+        if not DaraCore.is_null(request.target_resource_shrink):
+            query['TargetResource'] = request.target_resource_shrink
+        if not DaraCore.is_null(request.time_period_shrink):
+            query['TimePeriod'] = request.time_period_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyPlanMaintenanceWindow',
+            version = '2014-05-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyPlanMaintenanceWindowResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_plan_maintenance_window(
+        self,
+        request: main_models.ModifyPlanMaintenanceWindowRequest,
+    ) -> main_models.ModifyPlanMaintenanceWindowResponse:
+        runtime = RuntimeOptions()
+        return self.modify_plan_maintenance_window_with_options(request, runtime)
+
+    async def modify_plan_maintenance_window_async(
+        self,
+        request: main_models.ModifyPlanMaintenanceWindowRequest,
+    ) -> main_models.ModifyPlanMaintenanceWindowResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_plan_maintenance_window_with_options_async(request, runtime)
 
     def modify_port_range_list_with_options(
         self,

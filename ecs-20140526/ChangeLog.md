@@ -1,3 +1,13 @@
+2026-02-02 Version: 7.6.0
+- Support API CreatePlanMaintenanceWindow.
+- Support API DeletePlanMaintenanceWindow.
+- Support API DescribePlanMaintenanceWindows.
+- Support API ModifyPlanMaintenanceWindow.
+- Update API DescribeDiagnosticReportAttributes: add response parameters Body.MetricResults.$.Issues.$.RepairStatus.
+- Update API DescribeDiagnosticReportAttributes: add response parameters Body.MetricResults.$.Issues.$.Repairable.
+- Update API DescribeDisks: add response parameters Body.Disks.$.SourceDiskId.
+
+
 2026-01-30 Version: 7.5.4
 - Update API DescribeTasks: add request parameters TaskGroupId.
 

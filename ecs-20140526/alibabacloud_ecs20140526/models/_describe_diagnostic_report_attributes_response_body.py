@@ -308,6 +308,8 @@ class DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIss
         additional: str = None,
         issue_id: str = None,
         occurrence_time: str = None,
+        repair_status: str = None,
+        repairable: bool = None,
         severity: str = None,
     ):
         # The additional data about the diagnosed issue. The value is a JSON string.
@@ -316,6 +318,8 @@ class DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIss
         self.issue_id = issue_id
         # The time when the diagnosed issue occurred.
         self.occurrence_time = occurrence_time
+        self.repair_status = repair_status
+        self.repairable = repairable
         # The severity level of the diagnosed issue. Valid values:
         # 
         # *   Info: Diagnostic information was recorded and may be related to exceptions.
@@ -340,6 +344,12 @@ class DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIss
         if self.occurrence_time is not None:
             result['OccurrenceTime'] = self.occurrence_time
 
+        if self.repair_status is not None:
+            result['RepairStatus'] = self.repair_status
+
+        if self.repairable is not None:
+            result['Repairable'] = self.repairable
+
         if self.severity is not None:
             result['Severity'] = self.severity
 
@@ -355,6 +365,12 @@ class DescribeDiagnosticReportAttributesResponseBodyMetricResultsMetricResultIss
 
         if m.get('OccurrenceTime') is not None:
             self.occurrence_time = m.get('OccurrenceTime')
+
+        if m.get('RepairStatus') is not None:
+            self.repair_status = m.get('RepairStatus')
+
+        if m.get('Repairable') is not None:
+            self.repairable = m.get('Repairable')
 
         if m.get('Severity') is not None:
             self.severity = m.get('Severity')
