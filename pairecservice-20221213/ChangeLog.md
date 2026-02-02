@@ -1,3 +1,8 @@
+2026-02-02 Version: 4.1.1
+- Update API GetRecallManagementJob: add response parameters Body.RecallManagementTableInfo.
+- Update API ListRecallManagementJobs: add response parameters Body.RecallManagementJobs.$.RecallManagementTableInfo.
+
+
 2026-01-30 Version: 4.1.0
 - Support API ListInstanceResourceSchemas.
 - Support API ListInstanceResourceTables.

@@ -11,6 +11,7 @@ class GetRecallManagementJobResponseBody(DaraModel):
         end_time: str = None,
         log: str = None,
         recall_management_job_id: str = None,
+        recall_management_table_info: main_models.GetRecallManagementJobResponseBodyRecallManagementTableInfo = None,
         recall_manager_table_info: main_models.GetRecallManagementJobResponseBodyRecallManagerTableInfo = None,
         request_id: str = None,
         start_time: str = None,
@@ -19,12 +20,15 @@ class GetRecallManagementJobResponseBody(DaraModel):
         self.end_time = end_time
         self.log = log
         self.recall_management_job_id = recall_management_job_id
+        self.recall_management_table_info = recall_management_table_info
         self.recall_manager_table_info = recall_manager_table_info
         self.request_id = request_id
         self.start_time = start_time
         self.status = status
 
     def validate(self):
+        if self.recall_management_table_info:
+            self.recall_management_table_info.validate()
         if self.recall_manager_table_info:
             self.recall_manager_table_info.validate()
 
@@ -41,6 +45,9 @@ class GetRecallManagementJobResponseBody(DaraModel):
 
         if self.recall_management_job_id is not None:
             result['RecallManagementJobId'] = self.recall_management_job_id
+
+        if self.recall_management_table_info is not None:
+            result['RecallManagementTableInfo'] = self.recall_management_table_info.to_map()
 
         if self.recall_manager_table_info is not None:
             result['RecallManagerTableInfo'] = self.recall_manager_table_info.to_map()
@@ -66,6 +73,10 @@ class GetRecallManagementJobResponseBody(DaraModel):
 
         if m.get('RecallManagementJobId') is not None:
             self.recall_management_job_id = m.get('RecallManagementJobId')
+
+        if m.get('RecallManagementTableInfo') is not None:
+            temp_model = main_models.GetRecallManagementJobResponseBodyRecallManagementTableInfo()
+            self.recall_management_table_info = temp_model.from_map(m.get('RecallManagementTableInfo'))
 
         if m.get('RecallManagerTableInfo') is not None:
             temp_model = main_models.GetRecallManagementJobResponseBodyRecallManagerTableInfo()
@@ -124,6 +135,57 @@ class GetRecallManagementJobResponseBodyRecallManagerTableInfo(DaraModel):
 
         if m.get('RecallManagerTableVersionId') is not None:
             self.recall_manager_table_version_id = m.get('RecallManagerTableVersionId')
+
+        if m.get('SourceTableDataSize') is not None:
+            self.source_table_data_size = m.get('SourceTableDataSize')
+
+        if m.get('SourceTableRowCount') is not None:
+            self.source_table_row_count = m.get('SourceTableRowCount')
+
+        return self
+
+class GetRecallManagementJobResponseBodyRecallManagementTableInfo(DaraModel):
+    def __init__(
+        self,
+        data_version: str = None,
+        recall_management_table_version_id: str = None,
+        source_table_data_size: str = None,
+        source_table_row_count: str = None,
+    ):
+        self.data_version = data_version
+        self.recall_management_table_version_id = recall_management_table_version_id
+        self.source_table_data_size = source_table_data_size
+        self.source_table_row_count = source_table_row_count
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.data_version is not None:
+            result['DataVersion'] = self.data_version
+
+        if self.recall_management_table_version_id is not None:
+            result['RecallManagementTableVersionId'] = self.recall_management_table_version_id
+
+        if self.source_table_data_size is not None:
+            result['SourceTableDataSize'] = self.source_table_data_size
+
+        if self.source_table_row_count is not None:
+            result['SourceTableRowCount'] = self.source_table_row_count
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('DataVersion') is not None:
+            self.data_version = m.get('DataVersion')
+
+        if m.get('RecallManagementTableVersionId') is not None:
+            self.recall_management_table_version_id = m.get('RecallManagementTableVersionId')
 
         if m.get('SourceTableDataSize') is not None:
             self.source_table_data_size = m.get('SourceTableDataSize')
