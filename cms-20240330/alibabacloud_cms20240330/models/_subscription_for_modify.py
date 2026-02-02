@@ -15,6 +15,7 @@ class SubscriptionForModify(DaraModel):
         notify_strategy_id: str = None,
         pushing_setting: main_models.SubscriptionForModifyPushingSetting = None,
         subscription_name: str = None,
+        workspace_filter_setting: main_models.WorkspaceFilterSetting = None,
     ):
         self.description = description
         self.filter_setting = filter_setting
@@ -22,12 +23,15 @@ class SubscriptionForModify(DaraModel):
         self.pushing_setting = pushing_setting
         # This parameter is required.
         self.subscription_name = subscription_name
+        self.workspace_filter_setting = workspace_filter_setting
 
     def validate(self):
         if self.filter_setting:
             self.filter_setting.validate()
         if self.pushing_setting:
             self.pushing_setting.validate()
+        if self.workspace_filter_setting:
+            self.workspace_filter_setting.validate()
 
     def to_map(self):
         result = dict()
@@ -49,6 +53,9 @@ class SubscriptionForModify(DaraModel):
         if self.subscription_name is not None:
             result['subscriptionName'] = self.subscription_name
 
+        if self.workspace_filter_setting is not None:
+            result['workspaceFilterSetting'] = self.workspace_filter_setting.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -69,6 +76,10 @@ class SubscriptionForModify(DaraModel):
 
         if m.get('subscriptionName') is not None:
             self.subscription_name = m.get('subscriptionName')
+
+        if m.get('workspaceFilterSetting') is not None:
+            temp_model = main_models.WorkspaceFilterSetting()
+            self.workspace_filter_setting = temp_model.from_map(m.get('workspaceFilterSetting'))
 
         return self
 

@@ -19,7 +19,9 @@ class GetDigitalEmployeeResponseBody(DaraModel):
         name: str = None,
         region_id: str = None,
         request_id: str = None,
+        resource_group_id: str = None,
         role_arn: str = None,
+        tags: List[main_models.Tag] = None,
         update_time: str = None,
     ):
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
@@ -32,13 +34,19 @@ class GetDigitalEmployeeResponseBody(DaraModel):
         self.name = name
         self.region_id = region_id
         self.request_id = request_id
+        self.resource_group_id = resource_group_id
         self.role_arn = role_arn
+        self.tags = tags
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
 
     def validate(self):
         if self.knowledges:
             self.knowledges.validate()
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -72,8 +80,16 @@ class GetDigitalEmployeeResponseBody(DaraModel):
         if self.request_id is not None:
             result['requestId'] = self.request_id
 
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+
         if self.role_arn is not None:
             result['roleArn'] = self.role_arn
+
+        result['tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['tags'].append(k1.to_map() if k1 else None)
 
         if self.update_time is not None:
             result['updateTime'] = self.update_time
@@ -110,8 +126,17 @@ class GetDigitalEmployeeResponseBody(DaraModel):
         if m.get('requestId') is not None:
             self.request_id = m.get('requestId')
 
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+
         if m.get('roleArn') is not None:
             self.role_arn = m.get('roleArn')
+
+        self.tags = []
+        if m.get('tags') is not None:
+            for k1 in m.get('tags'):
+                temp_model = main_models.Tag()
+                self.tags.append(temp_model.from_map(k1))
 
         if m.get('updateTime') is not None:
             self.update_time = m.get('updateTime')

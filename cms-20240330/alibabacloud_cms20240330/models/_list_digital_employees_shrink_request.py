@@ -2,12 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
-from alibabacloud_cms20240330 import models as main_models
 from darabonba.model import DaraModel
 
-class ListDigitalEmployeesRequest(DaraModel):
+class ListDigitalEmployeesShrinkRequest(DaraModel):
     def __init__(
         self,
         display_name: str = None,
@@ -16,7 +13,7 @@ class ListDigitalEmployeesRequest(DaraModel):
         name: str = None,
         next_token: str = None,
         resource_group_id: str = None,
-        tags: List[main_models.Tag] = None,
+        tags_shrink: str = None,
     ):
         self.display_name = display_name
         self.employee_type = employee_type
@@ -24,13 +21,10 @@ class ListDigitalEmployeesRequest(DaraModel):
         self.name = name
         self.next_token = next_token
         self.resource_group_id = resource_group_id
-        self.tags = tags
+        self.tags_shrink = tags_shrink
 
     def validate(self):
-        if self.tags:
-            for v1 in self.tags:
-                 if v1:
-                    v1.validate()
+        pass
 
     def to_map(self):
         result = dict()
@@ -55,10 +49,8 @@ class ListDigitalEmployeesRequest(DaraModel):
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
 
-        result['tags'] = []
-        if self.tags is not None:
-            for k1 in self.tags:
-                result['tags'].append(k1.to_map() if k1 else None)
+        if self.tags_shrink is not None:
+            result['tags'] = self.tags_shrink
 
         return result
 
@@ -82,11 +74,8 @@ class ListDigitalEmployeesRequest(DaraModel):
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
 
-        self.tags = []
         if m.get('tags') is not None:
-            for k1 in m.get('tags'):
-                temp_model = main_models.Tag()
-                self.tags.append(temp_model.from_map(k1))
+            self.tags_shrink = m.get('tags')
 
         return self
 

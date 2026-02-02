@@ -84,7 +84,9 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
         employee_type: str = None,
         knowledges: main_models.ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges = None,
         name: str = None,
+        resource_group_id: str = None,
         role_arn: str = None,
+        tags: List[main_models.Tag] = None,
         update_time: str = None,
     ):
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
@@ -95,13 +97,19 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
         self.employee_type = employee_type
         self.knowledges = knowledges
         self.name = name
+        self.resource_group_id = resource_group_id
         self.role_arn = role_arn
+        self.tags = tags
         # Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
         self.update_time = update_time
 
     def validate(self):
         if self.knowledges:
             self.knowledges.validate()
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -129,8 +137,16 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
         if self.name is not None:
             result['name'] = self.name
 
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+
         if self.role_arn is not None:
             result['roleArn'] = self.role_arn
+
+        result['tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['tags'].append(k1.to_map() if k1 else None)
 
         if self.update_time is not None:
             result['updateTime'] = self.update_time
@@ -161,8 +177,17 @@ class ListDigitalEmployeesResponseBodyDigitalEmployees(DaraModel):
         if m.get('name') is not None:
             self.name = m.get('name')
 
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+
         if m.get('roleArn') is not None:
             self.role_arn = m.get('roleArn')
+
+        self.tags = []
+        if m.get('tags') is not None:
+            for k1 in m.get('tags'):
+                temp_model = main_models.Tag()
+                self.tags.append(temp_model.from_map(k1))
 
         if m.get('updateTime') is not None:
             self.update_time = m.get('updateTime')

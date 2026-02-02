@@ -1,3 +1,14 @@
+2026-02-02 Version: 6.0.1
+- Update API CreateDigitalEmployee: add request parameters body.resourceGroupId.
+- Update API CreateDigitalEmployee: add request parameters body.tags.
+- Update API GetDigitalEmployee: add response parameters Body.resourceGroupId.
+- Update API GetDigitalEmployee: add response parameters Body.tags.
+- Update API ListDigitalEmployees: add request parameters resourceGroupId.
+- Update API ListDigitalEmployees: add request parameters tags.
+- Update API ListDigitalEmployees: add response parameters Body.digitalEmployees.$.resourceGroupId.
+- Update API ListDigitalEmployees: add response parameters Body.digitalEmployees.$.tags.
+
+
 2026-01-23 Version: 6.0.0
 - Update API ListAggTaskGroups: delete response parameters Body.aggTaskGroups.$.tags.
 - Update API ListIntegrationPolicies: delete response parameters Body.policies.$.tags.

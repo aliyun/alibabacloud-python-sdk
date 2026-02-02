@@ -22,6 +22,7 @@ class SubscriptionForView(DaraModel):
         update_time: str = None,
         user_id: str = None,
         workspace: str = None,
+        workspace_filter_setting: main_models.WorkspaceFilterSetting = None,
     ):
         self.create_time = create_time
         self.description = description
@@ -36,12 +37,15 @@ class SubscriptionForView(DaraModel):
         self.update_time = update_time
         self.user_id = user_id
         self.workspace = workspace
+        self.workspace_filter_setting = workspace_filter_setting
 
     def validate(self):
         if self.filter_setting:
             self.filter_setting.validate()
         if self.pushing_setting:
             self.pushing_setting.validate()
+        if self.workspace_filter_setting:
+            self.workspace_filter_setting.validate()
 
     def to_map(self):
         result = dict()
@@ -84,6 +88,9 @@ class SubscriptionForView(DaraModel):
         if self.workspace is not None:
             result['workspace'] = self.workspace
 
+        if self.workspace_filter_setting is not None:
+            result['workspaceFilterSetting'] = self.workspace_filter_setting.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -125,6 +132,10 @@ class SubscriptionForView(DaraModel):
 
         if m.get('workspace') is not None:
             self.workspace = m.get('workspace')
+
+        if m.get('workspaceFilterSetting') is not None:
+            temp_model = main_models.WorkspaceFilterSetting()
+            self.workspace_filter_setting = temp_model.from_map(m.get('workspaceFilterSetting'))
 
         return self
 

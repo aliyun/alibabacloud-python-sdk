@@ -248,6 +248,7 @@ from ._list_biz_traces_request import ListBizTracesRequest
 from ._list_biz_traces_response_body import ListBizTracesResponseBody
 from ._list_biz_traces_response import ListBizTracesResponse
 from ._list_digital_employees_request import ListDigitalEmployeesRequest
+from ._list_digital_employees_shrink_request import ListDigitalEmployeesShrinkRequest
 from ._list_digital_employees_response_body import ListDigitalEmployeesResponseBody
 from ._list_digital_employees_response import ListDigitalEmployeesResponse
 from ._list_integration_policies_request import ListIntegrationPoliciesRequest
@@ -814,6 +815,7 @@ __all__ = [
     ListBizTracesResponseBody,
     ListBizTracesResponse,
     ListDigitalEmployeesRequest,
+    ListDigitalEmployeesShrinkRequest,
     ListDigitalEmployeesResponseBody,
     ListDigitalEmployeesResponse,
     ListIntegrationPoliciesRequest,

@@ -15,7 +15,9 @@ class CreateDigitalEmployeeRequest(DaraModel):
         display_name: str = None,
         knowledges: main_models.CreateDigitalEmployeeRequestKnowledges = None,
         name: str = None,
+        resource_group_id: str = None,
         role_arn: str = None,
+        tags: List[main_models.Tag] = None,
     ):
         self.default_rule = default_rule
         self.description = description
@@ -23,12 +25,18 @@ class CreateDigitalEmployeeRequest(DaraModel):
         self.knowledges = knowledges
         # This parameter is required.
         self.name = name
+        self.resource_group_id = resource_group_id
         # This parameter is required.
         self.role_arn = role_arn
+        self.tags = tags
 
     def validate(self):
         if self.knowledges:
             self.knowledges.validate()
+        if self.tags:
+            for v1 in self.tags:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -50,8 +58,16 @@ class CreateDigitalEmployeeRequest(DaraModel):
         if self.name is not None:
             result['name'] = self.name
 
+        if self.resource_group_id is not None:
+            result['resourceGroupId'] = self.resource_group_id
+
         if self.role_arn is not None:
             result['roleArn'] = self.role_arn
+
+        result['tags'] = []
+        if self.tags is not None:
+            for k1 in self.tags:
+                result['tags'].append(k1.to_map() if k1 else None)
 
         return result
 
@@ -73,8 +89,17 @@ class CreateDigitalEmployeeRequest(DaraModel):
         if m.get('name') is not None:
             self.name = m.get('name')
 
+        if m.get('resourceGroupId') is not None:
+            self.resource_group_id = m.get('resourceGroupId')
+
         if m.get('roleArn') is not None:
             self.role_arn = m.get('roleArn')
+
+        self.tags = []
+        if m.get('tags') is not None:
+            for k1 in m.get('tags'):
+                temp_model = main_models.Tag()
+                self.tags.append(temp_model.from_map(k1))
 
         return self
 

@@ -169,12 +169,16 @@ class NotifyStrategyForModifyRoutes(DaraModel):
     def __init__(
         self,
         channels: List[main_models.NotifyStrategyForModifyRoutesChannels] = None,
+        digital_employee_name: str = None,
         effect_time_range: main_models.NotifyStrategyForModifyRoutesEffectTimeRange = None,
+        enable_rca: bool = None,
         filter_setting: main_models.FilterSetting = None,
         severities: List[str] = None,
     ):
         self.channels = channels
+        self.digital_employee_name = digital_employee_name
         self.effect_time_range = effect_time_range
+        self.enable_rca = enable_rca
         self.filter_setting = filter_setting
         self.severities = severities
 
@@ -198,8 +202,14 @@ class NotifyStrategyForModifyRoutes(DaraModel):
             for k1 in self.channels:
                 result['channels'].append(k1.to_map() if k1 else None)
 
+        if self.digital_employee_name is not None:
+            result['digitalEmployeeName'] = self.digital_employee_name
+
         if self.effect_time_range is not None:
             result['effectTimeRange'] = self.effect_time_range.to_map()
+
+        if self.enable_rca is not None:
+            result['enableRca'] = self.enable_rca
 
         if self.filter_setting is not None:
             result['filterSetting'] = self.filter_setting.to_map()
@@ -217,9 +227,15 @@ class NotifyStrategyForModifyRoutes(DaraModel):
                 temp_model = main_models.NotifyStrategyForModifyRoutesChannels()
                 self.channels.append(temp_model.from_map(k1))
 
+        if m.get('digitalEmployeeName') is not None:
+            self.digital_employee_name = m.get('digitalEmployeeName')
+
         if m.get('effectTimeRange') is not None:
             temp_model = main_models.NotifyStrategyForModifyRoutesEffectTimeRange()
             self.effect_time_range = temp_model.from_map(m.get('effectTimeRange'))
+
+        if m.get('enableRca') is not None:
+            self.enable_rca = m.get('enableRca')
 
         if m.get('filterSetting') is not None:
             temp_model = main_models.FilterSetting()
