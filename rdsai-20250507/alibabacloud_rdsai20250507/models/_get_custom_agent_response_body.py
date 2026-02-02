@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List
 
+from alibabacloud_rdsai20250507 import models as main_models
 from darabonba.model import DaraModel
 
 class GetCustomAgentResponseBody(DaraModel):
@@ -14,6 +15,7 @@ class GetCustomAgentResponseBody(DaraModel):
         id: str = None,
         name: str = None,
         request_id: str = None,
+        skills: List[main_models.GetCustomAgentResponseBodySkills] = None,
         system_prompt: str = None,
         tools: List[str] = None,
         updated_at: str = None,
@@ -28,6 +30,7 @@ class GetCustomAgentResponseBody(DaraModel):
         self.name = name
         # The request ID.
         self.request_id = request_id
+        self.skills = skills
         # The system prompts.
         self.system_prompt = system_prompt
         # The details of the tools.
@@ -36,7 +39,10 @@ class GetCustomAgentResponseBody(DaraModel):
         self.updated_at = updated_at
 
     def validate(self):
-        pass
+        if self.skills:
+            for v1 in self.skills:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -57,6 +63,11 @@ class GetCustomAgentResponseBody(DaraModel):
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+
+        result['Skills'] = []
+        if self.skills is not None:
+            for k1 in self.skills:
+                result['Skills'].append(k1.to_map() if k1 else None)
 
         if self.system_prompt is not None:
             result['SystemPrompt'] = self.system_prompt
@@ -86,6 +97,12 @@ class GetCustomAgentResponseBody(DaraModel):
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
+        self.skills = []
+        if m.get('Skills') is not None:
+            for k1 in m.get('Skills'):
+                temp_model = main_models.GetCustomAgentResponseBodySkills()
+                self.skills.append(temp_model.from_map(k1))
+
         if m.get('SystemPrompt') is not None:
             self.system_prompt = m.get('SystemPrompt')
 
@@ -94,6 +111,57 @@ class GetCustomAgentResponseBody(DaraModel):
 
         if m.get('UpdatedAt') is not None:
             self.updated_at = m.get('UpdatedAt')
+
+        return self
+
+class GetCustomAgentResponseBodySkills(DaraModel):
+    def __init__(
+        self,
+        description: str = None,
+        id: str = None,
+        name: str = None,
+        skill_type: str = None,
+    ):
+        self.description = description
+        self.id = id
+        self.name = name
+        self.skill_type = skill_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.description is not None:
+            result['Description'] = self.description
+
+        if self.id is not None:
+            result['Id'] = self.id
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.skill_type is not None:
+            result['SkillType'] = self.skill_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
+
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('SkillType') is not None:
+            self.skill_type = m.get('SkillType')
 
         return self
 

@@ -447,6 +447,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateCustomAgentShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.skill_ids):
+            request.skill_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.skill_ids, 'SkillIds', 'json')
         if not DaraCore.is_null(tmp_req.tools):
             request.tools_shrink = Utils.array_to_string_with_specified_style(tmp_req.tools, 'Tools', 'json')
         query = {}
@@ -454,6 +456,8 @@ class Client(OpenApiClient):
             query['EnableTools'] = request.enable_tools
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.skill_ids_shrink):
+            query['SkillIds'] = request.skill_ids_shrink
         if not DaraCore.is_null(request.system_prompt):
             query['SystemPrompt'] = request.system_prompt
         if not DaraCore.is_null(request.tools_shrink):
@@ -485,6 +489,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.CreateCustomAgentShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.skill_ids):
+            request.skill_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.skill_ids, 'SkillIds', 'json')
         if not DaraCore.is_null(tmp_req.tools):
             request.tools_shrink = Utils.array_to_string_with_specified_style(tmp_req.tools, 'Tools', 'json')
         query = {}
@@ -492,6 +498,8 @@ class Client(OpenApiClient):
             query['EnableTools'] = request.enable_tools
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.skill_ids_shrink):
+            query['SkillIds'] = request.skill_ids_shrink
         if not DaraCore.is_null(request.system_prompt):
             query['SystemPrompt'] = request.system_prompt
         if not DaraCore.is_null(request.tools_shrink):
@@ -2757,6 +2765,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.UpdateCustomAgentShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.skill_ids):
+            request.skill_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.skill_ids, 'SkillIds', 'json')
         if not DaraCore.is_null(tmp_req.tools):
             request.tools_shrink = Utils.array_to_string_with_specified_style(tmp_req.tools, 'Tools', 'json')
         query = {}
@@ -2766,6 +2776,8 @@ class Client(OpenApiClient):
             query['EnableTools'] = request.enable_tools
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.skill_ids_shrink):
+            query['SkillIds'] = request.skill_ids_shrink
         if not DaraCore.is_null(request.system_prompt):
             query['SystemPrompt'] = request.system_prompt
         if not DaraCore.is_null(request.tools_shrink):
@@ -2797,6 +2809,8 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.UpdateCustomAgentShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.skill_ids):
+            request.skill_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.skill_ids, 'SkillIds', 'json')
         if not DaraCore.is_null(tmp_req.tools):
             request.tools_shrink = Utils.array_to_string_with_specified_style(tmp_req.tools, 'Tools', 'json')
         query = {}
@@ -2806,6 +2820,8 @@ class Client(OpenApiClient):
             query['EnableTools'] = request.enable_tools
         if not DaraCore.is_null(request.name):
             query['Name'] = request.name
+        if not DaraCore.is_null(request.skill_ids_shrink):
+            query['SkillIds'] = request.skill_ids_shrink
         if not DaraCore.is_null(request.system_prompt):
             query['SystemPrompt'] = request.system_prompt
         if not DaraCore.is_null(request.tools_shrink):

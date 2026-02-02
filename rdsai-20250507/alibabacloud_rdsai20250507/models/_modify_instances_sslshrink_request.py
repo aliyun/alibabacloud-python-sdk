@@ -14,13 +14,30 @@ class ModifyInstancesSSLShrinkRequest(DaraModel):
         server_cert: str = None,
         server_key: str = None,
     ):
+        # The certificate type. Only **custom** is supported.
+        # 
+        # >  This parameter is required if **SSLEnabled** is set to **1**.
         self.catype = catype
+        # The information about the RDS Supabase instances that you want to configure. You can specify up to 10 instances.
+        # 
         # This parameter is required.
         self.instance_names_shrink = instance_names_shrink
+        # The region ID.
         self.region_id = region_id
+        # Enables or disables SSL. Valid values:
+        # 
+        # *   **1**: enable
+        # *   **0**: disable
+        # 
         # This parameter is required.
         self.sslenabled = sslenabled
+        # The content of the custom certificate.
+        # 
+        # >  This parameter is required if **CAType** is set to **custom**.
         self.server_cert = server_cert
+        # The private key of the certificate.
+        # 
+        # >  This parameter is required if **CAType** is set to **custom**.
         self.server_key = server_key
 
     def validate(self):

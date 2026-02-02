@@ -12,7 +12,9 @@ class ModifyInstancesSSLResponseBody(DaraModel):
         instance_names: List[str] = None,
         request_id: str = None,
     ):
+        # The RDS Supabase instances whose SSL settings are modified.
         self.instance_names = instance_names
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

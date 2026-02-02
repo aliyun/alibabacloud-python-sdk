@@ -1,3 +1,12 @@
+2026-02-02 Version: 2.1.1
+- Update API CreateCustomAgent: add request parameters SkillIds.
+- Update API CreateCustomAgent: add response parameters Body.Skills.
+- Update API GetCustomAgent: add response parameters Body.Skills.
+- Update API ListCustomAgent: add response parameters Body.Skills.
+- Update API UpdateCustomAgent: add request parameters SkillIds.
+- Update API UpdateCustomAgent: add response parameters Body.Skills.
+
+
 2026-01-25 Version: 2.1.0
 - Support API ModifyInstancesSSL.
 - Update API ChatMessages: add request parameters EventMode.

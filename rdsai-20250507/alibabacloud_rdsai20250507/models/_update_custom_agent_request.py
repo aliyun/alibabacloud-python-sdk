@@ -12,6 +12,7 @@ class UpdateCustomAgentRequest(DaraModel):
         custom_agent_id: str = None,
         enable_tools: bool = None,
         name: str = None,
+        skill_ids: List[str] = None,
         system_prompt: str = None,
         tools: List[str] = None,
     ):
@@ -23,6 +24,7 @@ class UpdateCustomAgentRequest(DaraModel):
         self.enable_tools = enable_tools
         # The ID of the agent.
         self.name = name
+        self.skill_ids = skill_ids
         # The name of the agent.
         self.system_prompt = system_prompt
         # Specifies whether to enable tools.
@@ -45,6 +47,9 @@ class UpdateCustomAgentRequest(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.skill_ids is not None:
+            result['SkillIds'] = self.skill_ids
+
         if self.system_prompt is not None:
             result['SystemPrompt'] = self.system_prompt
 
@@ -63,6 +68,9 @@ class UpdateCustomAgentRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('SkillIds') is not None:
+            self.skill_ids = m.get('SkillIds')
 
         if m.get('SystemPrompt') is not None:
             self.system_prompt = m.get('SystemPrompt')

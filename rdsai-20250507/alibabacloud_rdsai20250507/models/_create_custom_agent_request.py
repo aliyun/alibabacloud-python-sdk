@@ -11,6 +11,7 @@ class CreateCustomAgentRequest(DaraModel):
         self,
         enable_tools: bool = None,
         name: str = None,
+        skill_ids: List[str] = None,
         system_prompt: str = None,
         tools: List[str] = None,
     ):
@@ -18,6 +19,7 @@ class CreateCustomAgentRequest(DaraModel):
         self.enable_tools = enable_tools
         # The operation that you want to perform. Set the value to **CreateCustomAgent**.
         self.name = name
+        self.skill_ids = skill_ids
         # The name of the dedicated agent.
         # 
         # This parameter is required.
@@ -39,6 +41,9 @@ class CreateCustomAgentRequest(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.skill_ids is not None:
+            result['SkillIds'] = self.skill_ids
+
         if self.system_prompt is not None:
             result['SystemPrompt'] = self.system_prompt
 
@@ -54,6 +59,9 @@ class CreateCustomAgentRequest(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('SkillIds') is not None:
+            self.skill_ids = m.get('SkillIds')
 
         if m.get('SystemPrompt') is not None:
             self.system_prompt = m.get('SystemPrompt')

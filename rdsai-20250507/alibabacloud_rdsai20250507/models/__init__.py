@@ -110,6 +110,7 @@ from ._update_custom_agent_response_body import UpdateCustomAgentResponseBody
 from ._update_custom_agent_response import UpdateCustomAgentResponse
 from ._chat_messages_request import ChatMessagesRequestInputs
 from ._create_app_instance_request import CreateAppInstanceRequestDBInstanceConfig
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodySkills
 from ._describe_app_instances_response_body import DescribeAppInstancesResponseBodyInstances
 from ._describe_events_list_response_body import DescribeEventsListResponseBodyEvents
 from ._describe_instance_auth_info_response_body import DescribeInstanceAuthInfoResponseBodyApiKeys
@@ -120,13 +121,16 @@ from ._describe_instance_ip_whitelist_response_body import DescribeInstanceIpWhi
 from ._describe_instance_ragconfig_response_body import DescribeInstanceRAGConfigResponseBodyConfigList
 from ._describe_instance_storage_config_response_body import DescribeInstanceStorageConfigResponseBodyConfigList
 from ._get_conversations_response_body import GetConversationsResponseBodyData
+from ._get_custom_agent_response_body import GetCustomAgentResponseBodySkills
 from ._get_messages_response_body import GetMessagesResponseBodyDataEvents
 from ._get_messages_response_body import GetMessagesResponseBodyData
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyData
+from ._list_custom_agent_response_body import ListCustomAgentResponseBodySkills
 from ._list_custom_agent_tools_response_body import ListCustomAgentToolsResponseBodyData
 from ._modify_instance_auth_config_request import ModifyInstanceAuthConfigRequestConfigList
 from ._modify_instance_ragconfig_request import ModifyInstanceRAGConfigRequestConfigList
 from ._modify_instance_storage_config_request import ModifyInstanceStorageConfigRequestConfigList
+from ._update_custom_agent_response_body import UpdateCustomAgentResponseBodySkills
 
 __all__ = [
     ChatMessagesRequest,
@@ -237,6 +241,7 @@ __all__ = [
     UpdateCustomAgentResponse,
     ChatMessagesRequestInputs,
     CreateAppInstanceRequestDBInstanceConfig,
+    CreateCustomAgentResponseBodySkills,
     DescribeAppInstancesResponseBodyInstances,
     DescribeEventsListResponseBodyEvents,
     DescribeInstanceAuthInfoResponseBodyApiKeys,
@@ -247,11 +252,14 @@ __all__ = [
     DescribeInstanceRAGConfigResponseBodyConfigList,
     DescribeInstanceStorageConfigResponseBodyConfigList,
     GetConversationsResponseBodyData,
+    GetCustomAgentResponseBodySkills,
     GetMessagesResponseBodyDataEvents,
     GetMessagesResponseBodyData,
     ListCustomAgentResponseBodyData,
+    ListCustomAgentResponseBodySkills,
     ListCustomAgentToolsResponseBodyData,
     ModifyInstanceAuthConfigRequestConfigList,
     ModifyInstanceRAGConfigRequestConfigList,
-    ModifyInstanceStorageConfigRequestConfigList
+    ModifyInstanceStorageConfigRequestConfigList,
+    UpdateCustomAgentResponseBodySkills
 ]
