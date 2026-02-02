@@ -169,6 +169,9 @@ from ._create_network_package_response import CreateNetworkPackageResponse
 from ._create_policy_group_request import CreatePolicyGroupRequest
 from ._create_policy_group_response_body import CreatePolicyGroupResponseBody
 from ._create_policy_group_response import CreatePolicyGroupResponse
+from ._create_qos_rule_request import CreateQosRuleRequest
+from ._create_qos_rule_response_body import CreateQosRuleResponseBody
+from ._create_qos_rule_response import CreateQosRuleResponse
 from ._create_ramdirectory_request import CreateRAMDirectoryRequest
 from ._create_ramdirectory_response_body import CreateRAMDirectoryResponseBody
 from ._create_ramdirectory_response import CreateRAMDirectoryResponse
@@ -253,6 +256,9 @@ from ._delete_office_sites_response import DeleteOfficeSitesResponse
 from ._delete_policy_groups_request import DeletePolicyGroupsRequest
 from ._delete_policy_groups_response_body import DeletePolicyGroupsResponseBody
 from ._delete_policy_groups_response import DeletePolicyGroupsResponse
+from ._delete_qos_rules_request import DeleteQosRulesRequest
+from ._delete_qos_rules_response_body import DeleteQosRulesResponseBody
+from ._delete_qos_rules_response import DeleteQosRulesResponse
 from ._delete_route_entry_request import DeleteRouteEntryRequest
 from ._delete_route_entry_response_body import DeleteRouteEntryResponseBody
 from ._delete_route_entry_response import DeleteRouteEntryResponse
@@ -436,6 +442,9 @@ from ._describe_price_for_modify_desktop_oversold_group_sale_response import Des
 from ._describe_price_for_renew_desktop_oversold_group_request import DescribePriceForRenewDesktopOversoldGroupRequest
 from ._describe_price_for_renew_desktop_oversold_group_response_body import DescribePriceForRenewDesktopOversoldGroupResponseBody
 from ._describe_price_for_renew_desktop_oversold_group_response import DescribePriceForRenewDesktopOversoldGroupResponse
+from ._describe_qos_rules_request import DescribeQosRulesRequest
+from ._describe_qos_rules_response_body import DescribeQosRulesResponseBody
+from ._describe_qos_rules_response import DescribeQosRulesResponse
 from ._describe_record_file_request import DescribeRecordFileRequest
 from ._describe_record_file_response_body import DescribeRecordFileResponseBody
 from ._describe_record_file_response import DescribeRecordFileResponse
@@ -698,6 +707,12 @@ from ._modify_office_site_mfa_enabled_response import ModifyOfficeSiteMfaEnabled
 from ._modify_policy_group_request import ModifyPolicyGroupRequest
 from ._modify_policy_group_response_body import ModifyPolicyGroupResponseBody
 from ._modify_policy_group_response import ModifyPolicyGroupResponse
+from ._modify_qos_entries_request import ModifyQosEntriesRequest
+from ._modify_qos_entries_response_body import ModifyQosEntriesResponseBody
+from ._modify_qos_entries_response import ModifyQosEntriesResponse
+from ._modify_qos_rule_request import ModifyQosRuleRequest
+from ._modify_qos_rule_response_body import ModifyQosRuleResponseBody
+from ._modify_qos_rule_response import ModifyQosRuleResponse
 from ._modify_resource_center_policy_request import ModifyResourceCenterPolicyRequest
 from ._modify_resource_center_policy_response_body import ModifyResourceCenterPolicyResponseBody
 from ._modify_resource_center_policy_response import ModifyResourceCenterPolicyResponse
@@ -1002,6 +1017,7 @@ from ._describe_price_response_body import DescribePriceResponseBodyPriceInfo
 from ._describe_price_for_create_desktop_oversold_group_response_body import DescribePriceForCreateDesktopOversoldGroupResponseBodyData
 from ._describe_price_for_modify_desktop_oversold_group_sale_response_body import DescribePriceForModifyDesktopOversoldGroupSaleResponseBodyData
 from ._describe_price_for_renew_desktop_oversold_group_response_body import DescribePriceForRenewDesktopOversoldGroupResponseBodyData
+from ._describe_qos_rules_response_body import DescribeQosRulesResponseBodyQosRules
 from ._describe_record_file_response_body import DescribeRecordFileResponseBodyRecordFilesEventDetails
 from ._describe_record_file_response_body import DescribeRecordFileResponseBodyRecordFiles
 from ._describe_recordings_response_body import DescribeRecordingsResponseBodyRecordings
@@ -1281,6 +1297,9 @@ __all__ = [
     CreatePolicyGroupRequest,
     CreatePolicyGroupResponseBody,
     CreatePolicyGroupResponse,
+    CreateQosRuleRequest,
+    CreateQosRuleResponseBody,
+    CreateQosRuleResponse,
     CreateRAMDirectoryRequest,
     CreateRAMDirectoryResponseBody,
     CreateRAMDirectoryResponse,
@@ -1365,6 +1384,9 @@ __all__ = [
     DeletePolicyGroupsRequest,
     DeletePolicyGroupsResponseBody,
     DeletePolicyGroupsResponse,
+    DeleteQosRulesRequest,
+    DeleteQosRulesResponseBody,
+    DeleteQosRulesResponse,
     DeleteRouteEntryRequest,
     DeleteRouteEntryResponseBody,
     DeleteRouteEntryResponse,
@@ -1548,6 +1570,9 @@ __all__ = [
     DescribePriceForRenewDesktopOversoldGroupRequest,
     DescribePriceForRenewDesktopOversoldGroupResponseBody,
     DescribePriceForRenewDesktopOversoldGroupResponse,
+    DescribeQosRulesRequest,
+    DescribeQosRulesResponseBody,
+    DescribeQosRulesResponse,
     DescribeRecordFileRequest,
     DescribeRecordFileResponseBody,
     DescribeRecordFileResponse,
@@ -1810,6 +1835,12 @@ __all__ = [
     ModifyPolicyGroupRequest,
     ModifyPolicyGroupResponseBody,
     ModifyPolicyGroupResponse,
+    ModifyQosEntriesRequest,
+    ModifyQosEntriesResponseBody,
+    ModifyQosEntriesResponse,
+    ModifyQosRuleRequest,
+    ModifyQosRuleResponseBody,
+    ModifyQosRuleResponse,
     ModifyResourceCenterPolicyRequest,
     ModifyResourceCenterPolicyResponseBody,
     ModifyResourceCenterPolicyResponse,
@@ -2114,6 +2145,7 @@ __all__ = [
     DescribePriceForCreateDesktopOversoldGroupResponseBodyData,
     DescribePriceForModifyDesktopOversoldGroupSaleResponseBodyData,
     DescribePriceForRenewDesktopOversoldGroupResponseBodyData,
+    DescribeQosRulesResponseBodyQosRules,
     DescribeRecordFileResponseBodyRecordFilesEventDetails,
     DescribeRecordFileResponseBodyRecordFiles,
     DescribeRecordingsResponseBodyRecordings,

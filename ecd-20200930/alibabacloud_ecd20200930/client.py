@@ -6069,6 +6069,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_policy_group_with_options_async(request, runtime)
 
+    def create_qos_rule_with_options(
+        self,
+        request: main_models.CreateQosRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateQosRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_android_id):
+            query['AuthAndroidId'] = request.auth_android_id
+        if not DaraCore.is_null(request.auth_desktop_id):
+            query['AuthDesktopId'] = request.auth_desktop_id
+        if not DaraCore.is_null(request.download):
+            query['Download'] = request.download
+        if not DaraCore.is_null(request.network_package_id):
+            query['NetworkPackageId'] = request.network_package_id
+        if not DaraCore.is_null(request.qos_rule_name):
+            query['QosRuleName'] = request.qos_rule_name
+        if not DaraCore.is_null(request.upload):
+            query['Upload'] = request.upload
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateQosRule',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateQosRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_qos_rule_with_options_async(
+        self,
+        request: main_models.CreateQosRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateQosRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_android_id):
+            query['AuthAndroidId'] = request.auth_android_id
+        if not DaraCore.is_null(request.auth_desktop_id):
+            query['AuthDesktopId'] = request.auth_desktop_id
+        if not DaraCore.is_null(request.download):
+            query['Download'] = request.download
+        if not DaraCore.is_null(request.network_package_id):
+            query['NetworkPackageId'] = request.network_package_id
+        if not DaraCore.is_null(request.qos_rule_name):
+            query['QosRuleName'] = request.qos_rule_name
+        if not DaraCore.is_null(request.upload):
+            query['Upload'] = request.upload
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateQosRule',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateQosRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_qos_rule(
+        self,
+        request: main_models.CreateQosRuleRequest,
+    ) -> main_models.CreateQosRuleResponse:
+        runtime = RuntimeOptions()
+        return self.create_qos_rule_with_options(request, runtime)
+
+    async def create_qos_rule_async(
+        self,
+        request: main_models.CreateQosRuleRequest,
+    ) -> main_models.CreateQosRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.create_qos_rule_with_options_async(request, runtime)
+
     def create_ramdirectory_with_options(
         self,
         request: main_models.CreateRAMDirectoryRequest,
@@ -8444,6 +8534,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeletePolicyGroupsResponse:
         runtime = RuntimeOptions()
         return await self.delete_policy_groups_with_options_async(request, runtime)
+
+    def delete_qos_rules_with_options(
+        self,
+        request: main_models.DeleteQosRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteQosRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.qos_rule_id):
+            query['QosRuleId'] = request.qos_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteQosRules',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteQosRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_qos_rules_with_options_async(
+        self,
+        request: main_models.DeleteQosRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteQosRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.qos_rule_id):
+            query['QosRuleId'] = request.qos_rule_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteQosRules',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteQosRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_qos_rules(
+        self,
+        request: main_models.DeleteQosRulesRequest,
+    ) -> main_models.DeleteQosRulesResponse:
+        runtime = RuntimeOptions()
+        return self.delete_qos_rules_with_options(request, runtime)
+
+    async def delete_qos_rules_async(
+        self,
+        request: main_models.DeleteQosRulesRequest,
+    ) -> main_models.DeleteQosRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_qos_rules_with_options_async(request, runtime)
 
     def delete_route_entry_with_options(
         self,
@@ -14414,6 +14574,80 @@ class Client(OpenApiClient):
     ) -> main_models.DescribePriceForRenewDesktopOversoldGroupResponse:
         runtime = RuntimeOptions()
         return await self.describe_price_for_renew_desktop_oversold_group_with_options_async(request, runtime)
+
+    def describe_qos_rules_with_options(
+        self,
+        request: main_models.DescribeQosRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeQosRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.network_package_id):
+            query['NetworkPackageId'] = request.network_package_id
+        if not DaraCore.is_null(request.qos_rule_name):
+            query['QosRuleName'] = request.qos_rule_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeQosRules',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeQosRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_qos_rules_with_options_async(
+        self,
+        request: main_models.DescribeQosRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeQosRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.network_package_id):
+            query['NetworkPackageId'] = request.network_package_id
+        if not DaraCore.is_null(request.qos_rule_name):
+            query['QosRuleName'] = request.qos_rule_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeQosRules',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeQosRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_qos_rules(
+        self,
+        request: main_models.DescribeQosRulesRequest,
+    ) -> main_models.DescribeQosRulesResponse:
+        runtime = RuntimeOptions()
+        return self.describe_qos_rules_with_options(request, runtime)
+
+    async def describe_qos_rules_async(
+        self,
+        request: main_models.DescribeQosRulesRequest,
+    ) -> main_models.DescribeQosRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_qos_rules_with_options_async(request, runtime)
 
     def describe_record_file_with_options(
         self,
@@ -22996,6 +23230,174 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyPolicyGroupResponse:
         runtime = RuntimeOptions()
         return await self.modify_policy_group_with_options_async(request, runtime)
+
+    def modify_qos_entries_with_options(
+        self,
+        request: main_models.ModifyQosEntriesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyQosEntriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_android_id):
+            query['AuthAndroidId'] = request.auth_android_id
+        if not DaraCore.is_null(request.auth_desktop_id):
+            query['AuthDesktopId'] = request.auth_desktop_id
+        if not DaraCore.is_null(request.qos_rule_id):
+            query['QosRuleId'] = request.qos_rule_id
+        if not DaraCore.is_null(request.revoke_android_id):
+            query['RevokeAndroidId'] = request.revoke_android_id
+        if not DaraCore.is_null(request.revoke_desktop_id):
+            query['RevokeDesktopId'] = request.revoke_desktop_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyQosEntries',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyQosEntriesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_qos_entries_with_options_async(
+        self,
+        request: main_models.ModifyQosEntriesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyQosEntriesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.auth_android_id):
+            query['AuthAndroidId'] = request.auth_android_id
+        if not DaraCore.is_null(request.auth_desktop_id):
+            query['AuthDesktopId'] = request.auth_desktop_id
+        if not DaraCore.is_null(request.qos_rule_id):
+            query['QosRuleId'] = request.qos_rule_id
+        if not DaraCore.is_null(request.revoke_android_id):
+            query['RevokeAndroidId'] = request.revoke_android_id
+        if not DaraCore.is_null(request.revoke_desktop_id):
+            query['RevokeDesktopId'] = request.revoke_desktop_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyQosEntries',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyQosEntriesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_qos_entries(
+        self,
+        request: main_models.ModifyQosEntriesRequest,
+    ) -> main_models.ModifyQosEntriesResponse:
+        runtime = RuntimeOptions()
+        return self.modify_qos_entries_with_options(request, runtime)
+
+    async def modify_qos_entries_async(
+        self,
+        request: main_models.ModifyQosEntriesRequest,
+    ) -> main_models.ModifyQosEntriesResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_qos_entries_with_options_async(request, runtime)
+
+    def modify_qos_rule_with_options(
+        self,
+        request: main_models.ModifyQosRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyQosRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.download):
+            query['Download'] = request.download
+        if not DaraCore.is_null(request.qos_rule_id):
+            query['QosRuleId'] = request.qos_rule_id
+        if not DaraCore.is_null(request.qos_rule_name):
+            query['QosRuleName'] = request.qos_rule_name
+        if not DaraCore.is_null(request.upload):
+            query['Upload'] = request.upload
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyQosRule',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyQosRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_qos_rule_with_options_async(
+        self,
+        request: main_models.ModifyQosRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyQosRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.download):
+            query['Download'] = request.download
+        if not DaraCore.is_null(request.qos_rule_id):
+            query['QosRuleId'] = request.qos_rule_id
+        if not DaraCore.is_null(request.qos_rule_name):
+            query['QosRuleName'] = request.qos_rule_name
+        if not DaraCore.is_null(request.upload):
+            query['Upload'] = request.upload
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyQosRule',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyQosRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_qos_rule(
+        self,
+        request: main_models.ModifyQosRuleRequest,
+    ) -> main_models.ModifyQosRuleResponse:
+        runtime = RuntimeOptions()
+        return self.modify_qos_rule_with_options(request, runtime)
+
+    async def modify_qos_rule_async(
+        self,
+        request: main_models.ModifyQosRuleRequest,
+    ) -> main_models.ModifyQosRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_qos_rule_with_options_async(request, runtime)
 
     def modify_resource_center_policy_with_options(
         self,

@@ -1,3 +1,11 @@
+2026-02-02 Version: 4.22.0
+- Support API CreateQosRule.
+- Support API DeleteQosRules.
+- Support API DescribeQosRules.
+- Support API ModifyQosEntries.
+- Support API ModifyQosRule.
+
+
 2026-01-23 Version: 4.21.4
 - Update API CreateCenterPolicy: add request parameters HoverConfigMsg.
 - Update API CreateCenterPolicy: add request parameters MultiScreen.
