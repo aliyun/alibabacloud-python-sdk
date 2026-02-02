@@ -170,6 +170,7 @@ class GetDialogDetailResponseBodyDataDialogueList(DaraModel):
         id: int = None,
         intent_code: str = None,
         intent_name: str = None,
+        record_id: str = None,
         role: str = None,
         type: str = None,
     ):
@@ -181,6 +182,7 @@ class GetDialogDetailResponseBodyDataDialogueList(DaraModel):
         self.id = id
         self.intent_code = intent_code
         self.intent_name = intent_name
+        self.record_id = record_id
         self.role = role
         self.type = type
 
@@ -216,6 +218,9 @@ class GetDialogDetailResponseBodyDataDialogueList(DaraModel):
         if self.intent_name is not None:
             result['intentName'] = self.intent_name
 
+        if self.record_id is not None:
+            result['recordId'] = self.record_id
+
         if self.role is not None:
             result['role'] = self.role
 
@@ -249,6 +254,9 @@ class GetDialogDetailResponseBodyDataDialogueList(DaraModel):
 
         if m.get('intentName') is not None:
             self.intent_name = m.get('intentName')
+
+        if m.get('recordId') is not None:
+            self.record_id = m.get('recordId')
 
         if m.get('role') is not None:
             self.role = m.get('role')
