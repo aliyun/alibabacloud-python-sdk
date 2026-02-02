@@ -1903,6 +1903,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_remediation_with_options_async(request, runtime)
 
+    def create_report_template_with_options(
+        self,
+        tmp_req: main_models.CreateReportTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateReportTemplateResponse:
+        tmp_req.validate()
+        request = main_models.CreateReportTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.report_scope):
+            request.report_scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.report_scope, 'ReportScope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.report_file_formats):
+            body['ReportFileFormats'] = request.report_file_formats
+        if not DaraCore.is_null(request.report_granularity):
+            body['ReportGranularity'] = request.report_granularity
+        if not DaraCore.is_null(request.report_language):
+            body['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.report_scope_shrink):
+            body['ReportScope'] = request.report_scope_shrink
+        if not DaraCore.is_null(request.report_template_description):
+            body['ReportTemplateDescription'] = request.report_template_description
+        if not DaraCore.is_null(request.report_template_name):
+            body['ReportTemplateName'] = request.report_template_name
+        if not DaraCore.is_null(request.subscription_frequency):
+            body['SubscriptionFrequency'] = request.subscription_frequency
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateReportTemplate',
+            version = '2020-09-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateReportTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_report_template_with_options_async(
+        self,
+        tmp_req: main_models.CreateReportTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateReportTemplateResponse:
+        tmp_req.validate()
+        request = main_models.CreateReportTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.report_scope):
+            request.report_scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.report_scope, 'ReportScope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.report_file_formats):
+            body['ReportFileFormats'] = request.report_file_formats
+        if not DaraCore.is_null(request.report_granularity):
+            body['ReportGranularity'] = request.report_granularity
+        if not DaraCore.is_null(request.report_language):
+            body['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.report_scope_shrink):
+            body['ReportScope'] = request.report_scope_shrink
+        if not DaraCore.is_null(request.report_template_description):
+            body['ReportTemplateDescription'] = request.report_template_description
+        if not DaraCore.is_null(request.report_template_name):
+            body['ReportTemplateName'] = request.report_template_name
+        if not DaraCore.is_null(request.subscription_frequency):
+            body['SubscriptionFrequency'] = request.subscription_frequency
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateReportTemplate',
+            version = '2020-09-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateReportTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_report_template(
+        self,
+        request: main_models.CreateReportTemplateRequest,
+    ) -> main_models.CreateReportTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.create_report_template_with_options(request, runtime)
+
+    async def create_report_template_async(
+        self,
+        request: main_models.CreateReportTemplateRequest,
+    ) -> main_models.CreateReportTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.create_report_template_with_options_async(request, runtime)
+
     def deactive_aggregate_config_rules_with_options(
         self,
         request: main_models.DeactiveAggregateConfigRulesRequest,
@@ -6555,6 +6657,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_report_from_template_with_options_async(request, runtime)
 
+    def get_report_template_with_options(
+        self,
+        request: main_models.GetReportTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetReportTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.report_template_id):
+            query['ReportTemplateId'] = request.report_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetReportTemplate',
+            version = '2020-09-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetReportTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_report_template_with_options_async(
+        self,
+        request: main_models.GetReportTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetReportTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.report_template_id):
+            query['ReportTemplateId'] = request.report_template_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetReportTemplate',
+            version = '2020-09-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetReportTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_report_template(
+        self,
+        request: main_models.GetReportTemplateRequest,
+    ) -> main_models.GetReportTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.get_report_template_with_options(request, runtime)
+
+    async def get_report_template_async(
+        self,
+        request: main_models.GetReportTemplateRequest,
+    ) -> main_models.GetReportTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.get_report_template_with_options_async(request, runtime)
+
     def get_resource_compliance_by_config_rule_with_options(
         self,
         request: main_models.GetResourceComplianceByConfigRuleRequest,
@@ -9879,6 +10051,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_remediations_with_options_async(request, runtime)
 
+    def list_report_templates_with_options(
+        self,
+        request: main_models.ListReportTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListReportTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListReportTemplates',
+            version = '2020-09-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListReportTemplatesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_report_templates_with_options_async(
+        self,
+        request: main_models.ListReportTemplatesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListReportTemplatesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['Keyword'] = request.keyword
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListReportTemplates',
+            version = '2020-09-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListReportTemplatesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_report_templates(
+        self,
+        request: main_models.ListReportTemplatesRequest,
+    ) -> main_models.ListReportTemplatesResponse:
+        runtime = RuntimeOptions()
+        return self.list_report_templates_with_options(request, runtime)
+
+    async def list_report_templates_async(
+        self,
+        request: main_models.ListReportTemplatesRequest,
+    ) -> main_models.ListReportTemplatesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_report_templates_with_options_async(request, runtime)
+
     def list_resource_evaluation_results_with_options(
         self,
         request: main_models.ListResourceEvaluationResultsRequest,
@@ -12664,3 +12914,109 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateRemediationResponse:
         runtime = RuntimeOptions()
         return await self.update_remediation_with_options_async(request, runtime)
+
+    def update_report_template_with_options(
+        self,
+        tmp_req: main_models.UpdateReportTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateReportTemplateResponse:
+        tmp_req.validate()
+        request = main_models.UpdateReportTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.report_scope):
+            request.report_scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.report_scope, 'ReportScope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.report_file_formats):
+            body['ReportFileFormats'] = request.report_file_formats
+        if not DaraCore.is_null(request.report_granularity):
+            body['ReportGranularity'] = request.report_granularity
+        if not DaraCore.is_null(request.report_language):
+            body['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.report_scope_shrink):
+            body['ReportScope'] = request.report_scope_shrink
+        if not DaraCore.is_null(request.report_template_description):
+            body['ReportTemplateDescription'] = request.report_template_description
+        if not DaraCore.is_null(request.report_template_id):
+            body['ReportTemplateId'] = request.report_template_id
+        if not DaraCore.is_null(request.report_template_name):
+            body['ReportTemplateName'] = request.report_template_name
+        if not DaraCore.is_null(request.subscription_frequency):
+            body['SubscriptionFrequency'] = request.subscription_frequency
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateReportTemplate',
+            version = '2020-09-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateReportTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_report_template_with_options_async(
+        self,
+        tmp_req: main_models.UpdateReportTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateReportTemplateResponse:
+        tmp_req.validate()
+        request = main_models.UpdateReportTemplateShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.report_scope):
+            request.report_scope_shrink = Utils.array_to_string_with_specified_style(tmp_req.report_scope, 'ReportScope', 'json')
+        body = {}
+        if not DaraCore.is_null(request.report_file_formats):
+            body['ReportFileFormats'] = request.report_file_formats
+        if not DaraCore.is_null(request.report_granularity):
+            body['ReportGranularity'] = request.report_granularity
+        if not DaraCore.is_null(request.report_language):
+            body['ReportLanguage'] = request.report_language
+        if not DaraCore.is_null(request.report_scope_shrink):
+            body['ReportScope'] = request.report_scope_shrink
+        if not DaraCore.is_null(request.report_template_description):
+            body['ReportTemplateDescription'] = request.report_template_description
+        if not DaraCore.is_null(request.report_template_id):
+            body['ReportTemplateId'] = request.report_template_id
+        if not DaraCore.is_null(request.report_template_name):
+            body['ReportTemplateName'] = request.report_template_name
+        if not DaraCore.is_null(request.subscription_frequency):
+            body['SubscriptionFrequency'] = request.subscription_frequency
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateReportTemplate',
+            version = '2020-09-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateReportTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_report_template(
+        self,
+        request: main_models.UpdateReportTemplateRequest,
+    ) -> main_models.UpdateReportTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.update_report_template_with_options(request, runtime)
+
+    async def update_report_template_async(
+        self,
+        request: main_models.UpdateReportTemplateRequest,
+    ) -> main_models.UpdateReportTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.update_report_template_with_options_async(request, runtime)

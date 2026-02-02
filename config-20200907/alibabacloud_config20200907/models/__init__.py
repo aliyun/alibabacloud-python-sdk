@@ -59,6 +59,10 @@ from ._create_config_rule_response import CreateConfigRuleResponse
 from ._create_remediation_request import CreateRemediationRequest
 from ._create_remediation_response_body import CreateRemediationResponseBody
 from ._create_remediation_response import CreateRemediationResponse
+from ._create_report_template_request import CreateReportTemplateRequest
+from ._create_report_template_shrink_request import CreateReportTemplateShrinkRequest
+from ._create_report_template_response_body import CreateReportTemplateResponseBody
+from ._create_report_template_response import CreateReportTemplateResponse
 from ._deactive_aggregate_config_rules_request import DeactiveAggregateConfigRulesRequest
 from ._deactive_aggregate_config_rules_response_body import DeactiveAggregateConfigRulesResponseBody
 from ._deactive_aggregate_config_rules_response import DeactiveAggregateConfigRulesResponse
@@ -253,6 +257,9 @@ from ._get_remediation_template_response import GetRemediationTemplateResponse
 from ._get_report_from_template_request import GetReportFromTemplateRequest
 from ._get_report_from_template_response_body import GetReportFromTemplateResponseBody
 from ._get_report_from_template_response import GetReportFromTemplateResponse
+from ._get_report_template_request import GetReportTemplateRequest
+from ._get_report_template_response_body import GetReportTemplateResponseBody
+from ._get_report_template_response import GetReportTemplateResponse
 from ._get_resource_compliance_by_config_rule_request import GetResourceComplianceByConfigRuleRequest
 from ._get_resource_compliance_by_config_rule_response_body import GetResourceComplianceByConfigRuleResponseBody
 from ._get_resource_compliance_by_config_rule_response import GetResourceComplianceByConfigRuleResponse
@@ -377,6 +384,9 @@ from ._list_remediation_templates_response import ListRemediationTemplatesRespon
 from ._list_remediations_request import ListRemediationsRequest
 from ._list_remediations_response_body import ListRemediationsResponseBody
 from ._list_remediations_response import ListRemediationsResponse
+from ._list_report_templates_request import ListReportTemplatesRequest
+from ._list_report_templates_response_body import ListReportTemplatesResponseBody
+from ._list_report_templates_response import ListReportTemplatesResponse
 from ._list_resource_evaluation_results_request import ListResourceEvaluationResultsRequest
 from ._list_resource_evaluation_results_response_body import ListResourceEvaluationResultsResponseBody
 from ._list_resource_evaluation_results_response import ListResourceEvaluationResultsResponse
@@ -471,6 +481,10 @@ from ._update_integrated_service_status_response import UpdateIntegratedServiceS
 from ._update_remediation_request import UpdateRemediationRequest
 from ._update_remediation_response_body import UpdateRemediationResponseBody
 from ._update_remediation_response import UpdateRemediationResponse
+from ._update_report_template_request import UpdateReportTemplateRequest
+from ._update_report_template_shrink_request import UpdateReportTemplateShrinkRequest
+from ._update_report_template_response_body import UpdateReportTemplateResponseBody
+from ._update_report_template_response import UpdateReportTemplateResponse
 from ._active_aggregate_config_rules_response_body import ActiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList
 from ._active_aggregate_config_rules_response_body import ActiveAggregateConfigRulesResponseBodyOperateRuleResult
 from ._active_config_rules_response_body import ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList
@@ -505,6 +519,7 @@ from ._create_config_rule_request import CreateConfigRuleRequestTag
 from ._create_config_rule_request import CreateConfigRuleRequestTagsScope
 from ._create_config_rule_shrink_request import CreateConfigRuleShrinkRequestExcludeTagsScope
 from ._create_config_rule_shrink_request import CreateConfigRuleShrinkRequestTagsScope
+from ._create_report_template_request import CreateReportTemplateRequestReportScope
 from ._deactive_aggregate_config_rules_response_body import DeactiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList
 from ._deactive_aggregate_config_rules_response_body import DeactiveAggregateConfigRulesResponseBodyOperateRuleResult
 from ._deactive_config_rules_response_body import DeactiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList
@@ -623,6 +638,8 @@ from ._get_managed_rule_response_body import GetManagedRuleResponseBodyManagedRu
 from ._get_managed_rule_response_body import GetManagedRuleResponseBodyManagedRule
 from ._get_remediation_template_response_body import GetRemediationTemplateResponseBodyRemediationTemplates
 from ._get_report_from_template_response_body import GetReportFromTemplateResponseBodyTemplateReport
+from ._get_report_template_response_body import GetReportTemplateResponseBodyReportTemplateReportScope
+from ._get_report_template_response_body import GetReportTemplateResponseBodyReportTemplate
 from ._get_resource_compliance_by_config_rule_response_body import GetResourceComplianceByConfigRuleResponseBodyComplianceResultCompliances
 from ._get_resource_compliance_by_config_rule_response_body import GetResourceComplianceByConfigRuleResponseBodyComplianceResult
 from ._get_resource_compliance_by_pack_response_body import GetResourceComplianceByPackResponseBodyResourceComplianceResult
@@ -710,6 +727,8 @@ from ._list_remediation_executions_response_body import ListRemediationExecution
 from ._list_remediation_executions_response_body import ListRemediationExecutionsResponseBodyRemediationExecutionData
 from ._list_remediation_templates_response_body import ListRemediationTemplatesResponseBodyRemediationTemplates
 from ._list_remediations_response_body import ListRemediationsResponseBodyRemediations
+from ._list_report_templates_response_body import ListReportTemplatesResponseBodyReportTemplateListReportScope
+from ._list_report_templates_response_body import ListReportTemplatesResponseBodyReportTemplateList
 from ._list_resource_evaluation_results_response_body import ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier
 from ._list_resource_evaluation_results_response_body import ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier
 from ._list_resource_evaluation_results_response_body import ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList
@@ -754,6 +773,7 @@ from ._update_config_rule_request import UpdateConfigRuleRequestTagsScope
 from ._update_config_rule_shrink_request import UpdateConfigRuleShrinkRequestExcludeTagsScope
 from ._update_config_rule_shrink_request import UpdateConfigRuleShrinkRequestTagsScope
 from ._update_configuration_recorder_response_body import UpdateConfigurationRecorderResponseBodyConfigurationRecorder
+from ._update_report_template_request import UpdateReportTemplateRequestReportScope
 
 __all__ = [
     ResourceDirectoryFolderNode,
@@ -813,6 +833,10 @@ __all__ = [
     CreateRemediationRequest,
     CreateRemediationResponseBody,
     CreateRemediationResponse,
+    CreateReportTemplateRequest,
+    CreateReportTemplateShrinkRequest,
+    CreateReportTemplateResponseBody,
+    CreateReportTemplateResponse,
     DeactiveAggregateConfigRulesRequest,
     DeactiveAggregateConfigRulesResponseBody,
     DeactiveAggregateConfigRulesResponse,
@@ -1007,6 +1031,9 @@ __all__ = [
     GetReportFromTemplateRequest,
     GetReportFromTemplateResponseBody,
     GetReportFromTemplateResponse,
+    GetReportTemplateRequest,
+    GetReportTemplateResponseBody,
+    GetReportTemplateResponse,
     GetResourceComplianceByConfigRuleRequest,
     GetResourceComplianceByConfigRuleResponseBody,
     GetResourceComplianceByConfigRuleResponse,
@@ -1131,6 +1158,9 @@ __all__ = [
     ListRemediationsRequest,
     ListRemediationsResponseBody,
     ListRemediationsResponse,
+    ListReportTemplatesRequest,
+    ListReportTemplatesResponseBody,
+    ListReportTemplatesResponse,
     ListResourceEvaluationResultsRequest,
     ListResourceEvaluationResultsResponseBody,
     ListResourceEvaluationResultsResponse,
@@ -1225,6 +1255,10 @@ __all__ = [
     UpdateRemediationRequest,
     UpdateRemediationResponseBody,
     UpdateRemediationResponse,
+    UpdateReportTemplateRequest,
+    UpdateReportTemplateShrinkRequest,
+    UpdateReportTemplateResponseBody,
+    UpdateReportTemplateResponse,
     ActiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList,
     ActiveAggregateConfigRulesResponseBodyOperateRuleResult,
     ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList,
@@ -1259,6 +1293,7 @@ __all__ = [
     CreateConfigRuleRequestTagsScope,
     CreateConfigRuleShrinkRequestExcludeTagsScope,
     CreateConfigRuleShrinkRequestTagsScope,
+    CreateReportTemplateRequestReportScope,
     DeactiveAggregateConfigRulesResponseBodyOperateRuleResultOperateRuleItemList,
     DeactiveAggregateConfigRulesResponseBodyOperateRuleResult,
     DeactiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList,
@@ -1377,6 +1412,8 @@ __all__ = [
     GetManagedRuleResponseBodyManagedRule,
     GetRemediationTemplateResponseBodyRemediationTemplates,
     GetReportFromTemplateResponseBodyTemplateReport,
+    GetReportTemplateResponseBodyReportTemplateReportScope,
+    GetReportTemplateResponseBodyReportTemplate,
     GetResourceComplianceByConfigRuleResponseBodyComplianceResultCompliances,
     GetResourceComplianceByConfigRuleResponseBodyComplianceResult,
     GetResourceComplianceByPackResponseBodyResourceComplianceResult,
@@ -1464,6 +1501,8 @@ __all__ = [
     ListRemediationExecutionsResponseBodyRemediationExecutionData,
     ListRemediationTemplatesResponseBodyRemediationTemplates,
     ListRemediationsResponseBodyRemediations,
+    ListReportTemplatesResponseBodyReportTemplateListReportScope,
+    ListReportTemplatesResponseBodyReportTemplateList,
     ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier,
     ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifier,
     ListResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultList,
@@ -1507,5 +1546,6 @@ __all__ = [
     UpdateConfigRuleRequestTagsScope,
     UpdateConfigRuleShrinkRequestExcludeTagsScope,
     UpdateConfigRuleShrinkRequestTagsScope,
-    UpdateConfigurationRecorderResponseBodyConfigurationRecorder
+    UpdateConfigurationRecorderResponseBodyConfigurationRecorder,
+    UpdateReportTemplateRequestReportScope
 ]
