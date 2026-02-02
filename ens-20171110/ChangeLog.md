@@ -1,3 +1,7 @@
+2026-02-02 Version: 10.1.0
+- Support API ModifyAICInstanceType.
+
+
 2026-01-30 Version: 10.0.2
 - Generated python 2017-11-10 for Ens.
 

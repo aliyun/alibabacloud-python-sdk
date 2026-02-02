@@ -744,6 +744,9 @@ from ._list_tag_resources_response import ListTagResourcesResponse
 from ._manage_aiclogin_request import ManageAICLoginRequest
 from ._manage_aiclogin_response_body import ManageAICLoginResponseBody
 from ._manage_aiclogin_response import ManageAICLoginResponse
+from ._modify_aicinstance_type_request import ModifyAICInstanceTypeRequest
+from ._modify_aicinstance_type_response_body import ModifyAICInstanceTypeResponseBody
+from ._modify_aicinstance_type_response import ModifyAICInstanceTypeResponse
 from ._modify_cluster_addon_request import ModifyClusterAddonRequest
 from ._modify_cluster_addon_shrink_request import ModifyClusterAddonShrinkRequest
 from ._modify_cluster_addon_response_body import ModifyClusterAddonResponseBody
@@ -2249,6 +2252,9 @@ __all__ = [
     ManageAICLoginRequest,
     ManageAICLoginResponseBody,
     ManageAICLoginResponse,
+    ModifyAICInstanceTypeRequest,
+    ModifyAICInstanceTypeResponseBody,
+    ModifyAICInstanceTypeResponse,
     ModifyClusterAddonRequest,
     ModifyClusterAddonShrinkRequest,
     ModifyClusterAddonResponseBody,
