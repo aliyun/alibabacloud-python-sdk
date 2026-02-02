@@ -486,6 +486,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_application_with_options_async(request, runtime)
 
+    def get_data_channel_credential_with_options(
+        self,
+        request: main_models.GetDataChannelCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataChannelCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            query['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataChannelCredential',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataChannelCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_data_channel_credential_with_options_async(
+        self,
+        request: main_models.GetDataChannelCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDataChannelCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.business_unit_id):
+            query['BusinessUnitId'] = request.business_unit_id
+        if not DaraCore.is_null(request.device_id):
+            query['DeviceId'] = request.device_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataChannelCredential',
+            version = '2025-01-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDataChannelCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_data_channel_credential(
+        self,
+        request: main_models.GetDataChannelCredentialRequest,
+    ) -> main_models.GetDataChannelCredentialResponse:
+        runtime = RuntimeOptions()
+        return self.get_data_channel_credential_with_options(request, runtime)
+
+    async def get_data_channel_credential_async(
+        self,
+        request: main_models.GetDataChannelCredentialRequest,
+    ) -> main_models.GetDataChannelCredentialResponse:
+        runtime = RuntimeOptions()
+        return await self.get_data_channel_credential_with_options_async(request, runtime)
+
     def list_applications_with_options(
         self,
         request: main_models.ListApplicationsRequest,

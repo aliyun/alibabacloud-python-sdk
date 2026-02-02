@@ -18,6 +18,9 @@ from ._delete_application_response import DeleteApplicationResponse
 from ._get_application_request import GetApplicationRequest
 from ._get_application_response_body import GetApplicationResponseBody
 from ._get_application_response import GetApplicationResponse
+from ._get_data_channel_credential_request import GetDataChannelCredentialRequest
+from ._get_data_channel_credential_response_body import GetDataChannelCredentialResponseBody
+from ._get_data_channel_credential_response import GetDataChannelCredentialResponse
 from ._list_applications_request import ListApplicationsRequest
 from ._list_applications_response_body import ListApplicationsResponseBody
 from ._list_applications_response import ListApplicationsResponse
@@ -53,6 +56,7 @@ from ._get_application_response_body import GetApplicationResponseBodyDataPublis
 from ._get_application_response_body import GetApplicationResponseBodyDataPublishedVersionTranscriberConfig
 from ._get_application_response_body import GetApplicationResponseBodyDataPublishedVersion
 from ._get_application_response_body import GetApplicationResponseBodyData
+from ._get_data_channel_credential_response_body import GetDataChannelCredentialResponseBodyData
 from ._list_applications_response_body import ListApplicationsResponseBodyDataApplications
 from ._list_applications_response_body import ListApplicationsResponseBodyData
 from ._update_application_version_request import UpdateApplicationVersionRequestInteractionConfigSilenceDetectionConfig
@@ -79,6 +83,9 @@ __all__ = [
     GetApplicationRequest,
     GetApplicationResponseBody,
     GetApplicationResponse,
+    GetDataChannelCredentialRequest,
+    GetDataChannelCredentialResponseBody,
+    GetDataChannelCredentialResponse,
     ListApplicationsRequest,
     ListApplicationsResponseBody,
     ListApplicationsResponse,
@@ -114,6 +121,7 @@ __all__ = [
     GetApplicationResponseBodyDataPublishedVersionTranscriberConfig,
     GetApplicationResponseBodyDataPublishedVersion,
     GetApplicationResponseBodyData,
+    GetDataChannelCredentialResponseBodyData,
     ListApplicationsResponseBodyDataApplications,
     ListApplicationsResponseBodyData,
     UpdateApplicationVersionRequestInteractionConfigSilenceDetectionConfig,
