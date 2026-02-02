@@ -9,6 +9,7 @@ from ._sink_api_destination_parameters import SinkApiDestinationParameters
 from ._sink_bai_lian_parameters import SinkBaiLianParameters
 from ._sink_data_works_trigger_parameters import SinkDataWorksTriggerParameters
 from ._sink_https_parameters import SinkHttpsParameters
+from ._sink_mqttparameters import SinkMQTTParameters
 from ._sink_ossparameters import SinkOSSParameters
 from ._sink_rabbit_mqmeta_parameters import SinkRabbitMQMetaParameters
 from ._sink_rabbit_mqmsg_sync_parameters import SinkRabbitMQMsgSyncParameters
@@ -186,6 +187,9 @@ from ._sink_bai_lian_parameters import SinkBaiLianParametersOp
 from ._sink_bai_lian_parameters import SinkBaiLianParametersPartition
 from ._sink_https_parameters import SinkHttpsParametersBody
 from ._sink_https_parameters import SinkHttpsParametersURL
+from ._sink_mqttparameters import SinkMQTTParametersMqtt5UserProperty
+from ._sink_mqttparameters import SinkMQTTParametersPayload
+from ._sink_mqttparameters import SinkMQTTParametersSubTopic
 from ._sink_ossparameters import SinkOSSParametersContentTransform
 from ._sink_rabbit_mqmsg_sync_parameters import SinkRabbitMQMsgSyncParametersBody
 from ._sink_rabbit_mqmsg_sync_parameters import SinkRabbitMQMsgSyncParametersExchange
@@ -904,6 +908,7 @@ __all__ = [
     SinkBaiLianParameters,
     SinkDataWorksTriggerParameters,
     SinkHttpsParameters,
+    SinkMQTTParameters,
     SinkOSSParameters,
     SinkRabbitMQMetaParameters,
     SinkRabbitMQMsgSyncParameters,
@@ -1081,6 +1086,9 @@ __all__ = [
     SinkBaiLianParametersPartition,
     SinkHttpsParametersBody,
     SinkHttpsParametersURL,
+    SinkMQTTParametersMqtt5UserProperty,
+    SinkMQTTParametersPayload,
+    SinkMQTTParametersSubTopic,
     SinkOSSParametersContentTransform,
     SinkRabbitMQMsgSyncParametersBody,
     SinkRabbitMQMsgSyncParametersExchange,

@@ -1696,6 +1696,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(DaraModel):
         sink_https_parameters: main_models.SinkHttpsParameters = None,
         sink_kafka_parameters: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkKafkaParameters = None,
         sink_mnsparameters: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParameters = None,
+        sink_mqttparameters: main_models.SinkMQTTParameters = None,
         sink_ossparameters: main_models.SinkOSSParameters = None,
         sink_open_source_rabbit_mqparameters: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkOpenSourceRabbitMQParameters = None,
         sink_rabbit_mqmeta_parameters: main_models.SinkRabbitMQMetaParameters = None,
@@ -1722,6 +1723,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(DaraModel):
         self.sink_kafka_parameters = sink_kafka_parameters
         # The parameters that are returned if MNS is specified as the event target.
         self.sink_mnsparameters = sink_mnsparameters
+        self.sink_mqttparameters = sink_mqttparameters
         self.sink_ossparameters = sink_ossparameters
         self.sink_open_source_rabbit_mqparameters = sink_open_source_rabbit_mqparameters
         self.sink_rabbit_mqmeta_parameters = sink_rabbit_mqmeta_parameters
@@ -1761,6 +1763,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(DaraModel):
             self.sink_kafka_parameters.validate()
         if self.sink_mnsparameters:
             self.sink_mnsparameters.validate()
+        if self.sink_mqttparameters:
+            self.sink_mqttparameters.validate()
         if self.sink_ossparameters:
             self.sink_ossparameters.validate()
         if self.sink_open_source_rabbit_mqparameters:
@@ -1821,6 +1825,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(DaraModel):
 
         if self.sink_mnsparameters is not None:
             result['SinkMNSParameters'] = self.sink_mnsparameters.to_map()
+
+        if self.sink_mqttparameters is not None:
+            result['SinkMQTTParameters'] = self.sink_mqttparameters.to_map()
 
         if self.sink_ossparameters is not None:
             result['SinkOSSParameters'] = self.sink_ossparameters.to_map()
@@ -1901,6 +1908,10 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(DaraModel):
         if m.get('SinkMNSParameters') is not None:
             temp_model = main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkMNSParameters()
             self.sink_mnsparameters = temp_model.from_map(m.get('SinkMNSParameters'))
+
+        if m.get('SinkMQTTParameters') is not None:
+            temp_model = main_models.SinkMQTTParameters()
+            self.sink_mqttparameters = temp_model.from_map(m.get('SinkMQTTParameters'))
 
         if m.get('SinkOSSParameters') is not None:
             temp_model = main_models.SinkOSSParameters()

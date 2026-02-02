@@ -1781,6 +1781,7 @@ class CreateEventStreamingRequestSink(DaraModel):
         sink_https_parameters: main_models.SinkHttpsParameters = None,
         sink_kafka_parameters: main_models.CreateEventStreamingRequestSinkSinkKafkaParameters = None,
         sink_mnsparameters: main_models.CreateEventStreamingRequestSinkSinkMNSParameters = None,
+        sink_mqttparameters: main_models.SinkMQTTParameters = None,
         sink_ossparameters: main_models.SinkOSSParameters = None,
         sink_open_source_rabbit_mqparameters: main_models.CreateEventStreamingRequestSinkSinkOpenSourceRabbitMQParameters = None,
         sink_prometheus_parameters: main_models.CreateEventStreamingRequestSinkSinkPrometheusParameters = None,
@@ -1811,6 +1812,7 @@ class CreateEventStreamingRequestSink(DaraModel):
         self.sink_kafka_parameters = sink_kafka_parameters
         # The parameters that are configured if you specify MNS as the event target.
         self.sink_mnsparameters = sink_mnsparameters
+        self.sink_mqttparameters = sink_mqttparameters
         self.sink_ossparameters = sink_ossparameters
         self.sink_open_source_rabbit_mqparameters = sink_open_source_rabbit_mqparameters
         # The parameters that are configured if you specify Managed Service for Prometheus as the event target.
@@ -1856,6 +1858,8 @@ class CreateEventStreamingRequestSink(DaraModel):
             self.sink_kafka_parameters.validate()
         if self.sink_mnsparameters:
             self.sink_mnsparameters.validate()
+        if self.sink_mqttparameters:
+            self.sink_mqttparameters.validate()
         if self.sink_ossparameters:
             self.sink_ossparameters.validate()
         if self.sink_open_source_rabbit_mqparameters:
@@ -1924,6 +1928,9 @@ class CreateEventStreamingRequestSink(DaraModel):
 
         if self.sink_mnsparameters is not None:
             result['SinkMNSParameters'] = self.sink_mnsparameters.to_map()
+
+        if self.sink_mqttparameters is not None:
+            result['SinkMQTTParameters'] = self.sink_mqttparameters.to_map()
 
         if self.sink_ossparameters is not None:
             result['SinkOSSParameters'] = self.sink_ossparameters.to_map()
@@ -2015,6 +2022,10 @@ class CreateEventStreamingRequestSink(DaraModel):
         if m.get('SinkMNSParameters') is not None:
             temp_model = main_models.CreateEventStreamingRequestSinkSinkMNSParameters()
             self.sink_mnsparameters = temp_model.from_map(m.get('SinkMNSParameters'))
+
+        if m.get('SinkMQTTParameters') is not None:
+            temp_model = main_models.SinkMQTTParameters()
+            self.sink_mqttparameters = temp_model.from_map(m.get('SinkMQTTParameters'))
 
         if m.get('SinkOSSParameters') is not None:
             temp_model = main_models.SinkOSSParameters()
