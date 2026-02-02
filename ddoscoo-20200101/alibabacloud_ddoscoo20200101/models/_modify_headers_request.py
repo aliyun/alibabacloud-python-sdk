@@ -9,6 +9,7 @@ class ModifyHeadersRequest(DaraModel):
         self,
         custom_headers: str = None,
         domain: str = None,
+        embedded_headers: str = None,
         resource_group_id: str = None,
     ):
         # The key-value pair of the custom header. The key specifies the header name, and the value specifies the header value. You can specify up to five key-value pairs. The key-value pairs can be up to 200 characters in length.
@@ -33,6 +34,7 @@ class ModifyHeadersRequest(DaraModel):
         # 
         # This parameter is required.
         self.domain = domain
+        self.embedded_headers = embedded_headers
         # The ID of the resource group to which the instance belongs.
         # 
         # > 
@@ -56,6 +58,9 @@ class ModifyHeadersRequest(DaraModel):
         if self.domain is not None:
             result['Domain'] = self.domain
 
+        if self.embedded_headers is not None:
+            result['EmbeddedHeaders'] = self.embedded_headers
+
         if self.resource_group_id is not None:
             result['ResourceGroupId'] = self.resource_group_id
 
@@ -68,6 +73,9 @@ class ModifyHeadersRequest(DaraModel):
 
         if m.get('Domain') is not None:
             self.domain = m.get('Domain')
+
+        if m.get('EmbeddedHeaders') is not None:
+            self.embedded_headers = m.get('EmbeddedHeaders')
 
         if m.get('ResourceGroupId') is not None:
             self.resource_group_id = m.get('ResourceGroupId')

@@ -9,10 +9,12 @@ class DescribeHeadersResponseBody(DaraModel):
     def __init__(
         self,
         custom_header: main_models.DescribeHeadersResponseBodyCustomHeader = None,
+        embedded_headers: str = None,
         request_id: str = None,
     ):
         # The information about the custom header.
         self.custom_header = custom_header
+        self.embedded_headers = embedded_headers
         # The ID of the request, which is used to locate and troubleshoot issues.
         self.request_id = request_id
 
@@ -28,6 +30,9 @@ class DescribeHeadersResponseBody(DaraModel):
         if self.custom_header is not None:
             result['CustomHeader'] = self.custom_header.to_map()
 
+        if self.embedded_headers is not None:
+            result['EmbeddedHeaders'] = self.embedded_headers
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -38,6 +43,9 @@ class DescribeHeadersResponseBody(DaraModel):
         if m.get('CustomHeader') is not None:
             temp_model = main_models.DescribeHeadersResponseBodyCustomHeader()
             self.custom_header = temp_model.from_map(m.get('CustomHeader'))
+
+        if m.get('EmbeddedHeaders') is not None:
+            self.embedded_headers = m.get('EmbeddedHeaders')
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')

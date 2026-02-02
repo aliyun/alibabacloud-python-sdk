@@ -1,3 +1,8 @@
+2026-02-02 Version: 4.0.1
+- Update API DescribeHeaders: add response parameters Body.EmbeddedHeaders.
+- Update API ModifyHeaders: add request parameters EmbeddedHeaders.
+
+
 2026-01-26 Version: 4.0.0
 - Update API DescribeWebCCRulesV2: update response parameters Body.WebCCRules.$.RuleDetail.Condition.$.ContentList' type has changed.
 

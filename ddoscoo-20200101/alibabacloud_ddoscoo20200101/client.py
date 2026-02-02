@@ -13065,6 +13065,8 @@ class Client(OpenApiClient):
             query['CustomHeaders'] = request.custom_headers
         if not DaraCore.is_null(request.domain):
             query['Domain'] = request.domain
+        if not DaraCore.is_null(request.embedded_headers):
+            query['EmbeddedHeaders'] = request.embedded_headers
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         req = open_api_util_models.OpenApiRequest(
@@ -13097,6 +13099,8 @@ class Client(OpenApiClient):
             query['CustomHeaders'] = request.custom_headers
         if not DaraCore.is_null(request.domain):
             query['Domain'] = request.domain
+        if not DaraCore.is_null(request.embedded_headers):
+            query['EmbeddedHeaders'] = request.embedded_headers
         if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
         req = open_api_util_models.OpenApiRequest(
