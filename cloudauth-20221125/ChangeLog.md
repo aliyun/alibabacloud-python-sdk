@@ -1,3 +1,7 @@
+2026-02-02 Version: 1.3.0
+- Support API EntElementVerifyPRO.
+
+
 2025-02-28 Version: 1.2.0
 - Support API EntElementVerifyV2.
 
