@@ -127,6 +127,7 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         status: str = None,
         type: str = None,
         v_switch_id: str = None,
+        vmnc_learn: bool = None,
     ):
         # The time when the ENI was created. Specify the time in the ISO 8601 standard in the yyyy-MM-ddThh:mmZ format. The time is displayed in UTC.
         self.creation_time = creation_time
@@ -172,6 +173,7 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         self.type = type
         # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
+        self.vmnc_learn = vmnc_learn
 
     def validate(self):
         if self.ipv_6sets:
@@ -234,6 +236,9 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
 
+        if self.vmnc_learn is not None:
+            result['VmncLearn'] = self.vmnc_learn
+
         return result
 
     def from_map(self, m: dict = None):
@@ -288,6 +293,9 @@ class DescribeNetworkInterfacesResponseBodyNetworkInterfaceSetsNetworkInterfaceS
 
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')
+
+        if m.get('VmncLearn') is not None:
+            self.vmnc_learn = m.get('VmncLearn')
 
         return self
 

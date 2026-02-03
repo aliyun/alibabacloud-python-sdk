@@ -1,3 +1,7 @@
+2026-02-03 Version: 10.1.1
+- Update API DescribeNetworkInterfaces: add response parameters Body.NetworkInterfaceSets.$.VmncLearn.
+
+
 2026-02-02 Version: 10.1.0
 - Support API ModifyAICInstanceType.
 
