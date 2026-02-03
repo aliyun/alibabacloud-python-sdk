@@ -21,6 +21,7 @@ class DescribeTrFirewallsV2DetailResponseBody(DaraModel):
         region_no: str = None,
         request_id: str = None,
         route_mode: str = None,
+        tr_attachment_id: str = None,
         tr_attachment_master_cidr: str = None,
         tr_attachment_master_zone: str = None,
         tr_attachment_slave_cidr: str = None,
@@ -72,6 +73,7 @@ class DescribeTrFirewallsV2DetailResponseBody(DaraModel):
         # *   **managed**: automatic mode
         # *   **manual**: manual mode
         self.route_mode = route_mode
+        self.tr_attachment_id = tr_attachment_id
         # The primary subnet CIDR block that the VPC uses to connect to the transit router in automatic mode.
         self.tr_attachment_master_cidr = tr_attachment_master_cidr
         # In automatic mode, the primary availability zone of the subnet in the firewall VPC used for connecting to TR.
@@ -133,6 +135,9 @@ class DescribeTrFirewallsV2DetailResponseBody(DaraModel):
         if self.route_mode is not None:
             result['RouteMode'] = self.route_mode
 
+        if self.tr_attachment_id is not None:
+            result['TrAttachmentId'] = self.tr_attachment_id
+
         if self.tr_attachment_master_cidr is not None:
             result['TrAttachmentMasterCidr'] = self.tr_attachment_master_cidr
 
@@ -193,6 +198,9 @@ class DescribeTrFirewallsV2DetailResponseBody(DaraModel):
 
         if m.get('RouteMode') is not None:
             self.route_mode = m.get('RouteMode')
+
+        if m.get('TrAttachmentId') is not None:
+            self.tr_attachment_id = m.get('TrAttachmentId')
 
         if m.get('TrAttachmentMasterCidr') is not None:
             self.tr_attachment_master_cidr = m.get('TrAttachmentMasterCidr')

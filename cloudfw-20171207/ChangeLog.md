@@ -1,3 +1,7 @@
+2026-02-03 Version: 8.0.2
+- Update API DescribeTrFirewallsV2Detail: add response parameters Body.TrAttachmentId.
+
+
 2026-01-28 Version: 8.0.1
 - Generated python 2017-12-07 for Cloudfw.
 
