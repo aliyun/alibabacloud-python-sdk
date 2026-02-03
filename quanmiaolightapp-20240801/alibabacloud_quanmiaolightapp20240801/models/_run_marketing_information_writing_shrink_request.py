@@ -2,17 +2,15 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import Dict
-
 from darabonba.model import DaraModel
 
-class RunMarketingInformationWritingRequest(DaraModel):
+class RunMarketingInformationWritingShrinkRequest(DaraModel):
     def __init__(
         self,
         api_key: str = None,
         custom_limitation: str = None,
         custom_prompt: str = None,
-        ext_parameters: Dict[str, str] = None,
+        ext_parameters_shrink: str = None,
         generate_count: str = None,
         input_example: str = None,
         keywords: str = None,
@@ -28,7 +26,7 @@ class RunMarketingInformationWritingRequest(DaraModel):
         self.api_key = api_key
         self.custom_limitation = custom_limitation
         self.custom_prompt = custom_prompt
-        self.ext_parameters = ext_parameters
+        self.ext_parameters_shrink = ext_parameters_shrink
         self.generate_count = generate_count
         self.input_example = input_example
         self.keywords = keywords
@@ -58,8 +56,8 @@ class RunMarketingInformationWritingRequest(DaraModel):
         if self.custom_prompt is not None:
             result['customPrompt'] = self.custom_prompt
 
-        if self.ext_parameters is not None:
-            result['extParameters'] = self.ext_parameters
+        if self.ext_parameters_shrink is not None:
+            result['extParameters'] = self.ext_parameters_shrink
 
         if self.generate_count is not None:
             result['generateCount'] = self.generate_count
@@ -108,7 +106,7 @@ class RunMarketingInformationWritingRequest(DaraModel):
             self.custom_prompt = m.get('customPrompt')
 
         if m.get('extParameters') is not None:
-            self.ext_parameters = m.get('extParameters')
+            self.ext_parameters_shrink = m.get('extParameters')
 
         if m.get('generateCount') is not None:
             self.generate_count = m.get('generateCount')

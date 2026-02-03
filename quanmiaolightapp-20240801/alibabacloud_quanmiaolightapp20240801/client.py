@@ -2435,11 +2435,15 @@ class Client(OpenApiClient):
     def run_marketing_information_writing_with_sse(
         self,
         workspace_id: str,
-        request: main_models.RunMarketingInformationWritingRequest,
+        tmp_req: main_models.RunMarketingInformationWritingRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> Generator[main_models.RunMarketingInformationWritingResponse, None, None]:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.RunMarketingInformationWritingShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ext_parameters):
+            request.ext_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.ext_parameters, 'extParameters', 'json')
         body = {}
         if not DaraCore.is_null(request.api_key):
             body['apiKey'] = request.api_key
@@ -2447,14 +2451,28 @@ class Client(OpenApiClient):
             body['customLimitation'] = request.custom_limitation
         if not DaraCore.is_null(request.custom_prompt):
             body['customPrompt'] = request.custom_prompt
+        if not DaraCore.is_null(request.ext_parameters_shrink):
+            body['extParameters'] = request.ext_parameters_shrink
+        if not DaraCore.is_null(request.generate_count):
+            body['generateCount'] = request.generate_count
         if not DaraCore.is_null(request.input_example):
             body['inputExample'] = request.input_example
+        if not DaraCore.is_null(request.keywords):
+            body['keywords'] = request.keywords
+        if not DaraCore.is_null(request.language):
+            body['language'] = request.language
         if not DaraCore.is_null(request.model_id):
             body['modelId'] = request.model_id
+        if not DaraCore.is_null(request.other_requirements):
+            body['otherRequirements'] = request.other_requirements
         if not DaraCore.is_null(request.output_example):
             body['outputExample'] = request.output_example
+        if not DaraCore.is_null(request.prompt):
+            body['prompt'] = request.prompt
         if not DaraCore.is_null(request.source_material):
             body['sourceMaterial'] = request.source_material
+        if not DaraCore.is_null(request.word_count_range):
+            body['wordCountRange'] = request.word_count_range
         if not DaraCore.is_null(request.writing_type):
             body['writingType'] = request.writing_type
         req = open_api_util_models.OpenApiRequest(
@@ -2489,11 +2507,15 @@ class Client(OpenApiClient):
     async def run_marketing_information_writing_with_sse_async(
         self,
         workspace_id: str,
-        request: main_models.RunMarketingInformationWritingRequest,
+        tmp_req: main_models.RunMarketingInformationWritingRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> AsyncGenerator[main_models.RunMarketingInformationWritingResponse, None, None]:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.RunMarketingInformationWritingShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ext_parameters):
+            request.ext_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.ext_parameters, 'extParameters', 'json')
         body = {}
         if not DaraCore.is_null(request.api_key):
             body['apiKey'] = request.api_key
@@ -2501,14 +2523,28 @@ class Client(OpenApiClient):
             body['customLimitation'] = request.custom_limitation
         if not DaraCore.is_null(request.custom_prompt):
             body['customPrompt'] = request.custom_prompt
+        if not DaraCore.is_null(request.ext_parameters_shrink):
+            body['extParameters'] = request.ext_parameters_shrink
+        if not DaraCore.is_null(request.generate_count):
+            body['generateCount'] = request.generate_count
         if not DaraCore.is_null(request.input_example):
             body['inputExample'] = request.input_example
+        if not DaraCore.is_null(request.keywords):
+            body['keywords'] = request.keywords
+        if not DaraCore.is_null(request.language):
+            body['language'] = request.language
         if not DaraCore.is_null(request.model_id):
             body['modelId'] = request.model_id
+        if not DaraCore.is_null(request.other_requirements):
+            body['otherRequirements'] = request.other_requirements
         if not DaraCore.is_null(request.output_example):
             body['outputExample'] = request.output_example
+        if not DaraCore.is_null(request.prompt):
+            body['prompt'] = request.prompt
         if not DaraCore.is_null(request.source_material):
             body['sourceMaterial'] = request.source_material
+        if not DaraCore.is_null(request.word_count_range):
+            body['wordCountRange'] = request.word_count_range
         if not DaraCore.is_null(request.writing_type):
             body['writingType'] = request.writing_type
         req = open_api_util_models.OpenApiRequest(
@@ -2543,11 +2579,15 @@ class Client(OpenApiClient):
     def run_marketing_information_writing_with_options(
         self,
         workspace_id: str,
-        request: main_models.RunMarketingInformationWritingRequest,
+        tmp_req: main_models.RunMarketingInformationWritingRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.RunMarketingInformationWritingResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.RunMarketingInformationWritingShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ext_parameters):
+            request.ext_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.ext_parameters, 'extParameters', 'json')
         body = {}
         if not DaraCore.is_null(request.api_key):
             body['apiKey'] = request.api_key
@@ -2555,14 +2595,28 @@ class Client(OpenApiClient):
             body['customLimitation'] = request.custom_limitation
         if not DaraCore.is_null(request.custom_prompt):
             body['customPrompt'] = request.custom_prompt
+        if not DaraCore.is_null(request.ext_parameters_shrink):
+            body['extParameters'] = request.ext_parameters_shrink
+        if not DaraCore.is_null(request.generate_count):
+            body['generateCount'] = request.generate_count
         if not DaraCore.is_null(request.input_example):
             body['inputExample'] = request.input_example
+        if not DaraCore.is_null(request.keywords):
+            body['keywords'] = request.keywords
+        if not DaraCore.is_null(request.language):
+            body['language'] = request.language
         if not DaraCore.is_null(request.model_id):
             body['modelId'] = request.model_id
+        if not DaraCore.is_null(request.other_requirements):
+            body['otherRequirements'] = request.other_requirements
         if not DaraCore.is_null(request.output_example):
             body['outputExample'] = request.output_example
+        if not DaraCore.is_null(request.prompt):
+            body['prompt'] = request.prompt
         if not DaraCore.is_null(request.source_material):
             body['sourceMaterial'] = request.source_material
+        if not DaraCore.is_null(request.word_count_range):
+            body['wordCountRange'] = request.word_count_range
         if not DaraCore.is_null(request.writing_type):
             body['writingType'] = request.writing_type
         req = open_api_util_models.OpenApiRequest(
@@ -2588,11 +2642,15 @@ class Client(OpenApiClient):
     async def run_marketing_information_writing_with_options_async(
         self,
         workspace_id: str,
-        request: main_models.RunMarketingInformationWritingRequest,
+        tmp_req: main_models.RunMarketingInformationWritingRequest,
         headers: Dict[str, str],
         runtime: RuntimeOptions,
     ) -> main_models.RunMarketingInformationWritingResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.RunMarketingInformationWritingShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.ext_parameters):
+            request.ext_parameters_shrink = Utils.array_to_string_with_specified_style(tmp_req.ext_parameters, 'extParameters', 'json')
         body = {}
         if not DaraCore.is_null(request.api_key):
             body['apiKey'] = request.api_key
@@ -2600,14 +2658,28 @@ class Client(OpenApiClient):
             body['customLimitation'] = request.custom_limitation
         if not DaraCore.is_null(request.custom_prompt):
             body['customPrompt'] = request.custom_prompt
+        if not DaraCore.is_null(request.ext_parameters_shrink):
+            body['extParameters'] = request.ext_parameters_shrink
+        if not DaraCore.is_null(request.generate_count):
+            body['generateCount'] = request.generate_count
         if not DaraCore.is_null(request.input_example):
             body['inputExample'] = request.input_example
+        if not DaraCore.is_null(request.keywords):
+            body['keywords'] = request.keywords
+        if not DaraCore.is_null(request.language):
+            body['language'] = request.language
         if not DaraCore.is_null(request.model_id):
             body['modelId'] = request.model_id
+        if not DaraCore.is_null(request.other_requirements):
+            body['otherRequirements'] = request.other_requirements
         if not DaraCore.is_null(request.output_example):
             body['outputExample'] = request.output_example
+        if not DaraCore.is_null(request.prompt):
+            body['prompt'] = request.prompt
         if not DaraCore.is_null(request.source_material):
             body['sourceMaterial'] = request.source_material
+        if not DaraCore.is_null(request.word_count_range):
+            body['wordCountRange'] = request.word_count_range
         if not DaraCore.is_null(request.writing_type):
             body['writingType'] = request.writing_type
         req = open_api_util_models.OpenApiRequest(

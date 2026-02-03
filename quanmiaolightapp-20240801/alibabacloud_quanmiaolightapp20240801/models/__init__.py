@@ -68,6 +68,7 @@ from ._run_marketing_information_extract_shrink_request import RunMarketingInfor
 from ._run_marketing_information_extract_response_body import RunMarketingInformationExtractResponseBody
 from ._run_marketing_information_extract_response import RunMarketingInformationExtractResponse
 from ._run_marketing_information_writing_request import RunMarketingInformationWritingRequest
+from ._run_marketing_information_writing_shrink_request import RunMarketingInformationWritingShrinkRequest
 from ._run_marketing_information_writing_response_body import RunMarketingInformationWritingResponseBody
 from ._run_marketing_information_writing_response import RunMarketingInformationWritingResponse
 from ._run_network_content_audit_request import RunNetworkContentAuditRequest
@@ -281,6 +282,8 @@ from ._run_tag_mining_analysis_response_body import RunTagMiningAnalysisResponse
 from ._run_tag_mining_analysis_response_body import RunTagMiningAnalysisResponseBodyPayloadOutput
 from ._run_tag_mining_analysis_response_body import RunTagMiningAnalysisResponseBodyPayloadUsage
 from ._run_tag_mining_analysis_response_body import RunTagMiningAnalysisResponseBodyPayload
+from ._run_video_analysis_request import RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues
+from ._run_video_analysis_request import RunVideoAnalysisRequestAddDocumentParamDocumentMetadata
 from ._run_video_analysis_request import RunVideoAnalysisRequestAddDocumentParamDocument
 from ._run_video_analysis_request import RunVideoAnalysisRequestAddDocumentParam
 from ._run_video_analysis_request import RunVideoAnalysisRequestFrameSampleMethod
@@ -332,6 +335,8 @@ from ._submit_essay_correction_task_request import SubmitEssayCorrectionTaskRequ
 from ._submit_essay_correction_task_response_body import SubmitEssayCorrectionTaskResponseBodyData
 from ._submit_tag_mining_analysis_task_request import SubmitTagMiningAnalysisTaskRequestTags
 from ._submit_tag_mining_analysis_task_response_body import SubmitTagMiningAnalysisTaskResponseBodyData
+from ._submit_video_analysis_task_request import SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadataKeyValues
+from ._submit_video_analysis_task_request import SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadata
 from ._submit_video_analysis_task_request import SubmitVideoAnalysisTaskRequestAddDocumentParamDocument
 from ._submit_video_analysis_task_request import SubmitVideoAnalysisTaskRequestAddDocumentParam
 from ._submit_video_analysis_task_request import SubmitVideoAnalysisTaskRequestFrameSampleMethod
@@ -413,6 +418,7 @@ __all__ = [
     RunMarketingInformationExtractResponseBody,
     RunMarketingInformationExtractResponse,
     RunMarketingInformationWritingRequest,
+    RunMarketingInformationWritingShrinkRequest,
     RunMarketingInformationWritingResponseBody,
     RunMarketingInformationWritingResponse,
     RunNetworkContentAuditRequest,
@@ -626,6 +632,8 @@ __all__ = [
     RunTagMiningAnalysisResponseBodyPayloadOutput,
     RunTagMiningAnalysisResponseBodyPayloadUsage,
     RunTagMiningAnalysisResponseBodyPayload,
+    RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues,
+    RunVideoAnalysisRequestAddDocumentParamDocumentMetadata,
     RunVideoAnalysisRequestAddDocumentParamDocument,
     RunVideoAnalysisRequestAddDocumentParam,
     RunVideoAnalysisRequestFrameSampleMethod,
@@ -677,6 +685,8 @@ __all__ = [
     SubmitEssayCorrectionTaskResponseBodyData,
     SubmitTagMiningAnalysisTaskRequestTags,
     SubmitTagMiningAnalysisTaskResponseBodyData,
+    SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadataKeyValues,
+    SubmitVideoAnalysisTaskRequestAddDocumentParamDocumentMetadata,
     SubmitVideoAnalysisTaskRequestAddDocumentParamDocument,
     SubmitVideoAnalysisTaskRequestAddDocumentParam,
     SubmitVideoAnalysisTaskRequestFrameSampleMethod,

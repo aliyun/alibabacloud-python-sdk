@@ -574,11 +574,131 @@ class RunVideoAnalysisRequestAddDocumentParam(DaraModel):
 class RunVideoAnalysisRequestAddDocumentParamDocument(DaraModel):
     def __init__(
         self,
+        category_uuid: str = None,
         doc_id: str = None,
+        extend_1: str = None,
+        extend_2: str = None,
+        extend_3: str = None,
+        metadata: main_models.RunVideoAnalysisRequestAddDocumentParamDocumentMetadata = None,
+        tags: List[str] = None,
         title: str = None,
     ):
+        self.category_uuid = category_uuid
         self.doc_id = doc_id
+        self.extend_1 = extend_1
+        self.extend_2 = extend_2
+        self.extend_3 = extend_3
+        self.metadata = metadata
+        self.tags = tags
         self.title = title
+
+    def validate(self):
+        if self.metadata:
+            self.metadata.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.category_uuid is not None:
+            result['categoryUuid'] = self.category_uuid
+
+        if self.doc_id is not None:
+            result['docId'] = self.doc_id
+
+        if self.extend_1 is not None:
+            result['extend1'] = self.extend_1
+
+        if self.extend_2 is not None:
+            result['extend2'] = self.extend_2
+
+        if self.extend_3 is not None:
+            result['extend3'] = self.extend_3
+
+        if self.metadata is not None:
+            result['metadata'] = self.metadata.to_map()
+
+        if self.tags is not None:
+            result['tags'] = self.tags
+
+        if self.title is not None:
+            result['title'] = self.title
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('categoryUuid') is not None:
+            self.category_uuid = m.get('categoryUuid')
+
+        if m.get('docId') is not None:
+            self.doc_id = m.get('docId')
+
+        if m.get('extend1') is not None:
+            self.extend_1 = m.get('extend1')
+
+        if m.get('extend2') is not None:
+            self.extend_2 = m.get('extend2')
+
+        if m.get('extend3') is not None:
+            self.extend_3 = m.get('extend3')
+
+        if m.get('metadata') is not None:
+            temp_model = main_models.RunVideoAnalysisRequestAddDocumentParamDocumentMetadata()
+            self.metadata = temp_model.from_map(m.get('metadata'))
+
+        if m.get('tags') is not None:
+            self.tags = m.get('tags')
+
+        if m.get('title') is not None:
+            self.title = m.get('title')
+
+        return self
+
+class RunVideoAnalysisRequestAddDocumentParamDocumentMetadata(DaraModel):
+    def __init__(
+        self,
+        key_values: List[main_models.RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues] = None,
+    ):
+        self.key_values = key_values
+
+    def validate(self):
+        if self.key_values:
+            for v1 in self.key_values:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['keyValues'] = []
+        if self.key_values is not None:
+            for k1 in self.key_values:
+                result['keyValues'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.key_values = []
+        if m.get('keyValues') is not None:
+            for k1 in m.get('keyValues'):
+                temp_model = main_models.RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues()
+                self.key_values.append(temp_model.from_map(k1))
+
+        return self
+
+class RunVideoAnalysisRequestAddDocumentParamDocumentMetadataKeyValues(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
 
     def validate(self):
         pass
@@ -588,21 +708,21 @@ class RunVideoAnalysisRequestAddDocumentParamDocument(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.doc_id is not None:
-            result['docId'] = self.doc_id
+        if self.key is not None:
+            result['key'] = self.key
 
-        if self.title is not None:
-            result['title'] = self.title
+        if self.value is not None:
+            result['value'] = self.value
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('docId') is not None:
-            self.doc_id = m.get('docId')
+        if m.get('key') is not None:
+            self.key = m.get('key')
 
-        if m.get('title') is not None:
-            self.title = m.get('title')
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 
