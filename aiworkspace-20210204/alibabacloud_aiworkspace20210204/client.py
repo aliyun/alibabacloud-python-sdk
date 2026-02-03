@@ -5403,6 +5403,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.accessibility):
             query['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.caller_type):
+            query['CallerType'] = request.caller_type
+        if not DaraCore.is_null(request.caller_uid):
+            query['CallerUid'] = request.caller_uid
         if not DaraCore.is_null(request.creator):
             query['Creator'] = request.creator
         if not DaraCore.is_null(request.labels_shrink):
@@ -5411,6 +5415,8 @@ class Client(OpenApiClient):
             query['Option'] = request.option
         if not DaraCore.is_null(request.resource):
             query['Resource'] = request.resource
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -5447,6 +5453,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.accessibility):
             query['Accessibility'] = request.accessibility
+        if not DaraCore.is_null(request.caller_type):
+            query['CallerType'] = request.caller_type
+        if not DaraCore.is_null(request.caller_uid):
+            query['CallerUid'] = request.caller_uid
         if not DaraCore.is_null(request.creator):
             query['Creator'] = request.creator
         if not DaraCore.is_null(request.labels_shrink):
@@ -5455,6 +5465,8 @@ class Client(OpenApiClient):
             query['Option'] = request.option
         if not DaraCore.is_null(request.resource):
             query['Resource'] = request.resource
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -10540,3 +10552,99 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_workspace_resource_with_options_async(workspace_id, request, headers, runtime)
+
+    def validate_connection_with_options(
+        self,
+        request: main_models.ValidateConnectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ValidateConnectionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.configs):
+            body['Configs'] = request.configs
+        if not DaraCore.is_null(request.connection_id):
+            body['ConnectionId'] = request.connection_id
+        if not DaraCore.is_null(request.connection_type):
+            body['ConnectionType'] = request.connection_type
+        if not DaraCore.is_null(request.secrets):
+            body['Secrets'] = request.secrets
+        if not DaraCore.is_null(request.validate_type):
+            body['ValidateType'] = request.validate_type
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ValidateConnection',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/connections/validate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ValidateConnectionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def validate_connection_with_options_async(
+        self,
+        request: main_models.ValidateConnectionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ValidateConnectionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.configs):
+            body['Configs'] = request.configs
+        if not DaraCore.is_null(request.connection_id):
+            body['ConnectionId'] = request.connection_id
+        if not DaraCore.is_null(request.connection_type):
+            body['ConnectionType'] = request.connection_type
+        if not DaraCore.is_null(request.secrets):
+            body['Secrets'] = request.secrets
+        if not DaraCore.is_null(request.validate_type):
+            body['ValidateType'] = request.validate_type
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ValidateConnection',
+            version = '2021-02-04',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/connections/validate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ValidateConnectionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def validate_connection(
+        self,
+        request: main_models.ValidateConnectionRequest,
+    ) -> main_models.ValidateConnectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.validate_connection_with_options(request, headers, runtime)
+
+    async def validate_connection_async(
+        self,
+        request: main_models.ValidateConnectionRequest,
+    ) -> main_models.ValidateConnectionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.validate_connection_with_options_async(request, headers, runtime)

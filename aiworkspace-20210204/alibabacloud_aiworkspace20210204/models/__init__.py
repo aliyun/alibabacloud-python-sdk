@@ -357,6 +357,9 @@ from ._update_workspace_response import UpdateWorkspaceResponse
 from ._update_workspace_resource_request import UpdateWorkspaceResourceRequest
 from ._update_workspace_resource_response_body import UpdateWorkspaceResourceResponseBody
 from ._update_workspace_resource_response import UpdateWorkspaceResourceResponse
+from ._validate_connection_request import ValidateConnectionRequest
+from ._validate_connection_response_body import ValidateConnectionResponseBody
+from ._validate_connection_response import ValidateConnectionResponse
 from ._connection import ConnectionModels
 from ._connection import ConnectionResourceMeta
 from ._dataset import DatasetSharingConfig
@@ -777,6 +780,9 @@ __all__ = [
     UpdateWorkspaceResourceRequest,
     UpdateWorkspaceResourceResponseBody,
     UpdateWorkspaceResourceResponse,
+    ValidateConnectionRequest,
+    ValidateConnectionResponseBody,
+    ValidateConnectionResponse,
     ConnectionModels,
     ConnectionResourceMeta,
     DatasetSharingConfig,
