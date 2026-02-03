@@ -10,12 +10,14 @@ from darabonba.model import DaraModel
 class ListTagOptionsResponseBody(DaraModel):
     def __init__(
         self,
+        next_token: str = None,
         page_number: int = None,
         page_size: int = None,
         request_id: str = None,
         tag_option_details: List[main_models.ListTagOptionsResponseBodyTagOptionDetails] = None,
         total_count: int = None,
     ):
+        self.next_token = next_token
         # The page number of the returned page.
         self.page_number = page_number
         # The number of entries returned per page.
@@ -40,6 +42,9 @@ class ListTagOptionsResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
 
@@ -61,6 +66,9 @@ class ListTagOptionsResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')
 

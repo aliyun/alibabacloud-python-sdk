@@ -56,10 +56,12 @@ class ListPrincipalsResponseBodyPrincipals(DaraModel):
     def __init__(
         self,
         principal_id: str = None,
+        principal_pattern: str = None,
         principal_type: str = None,
     ):
         # The ID of the RAM entity.
         self.principal_id = principal_id
+        self.principal_pattern = principal_pattern
         # The type of the RAM entity. Valid values:
         # 
         # *   RamUser: a RAM user
@@ -77,6 +79,9 @@ class ListPrincipalsResponseBodyPrincipals(DaraModel):
         if self.principal_id is not None:
             result['PrincipalId'] = self.principal_id
 
+        if self.principal_pattern is not None:
+            result['PrincipalPattern'] = self.principal_pattern
+
         if self.principal_type is not None:
             result['PrincipalType'] = self.principal_type
 
@@ -86,6 +91,9 @@ class ListPrincipalsResponseBodyPrincipals(DaraModel):
         m = m or dict()
         if m.get('PrincipalId') is not None:
             self.principal_id = m.get('PrincipalId')
+
+        if m.get('PrincipalPattern') is not None:
+            self.principal_pattern = m.get('PrincipalPattern')
 
         if m.get('PrincipalType') is not None:
             self.principal_type = m.get('PrincipalType')

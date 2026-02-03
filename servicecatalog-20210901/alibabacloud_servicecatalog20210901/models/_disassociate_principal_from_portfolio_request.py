@@ -9,6 +9,7 @@ class DisassociatePrincipalFromPortfolioRequest(DaraModel):
         self,
         portfolio_id: str = None,
         principal_id: str = None,
+        principal_pattern: str = None,
         principal_type: str = None,
     ):
         # The ID of the product portfolio.
@@ -20,9 +21,8 @@ class DisassociatePrincipalFromPortfolioRequest(DaraModel):
         # For more information about how to obtain the ID of a RAM user, see [GetUser](https://help.aliyun.com/document_detail/28681.html).
         # 
         # For more information about how to obtain the ID of a RAM role, see [GetRole](https://help.aliyun.com/document_detail/28711.html).
-        # 
-        # This parameter is required.
         self.principal_id = principal_id
+        self.principal_pattern = principal_pattern
         # The type of the Resource Access Management (RAM) entity. Valid values:
         # 
         # *   RamUser: a RAM user
@@ -45,6 +45,9 @@ class DisassociatePrincipalFromPortfolioRequest(DaraModel):
         if self.principal_id is not None:
             result['PrincipalId'] = self.principal_id
 
+        if self.principal_pattern is not None:
+            result['PrincipalPattern'] = self.principal_pattern
+
         if self.principal_type is not None:
             result['PrincipalType'] = self.principal_type
 
@@ -57,6 +60,9 @@ class DisassociatePrincipalFromPortfolioRequest(DaraModel):
 
         if m.get('PrincipalId') is not None:
             self.principal_id = m.get('PrincipalId')
+
+        if m.get('PrincipalPattern') is not None:
+            self.principal_pattern = m.get('PrincipalPattern')
 
         if m.get('PrincipalType') is not None:
             self.principal_type = m.get('PrincipalType')

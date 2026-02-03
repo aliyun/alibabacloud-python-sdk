@@ -129,6 +129,8 @@ class Client(OpenApiClient):
             body['PortfolioId'] = request.portfolio_id
         if not DaraCore.is_null(request.principal_id):
             body['PrincipalId'] = request.principal_id
+        if not DaraCore.is_null(request.principal_pattern):
+            body['PrincipalPattern'] = request.principal_pattern
         if not DaraCore.is_null(request.principal_type):
             body['PrincipalType'] = request.principal_type
         req = open_api_util_models.OpenApiRequest(
@@ -161,6 +163,8 @@ class Client(OpenApiClient):
             body['PortfolioId'] = request.portfolio_id
         if not DaraCore.is_null(request.principal_id):
             body['PrincipalId'] = request.principal_id
+        if not DaraCore.is_null(request.principal_pattern):
+            body['PrincipalPattern'] = request.principal_pattern
         if not DaraCore.is_null(request.principal_type):
             body['PrincipalType'] = request.principal_type
         req = open_api_util_models.OpenApiRequest(
@@ -1611,6 +1615,8 @@ class Client(OpenApiClient):
             body['PortfolioId'] = request.portfolio_id
         if not DaraCore.is_null(request.principal_id):
             body['PrincipalId'] = request.principal_id
+        if not DaraCore.is_null(request.principal_pattern):
+            body['PrincipalPattern'] = request.principal_pattern
         if not DaraCore.is_null(request.principal_type):
             body['PrincipalType'] = request.principal_type
         req = open_api_util_models.OpenApiRequest(
@@ -1643,6 +1649,8 @@ class Client(OpenApiClient):
             body['PortfolioId'] = request.portfolio_id
         if not DaraCore.is_null(request.principal_id):
             body['PrincipalId'] = request.principal_id
+        if not DaraCore.is_null(request.principal_pattern):
+            body['PrincipalPattern'] = request.principal_pattern
         if not DaraCore.is_null(request.principal_type):
             body['PrincipalType'] = request.principal_type
         req = open_api_util_models.OpenApiRequest(

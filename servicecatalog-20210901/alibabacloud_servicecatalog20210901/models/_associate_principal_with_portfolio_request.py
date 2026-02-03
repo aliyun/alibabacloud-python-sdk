@@ -9,12 +9,13 @@ class AssociatePrincipalWithPortfolioRequest(DaraModel):
         self,
         portfolio_id: str = None,
         principal_id: str = None,
+        principal_pattern: str = None,
         principal_type: str = None,
     ):
         # This parameter is required.
         self.portfolio_id = portfolio_id
-        # This parameter is required.
         self.principal_id = principal_id
+        self.principal_pattern = principal_pattern
         # This parameter is required.
         self.principal_type = principal_type
 
@@ -32,6 +33,9 @@ class AssociatePrincipalWithPortfolioRequest(DaraModel):
         if self.principal_id is not None:
             result['PrincipalId'] = self.principal_id
 
+        if self.principal_pattern is not None:
+            result['PrincipalPattern'] = self.principal_pattern
+
         if self.principal_type is not None:
             result['PrincipalType'] = self.principal_type
 
@@ -44,6 +48,9 @@ class AssociatePrincipalWithPortfolioRequest(DaraModel):
 
         if m.get('PrincipalId') is not None:
             self.principal_id = m.get('PrincipalId')
+
+        if m.get('PrincipalPattern') is not None:
+            self.principal_pattern = m.get('PrincipalPattern')
 
         if m.get('PrincipalType') is not None:
             self.principal_type = m.get('PrincipalType')

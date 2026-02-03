@@ -8,6 +8,8 @@ class ListTagOptionsShrinkRequest(DaraModel):
     def __init__(
         self,
         filters_shrink: str = None,
+        max_results: int = None,
+        next_token: str = None,
         page_number: int = None,
         page_size: int = None,
         sort_by: str = None,
@@ -15,6 +17,8 @@ class ListTagOptionsShrinkRequest(DaraModel):
     ):
         # The filter condition.
         self.filters_shrink = filters_shrink
+        self.max_results = max_results
+        self.next_token = next_token
         # The number of the page to return.
         # 
         # Pages start from page 1. Default value: 1.
@@ -44,6 +48,12 @@ class ListTagOptionsShrinkRequest(DaraModel):
         if self.filters_shrink is not None:
             result['Filters'] = self.filters_shrink
 
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+
         if self.page_number is not None:
             result['PageNumber'] = self.page_number
 
@@ -62,6 +72,12 @@ class ListTagOptionsShrinkRequest(DaraModel):
         m = m or dict()
         if m.get('Filters') is not None:
             self.filters_shrink = m.get('Filters')
+
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
 
         if m.get('PageNumber') is not None:
             self.page_number = m.get('PageNumber')

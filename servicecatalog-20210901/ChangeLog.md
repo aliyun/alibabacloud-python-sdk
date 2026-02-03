@@ -1,3 +1,12 @@
+2026-02-03 Version: 1.2.4
+- Update API AssociatePrincipalWithPortfolio: add request parameters PrincipalPattern.
+- Update API DisassociatePrincipalFromPortfolio: add request parameters PrincipalPattern.
+- Update API ListPrincipals: add response parameters Body.Principals.$.PrincipalPattern.
+- Update API ListTagOptions: add request parameters MaxResults.
+- Update API ListTagOptions: add request parameters NextToken.
+- Update API ListTagOptions: add response parameters Body.NextToken.
+
+
 2026-01-05 Version: 1.2.3
 - Generated python 2021-09-01 for servicecatalog.
 
