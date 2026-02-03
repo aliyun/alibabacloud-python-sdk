@@ -1,3 +1,6 @@
+2026-02-03 Version: 1.4.3
+- Generated python 2019-12-09 for Yundun-bastionhost.
+
 2026-01-21 Version: 1.4.2
 - Update API GetNetworkDomain: add request parameters CheckProxyState.
 - Update API SetPolicyProtocolConfig: add request parameters ProtocolConfig.RDP.DiskRedirectionDownload.
