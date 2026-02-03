@@ -13,6 +13,7 @@ class CreateJobRequest(DaraModel):
         accessibility: str = None,
         code_source: main_models.CreateJobRequestCodeSource = None,
         credential_config: main_models.CredentialConfig = None,
+        custom_envs: List[main_models.CreateJobRequestCustomEnvs] = None,
         data_sources: List[main_models.CreateJobRequestDataSources] = None,
         debugger_config_content: str = None,
         display_name: str = None,
@@ -41,6 +42,7 @@ class CreateJobRequest(DaraModel):
         self.code_source = code_source
         # The access credential configuration.
         self.credential_config = credential_config
+        self.custom_envs = custom_envs
         # The data sources for job running.
         self.data_sources = data_sources
         # This parameter is not supported.
@@ -125,6 +127,10 @@ class CreateJobRequest(DaraModel):
             self.code_source.validate()
         if self.credential_config:
             self.credential_config.validate()
+        if self.custom_envs:
+            for v1 in self.custom_envs:
+                 if v1:
+                    v1.validate()
         if self.data_sources:
             for v1 in self.data_sources:
                  if v1:
@@ -153,6 +159,11 @@ class CreateJobRequest(DaraModel):
 
         if self.credential_config is not None:
             result['CredentialConfig'] = self.credential_config.to_map()
+
+        result['CustomEnvs'] = []
+        if self.custom_envs is not None:
+            for k1 in self.custom_envs:
+                result['CustomEnvs'].append(k1.to_map() if k1 else None)
 
         result['DataSources'] = []
         if self.data_sources is not None:
@@ -226,6 +237,12 @@ class CreateJobRequest(DaraModel):
         if m.get('CredentialConfig') is not None:
             temp_model = main_models.CredentialConfig()
             self.credential_config = temp_model.from_map(m.get('CredentialConfig'))
+
+        self.custom_envs = []
+        if m.get('CustomEnvs') is not None:
+            for k1 in m.get('CustomEnvs'):
+                temp_model = main_models.CreateJobRequestCustomEnvs()
+                self.custom_envs.append(temp_model.from_map(k1))
 
         self.data_sources = []
         if m.get('DataSources') is not None:
@@ -441,6 +458,49 @@ class CreateJobRequestDataSources(DaraModel):
 
         if m.get('Uri') is not None:
             self.uri = m.get('Uri')
+
+        return self
+
+class CreateJobRequestCustomEnvs(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+        visible: str = None,
+    ):
+        self.key = key
+        self.value = value
+        self.visible = visible
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        if self.visible is not None:
+            result['Visible'] = self.visible
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+
+        if m.get('Visible') is not None:
+            self.visible = m.get('Visible')
 
         return self
 

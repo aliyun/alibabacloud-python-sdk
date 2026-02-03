@@ -42,6 +42,7 @@ from ._log_info import LogInfo
 from ._member import Member
 from ._metric import Metric
 from ._model_config import ModelConfig
+from ._model_template import ModelTemplate
 from ._node_metric import NodeMetric
 from ._pod_item import PodItem
 from ._pod_metric import PodMetric
@@ -149,9 +150,11 @@ from ._lifecycle import LifecyclePostStart
 from ._lifecycle import LifecyclePreStopExec
 from ._lifecycle import LifecyclePreStop
 from ._create_job_request import CreateJobRequestCodeSource
+from ._create_job_request import CreateJobRequestCustomEnvs
 from ._create_job_request import CreateJobRequestDataSources
 from ._create_job_request import CreateJobRequestUserVpc
 from ._get_job_response_body import GetJobResponseBodyCodeSource
+from ._get_job_response_body import GetJobResponseBodyCustomEnvs
 from ._get_job_response_body import GetJobResponseBodyDataSources
 from ._get_job_response_body import GetJobResponseBodyPodsHistoryPods
 from ._get_job_response_body import GetJobResponseBodyPods
@@ -200,6 +203,7 @@ __all__ = [
     Member,
     Metric,
     ModelConfig,
+    ModelTemplate,
     NodeMetric,
     PodItem,
     PodMetric,
@@ -307,9 +311,11 @@ __all__ = [
     LifecyclePreStopExec,
     LifecyclePreStop,
     CreateJobRequestCodeSource,
+    CreateJobRequestCustomEnvs,
     CreateJobRequestDataSources,
     CreateJobRequestUserVpc,
     GetJobResponseBodyCodeSource,
+    GetJobResponseBodyCustomEnvs,
     GetJobResponseBodyDataSources,
     GetJobResponseBodyPodsHistoryPods,
     GetJobResponseBodyPods,

@@ -2,43 +2,48 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from alibabacloud_pai_dlc20201203 import models as main_models
 from darabonba.model import DaraModel
 
-class ModelConfig(DaraModel):
+class ModelTemplate(DaraModel):
     def __init__(
         self,
+        collections: str = None,
         model_name: str = None,
-        model_template: main_models.ModelTemplate = None,
+        provider: str = None,
     ):
+        self.collections = collections
         self.model_name = model_name
-        self.model_template = model_template
+        self.provider = provider
 
     def validate(self):
-        if self.model_template:
-            self.model_template.validate()
+        pass
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.collections is not None:
+            result['Collections'] = self.collections
+
         if self.model_name is not None:
             result['ModelName'] = self.model_name
 
-        if self.model_template is not None:
-            result['ModelTemplate'] = self.model_template.to_map()
+        if self.provider is not None:
+            result['Provider'] = self.provider
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Collections') is not None:
+            self.collections = m.get('Collections')
+
         if m.get('ModelName') is not None:
             self.model_name = m.get('ModelName')
 
-        if m.get('ModelTemplate') is not None:
-            temp_model = main_models.ModelTemplate()
-            self.model_template = temp_model.from_map(m.get('ModelTemplate'))
+        if m.get('Provider') is not None:
+            self.provider = m.get('Provider')
 
         return self
 

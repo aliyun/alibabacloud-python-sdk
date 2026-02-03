@@ -100,6 +100,8 @@ class Client(OpenApiClient):
             body['CodeSource'] = request.code_source
         if not DaraCore.is_null(request.credential_config):
             body['CredentialConfig'] = request.credential_config
+        if not DaraCore.is_null(request.custom_envs):
+            body['CustomEnvs'] = request.custom_envs
         if not DaraCore.is_null(request.data_sources):
             body['DataSources'] = request.data_sources
         if not DaraCore.is_null(request.debugger_config_content):
@@ -170,6 +172,8 @@ class Client(OpenApiClient):
             body['CodeSource'] = request.code_source
         if not DaraCore.is_null(request.credential_config):
             body['CredentialConfig'] = request.credential_config
+        if not DaraCore.is_null(request.custom_envs):
+            body['CustomEnvs'] = request.custom_envs
         if not DaraCore.is_null(request.data_sources):
             body['DataSources'] = request.data_sources
         if not DaraCore.is_null(request.debugger_config_content):

@@ -1,3 +1,8 @@
+2026-02-03 Version: 1.6.8
+- Update API CreateJob: add request parameters body.CustomEnvs.
+- Update API GetJob: add response parameters Body.CustomEnvs.
+
+
 2026-01-16 Version: 1.6.7
 - Update API ListJobs: add request parameters EnableAssignNode.
 - Update API ListJobs: add request parameters ImageSearch.
