@@ -2,6 +2,10 @@
 - Update API SendChatMessage: add request parameters ParentSessionId.
 
 
+2026-02-03 Version: 1.8.6
+- Update API SendChatMessage: add request parameters ParentSessionId.
+
+
 2026-01-28 Version: 1.8.5
 - Update API CreateDataAgentSession: add request parameters SessionConfig.UserOssBucket.
 - Update API CreateDataAgentSession: add response parameters Body.Data.SessionConfig.UserOssBucket.
