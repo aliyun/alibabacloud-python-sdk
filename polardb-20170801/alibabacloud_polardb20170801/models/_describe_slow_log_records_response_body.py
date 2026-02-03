@@ -133,6 +133,7 @@ class DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord(DaraModel):
         dbnode_id: str = None,
         execution_start_time: str = None,
         host_address: str = None,
+        lock_time_ms: int = None,
         lock_times: int = None,
         parse_row_counts: int = None,
         query_time_ms: int = None,
@@ -149,6 +150,7 @@ class DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord(DaraModel):
         self.execution_start_time = execution_start_time
         # Client address connecting to the database.
         self.host_address = host_address
+        self.lock_time_ms = lock_time_ms
         # SQL lock duration in seconds.
         self.lock_times = lock_times
         # Number of rows parsed.
@@ -183,6 +185,9 @@ class DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord(DaraModel):
 
         if self.host_address is not None:
             result['HostAddress'] = self.host_address
+
+        if self.lock_time_ms is not None:
+            result['LockTimeMS'] = self.lock_time_ms
 
         if self.lock_times is not None:
             result['LockTimes'] = self.lock_times
@@ -220,6 +225,9 @@ class DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord(DaraModel):
 
         if m.get('HostAddress') is not None:
             self.host_address = m.get('HostAddress')
+
+        if m.get('LockTimeMS') is not None:
+            self.lock_time_ms = m.get('LockTimeMS')
 
         if m.get('LockTimes') is not None:
             self.lock_times = m.get('LockTimes')

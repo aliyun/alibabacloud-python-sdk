@@ -1,3 +1,7 @@
+2026-02-03 Version: 6.6.5
+- Update API DescribeSlowLogRecords: add response parameters Body.Items.$.LockTimeMS.
+
+
 2026-01-28 Version: 6.6.3
 - Update API DescribeAIDBClusterAttribute: add response parameters Body.ApiKey.
 

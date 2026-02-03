@@ -8827,6 +8827,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -8865,6 +8867,8 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.tag):
+            query['Tag'] = request.tag
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
