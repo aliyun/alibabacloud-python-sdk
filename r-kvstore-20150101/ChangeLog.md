@@ -1,3 +1,9 @@
+2026-02-03 Version: 6.2.1
+- Update API DescribeIntranetAttribute: add response parameters Body.IntranetBandWidthBurst.
+- Update API TransformInstanceChargeType: add request parameters CouponNo.
+- Update API TransformToPrePaid: add request parameters CouponNo.
+
+
 2025-12-15 Version: 6.2.0
 - Support API DescribeActiveOperationMaintenanceConfig.
 - Support API DescribeActiveOperationTaskCount.
