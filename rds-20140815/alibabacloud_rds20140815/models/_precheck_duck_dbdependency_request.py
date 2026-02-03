@@ -11,6 +11,7 @@ class PrecheckDuckDBDependencyRequest(DaraModel):
         owner_id: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        target_mode: str = None,
     ):
         # The primary instance ID.
         # 
@@ -19,6 +20,7 @@ class PrecheckDuckDBDependencyRequest(DaraModel):
         self.owner_id = owner_id
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.target_mode = target_mode
 
     def validate(self):
         pass
@@ -40,6 +42,9 @@ class PrecheckDuckDBDependencyRequest(DaraModel):
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
 
+        if self.target_mode is not None:
+            result['TargetMode'] = self.target_mode
+
         return result
 
     def from_map(self, m: dict = None):
@@ -55,6 +60,9 @@ class PrecheckDuckDBDependencyRequest(DaraModel):
 
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+
+        if m.get('TargetMode') is not None:
+            self.target_mode = m.get('TargetMode')
 
         return self
 

@@ -136,6 +136,7 @@ class DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord(DaraModel):
         execution_start_time: str = None,
         host_address: str = None,
         last_rows_affected_count: int = None,
+        lock_time_ms: int = None,
         lock_times: int = None,
         logical_ioread: int = None,
         parse_row_counts: int = None,
@@ -171,6 +172,7 @@ class DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord(DaraModel):
         # 
         # > This parameter is returned only for instances that run SQL Server.
         self.last_rows_affected_count = last_rows_affected_count
+        self.lock_time_ms = lock_time_ms
         # The lock duration of the query. Unit: seconds.
         self.lock_times = lock_times
         # The number of logical reads.
@@ -235,6 +237,9 @@ class DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord(DaraModel):
         if self.last_rows_affected_count is not None:
             result['LastRowsAffectedCount'] = self.last_rows_affected_count
 
+        if self.lock_time_ms is not None:
+            result['LockTimeMS'] = self.lock_time_ms
+
         if self.lock_times is not None:
             result['LockTimes'] = self.lock_times
 
@@ -295,6 +300,9 @@ class DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord(DaraModel):
 
         if m.get('LastRowsAffectedCount') is not None:
             self.last_rows_affected_count = m.get('LastRowsAffectedCount')
+
+        if m.get('LockTimeMS') is not None:
+            self.lock_time_ms = m.get('LockTimeMS')
 
         if m.get('LockTimes') is not None:
             self.lock_times = m.get('LockTimes')

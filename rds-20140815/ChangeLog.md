@@ -1,3 +1,7 @@
+2026-02-03 Version: 15.1.2
+- Update API DescribeSlowLogRecords: add response parameters Body.Items.$.LockTimeMS.
+
+
 2026-01-27 Version: 15.1.0
 - Support API CreateImportTask.
 - Support API CreateRCImage.
