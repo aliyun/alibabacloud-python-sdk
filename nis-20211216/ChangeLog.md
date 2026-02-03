@@ -1,3 +1,8 @@
+2026-02-03 Version: 2.3.0
+- Support API DescribeNisTrafficRanking.
+- Support API StartNisTrafficRanking.
+
+
 2025-11-07 Version: 2.2.3
 - Update API DescribeNisInspectionReportCheckItems: add response parameters Body.CheckItemList.$.DescriptionCode.
 
