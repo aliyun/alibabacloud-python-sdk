@@ -184,21 +184,37 @@ class RunSearchSimilarArticlesResponseBodyPayloadOutput(DaraModel):
 class RunSearchSimilarArticlesResponseBodyPayloadOutputArticles(DaraModel):
     def __init__(
         self,
+        category_uuid: str = None,
         doc_id: str = None,
+        doc_type: str = None,
         doc_uuid: str = None,
+        extend_1: str = None,
+        extend_2: str = None,
+        extend_3: str = None,
         pub_time: str = None,
+        search_source: str = None,
         search_source_name: str = None,
+        search_source_type: str = None,
         source: str = None,
         summary: str = None,
+        tags: List[str] = None,
         title: str = None,
         url: str = None,
     ):
+        self.category_uuid = category_uuid
         self.doc_id = doc_id
+        self.doc_type = doc_type
         self.doc_uuid = doc_uuid
+        self.extend_1 = extend_1
+        self.extend_2 = extend_2
+        self.extend_3 = extend_3
         self.pub_time = pub_time
+        self.search_source = search_source
         self.search_source_name = search_source_name
+        self.search_source_type = search_source_type
         self.source = source
         self.summary = summary
+        self.tags = tags
         self.title = title
         self.url = url
 
@@ -210,23 +226,47 @@ class RunSearchSimilarArticlesResponseBodyPayloadOutputArticles(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_uuid is not None:
+            result['CategoryUuid'] = self.category_uuid
+
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
+
+        if self.doc_type is not None:
+            result['DocType'] = self.doc_type
 
         if self.doc_uuid is not None:
             result['DocUuid'] = self.doc_uuid
 
+        if self.extend_1 is not None:
+            result['Extend1'] = self.extend_1
+
+        if self.extend_2 is not None:
+            result['Extend2'] = self.extend_2
+
+        if self.extend_3 is not None:
+            result['Extend3'] = self.extend_3
+
         if self.pub_time is not None:
             result['PubTime'] = self.pub_time
 
+        if self.search_source is not None:
+            result['SearchSource'] = self.search_source
+
         if self.search_source_name is not None:
             result['SearchSourceName'] = self.search_source_name
+
+        if self.search_source_type is not None:
+            result['SearchSourceType'] = self.search_source_type
 
         if self.source is not None:
             result['Source'] = self.source
 
         if self.summary is not None:
             result['Summary'] = self.summary
+
+        if self.tags is not None:
+            result['Tags'] = self.tags
 
         if self.title is not None:
             result['Title'] = self.title
@@ -238,23 +278,47 @@ class RunSearchSimilarArticlesResponseBodyPayloadOutputArticles(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryUuid') is not None:
+            self.category_uuid = m.get('CategoryUuid')
+
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
+
+        if m.get('DocType') is not None:
+            self.doc_type = m.get('DocType')
 
         if m.get('DocUuid') is not None:
             self.doc_uuid = m.get('DocUuid')
 
+        if m.get('Extend1') is not None:
+            self.extend_1 = m.get('Extend1')
+
+        if m.get('Extend2') is not None:
+            self.extend_2 = m.get('Extend2')
+
+        if m.get('Extend3') is not None:
+            self.extend_3 = m.get('Extend3')
+
         if m.get('PubTime') is not None:
             self.pub_time = m.get('PubTime')
 
+        if m.get('SearchSource') is not None:
+            self.search_source = m.get('SearchSource')
+
         if m.get('SearchSourceName') is not None:
             self.search_source_name = m.get('SearchSourceName')
+
+        if m.get('SearchSourceType') is not None:
+            self.search_source_type = m.get('SearchSourceType')
 
         if m.get('Source') is not None:
             self.source = m.get('Source')
 
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')

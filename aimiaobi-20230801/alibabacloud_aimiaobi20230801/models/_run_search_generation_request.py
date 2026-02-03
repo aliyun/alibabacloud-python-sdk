@@ -184,7 +184,15 @@ class RunSearchGenerationRequestChatConfig(DaraModel):
 class RunSearchGenerationRequestChatConfigSearchParam(DaraModel):
     def __init__(
         self,
+        category_uuids: List[str] = None,
+        create_time_end: int = None,
+        create_time_start: int = None,
+        doc_ids: List[str] = None,
+        doc_uuids: List[str] = None,
         end_time: int = None,
+        extend_1: str = None,
+        extend_2: str = None,
+        extend_3: str = None,
         multimodal_search_types: List[str] = None,
         search_audio_min_score: float = None,
         search_image_min_score: float = None,
@@ -192,8 +200,17 @@ class RunSearchGenerationRequestChatConfigSearchParam(DaraModel):
         search_text_min_score: float = None,
         search_video_min_score: float = None,
         start_time: int = None,
+        tags: List[str] = None,
     ):
+        self.category_uuids = category_uuids
+        self.create_time_end = create_time_end
+        self.create_time_start = create_time_start
+        self.doc_ids = doc_ids
+        self.doc_uuids = doc_uuids
         self.end_time = end_time
+        self.extend_1 = extend_1
+        self.extend_2 = extend_2
+        self.extend_3 = extend_3
         self.multimodal_search_types = multimodal_search_types
         self.search_audio_min_score = search_audio_min_score
         self.search_image_min_score = search_image_min_score
@@ -201,6 +218,7 @@ class RunSearchGenerationRequestChatConfigSearchParam(DaraModel):
         self.search_text_min_score = search_text_min_score
         self.search_video_min_score = search_video_min_score
         self.start_time = start_time
+        self.tags = tags
 
     def validate(self):
         if self.search_sources:
@@ -213,8 +231,32 @@ class RunSearchGenerationRequestChatConfigSearchParam(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_uuids is not None:
+            result['CategoryUuids'] = self.category_uuids
+
+        if self.create_time_end is not None:
+            result['CreateTimeEnd'] = self.create_time_end
+
+        if self.create_time_start is not None:
+            result['CreateTimeStart'] = self.create_time_start
+
+        if self.doc_ids is not None:
+            result['DocIds'] = self.doc_ids
+
+        if self.doc_uuids is not None:
+            result['DocUuids'] = self.doc_uuids
+
         if self.end_time is not None:
             result['EndTime'] = self.end_time
+
+        if self.extend_1 is not None:
+            result['Extend1'] = self.extend_1
+
+        if self.extend_2 is not None:
+            result['Extend2'] = self.extend_2
+
+        if self.extend_3 is not None:
+            result['Extend3'] = self.extend_3
 
         if self.multimodal_search_types is not None:
             result['MultimodalSearchTypes'] = self.multimodal_search_types
@@ -239,12 +281,39 @@ class RunSearchGenerationRequestChatConfigSearchParam(DaraModel):
         if self.start_time is not None:
             result['StartTime'] = self.start_time
 
+        if self.tags is not None:
+            result['Tags'] = self.tags
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryUuids') is not None:
+            self.category_uuids = m.get('CategoryUuids')
+
+        if m.get('CreateTimeEnd') is not None:
+            self.create_time_end = m.get('CreateTimeEnd')
+
+        if m.get('CreateTimeStart') is not None:
+            self.create_time_start = m.get('CreateTimeStart')
+
+        if m.get('DocIds') is not None:
+            self.doc_ids = m.get('DocIds')
+
+        if m.get('DocUuids') is not None:
+            self.doc_uuids = m.get('DocUuids')
+
         if m.get('EndTime') is not None:
             self.end_time = m.get('EndTime')
+
+        if m.get('Extend1') is not None:
+            self.extend_1 = m.get('Extend1')
+
+        if m.get('Extend2') is not None:
+            self.extend_2 = m.get('Extend2')
+
+        if m.get('Extend3') is not None:
+            self.extend_3 = m.get('Extend3')
 
         if m.get('MultimodalSearchTypes') is not None:
             self.multimodal_search_types = m.get('MultimodalSearchTypes')
@@ -269,6 +338,9 @@ class RunSearchGenerationRequestChatConfigSearchParam(DaraModel):
 
         if m.get('StartTime') is not None:
             self.start_time = m.get('StartTime')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         return self
 

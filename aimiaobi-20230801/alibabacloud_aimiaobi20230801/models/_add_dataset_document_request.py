@@ -65,6 +65,7 @@ class AddDatasetDocumentRequest(DaraModel):
 class AddDatasetDocumentRequestDocument(DaraModel):
     def __init__(
         self,
+        category_uuid: str = None,
         content: str = None,
         disable_handle_multimodal_media: bool = None,
         doc_id: str = None,
@@ -79,9 +80,11 @@ class AddDatasetDocumentRequestDocument(DaraModel):
         pub_time: str = None,
         source_from: str = None,
         summary: str = None,
+        tags: List[str] = None,
         title: str = None,
         url: str = None,
     ):
+        self.category_uuid = category_uuid
         self.content = content
         self.disable_handle_multimodal_media = disable_handle_multimodal_media
         self.doc_id = doc_id
@@ -96,6 +99,7 @@ class AddDatasetDocumentRequestDocument(DaraModel):
         self.pub_time = pub_time
         self.source_from = source_from
         self.summary = summary
+        self.tags = tags
         self.title = title
         self.url = url
 
@@ -112,6 +116,9 @@ class AddDatasetDocumentRequestDocument(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_uuid is not None:
+            result['CategoryUuid'] = self.category_uuid
+
         if self.content is not None:
             result['Content'] = self.content
 
@@ -156,6 +163,9 @@ class AddDatasetDocumentRequestDocument(DaraModel):
         if self.summary is not None:
             result['Summary'] = self.summary
 
+        if self.tags is not None:
+            result['Tags'] = self.tags
+
         if self.title is not None:
             result['Title'] = self.title
 
@@ -166,6 +176,9 @@ class AddDatasetDocumentRequestDocument(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryUuid') is not None:
+            self.category_uuid = m.get('CategoryUuid')
+
         if m.get('Content') is not None:
             self.content = m.get('Content')
 
@@ -211,6 +224,9 @@ class AddDatasetDocumentRequestDocument(DaraModel):
 
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')
@@ -267,16 +283,22 @@ class AddDatasetDocumentRequestDocumentMetadata(DaraModel):
     def __init__(
         self,
         asr_sentences: List[main_models.AddDatasetDocumentRequestDocumentMetadataAsrSentences] = None,
+        key_values: List[main_models.AddDatasetDocumentRequestDocumentMetadataKeyValues] = None,
         text: str = None,
         video_shots: List[main_models.AddDatasetDocumentRequestDocumentMetadataVideoShots] = None,
     ):
         self.asr_sentences = asr_sentences
+        self.key_values = key_values
         self.text = text
         self.video_shots = video_shots
 
     def validate(self):
         if self.asr_sentences:
             for v1 in self.asr_sentences:
+                 if v1:
+                    v1.validate()
+        if self.key_values:
+            for v1 in self.key_values:
                  if v1:
                     v1.validate()
         if self.video_shots:
@@ -293,6 +315,11 @@ class AddDatasetDocumentRequestDocumentMetadata(DaraModel):
         if self.asr_sentences is not None:
             for k1 in self.asr_sentences:
                 result['AsrSentences'].append(k1.to_map() if k1 else None)
+
+        result['KeyValues'] = []
+        if self.key_values is not None:
+            for k1 in self.key_values:
+                result['KeyValues'].append(k1.to_map() if k1 else None)
 
         if self.text is not None:
             result['Text'] = self.text
@@ -311,6 +338,12 @@ class AddDatasetDocumentRequestDocumentMetadata(DaraModel):
             for k1 in m.get('AsrSentences'):
                 temp_model = main_models.AddDatasetDocumentRequestDocumentMetadataAsrSentences()
                 self.asr_sentences.append(temp_model.from_map(k1))
+
+        self.key_values = []
+        if m.get('KeyValues') is not None:
+            for k1 in m.get('KeyValues'):
+                temp_model = main_models.AddDatasetDocumentRequestDocumentMetadataKeyValues()
+                self.key_values.append(temp_model.from_map(k1))
 
         if m.get('Text') is not None:
             self.text = m.get('Text')
@@ -363,6 +396,41 @@ class AddDatasetDocumentRequestDocumentMetadataVideoShots(DaraModel):
 
         if m.get('Text') is not None:
             self.text = m.get('Text')
+
+        return self
+
+class AddDatasetDocumentRequestDocumentMetadataKeyValues(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

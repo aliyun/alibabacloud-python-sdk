@@ -580,6 +580,7 @@ from ._save_style_learning_result_shrink_request import SaveStyleLearningResultS
 from ._save_style_learning_result_response_body import SaveStyleLearningResultResponseBody
 from ._save_style_learning_result_response import SaveStyleLearningResultResponse
 from ._search_dataset_documents_request import SearchDatasetDocumentsRequest
+from ._search_dataset_documents_shrink_request import SearchDatasetDocumentsShrinkRequest
 from ._search_dataset_documents_response_body import SearchDatasetDocumentsResponseBody
 from ._search_dataset_documents_response import SearchDatasetDocumentsResponse
 from ._search_news_request import SearchNewsRequest
@@ -681,6 +682,7 @@ from ._writing_style_template_field import WritingStyleTemplateFieldEnums
 from ._writing_style_template_field import WritingStyleTemplateFieldStyle
 from ._add_audit_terms_response_body import AddAuditTermsResponseBodyDataV1
 from ._add_dataset_document_request import AddDatasetDocumentRequestDocumentMetadataAsrSentences
+from ._add_dataset_document_request import AddDatasetDocumentRequestDocumentMetadataKeyValues
 from ._add_dataset_document_request import AddDatasetDocumentRequestDocumentMetadataVideoShots
 from ._add_dataset_document_request import AddDatasetDocumentRequestDocumentMetadata
 from ._add_dataset_document_request import AddDatasetDocumentRequestDocumentMultimodalMedias
@@ -704,6 +706,7 @@ from ._async_writing_bidding_doc_response_body import AsyncWritingBiddingDocResp
 from ._bind_ppt_artifact_response_body import BindPptArtifactResponseBodyData
 from ._cancel_deep_write_task_response_body import CancelDeepWriteTaskResponseBodyData
 from ._clear_intervenes_response_body import ClearIntervenesResponseBodyData
+from ._create_dataset_request import CreateDatasetRequestDatasetConfigSearchSourceConfig
 from ._create_dataset_request import CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders
 from ._create_dataset_request import CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams
 from ._create_dataset_request import CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig
@@ -759,6 +762,7 @@ from ._get_custom_topic_selection_perspective_analysis_task_response_body import
 from ._get_custom_topic_selection_perspective_analysis_task_response_body import GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData
 from ._get_data_source_order_config_response_body import GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList
 from ._get_data_source_order_config_response_body import GetDataSourceOrderConfigResponseBodyData
+from ._get_dataset_response_body import GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig
 from ._get_dataset_response_body import GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders
 from ._get_dataset_response_body import GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams
 from ._get_dataset_response_body import GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig
@@ -771,6 +775,7 @@ from ._get_dataset_response_body import GetDatasetResponseBodyDataDatasetConfig
 from ._get_dataset_response_body import GetDatasetResponseBodyDataDocumentHandleConfig
 from ._get_dataset_response_body import GetDatasetResponseBodyData
 from ._get_dataset_document_response_body import GetDatasetDocumentResponseBodyDataMetadataAsrSentences
+from ._get_dataset_document_response_body import GetDatasetDocumentResponseBodyDataMetadataKeyValues
 from ._get_dataset_document_response_body import GetDatasetDocumentResponseBodyDataMetadataVideoShots
 from ._get_dataset_document_response_body import GetDatasetDocumentResponseBodyDataMetadata
 from ._get_dataset_document_response_body import GetDatasetDocumentResponseBodyData
@@ -1219,6 +1224,7 @@ from ._run_writing_v2response_body import RunWritingV2ResponseBodyPayloadOutput
 from ._run_writing_v2response_body import RunWritingV2ResponseBodyPayloadUsage
 from ._run_writing_v2response_body import RunWritingV2ResponseBodyPayload
 from ._save_data_source_order_config_request import SaveDataSourceOrderConfigRequestUserConfigDataSourceList
+from ._search_dataset_documents_response_body import SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos
 from ._search_dataset_documents_response_body import SearchDatasetDocumentsResponseBodyDataDocuments
 from ._search_dataset_documents_response_body import SearchDatasetDocumentsResponseBodyData
 from ._search_news_response_body import SearchNewsResponseBodyData
@@ -1268,6 +1274,7 @@ from ._submit_smart_clip_task_response_body import SubmitSmartClipTaskResponseBo
 from ._submit_topic_selection_perspective_analysis_task_request import SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments
 from ._submit_topic_selection_perspective_analysis_task_request import SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments
 from ._submit_topic_selection_perspective_analysis_task_response_body import SubmitTopicSelectionPerspectiveAnalysisTaskResponseBodyData
+from ._update_dataset_request import UpdateDatasetRequestDatasetConfigSearchSourceConfig
 from ._update_dataset_request import UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders
 from ._update_dataset_request import UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams
 from ._update_dataset_request import UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig
@@ -1868,6 +1875,7 @@ __all__ = [
     SaveStyleLearningResultResponseBody,
     SaveStyleLearningResultResponse,
     SearchDatasetDocumentsRequest,
+    SearchDatasetDocumentsShrinkRequest,
     SearchDatasetDocumentsResponseBody,
     SearchDatasetDocumentsResponse,
     SearchNewsRequest,
@@ -1969,6 +1977,7 @@ __all__ = [
     WritingStyleTemplateFieldStyle,
     AddAuditTermsResponseBodyDataV1,
     AddDatasetDocumentRequestDocumentMetadataAsrSentences,
+    AddDatasetDocumentRequestDocumentMetadataKeyValues,
     AddDatasetDocumentRequestDocumentMetadataVideoShots,
     AddDatasetDocumentRequestDocumentMetadata,
     AddDatasetDocumentRequestDocumentMultimodalMedias,
@@ -1992,6 +2001,7 @@ __all__ = [
     BindPptArtifactResponseBodyData,
     CancelDeepWriteTaskResponseBodyData,
     ClearIntervenesResponseBodyData,
+    CreateDatasetRequestDatasetConfigSearchSourceConfig,
     CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders,
     CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams,
     CreateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig,
@@ -2047,6 +2057,7 @@ __all__ = [
     GetCustomTopicSelectionPerspectiveAnalysisTaskResponseBodyData,
     GetDataSourceOrderConfigResponseBodyDataUserConfigDataSourceList,
     GetDataSourceOrderConfigResponseBodyData,
+    GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig,
     GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders,
     GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams,
     GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequestConfig,
@@ -2059,6 +2070,7 @@ __all__ = [
     GetDatasetResponseBodyDataDocumentHandleConfig,
     GetDatasetResponseBodyData,
     GetDatasetDocumentResponseBodyDataMetadataAsrSentences,
+    GetDatasetDocumentResponseBodyDataMetadataKeyValues,
     GetDatasetDocumentResponseBodyDataMetadataVideoShots,
     GetDatasetDocumentResponseBodyDataMetadata,
     GetDatasetDocumentResponseBodyData,
@@ -2507,6 +2519,7 @@ __all__ = [
     RunWritingV2ResponseBodyPayloadUsage,
     RunWritingV2ResponseBodyPayload,
     SaveDataSourceOrderConfigRequestUserConfigDataSourceList,
+    SearchDatasetDocumentsResponseBodyDataDocumentsChunkInfos,
     SearchDatasetDocumentsResponseBodyDataDocuments,
     SearchDatasetDocumentsResponseBodyData,
     SearchNewsResponseBodyData,
@@ -2556,6 +2569,7 @@ __all__ = [
     SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments,
     SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments,
     SubmitTopicSelectionPerspectiveAnalysisTaskResponseBodyData,
+    UpdateDatasetRequestDatasetConfigSearchSourceConfig,
     UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders,
     UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams,
     UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfig,

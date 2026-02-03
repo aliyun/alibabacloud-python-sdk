@@ -202,11 +202,15 @@ class GetDatasetResponseBodyDataDocumentHandleConfig(DaraModel):
 class GetDatasetResponseBodyDataDatasetConfig(DaraModel):
     def __init__(
         self,
+        search_source_config: main_models.GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig = None,
         search_source_configs: List[main_models.GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigs] = None,
     ):
+        self.search_source_config = search_source_config
         self.search_source_configs = search_source_configs
 
     def validate(self):
+        if self.search_source_config:
+            self.search_source_config.validate()
         if self.search_source_configs:
             for v1 in self.search_source_configs:
                  if v1:
@@ -217,6 +221,9 @@ class GetDatasetResponseBodyDataDatasetConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.search_source_config is not None:
+            result['SearchSourceConfig'] = self.search_source_config.to_map()
+
         result['SearchSourceConfigs'] = []
         if self.search_source_configs is not None:
             for k1 in self.search_source_configs:
@@ -226,6 +233,10 @@ class GetDatasetResponseBodyDataDatasetConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('SearchSourceConfig') is not None:
+            temp_model = main_models.GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig()
+            self.search_source_config = temp_model.from_map(m.get('SearchSourceConfig'))
+
         self.search_source_configs = []
         if m.get('SearchSourceConfigs') is not None:
             for k1 in m.get('SearchSourceConfigs'):
@@ -685,6 +696,57 @@ class GetDatasetResponseBodyDataDatasetConfigSearchSourceConfigsSearchSourceRequ
 
         if m.get('ValueType') is not None:
             self.value_type = m.get('ValueType')
+
+        return self
+
+class GetDatasetResponseBodyDataDatasetConfigSearchSourceConfig(DaraModel):
+    def __init__(
+        self,
+        metadata_key_value_generate_enable: str = None,
+        metadata_key_value_search_enable: str = None,
+        tag_generate_enable: str = None,
+        tag_search_enable: str = None,
+    ):
+        self.metadata_key_value_generate_enable = metadata_key_value_generate_enable
+        self.metadata_key_value_search_enable = metadata_key_value_search_enable
+        self.tag_generate_enable = tag_generate_enable
+        self.tag_search_enable = tag_search_enable
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.metadata_key_value_generate_enable is not None:
+            result['MetadataKeyValueGenerateEnable'] = self.metadata_key_value_generate_enable
+
+        if self.metadata_key_value_search_enable is not None:
+            result['MetadataKeyValueSearchEnable'] = self.metadata_key_value_search_enable
+
+        if self.tag_generate_enable is not None:
+            result['TagGenerateEnable'] = self.tag_generate_enable
+
+        if self.tag_search_enable is not None:
+            result['TagSearchEnable'] = self.tag_search_enable
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MetadataKeyValueGenerateEnable') is not None:
+            self.metadata_key_value_generate_enable = m.get('MetadataKeyValueGenerateEnable')
+
+        if m.get('MetadataKeyValueSearchEnable') is not None:
+            self.metadata_key_value_search_enable = m.get('MetadataKeyValueSearchEnable')
+
+        if m.get('TagGenerateEnable') is not None:
+            self.tag_generate_enable = m.get('TagGenerateEnable')
+
+        if m.get('TagSearchEnable') is not None:
+            self.tag_search_enable = m.get('TagSearchEnable')
 
         return self
 

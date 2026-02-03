@@ -112,6 +112,7 @@ class ListDatasetDocumentsResponseBodyData(DaraModel):
         category_uuid: str = None,
         content: str = None,
         create_time: str = None,
+        create_user: str = None,
         disable_handle_multimodal_media: bool = None,
         doc_id: str = None,
         doc_type: str = None,
@@ -124,13 +125,16 @@ class ListDatasetDocumentsResponseBodyData(DaraModel):
         source_from: str = None,
         status: int = None,
         summary: str = None,
+        tags: List[str] = None,
         title: str = None,
         update_time: str = None,
+        update_user: str = None,
         url: str = None,
     ):
         self.category_uuid = category_uuid
         self.content = content
         self.create_time = create_time
+        self.create_user = create_user
         self.disable_handle_multimodal_media = disable_handle_multimodal_media
         self.doc_id = doc_id
         self.doc_type = doc_type
@@ -143,8 +147,10 @@ class ListDatasetDocumentsResponseBodyData(DaraModel):
         self.source_from = source_from
         self.status = status
         self.summary = summary
+        self.tags = tags
         self.title = title
         self.update_time = update_time
+        self.update_user = update_user
         # url
         self.url = url
 
@@ -167,6 +173,9 @@ class ListDatasetDocumentsResponseBodyData(DaraModel):
 
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
+
+        if self.create_user is not None:
+            result['CreateUser'] = self.create_user
 
         if self.disable_handle_multimodal_media is not None:
             result['DisableHandleMultimodalMedia'] = self.disable_handle_multimodal_media
@@ -206,11 +215,17 @@ class ListDatasetDocumentsResponseBodyData(DaraModel):
         if self.summary is not None:
             result['Summary'] = self.summary
 
+        if self.tags is not None:
+            result['Tags'] = self.tags
+
         if self.title is not None:
             result['Title'] = self.title
 
         if self.update_time is not None:
             result['UpdateTime'] = self.update_time
+
+        if self.update_user is not None:
+            result['UpdateUser'] = self.update_user
 
         if self.url is not None:
             result['Url'] = self.url
@@ -227,6 +242,9 @@ class ListDatasetDocumentsResponseBodyData(DaraModel):
 
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')
+
+        if m.get('CreateUser') is not None:
+            self.create_user = m.get('CreateUser')
 
         if m.get('DisableHandleMultimodalMedia') is not None:
             self.disable_handle_multimodal_media = m.get('DisableHandleMultimodalMedia')
@@ -267,11 +285,17 @@ class ListDatasetDocumentsResponseBodyData(DaraModel):
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
 
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
+
         if m.get('Title') is not None:
             self.title = m.get('Title')
 
         if m.get('UpdateTime') is not None:
             self.update_time = m.get('UpdateTime')
+
+        if m.get('UpdateUser') is not None:
+            self.update_user = m.get('UpdateUser')
 
         if m.get('Url') is not None:
             self.url = m.get('Url')

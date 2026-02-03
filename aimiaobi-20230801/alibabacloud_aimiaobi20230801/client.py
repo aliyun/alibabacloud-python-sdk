@@ -8519,10 +8519,43 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ListDatasetDocumentsShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.category_uuids):
+            request.category_uuids_shrink = Utils.array_to_string_with_specified_style(tmp_req.category_uuids, 'CategoryUuids', 'json')
+        if not DaraCore.is_null(tmp_req.doc_ids):
+            request.doc_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.doc_ids, 'DocIds', 'json')
+        if not DaraCore.is_null(tmp_req.doc_uuids):
+            request.doc_uuids_shrink = Utils.array_to_string_with_specified_style(tmp_req.doc_uuids, 'DocUuids', 'json')
         if not DaraCore.is_null(tmp_req.exclude_fields):
             request.exclude_fields_shrink = Utils.array_to_string_with_specified_style(tmp_req.exclude_fields, 'ExcludeFields', 'json')
         if not DaraCore.is_null(tmp_req.include_fields):
             request.include_fields_shrink = Utils.array_to_string_with_specified_style(tmp_req.include_fields, 'IncludeFields', 'json')
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not DaraCore.is_null(request.category_uuids_shrink):
+            query['CategoryUuids'] = request.category_uuids_shrink
+        if not DaraCore.is_null(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not DaraCore.is_null(request.create_time_start):
+            query['CreateTimeStart'] = request.create_time_start
+        if not DaraCore.is_null(request.doc_ids_shrink):
+            query['DocIds'] = request.doc_ids_shrink
+        if not DaraCore.is_null(request.doc_uuids_shrink):
+            query['DocUuids'] = request.doc_uuids_shrink
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.extend_1):
+            query['Extend1'] = request.extend_1
+        if not DaraCore.is_null(request.extend_2):
+            query['Extend2'] = request.extend_2
+        if not DaraCore.is_null(request.extend_3):
+            query['Extend3'] = request.extend_3
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
         body = {}
         if not DaraCore.is_null(request.dataset_description):
             body['DatasetDescription'] = request.dataset_description
@@ -8547,6 +8580,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -8573,10 +8607,43 @@ class Client(OpenApiClient):
         tmp_req.validate()
         request = main_models.ListDatasetDocumentsShrinkRequest()
         Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.category_uuids):
+            request.category_uuids_shrink = Utils.array_to_string_with_specified_style(tmp_req.category_uuids, 'CategoryUuids', 'json')
+        if not DaraCore.is_null(tmp_req.doc_ids):
+            request.doc_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.doc_ids, 'DocIds', 'json')
+        if not DaraCore.is_null(tmp_req.doc_uuids):
+            request.doc_uuids_shrink = Utils.array_to_string_with_specified_style(tmp_req.doc_uuids, 'DocUuids', 'json')
         if not DaraCore.is_null(tmp_req.exclude_fields):
             request.exclude_fields_shrink = Utils.array_to_string_with_specified_style(tmp_req.exclude_fields, 'ExcludeFields', 'json')
         if not DaraCore.is_null(tmp_req.include_fields):
             request.include_fields_shrink = Utils.array_to_string_with_specified_style(tmp_req.include_fields, 'IncludeFields', 'json')
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not DaraCore.is_null(request.category_uuids_shrink):
+            query['CategoryUuids'] = request.category_uuids_shrink
+        if not DaraCore.is_null(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not DaraCore.is_null(request.create_time_start):
+            query['CreateTimeStart'] = request.create_time_start
+        if not DaraCore.is_null(request.doc_ids_shrink):
+            query['DocIds'] = request.doc_ids_shrink
+        if not DaraCore.is_null(request.doc_uuids_shrink):
+            query['DocUuids'] = request.doc_uuids_shrink
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.extend_1):
+            query['Extend1'] = request.extend_1
+        if not DaraCore.is_null(request.extend_2):
+            query['Extend2'] = request.extend_2
+        if not DaraCore.is_null(request.extend_3):
+            query['Extend3'] = request.extend_3
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
         body = {}
         if not DaraCore.is_null(request.dataset_description):
             body['DatasetDescription'] = request.dataset_description
@@ -8601,6 +8668,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -19025,10 +19093,47 @@ class Client(OpenApiClient):
 
     def search_dataset_documents_with_options(
         self,
-        request: main_models.SearchDatasetDocumentsRequest,
+        tmp_req: main_models.SearchDatasetDocumentsRequest,
         runtime: RuntimeOptions,
     ) -> main_models.SearchDatasetDocumentsResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.SearchDatasetDocumentsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.category_uuids):
+            request.category_uuids_shrink = Utils.array_to_string_with_specified_style(tmp_req.category_uuids, 'CategoryUuids', 'json')
+        if not DaraCore.is_null(tmp_req.doc_ids):
+            request.doc_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.doc_ids, 'DocIds', 'json')
+        if not DaraCore.is_null(tmp_req.doc_types):
+            request.doc_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.doc_types, 'DocTypes', 'json')
+        if not DaraCore.is_null(tmp_req.doc_uuids):
+            request.doc_uuids_shrink = Utils.array_to_string_with_specified_style(tmp_req.doc_uuids, 'DocUuids', 'json')
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not DaraCore.is_null(request.category_uuids_shrink):
+            query['CategoryUuids'] = request.category_uuids_shrink
+        if not DaraCore.is_null(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not DaraCore.is_null(request.create_time_start):
+            query['CreateTimeStart'] = request.create_time_start
+        if not DaraCore.is_null(request.doc_ids_shrink):
+            query['DocIds'] = request.doc_ids_shrink
+        if not DaraCore.is_null(request.doc_types_shrink):
+            query['DocTypes'] = request.doc_types_shrink
+        if not DaraCore.is_null(request.doc_uuids_shrink):
+            query['DocUuids'] = request.doc_uuids_shrink
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.extend_2):
+            query['Extend2'] = request.extend_2
+        if not DaraCore.is_null(request.extend_3):
+            query['Extend3'] = request.extend_3
+        if not DaraCore.is_null(request.search_mode):
+            query['SearchMode'] = request.search_mode
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         body = {}
         if not DaraCore.is_null(request.dataset_id):
             body['DatasetId'] = request.dataset_id
@@ -19045,6 +19150,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -19065,10 +19171,47 @@ class Client(OpenApiClient):
 
     async def search_dataset_documents_with_options_async(
         self,
-        request: main_models.SearchDatasetDocumentsRequest,
+        tmp_req: main_models.SearchDatasetDocumentsRequest,
         runtime: RuntimeOptions,
     ) -> main_models.SearchDatasetDocumentsResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.SearchDatasetDocumentsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.category_uuids):
+            request.category_uuids_shrink = Utils.array_to_string_with_specified_style(tmp_req.category_uuids, 'CategoryUuids', 'json')
+        if not DaraCore.is_null(tmp_req.doc_ids):
+            request.doc_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.doc_ids, 'DocIds', 'json')
+        if not DaraCore.is_null(tmp_req.doc_types):
+            request.doc_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.doc_types, 'DocTypes', 'json')
+        if not DaraCore.is_null(tmp_req.doc_uuids):
+            request.doc_uuids_shrink = Utils.array_to_string_with_specified_style(tmp_req.doc_uuids, 'DocUuids', 'json')
+        if not DaraCore.is_null(tmp_req.tags):
+            request.tags_shrink = Utils.array_to_string_with_specified_style(tmp_req.tags, 'Tags', 'json')
+        query = {}
+        if not DaraCore.is_null(request.category_uuids_shrink):
+            query['CategoryUuids'] = request.category_uuids_shrink
+        if not DaraCore.is_null(request.create_time_end):
+            query['CreateTimeEnd'] = request.create_time_end
+        if not DaraCore.is_null(request.create_time_start):
+            query['CreateTimeStart'] = request.create_time_start
+        if not DaraCore.is_null(request.doc_ids_shrink):
+            query['DocIds'] = request.doc_ids_shrink
+        if not DaraCore.is_null(request.doc_types_shrink):
+            query['DocTypes'] = request.doc_types_shrink
+        if not DaraCore.is_null(request.doc_uuids_shrink):
+            query['DocUuids'] = request.doc_uuids_shrink
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.extend_2):
+            query['Extend2'] = request.extend_2
+        if not DaraCore.is_null(request.extend_3):
+            query['Extend3'] = request.extend_3
+        if not DaraCore.is_null(request.search_mode):
+            query['SearchMode'] = request.search_mode
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.tags_shrink):
+            query['Tags'] = request.tags_shrink
         body = {}
         if not DaraCore.is_null(request.dataset_id):
             body['DatasetId'] = request.dataset_id
@@ -19085,6 +19228,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.workspace_id):
             body['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(

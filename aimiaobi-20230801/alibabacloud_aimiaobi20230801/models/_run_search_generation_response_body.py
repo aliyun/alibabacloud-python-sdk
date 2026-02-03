@@ -969,17 +969,27 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentVideoSearchResultSearchResultArticle(DaraModel):
     def __init__(
         self,
+        category_uuid: str = None,
         doc_id: str = None,
         doc_uuid: str = None,
+        extend_1: str = None,
+        extend_2: str = None,
+        extend_3: str = None,
         search_source_name: str = None,
         summary: str = None,
+        tags: List[str] = None,
         title: str = None,
         url: str = None,
     ):
+        self.category_uuid = category_uuid
         self.doc_id = doc_id
         self.doc_uuid = doc_uuid
+        self.extend_1 = extend_1
+        self.extend_2 = extend_2
+        self.extend_3 = extend_3
         self.search_source_name = search_source_name
         self.summary = summary
+        self.tags = tags
         self.title = title
         self.url = url
 
@@ -991,17 +1001,32 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_uuid is not None:
+            result['CategoryUuid'] = self.category_uuid
+
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
 
         if self.doc_uuid is not None:
             result['DocUuid'] = self.doc_uuid
 
+        if self.extend_1 is not None:
+            result['Extend1'] = self.extend_1
+
+        if self.extend_2 is not None:
+            result['Extend2'] = self.extend_2
+
+        if self.extend_3 is not None:
+            result['Extend3'] = self.extend_3
+
         if self.search_source_name is not None:
             result['SearchSourceName'] = self.search_source_name
 
         if self.summary is not None:
             result['Summary'] = self.summary
+
+        if self.tags is not None:
+            result['Tags'] = self.tags
 
         if self.title is not None:
             result['Title'] = self.title
@@ -1013,17 +1038,32 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryUuid') is not None:
+            self.category_uuid = m.get('CategoryUuid')
+
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
 
         if m.get('DocUuid') is not None:
             self.doc_uuid = m.get('DocUuid')
 
+        if m.get('Extend1') is not None:
+            self.extend_1 = m.get('Extend1')
+
+        if m.get('Extend2') is not None:
+            self.extend_2 = m.get('Extend2')
+
+        if m.get('Extend3') is not None:
+            self.extend_3 = m.get('Extend3')
+
         if m.get('SearchSourceName') is not None:
             self.search_source_name = m.get('SearchSourceName')
 
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')
@@ -1311,10 +1351,14 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTimelineResultReferenceList(DaraModel):
     def __init__(
         self,
+        category_uuid: str = None,
         chunks: List[str] = None,
         content: str = None,
         doc_id: str = None,
         doc_uuid: str = None,
+        extend_1: str = None,
+        extend_2: str = None,
+        extend_3: str = None,
         pub_time: str = None,
         score: float = None,
         search_source: str = None,
@@ -1323,14 +1367,19 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         select: bool = None,
         source: str = None,
         summary: str = None,
+        tags: List[str] = None,
         title: str = None,
         traceability_id: int = None,
         url: str = None,
     ):
+        self.category_uuid = category_uuid
         self.chunks = chunks
         self.content = content
         self.doc_id = doc_id
         self.doc_uuid = doc_uuid
+        self.extend_1 = extend_1
+        self.extend_2 = extend_2
+        self.extend_3 = extend_3
         self.pub_time = pub_time
         self.score = score
         self.search_source = search_source
@@ -1339,6 +1388,7 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         self.select = select
         self.source = source
         self.summary = summary
+        self.tags = tags
         self.title = title
         self.traceability_id = traceability_id
         self.url = url
@@ -1351,6 +1401,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_uuid is not None:
+            result['CategoryUuid'] = self.category_uuid
+
         if self.chunks is not None:
             result['Chunks'] = self.chunks
 
@@ -1362,6 +1415,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
         if self.doc_uuid is not None:
             result['DocUuid'] = self.doc_uuid
+
+        if self.extend_1 is not None:
+            result['Extend1'] = self.extend_1
+
+        if self.extend_2 is not None:
+            result['Extend2'] = self.extend_2
+
+        if self.extend_3 is not None:
+            result['Extend3'] = self.extend_3
 
         if self.pub_time is not None:
             result['PubTime'] = self.pub_time
@@ -1387,6 +1449,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         if self.summary is not None:
             result['Summary'] = self.summary
 
+        if self.tags is not None:
+            result['Tags'] = self.tags
+
         if self.title is not None:
             result['Title'] = self.title
 
@@ -1400,6 +1465,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryUuid') is not None:
+            self.category_uuid = m.get('CategoryUuid')
+
         if m.get('Chunks') is not None:
             self.chunks = m.get('Chunks')
 
@@ -1411,6 +1479,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
         if m.get('DocUuid') is not None:
             self.doc_uuid = m.get('DocUuid')
+
+        if m.get('Extend1') is not None:
+            self.extend_1 = m.get('Extend1')
+
+        if m.get('Extend2') is not None:
+            self.extend_2 = m.get('Extend2')
+
+        if m.get('Extend3') is not None:
+            self.extend_3 = m.get('Extend3')
 
         if m.get('PubTime') is not None:
             self.pub_time = m.get('PubTime')
@@ -1435,6 +1512,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')
@@ -1925,26 +2005,36 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextSearchResultSearchResult(DaraModel):
     def __init__(
         self,
+        category_uuid: str = None,
         content: str = None,
         doc_id: str = None,
         doc_uuid: str = None,
+        extend_1: str = None,
+        extend_2: str = None,
+        extend_3: str = None,
         pub_time: str = None,
         search_source: str = None,
         search_source_name: str = None,
         search_source_type: str = None,
         summary: str = None,
+        tags: List[str] = None,
         title: str = None,
         traceability_id: str = None,
         url: str = None,
     ):
+        self.category_uuid = category_uuid
         self.content = content
         self.doc_id = doc_id
         self.doc_uuid = doc_uuid
+        self.extend_1 = extend_1
+        self.extend_2 = extend_2
+        self.extend_3 = extend_3
         self.pub_time = pub_time
         self.search_source = search_source
         self.search_source_name = search_source_name
         self.search_source_type = search_source_type
         self.summary = summary
+        self.tags = tags
         self.title = title
         self.traceability_id = traceability_id
         self.url = url
@@ -1957,6 +2047,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_uuid is not None:
+            result['CategoryUuid'] = self.category_uuid
+
         if self.content is not None:
             result['Content'] = self.content
 
@@ -1965,6 +2058,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
         if self.doc_uuid is not None:
             result['DocUuid'] = self.doc_uuid
+
+        if self.extend_1 is not None:
+            result['Extend1'] = self.extend_1
+
+        if self.extend_2 is not None:
+            result['Extend2'] = self.extend_2
+
+        if self.extend_3 is not None:
+            result['Extend3'] = self.extend_3
 
         if self.pub_time is not None:
             result['PubTime'] = self.pub_time
@@ -1981,6 +2083,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         if self.summary is not None:
             result['Summary'] = self.summary
 
+        if self.tags is not None:
+            result['Tags'] = self.tags
+
         if self.title is not None:
             result['Title'] = self.title
 
@@ -1994,6 +2099,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryUuid') is not None:
+            self.category_uuid = m.get('CategoryUuid')
+
         if m.get('Content') is not None:
             self.content = m.get('Content')
 
@@ -2002,6 +2110,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
         if m.get('DocUuid') is not None:
             self.doc_uuid = m.get('DocUuid')
+
+        if m.get('Extend1') is not None:
+            self.extend_1 = m.get('Extend1')
+
+        if m.get('Extend2') is not None:
+            self.extend_2 = m.get('Extend2')
+
+        if m.get('Extend3') is not None:
+            self.extend_3 = m.get('Extend3')
 
         if m.get('PubTime') is not None:
             self.pub_time = m.get('PubTime')
@@ -2017,6 +2134,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')
@@ -2315,10 +2435,14 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentTextGenerateResultReferenceList(DaraModel):
     def __init__(
         self,
+        category_uuid: str = None,
         chunks: List[str] = None,
         content: str = None,
         doc_id: str = None,
         doc_uuid: str = None,
+        extend_1: str = None,
+        extend_2: str = None,
+        extend_3: str = None,
         pub_time: str = None,
         score: float = None,
         search_source: str = None,
@@ -2327,14 +2451,19 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         select: bool = None,
         source: str = None,
         summary: str = None,
+        tags: List[str] = None,
         title: str = None,
         traceability_id: int = None,
         url: str = None,
     ):
+        self.category_uuid = category_uuid
         self.chunks = chunks
         self.content = content
         self.doc_id = doc_id
         self.doc_uuid = doc_uuid
+        self.extend_1 = extend_1
+        self.extend_2 = extend_2
+        self.extend_3 = extend_3
         self.pub_time = pub_time
         self.score = score
         self.search_source = search_source
@@ -2343,6 +2472,7 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         self.select = select
         self.source = source
         self.summary = summary
+        self.tags = tags
         self.title = title
         self.traceability_id = traceability_id
         self.url = url
@@ -2355,6 +2485,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_uuid is not None:
+            result['CategoryUuid'] = self.category_uuid
+
         if self.chunks is not None:
             result['Chunks'] = self.chunks
 
@@ -2366,6 +2499,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
         if self.doc_uuid is not None:
             result['DocUuid'] = self.doc_uuid
+
+        if self.extend_1 is not None:
+            result['Extend1'] = self.extend_1
+
+        if self.extend_2 is not None:
+            result['Extend2'] = self.extend_2
+
+        if self.extend_3 is not None:
+            result['Extend3'] = self.extend_3
 
         if self.pub_time is not None:
             result['PubTime'] = self.pub_time
@@ -2391,6 +2533,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         if self.summary is not None:
             result['Summary'] = self.summary
 
+        if self.tags is not None:
+            result['Tags'] = self.tags
+
         if self.title is not None:
             result['Title'] = self.title
 
@@ -2404,6 +2549,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryUuid') is not None:
+            self.category_uuid = m.get('CategoryUuid')
+
         if m.get('Chunks') is not None:
             self.chunks = m.get('Chunks')
 
@@ -2415,6 +2563,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
         if m.get('DocUuid') is not None:
             self.doc_uuid = m.get('DocUuid')
+
+        if m.get('Extend1') is not None:
+            self.extend_1 = m.get('Extend1')
+
+        if m.get('Extend2') is not None:
+            self.extend_2 = m.get('Extend2')
+
+        if m.get('Extend3') is not None:
+            self.extend_3 = m.get('Extend3')
 
         if m.get('PubTime') is not None:
             self.pub_time = m.get('PubTime')
@@ -2439,6 +2596,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')
@@ -3111,9 +3271,13 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentNewsElementResultNewsElementArticleListArticle(DaraModel):
     def __init__(
         self,
+        category_uuid: str = None,
         content: str = None,
         doc_id: str = None,
         doc_uuid: str = None,
+        extend_1: str = None,
+        extend_2: str = None,
+        extend_3: str = None,
         pub_time: str = None,
         score: float = None,
         search_source: str = None,
@@ -3121,12 +3285,17 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         search_source_type: str = None,
         select: bool = None,
         summary: str = None,
+        tags: List[str] = None,
         title: str = None,
         url: str = None,
     ):
+        self.category_uuid = category_uuid
         self.content = content
         self.doc_id = doc_id
         self.doc_uuid = doc_uuid
+        self.extend_1 = extend_1
+        self.extend_2 = extend_2
+        self.extend_3 = extend_3
         self.pub_time = pub_time
         self.score = score
         self.search_source = search_source
@@ -3134,6 +3303,7 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         self.search_source_type = search_source_type
         self.select = select
         self.summary = summary
+        self.tags = tags
         self.title = title
         self.url = url
 
@@ -3145,6 +3315,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_uuid is not None:
+            result['CategoryUuid'] = self.category_uuid
+
         if self.content is not None:
             result['Content'] = self.content
 
@@ -3153,6 +3326,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
         if self.doc_uuid is not None:
             result['DocUuid'] = self.doc_uuid
+
+        if self.extend_1 is not None:
+            result['Extend1'] = self.extend_1
+
+        if self.extend_2 is not None:
+            result['Extend2'] = self.extend_2
+
+        if self.extend_3 is not None:
+            result['Extend3'] = self.extend_3
 
         if self.pub_time is not None:
             result['PubTime'] = self.pub_time
@@ -3175,6 +3357,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         if self.summary is not None:
             result['Summary'] = self.summary
 
+        if self.tags is not None:
+            result['Tags'] = self.tags
+
         if self.title is not None:
             result['Title'] = self.title
 
@@ -3185,6 +3370,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryUuid') is not None:
+            self.category_uuid = m.get('CategoryUuid')
+
         if m.get('Content') is not None:
             self.content = m.get('Content')
 
@@ -3193,6 +3381,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
         if m.get('DocUuid') is not None:
             self.doc_uuid = m.get('DocUuid')
+
+        if m.get('Extend1') is not None:
+            self.extend_1 = m.get('Extend1')
+
+        if m.get('Extend2') is not None:
+            self.extend_2 = m.get('Extend2')
+
+        if m.get('Extend3') is not None:
+            self.extend_3 = m.get('Extend3')
 
         if m.get('PubTime') is not None:
             self.pub_time = m.get('PubTime')
@@ -3214,6 +3411,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')
@@ -3314,17 +3514,27 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentImageSearchResultSearchResultArticle(DaraModel):
     def __init__(
         self,
+        category_uuid: str = None,
         doc_id: str = None,
         doc_uuid: str = None,
+        extend_1: str = None,
+        extend_2: str = None,
+        extend_3: str = None,
         search_source_name: str = None,
         summary: str = None,
+        tags: List[str] = None,
         title: str = None,
         url: str = None,
     ):
+        self.category_uuid = category_uuid
         self.doc_id = doc_id
         self.doc_uuid = doc_uuid
+        self.extend_1 = extend_1
+        self.extend_2 = extend_2
+        self.extend_3 = extend_3
         self.search_source_name = search_source_name
         self.summary = summary
+        self.tags = tags
         self.title = title
         self.url = url
 
@@ -3336,17 +3546,32 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_uuid is not None:
+            result['CategoryUuid'] = self.category_uuid
+
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
 
         if self.doc_uuid is not None:
             result['DocUuid'] = self.doc_uuid
 
+        if self.extend_1 is not None:
+            result['Extend1'] = self.extend_1
+
+        if self.extend_2 is not None:
+            result['Extend2'] = self.extend_2
+
+        if self.extend_3 is not None:
+            result['Extend3'] = self.extend_3
+
         if self.search_source_name is not None:
             result['SearchSourceName'] = self.search_source_name
 
         if self.summary is not None:
             result['Summary'] = self.summary
+
+        if self.tags is not None:
+            result['Tags'] = self.tags
 
         if self.title is not None:
             result['Title'] = self.title
@@ -3358,17 +3583,32 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryUuid') is not None:
+            self.category_uuid = m.get('CategoryUuid')
+
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
 
         if m.get('DocUuid') is not None:
             self.doc_uuid = m.get('DocUuid')
 
+        if m.get('Extend1') is not None:
+            self.extend_1 = m.get('Extend1')
+
+        if m.get('Extend2') is not None:
+            self.extend_2 = m.get('Extend2')
+
+        if m.get('Extend3') is not None:
+            self.extend_3 = m.get('Extend3')
+
         if m.get('SearchSourceName') is not None:
             self.search_source_name = m.get('SearchSourceName')
 
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')
@@ -3448,11 +3688,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResult(DaraModel):
     def __init__(
         self,
+        category_uuid: str = None,
         chunks: List[str] = None,
         content: str = None,
         doc_id: str = None,
         doc_uuid: str = None,
         excerpt: str = None,
+        extend_1: str = None,
+        extend_2: str = None,
+        extend_3: str = None,
         multimodal_medias: List[main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultMultimodalMedias] = None,
         pub_time: str = None,
         score: float = None,
@@ -3461,16 +3705,21 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         search_source_type: str = None,
         select: bool = None,
         summary: str = None,
+        tags: List[str] = None,
         text_generate_multimodal_media_list: List[main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentExcerptResultSearchResultTextGenerateMultimodalMediaList] = None,
         title: str = None,
         traceability_id: int = None,
         url: str = None,
     ):
+        self.category_uuid = category_uuid
         self.chunks = chunks
         self.content = content
         self.doc_id = doc_id
         self.doc_uuid = doc_uuid
         self.excerpt = excerpt
+        self.extend_1 = extend_1
+        self.extend_2 = extend_2
+        self.extend_3 = extend_3
         self.multimodal_medias = multimodal_medias
         self.pub_time = pub_time
         self.score = score
@@ -3479,6 +3728,7 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         self.search_source_type = search_source_type
         self.select = select
         self.summary = summary
+        self.tags = tags
         self.text_generate_multimodal_media_list = text_generate_multimodal_media_list
         self.title = title
         self.traceability_id = traceability_id
@@ -3499,6 +3749,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_uuid is not None:
+            result['CategoryUuid'] = self.category_uuid
+
         if self.chunks is not None:
             result['Chunks'] = self.chunks
 
@@ -3513,6 +3766,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
         if self.excerpt is not None:
             result['Excerpt'] = self.excerpt
+
+        if self.extend_1 is not None:
+            result['Extend1'] = self.extend_1
+
+        if self.extend_2 is not None:
+            result['Extend2'] = self.extend_2
+
+        if self.extend_3 is not None:
+            result['Extend3'] = self.extend_3
 
         result['MultimodalMedias'] = []
         if self.multimodal_medias is not None:
@@ -3540,6 +3802,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         if self.summary is not None:
             result['Summary'] = self.summary
 
+        if self.tags is not None:
+            result['Tags'] = self.tags
+
         result['TextGenerateMultimodalMediaList'] = []
         if self.text_generate_multimodal_media_list is not None:
             for k1 in self.text_generate_multimodal_media_list:
@@ -3558,6 +3823,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryUuid') is not None:
+            self.category_uuid = m.get('CategoryUuid')
+
         if m.get('Chunks') is not None:
             self.chunks = m.get('Chunks')
 
@@ -3572,6 +3840,15 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
         if m.get('Excerpt') is not None:
             self.excerpt = m.get('Excerpt')
+
+        if m.get('Extend1') is not None:
+            self.extend_1 = m.get('Extend1')
+
+        if m.get('Extend2') is not None:
+            self.extend_2 = m.get('Extend2')
+
+        if m.get('Extend3') is not None:
+            self.extend_3 = m.get('Extend3')
 
         self.multimodal_medias = []
         if m.get('MultimodalMedias') is not None:
@@ -3599,6 +3876,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         self.text_generate_multimodal_media_list = []
         if m.get('TextGenerateMultimodalMediaList') is not None:
@@ -4135,17 +4415,31 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsVideoSearchResultSearchResultArticle(DaraModel):
     def __init__(
         self,
+        category_uuid: str = None,
         doc_id: str = None,
         doc_uuid: str = None,
+        extend_1: str = None,
+        extend_2: str = None,
+        extend_3: str = None,
+        search_source: str = None,
         search_source_name: str = None,
+        search_source_type: str = None,
         summary: str = None,
+        tags: List[str] = None,
         title: str = None,
         url: str = None,
     ):
+        self.category_uuid = category_uuid
         self.doc_id = doc_id
         self.doc_uuid = doc_uuid
+        self.extend_1 = extend_1
+        self.extend_2 = extend_2
+        self.extend_3 = extend_3
+        self.search_source = search_source
         self.search_source_name = search_source_name
+        self.search_source_type = search_source_type
         self.summary = summary
+        self.tags = tags
         self.title = title
         self.url = url
 
@@ -4157,17 +4451,38 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_uuid is not None:
+            result['CategoryUuid'] = self.category_uuid
+
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
 
         if self.doc_uuid is not None:
             result['DocUuid'] = self.doc_uuid
 
+        if self.extend_1 is not None:
+            result['Extend1'] = self.extend_1
+
+        if self.extend_2 is not None:
+            result['Extend2'] = self.extend_2
+
+        if self.extend_3 is not None:
+            result['Extend3'] = self.extend_3
+
+        if self.search_source is not None:
+            result['SearchSource'] = self.search_source
+
         if self.search_source_name is not None:
             result['SearchSourceName'] = self.search_source_name
 
+        if self.search_source_type is not None:
+            result['SearchSourceType'] = self.search_source_type
+
         if self.summary is not None:
             result['Summary'] = self.summary
+
+        if self.tags is not None:
+            result['Tags'] = self.tags
 
         if self.title is not None:
             result['Title'] = self.title
@@ -4179,17 +4494,38 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryUuid') is not None:
+            self.category_uuid = m.get('CategoryUuid')
+
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
 
         if m.get('DocUuid') is not None:
             self.doc_uuid = m.get('DocUuid')
 
+        if m.get('Extend1') is not None:
+            self.extend_1 = m.get('Extend1')
+
+        if m.get('Extend2') is not None:
+            self.extend_2 = m.get('Extend2')
+
+        if m.get('Extend3') is not None:
+            self.extend_3 = m.get('Extend3')
+
+        if m.get('SearchSource') is not None:
+            self.search_source = m.get('SearchSource')
+
         if m.get('SearchSourceName') is not None:
             self.search_source_name = m.get('SearchSourceName')
 
+        if m.get('SearchSourceType') is not None:
+            self.search_source_type = m.get('SearchSourceType')
+
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')
@@ -4261,25 +4597,35 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResult(DaraModel):
     def __init__(
         self,
+        category_uuid: str = None,
         doc_id: str = None,
         doc_uuid: str = None,
+        extend_1: str = None,
+        extend_2: str = None,
+        extend_3: str = None,
         multimodal_medias: List[main_models.RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsTextSearchResultSearchResultMultimodalMedias] = None,
         pub_time: str = None,
         search_source: str = None,
         search_source_name: str = None,
         search_source_type: str = None,
         summary: str = None,
+        tags: List[str] = None,
         title: str = None,
         url: str = None,
     ):
+        self.category_uuid = category_uuid
         self.doc_id = doc_id
         self.doc_uuid = doc_uuid
+        self.extend_1 = extend_1
+        self.extend_2 = extend_2
+        self.extend_3 = extend_3
         self.multimodal_medias = multimodal_medias
         self.pub_time = pub_time
         self.search_source = search_source
         self.search_source_name = search_source_name
         self.search_source_type = search_source_type
         self.summary = summary
+        self.tags = tags
         self.title = title
         self.url = url
 
@@ -4294,11 +4640,23 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_uuid is not None:
+            result['CategoryUuid'] = self.category_uuid
+
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
 
         if self.doc_uuid is not None:
             result['DocUuid'] = self.doc_uuid
+
+        if self.extend_1 is not None:
+            result['Extend1'] = self.extend_1
+
+        if self.extend_2 is not None:
+            result['Extend2'] = self.extend_2
+
+        if self.extend_3 is not None:
+            result['Extend3'] = self.extend_3
 
         result['MultimodalMedias'] = []
         if self.multimodal_medias is not None:
@@ -4320,6 +4678,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         if self.summary is not None:
             result['Summary'] = self.summary
 
+        if self.tags is not None:
+            result['Tags'] = self.tags
+
         if self.title is not None:
             result['Title'] = self.title
 
@@ -4330,11 +4691,23 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryUuid') is not None:
+            self.category_uuid = m.get('CategoryUuid')
+
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
 
         if m.get('DocUuid') is not None:
             self.doc_uuid = m.get('DocUuid')
+
+        if m.get('Extend1') is not None:
+            self.extend_1 = m.get('Extend1')
+
+        if m.get('Extend2') is not None:
+            self.extend_2 = m.get('Extend2')
+
+        if m.get('Extend3') is not None:
+            self.extend_3 = m.get('Extend3')
 
         self.multimodal_medias = []
         if m.get('MultimodalMedias') is not None:
@@ -4356,6 +4729,9 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')
@@ -4515,17 +4891,31 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsImageSearchResultSearchResultArticle(DaraModel):
     def __init__(
         self,
+        category_uuid: str = None,
         doc_id: str = None,
         doc_uuid: str = None,
+        extend_1: str = None,
+        extend_2: str = None,
+        extend_3: str = None,
+        search_source: str = None,
         search_source_name: str = None,
+        search_source_type: str = None,
         summary: str = None,
+        tags: List[str] = None,
         title: str = None,
         url: str = None,
     ):
+        self.category_uuid = category_uuid
         self.doc_id = doc_id
         self.doc_uuid = doc_uuid
+        self.extend_1 = extend_1
+        self.extend_2 = extend_2
+        self.extend_3 = extend_3
+        self.search_source = search_source
         self.search_source_name = search_source_name
+        self.search_source_type = search_source_type
         self.summary = summary
+        self.tags = tags
         self.title = title
         self.url = url
 
@@ -4537,17 +4927,38 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_uuid is not None:
+            result['CategoryUuid'] = self.category_uuid
+
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
 
         if self.doc_uuid is not None:
             result['DocUuid'] = self.doc_uuid
 
+        if self.extend_1 is not None:
+            result['Extend1'] = self.extend_1
+
+        if self.extend_2 is not None:
+            result['Extend2'] = self.extend_2
+
+        if self.extend_3 is not None:
+            result['Extend3'] = self.extend_3
+
+        if self.search_source is not None:
+            result['SearchSource'] = self.search_source
+
         if self.search_source_name is not None:
             result['SearchSourceName'] = self.search_source_name
 
+        if self.search_source_type is not None:
+            result['SearchSourceType'] = self.search_source_type
+
         if self.summary is not None:
             result['Summary'] = self.summary
+
+        if self.tags is not None:
+            result['Tags'] = self.tags
 
         if self.title is not None:
             result['Title'] = self.title
@@ -4559,17 +4970,38 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryUuid') is not None:
+            self.category_uuid = m.get('CategoryUuid')
+
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
 
         if m.get('DocUuid') is not None:
             self.doc_uuid = m.get('DocUuid')
 
+        if m.get('Extend1') is not None:
+            self.extend_1 = m.get('Extend1')
+
+        if m.get('Extend2') is not None:
+            self.extend_2 = m.get('Extend2')
+
+        if m.get('Extend3') is not None:
+            self.extend_3 = m.get('Extend3')
+
+        if m.get('SearchSource') is not None:
+            self.search_source = m.get('SearchSource')
+
         if m.get('SearchSourceName') is not None:
             self.search_source_name = m.get('SearchSourceName')
 
+        if m.get('SearchSourceType') is not None:
+            self.search_source_type = m.get('SearchSourceType')
+
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')
@@ -4756,17 +5188,31 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentClusterTopicResultClusterTopicsAudioSearchResultSearchResultArticle(DaraModel):
     def __init__(
         self,
+        category_uuid: str = None,
         doc_id: str = None,
         doc_uuid: str = None,
+        extend_1: str = None,
+        extend_2: str = None,
+        extend_3: str = None,
+        search_source: str = None,
         search_source_name: str = None,
+        search_source_type: str = None,
         summary: str = None,
+        tags: List[str] = None,
         title: str = None,
         url: str = None,
     ):
+        self.category_uuid = category_uuid
         self.doc_id = doc_id
         self.doc_uuid = doc_uuid
+        self.extend_1 = extend_1
+        self.extend_2 = extend_2
+        self.extend_3 = extend_3
+        self.search_source = search_source
         self.search_source_name = search_source_name
+        self.search_source_type = search_source_type
         self.summary = summary
+        self.tags = tags
         self.title = title
         self.url = url
 
@@ -4778,17 +5224,38 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_uuid is not None:
+            result['CategoryUuid'] = self.category_uuid
+
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
 
         if self.doc_uuid is not None:
             result['DocUuid'] = self.doc_uuid
 
+        if self.extend_1 is not None:
+            result['Extend1'] = self.extend_1
+
+        if self.extend_2 is not None:
+            result['Extend2'] = self.extend_2
+
+        if self.extend_3 is not None:
+            result['Extend3'] = self.extend_3
+
+        if self.search_source is not None:
+            result['SearchSource'] = self.search_source
+
         if self.search_source_name is not None:
             result['SearchSourceName'] = self.search_source_name
 
+        if self.search_source_type is not None:
+            result['SearchSourceType'] = self.search_source_type
+
         if self.summary is not None:
             result['Summary'] = self.summary
+
+        if self.tags is not None:
+            result['Tags'] = self.tags
 
         if self.title is not None:
             result['Title'] = self.title
@@ -4800,17 +5267,38 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryUuid') is not None:
+            self.category_uuid = m.get('CategoryUuid')
+
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
 
         if m.get('DocUuid') is not None:
             self.doc_uuid = m.get('DocUuid')
 
+        if m.get('Extend1') is not None:
+            self.extend_1 = m.get('Extend1')
+
+        if m.get('Extend2') is not None:
+            self.extend_2 = m.get('Extend2')
+
+        if m.get('Extend3') is not None:
+            self.extend_3 = m.get('Extend3')
+
+        if m.get('SearchSource') is not None:
+            self.search_source = m.get('SearchSource')
+
         if m.get('SearchSourceName') is not None:
             self.search_source_name = m.get('SearchSourceName')
 
+        if m.get('SearchSourceType') is not None:
+            self.search_source_type = m.get('SearchSourceType')
+
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')
@@ -4987,17 +5475,27 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGeneratedContentAudioSearchResultSearchResultArticle(DaraModel):
     def __init__(
         self,
+        category_uuid: str = None,
         doc_id: str = None,
         doc_uuid: str = None,
+        extend_1: str = None,
+        extend_2: str = None,
+        extend_3: str = None,
         search_source_name: str = None,
         summary: str = None,
+        tags: List[str] = None,
         title: str = None,
         url: str = None,
     ):
+        self.category_uuid = category_uuid
         self.doc_id = doc_id
         self.doc_uuid = doc_uuid
+        self.extend_1 = extend_1
+        self.extend_2 = extend_2
+        self.extend_3 = extend_3
         self.search_source_name = search_source_name
         self.summary = summary
+        self.tags = tags
         self.title = title
         self.url = url
 
@@ -5009,17 +5507,32 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.category_uuid is not None:
+            result['CategoryUuid'] = self.category_uuid
+
         if self.doc_id is not None:
             result['DocId'] = self.doc_id
 
         if self.doc_uuid is not None:
             result['DocUuid'] = self.doc_uuid
 
+        if self.extend_1 is not None:
+            result['Extend1'] = self.extend_1
+
+        if self.extend_2 is not None:
+            result['Extend2'] = self.extend_2
+
+        if self.extend_3 is not None:
+            result['Extend3'] = self.extend_3
+
         if self.search_source_name is not None:
             result['SearchSourceName'] = self.search_source_name
 
         if self.summary is not None:
             result['Summary'] = self.summary
+
+        if self.tags is not None:
+            result['Tags'] = self.tags
 
         if self.title is not None:
             result['Title'] = self.title
@@ -5031,17 +5544,32 @@ class RunSearchGenerationResponseBodyPayloadOutputAgentContextBizContextGenerate
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CategoryUuid') is not None:
+            self.category_uuid = m.get('CategoryUuid')
+
         if m.get('DocId') is not None:
             self.doc_id = m.get('DocId')
 
         if m.get('DocUuid') is not None:
             self.doc_uuid = m.get('DocUuid')
 
+        if m.get('Extend1') is not None:
+            self.extend_1 = m.get('Extend1')
+
+        if m.get('Extend2') is not None:
+            self.extend_2 = m.get('Extend2')
+
+        if m.get('Extend3') is not None:
+            self.extend_3 = m.get('Extend3')
+
         if m.get('SearchSourceName') is not None:
             self.search_source_name = m.get('SearchSourceName')
 
         if m.get('Summary') is not None:
             self.summary = m.get('Summary')
+
+        if m.get('Tags') is not None:
+            self.tags = m.get('Tags')
 
         if m.get('Title') is not None:
             self.title = m.get('Title')
