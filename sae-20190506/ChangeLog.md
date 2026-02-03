@@ -1,3 +1,8 @@
+2026-02-03 Version: 2.10.8
+- Update API DescribeConfigurationPrice: add request parameters GpuA10.
+- Update API DescribeConfigurationPrice: add request parameters GpuPpu810e.
+
+
 2026-01-08 Version: 2.10.6
 - Update API DescribeApplicationConfig: add response parameters Body.Data.IdleHour.
 - Update API UpdateAppMode: add request parameters IdleHour.

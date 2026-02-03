@@ -5165,6 +5165,10 @@ class Client(OpenApiClient):
             query['BestEffortType'] = request.best_effort_type
         if not DaraCore.is_null(request.cpu):
             query['Cpu'] = request.cpu
+        if not DaraCore.is_null(request.gpu_a10):
+            query['GpuA10'] = request.gpu_a10
+        if not DaraCore.is_null(request.gpu_ppu_810e):
+            query['GpuPpu810e'] = request.gpu_ppu_810e
         if not DaraCore.is_null(request.memory):
             query['Memory'] = request.memory
         if not DaraCore.is_null(request.new_sae_version):
@@ -5205,6 +5209,10 @@ class Client(OpenApiClient):
             query['BestEffortType'] = request.best_effort_type
         if not DaraCore.is_null(request.cpu):
             query['Cpu'] = request.cpu
+        if not DaraCore.is_null(request.gpu_a10):
+            query['GpuA10'] = request.gpu_a10
+        if not DaraCore.is_null(request.gpu_ppu_810e):
+            query['GpuPpu810e'] = request.gpu_ppu_810e
         if not DaraCore.is_null(request.memory):
             query['Memory'] = request.memory
         if not DaraCore.is_null(request.new_sae_version):
@@ -8646,6 +8654,86 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_app_versions_with_options_async(request, headers, runtime)
+
+    def list_application_center_service_instances_with_options(
+        self,
+        request: main_models.ListApplicationCenterServiceInstancesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApplicationCenterServiceInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApplicationCenterServiceInstances',
+            version = '2019-05-06',
+            protocol = 'HTTPS',
+            pathname = f'/pop/cas/v5/app/listApplicationCenterServiceInstances',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApplicationCenterServiceInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_application_center_service_instances_with_options_async(
+        self,
+        request: main_models.ListApplicationCenterServiceInstancesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListApplicationCenterServiceInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.namespace_id):
+            query['NamespaceId'] = request.namespace_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListApplicationCenterServiceInstances',
+            version = '2019-05-06',
+            protocol = 'HTTPS',
+            pathname = f'/pop/cas/v5/app/listApplicationCenterServiceInstances',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListApplicationCenterServiceInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_application_center_service_instances(
+        self,
+        request: main_models.ListApplicationCenterServiceInstancesRequest,
+    ) -> main_models.ListApplicationCenterServiceInstancesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_application_center_service_instances_with_options(request, headers, runtime)
+
+    async def list_application_center_service_instances_async(
+        self,
+        request: main_models.ListApplicationCenterServiceInstancesRequest,
+    ) -> main_models.ListApplicationCenterServiceInstancesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_application_center_service_instances_with_options_async(request, headers, runtime)
 
     def list_applications_with_options(
         self,

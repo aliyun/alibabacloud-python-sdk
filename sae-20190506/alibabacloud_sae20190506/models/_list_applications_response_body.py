@@ -528,6 +528,7 @@ class ListApplicationsResponseBodyDataApplicationsChildren(DaraModel):
         app_type: str = None,
         base_app_id: str = None,
         cpu: int = None,
+        enable_idle: str = None,
         instances: int = None,
         is_stateful: bool = None,
         mem: int = None,
@@ -557,6 +558,7 @@ class ListApplicationsResponseBodyDataApplicationsChildren(DaraModel):
         self.base_app_id = base_app_id
         # The CPU sepcification.
         self.cpu = cpu
+        self.enable_idle = enable_idle
         # The number of instances.
         self.instances = instances
         self.is_stateful = is_stateful
@@ -619,6 +621,9 @@ class ListApplicationsResponseBodyDataApplicationsChildren(DaraModel):
 
         if self.cpu is not None:
             result['Cpu'] = self.cpu
+
+        if self.enable_idle is not None:
+            result['EnableIdle'] = self.enable_idle
 
         if self.instances is not None:
             result['Instances'] = self.instances
@@ -688,6 +693,9 @@ class ListApplicationsResponseBodyDataApplicationsChildren(DaraModel):
 
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
+
+        if m.get('EnableIdle') is not None:
+            self.enable_idle = m.get('EnableIdle')
 
         if m.get('Instances') is not None:
             self.instances = m.get('Instances')

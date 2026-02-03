@@ -9,6 +9,8 @@ class DescribeConfigurationPriceRequest(DaraModel):
         self,
         best_effort_type: str = None,
         cpu: int = None,
+        gpu_a10: str = None,
+        gpu_ppu_810e: str = None,
         memory: int = None,
         new_sae_version: str = None,
         resource_type: str = None,
@@ -28,6 +30,8 @@ class DescribeConfigurationPriceRequest(DaraModel):
         # 
         # This parameter is required.
         self.cpu = cpu
+        self.gpu_a10 = gpu_a10
+        self.gpu_ppu_810e = gpu_ppu_810e
         # The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
         # 
         # *   This parameter is set to **1024** if the Cpu parameter is set to 500 or 1000.
@@ -65,6 +69,12 @@ class DescribeConfigurationPriceRequest(DaraModel):
         if self.cpu is not None:
             result['Cpu'] = self.cpu
 
+        if self.gpu_a10 is not None:
+            result['GpuA10'] = self.gpu_a10
+
+        if self.gpu_ppu_810e is not None:
+            result['GpuPpu810e'] = self.gpu_ppu_810e
+
         if self.memory is not None:
             result['Memory'] = self.memory
 
@@ -86,6 +96,12 @@ class DescribeConfigurationPriceRequest(DaraModel):
 
         if m.get('Cpu') is not None:
             self.cpu = m.get('Cpu')
+
+        if m.get('GpuA10') is not None:
+            self.gpu_a10 = m.get('GpuA10')
+
+        if m.get('GpuPpu810e') is not None:
+            self.gpu_ppu_810e = m.get('GpuPpu810e')
 
         if m.get('Memory') is not None:
             self.memory = m.get('Memory')
