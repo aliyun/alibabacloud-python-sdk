@@ -4632,6 +4632,8 @@ class Client(OpenApiClient):
             query['Message'] = request.message
         if not DaraCore.is_null(request.message_type):
             query['MessageType'] = request.message_type
+        if not DaraCore.is_null(request.parent_session_id):
+            query['ParentSessionId'] = request.parent_session_id
         if not DaraCore.is_null(request.question):
             query['Question'] = request.question
         if not DaraCore.is_null(request.quoted_message):
@@ -4684,6 +4686,8 @@ class Client(OpenApiClient):
             query['Message'] = request.message
         if not DaraCore.is_null(request.message_type):
             query['MessageType'] = request.message_type
+        if not DaraCore.is_null(request.parent_session_id):
+            query['ParentSessionId'] = request.parent_session_id
         if not DaraCore.is_null(request.question):
             query['Question'] = request.question
         if not DaraCore.is_null(request.quoted_message):

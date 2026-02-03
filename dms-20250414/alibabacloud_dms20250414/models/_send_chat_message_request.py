@@ -15,6 +15,7 @@ class SendChatMessageRequest(DaraModel):
         data_source: main_models.SendChatMessageRequestDataSource = None,
         message: str = None,
         message_type: str = None,
+        parent_session_id: str = None,
         question: str = None,
         quoted_message: str = None,
         reply_to: str = None,
@@ -28,6 +29,7 @@ class SendChatMessageRequest(DaraModel):
         # This parameter is required.
         self.message = message
         self.message_type = message_type
+        self.parent_session_id = parent_session_id
         self.question = question
         self.quoted_message = quoted_message
         self.reply_to = reply_to
@@ -60,6 +62,9 @@ class SendChatMessageRequest(DaraModel):
 
         if self.message_type is not None:
             result['MessageType'] = self.message_type
+
+        if self.parent_session_id is not None:
+            result['ParentSessionId'] = self.parent_session_id
 
         if self.question is not None:
             result['Question'] = self.question
@@ -95,6 +100,9 @@ class SendChatMessageRequest(DaraModel):
 
         if m.get('MessageType') is not None:
             self.message_type = m.get('MessageType')
+
+        if m.get('ParentSessionId') is not None:
+            self.parent_session_id = m.get('ParentSessionId')
 
         if m.get('Question') is not None:
             self.question = m.get('Question')
