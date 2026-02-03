@@ -19,6 +19,7 @@ class DatabaseSummary(DaraModel):
         table_count: int = None,
         total_file_count: int = None,
         total_file_size_in_bytes: int = None,
+        total_meta_file_count: int = None,
         total_meta_size_in_bytes: int = None,
     ):
         # Creation timestamp in milliseconds
@@ -39,6 +40,7 @@ class DatabaseSummary(DaraModel):
         self.total_file_count = total_file_count
         # Total file count
         self.total_file_size_in_bytes = total_file_size_in_bytes
+        self.total_meta_file_count = total_meta_file_count
         self.total_meta_size_in_bytes = total_meta_size_in_bytes
 
     def validate(self):
@@ -85,6 +87,9 @@ class DatabaseSummary(DaraModel):
         if self.total_file_size_in_bytes is not None:
             result['totalFileSizeInBytes'] = self.total_file_size_in_bytes
 
+        if self.total_meta_file_count is not None:
+            result['totalMetaFileCount'] = self.total_meta_file_count
+
         if self.total_meta_size_in_bytes is not None:
             result['totalMetaSizeInBytes'] = self.total_meta_size_in_bytes
 
@@ -127,6 +132,9 @@ class DatabaseSummary(DaraModel):
 
         if m.get('totalFileSizeInBytes') is not None:
             self.total_file_size_in_bytes = m.get('totalFileSizeInBytes')
+
+        if m.get('totalMetaFileCount') is not None:
+            self.total_meta_file_count = m.get('totalMetaFileCount')
 
         if m.get('totalMetaSizeInBytes') is not None:
             self.total_meta_size_in_bytes = m.get('totalMetaSizeInBytes')

@@ -21,6 +21,7 @@ class CatalogSummary(DaraModel):
         throughput_monthly: int = None,
         total_file_count: main_models.MoMValues = None,
         total_file_size_in_bytes: main_models.MoMValues = None,
+        total_meta_file_count: main_models.MoMValues = None,
         total_meta_size_in_bytes: main_models.MoMValues = None,
     ):
         self.api_visit_count_monthly = api_visit_count_monthly
@@ -37,6 +38,7 @@ class CatalogSummary(DaraModel):
         self.throughput_monthly = throughput_monthly
         self.total_file_count = total_file_count
         self.total_file_size_in_bytes = total_file_size_in_bytes
+        self.total_meta_file_count = total_meta_file_count
         self.total_meta_size_in_bytes = total_meta_size_in_bytes
 
     def validate(self):
@@ -50,6 +52,8 @@ class CatalogSummary(DaraModel):
             self.total_file_count.validate()
         if self.total_file_size_in_bytes:
             self.total_file_size_in_bytes.validate()
+        if self.total_meta_file_count:
+            self.total_meta_file_count.validate()
         if self.total_meta_size_in_bytes:
             self.total_meta_size_in_bytes.validate()
 
@@ -96,6 +100,9 @@ class CatalogSummary(DaraModel):
 
         if self.total_file_size_in_bytes is not None:
             result['totalFileSizeInBytes'] = self.total_file_size_in_bytes.to_map()
+
+        if self.total_meta_file_count is not None:
+            result['totalMetaFileCount'] = self.total_meta_file_count.to_map()
 
         if self.total_meta_size_in_bytes is not None:
             result['totalMetaSizeInBytes'] = self.total_meta_size_in_bytes.to_map()
@@ -147,6 +154,10 @@ class CatalogSummary(DaraModel):
         if m.get('totalFileSizeInBytes') is not None:
             temp_model = main_models.MoMValues()
             self.total_file_size_in_bytes = temp_model.from_map(m.get('totalFileSizeInBytes'))
+
+        if m.get('totalMetaFileCount') is not None:
+            temp_model = main_models.MoMValues()
+            self.total_meta_file_count = temp_model.from_map(m.get('totalMetaFileCount'))
 
         if m.get('totalMetaSizeInBytes') is not None:
             temp_model = main_models.MoMValues()

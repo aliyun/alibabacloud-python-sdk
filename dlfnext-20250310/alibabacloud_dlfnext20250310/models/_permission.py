@@ -17,6 +17,7 @@ class Permission(DaraModel):
         function: str = None,
         principal: str = None,
         resource_type: str = None,
+        row_filter: main_models.RowFilter = None,
         table: str = None,
         view: str = None,
     ):
@@ -27,12 +28,15 @@ class Permission(DaraModel):
         self.function = function
         self.principal = principal
         self.resource_type = resource_type
+        self.row_filter = row_filter
         self.table = table
         self.view = view
 
     def validate(self):
         if self.columns:
             self.columns.validate()
+        if self.row_filter:
+            self.row_filter.validate()
 
     def to_map(self):
         result = dict()
@@ -59,6 +63,9 @@ class Permission(DaraModel):
 
         if self.resource_type is not None:
             result['resourceType'] = self.resource_type
+
+        if self.row_filter is not None:
+            result['rowFilter'] = self.row_filter.to_map()
 
         if self.table is not None:
             result['table'] = self.table
@@ -92,6 +99,10 @@ class Permission(DaraModel):
         if m.get('resourceType') is not None:
             self.resource_type = m.get('resourceType')
 
+        if m.get('rowFilter') is not None:
+            temp_model = main_models.RowFilter()
+            self.row_filter = temp_model.from_map(m.get('rowFilter'))
+
         if m.get('table') is not None:
             self.table = m.get('table')
 
@@ -99,8 +110,6 @@ class Permission(DaraModel):
             self.view = m.get('view')
 
         return self
-
-
 
 class PermissionColumns(DaraModel):
     def __init__(

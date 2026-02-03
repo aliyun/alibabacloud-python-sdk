@@ -13,12 +13,14 @@ class TableSnapshot(DaraModel):
         last_file_creation_time: int = None,
         record_count: int = None,
         snapshot: main_models.Snapshot = None,
+        total_buckets: int = None,
     ):
         self.file_count = file_count
         self.file_size_in_bytes = file_size_in_bytes
         self.last_file_creation_time = last_file_creation_time
         self.record_count = record_count
         self.snapshot = snapshot
+        self.total_buckets = total_buckets
 
     def validate(self):
         if self.snapshot:
@@ -44,6 +46,9 @@ class TableSnapshot(DaraModel):
         if self.snapshot is not None:
             result['snapshot'] = self.snapshot.to_map()
 
+        if self.total_buckets is not None:
+            result['totalBuckets'] = self.total_buckets
+
         return result
 
     def from_map(self, m: dict = None):
@@ -63,6 +68,9 @@ class TableSnapshot(DaraModel):
         if m.get('snapshot') is not None:
             temp_model = main_models.Snapshot()
             self.snapshot = temp_model.from_map(m.get('snapshot'))
+
+        if m.get('totalBuckets') is not None:
+            self.total_buckets = m.get('totalBuckets')
 
         return self
 

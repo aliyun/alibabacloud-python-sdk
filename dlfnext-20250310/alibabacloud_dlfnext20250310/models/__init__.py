@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._cache_cluster import CacheCluster
 from ._catalog import Catalog
 from ._catalog_summary import CatalogSummary
 from ._catalog_summary_trend import CatalogSummaryTrend
@@ -11,6 +12,7 @@ from ._database_summary import DatabaseSummary
 from ._date_summary import DateSummary
 from ._error_response import ErrorResponse
 from ._failure_permission import FailurePermission
+from ._field_ref import FieldRef
 from ._full_data_type import FullDataType
 from ._full_instant import FullInstant
 from ._full_schema_change import FullSchemaChange
@@ -31,10 +33,12 @@ from ._partition import Partition
 from ._partition_summaries import PartitionSummaries
 from ._partition_summary import PartitionSummary
 from ._permission import Permission
+from ._predicate import Predicate
 from ._prepay_resource import PrepayResource
 from ._received_share import ReceivedShare
 from ._receiver import Receiver
 from ._role import Role
+from ._row_filter import RowFilter
 from ._schema import Schema
 from ._share import Share
 from ._share_options import ShareOptions
@@ -45,6 +49,8 @@ from ._table_compaction import TableCompaction
 from ._table_compaction_history import TableCompactionHistory
 from ._table_snapshot import TableSnapshot
 from ._table_summary import TableSummary
+from ._transform import Transform
+from ._transform_input import TransformInput
 from ._user import User
 from ._view import View
 from ._view_change import ViewChange
@@ -205,10 +211,12 @@ from ._update_role_request import UpdateRoleRequest
 from ._update_role_response import UpdateRoleResponse
 from ._update_role_users_request import UpdateRoleUsersRequest
 from ._update_role_users_response import UpdateRoleUsersResponse
+from ._cache_cluster import CacheClusterVSwitches
 from ._permission import PermissionColumns
 from ._describe_regions_response_body import DescribeRegionsResponseBodyRegions
 
 __all__ = [
+    CacheCluster,
     Catalog,
     CatalogSummary,
     CatalogSummaryTrend,
@@ -218,6 +226,7 @@ __all__ = [
     DateSummary,
     ErrorResponse,
     FailurePermission,
+    FieldRef,
     FullDataType,
     FullInstant,
     FullSchemaChange,
@@ -238,10 +247,12 @@ __all__ = [
     PartitionSummaries,
     PartitionSummary,
     Permission,
+    Predicate,
     PrepayResource,
     ReceivedShare,
     Receiver,
     Role,
+    RowFilter,
     Schema,
     Share,
     ShareOptions,
@@ -252,6 +263,8 @@ __all__ = [
     TableCompactionHistory,
     TableSnapshot,
     TableSummary,
+    Transform,
+    TransformInput,
     User,
     View,
     ViewChange,
@@ -412,6 +425,7 @@ __all__ = [
     UpdateRoleResponse,
     UpdateRoleUsersRequest,
     UpdateRoleUsersResponse,
+    CacheClusterVSwitches,
     PermissionColumns,
     DescribeRegionsResponseBodyRegions
 ]

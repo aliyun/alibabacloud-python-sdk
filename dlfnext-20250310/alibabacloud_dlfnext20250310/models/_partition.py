@@ -20,6 +20,7 @@ class Partition(DaraModel):
         storage_action: str = None,
         storage_action_timestamp: int = None,
         storage_class: str = None,
+        total_buckets: int = None,
         updated_at: int = None,
         updated_by: str = None,
     ):
@@ -34,6 +35,7 @@ class Partition(DaraModel):
         self.storage_action = storage_action
         self.storage_action_timestamp = storage_action_timestamp
         self.storage_class = storage_class
+        self.total_buckets = total_buckets
         self.updated_at = updated_at
         self.updated_by = updated_by
 
@@ -78,6 +80,9 @@ class Partition(DaraModel):
         if self.storage_class is not None:
             result['storageClass'] = self.storage_class
 
+        if self.total_buckets is not None:
+            result['totalBuckets'] = self.total_buckets
+
         if self.updated_at is not None:
             result['updatedAt'] = self.updated_at
 
@@ -120,6 +125,9 @@ class Partition(DaraModel):
 
         if m.get('storageClass') is not None:
             self.storage_class = m.get('storageClass')
+
+        if m.get('totalBuckets') is not None:
+            self.total_buckets = m.get('totalBuckets')
 
         if m.get('updatedAt') is not None:
             self.updated_at = m.get('updatedAt')
