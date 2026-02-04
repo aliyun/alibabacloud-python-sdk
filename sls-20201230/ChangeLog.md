@@ -1,3 +1,6 @@
+2026-02-04 Version: 5.11.2
+- Generated python 2020-12-30 for Sls.
+
 2026-01-09 Version: 5.11.1
 - Update API CreateLogStore: add request parameters body.resourceGroupId.
 

@@ -14,22 +14,26 @@ class IndexKey(DaraModel):
         case_sensitive: bool = None,
         chn: bool = None,
         doc_value: bool = None,
+        embedding: str = None,
         index_all: bool = None,
         json_keys: Dict[str, main_models.IndexJsonKey] = None,
         max_depth: int = None,
         token: List[str] = None,
         type: str = None,
+        vector_index: str = None,
     ):
         self.alias = alias
         self.case_sensitive = case_sensitive
         self.chn = chn
         self.doc_value = doc_value
+        self.embedding = embedding
         self.index_all = index_all
         self.json_keys = json_keys
         self.max_depth = max_depth
         self.token = token
         # This parameter is required.
         self.type = type
+        self.vector_index = vector_index
 
     def validate(self):
         if self.json_keys:
@@ -54,6 +58,9 @@ class IndexKey(DaraModel):
         if self.doc_value is not None:
             result['doc_value'] = self.doc_value
 
+        if self.embedding is not None:
+            result['embedding'] = self.embedding
+
         if self.index_all is not None:
             result['index_all'] = self.index_all
 
@@ -71,6 +78,9 @@ class IndexKey(DaraModel):
         if self.type is not None:
             result['type'] = self.type
 
+        if self.vector_index is not None:
+            result['vector_index'] = self.vector_index
+
         return result
 
     def from_map(self, m: dict = None):
@@ -86,6 +96,9 @@ class IndexKey(DaraModel):
 
         if m.get('doc_value') is not None:
             self.doc_value = m.get('doc_value')
+
+        if m.get('embedding') is not None:
+            self.embedding = m.get('embedding')
 
         if m.get('index_all') is not None:
             self.index_all = m.get('index_all')
@@ -104,6 +117,9 @@ class IndexKey(DaraModel):
 
         if m.get('type') is not None:
             self.type = m.get('type')
+
+        if m.get('vector_index') is not None:
+            self.vector_index = m.get('vector_index')
 
         return self
 

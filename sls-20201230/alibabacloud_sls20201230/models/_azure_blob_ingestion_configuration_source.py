@@ -15,6 +15,7 @@ class AzureBlobIngestionConfigurationSource(DaraModel):
         container_name: str = None,
         encoding: str = None,
         end_time: int = None,
+        endpoint: str = None,
         format: Dict[str, Any] = None,
         interval: str = None,
         pattern: str = None,
@@ -38,6 +39,7 @@ class AzureBlobIngestionConfigurationSource(DaraModel):
         # This parameter is required.
         self.encoding = encoding
         self.end_time = end_time
+        self.endpoint = endpoint
         # This parameter is required.
         self.format = format
         # This parameter is required.
@@ -77,6 +79,9 @@ class AzureBlobIngestionConfigurationSource(DaraModel):
 
         if self.end_time is not None:
             result['endTime'] = self.end_time
+
+        if self.endpoint is not None:
+            result['endpoint'] = self.endpoint
 
         if self.format is not None:
             result['format'] = self.format
@@ -132,6 +137,9 @@ class AzureBlobIngestionConfigurationSource(DaraModel):
 
         if m.get('endTime') is not None:
             self.end_time = m.get('endTime')
+
+        if m.get('endpoint') is not None:
+            self.endpoint = m.get('endpoint')
 
         if m.get('format') is not None:
             self.format = m.get('format')
