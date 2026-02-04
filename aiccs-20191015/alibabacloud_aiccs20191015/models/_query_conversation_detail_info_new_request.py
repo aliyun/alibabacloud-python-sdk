@@ -2,28 +2,23 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Dict, Any
-
 from darabonba.model import DaraModel
 
-class ImportTaskNumberDatasRequest(DaraModel):
+class QueryConversationDetailInfoNewRequest(DaraModel):
     def __init__(
         self,
-        data_type: str = None,
-        encryption_type: int = None,
-        oss_file_name: str = None,
+        call_id: str = None,
+        detail_id: str = None,
+        out_id: str = None,
         owner_id: int = None,
-        phone_number_list: List[Dict[str, Any]] = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
         task_id: str = None,
     ):
-        # This parameter is required.
-        self.data_type = data_type
-        self.encryption_type = encryption_type
-        self.oss_file_name = oss_file_name
+        self.call_id = call_id
+        self.detail_id = detail_id
+        self.out_id = out_id
         self.owner_id = owner_id
-        self.phone_number_list = phone_number_list
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
         # This parameter is required.
@@ -37,20 +32,17 @@ class ImportTaskNumberDatasRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.data_type is not None:
-            result['DataType'] = self.data_type
+        if self.call_id is not None:
+            result['CallId'] = self.call_id
 
-        if self.encryption_type is not None:
-            result['EncryptionType'] = self.encryption_type
+        if self.detail_id is not None:
+            result['DetailId'] = self.detail_id
 
-        if self.oss_file_name is not None:
-            result['OssFileName'] = self.oss_file_name
+        if self.out_id is not None:
+            result['OutId'] = self.out_id
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
-
-        if self.phone_number_list is not None:
-            result['PhoneNumberList'] = self.phone_number_list
 
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
@@ -65,20 +57,17 @@ class ImportTaskNumberDatasRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('DataType') is not None:
-            self.data_type = m.get('DataType')
+        if m.get('CallId') is not None:
+            self.call_id = m.get('CallId')
 
-        if m.get('EncryptionType') is not None:
-            self.encryption_type = m.get('EncryptionType')
+        if m.get('DetailId') is not None:
+            self.detail_id = m.get('DetailId')
 
-        if m.get('OssFileName') is not None:
-            self.oss_file_name = m.get('OssFileName')
+        if m.get('OutId') is not None:
+            self.out_id = m.get('OutId')
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
-
-        if m.get('PhoneNumberList') is not None:
-            self.phone_number_list = m.get('PhoneNumberList')
 
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')

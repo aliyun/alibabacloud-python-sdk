@@ -8,6 +8,7 @@ class ImportTaskNumberDatasShrinkRequest(DaraModel):
     def __init__(
         self,
         data_type: str = None,
+        encryption_type: int = None,
         oss_file_name: str = None,
         owner_id: int = None,
         phone_number_list_shrink: str = None,
@@ -17,6 +18,7 @@ class ImportTaskNumberDatasShrinkRequest(DaraModel):
     ):
         # This parameter is required.
         self.data_type = data_type
+        self.encryption_type = encryption_type
         self.oss_file_name = oss_file_name
         self.owner_id = owner_id
         self.phone_number_list_shrink = phone_number_list_shrink
@@ -35,6 +37,9 @@ class ImportTaskNumberDatasShrinkRequest(DaraModel):
             result = _map
         if self.data_type is not None:
             result['DataType'] = self.data_type
+
+        if self.encryption_type is not None:
+            result['EncryptionType'] = self.encryption_type
 
         if self.oss_file_name is not None:
             result['OssFileName'] = self.oss_file_name
@@ -60,6 +65,9 @@ class ImportTaskNumberDatasShrinkRequest(DaraModel):
         m = m or dict()
         if m.get('DataType') is not None:
             self.data_type = m.get('DataType')
+
+        if m.get('EncryptionType') is not None:
+            self.encryption_type = m.get('EncryptionType')
 
         if m.get('OssFileName') is not None:
             self.oss_file_name = m.get('OssFileName')

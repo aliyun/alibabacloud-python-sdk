@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class ImportOneTaskPhoneNumberShrinkRequest(DaraModel):
     def __init__(
         self,
+        encryption_type: int = None,
         out_id: str = None,
         owner_id: int = None,
         phone_number: str = None,
@@ -15,6 +16,7 @@ class ImportOneTaskPhoneNumberShrinkRequest(DaraModel):
         task_id: int = None,
         variables_shrink: str = None,
     ):
+        self.encryption_type = encryption_type
         self.out_id = out_id
         self.owner_id = owner_id
         # This parameter is required.
@@ -33,6 +35,9 @@ class ImportOneTaskPhoneNumberShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.encryption_type is not None:
+            result['EncryptionType'] = self.encryption_type
+
         if self.out_id is not None:
             result['OutId'] = self.out_id
 
@@ -58,6 +63,9 @@ class ImportOneTaskPhoneNumberShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('EncryptionType') is not None:
+            self.encryption_type = m.get('EncryptionType')
+
         if m.get('OutId') is not None:
             self.out_id = m.get('OutId')
 

@@ -81,10 +81,15 @@ class QueryAiCallTaskDetailResponseBodyData(DaraModel):
         self,
         agent_id: str = None,
         agent_name: str = None,
+        application_code: str = None,
+        application_name: str = None,
         call_days: List[str] = None,
         call_times: List[main_models.QueryAiCallTaskDetailResponseBodyDataCallTimes] = None,
         caller_number: str = None,
         concurrent_count: int = None,
+        line_encoding: str = None,
+        line_phone_num: str = None,
+        phone_type: int = None,
         real_start_time: int = None,
         retry_count: int = None,
         retry_enable: bool = None,
@@ -97,10 +102,15 @@ class QueryAiCallTaskDetailResponseBodyData(DaraModel):
     ):
         self.agent_id = agent_id
         self.agent_name = agent_name
+        self.application_code = application_code
+        self.application_name = application_name
         self.call_days = call_days
         self.call_times = call_times
         self.caller_number = caller_number
         self.concurrent_count = concurrent_count
+        self.line_encoding = line_encoding
+        self.line_phone_num = line_phone_num
+        self.phone_type = phone_type
         self.real_start_time = real_start_time
         self.retry_count = retry_count
         self.retry_enable = retry_enable
@@ -128,6 +138,12 @@ class QueryAiCallTaskDetailResponseBodyData(DaraModel):
         if self.agent_name is not None:
             result['AgentName'] = self.agent_name
 
+        if self.application_code is not None:
+            result['ApplicationCode'] = self.application_code
+
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
+
         if self.call_days is not None:
             result['CallDays'] = self.call_days
 
@@ -141,6 +157,15 @@ class QueryAiCallTaskDetailResponseBodyData(DaraModel):
 
         if self.concurrent_count is not None:
             result['ConcurrentCount'] = self.concurrent_count
+
+        if self.line_encoding is not None:
+            result['LineEncoding'] = self.line_encoding
+
+        if self.line_phone_num is not None:
+            result['LinePhoneNum'] = self.line_phone_num
+
+        if self.phone_type is not None:
+            result['PhoneType'] = self.phone_type
 
         if self.real_start_time is not None:
             result['RealStartTime'] = self.real_start_time
@@ -179,6 +204,12 @@ class QueryAiCallTaskDetailResponseBodyData(DaraModel):
         if m.get('AgentName') is not None:
             self.agent_name = m.get('AgentName')
 
+        if m.get('ApplicationCode') is not None:
+            self.application_code = m.get('ApplicationCode')
+
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
+
         if m.get('CallDays') is not None:
             self.call_days = m.get('CallDays')
 
@@ -193,6 +224,15 @@ class QueryAiCallTaskDetailResponseBodyData(DaraModel):
 
         if m.get('ConcurrentCount') is not None:
             self.concurrent_count = m.get('ConcurrentCount')
+
+        if m.get('LineEncoding') is not None:
+            self.line_encoding = m.get('LineEncoding')
+
+        if m.get('LinePhoneNum') is not None:
+            self.line_phone_num = m.get('LinePhoneNum')
+
+        if m.get('PhoneType') is not None:
+            self.phone_type = m.get('PhoneType')
 
         if m.get('RealStartTime') is not None:
             self.real_start_time = m.get('RealStartTime')

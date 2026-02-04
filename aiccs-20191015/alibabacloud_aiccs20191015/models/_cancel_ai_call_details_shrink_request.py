@@ -9,6 +9,7 @@ class CancelAiCallDetailsShrinkRequest(DaraModel):
         self,
         batch_id: str = None,
         detail_id_list_shrink: str = None,
+        encryption_type: int = None,
         owner_id: int = None,
         phone_numbers_shrink: str = None,
         resource_owner_account: str = None,
@@ -17,6 +18,7 @@ class CancelAiCallDetailsShrinkRequest(DaraModel):
     ):
         self.batch_id = batch_id
         self.detail_id_list_shrink = detail_id_list_shrink
+        self.encryption_type = encryption_type
         self.owner_id = owner_id
         self.phone_numbers_shrink = phone_numbers_shrink
         self.resource_owner_account = resource_owner_account
@@ -37,6 +39,9 @@ class CancelAiCallDetailsShrinkRequest(DaraModel):
 
         if self.detail_id_list_shrink is not None:
             result['DetailIdList'] = self.detail_id_list_shrink
+
+        if self.encryption_type is not None:
+            result['EncryptionType'] = self.encryption_type
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
@@ -62,6 +67,9 @@ class CancelAiCallDetailsShrinkRequest(DaraModel):
 
         if m.get('DetailIdList') is not None:
             self.detail_id_list_shrink = m.get('DetailIdList')
+
+        if m.get('EncryptionType') is not None:
+            self.encryption_type = m.get('EncryptionType')
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')

@@ -140,6 +140,8 @@ class QueryAiCallTaskPageResponseBodyDataList(DaraModel):
         self,
         agent_id: str = None,
         agent_name: str = None,
+        application_code: str = None,
+        application_name: str = None,
         calling_count: int = None,
         complete_rate: str = None,
         concurrent_count: int = None,
@@ -161,6 +163,8 @@ class QueryAiCallTaskPageResponseBodyDataList(DaraModel):
     ):
         self.agent_id = agent_id
         self.agent_name = agent_name
+        self.application_code = application_code
+        self.application_name = application_name
         self.calling_count = calling_count
         self.complete_rate = complete_rate
         self.concurrent_count = concurrent_count
@@ -193,6 +197,12 @@ class QueryAiCallTaskPageResponseBodyDataList(DaraModel):
 
         if self.agent_name is not None:
             result['AgentName'] = self.agent_name
+
+        if self.application_code is not None:
+            result['ApplicationCode'] = self.application_code
+
+        if self.application_name is not None:
+            result['ApplicationName'] = self.application_name
 
         if self.calling_count is not None:
             result['CallingCount'] = self.calling_count
@@ -257,6 +267,12 @@ class QueryAiCallTaskPageResponseBodyDataList(DaraModel):
 
         if m.get('AgentName') is not None:
             self.agent_name = m.get('AgentName')
+
+        if m.get('ApplicationCode') is not None:
+            self.application_code = m.get('ApplicationCode')
+
+        if m.get('ApplicationName') is not None:
+            self.application_name = m.get('ApplicationName')
 
         if m.get('CallingCount') is not None:
             self.calling_count = m.get('CallingCount')

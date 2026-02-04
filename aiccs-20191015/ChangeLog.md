@@ -1,3 +1,34 @@
+2026-02-04 Version: 3.4.2
+- Update API CancelAiCallDetails: add request parameters EncryptionType.
+- Update API CreateAiCallTask: add request parameters ApplicationCode.
+- Update API CreateAiCallTask: add request parameters ApplicationName.
+- Update API CreateAiCallTask: add request parameters LineEncoding.
+- Update API CreateAiCallTask: add request parameters LinePhoneNum.
+- Update API CreateAiCallTask: add request parameters PhoneType.
+- Update API CreateAiCallTask: add request parameters Source.
+- Update API ImportOneTaskPhoneNumber: add request parameters EncryptionType.
+- Update API ImportTaskNumberDatas: add request parameters EncryptionType.
+- Update API QueryAiCallDetailPage: add request parameters EncryptionType.
+- Update API QueryAiCallDetailPage: add response parameters Body.Data.List.$.BranchId.
+- Update API QueryAiCallDetailPage: add response parameters Body.Data.List.$.BranchVersionId.
+- Update API QueryAiCallDetailPage: add response parameters Body.Data.List.$.EncryptionType.
+- Update API QueryAiCallTaskDetail: add response parameters Body.Data.ApplicationCode.
+- Update API QueryAiCallTaskDetail: add response parameters Body.Data.ApplicationName.
+- Update API QueryAiCallTaskDetail: add response parameters Body.Data.LineEncoding.
+- Update API QueryAiCallTaskDetail: add response parameters Body.Data.LinePhoneNum.
+- Update API QueryAiCallTaskDetail: add response parameters Body.Data.PhoneType.
+- Update API QueryAiCallTaskPage: add request parameters ApplicationCode.
+- Update API QueryAiCallTaskPage: add request parameters Source.
+- Update API QueryAiCallTaskPage: add response parameters Body.Data.List.$.ApplicationCode.
+- Update API QueryAiCallTaskPage: add response parameters Body.Data.List.$.ApplicationName.
+- Update API QueryConversationDetailInfo: add response parameters Body.Data.EncryptionType.
+- Update API QueryConversationDetailInfoNew: add response parameters Body.Data.EncryptionType.
+- Update API UpdateAiCallTask: add request parameters LineEncoding.
+- Update API UpdateAiCallTask: add request parameters LinePhoneNum.
+- Update API UpdateAiCallTask: add request parameters PhoneType.
+- Update API UpdateAiCallTask: add request parameters Source.
+
+
 2026-01-13 Version: 3.4.0
 - Support API QueryInboundCallId.
 

@@ -8,21 +8,25 @@ class QueryAiCallTaskPageRequest(DaraModel):
     def __init__(
         self,
         agent_name: str = None,
+        application_code: str = None,
         owner_id: int = None,
         page_no: int = None,
         page_size: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        source: int = None,
         status: str = None,
         task_id: str = None,
         task_name: str = None,
     ):
         self.agent_name = agent_name
+        self.application_code = application_code
         self.owner_id = owner_id
         self.page_no = page_no
         self.page_size = page_size
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.source = source
         self.status = status
         self.task_id = task_id
         self.task_name = task_name
@@ -38,6 +42,9 @@ class QueryAiCallTaskPageRequest(DaraModel):
         if self.agent_name is not None:
             result['AgentName'] = self.agent_name
 
+        if self.application_code is not None:
+            result['ApplicationCode'] = self.application_code
+
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
 
@@ -52,6 +59,9 @@ class QueryAiCallTaskPageRequest(DaraModel):
 
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+
+        if self.source is not None:
+            result['Source'] = self.source
 
         if self.status is not None:
             result['Status'] = self.status
@@ -69,6 +79,9 @@ class QueryAiCallTaskPageRequest(DaraModel):
         if m.get('AgentName') is not None:
             self.agent_name = m.get('AgentName')
 
+        if m.get('ApplicationCode') is not None:
+            self.application_code = m.get('ApplicationCode')
+
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
 
@@ -83,6 +96,9 @@ class QueryAiCallTaskPageRequest(DaraModel):
 
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')

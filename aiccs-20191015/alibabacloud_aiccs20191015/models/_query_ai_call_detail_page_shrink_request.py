@@ -11,6 +11,7 @@ class QueryAiCallDetailPageShrinkRequest(DaraModel):
         call_result: str = None,
         called_number: str = None,
         detail_ids_shrink: str = None,
+        encryption_type: int = None,
         end_calling_time: int = None,
         end_imported_time: int = None,
         major_intent: str = None,
@@ -31,6 +32,7 @@ class QueryAiCallDetailPageShrinkRequest(DaraModel):
         self.call_result = call_result
         self.called_number = called_number
         self.detail_ids_shrink = detail_ids_shrink
+        self.encryption_type = encryption_type
         self.end_calling_time = end_calling_time
         self.end_imported_time = end_imported_time
         self.major_intent = major_intent
@@ -68,6 +70,9 @@ class QueryAiCallDetailPageShrinkRequest(DaraModel):
 
         if self.detail_ids_shrink is not None:
             result['DetailIds'] = self.detail_ids_shrink
+
+        if self.encryption_type is not None:
+            result['EncryptionType'] = self.encryption_type
 
         if self.end_calling_time is not None:
             result['EndCallingTime'] = self.end_calling_time
@@ -129,6 +134,9 @@ class QueryAiCallDetailPageShrinkRequest(DaraModel):
 
         if m.get('DetailIds') is not None:
             self.detail_ids_shrink = m.get('DetailIds')
+
+        if m.get('EncryptionType') is not None:
+            self.encryption_type = m.get('EncryptionType')
 
         if m.get('EndCallingTime') is not None:
             self.end_calling_time = m.get('EndCallingTime')

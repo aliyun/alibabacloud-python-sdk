@@ -7,12 +7,12 @@ from typing import List
 from alibabacloud_aiccs20191015 import models as main_models
 from darabonba.model import DaraModel
 
-class QueryConversationDetailInfoResponseBody(DaraModel):
+class QueryConversationDetailInfoNewResponseBody(DaraModel):
     def __init__(
         self,
         access_denied_detail: str = None,
         code: str = None,
-        data: main_models.QueryConversationDetailInfoResponseBodyData = None,
+        data: main_models.QueryConversationDetailInfoNewResponseBodyData = None,
         message: str = None,
         request_id: str = None,
         success: bool = None,
@@ -62,7 +62,7 @@ class QueryConversationDetailInfoResponseBody(DaraModel):
             self.code = m.get('Code')
 
         if m.get('Data') is not None:
-            temp_model = main_models.QueryConversationDetailInfoResponseBodyData()
+            temp_model = main_models.QueryConversationDetailInfoNewResponseBodyData()
             self.data = temp_model.from_map(m.get('Data'))
 
         if m.get('Message') is not None:
@@ -76,47 +76,61 @@ class QueryConversationDetailInfoResponseBody(DaraModel):
 
         return self
 
-class QueryConversationDetailInfoResponseBodyData(DaraModel):
+class QueryConversationDetailInfoNewResponseBodyData(DaraModel):
     def __init__(
         self,
+        batch_id: str = None,
         call_id: str = None,
         call_result: str = None,
         called_phone: str = None,
         caller_phone: str = None,
         conversation_record: str = None,
+        conversation_turn_count: int = None,
+        detail_id: str = None,
         duration: int = None,
-        encryption_type: str = None,
+        encryption_type: int = None,
         failed_reason: str = None,
         hangup_direction: str = None,
+        imported_time: int = None,
         major_intent: str = None,
+        options: str = None,
         out_id: str = None,
-        output_tags: List[main_models.QueryConversationDetailInfoResponseBodyDataOutputTags] = None,
+        output_tags: List[main_models.QueryConversationDetailInfoNewResponseBodyDataOutputTags] = None,
         pick_up_time: int = None,
         recording_file_download_url: str = None,
         release_time: int = None,
         start_call_time: int = None,
+        status: int = None,
         status_code: str = None,
         status_msg: str = None,
-        variables: List[main_models.QueryConversationDetailInfoResponseBodyDataVariables] = None,
+        task_id: str = None,
+        variables: List[main_models.QueryConversationDetailInfoNewResponseBodyDataVariables] = None,
     ):
+        self.batch_id = batch_id
         self.call_id = call_id
         self.call_result = call_result
         self.called_phone = called_phone
         self.caller_phone = caller_phone
         self.conversation_record = conversation_record
+        self.conversation_turn_count = conversation_turn_count
+        self.detail_id = detail_id
         self.duration = duration
         self.encryption_type = encryption_type
         self.failed_reason = failed_reason
         self.hangup_direction = hangup_direction
+        self.imported_time = imported_time
         self.major_intent = major_intent
+        self.options = options
         self.out_id = out_id
         self.output_tags = output_tags
         self.pick_up_time = pick_up_time
         self.recording_file_download_url = recording_file_download_url
         self.release_time = release_time
         self.start_call_time = start_call_time
+        self.status = status
         self.status_code = status_code
         self.status_msg = status_msg
+        self.task_id = task_id
         self.variables = variables
 
     def validate(self):
@@ -134,6 +148,9 @@ class QueryConversationDetailInfoResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.batch_id is not None:
+            result['BatchId'] = self.batch_id
+
         if self.call_id is not None:
             result['CallId'] = self.call_id
 
@@ -149,6 +166,12 @@ class QueryConversationDetailInfoResponseBodyData(DaraModel):
         if self.conversation_record is not None:
             result['ConversationRecord'] = self.conversation_record
 
+        if self.conversation_turn_count is not None:
+            result['ConversationTurnCount'] = self.conversation_turn_count
+
+        if self.detail_id is not None:
+            result['DetailId'] = self.detail_id
+
         if self.duration is not None:
             result['Duration'] = self.duration
 
@@ -161,8 +184,14 @@ class QueryConversationDetailInfoResponseBodyData(DaraModel):
         if self.hangup_direction is not None:
             result['HangupDirection'] = self.hangup_direction
 
+        if self.imported_time is not None:
+            result['ImportedTime'] = self.imported_time
+
         if self.major_intent is not None:
             result['MajorIntent'] = self.major_intent
+
+        if self.options is not None:
+            result['Options'] = self.options
 
         if self.out_id is not None:
             result['OutId'] = self.out_id
@@ -184,11 +213,17 @@ class QueryConversationDetailInfoResponseBodyData(DaraModel):
         if self.start_call_time is not None:
             result['StartCallTime'] = self.start_call_time
 
+        if self.status is not None:
+            result['Status'] = self.status
+
         if self.status_code is not None:
             result['StatusCode'] = self.status_code
 
         if self.status_msg is not None:
             result['StatusMsg'] = self.status_msg
+
+        if self.task_id is not None:
+            result['TaskId'] = self.task_id
 
         result['Variables'] = []
         if self.variables is not None:
@@ -199,6 +234,9 @@ class QueryConversationDetailInfoResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('BatchId') is not None:
+            self.batch_id = m.get('BatchId')
+
         if m.get('CallId') is not None:
             self.call_id = m.get('CallId')
 
@@ -214,6 +252,12 @@ class QueryConversationDetailInfoResponseBodyData(DaraModel):
         if m.get('ConversationRecord') is not None:
             self.conversation_record = m.get('ConversationRecord')
 
+        if m.get('ConversationTurnCount') is not None:
+            self.conversation_turn_count = m.get('ConversationTurnCount')
+
+        if m.get('DetailId') is not None:
+            self.detail_id = m.get('DetailId')
+
         if m.get('Duration') is not None:
             self.duration = m.get('Duration')
 
@@ -226,8 +270,14 @@ class QueryConversationDetailInfoResponseBodyData(DaraModel):
         if m.get('HangupDirection') is not None:
             self.hangup_direction = m.get('HangupDirection')
 
+        if m.get('ImportedTime') is not None:
+            self.imported_time = m.get('ImportedTime')
+
         if m.get('MajorIntent') is not None:
             self.major_intent = m.get('MajorIntent')
+
+        if m.get('Options') is not None:
+            self.options = m.get('Options')
 
         if m.get('OutId') is not None:
             self.out_id = m.get('OutId')
@@ -235,7 +285,7 @@ class QueryConversationDetailInfoResponseBodyData(DaraModel):
         self.output_tags = []
         if m.get('OutputTags') is not None:
             for k1 in m.get('OutputTags'):
-                temp_model = main_models.QueryConversationDetailInfoResponseBodyDataOutputTags()
+                temp_model = main_models.QueryConversationDetailInfoNewResponseBodyDataOutputTags()
                 self.output_tags.append(temp_model.from_map(k1))
 
         if m.get('PickUpTime') is not None:
@@ -250,21 +300,27 @@ class QueryConversationDetailInfoResponseBodyData(DaraModel):
         if m.get('StartCallTime') is not None:
             self.start_call_time = m.get('StartCallTime')
 
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
+
         if m.get('StatusCode') is not None:
             self.status_code = m.get('StatusCode')
 
         if m.get('StatusMsg') is not None:
             self.status_msg = m.get('StatusMsg')
 
+        if m.get('TaskId') is not None:
+            self.task_id = m.get('TaskId')
+
         self.variables = []
         if m.get('Variables') is not None:
             for k1 in m.get('Variables'):
-                temp_model = main_models.QueryConversationDetailInfoResponseBodyDataVariables()
+                temp_model = main_models.QueryConversationDetailInfoNewResponseBodyDataVariables()
                 self.variables.append(temp_model.from_map(k1))
 
         return self
 
-class QueryConversationDetailInfoResponseBodyDataVariables(DaraModel):
+class QueryConversationDetailInfoNewResponseBodyDataVariables(DaraModel):
     def __init__(
         self,
         id: str = None,
@@ -331,7 +387,7 @@ class QueryConversationDetailInfoResponseBodyDataVariables(DaraModel):
 
         return self
 
-class QueryConversationDetailInfoResponseBodyDataOutputTags(DaraModel):
+class QueryConversationDetailInfoNewResponseBodyDataOutputTags(DaraModel):
     def __init__(
         self,
         id: str = None,

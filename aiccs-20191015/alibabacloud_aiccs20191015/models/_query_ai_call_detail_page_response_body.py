@@ -139,6 +139,8 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
     def __init__(
         self,
         batch_id: str = None,
+        branch_id: int = None,
+        branch_version_id: int = None,
         call_result: str = None,
         called_number: str = None,
         calling_time: int = None,
@@ -146,6 +148,7 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
         conversation_record: str = None,
         conversation_turn_count: int = None,
         detail_id: str = None,
+        encryption_type: int = None,
         failed_reason: str = None,
         imported_time: int = None,
         major_intent: str = None,
@@ -156,6 +159,8 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
         task_id: str = None,
     ):
         self.batch_id = batch_id
+        self.branch_id = branch_id
+        self.branch_version_id = branch_version_id
         self.call_result = call_result
         self.called_number = called_number
         self.calling_time = calling_time
@@ -163,6 +168,7 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
         self.conversation_record = conversation_record
         self.conversation_turn_count = conversation_turn_count
         self.detail_id = detail_id
+        self.encryption_type = encryption_type
         self.failed_reason = failed_reason
         self.imported_time = imported_time
         self.major_intent = major_intent
@@ -182,6 +188,12 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
             result = _map
         if self.batch_id is not None:
             result['BatchId'] = self.batch_id
+
+        if self.branch_id is not None:
+            result['BranchId'] = self.branch_id
+
+        if self.branch_version_id is not None:
+            result['BranchVersionId'] = self.branch_version_id
 
         if self.call_result is not None:
             result['CallResult'] = self.call_result
@@ -203,6 +215,9 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
 
         if self.detail_id is not None:
             result['DetailId'] = self.detail_id
+
+        if self.encryption_type is not None:
+            result['EncryptionType'] = self.encryption_type
 
         if self.failed_reason is not None:
             result['FailedReason'] = self.failed_reason
@@ -235,6 +250,12 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
         if m.get('BatchId') is not None:
             self.batch_id = m.get('BatchId')
 
+        if m.get('BranchId') is not None:
+            self.branch_id = m.get('BranchId')
+
+        if m.get('BranchVersionId') is not None:
+            self.branch_version_id = m.get('BranchVersionId')
+
         if m.get('CallResult') is not None:
             self.call_result = m.get('CallResult')
 
@@ -255,6 +276,9 @@ class QueryAiCallDetailPageResponseBodyDataList(DaraModel):
 
         if m.get('DetailId') is not None:
             self.detail_id = m.get('DetailId')
+
+        if m.get('EncryptionType') is not None:
+            self.encryption_type = m.get('EncryptionType')
 
         if m.get('FailedReason') is not None:
             self.failed_reason = m.get('FailedReason')

@@ -12,10 +12,14 @@ class UpdateAiCallTaskShrinkRequest(DaraModel):
         call_retry_reason_shrink: str = None,
         call_retry_times: int = None,
         call_time_shrink: str = None,
+        line_encoding: str = None,
+        line_phone_num: str = None,
         miss_call_retry: bool = None,
         owner_id: int = None,
+        phone_type: int = None,
         resource_owner_account: str = None,
         resource_owner_id: int = None,
+        source: int = None,
         start_type: str = None,
         task_cps: int = None,
         task_id: str = None,
@@ -30,10 +34,14 @@ class UpdateAiCallTaskShrinkRequest(DaraModel):
         self.call_retry_times = call_retry_times
         # This parameter is required.
         self.call_time_shrink = call_time_shrink
+        self.line_encoding = line_encoding
+        self.line_phone_num = line_phone_num
         self.miss_call_retry = miss_call_retry
         self.owner_id = owner_id
+        self.phone_type = phone_type
         self.resource_owner_account = resource_owner_account
         self.resource_owner_id = resource_owner_id
+        self.source = source
         # This parameter is required.
         self.start_type = start_type
         # This parameter is required.
@@ -43,7 +51,6 @@ class UpdateAiCallTaskShrinkRequest(DaraModel):
         # This parameter is required.
         self.task_name = task_name
         self.task_start_time = task_start_time
-        # This parameter is required.
         self.virtual_number = virtual_number
 
     def validate(self):
@@ -69,17 +76,29 @@ class UpdateAiCallTaskShrinkRequest(DaraModel):
         if self.call_time_shrink is not None:
             result['CallTime'] = self.call_time_shrink
 
+        if self.line_encoding is not None:
+            result['LineEncoding'] = self.line_encoding
+
+        if self.line_phone_num is not None:
+            result['LinePhoneNum'] = self.line_phone_num
+
         if self.miss_call_retry is not None:
             result['MissCallRetry'] = self.miss_call_retry
 
         if self.owner_id is not None:
             result['OwnerId'] = self.owner_id
 
+        if self.phone_type is not None:
+            result['PhoneType'] = self.phone_type
+
         if self.resource_owner_account is not None:
             result['ResourceOwnerAccount'] = self.resource_owner_account
 
         if self.resource_owner_id is not None:
             result['ResourceOwnerId'] = self.resource_owner_id
+
+        if self.source is not None:
+            result['Source'] = self.source
 
         if self.start_type is not None:
             result['StartType'] = self.start_type
@@ -118,17 +137,29 @@ class UpdateAiCallTaskShrinkRequest(DaraModel):
         if m.get('CallTime') is not None:
             self.call_time_shrink = m.get('CallTime')
 
+        if m.get('LineEncoding') is not None:
+            self.line_encoding = m.get('LineEncoding')
+
+        if m.get('LinePhoneNum') is not None:
+            self.line_phone_num = m.get('LinePhoneNum')
+
         if m.get('MissCallRetry') is not None:
             self.miss_call_retry = m.get('MissCallRetry')
 
         if m.get('OwnerId') is not None:
             self.owner_id = m.get('OwnerId')
 
+        if m.get('PhoneType') is not None:
+            self.phone_type = m.get('PhoneType')
+
         if m.get('ResourceOwnerAccount') is not None:
             self.resource_owner_account = m.get('ResourceOwnerAccount')
 
         if m.get('ResourceOwnerId') is not None:
             self.resource_owner_id = m.get('ResourceOwnerId')
+
+        if m.get('Source') is not None:
+            self.source = m.get('Source')
 
         if m.get('StartType') is not None:
             self.start_type = m.get('StartType')

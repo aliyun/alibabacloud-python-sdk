@@ -866,6 +866,8 @@ class Client(OpenApiClient):
             query['BatchId'] = request.batch_id
         if not DaraCore.is_null(request.detail_id_list_shrink):
             query['DetailIdList'] = request.detail_id_list_shrink
+        if not DaraCore.is_null(request.encryption_type):
+            query['EncryptionType'] = request.encryption_type
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.phone_numbers_shrink):
@@ -912,6 +914,8 @@ class Client(OpenApiClient):
             query['BatchId'] = request.batch_id
         if not DaraCore.is_null(request.detail_id_list_shrink):
             query['DetailIdList'] = request.detail_id_list_shrink
+        if not DaraCore.is_null(request.encryption_type):
+            query['EncryptionType'] = request.encryption_type
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.phone_numbers_shrink):
@@ -1308,6 +1312,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.agent_id):
             query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_code):
+            query['ApplicationCode'] = request.application_code
+        if not DaraCore.is_null(request.application_name):
+            query['ApplicationName'] = request.application_name
         if not DaraCore.is_null(request.call_day_shrink):
             query['CallDay'] = request.call_day_shrink
         if not DaraCore.is_null(request.call_retry_interval):
@@ -1318,14 +1326,22 @@ class Client(OpenApiClient):
             query['CallRetryTimes'] = request.call_retry_times
         if not DaraCore.is_null(request.call_time_shrink):
             query['CallTime'] = request.call_time_shrink
+        if not DaraCore.is_null(request.line_encoding):
+            query['LineEncoding'] = request.line_encoding
+        if not DaraCore.is_null(request.line_phone_num):
+            query['LinePhoneNum'] = request.line_phone_num
         if not DaraCore.is_null(request.miss_call_retry):
             query['MissCallRetry'] = request.miss_call_retry
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.phone_type):
+            query['PhoneType'] = request.phone_type
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         if not DaraCore.is_null(request.start_type):
             query['StartType'] = request.start_type
         if not DaraCore.is_null(request.task_cps):
@@ -1372,6 +1388,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.agent_id):
             query['AgentId'] = request.agent_id
+        if not DaraCore.is_null(request.application_code):
+            query['ApplicationCode'] = request.application_code
+        if not DaraCore.is_null(request.application_name):
+            query['ApplicationName'] = request.application_name
         if not DaraCore.is_null(request.call_day_shrink):
             query['CallDay'] = request.call_day_shrink
         if not DaraCore.is_null(request.call_retry_interval):
@@ -1382,14 +1402,22 @@ class Client(OpenApiClient):
             query['CallRetryTimes'] = request.call_retry_times
         if not DaraCore.is_null(request.call_time_shrink):
             query['CallTime'] = request.call_time_shrink
+        if not DaraCore.is_null(request.line_encoding):
+            query['LineEncoding'] = request.line_encoding
+        if not DaraCore.is_null(request.line_phone_num):
+            query['LinePhoneNum'] = request.line_phone_num
         if not DaraCore.is_null(request.miss_call_retry):
             query['MissCallRetry'] = request.miss_call_retry
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.phone_type):
+            query['PhoneType'] = request.phone_type
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         if not DaraCore.is_null(request.start_type):
             query['StartType'] = request.start_type
         if not DaraCore.is_null(request.task_cps):
@@ -8326,6 +8354,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.variables):
             request.variables_shrink = Utils.array_to_string_with_specified_style(tmp_req.variables, 'Variables', 'json')
         query = {}
+        if not DaraCore.is_null(request.encryption_type):
+            query['EncryptionType'] = request.encryption_type
         if not DaraCore.is_null(request.out_id):
             query['OutId'] = request.out_id
         if not DaraCore.is_null(request.owner_id):
@@ -8370,6 +8400,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(tmp_req.variables):
             request.variables_shrink = Utils.array_to_string_with_specified_style(tmp_req.variables, 'Variables', 'json')
         query = {}
+        if not DaraCore.is_null(request.encryption_type):
+            query['EncryptionType'] = request.encryption_type
         if not DaraCore.is_null(request.out_id):
             query['OutId'] = request.out_id
         if not DaraCore.is_null(request.owner_id):
@@ -8430,6 +8462,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.data_type):
             query['DataType'] = request.data_type
+        if not DaraCore.is_null(request.encryption_type):
+            query['EncryptionType'] = request.encryption_type
         if not DaraCore.is_null(request.oss_file_name):
             query['OssFileName'] = request.oss_file_name
         if not DaraCore.is_null(request.owner_id):
@@ -8476,6 +8510,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.data_type):
             query['DataType'] = request.data_type
+        if not DaraCore.is_null(request.encryption_type):
+            query['EncryptionType'] = request.encryption_type
         if not DaraCore.is_null(request.oss_file_name):
             query['OssFileName'] = request.oss_file_name
         if not DaraCore.is_null(request.owner_id):
@@ -10500,6 +10536,8 @@ class Client(OpenApiClient):
             query['CalledNumber'] = request.called_number
         if not DaraCore.is_null(request.detail_ids_shrink):
             query['DetailIds'] = request.detail_ids_shrink
+        if not DaraCore.is_null(request.encryption_type):
+            query['EncryptionType'] = request.encryption_type
         if not DaraCore.is_null(request.end_calling_time):
             query['EndCallingTime'] = request.end_calling_time
         if not DaraCore.is_null(request.end_imported_time):
@@ -10568,6 +10606,8 @@ class Client(OpenApiClient):
             query['CalledNumber'] = request.called_number
         if not DaraCore.is_null(request.detail_ids_shrink):
             query['DetailIds'] = request.detail_ids_shrink
+        if not DaraCore.is_null(request.encryption_type):
+            query['EncryptionType'] = request.encryption_type
         if not DaraCore.is_null(request.end_calling_time):
             query['EndCallingTime'] = request.end_calling_time
         if not DaraCore.is_null(request.end_imported_time):
@@ -10722,6 +10762,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.agent_name):
             query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.application_code):
+            query['ApplicationCode'] = request.application_code
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.page_no):
@@ -10732,6 +10774,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         if not DaraCore.is_null(request.task_id):
@@ -10766,6 +10810,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.agent_name):
             query['AgentName'] = request.agent_name
+        if not DaraCore.is_null(request.application_code):
+            query['ApplicationCode'] = request.application_code
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
         if not DaraCore.is_null(request.page_no):
@@ -10776,6 +10822,8 @@ class Client(OpenApiClient):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         if not DaraCore.is_null(request.status):
             query['Status'] = request.status
         if not DaraCore.is_null(request.task_id):
@@ -10986,6 +11034,100 @@ class Client(OpenApiClient):
     ) -> main_models.QueryConversationDetailInfoResponse:
         runtime = RuntimeOptions()
         return await self.query_conversation_detail_info_with_options_async(request, runtime)
+
+    def query_conversation_detail_info_new_with_options(
+        self,
+        request: main_models.QueryConversationDetailInfoNewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryConversationDetailInfoNewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_id):
+            query['CallId'] = request.call_id
+        if not DaraCore.is_null(request.detail_id):
+            query['DetailId'] = request.detail_id
+        if not DaraCore.is_null(request.out_id):
+            query['OutId'] = request.out_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryConversationDetailInfoNew',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryConversationDetailInfoNewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_conversation_detail_info_new_with_options_async(
+        self,
+        request: main_models.QueryConversationDetailInfoNewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryConversationDetailInfoNewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_id):
+            query['CallId'] = request.call_id
+        if not DaraCore.is_null(request.detail_id):
+            query['DetailId'] = request.detail_id
+        if not DaraCore.is_null(request.out_id):
+            query['OutId'] = request.out_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryConversationDetailInfoNew',
+            version = '2019-10-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryConversationDetailInfoNewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_conversation_detail_info_new(
+        self,
+        request: main_models.QueryConversationDetailInfoNewRequest,
+    ) -> main_models.QueryConversationDetailInfoNewResponse:
+        runtime = RuntimeOptions()
+        return self.query_conversation_detail_info_new_with_options(request, runtime)
+
+    async def query_conversation_detail_info_new_async(
+        self,
+        request: main_models.QueryConversationDetailInfoNewRequest,
+    ) -> main_models.QueryConversationDetailInfoNewResponse:
+        runtime = RuntimeOptions()
+        return await self.query_conversation_detail_info_new_with_options_async(request, runtime)
 
     def query_hotline_in_queue_with_options(
         self,
@@ -14024,14 +14166,22 @@ class Client(OpenApiClient):
             query['CallRetryTimes'] = request.call_retry_times
         if not DaraCore.is_null(request.call_time_shrink):
             query['CallTime'] = request.call_time_shrink
+        if not DaraCore.is_null(request.line_encoding):
+            query['LineEncoding'] = request.line_encoding
+        if not DaraCore.is_null(request.line_phone_num):
+            query['LinePhoneNum'] = request.line_phone_num
         if not DaraCore.is_null(request.miss_call_retry):
             query['MissCallRetry'] = request.miss_call_retry
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.phone_type):
+            query['PhoneType'] = request.phone_type
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         if not DaraCore.is_null(request.start_type):
             query['StartType'] = request.start_type
         if not DaraCore.is_null(request.task_cps):
@@ -14088,14 +14238,22 @@ class Client(OpenApiClient):
             query['CallRetryTimes'] = request.call_retry_times
         if not DaraCore.is_null(request.call_time_shrink):
             query['CallTime'] = request.call_time_shrink
+        if not DaraCore.is_null(request.line_encoding):
+            query['LineEncoding'] = request.line_encoding
+        if not DaraCore.is_null(request.line_phone_num):
+            query['LinePhoneNum'] = request.line_phone_num
         if not DaraCore.is_null(request.miss_call_retry):
             query['MissCallRetry'] = request.miss_call_retry
         if not DaraCore.is_null(request.owner_id):
             query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.phone_type):
+            query['PhoneType'] = request.phone_type
         if not DaraCore.is_null(request.resource_owner_account):
             query['ResourceOwnerAccount'] = request.resource_owner_account
         if not DaraCore.is_null(request.resource_owner_id):
             query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
         if not DaraCore.is_null(request.start_type):
             query['StartType'] = request.start_type
         if not DaraCore.is_null(request.task_cps):
