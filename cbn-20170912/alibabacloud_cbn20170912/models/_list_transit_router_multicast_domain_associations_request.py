@@ -1,0 +1,138 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from darabonba.model import DaraModel
+
+class ListTransitRouterMulticastDomainAssociationsRequest(DaraModel):
+    def __init__(
+        self,
+        client_token: str = None,
+        max_results: int = None,
+        next_token: str = None,
+        owner_account: str = None,
+        owner_id: int = None,
+        resource_id: str = None,
+        resource_owner_account: str = None,
+        resource_owner_id: int = None,
+        resource_type: str = None,
+        transit_router_attachment_id: str = None,
+        transit_router_multicast_domain_id: str = None,
+        v_switch_ids: List[str] = None,
+    ):
+        # The client token that is used to ensure the idempotence of the request.
+        # 
+        # You can use the client to generate the value, but you must make sure that it is unique among all requests. The token can only contain ASCII characters.
+        self.client_token = client_token
+        # The number of entries to return on each page. Default value: **20**.
+        self.max_results = max_results
+        # The token that determines the start point of the query. Valid values:
+        # 
+        # *   If this is your first query and no next queries are to be sent, ignore this parameter.
+        # *   If a subsequent query is to be sent, set the parameter to the value of NextToken that is returned from the last call.
+        self.next_token = next_token
+        self.owner_account = owner_account
+        self.owner_id = owner_id
+        # The ID of the resource associated with the multicast domain.
+        self.resource_id = resource_id
+        self.resource_owner_account = resource_owner_account
+        self.resource_owner_id = resource_owner_id
+        # The type of resource associated with the multicast domain.
+        # 
+        # Valid value: **VPC**.
+        self.resource_type = resource_type
+        # The ID of the network instance connection.
+        self.transit_router_attachment_id = transit_router_attachment_id
+        # The ID of the multicast domain.
+        self.transit_router_multicast_domain_id = transit_router_multicast_domain_id
+        # The IDs of vSwitches.
+        self.v_switch_ids = v_switch_ids
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.client_token is not None:
+            result['ClientToken'] = self.client_token
+
+        if self.max_results is not None:
+            result['MaxResults'] = self.max_results
+
+        if self.next_token is not None:
+            result['NextToken'] = self.next_token
+
+        if self.owner_account is not None:
+            result['OwnerAccount'] = self.owner_account
+
+        if self.owner_id is not None:
+            result['OwnerId'] = self.owner_id
+
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+
+        if self.resource_owner_account is not None:
+            result['ResourceOwnerAccount'] = self.resource_owner_account
+
+        if self.resource_owner_id is not None:
+            result['ResourceOwnerId'] = self.resource_owner_id
+
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+
+        if self.transit_router_attachment_id is not None:
+            result['TransitRouterAttachmentId'] = self.transit_router_attachment_id
+
+        if self.transit_router_multicast_domain_id is not None:
+            result['TransitRouterMulticastDomainId'] = self.transit_router_multicast_domain_id
+
+        if self.v_switch_ids is not None:
+            result['VSwitchIds'] = self.v_switch_ids
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ClientToken') is not None:
+            self.client_token = m.get('ClientToken')
+
+        if m.get('MaxResults') is not None:
+            self.max_results = m.get('MaxResults')
+
+        if m.get('NextToken') is not None:
+            self.next_token = m.get('NextToken')
+
+        if m.get('OwnerAccount') is not None:
+            self.owner_account = m.get('OwnerAccount')
+
+        if m.get('OwnerId') is not None:
+            self.owner_id = m.get('OwnerId')
+
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+
+        if m.get('ResourceOwnerAccount') is not None:
+            self.resource_owner_account = m.get('ResourceOwnerAccount')
+
+        if m.get('ResourceOwnerId') is not None:
+            self.resource_owner_id = m.get('ResourceOwnerId')
+
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+
+        if m.get('TransitRouterAttachmentId') is not None:
+            self.transit_router_attachment_id = m.get('TransitRouterAttachmentId')
+
+        if m.get('TransitRouterMulticastDomainId') is not None:
+            self.transit_router_multicast_domain_id = m.get('TransitRouterMulticastDomainId')
+
+        if m.get('VSwitchIds') is not None:
+            self.v_switch_ids = m.get('VSwitchIds')
+
+        return self
+
