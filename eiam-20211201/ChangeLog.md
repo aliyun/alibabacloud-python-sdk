@@ -1,3 +1,24 @@
+2026-02-04 Version: 2.11.0
+- Support API CheckApplicationProvisioningUserPrimaryOrganizationalUnit.
+- Support API CheckInstanceForDelete.
+- Support API CheckInstanceModuleStatus.
+- Support API CreateCustomField.
+- Support API CreateInstanceTrialLicense.
+- Support API DeleteCustomField.
+- Support API DisableCustomField.
+- Support API EnableCustomField.
+- Support API GetApplicationProvisioningUserPrimaryOrganizationalUnit.
+- Support API GetCustomField.
+- Support API GetIdentityProviderAdvancedConfiguration.
+- Support API GetIdentityProviderStatusCheckJob.
+- Support API GetIdentityProviderUdPushConfiguration.
+- Support API GetInstanceControlConfiguration.
+- Support API GetInstanceGlobalizationConfig.
+- Support API GetInstanceModuleInfo.
+- Support API GetInstanceQuota.
+- Support API GetInstanceTrialStatus.
+
+
 2026-01-28 Version: 2.10.0
 - Support API AddApplicationToAuthorizationRule.
 - Support API AddGroupToAuthorizationRule.

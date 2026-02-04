@@ -1384,6 +1384,236 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.bind_user_authn_source_mapping_with_options_async(request, runtime)
 
+    def check_application_provisioning_user_primary_organizational_unit_with_options(
+        self,
+        request: main_models.CheckApplicationProvisioningUserPrimaryOrganizationalUnitRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.user_primary_organizational_unit_id):
+            query['UserPrimaryOrganizationalUnitId'] = request.user_primary_organizational_unit_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckApplicationProvisioningUserPrimaryOrganizationalUnit',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_application_provisioning_user_primary_organizational_unit_with_options_async(
+        self,
+        request: main_models.CheckApplicationProvisioningUserPrimaryOrganizationalUnitRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.user_primary_organizational_unit_id):
+            query['UserPrimaryOrganizationalUnitId'] = request.user_primary_organizational_unit_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckApplicationProvisioningUserPrimaryOrganizationalUnit',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_application_provisioning_user_primary_organizational_unit(
+        self,
+        request: main_models.CheckApplicationProvisioningUserPrimaryOrganizationalUnitRequest,
+    ) -> main_models.CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponse:
+        runtime = RuntimeOptions()
+        return self.check_application_provisioning_user_primary_organizational_unit_with_options(request, runtime)
+
+    async def check_application_provisioning_user_primary_organizational_unit_async(
+        self,
+        request: main_models.CheckApplicationProvisioningUserPrimaryOrganizationalUnitRequest,
+    ) -> main_models.CheckApplicationProvisioningUserPrimaryOrganizationalUnitResponse:
+        runtime = RuntimeOptions()
+        return await self.check_application_provisioning_user_primary_organizational_unit_with_options_async(request, runtime)
+
+    def check_instance_for_delete_with_options(
+        self,
+        request: main_models.CheckInstanceForDeleteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckInstanceForDeleteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckInstanceForDelete',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckInstanceForDeleteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_instance_for_delete_with_options_async(
+        self,
+        request: main_models.CheckInstanceForDeleteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckInstanceForDeleteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckInstanceForDelete',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckInstanceForDeleteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_instance_for_delete(
+        self,
+        request: main_models.CheckInstanceForDeleteRequest,
+    ) -> main_models.CheckInstanceForDeleteResponse:
+        runtime = RuntimeOptions()
+        return self.check_instance_for_delete_with_options(request, runtime)
+
+    async def check_instance_for_delete_async(
+        self,
+        request: main_models.CheckInstanceForDeleteRequest,
+    ) -> main_models.CheckInstanceForDeleteResponse:
+        runtime = RuntimeOptions()
+        return await self.check_instance_for_delete_with_options_async(request, runtime)
+
+    def check_instance_module_status_with_options(
+        self,
+        request: main_models.CheckInstanceModuleStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckInstanceModuleStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.feature_key):
+            query['FeatureKey'] = request.feature_key
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.module_key):
+            query['ModuleKey'] = request.module_key
+        if not DaraCore.is_null(request.sub_feature_key):
+            query['SubFeatureKey'] = request.sub_feature_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckInstanceModuleStatus',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckInstanceModuleStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def check_instance_module_status_with_options_async(
+        self,
+        request: main_models.CheckInstanceModuleStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckInstanceModuleStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.feature_key):
+            query['FeatureKey'] = request.feature_key
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.module_key):
+            query['ModuleKey'] = request.module_key
+        if not DaraCore.is_null(request.sub_feature_key):
+            query['SubFeatureKey'] = request.sub_feature_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CheckInstanceModuleStatus',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CheckInstanceModuleStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def check_instance_module_status(
+        self,
+        request: main_models.CheckInstanceModuleStatusRequest,
+    ) -> main_models.CheckInstanceModuleStatusResponse:
+        runtime = RuntimeOptions()
+        return self.check_instance_module_status_with_options(request, runtime)
+
+    async def check_instance_module_status_async(
+        self,
+        request: main_models.CheckInstanceModuleStatusRequest,
+    ) -> main_models.CheckInstanceModuleStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.check_instance_module_status_with_options_async(request, runtime)
+
     def create_application_with_options(
         self,
         request: main_models.CreateApplicationRequest,
@@ -2456,6 +2686,124 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_conditional_access_policy_with_options_async(request, runtime)
 
+    def create_custom_field_with_options(
+        self,
+        request: main_models.CreateCustomFieldRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomFieldResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.default_value):
+            query['DefaultValue'] = request.default_value
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.encrypted):
+            query['Encrypted'] = request.encrypted
+        if not DaraCore.is_null(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.field_data_config):
+            query['FieldDataConfig'] = request.field_data_config
+        if not DaraCore.is_null(request.field_data_type):
+            query['FieldDataType'] = request.field_data_type
+        if not DaraCore.is_null(request.field_display_name):
+            query['FieldDisplayName'] = request.field_display_name
+        if not DaraCore.is_null(request.field_display_type):
+            query['FieldDisplayType'] = request.field_display_type
+        if not DaraCore.is_null(request.field_name):
+            query['FieldName'] = request.field_name
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.required):
+            query['Required'] = request.required
+        if not DaraCore.is_null(request.unique):
+            query['Unique'] = request.unique
+        if not DaraCore.is_null(request.user_permission):
+            query['UserPermission'] = request.user_permission
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomField',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomFieldResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_custom_field_with_options_async(
+        self,
+        request: main_models.CreateCustomFieldRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomFieldResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.default_value):
+            query['DefaultValue'] = request.default_value
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.encrypted):
+            query['Encrypted'] = request.encrypted
+        if not DaraCore.is_null(request.entity_type):
+            query['EntityType'] = request.entity_type
+        if not DaraCore.is_null(request.field_data_config):
+            query['FieldDataConfig'] = request.field_data_config
+        if not DaraCore.is_null(request.field_data_type):
+            query['FieldDataType'] = request.field_data_type
+        if not DaraCore.is_null(request.field_display_name):
+            query['FieldDisplayName'] = request.field_display_name
+        if not DaraCore.is_null(request.field_display_type):
+            query['FieldDisplayType'] = request.field_display_type
+        if not DaraCore.is_null(request.field_name):
+            query['FieldName'] = request.field_name
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.required):
+            query['Required'] = request.required
+        if not DaraCore.is_null(request.unique):
+            query['Unique'] = request.unique
+        if not DaraCore.is_null(request.user_permission):
+            query['UserPermission'] = request.user_permission
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomField',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomFieldResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_custom_field(
+        self,
+        request: main_models.CreateCustomFieldRequest,
+    ) -> main_models.CreateCustomFieldResponse:
+        runtime = RuntimeOptions()
+        return self.create_custom_field_with_options(request, runtime)
+
+    async def create_custom_field_async(
+        self,
+        request: main_models.CreateCustomFieldRequest,
+    ) -> main_models.CreateCustomFieldResponse:
+        runtime = RuntimeOptions()
+        return await self.create_custom_field_with_options_async(request, runtime)
+
     def create_custom_privacy_policy_with_options(
         self,
         request: main_models.CreateCustomPrivacyPolicyRequest,
@@ -3159,6 +3507,76 @@ class Client(OpenApiClient):
     ) -> main_models.CreateInstanceResponse:
         runtime = RuntimeOptions()
         return await self.create_instance_with_options_async(request, runtime)
+
+    def create_instance_trial_license_with_options(
+        self,
+        request: main_models.CreateInstanceTrialLicenseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInstanceTrialLicenseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInstanceTrialLicense',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInstanceTrialLicenseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_instance_trial_license_with_options_async(
+        self,
+        request: main_models.CreateInstanceTrialLicenseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInstanceTrialLicenseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInstanceTrialLicense',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInstanceTrialLicenseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_instance_trial_license(
+        self,
+        request: main_models.CreateInstanceTrialLicenseRequest,
+    ) -> main_models.CreateInstanceTrialLicenseResponse:
+        runtime = RuntimeOptions()
+        return self.create_instance_trial_license_with_options(request, runtime)
+
+    async def create_instance_trial_license_async(
+        self,
+        request: main_models.CreateInstanceTrialLicenseRequest,
+    ) -> main_models.CreateInstanceTrialLicenseResponse:
+        runtime = RuntimeOptions()
+        return await self.create_instance_trial_license_with_options_async(request, runtime)
 
     def create_network_access_endpoint_with_options(
         self,
@@ -4569,6 +4987,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteConditionalAccessPolicyResponse:
         runtime = RuntimeOptions()
         return await self.delete_conditional_access_policy_with_options_async(request, runtime)
+
+    def delete_custom_field_with_options(
+        self,
+        request: main_models.DeleteCustomFieldRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomFieldResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.field_id):
+            query['FieldId'] = request.field_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomField',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCustomFieldResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_custom_field_with_options_async(
+        self,
+        request: main_models.DeleteCustomFieldRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomFieldResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.field_id):
+            query['FieldId'] = request.field_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomField',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCustomFieldResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_custom_field(
+        self,
+        request: main_models.DeleteCustomFieldRequest,
+    ) -> main_models.DeleteCustomFieldResponse:
+        runtime = RuntimeOptions()
+        return self.delete_custom_field_with_options(request, runtime)
+
+    async def delete_custom_field_async(
+        self,
+        request: main_models.DeleteCustomFieldRequest,
+    ) -> main_models.DeleteCustomFieldResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_custom_field_with_options_async(request, runtime)
 
     def delete_custom_privacy_policy_with_options(
         self,
@@ -6760,6 +7252,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.disable_conditional_access_policy_with_options_async(request, runtime)
 
+    def disable_custom_field_with_options(
+        self,
+        request: main_models.DisableCustomFieldRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableCustomFieldResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.field_id):
+            query['FieldId'] = request.field_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableCustomField',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableCustomFieldResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_custom_field_with_options_async(
+        self,
+        request: main_models.DisableCustomFieldRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableCustomFieldResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.field_id):
+            query['FieldId'] = request.field_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableCustomField',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableCustomFieldResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_custom_field(
+        self,
+        request: main_models.DisableCustomFieldRequest,
+    ) -> main_models.DisableCustomFieldResponse:
+        runtime = RuntimeOptions()
+        return self.disable_custom_field_with_options(request, runtime)
+
+    async def disable_custom_field_async(
+        self,
+        request: main_models.DisableCustomFieldRequest,
+    ) -> main_models.DisableCustomFieldResponse:
+        runtime = RuntimeOptions()
+        return await self.disable_custom_field_with_options_async(request, runtime)
+
     def disable_custom_privacy_policy_with_options(
         self,
         request: main_models.DisableCustomPrivacyPolicyRequest,
@@ -8572,6 +9138,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.enable_conditional_access_policy_with_options_async(request, runtime)
 
+    def enable_custom_field_with_options(
+        self,
+        request: main_models.EnableCustomFieldRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableCustomFieldResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.field_id):
+            query['FieldId'] = request.field_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableCustomField',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableCustomFieldResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_custom_field_with_options_async(
+        self,
+        request: main_models.EnableCustomFieldRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableCustomFieldResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.field_id):
+            query['FieldId'] = request.field_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableCustomField',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableCustomFieldResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_custom_field(
+        self,
+        request: main_models.EnableCustomFieldRequest,
+    ) -> main_models.EnableCustomFieldResponse:
+        runtime = RuntimeOptions()
+        return self.enable_custom_field_with_options(request, runtime)
+
+    async def enable_custom_field_async(
+        self,
+        request: main_models.EnableCustomFieldRequest,
+    ) -> main_models.EnableCustomFieldResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_custom_field_with_options_async(request, runtime)
+
     def enable_custom_privacy_policy_with_options(
         self,
         request: main_models.EnableCustomPrivacyPolicyRequest,
@@ -9986,6 +10626,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_application_provisioning_scope_with_options_async(request, runtime)
 
+    def get_application_provisioning_user_primary_organizational_unit_with_options(
+        self,
+        request: main_models.GetApplicationProvisioningUserPrimaryOrganizationalUnitRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetApplicationProvisioningUserPrimaryOrganizationalUnitResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetApplicationProvisioningUserPrimaryOrganizationalUnit',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetApplicationProvisioningUserPrimaryOrganizationalUnitResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_application_provisioning_user_primary_organizational_unit_with_options_async(
+        self,
+        request: main_models.GetApplicationProvisioningUserPrimaryOrganizationalUnitRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetApplicationProvisioningUserPrimaryOrganizationalUnitResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.application_id):
+            query['ApplicationId'] = request.application_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetApplicationProvisioningUserPrimaryOrganizationalUnit',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetApplicationProvisioningUserPrimaryOrganizationalUnitResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_application_provisioning_user_primary_organizational_unit(
+        self,
+        request: main_models.GetApplicationProvisioningUserPrimaryOrganizationalUnitRequest,
+    ) -> main_models.GetApplicationProvisioningUserPrimaryOrganizationalUnitResponse:
+        runtime = RuntimeOptions()
+        return self.get_application_provisioning_user_primary_organizational_unit_with_options(request, runtime)
+
+    async def get_application_provisioning_user_primary_organizational_unit_async(
+        self,
+        request: main_models.GetApplicationProvisioningUserPrimaryOrganizationalUnitRequest,
+    ) -> main_models.GetApplicationProvisioningUserPrimaryOrganizationalUnitResponse:
+        runtime = RuntimeOptions()
+        return await self.get_application_provisioning_user_primary_organizational_unit_with_options_async(request, runtime)
+
     def get_application_role_with_options(
         self,
         request: main_models.GetApplicationRoleRequest,
@@ -10738,6 +11452,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_conditional_access_policy_with_options_async(request, runtime)
 
+    def get_custom_field_with_options(
+        self,
+        request: main_models.GetCustomFieldRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomFieldResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.field_id):
+            query['FieldId'] = request.field_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCustomField',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCustomFieldResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_custom_field_with_options_async(
+        self,
+        request: main_models.GetCustomFieldRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomFieldResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.field_id):
+            query['FieldId'] = request.field_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCustomField',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCustomFieldResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_custom_field(
+        self,
+        request: main_models.GetCustomFieldRequest,
+    ) -> main_models.GetCustomFieldResponse:
+        runtime = RuntimeOptions()
+        return self.get_custom_field_with_options(request, runtime)
+
+    async def get_custom_field_async(
+        self,
+        request: main_models.GetCustomFieldRequest,
+    ) -> main_models.GetCustomFieldResponse:
+        runtime = RuntimeOptions()
+        return await self.get_custom_field_with_options_async(request, runtime)
+
     def get_custom_privacy_policy_with_options(
         self,
         request: main_models.GetCustomPrivacyPolicyRequest,
@@ -11252,6 +12040,158 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_identity_provider_with_options_async(request, runtime)
 
+    def get_identity_provider_advanced_configuration_with_options(
+        self,
+        request: main_models.GetIdentityProviderAdvancedConfigurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIdentityProviderAdvancedConfigurationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIdentityProviderAdvancedConfiguration',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIdentityProviderAdvancedConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_identity_provider_advanced_configuration_with_options_async(
+        self,
+        request: main_models.GetIdentityProviderAdvancedConfigurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIdentityProviderAdvancedConfigurationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIdentityProviderAdvancedConfiguration',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIdentityProviderAdvancedConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_identity_provider_advanced_configuration(
+        self,
+        request: main_models.GetIdentityProviderAdvancedConfigurationRequest,
+    ) -> main_models.GetIdentityProviderAdvancedConfigurationResponse:
+        runtime = RuntimeOptions()
+        return self.get_identity_provider_advanced_configuration_with_options(request, runtime)
+
+    async def get_identity_provider_advanced_configuration_async(
+        self,
+        request: main_models.GetIdentityProviderAdvancedConfigurationRequest,
+    ) -> main_models.GetIdentityProviderAdvancedConfigurationResponse:
+        runtime = RuntimeOptions()
+        return await self.get_identity_provider_advanced_configuration_with_options_async(request, runtime)
+
+    def get_identity_provider_status_check_job_with_options(
+        self,
+        request: main_models.GetIdentityProviderStatusCheckJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIdentityProviderStatusCheckJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not DaraCore.is_null(request.identity_provider_status_check_job_id):
+            query['IdentityProviderStatusCheckJobId'] = request.identity_provider_status_check_job_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIdentityProviderStatusCheckJob',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIdentityProviderStatusCheckJobResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_identity_provider_status_check_job_with_options_async(
+        self,
+        request: main_models.GetIdentityProviderStatusCheckJobRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIdentityProviderStatusCheckJobResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not DaraCore.is_null(request.identity_provider_status_check_job_id):
+            query['IdentityProviderStatusCheckJobId'] = request.identity_provider_status_check_job_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIdentityProviderStatusCheckJob',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIdentityProviderStatusCheckJobResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_identity_provider_status_check_job(
+        self,
+        request: main_models.GetIdentityProviderStatusCheckJobRequest,
+    ) -> main_models.GetIdentityProviderStatusCheckJobResponse:
+        runtime = RuntimeOptions()
+        return self.get_identity_provider_status_check_job_with_options(request, runtime)
+
+    async def get_identity_provider_status_check_job_async(
+        self,
+        request: main_models.GetIdentityProviderStatusCheckJobRequest,
+    ) -> main_models.GetIdentityProviderStatusCheckJobResponse:
+        runtime = RuntimeOptions()
+        return await self.get_identity_provider_status_check_job_with_options_async(request, runtime)
+
     def get_identity_provider_ud_pull_configuration_with_options(
         self,
         request: main_models.GetIdentityProviderUdPullConfigurationRequest,
@@ -11326,6 +12266,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_identity_provider_ud_pull_configuration_with_options_async(request, runtime)
 
+    def get_identity_provider_ud_push_configuration_with_options(
+        self,
+        request: main_models.GetIdentityProviderUdPushConfigurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIdentityProviderUdPushConfigurationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIdentityProviderUdPushConfiguration',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIdentityProviderUdPushConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_identity_provider_ud_push_configuration_with_options_async(
+        self,
+        request: main_models.GetIdentityProviderUdPushConfigurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetIdentityProviderUdPushConfigurationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.identity_provider_id):
+            query['IdentityProviderId'] = request.identity_provider_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetIdentityProviderUdPushConfiguration',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetIdentityProviderUdPushConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_identity_provider_ud_push_configuration(
+        self,
+        request: main_models.GetIdentityProviderUdPushConfigurationRequest,
+    ) -> main_models.GetIdentityProviderUdPushConfigurationResponse:
+        runtime = RuntimeOptions()
+        return self.get_identity_provider_ud_push_configuration_with_options(request, runtime)
+
+    async def get_identity_provider_ud_push_configuration_async(
+        self,
+        request: main_models.GetIdentityProviderUdPushConfigurationRequest,
+    ) -> main_models.GetIdentityProviderUdPushConfigurationResponse:
+        runtime = RuntimeOptions()
+        return await self.get_identity_provider_ud_push_configuration_with_options_async(request, runtime)
+
     def get_instance_with_options(
         self,
         request: main_models.GetInstanceRequest,
@@ -11396,6 +12410,146 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_instance_with_options_async(request, runtime)
 
+    def get_instance_control_configuration_with_options(
+        self,
+        request: main_models.GetInstanceControlConfigurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceControlConfigurationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceControlConfiguration',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceControlConfigurationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_control_configuration_with_options_async(
+        self,
+        request: main_models.GetInstanceControlConfigurationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceControlConfigurationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceControlConfiguration',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceControlConfigurationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_control_configuration(
+        self,
+        request: main_models.GetInstanceControlConfigurationRequest,
+    ) -> main_models.GetInstanceControlConfigurationResponse:
+        runtime = RuntimeOptions()
+        return self.get_instance_control_configuration_with_options(request, runtime)
+
+    async def get_instance_control_configuration_async(
+        self,
+        request: main_models.GetInstanceControlConfigurationRequest,
+    ) -> main_models.GetInstanceControlConfigurationResponse:
+        runtime = RuntimeOptions()
+        return await self.get_instance_control_configuration_with_options_async(request, runtime)
+
+    def get_instance_globalization_config_with_options(
+        self,
+        request: main_models.GetInstanceGlobalizationConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceGlobalizationConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceGlobalizationConfig',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceGlobalizationConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_globalization_config_with_options_async(
+        self,
+        request: main_models.GetInstanceGlobalizationConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceGlobalizationConfigResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceGlobalizationConfig',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceGlobalizationConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_globalization_config(
+        self,
+        request: main_models.GetInstanceGlobalizationConfigRequest,
+    ) -> main_models.GetInstanceGlobalizationConfigResponse:
+        runtime = RuntimeOptions()
+        return self.get_instance_globalization_config_with_options(request, runtime)
+
+    async def get_instance_globalization_config_async(
+        self,
+        request: main_models.GetInstanceGlobalizationConfigRequest,
+    ) -> main_models.GetInstanceGlobalizationConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.get_instance_globalization_config_with_options_async(request, runtime)
+
     def get_instance_license_with_options(
         self,
         request: main_models.GetInstanceLicenseRequest,
@@ -11465,6 +12619,224 @@ class Client(OpenApiClient):
     ) -> main_models.GetInstanceLicenseResponse:
         runtime = RuntimeOptions()
         return await self.get_instance_license_with_options_async(request, runtime)
+
+    def get_instance_module_info_with_options(
+        self,
+        request: main_models.GetInstanceModuleInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceModuleInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.module_key):
+            query['ModuleKey'] = request.module_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceModuleInfo',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceModuleInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_module_info_with_options_async(
+        self,
+        request: main_models.GetInstanceModuleInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceModuleInfoResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.module_key):
+            query['ModuleKey'] = request.module_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceModuleInfo',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceModuleInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_module_info(
+        self,
+        request: main_models.GetInstanceModuleInfoRequest,
+    ) -> main_models.GetInstanceModuleInfoResponse:
+        runtime = RuntimeOptions()
+        return self.get_instance_module_info_with_options(request, runtime)
+
+    async def get_instance_module_info_async(
+        self,
+        request: main_models.GetInstanceModuleInfoRequest,
+    ) -> main_models.GetInstanceModuleInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.get_instance_module_info_with_options_async(request, runtime)
+
+    def get_instance_quota_with_options(
+        self,
+        request: main_models.GetInstanceQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.quota_key):
+            query['QuotaKey'] = request.quota_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceQuota',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceQuotaResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_quota_with_options_async(
+        self,
+        request: main_models.GetInstanceQuotaRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceQuotaResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.quota_key):
+            query['QuotaKey'] = request.quota_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceQuota',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceQuotaResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_quota(
+        self,
+        request: main_models.GetInstanceQuotaRequest,
+    ) -> main_models.GetInstanceQuotaResponse:
+        runtime = RuntimeOptions()
+        return self.get_instance_quota_with_options(request, runtime)
+
+    async def get_instance_quota_async(
+        self,
+        request: main_models.GetInstanceQuotaRequest,
+    ) -> main_models.GetInstanceQuotaResponse:
+        runtime = RuntimeOptions()
+        return await self.get_instance_quota_with_options_async(request, runtime)
+
+    def get_instance_trial_status_with_options(
+        self,
+        request: main_models.GetInstanceTrialStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceTrialStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceTrialStatus',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceTrialStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_instance_trial_status_with_options_async(
+        self,
+        request: main_models.GetInstanceTrialStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInstanceTrialStatusResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInstanceTrialStatus',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInstanceTrialStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_instance_trial_status(
+        self,
+        request: main_models.GetInstanceTrialStatusRequest,
+    ) -> main_models.GetInstanceTrialStatusResponse:
+        runtime = RuntimeOptions()
+        return self.get_instance_trial_status_with_options(request, runtime)
+
+    async def get_instance_trial_status_async(
+        self,
+        request: main_models.GetInstanceTrialStatusRequest,
+    ) -> main_models.GetInstanceTrialStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.get_instance_trial_status_with_options_async(request, runtime)
 
     def get_login_redirect_application_for_brand_with_options(
         self,
