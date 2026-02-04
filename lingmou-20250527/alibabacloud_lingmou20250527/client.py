@@ -289,6 +289,86 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_background_pic_with_options_async(request, headers, runtime)
 
+    def create_broadcast_audio_with_options(
+        self,
+        request: main_models.CreateBroadcastAudioRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBroadcastAudioResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.file_name):
+            body['fileName'] = request.file_name
+        if not DaraCore.is_null(request.oss_key):
+            body['ossKey'] = request.oss_key
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBroadcastAudio',
+            version = '2025-05-27',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/customer/broadcast/material/audio/create',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBroadcastAudioResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_broadcast_audio_with_options_async(
+        self,
+        request: main_models.CreateBroadcastAudioRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateBroadcastAudioResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.file_name):
+            body['fileName'] = request.file_name
+        if not DaraCore.is_null(request.oss_key):
+            body['ossKey'] = request.oss_key
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateBroadcastAudio',
+            version = '2025-05-27',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/customer/broadcast/material/audio/create',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateBroadcastAudioResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_broadcast_audio(
+        self,
+        request: main_models.CreateBroadcastAudioRequest,
+    ) -> main_models.CreateBroadcastAudioResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_broadcast_audio_with_options(request, headers, runtime)
+
+    async def create_broadcast_audio_async(
+        self,
+        request: main_models.CreateBroadcastAudioRequest,
+    ) -> main_models.CreateBroadcastAudioResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_broadcast_audio_with_options_async(request, headers, runtime)
+
     def create_broadcast_sticker_with_options(
         self,
         request: main_models.CreateBroadcastStickerRequest,
@@ -1220,6 +1300,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_upload_policy_with_options_async(request, headers, runtime)
+
+    def list_broadcast_audios_by_id_with_options(
+        self,
+        tmp_req: main_models.ListBroadcastAudiosByIdRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBroadcastAudiosByIdResponse:
+        tmp_req.validate()
+        request = main_models.ListBroadcastAudiosByIdShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.audio_ids):
+            request.audio_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.audio_ids, 'audioIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.audio_ids_shrink):
+            query['audioIds'] = request.audio_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBroadcastAudiosById',
+            version = '2025-05-27',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/customer/broadcast/material/audio/batchQuery',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBroadcastAudiosByIdResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_broadcast_audios_by_id_with_options_async(
+        self,
+        tmp_req: main_models.ListBroadcastAudiosByIdRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListBroadcastAudiosByIdResponse:
+        tmp_req.validate()
+        request = main_models.ListBroadcastAudiosByIdShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.audio_ids):
+            request.audio_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.audio_ids, 'audioIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.audio_ids_shrink):
+            query['audioIds'] = request.audio_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListBroadcastAudiosById',
+            version = '2025-05-27',
+            protocol = 'HTTPS',
+            pathname = f'/openapi/customer/broadcast/material/audio/batchQuery',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListBroadcastAudiosByIdResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_broadcast_audios_by_id(
+        self,
+        request: main_models.ListBroadcastAudiosByIdRequest,
+    ) -> main_models.ListBroadcastAudiosByIdResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_broadcast_audios_by_id_with_options(request, headers, runtime)
+
+    async def list_broadcast_audios_by_id_async(
+        self,
+        request: main_models.ListBroadcastAudiosByIdRequest,
+    ) -> main_models.ListBroadcastAudiosByIdResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_broadcast_audios_by_id_with_options_async(request, headers, runtime)
 
     def list_broadcast_templates_with_options(
         self,

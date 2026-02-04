@@ -1,3 +1,8 @@
+2026-02-04 Version: 1.6.0
+- Support API CreateBroadcastAudio.
+- Support API ListBroadcastAudiosById.
+
+
 2026-02-02 Version: 1.5.4
 - Update API CreateTrainPicAvatar: add request parameters bizType.
 

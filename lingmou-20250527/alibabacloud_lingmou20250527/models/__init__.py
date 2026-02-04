@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._broadcast_audio import BroadcastAudio
 from ._broadcast_template import BroadcastTemplate
 from ._broadcast_video import BroadcastVideo
 from ._chat_session_info import ChatSessionInfo
@@ -16,6 +17,9 @@ from ._confirm_train_pic_avatar_response import ConfirmTrainPicAvatarResponse
 from ._create_background_pic_request import CreateBackgroundPicRequest
 from ._create_background_pic_response_body import CreateBackgroundPicResponseBody
 from ._create_background_pic_response import CreateBackgroundPicResponse
+from ._create_broadcast_audio_request import CreateBroadcastAudioRequest
+from ._create_broadcast_audio_response_body import CreateBroadcastAudioResponseBody
+from ._create_broadcast_audio_response import CreateBroadcastAudioResponse
 from ._create_broadcast_sticker_request import CreateBroadcastStickerRequest
 from ._create_broadcast_sticker_response_body import CreateBroadcastStickerResponseBody
 from ._create_broadcast_sticker_response import CreateBroadcastStickerResponse
@@ -49,6 +53,10 @@ from ._get_train_pic_avatar_status_response import GetTrainPicAvatarStatusRespon
 from ._get_upload_policy_request import GetUploadPolicyRequest
 from ._get_upload_policy_response_body import GetUploadPolicyResponseBody
 from ._get_upload_policy_response import GetUploadPolicyResponse
+from ._list_broadcast_audios_by_id_request import ListBroadcastAudiosByIdRequest
+from ._list_broadcast_audios_by_id_shrink_request import ListBroadcastAudiosByIdShrinkRequest
+from ._list_broadcast_audios_by_id_response_body import ListBroadcastAudiosByIdResponseBody
+from ._list_broadcast_audios_by_id_response import ListBroadcastAudiosByIdResponse
 from ._list_broadcast_templates_request import ListBroadcastTemplatesRequest
 from ._list_broadcast_templates_response_body import ListBroadcastTemplatesResponseBody
 from ._list_broadcast_templates_response import ListBroadcastTemplatesResponse
@@ -85,6 +93,7 @@ from ._list_private_ttsvoices_custom_response_body import ListPrivateTTSVoicesCu
 from ._list_template_material_response_body import ListTemplateMaterialResponseBodyData
 
 __all__ = [
+    BroadcastAudio,
     BroadcastTemplate,
     BroadcastVideo,
     ChatSessionInfo,
@@ -99,6 +108,9 @@ __all__ = [
     CreateBackgroundPicRequest,
     CreateBackgroundPicResponseBody,
     CreateBackgroundPicResponse,
+    CreateBroadcastAudioRequest,
+    CreateBroadcastAudioResponseBody,
+    CreateBroadcastAudioResponse,
     CreateBroadcastStickerRequest,
     CreateBroadcastStickerResponseBody,
     CreateBroadcastStickerResponse,
@@ -132,6 +144,10 @@ __all__ = [
     GetUploadPolicyRequest,
     GetUploadPolicyResponseBody,
     GetUploadPolicyResponse,
+    ListBroadcastAudiosByIdRequest,
+    ListBroadcastAudiosByIdShrinkRequest,
+    ListBroadcastAudiosByIdResponseBody,
+    ListBroadcastAudiosByIdResponse,
     ListBroadcastTemplatesRequest,
     ListBroadcastTemplatesResponseBody,
     ListBroadcastTemplatesResponse,
