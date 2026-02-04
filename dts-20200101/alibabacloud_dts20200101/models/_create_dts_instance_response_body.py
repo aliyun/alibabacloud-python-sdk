@@ -1,0 +1,79 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class CreateDtsInstanceResponseBody(DaraModel):
+    def __init__(
+        self,
+        err_code: str = None,
+        err_message: str = None,
+        instance_id: str = None,
+        job_id: str = None,
+        request_id: str = None,
+        success: str = None,
+    ):
+        # The error code returned if the request failed.
+        self.err_code = err_code
+        # The error message returned if the request failed.
+        self.err_message = err_message
+        # The ID of the DTS instance.
+        self.instance_id = instance_id
+        # The ID of the task.
+        self.job_id = job_id
+        # The ID of the request.
+        self.request_id = request_id
+        # Indicates whether the request was successful.
+        self.success = success
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.err_code is not None:
+            result['ErrCode'] = self.err_code
+
+        if self.err_message is not None:
+            result['ErrMessage'] = self.err_message
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.job_id is not None:
+            result['JobId'] = self.job_id
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.success is not None:
+            result['Success'] = self.success
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ErrCode') is not None:
+            self.err_code = m.get('ErrCode')
+
+        if m.get('ErrMessage') is not None:
+            self.err_message = m.get('ErrMessage')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('JobId') is not None:
+            self.job_id = m.get('JobId')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+
+        return self
+

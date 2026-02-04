@@ -1,3 +1,8 @@
+2026-02-04 Version: 5.11.1
+- Update API CreateDtsInstance: add request parameters InsightModule.
+- Update API DescribeDtsJobDetail: add response parameters Body.InsightModule.
+
+
 2025-12-22 Version: 5.11.0
 - Support API PromoteToMaster.
 
