@@ -1,3 +1,18 @@
+2026-02-04 Version: 2.12.0
+- Support API ExecIdentityProviderMetadataUrlResolution.
+- Support API GenerateOauthToken.
+- Support API GetServiceQuota.
+- Support API ListActionTrackEventTypes.
+- Support API ListEventTypes.
+- Support API RenewFreeLicenseEndTime.
+- Support API SetIdentityProviderAuthnConfiguration.
+- Support API SetIdentityProviderUdPushConfiguration.
+- Support API SetInstanceControlConfiguration.
+- Support API SetInstanceGlobalizationConfig.
+- Support API SetWebAuthnConfiguration.
+- Support API UnbindTotpAuthenticator.
+
+
 2026-02-04 Version: 2.11.0
 - Support API CheckApplicationProvisioningUserPrimaryOrganizationalUnit.
 - Support API CheckInstanceForDelete.
