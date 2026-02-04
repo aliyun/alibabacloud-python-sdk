@@ -103,9 +103,11 @@ class ListFullNatEntriesResponseBody(DaraModel):
 class ListFullNatEntriesResponseBodyFullNatEntries(DaraModel):
     def __init__(
         self,
+        access_domain: str = None,
         access_ip: str = None,
         access_port: str = None,
         creation_time: str = None,
+        domain_resolve: str = None,
         full_nat_entry_description: str = None,
         full_nat_entry_id: str = None,
         full_nat_entry_name: str = None,
@@ -117,12 +119,14 @@ class ListFullNatEntriesResponseBodyFullNatEntries(DaraModel):
         network_interface_id: str = None,
         network_interface_type: str = None,
     ):
+        self.access_domain = access_domain
         # The backend IP address that is used for FULLNAT address translation in FULLNAT entries.
         self.access_ip = access_ip
         # The backend port that is used for port mapping in FULLNAT entries. Valid values: **1** to **65535**.
         self.access_port = access_port
         # The time when the FULLNAT entry was created.
         self.creation_time = creation_time
+        self.domain_resolve = domain_resolve
         # The description of the FULLNAT entry.
         # 
         # The name must be 2 to 128 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
@@ -164,6 +168,9 @@ class ListFullNatEntriesResponseBodyFullNatEntries(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_domain is not None:
+            result['AccessDomain'] = self.access_domain
+
         if self.access_ip is not None:
             result['AccessIp'] = self.access_ip
 
@@ -172,6 +179,9 @@ class ListFullNatEntriesResponseBodyFullNatEntries(DaraModel):
 
         if self.creation_time is not None:
             result['CreationTime'] = self.creation_time
+
+        if self.domain_resolve is not None:
+            result['DomainResolve'] = self.domain_resolve
 
         if self.full_nat_entry_description is not None:
             result['FullNatEntryDescription'] = self.full_nat_entry_description
@@ -207,6 +217,9 @@ class ListFullNatEntriesResponseBodyFullNatEntries(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDomain') is not None:
+            self.access_domain = m.get('AccessDomain')
+
         if m.get('AccessIp') is not None:
             self.access_ip = m.get('AccessIp')
 
@@ -215,6 +228,9 @@ class ListFullNatEntriesResponseBodyFullNatEntries(DaraModel):
 
         if m.get('CreationTime') is not None:
             self.creation_time = m.get('CreationTime')
+
+        if m.get('DomainResolve') is not None:
+            self.domain_resolve = m.get('DomainResolve')
 
         if m.get('FullNatEntryDescription') is not None:
             self.full_nat_entry_description = m.get('FullNatEntryDescription')

@@ -1,3 +1,19 @@
+2026-02-04 Version: 7.0.0
+- Delete API ConvertBandwidthPackage.
+- Delete API DisableNatGatewayEcsMetric.
+- Delete API EnableNatGatewayEcsMetric.
+- Delete API GetNatIpAttribute.
+- Delete API GetNatIpCidrAttribute.
+- Update API CreateFullNatEntry: add request parameters AccessDomain.
+- Update API CreateNatIp: update request parameters Ipv4PrefixCount' format has changed.
+- Update API DescribePhysicalConnectionLOA: add response parameters Body.PhysicalConnectionLOAType.Description.
+- Update API DescribeVirtualBorderRoutersForPhysicalConnection: add response parameters Body.VirtualBorderRouterForPhysicalConnectionSet.$.VbrName.
+- Update API DescribeVpnGatewayAvailableZones: add request parameters GatewayType.
+- Update API ListFullNatEntries: add response parameters Body.FullNatEntries.$.AccessDomain.
+- Update API ListFullNatEntries: add response parameters Body.FullNatEntries.$.DomainResolve.
+- Update API ModifyFullNatEntryAttribute: add request parameters AccessDomain.
+
+
 2026-01-15 Version: 6.15.0
 - Support API GetNatIpAttribute.
 - Support API GetNatIpCidrAttribute.

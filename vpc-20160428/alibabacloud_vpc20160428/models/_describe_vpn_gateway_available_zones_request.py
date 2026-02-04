@@ -8,6 +8,7 @@ class DescribeVpnGatewayAvailableZonesRequest(DaraModel):
     def __init__(
         self,
         accept_language: str = None,
+        gateway_type: str = None,
         owner_account: str = None,
         owner_id: int = None,
         region_id: str = None,
@@ -20,6 +21,7 @@ class DescribeVpnGatewayAvailableZonesRequest(DaraModel):
         # *   **zh-CN**: Chinese
         # *   **en-US** (default): English
         self.accept_language = accept_language
+        self.gateway_type = gateway_type
         self.owner_account = owner_account
         self.owner_id = owner_id
         # The region ID.
@@ -58,6 +60,9 @@ class DescribeVpnGatewayAvailableZonesRequest(DaraModel):
         if self.accept_language is not None:
             result['AcceptLanguage'] = self.accept_language
 
+        if self.gateway_type is not None:
+            result['GatewayType'] = self.gateway_type
+
         if self.owner_account is not None:
             result['OwnerAccount'] = self.owner_account
 
@@ -82,6 +87,9 @@ class DescribeVpnGatewayAvailableZonesRequest(DaraModel):
         m = m or dict()
         if m.get('AcceptLanguage') is not None:
             self.accept_language = m.get('AcceptLanguage')
+
+        if m.get('GatewayType') is not None:
+            self.gateway_type = m.get('GatewayType')
 
         if m.get('OwnerAccount') is not None:
             self.owner_account = m.get('OwnerAccount')

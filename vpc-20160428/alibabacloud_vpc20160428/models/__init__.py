@@ -110,9 +110,6 @@ from ._confirm_physical_connection_response import ConfirmPhysicalConnectionResp
 from ._connect_router_interface_request import ConnectRouterInterfaceRequest
 from ._connect_router_interface_response_body import ConnectRouterInterfaceResponseBody
 from ._connect_router_interface_response import ConnectRouterInterfaceResponse
-from ._convert_bandwidth_package_request import ConvertBandwidthPackageRequest
-from ._convert_bandwidth_package_response_body import ConvertBandwidthPackageResponseBody
-from ._convert_bandwidth_package_response import ConvertBandwidthPackageResponse
 from ._copy_network_acl_entries_request import CopyNetworkAclEntriesRequest
 from ._copy_network_acl_entries_response_body import CopyNetworkAclEntriesResponseBody
 from ._copy_network_acl_entries_response import CopyNetworkAclEntriesResponse
@@ -708,9 +705,6 @@ from ._diagnose_vpn_connections_response import DiagnoseVpnConnectionsResponse
 from ._diagnose_vpn_gateway_request import DiagnoseVpnGatewayRequest
 from ._diagnose_vpn_gateway_response_body import DiagnoseVpnGatewayResponseBody
 from ._diagnose_vpn_gateway_response import DiagnoseVpnGatewayResponse
-from ._disable_nat_gateway_ecs_metric_request import DisableNatGatewayEcsMetricRequest
-from ._disable_nat_gateway_ecs_metric_response_body import DisableNatGatewayEcsMetricResponseBody
-from ._disable_nat_gateway_ecs_metric_response import DisableNatGatewayEcsMetricResponse
 from ._disable_vpc_classic_link_request import DisableVpcClassicLinkRequest
 from ._disable_vpc_classic_link_response_body import DisableVpcClassicLinkResponseBody
 from ._disable_vpc_classic_link_response import DisableVpcClassicLinkResponse
@@ -726,9 +720,6 @@ from ._dissociate_vpn_gateway_with_certificate_response import DissociateVpnGate
 from ._download_vpn_connection_config_request import DownloadVpnConnectionConfigRequest
 from ._download_vpn_connection_config_response_body import DownloadVpnConnectionConfigResponseBody
 from ._download_vpn_connection_config_response import DownloadVpnConnectionConfigResponse
-from ._enable_nat_gateway_ecs_metric_request import EnableNatGatewayEcsMetricRequest
-from ._enable_nat_gateway_ecs_metric_response_body import EnableNatGatewayEcsMetricResponseBody
-from ._enable_nat_gateway_ecs_metric_response import EnableNatGatewayEcsMetricResponse
 from ._enable_physical_connection_request import EnablePhysicalConnectionRequest
 from ._enable_physical_connection_response_body import EnablePhysicalConnectionResponseBody
 from ._enable_physical_connection_response import EnablePhysicalConnectionResponse
@@ -750,12 +741,6 @@ from ._get_ipv_4gateway_attribute_response import GetIpv4GatewayAttributeRespons
 from ._get_nat_gateway_attribute_request import GetNatGatewayAttributeRequest
 from ._get_nat_gateway_attribute_response_body import GetNatGatewayAttributeResponseBody
 from ._get_nat_gateway_attribute_response import GetNatGatewayAttributeResponse
-from ._get_nat_ip_attribute_request import GetNatIpAttributeRequest
-from ._get_nat_ip_attribute_response_body import GetNatIpAttributeResponseBody
-from ._get_nat_ip_attribute_response import GetNatIpAttributeResponse
-from ._get_nat_ip_cidr_attribute_request import GetNatIpCidrAttributeRequest
-from ._get_nat_ip_cidr_attribute_response_body import GetNatIpCidrAttributeResponseBody
-from ._get_nat_ip_cidr_attribute_response import GetNatIpCidrAttributeResponse
 from ._get_physical_connection_service_status_request import GetPhysicalConnectionServiceStatusRequest
 from ._get_physical_connection_service_status_response_body import GetPhysicalConnectionServiceStatusResponseBody
 from ._get_physical_connection_service_status_response import GetPhysicalConnectionServiceStatusResponse
@@ -1837,9 +1822,6 @@ __all__ = [
     ConnectRouterInterfaceRequest,
     ConnectRouterInterfaceResponseBody,
     ConnectRouterInterfaceResponse,
-    ConvertBandwidthPackageRequest,
-    ConvertBandwidthPackageResponseBody,
-    ConvertBandwidthPackageResponse,
     CopyNetworkAclEntriesRequest,
     CopyNetworkAclEntriesResponseBody,
     CopyNetworkAclEntriesResponse,
@@ -2435,9 +2417,6 @@ __all__ = [
     DiagnoseVpnGatewayRequest,
     DiagnoseVpnGatewayResponseBody,
     DiagnoseVpnGatewayResponse,
-    DisableNatGatewayEcsMetricRequest,
-    DisableNatGatewayEcsMetricResponseBody,
-    DisableNatGatewayEcsMetricResponse,
     DisableVpcClassicLinkRequest,
     DisableVpcClassicLinkResponseBody,
     DisableVpcClassicLinkResponse,
@@ -2453,9 +2432,6 @@ __all__ = [
     DownloadVpnConnectionConfigRequest,
     DownloadVpnConnectionConfigResponseBody,
     DownloadVpnConnectionConfigResponse,
-    EnableNatGatewayEcsMetricRequest,
-    EnableNatGatewayEcsMetricResponseBody,
-    EnableNatGatewayEcsMetricResponse,
     EnablePhysicalConnectionRequest,
     EnablePhysicalConnectionResponseBody,
     EnablePhysicalConnectionResponse,
@@ -2477,12 +2453,6 @@ __all__ = [
     GetNatGatewayAttributeRequest,
     GetNatGatewayAttributeResponseBody,
     GetNatGatewayAttributeResponse,
-    GetNatIpAttributeRequest,
-    GetNatIpAttributeResponseBody,
-    GetNatIpAttributeResponse,
-    GetNatIpCidrAttributeRequest,
-    GetNatIpCidrAttributeResponseBody,
-    GetNatIpCidrAttributeResponse,
     GetPhysicalConnectionServiceStatusRequest,
     GetPhysicalConnectionServiceStatusResponseBody,
     GetPhysicalConnectionServiceStatusResponse,

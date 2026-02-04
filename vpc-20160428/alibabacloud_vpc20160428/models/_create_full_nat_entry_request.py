@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreateFullNatEntryRequest(DaraModel):
     def __init__(
         self,
+        access_domain: str = None,
         access_ip: str = None,
         access_port: str = None,
         client_token: str = None,
@@ -24,9 +25,8 @@ class CreateFullNatEntryRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        self.access_domain = access_domain
         # The backend IP address to be modified in FULLNAT address translation.
-        # 
-        # This parameter is required.
         self.access_ip = access_ip
         # The backend port to be modified in the mapping of FULLNAT port. Valid values: **1** to **65535**.
         # 
@@ -89,6 +89,9 @@ class CreateFullNatEntryRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.access_domain is not None:
+            result['AccessDomain'] = self.access_domain
+
         if self.access_ip is not None:
             result['AccessIp'] = self.access_ip
 
@@ -141,6 +144,9 @@ class CreateFullNatEntryRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AccessDomain') is not None:
+            self.access_domain = m.get('AccessDomain')
+
         if m.get('AccessIp') is not None:
             self.access_ip = m.get('AccessIp')
 

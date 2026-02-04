@@ -132,6 +132,7 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorder
         termination_time: str = None,
         type: str = None,
         vbr_id: str = None,
+        vbr_name: str = None,
         vbr_owner_uid: int = None,
         vlan_id: int = None,
     ):
@@ -202,6 +203,7 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorder
         self.type = type
         # The VBR ID.
         self.vbr_id = vbr_id
+        self.vbr_name = vbr_name
         # The ID of the Alibaba Cloud account to which the VBR belongs.
         # 
         # If the owner of the VBR is the same as that of the Express Connect circuit, this parameter is empty.
@@ -280,6 +282,9 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorder
         if self.vbr_id is not None:
             result['VbrId'] = self.vbr_id
 
+        if self.vbr_name is not None:
+            result['VbrName'] = self.vbr_name
+
         if self.vbr_owner_uid is not None:
             result['VbrOwnerUid'] = self.vbr_owner_uid
 
@@ -352,6 +357,9 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorder
 
         if m.get('VbrId') is not None:
             self.vbr_id = m.get('VbrId')
+
+        if m.get('VbrName') is not None:
+            self.vbr_name = m.get('VbrName')
 
         if m.get('VbrOwnerUid') is not None:
             self.vbr_owner_uid = m.get('VbrOwnerUid')

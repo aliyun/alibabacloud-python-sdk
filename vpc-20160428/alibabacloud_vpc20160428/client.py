@@ -3895,100 +3895,6 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.connect_router_interface_with_options_async(request, runtime)
 
-    def convert_bandwidth_package_with_options(
-        self,
-        request: main_models.ConvertBandwidthPackageRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.ConvertBandwidthPackageResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.bandwidth_package_id):
-            query['BandwidthPackageId'] = request.bandwidth_package_id
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'ConvertBandwidthPackage',
-            version = '2016-04-28',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.ConvertBandwidthPackageResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def convert_bandwidth_package_with_options_async(
-        self,
-        request: main_models.ConvertBandwidthPackageRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.ConvertBandwidthPackageResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.bandwidth_package_id):
-            query['BandwidthPackageId'] = request.bandwidth_package_id
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'ConvertBandwidthPackage',
-            version = '2016-04-28',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.ConvertBandwidthPackageResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def convert_bandwidth_package(
-        self,
-        request: main_models.ConvertBandwidthPackageRequest,
-    ) -> main_models.ConvertBandwidthPackageResponse:
-        runtime = RuntimeOptions()
-        return self.convert_bandwidth_package_with_options(request, runtime)
-
-    async def convert_bandwidth_package_async(
-        self,
-        request: main_models.ConvertBandwidthPackageRequest,
-    ) -> main_models.ConvertBandwidthPackageResponse:
-        runtime = RuntimeOptions()
-        return await self.convert_bandwidth_package_with_options_async(request, runtime)
-
     def copy_network_acl_entries_with_options(
         self,
         request: main_models.CopyNetworkAclEntriesRequest,
@@ -5782,6 +5688,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateFullNatEntryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.access_domain):
+            query['AccessDomain'] = request.access_domain
         if not DaraCore.is_null(request.access_ip):
             query['AccessIp'] = request.access_ip
         if not DaraCore.is_null(request.access_port):
@@ -5840,6 +5748,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateFullNatEntryResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.access_domain):
+            query['AccessDomain'] = request.access_domain
         if not DaraCore.is_null(request.access_ip):
             query['AccessIp'] = request.access_ip
         if not DaraCore.is_null(request.access_port):
@@ -25685,88 +25595,6 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.diagnose_vpn_gateway_with_options_async(request, runtime)
 
-    def disable_nat_gateway_ecs_metric_with_options(
-        self,
-        request: main_models.DisableNatGatewayEcsMetricRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.DisableNatGatewayEcsMetricResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.dry_run):
-            query['DryRun'] = request.dry_run
-        if not DaraCore.is_null(request.nat_gateway_id):
-            query['NatGatewayId'] = request.nat_gateway_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'DisableNatGatewayEcsMetric',
-            version = '2016-04-28',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DisableNatGatewayEcsMetricResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def disable_nat_gateway_ecs_metric_with_options_async(
-        self,
-        request: main_models.DisableNatGatewayEcsMetricRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.DisableNatGatewayEcsMetricResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.dry_run):
-            query['DryRun'] = request.dry_run
-        if not DaraCore.is_null(request.nat_gateway_id):
-            query['NatGatewayId'] = request.nat_gateway_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'DisableNatGatewayEcsMetric',
-            version = '2016-04-28',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.DisableNatGatewayEcsMetricResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def disable_nat_gateway_ecs_metric(
-        self,
-        request: main_models.DisableNatGatewayEcsMetricRequest,
-    ) -> main_models.DisableNatGatewayEcsMetricResponse:
-        runtime = RuntimeOptions()
-        return self.disable_nat_gateway_ecs_metric_with_options(request, runtime)
-
-    async def disable_nat_gateway_ecs_metric_async(
-        self,
-        request: main_models.DisableNatGatewayEcsMetricRequest,
-    ) -> main_models.DisableNatGatewayEcsMetricResponse:
-        runtime = RuntimeOptions()
-        return await self.disable_nat_gateway_ecs_metric_with_options_async(request, runtime)
-
     def disable_vpc_classic_link_with_options(
         self,
         request: main_models.DisableVpcClassicLinkRequest,
@@ -26252,88 +26080,6 @@ class Client(OpenApiClient):
     ) -> main_models.DownloadVpnConnectionConfigResponse:
         runtime = RuntimeOptions()
         return await self.download_vpn_connection_config_with_options_async(request, runtime)
-
-    def enable_nat_gateway_ecs_metric_with_options(
-        self,
-        request: main_models.EnableNatGatewayEcsMetricRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.EnableNatGatewayEcsMetricResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.dry_run):
-            query['DryRun'] = request.dry_run
-        if not DaraCore.is_null(request.nat_gateway_id):
-            query['NatGatewayId'] = request.nat_gateway_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'EnableNatGatewayEcsMetric',
-            version = '2016-04-28',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.EnableNatGatewayEcsMetricResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def enable_nat_gateway_ecs_metric_with_options_async(
-        self,
-        request: main_models.EnableNatGatewayEcsMetricRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.EnableNatGatewayEcsMetricResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.dry_run):
-            query['DryRun'] = request.dry_run
-        if not DaraCore.is_null(request.nat_gateway_id):
-            query['NatGatewayId'] = request.nat_gateway_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'EnableNatGatewayEcsMetric',
-            version = '2016-04-28',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.EnableNatGatewayEcsMetricResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def enable_nat_gateway_ecs_metric(
-        self,
-        request: main_models.EnableNatGatewayEcsMetricRequest,
-    ) -> main_models.EnableNatGatewayEcsMetricResponse:
-        runtime = RuntimeOptions()
-        return self.enable_nat_gateway_ecs_metric_with_options(request, runtime)
-
-    async def enable_nat_gateway_ecs_metric_async(
-        self,
-        request: main_models.EnableNatGatewayEcsMetricRequest,
-    ) -> main_models.EnableNatGatewayEcsMetricResponse:
-        runtime = RuntimeOptions()
-        return await self.enable_nat_gateway_ecs_metric_with_options_async(request, runtime)
 
     def enable_physical_connection_with_options(
         self,
@@ -27004,214 +26750,6 @@ class Client(OpenApiClient):
     ) -> main_models.GetNatGatewayAttributeResponse:
         runtime = RuntimeOptions()
         return await self.get_nat_gateway_attribute_with_options_async(request, runtime)
-
-    def get_nat_ip_attribute_with_options(
-        self,
-        request: main_models.GetNatIpAttributeRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.GetNatIpAttributeResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not DaraCore.is_null(request.dry_run):
-            query['DryRun'] = request.dry_run
-        if not DaraCore.is_null(request.nat_ip_id):
-            query['NatIpId'] = request.nat_ip_id
-        if not DaraCore.is_null(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'GetNatIpAttribute',
-            version = '2016-04-28',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.GetNatIpAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_nat_ip_attribute_with_options_async(
-        self,
-        request: main_models.GetNatIpAttributeRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.GetNatIpAttributeResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not DaraCore.is_null(request.dry_run):
-            query['DryRun'] = request.dry_run
-        if not DaraCore.is_null(request.nat_ip_id):
-            query['NatIpId'] = request.nat_ip_id
-        if not DaraCore.is_null(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'GetNatIpAttribute',
-            version = '2016-04-28',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.GetNatIpAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_nat_ip_attribute(
-        self,
-        request: main_models.GetNatIpAttributeRequest,
-    ) -> main_models.GetNatIpAttributeResponse:
-        runtime = RuntimeOptions()
-        return self.get_nat_ip_attribute_with_options(request, runtime)
-
-    async def get_nat_ip_attribute_async(
-        self,
-        request: main_models.GetNatIpAttributeRequest,
-    ) -> main_models.GetNatIpAttributeResponse:
-        runtime = RuntimeOptions()
-        return await self.get_nat_ip_attribute_with_options_async(request, runtime)
-
-    def get_nat_ip_cidr_attribute_with_options(
-        self,
-        request: main_models.GetNatIpCidrAttributeRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.GetNatIpCidrAttributeResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not DaraCore.is_null(request.dry_run):
-            query['DryRun'] = request.dry_run
-        if not DaraCore.is_null(request.nat_gateway_id):
-            query['NatGatewayId'] = request.nat_gateway_id
-        if not DaraCore.is_null(request.nat_ip_cidr):
-            query['NatIpCidr'] = request.nat_ip_cidr
-        if not DaraCore.is_null(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'GetNatIpCidrAttribute',
-            version = '2016-04-28',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.GetNatIpCidrAttributeResponse(),
-            self.call_api(params, req, runtime)
-        )
-
-    async def get_nat_ip_cidr_attribute_with_options_async(
-        self,
-        request: main_models.GetNatIpCidrAttributeRequest,
-        runtime: RuntimeOptions,
-    ) -> main_models.GetNatIpCidrAttributeResponse:
-        request.validate()
-        query = {}
-        if not DaraCore.is_null(request.client_token):
-            query['ClientToken'] = request.client_token
-        if not DaraCore.is_null(request.dry_run):
-            query['DryRun'] = request.dry_run
-        if not DaraCore.is_null(request.nat_gateway_id):
-            query['NatGatewayId'] = request.nat_gateway_id
-        if not DaraCore.is_null(request.nat_ip_cidr):
-            query['NatIpCidr'] = request.nat_ip_cidr
-        if not DaraCore.is_null(request.owner_account):
-            query['OwnerAccount'] = request.owner_account
-        if not DaraCore.is_null(request.owner_id):
-            query['OwnerId'] = request.owner_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.region_id):
-            query['RegionId'] = request.region_id
-        if not DaraCore.is_null(request.resource_owner_account):
-            query['ResourceOwnerAccount'] = request.resource_owner_account
-        if not DaraCore.is_null(request.resource_owner_id):
-            query['ResourceOwnerId'] = request.resource_owner_id
-        req = open_api_util_models.OpenApiRequest(
-            query = Utils.query(query)
-        )
-        params = open_api_util_models.Params(
-            action = 'GetNatIpCidrAttribute',
-            version = '2016-04-28',
-            protocol = 'HTTPS',
-            pathname = '/',
-            method = 'POST',
-            auth_type = 'AK',
-            style = 'RPC',
-            req_body_type = 'formData',
-            body_type = 'json'
-        )
-        return DaraCore.from_map(
-            main_models.GetNatIpCidrAttributeResponse(),
-            await self.call_api_async(params, req, runtime)
-        )
-
-    def get_nat_ip_cidr_attribute(
-        self,
-        request: main_models.GetNatIpCidrAttributeRequest,
-    ) -> main_models.GetNatIpCidrAttributeResponse:
-        runtime = RuntimeOptions()
-        return self.get_nat_ip_cidr_attribute_with_options(request, runtime)
-
-    async def get_nat_ip_cidr_attribute_async(
-        self,
-        request: main_models.GetNatIpCidrAttributeRequest,
-    ) -> main_models.GetNatIpCidrAttributeResponse:
-        runtime = RuntimeOptions()
-        return await self.get_nat_ip_cidr_attribute_with_options_async(request, runtime)
 
     def get_physical_connection_service_status_with_options(
         self,
@@ -32836,6 +32374,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyFullNatEntryAttributeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.access_domain):
+            query['AccessDomain'] = request.access_domain
         if not DaraCore.is_null(request.access_ip):
             query['AccessIp'] = request.access_ip
         if not DaraCore.is_null(request.access_port):
@@ -32896,6 +32436,8 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyFullNatEntryAttributeResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.access_domain):
+            query['AccessDomain'] = request.access_domain
         if not DaraCore.is_null(request.access_ip):
             query['AccessIp'] = request.access_ip
         if not DaraCore.is_null(request.access_port):

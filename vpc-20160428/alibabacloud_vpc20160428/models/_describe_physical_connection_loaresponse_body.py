@@ -52,6 +52,7 @@ class DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType(DaraMod
         company_localized_name: str = None,
         company_name: str = None,
         construction_time: str = None,
+        description: str = None,
         instance_id: str = None,
         line_code: str = None,
         line_label: str = None,
@@ -69,6 +70,7 @@ class DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType(DaraMod
         self.company_name = company_name
         # The time when construction starts.
         self.construction_time = construction_time
+        self.description = description
         # The ID of the Express Connect circuit.
         self.instance_id = instance_id
         # The circuit code provided by the connectivity provider.
@@ -126,6 +128,9 @@ class DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType(DaraMod
         if self.construction_time is not None:
             result['ConstructionTime'] = self.construction_time
 
+        if self.description is not None:
+            result['Description'] = self.description
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -168,6 +173,9 @@ class DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType(DaraMod
 
         if m.get('ConstructionTime') is not None:
             self.construction_time = m.get('ConstructionTime')
+
+        if m.get('Description') is not None:
+            self.description = m.get('Description')
 
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
