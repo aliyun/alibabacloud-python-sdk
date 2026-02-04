@@ -1,3 +1,10 @@
+2026-02-04 Version: 2.3.1
+- Update API ListDelegatedServicesForAccount: add request parameters MaxResults.
+- Update API ListDelegatedServicesForAccount: add request parameters NextToken.
+- Update API ListDelegatedServicesForAccount: add response parameters Body.MaxResults.
+- Update API ListDelegatedServicesForAccount: add response parameters Body.NextToken.
+
+
 2025-12-15 Version: 2.3.0
 - Support API ListAuthorizedAccounts.
 - Support API ListAuthorizedFolders.

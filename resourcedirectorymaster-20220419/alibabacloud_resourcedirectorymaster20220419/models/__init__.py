@@ -1,0 +1,603 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._accept_handshake_request import AcceptHandshakeRequest
+from ._accept_handshake_response_body import AcceptHandshakeResponseBody
+from ._accept_handshake_response import AcceptHandshakeResponse
+from ._add_message_contact_request import AddMessageContactRequest
+from ._add_message_contact_response_body import AddMessageContactResponseBody
+from ._add_message_contact_response import AddMessageContactResponse
+from ._associate_members_request import AssociateMembersRequest
+from ._associate_members_response_body import AssociateMembersResponseBody
+from ._associate_members_response import AssociateMembersResponse
+from ._attach_control_policy_request import AttachControlPolicyRequest
+from ._attach_control_policy_response_body import AttachControlPolicyResponseBody
+from ._attach_control_policy_response import AttachControlPolicyResponse
+from ._bind_secure_mobile_phone_request import BindSecureMobilePhoneRequest
+from ._bind_secure_mobile_phone_response_body import BindSecureMobilePhoneResponseBody
+from ._bind_secure_mobile_phone_response import BindSecureMobilePhoneResponse
+from ._cancel_change_account_email_request import CancelChangeAccountEmailRequest
+from ._cancel_change_account_email_response_body import CancelChangeAccountEmailResponseBody
+from ._cancel_change_account_email_response import CancelChangeAccountEmailResponse
+from ._cancel_handshake_request import CancelHandshakeRequest
+from ._cancel_handshake_response_body import CancelHandshakeResponseBody
+from ._cancel_handshake_response import CancelHandshakeResponse
+from ._cancel_message_contact_update_request import CancelMessageContactUpdateRequest
+from ._cancel_message_contact_update_response_body import CancelMessageContactUpdateResponseBody
+from ._cancel_message_contact_update_response import CancelMessageContactUpdateResponse
+from ._change_account_email_request import ChangeAccountEmailRequest
+from ._change_account_email_response_body import ChangeAccountEmailResponseBody
+from ._change_account_email_response import ChangeAccountEmailResponse
+from ._check_account_delete_request import CheckAccountDeleteRequest
+from ._check_account_delete_response_body import CheckAccountDeleteResponseBody
+from ._check_account_delete_response import CheckAccountDeleteResponse
+from ._create_control_policy_request import CreateControlPolicyRequest
+from ._create_control_policy_response_body import CreateControlPolicyResponseBody
+from ._create_control_policy_response import CreateControlPolicyResponse
+from ._create_folder_request import CreateFolderRequest
+from ._create_folder_response_body import CreateFolderResponseBody
+from ._create_folder_response import CreateFolderResponse
+from ._create_resource_account_request import CreateResourceAccountRequest
+from ._create_resource_account_response_body import CreateResourceAccountResponseBody
+from ._create_resource_account_response import CreateResourceAccountResponse
+from ._decline_handshake_request import DeclineHandshakeRequest
+from ._decline_handshake_response_body import DeclineHandshakeResponseBody
+from ._decline_handshake_response import DeclineHandshakeResponse
+from ._delete_account_request import DeleteAccountRequest
+from ._delete_account_shrink_request import DeleteAccountShrinkRequest
+from ._delete_account_response_body import DeleteAccountResponseBody
+from ._delete_account_response import DeleteAccountResponse
+from ._delete_control_policy_request import DeleteControlPolicyRequest
+from ._delete_control_policy_response_body import DeleteControlPolicyResponseBody
+from ._delete_control_policy_response import DeleteControlPolicyResponse
+from ._delete_folder_request import DeleteFolderRequest
+from ._delete_folder_response_body import DeleteFolderResponseBody
+from ._delete_folder_response import DeleteFolderResponse
+from ._delete_message_contact_request import DeleteMessageContactRequest
+from ._delete_message_contact_response_body import DeleteMessageContactResponseBody
+from ._delete_message_contact_response import DeleteMessageContactResponse
+from ._deregister_delegated_administrator_request import DeregisterDelegatedAdministratorRequest
+from ._deregister_delegated_administrator_response_body import DeregisterDelegatedAdministratorResponseBody
+from ._deregister_delegated_administrator_response import DeregisterDelegatedAdministratorResponse
+from ._destroy_resource_directory_response_body import DestroyResourceDirectoryResponseBody
+from ._destroy_resource_directory_response import DestroyResourceDirectoryResponse
+from ._detach_control_policy_request import DetachControlPolicyRequest
+from ._detach_control_policy_response_body import DetachControlPolicyResponseBody
+from ._detach_control_policy_response import DetachControlPolicyResponse
+from ._disable_control_policy_response_body import DisableControlPolicyResponseBody
+from ._disable_control_policy_response import DisableControlPolicyResponse
+from ._disassociate_members_request import DisassociateMembersRequest
+from ._disassociate_members_response_body import DisassociateMembersResponseBody
+from ._disassociate_members_response import DisassociateMembersResponse
+from ._enable_control_policy_response_body import EnableControlPolicyResponseBody
+from ._enable_control_policy_response import EnableControlPolicyResponse
+from ._enable_resource_directory_request import EnableResourceDirectoryRequest
+from ._enable_resource_directory_response_body import EnableResourceDirectoryResponseBody
+from ._enable_resource_directory_response import EnableResourceDirectoryResponse
+from ._get_account_request import GetAccountRequest
+from ._get_account_response_body import GetAccountResponseBody
+from ._get_account_response import GetAccountResponse
+from ._get_account_deletion_check_result_request import GetAccountDeletionCheckResultRequest
+from ._get_account_deletion_check_result_response_body import GetAccountDeletionCheckResultResponseBody
+from ._get_account_deletion_check_result_response import GetAccountDeletionCheckResultResponse
+from ._get_account_deletion_status_request import GetAccountDeletionStatusRequest
+from ._get_account_deletion_status_response_body import GetAccountDeletionStatusResponseBody
+from ._get_account_deletion_status_response import GetAccountDeletionStatusResponse
+from ._get_control_policy_request import GetControlPolicyRequest
+from ._get_control_policy_response_body import GetControlPolicyResponseBody
+from ._get_control_policy_response import GetControlPolicyResponse
+from ._get_control_policy_enablement_status_response_body import GetControlPolicyEnablementStatusResponseBody
+from ._get_control_policy_enablement_status_response import GetControlPolicyEnablementStatusResponse
+from ._get_folder_request import GetFolderRequest
+from ._get_folder_response_body import GetFolderResponseBody
+from ._get_folder_response import GetFolderResponse
+from ._get_handshake_request import GetHandshakeRequest
+from ._get_handshake_response_body import GetHandshakeResponseBody
+from ._get_handshake_response import GetHandshakeResponse
+from ._get_message_contact_request import GetMessageContactRequest
+from ._get_message_contact_response_body import GetMessageContactResponseBody
+from ._get_message_contact_response import GetMessageContactResponse
+from ._get_message_contact_deletion_status_request import GetMessageContactDeletionStatusRequest
+from ._get_message_contact_deletion_status_response_body import GetMessageContactDeletionStatusResponseBody
+from ._get_message_contact_deletion_status_response import GetMessageContactDeletionStatusResponse
+from ._get_payer_for_account_request import GetPayerForAccountRequest
+from ._get_payer_for_account_response_body import GetPayerForAccountResponseBody
+from ._get_payer_for_account_response import GetPayerForAccountResponse
+from ._get_resource_directory_response_body import GetResourceDirectoryResponseBody
+from ._get_resource_directory_response import GetResourceDirectoryResponse
+from ._invite_account_to_resource_directory_request import InviteAccountToResourceDirectoryRequest
+from ._invite_account_to_resource_directory_response_body import InviteAccountToResourceDirectoryResponseBody
+from ._invite_account_to_resource_directory_response import InviteAccountToResourceDirectoryResponse
+from ._list_accounts_request import ListAccountsRequest
+from ._list_accounts_response_body import ListAccountsResponseBody
+from ._list_accounts_response import ListAccountsResponse
+from ._list_accounts_for_parent_request import ListAccountsForParentRequest
+from ._list_accounts_for_parent_response_body import ListAccountsForParentResponseBody
+from ._list_accounts_for_parent_response import ListAccountsForParentResponse
+from ._list_ancestors_request import ListAncestorsRequest
+from ._list_ancestors_response_body import ListAncestorsResponseBody
+from ._list_ancestors_response import ListAncestorsResponse
+from ._list_authorized_accounts_request import ListAuthorizedAccountsRequest
+from ._list_authorized_accounts_response_body import ListAuthorizedAccountsResponseBody
+from ._list_authorized_accounts_response import ListAuthorizedAccountsResponse
+from ._list_authorized_folders_request import ListAuthorizedFoldersRequest
+from ._list_authorized_folders_response_body import ListAuthorizedFoldersResponseBody
+from ._list_authorized_folders_response import ListAuthorizedFoldersResponse
+from ._list_control_policies_request import ListControlPoliciesRequest
+from ._list_control_policies_response_body import ListControlPoliciesResponseBody
+from ._list_control_policies_response import ListControlPoliciesResponse
+from ._list_control_policy_attachments_for_target_request import ListControlPolicyAttachmentsForTargetRequest
+from ._list_control_policy_attachments_for_target_response_body import ListControlPolicyAttachmentsForTargetResponseBody
+from ._list_control_policy_attachments_for_target_response import ListControlPolicyAttachmentsForTargetResponse
+from ._list_delegated_administrators_request import ListDelegatedAdministratorsRequest
+from ._list_delegated_administrators_response_body import ListDelegatedAdministratorsResponseBody
+from ._list_delegated_administrators_response import ListDelegatedAdministratorsResponse
+from ._list_delegated_services_for_account_request import ListDelegatedServicesForAccountRequest
+from ._list_delegated_services_for_account_response_body import ListDelegatedServicesForAccountResponseBody
+from ._list_delegated_services_for_account_response import ListDelegatedServicesForAccountResponse
+from ._list_folders_for_parent_request import ListFoldersForParentRequest
+from ._list_folders_for_parent_response_body import ListFoldersForParentResponseBody
+from ._list_folders_for_parent_response import ListFoldersForParentResponse
+from ._list_handshakes_for_account_request import ListHandshakesForAccountRequest
+from ._list_handshakes_for_account_response_body import ListHandshakesForAccountResponseBody
+from ._list_handshakes_for_account_response import ListHandshakesForAccountResponse
+from ._list_handshakes_for_resource_directory_request import ListHandshakesForResourceDirectoryRequest
+from ._list_handshakes_for_resource_directory_response_body import ListHandshakesForResourceDirectoryResponseBody
+from ._list_handshakes_for_resource_directory_response import ListHandshakesForResourceDirectoryResponse
+from ._list_message_contact_verifications_request import ListMessageContactVerificationsRequest
+from ._list_message_contact_verifications_response_body import ListMessageContactVerificationsResponseBody
+from ._list_message_contact_verifications_response import ListMessageContactVerificationsResponse
+from ._list_message_contacts_request import ListMessageContactsRequest
+from ._list_message_contacts_response_body import ListMessageContactsResponseBody
+from ._list_message_contacts_response import ListMessageContactsResponse
+from ._list_tag_keys_request import ListTagKeysRequest
+from ._list_tag_keys_response_body import ListTagKeysResponseBody
+from ._list_tag_keys_response import ListTagKeysResponse
+from ._list_tag_resources_request import ListTagResourcesRequest
+from ._list_tag_resources_response_body import ListTagResourcesResponseBody
+from ._list_tag_resources_response import ListTagResourcesResponse
+from ._list_tag_values_request import ListTagValuesRequest
+from ._list_tag_values_response_body import ListTagValuesResponseBody
+from ._list_tag_values_response import ListTagValuesResponse
+from ._list_target_attachments_for_control_policy_request import ListTargetAttachmentsForControlPolicyRequest
+from ._list_target_attachments_for_control_policy_response_body import ListTargetAttachmentsForControlPolicyResponseBody
+from ._list_target_attachments_for_control_policy_response import ListTargetAttachmentsForControlPolicyResponse
+from ._list_trusted_service_status_request import ListTrustedServiceStatusRequest
+from ._list_trusted_service_status_response_body import ListTrustedServiceStatusResponseBody
+from ._list_trusted_service_status_response import ListTrustedServiceStatusResponse
+from ._move_account_request import MoveAccountRequest
+from ._move_account_response_body import MoveAccountResponseBody
+from ._move_account_response import MoveAccountResponse
+from ._precheck_for_consolidated_billing_account_request import PrecheckForConsolidatedBillingAccountRequest
+from ._precheck_for_consolidated_billing_account_response_body import PrecheckForConsolidatedBillingAccountResponseBody
+from ._precheck_for_consolidated_billing_account_response import PrecheckForConsolidatedBillingAccountResponse
+from ._register_delegated_administrator_request import RegisterDelegatedAdministratorRequest
+from ._register_delegated_administrator_response_body import RegisterDelegatedAdministratorResponseBody
+from ._register_delegated_administrator_response import RegisterDelegatedAdministratorResponse
+from ._remove_cloud_account_request import RemoveCloudAccountRequest
+from ._remove_cloud_account_response_body import RemoveCloudAccountResponseBody
+from ._remove_cloud_account_response import RemoveCloudAccountResponse
+from ._retry_change_account_email_request import RetryChangeAccountEmailRequest
+from ._retry_change_account_email_response_body import RetryChangeAccountEmailResponseBody
+from ._retry_change_account_email_response import RetryChangeAccountEmailResponse
+from ._send_email_verification_for_message_contact_request import SendEmailVerificationForMessageContactRequest
+from ._send_email_verification_for_message_contact_response_body import SendEmailVerificationForMessageContactResponseBody
+from ._send_email_verification_for_message_contact_response import SendEmailVerificationForMessageContactResponse
+from ._send_phone_verification_for_message_contact_request import SendPhoneVerificationForMessageContactRequest
+from ._send_phone_verification_for_message_contact_response_body import SendPhoneVerificationForMessageContactResponseBody
+from ._send_phone_verification_for_message_contact_response import SendPhoneVerificationForMessageContactResponse
+from ._send_verification_code_for_bind_secure_mobile_phone_request import SendVerificationCodeForBindSecureMobilePhoneRequest
+from ._send_verification_code_for_bind_secure_mobile_phone_response_body import SendVerificationCodeForBindSecureMobilePhoneResponseBody
+from ._send_verification_code_for_bind_secure_mobile_phone_response import SendVerificationCodeForBindSecureMobilePhoneResponse
+from ._send_verification_code_for_enable_rdrequest import SendVerificationCodeForEnableRDRequest
+from ._send_verification_code_for_enable_rdresponse_body import SendVerificationCodeForEnableRDResponseBody
+from ._send_verification_code_for_enable_rdresponse import SendVerificationCodeForEnableRDResponse
+from ._set_member_deletion_permission_request import SetMemberDeletionPermissionRequest
+from ._set_member_deletion_permission_response_body import SetMemberDeletionPermissionResponseBody
+from ._set_member_deletion_permission_response import SetMemberDeletionPermissionResponse
+from ._set_member_display_name_sync_status_request import SetMemberDisplayNameSyncStatusRequest
+from ._set_member_display_name_sync_status_response_body import SetMemberDisplayNameSyncStatusResponseBody
+from ._set_member_display_name_sync_status_response import SetMemberDisplayNameSyncStatusResponse
+from ._tag_resources_request import TagResourcesRequest
+from ._tag_resources_response_body import TagResourcesResponseBody
+from ._tag_resources_response import TagResourcesResponse
+from ._untag_resources_request import UntagResourcesRequest
+from ._untag_resources_response_body import UntagResourcesResponseBody
+from ._untag_resources_response import UntagResourcesResponse
+from ._update_account_request import UpdateAccountRequest
+from ._update_account_response_body import UpdateAccountResponseBody
+from ._update_account_response import UpdateAccountResponse
+from ._update_control_policy_request import UpdateControlPolicyRequest
+from ._update_control_policy_response_body import UpdateControlPolicyResponseBody
+from ._update_control_policy_response import UpdateControlPolicyResponse
+from ._update_folder_request import UpdateFolderRequest
+from ._update_folder_response_body import UpdateFolderResponseBody
+from ._update_folder_response import UpdateFolderResponse
+from ._update_message_contact_request import UpdateMessageContactRequest
+from ._update_message_contact_response_body import UpdateMessageContactResponseBody
+from ._update_message_contact_response import UpdateMessageContactResponse
+from ._update_payer_for_account_request import UpdatePayerForAccountRequest
+from ._update_payer_for_account_response_body import UpdatePayerForAccountResponseBody
+from ._update_payer_for_account_response import UpdatePayerForAccountResponse
+from ._accept_handshake_response_body import AcceptHandshakeResponseBodyHandshake
+from ._add_message_contact_response_body import AddMessageContactResponseBodyContact
+from ._associate_members_response_body import AssociateMembersResponseBodyMembers
+from ._cancel_handshake_response_body import CancelHandshakeResponseBodyHandshake
+from ._create_control_policy_request import CreateControlPolicyRequestTag
+from ._create_control_policy_response_body import CreateControlPolicyResponseBodyControlPolicy
+from ._create_folder_request import CreateFolderRequestTag
+from ._create_folder_response_body import CreateFolderResponseBodyFolder
+from ._create_resource_account_request import CreateResourceAccountRequestTag
+from ._create_resource_account_response_body import CreateResourceAccountResponseBodyAccount
+from ._decline_handshake_response_body import DeclineHandshakeResponseBodyHandshake
+from ._disassociate_members_response_body import DisassociateMembersResponseBodyMembers
+from ._enable_resource_directory_response_body import EnableResourceDirectoryResponseBodyResourceDirectory
+from ._get_account_response_body import GetAccountResponseBodyAccountTags
+from ._get_account_response_body import GetAccountResponseBodyAccount
+from ._get_account_deletion_check_result_response_body import GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks
+from ._get_account_deletion_check_result_response_body import GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason
+from ._get_account_deletion_check_result_response_body import GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo
+from ._get_account_deletion_status_response_body import GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList
+from ._get_account_deletion_status_response_body import GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus
+from ._get_control_policy_response_body import GetControlPolicyResponseBodyControlPolicy
+from ._get_folder_response_body import GetFolderResponseBodyFolder
+from ._get_handshake_response_body import GetHandshakeResponseBodyHandshake
+from ._get_message_contact_response_body import GetMessageContactResponseBodyContact
+from ._get_message_contact_deletion_status_response_body import GetMessageContactDeletionStatusResponseBodyContactDeletionStatusFailReasonList
+from ._get_message_contact_deletion_status_response_body import GetMessageContactDeletionStatusResponseBodyContactDeletionStatus
+from ._get_resource_directory_response_body import GetResourceDirectoryResponseBodyResourceDirectory
+from ._invite_account_to_resource_directory_request import InviteAccountToResourceDirectoryRequestTag
+from ._invite_account_to_resource_directory_response_body import InviteAccountToResourceDirectoryResponseBodyHandshake
+from ._list_accounts_request import ListAccountsRequestTag
+from ._list_accounts_response_body import ListAccountsResponseBodyAccountsAccountTagsTag
+from ._list_accounts_response_body import ListAccountsResponseBodyAccountsAccountTags
+from ._list_accounts_response_body import ListAccountsResponseBodyAccountsAccount
+from ._list_accounts_response_body import ListAccountsResponseBodyAccounts
+from ._list_accounts_for_parent_request import ListAccountsForParentRequestTag
+from ._list_accounts_for_parent_response_body import ListAccountsForParentResponseBodyAccountsAccountTagsTag
+from ._list_accounts_for_parent_response_body import ListAccountsForParentResponseBodyAccountsAccountTags
+from ._list_accounts_for_parent_response_body import ListAccountsForParentResponseBodyAccountsAccount
+from ._list_accounts_for_parent_response_body import ListAccountsForParentResponseBodyAccounts
+from ._list_ancestors_response_body import ListAncestorsResponseBodyFoldersFolder
+from ._list_ancestors_response_body import ListAncestorsResponseBodyFolders
+from ._list_authorized_accounts_response_body import ListAuthorizedAccountsResponseBodyAccountsAccount
+from ._list_authorized_accounts_response_body import ListAuthorizedAccountsResponseBodyAccounts
+from ._list_authorized_folders_response_body import ListAuthorizedFoldersResponseBodyFoldersFolder
+from ._list_authorized_folders_response_body import ListAuthorizedFoldersResponseBodyFolders
+from ._list_control_policies_request import ListControlPoliciesRequestTag
+from ._list_control_policies_response_body import ListControlPoliciesResponseBodyControlPoliciesControlPolicyTagsTag
+from ._list_control_policies_response_body import ListControlPoliciesResponseBodyControlPoliciesControlPolicyTags
+from ._list_control_policies_response_body import ListControlPoliciesResponseBodyControlPoliciesControlPolicy
+from ._list_control_policies_response_body import ListControlPoliciesResponseBodyControlPolicies
+from ._list_control_policy_attachments_for_target_response_body import ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment
+from ._list_control_policy_attachments_for_target_response_body import ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachments
+from ._list_delegated_administrators_response_body import ListDelegatedAdministratorsResponseBodyAccountsAccount
+from ._list_delegated_administrators_response_body import ListDelegatedAdministratorsResponseBodyAccounts
+from ._list_delegated_services_for_account_response_body import ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService
+from ._list_delegated_services_for_account_response_body import ListDelegatedServicesForAccountResponseBodyDelegatedServices
+from ._list_folders_for_parent_request import ListFoldersForParentRequestTag
+from ._list_folders_for_parent_response_body import ListFoldersForParentResponseBodyFoldersFolderTagsTag
+from ._list_folders_for_parent_response_body import ListFoldersForParentResponseBodyFoldersFolderTags
+from ._list_folders_for_parent_response_body import ListFoldersForParentResponseBodyFoldersFolder
+from ._list_folders_for_parent_response_body import ListFoldersForParentResponseBodyFolders
+from ._list_handshakes_for_account_response_body import ListHandshakesForAccountResponseBodyHandshakesHandshake
+from ._list_handshakes_for_account_response_body import ListHandshakesForAccountResponseBodyHandshakes
+from ._list_handshakes_for_resource_directory_response_body import ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake
+from ._list_handshakes_for_resource_directory_response_body import ListHandshakesForResourceDirectoryResponseBodyHandshakes
+from ._list_message_contact_verifications_response_body import ListMessageContactVerificationsResponseBodyContactVerifications
+from ._list_message_contacts_response_body import ListMessageContactsResponseBodyContacts
+from ._list_tag_keys_response_body import ListTagKeysResponseBodyTags
+from ._list_tag_resources_request import ListTagResourcesRequestTag
+from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
+from ._list_tag_values_response_body import ListTagValuesResponseBodyTags
+from ._list_target_attachments_for_control_policy_response_body import ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment
+from ._list_target_attachments_for_control_policy_response_body import ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments
+from ._list_trusted_service_status_response_body import ListTrustedServiceStatusResponseBodyEnabledServicePrincipalsEnabledServicePrincipal
+from ._list_trusted_service_status_response_body import ListTrustedServiceStatusResponseBodyEnabledServicePrincipals
+from ._precheck_for_consolidated_billing_account_response_body import PrecheckForConsolidatedBillingAccountResponseBodyReasons
+from ._tag_resources_request import TagResourcesRequestTag
+from ._update_account_response_body import UpdateAccountResponseBodyAccount
+from ._update_control_policy_response_body import UpdateControlPolicyResponseBodyControlPolicy
+from ._update_folder_response_body import UpdateFolderResponseBodyFolder
+
+__all__ = [
+    AcceptHandshakeRequest,
+    AcceptHandshakeResponseBody,
+    AcceptHandshakeResponse,
+    AddMessageContactRequest,
+    AddMessageContactResponseBody,
+    AddMessageContactResponse,
+    AssociateMembersRequest,
+    AssociateMembersResponseBody,
+    AssociateMembersResponse,
+    AttachControlPolicyRequest,
+    AttachControlPolicyResponseBody,
+    AttachControlPolicyResponse,
+    BindSecureMobilePhoneRequest,
+    BindSecureMobilePhoneResponseBody,
+    BindSecureMobilePhoneResponse,
+    CancelChangeAccountEmailRequest,
+    CancelChangeAccountEmailResponseBody,
+    CancelChangeAccountEmailResponse,
+    CancelHandshakeRequest,
+    CancelHandshakeResponseBody,
+    CancelHandshakeResponse,
+    CancelMessageContactUpdateRequest,
+    CancelMessageContactUpdateResponseBody,
+    CancelMessageContactUpdateResponse,
+    ChangeAccountEmailRequest,
+    ChangeAccountEmailResponseBody,
+    ChangeAccountEmailResponse,
+    CheckAccountDeleteRequest,
+    CheckAccountDeleteResponseBody,
+    CheckAccountDeleteResponse,
+    CreateControlPolicyRequest,
+    CreateControlPolicyResponseBody,
+    CreateControlPolicyResponse,
+    CreateFolderRequest,
+    CreateFolderResponseBody,
+    CreateFolderResponse,
+    CreateResourceAccountRequest,
+    CreateResourceAccountResponseBody,
+    CreateResourceAccountResponse,
+    DeclineHandshakeRequest,
+    DeclineHandshakeResponseBody,
+    DeclineHandshakeResponse,
+    DeleteAccountRequest,
+    DeleteAccountShrinkRequest,
+    DeleteAccountResponseBody,
+    DeleteAccountResponse,
+    DeleteControlPolicyRequest,
+    DeleteControlPolicyResponseBody,
+    DeleteControlPolicyResponse,
+    DeleteFolderRequest,
+    DeleteFolderResponseBody,
+    DeleteFolderResponse,
+    DeleteMessageContactRequest,
+    DeleteMessageContactResponseBody,
+    DeleteMessageContactResponse,
+    DeregisterDelegatedAdministratorRequest,
+    DeregisterDelegatedAdministratorResponseBody,
+    DeregisterDelegatedAdministratorResponse,
+    DestroyResourceDirectoryResponseBody,
+    DestroyResourceDirectoryResponse,
+    DetachControlPolicyRequest,
+    DetachControlPolicyResponseBody,
+    DetachControlPolicyResponse,
+    DisableControlPolicyResponseBody,
+    DisableControlPolicyResponse,
+    DisassociateMembersRequest,
+    DisassociateMembersResponseBody,
+    DisassociateMembersResponse,
+    EnableControlPolicyResponseBody,
+    EnableControlPolicyResponse,
+    EnableResourceDirectoryRequest,
+    EnableResourceDirectoryResponseBody,
+    EnableResourceDirectoryResponse,
+    GetAccountRequest,
+    GetAccountResponseBody,
+    GetAccountResponse,
+    GetAccountDeletionCheckResultRequest,
+    GetAccountDeletionCheckResultResponseBody,
+    GetAccountDeletionCheckResultResponse,
+    GetAccountDeletionStatusRequest,
+    GetAccountDeletionStatusResponseBody,
+    GetAccountDeletionStatusResponse,
+    GetControlPolicyRequest,
+    GetControlPolicyResponseBody,
+    GetControlPolicyResponse,
+    GetControlPolicyEnablementStatusResponseBody,
+    GetControlPolicyEnablementStatusResponse,
+    GetFolderRequest,
+    GetFolderResponseBody,
+    GetFolderResponse,
+    GetHandshakeRequest,
+    GetHandshakeResponseBody,
+    GetHandshakeResponse,
+    GetMessageContactRequest,
+    GetMessageContactResponseBody,
+    GetMessageContactResponse,
+    GetMessageContactDeletionStatusRequest,
+    GetMessageContactDeletionStatusResponseBody,
+    GetMessageContactDeletionStatusResponse,
+    GetPayerForAccountRequest,
+    GetPayerForAccountResponseBody,
+    GetPayerForAccountResponse,
+    GetResourceDirectoryResponseBody,
+    GetResourceDirectoryResponse,
+    InviteAccountToResourceDirectoryRequest,
+    InviteAccountToResourceDirectoryResponseBody,
+    InviteAccountToResourceDirectoryResponse,
+    ListAccountsRequest,
+    ListAccountsResponseBody,
+    ListAccountsResponse,
+    ListAccountsForParentRequest,
+    ListAccountsForParentResponseBody,
+    ListAccountsForParentResponse,
+    ListAncestorsRequest,
+    ListAncestorsResponseBody,
+    ListAncestorsResponse,
+    ListAuthorizedAccountsRequest,
+    ListAuthorizedAccountsResponseBody,
+    ListAuthorizedAccountsResponse,
+    ListAuthorizedFoldersRequest,
+    ListAuthorizedFoldersResponseBody,
+    ListAuthorizedFoldersResponse,
+    ListControlPoliciesRequest,
+    ListControlPoliciesResponseBody,
+    ListControlPoliciesResponse,
+    ListControlPolicyAttachmentsForTargetRequest,
+    ListControlPolicyAttachmentsForTargetResponseBody,
+    ListControlPolicyAttachmentsForTargetResponse,
+    ListDelegatedAdministratorsRequest,
+    ListDelegatedAdministratorsResponseBody,
+    ListDelegatedAdministratorsResponse,
+    ListDelegatedServicesForAccountRequest,
+    ListDelegatedServicesForAccountResponseBody,
+    ListDelegatedServicesForAccountResponse,
+    ListFoldersForParentRequest,
+    ListFoldersForParentResponseBody,
+    ListFoldersForParentResponse,
+    ListHandshakesForAccountRequest,
+    ListHandshakesForAccountResponseBody,
+    ListHandshakesForAccountResponse,
+    ListHandshakesForResourceDirectoryRequest,
+    ListHandshakesForResourceDirectoryResponseBody,
+    ListHandshakesForResourceDirectoryResponse,
+    ListMessageContactVerificationsRequest,
+    ListMessageContactVerificationsResponseBody,
+    ListMessageContactVerificationsResponse,
+    ListMessageContactsRequest,
+    ListMessageContactsResponseBody,
+    ListMessageContactsResponse,
+    ListTagKeysRequest,
+    ListTagKeysResponseBody,
+    ListTagKeysResponse,
+    ListTagResourcesRequest,
+    ListTagResourcesResponseBody,
+    ListTagResourcesResponse,
+    ListTagValuesRequest,
+    ListTagValuesResponseBody,
+    ListTagValuesResponse,
+    ListTargetAttachmentsForControlPolicyRequest,
+    ListTargetAttachmentsForControlPolicyResponseBody,
+    ListTargetAttachmentsForControlPolicyResponse,
+    ListTrustedServiceStatusRequest,
+    ListTrustedServiceStatusResponseBody,
+    ListTrustedServiceStatusResponse,
+    MoveAccountRequest,
+    MoveAccountResponseBody,
+    MoveAccountResponse,
+    PrecheckForConsolidatedBillingAccountRequest,
+    PrecheckForConsolidatedBillingAccountResponseBody,
+    PrecheckForConsolidatedBillingAccountResponse,
+    RegisterDelegatedAdministratorRequest,
+    RegisterDelegatedAdministratorResponseBody,
+    RegisterDelegatedAdministratorResponse,
+    RemoveCloudAccountRequest,
+    RemoveCloudAccountResponseBody,
+    RemoveCloudAccountResponse,
+    RetryChangeAccountEmailRequest,
+    RetryChangeAccountEmailResponseBody,
+    RetryChangeAccountEmailResponse,
+    SendEmailVerificationForMessageContactRequest,
+    SendEmailVerificationForMessageContactResponseBody,
+    SendEmailVerificationForMessageContactResponse,
+    SendPhoneVerificationForMessageContactRequest,
+    SendPhoneVerificationForMessageContactResponseBody,
+    SendPhoneVerificationForMessageContactResponse,
+    SendVerificationCodeForBindSecureMobilePhoneRequest,
+    SendVerificationCodeForBindSecureMobilePhoneResponseBody,
+    SendVerificationCodeForBindSecureMobilePhoneResponse,
+    SendVerificationCodeForEnableRDRequest,
+    SendVerificationCodeForEnableRDResponseBody,
+    SendVerificationCodeForEnableRDResponse,
+    SetMemberDeletionPermissionRequest,
+    SetMemberDeletionPermissionResponseBody,
+    SetMemberDeletionPermissionResponse,
+    SetMemberDisplayNameSyncStatusRequest,
+    SetMemberDisplayNameSyncStatusResponseBody,
+    SetMemberDisplayNameSyncStatusResponse,
+    TagResourcesRequest,
+    TagResourcesResponseBody,
+    TagResourcesResponse,
+    UntagResourcesRequest,
+    UntagResourcesResponseBody,
+    UntagResourcesResponse,
+    UpdateAccountRequest,
+    UpdateAccountResponseBody,
+    UpdateAccountResponse,
+    UpdateControlPolicyRequest,
+    UpdateControlPolicyResponseBody,
+    UpdateControlPolicyResponse,
+    UpdateFolderRequest,
+    UpdateFolderResponseBody,
+    UpdateFolderResponse,
+    UpdateMessageContactRequest,
+    UpdateMessageContactResponseBody,
+    UpdateMessageContactResponse,
+    UpdatePayerForAccountRequest,
+    UpdatePayerForAccountResponseBody,
+    UpdatePayerForAccountResponse,
+    AcceptHandshakeResponseBodyHandshake,
+    AddMessageContactResponseBodyContact,
+    AssociateMembersResponseBodyMembers,
+    CancelHandshakeResponseBodyHandshake,
+    CreateControlPolicyRequestTag,
+    CreateControlPolicyResponseBodyControlPolicy,
+    CreateFolderRequestTag,
+    CreateFolderResponseBodyFolder,
+    CreateResourceAccountRequestTag,
+    CreateResourceAccountResponseBodyAccount,
+    DeclineHandshakeResponseBodyHandshake,
+    DisassociateMembersResponseBodyMembers,
+    EnableResourceDirectoryResponseBodyResourceDirectory,
+    GetAccountResponseBodyAccountTags,
+    GetAccountResponseBodyAccount,
+    GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoAbandonableChecks,
+    GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfoNotAllowReason,
+    GetAccountDeletionCheckResultResponseBodyAccountDeletionCheckResultInfo,
+    GetAccountDeletionStatusResponseBodyRdAccountDeletionStatusFailReasonList,
+    GetAccountDeletionStatusResponseBodyRdAccountDeletionStatus,
+    GetControlPolicyResponseBodyControlPolicy,
+    GetFolderResponseBodyFolder,
+    GetHandshakeResponseBodyHandshake,
+    GetMessageContactResponseBodyContact,
+    GetMessageContactDeletionStatusResponseBodyContactDeletionStatusFailReasonList,
+    GetMessageContactDeletionStatusResponseBodyContactDeletionStatus,
+    GetResourceDirectoryResponseBodyResourceDirectory,
+    InviteAccountToResourceDirectoryRequestTag,
+    InviteAccountToResourceDirectoryResponseBodyHandshake,
+    ListAccountsRequestTag,
+    ListAccountsResponseBodyAccountsAccountTagsTag,
+    ListAccountsResponseBodyAccountsAccountTags,
+    ListAccountsResponseBodyAccountsAccount,
+    ListAccountsResponseBodyAccounts,
+    ListAccountsForParentRequestTag,
+    ListAccountsForParentResponseBodyAccountsAccountTagsTag,
+    ListAccountsForParentResponseBodyAccountsAccountTags,
+    ListAccountsForParentResponseBodyAccountsAccount,
+    ListAccountsForParentResponseBodyAccounts,
+    ListAncestorsResponseBodyFoldersFolder,
+    ListAncestorsResponseBodyFolders,
+    ListAuthorizedAccountsResponseBodyAccountsAccount,
+    ListAuthorizedAccountsResponseBodyAccounts,
+    ListAuthorizedFoldersResponseBodyFoldersFolder,
+    ListAuthorizedFoldersResponseBodyFolders,
+    ListControlPoliciesRequestTag,
+    ListControlPoliciesResponseBodyControlPoliciesControlPolicyTagsTag,
+    ListControlPoliciesResponseBodyControlPoliciesControlPolicyTags,
+    ListControlPoliciesResponseBodyControlPoliciesControlPolicy,
+    ListControlPoliciesResponseBodyControlPolicies,
+    ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachmentsControlPolicyAttachment,
+    ListControlPolicyAttachmentsForTargetResponseBodyControlPolicyAttachments,
+    ListDelegatedAdministratorsResponseBodyAccountsAccount,
+    ListDelegatedAdministratorsResponseBodyAccounts,
+    ListDelegatedServicesForAccountResponseBodyDelegatedServicesDelegatedService,
+    ListDelegatedServicesForAccountResponseBodyDelegatedServices,
+    ListFoldersForParentRequestTag,
+    ListFoldersForParentResponseBodyFoldersFolderTagsTag,
+    ListFoldersForParentResponseBodyFoldersFolderTags,
+    ListFoldersForParentResponseBodyFoldersFolder,
+    ListFoldersForParentResponseBodyFolders,
+    ListHandshakesForAccountResponseBodyHandshakesHandshake,
+    ListHandshakesForAccountResponseBodyHandshakes,
+    ListHandshakesForResourceDirectoryResponseBodyHandshakesHandshake,
+    ListHandshakesForResourceDirectoryResponseBodyHandshakes,
+    ListMessageContactVerificationsResponseBodyContactVerifications,
+    ListMessageContactsResponseBodyContacts,
+    ListTagKeysResponseBodyTags,
+    ListTagResourcesRequestTag,
+    ListTagResourcesResponseBodyTagResources,
+    ListTagValuesResponseBodyTags,
+    ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachmentsTargetAttachment,
+    ListTargetAttachmentsForControlPolicyResponseBodyTargetAttachments,
+    ListTrustedServiceStatusResponseBodyEnabledServicePrincipalsEnabledServicePrincipal,
+    ListTrustedServiceStatusResponseBodyEnabledServicePrincipals,
+    PrecheckForConsolidatedBillingAccountResponseBodyReasons,
+    TagResourcesRequestTag,
+    UpdateAccountResponseBodyAccount,
+    UpdateControlPolicyResponseBodyControlPolicy,
+    UpdateFolderResponseBodyFolder
+]
