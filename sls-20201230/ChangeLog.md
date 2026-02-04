@@ -1,3 +1,25 @@
+2026-02-04 Version: 5.12.0
+- Support API AddMemories.
+- Support API CreateDataset.
+- Support API CreateMemoryStore.
+- Support API DeleteDataset.
+- Support API DeleteMemories.
+- Support API DeleteMemory.
+- Support API DeleteMemoryStore.
+- Support API ExecuteQuery.
+- Support API GetDataset.
+- Support API GetMemories.
+- Support API GetMemory.
+- Support API GetMemoryHistory.
+- Support API GetMemoryStore.
+- Support API ListDatasets.
+- Support API ListMemoryStores.
+- Support API SearchMemories.
+- Support API UpdateDataset.
+- Support API UpdateMemory.
+- Support API UpdateMemoryStore.
+
+
 2026-02-04 Version: 5.11.2
 - Generated python 2020-12-30 for Sls.
 

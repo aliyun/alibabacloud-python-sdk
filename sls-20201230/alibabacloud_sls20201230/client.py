@@ -29,6 +29,128 @@ class Client(OpenApiClient):
         self._spi = gateway_client
         self._endpoint_rule = 'central'
 
+    def add_memories_with_options(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.AddMemoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddMemoriesResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agent_id'] = request.agent_id
+        if not DaraCore.is_null(request.app_id):
+            body['app_id'] = request.app_id
+        if not DaraCore.is_null(request.async_mode):
+            body['async_mode'] = request.async_mode
+        if not DaraCore.is_null(request.custom_instructions):
+            body['custom_instructions'] = request.custom_instructions
+        if not DaraCore.is_null(request.infer):
+            body['infer'] = request.infer
+        if not DaraCore.is_null(request.messages):
+            body['messages'] = request.messages
+        if not DaraCore.is_null(request.metadata):
+            body['metadata'] = request.metadata
+        if not DaraCore.is_null(request.run_id):
+            body['run_id'] = request.run_id
+        if not DaraCore.is_null(request.user_id):
+            body['user_id'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddMemories',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}/memories',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddMemoriesResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def add_memories_with_options_async(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.AddMemoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AddMemoriesResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agent_id'] = request.agent_id
+        if not DaraCore.is_null(request.app_id):
+            body['app_id'] = request.app_id
+        if not DaraCore.is_null(request.async_mode):
+            body['async_mode'] = request.async_mode
+        if not DaraCore.is_null(request.custom_instructions):
+            body['custom_instructions'] = request.custom_instructions
+        if not DaraCore.is_null(request.infer):
+            body['infer'] = request.infer
+        if not DaraCore.is_null(request.messages):
+            body['messages'] = request.messages
+        if not DaraCore.is_null(request.metadata):
+            body['metadata'] = request.metadata
+        if not DaraCore.is_null(request.run_id):
+            body['run_id'] = request.run_id
+        if not DaraCore.is_null(request.user_id):
+            body['user_id'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddMemories',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}/memories',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddMemoriesResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def add_memories(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.AddMemoriesRequest,
+    ) -> main_models.AddMemoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.add_memories_with_options(project, memory_store, request, headers, runtime)
+
+    async def add_memories_async(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.AddMemoriesRequest,
+    ) -> main_models.AddMemoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.add_memories_with_options_async(project, memory_store, request, headers, runtime)
+
     def apply_config_to_machine_group_with_options(
         self,
         project: str,
@@ -1191,6 +1313,100 @@ class Client(OpenApiClient):
         headers = {}
         return await self.create_dashboard_with_options_async(project, request, headers, runtime)
 
+    def create_dataset_with_options(
+        self,
+        project: str,
+        request: main_models.CreateDatasetRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDatasetResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.schema):
+            body['schema'] = request.schema
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataset',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/datasets',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDatasetResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_dataset_with_options_async(
+        self,
+        project: str,
+        request: main_models.CreateDatasetRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDatasetResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.schema):
+            body['schema'] = request.schema
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDataset',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/datasets',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDatasetResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_dataset(
+        self,
+        project: str,
+        request: main_models.CreateDatasetRequest,
+    ) -> main_models.CreateDatasetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_dataset_with_options(project, request, headers, runtime)
+
+    async def create_dataset_async(
+        self,
+        project: str,
+        request: main_models.CreateDatasetRequest,
+    ) -> main_models.CreateDatasetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_dataset_with_options_async(project, request, headers, runtime)
+
     def create_domain_with_options(
         self,
         project: str,
@@ -2310,6 +2526,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_max_compute_export_with_options_async(project, request, headers, runtime)
+
+    def create_memory_store_with_options(
+        self,
+        project: str,
+        request: main_models.CreateMemoryStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMemoryStoreResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.custom_instructions):
+            body['customInstructions'] = request.custom_instructions
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.enable_graph):
+            body['enableGraph'] = request.enable_graph
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.short_term_ttl):
+            body['shortTermTtl'] = request.short_term_ttl
+        if not DaraCore.is_null(request.strategy):
+            body['strategy'] = request.strategy
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMemoryStore',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMemoryStoreResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def create_memory_store_with_options_async(
+        self,
+        project: str,
+        request: main_models.CreateMemoryStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMemoryStoreResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.custom_instructions):
+            body['customInstructions'] = request.custom_instructions
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.enable_graph):
+            body['enableGraph'] = request.enable_graph
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.short_term_ttl):
+            body['shortTermTtl'] = request.short_term_ttl
+        if not DaraCore.is_null(request.strategy):
+            body['strategy'] = request.strategy
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMemoryStore',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMemoryStoreResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def create_memory_store(
+        self,
+        project: str,
+        request: main_models.CreateMemoryStoreRequest,
+    ) -> main_models.CreateMemoryStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_memory_store_with_options(project, request, headers, runtime)
+
+    async def create_memory_store_async(
+        self,
+        project: str,
+        request: main_models.CreateMemoryStoreRequest,
+    ) -> main_models.CreateMemoryStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_memory_store_with_options_async(project, request, headers, runtime)
 
     def create_metric_store_with_options(
         self,
@@ -4231,6 +4553,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_dashboard_with_options_async(project, dashboard_name, headers, runtime)
 
+    def delete_dataset_with_options(
+        self,
+        project: str,
+        name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDatasetResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataset',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/datasets/{name}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDatasetResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_dataset_with_options_async(
+        self,
+        project: str,
+        name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDatasetResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDataset',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/datasets/{name}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDatasetResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_dataset(
+        self,
+        project: str,
+        name: str,
+    ) -> main_models.DeleteDatasetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_dataset_with_options(project, name, headers, runtime)
+
+    async def delete_dataset_async(
+        self,
+        project: str,
+        name: str,
+    ) -> main_models.DeleteDatasetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_dataset_with_options_async(project, name, headers, runtime)
+
     def delete_domain_with_options(
         self,
         project: str,
@@ -5138,6 +5536,264 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_max_compute_export_with_options_async(project, mc_export_name, headers, runtime)
+
+    def delete_memories_with_options(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.DeleteMemoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMemoriesResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agent_id'] = request.agent_id
+        if not DaraCore.is_null(request.app_id):
+            query['app_id'] = request.app_id
+        if not DaraCore.is_null(request.run_id):
+            query['run_id'] = request.run_id
+        if not DaraCore.is_null(request.user_id):
+            query['user_id'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMemories',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}/memories',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMemoriesResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_memories_with_options_async(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.DeleteMemoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMemoriesResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not DaraCore.is_null(request.agent_id):
+            query['agent_id'] = request.agent_id
+        if not DaraCore.is_null(request.app_id):
+            query['app_id'] = request.app_id
+        if not DaraCore.is_null(request.run_id):
+            query['run_id'] = request.run_id
+        if not DaraCore.is_null(request.user_id):
+            query['user_id'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMemories',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}/memories',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMemoriesResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_memories(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.DeleteMemoriesRequest,
+    ) -> main_models.DeleteMemoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_memories_with_options(project, memory_store, request, headers, runtime)
+
+    async def delete_memories_async(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.DeleteMemoriesRequest,
+    ) -> main_models.DeleteMemoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_memories_with_options_async(project, memory_store, request, headers, runtime)
+
+    def delete_memory_with_options(
+        self,
+        project: str,
+        memory_store: str,
+        memory_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMemoryResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMemory',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}/memories/{memory_id}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMemoryResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_memory_with_options_async(
+        self,
+        project: str,
+        memory_store: str,
+        memory_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMemoryResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMemory',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}/memories/{memory_id}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMemoryResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_memory(
+        self,
+        project: str,
+        memory_store: str,
+        memory_id: str,
+    ) -> main_models.DeleteMemoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_memory_with_options(project, memory_store, memory_id, headers, runtime)
+
+    async def delete_memory_async(
+        self,
+        project: str,
+        memory_store: str,
+        memory_id: str,
+    ) -> main_models.DeleteMemoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_memory_with_options_async(project, memory_store, memory_id, headers, runtime)
+
+    def delete_memory_store_with_options(
+        self,
+        project: str,
+        memory_store: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMemoryStoreResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMemoryStore',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMemoryStoreResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def delete_memory_store_with_options_async(
+        self,
+        project: str,
+        memory_store: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMemoryStoreResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMemoryStore',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMemoryStoreResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def delete_memory_store(
+        self,
+        project: str,
+        memory_store: str,
+    ) -> main_models.DeleteMemoryStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_memory_store_with_options(project, memory_store, headers, runtime)
+
+    async def delete_memory_store_async(
+        self,
+        project: str,
+        memory_store: str,
+    ) -> main_models.DeleteMemoryStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_memory_store_with_options_async(project, memory_store, headers, runtime)
 
     def delete_metric_store_with_options(
         self,
@@ -6284,6 +6940,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.enable_scheduled_sqlwith_options_async(project, scheduled_sqlname, headers, runtime)
+
+    def execute_query_with_options(
+        self,
+        project: str,
+        request: main_models.ExecuteQueryRequest,
+        headers: main_models.ExecuteQueryHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteQueryResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.accept_encoding):
+            real_headers['Accept-Encoding'] = str(headers.accept_encoding)
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteQuery',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/execute-query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecuteQueryResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def execute_query_with_options_async(
+        self,
+        project: str,
+        request: main_models.ExecuteQueryRequest,
+        headers: main_models.ExecuteQueryHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExecuteQueryResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.accept_encoding):
+            real_headers['Accept-Encoding'] = str(headers.accept_encoding)
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExecuteQuery',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/execute-query',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExecuteQueryResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def execute_query(
+        self,
+        project: str,
+        request: main_models.ExecuteQueryRequest,
+    ) -> main_models.ExecuteQueryResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ExecuteQueryHeaders()
+        return self.execute_query_with_options(project, request, headers, runtime)
+
+    async def execute_query_async(
+        self,
+        project: str,
+        request: main_models.ExecuteQueryRequest,
+    ) -> main_models.ExecuteQueryResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ExecuteQueryHeaders()
+        return await self.execute_query_with_options_async(project, request, headers, runtime)
 
     def get_agent_instance_config_with_options(
         self,
@@ -7669,6 +8425,82 @@ class Client(OpenApiClient):
         headers = {}
         return await self.get_dashboard_with_options_async(project, dashboard_name, headers, runtime)
 
+    def get_dataset_with_options(
+        self,
+        project: str,
+        name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDatasetResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataset',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/datasets/{name}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDatasetResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_dataset_with_options_async(
+        self,
+        project: str,
+        name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDatasetResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDataset',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/datasets/{name}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDatasetResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_dataset(
+        self,
+        project: str,
+        name: str,
+    ) -> main_models.GetDatasetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_dataset_with_options(project, name, headers, runtime)
+
+    async def get_dataset_async(
+        self,
+        project: str,
+        name: str,
+    ) -> main_models.GetDatasetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_dataset_with_options_async(project, name, headers, runtime)
+
     def get_download_job_with_options(
         self,
         project: str,
@@ -9032,6 +9864,360 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_max_compute_export_with_options_async(project, mc_export_name, headers, runtime)
+
+    def get_memories_with_options(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.GetMemoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoriesResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agent_id'] = request.agent_id
+        if not DaraCore.is_null(request.app_id):
+            body['app_id'] = request.app_id
+        if not DaraCore.is_null(request.limit):
+            body['limit'] = request.limit
+        if not DaraCore.is_null(request.metadata):
+            body['metadata'] = request.metadata
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['page_size'] = request.page_size
+        if not DaraCore.is_null(request.run_id):
+            body['run_id'] = request.run_id
+        if not DaraCore.is_null(request.user_id):
+            body['user_id'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemories',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}/all-memories',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoriesResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_memories_with_options_async(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.GetMemoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoriesResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agent_id'] = request.agent_id
+        if not DaraCore.is_null(request.app_id):
+            body['app_id'] = request.app_id
+        if not DaraCore.is_null(request.limit):
+            body['limit'] = request.limit
+        if not DaraCore.is_null(request.metadata):
+            body['metadata'] = request.metadata
+        if not DaraCore.is_null(request.page):
+            body['page'] = request.page
+        if not DaraCore.is_null(request.page_size):
+            body['page_size'] = request.page_size
+        if not DaraCore.is_null(request.run_id):
+            body['run_id'] = request.run_id
+        if not DaraCore.is_null(request.user_id):
+            body['user_id'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemories',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}/all-memories',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoriesResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_memories(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.GetMemoriesRequest,
+    ) -> main_models.GetMemoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_memories_with_options(project, memory_store, request, headers, runtime)
+
+    async def get_memories_async(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.GetMemoriesRequest,
+    ) -> main_models.GetMemoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_memories_with_options_async(project, memory_store, request, headers, runtime)
+
+    def get_memory_with_options(
+        self,
+        project: str,
+        memory_store: str,
+        memory_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemory',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}/memories/{memory_id}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_memory_with_options_async(
+        self,
+        project: str,
+        memory_store: str,
+        memory_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemory',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}/memories/{memory_id}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_memory(
+        self,
+        project: str,
+        memory_store: str,
+        memory_id: str,
+    ) -> main_models.GetMemoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_memory_with_options(project, memory_store, memory_id, headers, runtime)
+
+    async def get_memory_async(
+        self,
+        project: str,
+        memory_store: str,
+        memory_id: str,
+    ) -> main_models.GetMemoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_memory_with_options_async(project, memory_store, memory_id, headers, runtime)
+
+    def get_memory_history_with_options(
+        self,
+        project: str,
+        memory_store: str,
+        memory_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryHistoryResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemoryHistory',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}/memories/{memory_id}/history',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'array'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryHistoryResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_memory_history_with_options_async(
+        self,
+        project: str,
+        memory_store: str,
+        memory_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryHistoryResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemoryHistory',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}/memories/{memory_id}/history',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'array'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryHistoryResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_memory_history(
+        self,
+        project: str,
+        memory_store: str,
+        memory_id: str,
+    ) -> main_models.GetMemoryHistoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_memory_history_with_options(project, memory_store, memory_id, headers, runtime)
+
+    async def get_memory_history_async(
+        self,
+        project: str,
+        memory_store: str,
+        memory_id: str,
+    ) -> main_models.GetMemoryHistoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_memory_history_with_options_async(project, memory_store, memory_id, headers, runtime)
+
+    def get_memory_store_with_options(
+        self,
+        project: str,
+        memory_store: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryStoreResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemoryStore',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryStoreResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def get_memory_store_with_options_async(
+        self,
+        project: str,
+        memory_store: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetMemoryStoreResponse:
+        host_map = {}
+        host_map['project'] = project
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetMemoryStore',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetMemoryStoreResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def get_memory_store(
+        self,
+        project: str,
+        memory_store: str,
+    ) -> main_models.GetMemoryStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_memory_store_with_options(project, memory_store, headers, runtime)
+
+    async def get_memory_store_async(
+        self,
+        project: str,
+        memory_store: str,
+    ) -> main_models.GetMemoryStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_memory_store_with_options_async(project, memory_store, headers, runtime)
 
     def get_metric_store_with_options(
         self,
@@ -11213,6 +12399,100 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_dashboard_with_options_async(project, request, headers, runtime)
 
+    def list_datasets_with_options(
+        self,
+        project: str,
+        request: main_models.ListDatasetsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDatasetsResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.offset):
+            query['offset'] = request.offset
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDatasets',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/datasets',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDatasetsResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_datasets_with_options_async(
+        self,
+        project: str,
+        request: main_models.ListDatasetsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDatasetsResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.offset):
+            query['offset'] = request.offset
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDatasets',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/datasets',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDatasetsResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_datasets(
+        self,
+        project: str,
+        request: main_models.ListDatasetsRequest,
+    ) -> main_models.ListDatasetsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_datasets_with_options(project, request, headers, runtime)
+
+    async def list_datasets_async(
+        self,
+        project: str,
+        request: main_models.ListDatasetsRequest,
+    ) -> main_models.ListDatasetsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_datasets_with_options_async(project, request, headers, runtime)
+
     def list_domains_with_options(
         self,
         project: str,
@@ -12360,6 +13640,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_max_compute_exports_with_options_async(project, request, headers, runtime)
+
+    def list_memory_stores_with_options(
+        self,
+        project: str,
+        request: main_models.ListMemoryStoresRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMemoryStoresResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.offset):
+            query['offset'] = request.offset
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMemoryStores',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMemoryStoresResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def list_memory_stores_with_options_async(
+        self,
+        project: str,
+        request: main_models.ListMemoryStoresRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMemoryStoresResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        query = {}
+        if not DaraCore.is_null(request.name):
+            query['name'] = request.name
+        if not DaraCore.is_null(request.offset):
+            query['offset'] = request.offset
+        if not DaraCore.is_null(request.size):
+            query['size'] = request.size
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMemoryStores',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMemoryStoresResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def list_memory_stores(
+        self,
+        project: str,
+        request: main_models.ListMemoryStoresRequest,
+    ) -> main_models.ListMemoryStoresResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_memory_stores_with_options(project, request, headers, runtime)
+
+    async def list_memory_stores_async(
+        self,
+        project: str,
+        request: main_models.ListMemoryStoresRequest,
+    ) -> main_models.ListMemoryStoresResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_memory_stores_with_options_async(project, request, headers, runtime)
 
     def list_metric_stores_with_options(
         self,
@@ -14448,6 +15822,124 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.remove_config_from_machine_group_with_options_async(project, machine_group, config_name, headers, runtime)
+
+    def search_memories_with_options(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.SearchMemoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchMemoriesResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agent_id'] = request.agent_id
+        if not DaraCore.is_null(request.app_id):
+            body['app_id'] = request.app_id
+        if not DaraCore.is_null(request.metadata):
+            body['metadata'] = request.metadata
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
+        if not DaraCore.is_null(request.rerank):
+            body['rerank'] = request.rerank
+        if not DaraCore.is_null(request.run_id):
+            body['run_id'] = request.run_id
+        if not DaraCore.is_null(request.top_k):
+            body['top_k'] = request.top_k
+        if not DaraCore.is_null(request.user_id):
+            body['user_id'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchMemories',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}/search',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchMemoriesResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def search_memories_with_options_async(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.SearchMemoriesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.SearchMemoriesResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.agent_id):
+            body['agent_id'] = request.agent_id
+        if not DaraCore.is_null(request.app_id):
+            body['app_id'] = request.app_id
+        if not DaraCore.is_null(request.metadata):
+            body['metadata'] = request.metadata
+        if not DaraCore.is_null(request.query):
+            body['query'] = request.query
+        if not DaraCore.is_null(request.rerank):
+            body['rerank'] = request.rerank
+        if not DaraCore.is_null(request.run_id):
+            body['run_id'] = request.run_id
+        if not DaraCore.is_null(request.top_k):
+            body['top_k'] = request.top_k
+        if not DaraCore.is_null(request.user_id):
+            body['user_id'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SearchMemories',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}/search',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SearchMemoriesResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def search_memories(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.SearchMemoriesRequest,
+    ) -> main_models.SearchMemoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.search_memories_with_options(project, memory_store, request, headers, runtime)
+
+    async def search_memories_async(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.SearchMemoriesRequest,
+    ) -> main_models.SearchMemoriesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.search_memories_with_options_async(project, memory_store, request, headers, runtime)
 
     def split_shard_with_options(
         self,
@@ -16689,6 +18181,96 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_dashboard_with_options_async(project, dashboard_name, request, headers, runtime)
 
+    def update_dataset_with_options(
+        self,
+        project: str,
+        name: str,
+        request: main_models.UpdateDatasetRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDatasetResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataset',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/datasets/{name}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDatasetResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_dataset_with_options_async(
+        self,
+        project: str,
+        name: str,
+        request: main_models.UpdateDatasetRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDatasetResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDataset',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/datasets/{name}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDatasetResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_dataset(
+        self,
+        project: str,
+        name: str,
+        request: main_models.UpdateDatasetRequest,
+    ) -> main_models.UpdateDatasetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_dataset_with_options(project, name, request, headers, runtime)
+
+    async def update_dataset_async(
+        self,
+        project: str,
+        name: str,
+        request: main_models.UpdateDatasetRequest,
+    ) -> main_models.UpdateDatasetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_dataset_with_options_async(project, name, request, headers, runtime)
+
     def update_etlwith_options(
         self,
         project: str,
@@ -17994,6 +19576,210 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_max_compute_export_with_options_async(project, mc_export_name, request, headers, runtime)
+
+    def update_memory_with_options(
+        self,
+        project: str,
+        memory_store: str,
+        memory_id: str,
+        request: main_models.UpdateMemoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMemoryResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.metadata):
+            body['metadata'] = request.metadata
+        if not DaraCore.is_null(request.text):
+            body['text'] = request.text
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMemory',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}/memories/{memory_id}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMemoryResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_memory_with_options_async(
+        self,
+        project: str,
+        memory_store: str,
+        memory_id: str,
+        request: main_models.UpdateMemoryRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMemoryResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.metadata):
+            body['metadata'] = request.metadata
+        if not DaraCore.is_null(request.text):
+            body['text'] = request.text
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMemory',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}/memories/{memory_id}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMemoryResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_memory(
+        self,
+        project: str,
+        memory_store: str,
+        memory_id: str,
+        request: main_models.UpdateMemoryRequest,
+    ) -> main_models.UpdateMemoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_memory_with_options(project, memory_store, memory_id, request, headers, runtime)
+
+    async def update_memory_async(
+        self,
+        project: str,
+        memory_store: str,
+        memory_id: str,
+        request: main_models.UpdateMemoryRequest,
+    ) -> main_models.UpdateMemoryResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_memory_with_options_async(project, memory_store, memory_id, request, headers, runtime)
+
+    def update_memory_store_with_options(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.UpdateMemoryStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMemoryStoreResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.custom_instructions):
+            body['customInstructions'] = request.custom_instructions
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.enable_graph):
+            body['enableGraph'] = request.enable_graph
+        if not DaraCore.is_null(request.short_term_ttl):
+            body['shortTermTtl'] = request.short_term_ttl
+        if not DaraCore.is_null(request.strategy):
+            body['strategy'] = request.strategy
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMemoryStore',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMemoryStoreResponse(),
+            self.execute(params, req, runtime)
+        )
+
+    async def update_memory_store_with_options_async(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.UpdateMemoryStoreRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMemoryStoreResponse:
+        request.validate()
+        host_map = {}
+        host_map['project'] = project
+        body = {}
+        if not DaraCore.is_null(request.custom_instructions):
+            body['customInstructions'] = request.custom_instructions
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.enable_graph):
+            body['enableGraph'] = request.enable_graph
+        if not DaraCore.is_null(request.short_term_ttl):
+            body['shortTermTtl'] = request.short_term_ttl
+        if not DaraCore.is_null(request.strategy):
+            body['strategy'] = request.strategy
+        req = open_api_util_models.OpenApiRequest(
+            host_map = host_map,
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMemoryStore',
+            version = '2020-12-30',
+            protocol = 'HTTPS',
+            pathname = f'/memorystores/{memory_store}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMemoryStoreResponse(),
+            await self.execute_async(params, req, runtime)
+        )
+
+    def update_memory_store(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.UpdateMemoryStoreRequest,
+    ) -> main_models.UpdateMemoryStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_memory_store_with_options(project, memory_store, request, headers, runtime)
+
+    async def update_memory_store_async(
+        self,
+        project: str,
+        memory_store: str,
+        request: main_models.UpdateMemoryStoreRequest,
+    ) -> main_models.UpdateMemoryStoreResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_memory_store_with_options_async(project, memory_store, request, headers, runtime)
 
     def update_metric_store_with_options(
         self,
