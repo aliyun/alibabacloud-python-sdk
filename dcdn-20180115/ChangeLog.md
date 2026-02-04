@@ -1,3 +1,7 @@
+2026-02-04 Version: 3.1.0
+- Support API RefreshErObjectCachesByCacheTag.
+
+
 2025-08-22 Version: 3.0.0
 - Support API DeleteCustomDomainSampleRate.
 - Support API DescribeCustomDomainSampleRate.
