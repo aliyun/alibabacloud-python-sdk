@@ -199,6 +199,7 @@ from ._add_disaster_recovery_item_request import AddDisasterRecoveryItemRequestT
 from ._create_consumer_group_request import CreateConsumerGroupRequestConsumeRetryPolicy
 from ._create_disaster_recovery_plan_request import CreateDisasterRecoveryPlanRequestInstancesMessageProperty
 from ._create_disaster_recovery_plan_request import CreateDisasterRecoveryPlanRequestInstances
+from ._create_instance_request import CreateInstanceRequestAclInfo
 from ._create_instance_request import CreateInstanceRequestNetworkInfoInternetInfo
 from ._create_instance_request import CreateInstanceRequestNetworkInfoVpcInfoVSwitches
 from ._create_instance_request import CreateInstanceRequestNetworkInfoVpcInfo
@@ -509,6 +510,7 @@ __all__ = [
     CreateConsumerGroupRequestConsumeRetryPolicy,
     CreateDisasterRecoveryPlanRequestInstancesMessageProperty,
     CreateDisasterRecoveryPlanRequestInstances,
+    CreateInstanceRequestAclInfo,
     CreateInstanceRequestNetworkInfoInternetInfo,
     CreateInstanceRequestNetworkInfoVpcInfoVSwitches,
     CreateInstanceRequestNetworkInfoVpcInfo,

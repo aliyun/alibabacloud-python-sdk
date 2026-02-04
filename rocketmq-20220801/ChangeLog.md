@@ -1,3 +1,7 @@
+2026-02-04 Version: 5.0.3
+- Update API CreateInstance: add request parameters body.aclInfo.
+
+
 2026-01-14 Version: 5.0.2
 - Update API CreateInstance: add request parameters body.productInfo.traceOn.
 

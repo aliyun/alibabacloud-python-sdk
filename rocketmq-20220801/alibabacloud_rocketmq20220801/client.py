@@ -420,6 +420,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.client_token):
             query['clientToken'] = request.client_token
         body = {}
+        if not DaraCore.is_null(request.acl_info):
+            body['aclInfo'] = request.acl_info
         if not DaraCore.is_null(request.auto_renew):
             body['autoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.auto_renew_period):
@@ -482,6 +484,8 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.client_token):
             query['clientToken'] = request.client_token
         body = {}
+        if not DaraCore.is_null(request.acl_info):
+            body['aclInfo'] = request.acl_info
         if not DaraCore.is_null(request.auto_renew):
             body['autoRenew'] = request.auto_renew
         if not DaraCore.is_null(request.auto_renew_period):

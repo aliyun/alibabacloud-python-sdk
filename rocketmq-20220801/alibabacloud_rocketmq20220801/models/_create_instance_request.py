@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class CreateInstanceRequest(DaraModel):
     def __init__(
         self,
+        acl_info: main_models.CreateInstanceRequestAclInfo = None,
         auto_renew: bool = None,
         auto_renew_period: int = None,
         commodity_code: str = None,
@@ -27,6 +28,7 @@ class CreateInstanceRequest(DaraModel):
         tags: List[main_models.CreateInstanceRequestTags] = None,
         client_token: str = None,
     ):
+        self.acl_info = acl_info
         # Specifies whether to enable auto-renewal for the instance. This parameter takes effect only if you set paymentType to Subscription. Valid values:
         # 
         # *   true
@@ -126,6 +128,8 @@ class CreateInstanceRequest(DaraModel):
         self.client_token = client_token
 
     def validate(self):
+        if self.acl_info:
+            self.acl_info.validate()
         if self.network_info:
             self.network_info.validate()
         if self.product_info:
@@ -140,6 +144,9 @@ class CreateInstanceRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.acl_info is not None:
+            result['aclInfo'] = self.acl_info.to_map()
+
         if self.auto_renew is not None:
             result['autoRenew'] = self.auto_renew
 
@@ -194,6 +201,10 @@ class CreateInstanceRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('aclInfo') is not None:
+            temp_model = main_models.CreateInstanceRequestAclInfo()
+            self.acl_info = temp_model.from_map(m.get('aclInfo'))
+
         if m.get('autoRenew') is not None:
             self.auto_renew = m.get('autoRenew')
 
@@ -625,6 +636,33 @@ class CreateInstanceRequestNetworkInfoInternetInfo(DaraModel):
 
         if m.get('ipWhitelist') is not None:
             self.ip_whitelist = m.get('ipWhitelist')
+
+        return self
+
+class CreateInstanceRequestAclInfo(DaraModel):
+    def __init__(
+        self,
+        default_vpc_auth_free: bool = None,
+    ):
+        self.default_vpc_auth_free = default_vpc_auth_free
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.default_vpc_auth_free is not None:
+            result['defaultVpcAuthFree'] = self.default_vpc_auth_free
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('defaultVpcAuthFree') is not None:
+            self.default_vpc_auth_free = m.get('defaultVpcAuthFree')
 
         return self
 
