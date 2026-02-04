@@ -131,6 +131,7 @@ class ListCouponUsageResponseBodyData(DaraModel):
         eff_date: str = None,
         publish_date: str = None,
         status: str = None,
+        t_2partner_uid: str = None,
         uid: int = None,
     ):
         self.account = account
@@ -141,6 +142,7 @@ class ListCouponUsageResponseBodyData(DaraModel):
         self.eff_date = eff_date
         self.publish_date = publish_date
         self.status = status
+        self.t_2partner_uid = t_2partner_uid
         self.uid = uid
 
     def validate(self):
@@ -175,6 +177,9 @@ class ListCouponUsageResponseBodyData(DaraModel):
         if self.status is not None:
             result['Status'] = self.status
 
+        if self.t_2partner_uid is not None:
+            result['T2PartnerUid'] = self.t_2partner_uid
+
         if self.uid is not None:
             result['Uid'] = self.uid
 
@@ -205,6 +210,9 @@ class ListCouponUsageResponseBodyData(DaraModel):
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('T2PartnerUid') is not None:
+            self.t_2partner_uid = m.get('T2PartnerUid')
 
         if m.get('Uid') is not None:
             self.uid = m.get('Uid')

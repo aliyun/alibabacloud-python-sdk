@@ -1,3 +1,7 @@
+2026-02-04 Version: 1.9.1
+- Update API ListCouponUsage: add response parameters Body.Data.$.T2PartnerUid.
+
+
 2026-01-30 Version: 1.9.0
 - Support API GetTier2CouponApprovalDetail.
 - Support API ListTier2CouponApproval.
