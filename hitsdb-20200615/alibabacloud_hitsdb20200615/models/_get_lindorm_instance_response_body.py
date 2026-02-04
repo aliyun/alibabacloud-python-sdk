@@ -16,6 +16,7 @@ class GetLindormInstanceResponseBody(DaraModel):
         arch_version: str = None,
         archive_storage: int = None,
         auto_renew: bool = None,
+        backup_instance: str = None,
         cold_storage: int = None,
         core_disk_category: str = None,
         core_num: int = None,
@@ -86,6 +87,7 @@ class GetLindormInstanceResponseBody(DaraModel):
         # - **false**: Disabled.
         # > This parameter is returned when the instance\\"s payment type is prepaid.
         self.auto_renew = auto_renew
+        self.backup_instance = backup_instance
         # The Capacity storage size of the instance.
         self.cold_storage = cold_storage
         # The disk type of the core nodes. This parameter is returned only for multi-zone instances. Valid values:
@@ -309,6 +311,9 @@ class GetLindormInstanceResponseBody(DaraModel):
         if self.auto_renew is not None:
             result['AutoRenew'] = self.auto_renew
 
+        if self.backup_instance is not None:
+            result['BackupInstance'] = self.backup_instance
+
         if self.cold_storage is not None:
             result['ColdStorage'] = self.cold_storage
 
@@ -485,6 +490,9 @@ class GetLindormInstanceResponseBody(DaraModel):
 
         if m.get('AutoRenew') is not None:
             self.auto_renew = m.get('AutoRenew')
+
+        if m.get('BackupInstance') is not None:
+            self.backup_instance = m.get('BackupInstance')
 
         if m.get('ColdStorage') is not None:
             self.cold_storage = m.get('ColdStorage')

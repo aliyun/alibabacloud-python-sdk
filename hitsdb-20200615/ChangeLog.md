@@ -1,3 +1,7 @@
+2026-02-04 Version: 4.15.3
+- Update API GetLindormInstance: add response parameters Body.BackupInstance.
+
+
 2026-01-22 Version: 4.15.2
 - Update API GetLindormV2Instance: add response parameters Body.EnableFS.
 - Update API GetLindormV2Instance: add response parameters Body.EnableStoreTDE.
