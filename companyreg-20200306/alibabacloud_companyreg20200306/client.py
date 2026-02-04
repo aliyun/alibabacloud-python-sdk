@@ -1332,6 +1332,108 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_user_solutions_with_options_async(request, runtime)
 
+    def llm_smart_call_with_options(
+        self,
+        request: main_models.LlmSmartCallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LlmSmartCallResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.caller_number):
+            query['CallerNumber'] = request.caller_number
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.prompt_param):
+            query['PromptParam'] = request.prompt_param
+        if not DaraCore.is_null(request.scenes_code):
+            query['ScenesCode'] = request.scenes_code
+        if not DaraCore.is_null(request.skill_type):
+            query['SkillType'] = request.skill_type
+        if not DaraCore.is_null(request.start_word_param):
+            query['StartWordParam'] = request.start_word_param
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'LlmSmartCall',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LlmSmartCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def llm_smart_call_with_options_async(
+        self,
+        request: main_models.LlmSmartCallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LlmSmartCallResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.biz_type):
+            query['BizType'] = request.biz_type
+        if not DaraCore.is_null(request.caller_number):
+            query['CallerNumber'] = request.caller_number
+        if not DaraCore.is_null(request.product_code):
+            query['ProductCode'] = request.product_code
+        if not DaraCore.is_null(request.prompt_param):
+            query['PromptParam'] = request.prompt_param
+        if not DaraCore.is_null(request.scenes_code):
+            query['ScenesCode'] = request.scenes_code
+        if not DaraCore.is_null(request.skill_type):
+            query['SkillType'] = request.skill_type
+        if not DaraCore.is_null(request.start_word_param):
+            query['StartWordParam'] = request.start_word_param
+        if not DaraCore.is_null(request.tenant_code):
+            query['TenantCode'] = request.tenant_code
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'LlmSmartCall',
+            version = '2020-03-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LlmSmartCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def llm_smart_call(
+        self,
+        request: main_models.LlmSmartCallRequest,
+    ) -> main_models.LlmSmartCallResponse:
+        runtime = RuntimeOptions()
+        return self.llm_smart_call_with_options(request, runtime)
+
+    async def llm_smart_call_async(
+        self,
+        request: main_models.LlmSmartCallRequest,
+    ) -> main_models.LlmSmartCallResponse:
+        runtime = RuntimeOptions()
+        return await self.llm_smart_call_with_options_async(request, runtime)
+
     def operate_call_center_for_partner_with_options(
         self,
         request: main_models.OperateCallCenterForPartnerRequest,

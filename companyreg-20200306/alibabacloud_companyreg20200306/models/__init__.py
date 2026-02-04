@@ -48,6 +48,9 @@ from ._list_user_solutions_request import ListUserSolutionsRequest
 from ._list_user_solutions_shrink_request import ListUserSolutionsShrinkRequest
 from ._list_user_solutions_response_body import ListUserSolutionsResponseBody
 from ._list_user_solutions_response import ListUserSolutionsResponse
+from ._llm_smart_call_request import LlmSmartCallRequest
+from ._llm_smart_call_response_body import LlmSmartCallResponseBody
+from ._llm_smart_call_response import LlmSmartCallResponse
 from ._operate_call_center_for_partner_request import OperateCallCenterForPartnerRequest
 from ._operate_call_center_for_partner_response_body import OperateCallCenterForPartnerResponseBody
 from ._operate_call_center_for_partner_response import OperateCallCenterForPartnerResponse
@@ -173,6 +176,9 @@ __all__ = [
     ListUserSolutionsShrinkRequest,
     ListUserSolutionsResponseBody,
     ListUserSolutionsResponse,
+    LlmSmartCallRequest,
+    LlmSmartCallResponseBody,
+    LlmSmartCallResponse,
     OperateCallCenterForPartnerRequest,
     OperateCallCenterForPartnerResponseBody,
     OperateCallCenterForPartnerResponse,

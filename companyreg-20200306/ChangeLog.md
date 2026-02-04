@@ -1,3 +1,7 @@
+2026-02-04 Version: 2.3.0
+- Support API LlmSmartCall.
+
+
 2025-12-30 Version: 2.2.5
 - Update API SubmitIntentionForPartner: add response parameters Body.ExtInfo.
 
