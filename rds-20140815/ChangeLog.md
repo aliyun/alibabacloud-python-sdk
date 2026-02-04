@@ -1,3 +1,9 @@
+2026-02-04 Version: 15.2.0
+- Support API DescribeDBInstanceCLS.
+- Support API ModifyDBInstanceCLS.
+- Support API ModifyParameterTimedScheduleTask.
+
+
 2026-02-03 Version: 15.1.2
 - Update API DescribeSlowLogRecords: add response parameters Body.Items.$.LockTimeMS.
 

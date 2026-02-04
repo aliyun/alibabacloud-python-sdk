@@ -11963,6 +11963,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_dbinstance_by_tags_with_options_async(request, runtime)
 
+    def describe_dbinstance_clswith_options(
+        self,
+        request: main_models.DescribeDBInstanceCLSRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstanceCLSResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstanceCLS',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDBInstanceCLSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_dbinstance_clswith_options_async(
+        self,
+        request: main_models.DescribeDBInstanceCLSRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeDBInstanceCLSResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeDBInstanceCLS',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeDBInstanceCLSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_dbinstance_cls(
+        self,
+        request: main_models.DescribeDBInstanceCLSRequest,
+    ) -> main_models.DescribeDBInstanceCLSResponse:
+        runtime = RuntimeOptions()
+        return self.describe_dbinstance_clswith_options(request, runtime)
+
+    async def describe_dbinstance_cls_async(
+        self,
+        request: main_models.DescribeDBInstanceCLSRequest,
+    ) -> main_models.DescribeDBInstanceCLSResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_dbinstance_clswith_options_async(request, runtime)
+
     def describe_dbinstance_connectivity_with_options(
         self,
         request: main_models.DescribeDBInstanceConnectivityRequest,
@@ -27063,6 +27149,120 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_dbinstance_auto_upgrade_minor_version_with_options_async(request, runtime)
 
+    def modify_dbinstance_clswith_options(
+        self,
+        request: main_models.ModifyDBInstanceCLSRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBInstanceCLSResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.encryption_algorithm):
+            query['EncryptionAlgorithm'] = request.encryption_algorithm
+        if not DaraCore.is_null(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
+        if not DaraCore.is_null(request.encryption_key_mode):
+            query['EncryptionKeyMode'] = request.encryption_key_mode
+        if not DaraCore.is_null(request.encryption_status):
+            query['EncryptionStatus'] = request.encryption_status
+        if not DaraCore.is_null(request.is_rotate):
+            query['IsRotate'] = request.is_rotate
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not DaraCore.is_null(request.white_list_mode):
+            query['WhiteListMode'] = request.white_list_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDBInstanceCLS',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDBInstanceCLSResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_dbinstance_clswith_options_async(
+        self,
+        request: main_models.ModifyDBInstanceCLSRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyDBInstanceCLSResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.encryption_algorithm):
+            query['EncryptionAlgorithm'] = request.encryption_algorithm
+        if not DaraCore.is_null(request.encryption_key):
+            query['EncryptionKey'] = request.encryption_key
+        if not DaraCore.is_null(request.encryption_key_mode):
+            query['EncryptionKeyMode'] = request.encryption_key_mode
+        if not DaraCore.is_null(request.encryption_status):
+            query['EncryptionStatus'] = request.encryption_status
+        if not DaraCore.is_null(request.is_rotate):
+            query['IsRotate'] = request.is_rotate
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.role_arn):
+            query['RoleArn'] = request.role_arn
+        if not DaraCore.is_null(request.white_list_mode):
+            query['WhiteListMode'] = request.white_list_mode
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyDBInstanceCLS',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyDBInstanceCLSResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_dbinstance_cls(
+        self,
+        request: main_models.ModifyDBInstanceCLSRequest,
+    ) -> main_models.ModifyDBInstanceCLSResponse:
+        runtime = RuntimeOptions()
+        return self.modify_dbinstance_clswith_options(request, runtime)
+
+    async def modify_dbinstance_cls_async(
+        self,
+        request: main_models.ModifyDBInstanceCLSRequest,
+    ) -> main_models.ModifyDBInstanceCLSResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_dbinstance_clswith_options_async(request, runtime)
+
     def modify_dbinstance_config_with_options(
         self,
         request: main_models.ModifyDBInstanceConfigRequest,
@@ -31208,6 +31408,84 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyParameterGroupResponse:
         runtime = RuntimeOptions()
         return await self.modify_parameter_group_with_options_async(request, runtime)
+
+    def modify_parameter_timed_schedule_task_with_options(
+        self,
+        request: main_models.ModifyParameterTimedScheduleTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyParameterTimedScheduleTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyParameterTimedScheduleTask',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyParameterTimedScheduleTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_parameter_timed_schedule_task_with_options_async(
+        self,
+        request: main_models.ModifyParameterTimedScheduleTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyParameterTimedScheduleTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.switch_time):
+            query['SwitchTime'] = request.switch_time
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyParameterTimedScheduleTask',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyParameterTimedScheduleTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_parameter_timed_schedule_task(
+        self,
+        request: main_models.ModifyParameterTimedScheduleTaskRequest,
+    ) -> main_models.ModifyParameterTimedScheduleTaskResponse:
+        runtime = RuntimeOptions()
+        return self.modify_parameter_timed_schedule_task_with_options(request, runtime)
+
+    async def modify_parameter_timed_schedule_task_async(
+        self,
+        request: main_models.ModifyParameterTimedScheduleTaskRequest,
+    ) -> main_models.ModifyParameterTimedScheduleTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_parameter_timed_schedule_task_with_options_async(request, runtime)
 
     def modify_rcdisk_attribute_with_options(
         self,

@@ -363,6 +363,9 @@ from ._describe_dbinstance_attribute_response import DescribeDBInstanceAttribute
 from ._describe_dbinstance_by_tags_request import DescribeDBInstanceByTagsRequest
 from ._describe_dbinstance_by_tags_response_body import DescribeDBInstanceByTagsResponseBody
 from ._describe_dbinstance_by_tags_response import DescribeDBInstanceByTagsResponse
+from ._describe_dbinstance_clsrequest import DescribeDBInstanceCLSRequest
+from ._describe_dbinstance_clsresponse_body import DescribeDBInstanceCLSResponseBody
+from ._describe_dbinstance_clsresponse import DescribeDBInstanceCLSResponse
 from ._describe_dbinstance_connectivity_request import DescribeDBInstanceConnectivityRequest
 from ._describe_dbinstance_connectivity_response_body import DescribeDBInstanceConnectivityResponseBody
 from ._describe_dbinstance_connectivity_response import DescribeDBInstanceConnectivityResponse
@@ -838,6 +841,9 @@ from ._modify_dbdescription_response import ModifyDBDescriptionResponse
 from ._modify_dbinstance_auto_upgrade_minor_version_request import ModifyDBInstanceAutoUpgradeMinorVersionRequest
 from ._modify_dbinstance_auto_upgrade_minor_version_response_body import ModifyDBInstanceAutoUpgradeMinorVersionResponseBody
 from ._modify_dbinstance_auto_upgrade_minor_version_response import ModifyDBInstanceAutoUpgradeMinorVersionResponse
+from ._modify_dbinstance_clsrequest import ModifyDBInstanceCLSRequest
+from ._modify_dbinstance_clsresponse_body import ModifyDBInstanceCLSResponseBody
+from ._modify_dbinstance_clsresponse import ModifyDBInstanceCLSResponse
 from ._modify_dbinstance_config_request import ModifyDBInstanceConfigRequest
 from ._modify_dbinstance_config_response_body import ModifyDBInstanceConfigResponseBody
 from ._modify_dbinstance_config_response import ModifyDBInstanceConfigResponse
@@ -961,6 +967,9 @@ from ._modify_parameter_response import ModifyParameterResponse
 from ._modify_parameter_group_request import ModifyParameterGroupRequest
 from ._modify_parameter_group_response_body import ModifyParameterGroupResponseBody
 from ._modify_parameter_group_response import ModifyParameterGroupResponse
+from ._modify_parameter_timed_schedule_task_request import ModifyParameterTimedScheduleTaskRequest
+from ._modify_parameter_timed_schedule_task_response_body import ModifyParameterTimedScheduleTaskResponseBody
+from ._modify_parameter_timed_schedule_task_response import ModifyParameterTimedScheduleTaskResponse
 from ._modify_rcdisk_attribute_request import ModifyRCDiskAttributeRequest
 from ._modify_rcdisk_attribute_response_body import ModifyRCDiskAttributeResponseBody
 from ._modify_rcdisk_attribute_response import ModifyRCDiskAttributeResponse
@@ -1974,6 +1983,9 @@ __all__ = [
     DescribeDBInstanceByTagsRequest,
     DescribeDBInstanceByTagsResponseBody,
     DescribeDBInstanceByTagsResponse,
+    DescribeDBInstanceCLSRequest,
+    DescribeDBInstanceCLSResponseBody,
+    DescribeDBInstanceCLSResponse,
     DescribeDBInstanceConnectivityRequest,
     DescribeDBInstanceConnectivityResponseBody,
     DescribeDBInstanceConnectivityResponse,
@@ -2449,6 +2461,9 @@ __all__ = [
     ModifyDBInstanceAutoUpgradeMinorVersionRequest,
     ModifyDBInstanceAutoUpgradeMinorVersionResponseBody,
     ModifyDBInstanceAutoUpgradeMinorVersionResponse,
+    ModifyDBInstanceCLSRequest,
+    ModifyDBInstanceCLSResponseBody,
+    ModifyDBInstanceCLSResponse,
     ModifyDBInstanceConfigRequest,
     ModifyDBInstanceConfigResponseBody,
     ModifyDBInstanceConfigResponse,
@@ -2572,6 +2587,9 @@ __all__ = [
     ModifyParameterGroupRequest,
     ModifyParameterGroupResponseBody,
     ModifyParameterGroupResponse,
+    ModifyParameterTimedScheduleTaskRequest,
+    ModifyParameterTimedScheduleTaskResponseBody,
+    ModifyParameterTimedScheduleTaskResponse,
     ModifyRCDiskAttributeRequest,
     ModifyRCDiskAttributeResponseBody,
     ModifyRCDiskAttributeResponse,
