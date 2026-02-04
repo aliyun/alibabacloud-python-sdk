@@ -11,8 +11,11 @@ class RefreshAppInstanceTicketRequest(DaraModel):
         token: str = None,
         uuid: str = None,
     ):
+        # Business ID of the application instance
         self.biz_id = biz_id
+        # Updated token information
         self.token = token
+        # The UUID of the server.
         self.uuid = uuid
 
     def validate(self):

@@ -14,11 +14,17 @@ class SetAppDomainCertificateRequest(DaraModel):
         private_key: str = None,
         public_key: str = None,
     ):
+        # Business ID of the application instance
         self.biz_id = biz_id
+        # SSL certificate name
         self.certificate_name = certificate_name
+        # Certificate type: Default free certificate or customer\\"s own certificate
         self.certificate_type = certificate_type
+        # Domain name
         self.domain_name = domain_name
+        # Private key
         self.private_key = private_key
+        # Public key
         self.public_key = public_key
 
     def validate(self):

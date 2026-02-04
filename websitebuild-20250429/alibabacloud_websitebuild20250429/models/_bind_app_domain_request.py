@@ -12,9 +12,13 @@ class BindAppDomainRequest(DaraModel):
         extend: str = None,
         operate_type: str = None,
     ):
+        # Business ID
         self.biz_id = biz_id
+        # Domain Name
         self.domain_name = domain_name
+        # Extended Information (OverwriteExistingRecord)
         self.extend = extend
+        # Domain Binding - Operation Type
         self.operate_type = operate_type
 
     def validate(self):

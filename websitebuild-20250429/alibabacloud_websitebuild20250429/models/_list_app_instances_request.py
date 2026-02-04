@@ -22,17 +22,31 @@ class ListAppInstancesRequest(DaraModel):
         query: str = None,
         status_list: List[str] = None,
     ):
+        # Business ID
         self.biz_id = biz_id
+        # End time start
         self.end_time_begin = end_time_begin
+        # End time end
         self.end_time_end = end_time_end
+        # Extended information
         self.extend = extend
+        # Number of results per query.
+        # 
+        # Range: 10~100. Default value: 20.
         self.max_results = max_results
+        # Token for the next query. It will be empty if there is no next query.
         self.next_token = next_token
+        # Order column
         self.order_column = order_column
+        # Order type ASC|DESC
         self.order_type = order_type
+        # Page number, default is 1
         self.page_num = page_num
+        # Page size, default is 10
         self.page_size = page_size
+        # Query parameter
         self.query = query
+        # Status range
         self.status_list = status_list
 
     def validate(self):

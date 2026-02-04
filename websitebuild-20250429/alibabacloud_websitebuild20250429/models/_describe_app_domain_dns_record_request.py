@@ -11,8 +11,11 @@ class DescribeAppDomainDnsRecordRequest(DaraModel):
         domain_name: str = None,
         purpose: str = None,
     ):
+        # Business ID
         self.biz_id = biz_id
+        # Domain name
         self.domain_name = domain_name
+        # Purpose for querying DNS configuration
         self.purpose = purpose
 
     def validate(self):

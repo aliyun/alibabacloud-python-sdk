@@ -1,3 +1,7 @@
+2026-02-04 Version: 2.9.0
+- Support API IntrospectAppInstanceTicketForPreview.
+
+
 2026-01-19 Version: 2.8.3
 - Update API RefundAppInstanceForPartner: add request parameters ClientToken.
 

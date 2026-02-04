@@ -1168,6 +1168,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_user_tmp_identity_for_partner_with_options_async(request, runtime)
 
+    def introspect_app_instance_ticket_for_preview_with_options(
+        self,
+        request: main_models.IntrospectAppInstanceTicketForPreviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.IntrospectAppInstanceTicketForPreviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'IntrospectAppInstanceTicketForPreview',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.IntrospectAppInstanceTicketForPreviewResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def introspect_app_instance_ticket_for_preview_with_options_async(
+        self,
+        request: main_models.IntrospectAppInstanceTicketForPreviewRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.IntrospectAppInstanceTicketForPreviewResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.token):
+            query['Token'] = request.token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'IntrospectAppInstanceTicketForPreview',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.IntrospectAppInstanceTicketForPreviewResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def introspect_app_instance_ticket_for_preview(
+        self,
+        request: main_models.IntrospectAppInstanceTicketForPreviewRequest,
+    ) -> main_models.IntrospectAppInstanceTicketForPreviewResponse:
+        runtime = RuntimeOptions()
+        return self.introspect_app_instance_ticket_for_preview_with_options(request, runtime)
+
+    async def introspect_app_instance_ticket_for_preview_async(
+        self,
+        request: main_models.IntrospectAppInstanceTicketForPreviewRequest,
+    ) -> main_models.IntrospectAppInstanceTicketForPreviewResponse:
+        runtime = RuntimeOptions()
+        return await self.introspect_app_instance_ticket_for_preview_with_options_async(request, runtime)
+
     def list_app_domain_redirect_records_with_options(
         self,
         request: main_models.ListAppDomainRedirectRecordsRequest,

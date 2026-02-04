@@ -10,7 +10,9 @@ class CreateAppInstanceTicketRequest(DaraModel):
         biz_id: str = None,
         client_id: str = None,
     ):
+        # Customer business ID
         self.biz_id = biz_id
+        # Client ID of the device that needs to revoke the access token.
         self.client_id = client_id
 
     def validate(self):

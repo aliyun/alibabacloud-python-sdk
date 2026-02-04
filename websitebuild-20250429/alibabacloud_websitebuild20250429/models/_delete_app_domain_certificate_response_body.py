@@ -22,17 +22,29 @@ class DeleteAppDomainCertificateResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Details of permission check failure
         self.access_denied_detail = access_denied_detail
+        # Whether retry is allowed. Values:
+        # - false: Not allowed to retry.
+        # - true: Allowed to retry.
         self.allow_retry = allow_retry
+        # Application name. Allows a combination of numbers, letters, and hyphens (-). Must start with a letter, cannot end with a hyphen (-), and must not exceed 36 characters.
         self.app_name = app_name
+        # Dynamic code, not in use, please ignore
         self.dynamic_code = dynamic_code
+        # Dynamic message.
         self.dynamic_message = dynamic_message
+        # Returned error parameters
         self.error_args = error_args
+        # Response data
         self.module = module
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Error code
         self.root_error_code = root_error_code
+        # Exception message
         self.root_error_msg = root_error_msg
+        # Whether it is processed synchronously
         self.synchro = synchro
 
     def validate(self):
@@ -122,6 +134,7 @@ class DeleteAppDomainCertificateResponseBodyModule(DaraModel):
         self,
         success: bool = None,
     ):
+        # Whether it was successful
         self.success = success
 
     def validate(self):

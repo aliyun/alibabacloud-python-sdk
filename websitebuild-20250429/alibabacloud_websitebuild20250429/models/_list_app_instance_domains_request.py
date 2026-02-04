@@ -15,12 +15,21 @@ class ListAppInstanceDomainsRequest(DaraModel):
         page_num: int = None,
         page_size: int = None,
     ):
+        # Business ID
         self.biz_id = biz_id
+        # Number of results per query.
+        # 
+        # Range: 10~100. Default value: 20.
         self.max_results = max_results
+        # Token for the next query. It will be empty if there is no next query.
         self.next_token = next_token
+        # Sorting field
         self.order_column = order_column
+        # Sorting type ASC|DESC
         self.order_type = order_type
+        # Page number, default is 1
         self.page_num = page_num
+        # Page size, default is 10
         self.page_size = page_size
 
     def validate(self):

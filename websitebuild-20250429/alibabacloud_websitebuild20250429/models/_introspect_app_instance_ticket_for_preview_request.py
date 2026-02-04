@@ -4,16 +4,14 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class UnbindAppDomainRequest(DaraModel):
+class IntrospectAppInstanceTicketForPreviewRequest(DaraModel):
     def __init__(
         self,
         biz_id: str = None,
-        domain_name: str = None,
+        token: str = None,
     ):
-        # Business ID
         self.biz_id = biz_id
-        # Domain Name
-        self.domain_name = domain_name
+        self.token = token
 
     def validate(self):
         pass
@@ -26,8 +24,8 @@ class UnbindAppDomainRequest(DaraModel):
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
 
-        if self.domain_name is not None:
-            result['DomainName'] = self.domain_name
+        if self.token is not None:
+            result['Token'] = self.token
 
         return result
 
@@ -36,8 +34,8 @@ class UnbindAppDomainRequest(DaraModel):
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
 
-        if m.get('DomainName') is not None:
-            self.domain_name = m.get('DomainName')
+        if m.get('Token') is not None:
+            self.token = m.get('Token')
 
         return self
 

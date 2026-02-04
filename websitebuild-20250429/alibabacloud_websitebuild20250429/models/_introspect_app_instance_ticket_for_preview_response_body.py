@@ -7,7 +7,7 @@ from typing import List, Any
 from alibabacloud_websitebuild20250429 import models as main_models
 from darabonba.model import DaraModel
 
-class CreateAppInstanceTicketResponseBody(DaraModel):
+class IntrospectAppInstanceTicketForPreviewResponseBody(DaraModel):
     def __init__(
         self,
         access_denied_detail: str = None,
@@ -16,34 +16,23 @@ class CreateAppInstanceTicketResponseBody(DaraModel):
         dynamic_code: str = None,
         dynamic_message: str = None,
         error_args: List[Any] = None,
-        module: main_models.CreateAppInstanceTicketResponseBodyModule = None,
+        module: main_models.IntrospectAppInstanceTicketForPreviewResponseBodyModule = None,
         request_id: str = None,
         root_error_code: str = None,
         root_error_msg: str = None,
         synchro: bool = None,
     ):
-        # Detailed reason for access denial.
         self.access_denied_detail = access_denied_detail
-        # Whether to allow retry
         self.allow_retry = allow_retry
-        # App name.
         self.app_name = app_name
-        # Dynamic error code.
         self.dynamic_code = dynamic_code
-        # Dynamic error message, used to replace the `%s` in the **ErrMessage** error message.
-        # > If **ErrMessage** returns **The Value of Input Parameter %s is not valid**, and **DynamicMessage** returns **DtsJobId**, it means that the input request parameter **DtsJobId** is invalid.
         self.dynamic_message = dynamic_message
-        # Returned error parameters
         self.error_args = error_args
-        # Response data
         self.module = module
-        # ID of the request
+        # Id of the request
         self.request_id = request_id
-        # Error code
         self.root_error_code = root_error_code
-        # Exception message
         self.root_error_msg = root_error_msg
-        # Reserved parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -111,7 +100,7 @@ class CreateAppInstanceTicketResponseBody(DaraModel):
             self.error_args = m.get('ErrorArgs')
 
         if m.get('Module') is not None:
-            temp_model = main_models.CreateAppInstanceTicketResponseBodyModule()
+            temp_model = main_models.IntrospectAppInstanceTicketForPreviewResponseBodyModule()
             self.module = temp_model.from_map(m.get('Module'))
 
         if m.get('RequestId') is not None:
@@ -128,7 +117,7 @@ class CreateAppInstanceTicketResponseBody(DaraModel):
 
         return self
 
-class CreateAppInstanceTicketResponseBodyModule(DaraModel):
+class IntrospectAppInstanceTicketForPreviewResponseBodyModule(DaraModel):
     def __init__(
         self,
         access_token_expires_at: str = None,
@@ -144,29 +133,19 @@ class CreateAppInstanceTicketResponseBodyModule(DaraModel):
         refresh_token_value: str = None,
         uuid: str = None,
     ):
-        # Access token expiration time
         self.access_token_expires_at = access_token_expires_at
-        # Access token issuance time
         self.access_token_issued_at = access_token_issued_at
-        # Access token value
         self.access_token_value = access_token_value
-        # User ID
+        # aliyunPk
         self.aliyun_pk = aliyun_pk
-        # Extended attributes
         self.attributes = attributes
-        # Authorization grant type
         self.authorization_grant_type = authorization_grant_type
         # bid
         self.bid = bid
-        # User ID
         self.parent_pk = parent_pk
-        # Refresh token expiration time
         self.refresh_token_expires_at = refresh_token_expires_at
-        # Refresh token issuance time
         self.refresh_token_issued_at = refresh_token_issued_at
-        # Refresh token value
         self.refresh_token_value = refresh_token_value
-        # Unique identifier externally
         self.uuid = uuid
 
     def validate(self):

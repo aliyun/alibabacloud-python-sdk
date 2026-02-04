@@ -14,11 +14,17 @@ class RenewAppInstanceRequest(DaraModel):
         payment_type: str = None,
         pricing_cycle: str = None,
     ):
+        # Business ID
         self.biz_id = biz_id
+        # Ensures idempotence of requests. Generate a unique value from your client to ensure it is unique across different requests. ClientToken only supports ASCII characters and cannot exceed 64 characters.
         self.client_token = client_token
+        # Required. The number of subscription periods.
         self.duration = duration
+        # Extended information
         self.extend = extend
+        # Payment type
         self.payment_type = payment_type
+        # Required. The unit of the subscription period, Year: Year, Month: Month, Day: Day, Hour: Hour.
         self.pricing_cycle = pricing_cycle
 
     def validate(self):

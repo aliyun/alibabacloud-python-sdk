@@ -22,17 +22,27 @@ class DescribeAppDomainDnsRecordResponseBody(DaraModel):
         root_error_msg: str = None,
         synchro: bool = None,
     ):
+        # Details of access denial; this field is returned only when RAM verification fails.
         self.access_denied_detail = access_denied_detail
+        # Whether retry is allowed
         self.allow_retry = allow_retry
+        # 应用名称，查询此名称的应用
         self.app_name = app_name
+        # Dynamic error code.
         self.dynamic_code = dynamic_code
+        # Dynamic message.
         self.dynamic_message = dynamic_message
+        # 返回错误参数
         self.error_args = error_args
+        # Application module
         self.module = module
-        # Id of the request
+        # ID of the request
         self.request_id = request_id
+        # Error code
         self.root_error_code = root_error_code
+        # Exception message
         self.root_error_msg = root_error_msg
+        # Backup parameter.
         self.synchro = synchro
 
     def validate(self):
@@ -124,8 +134,11 @@ class DescribeAppDomainDnsRecordResponseBodyModule(DaraModel):
         record_type: str = None,
         value: str = None,
     ):
+        # Host record
         self.host = host
+        # Record type
         self.record_type = record_type
+        # Record value
         self.value = value
 
     def validate(self):
