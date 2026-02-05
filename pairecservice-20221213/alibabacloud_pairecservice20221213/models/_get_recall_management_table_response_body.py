@@ -16,7 +16,7 @@ class GetRecallManagementTableResponseBody(DaraModel):
         description: str = None,
         enable_data_size_fluctuation_threshold: bool = None,
         enable_row_count_fluctuation_threshold: bool = None,
-        fields: main_models.GetRecallManagementTableResponseBodyFields = None,
+        fields: List[main_models.GetRecallManagementTableResponseBodyFields] = None,
         gmt_create_time: str = None,
         gmt_modified_time: str = None,
         index_effective_time: str = None,
@@ -63,7 +63,9 @@ class GetRecallManagementTableResponseBody(DaraModel):
 
     def validate(self):
         if self.fields:
-            self.fields.validate()
+            for v1 in self.fields:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -88,8 +90,10 @@ class GetRecallManagementTableResponseBody(DaraModel):
         if self.enable_row_count_fluctuation_threshold is not None:
             result['EnableRowCountFluctuationThreshold'] = self.enable_row_count_fluctuation_threshold
 
+        result['Fields'] = []
         if self.fields is not None:
-            result['Fields'] = self.fields.to_map()
+            for k1 in self.fields:
+                result['Fields'].append(k1.to_map() if k1 else None)
 
         if self.gmt_create_time is not None:
             result['GmtCreateTime'] = self.gmt_create_time
@@ -164,9 +168,11 @@ class GetRecallManagementTableResponseBody(DaraModel):
         if m.get('EnableRowCountFluctuationThreshold') is not None:
             self.enable_row_count_fluctuation_threshold = m.get('EnableRowCountFluctuationThreshold')
 
+        self.fields = []
         if m.get('Fields') is not None:
-            temp_model = main_models.GetRecallManagementTableResponseBodyFields()
-            self.fields = temp_model.from_map(m.get('Fields'))
+            for k1 in m.get('Fields'):
+                temp_model = main_models.GetRecallManagementTableResponseBodyFields()
+                self.fields.append(temp_model.from_map(k1))
 
         if m.get('GmtCreateTime') is not None:
             self.gmt_create_time = m.get('GmtCreateTime')

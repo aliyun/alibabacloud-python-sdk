@@ -1,3 +1,8 @@
+2026-02-05 Version: 5.0.0
+- Update API GetRecallManagementTable: update response parameters Body.Fields' type has changed.
+- Update API GetRecallManagementTable: delete response parameters Body.Fields.
+
+
 2026-02-02 Version: 4.1.1
 - Update API GetRecallManagementJob: add response parameters Body.RecallManagementTableInfo.
 - Update API ListRecallManagementJobs: add response parameters Body.RecallManagementJobs.$.RecallManagementTableInfo.
