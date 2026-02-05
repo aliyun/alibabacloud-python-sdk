@@ -10,10 +10,13 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         app_name: str = None,
         app_type: str = None,
         dbinstance_name: str = None,
+        eip_id: str = None,
         eip_status: str = None,
         instance_class: str = None,
         instance_minor_version: str = None,
         instance_name: str = None,
+        nat_created_by: str = None,
+        nat_gateway_id: str = None,
         nat_status: str = None,
         public_connection_string: str = None,
         region_id: str = None,
@@ -29,6 +32,7 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         self.app_type = app_type
         # The ID of the RDS for PostgreSQL instance with which the RDS Supabase instances are associated.
         self.dbinstance_name = dbinstance_name
+        self.eip_id = eip_id
         self.eip_status = eip_status
         # The instance type of the RDS Supabase instance.
         self.instance_class = instance_class
@@ -36,6 +40,8 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         self.instance_minor_version = instance_minor_version
         # The ID of the RDS Supabase instance.
         self.instance_name = instance_name
+        self.nat_created_by = nat_created_by
+        self.nat_gateway_id = nat_gateway_id
         self.nat_status = nat_status
         # The public endpoint of the AI application.
         self.public_connection_string = public_connection_string
@@ -69,6 +75,9 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         if self.dbinstance_name is not None:
             result['DBInstanceName'] = self.dbinstance_name
 
+        if self.eip_id is not None:
+            result['EipId'] = self.eip_id
+
         if self.eip_status is not None:
             result['EipStatus'] = self.eip_status
 
@@ -80,6 +89,12 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
 
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+
+        if self.nat_created_by is not None:
+            result['NatCreatedBy'] = self.nat_created_by
+
+        if self.nat_gateway_id is not None:
+            result['NatGatewayId'] = self.nat_gateway_id
 
         if self.nat_status is not None:
             result['NatStatus'] = self.nat_status
@@ -118,6 +133,9 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
         if m.get('DBInstanceName') is not None:
             self.dbinstance_name = m.get('DBInstanceName')
 
+        if m.get('EipId') is not None:
+            self.eip_id = m.get('EipId')
+
         if m.get('EipStatus') is not None:
             self.eip_status = m.get('EipStatus')
 
@@ -129,6 +147,12 @@ class DescribeAppInstanceAttributeResponseBody(DaraModel):
 
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+
+        if m.get('NatCreatedBy') is not None:
+            self.nat_created_by = m.get('NatCreatedBy')
+
+        if m.get('NatGatewayId') is not None:
+            self.nat_gateway_id = m.get('NatGatewayId')
 
         if m.get('NatStatus') is not None:
             self.nat_status = m.get('NatStatus')

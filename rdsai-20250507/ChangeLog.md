@@ -1,3 +1,18 @@
+2026-02-05 Version: 2.2.0
+- Support API CreateInspectionTask.
+- Support API CreateScheduledTask.
+- Support API DeleteScheduledTask.
+- Support API GetInspectionReport.
+- Support API GetScheduledInstances.
+- Support API GetScheduledReports.
+- Support API GetStandAloneReports.
+- Support API ListScheduledTasks.
+- Support API ModifyScheduledTask.
+- Update API DescribeAppInstanceAttribute: add response parameters Body.EipId.
+- Update API DescribeAppInstanceAttribute: add response parameters Body.NatCreatedBy.
+- Update API DescribeAppInstanceAttribute: add response parameters Body.NatGatewayId.
+
+
 2026-02-02 Version: 2.1.1
 - Update API CreateCustomAgent: add request parameters SkillIds.
 - Update API CreateCustomAgent: add response parameters Body.Skills.

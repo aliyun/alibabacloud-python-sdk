@@ -17,12 +17,21 @@ from ._create_custom_agent_request import CreateCustomAgentRequest
 from ._create_custom_agent_shrink_request import CreateCustomAgentShrinkRequest
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBody
 from ._create_custom_agent_response import CreateCustomAgentResponse
+from ._create_inspection_task_request import CreateInspectionTaskRequest
+from ._create_inspection_task_response_body import CreateInspectionTaskResponseBody
+from ._create_inspection_task_response import CreateInspectionTaskResponse
+from ._create_scheduled_task_request import CreateScheduledTaskRequest
+from ._create_scheduled_task_response_body import CreateScheduledTaskResponseBody
+from ._create_scheduled_task_response import CreateScheduledTaskResponse
 from ._delete_app_instance_request import DeleteAppInstanceRequest
 from ._delete_app_instance_response_body import DeleteAppInstanceResponseBody
 from ._delete_app_instance_response import DeleteAppInstanceResponse
 from ._delete_custom_agent_request import DeleteCustomAgentRequest
 from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBody
 from ._delete_custom_agent_response import DeleteCustomAgentResponse
+from ._delete_scheduled_task_request import DeleteScheduledTaskRequest
+from ._delete_scheduled_task_response_body import DeleteScheduledTaskResponseBody
+from ._delete_scheduled_task_response import DeleteScheduledTaskResponse
 from ._describe_app_instance_attribute_request import DescribeAppInstanceAttributeRequest
 from ._describe_app_instance_attribute_response_body import DescribeAppInstanceAttributeResponseBody
 from ._describe_app_instance_attribute_response import DescribeAppInstanceAttributeResponse
@@ -56,14 +65,29 @@ from ._get_conversations_response import GetConversationsResponse
 from ._get_custom_agent_request import GetCustomAgentRequest
 from ._get_custom_agent_response_body import GetCustomAgentResponseBody
 from ._get_custom_agent_response import GetCustomAgentResponse
+from ._get_inspection_report_request import GetInspectionReportRequest
+from ._get_inspection_report_response_body import GetInspectionReportResponseBody
+from ._get_inspection_report_response import GetInspectionReportResponse
 from ._get_messages_request import GetMessagesRequest
 from ._get_messages_response_body import GetMessagesResponseBody
 from ._get_messages_response import GetMessagesResponse
+from ._get_scheduled_instances_request import GetScheduledInstancesRequest
+from ._get_scheduled_instances_response_body import GetScheduledInstancesResponseBody
+from ._get_scheduled_instances_response import GetScheduledInstancesResponse
+from ._get_scheduled_reports_request import GetScheduledReportsRequest
+from ._get_scheduled_reports_response_body import GetScheduledReportsResponseBody
+from ._get_scheduled_reports_response import GetScheduledReportsResponse
+from ._get_stand_alone_reports_request import GetStandAloneReportsRequest
+from ._get_stand_alone_reports_response_body import GetStandAloneReportsResponseBody
+from ._get_stand_alone_reports_response import GetStandAloneReportsResponse
 from ._list_custom_agent_request import ListCustomAgentRequest
 from ._list_custom_agent_response_body import ListCustomAgentResponseBody
 from ._list_custom_agent_response import ListCustomAgentResponse
 from ._list_custom_agent_tools_response_body import ListCustomAgentToolsResponseBody
 from ._list_custom_agent_tools_response import ListCustomAgentToolsResponse
+from ._list_scheduled_tasks_request import ListScheduledTasksRequest
+from ._list_scheduled_tasks_response_body import ListScheduledTasksResponseBody
+from ._list_scheduled_tasks_response import ListScheduledTasksResponse
 from ._modify_instance_auth_config_request import ModifyInstanceAuthConfigRequest
 from ._modify_instance_auth_config_shrink_request import ModifyInstanceAuthConfigShrinkRequest
 from ._modify_instance_auth_config_response_body import ModifyInstanceAuthConfigResponseBody
@@ -92,6 +116,9 @@ from ._modify_instances_sslresponse import ModifyInstancesSSLResponse
 from ._modify_messages_feedbacks_request import ModifyMessagesFeedbacksRequest
 from ._modify_messages_feedbacks_response_body import ModifyMessagesFeedbacksResponseBody
 from ._modify_messages_feedbacks_response import ModifyMessagesFeedbacksResponse
+from ._modify_scheduled_task_request import ModifyScheduledTaskRequest
+from ._modify_scheduled_task_response_body import ModifyScheduledTaskResponseBody
+from ._modify_scheduled_task_response import ModifyScheduledTaskResponse
 from ._reset_instance_password_request import ResetInstancePasswordRequest
 from ._reset_instance_password_response_body import ResetInstancePasswordResponseBody
 from ._reset_instance_password_response import ResetInstancePasswordResponse
@@ -111,6 +138,7 @@ from ._update_custom_agent_response import UpdateCustomAgentResponse
 from ._chat_messages_request import ChatMessagesRequestInputs
 from ._create_app_instance_request import CreateAppInstanceRequestDBInstanceConfig
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodySkills
+from ._create_inspection_task_response_body import CreateInspectionTaskResponseBodyData
 from ._describe_app_instances_response_body import DescribeAppInstancesResponseBodyInstances
 from ._describe_events_list_response_body import DescribeEventsListResponseBodyEvents
 from ._describe_instance_auth_info_response_body import DescribeInstanceAuthInfoResponseBodyApiKeys
@@ -122,11 +150,20 @@ from ._describe_instance_ragconfig_response_body import DescribeInstanceRAGConfi
 from ._describe_instance_storage_config_response_body import DescribeInstanceStorageConfigResponseBodyConfigList
 from ._get_conversations_response_body import GetConversationsResponseBodyData
 from ._get_custom_agent_response_body import GetCustomAgentResponseBodySkills
+from ._get_inspection_report_response_body import GetInspectionReportResponseBodyDataDataItemsData
+from ._get_inspection_report_response_body import GetInspectionReportResponseBodyDataDataItems
+from ._get_inspection_report_response_body import GetInspectionReportResponseBodyDataData
+from ._get_inspection_report_response_body import GetInspectionReportResponseBodyDataLevelSummary
+from ._get_inspection_report_response_body import GetInspectionReportResponseBodyData
 from ._get_messages_response_body import GetMessagesResponseBodyDataEvents
 from ._get_messages_response_body import GetMessagesResponseBodyData
+from ._get_scheduled_instances_response_body import GetScheduledInstancesResponseBodyInstances
+from ._get_scheduled_reports_response_body import GetScheduledReportsResponseBodyReports
+from ._get_stand_alone_reports_response_body import GetStandAloneReportsResponseBodyReports
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodyData
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodySkills
 from ._list_custom_agent_tools_response_body import ListCustomAgentToolsResponseBodyData
+from ._list_scheduled_tasks_response_body import ListScheduledTasksResponseBodySchedules
 from ._modify_instance_auth_config_request import ModifyInstanceAuthConfigRequestConfigList
 from ._modify_instance_ragconfig_request import ModifyInstanceRAGConfigRequestConfigList
 from ._modify_instance_storage_config_request import ModifyInstanceStorageConfigRequestConfigList
@@ -148,12 +185,21 @@ __all__ = [
     CreateCustomAgentShrinkRequest,
     CreateCustomAgentResponseBody,
     CreateCustomAgentResponse,
+    CreateInspectionTaskRequest,
+    CreateInspectionTaskResponseBody,
+    CreateInspectionTaskResponse,
+    CreateScheduledTaskRequest,
+    CreateScheduledTaskResponseBody,
+    CreateScheduledTaskResponse,
     DeleteAppInstanceRequest,
     DeleteAppInstanceResponseBody,
     DeleteAppInstanceResponse,
     DeleteCustomAgentRequest,
     DeleteCustomAgentResponseBody,
     DeleteCustomAgentResponse,
+    DeleteScheduledTaskRequest,
+    DeleteScheduledTaskResponseBody,
+    DeleteScheduledTaskResponse,
     DescribeAppInstanceAttributeRequest,
     DescribeAppInstanceAttributeResponseBody,
     DescribeAppInstanceAttributeResponse,
@@ -187,14 +233,29 @@ __all__ = [
     GetCustomAgentRequest,
     GetCustomAgentResponseBody,
     GetCustomAgentResponse,
+    GetInspectionReportRequest,
+    GetInspectionReportResponseBody,
+    GetInspectionReportResponse,
     GetMessagesRequest,
     GetMessagesResponseBody,
     GetMessagesResponse,
+    GetScheduledInstancesRequest,
+    GetScheduledInstancesResponseBody,
+    GetScheduledInstancesResponse,
+    GetScheduledReportsRequest,
+    GetScheduledReportsResponseBody,
+    GetScheduledReportsResponse,
+    GetStandAloneReportsRequest,
+    GetStandAloneReportsResponseBody,
+    GetStandAloneReportsResponse,
     ListCustomAgentRequest,
     ListCustomAgentResponseBody,
     ListCustomAgentResponse,
     ListCustomAgentToolsResponseBody,
     ListCustomAgentToolsResponse,
+    ListScheduledTasksRequest,
+    ListScheduledTasksResponseBody,
+    ListScheduledTasksResponse,
     ModifyInstanceAuthConfigRequest,
     ModifyInstanceAuthConfigShrinkRequest,
     ModifyInstanceAuthConfigResponseBody,
@@ -223,6 +284,9 @@ __all__ = [
     ModifyMessagesFeedbacksRequest,
     ModifyMessagesFeedbacksResponseBody,
     ModifyMessagesFeedbacksResponse,
+    ModifyScheduledTaskRequest,
+    ModifyScheduledTaskResponseBody,
+    ModifyScheduledTaskResponse,
     ResetInstancePasswordRequest,
     ResetInstancePasswordResponseBody,
     ResetInstancePasswordResponse,
@@ -242,6 +306,7 @@ __all__ = [
     ChatMessagesRequestInputs,
     CreateAppInstanceRequestDBInstanceConfig,
     CreateCustomAgentResponseBodySkills,
+    CreateInspectionTaskResponseBodyData,
     DescribeAppInstancesResponseBodyInstances,
     DescribeEventsListResponseBodyEvents,
     DescribeInstanceAuthInfoResponseBodyApiKeys,
@@ -253,11 +318,20 @@ __all__ = [
     DescribeInstanceStorageConfigResponseBodyConfigList,
     GetConversationsResponseBodyData,
     GetCustomAgentResponseBodySkills,
+    GetInspectionReportResponseBodyDataDataItemsData,
+    GetInspectionReportResponseBodyDataDataItems,
+    GetInspectionReportResponseBodyDataData,
+    GetInspectionReportResponseBodyDataLevelSummary,
+    GetInspectionReportResponseBodyData,
     GetMessagesResponseBodyDataEvents,
     GetMessagesResponseBodyData,
+    GetScheduledInstancesResponseBodyInstances,
+    GetScheduledReportsResponseBodyReports,
+    GetStandAloneReportsResponseBodyReports,
     ListCustomAgentResponseBodyData,
     ListCustomAgentResponseBodySkills,
     ListCustomAgentToolsResponseBodyData,
+    ListScheduledTasksResponseBodySchedules,
     ModifyInstanceAuthConfigRequestConfigList,
     ModifyInstanceRAGConfigRequestConfigList,
     ModifyInstanceStorageConfigRequestConfigList,

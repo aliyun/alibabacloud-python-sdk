@@ -537,6 +537,178 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_custom_agent_with_options_async(request, runtime)
 
+    def create_inspection_task_with_options(
+        self,
+        request: main_models.CreateInspectionTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInspectionTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.inspection_items):
+            query['InspectionItems'] = request.inspection_items
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInspectionTask',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInspectionTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_inspection_task_with_options_async(
+        self,
+        request: main_models.CreateInspectionTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateInspectionTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.inspection_items):
+            query['InspectionItems'] = request.inspection_items
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateInspectionTask',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateInspectionTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_inspection_task(
+        self,
+        request: main_models.CreateInspectionTaskRequest,
+    ) -> main_models.CreateInspectionTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_inspection_task_with_options(request, runtime)
+
+    async def create_inspection_task_async(
+        self,
+        request: main_models.CreateInspectionTaskRequest,
+    ) -> main_models.CreateInspectionTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_inspection_task_with_options_async(request, runtime)
+
+    def create_scheduled_task_with_options(
+        self,
+        request: main_models.CreateScheduledTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateScheduledTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.frequency):
+            query['Frequency'] = request.frequency
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.time_range):
+            query['TimeRange'] = request.time_range
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateScheduledTask',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateScheduledTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_scheduled_task_with_options_async(
+        self,
+        request: main_models.CreateScheduledTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateScheduledTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.frequency):
+            query['Frequency'] = request.frequency
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.time_range):
+            query['TimeRange'] = request.time_range
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateScheduledTask',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateScheduledTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_scheduled_task(
+        self,
+        request: main_models.CreateScheduledTaskRequest,
+    ) -> main_models.CreateScheduledTaskResponse:
+        runtime = RuntimeOptions()
+        return self.create_scheduled_task_with_options(request, runtime)
+
+    async def create_scheduled_task_async(
+        self,
+        request: main_models.CreateScheduledTaskRequest,
+    ) -> main_models.CreateScheduledTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.create_scheduled_task_with_options_async(request, runtime)
+
     def delete_app_instance_with_options(
         self,
         request: main_models.DeleteAppInstanceRequest,
@@ -684,6 +856,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteCustomAgentResponse:
         runtime = RuntimeOptions()
         return await self.delete_custom_agent_with_options_async(request, runtime)
+
+    def delete_scheduled_task_with_options(
+        self,
+        request: main_models.DeleteScheduledTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteScheduledTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.scheduled_id):
+            query['ScheduledId'] = request.scheduled_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteScheduledTask',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteScheduledTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_scheduled_task_with_options_async(
+        self,
+        request: main_models.DeleteScheduledTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteScheduledTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.scheduled_id):
+            query['ScheduledId'] = request.scheduled_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteScheduledTask',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteScheduledTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_scheduled_task(
+        self,
+        request: main_models.DeleteScheduledTaskRequest,
+    ) -> main_models.DeleteScheduledTaskResponse:
+        runtime = RuntimeOptions()
+        return self.delete_scheduled_task_with_options(request, runtime)
+
+    async def delete_scheduled_task_async(
+        self,
+        request: main_models.DeleteScheduledTaskRequest,
+    ) -> main_models.DeleteScheduledTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_scheduled_task_with_options_async(request, runtime)
 
     def describe_app_instance_attribute_with_options(
         self,
@@ -1535,6 +1777,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_custom_agent_with_options_async(request, runtime)
 
+    def get_inspection_report_with_options(
+        self,
+        request: main_models.GetInspectionReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInspectionReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInspectionReport',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInspectionReportResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_inspection_report_with_options_async(
+        self,
+        request: main_models.GetInspectionReportRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetInspectionReportResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetInspectionReport',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetInspectionReportResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_inspection_report(
+        self,
+        request: main_models.GetInspectionReportRequest,
+    ) -> main_models.GetInspectionReportResponse:
+        runtime = RuntimeOptions()
+        return self.get_inspection_report_with_options(request, runtime)
+
+    async def get_inspection_report_async(
+        self,
+        request: main_models.GetInspectionReportRequest,
+    ) -> main_models.GetInspectionReportResponse:
+        runtime = RuntimeOptions()
+        return await self.get_inspection_report_with_options_async(request, runtime)
+
     def get_messages_with_options(
         self,
         request: main_models.GetMessagesRequest,
@@ -1616,6 +1932,252 @@ class Client(OpenApiClient):
     ) -> main_models.GetMessagesResponse:
         runtime = RuntimeOptions()
         return await self.get_messages_with_options_async(request, runtime)
+
+    def get_scheduled_instances_with_options(
+        self,
+        request: main_models.GetScheduledInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetScheduledInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scheduled_id):
+            query['ScheduledId'] = request.scheduled_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetScheduledInstances',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetScheduledInstancesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_scheduled_instances_with_options_async(
+        self,
+        request: main_models.GetScheduledInstancesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetScheduledInstancesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scheduled_id):
+            query['ScheduledId'] = request.scheduled_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetScheduledInstances',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetScheduledInstancesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_scheduled_instances(
+        self,
+        request: main_models.GetScheduledInstancesRequest,
+    ) -> main_models.GetScheduledInstancesResponse:
+        runtime = RuntimeOptions()
+        return self.get_scheduled_instances_with_options(request, runtime)
+
+    async def get_scheduled_instances_async(
+        self,
+        request: main_models.GetScheduledInstancesRequest,
+    ) -> main_models.GetScheduledInstancesResponse:
+        runtime = RuntimeOptions()
+        return await self.get_scheduled_instances_with_options_async(request, runtime)
+
+    def get_scheduled_reports_with_options(
+        self,
+        request: main_models.GetScheduledReportsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetScheduledReportsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scheduled_id):
+            query['ScheduledId'] = request.scheduled_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetScheduledReports',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetScheduledReportsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_scheduled_reports_with_options_async(
+        self,
+        request: main_models.GetScheduledReportsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetScheduledReportsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scheduled_id):
+            query['ScheduledId'] = request.scheduled_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetScheduledReports',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetScheduledReportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_scheduled_reports(
+        self,
+        request: main_models.GetScheduledReportsRequest,
+    ) -> main_models.GetScheduledReportsResponse:
+        runtime = RuntimeOptions()
+        return self.get_scheduled_reports_with_options(request, runtime)
+
+    async def get_scheduled_reports_async(
+        self,
+        request: main_models.GetScheduledReportsRequest,
+    ) -> main_models.GetScheduledReportsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_scheduled_reports_with_options_async(request, runtime)
+
+    def get_stand_alone_reports_with_options(
+        self,
+        request: main_models.GetStandAloneReportsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetStandAloneReportsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetStandAloneReports',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetStandAloneReportsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_stand_alone_reports_with_options_async(
+        self,
+        request: main_models.GetStandAloneReportsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetStandAloneReportsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.end_time):
+            query['EndTime'] = request.end_time
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetStandAloneReports',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetStandAloneReportsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_stand_alone_reports(
+        self,
+        request: main_models.GetStandAloneReportsRequest,
+    ) -> main_models.GetStandAloneReportsResponse:
+        runtime = RuntimeOptions()
+        return self.get_stand_alone_reports_with_options(request, runtime)
+
+    async def get_stand_alone_reports_async(
+        self,
+        request: main_models.GetStandAloneReportsRequest,
+    ) -> main_models.GetStandAloneReportsResponse:
+        runtime = RuntimeOptions()
+        return await self.get_stand_alone_reports_with_options_async(request, runtime)
 
     def list_custom_agent_with_options(
         self,
@@ -1740,6 +2302,84 @@ class Client(OpenApiClient):
     async def list_custom_agent_tools_async(self) -> main_models.ListCustomAgentToolsResponse:
         runtime = RuntimeOptions()
         return await self.list_custom_agent_tools_with_options_async(runtime)
+
+    def list_scheduled_tasks_with_options(
+        self,
+        request: main_models.ListScheduledTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListScheduledTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scheduled_id):
+            query['ScheduledId'] = request.scheduled_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListScheduledTasks',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListScheduledTasksResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_scheduled_tasks_with_options_async(
+        self,
+        request: main_models.ListScheduledTasksRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListScheduledTasksResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.scheduled_id):
+            query['ScheduledId'] = request.scheduled_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListScheduledTasks',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListScheduledTasksResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_scheduled_tasks(
+        self,
+        request: main_models.ListScheduledTasksRequest,
+    ) -> main_models.ListScheduledTasksResponse:
+        runtime = RuntimeOptions()
+        return self.list_scheduled_tasks_with_options(request, runtime)
+
+    async def list_scheduled_tasks_async(
+        self,
+        request: main_models.ListScheduledTasksRequest,
+    ) -> main_models.ListScheduledTasksResponse:
+        runtime = RuntimeOptions()
+        return await self.list_scheduled_tasks_with_options_async(request, runtime)
 
     def modify_instance_auth_config_with_options(
         self,
@@ -2452,6 +3092,100 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyMessagesFeedbacksResponse:
         runtime = RuntimeOptions()
         return await self.modify_messages_feedbacks_with_options_async(request, runtime)
+
+    def modify_scheduled_task_with_options(
+        self,
+        request: main_models.ModifyScheduledTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyScheduledTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.frequency):
+            query['Frequency'] = request.frequency
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.scheduled_id):
+            query['ScheduledId'] = request.scheduled_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.time_range):
+            query['TimeRange'] = request.time_range
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyScheduledTask',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyScheduledTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_scheduled_task_with_options_async(
+        self,
+        request: main_models.ModifyScheduledTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyScheduledTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.frequency):
+            query['Frequency'] = request.frequency
+        if not DaraCore.is_null(request.instance_ids):
+            query['InstanceIds'] = request.instance_ids
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.scheduled_id):
+            query['ScheduledId'] = request.scheduled_id
+        if not DaraCore.is_null(request.start_time):
+            query['StartTime'] = request.start_time
+        if not DaraCore.is_null(request.time_range):
+            query['TimeRange'] = request.time_range
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyScheduledTask',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyScheduledTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_scheduled_task(
+        self,
+        request: main_models.ModifyScheduledTaskRequest,
+    ) -> main_models.ModifyScheduledTaskResponse:
+        runtime = RuntimeOptions()
+        return self.modify_scheduled_task_with_options(request, runtime)
+
+    async def modify_scheduled_task_async(
+        self,
+        request: main_models.ModifyScheduledTaskRequest,
+    ) -> main_models.ModifyScheduledTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_scheduled_task_with_options_async(request, runtime)
 
     def reset_instance_password_with_options(
         self,
