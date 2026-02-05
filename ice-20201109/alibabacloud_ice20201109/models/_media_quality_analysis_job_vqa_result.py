@@ -104,12 +104,14 @@ class MediaQualityAnalysisJobVqaResultScoreResult(DaraModel):
         color: main_models.MediaQualityAnalysisJobVqaResultScoreResultColor = None,
         detail: main_models.MediaQualityAnalysisJobVqaResultScoreResultDetail = None,
         noise: main_models.MediaQualityAnalysisJobVqaResultScoreResultNoise = None,
+        score: float = None,
         sharp: main_models.MediaQualityAnalysisJobVqaResultScoreResultSharp = None,
     ):
         self.block = block
         self.color = color
         self.detail = detail
         self.noise = noise
+        self.score = score
         self.sharp = sharp
 
     def validate(self):
@@ -141,6 +143,9 @@ class MediaQualityAnalysisJobVqaResultScoreResult(DaraModel):
         if self.noise is not None:
             result['Noise'] = self.noise.to_map()
 
+        if self.score is not None:
+            result['Score'] = self.score
+
         if self.sharp is not None:
             result['Sharp'] = self.sharp.to_map()
 
@@ -163,6 +168,9 @@ class MediaQualityAnalysisJobVqaResultScoreResult(DaraModel):
         if m.get('Noise') is not None:
             temp_model = main_models.MediaQualityAnalysisJobVqaResultScoreResultNoise()
             self.noise = temp_model.from_map(m.get('Noise'))
+
+        if m.get('Score') is not None:
+            self.score = m.get('Score')
 
         if m.get('Sharp') is not None:
             temp_model = main_models.MediaQualityAnalysisJobVqaResultScoreResultSharp()

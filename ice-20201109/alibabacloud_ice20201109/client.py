@@ -1535,6 +1535,8 @@ class Client(OpenApiClient):
     ) -> main_models.ClearAIAgentVoiceprintResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.registration_mode):
+            query['RegistrationMode'] = request.registration_mode
         if not DaraCore.is_null(request.voiceprint_id):
             query['VoiceprintId'] = request.voiceprint_id
         req = open_api_util_models.OpenApiRequest(
@@ -1563,6 +1565,8 @@ class Client(OpenApiClient):
     ) -> main_models.ClearAIAgentVoiceprintResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.registration_mode):
+            query['RegistrationMode'] = request.registration_mode
         if not DaraCore.is_null(request.voiceprint_id):
             query['VoiceprintId'] = request.voiceprint_id
         req = open_api_util_models.OpenApiRequest(
@@ -14749,6 +14753,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.registration_mode):
+            query['RegistrationMode'] = request.registration_mode
         if not DaraCore.is_null(request.voiceprint_id):
             query['VoiceprintId'] = request.voiceprint_id
         req = open_api_util_models.OpenApiRequest(
@@ -14781,6 +14787,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.registration_mode):
+            query['RegistrationMode'] = request.registration_mode
         if not DaraCore.is_null(request.voiceprint_id):
             query['VoiceprintId'] = request.voiceprint_id
         req = open_api_util_models.OpenApiRequest(

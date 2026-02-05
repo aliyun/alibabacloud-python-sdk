@@ -1,3 +1,8 @@
+2026-02-05 Version: 6.10.1
+- Update API ClearAIAgentVoiceprint: add request parameters RegistrationMode.
+- Update API ListAIAgentVoiceprints: add request parameters RegistrationMode.
+
+
 2025-12-30 Version: 6.10.0
 - Support API AlterSearchLib.
 - Update API CreateSearchLib: add request parameters SearchLibConfig.

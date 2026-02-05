@@ -17,6 +17,7 @@ class AIAgentConfig(DaraModel):
         avatar_url: str = None,
         avatar_url_type: str = None,
         back_channeling_config: List[main_models.AIAgentConfigBackChannelingConfig] = None,
+        back_channeling_configs: List[main_models.AIAgentConfigBackChannelingConfigs] = None,
         enable_intelligent_segment: bool = None,
         enable_push_to_talk: bool = None,
         experimental_config: str = None,
@@ -42,6 +43,7 @@ class AIAgentConfig(DaraModel):
         self.avatar_url = avatar_url
         self.avatar_url_type = avatar_url_type
         self.back_channeling_config = back_channeling_config
+        self.back_channeling_configs = back_channeling_configs
         self.enable_intelligent_segment = enable_intelligent_segment
         self.enable_push_to_talk = enable_push_to_talk
         self.experimental_config = experimental_config
@@ -71,6 +73,10 @@ class AIAgentConfig(DaraModel):
             self.avatar_config.validate()
         if self.back_channeling_config:
             for v1 in self.back_channeling_config:
+                 if v1:
+                    v1.validate()
+        if self.back_channeling_configs:
+            for v1 in self.back_channeling_configs:
                  if v1:
                     v1.validate()
         if self.interrupt_config:
@@ -113,6 +119,11 @@ class AIAgentConfig(DaraModel):
         if self.back_channeling_config is not None:
             for k1 in self.back_channeling_config:
                 result['BackChannelingConfig'].append(k1.to_map() if k1 else None)
+
+        result['BackChannelingConfigs'] = []
+        if self.back_channeling_configs is not None:
+            for k1 in self.back_channeling_configs:
+                result['BackChannelingConfigs'].append(k1.to_map() if k1 else None)
 
         if self.enable_intelligent_segment is not None:
             result['EnableIntelligentSegment'] = self.enable_intelligent_segment
@@ -197,6 +208,12 @@ class AIAgentConfig(DaraModel):
                 temp_model = main_models.AIAgentConfigBackChannelingConfig()
                 self.back_channeling_config.append(temp_model.from_map(k1))
 
+        self.back_channeling_configs = []
+        if m.get('BackChannelingConfigs') is not None:
+            for k1 in m.get('BackChannelingConfigs'):
+                temp_model = main_models.AIAgentConfigBackChannelingConfigs()
+                self.back_channeling_configs.append(temp_model.from_map(k1))
+
         if m.get('EnableIntelligentSegment') is not None:
             self.enable_intelligent_segment = m.get('EnableIntelligentSegment')
 
@@ -259,9 +276,11 @@ class AIAgentConfig(DaraModel):
 class AIAgentConfigVoiceprintConfig(DaraModel):
     def __init__(
         self,
+        registration_mode: str = None,
         use_voiceprint: bool = None,
         voiceprint_id: str = None,
     ):
+        self.registration_mode = registration_mode
         self.use_voiceprint = use_voiceprint
         self.voiceprint_id = voiceprint_id
 
@@ -273,6 +292,9 @@ class AIAgentConfigVoiceprintConfig(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.registration_mode is not None:
+            result['RegistrationMode'] = self.registration_mode
+
         if self.use_voiceprint is not None:
             result['UseVoiceprint'] = self.use_voiceprint
 
@@ -283,6 +305,9 @@ class AIAgentConfigVoiceprintConfig(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('RegistrationMode') is not None:
+            self.registration_mode = m.get('RegistrationMode')
+
         if m.get('UseVoiceprint') is not None:
             self.use_voiceprint = m.get('UseVoiceprint')
 
@@ -956,6 +981,100 @@ class AIAgentConfigInterruptConfig(DaraModel):
 
         if m.get('NoInterruptMode') is not None:
             self.no_interrupt_mode = m.get('NoInterruptMode')
+
+        return self
+
+class AIAgentConfigBackChannelingConfigs(DaraModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        probability: float = None,
+        trigger_stage: str = None,
+        words: List[main_models.AIAgentConfigBackChannelingConfigsWords] = None,
+    ):
+        self.enabled = enabled
+        self.probability = probability
+        self.trigger_stage = trigger_stage
+        self.words = words
+
+    def validate(self):
+        if self.words:
+            for v1 in self.words:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+
+        if self.probability is not None:
+            result['Probability'] = self.probability
+
+        if self.trigger_stage is not None:
+            result['TriggerStage'] = self.trigger_stage
+
+        result['Words'] = []
+        if self.words is not None:
+            for k1 in self.words:
+                result['Words'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+
+        if m.get('Probability') is not None:
+            self.probability = m.get('Probability')
+
+        if m.get('TriggerStage') is not None:
+            self.trigger_stage = m.get('TriggerStage')
+
+        self.words = []
+        if m.get('Words') is not None:
+            for k1 in m.get('Words'):
+                temp_model = main_models.AIAgentConfigBackChannelingConfigsWords()
+                self.words.append(temp_model.from_map(k1))
+
+        return self
+
+class AIAgentConfigBackChannelingConfigsWords(DaraModel):
+    def __init__(
+        self,
+        probability: float = None,
+        text: str = None,
+    ):
+        self.probability = probability
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.probability is not None:
+            result['Probability'] = self.probability
+
+        if self.text is not None:
+            result['Text'] = self.text
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Probability') is not None:
+            self.probability = m.get('Probability')
+
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
 
         return self
 

@@ -14,6 +14,7 @@ class AIAgentOutboundCallConfig(DaraModel):
         asr_config: main_models.AIAgentOutboundCallConfigAsrConfig = None,
         auto_speech_config: main_models.AIAgentOutboundCallConfigAutoSpeechConfig = None,
         back_channeling_config: main_models.AIAgentOutboundCallConfigBackChannelingConfig = None,
+        back_channeling_configs: List[main_models.AIAgentOutboundCallConfigBackChannelingConfigs] = None,
         enable_intelligent_segment: bool = None,
         experimental_config: str = None,
         greeting: str = None,
@@ -28,6 +29,7 @@ class AIAgentOutboundCallConfig(DaraModel):
         self.asr_config = asr_config
         self.auto_speech_config = auto_speech_config
         self.back_channeling_config = back_channeling_config
+        self.back_channeling_configs = back_channeling_configs
         self.enable_intelligent_segment = enable_intelligent_segment
         self.experimental_config = experimental_config
         self.greeting = greeting
@@ -47,6 +49,10 @@ class AIAgentOutboundCallConfig(DaraModel):
             self.auto_speech_config.validate()
         if self.back_channeling_config:
             self.back_channeling_config.validate()
+        if self.back_channeling_configs:
+            for v1 in self.back_channeling_configs:
+                 if v1:
+                    v1.validate()
         if self.interrupt_config:
             self.interrupt_config.validate()
         if self.llm_config:
@@ -72,6 +78,11 @@ class AIAgentOutboundCallConfig(DaraModel):
 
         if self.back_channeling_config is not None:
             result['BackChannelingConfig'] = self.back_channeling_config.to_map()
+
+        result['BackChannelingConfigs'] = []
+        if self.back_channeling_configs is not None:
+            for k1 in self.back_channeling_configs:
+                result['BackChannelingConfigs'].append(k1.to_map() if k1 else None)
 
         if self.enable_intelligent_segment is not None:
             result['EnableIntelligentSegment'] = self.enable_intelligent_segment
@@ -119,6 +130,12 @@ class AIAgentOutboundCallConfig(DaraModel):
         if m.get('BackChannelingConfig') is not None:
             temp_model = main_models.AIAgentOutboundCallConfigBackChannelingConfig()
             self.back_channeling_config = temp_model.from_map(m.get('BackChannelingConfig'))
+
+        self.back_channeling_configs = []
+        if m.get('BackChannelingConfigs') is not None:
+            for k1 in m.get('BackChannelingConfigs'):
+                temp_model = main_models.AIAgentOutboundCallConfigBackChannelingConfigs()
+                self.back_channeling_configs.append(temp_model.from_map(k1))
 
         if m.get('EnableIntelligentSegment') is not None:
             self.enable_intelligent_segment = m.get('EnableIntelligentSegment')
@@ -564,6 +581,100 @@ class AIAgentOutboundCallConfigInterruptConfig(DaraModel):
 
         if m.get('NoInterruptMode') is not None:
             self.no_interrupt_mode = m.get('NoInterruptMode')
+
+        return self
+
+class AIAgentOutboundCallConfigBackChannelingConfigs(DaraModel):
+    def __init__(
+        self,
+        enabled: bool = None,
+        probability: float = None,
+        trigger_stage: str = None,
+        words: List[main_models.AIAgentOutboundCallConfigBackChannelingConfigsWords] = None,
+    ):
+        self.enabled = enabled
+        self.probability = probability
+        self.trigger_stage = trigger_stage
+        self.words = words
+
+    def validate(self):
+        if self.words:
+            for v1 in self.words:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.enabled is not None:
+            result['Enabled'] = self.enabled
+
+        if self.probability is not None:
+            result['Probability'] = self.probability
+
+        if self.trigger_stage is not None:
+            result['TriggerStage'] = self.trigger_stage
+
+        result['Words'] = []
+        if self.words is not None:
+            for k1 in self.words:
+                result['Words'].append(k1.to_map() if k1 else None)
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Enabled') is not None:
+            self.enabled = m.get('Enabled')
+
+        if m.get('Probability') is not None:
+            self.probability = m.get('Probability')
+
+        if m.get('TriggerStage') is not None:
+            self.trigger_stage = m.get('TriggerStage')
+
+        self.words = []
+        if m.get('Words') is not None:
+            for k1 in m.get('Words'):
+                temp_model = main_models.AIAgentOutboundCallConfigBackChannelingConfigsWords()
+                self.words.append(temp_model.from_map(k1))
+
+        return self
+
+class AIAgentOutboundCallConfigBackChannelingConfigsWords(DaraModel):
+    def __init__(
+        self,
+        probability: float = None,
+        text: str = None,
+    ):
+        self.probability = probability
+        self.text = text
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.probability is not None:
+            result['Probability'] = self.probability
+
+        if self.text is not None:
+            result['Text'] = self.text
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Probability') is not None:
+            self.probability = m.get('Probability')
+
+        if m.get('Text') is not None:
+            self.text = m.get('Text')
 
         return self
 

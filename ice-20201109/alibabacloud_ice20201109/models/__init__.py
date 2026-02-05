@@ -1233,6 +1233,8 @@ from ._aiagent_config import AIAgentConfigAutoSpeechConfig
 from ._aiagent_config import AIAgentConfigAvatarConfig
 from ._aiagent_config import AIAgentConfigBackChannelingConfigWords
 from ._aiagent_config import AIAgentConfigBackChannelingConfig
+from ._aiagent_config import AIAgentConfigBackChannelingConfigsWords
+from ._aiagent_config import AIAgentConfigBackChannelingConfigs
 from ._aiagent_config import AIAgentConfigInterruptConfig
 from ._aiagent_config import AIAgentConfigLlmConfigFunctionMap
 from ._aiagent_config import AIAgentConfigLlmConfigLlmHistory
@@ -1257,6 +1259,8 @@ from ._aiagent_outbound_call_config import AIAgentOutboundCallConfigAutoSpeechCo
 from ._aiagent_outbound_call_config import AIAgentOutboundCallConfigAutoSpeechConfig
 from ._aiagent_outbound_call_config import AIAgentOutboundCallConfigBackChannelingConfigWords
 from ._aiagent_outbound_call_config import AIAgentOutboundCallConfigBackChannelingConfig
+from ._aiagent_outbound_call_config import AIAgentOutboundCallConfigBackChannelingConfigsWords
+from ._aiagent_outbound_call_config import AIAgentOutboundCallConfigBackChannelingConfigs
 from ._aiagent_outbound_call_config import AIAgentOutboundCallConfigInterruptConfig
 from ._aiagent_outbound_call_config import AIAgentOutboundCallConfigLlmConfigFunctionMap
 from ._aiagent_outbound_call_config import AIAgentOutboundCallConfigLlmConfigLlmHistory
@@ -3252,6 +3256,8 @@ __all__ = [
     AIAgentConfigAvatarConfig,
     AIAgentConfigBackChannelingConfigWords,
     AIAgentConfigBackChannelingConfig,
+    AIAgentConfigBackChannelingConfigsWords,
+    AIAgentConfigBackChannelingConfigs,
     AIAgentConfigInterruptConfig,
     AIAgentConfigLlmConfigFunctionMap,
     AIAgentConfigLlmConfigLlmHistory,
@@ -3276,6 +3282,8 @@ __all__ = [
     AIAgentOutboundCallConfigAutoSpeechConfig,
     AIAgentOutboundCallConfigBackChannelingConfigWords,
     AIAgentOutboundCallConfigBackChannelingConfig,
+    AIAgentOutboundCallConfigBackChannelingConfigsWords,
+    AIAgentOutboundCallConfigBackChannelingConfigs,
     AIAgentOutboundCallConfigInterruptConfig,
     AIAgentOutboundCallConfigLlmConfigFunctionMap,
     AIAgentOutboundCallConfigLlmConfigLlmHistory,
