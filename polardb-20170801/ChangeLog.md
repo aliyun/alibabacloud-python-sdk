@@ -1,3 +1,7 @@
+2026-02-05 Version: 6.6.6
+- Update API DescribeDBClusterEndpoints: add response parameters Body.Items.$.ServiceName.
+
+
 2026-02-03 Version: 6.6.5
 - Update API DescribeSlowLogRecords: add response parameters Body.Items.$.LockTimeMS.
 

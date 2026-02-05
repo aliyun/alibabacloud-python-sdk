@@ -68,6 +68,7 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
         polar_scc_wait_timeout: str = None,
         read_write_mode: str = None,
         scc_mode: str = None,
+        service_name: str = None,
     ):
         # The details of the endpoint.
         self.address_items = address_items
@@ -131,6 +132,7 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
         # *   **on**: enabled.
         # *   **off**: disabled
         self.scc_mode = scc_mode
+        self.service_name = service_name
 
     def validate(self):
         if self.address_items:
@@ -184,6 +186,9 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
         if self.scc_mode is not None:
             result['SccMode'] = self.scc_mode
 
+        if self.service_name is not None:
+            result['ServiceName'] = self.service_name
+
         return result
 
     def from_map(self, m: dict = None):
@@ -229,6 +234,9 @@ class DescribeDBClusterEndpointsResponseBodyItems(DaraModel):
 
         if m.get('SccMode') is not None:
             self.scc_mode = m.get('SccMode')
+
+        if m.get('ServiceName') is not None:
+            self.service_name = m.get('ServiceName')
 
         return self
 
