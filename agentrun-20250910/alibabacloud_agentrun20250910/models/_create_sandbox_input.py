@@ -11,12 +11,14 @@ class CreateSandboxInput(DaraModel):
         nas_config: main_models.NASConfig = None,
         oss_mount_config: main_models.OSSMountConfig = None,
         sandbox_id: str = None,
+        sandbox_idle_timeout_in_seconds: int = None,
         sandbox_idle_timeout_seconds: int = None,
         template_name: str = None,
     ):
         self.nas_config = nas_config
         self.oss_mount_config = oss_mount_config
         self.sandbox_id = sandbox_id
+        self.sandbox_idle_timeout_in_seconds = sandbox_idle_timeout_in_seconds
         # 沙箱空闲超时时间（秒）
         self.sandbox_idle_timeout_seconds = sandbox_idle_timeout_seconds
         # 模板名称（系统内部通过 templateName 查询 template_id）
@@ -44,6 +46,9 @@ class CreateSandboxInput(DaraModel):
         if self.sandbox_id is not None:
             result['sandboxId'] = self.sandbox_id
 
+        if self.sandbox_idle_timeout_in_seconds is not None:
+            result['sandboxIdleTimeoutInSeconds'] = self.sandbox_idle_timeout_in_seconds
+
         if self.sandbox_idle_timeout_seconds is not None:
             result['sandboxIdleTimeoutSeconds'] = self.sandbox_idle_timeout_seconds
 
@@ -64,6 +69,9 @@ class CreateSandboxInput(DaraModel):
 
         if m.get('sandboxId') is not None:
             self.sandbox_id = m.get('sandboxId')
+
+        if m.get('sandboxIdleTimeoutInSeconds') is not None:
+            self.sandbox_idle_timeout_in_seconds = m.get('sandboxIdleTimeoutInSeconds')
 
         if m.get('sandboxIdleTimeoutSeconds') is not None:
             self.sandbox_idle_timeout_seconds = m.get('sandboxIdleTimeoutSeconds')
