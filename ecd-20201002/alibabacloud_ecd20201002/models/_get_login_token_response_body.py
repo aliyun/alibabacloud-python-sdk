@@ -29,6 +29,7 @@ class GetLoginTokenResponseBody(DaraModel):
         session_id: str = None,
         tenant_id: int = None,
         window_display_mode: str = None,
+        wy_id: str = None,
     ):
         # The email address of the user. The system returns the email address in the return value of the LoginToken parameter after the user logs on to the client.
         # 
@@ -78,6 +79,7 @@ class GetLoginTokenResponseBody(DaraModel):
         self.tenant_id = tenant_id
         # > This is a parameter only for internal use.
         self.window_display_mode = window_display_mode
+        self.wy_id = wy_id
 
     def validate(self):
         if self.password_strategy:
@@ -147,6 +149,9 @@ class GetLoginTokenResponseBody(DaraModel):
         if self.window_display_mode is not None:
             result['WindowDisplayMode'] = self.window_display_mode
 
+        if self.wy_id is not None:
+            result['WyId'] = self.wy_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -209,6 +214,9 @@ class GetLoginTokenResponseBody(DaraModel):
 
         if m.get('WindowDisplayMode') is not None:
             self.window_display_mode = m.get('WindowDisplayMode')
+
+        if m.get('WyId') is not None:
+            self.wy_id = m.get('WyId')
 
         return self
 

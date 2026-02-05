@@ -1,3 +1,7 @@
+2026-02-05 Version: 1.2.11
+- Update API GetLoginToken: add response parameters Body.WyId.
+
+
 2026-01-27 Version: 1.2.10
 - Update API DescribeOfficeSites: add request parameters Uuid.
 - Update API DescribeOfficeSites: add response parameters Body.OfficeSites.$.AliUid.
