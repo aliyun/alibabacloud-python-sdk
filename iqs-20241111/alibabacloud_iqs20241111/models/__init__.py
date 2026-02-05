@@ -12,6 +12,10 @@ from ._global_search_information import GlobalSearchInformation
 from ._global_search_result import GlobalSearchResult
 from ._include_image import IncludeImage
 from ._location_info import LocationInfo
+from ._multimodal_original_query import MultimodalOriginalQuery
+from ._multimodal_query_context import MultimodalQueryContext
+from ._multimodal_search_body import MultimodalSearchBody
+from ._multimodal_search_output import MultimodalSearchOutput
 from ._query_context import QueryContext
 from ._read_page_body import ReadPageBody
 from ._read_page_item import ReadPageItem
@@ -22,6 +26,7 @@ from ._score_page_item import ScorePageItem
 from ._search_credits import SearchCredits
 from ._search_information import SearchInformation
 from ._unified_cost_credits import UnifiedCostCredits
+from ._unified_image_item import UnifiedImageItem
 from ._unified_original_query import UnifiedOriginalQuery
 from ._unified_page_item import UnifiedPageItem
 from ._unified_query_context import UnifiedQueryContext
@@ -44,6 +49,8 @@ from ._get_iqs_usage_request import GetIqsUsageRequest
 from ._get_iqs_usage_response import GetIqsUsageResponse
 from ._global_search_request import GlobalSearchRequest
 from ._global_search_response import GlobalSearchResponse
+from ._multimodal_search_request import MultimodalSearchRequest
+from ._multimodal_search_response import MultimodalSearchResponse
 from ._read_page_basic_request import ReadPageBasicRequest
 from ._read_page_basic_response_body import ReadPageBasicResponseBody
 from ._read_page_basic_response import ReadPageBasicResponse
@@ -74,6 +81,10 @@ __all__ = [
     GlobalSearchResult,
     IncludeImage,
     LocationInfo,
+    MultimodalOriginalQuery,
+    MultimodalQueryContext,
+    MultimodalSearchBody,
+    MultimodalSearchOutput,
     QueryContext,
     ReadPageBody,
     ReadPageItem,
@@ -84,6 +95,7 @@ __all__ = [
     SearchCredits,
     SearchInformation,
     UnifiedCostCredits,
+    UnifiedImageItem,
     UnifiedOriginalQuery,
     UnifiedPageItem,
     UnifiedQueryContext,
@@ -106,6 +118,8 @@ __all__ = [
     GetIqsUsageResponse,
     GlobalSearchRequest,
     GlobalSearchResponse,
+    MultimodalSearchRequest,
+    MultimodalSearchResponse,
     ReadPageBasicRequest,
     ReadPageBasicResponseBody,
     ReadPageBasicResponse,

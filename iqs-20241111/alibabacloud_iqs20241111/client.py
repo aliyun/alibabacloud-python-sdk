@@ -613,6 +613,76 @@ class Client(OpenApiClient):
         headers = {}
         return await self.global_search_with_options_async(request, headers, runtime)
 
+    def multimodal_search_with_options(
+        self,
+        request: main_models.MultimodalSearchRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.MultimodalSearchResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MultimodalSearch',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/multimodal/unified',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MultimodalSearchResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def multimodal_search_with_options_async(
+        self,
+        request: main_models.MultimodalSearchRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.MultimodalSearchResponse:
+        request.validate()
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(request.body)
+        )
+        params = open_api_util_models.Params(
+            action = 'MultimodalSearch',
+            version = '2024-11-11',
+            protocol = 'HTTPS',
+            pathname = f'/linked-retrieval/linked-retrieval-entry/v1/iqs/multimodal/unified',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MultimodalSearchResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def multimodal_search(
+        self,
+        request: main_models.MultimodalSearchRequest,
+    ) -> main_models.MultimodalSearchResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.multimodal_search_with_options(request, headers, runtime)
+
+    async def multimodal_search_async(
+        self,
+        request: main_models.MultimodalSearchRequest,
+    ) -> main_models.MultimodalSearchResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.multimodal_search_with_options_async(request, headers, runtime)
+
     def read_page_basic_with_options(
         self,
         request: main_models.ReadPageBasicRequest,

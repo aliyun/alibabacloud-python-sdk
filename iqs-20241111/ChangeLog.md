@@ -1,3 +1,7 @@
+2026-02-05 Version: 1.7.0
+- Support API MultimodalSearch.
+
+
 2026-01-13 Version: 1.6.4
 - Update API GetIqsUsage: add request parameters callerId.
 
