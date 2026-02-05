@@ -266,10 +266,12 @@ class GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet(DaraModel):
         region_business_status: str = None,
         region_service_status: str = None,
         service_region_id: str = None,
+        supported_region_id: str = None,
     ):
         self.region_business_status = region_business_status
         self.region_service_status = region_service_status
         self.service_region_id = service_region_id
+        self.supported_region_id = supported_region_id
 
     def validate(self):
         pass
@@ -288,6 +290,9 @@ class GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet(DaraModel):
         if self.service_region_id is not None:
             result['ServiceRegionId'] = self.service_region_id
 
+        if self.supported_region_id is not None:
+            result['SupportedRegionId'] = self.supported_region_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -300,6 +305,9 @@ class GetVpcEndpointServiceAttributeResponseBodySupportedRegionSet(DaraModel):
 
         if m.get('ServiceRegionId') is not None:
             self.service_region_id = m.get('ServiceRegionId')
+
+        if m.get('SupportedRegionId') is not None:
+            self.supported_region_id = m.get('SupportedRegionId')
 
         return self
 
