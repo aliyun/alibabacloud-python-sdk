@@ -1,3 +1,10 @@
+2026-02-05 Version: 2.0.1
+- Update API DescribeGroupExecutingInfo: add response parameters Body.ExecutingInfo.AvgTalkTime.
+- Update API DescribeGroupExecutingInfo: add response parameters Body.ExecutingInfo.DurationDistribution.
+- Update API DescribeGroupExecutingInfo: add response parameters Body.ExecutingInfo.TalkTurnsDistribution.
+- Update API DescribeJobGroup: add response parameters Body.JobGroup.ScriptNluEngine.
+
+
 2025-11-26 Version: 2.0.0
 - Delete API ApplyNumberDistrictInfoParsingResult.
 - Delete API CreateNumberDistrictInfoDownloadUrl.
