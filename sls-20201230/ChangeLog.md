@@ -1,3 +1,6 @@
+2026-02-05 Version: 5.12.1
+- Generated python 2020-12-30 for Sls.
+
 2026-02-04 Version: 5.12.0
 - Support API AddMemories.
 - Support API CreateDataset.

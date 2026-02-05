@@ -13,7 +13,6 @@ class ExecuteQueryHeaders(DaraModel):
         accept_encoding: str = None,
     ):
         self.common_headers = common_headers
-        # This parameter is required.
         self.accept_encoding = accept_encoding
 
     def validate(self):
