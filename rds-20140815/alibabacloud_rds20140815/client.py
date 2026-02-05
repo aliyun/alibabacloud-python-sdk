@@ -9329,6 +9329,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_action_event_policy_with_options_async(request, runtime)
 
+    def describe_active_operation_maintain_conf_with_options(
+        self,
+        request: main_models.DescribeActiveOperationMaintainConfRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeActiveOperationMaintainConfResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeActiveOperationMaintainConf',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeActiveOperationMaintainConfResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_active_operation_maintain_conf_with_options_async(
+        self,
+        request: main_models.DescribeActiveOperationMaintainConfRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeActiveOperationMaintainConfResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.owner_account):
+            query['OwnerAccount'] = request.owner_account
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.security_token):
+            query['SecurityToken'] = request.security_token
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeActiveOperationMaintainConf',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeActiveOperationMaintainConfResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_active_operation_maintain_conf(
+        self,
+        request: main_models.DescribeActiveOperationMaintainConfRequest,
+    ) -> main_models.DescribeActiveOperationMaintainConfResponse:
+        runtime = RuntimeOptions()
+        return self.describe_active_operation_maintain_conf_with_options(request, runtime)
+
+    async def describe_active_operation_maintain_conf_async(
+        self,
+        request: main_models.DescribeActiveOperationMaintainConfRequest,
+    ) -> main_models.DescribeActiveOperationMaintainConfResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_active_operation_maintain_conf_with_options_async(request, runtime)
+
     def describe_active_operation_tasks_with_options(
         self,
         request: main_models.DescribeActiveOperationTasksRequest,
@@ -22240,6 +22326,96 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeSQLLogReportListResponse:
         runtime = RuntimeOptions()
         return await self.describe_sqllog_report_list_with_options_async(request, runtime)
+
+    def describe_sqlserver_upgrade_versions_with_options(
+        self,
+        request: main_models.DescribeSQLServerUpgradeVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSQLServerUpgradeVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSQLServerUpgradeVersions',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSQLServerUpgradeVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_sqlserver_upgrade_versions_with_options_async(
+        self,
+        request: main_models.DescribeSQLServerUpgradeVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeSQLServerUpgradeVersionsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.engine_version):
+            query['EngineVersion'] = request.engine_version
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeSQLServerUpgradeVersions',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeSQLServerUpgradeVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_sqlserver_upgrade_versions(
+        self,
+        request: main_models.DescribeSQLServerUpgradeVersionsRequest,
+    ) -> main_models.DescribeSQLServerUpgradeVersionsResponse:
+        runtime = RuntimeOptions()
+        return self.describe_sqlserver_upgrade_versions_with_options(request, runtime)
+
+    async def describe_sqlserver_upgrade_versions_async(
+        self,
+        request: main_models.DescribeSQLServerUpgradeVersionsRequest,
+    ) -> main_models.DescribeSQLServerUpgradeVersionsResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_sqlserver_upgrade_versions_with_options_async(request, runtime)
 
     def describe_secrets_with_options(
         self,
