@@ -27,6 +27,9 @@ from ._create_cloud_resource_request import CreateCloudResourceRequest
 from ._create_cloud_resource_shrink_request import CreateCloudResourceShrinkRequest
 from ._create_cloud_resource_response_body import CreateCloudResourceResponseBody
 from ._create_cloud_resource_response import CreateCloudResourceResponse
+from ._create_cloud_resource_extension_cert_request import CreateCloudResourceExtensionCertRequest
+from ._create_cloud_resource_extension_cert_response_body import CreateCloudResourceExtensionCertResponseBody
+from ._create_cloud_resource_extension_cert_response import CreateCloudResourceExtensionCertResponse
 from ._create_defense_resource_request import CreateDefenseResourceRequest
 from ._create_defense_resource_shrink_request import CreateDefenseResourceShrinkRequest
 from ._create_defense_resource_response_body import CreateDefenseResourceResponseBody
@@ -83,6 +86,9 @@ from ._delete_apisec_events_response import DeleteApisecEventsResponse
 from ._delete_cloud_resource_request import DeleteCloudResourceRequest
 from ._delete_cloud_resource_response_body import DeleteCloudResourceResponseBody
 from ._delete_cloud_resource_response import DeleteCloudResourceResponse
+from ._delete_cloud_resource_extension_cert_request import DeleteCloudResourceExtensionCertRequest
+from ._delete_cloud_resource_extension_cert_response_body import DeleteCloudResourceExtensionCertResponseBody
+from ._delete_cloud_resource_extension_cert_response import DeleteCloudResourceExtensionCertResponse
 from ._delete_defense_resource_request import DeleteDefenseResourceRequest
 from ._delete_defense_resource_response_body import DeleteDefenseResourceResponseBody
 from ._delete_defense_resource_response import DeleteDefenseResourceResponse
@@ -603,6 +609,9 @@ from ._modify_cloud_resource_response import ModifyCloudResourceResponse
 from ._modify_cloud_resource_cert_request import ModifyCloudResourceCertRequest
 from ._modify_cloud_resource_cert_response_body import ModifyCloudResourceCertResponseBody
 from ._modify_cloud_resource_cert_response import ModifyCloudResourceCertResponse
+from ._modify_cloud_resource_default_cert_request import ModifyCloudResourceDefaultCertRequest
+from ._modify_cloud_resource_default_cert_response_body import ModifyCloudResourceDefaultCertResponseBody
+from ._modify_cloud_resource_default_cert_response import ModifyCloudResourceDefaultCertResponse
 from ._modify_default_https_request import ModifyDefaultHttpsRequest
 from ._modify_default_https_response_body import ModifyDefaultHttpsResponseBody
 from ._modify_default_https_response import ModifyDefaultHttpsResponse
@@ -947,6 +956,9 @@ __all__ = [
     CreateCloudResourceShrinkRequest,
     CreateCloudResourceResponseBody,
     CreateCloudResourceResponse,
+    CreateCloudResourceExtensionCertRequest,
+    CreateCloudResourceExtensionCertResponseBody,
+    CreateCloudResourceExtensionCertResponse,
     CreateDefenseResourceRequest,
     CreateDefenseResourceShrinkRequest,
     CreateDefenseResourceResponseBody,
@@ -1003,6 +1015,9 @@ __all__ = [
     DeleteCloudResourceRequest,
     DeleteCloudResourceResponseBody,
     DeleteCloudResourceResponse,
+    DeleteCloudResourceExtensionCertRequest,
+    DeleteCloudResourceExtensionCertResponseBody,
+    DeleteCloudResourceExtensionCertResponse,
     DeleteDefenseResourceRequest,
     DeleteDefenseResourceResponseBody,
     DeleteDefenseResourceResponse,
@@ -1523,6 +1538,9 @@ __all__ = [
     ModifyCloudResourceCertRequest,
     ModifyCloudResourceCertResponseBody,
     ModifyCloudResourceCertResponse,
+    ModifyCloudResourceDefaultCertRequest,
+    ModifyCloudResourceDefaultCertResponseBody,
+    ModifyCloudResourceDefaultCertResponse,
     ModifyDefaultHttpsRequest,
     ModifyDefaultHttpsResponseBody,
     ModifyDefaultHttpsResponse,

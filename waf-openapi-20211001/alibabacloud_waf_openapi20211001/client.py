@@ -774,6 +774,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_cloud_resource_with_options_async(request, runtime)
 
+    def create_cloud_resource_extension_cert_with_options(
+        self,
+        request: main_models.CreateCloudResourceExtensionCertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCloudResourceExtensionCertResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not DaraCore.is_null(request.cloud_resource_id):
+            query['CloudResourceId'] = request.cloud_resource_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCloudResourceExtensionCert',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCloudResourceExtensionCertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_cloud_resource_extension_cert_with_options_async(
+        self,
+        request: main_models.CreateCloudResourceExtensionCertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCloudResourceExtensionCertResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not DaraCore.is_null(request.cloud_resource_id):
+            query['CloudResourceId'] = request.cloud_resource_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCloudResourceExtensionCert',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCloudResourceExtensionCertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_cloud_resource_extension_cert(
+        self,
+        request: main_models.CreateCloudResourceExtensionCertRequest,
+    ) -> main_models.CreateCloudResourceExtensionCertResponse:
+        runtime = RuntimeOptions()
+        return self.create_cloud_resource_extension_cert_with_options(request, runtime)
+
+    async def create_cloud_resource_extension_cert_async(
+        self,
+        request: main_models.CreateCloudResourceExtensionCertRequest,
+    ) -> main_models.CreateCloudResourceExtensionCertResponse:
+        runtime = RuntimeOptions()
+        return await self.create_cloud_resource_extension_cert_with_options_async(request, runtime)
+
     def create_defense_resource_with_options(
         self,
         tmp_req: main_models.CreateDefenseResourceRequest,
@@ -2525,6 +2611,92 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteCloudResourceResponse:
         runtime = RuntimeOptions()
         return await self.delete_cloud_resource_with_options_async(request, runtime)
+
+    def delete_cloud_resource_extension_cert_with_options(
+        self,
+        request: main_models.DeleteCloudResourceExtensionCertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCloudResourceExtensionCertResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not DaraCore.is_null(request.cloud_resource_id):
+            query['CloudResourceId'] = request.cloud_resource_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCloudResourceExtensionCert',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCloudResourceExtensionCertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_cloud_resource_extension_cert_with_options_async(
+        self,
+        request: main_models.DeleteCloudResourceExtensionCertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCloudResourceExtensionCertResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not DaraCore.is_null(request.cloud_resource_id):
+            query['CloudResourceId'] = request.cloud_resource_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCloudResourceExtensionCert',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCloudResourceExtensionCertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_cloud_resource_extension_cert(
+        self,
+        request: main_models.DeleteCloudResourceExtensionCertRequest,
+    ) -> main_models.DeleteCloudResourceExtensionCertResponse:
+        runtime = RuntimeOptions()
+        return self.delete_cloud_resource_extension_cert_with_options(request, runtime)
+
+    async def delete_cloud_resource_extension_cert_async(
+        self,
+        request: main_models.DeleteCloudResourceExtensionCertRequest,
+    ) -> main_models.DeleteCloudResourceExtensionCertResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_cloud_resource_extension_cert_with_options_async(request, runtime)
 
     def delete_defense_resource_with_options(
         self,
@@ -18095,6 +18267,92 @@ class Client(OpenApiClient):
     ) -> main_models.ModifyCloudResourceCertResponse:
         runtime = RuntimeOptions()
         return await self.modify_cloud_resource_cert_with_options_async(request, runtime)
+
+    def modify_cloud_resource_default_cert_with_options(
+        self,
+        request: main_models.ModifyCloudResourceDefaultCertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyCloudResourceDefaultCertResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not DaraCore.is_null(request.cloud_resource_id):
+            query['CloudResourceId'] = request.cloud_resource_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyCloudResourceDefaultCert',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyCloudResourceDefaultCertResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_cloud_resource_default_cert_with_options_async(
+        self,
+        request: main_models.ModifyCloudResourceDefaultCertRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyCloudResourceDefaultCertResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.cert_id):
+            query['CertId'] = request.cert_id
+        if not DaraCore.is_null(request.cloud_resource_id):
+            query['CloudResourceId'] = request.cloud_resource_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_manager_resource_group_id):
+            query['ResourceManagerResourceGroupId'] = request.resource_manager_resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyCloudResourceDefaultCert',
+            version = '2021-10-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyCloudResourceDefaultCertResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_cloud_resource_default_cert(
+        self,
+        request: main_models.ModifyCloudResourceDefaultCertRequest,
+    ) -> main_models.ModifyCloudResourceDefaultCertResponse:
+        runtime = RuntimeOptions()
+        return self.modify_cloud_resource_default_cert_with_options(request, runtime)
+
+    async def modify_cloud_resource_default_cert_async(
+        self,
+        request: main_models.ModifyCloudResourceDefaultCertRequest,
+    ) -> main_models.ModifyCloudResourceDefaultCertResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_cloud_resource_default_cert_with_options_async(request, runtime)
 
     def modify_default_https_with_options(
         self,

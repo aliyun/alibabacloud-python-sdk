@@ -1,3 +1,9 @@
+2026-02-06 Version: 7.5.0
+- Support API CreateCloudResourceExtensionCert.
+- Support API DeleteCloudResourceExtensionCert.
+- Support API ModifyCloudResourceDefaultCert.
+
+
 2026-01-13 Version: 7.4.0
 - Support API DescribeCloudResourceList.
 - Support API DescribeThreatEventTopMetric.
