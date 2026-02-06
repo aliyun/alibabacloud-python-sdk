@@ -1,3 +1,6 @@
+2026-02-06 Version: 1.7.1
+- Generated python 2024-11-11 for IQS.
+
 2026-02-05 Version: 1.7.0
 - Support API MultimodalSearch.
 
