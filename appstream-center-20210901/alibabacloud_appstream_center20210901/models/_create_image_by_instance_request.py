@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_appstream_center20210901 import models as main_models
 from darabonba.model import DaraModel
 
 class CreateImageByInstanceRequest(DaraModel):
@@ -16,6 +19,7 @@ class CreateImageByInstanceRequest(DaraModel):
         instance_type: str = None,
         product_type: str = None,
         sub_instance_id: str = None,
+        tag_list: List[main_models.CreateImageByInstanceRequestTagList] = None,
     ):
         # This parameter is applicable only to scenarios in which the instance type is Cloud Desktop. Specifies whether to clear private data of users. If this parameter is set to true, the created image clears data in directories other than Administrator and Public in the C:\\Users directory.
         # 
@@ -50,9 +54,13 @@ class CreateImageByInstanceRequest(DaraModel):
         self.product_type = product_type
         # The ID of the child instance. This parameter is not used in cloud computing scenarios. Workstation scenarios, you need to specify a persistent session ID to ensure that a specific instance is located.
         self.sub_instance_id = sub_instance_id
+        self.tag_list = tag_list
 
     def validate(self):
-        pass
+        if self.tag_list:
+            for v1 in self.tag_list:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -86,6 +94,11 @@ class CreateImageByInstanceRequest(DaraModel):
         if self.sub_instance_id is not None:
             result['SubInstanceId'] = self.sub_instance_id
 
+        result['TagList'] = []
+        if self.tag_list is not None:
+            for k1 in self.tag_list:
+                result['TagList'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -116,6 +129,47 @@ class CreateImageByInstanceRequest(DaraModel):
 
         if m.get('SubInstanceId') is not None:
             self.sub_instance_id = m.get('SubInstanceId')
+
+        self.tag_list = []
+        if m.get('TagList') is not None:
+            for k1 in m.get('TagList'):
+                temp_model = main_models.CreateImageByInstanceRequestTagList()
+                self.tag_list.append(temp_model.from_map(k1))
+
+        return self
+
+class CreateImageByInstanceRequestTagList(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

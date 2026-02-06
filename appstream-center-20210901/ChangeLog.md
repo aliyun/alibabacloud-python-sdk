@@ -1,3 +1,7 @@
+2026-02-06 Version: 4.7.9
+- Update API CreateImageByInstance: add request parameters TagList.
+
+
 2026-01-27 Version: 4.7.8
 - Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.VirtualKubeletIp.
 

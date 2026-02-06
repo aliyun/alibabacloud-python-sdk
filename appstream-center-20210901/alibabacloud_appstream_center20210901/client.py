@@ -465,6 +465,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateImageByInstanceResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tag_list):
+            query['TagList'] = request.tag_list
         body = {}
         if not DaraCore.is_null(request.auto_clean_userdata):
             body['AutoCleanUserdata'] = request.auto_clean_userdata
@@ -485,6 +488,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.sub_instance_id):
             body['SubInstanceId'] = request.sub_instance_id
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(
@@ -509,6 +513,9 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.CreateImageByInstanceResponse:
         request.validate()
+        query = {}
+        if not DaraCore.is_null(request.tag_list):
+            query['TagList'] = request.tag_list
         body = {}
         if not DaraCore.is_null(request.auto_clean_userdata):
             body['AutoCleanUserdata'] = request.auto_clean_userdata
@@ -529,6 +536,7 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(request.sub_instance_id):
             body['SubInstanceId'] = request.sub_instance_id
         req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query),
             body = Utils.parse_to_map(body)
         )
         params = open_api_util_models.Params(

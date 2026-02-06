@@ -174,6 +174,7 @@ from ._create_app_instance_group_request import CreateAppInstanceGroupRequestUse
 from ._create_app_instance_group_request import CreateAppInstanceGroupRequestUserInfo
 from ._create_app_instance_group_request import CreateAppInstanceGroupRequestVideoPolicy
 from ._create_app_instance_group_response_body import CreateAppInstanceGroupResponseBodyAppInstanceGroupModel
+from ._create_image_by_instance_request import CreateImageByInstanceRequestTagList
 from ._create_image_by_instance_response_body import CreateImageByInstanceResponseBodyData
 from ._create_wuying_server_request import CreateWuyingServerRequestDataDisk
 from ._create_wuying_server_response_body import CreateWuyingServerResponseBodyData
@@ -429,6 +430,7 @@ __all__ = [
     CreateAppInstanceGroupRequestUserInfo,
     CreateAppInstanceGroupRequestVideoPolicy,
     CreateAppInstanceGroupResponseBodyAppInstanceGroupModel,
+    CreateImageByInstanceRequestTagList,
     CreateImageByInstanceResponseBodyData,
     CreateWuyingServerRequestDataDisk,
     CreateWuyingServerResponseBodyData,
