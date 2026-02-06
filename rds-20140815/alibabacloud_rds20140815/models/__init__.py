@@ -226,6 +226,9 @@ from ._delete_masking_rules_response import DeleteMaskingRulesResponse
 from ._delete_parameter_group_request import DeleteParameterGroupRequest
 from ._delete_parameter_group_response_body import DeleteParameterGroupResponseBody
 from ._delete_parameter_group_response import DeleteParameterGroupResponse
+from ._delete_parameter_timed_schedule_task_request import DeleteParameterTimedScheduleTaskRequest
+from ._delete_parameter_timed_schedule_task_response_body import DeleteParameterTimedScheduleTaskResponseBody
+from ._delete_parameter_timed_schedule_task_response import DeleteParameterTimedScheduleTaskResponse
 from ._delete_postgres_extensions_request import DeletePostgresExtensionsRequest
 from ._delete_postgres_extensions_response_body import DeletePostgresExtensionsResponseBody
 from ._delete_postgres_extensions_response import DeletePostgresExtensionsResponse
@@ -561,6 +564,9 @@ from ._describe_parameter_groups_response import DescribeParameterGroupsResponse
 from ._describe_parameter_templates_request import DescribeParameterTemplatesRequest
 from ._describe_parameter_templates_response_body import DescribeParameterTemplatesResponseBody
 from ._describe_parameter_templates_response import DescribeParameterTemplatesResponse
+from ._describe_parameter_timed_schedule_task_request import DescribeParameterTimedScheduleTaskRequest
+from ._describe_parameter_timed_schedule_task_response_body import DescribeParameterTimedScheduleTaskResponseBody
+from ._describe_parameter_timed_schedule_task_response import DescribeParameterTimedScheduleTaskResponse
 from ._describe_parameters_request import DescribeParametersRequest
 from ._describe_parameters_response_body import DescribeParametersResponseBody
 from ._describe_parameters_response import DescribeParametersResponse
@@ -1447,6 +1453,7 @@ from ._describe_parameter_groups_response_body import DescribeParameterGroupsRes
 from ._describe_parameter_groups_response_body import DescribeParameterGroupsResponseBodyParameterGroups
 from ._describe_parameter_templates_response_body import DescribeParameterTemplatesResponseBodyParametersTemplateRecord
 from ._describe_parameter_templates_response_body import DescribeParameterTemplatesResponseBodyParameters
+from ._describe_parameter_timed_schedule_task_response_body import DescribeParameterTimedScheduleTaskResponseBodyTaskList
 from ._describe_parameters_response_body import DescribeParametersResponseBodyConfigParametersDBInstanceParameter
 from ._describe_parameters_response_body import DescribeParametersResponseBodyConfigParameters
 from ._describe_parameters_response_body import DescribeParametersResponseBodyParamGroupInfo
@@ -1859,6 +1866,9 @@ __all__ = [
     DeleteParameterGroupRequest,
     DeleteParameterGroupResponseBody,
     DeleteParameterGroupResponse,
+    DeleteParameterTimedScheduleTaskRequest,
+    DeleteParameterTimedScheduleTaskResponseBody,
+    DeleteParameterTimedScheduleTaskResponse,
     DeletePostgresExtensionsRequest,
     DeletePostgresExtensionsResponseBody,
     DeletePostgresExtensionsResponse,
@@ -2194,6 +2204,9 @@ __all__ = [
     DescribeParameterTemplatesRequest,
     DescribeParameterTemplatesResponseBody,
     DescribeParameterTemplatesResponse,
+    DescribeParameterTimedScheduleTaskRequest,
+    DescribeParameterTimedScheduleTaskResponseBody,
+    DescribeParameterTimedScheduleTaskResponse,
     DescribeParametersRequest,
     DescribeParametersResponseBody,
     DescribeParametersResponse,
@@ -3080,6 +3093,7 @@ __all__ = [
     DescribeParameterGroupsResponseBodyParameterGroups,
     DescribeParameterTemplatesResponseBodyParametersTemplateRecord,
     DescribeParameterTemplatesResponseBodyParameters,
+    DescribeParameterTimedScheduleTaskResponseBodyTaskList,
     DescribeParametersResponseBodyConfigParametersDBInstanceParameter,
     DescribeParametersResponseBodyConfigParameters,
     DescribeParametersResponseBodyParamGroupInfo,

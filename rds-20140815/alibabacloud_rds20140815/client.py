@@ -7729,6 +7729,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_parameter_group_with_options_async(request, runtime)
 
+    def delete_parameter_timed_schedule_task_with_options(
+        self,
+        request: main_models.DeleteParameterTimedScheduleTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteParameterTimedScheduleTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteParameterTimedScheduleTask',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteParameterTimedScheduleTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_parameter_timed_schedule_task_with_options_async(
+        self,
+        request: main_models.DeleteParameterTimedScheduleTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteParameterTimedScheduleTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_name):
+            query['DBInstanceName'] = request.dbinstance_name
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteParameterTimedScheduleTask',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteParameterTimedScheduleTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_parameter_timed_schedule_task(
+        self,
+        request: main_models.DeleteParameterTimedScheduleTaskRequest,
+    ) -> main_models.DeleteParameterTimedScheduleTaskResponse:
+        runtime = RuntimeOptions()
+        return self.delete_parameter_timed_schedule_task_with_options(request, runtime)
+
+    async def delete_parameter_timed_schedule_task_async(
+        self,
+        request: main_models.DeleteParameterTimedScheduleTaskRequest,
+    ) -> main_models.DeleteParameterTimedScheduleTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_parameter_timed_schedule_task_with_options_async(request, runtime)
+
     def delete_postgres_extensions_with_options(
         self,
         request: main_models.DeletePostgresExtensionsRequest,
@@ -18434,6 +18508,72 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeParameterTemplatesResponse:
         runtime = RuntimeOptions()
         return await self.describe_parameter_templates_with_options_async(request, runtime)
+
+    def describe_parameter_timed_schedule_task_with_options(
+        self,
+        request: main_models.DescribeParameterTimedScheduleTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeParameterTimedScheduleTaskResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeParameterTimedScheduleTask',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeParameterTimedScheduleTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_parameter_timed_schedule_task_with_options_async(
+        self,
+        request: main_models.DescribeParameterTimedScheduleTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeParameterTimedScheduleTaskResponse:
+        request.validate()
+        query = Utils.query(request.to_map())
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeParameterTimedScheduleTask',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeParameterTimedScheduleTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_parameter_timed_schedule_task(
+        self,
+        request: main_models.DescribeParameterTimedScheduleTaskRequest,
+    ) -> main_models.DescribeParameterTimedScheduleTaskResponse:
+        runtime = RuntimeOptions()
+        return self.describe_parameter_timed_schedule_task_with_options(request, runtime)
+
+    async def describe_parameter_timed_schedule_task_async(
+        self,
+        request: main_models.DescribeParameterTimedScheduleTaskRequest,
+    ) -> main_models.DescribeParameterTimedScheduleTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_parameter_timed_schedule_task_with_options_async(request, runtime)
 
     def describe_parameters_with_options(
         self,
