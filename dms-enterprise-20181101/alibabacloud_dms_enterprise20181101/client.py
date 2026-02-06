@@ -17010,6 +17010,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
         if not DaraCore.is_null(request.tid):
             query['Tid'] = request.tid
         req = open_api_util_models.OpenApiRequest(
@@ -17044,6 +17046,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
         if not DaraCore.is_null(request.tid):
             query['Tid'] = request.tid
         req = open_api_util_models.OpenApiRequest(

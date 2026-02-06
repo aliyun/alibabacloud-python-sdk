@@ -1,3 +1,7 @@
+2026-02-06 Version: 2.1.6
+- Update API ListDatabases: add request parameters SearchKey.
+
+
 2026-01-22 Version: 2.1.5
 - Update API AddInstance: add request parameters RoleArn.
 - Update API CreateDifyInstance: add request parameters AutoRenew.

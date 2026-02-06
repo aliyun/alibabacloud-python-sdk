@@ -10,6 +10,7 @@ class ListDatabasesRequest(DaraModel):
         instance_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        search_key: str = None,
         tid: int = None,
     ):
         # The ID of the instance. The valid value is returned if you call the ListInstances operation. The instance ID is not the ID of the RDS instance.
@@ -20,6 +21,7 @@ class ListDatabasesRequest(DaraModel):
         self.page_number = page_number
         # The number of entries to return per page.
         self.page_size = page_size
+        self.search_key = search_key
         # The ID of the tenant.
         # 
         # > : To view the ID of the tenant, move the pointer over the profile picture in the upper-right corner of the Data Management (DMS) console. For more information, see [Manage DMS tenants](https://help.aliyun.com/document_detail/181330.html).
@@ -42,6 +44,9 @@ class ListDatabasesRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.search_key is not None:
+            result['SearchKey'] = self.search_key
+
         if self.tid is not None:
             result['Tid'] = self.tid
 
@@ -57,6 +62,9 @@ class ListDatabasesRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('SearchKey') is not None:
+            self.search_key = m.get('SearchKey')
 
         if m.get('Tid') is not None:
             self.tid = m.get('Tid')
