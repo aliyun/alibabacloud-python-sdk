@@ -2417,6 +2417,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_custom_hostname_with_options_async(request, runtime)
 
+    def create_custom_response_code_rule_with_options(
+        self,
+        request: main_models.CreateCustomResponseCodeRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomResponseCodeRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_id):
+            query['PageId'] = request.page_id
+        if not DaraCore.is_null(request.return_code):
+            query['ReturnCode'] = request.return_code
+        if not DaraCore.is_null(request.rule):
+            query['Rule'] = request.rule
+        if not DaraCore.is_null(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.sequence):
+            query['Sequence'] = request.sequence
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomResponseCodeRule',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomResponseCodeRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_custom_response_code_rule_with_options_async(
+        self,
+        request: main_models.CreateCustomResponseCodeRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomResponseCodeRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_id):
+            query['PageId'] = request.page_id
+        if not DaraCore.is_null(request.return_code):
+            query['ReturnCode'] = request.return_code
+        if not DaraCore.is_null(request.rule):
+            query['Rule'] = request.rule
+        if not DaraCore.is_null(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.sequence):
+            query['Sequence'] = request.sequence
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomResponseCodeRule',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomResponseCodeRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_custom_response_code_rule(
+        self,
+        request: main_models.CreateCustomResponseCodeRuleRequest,
+    ) -> main_models.CreateCustomResponseCodeRuleResponse:
+        runtime = RuntimeOptions()
+        return self.create_custom_response_code_rule_with_options(request, runtime)
+
+    async def create_custom_response_code_rule_async(
+        self,
+        request: main_models.CreateCustomResponseCodeRuleRequest,
+    ) -> main_models.CreateCustomResponseCodeRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.create_custom_response_code_rule_with_options_async(request, runtime)
+
     def create_custom_scene_policy_with_options(
         self,
         request: main_models.CreateCustomScenePolicyRequest,
@@ -7386,6 +7484,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteCustomHostnameResponse:
         runtime = RuntimeOptions()
         return await self.delete_custom_hostname_with_options_async(request, runtime)
+
+    def delete_custom_response_code_rule_with_options(
+        self,
+        request: main_models.DeleteCustomResponseCodeRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomResponseCodeRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomResponseCodeRule',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCustomResponseCodeRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_custom_response_code_rule_with_options_async(
+        self,
+        request: main_models.DeleteCustomResponseCodeRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomResponseCodeRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomResponseCodeRule',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCustomResponseCodeRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_custom_response_code_rule(
+        self,
+        request: main_models.DeleteCustomResponseCodeRuleRequest,
+    ) -> main_models.DeleteCustomResponseCodeRuleResponse:
+        runtime = RuntimeOptions()
+        return self.delete_custom_response_code_rule_with_options(request, runtime)
+
+    async def delete_custom_response_code_rule_async(
+        self,
+        request: main_models.DeleteCustomResponseCodeRuleRequest,
+    ) -> main_models.DeleteCustomResponseCodeRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_custom_response_code_rule_with_options_async(request, runtime)
 
     def delete_custom_scene_policy_with_options(
         self,
@@ -13375,6 +13547,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_custom_hostname_with_options_async(request, runtime)
 
+    def get_custom_response_code_rule_with_options(
+        self,
+        request: main_models.GetCustomResponseCodeRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomResponseCodeRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCustomResponseCodeRule',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCustomResponseCodeRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_custom_response_code_rule_with_options_async(
+        self,
+        request: main_models.GetCustomResponseCodeRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCustomResponseCodeRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCustomResponseCodeRule',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCustomResponseCodeRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_custom_response_code_rule(
+        self,
+        request: main_models.GetCustomResponseCodeRuleRequest,
+    ) -> main_models.GetCustomResponseCodeRuleResponse:
+        runtime = RuntimeOptions()
+        return self.get_custom_response_code_rule_with_options(request, runtime)
+
+    async def get_custom_response_code_rule_async(
+        self,
+        request: main_models.GetCustomResponseCodeRuleRequest,
+    ) -> main_models.GetCustomResponseCodeRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.get_custom_response_code_rule_with_options_async(request, runtime)
+
     def get_development_mode_with_options(
         self,
         request: main_models.GetDevelopmentModeRequest,
@@ -18798,6 +19044,100 @@ class Client(OpenApiClient):
     ) -> main_models.ListCustomHostnamesResponse:
         runtime = RuntimeOptions()
         return await self.list_custom_hostnames_with_options_async(request, runtime)
+
+    def list_custom_response_code_rules_with_options(
+        self,
+        request: main_models.ListCustomResponseCodeRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCustomResponseCodeRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.config_type):
+            query['ConfigType'] = request.config_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCustomResponseCodeRules',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCustomResponseCodeRulesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_custom_response_code_rules_with_options_async(
+        self,
+        request: main_models.ListCustomResponseCodeRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCustomResponseCodeRulesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.config_type):
+            query['ConfigType'] = request.config_type
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        if not DaraCore.is_null(request.site_version):
+            query['SiteVersion'] = request.site_version
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCustomResponseCodeRules',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCustomResponseCodeRulesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_custom_response_code_rules(
+        self,
+        request: main_models.ListCustomResponseCodeRulesRequest,
+    ) -> main_models.ListCustomResponseCodeRulesResponse:
+        runtime = RuntimeOptions()
+        return self.list_custom_response_code_rules_with_options(request, runtime)
+
+    async def list_custom_response_code_rules_async(
+        self,
+        request: main_models.ListCustomResponseCodeRulesRequest,
+    ) -> main_models.ListCustomResponseCodeRulesResponse:
+        runtime = RuntimeOptions()
+        return await self.list_custom_response_code_rules_with_options_async(request, runtime)
 
     def list_esaipinfo_with_options(
         self,
@@ -26128,6 +26468,104 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateCustomHostnameResponse:
         runtime = RuntimeOptions()
         return await self.update_custom_hostname_with_options_async(request, runtime)
+
+    def update_custom_response_code_rule_with_options(
+        self,
+        request: main_models.UpdateCustomResponseCodeRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCustomResponseCodeRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.page_id):
+            query['PageId'] = request.page_id
+        if not DaraCore.is_null(request.return_code):
+            query['ReturnCode'] = request.return_code
+        if not DaraCore.is_null(request.rule):
+            query['Rule'] = request.rule
+        if not DaraCore.is_null(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.sequence):
+            query['Sequence'] = request.sequence
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCustomResponseCodeRule',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCustomResponseCodeRuleResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_custom_response_code_rule_with_options_async(
+        self,
+        request: main_models.UpdateCustomResponseCodeRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCustomResponseCodeRuleResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config_id):
+            query['ConfigId'] = request.config_id
+        if not DaraCore.is_null(request.page_id):
+            query['PageId'] = request.page_id
+        if not DaraCore.is_null(request.return_code):
+            query['ReturnCode'] = request.return_code
+        if not DaraCore.is_null(request.rule):
+            query['Rule'] = request.rule
+        if not DaraCore.is_null(request.rule_enable):
+            query['RuleEnable'] = request.rule_enable
+        if not DaraCore.is_null(request.rule_name):
+            query['RuleName'] = request.rule_name
+        if not DaraCore.is_null(request.sequence):
+            query['Sequence'] = request.sequence
+        if not DaraCore.is_null(request.site_id):
+            query['SiteId'] = request.site_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCustomResponseCodeRule',
+            version = '2024-09-10',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCustomResponseCodeRuleResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_custom_response_code_rule(
+        self,
+        request: main_models.UpdateCustomResponseCodeRuleRequest,
+    ) -> main_models.UpdateCustomResponseCodeRuleResponse:
+        runtime = RuntimeOptions()
+        return self.update_custom_response_code_rule_with_options(request, runtime)
+
+    async def update_custom_response_code_rule_async(
+        self,
+        request: main_models.UpdateCustomResponseCodeRuleRequest,
+    ) -> main_models.UpdateCustomResponseCodeRuleResponse:
+        runtime = RuntimeOptions()
+        return await self.update_custom_response_code_rule_with_options_async(request, runtime)
 
     def update_custom_scene_policy_with_options(
         self,

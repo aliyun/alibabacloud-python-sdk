@@ -90,6 +90,9 @@ from ._create_compression_rule_response import CreateCompressionRuleResponse
 from ._create_custom_hostname_request import CreateCustomHostnameRequest
 from ._create_custom_hostname_response_body import CreateCustomHostnameResponseBody
 from ._create_custom_hostname_response import CreateCustomHostnameResponse
+from ._create_custom_response_code_rule_request import CreateCustomResponseCodeRuleRequest
+from ._create_custom_response_code_rule_response_body import CreateCustomResponseCodeRuleResponseBody
+from ._create_custom_response_code_rule_response import CreateCustomResponseCodeRuleResponse
 from ._create_custom_scene_policy_request import CreateCustomScenePolicyRequest
 from ._create_custom_scene_policy_response_body import CreateCustomScenePolicyResponseBody
 from ._create_custom_scene_policy_response import CreateCustomScenePolicyResponse
@@ -261,6 +264,9 @@ from ._delete_compression_rule_response import DeleteCompressionRuleResponse
 from ._delete_custom_hostname_request import DeleteCustomHostnameRequest
 from ._delete_custom_hostname_response_body import DeleteCustomHostnameResponseBody
 from ._delete_custom_hostname_response import DeleteCustomHostnameResponse
+from ._delete_custom_response_code_rule_request import DeleteCustomResponseCodeRuleRequest
+from ._delete_custom_response_code_rule_response_body import DeleteCustomResponseCodeRuleResponseBody
+from ._delete_custom_response_code_rule_response import DeleteCustomResponseCodeRuleResponse
 from ._delete_custom_scene_policy_request import DeleteCustomScenePolicyRequest
 from ._delete_custom_scene_policy_response_body import DeleteCustomScenePolicyResponseBody
 from ._delete_custom_scene_policy_response import DeleteCustomScenePolicyResponse
@@ -508,6 +514,9 @@ from ._get_cross_border_optimization_response import GetCrossBorderOptimizationR
 from ._get_custom_hostname_request import GetCustomHostnameRequest
 from ._get_custom_hostname_response_body import GetCustomHostnameResponseBody
 from ._get_custom_hostname_response import GetCustomHostnameResponse
+from ._get_custom_response_code_rule_request import GetCustomResponseCodeRuleRequest
+from ._get_custom_response_code_rule_response_body import GetCustomResponseCodeRuleResponseBody
+from ._get_custom_response_code_rule_response import GetCustomResponseCodeRuleResponse
 from ._get_development_mode_request import GetDevelopmentModeRequest
 from ._get_development_mode_response_body import GetDevelopmentModeResponseBody
 from ._get_development_mode_response import GetDevelopmentModeResponse
@@ -744,6 +753,9 @@ from ._list_compression_rules_response import ListCompressionRulesResponse
 from ._list_custom_hostnames_request import ListCustomHostnamesRequest
 from ._list_custom_hostnames_response_body import ListCustomHostnamesResponseBody
 from ._list_custom_hostnames_response import ListCustomHostnamesResponse
+from ._list_custom_response_code_rules_request import ListCustomResponseCodeRulesRequest
+from ._list_custom_response_code_rules_response_body import ListCustomResponseCodeRulesResponseBody
+from ._list_custom_response_code_rules_response import ListCustomResponseCodeRulesResponse
 from ._list_esaipinfo_request import ListESAIPInfoRequest
 from ._list_esaipinfo_response_body import ListESAIPInfoResponseBody
 from ._list_esaipinfo_response import ListESAIPInfoResponse
@@ -1032,6 +1044,9 @@ from ._update_cross_border_optimization_response import UpdateCrossBorderOptimiz
 from ._update_custom_hostname_request import UpdateCustomHostnameRequest
 from ._update_custom_hostname_response_body import UpdateCustomHostnameResponseBody
 from ._update_custom_hostname_response import UpdateCustomHostnameResponse
+from ._update_custom_response_code_rule_request import UpdateCustomResponseCodeRuleRequest
+from ._update_custom_response_code_rule_response_body import UpdateCustomResponseCodeRuleResponseBody
+from ._update_custom_response_code_rule_response import UpdateCustomResponseCodeRuleResponse
 from ._update_custom_scene_policy_request import UpdateCustomScenePolicyRequest
 from ._update_custom_scene_policy_response_body import UpdateCustomScenePolicyResponseBody
 from ._update_custom_scene_policy_response import UpdateCustomScenePolicyResponse
@@ -1417,6 +1432,7 @@ from ._list_client_ca_certificates_response_body import ListClientCaCertificates
 from ._list_client_certificates_response_body import ListClientCertificatesResponseBodyResult
 from ._list_compression_rules_response_body import ListCompressionRulesResponseBodyConfigs
 from ._list_custom_hostnames_response_body import ListCustomHostnamesResponseBodyHostnames
+from ._list_custom_response_code_rules_response_body import ListCustomResponseCodeRulesResponseBodyConfigs
 from ._list_esaipinfo_response_body import ListESAIPInfoResponseBodyContent
 from ._list_edge_container_app_image_secrets_response_body import ListEdgeContainerAppImageSecretsResponseBodyImageSecretList
 from ._list_edge_container_app_records_response_body import ListEdgeContainerAppRecordsResponseBodyRecords
@@ -1625,6 +1641,9 @@ __all__ = [
     CreateCustomHostnameRequest,
     CreateCustomHostnameResponseBody,
     CreateCustomHostnameResponse,
+    CreateCustomResponseCodeRuleRequest,
+    CreateCustomResponseCodeRuleResponseBody,
+    CreateCustomResponseCodeRuleResponse,
     CreateCustomScenePolicyRequest,
     CreateCustomScenePolicyResponseBody,
     CreateCustomScenePolicyResponse,
@@ -1796,6 +1815,9 @@ __all__ = [
     DeleteCustomHostnameRequest,
     DeleteCustomHostnameResponseBody,
     DeleteCustomHostnameResponse,
+    DeleteCustomResponseCodeRuleRequest,
+    DeleteCustomResponseCodeRuleResponseBody,
+    DeleteCustomResponseCodeRuleResponse,
     DeleteCustomScenePolicyRequest,
     DeleteCustomScenePolicyResponseBody,
     DeleteCustomScenePolicyResponse,
@@ -2043,6 +2065,9 @@ __all__ = [
     GetCustomHostnameRequest,
     GetCustomHostnameResponseBody,
     GetCustomHostnameResponse,
+    GetCustomResponseCodeRuleRequest,
+    GetCustomResponseCodeRuleResponseBody,
+    GetCustomResponseCodeRuleResponse,
     GetDevelopmentModeRequest,
     GetDevelopmentModeResponseBody,
     GetDevelopmentModeResponse,
@@ -2279,6 +2304,9 @@ __all__ = [
     ListCustomHostnamesRequest,
     ListCustomHostnamesResponseBody,
     ListCustomHostnamesResponse,
+    ListCustomResponseCodeRulesRequest,
+    ListCustomResponseCodeRulesResponseBody,
+    ListCustomResponseCodeRulesResponse,
     ListESAIPInfoRequest,
     ListESAIPInfoResponseBody,
     ListESAIPInfoResponse,
@@ -2567,6 +2595,9 @@ __all__ = [
     UpdateCustomHostnameRequest,
     UpdateCustomHostnameResponseBody,
     UpdateCustomHostnameResponse,
+    UpdateCustomResponseCodeRuleRequest,
+    UpdateCustomResponseCodeRuleResponseBody,
+    UpdateCustomResponseCodeRuleResponse,
     UpdateCustomScenePolicyRequest,
     UpdateCustomScenePolicyResponseBody,
     UpdateCustomScenePolicyResponse,
@@ -2952,6 +2983,7 @@ __all__ = [
     ListClientCertificatesResponseBodyResult,
     ListCompressionRulesResponseBodyConfigs,
     ListCustomHostnamesResponseBodyHostnames,
+    ListCustomResponseCodeRulesResponseBodyConfigs,
     ListESAIPInfoResponseBodyContent,
     ListEdgeContainerAppImageSecretsResponseBodyImageSecretList,
     ListEdgeContainerAppRecordsResponseBodyRecords,
