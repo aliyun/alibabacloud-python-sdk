@@ -1,3 +1,7 @@
+2026-02-06 Version: 1.3.0
+- Support API DeleteEmbodiedAIPlatform.
+
+
 2026-01-28 Version: 1.2.1
 - Update API GetEmbodiedAIPlatformResourceUsageInfo: add response parameters Body.GpuDetails.$.AllocatedUnit.
 

@@ -224,6 +224,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_embodied_aiplatform_with_options_async(request, runtime)
 
+    def delete_embodied_aiplatform_with_options(
+        self,
+        request: main_models.DeleteEmbodiedAIPlatformRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEmbodiedAIPlatformResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.platform_name):
+            query['PlatformName'] = request.platform_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEmbodiedAIPlatform',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEmbodiedAIPlatformResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_embodied_aiplatform_with_options_async(
+        self,
+        request: main_models.DeleteEmbodiedAIPlatformRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteEmbodiedAIPlatformResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.platform_name):
+            query['PlatformName'] = request.platform_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteEmbodiedAIPlatform',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteEmbodiedAIPlatformResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_embodied_aiplatform(
+        self,
+        request: main_models.DeleteEmbodiedAIPlatformRequest,
+    ) -> main_models.DeleteEmbodiedAIPlatformResponse:
+        runtime = RuntimeOptions()
+        return self.delete_embodied_aiplatform_with_options(request, runtime)
+
+    async def delete_embodied_aiplatform_async(
+        self,
+        request: main_models.DeleteEmbodiedAIPlatformRequest,
+    ) -> main_models.DeleteEmbodiedAIPlatformResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_embodied_aiplatform_with_options_async(request, runtime)
+
     def describe_embodied_aiplatforms_with_options(
         self,
         request: main_models.DescribeEmbodiedAIPlatformsRequest,
