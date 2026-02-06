@@ -1,3 +1,12 @@
+2026-02-06 Version: 4.22.1
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.ClientHibernate.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.ClientRestart.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.ClientShutdown.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.HoverHibernate.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.HoverRestart.
+- Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.HoverShutdown.
+
+
 2026-02-02 Version: 4.22.0
 - Support API CreateQosRule.
 - Support API DeleteQosRules.

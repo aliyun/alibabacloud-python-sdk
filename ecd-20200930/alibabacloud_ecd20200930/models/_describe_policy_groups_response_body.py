@@ -97,6 +97,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         camera_redirect: str = None,
         client_control_menu: str = None,
         client_create_snapshot: str = None,
+        client_hibernate: str = None,
+        client_restart: str = None,
+        client_shutdown: str = None,
         client_types: List[main_models.DescribePolicyGroupsResponseBodyDescribePolicyGroupsClientTypes] = None,
         clipboard: str = None,
         color_enhancement: str = None,
@@ -129,6 +132,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         file_transfer_speed_location: str = None,
         gpu_acceleration: str = None,
         hover_config_msg: str = None,
+        hover_hibernate: str = None,
+        hover_restart: str = None,
+        hover_shutdown: str = None,
         html_5access: str = None,
         html_5file_transfer: str = None,
         internet_communication_protocol: str = None,
@@ -246,6 +252,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         self.camera_redirect = camera_redirect
         self.client_control_menu = client_control_menu
         self.client_create_snapshot = client_create_snapshot
+        self.client_hibernate = client_hibernate
+        self.client_restart = client_restart
+        self.client_shutdown = client_shutdown
         # The logon method control rules to limit the type of the Alibaba Cloud Workspace client used by end users to connect to cloud computers.
         self.client_types = client_types
         # The permissions on the clipboard.
@@ -349,6 +358,9 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         # *   on
         self.gpu_acceleration = gpu_acceleration
         self.hover_config_msg = hover_config_msg
+        self.hover_hibernate = hover_hibernate
+        self.hover_restart = hover_restart
+        self.hover_shutdown = hover_shutdown
         # Specifies whether to allow web client access.
         # 
         # Valid values:
@@ -802,6 +814,15 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         if self.client_create_snapshot is not None:
             result['ClientCreateSnapshot'] = self.client_create_snapshot
 
+        if self.client_hibernate is not None:
+            result['ClientHibernate'] = self.client_hibernate
+
+        if self.client_restart is not None:
+            result['ClientRestart'] = self.client_restart
+
+        if self.client_shutdown is not None:
+            result['ClientShutdown'] = self.client_shutdown
+
         result['ClientTypes'] = []
         if self.client_types is not None:
             for k1 in self.client_types:
@@ -905,6 +926,15 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
 
         if self.hover_config_msg is not None:
             result['HoverConfigMsg'] = self.hover_config_msg
+
+        if self.hover_hibernate is not None:
+            result['HoverHibernate'] = self.hover_hibernate
+
+        if self.hover_restart is not None:
+            result['HoverRestart'] = self.hover_restart
+
+        if self.hover_shutdown is not None:
+            result['HoverShutdown'] = self.hover_shutdown
 
         if self.html_5access is not None:
             result['Html5Access'] = self.html_5access
@@ -1216,6 +1246,15 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
         if m.get('ClientCreateSnapshot') is not None:
             self.client_create_snapshot = m.get('ClientCreateSnapshot')
 
+        if m.get('ClientHibernate') is not None:
+            self.client_hibernate = m.get('ClientHibernate')
+
+        if m.get('ClientRestart') is not None:
+            self.client_restart = m.get('ClientRestart')
+
+        if m.get('ClientShutdown') is not None:
+            self.client_shutdown = m.get('ClientShutdown')
+
         self.client_types = []
         if m.get('ClientTypes') is not None:
             for k1 in m.get('ClientTypes'):
@@ -1323,6 +1362,15 @@ class DescribePolicyGroupsResponseBodyDescribePolicyGroups(DaraModel):
 
         if m.get('HoverConfigMsg') is not None:
             self.hover_config_msg = m.get('HoverConfigMsg')
+
+        if m.get('HoverHibernate') is not None:
+            self.hover_hibernate = m.get('HoverHibernate')
+
+        if m.get('HoverRestart') is not None:
+            self.hover_restart = m.get('HoverRestart')
+
+        if m.get('HoverShutdown') is not None:
+            self.hover_shutdown = m.get('HoverShutdown')
 
         if m.get('Html5Access') is not None:
             self.html_5access = m.get('Html5Access')
