@@ -1,3 +1,8 @@
+2026-02-06 Version: 3.10.1
+- Update API GetPlayInfo: add request parameters CodecName.
+- Update API GetURLUploadInfos: add response parameters Body.URLUploadInfoList.$.RegisteredMediaId.
+
+
 2025-12-05 Version: 3.10.0
 - Support API GetAppPlayKey.
 - Support API SetAppPlayKey.
