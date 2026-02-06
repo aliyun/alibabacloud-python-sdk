@@ -2713,6 +2713,8 @@ class Client(OpenApiClient):
             query['Categories'] = request.categories_shrink
         if not DaraCore.is_null(request.cust_space_id):
             query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.endpoint_uri):
+            query['EndpointUri'] = request.endpoint_uri
         if not DaraCore.is_null(request.flow_name):
             query['FlowName'] = request.flow_name
         if not DaraCore.is_null(request.owner_id):
@@ -2755,6 +2757,8 @@ class Client(OpenApiClient):
             query['Categories'] = request.categories_shrink
         if not DaraCore.is_null(request.cust_space_id):
             query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.endpoint_uri):
+            query['EndpointUri'] = request.endpoint_uri
         if not DaraCore.is_null(request.flow_name):
             query['FlowName'] = request.flow_name
         if not DaraCore.is_null(request.owner_id):
@@ -11521,6 +11525,8 @@ class Client(OpenApiClient):
             query['Categories'] = request.categories_shrink
         if not DaraCore.is_null(request.cust_space_id):
             query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.endpoint_uri):
+            query['EndpointUri'] = request.endpoint_uri
         if not DaraCore.is_null(request.flow_id):
             query['FlowId'] = request.flow_id
         if not DaraCore.is_null(request.flow_name):
@@ -11565,6 +11571,8 @@ class Client(OpenApiClient):
             query['Categories'] = request.categories_shrink
         if not DaraCore.is_null(request.cust_space_id):
             query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.endpoint_uri):
+            query['EndpointUri'] = request.endpoint_uri
         if not DaraCore.is_null(request.flow_id):
             query['FlowId'] = request.flow_id
         if not DaraCore.is_null(request.flow_name):
@@ -15843,3 +15851,113 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateWabaMmlStatusResponse:
         runtime = RuntimeOptions()
         return await self.update_waba_mml_status_with_options_async(request, runtime)
+
+    def whatsapp_call_with_options(
+        self,
+        tmp_req: main_models.WhatsappCallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.WhatsappCallResponse:
+        tmp_req.validate()
+        request = main_models.WhatsappCallShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.session):
+            request.session_shrink = Utils.array_to_string_with_specified_style(tmp_req.session, 'Session', 'json')
+        query = {}
+        if not DaraCore.is_null(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not DaraCore.is_null(request.call_action):
+            query['CallAction'] = request.call_action
+        if not DaraCore.is_null(request.call_id):
+            query['CallId'] = request.call_id
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.session_shrink):
+            query['Session'] = request.session_shrink
+        if not DaraCore.is_null(request.user_number):
+            query['UserNumber'] = request.user_number
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'WhatsappCall',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.WhatsappCallResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def whatsapp_call_with_options_async(
+        self,
+        tmp_req: main_models.WhatsappCallRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.WhatsappCallResponse:
+        tmp_req.validate()
+        request = main_models.WhatsappCallShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.session):
+            request.session_shrink = Utils.array_to_string_with_specified_style(tmp_req.session, 'Session', 'json')
+        query = {}
+        if not DaraCore.is_null(request.business_number):
+            query['BusinessNumber'] = request.business_number
+        if not DaraCore.is_null(request.call_action):
+            query['CallAction'] = request.call_action
+        if not DaraCore.is_null(request.call_id):
+            query['CallId'] = request.call_id
+        if not DaraCore.is_null(request.cust_space_id):
+            query['CustSpaceId'] = request.cust_space_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.session_shrink):
+            query['Session'] = request.session_shrink
+        if not DaraCore.is_null(request.user_number):
+            query['UserNumber'] = request.user_number
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'WhatsappCall',
+            version = '2020-06-06',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.WhatsappCallResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def whatsapp_call(
+        self,
+        request: main_models.WhatsappCallRequest,
+    ) -> main_models.WhatsappCallResponse:
+        runtime = RuntimeOptions()
+        return self.whatsapp_call_with_options(request, runtime)
+
+    async def whatsapp_call_async(
+        self,
+        request: main_models.WhatsappCallRequest,
+    ) -> main_models.WhatsappCallResponse:
+        runtime = RuntimeOptions()
+        return await self.whatsapp_call_with_options_async(request, runtime)

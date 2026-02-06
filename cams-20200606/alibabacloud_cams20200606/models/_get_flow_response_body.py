@@ -77,6 +77,7 @@ class GetFlowResponseBodyData(DaraModel):
         self,
         categories: List[str] = None,
         data_api_version: str = None,
+        endpoint_uri: str = None,
         flow_id: str = None,
         flow_name: str = None,
         jsonversion: str = None,
@@ -88,6 +89,7 @@ class GetFlowResponseBodyData(DaraModel):
         self.categories = categories
         # The version number of the API.
         self.data_api_version = data_api_version
+        self.endpoint_uri = endpoint_uri
         # The Flow ID.
         self.flow_id = flow_id
         # The Flow name.
@@ -141,6 +143,9 @@ class GetFlowResponseBodyData(DaraModel):
         if self.data_api_version is not None:
             result['DataApiVersion'] = self.data_api_version
 
+        if self.endpoint_uri is not None:
+            result['EndpointUri'] = self.endpoint_uri
+
         if self.flow_id is not None:
             result['FlowId'] = self.flow_id
 
@@ -168,6 +173,9 @@ class GetFlowResponseBodyData(DaraModel):
 
         if m.get('DataApiVersion') is not None:
             self.data_api_version = m.get('DataApiVersion')
+
+        if m.get('EndpointUri') is not None:
+            self.endpoint_uri = m.get('EndpointUri')
 
         if m.get('FlowId') is not None:
             self.flow_id = m.get('FlowId')

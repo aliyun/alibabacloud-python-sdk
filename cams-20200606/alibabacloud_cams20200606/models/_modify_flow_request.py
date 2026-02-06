@@ -11,6 +11,7 @@ class ModifyFlowRequest(DaraModel):
         self,
         categories: List[str] = None,
         cust_space_id: str = None,
+        endpoint_uri: str = None,
         flow_id: str = None,
         flow_name: str = None,
         owner_id: int = None,
@@ -20,6 +21,7 @@ class ModifyFlowRequest(DaraModel):
         # This parameter is required.
         self.categories = categories
         self.cust_space_id = cust_space_id
+        self.endpoint_uri = endpoint_uri
         self.flow_id = flow_id
         # This parameter is required.
         self.flow_name = flow_name
@@ -40,6 +42,9 @@ class ModifyFlowRequest(DaraModel):
 
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+
+        if self.endpoint_uri is not None:
+            result['EndpointUri'] = self.endpoint_uri
 
         if self.flow_id is not None:
             result['FlowId'] = self.flow_id
@@ -65,6 +70,9 @@ class ModifyFlowRequest(DaraModel):
 
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+
+        if m.get('EndpointUri') is not None:
+            self.endpoint_uri = m.get('EndpointUri')
 
         if m.get('FlowId') is not None:
             self.flow_id = m.get('FlowId')

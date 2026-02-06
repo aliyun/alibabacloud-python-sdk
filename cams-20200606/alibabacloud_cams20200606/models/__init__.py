@@ -542,6 +542,10 @@ from ._update_phone_webhook_response import UpdatePhoneWebhookResponse
 from ._update_waba_mml_status_request import UpdateWabaMmlStatusRequest
 from ._update_waba_mml_status_response_body import UpdateWabaMmlStatusResponseBody
 from ._update_waba_mml_status_response import UpdateWabaMmlStatusResponse
+from ._whatsapp_call_request import WhatsappCallRequest
+from ._whatsapp_call_shrink_request import WhatsappCallShrinkRequest
+from ._whatsapp_call_response_body import WhatsappCallResponseBody
+from ._whatsapp_call_response import WhatsappCallResponse
 from ._add_address_recover_suspend_request import AddAddressRecoverSuspendRequestAuditRecord
 from ._add_audit_viber_open_request import AddAuditViberOpenRequestAuditRecordCompanyAddress
 from ._add_audit_viber_open_request import AddAuditViberOpenRequestAuditRecordCompanyTel
@@ -552,6 +556,11 @@ from ._bind_instagram_page_response_body import BindInstagramPageResponseBodyDat
 from ._bind_messenger_page_response_body import BindMessengerPageResponseBodyData
 from ._chatapp_bind_waba_response_body import ChatappBindWabaResponseBodyData
 from ._chatapp_migration_verified_response_body import ChatappMigrationVerifiedResponseBodyData
+from ._chatapp_sync_phone_number_response_body import ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule
+from ._chatapp_sync_phone_number_response_body import ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours
+from ._chatapp_sync_phone_number_response_body import ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours
+from ._chatapp_sync_phone_number_response_body import ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling
+from ._chatapp_sync_phone_number_response_body import ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure
 from ._chatapp_sync_phone_number_response_body import ChatappSyncPhoneNumberResponseBodyPhoneNumbers
 from ._copy_template_response_body import CopyTemplateResponseBodyData
 from ._create_chatapp_migration_initiate_response_body import CreateChatappMigrationInitiateResponseBodyData
@@ -659,6 +668,11 @@ from ._modify_chatapp_template_request import ModifyChatappTemplateRequestCompon
 from ._modify_chatapp_template_response_body import ModifyChatappTemplateResponseBodyData
 from ._modify_flow_response_body import ModifyFlowResponseBodyData
 from ._query_chatapp_bind_waba_response_body import QueryChatappBindWabaResponseBodyData
+from ._query_chatapp_phone_numbers_response_body import QueryChatappPhoneNumbersResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule
+from ._query_chatapp_phone_numbers_response_body import QueryChatappPhoneNumbersResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours
+from ._query_chatapp_phone_numbers_response_body import QueryChatappPhoneNumbersResponseBodyPhoneNumbersCallingConfigureCallingCallHours
+from ._query_chatapp_phone_numbers_response_body import QueryChatappPhoneNumbersResponseBodyPhoneNumbersCallingConfigureCalling
+from ._query_chatapp_phone_numbers_response_body import QueryChatappPhoneNumbersResponseBodyPhoneNumbersCallingConfigure
 from ._query_chatapp_phone_numbers_response_body import QueryChatappPhoneNumbersResponseBodyPhoneNumbers
 from ._query_instance_response_body import QueryInstanceResponseBodyData
 from ._query_phone_business_profile_response_body import QueryPhoneBusinessProfileResponseBodyData
@@ -680,6 +694,8 @@ from ._update_conversational_automation_request import UpdateConversationalAutom
 from ._update_flow_jsonasset_response_body import UpdateFlowJSONAssetResponseBodyData
 from ._update_instance_response_body import UpdateInstanceResponseBodyData
 from ._update_phone_message_qrdl_response_body import UpdatePhoneMessageQrdlResponseBodyData
+from ._whatsapp_call_request import WhatsappCallRequestSession
+from ._whatsapp_call_response_body import WhatsappCallResponseBodyModel
 
 __all__ = [
     AddAddressRecoverSuspendRequest,
@@ -1222,6 +1238,10 @@ __all__ = [
     UpdateWabaMmlStatusRequest,
     UpdateWabaMmlStatusResponseBody,
     UpdateWabaMmlStatusResponse,
+    WhatsappCallRequest,
+    WhatsappCallShrinkRequest,
+    WhatsappCallResponseBody,
+    WhatsappCallResponse,
     AddAddressRecoverSuspendRequestAuditRecord,
     AddAuditViberOpenRequestAuditRecordCompanyAddress,
     AddAuditViberOpenRequestAuditRecordCompanyTel,
@@ -1232,6 +1252,11 @@ __all__ = [
     BindMessengerPageResponseBodyData,
     ChatappBindWabaResponseBodyData,
     ChatappMigrationVerifiedResponseBodyData,
+    ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule,
+    ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours,
+    ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCallingCallHours,
+    ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigureCalling,
+    ChatappSyncPhoneNumberResponseBodyPhoneNumbersCallingConfigure,
     ChatappSyncPhoneNumberResponseBodyPhoneNumbers,
     CopyTemplateResponseBodyData,
     CreateChatappMigrationInitiateResponseBodyData,
@@ -1339,6 +1364,11 @@ __all__ = [
     ModifyChatappTemplateResponseBodyData,
     ModifyFlowResponseBodyData,
     QueryChatappBindWabaResponseBodyData,
+    QueryChatappPhoneNumbersResponseBodyPhoneNumbersCallingConfigureCallingCallHoursHolidaySchedule,
+    QueryChatappPhoneNumbersResponseBodyPhoneNumbersCallingConfigureCallingCallHoursWeeklyOperatingHours,
+    QueryChatappPhoneNumbersResponseBodyPhoneNumbersCallingConfigureCallingCallHours,
+    QueryChatappPhoneNumbersResponseBodyPhoneNumbersCallingConfigureCalling,
+    QueryChatappPhoneNumbersResponseBodyPhoneNumbersCallingConfigure,
     QueryChatappPhoneNumbersResponseBodyPhoneNumbers,
     QueryInstanceResponseBodyData,
     QueryPhoneBusinessProfileResponseBodyData,
@@ -1359,5 +1389,7 @@ __all__ = [
     UpdateConversationalAutomationRequestCommands,
     UpdateFlowJSONAssetResponseBodyData,
     UpdateInstanceResponseBodyData,
-    UpdatePhoneMessageQrdlResponseBodyData
+    UpdatePhoneMessageQrdlResponseBodyData,
+    WhatsappCallRequestSession,
+    WhatsappCallResponseBodyModel
 ]

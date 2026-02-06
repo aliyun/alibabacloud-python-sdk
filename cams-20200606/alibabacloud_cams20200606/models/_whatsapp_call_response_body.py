@@ -2,33 +2,29 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from alibabacloud_cams20200606 import models as main_models
 from darabonba.model import DaraModel
 
-class ModifyFlowResponseBody(DaraModel):
+class WhatsappCallResponseBody(DaraModel):
     def __init__(
         self,
         access_denied_detail: str = None,
         code: str = None,
-        data: main_models.ModifyFlowResponseBodyData = None,
         message: str = None,
+        model: main_models.WhatsappCallResponseBodyModel = None,
         request_id: str = None,
+        success: bool = None,
     ):
         self.access_denied_detail = access_denied_detail
-        # If OK is returned, the request was successful.
         self.code = code
-        # The returned data.
-        self.data = data
-        # The error message.
         self.message = message
-        # The request ID.
+        self.model = model
         self.request_id = request_id
+        self.success = success
 
     def validate(self):
-        if self.data:
-            self.data.validate()
+        if self.model:
+            self.model.validate()
 
     def to_map(self):
         result = dict()
@@ -41,14 +37,17 @@ class ModifyFlowResponseBody(DaraModel):
         if self.code is not None:
             result['Code'] = self.code
 
-        if self.data is not None:
-            result['Data'] = self.data.to_map()
-
         if self.message is not None:
             result['Message'] = self.message
 
+        if self.model is not None:
+            result['Model'] = self.model.to_map()
+
         if self.request_id is not None:
             result['RequestId'] = self.request_id
+
+        if self.success is not None:
+            result['Success'] = self.success
 
         return result
 
@@ -60,33 +59,27 @@ class ModifyFlowResponseBody(DaraModel):
         if m.get('Code') is not None:
             self.code = m.get('Code')
 
-        if m.get('Data') is not None:
-            temp_model = main_models.ModifyFlowResponseBodyData()
-            self.data = temp_model.from_map(m.get('Data'))
-
         if m.get('Message') is not None:
             self.message = m.get('Message')
+
+        if m.get('Model') is not None:
+            temp_model = main_models.WhatsappCallResponseBodyModel()
+            self.model = temp_model.from_map(m.get('Model'))
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+
         return self
 
-class ModifyFlowResponseBodyData(DaraModel):
+class WhatsappCallResponseBodyModel(DaraModel):
     def __init__(
         self,
-        categories: List[str] = None,
-        endpoint_uri: str = None,
-        flow_id: str = None,
-        flow_name: str = None,
+        call_id: str = None,
     ):
-        # The categories of the Flow.
-        self.categories = categories
-        self.endpoint_uri = endpoint_uri
-        # The Flow ID.
-        self.flow_id = flow_id
-        # The Flow name.
-        self.flow_name = flow_name
+        self.call_id = call_id
 
     def validate(self):
         pass
@@ -96,33 +89,15 @@ class ModifyFlowResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.categories is not None:
-            result['Categories'] = self.categories
-
-        if self.endpoint_uri is not None:
-            result['EndpointUri'] = self.endpoint_uri
-
-        if self.flow_id is not None:
-            result['FlowId'] = self.flow_id
-
-        if self.flow_name is not None:
-            result['FlowName'] = self.flow_name
+        if self.call_id is not None:
+            result['CallId'] = self.call_id
 
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('Categories') is not None:
-            self.categories = m.get('Categories')
-
-        if m.get('EndpointUri') is not None:
-            self.endpoint_uri = m.get('EndpointUri')
-
-        if m.get('FlowId') is not None:
-            self.flow_id = m.get('FlowId')
-
-        if m.get('FlowName') is not None:
-            self.flow_name = m.get('FlowName')
+        if m.get('CallId') is not None:
+            self.call_id = m.get('CallId')
 
         return self
 

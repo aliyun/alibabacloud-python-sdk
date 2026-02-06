@@ -9,6 +9,7 @@ class CreateFlowShrinkRequest(DaraModel):
         self,
         categories_shrink: str = None,
         cust_space_id: str = None,
+        endpoint_uri: str = None,
         flow_name: str = None,
         owner_id: int = None,
         resource_owner_account: str = None,
@@ -17,6 +18,7 @@ class CreateFlowShrinkRequest(DaraModel):
         # This parameter is required.
         self.categories_shrink = categories_shrink
         self.cust_space_id = cust_space_id
+        self.endpoint_uri = endpoint_uri
         # This parameter is required.
         self.flow_name = flow_name
         self.owner_id = owner_id
@@ -36,6 +38,9 @@ class CreateFlowShrinkRequest(DaraModel):
 
         if self.cust_space_id is not None:
             result['CustSpaceId'] = self.cust_space_id
+
+        if self.endpoint_uri is not None:
+            result['EndpointUri'] = self.endpoint_uri
 
         if self.flow_name is not None:
             result['FlowName'] = self.flow_name
@@ -58,6 +63,9 @@ class CreateFlowShrinkRequest(DaraModel):
 
         if m.get('CustSpaceId') is not None:
             self.cust_space_id = m.get('CustSpaceId')
+
+        if m.get('EndpointUri') is not None:
+            self.endpoint_uri = m.get('EndpointUri')
 
         if m.get('FlowName') is not None:
             self.flow_name = m.get('FlowName')
