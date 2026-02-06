@@ -1571,6 +1571,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.permission_codes_shrink):
             body['PermissionCodes'] = request.permission_codes_shrink
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['SourceIdOfAssistantId'] = request.source_id_of_assistant_id
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -1614,6 +1616,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.permission_codes_shrink):
             body['PermissionCodes'] = request.permission_codes_shrink
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['SourceIdOfAssistantId'] = request.source_id_of_assistant_id
         real_headers = {}
         if not DaraCore.is_null(headers.common_headers):
             real_headers = headers.common_headers
@@ -17016,6 +17020,222 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = main_models.GetSheetContentJobIdHeaders()
         return await self.get_sheet_content_job_id_with_options_async(request, headers, runtime)
+
+    def get_skill_detail_with_options(
+        self,
+        request: main_models.GetSkillDetailRequest,
+        tmp_header: main_models.GetSkillDetailHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSkillDetailResponse:
+        request.validate()
+        headers = main_models.GetSkillDetailShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.group_id):
+            body['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.skill_id):
+            body['SkillId'] = request.skill_id
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['SourceIdOfAssistantId'] = request.source_id_of_assistant_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSkillDetail',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/ai/v1/skill/getSkillDetail',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSkillDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_skill_detail_with_options_async(
+        self,
+        request: main_models.GetSkillDetailRequest,
+        tmp_header: main_models.GetSkillDetailHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSkillDetailResponse:
+        request.validate()
+        headers = main_models.GetSkillDetailShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        body = {}
+        if not DaraCore.is_null(request.group_id):
+            body['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.skill_id):
+            body['SkillId'] = request.skill_id
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['SourceIdOfAssistantId'] = request.source_id_of_assistant_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSkillDetail',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/ai/v1/skill/getSkillDetail',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSkillDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_skill_detail(
+        self,
+        request: main_models.GetSkillDetailRequest,
+    ) -> main_models.GetSkillDetailResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetSkillDetailHeaders()
+        return self.get_skill_detail_with_options(request, headers, runtime)
+
+    async def get_skill_detail_async(
+        self,
+        request: main_models.GetSkillDetailRequest,
+    ) -> main_models.GetSkillDetailResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetSkillDetailHeaders()
+        return await self.get_skill_detail_with_options_async(request, headers, runtime)
+
+    def get_skills_with_options(
+        self,
+        tmp_req: main_models.GetSkillsRequest,
+        tmp_header: main_models.GetSkillsHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSkillsResponse:
+        tmp_req.validate()
+        request = main_models.GetSkillsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.GetSkillsShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.group_ids):
+            request.group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.group_ids, 'GroupIds', 'json')
+        if not DaraCore.is_null(tmp_req.skill_ids):
+            request.skill_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.skill_ids, 'SkillIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.group_ids_shrink):
+            body['GroupIds'] = request.group_ids_shrink
+        if not DaraCore.is_null(request.skill_ids_shrink):
+            body['SkillIds'] = request.skill_ids_shrink
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['SourceIdOfAssistantId'] = request.source_id_of_assistant_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSkills',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/ai/v1/skill/getSkills',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSkillsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_skills_with_options_async(
+        self,
+        tmp_req: main_models.GetSkillsRequest,
+        tmp_header: main_models.GetSkillsHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSkillsResponse:
+        tmp_req.validate()
+        request = main_models.GetSkillsShrinkRequest()
+        Utils.convert(tmp_req, request)
+        headers = main_models.GetSkillsShrinkHeaders()
+        Utils.convert(tmp_header, headers)
+        if not DaraCore.is_null(tmp_header.account_context):
+            headers.account_context_shrink = Utils.array_to_string_with_specified_style(tmp_header.account_context, 'AccountContext', 'json')
+        if not DaraCore.is_null(tmp_req.group_ids):
+            request.group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.group_ids, 'GroupIds', 'json')
+        if not DaraCore.is_null(tmp_req.skill_ids):
+            request.skill_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.skill_ids, 'SkillIds', 'json')
+        body = {}
+        if not DaraCore.is_null(request.group_ids_shrink):
+            body['GroupIds'] = request.group_ids_shrink
+        if not DaraCore.is_null(request.skill_ids_shrink):
+            body['SkillIds'] = request.skill_ids_shrink
+        if not DaraCore.is_null(request.source_id_of_assistant_id):
+            body['SourceIdOfAssistantId'] = request.source_id_of_assistant_id
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.account_context_shrink):
+            real_headers['AccountContext'] = DaraCore.to_json_string(headers.account_context_shrink)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSkills',
+            version = '2023-04-26',
+            protocol = 'HTTPS',
+            pathname = f'/ai/v1/skill/getSkills',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSkillsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_skills(
+        self,
+        request: main_models.GetSkillsRequest,
+    ) -> main_models.GetSkillsResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetSkillsHeaders()
+        return self.get_skills_with_options(request, headers, runtime)
+
+    async def get_skills_async(
+        self,
+        request: main_models.GetSkillsRequest,
+    ) -> main_models.GetSkillsResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.GetSkillsHeaders()
+        return await self.get_skills_with_options_async(request, headers, runtime)
 
     def get_space_directories_with_options(
         self,

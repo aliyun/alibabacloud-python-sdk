@@ -1,3 +1,9 @@
+2026-02-06 Version: 2.48.0
+- Support API GetSkillDetail.
+- Support API GetSkills.
+- Update API AuthorizeSkill: add request parameters SourceIdOfAssistantId.
+
+
 2026-01-22 Version: 2.47.2
 - Generated python 2023-04-26 for aliding.
 

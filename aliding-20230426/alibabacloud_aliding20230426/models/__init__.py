@@ -823,6 +823,17 @@ from ._get_sheet_content_job_id_request import GetSheetContentJobIdRequest
 from ._get_sheet_content_job_id_shrink_request import GetSheetContentJobIdShrinkRequest
 from ._get_sheet_content_job_id_response_body import GetSheetContentJobIdResponseBody
 from ._get_sheet_content_job_id_response import GetSheetContentJobIdResponse
+from ._get_skill_detail_headers import GetSkillDetailHeaders
+from ._get_skill_detail_shrink_headers import GetSkillDetailShrinkHeaders
+from ._get_skill_detail_request import GetSkillDetailRequest
+from ._get_skill_detail_response_body import GetSkillDetailResponseBody
+from ._get_skill_detail_response import GetSkillDetailResponse
+from ._get_skills_headers import GetSkillsHeaders
+from ._get_skills_shrink_headers import GetSkillsShrinkHeaders
+from ._get_skills_request import GetSkillsRequest
+from ._get_skills_shrink_request import GetSkillsShrinkRequest
+from ._get_skills_response_body import GetSkillsResponseBody
+from ._get_skills_response import GetSkillsResponse
 from ._get_space_directories_headers import GetSpaceDirectoriesHeaders
 from ._get_space_directories_shrink_headers import GetSpaceDirectoriesShrinkHeaders
 from ._get_space_directories_request import GetSpaceDirectoriesRequest
@@ -2110,6 +2121,8 @@ from ._get_sheet_headers import GetSheetHeadersAccountContext
 from ._get_sheet_request import GetSheetRequestTenantContext
 from ._get_sheet_content_job_id_headers import GetSheetContentJobIdHeadersAccountContext
 from ._get_sheet_content_job_id_request import GetSheetContentJobIdRequestTenantContext
+from ._get_skill_detail_headers import GetSkillDetailHeadersAccountContext
+from ._get_skills_headers import GetSkillsHeadersAccountContext
 from ._get_space_directories_headers import GetSpaceDirectoriesHeadersAccountContext
 from ._get_space_directories_request import GetSpaceDirectoriesRequestTenantContext
 from ._get_space_directories_response_body import GetSpaceDirectoriesResponseBodyChildrenCreator
@@ -3447,6 +3460,17 @@ __all__ = [
     GetSheetContentJobIdShrinkRequest,
     GetSheetContentJobIdResponseBody,
     GetSheetContentJobIdResponse,
+    GetSkillDetailHeaders,
+    GetSkillDetailShrinkHeaders,
+    GetSkillDetailRequest,
+    GetSkillDetailResponseBody,
+    GetSkillDetailResponse,
+    GetSkillsHeaders,
+    GetSkillsShrinkHeaders,
+    GetSkillsRequest,
+    GetSkillsShrinkRequest,
+    GetSkillsResponseBody,
+    GetSkillsResponse,
     GetSpaceDirectoriesHeaders,
     GetSpaceDirectoriesShrinkHeaders,
     GetSpaceDirectoriesRequest,
@@ -4734,6 +4758,8 @@ __all__ = [
     GetSheetRequestTenantContext,
     GetSheetContentJobIdHeadersAccountContext,
     GetSheetContentJobIdRequestTenantContext,
+    GetSkillDetailHeadersAccountContext,
+    GetSkillsHeadersAccountContext,
     GetSpaceDirectoriesHeadersAccountContext,
     GetSpaceDirectoriesRequestTenantContext,
     GetSpaceDirectoriesResponseBodyChildrenCreator,
