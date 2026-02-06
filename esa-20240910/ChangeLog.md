@@ -6,6 +6,14 @@
 - Support API UpdateCustomResponseCodeRule.
 
 
+2026-02-06 Version: 2.38.0
+- Support API CreateCustomResponseCodeRule.
+- Support API DeleteCustomResponseCodeRule.
+- Support API GetCustomResponseCodeRule.
+- Support API ListCustomResponseCodeRules.
+- Support API UpdateCustomResponseCodeRule.
+
+
 2026-01-26 Version: 2.37.0
 - Support API ApplyCustomHostnameCertificate.
 - Support API CreateCustomHostname.
