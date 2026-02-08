@@ -6,6 +6,9 @@ from ._app_ai_staff import AppAiStaff
 from ._app_instance import AppInstance
 from ._app_instance_aggregate import AppInstanceAggregate
 from ._app_instance_profile import AppInstanceProfile
+from ._app_material_directory import AppMaterialDirectory
+from ._app_material_file import AppMaterialFile
+from ._app_material_task import AppMaterialTask
 from ._app_operate_action import AppOperateAction
 from ._app_operation_address import AppOperationAddress
 from ._app_service import AppService
@@ -25,18 +28,32 @@ from ._create_app_instance_ticket_response import CreateAppInstanceTicketRespons
 from ._create_logo_task_request import CreateLogoTaskRequest
 from ._create_logo_task_response_body import CreateLogoTaskResponseBody
 from ._create_logo_task_response import CreateLogoTaskResponse
+from ._create_material_directory_request import CreateMaterialDirectoryRequest
+from ._create_material_directory_response_body import CreateMaterialDirectoryResponseBody
+from ._create_material_directory_response import CreateMaterialDirectoryResponse
 from ._delete_app_domain_certificate_request import DeleteAppDomainCertificateRequest
 from ._delete_app_domain_certificate_response_body import DeleteAppDomainCertificateResponseBody
 from ._delete_app_domain_certificate_response import DeleteAppDomainCertificateResponse
 from ._delete_app_domain_redirect_request import DeleteAppDomainRedirectRequest
 from ._delete_app_domain_redirect_response_body import DeleteAppDomainRedirectResponseBody
 from ._delete_app_domain_redirect_response import DeleteAppDomainRedirectResponse
+from ._delete_material_directory_request import DeleteMaterialDirectoryRequest
+from ._delete_material_directory_response_body import DeleteMaterialDirectoryResponseBody
+from ._delete_material_directory_response import DeleteMaterialDirectoryResponse
+from ._delete_material_task_request import DeleteMaterialTaskRequest
+from ._delete_material_task_shrink_request import DeleteMaterialTaskShrinkRequest
+from ._delete_material_task_response_body import DeleteMaterialTaskResponseBody
+from ._delete_material_task_response import DeleteMaterialTaskResponse
 from ._describe_app_domain_dns_record_request import DescribeAppDomainDnsRecordRequest
 from ._describe_app_domain_dns_record_response_body import DescribeAppDomainDnsRecordResponseBody
 from ._describe_app_domain_dns_record_response import DescribeAppDomainDnsRecordResponse
 from ._dispatch_console_apifor_partner_request import DispatchConsoleAPIForPartnerRequest
 from ._dispatch_console_apifor_partner_response_body import DispatchConsoleAPIForPartnerResponseBody
 from ._dispatch_console_apifor_partner_response import DispatchConsoleAPIForPartnerResponse
+from ._export_material_file_request import ExportMaterialFileRequest
+from ._export_material_file_shrink_request import ExportMaterialFileShrinkRequest
+from ._export_material_file_response_body import ExportMaterialFileResponseBody
+from ._export_material_file_response import ExportMaterialFileResponse
 from ._get_app_instance_request import GetAppInstanceRequest
 from ._get_app_instance_response_body import GetAppInstanceResponseBody
 from ._get_app_instance_response import GetAppInstanceResponse
@@ -71,12 +88,50 @@ from ._list_app_instances_response import ListAppInstancesResponse
 from ._modify_app_instance_spec_request import ModifyAppInstanceSpecRequest
 from ._modify_app_instance_spec_response_body import ModifyAppInstanceSpecResponseBody
 from ._modify_app_instance_spec_response import ModifyAppInstanceSpecResponse
+from ._modify_material_directory_request import ModifyMaterialDirectoryRequest
+from ._modify_material_directory_response_body import ModifyMaterialDirectoryResponseBody
+from ._modify_material_directory_response import ModifyMaterialDirectoryResponse
+from ._modify_material_file_request import ModifyMaterialFileRequest
+from ._modify_material_file_response_body import ModifyMaterialFileResponseBody
+from ._modify_material_file_response import ModifyMaterialFileResponse
+from ._modify_material_file_status_request import ModifyMaterialFileStatusRequest
+from ._modify_material_file_status_shrink_request import ModifyMaterialFileStatusShrinkRequest
+from ._modify_material_file_status_response_body import ModifyMaterialFileStatusResponseBody
+from ._modify_material_file_status_response import ModifyMaterialFileStatusResponse
+from ._move_material_directory_request import MoveMaterialDirectoryRequest
+from ._move_material_directory_response_body import MoveMaterialDirectoryResponseBody
+from ._move_material_directory_response import MoveMaterialDirectoryResponse
+from ._move_material_file_request import MoveMaterialFileRequest
+from ._move_material_file_shrink_request import MoveMaterialFileShrinkRequest
+from ._move_material_file_response_body import MoveMaterialFileResponseBody
+from ._move_material_file_response import MoveMaterialFileResponse
 from ._operate_app_instance_for_partner_request import OperateAppInstanceForPartnerRequest
 from ._operate_app_instance_for_partner_response_body import OperateAppInstanceForPartnerResponseBody
 from ._operate_app_instance_for_partner_response import OperateAppInstanceForPartnerResponse
 from ._operate_app_service_for_partner_request import OperateAppServiceForPartnerRequest
 from ._operate_app_service_for_partner_response_body import OperateAppServiceForPartnerResponseBody
 from ._operate_app_service_for_partner_response import OperateAppServiceForPartnerResponse
+from ._query_material_directory_tree_request import QueryMaterialDirectoryTreeRequest
+from ._query_material_directory_tree_response_body import QueryMaterialDirectoryTreeResponseBody
+from ._query_material_directory_tree_response import QueryMaterialDirectoryTreeResponse
+from ._query_material_file_detail_request import QueryMaterialFileDetailRequest
+from ._query_material_file_detail_response_body import QueryMaterialFileDetailResponseBody
+from ._query_material_file_detail_response import QueryMaterialFileDetailResponse
+from ._query_material_file_list_request import QueryMaterialFileListRequest
+from ._query_material_file_list_shrink_request import QueryMaterialFileListShrinkRequest
+from ._query_material_file_list_response_body import QueryMaterialFileListResponseBody
+from ._query_material_file_list_response import QueryMaterialFileListResponse
+from ._query_material_file_summary_info_request import QueryMaterialFileSummaryInfoRequest
+from ._query_material_file_summary_info_shrink_request import QueryMaterialFileSummaryInfoShrinkRequest
+from ._query_material_file_summary_info_response_body import QueryMaterialFileSummaryInfoResponseBody
+from ._query_material_file_summary_info_response import QueryMaterialFileSummaryInfoResponse
+from ._query_material_task_detail_request import QueryMaterialTaskDetailRequest
+from ._query_material_task_detail_response_body import QueryMaterialTaskDetailResponseBody
+from ._query_material_task_detail_response import QueryMaterialTaskDetailResponse
+from ._query_material_task_list_request import QueryMaterialTaskListRequest
+from ._query_material_task_list_shrink_request import QueryMaterialTaskListShrinkRequest
+from ._query_material_task_list_response_body import QueryMaterialTaskListResponseBody
+from ._query_material_task_list_response import QueryMaterialTaskListResponse
 from ._refresh_app_instance_ticket_request import RefreshAppInstanceTicketRequest
 from ._refresh_app_instance_ticket_response_body import RefreshAppInstanceTicketResponseBody
 from ._refresh_app_instance_ticket_response import RefreshAppInstanceTicketResponse
@@ -93,6 +148,9 @@ from ._search_image_response import SearchImageResponse
 from ._set_app_domain_certificate_request import SetAppDomainCertificateRequest
 from ._set_app_domain_certificate_response_body import SetAppDomainCertificateResponseBody
 from ._set_app_domain_certificate_response import SetAppDomainCertificateResponse
+from ._submit_material_task_request import SubmitMaterialTaskRequest
+from ._submit_material_task_response_body import SubmitMaterialTaskResponseBody
+from ._submit_material_task_response import SubmitMaterialTaskResponse
 from ._sync_app_instance_for_partner_request import SyncAppInstanceForPartnerRequest
 from ._sync_app_instance_for_partner_shrink_request import SyncAppInstanceForPartnerShrinkRequest
 from ._sync_app_instance_for_partner_response_body import SyncAppInstanceForPartnerResponseBody
@@ -100,6 +158,9 @@ from ._sync_app_instance_for_partner_response import SyncAppInstanceForPartnerRe
 from ._unbind_app_domain_request import UnbindAppDomainRequest
 from ._unbind_app_domain_response_body import UnbindAppDomainResponseBody
 from ._unbind_app_domain_response import UnbindAppDomainResponse
+from ._upload_material_file_request import UploadMaterialFileRequest
+from ._upload_material_file_response_body import UploadMaterialFileResponseBody
+from ._upload_material_file_response import UploadMaterialFileResponse
 from ._app_instance_aggregate import AppInstanceAggregatePartnerDetailBindData
 from ._app_instance_aggregate import AppInstanceAggregatePartnerDetail
 from ._app_instance_aggregate import AppInstanceAggregateTags
@@ -107,10 +168,12 @@ from ._bind_app_domain_response_body import BindAppDomainResponseBodyModule
 from ._create_app_instance_request import CreateAppInstanceRequestTags
 from ._create_app_instance_response_body import CreateAppInstanceResponseBodyModule
 from ._create_app_instance_ticket_response_body import CreateAppInstanceTicketResponseBodyModule
+from ._create_material_directory_response_body import CreateMaterialDirectoryResponseBodyModule
 from ._delete_app_domain_certificate_response_body import DeleteAppDomainCertificateResponseBodyModule
 from ._delete_app_domain_redirect_response_body import DeleteAppDomainRedirectResponseBodyModule
 from ._describe_app_domain_dns_record_response_body import DescribeAppDomainDnsRecordResponseBodyModule
 from ._dispatch_console_apifor_partner_response_body import DispatchConsoleAPIForPartnerResponseBodyModule
+from ._export_material_file_response_body import ExportMaterialFileResponseBodyModule
 from ._get_create_logo_task_response_body import GetCreateLogoTaskResponseBodyTask
 from ._get_domain_info_for_partner_response_body import GetDomainInfoForPartnerResponseBodyDataOwnership
 from ._get_domain_info_for_partner_response_body import GetDomainInfoForPartnerResponseBodyData
@@ -138,12 +201,17 @@ from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResp
 from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModuleNext
 from ._list_app_instance_domains_response_body import ListAppInstanceDomainsResponseBodyModule
 from ._modify_app_instance_spec_response_body import ModifyAppInstanceSpecResponseBodyModule
+from ._query_material_directory_tree_response_body import QueryMaterialDirectoryTreeResponseBodyModule
+from ._query_material_file_list_response_body import QueryMaterialFileListResponseBodyModule
+from ._query_material_file_summary_info_response_body import QueryMaterialFileSummaryInfoResponseBodyModule
+from ._query_material_task_list_response_body import QueryMaterialTaskListResponseBodyModule
 from ._refresh_app_instance_ticket_response_body import RefreshAppInstanceTicketResponseBodyModule
 from ._refund_app_instance_for_partner_response_body import RefundAppInstanceForPartnerResponseBodyModule
 from ._renew_app_instance_response_body import RenewAppInstanceResponseBodyModule
 from ._search_image_response_body import SearchImageResponseBodyImageResponseImageList
 from ._search_image_response_body import SearchImageResponseBodyImageResponse
 from ._set_app_domain_certificate_response_body import SetAppDomainCertificateResponseBodyModule
+from ._submit_material_task_response_body import SubmitMaterialTaskResponseBodyModule
 from ._sync_app_instance_for_partner_request import SyncAppInstanceForPartnerRequestAppInstanceProfile
 from ._sync_app_instance_for_partner_request import SyncAppInstanceForPartnerRequestAppInstance
 from ._sync_app_instance_for_partner_response_body import SyncAppInstanceForPartnerResponseBodyDataAppInstance
@@ -155,6 +223,9 @@ __all__ = [
     AppInstance,
     AppInstanceAggregate,
     AppInstanceProfile,
+    AppMaterialDirectory,
+    AppMaterialFile,
+    AppMaterialTask,
     AppOperateAction,
     AppOperationAddress,
     AppService,
@@ -174,18 +245,32 @@ __all__ = [
     CreateLogoTaskRequest,
     CreateLogoTaskResponseBody,
     CreateLogoTaskResponse,
+    CreateMaterialDirectoryRequest,
+    CreateMaterialDirectoryResponseBody,
+    CreateMaterialDirectoryResponse,
     DeleteAppDomainCertificateRequest,
     DeleteAppDomainCertificateResponseBody,
     DeleteAppDomainCertificateResponse,
     DeleteAppDomainRedirectRequest,
     DeleteAppDomainRedirectResponseBody,
     DeleteAppDomainRedirectResponse,
+    DeleteMaterialDirectoryRequest,
+    DeleteMaterialDirectoryResponseBody,
+    DeleteMaterialDirectoryResponse,
+    DeleteMaterialTaskRequest,
+    DeleteMaterialTaskShrinkRequest,
+    DeleteMaterialTaskResponseBody,
+    DeleteMaterialTaskResponse,
     DescribeAppDomainDnsRecordRequest,
     DescribeAppDomainDnsRecordResponseBody,
     DescribeAppDomainDnsRecordResponse,
     DispatchConsoleAPIForPartnerRequest,
     DispatchConsoleAPIForPartnerResponseBody,
     DispatchConsoleAPIForPartnerResponse,
+    ExportMaterialFileRequest,
+    ExportMaterialFileShrinkRequest,
+    ExportMaterialFileResponseBody,
+    ExportMaterialFileResponse,
     GetAppInstanceRequest,
     GetAppInstanceResponseBody,
     GetAppInstanceResponse,
@@ -220,12 +305,50 @@ __all__ = [
     ModifyAppInstanceSpecRequest,
     ModifyAppInstanceSpecResponseBody,
     ModifyAppInstanceSpecResponse,
+    ModifyMaterialDirectoryRequest,
+    ModifyMaterialDirectoryResponseBody,
+    ModifyMaterialDirectoryResponse,
+    ModifyMaterialFileRequest,
+    ModifyMaterialFileResponseBody,
+    ModifyMaterialFileResponse,
+    ModifyMaterialFileStatusRequest,
+    ModifyMaterialFileStatusShrinkRequest,
+    ModifyMaterialFileStatusResponseBody,
+    ModifyMaterialFileStatusResponse,
+    MoveMaterialDirectoryRequest,
+    MoveMaterialDirectoryResponseBody,
+    MoveMaterialDirectoryResponse,
+    MoveMaterialFileRequest,
+    MoveMaterialFileShrinkRequest,
+    MoveMaterialFileResponseBody,
+    MoveMaterialFileResponse,
     OperateAppInstanceForPartnerRequest,
     OperateAppInstanceForPartnerResponseBody,
     OperateAppInstanceForPartnerResponse,
     OperateAppServiceForPartnerRequest,
     OperateAppServiceForPartnerResponseBody,
     OperateAppServiceForPartnerResponse,
+    QueryMaterialDirectoryTreeRequest,
+    QueryMaterialDirectoryTreeResponseBody,
+    QueryMaterialDirectoryTreeResponse,
+    QueryMaterialFileDetailRequest,
+    QueryMaterialFileDetailResponseBody,
+    QueryMaterialFileDetailResponse,
+    QueryMaterialFileListRequest,
+    QueryMaterialFileListShrinkRequest,
+    QueryMaterialFileListResponseBody,
+    QueryMaterialFileListResponse,
+    QueryMaterialFileSummaryInfoRequest,
+    QueryMaterialFileSummaryInfoShrinkRequest,
+    QueryMaterialFileSummaryInfoResponseBody,
+    QueryMaterialFileSummaryInfoResponse,
+    QueryMaterialTaskDetailRequest,
+    QueryMaterialTaskDetailResponseBody,
+    QueryMaterialTaskDetailResponse,
+    QueryMaterialTaskListRequest,
+    QueryMaterialTaskListShrinkRequest,
+    QueryMaterialTaskListResponseBody,
+    QueryMaterialTaskListResponse,
     RefreshAppInstanceTicketRequest,
     RefreshAppInstanceTicketResponseBody,
     RefreshAppInstanceTicketResponse,
@@ -242,6 +365,9 @@ __all__ = [
     SetAppDomainCertificateRequest,
     SetAppDomainCertificateResponseBody,
     SetAppDomainCertificateResponse,
+    SubmitMaterialTaskRequest,
+    SubmitMaterialTaskResponseBody,
+    SubmitMaterialTaskResponse,
     SyncAppInstanceForPartnerRequest,
     SyncAppInstanceForPartnerShrinkRequest,
     SyncAppInstanceForPartnerResponseBody,
@@ -249,6 +375,9 @@ __all__ = [
     UnbindAppDomainRequest,
     UnbindAppDomainResponseBody,
     UnbindAppDomainResponse,
+    UploadMaterialFileRequest,
+    UploadMaterialFileResponseBody,
+    UploadMaterialFileResponse,
     AppInstanceAggregatePartnerDetailBindData,
     AppInstanceAggregatePartnerDetail,
     AppInstanceAggregateTags,
@@ -256,10 +385,12 @@ __all__ = [
     CreateAppInstanceRequestTags,
     CreateAppInstanceResponseBodyModule,
     CreateAppInstanceTicketResponseBodyModule,
+    CreateMaterialDirectoryResponseBodyModule,
     DeleteAppDomainCertificateResponseBodyModule,
     DeleteAppDomainRedirectResponseBodyModule,
     DescribeAppDomainDnsRecordResponseBodyModule,
     DispatchConsoleAPIForPartnerResponseBodyModule,
+    ExportMaterialFileResponseBodyModule,
     GetCreateLogoTaskResponseBodyTask,
     GetDomainInfoForPartnerResponseBodyDataOwnership,
     GetDomainInfoForPartnerResponseBodyData,
@@ -287,12 +418,17 @@ __all__ = [
     ListAppInstanceDomainsResponseBodyModuleNext,
     ListAppInstanceDomainsResponseBodyModule,
     ModifyAppInstanceSpecResponseBodyModule,
+    QueryMaterialDirectoryTreeResponseBodyModule,
+    QueryMaterialFileListResponseBodyModule,
+    QueryMaterialFileSummaryInfoResponseBodyModule,
+    QueryMaterialTaskListResponseBodyModule,
     RefreshAppInstanceTicketResponseBodyModule,
     RefundAppInstanceForPartnerResponseBodyModule,
     RenewAppInstanceResponseBodyModule,
     SearchImageResponseBodyImageResponseImageList,
     SearchImageResponseBodyImageResponse,
     SetAppDomainCertificateResponseBodyModule,
+    SubmitMaterialTaskResponseBodyModule,
     SyncAppInstanceForPartnerRequestAppInstanceProfile,
     SyncAppInstanceForPartnerRequestAppInstance,
     SyncAppInstanceForPartnerResponseBodyDataAppInstance,

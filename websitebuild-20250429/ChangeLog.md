@@ -1,3 +1,23 @@
+2026-02-08 Version: 2.10.0
+- Support API CreateMaterialDirectory.
+- Support API DeleteMaterialDirectory.
+- Support API DeleteMaterialTask.
+- Support API ExportMaterialFile.
+- Support API ModifyMaterialDirectory.
+- Support API ModifyMaterialFile.
+- Support API ModifyMaterialFileStatus.
+- Support API MoveMaterialDirectory.
+- Support API MoveMaterialFile.
+- Support API QueryMaterialDirectoryTree.
+- Support API QueryMaterialFileDetail.
+- Support API QueryMaterialFileList.
+- Support API QueryMaterialFileSummaryInfo.
+- Support API QueryMaterialTaskDetail.
+- Support API QueryMaterialTaskList.
+- Support API SubmitMaterialTask.
+- Support API UploadMaterialFile.
+
+
 2026-02-04 Version: 2.9.0
 - Support API IntrospectAppInstanceTicketForPreview.
 

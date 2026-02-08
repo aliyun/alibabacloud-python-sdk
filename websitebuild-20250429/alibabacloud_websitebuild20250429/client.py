@@ -404,6 +404,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_logo_task_with_options_async(request, runtime)
 
+    def create_material_directory_with_options(
+        self,
+        request: main_models.CreateMaterialDirectoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMaterialDirectoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.parent_directory_id):
+            query['ParentDirectoryId'] = request.parent_directory_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMaterialDirectory',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMaterialDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_material_directory_with_options_async(
+        self,
+        request: main_models.CreateMaterialDirectoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMaterialDirectoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.parent_directory_id):
+            query['ParentDirectoryId'] = request.parent_directory_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMaterialDirectory',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMaterialDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_material_directory(
+        self,
+        request: main_models.CreateMaterialDirectoryRequest,
+    ) -> main_models.CreateMaterialDirectoryResponse:
+        runtime = RuntimeOptions()
+        return self.create_material_directory_with_options(request, runtime)
+
+    async def create_material_directory_async(
+        self,
+        request: main_models.CreateMaterialDirectoryRequest,
+    ) -> main_models.CreateMaterialDirectoryResponse:
+        runtime = RuntimeOptions()
+        return await self.create_material_directory_with_options_async(request, runtime)
+
     def delete_app_domain_certificate_with_options(
         self,
         request: main_models.DeleteAppDomainCertificateRequest,
@@ -551,6 +629,158 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAppDomainRedirectResponse:
         runtime = RuntimeOptions()
         return await self.delete_app_domain_redirect_with_options_async(request, runtime)
+
+    def delete_material_directory_with_options(
+        self,
+        request: main_models.DeleteMaterialDirectoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMaterialDirectoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMaterialDirectory',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMaterialDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_material_directory_with_options_async(
+        self,
+        request: main_models.DeleteMaterialDirectoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMaterialDirectoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMaterialDirectory',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMaterialDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_material_directory(
+        self,
+        request: main_models.DeleteMaterialDirectoryRequest,
+    ) -> main_models.DeleteMaterialDirectoryResponse:
+        runtime = RuntimeOptions()
+        return self.delete_material_directory_with_options(request, runtime)
+
+    async def delete_material_directory_async(
+        self,
+        request: main_models.DeleteMaterialDirectoryRequest,
+    ) -> main_models.DeleteMaterialDirectoryResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_material_directory_with_options_async(request, runtime)
+
+    def delete_material_task_with_options(
+        self,
+        tmp_req: main_models.DeleteMaterialTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMaterialTaskResponse:
+        tmp_req.validate()
+        request = main_models.DeleteMaterialTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.task_ids):
+            request.task_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_ids, 'TaskIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.task_ids_shrink):
+            query['TaskIds'] = request.task_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMaterialTask',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMaterialTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_material_task_with_options_async(
+        self,
+        tmp_req: main_models.DeleteMaterialTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMaterialTaskResponse:
+        tmp_req.validate()
+        request = main_models.DeleteMaterialTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.task_ids):
+            request.task_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_ids, 'TaskIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.task_ids_shrink):
+            query['TaskIds'] = request.task_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMaterialTask',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMaterialTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_material_task(
+        self,
+        request: main_models.DeleteMaterialTaskRequest,
+    ) -> main_models.DeleteMaterialTaskResponse:
+        runtime = RuntimeOptions()
+        return self.delete_material_task_with_options(request, runtime)
+
+    async def delete_material_task_async(
+        self,
+        request: main_models.DeleteMaterialTaskRequest,
+    ) -> main_models.DeleteMaterialTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_material_task_with_options_async(request, runtime)
 
     def describe_app_domain_dns_record_with_options(
         self,
@@ -715,6 +945,88 @@ class Client(OpenApiClient):
     ) -> main_models.DispatchConsoleAPIForPartnerResponse:
         runtime = RuntimeOptions()
         return await self.dispatch_console_apifor_partner_with_options_async(request, runtime)
+
+    def export_material_file_with_options(
+        self,
+        tmp_req: main_models.ExportMaterialFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExportMaterialFileResponse:
+        tmp_req.validate()
+        request = main_models.ExportMaterialFileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.file_ids):
+            request.file_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.file_ids, 'FileIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.file_ids_shrink):
+            query['FileIds'] = request.file_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExportMaterialFile',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExportMaterialFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def export_material_file_with_options_async(
+        self,
+        tmp_req: main_models.ExportMaterialFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ExportMaterialFileResponse:
+        tmp_req.validate()
+        request = main_models.ExportMaterialFileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.file_ids):
+            request.file_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.file_ids, 'FileIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.file_ids_shrink):
+            query['FileIds'] = request.file_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ExportMaterialFile',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ExportMaterialFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def export_material_file(
+        self,
+        request: main_models.ExportMaterialFileRequest,
+    ) -> main_models.ExportMaterialFileResponse:
+        runtime = RuntimeOptions()
+        return self.export_material_file_with_options(request, runtime)
+
+    async def export_material_file_async(
+        self,
+        request: main_models.ExportMaterialFileRequest,
+    ) -> main_models.ExportMaterialFileResponse:
+        runtime = RuntimeOptions()
+        return await self.export_material_file_with_options_async(request, runtime)
 
     def get_app_instance_with_options(
         self,
@@ -1630,6 +1942,416 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_app_instance_spec_with_options_async(request, runtime)
 
+    def modify_material_directory_with_options(
+        self,
+        request: main_models.ModifyMaterialDirectoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyMaterialDirectoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyMaterialDirectory',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyMaterialDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_material_directory_with_options_async(
+        self,
+        request: main_models.ModifyMaterialDirectoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyMaterialDirectoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyMaterialDirectory',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyMaterialDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_material_directory(
+        self,
+        request: main_models.ModifyMaterialDirectoryRequest,
+    ) -> main_models.ModifyMaterialDirectoryResponse:
+        runtime = RuntimeOptions()
+        return self.modify_material_directory_with_options(request, runtime)
+
+    async def modify_material_directory_async(
+        self,
+        request: main_models.ModifyMaterialDirectoryRequest,
+    ) -> main_models.ModifyMaterialDirectoryResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_material_directory_with_options_async(request, runtime)
+
+    def modify_material_file_with_options(
+        self,
+        request: main_models.ModifyMaterialFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyMaterialFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyMaterialFile',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyMaterialFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_material_file_with_options_async(
+        self,
+        request: main_models.ModifyMaterialFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyMaterialFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyMaterialFile',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyMaterialFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_material_file(
+        self,
+        request: main_models.ModifyMaterialFileRequest,
+    ) -> main_models.ModifyMaterialFileResponse:
+        runtime = RuntimeOptions()
+        return self.modify_material_file_with_options(request, runtime)
+
+    async def modify_material_file_async(
+        self,
+        request: main_models.ModifyMaterialFileRequest,
+    ) -> main_models.ModifyMaterialFileResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_material_file_with_options_async(request, runtime)
+
+    def modify_material_file_status_with_options(
+        self,
+        tmp_req: main_models.ModifyMaterialFileStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyMaterialFileStatusResponse:
+        tmp_req.validate()
+        request = main_models.ModifyMaterialFileStatusShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.file_ids):
+            request.file_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.file_ids, 'FileIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.file_ids_shrink):
+            query['FileIds'] = request.file_ids_shrink
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyMaterialFileStatus',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyMaterialFileStatusResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_material_file_status_with_options_async(
+        self,
+        tmp_req: main_models.ModifyMaterialFileStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyMaterialFileStatusResponse:
+        tmp_req.validate()
+        request = main_models.ModifyMaterialFileStatusShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.file_ids):
+            request.file_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.file_ids, 'FileIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.file_ids_shrink):
+            query['FileIds'] = request.file_ids_shrink
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyMaterialFileStatus',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyMaterialFileStatusResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_material_file_status(
+        self,
+        request: main_models.ModifyMaterialFileStatusRequest,
+    ) -> main_models.ModifyMaterialFileStatusResponse:
+        runtime = RuntimeOptions()
+        return self.modify_material_file_status_with_options(request, runtime)
+
+    async def modify_material_file_status_async(
+        self,
+        request: main_models.ModifyMaterialFileStatusRequest,
+    ) -> main_models.ModifyMaterialFileStatusResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_material_file_status_with_options_async(request, runtime)
+
+    def move_material_directory_with_options(
+        self,
+        request: main_models.MoveMaterialDirectoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveMaterialDirectoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.parent_directory_id):
+            query['ParentDirectoryId'] = request.parent_directory_id
+        if not DaraCore.is_null(request.sort_num):
+            query['SortNum'] = request.sort_num
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MoveMaterialDirectory',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MoveMaterialDirectoryResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def move_material_directory_with_options_async(
+        self,
+        request: main_models.MoveMaterialDirectoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveMaterialDirectoryResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.parent_directory_id):
+            query['ParentDirectoryId'] = request.parent_directory_id
+        if not DaraCore.is_null(request.sort_num):
+            query['SortNum'] = request.sort_num
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MoveMaterialDirectory',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MoveMaterialDirectoryResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def move_material_directory(
+        self,
+        request: main_models.MoveMaterialDirectoryRequest,
+    ) -> main_models.MoveMaterialDirectoryResponse:
+        runtime = RuntimeOptions()
+        return self.move_material_directory_with_options(request, runtime)
+
+    async def move_material_directory_async(
+        self,
+        request: main_models.MoveMaterialDirectoryRequest,
+    ) -> main_models.MoveMaterialDirectoryResponse:
+        runtime = RuntimeOptions()
+        return await self.move_material_directory_with_options_async(request, runtime)
+
+    def move_material_file_with_options(
+        self,
+        tmp_req: main_models.MoveMaterialFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveMaterialFileResponse:
+        tmp_req.validate()
+        request = main_models.MoveMaterialFileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.file_ids):
+            request.file_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.file_ids, 'FileIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.file_ids_shrink):
+            query['FileIds'] = request.file_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MoveMaterialFile',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MoveMaterialFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def move_material_file_with_options_async(
+        self,
+        tmp_req: main_models.MoveMaterialFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveMaterialFileResponse:
+        tmp_req.validate()
+        request = main_models.MoveMaterialFileShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.file_ids):
+            request.file_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.file_ids, 'FileIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.file_ids_shrink):
+            query['FileIds'] = request.file_ids_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'MoveMaterialFile',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.MoveMaterialFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def move_material_file(
+        self,
+        request: main_models.MoveMaterialFileRequest,
+    ) -> main_models.MoveMaterialFileResponse:
+        runtime = RuntimeOptions()
+        return self.move_material_file_with_options(request, runtime)
+
+    async def move_material_file_async(
+        self,
+        request: main_models.MoveMaterialFileRequest,
+    ) -> main_models.MoveMaterialFileResponse:
+        runtime = RuntimeOptions()
+        return await self.move_material_file_with_options_async(request, runtime)
+
     def operate_app_instance_for_partner_with_options(
         self,
         request: main_models.OperateAppInstanceForPartnerRequest,
@@ -1785,6 +2507,590 @@ class Client(OpenApiClient):
     ) -> main_models.OperateAppServiceForPartnerResponse:
         runtime = RuntimeOptions()
         return await self.operate_app_service_for_partner_with_options_async(request, runtime)
+
+    def query_material_directory_tree_with_options(
+        self,
+        request: main_models.QueryMaterialDirectoryTreeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMaterialDirectoryTreeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.hidden_public):
+            query['HiddenPublic'] = request.hidden_public
+        if not DaraCore.is_null(request.root):
+            query['Root'] = request.root
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMaterialDirectoryTree',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMaterialDirectoryTreeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_material_directory_tree_with_options_async(
+        self,
+        request: main_models.QueryMaterialDirectoryTreeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMaterialDirectoryTreeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.hidden_public):
+            query['HiddenPublic'] = request.hidden_public
+        if not DaraCore.is_null(request.root):
+            query['Root'] = request.root
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMaterialDirectoryTree',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMaterialDirectoryTreeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_material_directory_tree(
+        self,
+        request: main_models.QueryMaterialDirectoryTreeRequest,
+    ) -> main_models.QueryMaterialDirectoryTreeResponse:
+        runtime = RuntimeOptions()
+        return self.query_material_directory_tree_with_options(request, runtime)
+
+    async def query_material_directory_tree_async(
+        self,
+        request: main_models.QueryMaterialDirectoryTreeRequest,
+    ) -> main_models.QueryMaterialDirectoryTreeResponse:
+        runtime = RuntimeOptions()
+        return await self.query_material_directory_tree_with_options_async(request, runtime)
+
+    def query_material_file_detail_with_options(
+        self,
+        request: main_models.QueryMaterialFileDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMaterialFileDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMaterialFileDetail',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMaterialFileDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_material_file_detail_with_options_async(
+        self,
+        request: main_models.QueryMaterialFileDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMaterialFileDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMaterialFileDetail',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMaterialFileDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_material_file_detail(
+        self,
+        request: main_models.QueryMaterialFileDetailRequest,
+    ) -> main_models.QueryMaterialFileDetailResponse:
+        runtime = RuntimeOptions()
+        return self.query_material_file_detail_with_options(request, runtime)
+
+    async def query_material_file_detail_async(
+        self,
+        request: main_models.QueryMaterialFileDetailRequest,
+    ) -> main_models.QueryMaterialFileDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.query_material_file_detail_with_options_async(request, runtime)
+
+    def query_material_file_list_with_options(
+        self,
+        tmp_req: main_models.QueryMaterialFileListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMaterialFileListResponse:
+        tmp_req.validate()
+        request = main_models.QueryMaterialFileListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.status_list):
+            request.status_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
+        if not DaraCore.is_null(tmp_req.suffix_list):
+            request.suffix_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.suffix_list, 'SuffixList', 'json')
+        if not DaraCore.is_null(tmp_req.type_list):
+            request.type_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.type_list, 'TypeList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.max_file_size):
+            query['MaxFileSize'] = request.max_file_size
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.min_file_size):
+            query['MinFileSize'] = request.min_file_size
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status_list_shrink):
+            query['StatusList'] = request.status_list_shrink
+        if not DaraCore.is_null(request.suffix_list_shrink):
+            query['SuffixList'] = request.suffix_list_shrink
+        if not DaraCore.is_null(request.type_list_shrink):
+            query['TypeList'] = request.type_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMaterialFileList',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMaterialFileListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_material_file_list_with_options_async(
+        self,
+        tmp_req: main_models.QueryMaterialFileListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMaterialFileListResponse:
+        tmp_req.validate()
+        request = main_models.QueryMaterialFileListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.status_list):
+            request.status_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
+        if not DaraCore.is_null(tmp_req.suffix_list):
+            request.suffix_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.suffix_list, 'SuffixList', 'json')
+        if not DaraCore.is_null(tmp_req.type_list):
+            request.type_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.type_list, 'TypeList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.max_file_size):
+            query['MaxFileSize'] = request.max_file_size
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.min_file_size):
+            query['MinFileSize'] = request.min_file_size
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status_list_shrink):
+            query['StatusList'] = request.status_list_shrink
+        if not DaraCore.is_null(request.suffix_list_shrink):
+            query['SuffixList'] = request.suffix_list_shrink
+        if not DaraCore.is_null(request.type_list_shrink):
+            query['TypeList'] = request.type_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMaterialFileList',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMaterialFileListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_material_file_list(
+        self,
+        request: main_models.QueryMaterialFileListRequest,
+    ) -> main_models.QueryMaterialFileListResponse:
+        runtime = RuntimeOptions()
+        return self.query_material_file_list_with_options(request, runtime)
+
+    async def query_material_file_list_async(
+        self,
+        request: main_models.QueryMaterialFileListRequest,
+    ) -> main_models.QueryMaterialFileListResponse:
+        runtime = RuntimeOptions()
+        return await self.query_material_file_list_with_options_async(request, runtime)
+
+    def query_material_file_summary_info_with_options(
+        self,
+        tmp_req: main_models.QueryMaterialFileSummaryInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMaterialFileSummaryInfoResponse:
+        tmp_req.validate()
+        request = main_models.QueryMaterialFileSummaryInfoShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.status_list):
+            request.status_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
+        if not DaraCore.is_null(tmp_req.type_list):
+            request.type_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.type_list, 'TypeList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status_list_shrink):
+            query['StatusList'] = request.status_list_shrink
+        if not DaraCore.is_null(request.type_list_shrink):
+            query['TypeList'] = request.type_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMaterialFileSummaryInfo',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMaterialFileSummaryInfoResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_material_file_summary_info_with_options_async(
+        self,
+        tmp_req: main_models.QueryMaterialFileSummaryInfoRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMaterialFileSummaryInfoResponse:
+        tmp_req.validate()
+        request = main_models.QueryMaterialFileSummaryInfoShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.status_list):
+            request.status_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
+        if not DaraCore.is_null(tmp_req.type_list):
+            request.type_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.type_list, 'TypeList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status_list_shrink):
+            query['StatusList'] = request.status_list_shrink
+        if not DaraCore.is_null(request.type_list_shrink):
+            query['TypeList'] = request.type_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMaterialFileSummaryInfo',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMaterialFileSummaryInfoResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_material_file_summary_info(
+        self,
+        request: main_models.QueryMaterialFileSummaryInfoRequest,
+    ) -> main_models.QueryMaterialFileSummaryInfoResponse:
+        runtime = RuntimeOptions()
+        return self.query_material_file_summary_info_with_options(request, runtime)
+
+    async def query_material_file_summary_info_async(
+        self,
+        request: main_models.QueryMaterialFileSummaryInfoRequest,
+    ) -> main_models.QueryMaterialFileSummaryInfoResponse:
+        runtime = RuntimeOptions()
+        return await self.query_material_file_summary_info_with_options_async(request, runtime)
+
+    def query_material_task_detail_with_options(
+        self,
+        request: main_models.QueryMaterialTaskDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMaterialTaskDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMaterialTaskDetail',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMaterialTaskDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_material_task_detail_with_options_async(
+        self,
+        request: main_models.QueryMaterialTaskDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMaterialTaskDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMaterialTaskDetail',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMaterialTaskDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_material_task_detail(
+        self,
+        request: main_models.QueryMaterialTaskDetailRequest,
+    ) -> main_models.QueryMaterialTaskDetailResponse:
+        runtime = RuntimeOptions()
+        return self.query_material_task_detail_with_options(request, runtime)
+
+    async def query_material_task_detail_async(
+        self,
+        request: main_models.QueryMaterialTaskDetailRequest,
+    ) -> main_models.QueryMaterialTaskDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.query_material_task_detail_with_options_async(request, runtime)
+
+    def query_material_task_list_with_options(
+        self,
+        tmp_req: main_models.QueryMaterialTaskListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMaterialTaskListResponse:
+        tmp_req.validate()
+        request = main_models.QueryMaterialTaskListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.status_list):
+            request.status_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
+        if not DaraCore.is_null(tmp_req.task_type_list):
+            request.task_type_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_type_list, 'TaskTypeList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status_list_shrink):
+            query['StatusList'] = request.status_list_shrink
+        if not DaraCore.is_null(request.task_type_list_shrink):
+            query['TaskTypeList'] = request.task_type_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMaterialTaskList',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMaterialTaskListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_material_task_list_with_options_async(
+        self,
+        tmp_req: main_models.QueryMaterialTaskListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryMaterialTaskListResponse:
+        tmp_req.validate()
+        request = main_models.QueryMaterialTaskListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.status_list):
+            request.status_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.status_list, 'StatusList', 'json')
+        if not DaraCore.is_null(tmp_req.task_type_list):
+            request.task_type_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.task_type_list, 'TaskTypeList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status_list_shrink):
+            query['StatusList'] = request.status_list_shrink
+        if not DaraCore.is_null(request.task_type_list_shrink):
+            query['TaskTypeList'] = request.task_type_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryMaterialTaskList',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryMaterialTaskListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_material_task_list(
+        self,
+        request: main_models.QueryMaterialTaskListRequest,
+    ) -> main_models.QueryMaterialTaskListResponse:
+        runtime = RuntimeOptions()
+        return self.query_material_task_list_with_options(request, runtime)
+
+    async def query_material_task_list_async(
+        self,
+        request: main_models.QueryMaterialTaskListRequest,
+    ) -> main_models.QueryMaterialTaskListResponse:
+        runtime = RuntimeOptions()
+        return await self.query_material_task_list_with_options_async(request, runtime)
 
     def refresh_app_instance_ticket_with_options(
         self,
@@ -2260,6 +3566,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.set_app_domain_certificate_with_options_async(request, runtime)
 
+    def submit_material_task_with_options(
+        self,
+        request: main_models.SubmitMaterialTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitMaterialTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_param):
+            query['TaskParam'] = request.task_param
+        if not DaraCore.is_null(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitMaterialTask',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitMaterialTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_material_task_with_options_async(
+        self,
+        request: main_models.SubmitMaterialTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitMaterialTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.task_param):
+            query['TaskParam'] = request.task_param
+        if not DaraCore.is_null(request.task_type):
+            query['TaskType'] = request.task_type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitMaterialTask',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitMaterialTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_material_task(
+        self,
+        request: main_models.SubmitMaterialTaskRequest,
+    ) -> main_models.SubmitMaterialTaskResponse:
+        runtime = RuntimeOptions()
+        return self.submit_material_task_with_options(request, runtime)
+
+    async def submit_material_task_async(
+        self,
+        request: main_models.SubmitMaterialTaskRequest,
+    ) -> main_models.SubmitMaterialTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_material_task_with_options_async(request, runtime)
+
     def sync_app_instance_for_partner_with_options(
         self,
         tmp_req: main_models.SyncAppInstanceForPartnerRequest,
@@ -2427,3 +3807,85 @@ class Client(OpenApiClient):
     ) -> main_models.UnbindAppDomainResponse:
         runtime = RuntimeOptions()
         return await self.unbind_app_domain_with_options_async(request, runtime)
+
+    def upload_material_file_with_options(
+        self,
+        request: main_models.UploadMaterialFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadMaterialFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadMaterialFile',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadMaterialFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def upload_material_file_with_options_async(
+        self,
+        request: main_models.UploadMaterialFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UploadMaterialFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.directory_id):
+            query['DirectoryId'] = request.directory_id
+        if not DaraCore.is_null(request.file_url):
+            query['FileUrl'] = request.file_url
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UploadMaterialFile',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UploadMaterialFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def upload_material_file(
+        self,
+        request: main_models.UploadMaterialFileRequest,
+    ) -> main_models.UploadMaterialFileResponse:
+        runtime = RuntimeOptions()
+        return self.upload_material_file_with_options(request, runtime)
+
+    async def upload_material_file_async(
+        self,
+        request: main_models.UploadMaterialFileRequest,
+    ) -> main_models.UploadMaterialFileResponse:
+        runtime = RuntimeOptions()
+        return await self.upload_material_file_with_options_async(request, runtime)
