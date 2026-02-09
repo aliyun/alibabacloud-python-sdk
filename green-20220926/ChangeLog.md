@@ -2,6 +2,10 @@
 - Update API GetCipStats: add request parameters Query.
 
 
+2026-02-09 Version: 1.5.7
+- Update API GetCipStats: add request parameters Query.
+
+
 2025-12-23 Version: 1.5.4
 - Update API GetTextScanResult: add response parameters Body.Data.Items.$.AccountId.
 - Update API GetTextScanResult: add response parameters Body.Data.Items.$.DataId.
