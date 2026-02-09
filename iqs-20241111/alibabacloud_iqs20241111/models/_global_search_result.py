@@ -18,6 +18,7 @@ class GlobalSearchResult(DaraModel):
     ):
         self.page_items = page_items
         self.query_context = query_context
+        # requestId
         self.request_id = request_id
         self.scene_items = scene_items
         self.search_information = search_information
