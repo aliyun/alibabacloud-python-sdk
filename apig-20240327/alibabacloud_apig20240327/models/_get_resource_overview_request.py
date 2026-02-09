@@ -9,6 +9,7 @@ class GetResourceOverviewRequest(DaraModel):
         self,
         gateway_type: str = None,
     ):
+        # The gateway type.
         self.gateway_type = gateway_type
 
     def validate(self):

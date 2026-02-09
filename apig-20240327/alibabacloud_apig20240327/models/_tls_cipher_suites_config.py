@@ -13,7 +13,9 @@ class TlsCipherSuitesConfig(DaraModel):
         config_type: str = None,
         tls_cipher_suite: List[main_models.TlsCipherSuitesConfigTlsCipherSuite] = None,
     ):
+        # The configuration type.
         self.config_type = config_type
+        # tlsCipherSuite
         self.tls_cipher_suite = tls_cipher_suite
 
     def validate(self):
@@ -56,7 +58,9 @@ class TlsCipherSuitesConfigTlsCipherSuite(DaraModel):
         name: str = None,
         support_versions: List[str] = None,
     ):
+        # The suite name.
         self.name = name
+        # The supported versions.
         self.support_versions = support_versions
 
     def validate(self):

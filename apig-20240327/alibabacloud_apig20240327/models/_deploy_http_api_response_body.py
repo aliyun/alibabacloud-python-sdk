@@ -13,7 +13,7 @@ class DeployHttpApiResponseBody(DaraModel):
     ):
         # Response status code.
         self.code = code
-        # 响应消息。
+        # Response message.
         self.message = message
         # Request ID.
         self.request_id = request_id

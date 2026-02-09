@@ -11,7 +11,9 @@ class ParentResourceInfo(DaraModel):
         api_info: main_models.HttpApiApiInfo = None,
         resource_type: str = None,
     ):
+        # The API information.
         self.api_info = api_info
+        # The resource type. Valid values: HttpApi/Operation/GatewayRoute/Gateway/GatewayDomain
         self.resource_type = resource_type
 
     def validate(self):

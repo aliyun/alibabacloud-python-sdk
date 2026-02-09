@@ -12,9 +12,23 @@ class SubDomainInfo(DaraModel):
         network_type: str = None,
         protocol: str = None,
     ):
+        # The domain name ID.
         self.domain_id = domain_id
+        # The domain name.
         self.name = name
+        # The network type. Valid values:
+        # 
+        # Valid values:
+        # 
+        # *   Intranet
+        # *   Internet
         self.network_type = network_type
+        # The protocol.
+        # 
+        # Valid values:
+        # 
+        # *   HTTPS
+        # *   HTTP
         self.protocol = protocol
 
     def validate(self):

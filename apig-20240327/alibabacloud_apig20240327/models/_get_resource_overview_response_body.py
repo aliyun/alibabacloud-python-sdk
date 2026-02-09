@@ -17,7 +17,7 @@ class GetResourceOverviewResponseBody(DaraModel):
     ):
         # Response status code.
         self.code = code
-        # Resource information.
+        # The resource information.
         self.data = data
         # Response message.
         self.message = message
@@ -75,6 +75,7 @@ class GetResourceOverviewResponseBodyData(DaraModel):
         self.api = api
         # Gateway information.
         self.gateway = gateway
+        # The risk overview.
         self.risk_overview = risk_overview
 
     def validate(self):
@@ -130,8 +131,11 @@ class GetResourceOverviewResponseBodyDataRiskOverview(DaraModel):
         risk_details: List[main_models.GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails] = None,
         risk_level: str = None,
     ):
+        # The number of instances at a risk level.
         self.count = count
+        # The risk details list.
         self.risk_details = risk_details
+        # The risk level.
         self.risk_level = risk_level
 
     def validate(self):
@@ -183,10 +187,15 @@ class GetResourceOverviewResponseBodyDataRiskOverviewRiskDetails(DaraModel):
         risk_names: List[str] = None,
         score: str = None,
     ):
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # The gateway name.
         self.gateway_name = gateway_name
+        # The risk level.
         self.risk_level = risk_level
+        # The risk name list.
         self.risk_names = risk_names
+        # The risk score.
         self.score = score
 
     def validate(self):

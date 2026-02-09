@@ -11,11 +11,8 @@ class UpdateEnvironmentResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response code.
         self.code = code
-        # Response message.
         self.message = message
-        # Request ID, used for tracing the API call chain.
         self.request_id = request_id
 
     def validate(self):

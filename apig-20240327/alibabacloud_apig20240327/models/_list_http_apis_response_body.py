@@ -17,11 +17,11 @@ class ListHttpApisResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The APIs.
+        # Response data.
         self.data = data
-        # The returned message.
+        # Response message.
         self.message = message
-        # The request ID.
+        # Get HTTP API List
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class ListHttpApisResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The API information.
+        # object
         self.items = items
-        # The page number of the returned page.
+        # Page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # Page size.
         self.page_size = page_size
-        # The total number of entries returned.
+        # Total number of items.
         self.total_size = total_size
 
     def validate(self):

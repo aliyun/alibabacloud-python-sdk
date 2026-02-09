@@ -13,7 +13,9 @@ class Backend(DaraModel):
         scene: str = None,
         services: List[main_models.BackendServices] = None,
     ):
+        # The backend service scenario. Valid values: Single, MultiServiceByRatio, MultiServiceByTag, Mock, and Redirect.
         self.scene = scene
+        # The backend services.
         self.services = services
 
     def validate(self):
@@ -60,11 +62,17 @@ class BackendServices(DaraModel):
         version: str = None,
         weight: int = None,
     ):
+        # The service name.
         self.name = name
+        # The service port. If you want to use a dynamic port, do not pass this parameter.
         self.port = port
+        # The service protocol. Valid values: HTTP, TCP, and DUBBO.
         self.protocol = protocol
+        # The service ID.
         self.service_id = service_id
+        # The service version.
         self.version = version
+        # The percentage value of traffic.
         self.weight = weight
 
     def validate(self):

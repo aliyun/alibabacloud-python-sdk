@@ -10,7 +10,14 @@ class ResourceStatistic(DaraModel):
         resource_count: int = None,
         resource_type: str = None,
     ):
+        # The number of online resources.
         self.resource_count = resource_count
+        # The resource type.
+        # 
+        # Valid values:
+        # 
+        # *   HttpApi
+        # *   GatewayRoute
         self.resource_type = resource_type
 
     def validate(self):

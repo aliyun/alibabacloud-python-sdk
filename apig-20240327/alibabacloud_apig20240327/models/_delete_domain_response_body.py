@@ -11,11 +11,11 @@ class DeleteDomainResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response code.
+        # The status code returned.
         self.code = code
-        # Response message.
+        # The response message returned.
         self.message = message
-        # Request ID, used for tracing the API call chain.
+        # The request ID, which is used to trace the API call link.
         self.request_id = request_id
 
     def validate(self):

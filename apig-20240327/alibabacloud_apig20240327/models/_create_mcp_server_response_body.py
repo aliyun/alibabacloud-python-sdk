@@ -13,13 +13,13 @@ class CreateMcpServerResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # code
         self.code = code
-        # The response payload.
+        # object
         self.data = data
-        # The status message.
+        # message
         self.message = message
-        # The request ID.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -68,9 +68,9 @@ class CreateMcpServerResponseBodyData(DaraModel):
         mcp_server_id: str = None,
         name: str = None,
     ):
-        # The ID of the MCP server.
+        # MCP Server ID
         self.mcp_server_id = mcp_server_id
-        # The name of the MCP server.
+        # MCP server name
         self.name = name
 
     def validate(self):

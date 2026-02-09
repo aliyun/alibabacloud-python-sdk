@@ -11,8 +11,11 @@ class ConsumerInfo(DaraModel):
         enable: bool = None,
         name: str = None,
     ):
+        # consumerId
         self.consumer_id = consumer_id
+        # enable
         self.enable = enable
+        # name
         self.name = name
 
     def validate(self):

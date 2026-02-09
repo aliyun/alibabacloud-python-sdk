@@ -10,7 +10,9 @@ class KMSConfig(DaraModel):
         kms_instance_id: str = None,
         kms_key_id: str = None,
     ):
+        # The KMS instance ID
         self.kms_instance_id = kms_instance_id
+        # The KMS key ID
         self.kms_key_id = kms_key_id
 
     def validate(self):

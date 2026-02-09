@@ -40,6 +40,7 @@ class ListHttpApiRoutesRequest(DaraModel):
         self.domain_id = domain_id
         # The environment ID.
         self.environment_id = environment_id
+        # Whether to filter for deployment scenario
         self.for_deploy = for_deploy
         # The ID of the Cloud-native API Gateway instance.
         self.gateway_id = gateway_id

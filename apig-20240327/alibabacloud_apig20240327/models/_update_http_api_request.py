@@ -24,29 +24,33 @@ class UpdateHttpApiRequest(DaraModel):
         remove_base_path_on_forward: bool = None,
         version_config: main_models.HttpApiVersionConfig = None,
     ):
+        # The list of agent protocols
         self.agent_protocols = agent_protocols
-        # The AI protocols.
+        # The status code.
         self.ai_protocols = ai_protocols
-        # The authentication configuration.
+        # The authentication configuration
         self.auth_config = auth_config
-        # The API base path, which must start with a forward slash (/).
+        # The list of API deployment configurations.
         # 
         # This parameter is required.
         self.base_path = base_path
-        # The deployment configurations.
+        # The deployment configurations
         self.deploy_configs = deploy_configs
-        # The API description.
+        # The environment ID.
         self.description = description
-        # Specifies whether to enable authentication.
+        # Whether authentication is enabled
         self.enable_auth = enable_auth
+        # The first byte timeout in nanoseconds
         self.first_byte_timeout = first_byte_timeout
-        # The HTTP Ingress API configurations.
+        # Specifies whether to enable authentication.
         self.ingress_config = ingress_config
+        # Whether to only change configuration without redeployment
         self.only_change_config = only_change_config
-        # The protocols that are used to access the API.
+        # The listened namespace.
         self.protocols = protocols
+        # Whether to remove base path when forwarding
         self.remove_base_path_on_forward = remove_base_path_on_forward
-        # The versioning configurations.
+        # A deployment configuration.
         self.version_config = version_config
 
     def validate(self):
@@ -167,15 +171,15 @@ class UpdateHttpApiRequestIngressConfig(DaraModel):
         source_id: str = None,
         watch_namespace: str = None,
     ):
-        # The environment ID.
+        # The authentication configuration.
         self.environment_id = environment_id
-        # The Ingress class for listening.
+        # The response parameters.
         self.ingress_class = ingress_class
-        # Specifies whether to update the address in Ingress Status.
+        # The returned message.
         self.override_ingress_ip = override_ingress_ip
-        # The source ID.
+        # json
         self.source_id = source_id
-        # The namespace for listening.
+        # The request ID.
         self.watch_namespace = watch_namespace
 
     def validate(self):

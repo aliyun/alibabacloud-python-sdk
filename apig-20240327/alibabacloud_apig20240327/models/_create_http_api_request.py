@@ -27,42 +27,39 @@ class CreateHttpApiRequest(DaraModel):
         type: str = None,
         version_config: main_models.HttpApiVersionConfig = None,
     ):
+        # Agent protocols
         self.agent_protocols = agent_protocols
-        # The AI API protocols. Valid value:
-        # 
-        # *   OpenAI/v1
+        # $.parameters[0].schema.properties.authConfig.enumValueTitles
         self.ai_protocols = ai_protocols
-        # The authentication configurations.
+        # The request parameters for API creation.
         self.auth_config = auth_config
-        # The API base path, which must start with a forward slash (/).
+        # $.parameters[0].schema.properties.deployConfigs.items.example
         self.base_path = base_path
-        # The API deployment configurations. Currently, only AI APIs support deployment configurations, and only a single deployment configuration can be passed.
+        # $.parameters[0].schema.example
         self.deploy_configs = deploy_configs
-        # The API description.
+        # $.parameters[0].schema.properties.aiProtocols.items.description
         self.description = description
-        # Specifies whether to enable authentication.
+        # Create an API of HTTP type
         self.enable_auth = enable_auth
+        # First byte timeout
         self.first_byte_timeout = first_byte_timeout
-        # The HTTP Ingress configurations.
+        # $.parameters[0].schema.properties.deployConfigs.example
         self.ingress_config = ingress_config
+        # Model category
         self.model_category = model_category
-        # The API name.
+        # $.parameters[0].schema.example
         # 
         # This parameter is required.
         self.name = name
-        # The protocols that are used to call the API.
+        # $.parameters[0].schema.properties.aiProtocols.description
         self.protocols = protocols
+        # Whether to remove base path when forwarding
         self.remove_base_path_on_forward = remove_base_path_on_forward
-        # The resource group ID.
+        # $.parameters[0].schema.properties.authConfig.example
         self.resource_group_id = resource_group_id
-        # The API type. Valid values:
-        # 
-        # *   Http
-        # *   Rest
-        # *   WebSocket
-        # *   HttpIngress
+        # $.parameters[0].schema.properties.deployConfigs.description
         self.type = type
-        # The versioning configuration of the API.
+        # $.parameters[0].schema.properties.deployConfigs.items.enumValueTitles
         self.version_config = version_config
 
     def validate(self):
@@ -202,16 +199,17 @@ class CreateHttpApiRequestIngressConfig(DaraModel):
         source_id: str = None,
         watch_namespace: str = None,
     ):
+        # Cluster ID.
         self.cluster_id = cluster_id
-        # The environment ID.
+        # $.parameters[0].schema.properties.deployConfigs.enumValueTitles
         self.environment_id = environment_id
-        # The Ingress Class for listening.
+        # $.parameters[0].schema.properties.enableAuth.example
         self.ingress_class = ingress_class
-        # Specifies whether to update the address in Ingress Status.
+        # $.parameters[0].schema.properties.authConfig.description
         self.override_ingress_ip = override_ingress_ip
-        # The source ID.
+        # $.parameters[0].schema.properties.enableAuth.description
         self.source_id = source_id
-        # The namespace for listening.
+        # $.parameters[0].schema.properties.enableAuth.enumValueTitles
         self.watch_namespace = watch_namespace
 
     def validate(self):

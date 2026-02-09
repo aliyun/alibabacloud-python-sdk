@@ -20,17 +20,42 @@ class DomainInfo(DaraModel):
         status: str = None,
         update_timestamp: int = None,
     ):
+        # The certificate identifier.
         self.cert_identifier = cert_identifier
+        # The client CA certificate.
         self.client_cacert = client_cacert
+        # The creation source of the domain name.
+        # 
+        # Valid values:
+        # 
+        # *   Console
+        # *   Ingress
         self.create_from = create_from
+        # The creation timestamp.
         self.create_timestamp = create_timestamp
+        # The domain name ID.
         self.domain_id = domain_id
+        # Specifies whether to enable forcible HTTPS redirection when HTTPS is used as the protocol.
         self.force_https = force_https
+        # Specifies whether to enable mutual authentication.
         self.m_tlsenabled = m_tlsenabled
+        # The domain name.
         self.name = name
+        # The supported protocol. Valid values:
+        # 
+        # *   HTTP
+        # *   HTTPS
         self.protocol = protocol
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The domain name status.
+        # 
+        # Valid values:
+        # 
+        # *   UnPublished
+        # *   Published
         self.status = status
+        # The update timestamp.
         self.update_timestamp = update_timestamp
 
     def validate(self):

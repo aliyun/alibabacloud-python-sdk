@@ -13,13 +13,13 @@ class ExportHttpApiResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The status code.
         self.code = code
-        # API definition information.
+        # The API definition.
         self.data = data
-        # Response message.
+        # The response message returned.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,7 +67,7 @@ class ExportHttpApiResponseBodyData(DaraModel):
         self,
         spec_content_base_64: str = None,
     ):
-        # Base64编码的API定义。
+        # The Base64-encoded API definition.
         self.spec_content_base_64 = spec_content_base_64
 
     def validate(self):

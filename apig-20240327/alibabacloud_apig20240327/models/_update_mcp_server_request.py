@@ -35,9 +35,11 @@ class UpdateMcpServerRequest(DaraModel):
         self.domain_ids = domain_ids
         # The exposed URI path. This parameter is required when the protocol parameter is set to SSE or StreamableHTTP and the type parameter is set to RealMCP.
         self.exposed_uri_path = exposed_uri_path
+        # The gray MCP server configurations
         self.gray_mcp_server_configs = gray_mcp_server_configs
         # The route match rule.
         self.match = match
+        # The MCP server configuration
         self.mcp_server_config = mcp_server_config
         # Specifies if MCP observability is enabled. Default value: false.
         self.mcp_statistics_enable = mcp_statistics_enable
@@ -168,7 +170,9 @@ class UpdateMcpServerRequestMcpServerConfig(DaraModel):
         mcp_server_spec: str = None,
         swagger_config: str = None,
     ):
+        # The converted mcp server spec yaml
         self.mcp_server_spec = mcp_server_spec
+        # The raw swagger/openapi document
         self.swagger_config = swagger_config
 
     def validate(self):
@@ -204,8 +208,11 @@ class UpdateMcpServerRequestGrayMcpServerConfigs(DaraModel):
         match: main_models.HttpRouteMatch = None,
         route_id: str = None,
     ):
+        # The backend configuration
         self.backend_config = backend_config
+        # The route match rules
         self.match = match
+        # The route ID
         self.route_id = route_id
 
     def validate(self):
@@ -251,7 +258,9 @@ class UpdateMcpServerRequestGrayMcpServerConfigsBackendConfig(DaraModel):
         scene: str = None,
         services: List[main_models.UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices] = None,
     ):
+        # The backend scene
         self.scene = scene
+        # The list of backend services
         self.services = services
 
     def validate(self):
@@ -297,10 +306,15 @@ class UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices(DaraModel)
         version: str = None,
         weight: int = None,
     ):
+        # The service port
         self.port = port
+        # The service protocol
         self.protocol = protocol
+        # The service ID
         self.service_id = service_id
+        # The service version
         self.version = version
+        # The service weight
         self.weight = weight
 
     def validate(self):

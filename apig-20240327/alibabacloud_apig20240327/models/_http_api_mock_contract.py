@@ -11,8 +11,11 @@ class HttpApiMockContract(DaraModel):
         response_code: int = None,
         response_content: str = None,
     ):
+        # Specifies whether to enable the Mock feature.
         self.enable = enable
+        # The response code.
         self.response_code = response_code
+        # The response content.
         self.response_content = response_content
 
     def validate(self):

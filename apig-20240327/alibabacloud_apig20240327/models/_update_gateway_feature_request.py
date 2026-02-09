@@ -9,7 +9,7 @@ class UpdateGatewayFeatureRequest(DaraModel):
         self,
         value: str = None,
     ):
-        # Parameter value.
+        # The parameter value.
         self.value = value
 
     def validate(self):

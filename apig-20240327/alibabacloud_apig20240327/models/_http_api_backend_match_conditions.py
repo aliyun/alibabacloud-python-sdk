@@ -13,7 +13,9 @@ class HttpApiBackendMatchConditions(DaraModel):
         conditions: List[main_models.HttpApiBackendMatchCondition] = None,
         default: bool = None,
     ):
+        # The configurations of the matching conditions.
         self.conditions = conditions
+        # Specifies whether the matching condition is the default one.
         self.default = default
 
     def validate(self):

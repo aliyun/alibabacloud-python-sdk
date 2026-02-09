@@ -14,7 +14,9 @@ class UndeployHttpApiRequest(DaraModel):
     ):
         # The environment ID.
         self.environment_id = environment_id
+        # Gateway ID.
         self.gateway_id = gateway_id
+        # The operation ID.
         self.operation_id = operation_id
         # The route ID. You must specify this parameter when you unpublish the route of an HTTP API.
         self.route_id = route_id

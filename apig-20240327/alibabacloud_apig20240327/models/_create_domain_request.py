@@ -24,14 +24,20 @@ class CreateDomainRequest(DaraModel):
     ):
         # The CA certificate ID.
         self.ca_cert_identifier = ca_cert_identifier
-        # The certificate ID.
+        # The certificate identifier.
         self.cert_identifier = cert_identifier
-        # The client CA certificate.
+        # The client CA certificate content.
         self.client_cacert = client_cacert
-        # Specifies whether to enable forcible HTTPS redirection.
+        # Specifies whether to enable forced HTTP to HTTPS redirection.
         self.force_https = force_https
+        # The gateway type.
+        # 
+        # Valid values:
+        # 
+        # *   AI
+        # *   API
         self.gateway_type = gateway_type
-        # The HTTP/2 configuration.
+        # HTTP/2 configuration options.
         # 
         # Valid values:
         # 
@@ -39,7 +45,7 @@ class CreateDomainRequest(DaraModel):
         # *   Close
         # *   Open
         self.http_2option = http_2option
-        # Specifies whether to enable mutual authentication.
+        # Specifies whether to enable mutual Transport Layer Security (mTLS) authentication.
         self.m_tlsenabled = m_tlsenabled
         # The domain name.
         # 
@@ -47,8 +53,8 @@ class CreateDomainRequest(DaraModel):
         self.name = name
         # The protocol type supported by the domain name.
         # 
-        # *   HTTP: Only HTTP is supported.
-        # *   HTTPS: Only HTTPS is supported.
+        # *   HTTP: HTTP only
+        # *   HTTPS: HTTPS only
         # 
         # This parameter is required.
         self.protocol = protocol
@@ -56,9 +62,9 @@ class CreateDomainRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The cipher suite configuration.
         self.tls_cipher_suites_config = tls_cipher_suites_config
-        # The maximum version of the TLS protocol. Up to TLS 1.3 is supported.
+        # The maximum TLS protocol version (up to TLS 1.3).
         self.tls_max = tls_max
-        # The minimum version of the TLS protocol. Down to TLS 1.0 is supported.
+        # The minimum TLS protocol version (minimum TLS 1.0).
         self.tls_min = tls_min
 
     def validate(self):

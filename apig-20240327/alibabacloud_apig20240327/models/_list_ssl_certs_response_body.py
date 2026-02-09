@@ -15,13 +15,13 @@ class ListSslCertsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The status code.
         self.code = code
-        # Returned data
+        # The data returned.
         self.data = data
-        # Response message.
+        # The response message returned.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class ListSslCertsResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # List of certificate information.
+        # The list of certificate information.
         self.items = items
-        # Page number.
+        # The page number of the returned page.
         self.page_number = page_number
-        # Page size.
+        # The number of entries per page.
         self.page_size = page_size
-        # Total count.
+        # The total number of entries returned.
         self.total_size = total_size
 
     def validate(self):

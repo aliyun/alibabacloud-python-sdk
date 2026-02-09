@@ -25,41 +25,39 @@ class ListHttpApisRequest(DaraModel):
         with_plugin_attachment_by_plugin_id: str = None,
         with_policy_configs: bool = None,
     ):
-        # The ID of the Cloud-native API Gateway instance.
+        # Specifies whether to include policy configurations.
         self.gateway_id = gateway_id
+        # The API information.
         self.gateway_type = gateway_type
-        # The search keyword. You can fuzzy-search by API name or exact-search by API ID.
-        self.keyword = keyword
-        # The API name that is used for the search. In this case, exact search is performed.
-        self.name = name
-        # The page number of the page to return. Pages start from page 1. Default value: 1.
-        self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 100. Default value: 10.
-        self.page_size = page_size
-        # The resource group ID.
-        self.resource_group_id = resource_group_id
-        # The API type. You can specify multiple types and separate them with a comma (,).
-        # 
-        # *   Http
-        # *   Rest
-        # *   WebSocket
-        # *   HttpIngress
-        self.types = types
-        self.with_apis_published_to_environment = with_apis_published_to_environment
         # The consumer authentication policy in the specified environment in each returned API.
-        self.with_auth_policy_in_environment_id = with_auth_policy_in_environment_id
+        self.keyword = keyword
         # Specifies whether authentication is enabled.
-        self.with_auth_policy_list = with_auth_policy_list
-        # The authorization rules of the specified consumer in each returned API.
-        self.with_consumer_info_by_id = with_consumer_info_by_id
+        self.name = name
         # The environment information.
-        self.with_environment_info = with_environment_info
-        # The environment ID.
-        self.with_environment_info_by_id = with_environment_info_by_id
+        self.page_number = page_number
+        # The resource group ID.
+        self.page_size = page_size
+        # The returned message.
+        self.resource_group_id = resource_group_id
         # The Ingress information.
+        self.types = types
+        # Whether to return all APIs published to a specific environment
+        self.with_apis_published_to_environment = with_apis_published_to_environment
+        # The gateway type to filter. Valid values: **AI** and **API**.
+        self.with_auth_policy_in_environment_id = with_auth_policy_in_environment_id
+        # The page number of the returned page.
+        self.with_auth_policy_list = with_auth_policy_list
+        # The response body.
+        self.with_consumer_info_by_id = with_consumer_info_by_id
+        # The request ID.
+        self.with_environment_info = with_environment_info
+        # The APIs.
+        self.with_environment_info_by_id = with_environment_info_by_id
+        # The number of entries per page.
         self.with_ingress_info = with_ingress_info
-        # The plug-in ID. You can use the returned value of this parameter to query the plug-in.
+        # The status code.
         self.with_plugin_attachment_by_plugin_id = with_plugin_attachment_by_plugin_id
+        # The total number of entries returned.
         self.with_policy_configs = with_policy_configs
 
     def validate(self):

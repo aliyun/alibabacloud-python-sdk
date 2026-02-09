@@ -493,6 +493,7 @@ from ._create_source_response_body import CreateSourceResponseBodyData
 from ._deploy_http_api_request import DeployHttpApiRequestHttpApiConfig
 from ._deploy_http_api_request import DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs
 from ._deploy_http_api_request import DeployHttpApiRequestRestApiConfigEnvironment
+from ._deploy_http_api_request import DeployHttpApiRequestRestApiConfigOperationDeployments
 from ._deploy_http_api_request import DeployHttpApiRequestRestApiConfig
 from ._export_http_api_response_body import ExportHttpApiResponseBodyData
 from ._get_consumer_response_body import GetConsumerResponseBodyData
@@ -1146,6 +1147,7 @@ __all__ = [
     DeployHttpApiRequestHttpApiConfig,
     DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs,
     DeployHttpApiRequestRestApiConfigEnvironment,
+    DeployHttpApiRequestRestApiConfigOperationDeployments,
     DeployHttpApiRequestRestApiConfig,
     ExportHttpApiResponseBodyData,
     GetConsumerResponseBodyData,

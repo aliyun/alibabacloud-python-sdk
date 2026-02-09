@@ -10,7 +10,9 @@ class AuthConfig(DaraModel):
         auth_mode: str = None,
         auth_type: str = None,
     ):
+        # The authentication mode.
         self.auth_mode = auth_mode
+        # The authentication type.
         self.auth_type = auth_type
 
     def validate(self):

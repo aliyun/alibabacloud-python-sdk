@@ -27,24 +27,43 @@ class SslCertMetaInfo(DaraModel):
         sha_2: str = None,
         sign_algorithm: str = None,
     ):
+        # The algorithm.
         self.algorithm = algorithm
+        # The certificate ID.
         self.cert_id = cert_id
+        # The certificate ID.
         self.cert_identifier = cert_identifier
+        # The certificate name.
         self.cert_name = cert_name
+        # The name.
         self.common_name = common_name
+        # The domain name.
         self.domain = domain
+        # The certificate matching the domain name.
         self.domain_match_cert = domain_match_cert
+        # The certificate fingerprint.
         self.fingerprint = fingerprint
+        # The instance ID.
         self.instance_id = instance_id
+        # isChainCompleted
         self.is_chain_completed = is_chain_completed
+        # The certificate issuer.
         self.issuer = issuer
+        # The key size.
         self.key_size = key_size
+        # The md5 value.
         self.md_5 = md_5
+        # The time when the certificate expires.
         self.not_after_timestamp = not_after_timestamp
+        # The time when the certificate starts to take effect.
         self.not_before_timestamp = not_before_timestamp
+        # sans
         self.sans = sans
+        # The serial number.
         self.serial_no = serial_no
+        # The sha2 value.
         self.sha_2 = sha_2
+        # The signature algorithm.
         self.sign_algorithm = sign_algorithm
 
     def validate(self):

@@ -12,13 +12,13 @@ class ListSslCertsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # Name matching keyword.
+        # The name keyword for matching.
         self.cert_name_like = cert_name_like
-        # Domain name.
+        # The domain name.
         self.domain_name = domain_name
-        # Page number, default is 1
+        # The page number of the page to return. Default value: 1.
         self.page_number = page_number
-        # Page size, default is 10
+        # The number of entries per page. Default value: 10.
         self.page_size = page_size
 
     def validate(self):

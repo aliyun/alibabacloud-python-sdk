@@ -19,14 +19,24 @@ class AgentServiceConfig(DaraModel):
         protocols: List[str] = None,
         provider: str = None,
     ):
+        # The address.
+        # 
         # This parameter is required.
         self.address = address
+        # User-defined configuration
         self.custom_config = custom_config
+        # The Model Studio service configuration.
         self.dash_scope_config = dash_scope_config
+        # The Dify service configuration.
         self.dify_config = dify_config
+        # Specifies whether to enable health check.
         self.enable_health_check = enable_health_check
+        # Whether to enable outlier detection
         self.enable_outlier_detection = enable_outlier_detection
+        # The protocol.
         self.protocols = protocols
+        # The service provider.
+        # 
         # This parameter is required.
         self.provider = provider
 
@@ -106,7 +116,9 @@ class AgentServiceConfigDifyConfig(DaraModel):
         api_key: str = None,
         bot_type: str = None,
     ):
+        # API Key
         self.api_key = api_key
+        # The interaction type.
         self.bot_type = bot_type
 
     def validate(self):
@@ -140,6 +152,7 @@ class AgentServiceConfigDashScopeConfig(DaraModel):
         self,
         app_credentials: List[main_models.AgentServiceConfigDashScopeConfigAppCredentials] = None,
     ):
+        # The application configuration.
         self.app_credentials = app_credentials
 
     def validate(self):
@@ -176,7 +189,9 @@ class AgentServiceConfigDashScopeConfigAppCredentials(DaraModel):
         api_key: str = None,
         app_id: str = None,
     ):
+        # apiKey
         self.api_key = api_key
+        # The application ID.
         self.app_id = app_id
 
     def validate(self):
@@ -213,7 +228,9 @@ class AgentServiceConfigCustomConfig(DaraModel):
         api_key: str = None,
         api_key_generate_mode: str = None,
     ):
+        # apiKey
         self.api_key = api_key
+        # API key generation mode.
         self.api_key_generate_mode = api_key_generate_mode
 
     def validate(self):

@@ -119,9 +119,11 @@ class CreateConsumerAuthorizationRulesRequestAuthorizationRulesResourceIdentifie
     ):
         # The environment ID.
         self.environment_id = environment_id
+        # Parent resource ID
         self.parent_resource_id = parent_resource_id
         # The resource ID.
         self.resource_id = resource_id
+        # List of resources
         self.resources = resources
 
     def validate(self):

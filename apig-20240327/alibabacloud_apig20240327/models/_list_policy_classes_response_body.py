@@ -15,13 +15,13 @@ class ListPolicyClassesResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response code.
+        # The status code returned.
         self.code = code
-        # Policy template information.
+        # An array of policy template information.
         self.data = data
-        # ResponseMessage
+        # The response message returned.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -72,13 +72,13 @@ class ListPolicyClassesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # List of policy templates
+        # The templates.
         self.items = items
-        # Page number.
+        # The page number of the returned page.
         self.page_number = page_number
-        # Page size
+        # The number of entries per page.
         self.page_size = page_size
-        # Total number of items.
+        # The total number of entries.
         self.total_size = total_size
 
     def validate(self):

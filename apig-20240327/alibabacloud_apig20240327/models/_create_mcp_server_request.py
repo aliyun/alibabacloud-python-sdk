@@ -25,37 +25,37 @@ class CreateMcpServerRequest(DaraModel):
         protocol: str = None,
         type: str = None,
     ):
-        # The list of assembly sources. This parameter is required when the type parameter is set to AssemblyMCP.
+        # Assembled MCP server sources
         self.assembled_sources = assembled_sources
-        # The backend service configurations for the route.
+        # Backend configuration
         self.backend_config = backend_config
-        # Creates the MCP server from the specified type.
+        # Creation source type
         self.create_from_type = create_from_type
-        # The MCP server description.
+        # MCP server description
         self.description = description
-        # The domain IDs.
+        # List of domain IDs for the MCP server
         self.domain_ids = domain_ids
-        # The exposed URI path. This parameter is required when the protocol parameter is set to SSE or StreamableHTTP, and the type parameter is set to RealMCP.
+        # Exposed URI path for SSE/StreamableHTTP protocols
         self.exposed_uri_path = exposed_uri_path
-        # The ID of the gateway.
+        # Gateway ID
         # 
         # This parameter is required.
         self.gateway_id = gateway_id
+        # Gray route configurations
         self.gray_mcp_server_configs = gray_mcp_server_configs
-        # The route match rule.
+        # Route matching conditions
         self.match = match
+        # MCP server specification
         self.mcp_server_config = mcp_server_config
-        # Specifies whether MCP observability is enabled. Default: false.
+        # Enable MCP statistics
         self.mcp_statistics_enable = mcp_statistics_enable
-        # The name of the MCP server. The name must match the regular expression ^[a-z0-9](%5B-a-z0-9%5D\\*%5Ba-z0-9%5D)?(.[a-z0-9](%5B-a-z0-9%5D\\*%5Ba-z0-9%5D)?)\\*$ and can be up to 64 characters in length.
+        # MCP server name
         # 
         # This parameter is required.
         self.name = name
-        # The protocol type. Valid values: HTTP, HTTPS, SSE, and StreamableHTTP
+        # MCP protocol
         self.protocol = protocol
-        # The type. Valid value:
-        # 
-        # RealMCP: regular MCP service
+        # MCP server type
         # 
         # This parameter is required.
         self.type = type
@@ -190,7 +190,9 @@ class CreateMcpServerRequestMcpServerConfig(DaraModel):
         mcp_server_spec: str = None,
         swagger_config: str = None,
     ):
+        # Converted MCP server spec YAML
         self.mcp_server_spec = mcp_server_spec
+        # Raw Swagger/OpenAPI document
         self.swagger_config = swagger_config
 
     def validate(self):
@@ -226,8 +228,11 @@ class CreateMcpServerRequestGrayMcpServerConfigs(DaraModel):
         match: main_models.HttpRouteMatch = None,
         route_id: str = None,
     ):
+        # Backend configuration for gray route
         self.backend_config = backend_config
+        # Route matching rules
         self.match = match
+        # Route ID for update operations
         self.route_id = route_id
 
     def validate(self):
@@ -273,7 +278,9 @@ class CreateMcpServerRequestGrayMcpServerConfigsBackendConfig(DaraModel):
         scene: str = None,
         services: List[main_models.CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices] = None,
     ):
+        # Must be SingleService
         self.scene = scene
+        # Exactly one service
         self.services = services
 
     def validate(self):
@@ -319,10 +326,15 @@ class CreateMcpServerRequestGrayMcpServerConfigsBackendConfigServices(DaraModel)
         version: str = None,
         weight: int = None,
     ):
+        # Service port number
         self.port = port
+        # Service protocol type
         self.protocol = protocol
+        # Service ID
         self.service_id = service_id
+        # Service version
         self.version = version
+        # Service weight for load balancing
         self.weight = weight
 
     def validate(self):
@@ -375,9 +387,9 @@ class CreateMcpServerRequestBackendConfig(DaraModel):
         scene: str = None,
         services: List[main_models.CreateMcpServerRequestBackendConfigServices] = None,
     ):
-        # The scenario of the backend service.
+        # Backend scene type
         self.scene = scene
-        # The backend services.
+        # List of backend services
         self.services = services
 
     def validate(self):
@@ -423,18 +435,15 @@ class CreateMcpServerRequestBackendConfigServices(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The backend node port of the service.
+        # Service port
         self.port = port
-        # The service protocol. Valid values:
-        # 
-        # *   HTTP
-        # *   HTTPS
+        # Service protocol
         self.protocol = protocol
-        # The service ID.
+        # Service ID
         self.service_id = service_id
-        # The service version.
+        # Service version
         self.version = version
-        # The weight.
+        # Service weight
         self.weight = weight
 
     def validate(self):
@@ -488,11 +497,11 @@ class CreateMcpServerRequestAssembledSources(DaraModel):
         mcp_server_name: str = None,
         tools: List[str] = None,
     ):
-        # The MCP server ID.
+        # MCP Server ID
         self.mcp_server_id = mcp_server_id
-        # The name of the MCP server.
+        # Source MCP server name
         self.mcp_server_name = mcp_server_name
-        # The list of the MCP tools.
+        # List of tool names to include
         self.tools = tools
 
     def validate(self):

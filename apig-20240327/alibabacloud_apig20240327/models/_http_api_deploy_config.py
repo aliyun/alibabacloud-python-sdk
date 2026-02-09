@@ -24,18 +24,31 @@ class HttpApiDeployConfig(DaraModel):
         service_configs: List[main_models.HttpApiDeployConfigServiceConfigs] = None,
         sub_domains: List[main_models.HttpApiDeployConfigSubDomains] = None,
     ):
+        # Specifies whether to enable automatic deployment.
         self.auto_deploy = auto_deploy
+        # The publishing scenario.
         self.backend_scene = backend_scene
+        # The IDs of the custom domain names.
         self.custom_domain_ids = custom_domain_ids
+        # The information about the custom domain names.
         self.custom_domain_infos = custom_domain_infos
+        # The environment ID.
         self.environment_id = environment_id
+        # The instance ID.
         self.gateway_id = gateway_id
+        # The instance information.
         self.gateway_info = gateway_info
+        # 网关类型
         self.gateway_type = gateway_type
+        # The Mock settings.
         self.mock = mock
+        # The policy configurations.
         self.policy_configs = policy_configs
+        # routeBackend
         self.route_backend = route_backend
+        # The service configurations.
         self.service_configs = service_configs
+        # The information about the sub-domain names.
         self.sub_domains = sub_domains
 
     def validate(self):
@@ -182,9 +195,13 @@ class HttpApiDeployConfigSubDomains(DaraModel):
         network_type: str = None,
         protocol: str = None,
     ):
+        # The domain name ID.
         self.domain_id = domain_id
+        # The domain name.
         self.name = name
+        # The network type.
         self.network_type = network_type
+        # The protocol.
         self.protocol = protocol
 
     def validate(self):
@@ -235,11 +252,17 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
         service_id: str = None,
         weight: int = None,
     ):
+        # Intent classification code
         self.intent_code = intent_code
+        # Match conditions
         self.match = match
+        # The model name.
         self.model_name = model_name
+        # The model name matching rule.
         self.model_name_pattern = model_name_pattern
+        # The service ID.
         self.service_id = service_id
+        # The service weight.
         self.weight = weight
 
     def validate(self):
@@ -303,10 +326,15 @@ class HttpApiDeployConfigPolicyConfigs(DaraModel):
         enable: bool = None,
         type: str = None,
     ):
+        # The fallback configurations
         self.ai_fallback_config = ai_fallback_config
+        # AI Security Guard configuration
         self.ai_security_guard_config = ai_security_guard_config
+        # AI Token Rate Limit configuration
         self.ai_token_rate_limit_config = ai_token_rate_limit_config
+        # Specifies whether to enable the policy.
         self.enable = enable
+        # The type of the policy. Valid values:
         self.type = type
 
     def validate(self):
@@ -368,8 +396,11 @@ class HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfig(DaraModel):
         global_rules: List[main_models.HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigGlobalRules] = None,
         rules: List[main_models.HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigRules] = None,
     ):
+        # Whether to enable global rate limit rules
         self.enable_global_rules = enable_global_rules
+        # List of global rate limit rules
         self.global_rules = global_rules
+        # List of rate limit rules
         self.rules = rules
 
     def validate(self):
@@ -431,11 +462,17 @@ class HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigRules(DaraModel):
         match_type: str = None,
         match_value: str = None,
     ):
+        # Limit mode
         self.limit_mode = limit_mode
+        # Limit type
         self.limit_type = limit_type
+        # Limit value
         self.limit_value = limit_value
+        # Match key
         self.match_key = match_key
+        # Match type
         self.match_type = match_type
+        # Match value
         self.match_value = match_value
 
     def validate(self):
@@ -498,11 +535,17 @@ class HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigGlobalRules(DaraMode
         match_type: str = None,
         match_value: str = None,
     ):
+        # Limit mode for global rules
         self.limit_mode = limit_mode
+        # Limit type for global rules
         self.limit_type = limit_type
+        # Limit value for global rules
         self.limit_value = limit_value
+        # Match key
         self.match_key = match_key
+        # Match type
         self.match_type = match_type
+        # Match value
         self.match_value = match_value
 
     def validate(self):
@@ -574,20 +617,35 @@ class HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfig(DaraModel):
         risk_config: List[main_models.HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfig] = None,
         service_address: str = None,
     ):
+        # bufferLimit
         self.buffer_limit = buffer_limit
+        # Whether to check request content
         self.check_request = check_request
+        # Whether to check request content
         self.check_request_image = check_request_image
+        # Whether to check response content
         self.check_response = check_response
+        # Whether to check response content
         self.check_response_image = check_response_image
+        # Consumer-specific request check configs
         self.consumer_request_check_service = consumer_request_check_service
+        # Consumer-specific Response check configs
         self.consumer_response_check_service = consumer_response_check_service
+        # Consumer-specific risk level configs
         self.consumer_risk_level = consumer_risk_level
+        # Request check service name
         self.request_check_service = request_check_service
+        # Request check service name
         self.request_image_check_service = request_image_check_service
+        # Response check service name
         self.response_check_service = response_check_service
+        # Response check service name
         self.response_image_check_service = response_image_check_service
+        # Risk alert level for content moderation
         self.risk_alert_level = risk_alert_level
+        # riskConfig
         self.risk_config = risk_config
+        # Security guard service address
         self.service_address = service_address
 
     def validate(self):
@@ -736,8 +794,11 @@ class HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfig(DaraModel)
         level: str = None,
         type: str = None,
     ):
+        # Consumer-specific rules
         self.consumer_rules = consumer_rules
+        # Risk alert level
         self.level = level
+        # Risk type identifier
         self.type = type
 
     def validate(self):
@@ -780,7 +841,9 @@ class HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfigConsumerRul
         match_type: str = None,
         pattern: str = None,
     ):
+        # Match type
         self.match_type = match_type
+        # Pattern for matching
         self.pattern = pattern
 
     def validate(self):
@@ -817,9 +880,13 @@ class HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerRiskLevel(Dar
         name: str = None,
         type: str = None,
     ):
+        # Risk alert level
         self.level = level
+        # Match type
         self.match_type = match_type
+        # Consumer name for matching
         self.name = name
+        # Risk type
         self.type = type
 
     def validate(self):
@@ -869,10 +936,15 @@ class HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerResponseCheck
         response_check_service: str = None,
         response_image_check_service: str = None,
     ):
+        # Match type
         self.match_type = match_type
+        # Modality type
         self.modality_type = modality_type
+        # Consumer name for matching
         self.name = name
+        # Response check service name
         self.response_check_service = response_check_service
+        # responseImageCheckService
         self.response_image_check_service = response_image_check_service
 
     def validate(self):
@@ -928,10 +1000,15 @@ class HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigConsumerRequestCheckS
         request_check_service: str = None,
         request_image_check_service: str = None,
     ):
+        # Match type
         self.match_type = match_type
+        # Modality type
         self.modality_type = modality_type
+        # Consumer name for matching
         self.name = name
+        # Request check service name
         self.request_check_service = request_check_service
+        # requestImageCheckService
         self.request_image_check_service = request_image_check_service
 
     def validate(self):
@@ -983,6 +1060,7 @@ class HttpApiDeployConfigPolicyConfigsAiFallbackConfig(DaraModel):
         self,
         service_configs: List[main_models.HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs] = None,
     ):
+        # List of fallback service configurations
         self.service_configs = service_configs
 
     def validate(self):
@@ -1019,7 +1097,9 @@ class HttpApiDeployConfigPolicyConfigsAiFallbackConfigServiceConfigs(DaraModel):
         service_id: str = None,
         target_model_name: str = None,
     ):
+        # Service ID for fallback
         self.service_id = service_id
+        # targetModelName
         self.target_model_name = target_model_name
 
     def validate(self):
@@ -1055,8 +1135,11 @@ class HttpApiDeployConfigCustomDomainInfos(DaraModel):
         name: str = None,
         protocol: str = None,
     ):
+        # The domain name ID.
         self.domain_id = domain_id
+        # The domain name.
         self.name = name
+        # The protocol.
         self.protocol = protocol
 
     def validate(self):

@@ -16,6 +16,7 @@ class ListDomainsRequest(DaraModel):
     ):
         # The instance ID.
         self.gateway_id = gateway_id
+        # The gateway type to filter. Valid values: **AI** and **API**.
         self.gateway_type = gateway_type
         # The domain name keyword for fuzzy search.
         self.name_like = name_like

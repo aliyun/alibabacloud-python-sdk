@@ -16,10 +16,15 @@ class HttpRouteMatch(DaraModel):
         path: main_models.HttpRouteMatchPath = None,
         query_params: List[main_models.HttpRouteMatchQueryParams] = None,
     ):
+        # The rules for matching based on HTTP request headers.
         self.headers = headers
+        # Specifies whether the path is case-insensitive.
         self.ignore_uri_case = ignore_uri_case
+        # The HTTP methods.
         self.methods = methods
+        # The path rule.
         self.path = path
+        # The rules for matching based on query parameters.
         self.query_params = query_params
 
     def validate(self):
@@ -93,8 +98,15 @@ class HttpRouteMatchQueryParams(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The parameter name.
         self.name = name
+        # The match type. Valid values:
+        # 
+        # *   Exact: exact match
+        # *   Prefix: prefix match
+        # *   Regex: regular expression
         self.type = type
+        # The parameter value.
         self.value = value
 
     def validate(self):
@@ -135,7 +147,13 @@ class HttpRouteMatchPath(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The path matching type. Valid values:
+        # 
+        # *   Exact: exact match
+        # *   Prefix: prefix match
+        # *   Regex: regular expression
         self.type = type
+        # The path.
         self.value = value
 
     def validate(self):
@@ -171,8 +189,15 @@ class HttpRouteMatchHeaders(DaraModel):
         type: str = None,
         value: str = None,
     ):
+        # The header name.
         self.name = name
+        # The match type. Valid values:
+        # 
+        # *   Exact: exact match
+        # *   Prefix: prefix match
+        # *   Regex: regular expression
         self.type = type
+        # The header value.
         self.value = value
 
     def validate(self):

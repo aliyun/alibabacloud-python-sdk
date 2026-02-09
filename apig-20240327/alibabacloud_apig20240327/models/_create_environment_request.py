@@ -13,21 +13,21 @@ class CreateEnvironmentRequest(DaraModel):
         name: str = None,
         resource_group_id: str = None,
     ):
-        # Environment alias.
+        # The request body.
         # 
         # This parameter is required.
         self.alias = alias
-        # Description of the environment, which can include information such as the purpose of the environment and its owner.
+        # The environment alias.
         self.description = description
-        # Gateway ID.
+        # The environment description, such as its purpose and owner.
         # 
         # This parameter is required.
         self.gateway_id = gateway_id
-        # Environment name.
+        # Create environment.
         # 
         # This parameter is required.
         self.name = name
-        # The ID of the resource group.
+        # Testing environment for xx project of xxx
         self.resource_group_id = resource_group_id
 
     def validate(self):

@@ -13,9 +13,13 @@ class GatewayInfo(DaraModel):
         name: str = None,
         vpc_info: main_models.GatewayInfoVpcInfo = None,
     ):
+        # The instance engine version.
         self.engine_version = engine_version
+        # The instance ID.
         self.gateway_id = gateway_id
+        # The instance name.
         self.name = name
+        # The virtual private cloud (VPC) information.
         self.vpc_info = vpc_info
 
     def validate(self):
@@ -64,7 +68,9 @@ class GatewayInfoVpcInfo(DaraModel):
         name: str = None,
         vpc_id: str = None,
     ):
+        # The VPC name.
         self.name = name
+        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

@@ -11,11 +11,11 @@ class UpdateHttpApiResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # Response status code.
         self.code = code
-        # The returned message.
+        # Response message.
         self.message = message
-        # The request ID.
+        # Request ID.
         self.request_id = request_id
 
     def validate(self):

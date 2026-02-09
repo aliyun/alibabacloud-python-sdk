@@ -11,11 +11,8 @@ class UpdateGatewayNameResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
         self.code = code
-        # Response message.
         self.message = message
-        # Request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -17,7 +17,7 @@ class ListDomainsResponseBody(DaraModel):
     ):
         # The status code returned.
         self.code = code
-        # The response data.
+        # Response parameters.
         self.data = data
         # The message returned.
         self.message = message
@@ -72,7 +72,7 @@ class ListDomainsResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The information about the domain names.
+        # The list of domain information.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number

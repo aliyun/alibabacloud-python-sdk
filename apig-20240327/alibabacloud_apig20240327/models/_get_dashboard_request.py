@@ -29,14 +29,17 @@ class GetDashboardRequest(DaraModel):
         # *   LOG: access logs
         # *   PLUGIN: plug-in logs
         self.name = name
-        # The plug-in ID.
+        # The plug-in type ID.
         self.plugin_class_id = plugin_class_id
+        # The plug-in ID.
         self.plugin_id = plugin_id
+        # The route ID.
         self.route_id = route_id
         # The dashboard source. Valid values:
         # 
         # *   SLS: Simple Log Service
         self.source = source
+        # The AI service identifier.
         self.upstream_cluster = upstream_cluster
 
     def validate(self):

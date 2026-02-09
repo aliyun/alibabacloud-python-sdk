@@ -10,7 +10,9 @@ class HttpApiApiInfoDeployCntMapValue(DaraModel):
         deployed_cnt: int = None,
         cnt: int = None,
     ):
+        # deployedCnt
         self.deployed_cnt = deployed_cnt
+        # Cnt
         self.cnt = cnt
 
     def validate(self):

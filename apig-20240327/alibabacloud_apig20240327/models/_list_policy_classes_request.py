@@ -15,28 +15,31 @@ class ListPolicyClassesRequest(DaraModel):
         page_size: int = None,
         type: str = None,
     ):
+        # The resource ID to attach the policy
         self.attach_resource_id = attach_resource_id
-        # Types of attachment points supported by the policy.
+        # The supported mount point type. Valid values:
         # 
-        # - HttpApi: HttpApi.
-        # - Operation: Operation of HttpApi.
-        # - GatewayRoute: Gateway route.
-        # - GatewayService: Gateway service.
-        # - GatewayServicePort: Gateway service port.
-        # - Domain: Gateway domain.
-        # - Gateway: Gateway.
+        # *   HttpApi: an HTTP API
+        # *   Operation: an operation in an HTTP API
+        # *   GatewayRoute: a route
+        # *   GatewayService: a service
+        # *   GatewayServicePort: a service port
+        # *   Domain: a domain name
+        # *   Gateway: an instance
         self.attach_resource_type = attach_resource_type
-        # Direction of the policy.
-        # - Outbound: OutBound.
-        # - Inbound: InBound.
-        # - Both directions: Both.
+        # The direction of traffic on which the policy takes effect. Valid values:
+        # 
+        # *   OutBound
+        # *   InBound
+        # *   Both
         self.direction = direction
+        # The gateway ID
         self.gateway_id = gateway_id
-        # Page number, default is 1.
+        # The page number of the page to return. Default value: 1.
         self.page_number = page_number
-        # Page size
+        # The number of entries per page.
         self.page_size = page_size
-        # Type of the policy template.
+        # The template type.
         self.type = type
 
     def validate(self):

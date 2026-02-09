@@ -12,9 +12,13 @@ class ResourceInfo(DaraModel):
         resource_type: str = None,
         resource_version: str = None,
     ):
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource name.
         self.resource_name = resource_name
+        # The resource type. Valid values: HttpApi, Operation, GatewayRoute, Gateway, and GatewayDomain.
         self.resource_type = resource_type
+        # The resource version.
         self.resource_version = resource_version
 
     def validate(self):

@@ -11,11 +11,11 @@ class UpdateGatewayFeatureResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The status code.
         self.code = code
-        # Response message.
+        # The response message returned.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

@@ -17,7 +17,7 @@ class ListServicesResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The response parameters.
+        # The response payload.
         self.data = data
         # The returned message.
         self.message = message
@@ -72,7 +72,7 @@ class ListServicesResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
-        # The services.
+        # The list of services.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number

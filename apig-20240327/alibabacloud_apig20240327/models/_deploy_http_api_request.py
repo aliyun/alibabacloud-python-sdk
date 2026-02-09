@@ -14,10 +14,11 @@ class DeployHttpApiRequest(DaraModel):
         rest_api_config: main_models.DeployHttpApiRequestRestApiConfig = None,
         route_id: str = None,
     ):
+        # httpApiConfig
         self.http_api_config = http_api_config
-        # Rest API deployment configuration. Required when deploying an HTTP API as a Rest API.
+        # The REST API deployment configuration. This parameter is required when you publish a REST API.
         self.rest_api_config = rest_api_config
-        # Route ID. This must be provided when publishing the route of an HTTP API.
+        # The route ID. You must specify this parameter when you publish an HTTP API.
         self.route_id = route_id
 
     def validate(self):
@@ -63,21 +64,29 @@ class DeployHttpApiRequestRestApiConfig(DaraModel):
         description: str = None,
         environment: main_models.DeployHttpApiRequestRestApiConfigEnvironment = None,
         gateway_id: str = None,
+        operation_deployments: List[main_models.DeployHttpApiRequestRestApiConfigOperationDeployments] = None,
         operation_ids: List[str] = None,
         revision_id: str = None,
     ):
-        # Publication description.
+        # The publish description.
         self.description = description
-        # Publication environment configuration.
+        # The environment configurations.
         self.environment = environment
+        # The gateway ID.
         self.gateway_id = gateway_id
+        self.operation_deployments = operation_deployments
+        # operationIds
         self.operation_ids = operation_ids
-        # Historical version number. If this field is specified, the publication information will be based on the historical version information.
+        # The historical version of the API. If you specify this parameter, the corresponding version of the API is published.
         self.revision_id = revision_id
 
     def validate(self):
         if self.environment:
             self.environment.validate()
+        if self.operation_deployments:
+            for v1 in self.operation_deployments:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -92,6 +101,11 @@ class DeployHttpApiRequestRestApiConfig(DaraModel):
 
         if self.gateway_id is not None:
             result['gatewayId'] = self.gateway_id
+
+        result['operationDeployments'] = []
+        if self.operation_deployments is not None:
+            for k1 in self.operation_deployments:
+                result['operationDeployments'].append(k1.to_map() if k1 else None)
 
         if self.operation_ids is not None:
             result['operationIds'] = self.operation_ids
@@ -113,11 +127,52 @@ class DeployHttpApiRequestRestApiConfig(DaraModel):
         if m.get('gatewayId') is not None:
             self.gateway_id = m.get('gatewayId')
 
+        self.operation_deployments = []
+        if m.get('operationDeployments') is not None:
+            for k1 in m.get('operationDeployments'):
+                temp_model = main_models.DeployHttpApiRequestRestApiConfigOperationDeployments()
+                self.operation_deployments.append(temp_model.from_map(k1))
+
         if m.get('operationIds') is not None:
             self.operation_ids = m.get('operationIds')
 
         if m.get('revisionId') is not None:
             self.revision_id = m.get('revisionId')
+
+        return self
+
+class DeployHttpApiRequestRestApiConfigOperationDeployments(DaraModel):
+    def __init__(
+        self,
+        action: str = None,
+        operation_id: str = None,
+    ):
+        self.action = action
+        self.operation_id = operation_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.action is not None:
+            result['action'] = self.action
+
+        if self.operation_id is not None:
+            result['operationId'] = self.operation_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('action') is not None:
+            self.action = m.get('action')
+
+        if m.get('operationId') is not None:
+            self.operation_id = m.get('operationId')
 
         return self
 
@@ -129,13 +184,20 @@ class DeployHttpApiRequestRestApiConfigEnvironment(DaraModel):
         environment_id: str = None,
         service_configs: List[main_models.DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs] = None,
     ):
-        # API publication scenario.
+        # The publishing scenario.
+        # 
+        # Valid values:
+        # 
+        # *   SingleService
+        # *   MultiServiceByRatio
+        # *   MultiServiceByContent
+        # *   Mock
         self.backend_scene = backend_scene
-        # List of user domains.
+        # The custom domain names.
         self.custom_domain_ids = custom_domain_ids
-        # Environment ID.
+        # The environment ID.
         self.environment_id = environment_id
-        # Existing service configurations. Only one entry is allowed in a single-service scenario, while multiple entries are allowed in scenarios such as by ratio or by content.
+        # The configurations of existing services. For single-service publishing, only one entry is allowed. For other scenarios, multiple entries are allowed.
         self.service_configs = service_configs
 
     def validate(self):
@@ -194,19 +256,20 @@ class DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # Configuration of matching conditions related to API deployment.
+        # The matching condition configurations related to API publishing.
         self.match = match
-        # Service port, do not provide for dynamic ports.
+        # The service port. If you want to use a dynamic port, do not pass this parameter.
         self.port = port
-        # Service protocol:
-        # - HTTP.
-        # - HTTPS.
+        # The service protocol. Valid values:
+        # 
+        # *   HTTP
+        # *   HTTPS
         self.protocol = protocol
-        # Service ID.
+        # The service ID.
         self.service_id = service_id
-        # Service version.
+        # The version of the microservice.
         self.version = version
-        # Weight, range [1,100], valid only in the by-ratio scenario.
+        # The weight. Valid values: [1,100]. This parameter is valid only in proportional routing.
         self.weight = weight
 
     def validate(self):
@@ -267,7 +330,9 @@ class DeployHttpApiRequestHttpApiConfig(DaraModel):
         gateway_id: str = None,
         route_ids: List[str] = None,
     ):
+        # The gateway ID.
         self.gateway_id = gateway_id
+        # routeIds
         self.route_ids = route_ids
 
     def validate(self):

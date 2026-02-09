@@ -15,13 +15,13 @@ class GetGatewayResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # The status code.
+        # The environment alias.
         self.code = code
-        # The returned data.
+        # The security group of the instance.
         self.data = data
-        # The response message returned.
+        # Default environment
         self.message = message
-        # The request ID.
+        # The environment name.
         self.request_id = request_id
 
     def validate(self):
@@ -92,69 +92,61 @@ class GetGatewayResponseBodyData(DaraModel):
         vpc: main_models.GetGatewayResponseBodyDataVpc = None,
         zones: List[main_models.GetGatewayResponseBodyDataZones] = None,
     ):
-        # The billing method. Valid values:
-        # 
-        # *   POSTPAY: pay-as-you-go
-        # *   PREPAY: subscription
-        self.charge_type = charge_type
-        # The creation source of the instance. Valid values:
-        # 
-        # *   Console
-        self.create_from = create_from
-        # The creation timestamp. Unit: milliseconds.
-        self.create_timestamp = create_timestamp
-        # The list of environments associated with the instance.
-        self.environments = environments
-        # The time when the instance expires. This value is a UNIX timestamp. Unit: milliseconds.
-        self.expire_timestamp = expire_timestamp
-        self.gateway_edition = gateway_edition
-        # The instance ID.
-        self.gateway_id = gateway_id
-        # the gateway type, which is categorized into the following two types:
-        # - API: indicates an API gateway
-        # - AI: Indicates an AI gateway
-        self.gateway_type = gateway_type
-        self.isp = isp
-        # The ingress addresses of the instance.
-        self.load_balancers = load_balancers
-        self.maintenance_period = maintenance_period
-        # The instance name.
-        self.name = name
-        # The node quantity of the instance.
-        self.replicas = replicas
-        # The resource group ID.
-        self.resource_group_id = resource_group_id
-        # The security group of the instance.
-        self.security_group = security_group
-        # The instance specification. Valid values:
-        # 
-        # *   apigw.small.x1
-        self.spec = spec
-        # The instance state. Valid values:
-        # 
-        # *   Running: The instance is running.
-        # *   Creating: The instance is being created.
-        # *   CreateFailed: The instance failed to be created.
-        # *   Upgrading: The instance is being upgraded.
-        # *   UpgradeFailed: The instance failed to be upgraded.
-        # *   Restarting: The instance is being restarted.
-        # *   RestartFailed: The instance failed to be restarted.
-        # *   Deleting: The instance is being released.
-        # *   DeleteFailed: The instance failed to be released.
-        self.status = status
-        # The resource tags.
-        self.tags = tags
-        # The destination version of the instance. If the value is inconsistent with the version value, you can upgrade the instance.
-        self.target_version = target_version
-        # The last update timestamp. Unit: milliseconds.
-        self.update_timestamp = update_timestamp
         # The vSwitch associated with the instance.
-        self.v_switch = v_switch
-        # The instance version.
-        self.version = version
+        self.charge_type = charge_type
+        # The mode in which the load balancer is provided. Valid values:
+        # 
+        # *   Managed: Cloud-native API Gateway manages and provides the load balancer.
+        self.create_from = create_from
+        # The zone ID.
+        self.create_timestamp = create_timestamp
+        # The IP version of the address. Valid values:
+        # 
+        # *   ipv4
+        # *   ipv6
+        self.environments = environments
+        # The ingress information.
+        self.expire_timestamp = expire_timestamp
+        # gatewayEdition
+        self.gateway_edition = gateway_edition
+        # The security group ID.
+        self.gateway_id = gateway_id
+        # The vSwitch ID.
+        self.gateway_type = gateway_type
+        # The ISP type for traffic routing
+        self.isp = isp
+        # loadBalancers
+        self.load_balancers = load_balancers
+        # The maintenance period configuration
+        self.maintenance_period = maintenance_period
+        # The security group name.
+        self.name = name
+        # HangzhouZoneE
+        self.replicas = replicas
+        # The resource group ID
+        self.resource_group_id = resource_group_id
+        # The port number.
+        self.security_group = security_group
+        # The zone name.
+        self.spec = spec
         # The VPC associated with the instance.
+        self.status = status
+        # List of tags associated with the gateway
+        self.tags = tags
+        # The load balancer address type. Valid values:
+        # 
+        # *   Internet
+        # *   Intranet
+        self.target_version = target_version
+        # The ingress addresses of the instance.
+        self.update_timestamp = update_timestamp
+        # rg-aek2s3cvc4jzfxi
+        self.v_switch = v_switch
+        # The load balancer IP address.
+        self.version = version
+        # The tag key.
         self.vpc = vpc
-        # The list of zones associated with the instance.
+        # List of zone information
         self.zones = zones
 
     def validate(self):
@@ -369,11 +361,11 @@ class GetGatewayResponseBodyDataZones(DaraModel):
         v_switch: main_models.GetGatewayResponseBodyDataZonesVSwitch = None,
         zone_id: str = None,
     ):
-        # The zone name.
+        # The zone name
         self.name = name
-        # The vSwitch information.
+        # The VSwitch information in the zone
         self.v_switch = v_switch
-        # The zone ID.
+        # The zone ID
         self.zone_id = zone_id
 
     def validate(self):
@@ -416,9 +408,9 @@ class GetGatewayResponseBodyDataZonesVSwitch(DaraModel):
         name: str = None,
         v_switch_id: str = None,
     ):
-        # The vSwitch name.
+        # The VSwitch name
         self.name = name
-        # The vSwitch ID.
+        # The VSwitch ID
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -453,9 +445,9 @@ class GetGatewayResponseBodyDataVpc(DaraModel):
         name: str = None,
         vpc_id: str = None,
     ):
-        # The VPC name.
+        # =
         self.name = name
-        # The VPC ID.
+        # Query Gateway Details
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -490,9 +482,9 @@ class GetGatewayResponseBodyDataVSwitch(DaraModel):
         name: str = None,
         v_switch_id: str = None,
     ):
-        # The vSwitch name.
+        # The resource tags.
         self.name = name
-        # The vSwitch ID.
+        # The tag value.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -527,9 +519,9 @@ class GetGatewayResponseBodyDataTags(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The tag key
         self.key = key
-        # The tag value.
+        # The tag value
         self.value = value
 
     def validate(self):
@@ -564,9 +556,12 @@ class GetGatewayResponseBodyDataSecurityGroup(DaraModel):
         name: str = None,
         security_group_id: str = None,
     ):
-        # The security group name.
+        # The resource group ID.
         self.name = name
-        # The security group ID.
+        # The load balancer status. Valid values:
+        # 
+        # *   Ready: The load balancer is available.
+        # *   NotCreate: The load balancer is not associated with the instance.
         self.security_group_id = security_group_id
 
     def validate(self):
@@ -601,7 +596,9 @@ class GetGatewayResponseBodyDataMaintenancePeriod(DaraModel):
         end_time: str = None,
         start_time: str = None,
     ):
+        # The maintenance end time
         self.end_time = end_time
+        # The maintenance start time
         self.start_time = start_time
 
     def validate(self):
@@ -645,39 +642,27 @@ class GetGatewayResponseBodyDataLoadBalancers(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The load balancer IP address.
+        # The IP address of the load balancer
         self.address = address
-        # The IP version of the address. Valid values:
-        # 
-        # *   ipv4
-        # *   ipv6
+        # The IP version of the load balancer address
         self.address_ip_version = address_ip_version
-        # The load balancer address type. Valid values:
-        # 
-        # *   Internet
-        # *   Intranet
+        # The address type of the load balancer
         self.address_type = address_type
-        # Indicates whether the address is the default ingress address of the instance.
+        # Whether this is the default gateway ingress
         self.gateway_default = gateway_default
+        # List of IPv4 addresses
         self.ipv_4addresses = ipv_4addresses
+        # List of IPv6 addresses
         self.ipv_6addresses = ipv_6addresses
-        # The load balancer ID.
+        # The unique identifier of the load balancer
         self.load_balancer_id = load_balancer_id
-        # The mode in which the load balancer is provided. Valid values:
-        # 
-        # *   Managed: Cloud-native API Gateway manages and provides the load balancer.
+        # The mode of the load balancer
         self.mode = mode
-        # The list of listened ports.
+        # List of port configurations for the load balancer
         self.ports = ports
-        # The load balancer status. Valid values:
-        # 
-        # *   Ready: The load balancer is available.
-        # *   NotCreate: The load balancer is not associated with the instance.
+        # The current status of the load balancer
         self.status = status
-        # The load balancer type. Valid values:
-        # 
-        # *   NLB: Network Load Balancer
-        # *   CLB: Classic Load Balancer
+        # The type of load balancer
         self.type = type
 
     def validate(self):
@@ -774,12 +759,9 @@ class GetGatewayResponseBodyDataLoadBalancersPorts(DaraModel):
         port: int = None,
         protocol: str = None,
     ):
-        # The port number.
+        # The listening port number
         self.port = port
-        # The protocol. Valid values:
-        # 
-        # *   TCP
-        # *   UDP
+        # The protocol of the port
         self.protocol = protocol
 
     def validate(self):
@@ -815,11 +797,14 @@ class GetGatewayResponseBodyDataEnvironments(DaraModel):
         environment_id: str = None,
         name: str = None,
     ):
-        # The environment alias.
+        # The port information.
         self.alias = alias
-        # The environment ID.
+        # The load balancer type. Valid values:
+        # 
+        # *   NLB: Network Load Balancer
+        # *   CLB: Classic Load Balancer
         self.environment_id = environment_id
-        # The environment name.
+        # The list of listened ports.
         self.name = name
 
     def validate(self):

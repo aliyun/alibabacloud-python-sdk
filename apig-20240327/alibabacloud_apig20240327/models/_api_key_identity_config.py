@@ -14,8 +14,11 @@ class ApiKeyIdentityConfig(DaraModel):
         credentials: List[main_models.ApiKeyIdentityConfigCredentials] = None,
         type: str = None,
     ):
+        # The source configuration of the API key.
         self.apikey_source = apikey_source
+        # The list of certificates.
         self.credentials = credentials
+        # The type.
         self.type = type
 
     def validate(self):
@@ -67,7 +70,9 @@ class ApiKeyIdentityConfigCredentials(DaraModel):
         apikey: str = None,
         generate_mode: str = None,
     ):
+        # The API key configuration.
         self.apikey = apikey
+        # The production mode.
         self.generate_mode = generate_mode
 
     def validate(self):
@@ -102,7 +107,15 @@ class ApiKeyIdentityConfigApikeySource(DaraModel):
         source: str = None,
         value: str = None,
     ):
+        # The source of the API key.
+        # 
+        # Valid values:
+        # 
+        # *   Header
+        # *   QueryString
+        # *   Default
         self.source = source
+        # The value of the API key.
         self.value = value
 
     def validate(self):

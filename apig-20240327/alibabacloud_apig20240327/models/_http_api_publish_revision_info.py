@@ -24,18 +24,46 @@ class HttpApiPublishRevisionInfo(DaraModel):
         sub_domains: List[main_models.HttpApiDomainInfo] = None,
         vip_configs: List[main_models.HttpApiPublishRevisionInfoVipConfigs] = None,
     ):
+        # The publishing scenario.
+        # 
+        # Valid values:
+        # 
+        # *   SingleService
+        # *   MultiServiceByRatio
+        # *   MultiServiceByContent
+        # *   MultiServiceByTag
+        # *   Mock
         self.backend_scene = backend_scene
+        # The type of the backend service.
+        # 
+        # Valid values:
+        # 
+        # *   DNS: a DNS domain name
+        # *   Service: an existing service
+        # *   VIP: a fixed IP address
+        # *   CloudProduct: a cloud service
         self.backend_type = backend_type
+        # The cloud service configurations.
         self.cloud_product_config = cloud_product_config
+        # The publishing timestamp.
         self.create_timestamp = create_timestamp
+        # The custom domain names.
         self.custom_domains = custom_domains
+        # The configurations of DNS domain names. For single-service publishing, only one entry is allowed. For other scenarios, multiple entries are allowed.
         self.dns_configs = dns_configs
+        # The environment information.
         self.environment_info = environment_info
+        # Specifies whether the current version is used.
         self.is_current_version = is_current_version
+        # The operations.
         self.operations = operations
+        # The published version.
         self.revision_id = revision_id
+        # The configurations of existing services. For single-service publishing, only one entry is allowed. For other scenarios, multiple entries are allowed.
         self.service_configs = service_configs
+        # The default domain names of the environment.
         self.sub_domains = sub_domains
+        # The configurations of fixed IP addresses. For single-service publishing, only one entry is allowed. For other scenarios, multiple entries are allowed.
         self.vip_configs = vip_configs
 
     def validate(self):
@@ -196,8 +224,11 @@ class HttpApiPublishRevisionInfoVipConfigs(DaraModel):
         match: main_models.HttpApiBackendMatchConditions = None,
         weight: int = None,
     ):
+        # The IP addresses.
         self.endpoints = endpoints
+        # The matching condition. This condition is valid only in content-based routing.
         self.match = match
+        # The weight. Valid values: [1,100]. This parameter is valid only in proportional routing.
         self.weight = weight
 
     def validate(self):
@@ -244,11 +275,17 @@ class HttpApiPublishRevisionInfoServiceConfigs(DaraModel):
         version: str = None,
         weight: int = None,
     ):
+        # The service ID.
         self.gateway_service_id = gateway_service_id
+        # The matching conditions.
         self.match = match
+        # The service port.
         self.port = port
+        # The service protocol.
         self.protocol = protocol
+        # The service version.
         self.version = version
+        # The service weight.
         self.weight = weight
 
     def validate(self):
@@ -311,9 +348,13 @@ class HttpApiPublishRevisionInfoEnvironmentInfo(DaraModel):
         gateway_info: main_models.HttpApiPublishRevisionInfoEnvironmentInfoGatewayInfo = None,
         name: str = None,
     ):
+        # The environment alias.
         self.alias = alias
+        # The environment ID.
         self.environment_id = environment_id
+        # The instance information.
         self.gateway_info = gateway_info
+        # The environment name.
         self.name = name
 
     def validate(self):
@@ -362,7 +403,9 @@ class HttpApiPublishRevisionInfoEnvironmentInfoGatewayInfo(DaraModel):
         gateway_id: str = None,
         name: str = None,
     ):
+        # The instance ID.
         self.gateway_id = gateway_id
+        # The instance name.
         self.name = name
 
     def validate(self):
@@ -398,8 +441,11 @@ class HttpApiPublishRevisionInfoDnsConfigs(DaraModel):
         match: main_models.HttpApiBackendMatchConditions = None,
         weight: int = None,
     ):
+        # The DNS domain names.
         self.dns_list = dns_list
+        # The matching condition. This condition is valid only in content-based routing.
         self.match = match
+        # The weight. Valid values: [1,100]. This parameter is valid only in proportional routing.
         self.weight = weight
 
     def validate(self):
@@ -444,9 +490,13 @@ class HttpApiPublishRevisionInfoCloudProductConfig(DaraModel):
         function_configs: List[main_models.HttpApiPublishRevisionInfoCloudProductConfigFunctionConfigs] = None,
         mse_nacos_configs: List[main_models.HttpApiPublishRevisionInfoCloudProductConfigMseNacosConfigs] = None,
     ):
+        # The type of the cloud service.
         self.cloud_product_type = cloud_product_type
+        # The ACK configurations.
         self.container_service_configs = container_service_configs
+        # The Function Compute configurations.
         self.function_configs = function_configs
+        # The MSE Nacos configurations.
         self.mse_nacos_configs = mse_nacos_configs
 
     def validate(self):
@@ -523,11 +573,17 @@ class HttpApiPublishRevisionInfoCloudProductConfigMseNacosConfigs(DaraModel):
         namespace: str = None,
         weight: int = None,
     ):
+        # The associated service ID.
         self.gateway_service_id = gateway_service_id
+        # The service group.
         self.group_name = group_name
+        # The matching conditions.
         self.match = match
+        # The Nacos service name.
         self.name = name
+        # The Nacos namespace.
         self.namespace = namespace
+        # The service weight.
         self.weight = weight
 
     def validate(self):
@@ -591,10 +647,15 @@ class HttpApiPublishRevisionInfoCloudProductConfigFunctionConfigs(DaraModel):
         qualifier: str = None,
         weight: int = None,
     ):
+        # The associated service ID.
         self.gateway_service_id = gateway_service_id
+        # The matching conditions.
         self.match = match
+        # The function name.
         self.name = name
+        # The function version or alias.
         self.qualifier = qualifier
+        # The service weight.
         self.weight = weight
 
     def validate(self):
@@ -654,12 +715,19 @@ class HttpApiPublishRevisionInfoCloudProductConfigContainerServiceConfigs(DaraMo
         protocol: str = None,
         weight: str = None,
     ):
+        # The associated service ID.
         self.gateway_service_id = gateway_service_id
+        # The matching conditions.
         self.match = match
+        # The K8s service name.
         self.name = name
+        # The K8s namespace.
         self.namespace = namespace
+        # The service port.
         self.port = port
+        # The service protocol.
         self.protocol = protocol
+        # The service weight.
         self.weight = weight
 
     def validate(self):

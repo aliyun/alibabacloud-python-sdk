@@ -11,11 +11,11 @@ class DeleteGatewayResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response status code.
+        # The status code.
         self.code = code
-        # Response message.
+        # The returned message.
         self.message = message
-        # Request ID.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

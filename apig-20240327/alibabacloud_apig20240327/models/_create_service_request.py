@@ -22,16 +22,16 @@ class CreateServiceRequest(DaraModel):
         self.resource_group_id = resource_group_id
         # The list of service configurations.
         self.service_configs = service_configs
-        # The service source. Valid values:
+        # The service source type. Valid values:
         # 
-        # *   MSE_NACOS: a service in an MSE Nacos instance
-        # *   K8S: a service in a Kubernetes (K8s) cluster in Container Service for Kubernetes (ACK)
-        # *   VIP: a fixed IP address
-        # *   DNS: a Domain Name System (DNS) domain name
-        # *   FC3: a service in Function Compute
-        # *   SAE_K8S_SERVICE: a service in a K8s cluster in Serverless App Engine (SAE)
+        # *   MSE_NACOS: MSE Nacos instance services
+        # *   K8S: Container Service for Kubernetes (ACK) cluster services
+        # *   VIP: fixed IP addresses
+        # *   DNS: Domain Name System (DNS) domains
+        # *   FC3: Function Compute services
+        # *   SAE_K8S_SERVICE: Serverless App Engine (SAE) Kubernetes services
         # 
-        # Enumerated values:
+        # Valid values:
         # 
         # *   SAE_K8S_SERVICE
         # *   K8S
@@ -40,6 +40,7 @@ class CreateServiceRequest(DaraModel):
         # *   VIP
         # *   MSE_NACOS
         self.source_type = source_type
+        # clientToken
         self.client_token = client_token
 
     def validate(self):
@@ -109,13 +110,15 @@ class CreateServiceRequestServiceConfigs(DaraModel):
         source_id: str = None,
         validation_options: main_models.CreateServiceRequestServiceConfigsValidationOptions = None,
     ):
-        # The list of domain names or fixed addresses.
+        # The list of domain names or fixed IP addresses.
         self.addresses = addresses
+        # Agent service configuration
         self.agent_service_config = agent_service_config
         # The AI service configurations.
         self.ai_service_config = ai_service_config
         # The list of DNS service addresses.
         self.dns_servers = dns_servers
+        # Express type
         self.express_type = express_type
         # The service group name. This parameter is required if sourceType is set to MSE_NACOS.
         self.group_name = group_name
@@ -125,10 +128,14 @@ class CreateServiceRequestServiceConfigs(DaraModel):
         # 
         # *   If sourceType is set to K8S, this parameter specifies the namespace where the K8s service resides.
         # *   If sourceType is set to MSE_NACOS, this parameter specifies a namespace in Nacos.
+        # 
+        # This parameter is required if sourceType is set to K8S or MSE_NACOS.
         self.namespace = namespace
-        # The function version or alias.
+        # The function version/alias.
         self.qualifier = qualifier
+        # Service source ID
         self.source_id = source_id
+        # Validation options
         self.validation_options = validation_options
 
     def validate(self):
@@ -224,6 +231,7 @@ class CreateServiceRequestServiceConfigsValidationOptions(DaraModel):
         self,
         skip_verify_aichat_completion: bool = None,
     ):
+        # Skip AI chat completion verification
         self.skip_verify_aichat_completion = skip_verify_aichat_completion
 
     def validate(self):

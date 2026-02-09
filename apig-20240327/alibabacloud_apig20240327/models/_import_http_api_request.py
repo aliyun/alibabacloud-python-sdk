@@ -24,34 +24,35 @@ class ImportHttpApiRequest(DaraModel):
         target_http_api_id: str = None,
         version_config: main_models.HttpApiVersionConfig = None,
     ):
-        # The deployment configuration.
+        # The API deployment configuration.
         self.deploy_configs = deploy_configs
-        # The API description, which cannot exceed 255 bytes in length. If you do not specify a description, a description is extracted from the definition file.
+        # The imported API description (255-byte limit). If not specified, a description is extracted from the API definition file. A maximum of 255 bytes is supported.
         self.description = description
-        # Specifies whether to perform a dry run. If this parameter is set to true, a dry run is performed without importing the file.
+        # Specifies whether to perform a precheck. If set to true, a check is performed without actual import.
         self.dry_run = dry_run
+        # Gateway ID.
         self.gateway_id = gateway_id
         # The MCP route ID.
         self.mcp_route_id = mcp_route_id
-        # The API name. If you do not specify a name, a name is extracted from the definition file. If a name and a versioning configuration already exist, the existing API definition is updated based on the strategy field.
+        # The imported API name. If not specified, a name is extracted from the API definition file. If the API name and versioning configuration already exist, this import will update the existing API definition based on the strategy field.
         self.name = name
-        # [The resource group ID](https://help.aliyun.com/document_detail/151181.html).
+        # The [resource group ID](https://help.aliyun.com/document_detail/151181.html).
         self.resource_group_id = resource_group_id
-        # The Base64-encoded API definition. OAS 2.0 and OAS 3.0 specifications are supported. YAML and JSON formats are supported. This parameter precedes over the specFileUrl parameter. However, if the file size exceeds 10 MB, use the specFileUrl parameter to pass the definition.
+        # The Base64-encoded API definition (supports OAS 2.0/OAS 3.0 in YAML/JSON). This parameter has higher priority than the specFileUrl parameter. However, if the file size exceeds 10 MB, use the specFileUrl parameter to pass the definition.
         self.spec_content_base_64 = spec_content_base_64
-        # The download URL of the API definition file. You can download the file over the Internet or by using an Object Storage Service (OSS) internal download URL that belongs to the current region. You must obtain the required permissions to download the file. For OSS URLs that are not publicly readable, refer to [Download objects using presigned URLs](https://help.aliyun.com/document_detail/39607.html) to specify URLs that provide download permissions. Currently, only OSS URLs are supported.
+        # The download URL of the API definition file. Must be either a publicly accessible Object Storage Service (OSS) URL or an OSS intranet endpoint within the same region. Requires download permissions. For OSS URLs that are not publicly readable, refer to [https://www.alibabacloud.com/help/en/oss/user-guide/how-to-obtain-the-url-of-a-single-object-or-the-urls-of-multiple-objects](https://help.aliyun.com/document_detail/39607.html) and use URLs with download permissions. Currently, only OSS URLs are supported.
         self.spec_file_url = spec_file_url
-        # The OSS information.
+        # The OSS configuration details.
         self.spec_oss_config = spec_oss_config
-        # The update policy when the API to be imported has the same version and name as an existing one. Valid values:
+        # The conflict resolution strategy when the API to be imported has the same name and version as an existing one. Valid values:
         # 
-        # *   SpectOnly: All configurations in the file take effect.
-        # *   SpecFirst: The file takes precedence. New APIs are created and existing ones are updated. APIs not included in the file remain unchanged.
-        # *   ExistFirst (default): The existing APIs take precedence. New APIs are created but existing ones remain unchanged. If this parameter is not specified, the ExistFirst policy takes effect.
+        # *   SpecOnly: full override.
+        # *   SpecFirst: Merge with priority on the newly imported file. New APIs are created and existing ones are updated. APIs not included in the file remain unchanged.
+        # *   ExistFirst (default): Merge with priority on existing APIs. New APIs are created but existing ones remain unchanged. If this parameter is not specified, the ExistFirst policy takes effect.
         self.strategy = strategy
-        # The API to be updated. If this parameter is specified, this import updates only the specified API. New APIs are not created and unspecified existing APIs are not updated. Only REST APIs can be specified.
+        # The target REST API ID for direct updates. If specified, the import operation will directly update the designated API instead of creating new APIs or updating existing APIs based on the name and version. Only REST APIs can be specified.
         self.target_http_api_id = target_http_api_id
-        # The API versioning configuration. If versioning is enabled for an API and the version and name of an API to be imported are the same as those of the existing API, the existing API is updated by this import. If versioning is not enabled for an API and the name of an API to be imported are the same as that of the existing API, the existing API is updated by this import.
+        # The API versioning configuration. If versioning is enabled, an imported API that matches both the version number and the API name of an existing API will update that API. If versioning is disabled, an imported API that matches the API name of an existing API will update it.
         self.version_config = version_config
 
     def validate(self):
@@ -167,9 +168,9 @@ class ImportHttpApiRequestSpecOssConfig(DaraModel):
         object_key: str = None,
         region_id: str = None,
     ):
-        # The bucket name.
+        # The OSS bucket name.
         self.bucket_name = bucket_name
-        # The full path of the file.
+        # The full file path in OSS.
         self.object_key = object_key
         # The region ID.
         self.region_id = region_id

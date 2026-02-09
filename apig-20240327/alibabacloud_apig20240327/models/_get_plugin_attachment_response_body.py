@@ -21,7 +21,7 @@ class GetPluginAttachmentResponseBody(DaraModel):
         self.data = data
         # The status message.
         self.message = message
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -93,7 +93,7 @@ class GetPluginAttachmentResponseBodyData(DaraModel):
         self.plugin_config = plugin_config
         # The plug-in ID.
         self.plugin_id = plugin_id
-        # The resource details.
+        # The resource information.
         self.resource_infos = resource_infos
 
     def validate(self):

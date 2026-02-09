@@ -12,7 +12,9 @@ class LabelDetail(DaraModel):
         key: str = None,
         values: List[str] = None,
     ):
+        # The label key
         self.key = key
+        # The list of available values for this label
         self.values = values
 
     def validate(self):

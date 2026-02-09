@@ -116,6 +116,7 @@ class GetMcpServerResponseBodyData(DaraModel):
         self.exposed_uri_path = exposed_uri_path
         # The gateway instance ID.
         self.gateway_id = gateway_id
+        # List of gray MCP server configurations
         self.gray_mcp_server_configs = gray_mcp_server_configs
         # The route match rule.
         self.match = match
@@ -374,8 +375,11 @@ class GetMcpServerResponseBodyDataGrayMcpServerConfigs(DaraModel):
         match: main_models.HttpRouteMatch = None,
         route_id: str = None,
     ):
+        # The gray route backend configuration
         self.backend_config = backend_config
+        # The gray route matching rules
         self.match = match
+        # The gray route ID
         self.route_id = route_id
 
     def validate(self):
@@ -421,7 +425,9 @@ class GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfig(DaraModel):
         scene: str = None,
         services: List[main_models.GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices] = None,
     ):
+        # The backend scene type
         self.scene = scene
+        # List of backend services
         self.services = services
 
     def validate(self):
@@ -467,10 +473,15 @@ class GetMcpServerResponseBodyDataGrayMcpServerConfigsBackendConfigServices(Dara
         version: str = None,
         weight: int = None,
     ):
+        # The service port
         self.port = port
+        # The service protocol
         self.protocol = protocol
+        # The gray service ID
         self.service_id = service_id
+        # The service version
         self.version = version
+        # The service weight
         self.weight = weight
 
     def validate(self):

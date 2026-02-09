@@ -13,13 +13,13 @@ class CreateEnvironmentResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
-        # Response code.
+        # The resource group ID.
         self.code = code
-        # Response data.
+        # Schema of Response
         self.data = data
-        # Response message.
+        # rg-acfmycs5expl7oq
         self.message = message
-        # Request ID, used for tracing the API call chain.
+        # The instance ID.
         self.request_id = request_id
 
     def validate(self):
@@ -67,7 +67,7 @@ class CreateEnvironmentResponseBodyData(DaraModel):
         self,
         environment_id: str = None,
     ):
-        # Environment ID.
+        # The request ID, which is used to trace the call link.
         self.environment_id = environment_id
 
     def validate(self):

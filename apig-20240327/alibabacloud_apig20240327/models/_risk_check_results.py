@@ -20,21 +20,23 @@ class RiskCheckResults(DaraModel):
         status: str = None,
         total_risk: int = None,
     ):
+        # The check time
         self.check_time = check_time
-        # 网关实例的唯一标识符
+        # The gateway ID
         self.gateway_id = gateway_id
-        # 实例的基本信息
+        # The instance metadata
         self.metadata = metadata
-        # 详细的风险项信息列表
+        # The risk details list
         self.risk_details = risk_details
-        # 整体风险等级，可选值：LOW（低风险）、MEDIUM（中风险）、HIGH（高风险）、CRITICAL（严重风险）
+        # The risk level
         self.risk_level = risk_level
-        # 风险综合评分，取值范围0-100分，分数越高表示风险越低
+        # The risk score
         self.score = score
+        # The snapshot time
         self.snapshot_time = snapshot_time
-        # 风险检测状态，可选值：SUCCESS（成功）、FAIL（失败）、RUNNING（运行中）
+        # The execution status
         self.status = status
-        # 检测到的风险项总数量
+        # The total number of risks
         self.total_risk = total_risk
 
     def validate(self):
@@ -130,25 +132,25 @@ class RiskCheckResultsRiskDetails(DaraModel):
         situation: str = None,
         suggestion: str = None,
     ):
-        # 执行检测的模块名称
+        # The check module
         self.check_module = check_module
-        # 风险相关的详细数据，不同风险类型数据结构不同
+        # The risk detailed data
         self.data = data
-        # 风险的详细描述，JSON字符串格式
+        # The risk description
         self.description = description
-        # 该风险项的告警通知是否已被屏蔽
+        # Whether to mute notifications
         self.is_notice_mute = is_notice_mute
-        # 风险项的唯一标识码
+        # The risk code
         self.risk_code = risk_code
-        # 该风险项的等级，可选值：LOW、MEDIUM、HIGH、CRITICAL
+        # The risk level
         self.risk_level = risk_level
-        # 风险项的名称
+        # The risk title
         self.risk_name = risk_name
-        # 风险分类，可选值：SYSTEM（系统风险）、VERSION（版本风险）、SAFE（安全风险）、CAPACITY（容量风险）
+        # The risk type
         self.risk_type = risk_type
-        # 当前实例的风险现状，JSON字符串格式
+        # The risk situation
         self.situation = situation
-        # 针对该风险的优化建议，JSON字符串格式，包含描述和操作链接
+        # The fix suggestion
         self.suggestion = suggestion
 
     def validate(self):
@@ -233,9 +235,13 @@ class RiskCheckResultsMetadata(DaraModel):
         spec: str = None,
         version: str = None,
     ):
+        # The cluster type
         self.cluster_type = cluster_type
+        # The replica count
         self.replica = replica
+        # The specification
         self.spec = spec
+        # The version
         self.version = version
 
     def validate(self):

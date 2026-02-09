@@ -17,9 +17,13 @@ class HttpApiInfoByName(DaraModel):
         versioned_http_apis: List[main_models.HttpApiApiInfo] = None,
     ):
         self.gateway_id = gateway_id
+        # The API name.
         self.name = name
+        # The API type.
         self.type = type
+        # Specifies whether to enable versioning.
         self.version_enabled = version_enabled
+        # The information about the versioned API.
         self.versioned_http_apis = versioned_http_apis
 
     def validate(self):

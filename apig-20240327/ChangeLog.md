@@ -1,48 +1,5 @@
-2026-01-30 Version: 6.0.1
-- Update API CreateHttpApiRoute: add request parameters body.policyConfigs.
-- Update API CreateService: add request parameters clientToken.
-- Update API CreateService: add request parameters body.serviceConfigs.$.expressType.
-- Update API CreateService: add request parameters body.serviceConfigs.$.validationOptions.
-
-
-2026-01-23 Version: 6.0.0
-- Update API GetConsumer: update response parameters Body.data.akSkIdentityConfigs' type has changed.
-- Update API GetConsumer: update response parameters Body.data.akSkIdentityConfigs' ref has changed.
-
-
-2026-01-15 Version: 5.8.0
-- Support API GetSecret.
-
-
-2026-01-12 Version: 5.7.2
-- Update API UpdateHttpApiRoute: add request parameters body.policyConfigs.
-
-
-2026-01-08 Version: 5.7.1
-- Generated python 2024-03-27 for APIG.
-
-2026-01-07 Version: 5.7.0
-- Support API CreateSecret.
-- Support API DeleteSecret.
-- Support API GetSecretValue.
-- Support API ListSecretReferences.
-- Support API ListSecrets.
-- Support API UpdateSecret.
-
-
-2026-01-05 Version: 5.6.0
-- Support API ListConsumerAuthorizationRules.
-- Support API ListPluginClasses.
-
-
-2026-01-05 Version: 5.6.0
-- Support API ListConsumerAuthorizationRules.
-- Support API ListPluginClasses.
-
-
-2025-12-25 Version: 5.5.0
-- Support API SyncMCPServers.
-- Update API CreateService: add request parameters body.serviceConfigs.$.sourceId.
+2026-02-09 Version: 6.0.2
+- Update API DeployHttpApi: add request parameters body.restApiConfig.operationDeployments.
 
 
 2025-12-18 Version: 5.4.1

@@ -14,17 +14,15 @@ class GetTraceConfigResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # Response Code
+        # The response code.
         self.code = code
-        # Response Data
+        # The data returned.
         self.data = data
-        # Error Message
+        # The error message.
         self.message = message
-        # Request ID
+        # The request ID.
         self.request_id = request_id
-        # Boolean	Request Result, with the following values:
-        # true: Request succeeded.
-        # false: Request failed.
+        # Indicates whether the request was successful. Valid values: true false
         self.success = success
 
     def validate(self):
@@ -82,21 +80,20 @@ class GetTraceConfigResponseBodyData(DaraModel):
         service_port: str = None,
         trace_type: str = None,
     ):
-        # Whether to Enable Tracing:
-        # true: Enabled
-        # false: Disabled
+        # Indicates whether tracing analysis is enabled. Valid values: true and false
         self.enable = enable
-        # Sampling Rate
+        # The sampling rate.
         self.sample_ratio = sample_ratio
-        # Service ID, present when the tracing type is SKYWALKING
+        # The service ID. This parameter exists when the traceType value is SKYWALKING.
         self.service_id = service_id
-        # 服务端口，链路追踪类型为SKYWALKING时存在该参数
+        # The service port. This parameter exists when the traceType value is SKYWALKING.
         self.service_port = service_port
-        # Tracing Type:
-        # - XTRACE
-        # - SKYWALKING
-        # - OPENTELEMETRY
-        # - OTSKYWALKING
+        # The type of tracing analysis. Valid values:
+        # 
+        # *   XTRACE
+        # *   SKYWALKING
+        # *   OPENTELEMETRY
+        # *   OTSKYWALKING
         self.trace_type = trace_type
 
     def validate(self):

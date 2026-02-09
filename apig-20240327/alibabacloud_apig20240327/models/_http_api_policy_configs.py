@@ -21,15 +21,25 @@ class HttpApiPolicyConfigs(DaraModel):
         semantic_router_config: main_models.HttpApiPolicyConfigsSemanticRouterConfig = None,
         type: str = None,
     ):
+        # AiCacheConfig
         self.ai_cache_config = ai_cache_config
+        # AiFallbackConfig
         self.ai_fallback_config = ai_fallback_config
+        # AiNetworkSearchConfig
         self.ai_network_search_config = ai_network_search_config
+        # AiSecurityGuardConfig
         self.ai_security_guard_config = ai_security_guard_config
+        # AiStatisticsConfig
         self.ai_statistics_config = ai_statistics_config
+        # AiTokenRateLimitConfig
         self.ai_token_rate_limit_config = ai_token_rate_limit_config
+        # AiToolSelectionConfig
         self.ai_tool_selection_config = ai_tool_selection_config
+        # Policy Enable
         self.enable = enable
+        # SemanticRouterConfig
         self.semantic_router_config = semantic_router_config
+        # Policy Type
         self.type = type
 
     def validate(self):
@@ -134,6 +144,7 @@ class HttpApiPolicyConfigsSemanticRouterConfig(DaraModel):
         self,
         timeout_millisecond: int = None,
     ):
+        # Timeout in milliseconds
         self.timeout_millisecond = timeout_millisecond
 
     def validate(self):
@@ -164,9 +175,13 @@ class HttpApiPolicyConfigsAiToolSelectionConfig(DaraModel):
         query_rewriting: main_models.HttpApiPolicyConfigsAiToolSelectionConfigQueryRewriting = None,
         tool_reranking: main_models.HttpApiPolicyConfigsAiToolSelectionConfigToolReranking = None,
     ):
+        # Enable conditions configuration
         self.enable_conditions = enable_conditions
+        # Plugin status
         self.plugin_status = plugin_status
+        # Query rewriting configuration
         self.query_rewriting = query_rewriting
+        # Tool reranking configuration
         self.tool_reranking = tool_reranking
 
     def validate(self):
@@ -228,11 +243,17 @@ class HttpApiPolicyConfigsAiToolSelectionConfigToolReranking(DaraModel):
         top_kpercent: int = None,
         top_ncount: int = None,
     ):
+        # Fallback strategy: skip/error
         self.fallback_strategy = fallback_strategy
+        # Filtering method: topK/topN/combined
         self.filtering_method = filtering_method
+        # Model service configuration
         self.model_service = model_service
+        # Score threshold (0.0-1.0, 0 means disabled)
         self.score_threshold = score_threshold
+        # TopK percentage (1-100)
         self.top_kpercent = top_kpercent
+        # TopN count
         self.top_ncount = top_ncount
 
     def validate(self):
@@ -294,8 +315,11 @@ class HttpApiPolicyConfigsAiToolSelectionConfigToolRerankingModelService(DaraMod
         service_id: str = None,
         timeout_millisecond: int = None,
     ):
+        # Model name
         self.model_name = model_name
+        # Service ID
         self.service_id = service_id
+        # Timeout in milliseconds
         self.timeout_millisecond = timeout_millisecond
 
     def validate(self):
@@ -341,12 +365,19 @@ class HttpApiPolicyConfigsAiToolSelectionConfigQueryRewriting(DaraModel):
         prompt_config: main_models.HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingPromptConfig = None,
         trigger_conditions: main_models.HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingTriggerConditions = None,
     ):
+        # Context selection
         self.context_selection = context_selection
+        # Enable query rewriting
         self.enabled = enabled
+        # Fallback strategy
         self.fallback_strategy = fallback_strategy
+        # Max output tokens
         self.max_output_tokens = max_output_tokens
+        # Model service configuration
         self.model_service = model_service
+        # Prompt configuration
         self.prompt_config = prompt_config
+        # Trigger conditions
         self.trigger_conditions = trigger_conditions
 
     def validate(self):
@@ -421,6 +452,7 @@ class HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingTriggerConditions(D
         self,
         message_count_threshold: int = None,
     ):
+        # Message count threshold (≥0)
         self.message_count_threshold = message_count_threshold
 
     def validate(self):
@@ -449,7 +481,9 @@ class HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingPromptConfig(DaraMo
         custom_prompt: str = None,
         type: str = None,
     ):
+        # Custom prompt (required when type=custom)
         self.custom_prompt = custom_prompt
+        # Prompt type: builtIn/custom
         self.type = type
 
     def validate(self):
@@ -485,8 +519,11 @@ class HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingModelService(DaraMo
         service_id: str = None,
         timeout_millisecond: int = None,
     ):
+        # Model name
         self.model_name = model_name
+        # Service ID
         self.service_id = service_id
+        # Timeout in milliseconds
         self.timeout_millisecond = timeout_millisecond
 
     def validate(self):
@@ -527,7 +564,9 @@ class HttpApiPolicyConfigsAiToolSelectionConfigQueryRewritingContextSelection(Da
         type: str = None,
         value: int = None,
     ):
+        # Context type
         self.type = type
+        # Value
         self.value = value
 
     def validate(self):
@@ -563,8 +602,11 @@ class HttpApiPolicyConfigsAiToolSelectionConfigPluginStatus(DaraModel):
         plugin_id: str = None,
         service_healthy: bool = None,
     ):
+        # errorLogs
         self.error_logs = error_logs
+        # pluginId
         self.plugin_id = plugin_id
+        # serviceHealthy
         self.service_healthy = service_healthy
 
     def validate(self):
@@ -604,6 +646,7 @@ class HttpApiPolicyConfigsAiToolSelectionConfigEnableConditions(DaraModel):
         self,
         tool_count_threshold: int = None,
     ):
+        # Tool count threshold
         self.tool_count_threshold = tool_count_threshold
 
     def validate(self):
@@ -635,10 +678,15 @@ class HttpApiPolicyConfigsAiTokenRateLimitConfig(DaraModel):
         redis_config: main_models.HttpApiPolicyConfigsAiTokenRateLimitConfigRedisConfig = None,
         rules: List[main_models.HttpApiPolicyConfigsAiTokenRateLimitConfigRules] = None,
     ):
+        # Enable global rate limit rules
         self.enable_global_rules = enable_global_rules
+        # List of global rate limit rules
         self.global_rules = global_rules
+        # pluginStatus
         self.plugin_status = plugin_status
+        # Redis Config
         self.redis_config = redis_config
+        # List of rate limit rules
         self.rules = rules
 
     def validate(self):
@@ -718,11 +766,17 @@ class HttpApiPolicyConfigsAiTokenRateLimitConfigRules(DaraModel):
         match_type: str = None,
         match_value: str = None,
     ):
+        # Limit mode
         self.limit_mode = limit_mode
+        # Limit type
         self.limit_type = limit_type
+        # Limit value
         self.limit_value = limit_value
+        # Match key
         self.match_key = match_key
+        # Match type
         self.match_type = match_type
+        # Match value
         self.match_value = match_value
 
     def validate(self):
@@ -785,11 +839,17 @@ class HttpApiPolicyConfigsAiTokenRateLimitConfigRedisConfig(DaraModel):
         timeout: int = None,
         username: str = None,
     ):
+        # Redis database number
         self.database_number = database_number
+        # Redis host
         self.host = host
+        # Redis password
         self.password = password
+        # Redis port
         self.port = port
+        # Redis timeout
         self.timeout = timeout
+        # Redis username
         self.username = username
 
     def validate(self):
@@ -849,8 +909,11 @@ class HttpApiPolicyConfigsAiTokenRateLimitConfigPluginStatus(DaraModel):
         plugin_id: str = None,
         service_healthy: bool = None,
     ):
+        # Array of plugin execution error logs
         self.error_logs = error_logs
+        # Plugin instance unique identifier
         self.plugin_id = plugin_id
+        # Health status of the cache service
         self.service_healthy = service_healthy
 
     def validate(self):
@@ -895,11 +958,17 @@ class HttpApiPolicyConfigsAiTokenRateLimitConfigGlobalRules(DaraModel):
         match_type: str = None,
         match_value: str = None,
     ):
+        # Limit mode
         self.limit_mode = limit_mode
+        # Limit type
         self.limit_type = limit_type
+        # Limit value
         self.limit_value = limit_value
+        # Match key
         self.match_key = match_key
+        # Match type
         self.match_type = match_type
+        # Match value
         self.match_value = match_value
 
     def validate(self):
@@ -958,7 +1027,9 @@ class HttpApiPolicyConfigsAiStatisticsConfig(DaraModel):
         log_request_content: bool = None,
         log_response_content: bool = None,
     ):
+        # Log request content
         self.log_request_content = log_request_content
+        # Log response content
         self.log_response_content = log_response_content
 
     def validate(self):
@@ -1007,21 +1078,37 @@ class HttpApiPolicyConfigsAiSecurityGuardConfig(DaraModel):
         risk_config: List[main_models.HttpApiPolicyConfigsAiSecurityGuardConfigRiskConfig] = None,
         service_address: str = None,
     ):
+        # Buffer limit for content checking
         self.buffer_limit = buffer_limit
+        # Enable request content checking
         self.check_request = check_request
+        # Enable request image checking
         self.check_request_image = check_request_image
+        # Enable response content checking
         self.check_response = check_response
+        # Enable response image checking
         self.check_response_image = check_response_image
+        # consumerRequestCheckService
         self.consumer_request_check_service = consumer_request_check_service
+        # consumerResponseCheckService
         self.consumer_response_check_service = consumer_response_check_service
+        # consumerRiskLevel
         self.consumer_risk_level = consumer_risk_level
+        # pluginStatus
         self.plugin_status = plugin_status
+        # Request text check service type
         self.request_check_service = request_check_service
+        # Request image check service type
         self.request_image_check_service = request_image_check_service
+        # Response text check service type
         self.response_check_service = response_check_service
+        # Response image check service type
         self.response_image_check_service = response_image_check_service
+        # Global risk alert level
         self.risk_alert_level = risk_alert_level
+        # RiskConfig
         self.risk_config = risk_config
+        # Security guard service endpoint URL
         self.service_address = service_address
 
     def validate(self):
@@ -1179,8 +1266,11 @@ class HttpApiPolicyConfigsAiSecurityGuardConfigRiskConfig(DaraModel):
         level: str = None,
         type: str = None,
     ):
+        # consumerRules
         self.consumer_rules = consumer_rules
+        # Risk level
         self.level = level
+        # Risk type
         self.type = type
 
     def validate(self):
@@ -1223,7 +1313,9 @@ class HttpApiPolicyConfigsAiSecurityGuardConfigRiskConfigConsumerRules(DaraModel
         match_type: str = None,
         pattern: str = None,
     ):
+        # matchType
         self.match_type = match_type
+        # pattern
         self.pattern = pattern
 
     def validate(self):
@@ -1259,8 +1351,11 @@ class HttpApiPolicyConfigsAiSecurityGuardConfigPluginStatus(DaraModel):
         plugin_id: str = None,
         service_healthy: bool = None,
     ):
+        # errorLogs
         self.error_logs = error_logs
+        # pluginId
         self.plugin_id = plugin_id
+        # serviceHealthy
         self.service_healthy = service_healthy
 
     def validate(self):
@@ -1303,9 +1398,13 @@ class HttpApiPolicyConfigsAiSecurityGuardConfigConsumerRiskLevel(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # Risk level
         self.level = level
+        # Match type
         self.match_type = match_type
+        # Consumer name
         self.name = name
+        # Risk type
         self.type = type
 
     def validate(self):
@@ -1355,10 +1454,15 @@ class HttpApiPolicyConfigsAiSecurityGuardConfigConsumerResponseCheckService(Dara
         response_check_service: str = None,
         response_image_check_service: str = None,
     ):
+        # Match type
         self.match_type = match_type
+        # Modality type
         self.modality_type = modality_type
+        # Consumer name
         self.name = name
+        # responseCheckService
         self.response_check_service = response_check_service
+        # responseImageCheckService
         self.response_image_check_service = response_image_check_service
 
     def validate(self):
@@ -1414,10 +1518,15 @@ class HttpApiPolicyConfigsAiSecurityGuardConfigConsumerRequestCheckService(DaraM
         request_check_service: str = None,
         request_image_check_service: str = None,
     ):
+        # Match type
         self.match_type = match_type
+        # Modality type
         self.modality_type = modality_type
+        # Consumer name
         self.name = name
+        # requestCheckService
         self.request_check_service = request_check_service
+        # requestImageCheckService
         self.request_image_check_service = request_image_check_service
 
     def validate(self):
@@ -1477,14 +1586,23 @@ class HttpApiPolicyConfigsAiNetworkSearchConfig(DaraModel):
         search_from: List[main_models.HttpApiPolicyConfigsAiNetworkSearchConfigSearchFrom] = None,
         search_rewrite: main_models.HttpApiPolicyConfigsAiNetworkSearchConfigSearchRewrite = None,
     ):
+        # Default enable
         self.default_enable = default_enable
+        # Default search language code
         self.default_lang = default_lang
+        # Add reference sources in answer
         self.need_reference = need_reference
+        # pluginStatus
         self.plugin_status = plugin_status
+        # Reference format
         self.reference_format = reference_format
+        # Reference location
         self.reference_location = reference_location
+        # Search engine configuration
         self.search_engine_config = search_engine_config
+        # Search engine list
         self.search_from = search_from
+        # Search rewrite configuration
         self.search_rewrite = search_rewrite
 
     def validate(self):
@@ -1581,10 +1699,15 @@ class HttpApiPolicyConfigsAiNetworkSearchConfigSearchRewrite(DaraModel):
         service_id: str = None,
         timeout_millisecond: int = None,
     ):
+        # Enable search rewrite
         self.enable = enable
+        # Max rewrite count (1-5)
         self.max_count = max_count
+        # Model name
         self.model_name = model_name
+        # Service ID
         self.service_id = service_id
+        # Timeout in milliseconds
         self.timeout_millisecond = timeout_millisecond
 
     def validate(self):
@@ -1645,15 +1768,25 @@ class HttpApiPolicyConfigsAiNetworkSearchConfigSearchFrom(DaraModel):
         timeout_millisecond: int = None,
         type: str = None,
     ):
+        # Search engine API key
         self.api_key = api_key
+        # Content mode
         self.content_mode = content_mode
+        # Result count
         self.count = count
+        # Search engine endpoint
         self.endpoint = endpoint
+        # Industry
         self.industry = industry
+        # Additional parameters
         self.option_args = option_args
+        # Result offset
         self.start = start
+        # Time range
         self.time_range = time_range
+        # API call timeout in milliseconds
         self.timeout_millisecond = timeout_millisecond
+        # Search engine type
         self.type = type
 
     def validate(self):
@@ -1744,15 +1877,25 @@ class HttpApiPolicyConfigsAiNetworkSearchConfigSearchEngineConfig(DaraModel):
         timeout_millisecond: int = None,
         type: str = None,
     ):
+        # Search engine API key
         self.api_key = api_key
+        # Content mode
         self.content_mode = content_mode
+        # Result count
         self.count = count
+        # Search engine endpoint
         self.endpoint = endpoint
+        # Industry
         self.industry = industry
+        # Additional parameters
         self.option_args = option_args
+        # Result offset
         self.start = start
+        # Time range
         self.time_range = time_range
+        # API call timeout in milliseconds
         self.timeout_millisecond = timeout_millisecond
+        # Search engine type: Bing/aliyunQuark
         self.type = type
 
     def validate(self):
@@ -1836,8 +1979,11 @@ class HttpApiPolicyConfigsAiNetworkSearchConfigPluginStatus(DaraModel):
         plugin_id: str = None,
         service_healthy: bool = None,
     ):
+        # errorLogs
         self.error_logs = error_logs
+        # pluginId
         self.plugin_id = plugin_id
+        # serviceHealthy
         self.service_healthy = service_healthy
 
     def validate(self):
@@ -1879,8 +2025,11 @@ class HttpApiPolicyConfigsAiFallbackConfig(DaraModel):
         route_embedded: bool = None,
         service_configs: List[main_models.HttpApiPolicyConfigsAiFallbackConfigServiceConfigs] = None,
     ):
+        # Only trigger fallback when backend returns 4xx/5xx status codes
         self.only_redirect_upstream_code = only_redirect_upstream_code
+        # Whether the policy is generated from route embedded configuration
         self.route_embedded = route_embedded
+        # List of fallback service configurations
         self.service_configs = service_configs
 
     def validate(self):
@@ -1931,9 +2080,13 @@ class HttpApiPolicyConfigsAiFallbackConfigServiceConfigs(DaraModel):
         service_id: str = None,
         target_model_name: str = None,
     ):
+        # Service name for frontend display
         self.name = name
+        # Whether to pass through the original model name
         self.pass_through_model_name = pass_through_model_name
+        # Fallback service ID
         self.service_id = service_id
+        # Target model name for fallback
         self.target_model_name = target_model_name
 
     def validate(self):
@@ -1985,12 +2138,19 @@ class HttpApiPolicyConfigsAiCacheConfig(DaraModel):
         redis_config: main_models.HttpApiPolicyConfigsAiCacheConfigRedisConfig = None,
         vector_config: main_models.HttpApiPolicyConfigsAiCacheConfigVectorConfig = None,
     ):
+        # Strategy for generating cache keys
         self.cache_key_strategy = cache_key_strategy
+        # Cache mode type
         self.cache_mode = cache_mode
+        # Cache time-to-live in seconds
         self.cache_ttl = cache_ttl
+        # Embedding Config
         self.embedding_config = embedding_config
+        # pluginStatus
         self.plugin_status = plugin_status
+        # Redis configuration for cache storage
         self.redis_config = redis_config
+        # vectorConfig
         self.vector_config = vector_config
 
     def validate(self):
@@ -2070,11 +2230,17 @@ class HttpApiPolicyConfigsAiCacheConfigVectorConfig(DaraModel):
         timeout: int = None,
         type: str = None,
     ):
+        # Vector database API key for authentication
         self.api_key = api_key
+        # Vector database collection ID for storing vector embeddings
         self.collection_id = collection_id
+        # Vector database service host address
         self.service_host = service_host
+        # Similarity threshold for semantic matching
         self.threshold = threshold
+        # Vector database request timeout in milliseconds
         self.timeout = timeout
+        # Vector database service type
         self.type = type
 
     def validate(self):
@@ -2137,11 +2303,17 @@ class HttpApiPolicyConfigsAiCacheConfigRedisConfig(DaraModel):
         timeout: int = None,
         username: str = None,
     ):
+        # Redis database number
         self.database_number = database_number
+        # Redis host
         self.host = host
+        # Redis password
         self.password = password
+        # Redis port
         self.port = port
+        # Redis timeout
         self.timeout = timeout
+        # Redis username
         self.username = username
 
     def validate(self):
@@ -2201,8 +2373,11 @@ class HttpApiPolicyConfigsAiCacheConfigPluginStatus(DaraModel):
         plugin_id: str = None,
         service_healthy: bool = None,
     ):
+        # errorLogs
         self.error_logs = error_logs
+        # pluginId
         self.plugin_id = plugin_id
+        # serviceHealthy
         self.service_healthy = service_healthy
 
     def validate(self):
@@ -2245,9 +2420,13 @@ class HttpApiPolicyConfigsAiCacheConfigEmbeddingConfig(DaraModel):
         timeout: int = None,
         type: str = None,
     ):
+        # Embedding model name
         self.model_name = model_name
+        # Embedding service ID
         self.service_id = service_id
+        # Embedding service request timeout in milliseconds
         self.timeout = timeout
+        # Embedding service provider type
         self.type = type
 
     def validate(self):

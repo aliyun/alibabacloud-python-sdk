@@ -23,18 +23,31 @@ class PolicyClassInfo(DaraModel):
         type: str = None,
         version: str = None,
     ):
+        # The template alias.
         self.alias = alias
+        # The list of resource types that can be mounted.
         self.attachable_resource_types = attachable_resource_types
+        # The template identifier.
         self.class_id = class_id
+        # A configuration example.
         self.config_example = config_example
+        # Specifies whether the policy has been deprecated.
         self.deprecated = deprecated
+        # The template description.
         self.description = description
+        # The direction of traffic on which the policy takes effect.
         self.direction = direction
+        # Specifies whether to enable logging.
         self.enable_log = enable_log
+        # The execution priority.
         self.execute_priority = execute_priority
+        # The execution phase.
         self.execute_stage = execute_stage
+        # The template name.
         self.name = name
+        # The policy type.
         self.type = type
+        # The template version.
         self.version = version
 
     def validate(self):

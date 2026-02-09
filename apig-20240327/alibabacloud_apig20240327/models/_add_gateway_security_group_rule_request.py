@@ -13,11 +13,11 @@ class AddGatewaySecurityGroupRuleRequest(DaraModel):
         port_ranges: List[str] = None,
         security_group_id: str = None,
     ):
-        # Description of the security group rule.
+        # The description of security group rule N.
         self.description = description
-        # Port ranges.
+        # The port ranges.
         self.port_ranges = port_ranges
-        # Security group ID.
+        # The security group ID.
         self.security_group_id = security_group_id
 
     def validate(self):

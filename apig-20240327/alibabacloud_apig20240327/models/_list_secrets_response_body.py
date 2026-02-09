@@ -15,8 +15,11 @@ class ListSecretsResponseBody(DaraModel):
         message: str = None,
         request_id: str = None,
     ):
+        # Code of the request
         self.code = code
+        # Data
         self.data = data
+        # message
         self.message = message
         # Id of the request
         self.request_id = request_id
@@ -69,9 +72,13 @@ class ListSecretsResponseBodyData(DaraModel):
         page_size: int = None,
         total_size: int = None,
     ):
+        # Array of secret details
         self.items = items
+        # Page number
         self.page_number = page_number
+        # Number of items per page
         self.page_size = page_size
+        # Total number of records matching the query
         self.total_size = total_size
 
     def validate(self):
@@ -133,14 +140,23 @@ class ListSecretsResponseBodyDataItems(DaraModel):
         status: str = None,
         update_timestamp: int = None,
     ):
+        # Unix timestamp when the secret was created
         self.create_timestamp = create_timestamp
+        # Gateway type associated with the secret
         self.gateway_type = gateway_type
+        # KMS configuration object
         self.kms_config = kms_config
+        # Name of the secret
         self.name = name
+        # Number of resources referencing this secret
         self.reference_count = reference_count
+        # Source of the ID
         self.secret_id = secret_id
+        # Source of the secret
         self.secret_source = secret_source
+        # Current status of the secret
         self.status = status
+        # Unix timestamp when the secret was last updated
         self.update_timestamp = update_timestamp
 
     def validate(self):

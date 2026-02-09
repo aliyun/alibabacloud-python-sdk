@@ -17,7 +17,7 @@ class GetDomainResponseBody(DaraModel):
     ):
         # The status code returned.
         self.code = code
-        # The data returned.
+        # The response data.
         self.data = data
         # The response message returned.
         self.message = message

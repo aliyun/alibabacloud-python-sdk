@@ -23,17 +23,29 @@ class AiServiceConfig(DaraModel):
         provider: str = None,
         vertex_service_config: main_models.AiServiceConfigVertexServiceConfig = None,
     ):
+        # API key generation mode.
         self.api_key_generate_mode = api_key_generate_mode
+        # The service endpoint.
         self.address = address
+        # The API keys.
         self.api_keys = api_keys
+        # Bedrock service configuration.
         self.bedrock_service_config = bedrock_service_config
+        # Supported compatible protocols.
         self.compatible_protocols = compatible_protocols
+        # Default model name.
         self.default_model_name = default_model_name
+        # Specifies whether to enable health check.
         self.enable_health_check = enable_health_check
+        # Enable outlier detection.
         self.enable_outlier_detection = enable_outlier_detection
+        # PAI-EAS service configuration settings.
         self.pai_easservice_config = pai_easservice_config
+        # The LLM protocols.
         self.protocols = protocols
+        # The Large Language Model (LLM) provider.
         self.provider = provider
+        # Vertex AI service configuration.
         self.vertex_service_config = vertex_service_config
 
     def validate(self):
@@ -140,11 +152,17 @@ class AiServiceConfigVertexServiceConfig(DaraModel):
         vertex_region: str = None,
         vertex_token_refresh_ahead: int = None,
     ):
+        # Gemini safety settings.
         self.gemini_safety_setting = gemini_safety_setting
+        # Vertex AI authentication key.
         self.vertex_auth_key = vertex_auth_key
+        # Vertex AI auth service name.
         self.vertex_auth_service_name = vertex_auth_service_name
+        # Vertex AI project ID.
         self.vertex_project_id = vertex_project_id
+        # Vertex AI region.
         self.vertex_region = vertex_region
+        # Vertex token refresh lead time.
         self.vertex_token_refresh_ahead = vertex_token_refresh_ahead
 
     def validate(self):
@@ -205,9 +223,13 @@ class AiServiceConfigPaiEASServiceConfig(DaraModel):
         service_name: str = None,
         workspace_id: str = None,
     ):
+        # Type of endpoint.
         self.endpoint_type = endpoint_type
+        # Service identifier.
         self.service_id = service_id
+        # Name of the service.
         self.service_name = service_name
+        # Workspace identifier.
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -255,8 +277,11 @@ class AiServiceConfigBedrockServiceConfig(DaraModel):
         aws_region: str = None,
         aws_secret_key: str = None,
     ):
+        # AWS-AccessKey
         self.aws_access_key = aws_access_key
+        # AWS-Region
         self.aws_region = aws_region
+        # AWS-SecretKey
         self.aws_secret_key = aws_secret_key
 
     def validate(self):

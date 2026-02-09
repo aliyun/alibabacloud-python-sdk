@@ -13,10 +13,21 @@ class HttpApiVersionConfig(DaraModel):
         scheme: str = None,
         version: str = None,
     ):
+        # Specifies whether to enable versioning.
         self.enable = enable
+        # The key in the specified header when the header versioning solution is used.
         self.header_name = header_name
+        # The key in the specified query parameter when the query versioning solution is used.
         self.query_name = query_name
+        # The versioning solution.
+        # 
+        # Valid values:
+        # 
+        # *   Path
+        # *   Query
+        # *   Header
         self.scheme = scheme
+        # The version number.
         self.version = version
 
     def validate(self):

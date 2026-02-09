@@ -39,6 +39,7 @@ class QueryConsumerAuthorizationRulesRequest(DaraModel):
         self.resource_id = resource_id
         # The resource type.
         self.resource_type = resource_type
+        # The resource types.
         self.resource_types = resource_types
 
     def validate(self):

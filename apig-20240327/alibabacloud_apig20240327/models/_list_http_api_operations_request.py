@@ -23,8 +23,11 @@ class ListHttpApiOperationsRequest(DaraModel):
     ):
         # Filter the operation list based on a specific consumer authorization rule ID, and the interface list in the response only contains authorized operations.
         self.consumer_authorization_rule_id = consumer_authorization_rule_id
+        # Filter operations by authentication status
         self.enable_auth = enable_auth
+        # Whether to filter for deployment scenario
         self.for_deploy = for_deploy
+        # The gateway ID
         self.gateway_id = gateway_id
         # List interfaces by Method.
         self.method = method

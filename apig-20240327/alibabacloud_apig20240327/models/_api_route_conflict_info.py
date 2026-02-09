@@ -13,7 +13,9 @@ class ApiRouteConflictInfo(DaraModel):
         conflicts: List[main_models.ApiRouteConflictInfoConflicts] = None,
         domain_info: main_models.ApiRouteConflictInfoDomainInfo = None,
     ):
+        # The conflicts.
         self.conflicts = conflicts
+        # The conflicting routes.
         self.domain_info = domain_info
 
     def validate(self):
@@ -59,7 +61,9 @@ class ApiRouteConflictInfoDomainInfo(DaraModel):
         domain_id: str = None,
         name: str = None,
     ):
+        # The domain name ID.
         self.domain_id = domain_id
+        # The domain name.
         self.name = name
 
     def validate(self):
@@ -98,11 +102,22 @@ class ApiRouteConflictInfoConflicts(DaraModel):
         resource_type: str = None,
         route_info: main_models.ApiRouteConflictInfoConflictsRouteInfo = None,
     ):
+        # The details about the conflicts.
         self.details = details
+        # For APIs, conflicts exist in the specific environment. If the conflict object is a route, ignore.
         self.environment_info = environment_info
+        # The conflicting resource ID.
         self.resource_id = resource_id
+        # The conflicting resource name.
         self.resource_name = resource_name
+        # The type of the conflicting resource.
+        # 
+        # Valid values:
+        # 
+        # *   RestApi
+        # *   HttpApiRoute
         self.resource_type = resource_type
+        # The route information.
         self.route_info = route_info
 
     def validate(self):
@@ -175,7 +190,9 @@ class ApiRouteConflictInfoConflictsRouteInfo(DaraModel):
         name: str = None,
         route_id: str = None,
     ):
+        # The route name.
         self.name = name
+        # The route ID.
         self.route_id = route_id
 
     def validate(self):
@@ -210,7 +227,9 @@ class ApiRouteConflictInfoConflictsEnvironmentInfo(DaraModel):
         environment_id: str = None,
         name: str = None,
     ):
+        # The environment ID.
         self.environment_id = environment_id
+        # The environment name.
         self.name = name
 
     def validate(self):
@@ -246,8 +265,11 @@ class ApiRouteConflictInfoConflictsDetails(DaraModel):
         detected_match: main_models.ApiRouteConflictInfoConflictsDetailsDetectedMatch = None,
         level: str = None,
     ):
+        # The matching rule information of the conflicting target.
         self.conflicting_match = conflicting_match
+        # The matching rule information of the object being detected.
         self.detected_match = detected_match
+        # The conflict level. Valid values: Critical, Warning, and Informational.
         self.level = level
 
     def validate(self):
@@ -293,7 +315,9 @@ class ApiRouteConflictInfoConflictsDetailsDetectedMatch(DaraModel):
         match: main_models.HttpRouteMatch = None,
         operation_info: main_models.ApiRouteConflictInfoConflictsDetailsDetectedMatchOperationInfo = None,
     ):
+        # The matching rule information of the object being detected.
         self.match = match
+        # If the object is an API, the conflicting operation information needs to be returned.
         self.operation_info = operation_info
 
     def validate(self):
@@ -333,7 +357,9 @@ class ApiRouteConflictInfoConflictsDetailsDetectedMatchOperationInfo(DaraModel):
         name: str = None,
         operation_id: str = None,
     ):
+        # The operation name.
         self.name = name
+        # The operation ID.
         self.operation_id = operation_id
 
     def validate(self):
@@ -368,7 +394,9 @@ class ApiRouteConflictInfoConflictsDetailsConflictingMatch(DaraModel):
         match: main_models.HttpRouteMatch = None,
         operation_info: main_models.ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo = None,
     ):
+        # The matching rule.
         self.match = match
+        # The corresponding operation information if the conflicting target is an API.
         self.operation_info = operation_info
 
     def validate(self):
@@ -408,7 +436,9 @@ class ApiRouteConflictInfoConflictsDetailsConflictingMatchOperationInfo(DaraMode
         name: str = None,
         operation_id: str = None,
     ):
+        # The operation name.
         self.name = name
+        # The operation ID.
         self.operation_id = operation_id
 
     def validate(self):

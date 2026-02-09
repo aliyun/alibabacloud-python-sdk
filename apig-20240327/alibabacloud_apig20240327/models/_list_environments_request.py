@@ -22,6 +22,7 @@ class ListEnvironmentsRequest(DaraModel):
         self.gateway_id = gateway_id
         # Gateway name, fuzzy search.
         self.gateway_name_like = gateway_name_like
+        # The gateway type
         self.gateway_type = gateway_type
         # Environment name, fuzzy search.
         self.name_like = name_like

@@ -20,20 +20,23 @@ class CreateHttpApiRouteRequest(DaraModel):
         name: str = None,
         policy_configs: List[main_models.HttpApiPolicyConfigs] = None,
     ):
-        # The backend service configurations of the route.
+        # The backend service configurations for the route.
         self.backend_config = backend_config
+        # deployConfigs
         self.deploy_configs = deploy_configs
         # The route description.
         self.description = description
-        # The domain name IDs.
+        # The list of domain IDs.
         self.domain_ids = domain_ids
         # The environment ID.
         self.environment_id = environment_id
-        # The rule for matching the route.
+        # The route match rule.
         self.match = match
+        # The MCP route configuration
         self.mcp_route_config = mcp_route_config
         # The route name.
         self.name = name
+        # The route-level policy configurations
         self.policy_configs = policy_configs
 
     def validate(self):
@@ -137,8 +140,11 @@ class CreateHttpApiRouteRequestMcpRouteConfig(DaraModel):
         mcp_statistics_enable: bool = None,
         protocol: str = None,
     ):
+        # The exposed URI path
         self.exposed_uri_path = exposed_uri_path
+        # mcpStatisticsEnable
         self.mcp_statistics_enable = mcp_statistics_enable
+        # The MCP protocol
         self.protocol = protocol
 
     def validate(self):
@@ -179,14 +185,14 @@ class CreateHttpApiRouteRequestBackendConfig(DaraModel):
         scene: str = None,
         services: List[main_models.CreateHttpApiRouteRequestBackendConfigServices] = None,
     ):
-        # The scenario of the backend service.
+        # The backend service scenario. Valid values:
         # 
         # *   SingleService
         # *   MultiServiceByRatio
         # *   Mock
         # *   Redirect
         self.scene = scene
-        # The backend services.
+        # The list of backend services.
         self.services = services
 
     def validate(self):
@@ -232,18 +238,18 @@ class CreateHttpApiRouteRequestBackendConfigServices(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The service port. If you want to use a dynamic port, do not pass this parameter.
+        # The service port (omit for dynamic ports).
         self.port = port
-        # The protocol. Valid values:
+        # The service protocol. Valid values:
         # 
         # *   HTTP
         # *   HTTPS
         self.protocol = protocol
         # The service ID.
         self.service_id = service_id
-        # The service version. Pass this parameter for tag-based routing.
+        # The service version (valid only in tag-based scenarios).
         self.version = version
-        # The percentage value of traffic.
+        # The traffic weight percentage.
         self.weight = weight
 
     def validate(self):

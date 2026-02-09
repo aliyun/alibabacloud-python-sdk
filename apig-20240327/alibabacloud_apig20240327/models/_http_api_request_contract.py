@@ -15,9 +15,13 @@ class HttpApiRequestContract(DaraModel):
         path_parameters: List[main_models.HttpApiParameter] = None,
         query_parameters: List[main_models.HttpApiParameter] = None,
     ):
+        # The body parameters.
         self.body = body
+        # The request header parameters.
         self.header_parameters = header_parameters
+        # The path parameters.
         self.path_parameters = path_parameters
+        # The query parameters.
         self.query_parameters = query_parameters
 
     def validate(self):
@@ -95,9 +99,13 @@ class HttpApiRequestContractBody(DaraModel):
         example: str = None,
         json_schema: str = None,
     ):
+        # The content type of the request body.
         self.content_type = content_type
+        # The parameter description.
         self.description = description
+        # The sample value.
         self.example = example
+        # The JSON definition description of the request body.
         self.json_schema = json_schema
 
     def validate(self):

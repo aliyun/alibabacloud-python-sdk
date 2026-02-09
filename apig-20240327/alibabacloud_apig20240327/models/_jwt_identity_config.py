@@ -14,10 +14,20 @@ class JwtIdentityConfig(DaraModel):
         secret_type: str = None,
         type: str = None,
     ):
+        # The JWKS configuration.
         self.jwks = jwks
+        # The JWT payload configuration.
         self.jwt_payload_config = jwt_payload_config
+        # The JWT token configuration.
         self.jwt_token_config = jwt_token_config
+        # The type of the secret used.
+        # 
+        # Valid values:
+        # 
+        # *   Asymmetry: asymmetric encryption.
+        # *   Symmetry: symmetric encryption.
         self.secret_type = secret_type
+        # The authentication configuration type.
         self.type = type
 
     def validate(self):
@@ -77,9 +87,13 @@ class JwtIdentityConfigJwtTokenConfig(DaraModel):
         position: str = None,
         prefix: str = None,
     ):
+        # The key used for the JWT.
         self.key = key
+        # Indicates whether acceptance is granted.
         self.pass_ = pass_
+        # The location where the JWT is stored.
         self.position = position
+        # The token prefix configuration.
         self.prefix = prefix
 
     def validate(self):
@@ -126,7 +140,9 @@ class JwtIdentityConfigJwtPayloadConfig(DaraModel):
         payload_key_name: str = None,
         payload_key_value: str = None,
     ):
+        # The key in the JWT payload.
         self.payload_key_name = payload_key_name
+        # The value for the JWT payload key.
         self.payload_key_value = payload_key_value
 
     def validate(self):

@@ -41,6 +41,7 @@ class ListServicesRequest(DaraModel):
         # *   VIP
         # *   MSE_NACOS
         self.source_type = source_type
+        # List of service source types
         self.source_types = source_types
 
     def validate(self):

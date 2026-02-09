@@ -32,26 +32,52 @@ class Service(DaraModel):
         unhealthy_endpoints: List[str] = None,
         update_timestamp: int = None,
     ):
+        # The address details, which can be IP addresses or domain names.
         self.addresses = addresses
+        # The agent service configuration
         self.agent_service_config = agent_service_config
+        # The AI service configurations.
         self.ai_service_config = ai_service_config
+        # The creation time (unix timestamp).
         self.create_timestamp = create_timestamp
+        # The express type
         self.express_type = express_type
+        # The gateway instance ID.
         self.gateway_id = gateway_id
+        # The service group name.
         self.group_name = group_name
+        # The health check configurations.
         self.health_check = health_check
+        # The health check status.
+        # 
+        # Valid values:
+        # 
+        # *   Unhealthy
+        # *   Healthy
         self.health_status = health_status
+        # The label details for service version configuration
         self.label_details = label_details
+        # The service name.
         self.name = name
+        # The namespace of the service.
         self.namespace = namespace
+        # The outlier endpoints list
         self.outlier_endpoints = outlier_endpoints
+        # The list of objects containing port details.
         self.ports = ports
+        # The service protocol type.
         self.protocol = protocol
+        # The function qualifier name.
         self.qualifier = qualifier
+        # The resource group ID.
         self.resource_group_id = resource_group_id
+        # The service unique ID.
         self.service_id = service_id
+        # The source type.
         self.source_type = source_type
+        # The list of unhealthy endpoints.
         self.unhealthy_endpoints = unhealthy_endpoints
+        # The last modified time (unix timestamp).
         self.update_timestamp = update_timestamp
 
     def validate(self):
@@ -227,8 +253,11 @@ class ServicePorts(DaraModel):
         port: int = None,
         protocol: str = None,
     ):
+        # The port name.
         self.name = name
+        # The port number.
         self.port = port
+        # The protocol. Valid values: TCP and UDP.
         self.protocol = protocol
 
     def validate(self):

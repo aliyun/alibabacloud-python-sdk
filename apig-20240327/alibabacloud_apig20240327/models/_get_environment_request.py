@@ -10,9 +10,9 @@ class GetEnvironmentRequest(DaraModel):
         with_statistics: bool = None,
         with_vpc_info: bool = None,
     ):
-        # Indicates whether to return online resource info.
+        # The request ID, which is used to trace the API call link.
         self.with_statistics = with_statistics
-        # Option for vpc info.
+        # Schema of Response
         self.with_vpc_info = with_vpc_info
 
     def validate(self):

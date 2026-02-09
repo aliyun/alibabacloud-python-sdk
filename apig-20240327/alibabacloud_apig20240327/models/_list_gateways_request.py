@@ -19,18 +19,19 @@ class ListGatewaysRequest(DaraModel):
         resource_group_id: str = None,
         tag: List[main_models.ListGatewaysRequestTag] = None,
     ):
-        # The instance ID. If you specify an ID, an exact search is performed.
+        # Retrieve the list of created cloud-native gateways
         self.gateway_id = gateway_id
-        self.gateway_type = gateway_type
         # The search keyword. A full match is performed. The search is case-insensitive.
-        self.keyword = keyword
+        self.gateway_type = gateway_type
         # The instance name. If you specify a name, an exact search is performed.
-        self.name = name
-        # The number of the page to return.
-        self.page_number = page_number
+        self.keyword = keyword
         # The number of entries per page.
+        self.name = name
+        # The instance ID. If you specify an ID, an exact search is performed.
+        self.page_number = page_number
+        # The number of the page to return.
         self.page_size = page_size
-        # The resource group ID.
+        # rg-aekz3wes3hnre5a
         self.resource_group_id = resource_group_id
         # The tags that you want to use for the search.
         self.tag = tag

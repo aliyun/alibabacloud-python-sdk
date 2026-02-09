@@ -25,7 +25,7 @@ class UpdateDomainRequest(DaraModel):
         self.cert_identifier = cert_identifier
         # The client CA certificate.
         self.client_cacert = client_cacert
-        # Specifies whether to enable HTTPS redirection. If protocol is set to HTTPS, forceHttps is required.
+        # Specifies whether to enable forcible HTTPS redirection. If protocol is set to HTTPS, forceHttps is required.
         self.force_https = force_https
         # The HTTP/2 configuration.
         # 

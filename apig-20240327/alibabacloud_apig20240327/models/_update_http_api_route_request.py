@@ -20,16 +20,16 @@ class UpdateHttpApiRouteRequest(DaraModel):
         name: str = None,
         policy_configs: List[main_models.UpdateHttpApiRouteRequestPolicyConfigs] = None,
     ):
-        # The backend service configurations of the route.
+        # The backend service configurations for the route.
         self.backend_config = backend_config
         self.deploy_configs = deploy_configs
         # The route description.
         self.description = description
-        # The domain IDs.
+        # The list of domain IDs.
         self.domain_ids = domain_ids
         # The environment ID.
         self.environment_id = environment_id
-        # The rules for matching the route.
+        # The route match rule.
         self.match = match
         self.mcp_route_config = mcp_route_config
         self.name = name
@@ -2192,6 +2192,7 @@ class UpdateHttpApiRouteRequestPolicyConfigsAiCacheConfigVectorConfig(DaraModel)
         timeout: int = None,
         type: str = None,
     ):
+        # apiKey
         self.api_key = api_key
         self.collection_id = collection_id
         self.service_host = service_host
@@ -2459,16 +2460,14 @@ class UpdateHttpApiRouteRequestBackendConfig(DaraModel):
         scene: str = None,
         services: List[main_models.UpdateHttpApiRouteRequestBackendConfigServices] = None,
     ):
-        # The backend service scenario.
-        # 
-        # Valid values:
+        # The backend service scenario. Valid values:
         # 
         # *   SingleService
         # *   MultiServiceByRatio
         # *   Redirect
         # *   Mock
         self.scene = scene
-        # The backend services.
+        # The list of backend services.
         self.services = services
 
     def validate(self):
@@ -2514,9 +2513,9 @@ class UpdateHttpApiRouteRequestBackendConfigServices(DaraModel):
         version: str = None,
         weight: int = None,
     ):
-        # The service port. If you want to use a dynamic port, do not pass this parameter.
+        # The service port (omit for dynamic ports).
         self.port = port
-        # The protocol. Valid values:
+        # The service protocol. Valid values:
         # 
         # *   HTTP
         # *   HTTPS
@@ -2525,7 +2524,7 @@ class UpdateHttpApiRouteRequestBackendConfigServices(DaraModel):
         self.service_id = service_id
         # The service version.
         self.version = version
-        # The percentage value of traffic.
+        # The traffic weight percentage.
         self.weight = weight
 
     def validate(self):

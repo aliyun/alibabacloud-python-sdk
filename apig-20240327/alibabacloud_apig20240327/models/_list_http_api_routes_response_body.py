@@ -17,7 +17,7 @@ class ListHttpApiRoutesResponseBody(DaraModel):
     ):
         # The status code.
         self.code = code
-        # The response parameters.
+        # The response payload.
         self.data = data
         # The returned message.
         self.message = message
