@@ -22,7 +22,6 @@ class ListSchemasResponseBody(DaraModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The queried schemas.
         self.schemas = schemas
         # The status of the operation. Valid values:
         # 

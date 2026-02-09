@@ -13,7 +13,6 @@ class DescribeAccountsResponseBody(DaraModel):
         accounts: main_models.DescribeAccountsResponseBodyAccounts = None,
         request_id: str = None,
     ):
-        # The queried database accounts.
         self.accounts = accounts
         # The request ID.
         self.request_id = request_id
@@ -90,19 +89,10 @@ class DescribeAccountsResponseBodyAccountsDBInstanceAccount(DaraModel):
         account_type: str = None,
         dbinstance_id: str = None,
     ):
-        # The description of the account.
         self.account_description = account_description
-        # The name of the account.
         self.account_name = account_name
-        # The state of the account.
-        # 
-        # *   **0**: The account is being created.
-        # *   **1**: The account is in use.
-        # *   **3**: The account is being deleted.
         self.account_status = account_status
-        # The type of the database account. Valid values: Super and Normal. Super indicates a privileged account and Normal indicates a standard account.
         self.account_type = account_type
-        # The ID of the instance.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):

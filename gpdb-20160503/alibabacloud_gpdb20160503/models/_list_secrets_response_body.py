@@ -22,7 +22,6 @@ class ListSecretsResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The queried access credentials.
         self.secrets = secrets
         # The status of the operation. Valid values:
         # 
@@ -122,19 +121,12 @@ class ListSecretsResponseBodySecretsSecrets(DaraModel):
         secret_name: str = None,
         username: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The description of the access credential.
         self.description = description
-        # The region ID of the instance.
         self.region_id = region_id
-        # The Alibaba Cloud Resource Name (ARN) of the access credential for the created Data API account. Format: `acs:gpdb:{{region}}:{{accountId}}:secret/{{secretName}}-{{32 digits random string}`.
         self.secret_arn = secret_arn
-        # The name of the access credential.
         self.secret_name = secret_name
-        # The name of the database account.
         self.username = username
 
     def validate(self):

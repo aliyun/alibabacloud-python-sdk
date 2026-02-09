@@ -14,7 +14,6 @@ class ListRemoteADBDataSourcesResponseBody(DaraModel):
         request_id: str = None,
         task_id: int = None,
     ):
-        # Returns the successfully added data sharing service data.
         self.data_source_items = data_source_items
         # Request ID.
         self.request_id = request_id
@@ -105,29 +104,16 @@ class ListRemoteADBDataSourcesResponseBodyDataSourceItemsRemoteDataSources(DaraM
         status: str = None,
         user_name: str = None,
     ):
-        # Data source name
         self.data_source_name = data_source_name
-        # Description.
         self.description = description
-        # ID.
         self.id = id
-        # Local database name
         self.local_database = local_database
-        # Local instance name
         self.local_instance_name = local_instance_name
-        # Manager user name
         self.manager_user_name = manager_user_name
-        # Region ID.
-        # 
-        # > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/86912.html) API to view available region IDs.
         self.region_id = region_id
-        # Remote database name
         self.remote_database = remote_database
-        # Remote instance name
         self.remote_instance_name = remote_instance_name
-        # Data source status
         self.status = status
-        # User name
         self.user_name = user_name
 
     def validate(self):

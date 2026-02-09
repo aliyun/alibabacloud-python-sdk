@@ -27,7 +27,6 @@ class ListTablesResponseBody(DaraModel):
         # *   **success**
         # *   **fail**
         self.status = status
-        # The queried tables.
         self.tables = tables
 
     def validate(self):

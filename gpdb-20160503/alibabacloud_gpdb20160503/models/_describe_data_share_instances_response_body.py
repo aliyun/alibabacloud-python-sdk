@@ -16,12 +16,6 @@ class DescribeDataShareInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The state of data sharing. Valid values:
-        # 
-        # *   **opening**
-        # *   **opened**
-        # *   **closing**
-        # *   **closed**
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -123,26 +117,11 @@ class DescribeDataShareInstancesResponseBodyItemsDBInstance(DaraModel):
         region_id: str = None,
         zone_id: str = None,
     ):
-        # The ID of the instance.
         self.dbinstance_id = dbinstance_id
-        # The resource type of the instance. Valid values:
-        # 
-        # *   **Serverless**: Serverless mode
-        # *   **StorageElasic**: elastic storage mode
-        # *   **Classic**: reserved storage mode
         self.dbinstance_mode = dbinstance_mode
-        # The state of data sharing. Valid values:
-        # 
-        # *   **opening**: Data sharing is being enabled.
-        # *   **opened**: Data sharing is enabled.
-        # *   **closing**: Data sharing is being disabled.
-        # *   **closed**: Data sharing is disabled.
         self.data_share_status = data_share_status
-        # The description of the instance.
         self.description = description
-        # The region ID of the instance.
         self.region_id = region_id
-        # The zone ID of the instance.
         self.zone_id = zone_id
 
     def validate(self):

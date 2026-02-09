@@ -23,13 +23,10 @@ class QueryKnowledgeBasesContentResponseBody(DaraModel):
         # 
         # >  A token is the minimum unit for segmenting text. A token can be a word, phrase, punctuation, or character.
         self.embedding_tokens = embedding_tokens
-        # The details of the entity.
         self.entities = entities
-        # A single data record.
         self.matches = matches
         # The returned information.
         self.message = message
-        # The details of the relationship edge.
         self.relations = relations
         # The unique ID of the request.
         self.request_id = request_id
@@ -199,15 +196,10 @@ class QueryKnowledgeBasesContentResponseBodyRelationsRelations(DaraModel):
         source_entity: str = None,
         target_entity: str = None,
     ):
-        # The description of the relationship edge.
         self.description = description
-        # The name of the file.
         self.file_name = file_name
-        # The ID of the link.
         self.id = id
-        # The source entity.
         self.source_entity = source_entity
-        # The destination entity.
         self.target_entity = target_entity
 
     def validate(self):
@@ -302,25 +294,14 @@ class QueryKnowledgeBasesContentResponseBodyMatchesMatchList(DaraModel):
         retrieval_source: int = None,
         score: float = None,
     ):
-        # The content of the text.
         self.content = content
-        # The name of the file.
         self.file_name = file_name
-        # The public network URL of the image result. By default, the URL is valid for 2 hours.
-        # 
-        # You can use the UrlExpiration parameter to specify a validity period.
         self.file_url = file_url
-        # The unique ID of the vector data.
         self.id = id
-        # Document loader metadata.
         self.loader_metadata = loader_metadata
-        # The metadata map.
         self.metadata = metadata
-        # The rerank score.
         self.rerank_score = rerank_score
-        # The source of the retrieval results. 1 indicates vector retrieval, 2 indicates full-text retrieval, and 3 indicates dual-path retrieval.
         self.retrieval_source = retrieval_source
-        # The similarity score of the data. It is related to the algorithm (l2, ip, or cosine) that is specified when you create an index.
         self.score = score
 
     def validate(self):
@@ -435,15 +416,10 @@ class QueryKnowledgeBasesContentResponseBodyEntitiesEntities(DaraModel):
         id: str = None,
         type: str = None,
     ):
-        # The entity description.
         self.description = description
-        # The name of the entity.
         self.entity = entity
-        # The name of the file.
         self.file_name = file_name
-        # The entity ID.
         self.id = id
-        # The entity type.
         self.type = type
 
     def validate(self):

@@ -24,7 +24,6 @@ class ListNamespacesResponseBody(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The returned message.
         self.message = message
-        # The queried namespaces.
         self.namespaces = namespaces
         # The region ID of the instance.
         self.region_id = region_id

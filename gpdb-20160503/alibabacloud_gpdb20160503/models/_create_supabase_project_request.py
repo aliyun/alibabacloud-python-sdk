@@ -10,11 +10,14 @@ class CreateSupabaseProjectRequest(DaraModel):
         account_password: str = None,
         client_token: str = None,
         disk_performance_level: str = None,
+        pay_type: str = None,
+        period: str = None,
         project_name: str = None,
         project_spec: str = None,
         region_id: str = None,
         security_iplist: str = None,
         storage_size: int = None,
+        used_time: str = None,
         v_switch_id: str = None,
         vpc_id: str = None,
         zone_id: str = None,
@@ -34,6 +37,8 @@ class CreateSupabaseProjectRequest(DaraModel):
         # *   PL0
         # *   PL1
         self.disk_performance_level = disk_performance_level
+        self.pay_type = pay_type
+        self.period = period
         # The name of the Supabase project. The name must meet the following requirements:
         # 
         # *   The name must be 1 to 128 characters in length.
@@ -56,6 +61,7 @@ class CreateSupabaseProjectRequest(DaraModel):
         self.security_iplist = security_iplist
         # The storage size. Unit: GB. Default value: 1.
         self.storage_size = storage_size
+        self.used_time = used_time
         # The vSwitch ID.
         # 
         # > 
@@ -100,6 +106,12 @@ class CreateSupabaseProjectRequest(DaraModel):
         if self.disk_performance_level is not None:
             result['DiskPerformanceLevel'] = self.disk_performance_level
 
+        if self.pay_type is not None:
+            result['PayType'] = self.pay_type
+
+        if self.period is not None:
+            result['Period'] = self.period
+
         if self.project_name is not None:
             result['ProjectName'] = self.project_name
 
@@ -114,6 +126,9 @@ class CreateSupabaseProjectRequest(DaraModel):
 
         if self.storage_size is not None:
             result['StorageSize'] = self.storage_size
+
+        if self.used_time is not None:
+            result['UsedTime'] = self.used_time
 
         if self.v_switch_id is not None:
             result['VSwitchId'] = self.v_switch_id
@@ -137,6 +152,12 @@ class CreateSupabaseProjectRequest(DaraModel):
         if m.get('DiskPerformanceLevel') is not None:
             self.disk_performance_level = m.get('DiskPerformanceLevel')
 
+        if m.get('PayType') is not None:
+            self.pay_type = m.get('PayType')
+
+        if m.get('Period') is not None:
+            self.period = m.get('Period')
+
         if m.get('ProjectName') is not None:
             self.project_name = m.get('ProjectName')
 
@@ -151,6 +172,9 @@ class CreateSupabaseProjectRequest(DaraModel):
 
         if m.get('StorageSize') is not None:
             self.storage_size = m.get('StorageSize')
+
+        if m.get('UsedTime') is not None:
+            self.used_time = m.get('UsedTime')
 
         if m.get('VSwitchId') is not None:
             self.v_switch_id = m.get('VSwitchId')

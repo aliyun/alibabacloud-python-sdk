@@ -30,6 +30,9 @@ class CreateDocumentCollectionShrinkRequest(DaraModel):
         pq_enable: int = None,
         region_id: str = None,
         relationship_types_shrink: str = None,
+        sparse_retrieval_fields: str = None,
+        sparse_vector_index_config_shrink: str = None,
+        support_sparse: bool = None,
     ):
         # The name of the document collection that you want to create.
         # 
@@ -147,6 +150,9 @@ class CreateDocumentCollectionShrinkRequest(DaraModel):
         # This parameter is required.
         self.region_id = region_id
         self.relationship_types_shrink = relationship_types_shrink
+        self.sparse_retrieval_fields = sparse_retrieval_fields
+        self.sparse_vector_index_config_shrink = sparse_vector_index_config_shrink
+        self.support_sparse = support_sparse
 
     def validate(self):
         pass
@@ -225,6 +231,15 @@ class CreateDocumentCollectionShrinkRequest(DaraModel):
         if self.relationship_types_shrink is not None:
             result['RelationshipTypes'] = self.relationship_types_shrink
 
+        if self.sparse_retrieval_fields is not None:
+            result['SparseRetrievalFields'] = self.sparse_retrieval_fields
+
+        if self.sparse_vector_index_config_shrink is not None:
+            result['SparseVectorIndexConfig'] = self.sparse_vector_index_config_shrink
+
+        if self.support_sparse is not None:
+            result['SupportSparse'] = self.support_sparse
+
         return result
 
     def from_map(self, m: dict = None):
@@ -297,6 +312,15 @@ class CreateDocumentCollectionShrinkRequest(DaraModel):
 
         if m.get('RelationshipTypes') is not None:
             self.relationship_types_shrink = m.get('RelationshipTypes')
+
+        if m.get('SparseRetrievalFields') is not None:
+            self.sparse_retrieval_fields = m.get('SparseRetrievalFields')
+
+        if m.get('SparseVectorIndexConfig') is not None:
+            self.sparse_vector_index_config_shrink = m.get('SparseVectorIndexConfig')
+
+        if m.get('SupportSparse') is not None:
+            self.support_sparse = m.get('SupportSparse')
 
         return self
 

@@ -927,17 +927,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.ChatWithKnowledgeBaseStreamResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ChatWithKnowledgeBaseStreamResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def chat_with_knowledge_base_stream_with_sse_async(
         self,
@@ -982,17 +982,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.ChatWithKnowledgeBaseStreamResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ChatWithKnowledgeBaseStreamResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def chat_with_knowledge_base_stream_with_options(
         self,
@@ -2442,6 +2442,8 @@ class Client(OpenApiClient):
             request.entity_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.entity_types, 'EntityTypes', 'json')
         if not DaraCore.is_null(tmp_req.relationship_types):
             request.relationship_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.relationship_types, 'RelationshipTypes', 'json')
+        if not DaraCore.is_null(tmp_req.sparse_vector_index_config):
+            request.sparse_vector_index_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sparse_vector_index_config, 'SparseVectorIndexConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.collection):
             query['Collection'] = request.collection
@@ -2489,6 +2491,12 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.relationship_types_shrink):
             query['RelationshipTypes'] = request.relationship_types_shrink
+        if not DaraCore.is_null(request.sparse_retrieval_fields):
+            query['SparseRetrievalFields'] = request.sparse_retrieval_fields
+        if not DaraCore.is_null(request.sparse_vector_index_config_shrink):
+            query['SparseVectorIndexConfig'] = request.sparse_vector_index_config_shrink
+        if not DaraCore.is_null(request.support_sparse):
+            query['SupportSparse'] = request.support_sparse
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2520,6 +2528,8 @@ class Client(OpenApiClient):
             request.entity_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.entity_types, 'EntityTypes', 'json')
         if not DaraCore.is_null(tmp_req.relationship_types):
             request.relationship_types_shrink = Utils.array_to_string_with_specified_style(tmp_req.relationship_types, 'RelationshipTypes', 'json')
+        if not DaraCore.is_null(tmp_req.sparse_vector_index_config):
+            request.sparse_vector_index_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sparse_vector_index_config, 'SparseVectorIndexConfig', 'json')
         query = {}
         if not DaraCore.is_null(request.collection):
             query['Collection'] = request.collection
@@ -2567,6 +2577,12 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.relationship_types_shrink):
             query['RelationshipTypes'] = request.relationship_types_shrink
+        if not DaraCore.is_null(request.sparse_retrieval_fields):
+            query['SparseRetrievalFields'] = request.sparse_retrieval_fields
+        if not DaraCore.is_null(request.sparse_vector_index_config_shrink):
+            query['SparseVectorIndexConfig'] = request.sparse_vector_index_config_shrink
+        if not DaraCore.is_null(request.support_sparse):
+            query['SupportSparse'] = request.support_sparse
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4037,6 +4053,10 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.disk_performance_level):
             query['DiskPerformanceLevel'] = request.disk_performance_level
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
         if not DaraCore.is_null(request.project_name):
             query['ProjectName'] = request.project_name
         if not DaraCore.is_null(request.project_spec):
@@ -4047,6 +4067,8 @@ class Client(OpenApiClient):
             query['SecurityIPList'] = request.security_iplist
         if not DaraCore.is_null(request.storage_size):
             query['StorageSize'] = request.storage_size
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
         if not DaraCore.is_null(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not DaraCore.is_null(request.vpc_id):
@@ -4085,6 +4107,10 @@ class Client(OpenApiClient):
             query['ClientToken'] = request.client_token
         if not DaraCore.is_null(request.disk_performance_level):
             query['DiskPerformanceLevel'] = request.disk_performance_level
+        if not DaraCore.is_null(request.pay_type):
+            query['PayType'] = request.pay_type
+        if not DaraCore.is_null(request.period):
+            query['Period'] = request.period
         if not DaraCore.is_null(request.project_name):
             query['ProjectName'] = request.project_name
         if not DaraCore.is_null(request.project_spec):
@@ -4095,6 +4121,8 @@ class Client(OpenApiClient):
             query['SecurityIPList'] = request.security_iplist
         if not DaraCore.is_null(request.storage_size):
             query['StorageSize'] = request.storage_size
+        if not DaraCore.is_null(request.used_time):
+            query['UsedTime'] = request.used_time
         if not DaraCore.is_null(request.v_switch_id):
             query['VSwitchId'] = request.v_switch_id
         if not DaraCore.is_null(request.vpc_id):

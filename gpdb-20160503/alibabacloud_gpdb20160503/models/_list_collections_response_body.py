@@ -19,7 +19,6 @@ class ListCollectionsResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The queried vector collections.
         self.collections = collections
         # The total number of entries returned.
         self.count = count

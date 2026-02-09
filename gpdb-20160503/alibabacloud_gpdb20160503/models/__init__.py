@@ -792,6 +792,7 @@ from ._chat_with_knowledge_base_stream_response_body import ChatWithKnowledgeBas
 from ._create_collection_request import CreateCollectionRequestSparseVectorIndexConfig
 from ._create_dbinstance_request import CreateDBInstanceRequestAINodeSpecInfos
 from ._create_dbinstance_request import CreateDBInstanceRequestTag
+from ._create_document_collection_request import CreateDocumentCollectionRequestSparseVectorIndexConfig
 from ._create_remote_adbdata_source_response_body import CreateRemoteADBDataSourceResponseBodyDataSourceItem
 from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccountsDBInstanceAccount
 from ._describe_accounts_response_body import DescribeAccountsResponseBodyAccounts
@@ -1775,6 +1776,7 @@ __all__ = [
     CreateCollectionRequestSparseVectorIndexConfig,
     CreateDBInstanceRequestAINodeSpecInfos,
     CreateDBInstanceRequestTag,
+    CreateDocumentCollectionRequestSparseVectorIndexConfig,
     CreateRemoteADBDataSourceResponseBodyDataSourceItem,
     DescribeAccountsResponseBodyAccountsDBInstanceAccount,
     DescribeAccountsResponseBodyAccounts,

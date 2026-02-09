@@ -15,7 +15,6 @@ class DescribeTableResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The columns of the table.
         self.column_list = column_list
         # The returned message.
         self.message = message

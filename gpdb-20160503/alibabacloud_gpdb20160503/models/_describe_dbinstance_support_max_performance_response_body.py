@@ -16,7 +16,6 @@ class DescribeDBInstanceSupportMaxPerformanceResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The queried performance metric.
         self.performances = performances
         # The request ID.
         self.request_id = request_id
@@ -98,13 +97,9 @@ class DescribeDBInstanceSupportMaxPerformanceResponseBodyPerformancesPerformance
         unit: str = None,
         value: str = None,
     ):
-        # The performance bottleneck type.
         self.bottleneck = bottleneck
-        # The name of the performance metric.
         self.key = key
-        # The unit of the performance metric.
         self.unit = unit
-        # The value of the performance metric.
         self.value = value
 
     def validate(self):

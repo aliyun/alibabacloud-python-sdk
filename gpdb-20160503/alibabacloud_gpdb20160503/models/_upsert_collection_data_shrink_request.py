@@ -39,6 +39,7 @@ class UpsertCollectionDataShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.region_id = region_id
+        # The vector data that you want to upload.
         self.rows_shrink = rows_shrink
         # The ID of the workspace that consists of multiple AnalyticDB for PostgreSQL instances. You must specify one of the WorkspaceId and DBInstanceId parameters. If you specify both parameters, the WorkspaceId parameter takes effect.
         self.workspace_id = workspace_id

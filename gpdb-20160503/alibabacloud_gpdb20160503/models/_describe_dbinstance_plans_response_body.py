@@ -22,7 +22,6 @@ class DescribeDBInstancePlansResponseBody(DaraModel):
         # 
         # This parameter is returned only if the request fails.
         self.error_message = error_message
-        # The queried plans.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -144,48 +143,15 @@ class DescribeDBInstancePlansResponseBodyItemsPlanList(DaraModel):
         plan_status: str = None,
         plan_type: str = None,
     ):
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The execution information of the plan.
         self.plan_config = plan_config
-        # The description of the plan.
         self.plan_desc = plan_desc
-        # The end time of the plan. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-        # 
-        # > 
-        # 
-        # *   This parameter is returned only for the plans that are periodically executed.
-        # 
-        # *   If you did not specify the end time when you created the plan, this parameter is not returned.
         self.plan_end_date = plan_end_date
-        # The plan ID.
         self.plan_id = plan_id
-        # The name of the plan.
         self.plan_name = plan_name
-        # The execution mode of the plan. Valid values:
-        # 
-        # *   **Postpone**: The plan is executed later.
-        # *   **Regular**: The plan is executed periodically.
         self.plan_schedule_type = plan_schedule_type
-        # The start time of the plan. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-        # 
-        # > 
-        # 
-        # *   This parameter is returned only for the plans that are periodically executed.
-        # 
-        # *   If you did not specify the start time when you created the plan, the current time is returned.
         self.plan_start_date = plan_start_date
-        # The status of the plan. Valid values:
-        # 
-        # *   **active**
-        # *   **cancel**
-        # *   **deleted**
-        # *   **finished**
         self.plan_status = plan_status
-        # The type of the plan. Valid values:
-        # 
-        # *   **PauseResume**: pauses and resumes an instance.
-        # *   **Resize**: scales an instance.
         self.plan_type = plan_type
 
     def validate(self):

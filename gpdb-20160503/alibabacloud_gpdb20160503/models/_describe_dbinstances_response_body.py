@@ -16,7 +16,6 @@ class DescribeDBInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The queried instances.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -140,109 +139,33 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # An invalid parameter. It is no longer returned when you call this operation.
-        # 
-        # You can call the [DescribeDBInstanceAttribute](https://help.aliyun.com/document_detail/86910.html) operation to query the access mode of an instance.
         self.connection_mode = connection_mode
-        # The time when the instance was created. The time is displayed in UTC.
         self.create_time = create_time
-        # The edition of the instance. Valid values:
-        # 
-        # *   **Basic**: Basic Edition.
-        # *   **HighAvailability**: High-availability Edition.
-        # *   **Finance**: Enterprise Edition.
         self.dbinstance_category = dbinstance_category
-        # The description of the instance.
         self.dbinstance_description = dbinstance_description
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The resource type of the instance. Valid values:
-        # 
-        # *   **Serverless**: Serverless mode.
-        # *   **StorageElastic**: elastic storage mode.
-        # *   **Classic**: reserved storage mode.
         self.dbinstance_mode = dbinstance_mode
-        # The type of the network interface card (NIC) that is used by the instance. Valid values:
-        # 
-        # *   **0**: Internet.
-        # *   **1**: internal network.
-        # *   **2**: VPC.
         self.dbinstance_net_type = dbinstance_net_type
-        # The status of the instance. For more information, see [Instance statuses](https://help.aliyun.com/document_detail/86944.html).
         self.dbinstance_status = dbinstance_status
-        # The database engine of the instance.
         self.engine = engine
-        # The database engine version of the instance.
         self.engine_version = engine_version
-        # The expiration time of the instance. The time is displayed in UTC.
-        # 
-        # >  The expiration time of a pay-as-you-go instance is `2999-09-08T16:00:00Z`.
         self.expire_time = expire_time
-        # The resource type of the instance. Valid values:
-        # 
-        # *   **cluster**: Serverless mode or elastic storage mode.
-        # *   **replicaSet**: reserved storage mode.
         self.instance_deploy_type = instance_deploy_type
-        # The network type of the instance. Valid values:
-        # 
-        # *   **Classic**: classic network.
-        # *   **VPC**: VPC.
         self.instance_network_type = instance_network_type
-        # The lock mode of the instance. Valid values:
-        # 
-        # *   **Unlock**: The instance is not locked.
-        # *   **ManualLock**: The instance is manually locked.
-        # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
-        # *   **LockByRestoration**: The instance is automatically locked due to instance restoration.
-        # *   **LockByDiskQuota**: The instance is automatically locked due to exhausted storage.
-        # *   **LockReadInstanceByDiskQuota**: The instance is a read-only instance and is automatically locked when the disk space is full.
         self.lock_mode = lock_mode
-        # The reason why the instance is locked. Valid values:
-        # 
-        # *   **0**: The instance is not locked.
-        # *   **1**: The instance is manually locked.
-        # *   **2**: The instance is automatically locked due to instance expiration.
-        # *   **3**: The instance is automatically locked due to instance restoration.
-        # *   **4**: The instance is automatically locked due to exhausted storage.
-        # 
-        # >  If the instance is in reserved storage mode and is not locked, null is returned.
         self.lock_reason = lock_reason
-        # The number of coordinator nodes.
         self.master_node_num = master_node_num
-        # The billing method of the instance. Valid values:
-        # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription.
         self.pay_type = pay_type
-        # product type
         self.prod_type = prod_type
-        # The region ID.
         self.region_id = region_id
-        # The ID of the resource group to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The number of compute nodes.
         self.seg_node_num = seg_node_num
-        # The type of the Serverless mode. Valid values:
-        # 
-        # *   **Manual**: manual scheduling.
-        # *   **Auto**: automatic scheduling.
-        # 
-        # >  This parameter is returned only for instances in Serverless mode.
         self.serverless_mode = serverless_mode
-        # The storage capacity of the instance. Unit: GB.
         self.storage_size = storage_size
-        # The storage type of the instance. Valid values:
-        # 
-        # *   **cloud_essd**: enhanced SSD (ESSD).
-        # *   **cloud_efficiency**: ultra disk.
         self.storage_type = storage_type
-        # The tags that are added to the instance.
         self.tags = tags
-        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC ID of the instance.
         self.vpc_id = vpc_id
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -470,9 +393,7 @@ class DescribeDBInstancesResponseBodyItemsDBInstanceTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N.
         self.key = key
-        # The value of tag N.
         self.value = value
 
     def validate(self):

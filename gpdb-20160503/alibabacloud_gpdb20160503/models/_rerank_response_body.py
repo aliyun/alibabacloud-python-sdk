@@ -20,7 +20,6 @@ class RerankResponseBody(DaraModel):
         self.message = message
         # Request ID.
         self.request_id = request_id
-        # Rerank results.
         self.results = results
         # API execution status, value description:
         # - **success**: Execution succeeded.
@@ -117,11 +116,8 @@ class RerankResponseBodyResultsResults(DaraModel):
         index: int = None,
         relevance_score: float = None,
     ):
-        # Re-ordered document information.
         self.document = document
-        # Index of this document in the request parameter Documents, starting from 0.
         self.index = index
-        # Rerank similarity score.
         self.relevance_score = relevance_score
 
     def validate(self):

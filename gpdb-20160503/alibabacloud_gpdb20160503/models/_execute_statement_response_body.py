@@ -119,9 +119,7 @@ class ExecuteStatementResponseBodyData(DaraModel):
         records: main_models.ExecuteStatementResponseBodyDataRecords = None,
         total_num_rows: int = None,
     ):
-        # The metadata of the columns.
         self.column_metadata = column_metadata
-        # The rows of data.
         self.records = records
         # The total number of entries returned.
         self.total_num_rows = total_num_rows

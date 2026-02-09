@@ -13,7 +13,6 @@ class DescribeRegionsResponseBody(DaraModel):
         regions: main_models.DescribeRegionsResponseBodyRegions = None,
         request_id: str = None,
     ):
-        # Details of the regions.
         self.regions = regions
         # The ID of the request.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class DescribeRegionsResponseBodyRegionsRegion(DaraModel):
         region_id: str = None,
         zones: main_models.DescribeRegionsResponseBodyRegionsRegionZones = None,
     ):
-        # The ID of the region.
         self.region_id = region_id
-        # Details of the zones.
         self.zones = zones
 
     def validate(self):
@@ -161,12 +158,7 @@ class DescribeRegionsResponseBodyRegionsRegionZonesZone(DaraModel):
         vpc_enabled: bool = None,
         zone_id: str = None,
     ):
-        # Indicates whether Virtual Private Cloud (VPC) is available.
-        # 
-        # *   **true**: VPC is available.
-        # *   **false**: VPC is unavailable.
         self.vpc_enabled = vpc_enabled
-        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):

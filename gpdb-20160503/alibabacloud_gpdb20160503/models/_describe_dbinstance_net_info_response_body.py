@@ -14,7 +14,6 @@ class DescribeDBInstanceNetInfoResponseBody(DaraModel):
         instance_network_type: str = None,
         request_id: str = None,
     ):
-        # The connection information of the instance.
         self.dbinstance_net_infos = dbinstance_net_infos
         # The network type of the instance. Valid values:
         # 
@@ -105,24 +104,13 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo(D
         v_switch_id: str = None,
         vpc_instance_id: str = None,
     ):
-        # The type of the endpoint.
         self.address_type = address_type
-        # The endpoint that is used to connect to the instance.
         self.connection_string = connection_string
-        # The IP address.
         self.ipaddress = ipaddress
-        # The type of the IP address.
-        # 
-        # *   Valid values for instances in the classic network: Inner and Public.
-        # *   Valid values for instances in a virtual private cloud (VPC): Private and Public.
         self.iptype = iptype
-        # The port number.
         self.port = port
-        # The VPC ID of the instance.
         self.vpcid = vpcid
-        # The vSwitch ID. Multiple IDs are separated by commas (,).
         self.v_switch_id = v_switch_id
-        # The ID of the instance that is deployed in a VPC.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):

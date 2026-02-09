@@ -1,6 +1,8 @@
-2026-01-13 Version: 5.0.0
-- Update API ChatWithKnowledgeBase: delete response parameters Body.MultiCollectionRecallResult.Matches.$.Metadata.
-- Update API ChatWithKnowledgeBaseStream: delete response parameters Body.MultiCollectionRecallResult.Matches.$.Metadata.
+2026-02-09 Version: 5.0.2
+- Update API CreateSupabaseProject: add request parameters PayType.
+- Update API CreateSupabaseProject: add request parameters Period.
+- Update API CreateSupabaseProject: add request parameters UsedTime.
+- Update API CreateSupabaseProject: add response parameters Body.OrderId.
 
 
 2025-12-15 Version: 4.15.2

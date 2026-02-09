@@ -16,7 +16,6 @@ class QueryCollectionDataResponseBody(DaraModel):
         status: str = None,
         total: int = None,
     ):
-        # Data list.
         self.matches = matches
         # Detailed information when the request fails.
         self.message = message
@@ -120,15 +119,11 @@ class QueryCollectionDataResponseBodyMatchesMatch(DaraModel):
         sparse_values: main_models.QueryCollectionDataResponseBodyMatchesMatchSparseValues = None,
         values: main_models.QueryCollectionDataResponseBodyMatchesMatchValues = None,
     ):
-        # The unique ID of the vector data.
         self.id = id
-        # Metadata.
         self.metadata = metadata
         self.metadata_v2 = metadata_v2
-        # The similarity score of this data, which is related to the algorithm `(l2/ip/cosine)` specified when creating the index.
         self.score = score
         self.sparse_values = sparse_values
-        # List of vector data.
         self.values = values
 
     def validate(self):

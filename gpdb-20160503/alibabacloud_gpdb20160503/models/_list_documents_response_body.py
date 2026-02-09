@@ -19,7 +19,6 @@ class ListDocumentsResponseBody(DaraModel):
     ):
         # The total number of entries returned.
         self.count = count
-        # The queried documents.
         self.items = items
         # The returned message.
         self.message = message
@@ -126,9 +125,7 @@ class ListDocumentsResponseBodyItemsDocumentList(DaraModel):
         file_name: str = None,
         source: str = None,
     ):
-        # The name of the document.
         self.file_name = file_name
-        # The source of the document.
         self.source = source
 
     def validate(self):

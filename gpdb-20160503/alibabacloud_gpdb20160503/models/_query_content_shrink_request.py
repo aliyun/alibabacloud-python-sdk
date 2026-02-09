@@ -39,6 +39,7 @@ class QueryContentShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.collection = collection
+        # Text content for retrieval.
         self.content = content
         # Instance ID.
         # 

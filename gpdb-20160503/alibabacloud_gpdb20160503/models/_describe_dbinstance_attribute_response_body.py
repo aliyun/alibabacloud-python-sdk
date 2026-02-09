@@ -13,7 +13,6 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         items: main_models.DescribeDBInstanceAttributeResponseBodyItems = None,
         request_id: str = None,
     ):
-        # The queried instance.
         self.items = items
         # Request ID.
         self.request_id = request_id
@@ -155,233 +154,75 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # Queries the current instance availability status, in percentage (%).
-        # 
-        # > This parameter is only applicable to instances in the storage reserved mode.
         self.availability_value = availability_value
         self.cache_storage_size = cache_storage_size
-        # Access mode, with the following values:
-        # 
-        # - **Performance**: Standard access mode.
-        # - **Safty**: High-security access mode.
-        # - **LVS**: LVS link mode.
         self.connection_mode = connection_mode
-        # Instance connection address.
         self.connection_string = connection_string
-        # Minor version number of the kernel.
         self.core_version = core_version
-        # Number of CPU cores for the compute node, unit: Core.
         self.cpu_cores = cpu_cores
-        # Number of CPU cores per node.
-        # 
-        # > This parameter is only applicable to instances in the storage reserved mode.
         self.cpu_cores_per_node = cpu_cores_per_node
-        # Instance creation time.
         self.creation_time = creation_time
-        # Instance series, with the following values:
-        # 
-        # - **Basic**: Basic Edition.
-        # - **HighAvailability**: High Availability Edition.
         self.dbinstance_category = dbinstance_category
-        # Instance specification.
-        # 
-        # > This parameter is only applicable to reserved storage mode instances.
         self.dbinstance_class = dbinstance_class
-        # Instance family, with the following values:
-        # 
-        # - **s**: Shared type.
-        # - **x**: General type.
-        # - **d**: Dedicated package.
-        # - **h**: Dedicated physical machine.
         self.dbinstance_class_type = dbinstance_class_type
-        # Number of CPU cores.
         self.dbinstance_cpu_cores = dbinstance_cpu_cores
-        # Instance description.
         self.dbinstance_description = dbinstance_description
-        # Maximum BPS (disk throughput) of the compute group, in Mbps.
-        # 
-        # > This parameter is only applicable to reserved storage mode instances.
         self.dbinstance_disk_mbps = dbinstance_disk_mbps
-        # Number of compute groups.
-        # 
-        # > This parameter is only applicable to reserved storage mode instances.
         self.dbinstance_group_count = dbinstance_group_count
-        # Instance ID.
         self.dbinstance_id = dbinstance_id
-        # Memory of the compute node.
-        # 
-        # > The unit for storage-reserved mode is MB; for Serverless and storage-elastic modes, it is GB.
         self.dbinstance_memory = dbinstance_memory
-        # Instance resource type, with the following values:
-        # 
-        # - **Serverless**: Serverless mode.
-        # - **StorageElastic**: Storage elastic mode.
-        # - **Classic**: Storage reserved mode.
         self.dbinstance_mode = dbinstance_mode
-        # This parameter is deprecated and will not return any value.
         self.dbinstance_net_type = dbinstance_net_type
-        # Instance status. For more details, see the supplementary explanation of the DBInstanceStatus parameter.
         self.dbinstance_status = dbinstance_status
-        # Maximum storage space of a single replica, in GB.
         self.dbinstance_storage = dbinstance_storage
-        # The deployment mode.
         self.deploy_mode = deploy_mode
-        # Encryption key.
-        # 
-        # > This parameter is returned only for instances with disk encryption enabled.
         self.encryption_key = encryption_key
-        # Encryption type, with the following value:
-        # 
-        # - **CloudDisk**: Cloud disk encryption.
-        # 
-        # > This parameter is returned only for instances with cloud disk encryption.
         self.encryption_type = encryption_type
-        # Database engine.
         self.engine = engine
-        # Database version.
         self.engine_version = engine_version
-        # Instance expiration time (in UTC).
-        # 
-        # > The expiration time for pay-as-you-go instances is `2999-09-08T16:00:00Z`.
         self.expire_time = expire_time
         self.graph_engine_status = graph_engine_status
-        # Compute group machine type, with the following values:
-        # - **0**: SSD
-        # - **1**: HDD
-        # 
-        # > This parameter applies only to storage-reserved mode instances.
         self.host_type = host_type
-        # Idle release waiting time. Unit: seconds.
-        # 
-        # > This parameter is returned only for instances in the Serverless automatic scheduling mode.
         self.idle_time = idle_time
-        # Instance network type, with the following values:
-        # 
-        # - **Classic**: Classic network.
-        # - **VPC**: VPC network.
         self.instance_network_type = instance_network_type
         self.instance_spec = instance_spec
-        # Lock mode, with the following values:
-        # 
-        # - **Unlock**: Normal.
-        # - **ManualLock**: Manually triggered lock.
-        # - **LockByExpiration**: Automatically locked when the instance expires.
-        # - **LockByRestoration**: Automatically locked before the instance rolls back.
-        # - **LockByDiskQuota**: Automatically locked when the instance space is full.
         self.lock_mode = lock_mode
-        # This parameter is deprecated and will not return any value.
         self.lock_reason = lock_reason
-        # Maintenance end time.
         self.maintain_end_time = maintain_end_time
-        # Maintenance start time.
         self.maintain_start_time = maintain_start_time
-        # The specifications of AI coordinator node resources of the instance. If the coordinator nodes of the instance are not AI nodes, null is returned.
         self.master_aispec = master_aispec
-        # Master resources.
         self.master_cu = master_cu
-        # Number of Master nodes.
         self.master_node_num = master_node_num
-        # Maximum number of concurrent connections for the instance.
-        # 
-        # > This parameter is only applicable to reserved storage mode instances.
         self.max_connections = max_connections
-        # Memory size per replica, see the **MemoryUnit** parameter for the unit.
-        # 
-        # > This parameter is only applicable to instances in the storage reserved mode.
         self.memory_per_node = memory_per_node
-        # Memory size of the compute node.
-        # 
-        # > The unit is MB for the storage reserved mode; GB for Serverless and storage elastic modes.
         self.memory_size = memory_size
-        # Memory unit.
-        # 
-        # > This parameter is only applicable to reserved storage mode instances.
         self.memory_unit = memory_unit
-        # Minor version of the kernel.
         self.minor_version = minor_version
-        # Billing type, with the following values:
-        # 
-        # - **Postpaid**: Pay-as-you-go.
-        # - **Prepaid**: Subscription.
         self.pay_type = pay_type
-        # Instance port number.
         self.port = port
-        # The service type.
         self.prod_type = prod_type
-        # This parameter has been deprecated and will not return a value.
         self.read_delay_time = read_delay_time
-        # Region ID.
         self.region_id = region_id
-        # ID of the resource group where the instance is located.
         self.resource_group_id = resource_group_id
-        # Instance running time.
         self.running_time = running_time
-        # This parameter is deprecated and will not return any value.
         self.security_iplist = security_iplist
-        # Performance Level (PL), currently only **PL1** is supported.
         self.seg_disk_performance_level = seg_disk_performance_level
-        # Number of Segment nodes.
-        # 
-        # > This parameter applies only to instances in the storage elastic mode and Serverless manual scheduling mode.
         self.seg_node_num = seg_node_num
-        # The specifications of AI compute node resources of the instance. If the compute nodes of the instance are not AI nodes, null is returned.
         self.segment_aispec = segment_aispec
-        # Number of compute groups.
-        # 
-        # > This parameter applies only to storage-reserved mode instances.
         self.segment_counts = segment_counts
-        # The mode of the Serverless instance, with the following values:
-        # 
-        # - **Manual**: Manual scheduling.
-        # - **Auto**: Automatic scheduling.
-        # 
-        # > This parameter is returned only for Serverless mode instances.
         self.serverless_mode = serverless_mode
-        # Compute resource threshold. Unit: ACU.
-        # 
-        # > This parameter is returned only for instances in the Serverless automatic scheduling mode.
         self.serverless_resource = serverless_resource
-        # The secondary zone ID.
         self.standby_zone_id = standby_zone_id
-        # The time when the instance started running.
         self.start_time = start_time
-        # Storage size per replica, see the **StorageUnit** parameter for units.
-        # 
-        # > This parameter applies only to storage-reserved mode instances.
         self.storage_per_node = storage_per_node
-        # Storage space size, unit: GB.
         self.storage_size = storage_size
-        # Storage type, with the following values:
-        # 
-        # - **cloud_essd**: ESSD cloud disk.
-        # - **cloud_efficiency**: Efficient cloud disk.
-        # 
-        # > This parameter is only applicable to instances in the storage elastic mode.
         self.storage_type = storage_type
-        # Storage unit, with the following values:
-        # 
-        # - **GB SSD**
-        # - **TB SSD**
-        # - **GB HDD**
-        # 
-        # > This parameter is only applicable to instances in the storage reserved mode.
         self.storage_unit = storage_unit
-        # Indicates whether backup recovery is supported, with the following values:
-        # 
-        # - **true**: Backup recovery is supported.
-        # - **false**: Backup recovery is not supported.
         self.support_restore = support_restore
-        # Tag key-value pairs.
         self.tags = tags
-        # vSwitch ID.
         self.v_switch_id = v_switch_id
-        # Indicates whether vector engine optimization is enabled. The values are as follows:
-        # - **enabled**: Indicates that vector engine optimization is enabled.
-        # - **disabled**: Indicates that vector engine optimization is disabled.
         self.vector_configuration_status = vector_configuration_status
-        # VPC ID.
         self.vpc_id = vpc_id
-        # Zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -861,9 +702,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeTagsTag(Dar
         key: str = None,
         value: str = None,
     ):
-        # Tag key.
         self.key = key
-        # Tag value.
         self.value = value
 
     def validate(self):

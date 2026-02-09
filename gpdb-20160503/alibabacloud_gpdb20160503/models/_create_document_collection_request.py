@@ -4,6 +4,7 @@ from __future__ import annotations
 
 from typing import List
 
+from alibabacloud_gpdb20160503 import models as main_models
 from darabonba.model import DaraModel
 
 class CreateDocumentCollectionRequest(DaraModel):
@@ -32,6 +33,9 @@ class CreateDocumentCollectionRequest(DaraModel):
         pq_enable: int = None,
         region_id: str = None,
         relationship_types: List[str] = None,
+        sparse_retrieval_fields: str = None,
+        sparse_vector_index_config: main_models.CreateDocumentCollectionRequestSparseVectorIndexConfig = None,
+        support_sparse: bool = None,
     ):
         # The name of the document collection that you want to create.
         # 
@@ -149,9 +153,13 @@ class CreateDocumentCollectionRequest(DaraModel):
         # This parameter is required.
         self.region_id = region_id
         self.relationship_types = relationship_types
+        self.sparse_retrieval_fields = sparse_retrieval_fields
+        self.sparse_vector_index_config = sparse_vector_index_config
+        self.support_sparse = support_sparse
 
     def validate(self):
-        pass
+        if self.sparse_vector_index_config:
+            self.sparse_vector_index_config.validate()
 
     def to_map(self):
         result = dict()
@@ -227,6 +235,15 @@ class CreateDocumentCollectionRequest(DaraModel):
         if self.relationship_types is not None:
             result['RelationshipTypes'] = self.relationship_types
 
+        if self.sparse_retrieval_fields is not None:
+            result['SparseRetrievalFields'] = self.sparse_retrieval_fields
+
+        if self.sparse_vector_index_config is not None:
+            result['SparseVectorIndexConfig'] = self.sparse_vector_index_config.to_map()
+
+        if self.support_sparse is not None:
+            result['SupportSparse'] = self.support_sparse
+
         return result
 
     def from_map(self, m: dict = None):
@@ -299,6 +316,51 @@ class CreateDocumentCollectionRequest(DaraModel):
 
         if m.get('RelationshipTypes') is not None:
             self.relationship_types = m.get('RelationshipTypes')
+
+        if m.get('SparseRetrievalFields') is not None:
+            self.sparse_retrieval_fields = m.get('SparseRetrievalFields')
+
+        if m.get('SparseVectorIndexConfig') is not None:
+            temp_model = main_models.CreateDocumentCollectionRequestSparseVectorIndexConfig()
+            self.sparse_vector_index_config = temp_model.from_map(m.get('SparseVectorIndexConfig'))
+
+        if m.get('SupportSparse') is not None:
+            self.support_sparse = m.get('SupportSparse')
+
+        return self
+
+class CreateDocumentCollectionRequestSparseVectorIndexConfig(DaraModel):
+    def __init__(
+        self,
+        hnsw_ef_construction: int = None,
+        hnsw_m: int = None,
+    ):
+        self.hnsw_ef_construction = hnsw_ef_construction
+        self.hnsw_m = hnsw_m
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.hnsw_ef_construction is not None:
+            result['HnswEfConstruction'] = self.hnsw_ef_construction
+
+        if self.hnsw_m is not None:
+            result['HnswM'] = self.hnsw_m
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('HnswEfConstruction') is not None:
+            self.hnsw_ef_construction = m.get('HnswEfConstruction')
+
+        if m.get('HnswM') is not None:
+            self.hnsw_m = m.get('HnswM')
 
         return self
 

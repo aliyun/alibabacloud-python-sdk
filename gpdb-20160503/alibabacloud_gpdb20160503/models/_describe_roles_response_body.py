@@ -15,7 +15,6 @@ class DescribeRolesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The roles.
         self.role_list = role_list
 
     def validate(self):

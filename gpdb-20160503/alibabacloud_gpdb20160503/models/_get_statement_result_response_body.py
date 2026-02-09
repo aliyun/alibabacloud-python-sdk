@@ -74,9 +74,7 @@ class GetStatementResultResponseBodyData(DaraModel):
         records: main_models.GetStatementResultResponseBodyDataRecords = None,
         total_num_rows: int = None,
     ):
-        # List of column metadata.
         self.column_metadata = column_metadata
-        # Multiple rows of data.
         self.records = records
         # Total number of entries.
         self.total_num_rows = total_num_rows

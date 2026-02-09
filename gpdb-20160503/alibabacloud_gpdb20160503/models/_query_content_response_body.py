@@ -24,13 +24,10 @@ class QueryContentResponseBody(DaraModel):
         # 
         # > A token refers to the smallest unit into which the input text is divided; a token can be a word, a phrase, a punctuation mark, or a character, etc.
         self.embedding_tokens = embedding_tokens
-        # The entities.
         self.entities = entities
-        # The retrieved data.
         self.matches = matches
         # Return message.
         self.message = message
-        # The list of relationship edges.
         self.relations = relations
         # The request ID.
         self.request_id = request_id
@@ -41,7 +38,6 @@ class QueryContentResponseBody(DaraModel):
         self.status = status
         # Resource usage for this query.
         self.usage = usage
-        # List of windowed matches.
         self.window_matches = window_matches
 
     def validate(self):
@@ -166,7 +162,6 @@ class QueryContentResponseBodyWindowMatchesWindowMatches(DaraModel):
         self,
         window_match: main_models.QueryContentResponseBodyWindowMatchesWindowMatchesWindowMatch = None,
     ):
-        # List of individual top windowed matches.
         self.window_match = window_match
 
     def validate(self):
@@ -235,15 +230,10 @@ class QueryContentResponseBodyWindowMatchesWindowMatchesWindowMatchWindowMatch(D
         loader_metadata: str = None,
         metadata: Dict[str, str] = None,
     ):
-        # Text content.
         self.content = content
-        # File name.
         self.file_name = file_name
-        # Unique ID of the vector data.
         self.id = id
-        # Metadata information when the document loader was loaded.
         self.loader_metadata = loader_metadata
-        # Metadata map.
         self.metadata = metadata
 
     def validate(self):
@@ -374,15 +364,10 @@ class QueryContentResponseBodyRelationsRelations(DaraModel):
         source_entity: str = None,
         target_entity: str = None,
     ):
-        # The description of the relationship edge.
         self.description = description
-        # The file name.
         self.file_name = file_name
-        # The ID of the relationship edge.
         self.id = id
-        # The source entity.
         self.source_entity = source_entity
-        # The destination entity.
         self.target_entity = target_entity
 
     def validate(self):
@@ -478,35 +463,15 @@ class QueryContentResponseBodyMatchesMatchList(DaraModel):
         score: float = None,
         vector: main_models.QueryContentResponseBodyMatchesMatchListVector = None,
     ):
-        # The content that is used for full-text search. If you leave this parameter empty, only vector search is used. If you do not leave this parameter empty, two-way retrieval based on vector search and full-text search is used.
-        # 
-        # >  You must specify at least one of the Content and Vector parameters.
         self.content = content
-        # The name of the document.
-        # 
-        # >  You can call the [ListDocuments](https://help.aliyun.com/document_detail/2618453.html) operation to query a list of documents.
         self.file_name = file_name
-        # The public URL of the query result image, valid for 2 hours
         self.file_url = file_url
-        # The unique ID of the vector data.
         self.id = id
-        # Metadata during document loader loading.
         self.loader_metadata = loader_metadata
-        # The metadata.
         self.metadata = metadata
-        # Re-ranking score.
         self.rerank_score = rerank_score
-        # Source of the retrieval results:
-        # 
-        # - 1 indicates vector retrieval
-        # - 2 indicates full-text retrieval
-        # - 3 indicates dual-path recall
         self.retrieval_source = retrieval_source
-        # The similarity score of the data. It is related to the `l2, ip, or cosine` algorithm that is specified when you create an index.
         self.score = score
-        # The vector data. The length of the value must be the same as that of the Dimension parameter in the [CreateCollection](https://help.aliyun.com/document_detail/2401497.html) operation.
-        # 
-        # >  If you leave this parameter empty, only full-text search results are returned.
         self.vector = vector
 
     def validate(self):
@@ -656,15 +621,10 @@ class QueryContentResponseBodyEntitiesEntities(DaraModel):
         id: str = None,
         type: str = None,
     ):
-        # Entity description.
         self.description = description
-        # The entity name.
         self.entity = entity
-        # The file name.
         self.file_name = file_name
-        # The entity ID.
         self.id = id
-        # The entity type.
         self.type = type
 
     def validate(self):

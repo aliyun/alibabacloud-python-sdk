@@ -16,7 +16,6 @@ class ListDatabasesResponseBody(DaraModel):
         request_id: str = None,
         status: str = None,
     ):
-        # The queried databases.
         self.databases = databases
         # The returned message.
         self.message = message
