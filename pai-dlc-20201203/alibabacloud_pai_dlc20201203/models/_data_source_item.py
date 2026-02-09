@@ -20,17 +20,29 @@ class DataSourceItem(DaraModel):
         path: str = None,
         user_id: str = None,
     ):
+        # The data source ID.
         self.data_source_id = data_source_id
+        # The data source type. Only File Storage NAS (NAS) file systems are supported.
         self.data_source_type = data_source_type
+        # The data source description.
         self.description = description
+        # The data source name.
         self.display_name = display_name
+        # The endpoint of the Alibaba Cloud OSS file system.
         self.endpoint = endpoint
+        # The ID of the NAS file system. For more information, see [Alibaba Cloud documentation](https://help.aliyun.com/document_detail/185212.html).
         self.file_system_id = file_system_id
+        # The time when the data source was created. The time is displayed in UTC.
         self.gmt_create_time = gmt_create_time
+        # The time when the data source was last modified. The time is displayed in UTC.
         self.gmt_modify_time = gmt_modify_time
+        # The local path of the container that is attached to the runtime of the task.
         self.mount_path = mount_path
+        # The configuration options of the Alibaba Cloud OSS file system.
         self.options = options
+        # The path of the Alibaba Cloud Object Storage Service (OSS) file system.
         self.path = path
+        # The ID of the Alibaba Cloud account that creates the data source.
         self.user_id = user_id
 
     def validate(self):

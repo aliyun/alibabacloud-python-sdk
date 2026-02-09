@@ -12,9 +12,13 @@ class TensorboardSpec(DaraModel):
         switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The specifications of the ECS instance configured for the pay-as-you-go Tensorboard task.
         self.ecs_type = ecs_type
+        # The ID of the security group configured for the pay-as-you-go Tensorboard task.
         self.security_group_id = security_group_id
+        # The ID of the vSwitch configured for the pay-as-you-go Tensorboard task.
         self.switch_id = switch_id
+        # The ID of the virtual private cloud (VPC) configured for the pay-as-you-go Tensorboard task.
         self.vpc_id = vpc_id
 
     def validate(self):

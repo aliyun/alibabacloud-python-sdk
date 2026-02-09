@@ -29,23 +29,49 @@ class JobSpec(DaraModel):
         type: str = None,
         use_spot_instance: bool = None,
     ):
+        # The scheduling node configurations.
         self.assign_node_spec = assign_node_spec
+        # The auto scaling configurations.
         self.auto_scaling_spec = auto_scaling_spec
+        # The hardware specifications of the worker. For more information, see [Billing of DLC](https://help.aliyun.com/document_detail/171758.html) of PAI.
+        # 
+        # >  The price varies based on instance types.
         self.ecs_spec = ecs_spec
+        # The additional pod configurations.
         self.extra_pod_spec = extra_pod_spec
+        # The address of the image that is run by the worker node. You can call [ListImages](https://help.aliyun.com/document_detail/449118.html) to obtain the image provided by PAI. You can also specify a third-party public image.
         self.image = image
+        # The configuration of the private image.
         self.image_config = image_config
+        # Deprecated.
         self.is_cheif = is_cheif
+        # Whether the role is a Chief role. Chief role must be unique.
         self.is_chief = is_chief
+        # The list of local mount configurations.
         self.local_mount_specs = local_mount_specs
+        # The number of replicas.
         self.pod_count = pod_count
+        # The resource configurations.
         self.resource_config = resource_config
+        # The restart policy. Valid values: Always, Never, OnFailure, and ExitCode.
         self.restart_policy = restart_policy
+        # The service configurations.
         self.service_spec = service_spec
+        # The configurations of the preemptible instance.
         self.spot_spec = spot_spec
         self.startup_dependencies = startup_dependencies
         self.system_disk = system_disk
+        # The worker type, which is related to JobType. The valid values of this parameter vary based on the value of JobType.
+        # 
+        # *   Valid values when JobType is set to **TFJob**: Chief, PS, Worker, Evaluator, and GraphLearn.
+        # *   Valid values when JobType is set to **PyTorchJob**: Worker and Master.
+        # *   Valid values when JobType is set to **XGBoostJob**: Worker and Master.
+        # *   Valid values when JobType is set to **OneFlowJob**: Worker and Master.
+        # *   Valid values when JobType is set to **ElasticBatch**: Worker and Master.
+        # 
+        # The Master node in jobs of the PyTorchJob, XGBoostJob, OneFlowJob, or ElasticBatch type is optional. If you do not specify the Master node, the system automatically uses the first Worker node as the Master node.
         self.type = type
+        # Whether to use preemptible instances.
         self.use_spot_instance = use_spot_instance
 
     def validate(self):

@@ -11,8 +11,11 @@ class ResourceLimit(DaraModel):
         gpu: str = None,
         memory: str = None,
     ):
+        # The number of GPU cores.
         self.cpu = cpu
+        # The number of GPU cores.
         self.gpu = gpu
+        # The memory capacity limit, in Gi.
         self.memory = memory
 
     def validate(self):

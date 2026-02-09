@@ -16,13 +16,24 @@ class TensorboardDataSourceSpec(DaraModel):
         summary_path: str = None,
         uri: str = None,
     ):
+        # The file type that corresponds to the URI in the dataset configurations.
         self.data_source_type = data_source_type
+        # The directory prefix of the dataset in the TensorBoard task.
         self.directory_name = directory_name
+        # The full summary path.
         self.full_summary_path = full_summary_path
+        # The ID of the dataset configurations. In most cases, the ID of the dataset configurations is the ID of a dataset or task.
         self.id = id
+        # The name of the dataset configurations. In most cases, the name of the dataset configurations is the name of a dataset or task.
         self.name = name
+        # The dataset type.
+        # 
+        # *   datasource: configure a dataset based on the dataset type.
+        # *   dlcjob: configure a dataset based on the task type.
         self.source_type = source_type
+        # The summary path.
         self.summary_path = summary_path
+        # The file system URI in the dataset configurations.
         self.uri = uri
 
     def validate(self):

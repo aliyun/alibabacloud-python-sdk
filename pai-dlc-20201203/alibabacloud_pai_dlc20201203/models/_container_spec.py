@@ -18,12 +18,19 @@ class ContainerSpec(DaraModel):
         resources: main_models.ResourceRequirements = None,
         working_dir: str = None,
     ):
+        # The command parameters.
         self.args = args
+        # The user command.
         self.command = command
+        # The environment variables.
         self.env = env
+        # The endpoint of the container image.
         self.image = image
+        # The name of the container.
         self.name = name
+        # The container resources.
         self.resources = resources
+        # The working directory in the container.
         self.working_dir = working_dir
 
     def validate(self):

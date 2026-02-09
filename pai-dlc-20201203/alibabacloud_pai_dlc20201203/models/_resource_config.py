@@ -13,10 +13,15 @@ class ResourceConfig(DaraModel):
         memory: str = None,
         shared_memory: str = None,
     ):
+        # The number of vCPUs.
         self.cpu = cpu
+        # The number of GPUs.
         self.gpu = gpu
+        # The GPU type.
         self.gputype = gputype
+        # The memory size.
         self.memory = memory
+        # The shared memory capacity.
         self.shared_memory = shared_memory
 
     def validate(self):

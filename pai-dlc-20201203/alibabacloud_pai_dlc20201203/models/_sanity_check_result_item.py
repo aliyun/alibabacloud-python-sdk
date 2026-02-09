@@ -14,11 +14,17 @@ class SanityCheckResultItem(DaraModel):
         started_at: str = None,
         status: str = None,
     ):
+        # The nth time the check is performed.
         self.check_number = check_number
+        # The time when the check ends.
         self.finished_at = finished_at
+        # The detailed information about the check results.
         self.message = message
+        # The check phase.
         self.phase = phase
+        # The time when the check starts.
         self.started_at = started_at
+        # The check status.
         self.status = status
 
     def validate(self):

@@ -11,8 +11,13 @@ class SpotSpec(DaraModel):
         spot_price_limit: float = None,
         spot_strategy: str = None,
     ):
+        # The maximum discount. Specify only one of SpotDiscountLimit and SpotPriceLimit.
         self.spot_discount_limit = spot_discount_limit
+        # The maximum price. Unit: CNY/minute. Specify only one of SpotDiscountLimit and SpotPriceLimit.
         self.spot_price_limit = spot_price_limit
+        # The spot policy. Valid values:
+        # 
+        # *   SpotWithPriceLimit
         self.spot_strategy = spot_strategy
 
     def validate(self):

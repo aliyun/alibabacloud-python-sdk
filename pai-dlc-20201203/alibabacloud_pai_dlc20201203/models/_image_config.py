@@ -12,9 +12,13 @@ class ImageConfig(DaraModel):
         password: str = None,
         username: str = None,
     ):
+        # The authentication information of the image repository.
         self.auth = auth
+        # The address of the image repository.
         self.docker_registry = docker_registry
+        # The password that is used to log on to the image repository.
         self.password = password
+        # The username that is used to log on to the image repository.
         self.username = username
 
     def validate(self):

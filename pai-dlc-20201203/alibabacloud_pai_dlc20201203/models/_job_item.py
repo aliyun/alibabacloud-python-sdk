@@ -68,62 +68,134 @@ class JobItem(DaraModel):
         workspace_id: str = None,
         workspace_name: str = None,
     ):
+        # The visibility of the job.
         self.accessibility = accessibility
+        # The cluster ID.
         self.cluster_id = cluster_id
+        # The code source used by the job.
         self.code_source = code_source
+        # The credential configurations associated with the job.
         self.credential_config = credential_config
+        # A list of all data sources used by the job.
         self.data_sources = data_sources
+        # The job name.
         self.display_name = display_name
+        # The duration of the job. Unit: seconds.
         self.duration = duration
+        # The elastic parameters of the job.
         self.elastic_spec = elastic_spec
+        # Indicates whether PreemptibleJob is enabled.
         self.enable_preemptible_job = enable_preemptible_job
+        # Indicates whether DeBugger is enabled.
         self.enabled_debugger = enabled_debugger
+        # The environment variables that are injected into the job run time.
         self.envs = envs
+        # The time when the job was created (UTC).
         self.gmt_create_time = gmt_create_time
+        # The time when the job failed (UTC).
         self.gmt_failed_time = gmt_failed_time
+        # The time when the job ended (UTC).
         self.gmt_finish_time = gmt_finish_time
+        # The time when the job was modified (UTC).
         self.gmt_modified_time = gmt_modified_time
+        # The time when the job started (UTC).
         self.gmt_running_time = gmt_running_time
+        # The time when the job stopped (UTC).
         self.gmt_stopped_time = gmt_stopped_time
+        # The time when the job was submitted (UTC).
         self.gmt_submitted_time = gmt_submitted_time
+        # The time when the job succeeded (UTC).
         self.gmt_successed_time = gmt_successed_time
+        # Indicates whether the job is deleted.
         self.is_deleted = is_deleted
+        # The ID of the job.
         self.job_id = job_id
+        # The maximum running duration of the job.
         self.job_max_running_time_minutes = job_max_running_time_minutes
         self.job_replica_statuses = job_replica_statuses
+        # The node configurations of the job run time.
         self.job_specs = job_specs
+        # The job type. Valid values:
+        # 
+        # *   TFJob
+        # *   PyTorchJob
+        # *   MPIJob
+        # *   XGBoostJob
+        # *   OneFlowJob
+        # *   ElasticBatchJob
+        # *   RayJob
+        # *   SlurmJob
         self.job_type = job_type
+        # The number of nodes.
         self.node_count = node_count
+        # The node names.
         self.node_names = node_names
+        # The pods.
         self.pods = pods
+        # The priority of the job.
         self.priority = priority
+        # The reason code for the job to enter the current status. Valid values:
+        # 
+        # *   InvalidParameter
+        # *   JobSucceeded
+        # *   JobStoppedByUser
         self.reason_code = reason_code
+        # The detailed reason for the job to enter the current status.
         self.reason_message = reason_message
+        # The requested CPU cores.
         self.request_cpu = request_cpu
+        # The requested GPU cores.
         self.request_gpu = request_gpu
+        # The requested memory.
         self.request_memory = request_memory
+        # The ID of the resource group to which the resource belongs.
         self.resource_id = resource_id
+        # The resource level of the job run time.
         self.resource_level = resource_level
+        # The name of the resource on which the job runs.
         self.resource_name = resource_name
+        # The name of the resource quota.
         self.resource_quota_name = resource_quota_name
+        # The resource type. Valid values: ECS, Lingjun, and ACS.
         self.resource_type = resource_type
+        # The number of job restarts.
         self.restart_times = restart_times
+        # The extra parameters of the job.
         self.settings = settings
+        # The job status. Valid values:
+        # 
+        # *   Succeeded
+        # *   Failed
         self.status = status
+        # The status history of the job.
         self.status_history = status_history
+        # The sub-status of the job, such as the preemption and retry status.
         self.sub_status = sub_status
+        # The system environment variables configured.
         self.system_envs = system_envs
+        # The tenant ID.
         self.tenant_id = tenant_id
+        # The name of the folder in which the requirements.txt file resides.
         self.thirdparty_lib_dir = thirdparty_lib_dir
+        # The third-party Python libraries required for the job.
         self.thirdparty_libs = thirdparty_libs
+        # Indicates whether the job uses idle resources.
         self.use_oversold_resource = use_oversold_resource
+        # The start command for each node of the job.
         self.user_command = user_command
+        # The UID of the user to which the job belongs.
         self.user_id = user_id
+        # The user script.
         self.user_script = user_script
+        # The user VPC.
         self.user_vpc = user_vpc
+        # The username that is used to submit the job.
         self.username = username
+        # The working path.
         self.working_dir = working_dir
+        # The ID of the workspace to which the job belongs.
         self.workspace_id = workspace_id
+        # The name of the workspace to which the job belongs.
         self.workspace_name = workspace_name
 
     def validate(self):
@@ -550,10 +622,18 @@ class JobItemUserVpc(DaraModel):
         switch_id: str = None,
         vpc_id: str = None,
     ):
+        # The default route. Default value: false. Valid values:
+        # 
+        # *   eth0: The default network interface is used to access the Internet through the public gateway.
+        # *   eth1: The user\\"s Elastic Network Interface is used to access the Internet through the private gateway.
         self.default_route = default_route
+        # The extended CIDR blocks that need to be connected.
         self.extended_cidrs = extended_cidrs
+        # The security group ID.
         self.security_group_id = security_group_id
+        # The vSwitch ID.
         self.switch_id = switch_id
+        # VPC ID
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -606,7 +686,9 @@ class JobItemDataSources(DaraModel):
         data_source_id: str = None,
         mount_path: str = None,
     ):
+        # The data source ID.
         self.data_source_id = data_source_id
+        # The local mount path of the data source.
         self.mount_path = mount_path
 
     def validate(self):
@@ -645,9 +727,13 @@ class JobItemCodeSource(DaraModel):
         commit: str = None,
         mount_path: str = None,
     ):
+        # The code repository branch.
         self.branch = branch
+        # The code source ID.
         self.code_source_id = code_source_id
+        # The CommitID of the code repository used by the job.
         self.commit = commit
+        # The local mount path of the code.
         self.mount_path = mount_path
 
     def validate(self):

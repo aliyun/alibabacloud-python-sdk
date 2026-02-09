@@ -15,12 +15,28 @@ class ImageItem(DaraModel):
         image_url: str = None,
         image_url_vpc: str = None,
     ):
+        # The type of the image accelerator. Valid values:
+        # 
+        # *   cpu
+        # *   gpu
         self.accelerator_type = accelerator_type
+        # The creator of the image.
         self.author_id = author_id
+        # The computing framework that is encapsulated by the image. Valid values:
+        # 
+        # *   TFJob
+        # *   PyTorchJob
         self.framework = framework
+        # The image type. Valid values:
+        # 
+        # *   Community
+        # *   PAI
         self.image_provider_type = image_provider_type
+        # The tag of the docker image.
         self.image_tag = image_tag
+        # The image URL address.
         self.image_url = image_url
+        # The VPC endpoint of the image URL. This address provides faster access speed.
         self.image_url_vpc = image_url_vpc
 
     def validate(self):

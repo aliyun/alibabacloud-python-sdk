@@ -10,7 +10,9 @@ class EnvVar(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The name of the environment variable.
         self.name = name
+        # The value of the environment variable.
         self.value = value
 
     def validate(self):

@@ -10,7 +10,9 @@ class Metric(DaraModel):
         time: int = None,
         value: float = None,
     ):
+        # The timestamp. Unit: milliseconds.
         self.time = time
+        # The value of the monitoring data.
         self.value = value
 
     def validate(self):

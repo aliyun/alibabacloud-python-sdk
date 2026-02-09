@@ -13,7 +13,9 @@ class PodMetric(DaraModel):
         metrics: List[main_models.Metric] = None,
         pod_id: str = None,
     ):
+        # The metrics list.
         self.metrics = metrics
+        # The node ID.
         self.pod_id = pod_id
 
     def validate(self):

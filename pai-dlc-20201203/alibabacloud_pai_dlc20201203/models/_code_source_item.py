@@ -19,16 +19,27 @@ class CodeSourceItem(DaraModel):
         gmt_modify_time: str = None,
         user_id: str = None,
     ):
+        # The branch of the code repository. If you configure this parameter when you call the CreateJob API operation, the branch is overwritten.
         self.code_branch = code_branch
+        # The commit ID. If you configure this parameter when you call the CreateJob API operation, the commit is overwritten.
         self.code_commit = code_commit
+        # The URL of the code repository.
         self.code_repo = code_repo
+        # The access token used to access the code repository.
         self.code_repo_access_token = code_repo_access_token
+        # The username used to access the private code repository.
         self.code_repo_user_name = code_repo_user_name
+        # The ID of the code source.
         self.code_source_id = code_source_id
+        # The description of the code source.
         self.description = description
+        # The name of the code source.
         self.display_name = display_name
+        # The time when the code source was created. The time is displayed in UTC.
         self.gmt_create_time = gmt_create_time
+        # The time when the code source was modified. The time is displayed in UTC.
         self.gmt_modify_time = gmt_modify_time
+        # The UID of the Alibaba Cloud user who creates the code source.
         self.user_id = user_id
 
     def validate(self):

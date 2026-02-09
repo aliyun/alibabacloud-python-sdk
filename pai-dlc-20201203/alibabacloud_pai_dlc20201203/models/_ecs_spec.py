@@ -24,19 +24,42 @@ class EcsSpec(DaraModel):
         spot_stock_status: str = None,
         supported_gpudrivers: List[str] = None,
     ):
+        # The accelerator type. Valid values:
+        # 
+        # *   CPU
+        # *   GPU
         self.accelerator_type = accelerator_type
+        # The number of CPU cores.
         self.cpu = cpu
+        # The default GPU driver version.
         self.default_gpudriver = default_gpudriver
+        # The number of GPUs.
         self.gpu = gpu
+        # The GPU memory size.
         self.gpu_memory = gpu_memory
+        # The GPU type.
         self.gpu_type = gpu_type
+        # The instance type.
         self.instance_type = instance_type
+        # Indicates whether the instance type is available. Valid values:
+        # 
+        # *   true
+        # *   false
         self.is_available = is_available
+        # The memory size. Unit: MiB or GiB.
         self.memory = memory
+        # The discount on the current price of the preemptible instance.
         self.non_protect_spot_discount = non_protect_spot_discount
+        # The billing methods.
         self.payment_types = payment_types
+        # The resource type. Valid values:
+        # 
+        # *   ECS
+        # *   Lingjun
         self.resource_type = resource_type
+        # The inventory status of preemptible instance.
         self.spot_stock_status = spot_stock_status
+        # The GPU driver versions.
         self.supported_gpudrivers = supported_gpudrivers
 
     def validate(self):

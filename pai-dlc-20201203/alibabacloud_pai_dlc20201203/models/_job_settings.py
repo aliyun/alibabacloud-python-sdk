@@ -12,6 +12,7 @@ class JobSettings(DaraModel):
         self,
         advanced_settings: Dict[str, Any] = None,
         allocate_all_rdmadevices: bool = None,
+        allow_unschedulable_nodes: bool = None,
         business_user_id: str = None,
         caller: str = None,
         data_juicer_config: main_models.DataJuicerConfig = None,
@@ -33,27 +34,65 @@ class JobSettings(DaraModel):
         sanity_check_args: str = None,
         tags: Dict[str, str] = None,
     ):
+        # The additional advanced parameter configurations.
         self.advanced_settings = advanced_settings
+        # Whether to mount all RDMA network interface controllers
         self.allocate_all_rdmadevices = allocate_all_rdmadevices
+        self.allow_unschedulable_nodes = allow_unschedulable_nodes
+        # The ID of the user associated with the job.
         self.business_user_id = business_user_id
+        # The caller.
         self.caller = caller
         self.data_juicer_config = data_juicer_config
+        # Whether inventory check is skipped. Valid values:
+        # 
+        # *   true
+        # *   false
         self.disable_ecs_stock_check = disable_ecs_stock_check
+        # The NVIDIA driver configurations.
         self.driver = driver
+        # Whether the CPU affinity is enabled. This parameter takes effect only when you use subscription general computing resources.
         self.enable_cpuaffinity = enable_cpuaffinity
         self.enable_dswdev = enable_dswdev
+        # Whether fault tolerance monitoring is enabled for the job. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_error_monitoring_in_aimaster = enable_error_monitoring_in_aimaster
+        # Whether data is written to Object Storage Service (OSS) in append mode. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_oss_append = enable_oss_append
+        # Whether RDMA is enabled for the job. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_rdma = enable_rdma
+        # Whether sanity check is enabled for the job. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_sanity_check = enable_sanity_check
+        # Whether tidal resources are allowed for the job. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_tide_resource = enable_tide_resource
+        # The configuration parameters after you enable fault tolerance monitoring. For example, you can specify whether to enable log hang-based detection.
         self.error_monitoring_args = error_monitoring_args
+        # The retention period after the job ends. Unit: minutes.
         self.job_reserved_minutes = job_reserved_minutes
+        # The retention policy after the job ends.
         self.job_reserved_policy = job_reserved_policy
         self.model_config = model_config
+        # Whether the job accepts oversold resources. Valid values: ForbiddenQuotaOverSold, AcceptQuotaOverSold, and ForceQuotaOverSold.
         self.oversold_type = oversold_type
+        # The pipeline ID.
         self.pipeline_id = pipeline_id
+        # The configuration parameters for sanity check.
         self.sanity_check_args = sanity_check_args
+        # The custom tag.
         self.tags = tags
 
     def validate(self):
@@ -72,6 +111,9 @@ class JobSettings(DaraModel):
 
         if self.allocate_all_rdmadevices is not None:
             result['AllocateAllRDMADevices'] = self.allocate_all_rdmadevices
+
+        if self.allow_unschedulable_nodes is not None:
+            result['AllowUnschedulableNodes'] = self.allow_unschedulable_nodes
 
         if self.business_user_id is not None:
             result['BusinessUserId'] = self.business_user_id
@@ -142,6 +184,9 @@ class JobSettings(DaraModel):
 
         if m.get('AllocateAllRDMADevices') is not None:
             self.allocate_all_rdmadevices = m.get('AllocateAllRDMADevices')
+
+        if m.get('AllowUnschedulableNodes') is not None:
+            self.allow_unschedulable_nodes = m.get('AllowUnschedulableNodes')
 
         if m.get('BusinessUserId') is not None:
             self.business_user_id = m.get('BusinessUserId')
