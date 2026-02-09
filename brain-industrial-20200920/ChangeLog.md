@@ -1,3 +1,9 @@
+2026-02-09 Version: 2.1.3
+- Update API ListAivppResources: add request parameters InstanceType.
+- Update API ListAivppResources: add response parameters Body.Data.$.ConnectNum.
+- Update API ListAivppResources: add response parameters Body.Data.$.MessageTps.
+
+
 2025-10-17 Version: 2.1.2
 - Update API CreateLoadForecastByFileUrlJob: add request parameters DataMode.
 - Update API CreateLoadForecastByFileUrlJob: add request parameters ForecastHorizon.
