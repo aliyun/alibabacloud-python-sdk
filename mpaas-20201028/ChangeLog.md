@@ -1,3 +1,16 @@
+2026-02-09 Version: 3.1.0
+- Support API CreateMcubeHotpatchResource.
+- Support API CreateMcubeHotpatchRollbackTask.
+- Support API CreateMcubeHotpatchTask.
+- Support API DeleteMcubeHotpatchResource.
+- Support API GetGameReviewByStatus.
+- Support API ListMcubeHotpatchResources.
+- Support API ListMcubeHotpatchTasks.
+- Support API QueryMcubeHotpatchTaskDetail.
+- Support API QueryMscpRiskInfo.
+- Support API UpdateMcubeHotpatchTaskStatus.
+
+
 2025-12-09 Version: 3.0.2
 - Generated python 2020-10-28 for mPaaS.
 
