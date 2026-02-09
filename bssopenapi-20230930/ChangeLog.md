@@ -1,3 +1,6 @@
+2026-02-09 Version: 1.6.2
+- Generated python 2023-09-30 for BssOpenApi.
+
 2025-09-10 Version: 1.6.0
 - Support API CheckAccountExist.
 - Support API PayOrder.
