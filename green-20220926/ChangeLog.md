@@ -1,13 +1,5 @@
-2026-01-16 Version: 1.5.6
-- Update API CreatStockOssCheckTask: add request parameters BucketPrefixFilterConfig.
-- Update API CreatePreCheck: add request parameters BucketPrefixFilterConfig.
-- Update API GetOssCheckTaskInfo: add response parameters Body.Config.BucketPrefixFilterConfig.
-
-
-2026-01-12 Version: 1.5.5
-- Update API GetScanResult: add response parameters Body.Data.Items.$.AppId.
-- Update API GetScanResult: add response parameters Body.Data.Items.$.ImageUrls.
-- Update API LlmStreamChat: add request parameters Channel.
+2026-02-09 Version: 1.5.7
+- Update API GetCipStats: add request parameters Query.
 
 
 2025-12-23 Version: 1.5.4

@@ -11,7 +11,6 @@ from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
 from darabonba.core import DaraCore as DaraCore
-from darabonba.core import DaraCore
 from darabonba.runtime import RuntimeOptions
 
 """
@@ -3070,6 +3069,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetCipStatsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.service_code):
@@ -3116,6 +3117,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetCipStatsResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.service_code):
@@ -5778,17 +5781,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.LlmStreamChatResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.LlmStreamChatResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def llm_stream_chat_with_sse_async(
         self,
@@ -5823,17 +5826,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.LlmStreamChatResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.LlmStreamChatResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def llm_stream_chat_with_options(
         self,

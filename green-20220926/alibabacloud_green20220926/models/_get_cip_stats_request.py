@@ -10,6 +10,7 @@ class GetCipStatsRequest(DaraModel):
         by_month: bool = None,
         end_date: str = None,
         label: str = None,
+        query: str = None,
         region_id: str = None,
         resource_type: str = None,
         service_code: str = None,
@@ -20,6 +21,7 @@ class GetCipStatsRequest(DaraModel):
         self.by_month = by_month
         self.end_date = end_date
         self.label = label
+        self.query = query
         self.region_id = region_id
         self.resource_type = resource_type
         self.service_code = service_code
@@ -43,6 +45,9 @@ class GetCipStatsRequest(DaraModel):
 
         if self.label is not None:
             result['Label'] = self.label
+
+        if self.query is not None:
+            result['Query'] = self.query
 
         if self.region_id is not None:
             result['RegionId'] = self.region_id
@@ -74,6 +79,9 @@ class GetCipStatsRequest(DaraModel):
 
         if m.get('Label') is not None:
             self.label = m.get('Label')
+
+        if m.get('Query') is not None:
+            self.query = m.get('Query')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
