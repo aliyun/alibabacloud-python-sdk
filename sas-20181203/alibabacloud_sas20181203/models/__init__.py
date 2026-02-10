@@ -3075,6 +3075,7 @@ from ._describe_property_proc_detail_response_body import DescribePropertyProcDe
 from ._describe_property_proc_detail_response_body import DescribePropertyProcDetailResponseBodyPropertys
 from ._describe_property_proc_item_response_body import DescribePropertyProcItemResponseBodyPageInfo
 from ._describe_property_proc_item_response_body import DescribePropertyProcItemResponseBodyPropertyItems
+from ._describe_property_sca_detail_request import DescribePropertyScaDetailRequestSearchCriteriaList
 from ._describe_property_sca_detail_response_body import DescribePropertyScaDetailResponseBodyPageInfo
 from ._describe_property_sca_detail_response_body import DescribePropertyScaDetailResponseBodyPropertys
 from ._describe_property_sca_item_response_body import DescribePropertyScaItemResponseBodyPageInfo
@@ -3223,6 +3224,7 @@ from ._describe_white_list_effective_assets_response_body import DescribeWhiteLi
 from ._describe_white_list_process_response_body import DescribeWhiteListProcessResponseBodyProcesses
 from ._describe_white_list_strategy_list_response_body import DescribeWhiteListStrategyListResponseBodyStrategies
 from ._describe_white_list_strategy_statistics_response_body import DescribeWhiteListStrategyStatisticsResponseBodyStrategies
+from ._export_vul_request import ExportVulRequestVulEntityList
 from ._find_container_network_connect_request import FindContainerNetworkConnectRequestDstNode
 from ._find_container_network_connect_request import FindContainerNetworkConnectRequestSrcNode
 from ._find_container_network_connect_response_body import FindContainerNetworkConnectResponseBodyConnectsDstContainer
@@ -6847,6 +6849,7 @@ __all__ = [
     DescribePropertyProcDetailResponseBodyPropertys,
     DescribePropertyProcItemResponseBodyPageInfo,
     DescribePropertyProcItemResponseBodyPropertyItems,
+    DescribePropertyScaDetailRequestSearchCriteriaList,
     DescribePropertyScaDetailResponseBodyPageInfo,
     DescribePropertyScaDetailResponseBodyPropertys,
     DescribePropertyScaItemResponseBodyPageInfo,
@@ -6995,6 +6998,7 @@ __all__ = [
     DescribeWhiteListProcessResponseBodyProcesses,
     DescribeWhiteListStrategyListResponseBodyStrategies,
     DescribeWhiteListStrategyStatisticsResponseBodyStrategies,
+    ExportVulRequestVulEntityList,
     FindContainerNetworkConnectRequestDstNode,
     FindContainerNetworkConnectRequestSrcNode,
     FindContainerNetworkConnectResponseBodyConnectsDstContainer,

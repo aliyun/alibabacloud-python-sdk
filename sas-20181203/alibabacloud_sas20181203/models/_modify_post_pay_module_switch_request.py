@@ -102,6 +102,7 @@ class ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj(DaraModel):
     def __init__(
         self,
         agentless: int = None,
+        ai_digital: int = None,
         anti_ransomware: int = None,
         basic_service: int = None,
         cspm: int = None,
@@ -118,6 +119,7 @@ class ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj(DaraModel):
         # - **0**: Off
         # - **1**: On
         self.agentless = agentless
+        self.ai_digital = ai_digital
         # Anti-Ransomware Module. Values:
         # - **0**: Off
         # - **1**: On
@@ -176,6 +178,9 @@ class ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj(DaraModel):
         if self.agentless is not None:
             result['Agentless'] = self.agentless
 
+        if self.ai_digital is not None:
+            result['AiDigital'] = self.ai_digital
+
         if self.anti_ransomware is not None:
             result['AntiRansomware'] = self.anti_ransomware
 
@@ -215,6 +220,9 @@ class ModifyPostPayModuleSwitchRequestPostPayModuleSwitchObj(DaraModel):
         m = m or dict()
         if m.get('Agentless') is not None:
             self.agentless = m.get('Agentless')
+
+        if m.get('AiDigital') is not None:
+            self.ai_digital = m.get('AiDigital')
 
         if m.get('AntiRansomware') is not None:
             self.anti_ransomware = m.get('AntiRansomware')

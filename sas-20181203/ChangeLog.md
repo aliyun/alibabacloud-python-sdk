@@ -1,3 +1,19 @@
+2026-02-10 Version: 8.0.1
+- Update API DescribeImageSensitiveFileList: add request parameters SensitiveKeyList.
+- Update API DescribePropertyScaDetail: add request parameters SearchCriteriaList.
+- Update API DescribeVersionConfig: add response parameters Body.IntelligentAnalysisFlow.
+- Update API DescribeVersionConfig: add response parameters Body.OnboardedAssets.
+- Update API ExportVul: add request parameters VulEntityList.
+- Update API GetAssetsPropertyDetail: add response parameters Body.Propertys.$.ImageDigest.
+- Update API GetAssetsPropertyDetail: add response parameters Body.Propertys.$.RepoName.
+- Update API GetAssetsPropertyDetail: add response parameters Body.Propertys.$.RepoNamespace.
+- Update API GetAssetsPropertyDetail: add response parameters Body.Propertys.$.Tag.
+- Update API GetCheckCountStatistic: add request parameters Lang.
+- Update API GetCheckCountStatistic: add response parameters Body.CheckCountStatisticDTO.CheckCountStatisticItems.$.CheckShowName.
+- Update API GetCheckCountStatistic: add response parameters Body.CheckCountStatisticDTO.CheckCountStatisticItems.$.VendorShowName.
+- Update API ModifyPostPayModuleSwitch: add request parameters PostPayModuleSwitchObj.AiDigital.
+
+
 2026-02-10 Version: 8.0.0
 - Update API DescribeCloudCenterInstances: add response parameters Body.Instances.$.BindFileProtectType.
 - Update API DescribeCloudVendorAccountAKList: add request parameters Vendor.

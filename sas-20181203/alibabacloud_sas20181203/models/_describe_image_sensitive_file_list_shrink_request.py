@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class DescribeImageSensitiveFileListShrinkRequest(DaraModel):
@@ -15,6 +17,7 @@ class DescribeImageSensitiveFileListShrinkRequest(DaraModel):
         page_size: int = None,
         risk_level: str = None,
         scan_range_shrink: str = None,
+        sensitive_key_list: List[str] = None,
     ):
         # The value of the sensitive file type.
         self.criteria = criteria
@@ -161,6 +164,7 @@ class DescribeImageSensitiveFileListShrinkRequest(DaraModel):
         # *   **image**
         # *   **container**
         self.scan_range_shrink = scan_range_shrink
+        self.sensitive_key_list = sensitive_key_list
 
     def validate(self):
         pass
@@ -194,6 +198,9 @@ class DescribeImageSensitiveFileListShrinkRequest(DaraModel):
         if self.scan_range_shrink is not None:
             result['ScanRange'] = self.scan_range_shrink
 
+        if self.sensitive_key_list is not None:
+            result['SensitiveKeyList'] = self.sensitive_key_list
+
         return result
 
     def from_map(self, m: dict = None):
@@ -221,6 +228,9 @@ class DescribeImageSensitiveFileListShrinkRequest(DaraModel):
 
         if m.get('ScanRange') is not None:
             self.scan_range_shrink = m.get('ScanRange')
+
+        if m.get('SensitiveKeyList') is not None:
+            self.sensitive_key_list = m.get('SensitiveKeyList')
 
         return self
 

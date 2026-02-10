@@ -25560,6 +25560,8 @@ class Client(OpenApiClient):
             query['RiskLevel'] = request.risk_level
         if not DaraCore.is_null(request.scan_range_shrink):
             query['ScanRange'] = request.scan_range_shrink
+        if not DaraCore.is_null(request.sensitive_key_list):
+            query['SensitiveKeyList'] = request.sensitive_key_list
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -25606,6 +25608,8 @@ class Client(OpenApiClient):
             query['RiskLevel'] = request.risk_level
         if not DaraCore.is_null(request.scan_range_shrink):
             query['ScanRange'] = request.scan_range_shrink
+        if not DaraCore.is_null(request.sensitive_key_list):
+            query['SensitiveKeyList'] = request.sensitive_key_list
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -28412,6 +28416,8 @@ class Client(OpenApiClient):
             query['ScaNamePattern'] = request.sca_name_pattern
         if not DaraCore.is_null(request.sca_version):
             query['ScaVersion'] = request.sca_version
+        if not DaraCore.is_null(request.search_criteria_list):
+            query['SearchCriteriaList'] = request.search_criteria_list
         if not DaraCore.is_null(request.search_info):
             query['SearchInfo'] = request.search_info
         if not DaraCore.is_null(request.search_info_sub):
@@ -28482,6 +28488,8 @@ class Client(OpenApiClient):
             query['ScaNamePattern'] = request.sca_name_pattern
         if not DaraCore.is_null(request.sca_version):
             query['ScaVersion'] = request.sca_version
+        if not DaraCore.is_null(request.search_criteria_list):
+            query['SearchCriteriaList'] = request.search_criteria_list
         if not DaraCore.is_null(request.search_info):
             query['SearchInfo'] = request.search_info
         if not DaraCore.is_null(request.search_info_sub):
@@ -38756,6 +38764,8 @@ class Client(OpenApiClient):
             query['Uuids'] = request.uuids
         if not DaraCore.is_null(request.vpc_instance_ids):
             query['VpcInstanceIds'] = request.vpc_instance_ids
+        if not DaraCore.is_null(request.vul_entity_list):
+            query['VulEntityList'] = request.vul_entity_list
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -38816,6 +38826,8 @@ class Client(OpenApiClient):
             query['Uuids'] = request.uuids
         if not DaraCore.is_null(request.vpc_instance_ids):
             query['VpcInstanceIds'] = request.vpc_instance_ids
+        if not DaraCore.is_null(request.vul_entity_list):
+            query['VulEntityList'] = request.vul_entity_list
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -41174,6 +41186,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetCheckCountStatisticResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
         if not DaraCore.is_null(request.statistic_type):
             query['StatisticType'] = request.statistic_type
         if not DaraCore.is_null(request.task_sources):
@@ -41206,6 +41220,8 @@ class Client(OpenApiClient):
     ) -> main_models.GetCheckCountStatisticResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.lang):
+            query['Lang'] = request.lang
         if not DaraCore.is_null(request.statistic_type):
             query['StatisticType'] = request.statistic_type
         if not DaraCore.is_null(request.task_sources):

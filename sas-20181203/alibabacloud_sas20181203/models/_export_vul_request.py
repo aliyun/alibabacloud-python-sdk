@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_sas20181203 import models as main_models
 from darabonba.model import DaraModel
 
 class ExportVulRequest(DaraModel):
@@ -24,6 +27,7 @@ class ExportVulRequest(DaraModel):
         type: str = None,
         uuids: str = None,
         vpc_instance_ids: str = None,
+        vul_entity_list: List[main_models.ExportVulRequestVulEntityList] = None,
     ):
         # The name of the vulnerability.
         self.alias_name = alias_name
@@ -98,9 +102,13 @@ class ExportVulRequest(DaraModel):
         # 
         # > You can call the [DescribeVpcList](~~DescribeVpcList~~) operation to query the IDs of VPCs.
         self.vpc_instance_ids = vpc_instance_ids
+        self.vul_entity_list = vul_entity_list
 
     def validate(self):
-        pass
+        if self.vul_entity_list:
+            for v1 in self.vul_entity_list:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -158,6 +166,11 @@ class ExportVulRequest(DaraModel):
         if self.vpc_instance_ids is not None:
             result['VpcInstanceIds'] = self.vpc_instance_ids
 
+        result['VulEntityList'] = []
+        if self.vul_entity_list is not None:
+            for k1 in self.vul_entity_list:
+                result['VulEntityList'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -212,6 +225,47 @@ class ExportVulRequest(DaraModel):
 
         if m.get('VpcInstanceIds') is not None:
             self.vpc_instance_ids = m.get('VpcInstanceIds')
+
+        self.vul_entity_list = []
+        if m.get('VulEntityList') is not None:
+            for k1 in m.get('VulEntityList'):
+                temp_model = main_models.ExportVulRequestVulEntityList()
+                self.vul_entity_list.append(temp_model.from_map(k1))
+
+        return self
+
+class ExportVulRequestVulEntityList(DaraModel):
+    def __init__(
+        self,
+        entity_name: str = None,
+        entity_version: str = None,
+    ):
+        self.entity_name = entity_name
+        self.entity_version = entity_version
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.entity_name is not None:
+            result['EntityName'] = self.entity_name
+
+        if self.entity_version is not None:
+            result['EntityVersion'] = self.entity_version
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('EntityName') is not None:
+            self.entity_name = m.get('EntityName')
+
+        if m.get('EntityVersion') is not None:
+            self.entity_version = m.get('EntityVersion')
 
         return self
 

@@ -75,6 +75,7 @@ class GetAssetsPropertyDetailResponseBodyPropertys(DaraModel):
         end_point: str = None,
         file: str = None,
         filepath: str = None,
+        image_digest: str = None,
         image_name: str = None,
         installation_path: str = None,
         instance_id: str = None,
@@ -94,9 +95,12 @@ class GetAssetsPropertyDetailResponseBodyPropertys(DaraModel):
         port: str = None,
         process_started: int = None,
         region_id: str = None,
+        repo_name: str = None,
+        repo_namespace: str = None,
         server_type: str = None,
         size: int = None,
         skills_name: str = None,
+        tag: str = None,
         transport_name: str = None,
         used_by_count: int = None,
         user: str = None,
@@ -119,6 +123,7 @@ class GetAssetsPropertyDetailResponseBodyPropertys(DaraModel):
         # Kernel module file path.
         # > Returned only when **Biz** is **lkm**.
         self.filepath = filepath
+        self.image_digest = image_digest
         # Image name.
         self.image_name = image_name
         # AI tool installation path
@@ -164,6 +169,8 @@ class GetAssetsPropertyDetailResponseBodyPropertys(DaraModel):
         self.process_started = process_started
         # The ID of the region where the instance is located.
         self.region_id = region_id
+        self.repo_name = repo_name
+        self.repo_namespace = repo_namespace
         # Web site type.
         # > Returned only when **Biz** is **web_server**.
         self.server_type = server_type
@@ -171,6 +178,7 @@ class GetAssetsPropertyDetailResponseBodyPropertys(DaraModel):
         # > Returned only when **Biz** is **lkm**.
         self.size = size
         self.skills_name = skills_name
+        self.tag = tag
         self.transport_name = transport_name
         # Number of dependencies for the kernel module.
         # > Returned only when **Biz** is **lkm**.
@@ -215,6 +223,9 @@ class GetAssetsPropertyDetailResponseBodyPropertys(DaraModel):
 
         if self.filepath is not None:
             result['Filepath'] = self.filepath
+
+        if self.image_digest is not None:
+            result['ImageDigest'] = self.image_digest
 
         if self.image_name is not None:
             result['ImageName'] = self.image_name
@@ -273,6 +284,12 @@ class GetAssetsPropertyDetailResponseBodyPropertys(DaraModel):
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
+        if self.repo_name is not None:
+            result['RepoName'] = self.repo_name
+
+        if self.repo_namespace is not None:
+            result['RepoNamespace'] = self.repo_namespace
+
         if self.server_type is not None:
             result['ServerType'] = self.server_type
 
@@ -281,6 +298,9 @@ class GetAssetsPropertyDetailResponseBodyPropertys(DaraModel):
 
         if self.skills_name is not None:
             result['SkillsName'] = self.skills_name
+
+        if self.tag is not None:
+            result['Tag'] = self.tag
 
         if self.transport_name is not None:
             result['TransportName'] = self.transport_name
@@ -324,6 +344,9 @@ class GetAssetsPropertyDetailResponseBodyPropertys(DaraModel):
 
         if m.get('Filepath') is not None:
             self.filepath = m.get('Filepath')
+
+        if m.get('ImageDigest') is not None:
+            self.image_digest = m.get('ImageDigest')
 
         if m.get('ImageName') is not None:
             self.image_name = m.get('ImageName')
@@ -382,6 +405,12 @@ class GetAssetsPropertyDetailResponseBodyPropertys(DaraModel):
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
 
+        if m.get('RepoName') is not None:
+            self.repo_name = m.get('RepoName')
+
+        if m.get('RepoNamespace') is not None:
+            self.repo_namespace = m.get('RepoNamespace')
+
         if m.get('ServerType') is not None:
             self.server_type = m.get('ServerType')
 
@@ -390,6 +419,9 @@ class GetAssetsPropertyDetailResponseBodyPropertys(DaraModel):
 
         if m.get('SkillsName') is not None:
             self.skills_name = m.get('SkillsName')
+
+        if m.get('Tag') is not None:
+            self.tag = m.get('Tag')
 
         if m.get('TransportName') is not None:
             self.transport_name = m.get('TransportName')

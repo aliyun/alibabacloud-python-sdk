@@ -17,6 +17,7 @@ class DescribeImageSensitiveFileListRequest(DaraModel):
         page_size: int = None,
         risk_level: str = None,
         scan_range: List[str] = None,
+        sensitive_key_list: List[str] = None,
     ):
         # The value of the sensitive file type.
         self.criteria = criteria
@@ -163,6 +164,7 @@ class DescribeImageSensitiveFileListRequest(DaraModel):
         # *   **image**
         # *   **container**
         self.scan_range = scan_range
+        self.sensitive_key_list = sensitive_key_list
 
     def validate(self):
         pass
@@ -196,6 +198,9 @@ class DescribeImageSensitiveFileListRequest(DaraModel):
         if self.scan_range is not None:
             result['ScanRange'] = self.scan_range
 
+        if self.sensitive_key_list is not None:
+            result['SensitiveKeyList'] = self.sensitive_key_list
+
         return result
 
     def from_map(self, m: dict = None):
@@ -223,6 +228,9 @@ class DescribeImageSensitiveFileListRequest(DaraModel):
 
         if m.get('ScanRange') is not None:
             self.scan_range = m.get('ScanRange')
+
+        if m.get('SensitiveKeyList') is not None:
+            self.sensitive_key_list = m.get('SensitiveKeyList')
 
         return self
 

@@ -9,10 +9,12 @@ from darabonba.model import DaraModel
 class GetCheckCountStatisticRequest(DaraModel):
     def __init__(
         self,
+        lang: str = None,
         statistic_type: str = None,
         task_sources: List[str] = None,
         vendors: List[str] = None,
     ):
+        self.lang = lang
         # The type of the statistics. Valid values:
         # 
         # *   **user**: the top five users that are granted excessive permissions.
@@ -33,6 +35,9 @@ class GetCheckCountStatisticRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.lang is not None:
+            result['Lang'] = self.lang
+
         if self.statistic_type is not None:
             result['StatisticType'] = self.statistic_type
 
@@ -46,6 +51,9 @@ class GetCheckCountStatisticRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Lang') is not None:
+            self.lang = m.get('Lang')
+
         if m.get('StatisticType') is not None:
             self.statistic_type = m.get('StatisticType')
 

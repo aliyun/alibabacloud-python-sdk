@@ -2,6 +2,9 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
+from alibabacloud_sas20181203 import models as main_models
 from darabonba.model import DaraModel
 
 class DescribePropertyScaDetailRequest(DaraModel):
@@ -22,6 +25,7 @@ class DescribePropertyScaDetailRequest(DaraModel):
         sca_name: str = None,
         sca_name_pattern: str = None,
         sca_version: str = None,
+        search_criteria_list: List[main_models.DescribePropertyScaDetailRequestSearchCriteriaList] = None,
         search_info: str = None,
         search_info_sub: str = None,
         search_item: str = None,
@@ -83,6 +87,7 @@ class DescribePropertyScaDetailRequest(DaraModel):
         self.sca_name_pattern = sca_name_pattern
         # The version of the middleware, database, or web service.
         self.sca_version = sca_version
+        self.search_criteria_list = search_criteria_list
         # The search keyword. You must specify this parameter based on the value of the **SearchItem** parameter.
         # 
         # *   If the **SearchItem** parameter is set to **name**, you must enter the name of an asset fingerprint.
@@ -133,7 +138,10 @@ class DescribePropertyScaDetailRequest(DaraModel):
         self.uuid = uuid
 
     def validate(self):
-        pass
+        if self.search_criteria_list:
+            for v1 in self.search_criteria_list:
+                 if v1:
+                    v1.validate()
 
     def to_map(self):
         result = dict()
@@ -184,6 +192,11 @@ class DescribePropertyScaDetailRequest(DaraModel):
 
         if self.sca_version is not None:
             result['ScaVersion'] = self.sca_version
+
+        result['SearchCriteriaList'] = []
+        if self.search_criteria_list is not None:
+            for k1 in self.search_criteria_list:
+                result['SearchCriteriaList'].append(k1.to_map() if k1 else None)
 
         if self.search_info is not None:
             result['SearchInfo'] = self.search_info
@@ -255,6 +268,12 @@ class DescribePropertyScaDetailRequest(DaraModel):
         if m.get('ScaVersion') is not None:
             self.sca_version = m.get('ScaVersion')
 
+        self.search_criteria_list = []
+        if m.get('SearchCriteriaList') is not None:
+            for k1 in m.get('SearchCriteriaList'):
+                temp_model = main_models.DescribePropertyScaDetailRequestSearchCriteriaList()
+                self.search_criteria_list.append(temp_model.from_map(k1))
+
         if m.get('SearchInfo') is not None:
             self.search_info = m.get('SearchInfo')
 
@@ -275,6 +294,41 @@ class DescribePropertyScaDetailRequest(DaraModel):
 
         if m.get('Uuid') is not None:
             self.uuid = m.get('Uuid')
+
+        return self
+
+class DescribePropertyScaDetailRequestSearchCriteriaList(DaraModel):
+    def __init__(
+        self,
+        name: str = None,
+        value: str = None,
+    ):
+        self.name = name
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
 
         return self
 

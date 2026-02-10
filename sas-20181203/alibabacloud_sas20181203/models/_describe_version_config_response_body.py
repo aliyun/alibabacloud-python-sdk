@@ -21,6 +21,7 @@ class DescribeVersionConfigResponseBody(DaraModel):
         image_scan_capacity: int = None,
         instance_buy_type: int = None,
         instance_id: str = None,
+        intelligent_analysis_flow: int = None,
         is_new_container_version: bool = None,
         is_new_multi_version: bool = None,
         is_over_balance: bool = None,
@@ -32,6 +33,7 @@ class DescribeVersionConfigResponseBody(DaraModel):
         merged_version: int = None,
         multi_version: str = None,
         new_threat_analysis: int = None,
+        onboarded_assets: int = None,
         open_time: int = None,
         post_pay_host_version: int = None,
         post_pay_instance_id: str = None,
@@ -106,6 +108,7 @@ class DescribeVersionConfigResponseBody(DaraModel):
         self.instance_buy_type = instance_buy_type
         # The ID of purchased Security Center.
         self.instance_id = instance_id
+        self.intelligent_analysis_flow = intelligent_analysis_flow
         # Indicates whether Security Center runs the latest version of the Ultimate edition.
         # 
         # *   **true**: yes
@@ -147,6 +150,7 @@ class DescribeVersionConfigResponseBody(DaraModel):
         # *   **0**: no
         # *   **1**: yes
         self.new_threat_analysis = new_threat_analysis
+        self.onboarded_assets = onboarded_assets
         # The timestamp when Security Center is purchased. Unit: milliseconds.
         self.open_time = open_time
         # When activating the pay-as-you-go service for host and container security, this represents the highest protection version for the already bound assets. The values are as follows: - **1**: Free Edition - **3**: Enterprise Edition - **5**: Advanced Edition - **6**: Anti-Virus Edition - **7**: Flagship Edition
@@ -269,6 +273,9 @@ class DescribeVersionConfigResponseBody(DaraModel):
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
+        if self.intelligent_analysis_flow is not None:
+            result['IntelligentAnalysisFlow'] = self.intelligent_analysis_flow
+
         if self.is_new_container_version is not None:
             result['IsNewContainerVersion'] = self.is_new_container_version
 
@@ -301,6 +308,9 @@ class DescribeVersionConfigResponseBody(DaraModel):
 
         if self.new_threat_analysis is not None:
             result['NewThreatAnalysis'] = self.new_threat_analysis
+
+        if self.onboarded_assets is not None:
+            result['OnboardedAssets'] = self.onboarded_assets
 
         if self.open_time is not None:
             result['OpenTime'] = self.open_time
@@ -411,6 +421,9 @@ class DescribeVersionConfigResponseBody(DaraModel):
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 
+        if m.get('IntelligentAnalysisFlow') is not None:
+            self.intelligent_analysis_flow = m.get('IntelligentAnalysisFlow')
+
         if m.get('IsNewContainerVersion') is not None:
             self.is_new_container_version = m.get('IsNewContainerVersion')
 
@@ -443,6 +456,9 @@ class DescribeVersionConfigResponseBody(DaraModel):
 
         if m.get('NewThreatAnalysis') is not None:
             self.new_threat_analysis = m.get('NewThreatAnalysis')
+
+        if m.get('OnboardedAssets') is not None:
+            self.onboarded_assets = m.get('OnboardedAssets')
 
         if m.get('OpenTime') is not None:
             self.open_time = m.get('OpenTime')

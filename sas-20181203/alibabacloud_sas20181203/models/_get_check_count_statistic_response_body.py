@@ -98,6 +98,7 @@ class GetCheckCountStatisticResponseBodyCheckCountStatisticDTO(DaraModel):
 class GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisticItems(DaraModel):
     def __init__(
         self,
+        check_show_name: str = None,
         cores: int = None,
         instance_id: str = None,
         instance_name: str = None,
@@ -112,8 +113,10 @@ class GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisti
         risk_count: int = None,
         uuid: str = None,
         vendor: int = None,
+        vendor_show_name: str = None,
         vpc_instance_id: str = None,
     ):
+        self.check_show_name = check_show_name
         # The number of the CPU cores used by the host instance.
         self.cores = cores
         # The instance ID of the cloud service.
@@ -205,6 +208,7 @@ class GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisti
         # *   **MICROSOFT**: Microsoft Azure.
         # *   **AWS**: AWS.
         self.vendor = vendor
+        self.vendor_show_name = vendor_show_name
         # The ID of the VPC to which the host instance belongs.
         self.vpc_instance_id = vpc_instance_id
 
@@ -216,6 +220,9 @@ class GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisti
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.check_show_name is not None:
+            result['CheckShowName'] = self.check_show_name
+
         if self.cores is not None:
             result['Cores'] = self.cores
 
@@ -258,6 +265,9 @@ class GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisti
         if self.vendor is not None:
             result['Vendor'] = self.vendor
 
+        if self.vendor_show_name is not None:
+            result['VendorShowName'] = self.vendor_show_name
+
         if self.vpc_instance_id is not None:
             result['VpcInstanceId'] = self.vpc_instance_id
 
@@ -265,6 +275,9 @@ class GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisti
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('CheckShowName') is not None:
+            self.check_show_name = m.get('CheckShowName')
+
         if m.get('Cores') is not None:
             self.cores = m.get('Cores')
 
@@ -306,6 +319,9 @@ class GetCheckCountStatisticResponseBodyCheckCountStatisticDTOCheckCountStatisti
 
         if m.get('Vendor') is not None:
             self.vendor = m.get('Vendor')
+
+        if m.get('VendorShowName') is not None:
+            self.vendor_show_name = m.get('VendorShowName')
 
         if m.get('VpcInstanceId') is not None:
             self.vpc_instance_id = m.get('VpcInstanceId')
