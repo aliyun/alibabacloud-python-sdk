@@ -2,15 +2,13 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
-
 from darabonba.model import DaraModel
 
-class ListMultimodalSearchTaskRequest(DaraModel):
+class ListMultimodalSearchTaskShrinkRequest(DaraModel):
     def __init__(
         self,
         dbcluster_id: str = None,
-        dataset_ids: List[str] = None,
+        dataset_ids_shrink: str = None,
         input_field: str = None,
         model_mode: str = None,
         page_number: int = None,
@@ -18,7 +16,7 @@ class ListMultimodalSearchTaskRequest(DaraModel):
     ):
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
-        self.dataset_ids = dataset_ids
+        self.dataset_ids_shrink = dataset_ids_shrink
         self.input_field = input_field
         self.model_mode = model_mode
         self.page_number = page_number
@@ -35,8 +33,8 @@ class ListMultimodalSearchTaskRequest(DaraModel):
         if self.dbcluster_id is not None:
             result['DBClusterId'] = self.dbcluster_id
 
-        if self.dataset_ids is not None:
-            result['DatasetIds'] = self.dataset_ids
+        if self.dataset_ids_shrink is not None:
+            result['DatasetIds'] = self.dataset_ids_shrink
 
         if self.input_field is not None:
             result['InputField'] = self.input_field
@@ -58,7 +56,7 @@ class ListMultimodalSearchTaskRequest(DaraModel):
             self.dbcluster_id = m.get('DBClusterId')
 
         if m.get('DatasetIds') is not None:
-            self.dataset_ids = m.get('DatasetIds')
+            self.dataset_ids_shrink = m.get('DatasetIds')
 
         if m.get('InputField') is not None:
             self.input_field = m.get('InputField')

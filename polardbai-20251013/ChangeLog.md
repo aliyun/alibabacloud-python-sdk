@@ -1,3 +1,20 @@
+2026-02-10 Version: 1.3.0
+- Support API AddOSSMultimodalFineTuneDataset.
+- Support API CreateMultimodalFineTuneDataset.
+- Support API CreateMultimodalLabelStudioService.
+- Support API CreateMultimodalSearchTaskResultFineTuneDataset.
+- Support API DeleteMultimodalFineTuneDataset.
+- Support API DeleteMultimodalLabelStudioService.
+- Support API DeleteOSSMultimodalFineTuneDataset.
+- Support API ListMultimodalFineTuneDataset.
+- Support API ListMultimodalLabelStudioService.
+- Support API UpdateMultimodalFineTuneDataset.
+- Support API UpdateMultimodalLabelStudioServiceWhiteList.
+- Update API ListMultimodalSearchTask: add request parameters DatasetIds.
+- Update API ListMultimodalSearchTask: add request parameters InputField.
+- Update API ListMultimodalSearchTask: add request parameters ModelMode.
+
+
 2026-01-15 Version: 1.2.0
 - Support API ListMultimodalEmbeddingModelMode.
 - Support API ListMultimodalSearchModel.

@@ -11,7 +11,6 @@ from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
 from darabonba.core import DaraCore as DaraCore
-from darabonba.core import DaraCore
 from darabonba.runtime import RuntimeOptions
 
 """
@@ -42,6 +41,84 @@ class Client(OpenApiClient):
         if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+
+    def add_ossmultimodal_fine_tune_dataset_with_options(
+        self,
+        request: main_models.AddOSSMultimodalFineTuneDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddOSSMultimodalFineTuneDatasetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_id):
+            query['DatasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.oss_url):
+            query['OssUrl'] = request.oss_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddOSSMultimodalFineTuneDataset',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddOSSMultimodalFineTuneDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def add_ossmultimodal_fine_tune_dataset_with_options_async(
+        self,
+        request: main_models.AddOSSMultimodalFineTuneDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AddOSSMultimodalFineTuneDatasetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_id):
+            query['DatasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.oss_url):
+            query['OssUrl'] = request.oss_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AddOSSMultimodalFineTuneDataset',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AddOSSMultimodalFineTuneDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def add_ossmultimodal_fine_tune_dataset(
+        self,
+        request: main_models.AddOSSMultimodalFineTuneDatasetRequest,
+    ) -> main_models.AddOSSMultimodalFineTuneDatasetResponse:
+        runtime = RuntimeOptions()
+        return self.add_ossmultimodal_fine_tune_dataset_with_options(request, runtime)
+
+    async def add_ossmultimodal_fine_tune_dataset_async(
+        self,
+        request: main_models.AddOSSMultimodalFineTuneDatasetRequest,
+    ) -> main_models.AddOSSMultimodalFineTuneDatasetResponse:
+        runtime = RuntimeOptions()
+        return await self.add_ossmultimodal_fine_tune_dataset_with_options_async(request, runtime)
 
     def chat_biconfig_create_with_options(
         self,
@@ -1726,17 +1803,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.ChatBIPredictSseResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ChatBIPredictSseResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def chat_bipredict_sse_with_sse_async(
         self,
@@ -1789,17 +1866,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.ChatBIPredictSseResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ChatBIPredictSseResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def chat_bipredict_sse_with_options(
         self,
@@ -2451,6 +2528,174 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_multimodal_dataset_embedding_with_options_async(request, runtime)
 
+    def create_multimodal_fine_tune_dataset_with_options(
+        self,
+        request: main_models.CreateMultimodalFineTuneDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMultimodalFineTuneDatasetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_description):
+            query['DatasetDescription'] = request.dataset_description
+        if not DaraCore.is_null(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMultimodalFineTuneDataset',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMultimodalFineTuneDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_multimodal_fine_tune_dataset_with_options_async(
+        self,
+        request: main_models.CreateMultimodalFineTuneDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMultimodalFineTuneDatasetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_description):
+            query['DatasetDescription'] = request.dataset_description
+        if not DaraCore.is_null(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMultimodalFineTuneDataset',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMultimodalFineTuneDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_multimodal_fine_tune_dataset(
+        self,
+        request: main_models.CreateMultimodalFineTuneDatasetRequest,
+    ) -> main_models.CreateMultimodalFineTuneDatasetResponse:
+        runtime = RuntimeOptions()
+        return self.create_multimodal_fine_tune_dataset_with_options(request, runtime)
+
+    async def create_multimodal_fine_tune_dataset_async(
+        self,
+        request: main_models.CreateMultimodalFineTuneDatasetRequest,
+    ) -> main_models.CreateMultimodalFineTuneDatasetResponse:
+        runtime = RuntimeOptions()
+        return await self.create_multimodal_fine_tune_dataset_with_options_async(request, runtime)
+
+    def create_multimodal_label_studio_service_with_options(
+        self,
+        tmp_req: main_models.CreateMultimodalLabelStudioServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMultimodalLabelStudioServiceResponse:
+        tmp_req.validate()
+        request = main_models.CreateMultimodalLabelStudioServiceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dataset_ids):
+            request.dataset_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_ids, 'DatasetIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_ids_shrink):
+            query['DatasetIds'] = request.dataset_ids_shrink
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMultimodalLabelStudioService',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMultimodalLabelStudioServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_multimodal_label_studio_service_with_options_async(
+        self,
+        tmp_req: main_models.CreateMultimodalLabelStudioServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMultimodalLabelStudioServiceResponse:
+        tmp_req.validate()
+        request = main_models.CreateMultimodalLabelStudioServiceShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dataset_ids):
+            request.dataset_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_ids, 'DatasetIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_ids_shrink):
+            query['DatasetIds'] = request.dataset_ids_shrink
+        if not DaraCore.is_null(request.password):
+            query['Password'] = request.password
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMultimodalLabelStudioService',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMultimodalLabelStudioServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_multimodal_label_studio_service(
+        self,
+        request: main_models.CreateMultimodalLabelStudioServiceRequest,
+    ) -> main_models.CreateMultimodalLabelStudioServiceResponse:
+        runtime = RuntimeOptions()
+        return self.create_multimodal_label_studio_service_with_options(request, runtime)
+
+    async def create_multimodal_label_studio_service_async(
+        self,
+        request: main_models.CreateMultimodalLabelStudioServiceRequest,
+    ) -> main_models.CreateMultimodalLabelStudioServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.create_multimodal_label_studio_service_with_options_async(request, runtime)
+
     def create_multimodal_search_task_with_options(
         self,
         tmp_req: main_models.CreateMultimodalSearchTaskRequest,
@@ -2552,6 +2797,108 @@ class Client(OpenApiClient):
     ) -> main_models.CreateMultimodalSearchTaskResponse:
         runtime = RuntimeOptions()
         return await self.create_multimodal_search_task_with_options_async(request, runtime)
+
+    def create_multimodal_search_task_result_fine_tune_dataset_with_options(
+        self,
+        tmp_req: main_models.CreateMultimodalSearchTaskResultFineTuneDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMultimodalSearchTaskResultFineTuneDatasetResponse:
+        tmp_req.validate()
+        request = main_models.CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.result_index):
+            request.result_index_shrink = Utils.array_to_string_with_specified_style(tmp_req.result_index, 'ResultIndex', 'json')
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_description):
+            query['DatasetDescription'] = request.dataset_description
+        if not DaraCore.is_null(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.result_index_shrink):
+            query['ResultIndex'] = request.result_index_shrink
+        if not DaraCore.is_null(request.result_mode):
+            query['ResultMode'] = request.result_mode
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.top_n):
+            query['TopN'] = request.top_n
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMultimodalSearchTaskResultFineTuneDataset',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMultimodalSearchTaskResultFineTuneDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_multimodal_search_task_result_fine_tune_dataset_with_options_async(
+        self,
+        tmp_req: main_models.CreateMultimodalSearchTaskResultFineTuneDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateMultimodalSearchTaskResultFineTuneDatasetResponse:
+        tmp_req.validate()
+        request = main_models.CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.result_index):
+            request.result_index_shrink = Utils.array_to_string_with_specified_style(tmp_req.result_index, 'ResultIndex', 'json')
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_description):
+            query['DatasetDescription'] = request.dataset_description
+        if not DaraCore.is_null(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.result_index_shrink):
+            query['ResultIndex'] = request.result_index_shrink
+        if not DaraCore.is_null(request.result_mode):
+            query['ResultMode'] = request.result_mode
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.top_n):
+            query['TopN'] = request.top_n
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateMultimodalSearchTaskResultFineTuneDataset',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateMultimodalSearchTaskResultFineTuneDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_multimodal_search_task_result_fine_tune_dataset(
+        self,
+        request: main_models.CreateMultimodalSearchTaskResultFineTuneDatasetRequest,
+    ) -> main_models.CreateMultimodalSearchTaskResultFineTuneDatasetResponse:
+        runtime = RuntimeOptions()
+        return self.create_multimodal_search_task_result_fine_tune_dataset_with_options(request, runtime)
+
+    async def create_multimodal_search_task_result_fine_tune_dataset_async(
+        self,
+        request: main_models.CreateMultimodalSearchTaskResultFineTuneDatasetRequest,
+    ) -> main_models.CreateMultimodalSearchTaskResultFineTuneDatasetResponse:
+        runtime = RuntimeOptions()
+        return await self.create_multimodal_search_task_result_fine_tune_dataset_with_options_async(request, runtime)
 
     def delete_multimodal_dataset_with_options(
         self,
@@ -2700,6 +3047,228 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteMultimodalEmbeddingResponse:
         runtime = RuntimeOptions()
         return await self.delete_multimodal_embedding_with_options_async(request, runtime)
+
+    def delete_multimodal_fine_tune_dataset_with_options(
+        self,
+        request: main_models.DeleteMultimodalFineTuneDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMultimodalFineTuneDatasetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_id):
+            query['DatasetId'] = request.dataset_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMultimodalFineTuneDataset',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMultimodalFineTuneDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_multimodal_fine_tune_dataset_with_options_async(
+        self,
+        request: main_models.DeleteMultimodalFineTuneDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMultimodalFineTuneDatasetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_id):
+            query['DatasetId'] = request.dataset_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMultimodalFineTuneDataset',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMultimodalFineTuneDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_multimodal_fine_tune_dataset(
+        self,
+        request: main_models.DeleteMultimodalFineTuneDatasetRequest,
+    ) -> main_models.DeleteMultimodalFineTuneDatasetResponse:
+        runtime = RuntimeOptions()
+        return self.delete_multimodal_fine_tune_dataset_with_options(request, runtime)
+
+    async def delete_multimodal_fine_tune_dataset_async(
+        self,
+        request: main_models.DeleteMultimodalFineTuneDatasetRequest,
+    ) -> main_models.DeleteMultimodalFineTuneDatasetResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_multimodal_fine_tune_dataset_with_options_async(request, runtime)
+
+    def delete_multimodal_label_studio_service_with_options(
+        self,
+        request: main_models.DeleteMultimodalLabelStudioServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMultimodalLabelStudioServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMultimodalLabelStudioService',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMultimodalLabelStudioServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_multimodal_label_studio_service_with_options_async(
+        self,
+        request: main_models.DeleteMultimodalLabelStudioServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteMultimodalLabelStudioServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteMultimodalLabelStudioService',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteMultimodalLabelStudioServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_multimodal_label_studio_service(
+        self,
+        request: main_models.DeleteMultimodalLabelStudioServiceRequest,
+    ) -> main_models.DeleteMultimodalLabelStudioServiceResponse:
+        runtime = RuntimeOptions()
+        return self.delete_multimodal_label_studio_service_with_options(request, runtime)
+
+    async def delete_multimodal_label_studio_service_async(
+        self,
+        request: main_models.DeleteMultimodalLabelStudioServiceRequest,
+    ) -> main_models.DeleteMultimodalLabelStudioServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_multimodal_label_studio_service_with_options_async(request, runtime)
+
+    def delete_ossmultimodal_fine_tune_dataset_with_options(
+        self,
+        request: main_models.DeleteOSSMultimodalFineTuneDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOSSMultimodalFineTuneDatasetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_id):
+            query['DatasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.oss_url):
+            query['OssUrl'] = request.oss_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOSSMultimodalFineTuneDataset',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOSSMultimodalFineTuneDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_ossmultimodal_fine_tune_dataset_with_options_async(
+        self,
+        request: main_models.DeleteOSSMultimodalFineTuneDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOSSMultimodalFineTuneDatasetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_id):
+            query['DatasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.oss_url):
+            query['OssUrl'] = request.oss_url
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOSSMultimodalFineTuneDataset',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOSSMultimodalFineTuneDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_ossmultimodal_fine_tune_dataset(
+        self,
+        request: main_models.DeleteOSSMultimodalFineTuneDatasetRequest,
+    ) -> main_models.DeleteOSSMultimodalFineTuneDatasetResponse:
+        runtime = RuntimeOptions()
+        return self.delete_ossmultimodal_fine_tune_dataset_with_options(request, runtime)
+
+    async def delete_ossmultimodal_fine_tune_dataset_async(
+        self,
+        request: main_models.DeleteOSSMultimodalFineTuneDatasetRequest,
+    ) -> main_models.DeleteOSSMultimodalFineTuneDatasetResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_ossmultimodal_fine_tune_dataset_with_options_async(request, runtime)
 
     def download_multimodal_search_task_result_metadata_with_options(
         self,
@@ -3083,6 +3652,158 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_multimodal_embedding_model_mode_with_options_async(request, runtime)
 
+    def list_multimodal_fine_tune_dataset_with_options(
+        self,
+        request: main_models.ListMultimodalFineTuneDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMultimodalFineTuneDatasetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.input_field):
+            query['InputField'] = request.input_field
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMultimodalFineTuneDataset',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMultimodalFineTuneDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_multimodal_fine_tune_dataset_with_options_async(
+        self,
+        request: main_models.ListMultimodalFineTuneDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMultimodalFineTuneDatasetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.input_field):
+            query['InputField'] = request.input_field
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMultimodalFineTuneDataset',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMultimodalFineTuneDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_multimodal_fine_tune_dataset(
+        self,
+        request: main_models.ListMultimodalFineTuneDatasetRequest,
+    ) -> main_models.ListMultimodalFineTuneDatasetResponse:
+        runtime = RuntimeOptions()
+        return self.list_multimodal_fine_tune_dataset_with_options(request, runtime)
+
+    async def list_multimodal_fine_tune_dataset_async(
+        self,
+        request: main_models.ListMultimodalFineTuneDatasetRequest,
+    ) -> main_models.ListMultimodalFineTuneDatasetResponse:
+        runtime = RuntimeOptions()
+        return await self.list_multimodal_fine_tune_dataset_with_options_async(request, runtime)
+
+    def list_multimodal_label_studio_service_with_options(
+        self,
+        request: main_models.ListMultimodalLabelStudioServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMultimodalLabelStudioServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMultimodalLabelStudioService',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMultimodalLabelStudioServiceResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_multimodal_label_studio_service_with_options_async(
+        self,
+        request: main_models.ListMultimodalLabelStudioServiceRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListMultimodalLabelStudioServiceResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListMultimodalLabelStudioService',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListMultimodalLabelStudioServiceResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_multimodal_label_studio_service(
+        self,
+        request: main_models.ListMultimodalLabelStudioServiceRequest,
+    ) -> main_models.ListMultimodalLabelStudioServiceResponse:
+        runtime = RuntimeOptions()
+        return self.list_multimodal_label_studio_service_with_options(request, runtime)
+
+    async def list_multimodal_label_studio_service_async(
+        self,
+        request: main_models.ListMultimodalLabelStudioServiceRequest,
+    ) -> main_models.ListMultimodalLabelStudioServiceResponse:
+        runtime = RuntimeOptions()
+        return await self.list_multimodal_label_studio_service_with_options_async(request, runtime)
+
     def list_multimodal_search_model_with_options(
         self,
         request: main_models.ListMultimodalSearchModelRequest,
@@ -3163,13 +3884,23 @@ class Client(OpenApiClient):
 
     def list_multimodal_search_task_with_options(
         self,
-        request: main_models.ListMultimodalSearchTaskRequest,
+        tmp_req: main_models.ListMultimodalSearchTaskRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ListMultimodalSearchTaskResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListMultimodalSearchTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dataset_ids):
+            request.dataset_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_ids, 'DatasetIds', 'json')
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_ids_shrink):
+            query['DatasetIds'] = request.dataset_ids_shrink
+        if not DaraCore.is_null(request.input_field):
+            query['InputField'] = request.input_field
+        if not DaraCore.is_null(request.model_mode):
+            query['ModelMode'] = request.model_mode
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -3195,13 +3926,23 @@ class Client(OpenApiClient):
 
     async def list_multimodal_search_task_with_options_async(
         self,
-        request: main_models.ListMultimodalSearchTaskRequest,
+        tmp_req: main_models.ListMultimodalSearchTaskRequest,
         runtime: RuntimeOptions,
     ) -> main_models.ListMultimodalSearchTaskResponse:
-        request.validate()
+        tmp_req.validate()
+        request = main_models.ListMultimodalSearchTaskShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.dataset_ids):
+            request.dataset_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.dataset_ids, 'DatasetIds', 'json')
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_ids_shrink):
+            query['DatasetIds'] = request.dataset_ids_shrink
+        if not DaraCore.is_null(request.input_field):
+            query['InputField'] = request.input_field
+        if not DaraCore.is_null(request.model_mode):
+            query['ModelMode'] = request.model_mode
         if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
@@ -3402,6 +4143,170 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateMultimodalDatasetResponse:
         runtime = RuntimeOptions()
         return await self.update_multimodal_dataset_with_options_async(request, runtime)
+
+    def update_multimodal_fine_tune_dataset_with_options(
+        self,
+        request: main_models.UpdateMultimodalFineTuneDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMultimodalFineTuneDatasetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_description):
+            query['DatasetDescription'] = request.dataset_description
+        if not DaraCore.is_null(request.dataset_id):
+            query['DatasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMultimodalFineTuneDataset',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMultimodalFineTuneDatasetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_multimodal_fine_tune_dataset_with_options_async(
+        self,
+        request: main_models.UpdateMultimodalFineTuneDatasetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMultimodalFineTuneDatasetResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.dataset_description):
+            query['DatasetDescription'] = request.dataset_description
+        if not DaraCore.is_null(request.dataset_id):
+            query['DatasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.dataset_name):
+            query['DatasetName'] = request.dataset_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMultimodalFineTuneDataset',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMultimodalFineTuneDatasetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_multimodal_fine_tune_dataset(
+        self,
+        request: main_models.UpdateMultimodalFineTuneDatasetRequest,
+    ) -> main_models.UpdateMultimodalFineTuneDatasetResponse:
+        runtime = RuntimeOptions()
+        return self.update_multimodal_fine_tune_dataset_with_options(request, runtime)
+
+    async def update_multimodal_fine_tune_dataset_async(
+        self,
+        request: main_models.UpdateMultimodalFineTuneDatasetRequest,
+    ) -> main_models.UpdateMultimodalFineTuneDatasetResponse:
+        runtime = RuntimeOptions()
+        return await self.update_multimodal_fine_tune_dataset_with_options_async(request, runtime)
+
+    def update_multimodal_label_studio_service_white_list_with_options(
+        self,
+        tmp_req: main_models.UpdateMultimodalLabelStudioServiceWhiteListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMultimodalLabelStudioServiceWhiteListResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.white_list):
+            request.white_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.white_list, 'WhiteList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.white_list_shrink):
+            query['WhiteList'] = request.white_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMultimodalLabelStudioServiceWhiteList',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMultimodalLabelStudioServiceWhiteListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_multimodal_label_studio_service_white_list_with_options_async(
+        self,
+        tmp_req: main_models.UpdateMultimodalLabelStudioServiceWhiteListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateMultimodalLabelStudioServiceWhiteListResponse:
+        tmp_req.validate()
+        request = main_models.UpdateMultimodalLabelStudioServiceWhiteListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.white_list):
+            request.white_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.white_list, 'WhiteList', 'json')
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.white_list_shrink):
+            query['WhiteList'] = request.white_list_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateMultimodalLabelStudioServiceWhiteList',
+            version = '2025-10-13',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateMultimodalLabelStudioServiceWhiteListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_multimodal_label_studio_service_white_list(
+        self,
+        request: main_models.UpdateMultimodalLabelStudioServiceWhiteListRequest,
+    ) -> main_models.UpdateMultimodalLabelStudioServiceWhiteListResponse:
+        runtime = RuntimeOptions()
+        return self.update_multimodal_label_studio_service_white_list_with_options(request, runtime)
+
+    async def update_multimodal_label_studio_service_white_list_async(
+        self,
+        request: main_models.UpdateMultimodalLabelStudioServiceWhiteListRequest,
+    ) -> main_models.UpdateMultimodalLabelStudioServiceWhiteListResponse:
+        runtime = RuntimeOptions()
+        return await self.update_multimodal_label_studio_service_white_list_with_options_async(request, runtime)
 
     def upload_ossmultimodal_dataset_with_options(
         self,
