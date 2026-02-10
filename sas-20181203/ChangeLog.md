@@ -1,3 +1,22 @@
+2026-02-10 Version: 8.0.0
+- Update API DescribeCloudCenterInstances: add response parameters Body.Instances.$.BindFileProtectType.
+- Update API DescribeCloudVendorAccountAKList: add request parameters Vendor.
+- Update API DescribeImageListByBuildRisk: add request parameters Criteria.
+- Update API DescribeImageListByBuildRisk: add request parameters CriteriaType.
+- Update API DescribeVersionConfig: update request parameters ResourceDirectoryAccountId' type has changed.
+- Update API DescribeVersionConfig: update request parameters ResourceDirectoryAccountId' format has changed.
+- Update API GetAssetsPropertyDetail: add response parameters Body.Propertys.$.Agent.
+- Update API GetAssetsPropertyDetail: add response parameters Body.Propertys.$.Description.
+- Update API GetAssetsPropertyDetail: add response parameters Body.Propertys.$.McpName.
+- Update API GetAssetsPropertyDetail: add response parameters Body.Propertys.$.SkillsName.
+- Update API GetAssetsPropertyDetail: add response parameters Body.Propertys.$.TransportName.
+- Update API ListCheckItemWarningMachine: add request parameters ResourceDirectoryAccountId.
+- Update API ListCheckItemWarningSummary: add request parameters ResourceDirectoryAccountId.
+- Update API ModifyPostPayModuleSwitch: add request parameters PostPaidHostAutoBind.
+- Update API ModifyPostPayModuleSwitch: add request parameters PostPaidHostAutoBindVersion.
+- Update API ModifyPostPayModuleSwitch: add request parameters PostPayModuleSwitchObj.
+
+
 2025-12-12 Version: 7.1.2
 - Update API DescribePropertyCronDetail: add request parameters NextToken.
 - Update API DescribePropertyCronDetail: add request parameters UseNextToken.
