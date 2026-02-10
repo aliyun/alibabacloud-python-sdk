@@ -33,30 +33,111 @@ class CdsFileShareLinkModel(DaraModel):
         status: str = None,
         video_preview_count: int = None,
     ):
+        # The number of times to access the shared file.
         self.access_count = access_count
+        # The creation time.
         self.create_time = create_time
+        # The user that creates the file sharing task.
         self.creator = creator
+        # The description.
         self.description = description
+        # The shared file is forbidden from being downloaded.
         self.disable_download = disable_download
+        # The shared file is forbidden from being previewed.
         self.disable_preview = disable_preview
+        # The shared file is forbidden from being dumped.
         self.disable_save = disable_save
+        # The number of times that the shared file can be downloaded.
         self.download_count = download_count
+        # The maximum number of times that the shared file can be downloaded.
         self.download_limit = download_limit
+        # The team space ID.
         self.drive_id = drive_id
+        # The time when the file sharing link expires.
+        # 
+        # >  The value must be in the FC3339 format. Example: 2020-06-28T11:33:00.000+08:00. If the parameter is left empty, the file sharing link is permanently valid.
         self.expiration = expiration
+        # Specifies whether the file sharing link expires.
         self.expired = expired
+        # The file sharing task IDs.
         self.file_ids = file_ids
+        # The modification time.
         self.modifiy_time = modifiy_time
+        # The number of times that the shared file is previewed.
         self.preview_count = preview_count
+        # The maximum number of times that the shared file can be previewed.
         self.preview_limit = preview_limit
+        # The number of times that the shared file is reported due to content violation.
         self.report_count = report_count
+        # The number of times that the shared files can be dumped.
         self.save_count = save_count
+        # The maximum number of times that the shared file can be saved.
         self.save_limit = save_limit
+        # The file sharing task ID.
         self.share_id = share_id
+        # The file sharing link.
         self.share_link = share_link
+        # The shared file name. By default, the name of the first shared file is used.
         self.share_name = share_name
+        # The access code. It must contain up to 64 characters in length. 0 characters indicates that there is no access code.
         self.share_pwd = share_pwd
+        # The status of the file sharing link.
+        # 
+        # Valid values:
+        # 
+        # *   forbidden_disabled
+        # 
+        #     <!-- -->
+        # 
+        #     : The file sharing link is canceled
+        # 
+        #     <!-- -->
+        # 
+        #     after it
+        # 
+        #     <!-- -->
+        # 
+        #     is not allowed.
+        # 
+        # *   forbidden
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The file sharing link is not allowed
+        # 
+        #     <!-- -->
+        # 
+        #     .
+        # 
+        # *   disabled
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The file sharing link is canceled.
+        # 
+        #     <!-- -->
+        # 
+        # *   enabled
+        # 
+        #     <!-- -->
+        # 
+        #     :
+        # 
+        #     <!-- -->
+        # 
+        #     The file sharing link is valid.
+        # 
+        #     <!-- -->
         self.status = status
+        # The number of times that the audio and video file is played.
         self.video_preview_count = video_preview_count
 
     def validate(self):

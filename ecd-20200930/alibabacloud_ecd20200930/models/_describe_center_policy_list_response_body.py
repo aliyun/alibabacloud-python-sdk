@@ -64,12 +64,16 @@ class DescribeCenterPolicyListResponseBody(DaraModel):
 class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
     def __init__(
         self,
+        academic_proxy: str = None,
         admin_access: str = None,
         app_content_protection: str = None,
         authorize_access_policy_rules: List[main_models.DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeAccessPolicyRules] = None,
         authorize_security_policy_rules: List[main_models.DescribeCenterPolicyListResponseBodyDescribePolicyGroupsAuthorizeSecurityPolicyRules] = None,
         camera_redirect: str = None,
         client_control_menu: str = None,
+        client_hibernate: str = None,
+        client_restart: str = None,
+        client_shutdown: str = None,
         client_types: List[main_models.DescribeCenterPolicyListResponseBodyDescribePolicyGroupsClientTypes] = None,
         clipboard: str = None,
         color_enhancement: str = None,
@@ -97,6 +101,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         file_transfer_speed_location: str = None,
         gpu_acceleration: str = None,
         hover_config_msg: str = None,
+        hover_hibernate: str = None,
+        hover_restart: str = None,
+        hover_shutdown: str = None,
         html_5access: str = None,
         html_5file_transfer: str = None,
         internet_communication_protocol: str = None,
@@ -110,7 +117,12 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         memory_sample_duration: int = None,
         memory_single_rate_limit: int = None,
         mobile_restart: str = None,
+        mobile_safe_menu: str = None,
         mobile_shutdown: str = None,
+        mobile_wuying_keeper: str = None,
+        mobile_wy_assistant: str = None,
+        model_library: str = None,
+        multi_screen: str = None,
         name: str = None,
         net_redirect: str = None,
         net_redirect_rule: List[main_models.DescribeCenterPolicyListResponseBodyDescribePolicyGroupsNetRedirectRule] = None,
@@ -119,6 +131,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         policy_group_id: str = None,
         policy_group_type: str = None,
         policy_status: str = None,
+        port_proxy: str = None,
         printer_redirection: str = None,
         quality_enhancement: str = None,
         record_content: str = None,
@@ -170,10 +183,12 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         watermark_power: str = None,
         watermark_row_amount: int = None,
         watermark_security: str = None,
+        watermark_shadow: str = None,
         watermark_transparency_value: int = None,
         watermark_type: str = None,
         wy_assistant: str = None,
     ):
+        self.academic_proxy = academic_proxy
         # Indicates whether the admin permissions are granted to end users.
         # 
         # >  This parameter is in private preview and only available to specific users.
@@ -187,6 +202,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         # Indicates whether on-premises webcam redirection is enabled.
         self.camera_redirect = camera_redirect
         self.client_control_menu = client_control_menu
+        self.client_hibernate = client_hibernate
+        self.client_restart = client_restart
+        self.client_shutdown = client_shutdown
         # The logon method control rules.
         self.client_types = client_types
         # The read/write permissions on the clipboard.
@@ -240,6 +258,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         # Indicates whether image quality control is enabled. For optimal computer performance and user experience in professional design scenarios, we recommend enabling this feature.
         self.gpu_acceleration = gpu_acceleration
         self.hover_config_msg = hover_config_msg
+        self.hover_hibernate = hover_hibernate
+        self.hover_restart = hover_restart
+        self.hover_shutdown = hover_shutdown
         # The web client access policy.
         self.html_5access = html_5access
         # The file transfer feature on the web client.
@@ -267,10 +288,15 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         # 
         # >  This feature applies to only mobile clients of version 7.4.0 or later.
         self.mobile_restart = mobile_restart
+        self.mobile_safe_menu = mobile_safe_menu
         # Indicates whether the Stop button is displayed in the DesktopAssistant menu when end users connect to cloud computers from Android clients.
         # 
         # >  This feature applies to only mobile clients of version 7.4.0 or later.
         self.mobile_shutdown = mobile_shutdown
+        self.mobile_wuying_keeper = mobile_wuying_keeper
+        self.mobile_wy_assistant = mobile_wy_assistant
+        self.model_library = model_library
+        self.multi_screen = multi_screen
         # The policy name.
         self.name = name
         # The network redirection policy.
@@ -295,6 +321,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.policy_group_type = policy_group_type
         # The status of the cloud computer policy.
         self.policy_status = policy_status
+        self.port_proxy = port_proxy
         # The printer redirection policy.
         self.printer_redirection = printer_redirection
         # Indicates whether image quality enhancement is enabled for design and 3D applications.
@@ -395,6 +422,7 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         self.watermark_row_amount = watermark_row_amount
         # Indicates whether security priority is enabled for invisible watermarks.
         self.watermark_security = watermark_security
+        self.watermark_shadow = watermark_shadow
         # The watermark transparency. A higher value means the watermark is less transparent. Valid values: 10 to 100.
         self.watermark_transparency_value = watermark_transparency_value
         # The watermark type.
@@ -441,6 +469,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.academic_proxy is not None:
+            result['AcademicProxy'] = self.academic_proxy
+
         if self.admin_access is not None:
             result['AdminAccess'] = self.admin_access
 
@@ -462,6 +493,15 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
         if self.client_control_menu is not None:
             result['ClientControlMenu'] = self.client_control_menu
+
+        if self.client_hibernate is not None:
+            result['ClientHibernate'] = self.client_hibernate
+
+        if self.client_restart is not None:
+            result['ClientRestart'] = self.client_restart
+
+        if self.client_shutdown is not None:
+            result['ClientShutdown'] = self.client_shutdown
 
         result['ClientTypes'] = []
         if self.client_types is not None:
@@ -552,6 +592,15 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         if self.hover_config_msg is not None:
             result['HoverConfigMsg'] = self.hover_config_msg
 
+        if self.hover_hibernate is not None:
+            result['HoverHibernate'] = self.hover_hibernate
+
+        if self.hover_restart is not None:
+            result['HoverRestart'] = self.hover_restart
+
+        if self.hover_shutdown is not None:
+            result['HoverShutdown'] = self.hover_shutdown
+
         if self.html_5access is not None:
             result['Html5Access'] = self.html_5access
 
@@ -591,8 +640,23 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         if self.mobile_restart is not None:
             result['MobileRestart'] = self.mobile_restart
 
+        if self.mobile_safe_menu is not None:
+            result['MobileSafeMenu'] = self.mobile_safe_menu
+
         if self.mobile_shutdown is not None:
             result['MobileShutdown'] = self.mobile_shutdown
+
+        if self.mobile_wuying_keeper is not None:
+            result['MobileWuyingKeeper'] = self.mobile_wuying_keeper
+
+        if self.mobile_wy_assistant is not None:
+            result['MobileWyAssistant'] = self.mobile_wy_assistant
+
+        if self.model_library is not None:
+            result['ModelLibrary'] = self.model_library
+
+        if self.multi_screen is not None:
+            result['MultiScreen'] = self.multi_screen
 
         if self.name is not None:
             result['Name'] = self.name
@@ -619,6 +683,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
         if self.policy_status is not None:
             result['PolicyStatus'] = self.policy_status
+
+        if self.port_proxy is not None:
+            result['PortProxy'] = self.port_proxy
 
         if self.printer_redirection is not None:
             result['PrinterRedirection'] = self.printer_redirection
@@ -775,6 +842,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         if self.watermark_security is not None:
             result['WatermarkSecurity'] = self.watermark_security
 
+        if self.watermark_shadow is not None:
+            result['WatermarkShadow'] = self.watermark_shadow
+
         if self.watermark_transparency_value is not None:
             result['WatermarkTransparencyValue'] = self.watermark_transparency_value
 
@@ -788,6 +858,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AcademicProxy') is not None:
+            self.academic_proxy = m.get('AcademicProxy')
+
         if m.get('AdminAccess') is not None:
             self.admin_access = m.get('AdminAccess')
 
@@ -811,6 +884,15 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
         if m.get('ClientControlMenu') is not None:
             self.client_control_menu = m.get('ClientControlMenu')
+
+        if m.get('ClientHibernate') is not None:
+            self.client_hibernate = m.get('ClientHibernate')
+
+        if m.get('ClientRestart') is not None:
+            self.client_restart = m.get('ClientRestart')
+
+        if m.get('ClientShutdown') is not None:
+            self.client_shutdown = m.get('ClientShutdown')
 
         self.client_types = []
         if m.get('ClientTypes') is not None:
@@ -905,6 +987,15 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         if m.get('HoverConfigMsg') is not None:
             self.hover_config_msg = m.get('HoverConfigMsg')
 
+        if m.get('HoverHibernate') is not None:
+            self.hover_hibernate = m.get('HoverHibernate')
+
+        if m.get('HoverRestart') is not None:
+            self.hover_restart = m.get('HoverRestart')
+
+        if m.get('HoverShutdown') is not None:
+            self.hover_shutdown = m.get('HoverShutdown')
+
         if m.get('Html5Access') is not None:
             self.html_5access = m.get('Html5Access')
 
@@ -944,8 +1035,23 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
         if m.get('MobileRestart') is not None:
             self.mobile_restart = m.get('MobileRestart')
 
+        if m.get('MobileSafeMenu') is not None:
+            self.mobile_safe_menu = m.get('MobileSafeMenu')
+
         if m.get('MobileShutdown') is not None:
             self.mobile_shutdown = m.get('MobileShutdown')
+
+        if m.get('MobileWuyingKeeper') is not None:
+            self.mobile_wuying_keeper = m.get('MobileWuyingKeeper')
+
+        if m.get('MobileWyAssistant') is not None:
+            self.mobile_wy_assistant = m.get('MobileWyAssistant')
+
+        if m.get('ModelLibrary') is not None:
+            self.model_library = m.get('ModelLibrary')
+
+        if m.get('MultiScreen') is not None:
+            self.multi_screen = m.get('MultiScreen')
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
@@ -973,6 +1079,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
         if m.get('PolicyStatus') is not None:
             self.policy_status = m.get('PolicyStatus')
+
+        if m.get('PortProxy') is not None:
+            self.port_proxy = m.get('PortProxy')
 
         if m.get('PrinterRedirection') is not None:
             self.printer_redirection = m.get('PrinterRedirection')
@@ -1129,6 +1238,9 @@ class DescribeCenterPolicyListResponseBodyDescribePolicyGroups(DaraModel):
 
         if m.get('WatermarkSecurity') is not None:
             self.watermark_security = m.get('WatermarkSecurity')
+
+        if m.get('WatermarkShadow') is not None:
+            self.watermark_shadow = m.get('WatermarkShadow')
 
         if m.get('WatermarkTransparencyValue') is not None:
             self.watermark_transparency_value = m.get('WatermarkTransparencyValue')

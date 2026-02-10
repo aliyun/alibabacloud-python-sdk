@@ -1,3 +1,20 @@
+2026-02-10 Version: 4.22.2
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.AcademicProxy.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.ClientHibernate.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.ClientRestart.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.ClientShutdown.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.HoverHibernate.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.HoverRestart.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.HoverShutdown.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.MobileSafeMenu.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.MobileWuyingKeeper.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.MobileWyAssistant.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.ModelLibrary.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.MultiScreen.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.PortProxy.
+- Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.WatermarkShadow.
+
+
 2026-02-06 Version: 4.22.1
 - Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.ClientHibernate.
 - Update API DescribePolicyGroups: add response parameters Body.DescribePolicyGroups.$.ClientRestart.
