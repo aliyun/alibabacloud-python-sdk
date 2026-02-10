@@ -1,3 +1,12 @@
+2026-02-10 Version: 3.7.1
+- Update API GetTaskResult: add response parameters Body.data.ragErrorMessage.
+- Update API GetTaskResult: add response parameters Body.data.ragResult.
+- Update API GetTaskResult: add response parameters Body.data.ragStatus.
+- Update API GetTaskResult: add response parameters Body.data.usage.
+- Update API RunCompletion: add response parameters Body.ragStatus.
+- Update API RunCompletion: add response parameters Body.usage.
+
+
 2025-08-20 Version: 3.7.0
 - Support API GeneralAnalyzeImage.
 
