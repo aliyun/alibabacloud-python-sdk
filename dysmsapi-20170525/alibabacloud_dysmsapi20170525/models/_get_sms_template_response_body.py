@@ -42,7 +42,6 @@ class GetSmsTemplateResponseBody(DaraModel):
         self.code = code
         # The time when the SMS template was created.
         self.create_date = create_date
-        # File information, compatible with signatures created by the [AddSmsSign](https://help.aliyun.com/zh/sms/developer-reference/api-dysmsapi-2017-05-25-addsmstemplate?spm) API.
         self.file_url_list = file_url_list
         # International/Hong Kong, Macao, and Taiwan template type. When the **TemplateType** parameter is **3**, this parameter is required for international/Hong Kong, Macao, and Taiwan templates, with values:
         # - **0**: Verification code.
@@ -51,7 +50,6 @@ class GetSmsTemplateResponseBody(DaraModel):
         self.intl_type = intl_type
         # Description of the status code.
         self.message = message
-        # Additional documentation information, supplementing uploaded business proof files or operational screenshots file list.
         self.more_data_file_url_list = more_data_file_url_list
         # Work order number.
         # 

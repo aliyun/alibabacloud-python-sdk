@@ -764,6 +764,226 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_card_sms_template_with_options_async(request, runtime)
 
+    def create_digital_sign_order_with_options(
+        self,
+        tmp_req: main_models.CreateDigitalSignOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDigitalSignOrderResponse:
+        tmp_req.validate()
+        request = main_models.CreateDigitalSignOrderShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.order_context):
+            request.order_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.order_context, 'OrderContext', 'json')
+        query = {}
+        if not DaraCore.is_null(request.extend_message):
+            query['ExtendMessage'] = request.extend_message
+        if not DaraCore.is_null(request.order_context_shrink):
+            query['OrderContext'] = request.order_context_shrink
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.qualification_id):
+            query['QualificationId'] = request.qualification_id
+        if not DaraCore.is_null(request.qualification_version):
+            query['QualificationVersion'] = request.qualification_version
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.sign_id):
+            query['SignId'] = request.sign_id
+        if not DaraCore.is_null(request.sign_industry):
+            query['SignIndustry'] = request.sign_industry
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not DaraCore.is_null(request.sign_source):
+            query['SignSource'] = request.sign_source
+        if not DaraCore.is_null(request.submitter):
+            query['Submitter'] = request.submitter
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDigitalSignOrder',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDigitalSignOrderResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_digital_sign_order_with_options_async(
+        self,
+        tmp_req: main_models.CreateDigitalSignOrderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDigitalSignOrderResponse:
+        tmp_req.validate()
+        request = main_models.CreateDigitalSignOrderShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.order_context):
+            request.order_context_shrink = Utils.array_to_string_with_specified_style(tmp_req.order_context, 'OrderContext', 'json')
+        query = {}
+        if not DaraCore.is_null(request.extend_message):
+            query['ExtendMessage'] = request.extend_message
+        if not DaraCore.is_null(request.order_context_shrink):
+            query['OrderContext'] = request.order_context_shrink
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.qualification_id):
+            query['QualificationId'] = request.qualification_id
+        if not DaraCore.is_null(request.qualification_version):
+            query['QualificationVersion'] = request.qualification_version
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.sign_id):
+            query['SignId'] = request.sign_id
+        if not DaraCore.is_null(request.sign_industry):
+            query['SignIndustry'] = request.sign_industry
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not DaraCore.is_null(request.sign_source):
+            query['SignSource'] = request.sign_source
+        if not DaraCore.is_null(request.submitter):
+            query['Submitter'] = request.submitter
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDigitalSignOrder',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDigitalSignOrderResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_digital_sign_order(
+        self,
+        request: main_models.CreateDigitalSignOrderRequest,
+    ) -> main_models.CreateDigitalSignOrderResponse:
+        runtime = RuntimeOptions()
+        return self.create_digital_sign_order_with_options(request, runtime)
+
+    async def create_digital_sign_order_async(
+        self,
+        request: main_models.CreateDigitalSignOrderRequest,
+    ) -> main_models.CreateDigitalSignOrderResponse:
+        runtime = RuntimeOptions()
+        return await self.create_digital_sign_order_with_options_async(request, runtime)
+
+    def create_digital_sms_template_with_options(
+        self,
+        request: main_models.CreateDigitalSmsTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDigitalSmsTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not DaraCore.is_null(request.template_contents):
+            query['TemplateContents'] = request.template_contents
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDigitalSmsTemplate',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDigitalSmsTemplateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_digital_sms_template_with_options_async(
+        self,
+        request: main_models.CreateDigitalSmsTemplateRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDigitalSmsTemplateResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        if not DaraCore.is_null(request.template_contents):
+            query['TemplateContents'] = request.template_contents
+        if not DaraCore.is_null(request.template_name):
+            query['TemplateName'] = request.template_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDigitalSmsTemplate',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDigitalSmsTemplateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_digital_sms_template(
+        self,
+        request: main_models.CreateDigitalSmsTemplateRequest,
+    ) -> main_models.CreateDigitalSmsTemplateResponse:
+        runtime = RuntimeOptions()
+        return self.create_digital_sms_template_with_options(request, runtime)
+
+    async def create_digital_sms_template_async(
+        self,
+        request: main_models.CreateDigitalSmsTemplateRequest,
+    ) -> main_models.CreateDigitalSmsTemplateResponse:
+        runtime = RuntimeOptions()
+        return await self.create_digital_sms_template_with_options_async(request, runtime)
+
     def create_smart_short_url_with_options(
         self,
         request: main_models.CreateSmartShortUrlRequest,
@@ -3175,6 +3395,88 @@ class Client(OpenApiClient):
     ) -> main_models.QueryCardSmsTemplateReportResponse:
         runtime = RuntimeOptions()
         return await self.query_card_sms_template_report_with_options_async(request, runtime)
+
+    def query_digital_sign_by_name_with_options(
+        self,
+        request: main_models.QueryDigitalSignByNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryDigitalSignByNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryDigitalSignByName',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryDigitalSignByNameResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_digital_sign_by_name_with_options_async(
+        self,
+        request: main_models.QueryDigitalSignByNameRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryDigitalSignByNameResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.resource_owner_account):
+            query['ResourceOwnerAccount'] = request.resource_owner_account
+        if not DaraCore.is_null(request.resource_owner_id):
+            query['ResourceOwnerId'] = request.resource_owner_id
+        if not DaraCore.is_null(request.sign_name):
+            query['SignName'] = request.sign_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryDigitalSignByName',
+            version = '2017-05-25',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryDigitalSignByNameResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_digital_sign_by_name(
+        self,
+        request: main_models.QueryDigitalSignByNameRequest,
+    ) -> main_models.QueryDigitalSignByNameResponse:
+        runtime = RuntimeOptions()
+        return self.query_digital_sign_by_name_with_options(request, runtime)
+
+    async def query_digital_sign_by_name_async(
+        self,
+        request: main_models.QueryDigitalSignByNameRequest,
+    ) -> main_models.QueryDigitalSignByNameResponse:
+        runtime = RuntimeOptions()
+        return await self.query_digital_sign_by_name_with_options_async(request, runtime)
 
     def query_ext_code_sign_with_options(
         self,

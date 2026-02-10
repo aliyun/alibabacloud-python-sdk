@@ -27,6 +27,13 @@ from ._create_card_sms_template_request import CreateCardSmsTemplateRequest
 from ._create_card_sms_template_shrink_request import CreateCardSmsTemplateShrinkRequest
 from ._create_card_sms_template_response_body import CreateCardSmsTemplateResponseBody
 from ._create_card_sms_template_response import CreateCardSmsTemplateResponse
+from ._create_digital_sign_order_request import CreateDigitalSignOrderRequest
+from ._create_digital_sign_order_shrink_request import CreateDigitalSignOrderShrinkRequest
+from ._create_digital_sign_order_response_body import CreateDigitalSignOrderResponseBody
+from ._create_digital_sign_order_response import CreateDigitalSignOrderResponse
+from ._create_digital_sms_template_request import CreateDigitalSmsTemplateRequest
+from ._create_digital_sms_template_response_body import CreateDigitalSmsTemplateResponseBody
+from ._create_digital_sms_template_response import CreateDigitalSmsTemplateResponse
 from ._create_smart_short_url_request import CreateSmartShortUrlRequest
 from ._create_smart_short_url_response_body import CreateSmartShortUrlResponseBody
 from ._create_smart_short_url_response import CreateSmartShortUrlResponse
@@ -108,6 +115,9 @@ from ._query_card_sms_template_response import QueryCardSmsTemplateResponse
 from ._query_card_sms_template_report_request import QueryCardSmsTemplateReportRequest
 from ._query_card_sms_template_report_response_body import QueryCardSmsTemplateReportResponseBody
 from ._query_card_sms_template_report_response import QueryCardSmsTemplateReportResponse
+from ._query_digital_sign_by_name_request import QueryDigitalSignByNameRequest
+from ._query_digital_sign_by_name_response_body import QueryDigitalSignByNameResponseBody
+from ._query_digital_sign_by_name_response import QueryDigitalSignByNameResponse
 from ._query_ext_code_sign_request import QueryExtCodeSignRequest
 from ._query_ext_code_sign_response_body import QueryExtCodeSignResponseBody
 from ._query_ext_code_sign_response import QueryExtCodeSignResponse
@@ -215,6 +225,7 @@ from ._change_signature_qualification_response_body import ChangeSignatureQualif
 from ._check_mobiles_card_support_response_body import CheckMobilesCardSupportResponseBodyDataQueryResult
 from ._check_mobiles_card_support_response_body import CheckMobilesCardSupportResponseBodyData
 from ._create_card_sms_template_response_body import CreateCardSmsTemplateResponseBodyData
+from ._create_digital_sms_template_request import CreateDigitalSmsTemplateRequestTemplateContents
 from ._create_smart_short_url_response_body import CreateSmartShortUrlResponseBodyModel
 from ._get_card_sms_details_response_body import GetCardSmsDetailsResponseBodyCardSendDetailDTORecords
 from ._get_card_sms_details_response_body import GetCardSmsDetailsResponseBodyCardSendDetailDTO
@@ -299,6 +310,13 @@ __all__ = [
     CreateCardSmsTemplateShrinkRequest,
     CreateCardSmsTemplateResponseBody,
     CreateCardSmsTemplateResponse,
+    CreateDigitalSignOrderRequest,
+    CreateDigitalSignOrderShrinkRequest,
+    CreateDigitalSignOrderResponseBody,
+    CreateDigitalSignOrderResponse,
+    CreateDigitalSmsTemplateRequest,
+    CreateDigitalSmsTemplateResponseBody,
+    CreateDigitalSmsTemplateResponse,
     CreateSmartShortUrlRequest,
     CreateSmartShortUrlResponseBody,
     CreateSmartShortUrlResponse,
@@ -380,6 +398,9 @@ __all__ = [
     QueryCardSmsTemplateReportRequest,
     QueryCardSmsTemplateReportResponseBody,
     QueryCardSmsTemplateReportResponse,
+    QueryDigitalSignByNameRequest,
+    QueryDigitalSignByNameResponseBody,
+    QueryDigitalSignByNameResponse,
     QueryExtCodeSignRequest,
     QueryExtCodeSignResponseBody,
     QueryExtCodeSignResponse,
@@ -487,6 +508,7 @@ __all__ = [
     CheckMobilesCardSupportResponseBodyDataQueryResult,
     CheckMobilesCardSupportResponseBodyData,
     CreateCardSmsTemplateResponseBodyData,
+    CreateDigitalSmsTemplateRequestTemplateContents,
     CreateSmartShortUrlResponseBodyModel,
     GetCardSmsDetailsResponseBodyCardSendDetailDTORecords,
     GetCardSmsDetailsResponseBodyCardSendDetailDTO,

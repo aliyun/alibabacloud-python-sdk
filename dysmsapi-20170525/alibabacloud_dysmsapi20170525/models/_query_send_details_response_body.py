@@ -25,7 +25,6 @@ class QuerySendDetailsResponseBody(DaraModel):
         self.message = message
         # The request ID.
         self.request_id = request_id
-        # The details of the message.
         self.sms_send_detail_dtos = sms_send_detail_dtos
         # The number of sent messages.
         self.total_count = total_count
@@ -123,28 +122,13 @@ class QuerySendDetailsResponseBodySmsSendDetailDTOsSmsSendDetailDTO(DaraModel):
         send_status: int = None,
         template_code: str = None,
     ):
-        # The content of the message.
         self.content = content
-        # The status code returned by the carrier.
-        # 
-        # *   If the message is delivered, "DELIVERED" is returned.
-        # *   For information about the error codes that may be returned if the message is not delivered, see [error codes](https://help.aliyun.com/document_detail/101347.html).
         self.err_code = err_code
-        # The extended field.
         self.out_id = out_id
-        # The mobile numbers of the recipients.
         self.phone_num = phone_num
-        # The date and time when the message was received.
         self.receive_date = receive_date
-        # The date and time when the message was sent.
         self.send_date = send_date
-        # The delivery status of the message. Valid values:
-        # 
-        # *   **1**: The message has not received a delivery receipt yet.
-        # *   **2**: The message failed to be delivered.
-        # *   **3**: The message was delivered.
         self.send_status = send_status
-        # The ID of the message template.
         self.template_code = template_code
 
     def validate(self):
