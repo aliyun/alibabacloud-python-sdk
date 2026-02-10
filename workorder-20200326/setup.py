@@ -24,22 +24,21 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_workorder20200326.
 
-Created on 30/12/2020
+Created on 10/02/2026
 
 @author: Alibaba Cloud SDK
 """
 
 PACKAGE = "alibabacloud_workorder20200326"
-NAME = "alibabacloud_workorder20200326" or "alibabacloud-package"
+NAME = "alibabacloud_workorder20200326"
 DESCRIPTION = "Alibaba Cloud Workorder (20200326) SDK Library for Python"
 AUTHOR = "Alibaba Cloud SDK"
 AUTHOR_EMAIL = "sdk-team@alibabacloud.com"
 URL = "https://github.com/aliyun/alibabacloud-python-sdk"
 VERSION = __import__(PACKAGE).__version__
 REQUIRES = [
-    "alibabacloud_tea_util>=0.3.1, <1.0.0",
-    "alibabacloud_tea_openapi>=0.1.0, <1.0.0",
-    "alibabacloud_endpoint_util>=0.0.3, <1.0.0"
+    "darabonba-core>=1.0.0, <2.0.0",
+    "alibabacloud_tea_openapi>=0.4.3, <1.0.0"
 ]
 
 LONG_DESCRIPTION = ''
@@ -62,17 +61,19 @@ setup(
     include_package_data=True,
     platforms="any",
     install_requires=REQUIRES,
-    python_requires=">=3.6",
+    python_requires=">=3.7",
     classifiers=(
         "Development Status :: 4 - Beta",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: Apache Software License",
         "Programming Language :: Python",
         "Programming Language :: Python :: 3",
-        "Programming Language :: Python :: 3.6",
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
+        "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "Topic :: Software Development"
     )
 )
