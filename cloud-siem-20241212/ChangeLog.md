@@ -1,3 +1,7 @@
+2026-02-10 Version: 2.0.1
+- Update API ListTrafficStatistics: add request parameters TrafficType.
+
+
 2026-02-04 Version: 2.0.0
 - Support API CreateNormalizationSchema.
 - Support API RefreshDataSource.

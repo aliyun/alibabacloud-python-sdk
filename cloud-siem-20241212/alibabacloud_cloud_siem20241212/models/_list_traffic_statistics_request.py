@@ -18,6 +18,7 @@ class ListTrafficStatisticsRequest(DaraModel):
         traffic_statistic_period: str = None,
         traffic_statistic_period_type: str = None,
         traffic_statistic_type: str = None,
+        traffic_type: str = None,
     ):
         self.lang = lang
         self.log_user_ids = log_user_ids
@@ -28,6 +29,7 @@ class ListTrafficStatisticsRequest(DaraModel):
         self.traffic_statistic_period = traffic_statistic_period
         self.traffic_statistic_period_type = traffic_statistic_period_type
         self.traffic_statistic_type = traffic_statistic_type
+        self.traffic_type = traffic_type
 
     def validate(self):
         pass
@@ -64,6 +66,9 @@ class ListTrafficStatisticsRequest(DaraModel):
         if self.traffic_statistic_type is not None:
             result['TrafficStatisticType'] = self.traffic_statistic_type
 
+        if self.traffic_type is not None:
+            result['TrafficType'] = self.traffic_type
+
         return result
 
     def from_map(self, m: dict = None):
@@ -94,6 +99,9 @@ class ListTrafficStatisticsRequest(DaraModel):
 
         if m.get('TrafficStatisticType') is not None:
             self.traffic_statistic_type = m.get('TrafficStatisticType')
+
+        if m.get('TrafficType') is not None:
+            self.traffic_type = m.get('TrafficType')
 
         return self
 

@@ -5352,6 +5352,8 @@ class Client(OpenApiClient):
             body['TrafficStatisticPeriodType'] = request.traffic_statistic_period_type
         if not DaraCore.is_null(request.traffic_statistic_type):
             body['TrafficStatisticType'] = request.traffic_statistic_type
+        if not DaraCore.is_null(request.traffic_type):
+            body['TrafficType'] = request.traffic_type
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
@@ -5400,6 +5402,8 @@ class Client(OpenApiClient):
             body['TrafficStatisticPeriodType'] = request.traffic_statistic_period_type
         if not DaraCore.is_null(request.traffic_statistic_type):
             body['TrafficStatisticType'] = request.traffic_statistic_type
+        if not DaraCore.is_null(request.traffic_type):
+            body['TrafficType'] = request.traffic_type
         req = open_api_util_models.OpenApiRequest(
             body = Utils.parse_to_map(body)
         )
