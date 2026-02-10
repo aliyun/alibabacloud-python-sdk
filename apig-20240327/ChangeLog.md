@@ -1,3 +1,6 @@
+2026-02-10 Version: 6.0.3
+- Generated python 2024-03-27 for APIG.
+
 2026-02-09 Version: 6.0.2
 - Update API DeployHttpApi: add request parameters body.restApiConfig.operationDeployments.
 

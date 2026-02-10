@@ -12,9 +12,13 @@ class AkSkIdentityConfig(DaraModel):
         sk: str = None,
         type: str = None,
     ):
+        # Access Key
         self.ak = ak
+        # Generation mode
         self.generate_mode = generate_mode
+        # Secret Key
         self.sk = sk
+        # Identity authentication type
         self.type = type
 
     def validate(self):
