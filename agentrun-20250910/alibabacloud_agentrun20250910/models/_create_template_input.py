@@ -17,10 +17,12 @@ class CreateTemplateInput(DaraModel):
         credential_configuration: main_models.CredentialConfiguration = None,
         description: str = None,
         disk_size: int = None,
+        enable_agent: bool = None,
         environment_variables: Dict[str, str] = None,
         execution_role_arn: str = None,
         log_configuration: main_models.LogConfiguration = None,
         memory: int = None,
+        nas_config: main_models.NASConfig = None,
         network_configuration: main_models.NetworkConfiguration = None,
         oss_configuration: List[main_models.OssConfiguration] = None,
         sandbox_idle_timeout_in_seconds: int = None,
@@ -40,6 +42,7 @@ class CreateTemplateInput(DaraModel):
         self.credential_configuration = credential_configuration
         self.description = description
         self.disk_size = disk_size
+        self.enable_agent = enable_agent
         self.environment_variables = environment_variables
         self.execution_role_arn = execution_role_arn
         self.log_configuration = log_configuration
@@ -47,6 +50,7 @@ class CreateTemplateInput(DaraModel):
         # 
         # This parameter is required.
         self.memory = memory
+        self.nas_config = nas_config
         # This parameter is required.
         self.network_configuration = network_configuration
         self.oss_configuration = oss_configuration
@@ -72,6 +76,8 @@ class CreateTemplateInput(DaraModel):
             self.credential_configuration.validate()
         if self.log_configuration:
             self.log_configuration.validate()
+        if self.nas_config:
+            self.nas_config.validate()
         if self.network_configuration:
             self.network_configuration.validate()
         if self.oss_configuration:
@@ -105,6 +111,9 @@ class CreateTemplateInput(DaraModel):
         if self.disk_size is not None:
             result['diskSize'] = self.disk_size
 
+        if self.enable_agent is not None:
+            result['enableAgent'] = self.enable_agent
+
         if self.environment_variables is not None:
             result['environmentVariables'] = self.environment_variables
 
@@ -116,6 +125,9 @@ class CreateTemplateInput(DaraModel):
 
         if self.memory is not None:
             result['memory'] = self.memory
+
+        if self.nas_config is not None:
+            result['nasConfig'] = self.nas_config.to_map()
 
         if self.network_configuration is not None:
             result['networkConfiguration'] = self.network_configuration.to_map()
@@ -168,6 +180,9 @@ class CreateTemplateInput(DaraModel):
         if m.get('diskSize') is not None:
             self.disk_size = m.get('diskSize')
 
+        if m.get('enableAgent') is not None:
+            self.enable_agent = m.get('enableAgent')
+
         if m.get('environmentVariables') is not None:
             self.environment_variables = m.get('environmentVariables')
 
@@ -180,6 +195,10 @@ class CreateTemplateInput(DaraModel):
 
         if m.get('memory') is not None:
             self.memory = m.get('memory')
+
+        if m.get('nasConfig') is not None:
+            temp_model = main_models.NASConfig()
+            self.nas_config = temp_model.from_map(m.get('nasConfig'))
 
         if m.get('networkConfiguration') is not None:
             temp_model = main_models.NetworkConfiguration()
