@@ -13,7 +13,6 @@ class DescribeLiveStreamTranscodeInfoResponseBody(DaraModel):
         domain_transcode_list: main_models.DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeList = None,
         request_id: str = None,
     ):
-        # The transcoding configurations.
         self.domain_transcode_list = domain_transcode_list
         # The request ID.
         self.request_id = request_id
@@ -91,34 +90,11 @@ class DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTransc
         transcode_name: str = None,
         transcode_template: str = None,
     ):
-        # The custom transcoding configuration.
         self.custom_transcode_parameters = custom_transcode_parameters
-        # The encryption settings.
         self.encrypt_parameters = encrypt_parameters
-        # Indicates whether forcible transcoding is used. Valid values:
-        # 
-        # *   **true**: Delayed transcoding is used.
-        # *   **false**: Forcible transcoding is used.
         self.is_lazy = is_lazy
-        # The application name.
         self.transcode_app = transcode_app
-        # The main streaming domain.
         self.transcode_name = transcode_name
-        # The transcoding template ID. Valid values:
-        # 
-        # *   **Standard transcoding**:
-        # 
-        #     *   **lld**: low definition
-        #     *   **lsd**: standard definition
-        #     *   **lhd**: high definition
-        #     *   **lud**: ultra-high definition
-        # 
-        # *   **Narrowband HD™ transcoding**:
-        # 
-        #     *   **ld**: low definition
-        #     *   **sd**: standard definition
-        #     *   **hd**: high definition
-        #     *   **ud**: ultra-high definition
         self.transcode_template = transcode_template
 
     def validate(self):
@@ -183,11 +159,8 @@ class DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTransc
         kms_key_expire_interval: str = None,
         kms_key_id: str = None,
     ):
-        # The type of encryption. Fixed value: **aliyun**.
         self.encrypt_type = encrypt_type
-        # The rotation period of the CMK. Valid values: **60 to 3600**. Unit: seconds.
         self.kms_key_expire_interval = kms_key_expire_interval
-        # The ID of the customer master key (CMK) in Key Management Service (KMS).
         self.kms_key_id = kms_key_id
 
     def validate(self):
@@ -245,64 +218,24 @@ class DescribeLiveStreamTranscodeInfoResponseBodyDomainTranscodeListDomainTransc
         video_profile: str = None,
         width: int = None,
     ):
-        # The bitrate of the output audio. Unit: Kbit/s. Valid values: **1 to 1000**.
         self.audio_bitrate = audio_bitrate
-        # The number of sound channels. Valid values:
-        # 
-        # *   **1**: mono
-        # *   **2**: binaural
         self.audio_channel_num = audio_channel_num
-        # The audio encoding format.
         self.audio_codec = audio_codec
-        # The audio encoding profile. Valid values:
-        # 
-        # *   **aac_low**
-        # *   **aac_he**
-        # *   **aac_he_v2**
-        # *   **aac_ld**
         self.audio_profile = audio_profile
-        # The audio sampling rate. Valid values: **22050 to 96000**.
-        # 
-        # >  If the value of AudioProfile is **aac_ld**, the audio sampling rate cannot exceed 44100.
         self.audio_rate = audio_rate
-        # Indicates whether B-frame removal is enabled. Fixed value: **0**.
         self.bframes = bframes
-        # The source-based bitrate settings.
         self.bitrate_with_source = bitrate_with_source
         self.de_interlaced = de_interlaced
-        # Other source-based settings.
         self.ext_with_source = ext_with_source
-        # The frame rate of the output video. Unit: frames per second (FPS).
         self.fps = fps
-        # The source-based frame rate settings.
         self.fps_with_source = fps_with_source
-        # The group of pictures (GOP) size of the output video. Unit: frames. Valid values: **1 to 3000**.
         self.gop = gop
-        # The height of the output video.
         self.height = height
-        # The source-based resolution settings.
         self.res_with_source = res_with_source
-        # The Real-Time Transcoding (RTS) flag. Fixed value: **true**.
-        # 
-        # >  This parameter is returned only if RTS is used for transcoding.
         self.rts_flag = rts_flag
-        # The type of the custom transcoding template. Valid values:
-        # 
-        # *   **h264**: custom H.264 standard transcoding
-        # *   **h264-nbhd**: custom H.264 Narrowband HD™ transcoding
-        # *   **h265**: custom H.265 standard transcoding
-        # *   **h265-nbhd**: custom H.265 Narrowband HD™ transcoding
-        # *   **audio**: audio-only transcoding
         self.template_type = template_type
-        # The bitrate of the output video. Unit: Kbit/s.
         self.video_bitrate = video_bitrate
-        # The video encoding profile. Valid values:
-        # 
-        # *   **baseline**: suitable for mobile devices.
-        # *   **main**: suitable for standard-definition devices.
-        # *   **high**: suitable for high-definition devices.
         self.video_profile = video_profile
-        # The width of the output video.
         self.width = width
 
     def validate(self):

@@ -15,7 +15,6 @@ class DescribeLiveAIProduceRulesResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The subtitle rules.
         self.rule_info_list = rule_info_list
 
     def validate(self):
@@ -95,25 +94,15 @@ class DescribeLiveAIProduceRulesResponseBodyRuleInfoListRuleInfo(DaraModel):
         subtitle_name: str = None,
         suffix_name: str = None,
     ):
-        # The name of the application to which the live stream belongs.
         self.app = app
-        # The description of the rule.
         self.description = description
-        # The streaming domain.
         self.domain = domain
-        # The last time when the rule was modified. The value is a timestamp.
         self.gmt_modify_time = gmt_modify_time
-        # Indicates whether the rule takes effect when stream pulling starts.
         self.is_lazy = is_lazy
-        # The specification of the exported subtitles.
         self.live_template = live_template
-        # The ID of the subtitle rule.
         self.rules_id = rules_id
-        # The name of the virtual background template.
         self.studio_name = studio_name
-        # The name of the subtitle template.
         self.subtitle_name = subtitle_name
-        # The suffix of the subtitle rule.
         self.suffix_name = suffix_name
 
     def validate(self):

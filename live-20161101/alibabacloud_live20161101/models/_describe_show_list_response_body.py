@@ -80,7 +80,6 @@ class DescribeShowListResponseBodyShowListInfo(DaraModel):
         # 
         # > You can configure this parameter only before the episode list starts playing. After you configure this parameter, when the specified point in time is reached, any episode that is playing stops and the episode of the highest priority in the episode list starts to play.
         self.high_priority_show_start_time = high_priority_show_start_time
-        # The episodes in the episode list.
         self.show_list = show_list
         # The number of additional times the episode list is played by default. The value is 0.
         self.show_list_repeat_times = show_list_repeat_times
@@ -189,17 +188,10 @@ class DescribeShowListResponseBodyShowListInfoShowListShow(DaraModel):
         show_id: str = None,
         show_name: str = None,
     ):
-        # The duration of the episode. Unit: seconds.
         self.duration = duration
-        # The number of times the episode repeats after the first playback is complete.
-        # 
-        # For example, if you set the value to 0, the episode is to be played once. If you set the value to 1, the episode is to be played twice.
         self.repeat_times = repeat_times
-        # The resource information.
         self.resource_info = resource_info
-        # The ID of the episode.
         self.show_id = show_id
-        # The name of the episode.
         self.show_name = show_name
 
     def validate(self):
@@ -256,13 +248,9 @@ class DescribeShowListResponseBodyShowListInfoShowListShowResourceInfo(DaraModel
         resource_type: str = None,
         resource_url: str = None,
     ):
-        # The custom type label.
         self.live_input_type = live_input_type
-        # The ID of the video-on-demand (VOD) file.
         self.resource_id = resource_id
-        # The type of the resource.
         self.resource_type = resource_type
-        # The URL of the resource.
         self.resource_url = resource_url
 
     def validate(self):

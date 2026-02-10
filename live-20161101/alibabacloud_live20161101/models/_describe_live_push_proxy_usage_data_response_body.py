@@ -17,7 +17,6 @@ class DescribeLivePushProxyUsageDataResponseBody(DaraModel):
     ):
         # The end time.
         self.end_time = end_time
-        # The usage data of live center stream relay.
         self.push_proxy_data = push_proxy_data
         # The request ID.
         self.request_id = request_id
@@ -107,13 +106,9 @@ class DescribeLivePushProxyUsageDataResponseBodyPushProxyDataPushProxyDataItem(D
         stream_count: int = None,
         time_stamp: str = None,
     ):
-        # The domain name. If the value of SplitBy includes domain, the returned data is grouped by domain name.
         self.domain_name = domain_name
-        # The ID of the region. If the value of SplitBy includes region, the returned data is grouped by region.
         self.region = region
-        # The peak number of live center stream relay channels.
         self.stream_count = stream_count
-        # The timestamp of the returned data.
         self.time_stamp = time_stamp
 
     def validate(self):

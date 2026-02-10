@@ -13,7 +13,6 @@ class DescribeLiveCenterTransferResponseBody(DaraModel):
         live_center_transfer_info_list: main_models.DescribeLiveCenterTransferResponseBodyLiveCenterTransferInfoList = None,
         request_id: str = None,
     ):
-        # The stream relay information.
         self.live_center_transfer_info_list = live_center_transfer_info_list
         # The request ID.
         self.request_id = request_id
@@ -92,22 +91,12 @@ class DescribeLiveCenterTransferResponseBodyLiveCenterTransferInfoListLiveCenter
         stream_name: str = None,
         transfer_args: str = None,
     ):
-        # The name of the application to which the live stream belongs.
         self.app_name = app_name
-        # The streaming domain.
         self.domain_name = domain_name
-        # The third-party URL to which the live stream is relayed.
         self.dst_url = dst_url
-        # The end time of stream relay.
         self.end_time = end_time
-        # The start time of stream relay.
         self.start_time = start_time
-        # The name of the live stream.
         self.stream_name = stream_name
-        # The validity period of stream relay. Valid values:
-        # 
-        # *   **always**: The stream can always be relayed.
-        # *   **time**: The stream can be relayed in a specified time period.
         self.transfer_args = transfer_args
 
     def validate(self):

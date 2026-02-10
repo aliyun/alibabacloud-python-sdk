@@ -25,7 +25,6 @@ class DescribeStreamLocationBlockResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The configurations.
         self.stream_block_list = stream_block_list
         # The total number of pages.
         self.total_page = total_page
@@ -129,24 +128,13 @@ class DescribeStreamLocationBlockResponseBodyStreamBlockListStreamBlock(DaraMode
         stream_name: str = None,
         update_time: str = None,
     ):
-        # The name of the application in which the blocking applies.
         self.app_name = app_name
-        # The blocking type. Valid values:
-        # 
-        # *   blacklist
-        # *   whitelist
         self.block_type = block_type
-        # The accelerated domain name.
         self.domain_name = domain_name
-        # The blocked region. If multiple regions are specified, such as CN and AS, they are separated by commas (,).
         self.location_list = location_list
-        # The time when the blocking ends. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.release_time = release_time
-        # The blocking status. Valid values: 0 (not started), 1 (blocking), 2 (successful), 3 (failed), 4 (expired), and 5 (deleting).
         self.status = status
-        # The name of the stream.
         self.stream_name = stream_name
-        # The time when the configuration was last modified. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):

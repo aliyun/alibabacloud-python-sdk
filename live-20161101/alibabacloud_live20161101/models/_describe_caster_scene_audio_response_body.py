@@ -16,7 +16,6 @@ class DescribeCasterSceneAudioResponseBody(DaraModel):
         mix_list: main_models.DescribeCasterSceneAudioResponseBodyMixList = None,
         request_id: str = None,
     ):
-        # The configurations of the audio layers.
         self.audio_layers = audio_layers
         # The ID of the production studio. You can specify the ID in a request to start a scene in the production studio.
         self.caster_id = caster_id
@@ -147,15 +146,8 @@ class DescribeCasterSceneAudioResponseBodyAudioLayersAudioLayer(DaraModel):
         valid_channel: str = None,
         volume_rate: float = None,
     ):
-        # The fixed delay of the audio layer. Unit: milliseconds.
         self.fixed_delay_duration = fixed_delay_duration
-        # The sound channel type of the audio layer. Valid values:
-        # 
-        # *   **left**: the left channel
-        # *   **right**: the right channel
-        # *   **all** (default): both the left and right channels
         self.valid_channel = valid_channel
-        # The volume of the audio layer.
         self.volume_rate = volume_rate
 
     def validate(self):

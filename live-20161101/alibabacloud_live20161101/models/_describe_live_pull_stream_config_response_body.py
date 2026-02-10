@@ -13,7 +13,6 @@ class DescribeLivePullStreamConfigResponseBody(DaraModel):
         live_app_record_list: main_models.DescribeLivePullStreamConfigResponseBodyLiveAppRecordList = None,
         request_id: str = None,
     ):
-        # Details about the stream pulling configurations.
         self.live_app_record_list = live_app_record_list
         # The ID of the request.
         self.request_id = request_id
@@ -92,19 +91,12 @@ class DescribeLivePullStreamConfigResponseBodyLiveAppRecordListLiveAppRecord(Dar
         start_time: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs.
         self.app_name = app_name
-        # The main streaming domain.
         self.domain_name = domain_name
-        # The end of the time range for which the configurations were queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.end_time = end_time
-        # The origin server of the live stream.
         self.source_url = source_url
-        # The live stream origin server that you are using.
         self.source_using = source_using
-        # The beginning of the time range for which the configurations were queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.start_time = start_time
-        # The name of the live stream.
         self.stream_name = stream_name
 
     def validate(self):

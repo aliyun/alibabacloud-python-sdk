@@ -14,7 +14,6 @@ class DescribeLiveHttpsDomainListResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the certificates.
         self.cert_infos = cert_infos
         # The request ID.
         self.request_id = request_id
@@ -102,29 +101,13 @@ class DescribeLiveHttpsDomainListResponseBodyCertInfosCertInfo(DaraModel):
         cert_update_time: str = None,
         domain_name: str = None,
     ):
-        # The primary domain name of the certificate.
         self.cert_common_name = cert_common_name
-        # The time when the certificate expires.
         self.cert_expire_time = cert_expire_time
-        # The name of the certificate.
         self.cert_name = cert_name
-        # The time when the certificate became effective.
         self.cert_start_time = cert_start_time
-        # The status of the certificate. Valid values:
-        # 
-        # *   **ok**: The certificate is working as expected.
-        # *   **mismatch**: The certificate does not match the specified domain name.
-        # *   **expired**: The certificate has expired.
-        # *   **expire_soon**: The certificate will expire soon.
         self.cert_status = cert_status
-        # The type of the certificate. Valid values:
-        # 
-        # *   **cas**: a certificate that you purchased from Certificate Management Service
-        # *   **upload**: a custom certificate that you uploaded
         self.cert_type = cert_type
-        # The time when the certificate was updated.
         self.cert_update_time = cert_update_time
-        # The accelerated domain name.
         self.domain_name = domain_name
 
     def validate(self):

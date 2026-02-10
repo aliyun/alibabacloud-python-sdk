@@ -14,9 +14,7 @@ class StartCasterResponseBody(DaraModel):
         pvw_scene_infos: main_models.StartCasterResponseBodyPvwSceneInfos = None,
         request_id: str = None,
     ):
-        # The PGM scenes.
         self.pgm_scene_infos = pgm_scene_infos
-        # The PVW scenes.
         self.pvw_scene_infos = pvw_scene_infos
         # The request ID.
         self.request_id = request_id
@@ -99,9 +97,7 @@ class StartCasterResponseBodyPvwSceneInfosSceneInfo(DaraModel):
         scene_id: str = None,
         stream_url: str = None,
     ):
-        # The ID of the scene.
         self.scene_id = scene_id
-        # The streaming URL of the PVW scene in the production studio. The value is not a stream relay URL.
         self.stream_url = stream_url
 
     def validate(self):
@@ -172,11 +168,8 @@ class StartCasterResponseBodyPgmSceneInfosSceneInfo(DaraModel):
         stream_infos: main_models.StartCasterResponseBodyPgmSceneInfosSceneInfoStreamInfos = None,
         stream_url: str = None,
     ):
-        # The ID of the scene.
         self.scene_id = scene_id
-        # The stream relay URLs.
         self.stream_infos = stream_infos
-        # The streaming URL of the PGM scene in the production studio. The value is not a stream relay URL.
         self.stream_url = stream_url
 
     def validate(self):
@@ -255,20 +248,8 @@ class StartCasterResponseBodyPgmSceneInfosSceneInfoStreamInfosStreamInfo(DaraMod
         transcode_config: str = None,
         video_format: str = None,
     ):
-        # The URL.
         self.output_stream_url = output_stream_url
-        # The transcoding configuration. Valid values:
-        # 
-        # *   **lsd**: standard definition
-        # *   **lld**: low definition
-        # *   **lud**: ultra-high definition
-        # *   **lhd**: high definition
         self.transcode_config = transcode_config
-        # The format. Valid values:
-        # 
-        # *   **flv**
-        # *   **rtmp**
-        # *   **m3u8**
         self.video_format = video_format
 
     def validate(self):

@@ -18,7 +18,6 @@ class DescribeLiveSnapshotConfigResponseBody(DaraModel):
         total_num: int = None,
         total_page: int = None,
     ):
-        # The snapshot configurations.
         self.live_stream_snapshot_config_list = live_stream_snapshot_config_list
         # The sort order.
         self.order = order
@@ -139,23 +138,14 @@ class DescribeLiveSnapshotConfigResponseBodyLiveStreamSnapshotConfigListLiveStre
         sequence_oss_object: str = None,
         time_interval: int = None,
     ):
-        # The name of the application to which the live stream belongs.
         self.app_name = app_name
-        # The callback URL that is used to receive notifications about snapshot capture.
         self.callback = callback
-        # The time when the configuration was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
-        # The main streaming domain.
         self.domain_name = domain_name
-        # The name of the Object Storage Service (OSS) bucket.
         self.oss_bucket = oss_bucket
-        # The endpoint of the OSS bucket.
         self.oss_endpoint = oss_endpoint
-        # The naming format of snapshots that are stored in the overwrite mode, which means that a new snapshot overwrites the previous snapshot.
         self.overwrite_oss_object = overwrite_oss_object
-        # The naming format of snapshots that are stored in sequence, which means that a new snapshot does not overwrite the previous snapshot.
         self.sequence_oss_object = sequence_oss_object
-        # The interval at which snapshots are captured. Unit: seconds.
         self.time_interval = time_interval
 
     def validate(self):

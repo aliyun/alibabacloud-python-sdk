@@ -17,7 +17,6 @@ class DescribeLiveStreamsOnlineListResponseBody(DaraModel):
         total_num: int = None,
         total_page: int = None,
     ):
-        # The information about the live streams that are being ingested.
         self.online_info = online_info
         # The page number of the returned page.
         self.page_num = page_num
@@ -138,49 +137,22 @@ class DescribeLiveStreamsOnlineListResponseBodyOnlineInfoLiveStreamOnlineInfo(Da
         video_data_rate: int = None,
         width: int = None,
     ):
-        # The name of the application to which the live stream belongs.
         self.app_name = app_name
-        # The ID of the audio codec.
         self.audio_codec_id = audio_codec_id
-        # The audio bitrate of the live stream. Unit: Kbit/s.
-        # 
-        # >  This parameter can be returned after you submit a ticket for whitelist configuration. For more information about how to submit a ticket, see Contact us.
         self.audio_data_rate = audio_data_rate
-        # The IP address of the client for stream ingest.
         self.client_ip = client_ip
-        # The main streaming domain.
         self.domain_name = domain_name
-        # The frame rate. Unit: FPS.
         self.frame_rate = frame_rate
-        # The height of the video resolution. Unit: pixels.
         self.height = height
-        # The ingest domain. If live center ingest was used, the streaming domain is returned.
         self.publish_domain = publish_domain
-        # The start time of stream ingest. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.publish_time = publish_time
-        # The ingest type. Valid values:
-        # 
-        # *   **edge**: edge ingest.
-        # *   **center**: live center ingest.
         self.publish_type = publish_type
-        # The complete URL that was used to ingest the stream.
         self.publish_url = publish_url
-        # The IP address of the ingest node.
         self.server_ip = server_ip
-        # The name of the live stream.
         self.stream_name = stream_name
-        # Indicates whether the stream was transcoded. Valid values:
-        # 
-        # *   **yes**
-        # *   **no**
         self.transcoded = transcoded
-        # The ID of the video codec.
         self.video_codec_id = video_codec_id
-        # The video bitrate of the live stream. Unit: Kbit/s.
-        # 
-        # >  This parameter can be returned after you submit a ticket for whitelist configuration. For more information about how to submit a ticket, see Contact us.
         self.video_data_rate = video_data_rate
-        # The width of the video resolution. Unit: pixels.
         self.width = width
 
     def validate(self):

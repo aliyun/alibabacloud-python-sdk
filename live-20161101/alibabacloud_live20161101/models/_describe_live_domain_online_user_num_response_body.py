@@ -15,7 +15,6 @@ class DescribeLiveDomainOnlineUserNumResponseBody(DaraModel):
         stream_count: int = None,
         user_count: int = None,
     ):
-        # The information about the streams.
         self.online_user_info = online_user_info
         # The request ID.
         self.request_id = request_id
@@ -105,9 +104,7 @@ class DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineU
         infos: main_models.DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineUserNumInfoInfos = None,
         stream_name: str = None,
     ):
-        # The statistics on the stream.
         self.infos = infos
-        # The name of the stream.
         self.stream_name = stream_name
 
     def validate(self):
@@ -179,9 +176,7 @@ class DescribeLiveDomainOnlineUserNumResponseBodyOnlineUserInfoLiveStreamOnlineU
         transcode_template: str = None,
         user_number: int = None,
     ):
-        # The transcoding template. A value of origin indicates that the stream is a source stream.
         self.transcode_template = transcode_template
-        # The number of online users for the stream, which can be a source stream or transcoded stream.
         self.user_number = user_number
 
     def validate(self):

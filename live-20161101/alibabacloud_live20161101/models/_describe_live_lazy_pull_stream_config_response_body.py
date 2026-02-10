@@ -13,7 +13,6 @@ class DescribeLiveLazyPullStreamConfigResponseBody(DaraModel):
         live_lazy_pull_config_list: main_models.DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigList = None,
         request_id: str = None,
     ):
-        # The configurations of triggered stream pulling.
         self.live_lazy_pull_config_list = live_lazy_pull_config_list
         # The ID of the request.
         self.request_id = request_id
@@ -92,26 +91,12 @@ class DescribeLiveLazyPullStreamConfigResponseBodyLiveLazyPullConfigListLiveLazy
         pull_protocol: str = None,
         transcode_lazy: str = None,
     ):
-        # The name of the application.
         self.app_name = app_name
-        # The main streaming domain.
         self.domain_name = domain_name
-        # The name of the application for back-to-origin stream pulling. If the application specified in the streaming URL is used, this parameter is left empty.
         self.pull_app_name = pull_app_name
-        # The parameters of back-to-origin stream pulling.
         self.pull_args = pull_args
-        # The domain name for back-to-origin stream pulling.
         self.pull_domain_name = pull_domain_name
-        # The protocol for back-to-origin stream pulling. Valid values:
-        # 
-        # *   **rtmp**
-        # *   **httpflv**
-        # *   **hls**
         self.pull_protocol = pull_protocol
-        # Indicates whether stream pulling is triggered when the transcoded stream is played. Default value: **no**. Valid values:
-        # 
-        # *   **yes**
-        # *   **no**
         self.transcode_lazy = transcode_lazy
 
     def validate(self):

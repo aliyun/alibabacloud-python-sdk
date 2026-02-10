@@ -17,7 +17,6 @@ class DescribeCasterStreamUrlResponseBody(DaraModel):
     ):
         # The ID of the production studio.
         self.caster_id = caster_id
-        # The information about the streams of the production studio.
         self.caster_streams = caster_streams
         # The ID of the request.
         self.request_id = request_id
@@ -108,18 +107,10 @@ class DescribeCasterStreamUrlResponseBodyCasterStreamsCasterStream(DaraModel):
         stream_infos: main_models.DescribeCasterStreamUrlResponseBodyCasterStreamsCasterStreamStreamInfos = None,
         stream_url: str = None,
     ):
-        # Indicates whether the output stream is in preview mode or program mode.
-        # 
-        # *   **0**: indicates that the output videos of the scene are in preview mode.
-        # *   **1**: indicates that the output videos of the scene are in program mode.
         self.output_type = output_type
-        # The Real Time Messaging Protocol (RTMP) URL.
         self.rtmp_url = rtmp_url
-        # The ID of the scene.
         self.scene_id = scene_id
-        # The information about the stream.
         self.stream_infos = stream_infos
-        # The streaming URL.
         self.stream_url = stream_url
 
     def validate(self):
@@ -210,20 +201,8 @@ class DescribeCasterStreamUrlResponseBodyCasterStreamsCasterStreamStreamInfosStr
         transcode_config: str = None,
         video_format: str = None,
     ):
-        # The streaming URL.
         self.output_stream_url = output_stream_url
-        # The resolution to which the scene transcodes the stream for playback. Valid values:
-        # 
-        # *   **lsd**: standard definition.
-        # *   **lld**: low definition.
-        # *   **lud**: ultra high definition.
-        # *   **lhd**: high definition.
         self.transcode_config = transcode_config
-        # The format to which the scene transcodes the stream for playback. Valid values:
-        # 
-        # *   **flv**.
-        # *   **rtmp**.
-        # *   **m3u8**.
         self.video_format = video_format
 
     def validate(self):

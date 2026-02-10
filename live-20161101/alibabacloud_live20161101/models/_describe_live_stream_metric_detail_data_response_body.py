@@ -30,7 +30,6 @@ class DescribeLiveStreamMetricDetailDataResponseBody(DaraModel):
         self.request_id = request_id
         # The beginning of the time range during which data was queried.
         self.start_time = start_time
-        # The data array returned.
         self.stream_detail_data = stream_detail_data
 
     def validate(self):
@@ -152,79 +151,27 @@ class DescribeLiveStreamMetricDetailDataResponseBodyStreamDetailDataStreamData(D
         time_stamp: str = None,
         traffic: int = None,
     ):
-        # The name of the application.
         self.app_name = app_name
-        # The total bandwidth consumed by the stream per minute. Unit: bit/s.
         self.bps = bps
-        # The total number of online viewers for the stream per minute.
         self.count = count
-        # The bandwidth over the Flash Video (FLV) protocol. Unit: bit/s.
-        # 
-        # >  This parameter is not returned if no traffic is generated over the protocol.
         self.flv_bps = flv_bps
-        # The number of online viewers over the FLV protocol.
-        # 
-        # >  This parameter is not returned if no traffic is generated over the protocol.
         self.flv_count = flv_count
-        # The amount of traffic over the FLV protocol. Unit: bytes.
-        # 
-        # >  This parameter is not returned if no traffic is generated over the protocol.
         self.flv_traffic = flv_traffic
-        # The bandwidth over the HTTP Live Streaming (HLS) protocol. Unit: bit/s.
-        # 
-        # >  This parameter is not returned if no traffic is generated over the protocol.
         self.hls_bps = hls_bps
-        # The number of online viewers over the HLS protocol.
-        # 
-        # >  Currently, this parameter is not supported.
         self.hls_count = hls_count
-        # The amount of traffic over the HLS protocol. Unit: bytes.
-        # 
-        # >  This parameter is not returned if no traffic is generated over the protocol.
         self.hls_traffic = hls_traffic
-        # Number of new connections established per minute.
         self.new_conns = new_conns
-        # The bandwidth over the P2P protocol. Unit: bit/s.
-        # 
-        # >  This parameter is not returned if no traffic is generated over the protocol.
         self.p_2p_bps = p_2p_bps
-        # The number of online viewers over the P2P protocol.
-        # 
-        # >  This parameter is not returned if no traffic is generated over the protocol.
         self.p_2p_count = p_2p_count
-        # The amount of traffic over the peer-to-peer (P2P) protocol. Unit: bytes.
-        # 
-        # >  This parameter is not returned if no traffic is generated over the protocol.
         self.p_2p_traffic = p_2p_traffic
-        # The bandwidth over the Real-Time Messaging Protocol (RTMP) protocol. Unit: bit/s.
-        # 
-        # >  This parameter is not returned if no traffic is generated over the protocol.
         self.rtmp_bps = rtmp_bps
-        # The number of online viewers over the RTMP protocol.
-        # 
-        # >  This parameter is not returned if no traffic is generated over the protocol.
         self.rtmp_count = rtmp_count
-        # The amount of traffic over the RTMP protocol. Unit: bytes.
-        # 
-        # >  This parameter is not returned if no traffic is generated over the protocol.
         self.rtmp_traffic = rtmp_traffic
-        # The bandwidth over the RTS protocol. Unit: bit/s.
-        # 
-        # >  This parameter is not returned if no traffic is generated over the protocol.
         self.rts_bps = rts_bps
-        # The number of online viewers over the Real-Time Streaming (RTS) protocol.
-        # 
-        # >  This parameter is not returned if no traffic is generated over the protocol.
         self.rts_count = rts_count
-        # The amount of traffic over the RTS protocol. Unit: bytes.
-        # 
-        # >  This parameter is not returned if no traffic is generated over the protocol.
         self.rts_traffic = rts_traffic
-        # The name of the stream.
         self.stream_name = stream_name
-        # The timestamp of the returned data.
         self.time_stamp = time_stamp
-        # The total amount of traffic consumed by the stream per minute. Unit: bytes.
         self.traffic = traffic
 
     def validate(self):

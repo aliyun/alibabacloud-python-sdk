@@ -13,7 +13,6 @@ class DescribeLiveDomainLimitResponseBody(DaraModel):
         live_domain_limit_list: main_models.DescribeLiveDomainLimitResponseBodyLiveDomainLimitList = None,
         request_id: str = None,
     ):
-        # The limits.
         self.live_domain_limit_list = live_domain_limit_list
         # The request ID.
         self.request_id = request_id
@@ -92,19 +91,12 @@ class DescribeLiveDomainLimitResponseBodyLiveDomainLimitListLiveDomainLimit(Dara
         limit_transcode_num: int = None,
         limit_transfer_num: int = None,
     ):
-        # The current number of ingested streams.
         self.current_num = current_num
-        # The current number of transcoded streams.
         self.current_transcode_num = current_transcode_num
-        # The current number of streams relayed from the live center.
         self.current_transfer_num = current_transfer_num
-        # The name of the queried main streaming domain.
         self.domain_name = domain_name
-        # The maximum number of ingested streams.
         self.limit_num = limit_num
-        # The maximum number of transcoded streams.
         self.limit_transcode_num = limit_transcode_num
-        # The maximum allowed number of streams relayed from the live center.
         self.limit_transfer_num = limit_transfer_num
 
     def validate(self):

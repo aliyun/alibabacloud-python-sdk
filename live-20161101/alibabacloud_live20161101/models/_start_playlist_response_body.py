@@ -69,7 +69,6 @@ class StartPlaylistResponseBodyStreamInfo(DaraModel):
         self.domain_name = domain_name
         # The name of the live stream.
         self.stream_name = stream_name
-        # The streaming URLs.
         self.streams = streams
 
     def validate(self):
@@ -155,13 +154,9 @@ class StartPlaylistResponseBodyStreamInfoStreamsStream(DaraModel):
         pull_rtmp_url: str = None,
         quality: str = None,
     ):
-        # The streaming URL in the Flash Video (FLV) format.
         self.pull_flv_url = pull_flv_url
-        # The streaming URL in the Real-Time Messaging Protocol (RTMP) format.
         self.pull_m3u8url = pull_m3u8url
-        # The streaming URL in the M3U8 format.
         self.pull_rtmp_url = pull_rtmp_url
-        # The video quality of the live stream. Valid values: **original**: original quality
         self.quality = quality
 
     def validate(self):

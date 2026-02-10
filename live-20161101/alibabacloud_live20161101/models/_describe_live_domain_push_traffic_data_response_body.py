@@ -27,7 +27,6 @@ class DescribeLiveDomainPushTrafficDataResponseBody(DaraModel):
         self.request_id = request_id
         # The beginning of the time range during which the data was queried.
         self.start_time = start_time
-        # The traffic data that was collected at each interval.
         self.traffic_data_per_interval = traffic_data_per_interval
 
     def validate(self):
@@ -123,9 +122,7 @@ class DescribeLiveDomainPushTrafficDataResponseBodyTrafficDataPerIntervalDataMod
         time_stamp: str = None,
         traffic_value: str = None,
     ):
-        # The timestamp of the data returned.
         self.time_stamp = time_stamp
-        # The traffic. Unit: bytes.
         self.traffic_value = traffic_value
 
     def validate(self):

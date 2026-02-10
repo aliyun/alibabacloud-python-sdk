@@ -19,7 +19,6 @@ class DeleteSnapshotFilesResponseBody(DaraModel):
         self.failure_count = failure_count
         # The request ID.
         self.request_id = request_id
-        # The information about the snapshots.
         self.snapshot_delete_info_list = snapshot_delete_info_list
         # The number of successful screenshot deletions.
         self.success_count = success_count
@@ -105,12 +104,7 @@ class DeleteSnapshotFilesResponseBodySnapshotDeleteInfoListSnapshotDeleteInfo(Da
         create_timestamp: int = None,
         message: str = None,
     ):
-        # The timestamp when the snapshot was captured. Unit: milliseconds.
         self.create_timestamp = create_timestamp
-        # The processing result of the snapshot. Valid values:
-        # 
-        # *   **OK**: The snapshot was deleted.
-        # *   **FileNotFound**: The snapshot was not found.
         self.message = message
 
     def validate(self):

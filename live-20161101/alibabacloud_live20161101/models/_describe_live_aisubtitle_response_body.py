@@ -15,7 +15,6 @@ class DescribeLiveAISubtitleResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The information about the subtitle templates.
         self.subtitle_configs = subtitle_configs
 
     def validate(self):
@@ -103,41 +102,23 @@ class DescribeLiveAISubtitleResponseBodySubtitleConfigsSubtitleConfig(DaraModel)
         width: str = None,
         word_perline: int = None,
     ):
-        # The background color of the subtitles.
         self.bg_color = bg_color
-        # The size of the background image.
         self.bg_width_normalized = bg_width_normalized
-        # The font weight.
         self.border_width_normalized = border_width_normalized
-        # The description of the template.
         self.description = description
-        # The language to which the subtitles are translated.
         self.dst_language = dst_language
-        # The font color.
         self.font_color = font_color
-        # The font.
         self.font_name = font_name
-        # The font size.
         self.font_size_normalized = font_size_normalized
-        # The height of the preview image.
         self.height = height
-        # The number of displayed lines.
         self.max_lines = max_lines
-        # The position of the subtitles.
         self.position_normalized = position_normalized
-        # The ID of the subtitle rule.
         self.rules_refer = rules_refer
-        # Indicates whether the source language of the subtitle is displayed.
         self.show_source_lan = show_source_lan
-        # The source language of the subtitles.
         self.src_language = src_language
-        # The ID of the subtitle template.
         self.subtitle_id = subtitle_id
-        # The name of the subtitle template.
         self.subtitle_name = subtitle_name
-        # The width of the preview image.
         self.width = width
-        # The number of words per line.
         self.word_perline = word_perline
 
     def validate(self):

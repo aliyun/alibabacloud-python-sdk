@@ -13,7 +13,6 @@ class DescribeLivePrivateLineAreasResponseBody(DaraModel):
         live_areas_list: main_models.DescribeLivePrivateLineAreasResponseBodyLiveAreasList = None,
         request_id: str = None,
     ):
-        # Details about the regions.
         self.live_areas_list = live_areas_list
         # The request ID.
         self.request_id = request_id
@@ -87,12 +86,7 @@ class DescribeLivePrivateLineAreasResponseBodyLiveAreasListLiveArea(DaraModel):
         region_type: str = None,
         regions: main_models.DescribeLivePrivateLineAreasResponseBodyLiveAreasListLiveAreaRegions = None,
     ):
-        # The region type. Valid values:
-        # 
-        # *   domestic: in the Chinese mainland
-        # *   overseas: outside the Chinese mainland
         self.region_type = region_type
-        # The regions.
         self.regions = regions
 
     def validate(self):
@@ -164,9 +158,7 @@ class DescribeLivePrivateLineAreasResponseBodyLiveAreasListLiveAreaRegionsRegion
         local_name: str = None,
         region_id: str = None,
     ):
-        # The region name.
         self.local_name = local_name
-        # The region ID.
         self.region_id = region_id
 
     def validate(self):

@@ -23,7 +23,6 @@ class DescribeLiveDomainPvUvDataResponseBody(DaraModel):
         self.domain_name = domain_name
         # The end of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ssZ* format. The time is displayed in UTC.
         self.end_time = end_time
-        # The data of PVs and UVs.
         self.pv_uv_data_infos = pv_uv_data_infos
         # The request ID.
         self.request_id = request_id
@@ -124,11 +123,8 @@ class DescribeLiveDomainPvUvDataResponseBodyPvUvDataInfosPvUvDataInfo(DaraModel)
         time_stamp: str = None,
         uv: str = None,
     ):
-        # The number of PVs.
         self.pv = pv
-        # The timestamp of the data returned. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ssZ* format. The time is displayed in UTC.
         self.time_stamp = time_stamp
-        # The number of UVs.
         self.uv = uv
 
     def validate(self):

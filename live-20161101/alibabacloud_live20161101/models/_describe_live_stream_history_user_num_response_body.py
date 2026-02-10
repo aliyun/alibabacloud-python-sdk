@@ -13,7 +13,6 @@ class DescribeLiveStreamHistoryUserNumResponseBody(DaraModel):
         live_stream_user_num_infos: main_models.DescribeLiveStreamHistoryUserNumResponseBodyLiveStreamUserNumInfos = None,
         request_id: str = None,
     ):
-        # The number of historical online users for the live stream.
         self.live_stream_user_num_infos = live_stream_user_num_infos
         # The request ID.
         self.request_id = request_id
@@ -87,9 +86,7 @@ class DescribeLiveStreamHistoryUserNumResponseBodyLiveStreamUserNumInfosLiveStre
         stream_time: str = None,
         user_num: str = None,
     ):
-        # The time when the stream started. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.stream_time = stream_time
-        # The number of users at the current point in time.
         self.user_num = user_num
 
     def validate(self):

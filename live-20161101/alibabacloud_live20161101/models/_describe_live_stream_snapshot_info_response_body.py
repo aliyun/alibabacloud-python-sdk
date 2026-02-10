@@ -14,7 +14,6 @@ class DescribeLiveStreamSnapshotInfoResponseBody(DaraModel):
         next_start_time: str = None,
         request_id: str = None,
     ):
-        # The snapshots.
         self.live_stream_snapshot_info_list = live_stream_snapshot_info_list
         # The time when the next call occurred. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         # 
@@ -102,20 +101,11 @@ class DescribeLiveStreamSnapshotInfoResponseBodyLiveStreamSnapshotInfoListLiveSt
         oss_endpoint: str = None,
         oss_object: str = None,
     ):
-        # The time when the snapshot was captured. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
-        # The timestamp when the snapshot file was created. Unit: milliseconds.
         self.create_timestamp = create_timestamp
-        # The snapshot mode. Valid values:
-        # 
-        # *   **true**: overwrite mode, which means that a new snapshot overwrites the previous snapshot.
-        # *   **false**: sequence mode, which means that a new snapshot does not overwrite the previous snapshot.
         self.is_overlay = is_overlay
-        # The name of the OSS bucket.
         self.oss_bucket = oss_bucket
-        # The endpoint of the OSS bucket.
         self.oss_endpoint = oss_endpoint
-        # The name of the snapshot stored in Object Storage Service (OSS).
         self.oss_object = oss_object
 
     def validate(self):

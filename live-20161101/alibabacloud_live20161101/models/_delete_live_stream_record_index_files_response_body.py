@@ -19,7 +19,6 @@ class DeleteLiveStreamRecordIndexFilesResponseBody(DaraModel):
         self.code = code
         # The status description. A return value of 500 indicates an error. For details, see the Error codes section of this topic.
         self.message = message
-        # The deletion information.
         self.record_delete_info_list = record_delete_info_list
         # The ID of the request.
         self.request_id = request_id
@@ -105,13 +104,7 @@ class DeleteLiveStreamRecordIndexFilesResponseBodyRecordDeleteInfoListRecordDele
         message: str = None,
         record_id: str = None,
     ):
-        # The processing result of each file indicated by the file ID. Valid values:
-        # 
-        # *   **OK**: The file has been deleted.
-        # *   **AccessDenied**: Access to the file has been denied.
-        # *   **FileNotFound**: The file fails to be found.
         self.message = message
-        # The ID of the index file that is used to locate the live stream recording files to be deleted.
         self.record_id = record_id
 
     def validate(self):

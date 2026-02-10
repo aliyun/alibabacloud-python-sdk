@@ -23,7 +23,6 @@ class DescribeLiveDomainRealTimeTrafficDataResponseBody(DaraModel):
         self.domain_name = domain_name
         # The end of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.end_time = end_time
-        # The traffic that was collected at each interval.
         self.real_time_traffic_data_per_interval = real_time_traffic_data_per_interval
         # The request ID.
         self.request_id = request_id
@@ -123,9 +122,7 @@ class DescribeLiveDomainRealTimeTrafficDataResponseBodyRealTimeTrafficDataPerInt
         time_stamp: str = None,
         value: str = None,
     ):
-        # The timestamp of the data returned. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.time_stamp = time_stamp
-        # The traffic. Unit: bytes.
         self.value = value
 
     def validate(self):

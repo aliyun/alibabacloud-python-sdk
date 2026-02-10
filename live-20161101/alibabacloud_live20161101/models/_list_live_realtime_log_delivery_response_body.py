@@ -13,7 +13,6 @@ class ListLiveRealtimeLogDeliveryResponseBody(DaraModel):
         content: main_models.ListLiveRealtimeLogDeliveryResponseBodyContent = None,
         request_id: str = None,
     ):
-        # The configurations of real-time log delivery.
         self.content = content
         # The request ID.
         self.request_id = request_id
@@ -91,20 +90,11 @@ class ListLiveRealtimeLogDeliveryResponseBodyContentRealtimeLogDeliveryInfo(Dara
         region: str = None,
         status: str = None,
     ):
-        # The ID of the domain name.
         self.dm_id = dm_id
-        # The streaming domain.
         self.domain_name = domain_name
-        # The name of the Logstore to which log entries are delivered.
         self.logstore = logstore
-        # The name of the Log Service project that is used for real-time log delivery.
         self.project = project
-        # The ID of the region where the Log Service project is deployed.
         self.region = region
-        # The status of real-time log delivery. Valid values:
-        # 
-        # *   **online**: enabled
-        # *   **offline**: disabled
         self.status = status
 
     def validate(self):

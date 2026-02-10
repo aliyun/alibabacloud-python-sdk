@@ -13,7 +13,6 @@ class DescribeLivePrivateLineAvailGAResponseBody(DaraModel):
         live_private_line_avail_gas: main_models.DescribeLivePrivateLineAvailGAResponseBodyLivePrivateLineAvailGAs = None,
         request_id: str = None,
     ):
-        # The GA instance configuration details.
         self.live_private_line_avail_gas = live_private_line_avail_gas
         # The request ID.
         self.request_id = request_id
@@ -96,36 +95,16 @@ class DescribeLivePrivateLineAvailGAResponseBodyLivePrivateLineAvailGAsLivePriva
         uid: str = None,
         video_center: str = None,
     ):
-        # The acceleration channel.
         self.acceleration_area = acceleration_area
-        # The acceleration type. Valid values:
-        # 
-        # *   play: streaming acceleration
-        # *   publish: stream ingest acceleration
         self.acceleration_type = acceleration_type
-        # The name of the application.
         self.app_name = app_name
-        # Indicates whether the GA instance is bound to an acceleration circuit. Valid values:
-        # 
-        # *   yes
-        # *   no
         self.binding_status = binding_status
-        # The main streaming domain.
         self.domain_name = domain_name
-        # The accelerated IP address.
         self.ip = ip
-        # The ID of the GA instance.
         self.instance_id = instance_id
-        # The status of the GA instance. Valid values:
-        # 
-        # *   active: The GA instance is available.
-        # *   inactive: The GA instance is unavailable.
         self.status = status
-        # The name of the live stream.
         self.stream_name = stream_name
-        # The user ID (UID).
         self.uid = uid
-        # The live center.
         self.video_center = video_center
 
     def validate(self):

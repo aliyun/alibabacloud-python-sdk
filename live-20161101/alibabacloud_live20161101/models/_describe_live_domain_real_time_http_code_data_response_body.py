@@ -23,7 +23,6 @@ class DescribeLiveDomainRealTimeHttpCodeDataResponseBody(DaraModel):
         self.domain_name = domain_name
         # The end of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.end_time = end_time
-        # The proportions of HTTP status codes at each time interval.
         self.real_time_http_code_data = real_time_http_code_data
         # The request ID.
         self.request_id = request_id
@@ -123,9 +122,7 @@ class DescribeLiveDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsag
         time_stamp: str = None,
         value: main_models.DescribeLiveDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsageDataValue = None,
     ):
-        # The timestamp of the data returned.
         self.time_stamp = time_stamp
-        # The proportions of HTTP status codes.
         self.value = value
 
     def validate(self):
@@ -198,11 +195,8 @@ class DescribeLiveDomainRealTimeHttpCodeDataResponseBodyRealTimeHttpCodeDataUsag
         count: str = None,
         proportion: str = None,
     ):
-        # The HTTP status code.
         self.code = code
-        # The number of times the HTTP status code was returned.
         self.count = count
-        # The proportion of the HTTP status code.
         self.proportion = proportion
 
     def validate(self):

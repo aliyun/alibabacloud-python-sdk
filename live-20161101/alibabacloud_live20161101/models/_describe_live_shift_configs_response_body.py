@@ -13,7 +13,6 @@ class DescribeLiveShiftConfigsResponseBody(DaraModel):
         content: main_models.DescribeLiveShiftConfigsResponseBodyContent = None,
         request_id: str = None,
     ):
-        # The time shifting configurations.
         self.content = content
         # The ID of the request.
         self.request_id = request_id
@@ -90,20 +89,10 @@ class DescribeLiveShiftConfigsResponseBodyContentConfig(DaraModel):
         stream_name: str = None,
         vision: int = None,
     ):
-        # The application for which you configure time shifting.
         self.app_name = app_name
-        # The domain name for which you configure time shifting.
         self.domain_name = domain_name
-        # Whether to ignore time shift generation for the transcode stream.
-        # 
-        # *   true: Ignore time shifting generation.
-        # *   false: Generate time shifting.
-        # 
-        # The default value is true.
         self.ignore_transcode = ignore_transcode
-        # The name of the live stream for which you configure time shifting.
         self.stream_name = stream_name
-        # The number of days for which the time shifting configurations are retained.
         self.vision = vision
 
     def validate(self):

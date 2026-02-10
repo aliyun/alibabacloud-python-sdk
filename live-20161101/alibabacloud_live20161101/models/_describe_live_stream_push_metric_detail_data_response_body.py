@@ -32,7 +32,6 @@ class DescribeLiveStreamPushMetricDetailDataResponseBody(DaraModel):
         self.request_id = request_id
         # The beginning of the time range that was queried. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
-        # The data array returned.
         self.stream_detail_data = stream_detail_data
 
     def validate(self):
@@ -137,15 +136,10 @@ class DescribeLiveStreamPushMetricDetailDataResponseBodyStreamDetailDataStreamDa
         stream_name: str = None,
         time_stamp: str = None,
     ):
-        # The name of the application.
         self.app_name = app_name
-        # The total bandwidth consumed by the stream per minute. Unit: bit/s.
         self.req_bps = req_bps
-        # The total amount of traffic consumed by the stream per minute. Unit: bytes.
         self.req_traffic = req_traffic
-        # The name of the stream.
         self.stream_name = stream_name
-        # The timestamp of the returned data.
         self.time_stamp = time_stamp
 
     def validate(self):

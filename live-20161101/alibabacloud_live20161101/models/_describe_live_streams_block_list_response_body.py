@@ -26,7 +26,6 @@ class DescribeLiveStreamsBlockListResponseBody(DaraModel):
         self.page_size = page_size
         # The ID of the request.
         self.request_id = request_id
-        # The complete URL of each live stream.
         self.stream_urls = stream_urls
         # The total number of live stream URLs that meet the specified conditions.
         self.total_num = total_num

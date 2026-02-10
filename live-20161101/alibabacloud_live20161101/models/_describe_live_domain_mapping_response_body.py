@@ -13,7 +13,6 @@ class DescribeLiveDomainMappingResponseBody(DaraModel):
         live_domain_models: main_models.DescribeLiveDomainMappingResponseBodyLiveDomainModels = None,
         request_id: str = None,
     ):
-        # The mappings of the queried domain name.
         self.live_domain_models = live_domain_models
         # The request ID.
         self.request_id = request_id
@@ -87,13 +86,7 @@ class DescribeLiveDomainMappingResponseBodyLiveDomainModelsLiveDomainModel(DaraM
         domain_name: str = None,
         type: str = None,
     ):
-        # The domain name to which the queried domain name is mapped.
         self.domain_name = domain_name
-        # The type of the queried domain name. Valid values:
-        # 
-        # *   **vhost**: main streaming domain
-        # *   **publish**: ingest domain
-        # *   **play**: sub-streaming domain
         self.type = type
 
     def validate(self):

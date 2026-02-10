@@ -14,7 +14,6 @@ class DescribeCasterComponentsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The components.
         self.components = components
         # The request ID.
         self.request_id = request_id
@@ -103,33 +102,14 @@ class DescribeCasterComponentsResponseBodyComponentsComponent(DaraModel):
         location_id: str = None,
         text_layer_content: main_models.DescribeCasterComponentsResponseBodyComponentsComponentTextLayerContent = None,
     ):
-        # The information about the subtitle component.
         self.caption_layer_content = caption_layer_content
-        # The component ID.
         self.component_id = component_id
-        # The information about the component layer, such as the size and layout.
         self.component_layer = component_layer
-        # The name of the component. By default, the name is the ID of the component.
         self.component_name = component_name
-        # The type of the component. Valid values:
-        # 
-        # *   **text**: a text component
-        # *   **image**: an image component
-        # *   **caption**: a caption component
         self.component_type = component_type
-        # The display effect for the component. Valid values:
-        # 
-        # *   **none**
-        # *   **animateH**: horizontal scrolling
-        # *   **animateV**: vertical scrolling
         self.effect = effect
-        # The information about the image component. This parameter is returned only for image components.
         self.image_layer_content = image_layer_content
-        # The location ID of the component.
-        # 
-        # Each location ID can be assigned to only one component and must be in the RC[Number] format. The values of this parameter are in ascending order, for example, from RC01 to RC12.
         self.location_id = location_id
-        # The information about the text component. This parameter is returned only for text components.
         self.text_layer_content = text_layer_content
 
     def validate(self):
@@ -221,31 +201,11 @@ class DescribeCasterComponentsResponseBodyComponentsComponentTextLayerContent(Da
         size_normalized: float = None,
         text: str = None,
     ):
-        # The color of the text border. Valid values: **0x000000 to 0xffffff**. If the value of this parameter is **""**, this parameter does not take effect.
         self.border_color = border_color
-        # The normalized value of the width of the text border. The value of this parameter equals the border width divided by the font size.****
-        # 
-        # The maximum width of the text border is **16**, even if the border width calculated based on this parameter is greater than **16**.
         self.border_width_normalized = border_width_normalized
-        # The color of the text. Valid values: **0x000000 to 0xffffff**.
         self.color = color
-        # The font of the text, which is specified by the system. Valid values:
-        # 
-        # *   **KaiTi**
-        # *   **AlibabaPuHuiTi-Regular**
-        # *   **AlibabaPuHuiTi-Bold**
-        # *   **NAlibabaPuHuiTi-Light**
-        # *   **NotoSansHans-Regular**
-        # *   **NotoSansHans-Bold**
-        # *   **NotoSansHans-Light**
-        # 
-        # ****
         self.font_name = font_name
-        # The normalized value of the font size of the text.
-        # 
-        # The value of this parameter equals the font size divided by the output height.**** The maximum font size of the text is **1,024**, even if the font size calculated based on this parameter is greater than **1,024**. If the value of this parameter is **-1**, this parameter does not take effect.
         self.size_normalized = size_normalized
-        # The content of the text.
         self.text = text
 
     def validate(self):
@@ -303,7 +263,6 @@ class DescribeCasterComponentsResponseBodyComponentsComponentImageLayerContent(D
         self,
         material_id: str = None,
     ):
-        # The ID of the material from the media library.
         self.material_id = material_id
 
     def validate(self):
@@ -335,28 +294,10 @@ class DescribeCasterComponentsResponseBodyComponentsComponentComponentLayer(Dara
         transparency: int = None,
         width_normalized: float = None,
     ):
-        # The normalized value for heights of the elements in the layer. The widths of the elements are proportionally scaled based on this parameter.
-        # 
-        # If the value of this parameter is **0**, the elements in the layer are not scaled.
         self.height_normalized = height_normalized
-        # The normalized value of the position of the layer, in the format of `[x,y]`. Example: `[0,0]`.
-        # 
-        # >  The values of x and y need to be normalized.
         self.position_normalizeds = position_normalizeds
-        # The reference coordinates of the layer. Valid values:
-        # 
-        # *   **topLeft**: the upper-left corner
-        # *   **topRight**: the upper-right corner
-        # *   **bottomLeft**: the lower-left corner
-        # *   **bottomRight**: the lower-right corner
         self.position_refer = position_refer
-        # The transparency of the layer. Valid values: 0 to 255.
-        # 
-        # A value of **0** indicates that the layer is completely transparent. A value of **255** indicates that the layer is completely opaque.
         self.transparency = transparency
-        # The normalized value for widths of the elements in the layer. The heights of the elements are proportionally scaled based on this parameter. If the value of this parameter is **0**, the elements in the layer are not scaled.
-        # 
-        # >  This parameter conflicts with the HeightNormalized parameter. If both of them are specified, only the HeightNormalized parameter takes effect. If only one of them is specified, the latest specified value is used.
         self.width_normalized = width_normalized
 
     def validate(self):
@@ -450,66 +391,19 @@ class DescribeCasterComponentsResponseBodyComponentsComponentCaptionLayerContent
         word_space_normalized: float = None,
         words_count: int = None,
     ):
-        # The color of the text border.
-        # 
-        # Valid values: **0x000000 to 0xffffff**. If the value of this parameter is "", this parameter does not take effect.
         self.border_color = border_color
-        # The normalized value of the width of the text border. The value of this parameter equals the border width divided by the font size.
-        # 
-        # The maximum width of the text border is **16**, even if the border width calculated based on this parameter is greater than **16**.
         self.border_width_normalized = border_width_normalized
-        # The color of the text. Valid values: **0x000000 to 0xffffff**.
         self.color = color
-        # The font of the text, which is specified by the system. Valid values:
-        # 
-        # *   **KaiTi**
-        # *   **AlibabaPuHuiTi-Regular**
-        # *   **AlibabaPuHuiTi-Bold**
-        # *   **NAlibabaPuHuiTi-Light**
-        # *   **NotoSansHans-Regular**
-        # *   **NotoSansHans-Bold**
-        # *   **NotoSansHans-Light**
-        # 
-        # ****
         self.font_name = font_name
-        # The line spacing, which indicates the interval between every two lines.
         self.line_space_normalized = line_space_normalized
-        # The location ID of the component. If the value of the ComponentType parameter is caption, the LocationId parameter indicates the channel ID of the video source that is referenced by the component.
         self.location_id = location_id
-        # The offset between the presentation timestamps (PTS) of the subtitles and the audio.
-        # 
-        # Valid values: **-10000 to 10000**. Default value: **0**.
         self.pts_offset = pts_offset
-        # Indicates whether the source language of the subtitles is displayed. Valid values:
-        # 
-        # *   **true**: The source language is displayed.
-        # *   **false**: The source language is not displayed.
         self.show_source_lan = show_source_lan
-        # The normalized value of the font size of the subtitles. The value of this parameter equals the font size divided by the output height.``
-        # 
-        # The maximum font size of the subtitles is **1,024**, even if the font size calculated based on this parameter is greater than **1,024**. If the value of this parameter is **-1**, this parameter does not take effect.
         self.size_normalized = size_normalized
-        # The source language of the audio in the video source. Valid values:
-        # 
-        # *   **en**: English
-        # *   **cn**: Chinese
-        # *   **es**: Spanish
-        # *   **ru**: Russian
         self.source_lan = source_lan
-        # The target language of the audio in the video source. Valid values:
-        # 
-        # *   **en**: English
-        # *   **cn**: Chinese
-        # *   **es**: Spanish
-        # *   **ru**: Russian
         self.target_lan = target_lan
-        # The maximum number of words displayed in each line.
         self.word_count_per_line = word_count_per_line
-        # The word spacing, which indicates the interval between every two words.
         self.word_space_normalized = word_space_normalized
-        # The number of words displayed on the component. The value of this parameter can be specified based on the font size.
-        # 
-        # Valid values: **10 to 50**.
         self.words_count = words_count
 
     def validate(self):

@@ -27,7 +27,6 @@ class DescribeLiveTopDomainsByFlowResponseBody(DaraModel):
         self.request_id = request_id
         # The beginning of the time range for which data was queried.
         self.start_time = start_time
-        # The top domain names ranked by traffic.
         self.top_domains = top_domains
 
     def validate(self):
@@ -128,19 +127,12 @@ class DescribeLiveTopDomainsByFlowResponseBodyTopDomainsTopDomain(DaraModel):
         total_traffic: str = None,
         traffic_percent: str = None,
     ):
-        # The domain name.
         self.domain_name = domain_name
-        # The peak bandwidth of the domain name.
         self.max_bps = max_bps
-        # The time when the bandwidth reached the peak value.
         self.max_bps_time = max_bps_time
-        # The ranking of the domain name.
         self.rank = rank
-        # The number of visits to the domain name.
         self.total_access = total_access
-        # The total traffic.
         self.total_traffic = total_traffic
-        # The traffic share of the domain name relative to the total traffic.
         self.traffic_percent = traffic_percent
 
     def validate(self):

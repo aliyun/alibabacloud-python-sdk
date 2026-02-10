@@ -18,7 +18,6 @@ class DescribeLiveRecordConfigResponseBody(DaraModel):
         total_num: int = None,
         total_page: int = None,
     ):
-        # The list of recording configurations.
         self.live_app_record_list = live_app_record_list
         # The sorting order of recording configurations by creation time.
         self.order = order
@@ -143,38 +142,18 @@ class DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecord(DaraMod
         transcode_record_format_list: main_models.DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordTranscodeRecordFormatList = None,
         transcode_templates: main_models.DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordTranscodeTemplates = None,
     ):
-        # The name of the application to which the live stream belongs.
         self.app_name = app_name
-        # The time when the recording configuration was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
-        # The maximum interruption duration of the live stream. If the actual interruption duration exceeds the threshold, a new recording is generated. Valid values: 15 to 21600. Unit: seconds.
         self.delay_time = delay_time
-        # The name of the main streaming domain.
         self.domain_name = domain_name
-        # The end time of the recording. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.end_time = end_time
-        # The configuration of on-demand recording. Valid values:
-        # 
-        # *   **0**: disables on-demand recording.
-        # *   **1**: enables on-demand recording that is triggered by HTTP callbacks.
-        # *   **2**: enables on-demand recording that is triggered by stream ingest parameters.
-        # *   **7**: enables on-demand recording by calling the [RealTimeRecordCommand](https://help.aliyun.com/document_detail/85907.html) operation to manually start or stop recording.
-        # 
-        # >  If you set OnDemand to **1**, you must call the [AddLiveRecordNotifyConfig](https://help.aliyun.com/document_detail/51831.html) operation to configure OnDemandUrl. Otherwise, the configuration of on-demand recording is invalid.
         self.on_demond = on_demond
-        # The name of the Object Storage Service (OSS) bucket in which the recordings are stored.
         self.oss_bucket = oss_bucket
-        # The endpoint of the OSS bucket.
         self.oss_endpoint = oss_endpoint
-        # The recording formats of original streams.
         self.record_format_list = record_format_list
-        # The start time of the recording. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.start_time = start_time
-        # The name of the live stream.
         self.stream_name = stream_name
-        # The recording formats of transcoded streams.
         self.transcode_record_format_list = transcode_record_format_list
-        # The transcoding templates.
         self.transcode_templates = transcode_templates
 
     def validate(self):
@@ -348,15 +327,10 @@ class DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordTranscod
         slice_duration: int = None,
         slice_oss_object_prefix: str = None,
     ):
-        # The duration of a recording file. Unit: seconds.
         self.cycle_duration = cycle_duration
-        # The format of recording files.
         self.format = format
-        # The naming format of a recording file.
         self.oss_object_prefix = oss_object_prefix
-        # The duration of a segment file. Unit: seconds.
         self.slice_duration = slice_duration
-        # The naming format of a segment file.
         self.slice_oss_object_prefix = slice_oss_object_prefix
 
     def validate(self):
@@ -447,15 +421,10 @@ class DescribeLiveRecordConfigResponseBodyLiveAppRecordListLiveAppRecordRecordFo
         slice_duration: int = None,
         slice_oss_object_prefix: str = None,
     ):
-        # The duration of a recording file. Unit: seconds.
         self.cycle_duration = cycle_duration
-        # The format of recording files.
         self.format = format
-        # The naming format of a recording file.
         self.oss_object_prefix = oss_object_prefix
-        # The duration of a segment file. Unit: seconds.
         self.slice_duration = slice_duration
-        # The naming format of a segment file.
         self.slice_oss_object_prefix = slice_oss_object_prefix
 
     def validate(self):

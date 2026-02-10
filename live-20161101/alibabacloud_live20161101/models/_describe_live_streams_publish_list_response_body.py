@@ -21,7 +21,6 @@ class DescribeLiveStreamsPublishListResponseBody(DaraModel):
         self.page_num = page_num
         # The number of entries per page.
         self.page_size = page_size
-        # The information about the stream ingest records.
         self.publish_info = publish_info
         # The request ID.
         self.request_id = request_id
@@ -135,38 +134,19 @@ class DescribeLiveStreamsPublishListResponseBodyPublishInfoLiveStreamPublishInfo
         transcode_id: str = None,
         transcoded: str = None,
     ):
-        # Internal error
         self.ali_inner_error_flags = ali_inner_error_flags
-        # The name of the application to which the live stream belongs.
         self.app_name = app_name
-        # The IP address of the client that ingested the live stream.
         self.client_addr = client_addr
-        # The ingest domain or main streaming domain.
         self.domain_name = domain_name
-        # The IP address of the CDN point of presence (POP) to which the stream was ingested.
         self.edge_node_addr = edge_node_addr
-        # The ingest domain.
         self.publish_domain = publish_domain
-        # The time when the stream ingest was started. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.publish_time = publish_time
-        # The type of the stream ingest. Valid values:
-        # 
-        # *   **edge**: edge ingest
-        # *   **center**: live center ingest
         self.publish_type = publish_type
-        # The complete ingest URL.
         self.publish_url = publish_url
-        # The time when the stream ingest was stopped. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.stop_time = stop_time
-        # The name of the live stream.
         self.stream_name = stream_name
-        # The streaming URL.
         self.stream_url = stream_url
-        # The ID of the transcoding template.
-        # 
-        # >  This parameter is not returned if the value of the Transcoded parameter is no.
         self.transcode_id = transcode_id
-        # Indicates whether the stream was a transcoded stream.
         self.transcoded = transcoded
 
     def validate(self):

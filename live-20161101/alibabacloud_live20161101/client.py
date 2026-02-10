@@ -23493,6 +23493,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_rtc_cloud_recording_files_with_options_async(request, runtime)
 
+    def describe_rtc_cloud_transcode_with_options(
+        self,
+        request: main_models.DescribeRtcCloudTranscodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRtcCloudTranscodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRtcCloudTranscode',
+            version = '2016-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRtcCloudTranscodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_rtc_cloud_transcode_with_options_async(
+        self,
+        request: main_models.DescribeRtcCloudTranscodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeRtcCloudTranscodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeRtcCloudTranscode',
+            version = '2016-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeRtcCloudTranscodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_rtc_cloud_transcode(
+        self,
+        request: main_models.DescribeRtcCloudTranscodeRequest,
+    ) -> main_models.DescribeRtcCloudTranscodeResponse:
+        runtime = RuntimeOptions()
+        return self.describe_rtc_cloud_transcode_with_options(request, runtime)
+
+    async def describe_rtc_cloud_transcode_async(
+        self,
+        request: main_models.DescribeRtcCloudTranscodeRequest,
+    ) -> main_models.DescribeRtcCloudTranscodeResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_rtc_cloud_transcode_with_options_async(request, runtime)
+
     def describe_rtc_mpuevent_sub_with_options(
         self,
         request: main_models.DescribeRtcMPUEventSubRequest,
@@ -34577,6 +34651,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.start_rtc_cloud_recording_with_options_async(request, runtime)
 
+    def start_rtc_cloud_transcode_with_options(
+        self,
+        tmp_req: main_models.StartRtcCloudTranscodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartRtcCloudTranscodeResponse:
+        tmp_req.validate()
+        request = main_models.StartRtcCloudTranscodeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.input_param):
+            request.input_param_shrink = Utils.array_to_string_with_specified_style(tmp_req.input_param, 'InputParam', 'json')
+        if not DaraCore.is_null(tmp_req.output_params):
+            request.output_params_shrink = Utils.array_to_string_with_specified_style(tmp_req.output_params, 'OutputParams', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not DaraCore.is_null(request.input_param_shrink):
+            query['InputParam'] = request.input_param_shrink
+        if not DaraCore.is_null(request.max_idle_time):
+            query['MaxIdleTime'] = request.max_idle_time
+        if not DaraCore.is_null(request.output_params_shrink):
+            query['OutputParams'] = request.output_params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartRtcCloudTranscode',
+            version = '2016-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartRtcCloudTranscodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def start_rtc_cloud_transcode_with_options_async(
+        self,
+        tmp_req: main_models.StartRtcCloudTranscodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StartRtcCloudTranscodeResponse:
+        tmp_req.validate()
+        request = main_models.StartRtcCloudTranscodeShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.input_param):
+            request.input_param_shrink = Utils.array_to_string_with_specified_style(tmp_req.input_param, 'InputParam', 'json')
+        if not DaraCore.is_null(tmp_req.output_params):
+            request.output_params_shrink = Utils.array_to_string_with_specified_style(tmp_req.output_params, 'OutputParams', 'json')
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.channel_id):
+            query['ChannelId'] = request.channel_id
+        if not DaraCore.is_null(request.input_param_shrink):
+            query['InputParam'] = request.input_param_shrink
+        if not DaraCore.is_null(request.max_idle_time):
+            query['MaxIdleTime'] = request.max_idle_time
+        if not DaraCore.is_null(request.output_params_shrink):
+            query['OutputParams'] = request.output_params_shrink
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StartRtcCloudTranscode',
+            version = '2016-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StartRtcCloudTranscodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def start_rtc_cloud_transcode(
+        self,
+        request: main_models.StartRtcCloudTranscodeRequest,
+    ) -> main_models.StartRtcCloudTranscodeResponse:
+        runtime = RuntimeOptions()
+        return self.start_rtc_cloud_transcode_with_options(request, runtime)
+
+    async def start_rtc_cloud_transcode_async(
+        self,
+        request: main_models.StartRtcCloudTranscodeRequest,
+    ) -> main_models.StartRtcCloudTranscodeResponse:
+        runtime = RuntimeOptions()
+        return await self.start_rtc_cloud_transcode_with_options_async(request, runtime)
+
     def stop_caster_with_options(
         self,
         request: main_models.StopCasterRequest,
@@ -35340,6 +35512,80 @@ class Client(OpenApiClient):
     ) -> main_models.StopRtcCloudRecordingResponse:
         runtime = RuntimeOptions()
         return await self.stop_rtc_cloud_recording_with_options_async(request, runtime)
+
+    def stop_rtc_cloud_transcode_with_options(
+        self,
+        request: main_models.StopRtcCloudTranscodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopRtcCloudTranscodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopRtcCloudTranscode',
+            version = '2016-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopRtcCloudTranscodeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def stop_rtc_cloud_transcode_with_options_async(
+        self,
+        request: main_models.StopRtcCloudTranscodeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.StopRtcCloudTranscodeResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.app_id):
+            query['AppId'] = request.app_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'StopRtcCloudTranscode',
+            version = '2016-11-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.StopRtcCloudTranscodeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def stop_rtc_cloud_transcode(
+        self,
+        request: main_models.StopRtcCloudTranscodeRequest,
+    ) -> main_models.StopRtcCloudTranscodeResponse:
+        runtime = RuntimeOptions()
+        return self.stop_rtc_cloud_transcode_with_options(request, runtime)
+
+    async def stop_rtc_cloud_transcode_async(
+        self,
+        request: main_models.StopRtcCloudTranscodeRequest,
+    ) -> main_models.StopRtcCloudTranscodeResponse:
+        runtime = RuntimeOptions()
+        return await self.stop_rtc_cloud_transcode_with_options_async(request, runtime)
 
     def tag_live_resources_with_options(
         self,

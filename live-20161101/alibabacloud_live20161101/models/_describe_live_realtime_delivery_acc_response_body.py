@@ -13,7 +13,6 @@ class DescribeLiveRealtimeDeliveryAccResponseBody(DaraModel):
         real_time_delivery_acc_data: main_models.DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccData = None,
         request_id: str = None,
     ):
-        # The information about real-time log deliveries.
         self.real_time_delivery_acc_data = real_time_delivery_acc_data
         # The request ID.
         self.request_id = request_id
@@ -88,11 +87,8 @@ class DescribeLiveRealtimeDeliveryAccResponseBodyRealTimeDeliveryAccDataAccData(
         success_num: int = None,
         time_stamp: str = None,
     ):
-        # The number of failed real-time log deliveries.
         self.failed_num = failed_num
-        # The number of successful real-time log deliveries.
         self.success_num = success_num
-        # The timestamp of the data returned.
         self.time_stamp = time_stamp
 
     def validate(self):

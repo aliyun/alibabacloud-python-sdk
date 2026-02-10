@@ -16,7 +16,6 @@ class DescribeLiveStreamWatermarkRulesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The watermark rules.
         self.rule_info_list = rule_info_list
         # The total number of entries that meet the specified conditions.
         self.total = total
@@ -101,33 +100,12 @@ class DescribeLiveStreamWatermarkRulesResponseBodyRuleInfoListRuleInfo(DaraModel
         stream: str = None,
         template_id: str = None,
     ):
-        # The name of the application to which the live stream belongs.
         self.app = app
-        # The description of the custom rule.
         self.description = description
-        # The streaming domain.
         self.domain = domain
-        # The name of the custom rule.
         self.name = name
-        # The ID of the watermark rule.
-        # 
-        # >  You can obtain the rule ID by checking the value of the RuleId parameter that is returned by the [AddLiveStreamWatermarkRule](https://help.aliyun.com/document_detail/2848100.html) operation.
         self.rule_id = rule_id
-        # The name of the live stream. The following matching rules apply:
-        # 
-        # *   A stream name can be exactly matched. Example: liveStreamA.
-        # *   Fuzzy match is also supported. The use of an asterisk (`*`) allows all approximate matches to be found.
-        # *   You can place the asterisk before or after an approximate string.
-        # 
-        # > 
-        # 
-        # *   Fuzzy match: Only one asterisk (`*`) before or after an approximate string is allowed. The approximate string must be enclosed in `()`. Separate multiple strings with vertical bars (`|`).
-        # 
-        # *   For example, `*(t1|t2)` matches all streams whose name has the `t1` or `t2` suffix, and `(abc|123)*` matches all streams whose name has the `abc` or `123` prefix.
         self.stream = stream
-        # The ID of the watermark template.
-        # 
-        # >  You can obtain the template ID by checking the value of the TemplateId parameter that is returned by the [AddLiveStreamWatermark](https://help.aliyun.com/document_detail/2848096.html) operation.
         self.template_id = template_id
 
     def validate(self):

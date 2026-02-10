@@ -14,7 +14,6 @@ class AddCasterEpisodeGroupResponseBody(DaraModel):
         program_id: str = None,
         request_id: str = None,
     ):
-        # The IDs of the episodes.
         self.item_ids = item_ids
         # The ID of the episode list that was added. Record the ID as it can be used to manage the program being added.
         self.program_id = program_id

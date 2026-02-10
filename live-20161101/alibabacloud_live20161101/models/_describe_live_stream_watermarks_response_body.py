@@ -18,7 +18,6 @@ class DescribeLiveStreamWatermarksResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of watermark templates that meet the specified conditions.
         self.total = total
-        # Details of the watermark templates.
         self.watermark_list = watermark_list
 
     def validate(self):
@@ -107,43 +106,18 @@ class DescribeLiveStreamWatermarksResponseBodyWatermarkListWatermark(DaraModel):
         xoffset: float = None,
         yoffset: float = None,
     ):
-        # The description of the watermark.
         self.description = description
-        # The height of the watermark. Unit: pixels.
         self.height = height
-        # The name of the watermark.
         self.name = name
-        # The position of the watermark.
-        # 
-        # *   TopLeft: the upper-left corner.
-        # *   TopRight: the upper-right corner.
-        # *   BottomLeft: the lower-left corner.
-        # *   BottomRight: the lower-right corner.
         self.offset_corner = offset_corner
-        # The URL of the watermark image.
         self.picture_url = picture_url
-        # The height of the background video. Unit: pixels.
         self.ref_height = ref_height
-        # The width of the background video. Unit: pixels.
         self.ref_width = ref_width
-        # The number of watermark rules configured for the domain name.
         self.rule_count = rule_count
-        # The ID of the watermark template.
         self.template_id = template_id
-        # The transparency of the watermark. A smaller value indicates a more transparent watermark. Valid values: 0 to 255.
         self.transparency = transparency
-        # The watermark type.
-        # 
-        # *   0: image. Only image watermarks are supported.
-        # *   1: text.
         self.type = type
-        # The offset of the watermark along the x-axis. Unit: pixels.
-        # 
-        # >  The value of the RefWidth parameter is used as the reference. If the OffsetCorner parameter is set to TopLeft, the value of the XOffset parameter indicates the x-axis offset of the upper-left corner of the watermark relative to that of the background video. The directions from the coordinate axes to the center of the background video are positive. In other words, the x-axis is positive toward the right.
         self.xoffset = xoffset
-        # The offset of the watermark along the y-axis. Unit: pixels.
-        # 
-        # >  The value of the RefHeight parameter is used as the reference. If the OffsetCorner parameter is set to TopLeft, the value of the YOffset parameter indicates the y-axis offset of the upper-left corner of the watermark relative to that of the background video. The directions from the coordinate axes to the center of the background video are positive. In other words, the y-axis is positive downward.
         self.yoffset = yoffset
 
     def validate(self):

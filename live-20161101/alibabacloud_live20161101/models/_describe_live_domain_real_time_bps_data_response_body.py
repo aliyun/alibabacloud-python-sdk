@@ -23,7 +23,6 @@ class DescribeLiveDomainRealTimeBpsDataResponseBody(DaraModel):
         self.domain_name = domain_name
         # The end of the time range in which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.end_time = end_time
-        # The bandwidth data that was collected every minute.
         self.real_time_bps_data_per_interval = real_time_bps_data_per_interval
         # The ID of the request.
         self.request_id = request_id
@@ -123,9 +122,7 @@ class DescribeLiveDomainRealTimeBpsDataResponseBodyRealTimeBpsDataPerIntervalDat
         time_stamp: str = None,
         value: str = None,
     ):
-        # The timestamp of the returned data.
         self.time_stamp = time_stamp
-        # The bandwidth. Unit: bit/s.
         self.value = value
 
     def validate(self):

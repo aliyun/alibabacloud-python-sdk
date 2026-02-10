@@ -52,7 +52,6 @@ class DescribeLiveCertificateListResponseBodyCertificateListModel(DaraModel):
         cert_list: main_models.DescribeLiveCertificateListResponseBodyCertificateListModelCertList = None,
         count: int = None,
     ):
-        # The certificates.
         self.cert_list = cert_list
         # The number of certificates.
         self.count = count
@@ -130,17 +129,11 @@ class DescribeLiveCertificateListResponseBodyCertificateListModelCertListCert(Da
         issuer: str = None,
         last_time: int = None,
     ):
-        # The ID of the certificate.
         self.cert_id = cert_id
-        # The name of the certificate.
         self.cert_name = cert_name
-        # The Common Name (CN) attribute of the certificate.
         self.common = common
-        # The fingerprint of the certificate.
         self.fingerprint = fingerprint
-        # The certificate authority (CA) that issued the certificate.
         self.issuer = issuer
-        # The time when the certificate was issued. Unit: seconds.
         self.last_time = last_time
 
     def validate(self):

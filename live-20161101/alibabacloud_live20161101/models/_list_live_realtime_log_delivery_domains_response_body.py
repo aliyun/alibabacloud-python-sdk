@@ -13,7 +13,6 @@ class ListLiveRealtimeLogDeliveryDomainsResponseBody(DaraModel):
         content: main_models.ListLiveRealtimeLogDeliveryDomainsResponseBodyContent = None,
         request_id: str = None,
     ):
-        # The domain names.
         self.content = content
         # The request ID.
         self.request_id = request_id
@@ -87,12 +86,7 @@ class ListLiveRealtimeLogDeliveryDomainsResponseBodyContentDomains(DaraModel):
         domain_name: str = None,
         status: str = None,
     ):
-        # The streaming domain.
         self.domain_name = domain_name
-        # The status of real-time log delivery. Valid values:
-        # 
-        # *   **online**: enabled
-        # *   **offline**: disabled
         self.status = status
 
     def validate(self):

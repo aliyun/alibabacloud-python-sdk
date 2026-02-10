@@ -14,7 +14,6 @@ class ListEdgeTranscodeJobResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The edge transcoding tasks.
         self.job_list = job_list
         # The request ID.
         self.request_id = request_id
@@ -105,34 +104,16 @@ class ListEdgeTranscodeJobResponseBodyJobListJob(DaraModel):
         template_name: str = None,
         type: str = None,
     ):
-        # The time when the task was created.
         self.create_time = create_time
-        # The ID of the task.
         self.job_id = job_id
-        # The time when the task was last started.
         self.last_start_at = last_start_at
-        # The time when the task was last stopped.
         self.last_stop_at = last_stop_at
-        # The name of the task.
         self.name = name
-        # The status of the task. Valid values:
-        # 
-        # *   0: not started
-        # *   1: in progress
         self.status = status
-        # The URL of the input stream.
         self.stream_input = stream_input
-        # The URL of the output stream.
         self.stream_output = stream_output
-        # The ID of the edge transcoding template used by the task.
         self.template_id = template_id
-        # The name of the edge transcoding template used by the task.
         self.template_name = template_name
-        # The type of edge transcoding. Valid values:
-        # 
-        # *   common: standard transcoding and Narrowband HD™ 1.0 transcoding.
-        # *   nbhd-2: Narrowband HD™ 2.0 transcoding
-        # *   ultra-hd: ultra-high definition transcoding
         self.type = type
 
     def validate(self):

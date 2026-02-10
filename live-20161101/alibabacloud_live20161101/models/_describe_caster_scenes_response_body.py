@@ -16,7 +16,6 @@ class DescribeCasterScenesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The scenes.
         self.scene_list = scene_list
         # The total number of entries.
         self.total = total
@@ -102,27 +101,13 @@ class DescribeCasterScenesResponseBodySceneListScene(DaraModel):
         stream_infos: main_models.DescribeCasterScenesResponseBodySceneListSceneStreamInfos = None,
         stream_url: str = None,
     ):
-        # The components.
         self.component_ids = component_ids
-        # The ID of the layout.
         self.layout_id = layout_id
-        # Indicates whether the output video is in PVW mode or PGM mode. Valid values:
-        # 
-        # *   **0**: in PVW mode.
-        # *   **1**: in PGM mode.
         self.output_type = output_type
-        # The ID of the scene. You can use the ID as a request parameter in the API operation that is used to modify the audio configurations of the scene, query the audio configurations of the scene, start the scene, or stop the scene.
         self.scene_id = scene_id
-        # The name of the scene.
         self.scene_name = scene_name
-        # The status of the scene. Valid values:
-        # 
-        # *   **0**: disabled
-        # *   **1**: enabled
         self.status = status
-        # The information about the stream.
         self.stream_infos = stream_infos
-        # The URL of the output stream.
         self.stream_url = stream_url
 
     def validate(self):
@@ -234,20 +219,8 @@ class DescribeCasterScenesResponseBodySceneListSceneStreamInfosStreamInfo(DaraMo
         transcode_config: str = None,
         video_format: str = None,
     ):
-        # The streaming URL.
         self.output_stream_url = output_stream_url
-        # The transcoding configuration. Valid values:
-        # 
-        # *   **sd**: standard definition
-        # *   **lld**: low definition
-        # *   **lud**: ultra-high definition
-        # *   **lhd**: high definition
         self.transcode_config = transcode_config
-        # The format. Valid values:
-        # 
-        # *   **flv**
-        # *   **mp4**
-        # *   **m3u8**
         self.video_format = video_format
 
     def validate(self):

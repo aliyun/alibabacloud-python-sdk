@@ -33,7 +33,6 @@ class DescribeDomainUsageDataResponseBody(DaraModel):
         self.start_time = start_time
         # The type of the resource usage data.
         self.type = type
-        # The resource usage data that was collected for each time interval.
         self.usage_data_per_interval = usage_data_per_interval
 
     def validate(self):
@@ -141,13 +140,7 @@ class DescribeDomainUsageDataResponseBodyUsageDataPerIntervalDataModule(DaraMode
         time_stamp: str = None,
         value: str = None,
     ):
-        # The timestamp of the returned data. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.time_stamp = time_stamp
-        # The amount of resource usage.
-        # 
-        # *   If the value of the Field parameter is traf or req_traf, the returned data is measured in bytes.
-        # *   If the value of the Field parameter is bps or req_bps, the returned data is measured in bit/s.
-        # *   If the value of the Field parameter is acc, the returned data is measured by count.
         self.value = value
 
     def validate(self):

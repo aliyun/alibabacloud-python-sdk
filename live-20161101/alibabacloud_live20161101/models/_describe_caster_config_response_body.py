@@ -71,7 +71,6 @@ class DescribeCasterConfigResponseBody(DaraModel):
         self.side_output_url = side_output_url
         # The list of custom stream redirect URLs.
         self.side_output_url_list = side_output_url_list
-        # The storage configuration.
         self.sync_groups_config = sync_groups_config
         # The transcoding configuration.
         self.transcode_config = transcode_config
@@ -246,7 +245,6 @@ class DescribeCasterConfigResponseBodyTranscodeConfig(DaraModel):
         self.caster_template = caster_template
         # The custom settings.
         self.custom_params = custom_params
-        # The transcoding setting for live streams.
         self.live_template_ids = live_template_ids
 
     def validate(self):
@@ -440,15 +438,8 @@ class DescribeCasterConfigResponseBodySyncGroupsConfigSyncGroup(DaraModel):
         mode: int = None,
         resource_ids: main_models.DescribeCasterConfigResponseBodySyncGroupsConfigSyncGroupResourceIds = None,
     ):
-        # The ID of the resource in the production studio.
         self.host_resource_id = host_resource_id
-        # The cache mode of the Static Page Caching policy. Valid values:
-        # 
-        # *   0: standard mode
-        # *   1: force mode
-        # *   2: no cache
         self.mode = mode
-        # The IDs of the resources for which you want to modify the resource group. The number of resource IDs is 1 to 50.
         self.resource_ids = resource_ids
 
     def validate(self):
@@ -530,7 +521,6 @@ class DescribeCasterConfigResponseBodyRecordConfig(DaraModel):
         self.oss_bucket = oss_bucket
         # The Object Storage Service (OSS) endpoint.
         self.oss_endpoint = oss_endpoint
-        # The recording configuration.
         self.record_format = record_format
 
     def validate(self):
@@ -616,13 +606,9 @@ class DescribeCasterConfigResponseBodyRecordConfigRecordFormatRecordFormat(DaraM
         oss_object_prefix: str = None,
         slice_oss_object_prefix: str = None,
     ):
-        # The length of the recording.
         self.cycle_duration = cycle_duration
-        # The format of the recording.
         self.format = format
-        # The name of the recording.
         self.oss_object_prefix = oss_object_prefix
-        # The name of the segment.
         self.slice_oss_object_prefix = slice_oss_object_prefix
 
     def validate(self):

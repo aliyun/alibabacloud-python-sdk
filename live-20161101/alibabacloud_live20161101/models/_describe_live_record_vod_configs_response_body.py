@@ -16,7 +16,6 @@ class DescribeLiveRecordVodConfigsResponseBody(DaraModel):
         request_id: str = None,
         total: str = None,
     ):
-        # The configurations.
         self.live_record_vod_configs = live_record_vod_configs
         # The page number.
         self.page_num = page_num
@@ -122,33 +121,15 @@ class DescribeLiveRecordVodConfigsResponseBodyLiveRecordVodConfigsLiveRecordVodC
         stream_name: str = None,
         vod_transcode_group_id: str = None,
     ):
-        # The name of the application to which the live stream belongs.
         self.app_name = app_name
-        # Indicates whether automatic merging is enabled. Valid values:
-        # 
-        # *   **ON**
-        # *   **OFF**
         self.auto_compose = auto_compose
-        # The ID of the transcoding template group that was used to automatically merge the VOD files created from the live streams.
-        # 
-        # >  This parameter is returned if the value of the AutoCompose parameter is ON.
         self.compose_vod_transcode_group_id = compose_vod_transcode_group_id
-        # The time when the live stream was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
-        # The recording cycle. Unit: seconds. Default value: **3600**. Valid values: **300 to 21600**.
         self.cycle_duration = cycle_duration
-        # The main streaming domain.
         self.domain_name = domain_name
-        # Indicates whether on-demand recording is enabled. Valid values:
-        # 
-        # *   **0** (default): On-demand recording is disabled.
-        # *   **1**: On-demand recording is enabled by using the HTTP callback method.
         self.on_demand = on_demand
-        # The storage location.
         self.storage_location = storage_location
-        # The name of the live stream.
         self.stream_name = stream_name
-        # The ID of the transcoding template group in ApsaraVideo VOD.
         self.vod_transcode_group_id = vod_transcode_group_id
 
     def validate(self):

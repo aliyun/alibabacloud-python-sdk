@@ -16,7 +16,6 @@ class ListEdgeTranscodeTemplateResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The details of the edge transcoding templates.
         self.template_list = template_list
         # The total number of templates returned.
         self.total_count = total_count
@@ -103,28 +102,14 @@ class ListEdgeTranscodeTemplateResponseBodyTemplateListTemplate(DaraModel):
         template_id: str = None,
         type: str = None,
     ):
-        # The bitrate. If a numeric value is returned, a fixed bitrate is configured for the output stream. If ws is returned, the output stream maintains the same bitrate as the input stream.
         self.bitrate = bitrate
-        # The video encoding format. Valid values:
-        # 
-        # *   H.264
-        # *   H.265
         self.codec = codec
-        # The time when the image template was created.
         self.create_time = create_time
-        # The frame rate. If a numeric value is returned, a fixed frame rate is configured for the output stream. If ws is returned, the output stream maintains the same frame rate as the input stream.
         self.fps = fps
-        # The group of pictures (GOP) size. The GOP size can be defined by the number of frames or the time interval between I-frames. If ws is returned, the output stream maintains the same GOP size as the input stream.
         self.gop = gop
-        # The template name.
         self.name = name
-        # The resolution. If width and height values are returned, a fixed resolution is configured for the output stream. If ws is returned, the output stream maintains the same resolution as the input stream.
-        # 
-        # >  If the width value is -1, the width of the output video is adapted to a fixed height. If the height value is -2, the height of the output video is adapted to a fixed width.
         self.resolution = resolution
-        # The ID of the edge transcoding template.
         self.template_id = template_id
-        # The type of edge transcoding.
         self.type = type
 
     def validate(self):

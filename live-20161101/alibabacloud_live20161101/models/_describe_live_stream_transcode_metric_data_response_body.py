@@ -32,7 +32,6 @@ class DescribeLiveStreamTranscodeMetricDataResponseBody(DaraModel):
         self.request_id = request_id
         # The beginning of the time range during which data was queried. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.start_time = start_time
-        # The data array returned.
         self.stream_detail_data = stream_detail_data
 
     def validate(self):
@@ -140,59 +139,13 @@ class DescribeLiveStreamTranscodeMetricDataResponseBodyStreamDetailDataStreamDat
         time_stamp: str = None,
         transcode_type: str = None,
     ):
-        # The name of the application.
         self.app_name = app_name
-        # The duration. Unit: seconds.
         self.duration = duration
-        # The frame rate.
-        # 
-        # Valid values:
-        # 
-        # *   <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     normal
-        # 
-        #     <!-- -->
-        # 
-        # *   <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     high
-        # 
-        #     <!-- -->
-        # 
-        # *   <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     def
-        # 
-        #     <!-- -->
         self.fps = fps
-        # The region.
         self.region = region
-        # The resolution. Valid values:
-        # 
-        # *   2K: 2K resolution
-        # *   4K: 4K resolution
-        # *   LD: low definition
-        # *   SD: standard definition
-        # *   HD: high definition
-        # *   def: audio
         self.resolution = resolution
-        # The name of the stream.
         self.stream_name = stream_name
-        # The timestamp of the returned data.
         self.time_stamp = time_stamp
-        # The transcoding type. Valid values:
-        # 
-        # *   H264STD: standard transcoding based on H.264
-        # *   H264NBHD: Narrowband HD™ transcoding based on H.264
-        # *   H265STD: standard transcoding based on H.265
-        # *   AUDIO: audio transcoding
         self.transcode_type = transcode_type
 
     def validate(self):

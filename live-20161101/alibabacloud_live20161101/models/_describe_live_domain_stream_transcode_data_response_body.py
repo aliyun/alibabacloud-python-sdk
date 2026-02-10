@@ -15,7 +15,6 @@ class DescribeLiveDomainStreamTranscodeDataResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The transcoding usage data returned at each interval.
         self.transcode_data_list = transcode_data_list
 
     def validate(self):
@@ -92,43 +91,12 @@ class DescribeLiveDomainStreamTranscodeDataResponseBodyTranscodeDataListTranscod
         tanscode_type: str = None,
         time_stamp: str = None,
     ):
-        # The main streaming domain. This parameter is returned only when you add the domain key to the value of the Split parameter.
         self.domain = domain
-        # The transcoding length. Unit: minutes.
         self.duration = duration
-        # The frame rate of the transcoded stream. This parameter is returned only when you add the fps key to the value of the Split parameter.
         self.fps = fps
-        # The region in which the domain name resides. Valid values:
-        # 
-        # >  This parameter takes effect only when you set Split to region.
-        # 
-        # *   **cn-beijing**: China (Beijing)
-        # *   **cn-shanghai**: China (Shanghai)
-        # *   **cn-qingdao**: China (Qingdao)
-        # *   **cn-shenzhen**: China (Shenzhen)
-        # *   **ap-northeast-1**: Japan (Tokyo)
-        # *   **ap-southeast-1**: Singapore
-        # *   **ap-southeast-5**: Indonesia (Jakarta)
-        # *   **eu-central-1**: Germany (Frankfurt)
         self.region = region
-        # The resolution of the transcoded stream. This parameter is returned only when you add the resolution key to the value of the Split parameter. Valid values:
-        # 
-        # *   **2K**
-        # *   **4K**
-        # *   **LD**: low definition
-        # *   **SD**: standard definition
-        # *   **HD**: high definition
-        # *   **def**: audio
         self.resolution = resolution
-        # The transcoding type. Valid values:
-        # 
-        # >  This parameter takes effect only if the request parameter Split is set to transcode_type.
-        # 
-        # *   **H264NBHD**: Narrowband HD™ transcoding based on H.264
-        # *   **H265NBHD**: Narrowband HD™ transcoding based on H.265
-        # *   **AUDIO**: audio transcoding
         self.tanscode_type = tanscode_type
-        # The timestamp of the data entry.
         self.time_stamp = time_stamp
 
     def validate(self):

@@ -13,7 +13,6 @@ class AddCasterProgramResponseBody(DaraModel):
         episode_ids: main_models.AddCasterProgramResponseBodyEpisodeIds = None,
         request_id: str = None,
     ):
-        # The IDs of the episodes. The episode IDs are listed in the same order as specified by the variable N.
         self.episode_ids = episode_ids
         # The request ID.
         self.request_id = request_id
@@ -86,7 +85,6 @@ class AddCasterProgramResponseBodyEpisodeIdsEpisodeId(DaraModel):
         self,
         episode_id: str = None,
     ):
-        # The ID of the episode. You can use the ID as a request parameter in the API operation that is used to modify the episode list, query the information about the episode list, delete the episode, or modify the configurations of the episode.
         self.episode_id = episode_id
 
     def validate(self):

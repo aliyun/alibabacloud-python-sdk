@@ -13,7 +13,6 @@ class DescribeUpBpsPeakDataResponseBody(DaraModel):
         describe_up_peak_traffics: main_models.DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTraffics = None,
         request_id: str = None,
     ):
-        # The information about peak inbound bandwidth on each day.
         self.describe_up_peak_traffics = describe_up_peak_traffics
         # The request ID.
         self.request_id = request_id
@@ -89,13 +88,9 @@ class DescribeUpBpsPeakDataResponseBodyDescribeUpPeakTrafficsDescribeUpPeakTraff
         query_time: str = None,
         stat_name: str = None,
     ):
-        # The daily peak inbound bandwidth.
         self.band_width = band_width
-        # The time when the daily peak bandwidth is reached.
         self.peak_time = peak_time
-        # The time queried on the day.
         self.query_time = query_time
-        # The category of the statistical data. If the DomainSwitch parameter is set to on, the value of this parameter is the domain name. If the DomainSwitch parameter is set to off or not specified, the value of this parameter is the user ID.
         self.stat_name = stat_name
 
     def validate(self):

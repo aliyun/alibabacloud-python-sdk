@@ -17,7 +17,6 @@ class DescribeLiveDomainRecordUsageDataResponseBody(DaraModel):
     ):
         # The end of the time range during which data was queried.
         self.end_time = end_time
-        # The recording data that was collected for each interval.
         self.record_usage_data = record_usage_data
         # The request ID.
         self.request_id = request_id
@@ -109,17 +108,11 @@ class DescribeLiveDomainRecordUsageDataResponseBodyRecordUsageDataDataModule(Dar
         time_stamp: str = None,
         type: str = None,
     ):
-        # The number of peak channels.
         self.count = count
-        # The main streaming domain. This parameter is returned if the value of the request parameter SplitBy contains `domain`.
         self.domain = domain
-        # The recording length. Unit: seconds.
         self.duration = duration
-        # The region ID.
         self.region = region
-        # The time when recording started.
         self.time_stamp = time_stamp
-        # The recording file type. This parameter is returned if the value of the request parameter SplitBy contains `record_fmt`.
         self.type = type
 
     def validate(self):

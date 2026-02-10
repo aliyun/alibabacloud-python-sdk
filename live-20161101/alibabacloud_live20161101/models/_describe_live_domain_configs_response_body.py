@@ -13,7 +13,6 @@ class DescribeLiveDomainConfigsResponseBody(DaraModel):
         domain_configs: main_models.DescribeLiveDomainConfigsResponseBodyDomainConfigs = None,
         request_id: str = None,
     ):
-        # The configurations of the domain name.
         self.domain_configs = domain_configs
         # The request ID.
         self.request_id = request_id
@@ -89,18 +88,9 @@ class DescribeLiveDomainConfigsResponseBodyDomainConfigsDomainConfig(DaraModel):
         function_name: str = None,
         status: str = None,
     ):
-        # The configuration ID.
         self.config_id = config_id
-        # The attributes of the feature.
         self.function_args = function_args
-        # The name of the feature.
         self.function_name = function_name
-        # The configuration status. Valid values:
-        # 
-        # *   **success**
-        # *   **testing**
-        # *   **failed**
-        # *   **configuring**
         self.status = status
 
     def validate(self):
@@ -184,9 +174,7 @@ class DescribeLiveDomainConfigsResponseBodyDomainConfigsDomainConfigFunctionArgs
         arg_name: str = None,
         arg_value: str = None,
     ):
-        # The name of the attribute.
         self.arg_name = arg_name
-        # The attribute value.
         self.arg_value = arg_value
 
     def validate(self):

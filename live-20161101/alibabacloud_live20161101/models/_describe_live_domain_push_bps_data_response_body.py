@@ -17,7 +17,6 @@ class DescribeLiveDomainPushBpsDataResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The bandwidth data that was collected at each interval.
         self.bps_data_per_interval = bps_data_per_interval
         # The time granularity of the query.
         self.data_interval = data_interval
@@ -123,9 +122,7 @@ class DescribeLiveDomainPushBpsDataResponseBodyBpsDataPerIntervalDataModule(Dara
         bps_value: str = None,
         time_stamp: str = None,
     ):
-        # The bandwidth. Unit: bit/s.
         self.bps_value = bps_value
-        # The timestamp of the data returned.
         self.time_stamp = time_stamp
 
     def validate(self):

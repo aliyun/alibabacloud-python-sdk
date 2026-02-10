@@ -14,7 +14,6 @@ class DescribeLiveDomainLogResponseBody(DaraModel):
         domain_name: str = None,
         request_id: str = None,
     ):
-        # The log information.
         self.domain_log_details = domain_log_details
         # The streaming domain or ingest domain.
         self.domain_name = domain_name
@@ -97,11 +96,8 @@ class DescribeLiveDomainLogResponseBodyDomainLogDetailsDomainLogDetail(DaraModel
         log_infos: main_models.DescribeLiveDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfos = None,
         page_infos: main_models.DescribeLiveDomainLogResponseBodyDomainLogDetailsDomainLogDetailPageInfos = None,
     ):
-        # The total number of entries returned on the current page.
         self.log_count = log_count
-        # Details about the logs.
         self.log_infos = log_infos
-        # The page information.
         self.page_infos = page_infos
 
     def validate(self):
@@ -148,11 +144,8 @@ class DescribeLiveDomainLogResponseBodyDomainLogDetailsDomainLogDetailPageInfos(
         page_size: int = None,
         total: int = None,
     ):
-        # The page number of the returned page.
         self.page_index = page_index
-        # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of entries returned.
         self.total = total
 
     def validate(self):
@@ -231,15 +224,10 @@ class DescribeLiveDomainLogResponseBodyDomainLogDetailsDomainLogDetailLogInfosLo
         log_size: int = None,
         start_time: str = None,
     ):
-        # The end of the time range for which the logs were queried.
         self.end_time = end_time
-        # The name of the log file.
         self.log_name = log_name
-        # The path of the log file.
         self.log_path = log_path
-        # The size of the log file.
         self.log_size = log_size
-        # The beginning of the time range for which the logs were queried.
         self.start_time = start_time
 
     def validate(self):

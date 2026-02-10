@@ -14,7 +14,6 @@ class DescribeLiveDomainBpsDataByLayerResponseBody(DaraModel):
         data_interval: str = None,
         request_id: str = None,
     ):
-        # The data returned at each time interval.
         self.bps_data_interval = bps_data_interval
         # The time interval between the data entries returned. Unit: seconds.
         self.data_interval = data_interval
@@ -97,11 +96,8 @@ class DescribeLiveDomainBpsDataByLayerResponseBodyBpsDataIntervalDataModule(Dara
         traffic_value: str = None,
         value: str = None,
     ):
-        # The timestamp of the data returned.
         self.time_stamp = time_stamp
-        # The total traffic. Unit: bytes.
         self.traffic_value = traffic_value
-        # The peak bandwidth. Unit: bit/s.
         self.value = value
 
     def validate(self):

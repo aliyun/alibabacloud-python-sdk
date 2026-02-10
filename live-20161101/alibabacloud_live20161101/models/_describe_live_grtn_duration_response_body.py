@@ -15,7 +15,6 @@ class DescribeLiveGrtnDurationResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The details of the co-streaming usage data.
         self.stream_detail_data = stream_detail_data
 
     def validate(self):
@@ -90,23 +89,10 @@ class DescribeLiveGrtnDurationResponseBodyStreamDetailDataStreamData(DaraModel):
         media_type: str = None,
         time_stamp: str = None,
     ):
-        # The ID of the application.
         self.app_id = app_id
-        # The co-streaming duration. Unit: minutes.
         self.duration = duration
-        # The media specification. Valid values:
-        # 
-        # *   0: audio-only. This is a basic specification.
-        # *   480P: standard definition (SD). The video resolution is 640 × 480 or lower.
-        # *   720P: high definition (HD). The video resolution is 1280 × 720 or lower.
-        # *   1080P: full HD. The video resolution is 1920 × 1080 or lower.
         self.media_profile = media_profile
-        # The media type. Valid values:
-        # 
-        # *   audio
-        # *   video
         self.media_type = media_type
-        # The timestamp of the returned data.
         self.time_stamp = time_stamp
 
     def validate(self):

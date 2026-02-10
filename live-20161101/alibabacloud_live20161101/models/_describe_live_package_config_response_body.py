@@ -18,7 +18,6 @@ class DescribeLivePackageConfigResponseBody(DaraModel):
         total_num: int = None,
         total_page: int = None,
     ):
-        # The live stream encapsulation configurations.
         self.live_package_config_list = live_package_config_list
         # The sorting order. Valid values:
         # 
@@ -141,24 +140,13 @@ class DescribeLivePackageConfigResponseBodyLivePackageConfigListLivePackageConfi
         segment_num: int = None,
         stream_name: str = None,
     ):
-        # The application name.
         self.app_name = app_name
-        # The main streaming domain.
         self.domain_name = domain_name
-        # Indicates whether the transcoded stream is ignored. Valid values:
-        # 
-        # *   **true** (default)
-        # *   **false**
         self.ignore_transcode = ignore_transcode
-        # The part length. Unit: milliseconds.
         self.part_duration = part_duration
-        # The streaming protocol and encapsulation format.
         self.protocol = protocol
-        # The segment length. Unit: seconds.
         self.segment_duration = segment_duration
-        # The number of segments.
         self.segment_num = segment_num
-        # The stream name.
         self.stream_name = stream_name
 
     def validate(self):

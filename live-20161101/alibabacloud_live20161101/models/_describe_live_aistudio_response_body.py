@@ -22,7 +22,6 @@ class DescribeLiveAIStudioResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The virtual studio templates.
         self.studio_configs = studio_configs
         # The total number of templates.
         self.total = total
@@ -127,58 +126,20 @@ class DescribeLiveAIStudioResponseBodyStudioConfigsSubtitleConfig(DaraModel):
         template_name: str = None,
         width: str = None,
     ):
-        # The ID of the background material.
         self.background_resource_id = background_resource_id
-        # The URL of the background material. Make sure that the URL is accessible over the Internet. Either this parameter or the BackgroundResourceId parameter is returned.
         self.background_resource_url = background_resource_url
-        # The type of the background material. Valid values:
-        # 
-        # *   VOD: a video in ApsaraVideo VOD
-        # *   PIC: an image
-        # *   LIVE: a live stream
         self.background_type = background_type
-        # The custom description.
         self.description = description
-        # The preview height. Unit: pixels.
-        # 
-        # The following preview specifications (width × height) are supported:
-        # 
-        # *   Landscape low definition 360p (640×360)
-        # *   Portrait low definition 360p (360×640)
-        # *   Landscape standard definition 480p (854×480)
-        # *   Portrait standard definition 480p (480×854)
-        # *   Landscape high definition 720p (1280×720)
-        # *   Portrait high definition 720p (720×1280)
-        # *   Landscape ultra-high definition 1080p (1920×1080)
-        # *   Portrait ultra-high definition 1080p (1080×1920)
         self.height = height
-        # The layout information of the multimedia material.
         self.matting_layout = matting_layout
-        # The type of chroma key that is performed on ingested streams. Valid values:
-        # 
-        # *   green: green-key chroma key
-        # *   blue: blue-screen chroma key
-        # *   complex: background replacement
         self.matting_type = matting_type
-        # LIVE, live streaming
         self.media_layout = media_layout
-        # The ID of the multimedia material in ApsaraVideo VOD.
         self.media_resource_id = media_resource_id
-        # The URL of the multimedia material.
         self.media_resource_url = media_resource_url
-        # The type of the multimedia material. Valid values:
-        # 
-        # *   VOD: a video in ApsaraVideo VOD
-        # *   PIC: an image
-        # *   LIVE: a live stream
         self.media_type = media_type
-        # The IDs of the bound rules.
         self.rule_ids = rule_ids
-        # The ID of the virtual studio template.
         self.template_id = template_id
-        # The name of the virtual studio template. The name is the same as the value of the StudioName parameter that was specified when you called the CreateLiveAiStudio operation to create the virtual studio template.
         self.template_name = template_name
-        # The preview width.
         self.width = width
 
     def validate(self):

@@ -27,7 +27,6 @@ class DescribeLiveDomainTrafficDataResponseBody(DaraModel):
         self.request_id = request_id
         # The beginning of the time range during which the data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.start_time = start_time
-        # The network traffic data that was collected at each interval.
         self.traffic_data_per_interval = traffic_data_per_interval
 
     def validate(self):
@@ -125,13 +124,9 @@ class DescribeLiveDomainTrafficDataResponseBodyTrafficDataPerIntervalDataModule(
         time_stamp: str = None,
         traffic_value: str = None,
     ):
-        # The traffic over HTTP. Unit: bytes.
         self.http_traffic_value = http_traffic_value
-        # The traffic over HTTPS. Unit: bytes.
         self.https_traffic_value = https_traffic_value
-        # The timestamp of the data returned.
         self.time_stamp = time_stamp
-        # The total traffic. Unit: bytes.
         self.traffic_value = traffic_value
 
     def validate(self):

@@ -1,3 +1,9 @@
+2026-02-10 Version: 2.7.0
+- Support API DescribeRtcCloudTranscode.
+- Support API StartRtcCloudTranscode.
+- Support API StopRtcCloudTranscode.
+
+
 2026-01-05 Version: 2.6.0
 - Support API DescribeLiveTagResources.
 

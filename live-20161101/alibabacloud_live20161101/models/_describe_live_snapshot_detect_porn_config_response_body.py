@@ -18,7 +18,6 @@ class DescribeLiveSnapshotDetectPornConfigResponseBody(DaraModel):
         total_num: int = None,
         total_page: int = None,
     ):
-        # The list of video moderation configurations.
         self.live_snapshot_detect_porn_config_list = live_snapshot_detect_porn_config_list
         # The sort order.
         self.order = order
@@ -137,19 +136,12 @@ class DescribeLiveSnapshotDetectPornConfigResponseBodyLiveSnapshotDetectPornConf
         oss_object: str = None,
         scenes: main_models.DescribeLiveSnapshotDetectPornConfigResponseBodyLiveSnapshotDetectPornConfigListLiveSnapshotDetectPornConfigScenes = None,
     ):
-        # The application name.
         self.app_name = app_name
-        # The main streaming domain.
         self.domain_name = domain_name
-        # The interval at which snapshots are captured from the live stream. Unit: seconds.
         self.interval = interval
-        # The name of the OSS bucket.
         self.oss_bucket = oss_bucket
-        # The endpoint of the OSS bucket.
         self.oss_endpoint = oss_endpoint
-        # The name of the storage file in Object Storage Service (OSS).
         self.oss_object = oss_object
-        # The moderation scenario array.
         self.scenes = scenes
 
     def validate(self):

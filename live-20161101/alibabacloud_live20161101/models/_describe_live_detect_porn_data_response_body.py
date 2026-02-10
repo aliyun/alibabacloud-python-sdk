@@ -13,7 +13,6 @@ class DescribeLiveDetectPornDataResponseBody(DaraModel):
         detect_porn_data: main_models.DescribeLiveDetectPornDataResponseBodyDetectPornData = None,
         request_id: str = None,
     ):
-        # The bandwidth data returned at each interval.
         self.detect_porn_data = detect_porn_data
         # The request ID.
         self.request_id = request_id
@@ -93,30 +92,13 @@ class DescribeLiveDetectPornDataResponseBodyDetectPornDataDataModule(DaraModel):
         stream: str = None,
         time_stamp: str = None,
     ):
-        # The name of the application to which the live stream belongs.
         self.app = app
-        # The number of reviewed images.
         self.count = count
-        # The main streaming domain.
         self.domain = domain
-        # Indicates whether a quota of free image scanning is available. Valid values:
-        # 
-        # *   **free**
-        # *   **charge**
         self.fee = fee
-        # The region in which the domain name resides.
         self.region = region
-        # The moderation scenario. Valid values:
-        # 
-        # *   **porn** (default): pornography
-        # *   **terrorism**: terrorism or politically sensitive content
-        # *   **ad**: ad violation
-        # *   **live**: undesirable scene
-        # *   **logo**
         self.scene = scene
-        # The name of the live stream.
         self.stream = stream
-        # The timestamp of the data returned. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.time_stamp = time_stamp
 
     def validate(self):

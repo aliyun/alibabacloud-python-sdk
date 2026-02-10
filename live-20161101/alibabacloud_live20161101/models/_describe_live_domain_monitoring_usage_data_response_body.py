@@ -24,7 +24,6 @@ class DescribeLiveDomainMonitoringUsageDataResponseBody(DaraModel):
         self.end_time = end_time
         # The ID of the monitoring session.
         self.instance_id = instance_id
-        # The live monitoring data.
         self.monitoring_data = monitoring_data
         # The region of the live center.
         self.region = region
@@ -136,17 +135,11 @@ class DescribeLiveDomainMonitoringUsageDataResponseBodyMonitoringDataMonitoringD
         resolution: str = None,
         time_stamp: str = None,
     ):
-        # The domain name. This field is valid only when you specify domain for the **SplitBy** parameter.
         self.domain_name = domain_name
-        # The duration. Unit: minutes.
         self.duration = duration
-        # The ID of the monitoring session. This field is valid only when you specify instance for the **SplitBy** parameter.
         self.instance_id = instance_id
-        # The region of the live center. This field is valid only when you specify Region for the **SplitBy** parameter.
         self.region = region
-        # The resolution. This field is valid only when you specify resolution for the **SplitBy** parameter.
         self.resolution = resolution
-        # The timestamp of the returned data.
         self.time_stamp = time_stamp
 
     def validate(self):

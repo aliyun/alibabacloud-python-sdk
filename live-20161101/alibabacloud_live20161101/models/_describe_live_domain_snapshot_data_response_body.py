@@ -15,7 +15,6 @@ class DescribeLiveDomainSnapshotDataResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The daily statistics on the number of snapshots.
         self.snapshot_data_infos = snapshot_data_infos
 
     def validate(self):
@@ -87,9 +86,7 @@ class DescribeLiveDomainSnapshotDataResponseBodySnapshotDataInfosSnapshotDataInf
         date: str = None,
         total: int = None,
     ):
-        # The date.
         self.date = date
-        # The total number of snapshots that were captured on the day.
         self.total = total
 
     def validate(self):

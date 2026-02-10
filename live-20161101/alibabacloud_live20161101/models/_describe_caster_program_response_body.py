@@ -19,7 +19,6 @@ class DescribeCasterProgramResponseBody(DaraModel):
     ):
         # The ID of the production studio.
         self.caster_id = caster_id
-        # The list of the episodes.
         self.episodes = episodes
         # Indicates whether carousel playback is enabled.
         # 
@@ -133,29 +132,14 @@ class DescribeCasterProgramResponseBodyEpisodesEpisode(DaraModel):
         status: int = None,
         switch_type: str = None,
     ):
-        # The components.
         self.component_ids = component_ids
-        # The end of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.end_time = end_time
-        # The ID of the episode.
         self.episode_id = episode_id
-        # The name of the episode.
         self.episode_name = episode_name
-        # The type of the episode. Valid values:
-        # 
-        # *   **Resource**: a video resource
-        # *   **Component**: a component
         self.episode_type = episode_type
-        # The ID of the video resource.
         self.resource_id = resource_id
-        # The beginning of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.start_time = start_time
-        # The status of the episode.
         self.status = status
-        # The policy for switching episodes. Valid values:
-        # 
-        # *   **TimeFirst**: The episode starts when the previous episode ends and ends when the next episode starts. If no next episode exists, the episode keeps repeating until a new episode is added or the production studio stops. This value is required for live video resources.
-        # *   **ContentFirst**: The episode starts and ends as scheduled.
         self.switch_type = switch_type
 
     def validate(self):

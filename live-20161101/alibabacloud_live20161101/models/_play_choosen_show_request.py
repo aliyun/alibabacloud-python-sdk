@@ -22,6 +22,7 @@ class PlayChoosenShowRequest(DaraModel):
         # This parameter is required.
         self.caster_id = caster_id
         self.owner_id = owner_id
+        # The ID of the region.
         self.region_id = region_id
         # The ID of the episode that you want to switch to.
         # 

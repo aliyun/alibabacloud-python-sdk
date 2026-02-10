@@ -15,7 +15,6 @@ class DescribeLiveDelayedStreamingUsageResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The details about the stream delay usage data.
         self.delay_data = delay_data
         # The end of the time range during which the data was queried.
         self.end_time = end_time
@@ -108,15 +107,10 @@ class DescribeLiveDelayedStreamingUsageResponseBodyDelayDataDelayDataItem(DaraMo
         stream_name: str = None,
         time_stamp: str = None,
     ):
-        # The domain name. If SplitBy is set to domain, the data returned is grouped by domain name.
         self.domain_name = domain_name
-        # The duration of stream delay.
         self.duration = duration
-        # The ID of the region. If SplitBy is set to region, the data returned is grouped by region.
         self.region = region
-        # The name of the stream. If SplitBy is set to stream, the data returned is grouped by stream.
         self.stream_name = stream_name
-        # The timestamp of the data returned.
         self.time_stamp = time_stamp
 
     def validate(self):

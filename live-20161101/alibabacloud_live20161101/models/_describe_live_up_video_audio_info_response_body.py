@@ -15,7 +15,6 @@ class DescribeLiveUpVideoAudioInfoResponseBody(DaraModel):
     ):
         # The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
         self.request_id = request_id
-        # The request ID.
         self.up_items = up_items
 
     def validate(self):
@@ -107,49 +106,27 @@ class DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItem(DaraModel):
         video_interval: main_models.DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoInterval = None,
         video_stamps: main_models.DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoStamps = None,
     ):
-        # The details about the audio and video data of the stream ingest occurrences.
         self.aac_headers = aac_headers
-        # The metric value at a granularity of seconds at the query time.
         self.app_name = app_name
-        # The name of the application to which the ingested stream belongs.
         self.audio_bit_rate = audio_bit_rate
-        # The metric value at a granularity of seconds at the query time.
         self.audio_frames = audio_frames
-        # The metric value at a granularity of seconds at the query time.
         self.audio_interval = audio_interval
-        # The metric value at a granularity of seconds at the query time.
         self.audio_stamps = audio_stamps
-        # The metric value at a granularity of seconds at the query time.
         self.avc_headers = avc_headers
-        # The metric value at a granularity of seconds at the query time.
         self.codec_info = codec_info
-        # The audio and video encoding information.
         self.domain_name = domain_name
-        # The ingest domain.
         self.error_flags = error_flags
-        # The metric value at a granularity of seconds at the query time.
         self.publish_interval = publish_interval
-        # The stream ingest duration. Unit: seconds. A hyphen (-) indicates that the stream is being ingested and the duration cannot be returned.
         self.publish_ip = publish_ip
-        # The IP address of the stream ingest client.
         self.publish_status = publish_status
-        # The stream ingest status. A value of 1 indicates that the stream is being ingested. A value of 0 indicates that the stream was ingested.
         self.publish_time = publish_time
-        # The start time of stream ingest. The time is displayed in UTC.
         self.stop_time = stop_time
-        # The end time of stream ingest. The time is displayed in UTC.
         self.stream_name = stream_name
-        # The name of the stream.
         self.unique_id = unique_id
-        # The unique ID of each stream ingest occurrence.
         self.video_and_audio_stamp = video_and_audio_stamp
-        # The metric value at a granularity of seconds at the query time.
         self.video_bit_rate = video_bit_rate
-        # The metric value at a granularity of seconds at the query time.
         self.video_frames = video_frames
-        # The metric value at a granularity of seconds at the query time.
         self.video_interval = video_interval
-        # The metric value at a granularity of seconds at the query time.
         self.video_stamps = video_stamps
 
     def validate(self):
@@ -374,9 +351,7 @@ class DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoStampsVideo
         time: int = None,
         value: int = None,
     ):
-        # The video timestamp. Unit: milliseconds.
         self.time = time
-        # The query time. The value is a UNIX timestamp in milliseconds.
         self.value = value
 
     def validate(self):
@@ -446,9 +421,7 @@ class DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoIntervalVid
         time: int = None,
         value: int = None,
     ):
-        # The maximum video frame interval. Unit: milliseconds.
         self.time = time
-        # The query time. The value is a UNIX timestamp in milliseconds.
         self.value = value
 
     def validate(self):
@@ -518,9 +491,7 @@ class DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoFramesVideo
         time: int = None,
         value: int = None,
     ):
-        # The frame rate of the video. Unit: frames.
         self.time = time
-        # The query time. The value is a UNIX timestamp in milliseconds.
         self.value = value
 
     def validate(self):
@@ -590,9 +561,7 @@ class DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoBitRateVide
         time: int = None,
         value: int = None,
     ):
-        # The bitrate of the video. Unit: bit/s.
         self.time = time
-        # The query time. The value is a UNIX timestamp in milliseconds.
         self.value = value
 
     def validate(self):
@@ -662,9 +631,7 @@ class DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemVideoAndAudioSta
         time: int = None,
         value: int = None,
     ):
-        # The difference between the audio and video timestamps. Unit: milliseconds.
         self.time = time
-        # The query time. The value is a UNIX timestamp in milliseconds.
         self.value = value
 
     def validate(self):
@@ -734,9 +701,7 @@ class DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemErrorFlagsErrorF
         time: int = None,
         value: int = None,
     ):
-        # The number of times the error code that indicates interrupted stream ingest was returned.
         self.time = time
-        # The query time. The value is a UNIX timestamp in milliseconds.
         self.value = value
 
     def validate(self):
@@ -806,9 +771,7 @@ class DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAvcHeadersAvcHea
         time: int = None,
         value: int = None,
     ):
-        # The number of AVC headers in the audio.
         self.time = time
-        # The query time. The value is a UNIX timestamp in milliseconds.
         self.value = value
 
     def validate(self):
@@ -878,9 +841,7 @@ class DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioStampsAudio
         time: int = None,
         value: int = None,
     ):
-        # The audio timestamp. Unit: milliseconds.
         self.time = time
-        # The query time. The value is a UNIX timestamp in milliseconds.
         self.value = value
 
     def validate(self):
@@ -950,9 +911,7 @@ class DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioIntervalAud
         time: int = None,
         value: int = None,
     ):
-        # The maximum audio frame interval. Unit: milliseconds.
         self.time = time
-        # The query time. The value is a UNIX timestamp in milliseconds.
         self.value = value
 
     def validate(self):
@@ -1022,9 +981,7 @@ class DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioFramesAudio
         time: int = None,
         value: int = None,
     ):
-        # The frame rate of the audio. Unit: frames.
         self.time = time
-        # The query time. The value is a UNIX timestamp in milliseconds.
         self.value = value
 
     def validate(self):
@@ -1094,9 +1051,7 @@ class DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAudioBitRateAudi
         time: int = None,
         value: int = None,
     ):
-        # The bitrate of the audio. Unit: bit/s.
         self.time = time
-        # The query time. The value is a UNIX timestamp in milliseconds.
         self.value = value
 
     def validate(self):
@@ -1166,9 +1121,7 @@ class DescribeLiveUpVideoAudioInfoResponseBodyUpItemsPublishItemAacHeadersAacHea
         time: int = None,
         value: int = None,
     ):
-        # The number of AAC headers in the audio.
         self.time = time
-        # The query time. The value is a UNIX timestamp in milliseconds.
         self.value = value
 
     def validate(self):

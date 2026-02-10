@@ -18,7 +18,6 @@ class DescribeCasterVideoResourcesResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of returned entries.
         self.total = total
-        # The input sources.
         self.video_resources = video_resources
 
     def validate(self):
@@ -107,41 +106,18 @@ class DescribeCasterVideoResourcesResponseBodyVideoResourcesVideoResource(DaraMo
         resource_name: str = None,
         vod_url: str = None,
     ):
-        # The offset of the position where the system starts to read the video resource. This parameter takes effect only if the input source is a video file. Unit: milliseconds.
-        # 
-        # A value **greater than 0** indicates an offset from the first frame.
         self.begin_offset = begin_offset
-        # The offset of the position where the system stops reading the video file. This parameter takes effect only if the input source is a video file. Unit: milliseconds.
-        # 
-        # *   A value greater than **0** indicates an offset from the first frame.
-        # *   A value smaller than **0** indicates an offset from the last frame.
         self.end_offset = end_offset
-        # The source URL.
         self.flv_url = flv_url
-        # The image ID.
         self.image_id = image_id
-        # The image URL.
         self.image_url = image_url
-        # The URL of the live stream.
         self.live_stream_url = live_stream_url
-        # The position of the video resource.
         self.location_id = location_id
-        # The material ID.
         self.material_id = material_id
-        # The interval between presentation timestamp (PTS) callbacks. If you set the value to 0, the PTS callback is disabled. This parameter is returned only when the video resource is a video-on-demand (VOD) file.
         self.pts_callback_interval = pts_callback_interval
-        # The number of playback times after the first playback is complete. This parameter takes effect only when the input source is a video file. Valid values:
-        # 
-        # *   **0** (default): The video file is played only once.
-        # *   **-1**: The video file is played in loop mode.
         self.repeat_num = repeat_num
-        # The resource ID.
         self.resource_id = resource_id
-        # The resource name.
         self.resource_name = resource_name
-        # The URL of the VOD file.
-        # 
-        # This parameter is returned only when the video resource is an MP4, FLV, or TS file that is not from the media library.
         self.vod_url = vod_url
 
     def validate(self):

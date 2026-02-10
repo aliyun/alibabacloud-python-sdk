@@ -13,7 +13,6 @@ class DescribeLiveDrmUsageDataResponseBody(DaraModel):
         drm_usage_data: main_models.DescribeLiveDrmUsageDataResponseBodyDrmUsageData = None,
         request_id: str = None,
     ):
-        # The usage of the DRM encryption service at each time interval.
         self.drm_usage_data = drm_usage_data
         # The request ID.
         self.request_id = request_id
@@ -90,15 +89,10 @@ class DescribeLiveDrmUsageDataResponseBodyDrmUsageDataDataModule(DaraModel):
         region: str = None,
         time_stamp: str = None,
     ):
-        # The number of times DRM-encrypted live streams are requested.
         self.count = count
-        # The domain name. If the value of SplitBy includes domain, the returned data is grouped by domain name.
         self.domain = domain
-        # The DRM type. If the value of SplitBy includes drm_type, the returned data is grouped by DRM type.
         self.drm_type = drm_type
-        # The ID of the region. If the value of SplitBy includes region, the returned data is grouped by region.
         self.region = region
-        # The timestamp of the returned data.
         self.time_stamp = time_stamp
 
     def validate(self):

@@ -21,7 +21,6 @@ class DescribeLiveStreamPreloadTasksResponseBody(DaraModel):
         self.page_num = page_num
         # The number of entries per page.
         self.page_size = page_size
-        # The details of the prefetch task.
         self.preload_tasks = preload_tasks
         # The ID of the request.
         self.request_id = request_id
@@ -131,39 +130,15 @@ class DescribeLiveStreamPreloadTasksResponseBodyPreloadTasksPreloadTask(DaraMode
         status: str = None,
         task_id: str = None,
     ):
-        # The acceleration region where the live content is prefetched. Valid values:
-        # 
-        # *   domestic: regions in the Chinese mainland.
-        # *   overseas: regions outside the Chinese mainland.
-        # *   global: regions in and outside the Chinese mainland.
-        # 
-        # >  If this parameter is left empty, the acceleration region configured for the domain name is returned.
         self.area = area
-        # The time when the prefetch task was created.
         self.create_time = create_time
-        # Indicates whether the prefetch task is successful. Valid values:
-        # 
-        # *   Successfully
-        # *   InternalError
         self.description = description
-        # The streaming domain name.
         self.domain_name = domain_name
-        # The streaming URL.
         self.play_url = play_url
-        # The time when the prefetch task ended.
         self.preloaded_end_time = preloaded_end_time
-        # The time when the prefetch task started.
         self.preloaded_start_time = preloaded_start_time
-        # The progress of the prefetch task.
         self.process = process
-        # The status of the prefetch task. Valid values:
-        # 
-        # *   Success
-        # *   Failed
-        # 
-        # >  Success is returned only if the prefetch task is configured for all streaming URLs.
         self.status = status
-        # The ID of the prefetch task.
         self.task_id = task_id
 
     def validate(self):

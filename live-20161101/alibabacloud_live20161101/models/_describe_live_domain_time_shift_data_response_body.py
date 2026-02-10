@@ -15,7 +15,6 @@ class DescribeLiveDomainTimeShiftDataResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The time shifting usage data that was collected for each time interval.
         self.time_shift_data = time_shift_data
 
     def validate(self):
@@ -88,11 +87,8 @@ class DescribeLiveDomainTimeShiftDataResponseBodyTimeShiftDataDataModule(DaraMod
         time_stamp: str = None,
         type: str = None,
     ):
-        # The storage used for time shifting. Unit: bytes.
         self.size = size
-        # The timestamp of the data returned.
         self.time_stamp = time_stamp
-        # The type of time shifting. Examples: HLS_D1 and HLS_D7.
         self.type = type
 
     def validate(self):

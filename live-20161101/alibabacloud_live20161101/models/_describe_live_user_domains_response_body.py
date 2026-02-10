@@ -16,7 +16,6 @@ class DescribeLiveUserDomainsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The domain names.
         self.domains = domains
         # The page number.
         self.page_number = page_number
@@ -121,30 +120,14 @@ class DescribeLiveUserDomainsResponseBodyDomainsPageData(DaraModel):
         region_name: str = None,
         resource_group_id: str = None,
     ):
-        # The CNAME generated for the domain name.
         self.cname = cname
-        # The description.
         self.description = description
-        # The domain name.
         self.domain_name = domain_name
-        # The time when the domain name was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.gmt_created = gmt_created
-        # The time when the domain name was last modified. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.gmt_modified = gmt_modified
-        # The status of the domain name. Valid values:
-        # 
-        # *   **online**
-        # *   **offline**
-        # *   **configuring**
         self.live_domain_status = live_domain_status
-        # The type of the domain name. Valid values:
-        # 
-        # *   **liveVideo**: streaming domain
-        # *   **liveEdge**: ingest domain
         self.live_domain_type = live_domain_type
-        # The ID of the region in which the domain name resides.
         self.region_name = region_name
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
 
     def validate(self):

@@ -15,7 +15,6 @@ class DescribeLiveProducerUsageDataResponseBody(DaraModel):
         request_id: str = None,
         start_time: str = None,
     ):
-        # The production studio usage data.
         self.bill_producer_data = bill_producer_data
         # The end of the time range during which data was queried.
         self.end_time = end_time
@@ -114,27 +113,16 @@ class DescribeLiveProducerUsageDataResponseBodyBillProducerDataBillProducerDataI
         tran_sd_duration: int = None,
         type: str = None,
     ):
-        # The domain name. If domain is specified by the SplitBy parameter, the usage data is returned based on different domain names.
         self.domain_name = domain_name
-        # The production studio instance. If instance is specified by the SplitBy parameter, the usage data is returned based on different production studio instances.
         self.instance = instance
-        # The duration of high definition streaming. Unit: minutes.
         self.output_hd_duration = output_hd_duration
-        # The duration of low definition streaming. Unit: minutes.
         self.output_ld_duration = output_ld_duration
-        # The duration of standard definition streaming. Unit: minutes.
         self.output_sd_duration = output_sd_duration
-        # The region. If region is specified by the SplitBy parameter, the usage data is returned based on different regions.
         self.region = region
-        # The timestamp of the returned data.
         self.time_stamp = time_stamp
-        # The duration of high definition transcoding. Unit: minutes.
         self.tran_hd_duration = tran_hd_duration
-        # The duration of low definition transcoding. Unit: minutes.
         self.tran_ld_duration = tran_ld_duration
-        # The duration of standard definition transcoding. Unit: minutes.
         self.tran_sd_duration = tran_sd_duration
-        # The type of the production studio. If type is specified by the SplitBy parameter, the usage data is returned based on different types of production studios.
         self.type = type
 
     def validate(self):

@@ -14,7 +14,6 @@ class DescribeCastersResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The production studios.
         self.caster_list = caster_list
         # The request ID.
         self.request_id = request_id
@@ -110,58 +109,21 @@ class DescribeCastersResponseBodyCasterListCaster(DaraModel):
         status: int = None,
         tags: main_models.DescribeCastersResponseBodyCasterListCasterTags = None,
     ):
-        # The ID of the production studio. You can specify the ID in a request to query the streaming URLs of the production studio, start the production studio, add a video resource, a layout, a component, or a playlist to the production studio, or query layouts of the production studio.
         self.caster_id = caster_id
-        # The name of the production studio.
         self.caster_name = caster_name
-        # The resolution in which the production studio plays videos. This parameter is returned if the subscription billing method is used. Valid values:
-        # 
-        # *   lp_ld: low definition
-        # *   lp_sd: standard definition
-        # *   lp_hd: high definition
-        # *   lp_ud: ultra high definition.
-        # *   lp_ld_v: low definition (portrait mode)
-        # *   lp_sd_v: standard definition (portrait mode)
-        # *   lp_hd_v: high definition (portrait mode)
-        # *   lp_ud_v: ultra high definition (portrait mode)
         self.caster_template = caster_template
-        # Indicates whether the channel is enabled for the production studio.
-        # 
-        # *   0: The channel is disabled.
-        # *   1: The channel is enabled.
         self.channel_enable = channel_enable
-        # The billing method. Valid values:
-        # 
-        # *   PrePaid: the subscription billing method
-        # *   PostPaid: the pay-as-you-go billing method
         self.charge_type = charge_type
-        # The client token that is used to ensure the idempotence of the request.
         self.client_token_id = client_token_id
-        # The time when the production studio was created.
         self.create_time = create_time
-        # The streaming duration. Format: hh:mm:ss.
         self.duration = duration
-        # The time when the production studio expires.
         self.expire_time = expire_time
-        # The time when the production studio was last modified. For example, the time when the production studio was last started, stopped, or modified is returned.
         self.last_modified = last_modified
-        # The type of the production studio. Valid values:
-        # 
-        # *   0: playlist mode
-        # *   1: general mode
         self.norm_type = norm_type
-        # The time when the production studio was purchased.
         self.purchase_time = purchase_time
-        # The resource group ID. For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/2381067.html).
         self.resource_group_id = resource_group_id
-        # The time when the production studio was started. This parameter is returned if the production studio is in the streaming status.
         self.start_time = start_time
-        # The status of the production studio. Valid values:
-        # 
-        # *   0: idle
-        # *   1: streaming
         self.status = status
-        # The tags.
         self.tags = tags
 
     def validate(self):
@@ -317,9 +279,7 @@ class DescribeCastersResponseBodyCasterListCasterTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag.
         self.tag_key = tag_key
-        # The value of the tag.
         self.tag_value = tag_value
 
     def validate(self):

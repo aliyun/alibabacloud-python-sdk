@@ -17,7 +17,6 @@ class DescribeLiveStreamsNotifyRecordsResponseBody(DaraModel):
         total_num: int = None,
         total_page: int = None,
     ):
-        # The stream ingest callback records.
         self.notify_records_info = notify_records_info
         # The page number.
         self.page_num = page_num
@@ -132,31 +131,16 @@ class DescribeLiveStreamsNotifyRecordsResponseBodyNotifyRecordsInfoLiveStreamNot
         notify_url: str = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs.
         self.app_name = app_name
-        # The result of the request. If success is returned, the request is successful. If an error message is returned, the request failed.
         self.description = description
-        # The ingest domain.
         self.domain_name = domain_name
-        # The callback content.
         self.notify_content = notify_content
         self.notify_header = notify_header
         self.notify_response = notify_response
-        # The callback result. Valid values:
-        # 
-        # *   success
-        # *   failed
         self.notify_result = notify_result
-        # The time when the callback was invoked. The time is displayed in UTC.
         self.notify_time = notify_time
-        # The event. Valid values:
-        # 
-        # *   publish: The stream ingest starts.
-        # *   publish_done: The stream ingest is interrupted.
         self.notify_type = notify_type
-        # The callback URL.
         self.notify_url = notify_url
-        # The name of the live stream.
         self.stream_name = stream_name
 
     def validate(self):

@@ -14,7 +14,6 @@ class AddCasterEpisodeGroupContentResponseBody(DaraModel):
         program_id: str = None,
         request_id: str = None,
     ):
-        # The IDs of the episodes.
         self.item_ids = item_ids
         # The ID of the episode list. You can use the ID as a request parameter in the API operation that is used to create or add episodes, remove episodes, query episodes, edit an episode list, delete an episode list, query the information about an episode list, start playing an episode list, or stop playing an episode list.
         self.program_id = program_id

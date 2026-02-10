@@ -14,7 +14,6 @@ class DescribeCasterLayoutsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The layouts.
         self.layouts = layouts
         # The request ID.
         self.request_id = request_id
@@ -99,15 +98,10 @@ class DescribeCasterLayoutsResponseBodyLayoutsLayout(DaraModel):
         mix_list: main_models.DescribeCasterLayoutsResponseBodyLayoutsLayoutMixList = None,
         video_layers: main_models.DescribeCasterLayoutsResponseBodyLayoutsLayoutVideoLayers = None,
     ):
-        # The configurations of the audio layers.
         self.audio_layers = audio_layers
-        # The location IDs of the video layers, which are in the same order as the video layers.
         self.blend_list = blend_list
-        # The ID of the layout.
         self.layout_id = layout_id
-        # The location IDs of the audio layers, which are in the same order as the audio layers.
         self.mix_list = mix_list
-        # The configurations of the video layers, which are in the default array sequence.
         self.video_layers = video_layers
 
     def validate(self):
@@ -210,40 +204,11 @@ class DescribeCasterLayoutsResponseBodyLayoutsLayoutVideoLayersVideoLayer(DaraMo
         position_refer: str = None,
         width_normalized: float = None,
     ):
-        # The scaling mode of the video layer. Valid values:
-        # 
-        # *   **none** (default): specifies that the video layer is not scaled. The video layer is displayed based on its original size.
-        # *   **fit**: specifies that the video layer is adapted to the fill area. The video layer is displayed based on the fill area. In this case, the video layer is scaled proportionally, with its original aspect ratio retained. The video layer is placed in the center, with its longer sides aligned with the fill area. If the aspect ratio of the video layer is different from that of the fill area, the content of the lower layer is displayed alongside the shorter sides. If there is no lower layer, black bars are displayed instead.
         self.fill_mode = fill_mode
-        # The fixed delay of the video layer. This parameter is used to synchronize the video with subtitles.
-        # 
-        # Unit: milliseconds. Default value: **0**. Valid values: **0 to 5000**.
         self.fixed_delay_duration = fixed_delay_duration
-        # The normalized value of the height of the video layer.
-        # 
-        # *   If the FillMode parameter of the video layer is set to none, the width of the video layer is proportionally scaled based on this parameter. The default value is **0**, which indicates that the video layer is not scaled.
-        # *   If the FillMode parameter of the video layer is set to fit, the value of this parameter is greater than **0**.
         self.height_normalized = height_normalized
-        # The normalized value of the position of the video layer, in the format of `[x,y]`. Default value: `[0,0]`.
-        # 
-        # >  The values of x and y are normalized.
         self.position_normalizeds = position_normalizeds
-        # The reference coordinates of the video layer. Valid values:
-        # 
-        # *   **topLeft** (default): the upper-left corner
-        # *   **topRight**: the upper-right corner
-        # *   **bottomLeft**: the lower-left corner
-        # *   **bottomRight**: the lower-right corner
-        # *   **center**: the center
-        # *   **topCenter**: the upper center
-        # *   **bottomCenter**: the lower center
-        # *   **leftCenter**: the left center
-        # *   **rightCenter**: the right center
         self.position_refer = position_refer
-        # The normalized value of the width of the video layer.
-        # 
-        # *   If the FillMode parameter of the video layer is set to none, the height of the video layer is scaled based on this parameter. The default value is **0**, which indicates that the video layer is not scaled.
-        # *   If the FillMode parameter of the video layer is set to fit, the value of this parameter is greater than **0**.
         self.width_normalized = width_normalized
 
     def validate(self):
@@ -421,19 +386,8 @@ class DescribeCasterLayoutsResponseBodyLayoutsLayoutAudioLayersAudioLayer(DaraMo
         valid_channel: str = None,
         volume_rate: float = None,
     ):
-        # The fixed delay of the audio layer. This parameter is used to synchronize the audio with subtitles.
-        # 
-        # Unit: milliseconds. Default value: **0**. Valid values: **0 to 5000**.
         self.fixed_delay_duration = fixed_delay_duration
-        # The sound channels that are used for volume input in the audio layer. Valid values:
-        # 
-        # *   **leftChannel**: the left channel
-        # *   **rightChannel**: the right channel
-        # *   **all** (default): both the left and right channels
         self.valid_channel = valid_channel
-        # The normalized value of the height of the audio layer. The width of the audio layer is proportionally scaled based on this parameter.
-        # 
-        # >  The default value is **0**, which indicates that the audio layer is not scaled.
         self.volume_rate = volume_rate
 
     def validate(self):

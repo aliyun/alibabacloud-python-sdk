@@ -13,7 +13,6 @@ class DescribeLiveAudioAuditNotifyConfigResponseBody(DaraModel):
         live_audio_audit_notify_config_list: main_models.DescribeLiveAudioAuditNotifyConfigResponseBodyLiveAudioAuditNotifyConfigList = None,
         request_id: str = None,
     ):
-        # The configuration of callbacks for audio moderation results.
         self.live_audio_audit_notify_config_list = live_audio_audit_notify_config_list
         # The request ID.
         self.request_id = request_id
@@ -88,17 +87,8 @@ class DescribeLiveAudioAuditNotifyConfigResponseBodyLiveAudioAuditNotifyConfigLi
         callback_template: str = None,
         domain_name: str = None,
     ):
-        # The callback URL.
         self.callback = callback
-        # The callback template. The following fields are configured:
-        # 
-        # *   **{DomainName}**: the streaming domain.
-        # *   **{AppName}**: the name of the application to which the live stream belongs.
-        # *   **{StreamName}**: the name of the live stream.
-        # *   **{Timestamp}**: the time when the callback is returned. The value of this field is a UNIX timestamp. Unit: seconds.
-        # *   **{Result}**: the moderation results.
         self.callback_template = callback_template
-        # The main streaming domain.
         self.domain_name = domain_name
 
     def validate(self):

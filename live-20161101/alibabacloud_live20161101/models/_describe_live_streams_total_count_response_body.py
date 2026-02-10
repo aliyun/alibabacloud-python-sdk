@@ -15,7 +15,6 @@ class DescribeLiveStreamsTotalCountResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The statistics about the live streams.
         self.stream_count_list = stream_count_list
 
     def validate(self):
@@ -87,9 +86,7 @@ class DescribeLiveStreamsTotalCountResponseBodyStreamCountListStreamCountInfos(D
         count: int = None,
         timestamp: str = None,
     ):
-        # The total number of live streams.
         self.count = count
-        # The timestamp.
         self.timestamp = timestamp
 
     def validate(self):

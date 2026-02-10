@@ -13,7 +13,6 @@ class DescribeLiveDomainByCertificateResponseBody(DaraModel):
         cert_infos: main_models.DescribeLiveDomainByCertificateResponseBodyCertInfos = None,
         request_id: str = None,
     ):
-        # The information about the certificate.
         self.cert_infos = cert_infos
         # The ID of the request.
         self.request_id = request_id
@@ -94,29 +93,14 @@ class DescribeLiveDomainByCertificateResponseBodyCertInfosCertInfo(DaraModel):
         domain_names: str = None,
         issuer: str = None,
     ):
-        # Indicates whether the SSL certificate is obsolete. Valid values:
-        # 
-        # *   **yes**
-        # *   **no**
         self.cert_ca_is_legacy = cert_ca_is_legacy
-        # The time at which the certificate expires.
         self.cert_expire_time = cert_expire_time
-        # Indicates whether the SSL certificate is expired. Valid values:
-        # 
-        # *   **yes**
-        # *   **no**
         self.cert_expired = cert_expired
-        # The effective time of the certificate.
         self.cert_start_time = cert_start_time
-        # The name of the SSL certificate owner.
         self.cert_subject_common_name = cert_subject_common_name
-        # The type of the certificate. Valid values: **RSA**, **DSA**, and **ECDSA**.
         self.cert_type = cert_type
-        # The list of domain names. If a value is returned, the value matches the SSL certificate. Multiple domain names are separated by commas (,).
         self.domain_list = domain_list
-        # The domain names (DNS fields) that match the SSL certificate. Multiple domain names are separated by commas (,).
         self.domain_names = domain_names
-        # The certificate authority (CA) that issued the SSL certificate.
         self.issuer = issuer
 
     def validate(self):

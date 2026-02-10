@@ -13,7 +13,6 @@ class DescribeLiveStreamsControlHistoryResponseBody(DaraModel):
         control_info: main_models.DescribeLiveStreamsControlHistoryResponseBodyControlInfo = None,
         request_id: str = None,
     ):
-        # The operation records.
         self.control_info = control_info
         # The ID of the request.
         self.request_id = request_id
@@ -89,13 +88,9 @@ class DescribeLiveStreamsControlHistoryResponseBodyControlInfoLiveStreamControlI
         stream_name: str = None,
         time_stamp: str = None,
     ):
-        # The name of the operation performed.
         self.action = action
-        # The IP address that is used by the client for live streaming.
         self.client_ip = client_ip
-        # The name of the live stream.
         self.stream_name = stream_name
-        # The time when the operation was performed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.time_stamp = time_stamp
 
     def validate(self):

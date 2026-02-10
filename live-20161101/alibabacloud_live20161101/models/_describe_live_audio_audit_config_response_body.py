@@ -13,7 +13,6 @@ class DescribeLiveAudioAuditConfigResponseBody(DaraModel):
         live_audio_audit_config_list: main_models.DescribeLiveAudioAuditConfigResponseBodyLiveAudioAuditConfigList = None,
         request_id: str = None,
     ):
-        # The list of audio moderation configurations.
         self.live_audio_audit_config_list = live_audio_audit_config_list
         # The request ID.
         self.request_id = request_id
@@ -90,15 +89,10 @@ class DescribeLiveAudioAuditConfigResponseBodyLiveAudioAuditConfigListLiveAudioA
         scenes: main_models.DescribeLiveAudioAuditConfigResponseBodyLiveAudioAuditConfigListLiveAudioAuditConfigScenes = None,
         stream_name: str = None,
     ):
-        # The name of the application to which the live stream belongs.
         self.app_name = app_name
-        # The business type. You can specify a model. The default value is the domain name.
         self.biz_type = biz_type
-        # The main streaming domain.
         self.domain_name = domain_name
-        # The moderation scenarios.
         self.scenes = scenes
-        # The name of the live stream.
         self.stream_name = stream_name
 
     def validate(self):

@@ -14,7 +14,6 @@ class DescribeCasterChannelsResponseBody(DaraModel):
         request_id: str = None,
         total: int = None,
     ):
-        # The channels.
         self.channels = channels
         # The request ID.
         self.request_id = request_id
@@ -99,17 +98,10 @@ class DescribeCasterChannelsResponseBodyChannelsChannel(DaraModel):
         rtmp_url: str = None,
         stream_url: str = None,
     ):
-        # The ID of the channel.
-        # 
-        # The layout references the channel ID when the channel is enabled. You can specify up to one video resource for the channel. The value of this parameter must be in the RV[Number] format, such as RV01 and RV12.
         self.channel_id = channel_id
-        # The face retouching effect. Valid values: 0 (all effects), 1 (skin smoothing), 2 (skin whitening), 3 (dark circles removal), and 4 (nasolabial folds removal).
         self.face_beauty = face_beauty
-        # The ID of the video resource.
         self.resource_id = resource_id
-        # The URL in the Real-Time Messaging Protocol (RTMP) format.
         self.rtmp_url = rtmp_url
-        # The URL of the output content in the channel.
         self.stream_url = stream_url
 
     def validate(self):

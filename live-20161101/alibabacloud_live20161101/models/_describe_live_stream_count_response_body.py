@@ -15,7 +15,6 @@ class DescribeLiveStreamCountResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The statistics of the live streams.
         self.stream_count_infos = stream_count_infos
 
     def validate(self):
@@ -89,16 +88,9 @@ class DescribeLiveStreamCountResponseBodyStreamCountInfosStreamCountInfo(DaraMod
         stream_count_details: main_models.DescribeLiveStreamCountResponseBodyStreamCountInfosStreamCountInfoStreamCountDetails = None,
         type: str = None,
     ):
-        # The number of online streams.
         self.count = count
-        # The maximum allowed number of concurrently ingested streams. This parameter is available only to users in the whitelist.
         self.limit = limit
-        # The information about the live streams.
         self.stream_count_details = stream_count_details
-        # The type of the live stream. Valid values:
-        # 
-        # *   **raw**: source streams
-        # *   **trans**: transcoded streams
         self.type = type
 
     def validate(self):
@@ -183,14 +175,8 @@ class DescribeLiveStreamCountResponseBodyStreamCountInfosStreamCountInfoStreamCo
         format: str = None,
         video_data_rate: int = None,
     ):
-        # The number of online streams.
         self.count = count
-        # The video codec. Valid values:
-        # 
-        # *   **h264**
-        # *   **h265**
         self.format = format
-        # The video bitrate. This parameter is returned only for transcoded streams.
         self.video_data_rate = video_data_rate
 
     def validate(self):

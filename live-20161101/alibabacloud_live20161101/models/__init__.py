@@ -803,6 +803,9 @@ from ._describe_rtsnative_sdkvv_data_response import DescribeRTSNativeSDKVvDataR
 from ._describe_rtc_cloud_recording_files_request import DescribeRtcCloudRecordingFilesRequest
 from ._describe_rtc_cloud_recording_files_response_body import DescribeRtcCloudRecordingFilesResponseBody
 from ._describe_rtc_cloud_recording_files_response import DescribeRtcCloudRecordingFilesResponse
+from ._describe_rtc_cloud_transcode_request import DescribeRtcCloudTranscodeRequest
+from ._describe_rtc_cloud_transcode_response_body import DescribeRtcCloudTranscodeResponseBody
+from ._describe_rtc_cloud_transcode_response import DescribeRtcCloudTranscodeResponse
 from ._describe_rtc_mpuevent_sub_request import DescribeRtcMPUEventSubRequest
 from ._describe_rtc_mpuevent_sub_response_body import DescribeRtcMPUEventSubResponseBody
 from ._describe_rtc_mpuevent_sub_response import DescribeRtcMPUEventSubResponse
@@ -1192,6 +1195,10 @@ from ._start_rtc_cloud_recording_request import StartRtcCloudRecordingRequest
 from ._start_rtc_cloud_recording_shrink_request import StartRtcCloudRecordingShrinkRequest
 from ._start_rtc_cloud_recording_response_body import StartRtcCloudRecordingResponseBody
 from ._start_rtc_cloud_recording_response import StartRtcCloudRecordingResponse
+from ._start_rtc_cloud_transcode_request import StartRtcCloudTranscodeRequest
+from ._start_rtc_cloud_transcode_shrink_request import StartRtcCloudTranscodeShrinkRequest
+from ._start_rtc_cloud_transcode_response_body import StartRtcCloudTranscodeResponseBody
+from ._start_rtc_cloud_transcode_response import StartRtcCloudTranscodeResponse
 from ._stop_caster_request import StopCasterRequest
 from ._stop_caster_response_body import StopCasterResponseBody
 from ._stop_caster_response import StopCasterResponse
@@ -1222,6 +1229,9 @@ from ._stop_rtc_asr_task_response import StopRtcAsrTaskResponse
 from ._stop_rtc_cloud_recording_request import StopRtcCloudRecordingRequest
 from ._stop_rtc_cloud_recording_response_body import StopRtcCloudRecordingResponseBody
 from ._stop_rtc_cloud_recording_response import StopRtcCloudRecordingResponse
+from ._stop_rtc_cloud_transcode_request import StopRtcCloudTranscodeRequest
+from ._stop_rtc_cloud_transcode_response_body import StopRtcCloudTranscodeResponseBody
+from ._stop_rtc_cloud_transcode_response import StopRtcCloudTranscodeResponse
 from ._tag_live_resources_request import TagLiveResourcesRequest
 from ._tag_live_resources_response_body import TagLiveResourcesResponseBody
 from ._tag_live_resources_response import TagLiveResourcesResponse
@@ -1687,6 +1697,10 @@ from ._describe_rtsnative_sdkvv_data_response_body import DescribeRTSNativeSDKVv
 from ._describe_rtc_cloud_recording_files_response_body import DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList
 from ._describe_rtc_cloud_recording_files_response_body import DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList
 from ._describe_rtc_cloud_recording_files_response_body import DescribeRtcCloudRecordingFilesResponseBodyTaskInfo
+from ._describe_rtc_cloud_transcode_response_body import DescribeRtcCloudTranscodeResponseBodyTaskInfoInputParamSingleSubUserParam
+from ._describe_rtc_cloud_transcode_response_body import DescribeRtcCloudTranscodeResponseBodyTaskInfoInputParam
+from ._describe_rtc_cloud_transcode_response_body import DescribeRtcCloudTranscodeResponseBodyTaskInfoOutputParams
+from ._describe_rtc_cloud_transcode_response_body import DescribeRtcCloudTranscodeResponseBodyTaskInfo
 from ._describe_rtc_mpuevent_sub_response_body import DescribeRtcMPUEventSubResponseBodySubInfo
 from ._describe_show_list_response_body import DescribeShowListResponseBodyShowListInfoShowListShowResourceInfo
 from ._describe_show_list_response_body import DescribeShowListResponseBodyShowListInfoShowListShow
@@ -1827,6 +1841,9 @@ from ._start_rtc_cloud_recording_request import StartRtcCloudRecordingRequestSto
 from ._start_rtc_cloud_recording_request import StartRtcCloudRecordingRequestStorageParams
 from ._start_rtc_cloud_recording_request import StartRtcCloudRecordingRequestSubscribeParamsSubscribeUserIdList
 from ._start_rtc_cloud_recording_request import StartRtcCloudRecordingRequestSubscribeParams
+from ._start_rtc_cloud_transcode_request import StartRtcCloudTranscodeRequestInputParamSingleSubUserParam
+from ._start_rtc_cloud_transcode_request import StartRtcCloudTranscodeRequestInputParam
+from ._start_rtc_cloud_transcode_request import StartRtcCloudTranscodeRequestOutputParams
 from ._tag_live_resources_request import TagLiveResourcesRequestTag
 from ._update_caster_scene_audio_request import UpdateCasterSceneAudioRequestAudioLayer
 from ._update_live_app_record_config_request import UpdateLiveAppRecordConfigRequestRecordFormat
@@ -2654,6 +2671,9 @@ __all__ = [
     DescribeRtcCloudRecordingFilesRequest,
     DescribeRtcCloudRecordingFilesResponseBody,
     DescribeRtcCloudRecordingFilesResponse,
+    DescribeRtcCloudTranscodeRequest,
+    DescribeRtcCloudTranscodeResponseBody,
+    DescribeRtcCloudTranscodeResponse,
     DescribeRtcMPUEventSubRequest,
     DescribeRtcMPUEventSubResponseBody,
     DescribeRtcMPUEventSubResponse,
@@ -3043,6 +3063,10 @@ __all__ = [
     StartRtcCloudRecordingShrinkRequest,
     StartRtcCloudRecordingResponseBody,
     StartRtcCloudRecordingResponse,
+    StartRtcCloudTranscodeRequest,
+    StartRtcCloudTranscodeShrinkRequest,
+    StartRtcCloudTranscodeResponseBody,
+    StartRtcCloudTranscodeResponse,
     StopCasterRequest,
     StopCasterResponseBody,
     StopCasterResponse,
@@ -3073,6 +3097,9 @@ __all__ = [
     StopRtcCloudRecordingRequest,
     StopRtcCloudRecordingResponseBody,
     StopRtcCloudRecordingResponse,
+    StopRtcCloudTranscodeRequest,
+    StopRtcCloudTranscodeResponseBody,
+    StopRtcCloudTranscodeResponse,
     TagLiveResourcesRequest,
     TagLiveResourcesResponseBody,
     TagLiveResourcesResponse,
@@ -3538,6 +3565,10 @@ __all__ = [
     DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileListVodMediaList,
     DescribeRtcCloudRecordingFilesResponseBodyTaskInfoRecordFileList,
     DescribeRtcCloudRecordingFilesResponseBodyTaskInfo,
+    DescribeRtcCloudTranscodeResponseBodyTaskInfoInputParamSingleSubUserParam,
+    DescribeRtcCloudTranscodeResponseBodyTaskInfoInputParam,
+    DescribeRtcCloudTranscodeResponseBodyTaskInfoOutputParams,
+    DescribeRtcCloudTranscodeResponseBodyTaskInfo,
     DescribeRtcMPUEventSubResponseBodySubInfo,
     DescribeShowListResponseBodyShowListInfoShowListShowResourceInfo,
     DescribeShowListResponseBodyShowListInfoShowListShow,
@@ -3678,6 +3709,9 @@ __all__ = [
     StartRtcCloudRecordingRequestStorageParams,
     StartRtcCloudRecordingRequestSubscribeParamsSubscribeUserIdList,
     StartRtcCloudRecordingRequestSubscribeParams,
+    StartRtcCloudTranscodeRequestInputParamSingleSubUserParam,
+    StartRtcCloudTranscodeRequestInputParam,
+    StartRtcCloudTranscodeRequestOutputParams,
     TagLiveResourcesRequestTag,
     UpdateCasterSceneAudioRequestAudioLayer,
     UpdateLiveAppRecordConfigRequestRecordFormat,

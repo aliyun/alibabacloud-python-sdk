@@ -13,7 +13,6 @@ class DescribeLiveStreamMergeResponseBody(DaraModel):
         live_stream_merge_list: main_models.DescribeLiveStreamMergeResponseBodyLiveStreamMergeList = None,
         request_id: str = None,
     ):
-        # Live stream information list.
         self.live_stream_merge_list = live_stream_merge_list
         # The ID of the request.
         self.request_id = request_id
@@ -100,33 +99,20 @@ class DescribeLiveStreamMergeResponseBodyLiveStreamMergeListLiveStreamMerge(Dara
         stream_name: str = None,
         stream_using: str = None,
     ):
-        # The name of the application that generates the output stream.
         self.app_name = app_name
-        # The application that is being used.
         self.app_using = app_using
-        # The streaming domain.
         self.domain_name = domain_name
-        # The end time of the stream mixing.
         self.end_time = end_time
-        # The names of the applications that generate the input additional streams other than the primary stream and secondary stream, and the names of these additional streams.
         self.extra_in_app_streams = extra_in_app_streams
-        # The name of the application that generates the input primary stream.
         self.in_app_name_1 = in_app_name_1
-        # The name of the application that generates the input secondary stream.
         self.in_app_name_2 = in_app_name_2
-        # The name of the input primary stream.
         self.in_stream_name_1 = in_stream_name_1
-        # The name of the input secondary stream.
         self.in_stream_name_2 = in_stream_name_2
         self.live_merger = live_merger
         self.merge_parameters = merge_parameters
-        # The streaming protocol.
         self.protocol = protocol
-        # The start time of the stream mixing.
         self.start_time = start_time
-        # The name of the output stream.
         self.stream_name = stream_name
-        # The stream that is being used.
         self.stream_using = stream_using
 
     def validate(self):
