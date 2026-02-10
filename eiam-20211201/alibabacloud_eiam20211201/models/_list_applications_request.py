@@ -10,6 +10,7 @@ class ListApplicationsRequest(DaraModel):
     def __init__(
         self,
         application_creation_type: str = None,
+        application_identity_type: str = None,
         application_ids: List[str] = None,
         application_name: str = None,
         authorization_type: str = None,
@@ -22,6 +23,7 @@ class ListApplicationsRequest(DaraModel):
         status: str = None,
     ):
         self.application_creation_type = application_creation_type
+        self.application_identity_type = application_identity_type
         # The IDs of the applications.
         self.application_ids = application_ids
         # The name of the application. Only fuzzy match from the leftmost character is supported.
@@ -69,6 +71,9 @@ class ListApplicationsRequest(DaraModel):
         if self.application_creation_type is not None:
             result['ApplicationCreationType'] = self.application_creation_type
 
+        if self.application_identity_type is not None:
+            result['ApplicationIdentityType'] = self.application_identity_type
+
         if self.application_ids is not None:
             result['ApplicationIds'] = self.application_ids
 
@@ -105,6 +110,9 @@ class ListApplicationsRequest(DaraModel):
         m = m or dict()
         if m.get('ApplicationCreationType') is not None:
             self.application_creation_type = m.get('ApplicationCreationType')
+
+        if m.get('ApplicationIdentityType') is not None:
+            self.application_identity_type = m.get('ApplicationIdentityType')
 
         if m.get('ApplicationIds') is not None:
             self.application_ids = m.get('ApplicationIds')

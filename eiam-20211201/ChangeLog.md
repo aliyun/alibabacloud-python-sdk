@@ -1,3 +1,19 @@
+2026-02-10 Version: 2.12.2
+- Update API CreateApplication: add request parameters ApplicationIdentityType.
+- Update API GetApplication: add response parameters Body.Application.ApplicationIdentityType.
+- Update API GetAuthorizationRule: add response parameters Body.AuthorizationRule.AuthorizationRuleSubjectId.
+- Update API GetAuthorizationRule: add response parameters Body.AuthorizationRule.AuthorizationRuleSubjectScope.
+- Update API GetAuthorizationRule: add response parameters Body.AuthorizationRule.AuthorizationRuleSubjectType.
+- Update API ListApplications: add request parameters ApplicationIdentityType.
+- Update API ListApplications: add response parameters Body.Applications.$.ApplicationIdentityType.
+- Update API ListAuthorizationRules: add response parameters Body.AuthorizationRules.$.AuthorizationRuleSubjectId.
+- Update API ListAuthorizationRules: add response parameters Body.AuthorizationRules.$.AuthorizationRuleSubjectScope.
+- Update API ListAuthorizationRules: add response parameters Body.AuthorizationRules.$.AuthorizationRuleSubjectType.
+- Update API ListGroupsForResourceServer: add request parameters ResourceServerScopeId.
+- Update API ListOrganizationalUnitsForResourceServer: add request parameters ResourceServerScopeId.
+- Update API ListUsersForResourceServer: add request parameters ResourceServerScopeId.
+
+
 2026-02-04 Version: 2.12.1
 - Generated python 2021-12-01 for Eiam.
 

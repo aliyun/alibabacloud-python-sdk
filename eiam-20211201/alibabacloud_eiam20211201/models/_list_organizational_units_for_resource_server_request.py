@@ -15,6 +15,7 @@ class ListOrganizationalUnitsForResourceServerRequest(DaraModel):
         instance_id: str = None,
         max_results: int = None,
         next_token: str = None,
+        resource_server_scope_id: str = None,
     ):
         # IDaaS的应用资源ID。
         # 
@@ -28,6 +29,8 @@ class ListOrganizationalUnitsForResourceServerRequest(DaraModel):
         self.max_results = max_results
         # 查询凭证（Token），取值为上一次API调用返回的NextToken参数值。
         self.next_token = next_token
+        # 权限唯一标识。
+        self.resource_server_scope_id = resource_server_scope_id
 
     def validate(self):
         if self.filter:
@@ -57,6 +60,9 @@ class ListOrganizationalUnitsForResourceServerRequest(DaraModel):
         if self.next_token is not None:
             result['NextToken'] = self.next_token
 
+        if self.resource_server_scope_id is not None:
+            result['ResourceServerScopeId'] = self.resource_server_scope_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -78,6 +84,9 @@ class ListOrganizationalUnitsForResourceServerRequest(DaraModel):
 
         if m.get('NextToken') is not None:
             self.next_token = m.get('NextToken')
+
+        if m.get('ResourceServerScopeId') is not None:
+            self.resource_server_scope_id = m.get('ResourceServerScopeId')
 
         return self
 

@@ -22,8 +22,6 @@ class UpdateCloudAccountRoleDescriptionRequest(DaraModel):
         # This parameter is required.
         self.cloud_account_role_id = cloud_account_role_id
         # 描述
-        # 
-        # This parameter is required.
         self.description = description
         # IDaaS EIAM实例的ID。
         # 

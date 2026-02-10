@@ -52,6 +52,7 @@ class GetApplicationResponseBodyApplication(DaraModel):
         api_invoke_status: str = None,
         application_creation_type: str = None,
         application_id: str = None,
+        application_identity_type: str = None,
         application_name: str = None,
         application_source_type: str = None,
         application_template_id: str = None,
@@ -82,6 +83,7 @@ class GetApplicationResponseBodyApplication(DaraModel):
         self.application_creation_type = application_creation_type
         # The ID of the application.
         self.application_id = application_id
+        self.application_identity_type = application_identity_type
         # The name of the application.
         self.application_name = application_name
         # The origin of the application. Valid values:
@@ -155,6 +157,9 @@ class GetApplicationResponseBodyApplication(DaraModel):
 
         if self.application_id is not None:
             result['ApplicationId'] = self.application_id
+
+        if self.application_identity_type is not None:
+            result['ApplicationIdentityType'] = self.application_identity_type
 
         if self.application_name is not None:
             result['ApplicationName'] = self.application_name
@@ -231,6 +236,9 @@ class GetApplicationResponseBodyApplication(DaraModel):
 
         if m.get('ApplicationId') is not None:
             self.application_id = m.get('ApplicationId')
+
+        if m.get('ApplicationIdentityType') is not None:
+            self.application_identity_type = m.get('ApplicationIdentityType')
 
         if m.get('ApplicationName') is not None:
             self.application_name = m.get('ApplicationName')

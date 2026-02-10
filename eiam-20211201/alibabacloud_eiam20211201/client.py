@@ -1621,6 +1621,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateApplicationResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.application_identity_type):
+            query['ApplicationIdentityType'] = request.application_identity_type
         if not DaraCore.is_null(request.application_name):
             query['ApplicationName'] = request.application_name
         if not DaraCore.is_null(request.application_source_type):
@@ -1661,6 +1663,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateApplicationResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.application_identity_type):
+            query['ApplicationIdentityType'] = request.application_identity_type
         if not DaraCore.is_null(request.application_name):
             query['ApplicationName'] = request.application_name
         if not DaraCore.is_null(request.application_source_type):
@@ -14683,6 +14687,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_creation_type):
             query['ApplicationCreationType'] = request.application_creation_type
+        if not DaraCore.is_null(request.application_identity_type):
+            query['ApplicationIdentityType'] = request.application_identity_type
         if not DaraCore.is_null(request.application_ids):
             query['ApplicationIds'] = request.application_ids
         if not DaraCore.is_null(request.application_name):
@@ -14731,6 +14737,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.application_creation_type):
             query['ApplicationCreationType'] = request.application_creation_type
+        if not DaraCore.is_null(request.application_identity_type):
+            query['ApplicationIdentityType'] = request.application_identity_type
         if not DaraCore.is_null(request.application_ids):
             query['ApplicationIds'] = request.application_ids
         if not DaraCore.is_null(request.application_name):
@@ -17245,6 +17253,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_server_scope_id):
+            query['ResourceServerScopeId'] = request.resource_server_scope_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -17281,6 +17291,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_server_scope_id):
+            query['ResourceServerScopeId'] = request.resource_server_scope_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -18291,6 +18303,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_server_scope_id):
+            query['ResourceServerScopeId'] = request.resource_server_scope_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -18327,6 +18341,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_server_scope_id):
+            query['ResourceServerScopeId'] = request.resource_server_scope_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -19105,6 +19121,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_server_scope_id):
+            query['ResourceServerScopeId'] = request.resource_server_scope_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -19141,6 +19159,8 @@ class Client(OpenApiClient):
             query['MaxResults'] = request.max_results
         if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.resource_server_scope_id):
+            query['ResourceServerScopeId'] = request.resource_server_scope_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

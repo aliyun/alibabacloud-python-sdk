@@ -83,6 +83,9 @@ class ListAuthorizationRulesResponseBodyAuthorizationRules(DaraModel):
         authorization_rule_creation_type: str = None,
         authorization_rule_id: str = None,
         authorization_rule_name: str = None,
+        authorization_rule_subject_id: str = None,
+        authorization_rule_subject_scope: str = None,
+        authorization_rule_subject_type: str = None,
         create_time: int = None,
         description: str = None,
         instance_id: str = None,
@@ -98,6 +101,12 @@ class ListAuthorizationRulesResponseBodyAuthorizationRules(DaraModel):
         self.authorization_rule_id = authorization_rule_id
         # 授权规则名称。
         self.authorization_rule_name = authorization_rule_name
+        # 授权规则主体ID，主体类型对应的主体ID。
+        self.authorization_rule_subject_id = authorization_rule_subject_id
+        # 授权规则主体范围，枚举类型：shared（共享型，即支持所有主体，包括账户、应用），exclusive（专属类型）
+        self.authorization_rule_subject_scope = authorization_rule_subject_scope
+        # 授权规则主体类型，枚举类型：application（应用)，user（账户)。
+        self.authorization_rule_subject_type = authorization_rule_subject_type
         # 创建时间，Unix时间戳格式，单位为毫秒。
         self.create_time = create_time
         # 授权规则描述，长度限制为128字符。
@@ -130,6 +139,15 @@ class ListAuthorizationRulesResponseBodyAuthorizationRules(DaraModel):
 
         if self.authorization_rule_name is not None:
             result['AuthorizationRuleName'] = self.authorization_rule_name
+
+        if self.authorization_rule_subject_id is not None:
+            result['AuthorizationRuleSubjectId'] = self.authorization_rule_subject_id
+
+        if self.authorization_rule_subject_scope is not None:
+            result['AuthorizationRuleSubjectScope'] = self.authorization_rule_subject_scope
+
+        if self.authorization_rule_subject_type is not None:
+            result['AuthorizationRuleSubjectType'] = self.authorization_rule_subject_type
 
         if self.create_time is not None:
             result['CreateTime'] = self.create_time
@@ -164,6 +182,15 @@ class ListAuthorizationRulesResponseBodyAuthorizationRules(DaraModel):
 
         if m.get('AuthorizationRuleName') is not None:
             self.authorization_rule_name = m.get('AuthorizationRuleName')
+
+        if m.get('AuthorizationRuleSubjectId') is not None:
+            self.authorization_rule_subject_id = m.get('AuthorizationRuleSubjectId')
+
+        if m.get('AuthorizationRuleSubjectScope') is not None:
+            self.authorization_rule_subject_scope = m.get('AuthorizationRuleSubjectScope')
+
+        if m.get('AuthorizationRuleSubjectType') is not None:
+            self.authorization_rule_subject_type = m.get('AuthorizationRuleSubjectType')
 
         if m.get('CreateTime') is not None:
             self.create_time = m.get('CreateTime')

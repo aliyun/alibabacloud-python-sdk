@@ -7,6 +7,7 @@ from darabonba.model import DaraModel
 class CreateApplicationRequest(DaraModel):
     def __init__(
         self,
+        application_identity_type: str = None,
         application_name: str = None,
         application_source_type: str = None,
         application_template_id: str = None,
@@ -15,6 +16,7 @@ class CreateApplicationRequest(DaraModel):
         logo_url: str = None,
         sso_type: str = None,
     ):
+        self.application_identity_type = application_identity_type
         # The name of the application.
         # 
         # This parameter is required.
@@ -52,6 +54,9 @@ class CreateApplicationRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.application_identity_type is not None:
+            result['ApplicationIdentityType'] = self.application_identity_type
+
         if self.application_name is not None:
             result['ApplicationName'] = self.application_name
 
@@ -77,6 +82,9 @@ class CreateApplicationRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ApplicationIdentityType') is not None:
+            self.application_identity_type = m.get('ApplicationIdentityType')
+
         if m.get('ApplicationName') is not None:
             self.application_name = m.get('ApplicationName')
 
