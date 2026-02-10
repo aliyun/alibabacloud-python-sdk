@@ -13,12 +13,19 @@ class AsyncCreateClipsTaskRequest(DaraModel):
         close_music: bool = None,
         close_subtitle: bool = None,
         close_voice: bool = None,
+        closing_credits_url: str = None,
         color_words: List[main_models.AsyncCreateClipsTaskRequestColorWords] = None,
+        cosy_voice_app_key: str = None,
+        cosy_voice_token: str = None,
+        custom_voice_style: str = None,
         custom_voice_url: str = None,
         custom_voice_volume: int = None,
         height: int = None,
+        high_def_source_videos: List[main_models.AsyncCreateClipsTaskRequestHighDefSourceVideos] = None,
+        music_style: str = None,
         music_url: str = None,
         music_volume: int = None,
+        opening_credits_url: str = None,
         stickers: List[main_models.AsyncCreateClipsTaskRequestStickers] = None,
         subtitle_font_size: int = None,
         task_id: str = None,
@@ -30,12 +37,19 @@ class AsyncCreateClipsTaskRequest(DaraModel):
         self.close_music = close_music
         self.close_subtitle = close_subtitle
         self.close_voice = close_voice
+        self.closing_credits_url = closing_credits_url
         self.color_words = color_words
+        self.cosy_voice_app_key = cosy_voice_app_key
+        self.cosy_voice_token = cosy_voice_token
+        self.custom_voice_style = custom_voice_style
         self.custom_voice_url = custom_voice_url
         self.custom_voice_volume = custom_voice_volume
         self.height = height
+        self.high_def_source_videos = high_def_source_videos
+        self.music_style = music_style
         self.music_url = music_url
         self.music_volume = music_volume
+        self.opening_credits_url = opening_credits_url
         self.stickers = stickers
         self.subtitle_font_size = subtitle_font_size
         # This parameter is required.
@@ -49,6 +63,10 @@ class AsyncCreateClipsTaskRequest(DaraModel):
     def validate(self):
         if self.color_words:
             for v1 in self.color_words:
+                 if v1:
+                    v1.validate()
+        if self.high_def_source_videos:
+            for v1 in self.high_def_source_videos:
                  if v1:
                     v1.validate()
         if self.stickers:
@@ -70,10 +88,22 @@ class AsyncCreateClipsTaskRequest(DaraModel):
         if self.close_voice is not None:
             result['CloseVoice'] = self.close_voice
 
+        if self.closing_credits_url is not None:
+            result['ClosingCreditsUrl'] = self.closing_credits_url
+
         result['ColorWords'] = []
         if self.color_words is not None:
             for k1 in self.color_words:
                 result['ColorWords'].append(k1.to_map() if k1 else None)
+
+        if self.cosy_voice_app_key is not None:
+            result['CosyVoiceAppKey'] = self.cosy_voice_app_key
+
+        if self.cosy_voice_token is not None:
+            result['CosyVoiceToken'] = self.cosy_voice_token
+
+        if self.custom_voice_style is not None:
+            result['CustomVoiceStyle'] = self.custom_voice_style
 
         if self.custom_voice_url is not None:
             result['CustomVoiceUrl'] = self.custom_voice_url
@@ -84,11 +114,22 @@ class AsyncCreateClipsTaskRequest(DaraModel):
         if self.height is not None:
             result['Height'] = self.height
 
+        result['HighDefSourceVideos'] = []
+        if self.high_def_source_videos is not None:
+            for k1 in self.high_def_source_videos:
+                result['HighDefSourceVideos'].append(k1.to_map() if k1 else None)
+
+        if self.music_style is not None:
+            result['MusicStyle'] = self.music_style
+
         if self.music_url is not None:
             result['MusicUrl'] = self.music_url
 
         if self.music_volume is not None:
             result['MusicVolume'] = self.music_volume
+
+        if self.opening_credits_url is not None:
+            result['OpeningCreditsUrl'] = self.opening_credits_url
 
         result['Stickers'] = []
         if self.stickers is not None:
@@ -126,11 +167,23 @@ class AsyncCreateClipsTaskRequest(DaraModel):
         if m.get('CloseVoice') is not None:
             self.close_voice = m.get('CloseVoice')
 
+        if m.get('ClosingCreditsUrl') is not None:
+            self.closing_credits_url = m.get('ClosingCreditsUrl')
+
         self.color_words = []
         if m.get('ColorWords') is not None:
             for k1 in m.get('ColorWords'):
                 temp_model = main_models.AsyncCreateClipsTaskRequestColorWords()
                 self.color_words.append(temp_model.from_map(k1))
+
+        if m.get('CosyVoiceAppKey') is not None:
+            self.cosy_voice_app_key = m.get('CosyVoiceAppKey')
+
+        if m.get('CosyVoiceToken') is not None:
+            self.cosy_voice_token = m.get('CosyVoiceToken')
+
+        if m.get('CustomVoiceStyle') is not None:
+            self.custom_voice_style = m.get('CustomVoiceStyle')
 
         if m.get('CustomVoiceUrl') is not None:
             self.custom_voice_url = m.get('CustomVoiceUrl')
@@ -141,11 +194,23 @@ class AsyncCreateClipsTaskRequest(DaraModel):
         if m.get('Height') is not None:
             self.height = m.get('Height')
 
+        self.high_def_source_videos = []
+        if m.get('HighDefSourceVideos') is not None:
+            for k1 in m.get('HighDefSourceVideos'):
+                temp_model = main_models.AsyncCreateClipsTaskRequestHighDefSourceVideos()
+                self.high_def_source_videos.append(temp_model.from_map(k1))
+
+        if m.get('MusicStyle') is not None:
+            self.music_style = m.get('MusicStyle')
+
         if m.get('MusicUrl') is not None:
             self.music_url = m.get('MusicUrl')
 
         if m.get('MusicVolume') is not None:
             self.music_volume = m.get('MusicVolume')
+
+        if m.get('OpeningCreditsUrl') is not None:
+            self.opening_credits_url = m.get('OpeningCreditsUrl')
 
         self.stickers = []
         if m.get('Stickers') is not None:
@@ -253,6 +318,49 @@ class AsyncCreateClipsTaskRequestStickers(DaraModel):
 
         if m.get('Y') is not None:
             self.y = m.get('Y')
+
+        return self
+
+class AsyncCreateClipsTaskRequestHighDefSourceVideos(DaraModel):
+    def __init__(
+        self,
+        video_id: str = None,
+        video_name: str = None,
+        video_url: str = None,
+    ):
+        self.video_id = video_id
+        self.video_name = video_name
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.video_id is not None:
+            result['VideoId'] = self.video_id
+
+        if self.video_name is not None:
+            result['VideoName'] = self.video_name
+
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoId') is not None:
+            self.video_id = m.get('VideoId')
+
+        if m.get('VideoName') is not None:
+            self.video_name = m.get('VideoName')
+
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
 
         return self
 

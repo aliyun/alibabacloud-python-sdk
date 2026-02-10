@@ -59,6 +59,7 @@ class GenerateTraceabilityNews(DaraModel):
         self.search_source = search_source
         self.search_source_name = search_source_name
         self.title = title
+        # URL
         self.url = url
 
     def validate(self):

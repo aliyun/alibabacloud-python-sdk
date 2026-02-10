@@ -7,16 +7,20 @@ from darabonba.model import DaraModel
 class AsyncUploadVideoShrinkRequest(DaraModel):
     def __init__(
         self,
+        adaptive_threshold: float = None,
         anlysis_prompt: str = None,
         face_identity_similarity_min_score: float = None,
         reference_video_shrink: str = None,
         remove_subtitle: bool = None,
         source_videos_shrink: str = None,
         split_interval: int = None,
+        task_name: str = None,
+        task_type: str = None,
         video_roles_shrink: str = None,
         video_shot_face_identity_count: int = None,
         workspace_id: str = None,
     ):
+        self.adaptive_threshold = adaptive_threshold
         self.anlysis_prompt = anlysis_prompt
         self.face_identity_similarity_min_score = face_identity_similarity_min_score
         self.reference_video_shrink = reference_video_shrink
@@ -24,6 +28,8 @@ class AsyncUploadVideoShrinkRequest(DaraModel):
         # This parameter is required.
         self.source_videos_shrink = source_videos_shrink
         self.split_interval = split_interval
+        self.task_name = task_name
+        self.task_type = task_type
         self.video_roles_shrink = video_roles_shrink
         self.video_shot_face_identity_count = video_shot_face_identity_count
         # This parameter is required.
@@ -37,6 +43,9 @@ class AsyncUploadVideoShrinkRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.adaptive_threshold is not None:
+            result['AdaptiveThreshold'] = self.adaptive_threshold
+
         if self.anlysis_prompt is not None:
             result['AnlysisPrompt'] = self.anlysis_prompt
 
@@ -55,6 +64,12 @@ class AsyncUploadVideoShrinkRequest(DaraModel):
         if self.split_interval is not None:
             result['SplitInterval'] = self.split_interval
 
+        if self.task_name is not None:
+            result['TaskName'] = self.task_name
+
+        if self.task_type is not None:
+            result['TaskType'] = self.task_type
+
         if self.video_roles_shrink is not None:
             result['VideoRoles'] = self.video_roles_shrink
 
@@ -68,6 +83,9 @@ class AsyncUploadVideoShrinkRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AdaptiveThreshold') is not None:
+            self.adaptive_threshold = m.get('AdaptiveThreshold')
+
         if m.get('AnlysisPrompt') is not None:
             self.anlysis_prompt = m.get('AnlysisPrompt')
 
@@ -85,6 +103,12 @@ class AsyncUploadVideoShrinkRequest(DaraModel):
 
         if m.get('SplitInterval') is not None:
             self.split_interval = m.get('SplitInterval')
+
+        if m.get('TaskName') is not None:
+            self.task_name = m.get('TaskName')
+
+        if m.get('TaskType') is not None:
+            self.task_type = m.get('TaskType')
 
         if m.get('VideoRoles') is not None:
             self.video_roles_shrink = m.get('VideoRoles')

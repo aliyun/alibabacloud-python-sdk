@@ -112,6 +112,9 @@ from ._delete_intervene_rule_response import DeleteInterveneRuleResponse
 from ._delete_material_by_id_request import DeleteMaterialByIdRequest
 from ._delete_material_by_id_response_body import DeleteMaterialByIdResponseBody
 from ._delete_material_by_id_response import DeleteMaterialByIdResponse
+from ._delete_ppt_artifact_request import DeletePptArtifactRequest
+from ._delete_ppt_artifact_response_body import DeletePptArtifactResponseBody
+from ._delete_ppt_artifact_response import DeletePptArtifactResponse
 from ._delete_style_learning_result_request import DeleteStyleLearningResultRequest
 from ._delete_style_learning_result_response_body import DeleteStyleLearningResultResponseBody
 from ._delete_style_learning_result_response import DeleteStyleLearningResultResponse
@@ -207,6 +210,9 @@ from ._get_bidding_remain_limit_num_response import GetBiddingRemainLimitNumResp
 from ._get_categories_by_task_id_request import GetCategoriesByTaskIdRequest
 from ._get_categories_by_task_id_response_body import GetCategoriesByTaskIdResponseBody
 from ._get_categories_by_task_id_response import GetCategoriesByTaskIdResponse
+from ._get_clips_build_in_resource_request import GetClipsBuildInResourceRequest
+from ._get_clips_build_in_resource_response_body import GetClipsBuildInResourceResponseBody
+from ._get_clips_build_in_resource_response import GetClipsBuildInResourceResponse
 from ._get_custom_hot_topic_broadcast_job_request import GetCustomHotTopicBroadcastJobRequest
 from ._get_custom_hot_topic_broadcast_job_response_body import GetCustomHotTopicBroadcastJobResponseBody
 from ._get_custom_hot_topic_broadcast_job_response import GetCustomHotTopicBroadcastJobResponse
@@ -275,6 +281,9 @@ from ._get_intervene_template_file_url_response import GetInterveneTemplateFileU
 from ._get_material_by_id_request import GetMaterialByIdRequest
 from ._get_material_by_id_response_body import GetMaterialByIdResponseBody
 from ._get_material_by_id_response import GetMaterialByIdResponse
+from ._get_ppt_artifact_request import GetPptArtifactRequest
+from ._get_ppt_artifact_response_body import GetPptArtifactResponseBody
+from ._get_ppt_artifact_response import GetPptArtifactResponse
 from ._get_ppt_config_request import GetPptConfigRequest
 from ._get_ppt_config_response_body import GetPptConfigResponseBody
 from ._get_ppt_config_response import GetPptConfigResponse
@@ -327,6 +336,9 @@ from ._list_audit_content_error_types_response import ListAuditContentErrorTypes
 from ._list_audit_terms_request import ListAuditTermsRequest
 from ._list_audit_terms_response_body import ListAuditTermsResponseBody
 from ._list_audit_terms_response import ListAuditTermsResponse
+from ._list_auto_clips_task_request import ListAutoClipsTaskRequest
+from ._list_auto_clips_task_response_body import ListAutoClipsTaskResponseBody
+from ._list_auto_clips_task_response import ListAutoClipsTaskResponse
 from ._list_bidding_doc_request import ListBiddingDocRequest
 from ._list_bidding_doc_response_body import ListBiddingDocResponseBody
 from ._list_bidding_doc_response import ListBiddingDocResponse
@@ -400,6 +412,9 @@ from ._list_planning_proposal_request import ListPlanningProposalRequest
 from ._list_planning_proposal_shrink_request import ListPlanningProposalShrinkRequest
 from ._list_planning_proposal_response_body import ListPlanningProposalResponseBody
 from ._list_planning_proposal_response import ListPlanningProposalResponse
+from ._list_ppt_artifacts_request import ListPptArtifactsRequest
+from ._list_ppt_artifacts_response_body import ListPptArtifactsResponseBody
+from ._list_ppt_artifacts_response import ListPptArtifactsResponse
 from ._list_search_task_dialogue_datas_request import ListSearchTaskDialogueDatasRequest
 from ._list_search_task_dialogue_datas_response_body import ListSearchTaskDialogueDatasResponseBody
 from ._list_search_task_dialogue_datas_response import ListSearchTaskDialogueDatasResponse
@@ -689,6 +704,7 @@ from ._add_dataset_document_request import AddDatasetDocumentRequestDocumentMult
 from ._add_dataset_document_request import AddDatasetDocumentRequestDocument
 from ._add_dataset_document_response_body import AddDatasetDocumentResponseBodyData
 from ._async_create_clips_task_request import AsyncCreateClipsTaskRequestColorWords
+from ._async_create_clips_task_request import AsyncCreateClipsTaskRequestHighDefSourceVideos
 from ._async_create_clips_task_request import AsyncCreateClipsTaskRequestStickers
 from ._async_create_clips_task_response_body import AsyncCreateClipsTaskResponseBodyData
 from ._async_create_clips_time_line_response_body import AsyncCreateClipsTimeLineResponseBodyData
@@ -721,6 +737,7 @@ from ._create_dataset_response_body import CreateDatasetResponseBodyData
 from ._create_general_config_response_body import CreateGeneralConfigResponseBodyData
 from ._create_token_response_body import CreateTokenResponseBodyData
 from ._delete_intervene_rule_response_body import DeleteInterveneRuleResponseBodyData
+from ._delete_ppt_artifact_response_body import DeletePptArtifactResponseBodyData
 from ._document_extraction_response_body import DocumentExtractionResponseBodyData
 from ._download_bidding_doc_response_body import DownloadBiddingDocResponseBodyData
 from ._edit_bidding_doc_response_body import EditBiddingDocResponseBodyData
@@ -740,7 +757,13 @@ from ._generate_view_point_request import GenerateViewPointRequestReferenceData
 from ._generate_view_point_response_body import GenerateViewPointResponseBodyData
 from ._get_audit_note_post_processing_status_response_body import GetAuditNotePostProcessingStatusResponseBodyData
 from ._get_audit_note_processing_status_response_body import GetAuditNoteProcessingStatusResponseBodyData
+from ._get_auto_clips_task_info_response_body import GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime
+from ._get_auto_clips_task_info_response_body import GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime
+from ._get_auto_clips_task_info_response_body import GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos
+from ._get_auto_clips_task_info_response_body import GetAutoClipsTaskInfoResponseBodyDataAnalysisResults
 from ._get_auto_clips_task_info_response_body import GetAutoClipsTaskInfoResponseBodyDataColorWords
+from ._get_auto_clips_task_info_response_body import GetAutoClipsTaskInfoResponseBodyDataReferenceVideo
+from ._get_auto_clips_task_info_response_body import GetAutoClipsTaskInfoResponseBodyDataSourceVideos
 from ._get_auto_clips_task_info_response_body import GetAutoClipsTaskInfoResponseBodyDataStickers
 from ._get_auto_clips_task_info_response_body import GetAutoClipsTaskInfoResponseBodyDataTimelinesClips
 from ._get_auto_clips_task_info_response_body import GetAutoClipsTaskInfoResponseBodyDataTimelines
@@ -750,6 +773,7 @@ from ._get_bidding_doc_info_response_body import GetBiddingDocInfoResponseBodyDa
 from ._get_bidding_remain_limit_num_response_body import GetBiddingRemainLimitNumResponseBodyData
 from ._get_categories_by_task_id_response_body import GetCategoriesByTaskIdResponseBodyDataChildren
 from ._get_categories_by_task_id_response_body import GetCategoriesByTaskIdResponseBodyData
+from ._get_clips_build_in_resource_response_body import GetClipsBuildInResourceResponseBodyData
 from ._get_custom_hot_topic_broadcast_job_response_body import GetCustomHotTopicBroadcastJobResponseBodyData
 from ._get_custom_source_topic_analysis_task_response_body import GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews
 from ._get_custom_source_topic_analysis_task_response_body import GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults
@@ -815,6 +839,8 @@ from ._get_intervene_rule_detail_response_body import GetInterveneRuleDetailResp
 from ._get_intervene_rule_detail_response_body import GetInterveneRuleDetailResponseBodyData
 from ._get_intervene_template_file_url_response_body import GetInterveneTemplateFileUrlResponseBodyData
 from ._get_material_by_id_response_body import GetMaterialByIdResponseBodyData
+from ._get_ppt_artifact_response_body import GetPptArtifactResponseBodyDataFileAttr
+from ._get_ppt_artifact_response_body import GetPptArtifactResponseBodyData
 from ._get_ppt_config_response_body import GetPptConfigResponseBodyData
 from ._get_properties_response_body import GetPropertiesResponseBodyDataConsoleConfig
 from ._get_properties_response_body import GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources
@@ -879,6 +905,7 @@ from ._list_async_tasks_response_body import ListAsyncTasksResponseBodyData
 from ._list_audit_content_error_types_response_body import ListAuditContentErrorTypesResponseBodyDataSubClasses
 from ._list_audit_content_error_types_response_body import ListAuditContentErrorTypesResponseBodyData
 from ._list_audit_terms_response_body import ListAuditTermsResponseBodyData
+from ._list_auto_clips_task_response_body import ListAutoClipsTaskResponseBodyData
 from ._list_bidding_doc_response_body import ListBiddingDocResponseBodyData
 from ._list_build_configs_response_body import ListBuildConfigsResponseBodyDataKeywords
 from ._list_build_configs_response_body import ListBuildConfigsResponseBodyData
@@ -921,6 +948,8 @@ from ._list_material_documents_response_body import ListMaterialDocumentsRespons
 from ._list_material_documents_response_body import ListMaterialDocumentsResponseBodyData
 from ._list_planning_proposal_response_body import ListPlanningProposalResponseBodyDataOutlines
 from ._list_planning_proposal_response_body import ListPlanningProposalResponseBodyData
+from ._list_ppt_artifacts_response_body import ListPptArtifactsResponseBodyDataFileAttr
+from ._list_ppt_artifacts_response_body import ListPptArtifactsResponseBodyData
 from ._list_search_task_dialogue_datas_response_body import ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias
 from ._list_search_task_dialogue_datas_response_body import ListSearchTaskDialogueDatasResponseBodyArticles
 from ._list_search_task_dialogue_datas_response_body import ListSearchTaskDialogueDatasResponseBodyAudios
@@ -1407,6 +1436,9 @@ __all__ = [
     DeleteMaterialByIdRequest,
     DeleteMaterialByIdResponseBody,
     DeleteMaterialByIdResponse,
+    DeletePptArtifactRequest,
+    DeletePptArtifactResponseBody,
+    DeletePptArtifactResponse,
     DeleteStyleLearningResultRequest,
     DeleteStyleLearningResultResponseBody,
     DeleteStyleLearningResultResponse,
@@ -1502,6 +1534,9 @@ __all__ = [
     GetCategoriesByTaskIdRequest,
     GetCategoriesByTaskIdResponseBody,
     GetCategoriesByTaskIdResponse,
+    GetClipsBuildInResourceRequest,
+    GetClipsBuildInResourceResponseBody,
+    GetClipsBuildInResourceResponse,
     GetCustomHotTopicBroadcastJobRequest,
     GetCustomHotTopicBroadcastJobResponseBody,
     GetCustomHotTopicBroadcastJobResponse,
@@ -1570,6 +1605,9 @@ __all__ = [
     GetMaterialByIdRequest,
     GetMaterialByIdResponseBody,
     GetMaterialByIdResponse,
+    GetPptArtifactRequest,
+    GetPptArtifactResponseBody,
+    GetPptArtifactResponse,
     GetPptConfigRequest,
     GetPptConfigResponseBody,
     GetPptConfigResponse,
@@ -1622,6 +1660,9 @@ __all__ = [
     ListAuditTermsRequest,
     ListAuditTermsResponseBody,
     ListAuditTermsResponse,
+    ListAutoClipsTaskRequest,
+    ListAutoClipsTaskResponseBody,
+    ListAutoClipsTaskResponse,
     ListBiddingDocRequest,
     ListBiddingDocResponseBody,
     ListBiddingDocResponse,
@@ -1695,6 +1736,9 @@ __all__ = [
     ListPlanningProposalShrinkRequest,
     ListPlanningProposalResponseBody,
     ListPlanningProposalResponse,
+    ListPptArtifactsRequest,
+    ListPptArtifactsResponseBody,
+    ListPptArtifactsResponse,
     ListSearchTaskDialogueDatasRequest,
     ListSearchTaskDialogueDatasResponseBody,
     ListSearchTaskDialogueDatasResponse,
@@ -1984,6 +2028,7 @@ __all__ = [
     AddDatasetDocumentRequestDocument,
     AddDatasetDocumentResponseBodyData,
     AsyncCreateClipsTaskRequestColorWords,
+    AsyncCreateClipsTaskRequestHighDefSourceVideos,
     AsyncCreateClipsTaskRequestStickers,
     AsyncCreateClipsTaskResponseBodyData,
     AsyncCreateClipsTimeLineResponseBodyData,
@@ -2016,6 +2061,7 @@ __all__ = [
     CreateGeneralConfigResponseBodyData,
     CreateTokenResponseBodyData,
     DeleteInterveneRuleResponseBodyData,
+    DeletePptArtifactResponseBodyData,
     DocumentExtractionResponseBodyData,
     DownloadBiddingDocResponseBodyData,
     EditBiddingDocResponseBodyData,
@@ -2035,7 +2081,13 @@ __all__ = [
     GenerateViewPointResponseBodyData,
     GetAuditNotePostProcessingStatusResponseBodyData,
     GetAuditNoteProcessingStatusResponseBodyData,
+    GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime,
+    GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime,
+    GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos,
+    GetAutoClipsTaskInfoResponseBodyDataAnalysisResults,
     GetAutoClipsTaskInfoResponseBodyDataColorWords,
+    GetAutoClipsTaskInfoResponseBodyDataReferenceVideo,
+    GetAutoClipsTaskInfoResponseBodyDataSourceVideos,
     GetAutoClipsTaskInfoResponseBodyDataStickers,
     GetAutoClipsTaskInfoResponseBodyDataTimelinesClips,
     GetAutoClipsTaskInfoResponseBodyDataTimelines,
@@ -2045,6 +2097,7 @@ __all__ = [
     GetBiddingRemainLimitNumResponseBodyData,
     GetCategoriesByTaskIdResponseBodyDataChildren,
     GetCategoriesByTaskIdResponseBodyData,
+    GetClipsBuildInResourceResponseBodyData,
     GetCustomHotTopicBroadcastJobResponseBodyData,
     GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResultsClusterNews,
     GetCustomSourceTopicAnalysisTaskResponseBodyDataClusterResults,
@@ -2110,6 +2163,8 @@ __all__ = [
     GetInterveneRuleDetailResponseBodyData,
     GetInterveneTemplateFileUrlResponseBodyData,
     GetMaterialByIdResponseBodyData,
+    GetPptArtifactResponseBodyDataFileAttr,
+    GetPptArtifactResponseBodyData,
     GetPptConfigResponseBodyData,
     GetPropertiesResponseBodyDataConsoleConfig,
     GetPropertiesResponseBodyDataIntelligentSearchConfigCopilotPreciseSearchSources,
@@ -2174,6 +2229,7 @@ __all__ = [
     ListAuditContentErrorTypesResponseBodyDataSubClasses,
     ListAuditContentErrorTypesResponseBodyData,
     ListAuditTermsResponseBodyData,
+    ListAutoClipsTaskResponseBodyData,
     ListBiddingDocResponseBodyData,
     ListBuildConfigsResponseBodyDataKeywords,
     ListBuildConfigsResponseBodyData,
@@ -2216,6 +2272,8 @@ __all__ = [
     ListMaterialDocumentsResponseBodyData,
     ListPlanningProposalResponseBodyDataOutlines,
     ListPlanningProposalResponseBodyData,
+    ListPptArtifactsResponseBodyDataFileAttr,
+    ListPptArtifactsResponseBodyData,
     ListSearchTaskDialogueDatasResponseBodyArticlesMultimodalMedias,
     ListSearchTaskDialogueDatasResponseBodyArticles,
     ListSearchTaskDialogueDatasResponseBodyAudios,

@@ -1,3 +1,30 @@
+2026-02-10 Version: 1.39.0
+- Support API DeletePptArtifact.
+- Support API GetClipsBuildInResource.
+- Support API GetPptArtifact.
+- Support API ListAutoClipsTask.
+- Support API ListPptArtifacts.
+- Update API AsyncCreateClipsTask: add request parameters ClosingCreditsUrl.
+- Update API AsyncCreateClipsTask: add request parameters CosyVoiceAppKey.
+- Update API AsyncCreateClipsTask: add request parameters CosyVoiceToken.
+- Update API AsyncCreateClipsTask: add request parameters CustomVoiceStyle.
+- Update API AsyncCreateClipsTask: add request parameters HighDefSourceVideos.
+- Update API AsyncCreateClipsTask: add request parameters MusicStyle.
+- Update API AsyncCreateClipsTask: add request parameters OpeningCreditsUrl.
+- Update API AsyncUploadVideo: add request parameters AdaptiveThreshold.
+- Update API AsyncUploadVideo: add request parameters TaskName.
+- Update API AsyncUploadVideo: add request parameters TaskType.
+- Update API GetAutoClipsTaskInfo: add request parameters ShowAnalysisResults.
+- Update API GetAutoClipsTaskInfo: add request parameters ShowResourceInfo.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Data.AnalysisResults.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Data.ClosingCreditsUrl.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Data.CustomVoiceStyle.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Data.OpeningCreditsUrl.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Data.OutputVideoFileKey.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Data.ReferenceVideo.
+- Update API GetAutoClipsTaskInfo: add response parameters Body.Data.SourceVideos.
+
+
 2026-02-03 Version: 1.38.6
 - Update API AddDatasetDocument: add request parameters Document.CategoryUuid.
 - Update API AddDatasetDocument: add request parameters Document.Tags.

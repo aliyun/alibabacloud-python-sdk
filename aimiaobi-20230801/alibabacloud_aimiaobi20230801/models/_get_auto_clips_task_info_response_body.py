@@ -80,11 +80,14 @@ class GetAutoClipsTaskInfoResponseBody(DaraModel):
 class GetAutoClipsTaskInfoResponseBodyData(DaraModel):
     def __init__(
         self,
+        analysis_results: List[main_models.GetAutoClipsTaskInfoResponseBodyDataAnalysisResults] = None,
         close_music: bool = None,
         close_subtitle: bool = None,
         close_voice: bool = None,
+        closing_credits_url: str = None,
         color_words: List[main_models.GetAutoClipsTaskInfoResponseBodyDataColorWords] = None,
         content: str = None,
+        custom_voice_style: str = None,
         custom_voice_url: str = None,
         custom_voice_volume: int = None,
         error_message: str = None,
@@ -92,7 +95,11 @@ class GetAutoClipsTaskInfoResponseBodyData(DaraModel):
         music_style: str = None,
         music_url: str = None,
         music_volume: int = None,
+        opening_credits_url: str = None,
+        output_video_file_key: str = None,
         output_video_url: str = None,
+        reference_video: main_models.GetAutoClipsTaskInfoResponseBodyDataReferenceVideo = None,
+        source_videos: List[main_models.GetAutoClipsTaskInfoResponseBodyDataSourceVideos] = None,
         status: int = None,
         step: str = None,
         stickers: List[main_models.GetAutoClipsTaskInfoResponseBodyDataStickers] = None,
@@ -102,11 +109,14 @@ class GetAutoClipsTaskInfoResponseBodyData(DaraModel):
         voice_style: str = None,
         voice_volume: int = None,
     ):
+        self.analysis_results = analysis_results
         self.close_music = close_music
         self.close_subtitle = close_subtitle
         self.close_voice = close_voice
+        self.closing_credits_url = closing_credits_url
         self.color_words = color_words
         self.content = content
+        self.custom_voice_style = custom_voice_style
         self.custom_voice_url = custom_voice_url
         self.custom_voice_volume = custom_voice_volume
         self.error_message = error_message
@@ -114,7 +124,11 @@ class GetAutoClipsTaskInfoResponseBodyData(DaraModel):
         self.music_style = music_style
         self.music_url = music_url
         self.music_volume = music_volume
+        self.opening_credits_url = opening_credits_url
+        self.output_video_file_key = output_video_file_key
         self.output_video_url = output_video_url
+        self.reference_video = reference_video
+        self.source_videos = source_videos
         self.status = status
         self.step = step
         self.stickers = stickers
@@ -125,8 +139,18 @@ class GetAutoClipsTaskInfoResponseBodyData(DaraModel):
         self.voice_volume = voice_volume
 
     def validate(self):
+        if self.analysis_results:
+            for v1 in self.analysis_results:
+                 if v1:
+                    v1.validate()
         if self.color_words:
             for v1 in self.color_words:
+                 if v1:
+                    v1.validate()
+        if self.reference_video:
+            self.reference_video.validate()
+        if self.source_videos:
+            for v1 in self.source_videos:
                  if v1:
                     v1.validate()
         if self.stickers:
@@ -143,6 +167,11 @@ class GetAutoClipsTaskInfoResponseBodyData(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        result['AnalysisResults'] = []
+        if self.analysis_results is not None:
+            for k1 in self.analysis_results:
+                result['AnalysisResults'].append(k1.to_map() if k1 else None)
+
         if self.close_music is not None:
             result['CloseMusic'] = self.close_music
 
@@ -152,6 +181,9 @@ class GetAutoClipsTaskInfoResponseBodyData(DaraModel):
         if self.close_voice is not None:
             result['CloseVoice'] = self.close_voice
 
+        if self.closing_credits_url is not None:
+            result['ClosingCreditsUrl'] = self.closing_credits_url
+
         result['ColorWords'] = []
         if self.color_words is not None:
             for k1 in self.color_words:
@@ -159,6 +191,9 @@ class GetAutoClipsTaskInfoResponseBodyData(DaraModel):
 
         if self.content is not None:
             result['Content'] = self.content
+
+        if self.custom_voice_style is not None:
+            result['CustomVoiceStyle'] = self.custom_voice_style
 
         if self.custom_voice_url is not None:
             result['CustomVoiceUrl'] = self.custom_voice_url
@@ -181,8 +216,22 @@ class GetAutoClipsTaskInfoResponseBodyData(DaraModel):
         if self.music_volume is not None:
             result['MusicVolume'] = self.music_volume
 
+        if self.opening_credits_url is not None:
+            result['OpeningCreditsUrl'] = self.opening_credits_url
+
+        if self.output_video_file_key is not None:
+            result['OutputVideoFileKey'] = self.output_video_file_key
+
         if self.output_video_url is not None:
             result['OutputVideoUrl'] = self.output_video_url
+
+        if self.reference_video is not None:
+            result['ReferenceVideo'] = self.reference_video.to_map()
+
+        result['SourceVideos'] = []
+        if self.source_videos is not None:
+            for k1 in self.source_videos:
+                result['SourceVideos'].append(k1.to_map() if k1 else None)
 
         if self.status is not None:
             result['Status'] = self.status
@@ -216,6 +265,12 @@ class GetAutoClipsTaskInfoResponseBodyData(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        self.analysis_results = []
+        if m.get('AnalysisResults') is not None:
+            for k1 in m.get('AnalysisResults'):
+                temp_model = main_models.GetAutoClipsTaskInfoResponseBodyDataAnalysisResults()
+                self.analysis_results.append(temp_model.from_map(k1))
+
         if m.get('CloseMusic') is not None:
             self.close_music = m.get('CloseMusic')
 
@@ -225,6 +280,9 @@ class GetAutoClipsTaskInfoResponseBodyData(DaraModel):
         if m.get('CloseVoice') is not None:
             self.close_voice = m.get('CloseVoice')
 
+        if m.get('ClosingCreditsUrl') is not None:
+            self.closing_credits_url = m.get('ClosingCreditsUrl')
+
         self.color_words = []
         if m.get('ColorWords') is not None:
             for k1 in m.get('ColorWords'):
@@ -233,6 +291,9 @@ class GetAutoClipsTaskInfoResponseBodyData(DaraModel):
 
         if m.get('Content') is not None:
             self.content = m.get('Content')
+
+        if m.get('CustomVoiceStyle') is not None:
+            self.custom_voice_style = m.get('CustomVoiceStyle')
 
         if m.get('CustomVoiceUrl') is not None:
             self.custom_voice_url = m.get('CustomVoiceUrl')
@@ -255,8 +316,24 @@ class GetAutoClipsTaskInfoResponseBodyData(DaraModel):
         if m.get('MusicVolume') is not None:
             self.music_volume = m.get('MusicVolume')
 
+        if m.get('OpeningCreditsUrl') is not None:
+            self.opening_credits_url = m.get('OpeningCreditsUrl')
+
+        if m.get('OutputVideoFileKey') is not None:
+            self.output_video_file_key = m.get('OutputVideoFileKey')
+
         if m.get('OutputVideoUrl') is not None:
             self.output_video_url = m.get('OutputVideoUrl')
+
+        if m.get('ReferenceVideo') is not None:
+            temp_model = main_models.GetAutoClipsTaskInfoResponseBodyDataReferenceVideo()
+            self.reference_video = temp_model.from_map(m.get('ReferenceVideo'))
+
+        self.source_videos = []
+        if m.get('SourceVideos') is not None:
+            for k1 in m.get('SourceVideos'):
+                temp_model = main_models.GetAutoClipsTaskInfoResponseBodyDataSourceVideos()
+                self.source_videos.append(temp_model.from_map(k1))
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
@@ -507,6 +584,92 @@ class GetAutoClipsTaskInfoResponseBodyDataStickers(DaraModel):
 
         return self
 
+class GetAutoClipsTaskInfoResponseBodyDataSourceVideos(DaraModel):
+    def __init__(
+        self,
+        video_id: str = None,
+        video_name: str = None,
+        video_url: str = None,
+    ):
+        self.video_id = video_id
+        self.video_name = video_name
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.video_id is not None:
+            result['VideoId'] = self.video_id
+
+        if self.video_name is not None:
+            result['VideoName'] = self.video_name
+
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoId') is not None:
+            self.video_id = m.get('VideoId')
+
+        if m.get('VideoName') is not None:
+            self.video_name = m.get('VideoName')
+
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+
+        return self
+
+class GetAutoClipsTaskInfoResponseBodyDataReferenceVideo(DaraModel):
+    def __init__(
+        self,
+        video_id: str = None,
+        video_name: str = None,
+        video_url: str = None,
+    ):
+        self.video_id = video_id
+        self.video_name = video_name
+        self.video_url = video_url
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.video_id is not None:
+            result['VideoId'] = self.video_id
+
+        if self.video_name is not None:
+            result['VideoName'] = self.video_name
+
+        if self.video_url is not None:
+            result['VideoUrl'] = self.video_url
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('VideoId') is not None:
+            self.video_id = m.get('VideoId')
+
+        if m.get('VideoName') is not None:
+            self.video_name = m.get('VideoName')
+
+        if m.get('VideoUrl') is not None:
+            self.video_url = m.get('VideoUrl')
+
+        return self
+
 class GetAutoClipsTaskInfoResponseBodyDataColorWords(DaraModel):
     def __init__(
         self,
@@ -579,6 +742,215 @@ class GetAutoClipsTaskInfoResponseBodyDataColorWords(DaraModel):
 
         if m.get('Y') is not None:
             self.y = m.get('Y')
+
+        return self
+
+class GetAutoClipsTaskInfoResponseBodyDataAnalysisResults(DaraModel):
+    def __init__(
+        self,
+        lens_infos: List[main_models.GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos] = None,
+        media_id: str = None,
+        media_name: str = None,
+        media_url: str = None,
+    ):
+        self.lens_infos = lens_infos
+        self.media_id = media_id
+        self.media_name = media_name
+        self.media_url = media_url
+
+    def validate(self):
+        if self.lens_infos:
+            for v1 in self.lens_infos:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['LensInfos'] = []
+        if self.lens_infos is not None:
+            for k1 in self.lens_infos:
+                result['LensInfos'].append(k1.to_map() if k1 else None)
+
+        if self.media_id is not None:
+            result['MediaId'] = self.media_id
+
+        if self.media_name is not None:
+            result['MediaName'] = self.media_name
+
+        if self.media_url is not None:
+            result['MediaUrl'] = self.media_url
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.lens_infos = []
+        if m.get('LensInfos') is not None:
+            for k1 in m.get('LensInfos'):
+                temp_model = main_models.GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos()
+                self.lens_infos.append(temp_model.from_map(k1))
+
+        if m.get('MediaId') is not None:
+            self.media_id = m.get('MediaId')
+
+        if m.get('MediaName') is not None:
+            self.media_name = m.get('MediaName')
+
+        if m.get('MediaUrl') is not None:
+            self.media_url = m.get('MediaUrl')
+
+        return self
+
+class GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfos(DaraModel):
+    def __init__(
+        self,
+        analysis_content: str = None,
+        end_time: main_models.GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime = None,
+        start_time: main_models.GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime = None,
+    ):
+        self.analysis_content = analysis_content
+        self.end_time = end_time
+        self.start_time = start_time
+
+    def validate(self):
+        if self.end_time:
+            self.end_time.validate()
+        if self.start_time:
+            self.start_time.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.analysis_content is not None:
+            result['AnalysisContent'] = self.analysis_content
+
+        if self.end_time is not None:
+            result['EndTime'] = self.end_time.to_map()
+
+        if self.start_time is not None:
+            result['StartTime'] = self.start_time.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('AnalysisContent') is not None:
+            self.analysis_content = m.get('AnalysisContent')
+
+        if m.get('EndTime') is not None:
+            temp_model = main_models.GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime()
+            self.end_time = temp_model.from_map(m.get('EndTime'))
+
+        if m.get('StartTime') is not None:
+            temp_model = main_models.GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime()
+            self.start_time = temp_model.from_map(m.get('StartTime'))
+
+        return self
+
+class GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosStartTime(DaraModel):
+    def __init__(
+        self,
+        hour: int = None,
+        mill_second: int = None,
+        minute: int = None,
+        second: int = None,
+    ):
+        self.hour = hour
+        self.mill_second = mill_second
+        self.minute = minute
+        self.second = second
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.hour is not None:
+            result['Hour'] = self.hour
+
+        if self.mill_second is not None:
+            result['MillSecond'] = self.mill_second
+
+        if self.minute is not None:
+            result['Minute'] = self.minute
+
+        if self.second is not None:
+            result['Second'] = self.second
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Hour') is not None:
+            self.hour = m.get('Hour')
+
+        if m.get('MillSecond') is not None:
+            self.mill_second = m.get('MillSecond')
+
+        if m.get('Minute') is not None:
+            self.minute = m.get('Minute')
+
+        if m.get('Second') is not None:
+            self.second = m.get('Second')
+
+        return self
+
+class GetAutoClipsTaskInfoResponseBodyDataAnalysisResultsLensInfosEndTime(DaraModel):
+    def __init__(
+        self,
+        hour: int = None,
+        mill_second: int = None,
+        minute: int = None,
+        second: int = None,
+    ):
+        self.hour = hour
+        self.mill_second = mill_second
+        self.minute = minute
+        self.second = second
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.hour is not None:
+            result['Hour'] = self.hour
+
+        if self.mill_second is not None:
+            result['MillSecond'] = self.mill_second
+
+        if self.minute is not None:
+            result['Minute'] = self.minute
+
+        if self.second is not None:
+            result['Second'] = self.second
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Hour') is not None:
+            self.hour = m.get('Hour')
+
+        if m.get('MillSecond') is not None:
+            self.mill_second = m.get('MillSecond')
+
+        if m.get('Minute') is not None:
+            self.minute = m.get('Minute')
+
+        if m.get('Second') is not None:
+            self.second = m.get('Second')
 
         return self
 
