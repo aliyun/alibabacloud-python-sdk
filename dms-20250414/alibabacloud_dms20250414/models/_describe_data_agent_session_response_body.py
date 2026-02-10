@@ -201,17 +201,25 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         custom_agent_id: str = None,
         custom_agent_stage: str = None,
         enable_search: bool = None,
+        encrypt_key: str = None,
+        encrypt_type: str = None,
         language: str = None,
         mcp_server_ids: List[str] = None,
         mode: str = None,
+        report_page_width: int = None,
+        report_water_mark: str = None,
         user_oss_bucket: str = None,
     ):
         self.custom_agent_id = custom_agent_id
         self.custom_agent_stage = custom_agent_stage
         self.enable_search = enable_search
+        self.encrypt_key = encrypt_key
+        self.encrypt_type = encrypt_type
         self.language = language
         self.mcp_server_ids = mcp_server_ids
         self.mode = mode
+        self.report_page_width = report_page_width
+        self.report_water_mark = report_water_mark
         self.user_oss_bucket = user_oss_bucket
 
     def validate(self):
@@ -231,6 +239,12 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         if self.enable_search is not None:
             result['EnableSearch'] = self.enable_search
 
+        if self.encrypt_key is not None:
+            result['EncryptKey'] = self.encrypt_key
+
+        if self.encrypt_type is not None:
+            result['EncryptType'] = self.encrypt_type
+
         if self.language is not None:
             result['Language'] = self.language
 
@@ -239,6 +253,12 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
 
         if self.mode is not None:
             result['Mode'] = self.mode
+
+        if self.report_page_width is not None:
+            result['ReportPageWidth'] = self.report_page_width
+
+        if self.report_water_mark is not None:
+            result['ReportWaterMark'] = self.report_water_mark
 
         if self.user_oss_bucket is not None:
             result['UserOssBucket'] = self.user_oss_bucket
@@ -256,6 +276,12 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
         if m.get('EnableSearch') is not None:
             self.enable_search = m.get('EnableSearch')
 
+        if m.get('EncryptKey') is not None:
+            self.encrypt_key = m.get('EncryptKey')
+
+        if m.get('EncryptType') is not None:
+            self.encrypt_type = m.get('EncryptType')
+
         if m.get('Language') is not None:
             self.language = m.get('Language')
 
@@ -264,6 +290,12 @@ class DescribeDataAgentSessionResponseBodyDataSessionConfig(DaraModel):
 
         if m.get('Mode') is not None:
             self.mode = m.get('Mode')
+
+        if m.get('ReportPageWidth') is not None:
+            self.report_page_width = m.get('ReportPageWidth')
+
+        if m.get('ReportWaterMark') is not None:
+            self.report_water_mark = m.get('ReportWaterMark')
 
         if m.get('UserOssBucket') is not None:
             self.user_oss_bucket = m.get('UserOssBucket')

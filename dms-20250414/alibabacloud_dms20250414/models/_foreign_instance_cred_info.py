@@ -12,7 +12,9 @@ class ForeignInstanceCredInfo(DaraModel):
         cred_info: Dict[str, str] = None,
         cred_type: str = None,
     ):
+        # The information about the credential.
         self.cred_info = cred_info
+        # The type of the credential. Set the value to DEFAULT.
         self.cred_type = cred_type
 
     def validate(self):

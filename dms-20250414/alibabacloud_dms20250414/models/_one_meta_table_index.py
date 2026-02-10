@@ -13,11 +13,17 @@ class OneMetaTableIndex(DaraModel):
         description: str = None,
         index_name: str = None,
         index_type: str = None,
+        primary: bool = None,
+        real_column_names: List[str] = None,
+        unique: bool = None,
     ):
         self.column_names = column_names
         self.description = description
         self.index_name = index_name
         self.index_type = index_type
+        self.primary = primary
+        self.real_column_names = real_column_names
+        self.unique = unique
 
     def validate(self):
         pass
@@ -39,6 +45,15 @@ class OneMetaTableIndex(DaraModel):
         if self.index_type is not None:
             result['IndexType'] = self.index_type
 
+        if self.primary is not None:
+            result['Primary'] = self.primary
+
+        if self.real_column_names is not None:
+            result['RealColumnNames'] = self.real_column_names
+
+        if self.unique is not None:
+            result['Unique'] = self.unique
+
         return result
 
     def from_map(self, m: dict = None):
@@ -54,6 +69,15 @@ class OneMetaTableIndex(DaraModel):
 
         if m.get('IndexType') is not None:
             self.index_type = m.get('IndexType')
+
+        if m.get('Primary') is not None:
+            self.primary = m.get('Primary')
+
+        if m.get('RealColumnNames') is not None:
+            self.real_column_names = m.get('RealColumnNames')
+
+        if m.get('Unique') is not None:
+            self.unique = m.get('Unique')
 
         return self
 

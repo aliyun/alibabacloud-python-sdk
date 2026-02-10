@@ -18,13 +18,28 @@ class ForeignInstance(DaraModel):
         region_id: str = None,
         sid: str = None,
     ):
+        # The name of the data link.
         self.data_link_name = data_link_name
+        # The endpoint that is used to connect to the database instance.
         self.host = host
+        # The source of the database instance. Valid values:
+        # 
+        # *   **PUBLIC_OWN:** a self-managed database instance that is deployed on the Internet.
+        # *   **RDS**: an ApsaraDB RDS instance.
+        # *   **ECS_OWN**: a self-managed database that is hosted on an Elastic Compute Service (ECS) instance.
+        # *   **VPC_IDC**: a self-managed database instance that is deployed in the data center over a virtual private cloud (VPC).
         self.instance_source = instance_source
+        # The type of the instance.
         self.instance_type = instance_type
+        # The port number that is used to connect to the database instance.
         self.port = port
+        # The information of the properties.
         self.properties = properties
+        # The region ID.
         self.region_id = region_id
+        # The system identifier (SID) of the database.
+        # 
+        # >  The SID uniquely identifies an Oracle database. After a database is created, a SID is generated for the database.
         self.sid = sid
 
     def validate(self):
