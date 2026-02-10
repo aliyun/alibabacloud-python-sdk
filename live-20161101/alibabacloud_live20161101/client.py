@@ -17092,6 +17092,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not DaraCore.is_null(request.begin_ts):
             query['BeginTs'] = request.begin_ts
+        if not DaraCore.is_null(request.channel_id):
+            query['ChannelId'] = request.channel_id
         if not DaraCore.is_null(request.end_ts):
             query['EndTs'] = request.end_ts
         if not DaraCore.is_null(request.metric_type):
@@ -17130,6 +17132,8 @@ class Client(OpenApiClient):
             query['AppId'] = request.app_id
         if not DaraCore.is_null(request.begin_ts):
             query['BeginTs'] = request.begin_ts
+        if not DaraCore.is_null(request.channel_id):
+            query['ChannelId'] = request.channel_id
         if not DaraCore.is_null(request.end_ts):
             query['EndTs'] = request.end_ts
         if not DaraCore.is_null(request.metric_type):

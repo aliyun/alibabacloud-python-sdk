@@ -9,6 +9,7 @@ class DescribeLiveInteractionMetricDataRequest(DaraModel):
         self,
         app_id: str = None,
         begin_ts: int = None,
+        channel_id: str = None,
         end_ts: int = None,
         metric_type: str = None,
         os: str = None,
@@ -22,6 +23,7 @@ class DescribeLiveInteractionMetricDataRequest(DaraModel):
         # 
         # This parameter is required.
         self.begin_ts = begin_ts
+        self.channel_id = channel_id
         # The end of the time range to query. The value is a UNIX timestamp. Unit: milliseconds.
         # 
         # This parameter is required.
@@ -54,6 +56,9 @@ class DescribeLiveInteractionMetricDataRequest(DaraModel):
         if self.begin_ts is not None:
             result['BeginTs'] = self.begin_ts
 
+        if self.channel_id is not None:
+            result['ChannelId'] = self.channel_id
+
         if self.end_ts is not None:
             result['EndTs'] = self.end_ts
 
@@ -75,6 +80,9 @@ class DescribeLiveInteractionMetricDataRequest(DaraModel):
 
         if m.get('BeginTs') is not None:
             self.begin_ts = m.get('BeginTs')
+
+        if m.get('ChannelId') is not None:
+            self.channel_id = m.get('ChannelId')
 
         if m.get('EndTs') is not None:
             self.end_ts = m.get('EndTs')

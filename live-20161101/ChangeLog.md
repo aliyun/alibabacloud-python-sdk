@@ -1,3 +1,7 @@
+2026-02-10 Version: 2.7.1
+- Update API DescribeLiveInteractionMetricData: add request parameters ChannelId.
+
+
 2026-02-10 Version: 2.7.0
 - Support API DescribeRtcCloudTranscode.
 - Support API StartRtcCloudTranscode.
