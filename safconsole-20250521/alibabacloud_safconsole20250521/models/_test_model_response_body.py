@@ -16,10 +16,18 @@ class TestModelResponseBody(DaraModel):
         result_object: main_models.TestModelResponseBodyResultObject = None,
         success: bool = None,
     ):
+        # Status code. A return value of 200 indicates success.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Return result.
         self.result_object = result_object
+        # Indicates whether the call was successful.
+        # 
+        # - **true**: Call succeeded.
+        # - **false**: Call failed.
         self.success = success
 
     def validate(self):
@@ -76,9 +84,13 @@ class TestModelResponseBodyResultObject(DaraModel):
         test_result: List[main_models.TestModelResponseBodyResultObjectTestResult] = None,
         total: int = None,
     ):
+        # Number of consistencies.
         self.consistency_count = consistency_count
+        # Consistency rate.
         self.consistency_rate = consistency_rate
+        # Test results.
         self.test_result = test_result
+        # Total number.
         self.total = total
 
     def validate(self):
@@ -135,9 +147,13 @@ class TestModelResponseBodyResultObjectTestResult(DaraModel):
         test_result: str = None,
         train_result: str = None,
     ):
+        # Actual output.
         self.actual_result = actual_result
+        # Whether it is consistent.
         self.consistency = consistency
+        # Test output.
         self.test_result = test_result
+        # Training output.
         self.train_result = train_result
 
     def validate(self):

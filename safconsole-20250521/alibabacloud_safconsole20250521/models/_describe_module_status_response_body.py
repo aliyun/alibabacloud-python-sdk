@@ -13,10 +13,15 @@ class DescribeModuleStatusResponseBody(DaraModel):
         result_object: str = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Returned result.
         self.result_object = result_object
+        # Whether the operation was successful
         self.success = success
 
     def validate(self):

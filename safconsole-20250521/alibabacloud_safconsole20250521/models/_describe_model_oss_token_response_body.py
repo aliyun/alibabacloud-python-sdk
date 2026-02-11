@@ -20,16 +20,30 @@ class DescribeModelOssTokenResponseBody(DaraModel):
         success: bool = None,
         xoss_security_token: str = None,
     ):
+        # AccessKeyId for uploading files to OSS.
         self.access_id = access_id
+        # Status code. A return value of 200 indicates success.
         self.code = code
+        # OSS domain name.
         self.host = host
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Key required for file upload.
         self.key = key
+        # Authorization policy for security group control rules.
         self.policy = policy
+        # Request ID.
         self.request_id = request_id
+        # Returned result.
         self.result_object = result_object
+        # OSS signature.
         self.signature = signature
+        # Indicates whether the call was successful.
+        # 
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
+        # Temporary authorization token for OSS.
         self.xoss_security_token = xoss_security_token
 
     def validate(self):
@@ -124,11 +138,17 @@ class DescribeModelOssTokenResponseBodyResultObject(DaraModel):
         signature: str = None,
         xoss_security_token: str = None,
     ):
+        # AccessKeyId for uploading files to OSS.
         self.access_id = access_id
+        # OSS domain name.
         self.host = host
+        # Key required for file upload.
         self.key = key
+        # Authorization policy for security group control rules.
         self.policy = policy
+        # OSS signature.
         self.signature = signature
+        # Temporary authorization token for OSS.
         self.xoss_security_token = xoss_security_token
 
     def validate(self):

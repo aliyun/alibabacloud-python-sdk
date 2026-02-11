@@ -22,13 +22,23 @@ class DescribeUserModelListResponseBody(DaraModel):
     ):
         # `code`
         self.code = code
+        # Current page.
         self.current_page = current_page
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Pagination parameter: number of items per page, default value is 10.
         self.page_size = page_size
+        # Request ID.
         self.request_id = request_id
+        # Return result.
         self.result_object = result_object
+        # Indicates whether the request was successful, with values as follows:
+        # - true, request succeeded
+        # - false, request failed
         self.success = success
+        # Total number of records.
         self.total_item = total_item
+        # Total number of pages.
         self.total_page = total_page
 
     def validate(self):
@@ -123,17 +133,29 @@ class DescribeUserModelListResponseBodyResultObject(DaraModel):
         iteration_version: int = None,
         root_module_id: int = None,
     ):
+        # Authorization type.
         self.auth_type = auth_type
+        # Model name.
         self.customer_module_name = customer_module_name
+        # Remarks.
         self.description = description
+        # Associated features.
         self.feature_template = feature_template
+        # Modification time.
         self.gmt_modified = gmt_modified
+        # Primary key ID of the model.
         self.id = id
+        # Publication status.
         self.inner_define_status = inner_define_status
+        # Model identifier.
         self.inner_module_name = inner_module_name
+        # Whether iteration is allowed.
         self.is_allow_iterate = is_allow_iterate
+        # Whether rollback is allowed.
         self.is_allow_rollback = is_allow_rollback
+        # Iteration version.
         self.iteration_version = iteration_version
+        # Root model ID.
         self.root_module_id = root_module_id
 
     def validate(self):

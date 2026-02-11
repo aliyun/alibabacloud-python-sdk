@@ -16,10 +16,18 @@ class DescribeModelFeatureResponseBody(DaraModel):
         result_object: List[main_models.DescribeModelFeatureResponseBodyResultObject] = None,
         success: bool = None,
     ):
+        # Status code. A return value of 200 indicates success.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Return result.
         self.result_object = result_object
+        # Whether the call was successful.
+        # 
+        # - **true**: Call succeeded.
+        # - **false**: Call failed.
         self.success = success
 
     def validate(self):
@@ -82,9 +90,13 @@ class DescribeModelFeatureResponseBodyResultObject(DaraModel):
         feature_type: str = None,
         name: str = None,
     ):
+        # Default value of the feature.
         self.default_value = default_value
+        # Feature mapping name.
         self.feature_name = feature_name
+        # Feature type.
         self.feature_type = feature_type
+        # Feature name.
         self.name = name
 
     def validate(self):

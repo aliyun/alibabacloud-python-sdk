@@ -9,6 +9,7 @@ class DescribeModuleStatusRequest(DaraModel):
         self,
         customer_module_id: int = None,
     ):
+        # Customer model ID
         self.customer_module_id = customer_module_id
 
     def validate(self):

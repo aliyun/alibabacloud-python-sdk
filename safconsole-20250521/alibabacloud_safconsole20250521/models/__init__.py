@@ -2,6 +2,15 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._apply_bastion_account_request import ApplyBastionAccountRequest
+from ._apply_bastion_account_response_body import ApplyBastionAccountResponseBody
+from ._apply_bastion_account_response import ApplyBastionAccountResponse
+from ._associate_poc_task_request import AssociatePocTaskRequest
+from ._associate_poc_task_response_body import AssociatePocTaskResponseBody
+from ._associate_poc_task_response import AssociatePocTaskResponse
+from ._complete_modeling_project_request import CompleteModelingProjectRequest
+from ._complete_modeling_project_response_body import CompleteModelingProjectResponseBody
+from ._complete_modeling_project_response import CompleteModelingProjectResponse
 from ._create_customer_module_basic_info_request import CreateCustomerModuleBasicInfoRequest
 from ._create_customer_module_basic_info_response_body import CreateCustomerModuleBasicInfoResponseBody
 from ._create_customer_module_basic_info_response import CreateCustomerModuleBasicInfoResponse
@@ -11,9 +20,15 @@ from ._create_customer_module_meta_info_response import CreateCustomerModuleMeta
 from ._create_customer_module_output_info_request import CreateCustomerModuleOutputInfoRequest
 from ._create_customer_module_output_info_response_body import CreateCustomerModuleOutputInfoResponseBody
 from ._create_customer_module_output_info_response import CreateCustomerModuleOutputInfoResponse
+from ._create_modeling_project_request import CreateModelingProjectRequest
+from ._create_modeling_project_response_body import CreateModelingProjectResponseBody
+from ._create_modeling_project_response import CreateModelingProjectResponse
 from ._delete_model_request import DeleteModelRequest
 from ._delete_model_response_body import DeleteModelResponseBody
 from ._delete_model_response import DeleteModelResponse
+from ._deploy_model_file_request import DeployModelFileRequest
+from ._deploy_model_file_response_body import DeployModelFileResponseBody
+from ._deploy_model_file_response import DeployModelFileResponse
 from ._describe_customer_module_basic_info_request import DescribeCustomerModuleBasicInfoRequest
 from ._describe_customer_module_basic_info_response_body import DescribeCustomerModuleBasicInfoResponseBody
 from ._describe_customer_module_basic_info_response import DescribeCustomerModuleBasicInfoResponse
@@ -28,17 +43,28 @@ from ._describe_feature_option_response_body import DescribeFeatureOptionRespons
 from ._describe_feature_option_response import DescribeFeatureOptionResponse
 from ._describe_feature_template_list_response_body import DescribeFeatureTemplateListResponseBody
 from ._describe_feature_template_list_response import DescribeFeatureTemplateListResponse
+from ._describe_file_download_url_request import DescribeFileDownloadUrlRequest
+from ._describe_file_download_url_response_body import DescribeFileDownloadUrlResponseBody
+from ._describe_file_download_url_response import DescribeFileDownloadUrlResponse
 from ._describe_model_feature_request import DescribeModelFeatureRequest
 from ._describe_model_feature_response_body import DescribeModelFeatureResponseBody
 from ._describe_model_feature_response import DescribeModelFeatureResponse
 from ._describe_model_oss_token_response_body import DescribeModelOssTokenResponseBody
 from ._describe_model_oss_token_response import DescribeModelOssTokenResponse
+from ._describe_modeling_project_detail_request import DescribeModelingProjectDetailRequest
+from ._describe_modeling_project_detail_response_body import DescribeModelingProjectDetailResponseBody
+from ._describe_modeling_project_detail_response import DescribeModelingProjectDetailResponse
+from ._describe_modeling_project_list_request import DescribeModelingProjectListRequest
+from ._describe_modeling_project_list_response_body import DescribeModelingProjectListResponseBody
+from ._describe_modeling_project_list_response import DescribeModelingProjectListResponse
 from ._describe_module_service_exist_request import DescribeModuleServiceExistRequest
 from ._describe_module_service_exist_response_body import DescribeModuleServiceExistResponseBody
 from ._describe_module_service_exist_response import DescribeModuleServiceExistResponse
 from ._describe_module_status_request import DescribeModuleStatusRequest
 from ._describe_module_status_response_body import DescribeModuleStatusResponseBody
 from ._describe_module_status_response import DescribeModuleStatusResponse
+from ._describe_poc_task_list_response_body import DescribePocTaskListResponseBody
+from ._describe_poc_task_list_response import DescribePocTaskListResponse
 from ._describe_saf_rmmp_order_response_body import DescribeSafRmmpOrderResponseBody
 from ._describe_saf_rmmp_order_response import DescribeSafRmmpOrderResponse
 from ._describe_service_and_scene_request import DescribeServiceAndSceneRequest
@@ -53,6 +79,9 @@ from ._duplicate_model_response import DuplicateModelResponse
 from ._edit_model_request import EditModelRequest
 from ._edit_model_response_body import EditModelResponseBody
 from ._edit_model_response import EditModelResponse
+from ._get_bastion_host_certification_request import GetBastionHostCertificationRequest
+from ._get_bastion_host_certification_response_body import GetBastionHostCertificationResponseBody
+from ._get_bastion_host_certification_response import GetBastionHostCertificationResponse
 from ._iterate_model_request import IterateModelRequest
 from ._iterate_model_response_body import IterateModelResponseBody
 from ._iterate_model_response import IterateModelResponse
@@ -68,6 +97,9 @@ from ._parse_expression_parameters_response import ParseExpressionParametersResp
 from ._prepublish_model_request import PrepublishModelRequest
 from ._prepublish_model_response_body import PrepublishModelResponseBody
 from ._prepublish_model_response import PrepublishModelResponse
+from ._request_model_file_sync_request import RequestModelFileSyncRequest
+from ._request_model_file_sync_response_body import RequestModelFileSyncResponseBody
+from ._request_model_file_sync_response import RequestModelFileSyncResponse
 from ._rollback_model_request import RollbackModelRequest
 from ._rollback_model_response_body import RollbackModelResponseBody
 from ._rollback_model_response import RollbackModelResponse
@@ -89,6 +121,7 @@ from ._validate_model_file_response import ValidateModelFileResponse
 from ._validate_test_file_request import ValidateTestFileRequest
 from ._validate_test_file_response_body import ValidateTestFileResponseBody
 from ._validate_test_file_response import ValidateTestFileResponse
+from ._create_modeling_project_response_body import CreateModelingProjectResponseBodyResultObject
 from ._describe_customer_module_basic_info_response_body import DescribeCustomerModuleBasicInfoResponseBodyResultObject
 from ._describe_customer_module_meta_info_response_body import DescribeCustomerModuleMetaInfoResponseBodyResultObjectFeatureList
 from ._describe_customer_module_meta_info_response_body import DescribeCustomerModuleMetaInfoResponseBodyResultObject
@@ -97,6 +130,12 @@ from ._describe_feature_option_response_body import DescribeFeatureOptionRespons
 from ._describe_feature_template_list_response_body import DescribeFeatureTemplateListResponseBodyResultObject
 from ._describe_model_feature_response_body import DescribeModelFeatureResponseBodyResultObject
 from ._describe_model_oss_token_response_body import DescribeModelOssTokenResponseBodyResultObject
+from ._describe_modeling_project_detail_response_body import DescribeModelingProjectDetailResponseBodyResultObjectPocTasks
+from ._describe_modeling_project_detail_response_body import DescribeModelingProjectDetailResponseBodyResultObjectSyncedFilesFiles
+from ._describe_modeling_project_detail_response_body import DescribeModelingProjectDetailResponseBodyResultObjectSyncedFiles
+from ._describe_modeling_project_detail_response_body import DescribeModelingProjectDetailResponseBodyResultObject
+from ._describe_modeling_project_list_response_body import DescribeModelingProjectListResponseBodyResultObject
+from ._describe_poc_task_list_response_body import DescribePocTaskListResponseBodyResultObject
 from ._describe_saf_rmmp_order_response_body import DescribeSafRmmpOrderResponseBodyResultObject
 from ._describe_service_and_scene_response_body import DescribeServiceAndSceneResponseBodyResultObject
 from ._describe_user_model_list_response_body import DescribeUserModelListResponseBodyResultObject
@@ -108,6 +147,15 @@ from ._validate_model_file_response_body import ValidateModelFileResponseBodyRes
 from ._validate_test_file_response_body import ValidateTestFileResponseBodyResultObject
 
 __all__ = [
+    ApplyBastionAccountRequest,
+    ApplyBastionAccountResponseBody,
+    ApplyBastionAccountResponse,
+    AssociatePocTaskRequest,
+    AssociatePocTaskResponseBody,
+    AssociatePocTaskResponse,
+    CompleteModelingProjectRequest,
+    CompleteModelingProjectResponseBody,
+    CompleteModelingProjectResponse,
     CreateCustomerModuleBasicInfoRequest,
     CreateCustomerModuleBasicInfoResponseBody,
     CreateCustomerModuleBasicInfoResponse,
@@ -117,9 +165,15 @@ __all__ = [
     CreateCustomerModuleOutputInfoRequest,
     CreateCustomerModuleOutputInfoResponseBody,
     CreateCustomerModuleOutputInfoResponse,
+    CreateModelingProjectRequest,
+    CreateModelingProjectResponseBody,
+    CreateModelingProjectResponse,
     DeleteModelRequest,
     DeleteModelResponseBody,
     DeleteModelResponse,
+    DeployModelFileRequest,
+    DeployModelFileResponseBody,
+    DeployModelFileResponse,
     DescribeCustomerModuleBasicInfoRequest,
     DescribeCustomerModuleBasicInfoResponseBody,
     DescribeCustomerModuleBasicInfoResponse,
@@ -134,17 +188,28 @@ __all__ = [
     DescribeFeatureOptionResponse,
     DescribeFeatureTemplateListResponseBody,
     DescribeFeatureTemplateListResponse,
+    DescribeFileDownloadUrlRequest,
+    DescribeFileDownloadUrlResponseBody,
+    DescribeFileDownloadUrlResponse,
     DescribeModelFeatureRequest,
     DescribeModelFeatureResponseBody,
     DescribeModelFeatureResponse,
     DescribeModelOssTokenResponseBody,
     DescribeModelOssTokenResponse,
+    DescribeModelingProjectDetailRequest,
+    DescribeModelingProjectDetailResponseBody,
+    DescribeModelingProjectDetailResponse,
+    DescribeModelingProjectListRequest,
+    DescribeModelingProjectListResponseBody,
+    DescribeModelingProjectListResponse,
     DescribeModuleServiceExistRequest,
     DescribeModuleServiceExistResponseBody,
     DescribeModuleServiceExistResponse,
     DescribeModuleStatusRequest,
     DescribeModuleStatusResponseBody,
     DescribeModuleStatusResponse,
+    DescribePocTaskListResponseBody,
+    DescribePocTaskListResponse,
     DescribeSafRmmpOrderResponseBody,
     DescribeSafRmmpOrderResponse,
     DescribeServiceAndSceneRequest,
@@ -159,6 +224,9 @@ __all__ = [
     EditModelRequest,
     EditModelResponseBody,
     EditModelResponse,
+    GetBastionHostCertificationRequest,
+    GetBastionHostCertificationResponseBody,
+    GetBastionHostCertificationResponse,
     IterateModelRequest,
     IterateModelResponseBody,
     IterateModelResponse,
@@ -174,6 +242,9 @@ __all__ = [
     PrepublishModelRequest,
     PrepublishModelResponseBody,
     PrepublishModelResponse,
+    RequestModelFileSyncRequest,
+    RequestModelFileSyncResponseBody,
+    RequestModelFileSyncResponse,
     RollbackModelRequest,
     RollbackModelResponseBody,
     RollbackModelResponse,
@@ -195,6 +266,7 @@ __all__ = [
     ValidateTestFileRequest,
     ValidateTestFileResponseBody,
     ValidateTestFileResponse,
+    CreateModelingProjectResponseBodyResultObject,
     DescribeCustomerModuleBasicInfoResponseBodyResultObject,
     DescribeCustomerModuleMetaInfoResponseBodyResultObjectFeatureList,
     DescribeCustomerModuleMetaInfoResponseBodyResultObject,
@@ -203,6 +275,12 @@ __all__ = [
     DescribeFeatureTemplateListResponseBodyResultObject,
     DescribeModelFeatureResponseBodyResultObject,
     DescribeModelOssTokenResponseBodyResultObject,
+    DescribeModelingProjectDetailResponseBodyResultObjectPocTasks,
+    DescribeModelingProjectDetailResponseBodyResultObjectSyncedFilesFiles,
+    DescribeModelingProjectDetailResponseBodyResultObjectSyncedFiles,
+    DescribeModelingProjectDetailResponseBodyResultObject,
+    DescribeModelingProjectListResponseBodyResultObject,
+    DescribePocTaskListResponseBodyResultObject,
     DescribeSafRmmpOrderResponseBodyResultObject,
     DescribeServiceAndSceneResponseBodyResultObject,
     DescribeUserModelListResponseBodyResultObject,

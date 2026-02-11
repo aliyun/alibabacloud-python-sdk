@@ -12,9 +12,13 @@ class DescribeUserModelListRequest(DaraModel):
         name: str = None,
         page_size: str = None,
     ):
+        # Authorization type.
         self.auth_type = auth_type
+        # Current page number.
         self.current_page = current_page
+        # Model name.
         self.name = name
+        # Pagination parameter: number of items per page, default value 10.
         self.page_size = page_size
 
     def validate(self):

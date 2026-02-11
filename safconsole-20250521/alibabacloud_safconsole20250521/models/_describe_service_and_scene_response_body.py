@@ -14,10 +14,18 @@ class DescribeServiceAndSceneResponseBody(DaraModel):
         result_object: main_models.DescribeServiceAndSceneResponseBodyResultObject = None,
         success: bool = None,
     ):
+        # Status code. A return value of 200 indicates success.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Returned result.
         self.result_object = result_object
+        # Indicates whether the call was successful.
+        # 
+        # - **true**: Call succeeded.
+        # - **false**: Call failed.
         self.success = success
 
     def validate(self):
@@ -72,7 +80,9 @@ class DescribeServiceAndSceneResponseBodyResultObject(DaraModel):
         scene: str = None,
         service: str = None,
     ):
+        # Model corresponding scene.
         self.scene = scene
+        # Model corresponding service.
         self.service = service
 
     def validate(self):

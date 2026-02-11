@@ -40,6 +40,224 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def apply_bastion_account_with_options(
+        self,
+        request: main_models.ApplyBastionAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ApplyBastionAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.mobile):
+            query['Mobile'] = request.mobile
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ApplyBastionAccount',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ApplyBastionAccountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def apply_bastion_account_with_options_async(
+        self,
+        request: main_models.ApplyBastionAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ApplyBastionAccountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.mobile):
+            query['Mobile'] = request.mobile
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ApplyBastionAccount',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ApplyBastionAccountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def apply_bastion_account(
+        self,
+        request: main_models.ApplyBastionAccountRequest,
+    ) -> main_models.ApplyBastionAccountResponse:
+        runtime = RuntimeOptions()
+        return self.apply_bastion_account_with_options(request, runtime)
+
+    async def apply_bastion_account_async(
+        self,
+        request: main_models.ApplyBastionAccountRequest,
+    ) -> main_models.ApplyBastionAccountResponse:
+        runtime = RuntimeOptions()
+        return await self.apply_bastion_account_with_options_async(request, runtime)
+
+    def associate_poc_task_with_options(
+        self,
+        request: main_models.AssociatePocTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AssociatePocTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AssociatePocTask',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AssociatePocTaskResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def associate_poc_task_with_options_async(
+        self,
+        request: main_models.AssociatePocTaskRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AssociatePocTaskResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        if not DaraCore.is_null(request.task_id):
+            query['TaskId'] = request.task_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AssociatePocTask',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AssociatePocTaskResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def associate_poc_task(
+        self,
+        request: main_models.AssociatePocTaskRequest,
+    ) -> main_models.AssociatePocTaskResponse:
+        runtime = RuntimeOptions()
+        return self.associate_poc_task_with_options(request, runtime)
+
+    async def associate_poc_task_async(
+        self,
+        request: main_models.AssociatePocTaskRequest,
+    ) -> main_models.AssociatePocTaskResponse:
+        runtime = RuntimeOptions()
+        return await self.associate_poc_task_with_options_async(request, runtime)
+
+    def complete_modeling_project_with_options(
+        self,
+        request: main_models.CompleteModelingProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CompleteModelingProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CompleteModelingProject',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CompleteModelingProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def complete_modeling_project_with_options_async(
+        self,
+        request: main_models.CompleteModelingProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CompleteModelingProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CompleteModelingProject',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CompleteModelingProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def complete_modeling_project(
+        self,
+        request: main_models.CompleteModelingProjectRequest,
+    ) -> main_models.CompleteModelingProjectResponse:
+        runtime = RuntimeOptions()
+        return self.complete_modeling_project_with_options(request, runtime)
+
+    async def complete_modeling_project_async(
+        self,
+        request: main_models.CompleteModelingProjectRequest,
+    ) -> main_models.CompleteModelingProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.complete_modeling_project_with_options_async(request, runtime)
+
     def create_customer_module_basic_info_with_options(
         self,
         request: main_models.CreateCustomerModuleBasicInfoRequest,
@@ -282,6 +500,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_customer_module_output_info_with_options_async(request, runtime)
 
+    def create_modeling_project_with_options(
+        self,
+        request: main_models.CreateModelingProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateModelingProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_spec):
+            query['InstanceSpec'] = request.instance_spec
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateModelingProject',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateModelingProjectResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_modeling_project_with_options_async(
+        self,
+        request: main_models.CreateModelingProjectRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateModelingProjectResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.instance_spec):
+            query['InstanceSpec'] = request.instance_spec
+        if not DaraCore.is_null(request.project_name):
+            query['ProjectName'] = request.project_name
+        if not DaraCore.is_null(request.remark):
+            query['Remark'] = request.remark
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateModelingProject',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateModelingProjectResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_modeling_project(
+        self,
+        request: main_models.CreateModelingProjectRequest,
+    ) -> main_models.CreateModelingProjectResponse:
+        runtime = RuntimeOptions()
+        return self.create_modeling_project_with_options(request, runtime)
+
+    async def create_modeling_project_async(
+        self,
+        request: main_models.CreateModelingProjectRequest,
+    ) -> main_models.CreateModelingProjectResponse:
+        runtime = RuntimeOptions()
+        return await self.create_modeling_project_with_options_async(request, runtime)
+
     def delete_model_with_options(
         self,
         request: main_models.DeleteModelRequest,
@@ -351,6 +647,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteModelResponse:
         runtime = RuntimeOptions()
         return await self.delete_model_with_options_async(request, runtime)
+
+    def deploy_model_file_with_options(
+        self,
+        request: main_models.DeployModelFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeployModelFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.group_id):
+            query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeployModelFile',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeployModelFileResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def deploy_model_file_with_options_async(
+        self,
+        request: main_models.DeployModelFileRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeployModelFileResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.group_id):
+            query['GroupId'] = request.group_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeployModelFile',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeployModelFileResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def deploy_model_file(
+        self,
+        request: main_models.DeployModelFileRequest,
+    ) -> main_models.DeployModelFileResponse:
+        runtime = RuntimeOptions()
+        return self.deploy_model_file_with_options(request, runtime)
+
+    async def deploy_model_file_async(
+        self,
+        request: main_models.DeployModelFileRequest,
+    ) -> main_models.DeployModelFileResponse:
+        runtime = RuntimeOptions()
+        return await self.deploy_model_file_with_options_async(request, runtime)
 
     def describe_customer_module_basic_info_with_options(
         self,
@@ -690,6 +1060,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_feature_template_list_with_options_async(runtime)
 
+    def describe_file_download_url_with_options(
+        self,
+        request: main_models.DescribeFileDownloadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFileDownloadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFileDownloadUrl',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFileDownloadUrlResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_file_download_url_with_options_async(
+        self,
+        request: main_models.DescribeFileDownloadUrlRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeFileDownloadUrlResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.file_id):
+            query['FileId'] = request.file_id
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeFileDownloadUrl',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeFileDownloadUrlResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_file_download_url(
+        self,
+        request: main_models.DescribeFileDownloadUrlRequest,
+    ) -> main_models.DescribeFileDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        return self.describe_file_download_url_with_options(request, runtime)
+
+    async def describe_file_download_url_async(
+        self,
+        request: main_models.DescribeFileDownloadUrlRequest,
+    ) -> main_models.DescribeFileDownloadUrlResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_file_download_url_with_options_async(request, runtime)
+
     def describe_model_feature_with_options(
         self,
         request: main_models.DescribeModelFeatureRequest,
@@ -813,6 +1257,154 @@ class Client(OpenApiClient):
     async def describe_model_oss_token_async(self) -> main_models.DescribeModelOssTokenResponse:
         runtime = RuntimeOptions()
         return await self.describe_model_oss_token_with_options_async(runtime)
+
+    def describe_modeling_project_detail_with_options(
+        self,
+        request: main_models.DescribeModelingProjectDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeModelingProjectDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeModelingProjectDetail',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeModelingProjectDetailResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_modeling_project_detail_with_options_async(
+        self,
+        request: main_models.DescribeModelingProjectDetailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeModelingProjectDetailResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeModelingProjectDetail',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeModelingProjectDetailResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_modeling_project_detail(
+        self,
+        request: main_models.DescribeModelingProjectDetailRequest,
+    ) -> main_models.DescribeModelingProjectDetailResponse:
+        runtime = RuntimeOptions()
+        return self.describe_modeling_project_detail_with_options(request, runtime)
+
+    async def describe_modeling_project_detail_async(
+        self,
+        request: main_models.DescribeModelingProjectDetailRequest,
+    ) -> main_models.DescribeModelingProjectDetailResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_modeling_project_detail_with_options_async(request, runtime)
+
+    def describe_modeling_project_list_with_options(
+        self,
+        request: main_models.DescribeModelingProjectListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeModelingProjectListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeModelingProjectList',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeModelingProjectListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_modeling_project_list_with_options_async(
+        self,
+        request: main_models.DescribeModelingProjectListRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribeModelingProjectListResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.status):
+            query['Status'] = request.status
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DescribeModelingProjectList',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribeModelingProjectListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_modeling_project_list(
+        self,
+        request: main_models.DescribeModelingProjectListRequest,
+    ) -> main_models.DescribeModelingProjectListResponse:
+        runtime = RuntimeOptions()
+        return self.describe_modeling_project_list_with_options(request, runtime)
+
+    async def describe_modeling_project_list_async(
+        self,
+        request: main_models.DescribeModelingProjectListRequest,
+    ) -> main_models.DescribeModelingProjectListResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_modeling_project_list_with_options_async(request, runtime)
 
     def describe_module_service_exist_with_options(
         self,
@@ -953,6 +1545,56 @@ class Client(OpenApiClient):
     ) -> main_models.DescribeModuleStatusResponse:
         runtime = RuntimeOptions()
         return await self.describe_module_status_with_options_async(request, runtime)
+
+    def describe_poc_task_list_with_options(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePocTaskListResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribePocTaskList',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePocTaskListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def describe_poc_task_list_with_options_async(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.DescribePocTaskListResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DescribePocTaskList',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DescribePocTaskListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def describe_poc_task_list(self) -> main_models.DescribePocTaskListResponse:
+        runtime = RuntimeOptions()
+        return self.describe_poc_task_list_with_options(runtime)
+
+    async def describe_poc_task_list_async(self) -> main_models.DescribePocTaskListResponse:
+        runtime = RuntimeOptions()
+        return await self.describe_poc_task_list_with_options_async(runtime)
 
     def describe_saf_rmmp_order_with_options(
         self,
@@ -1299,6 +1941,76 @@ class Client(OpenApiClient):
     ) -> main_models.EditModelResponse:
         runtime = RuntimeOptions()
         return await self.edit_model_with_options_async(request, runtime)
+
+    def get_bastion_host_certification_with_options(
+        self,
+        request: main_models.GetBastionHostCertificationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBastionHostCertificationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBastionHostCertification',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBastionHostCertificationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_bastion_host_certification_with_options_async(
+        self,
+        request: main_models.GetBastionHostCertificationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetBastionHostCertificationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetBastionHostCertification',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetBastionHostCertificationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_bastion_host_certification(
+        self,
+        request: main_models.GetBastionHostCertificationRequest,
+    ) -> main_models.GetBastionHostCertificationResponse:
+        runtime = RuntimeOptions()
+        return self.get_bastion_host_certification_with_options(request, runtime)
+
+    async def get_bastion_host_certification_async(
+        self,
+        request: main_models.GetBastionHostCertificationRequest,
+    ) -> main_models.GetBastionHostCertificationResponse:
+        runtime = RuntimeOptions()
+        return await self.get_bastion_host_certification_with_options_async(request, runtime)
 
     def iterate_model_with_options(
         self,
@@ -1649,6 +2361,76 @@ class Client(OpenApiClient):
     ) -> main_models.PrepublishModelResponse:
         runtime = RuntimeOptions()
         return await self.prepublish_model_with_options_async(request, runtime)
+
+    def request_model_file_sync_with_options(
+        self,
+        request: main_models.RequestModelFileSyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RequestModelFileSyncResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RequestModelFileSync',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RequestModelFileSyncResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def request_model_file_sync_with_options_async(
+        self,
+        request: main_models.RequestModelFileSyncRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RequestModelFileSyncResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.project_id):
+            query['ProjectId'] = request.project_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'RequestModelFileSync',
+            version = '2025-05-21',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.RequestModelFileSyncResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def request_model_file_sync(
+        self,
+        request: main_models.RequestModelFileSyncRequest,
+    ) -> main_models.RequestModelFileSyncResponse:
+        runtime = RuntimeOptions()
+        return self.request_model_file_sync_with_options(request, runtime)
+
+    async def request_model_file_sync_async(
+        self,
+        request: main_models.RequestModelFileSyncRequest,
+    ) -> main_models.RequestModelFileSyncResponse:
+        runtime = RuntimeOptions()
+        return await self.request_model_file_sync_with_options_async(request, runtime)
 
     def rollback_model_with_options(
         self,

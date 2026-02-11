@@ -10,7 +10,9 @@ class DescribeCustomerModuleOutputInfoRequest(DaraModel):
         auth_type: str = None,
         customer_module_id: int = None,
     ):
+        # Authorization type.
         self.auth_type = auth_type
+        # Customer model ID
         self.customer_module_id = customer_module_id
 
     def validate(self):

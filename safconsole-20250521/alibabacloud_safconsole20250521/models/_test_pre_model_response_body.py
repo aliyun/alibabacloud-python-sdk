@@ -15,10 +15,18 @@ class TestPreModelResponseBody(DaraModel):
         result_object: List[bool] = None,
         success: bool = None,
     ):
+        # Status code. A return of 200 indicates success.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Return result.
         self.result_object = result_object
+        # Whether the call was successful.
+        # 
+        # - **true**: Call succeeded.
+        # - **false**: Call failed.
         self.success = success
 
     def validate(self):

@@ -13,10 +13,18 @@ class OfflineModelResponseBody(DaraModel):
         result_object: bool = None,
         success: bool = None,
     ):
+        # Status code. A return value of 200 indicates success.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Return result.
         self.result_object = result_object
+        # Indicates whether the call was successful.
+        # 
+        # - **true**: The call was successful.
+        # - **false**: The call failed.
         self.success = success
 
     def validate(self):

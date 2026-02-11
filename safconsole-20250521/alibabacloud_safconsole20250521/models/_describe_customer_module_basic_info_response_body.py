@@ -80,8 +80,6 @@ class DescribeCustomerModuleBasicInfoResponseBody(DaraModel):
 
         return self
 
-
-
 class DescribeCustomerModuleBasicInfoResponseBodyResultObject(DaraModel):
     def __init__(
         self,

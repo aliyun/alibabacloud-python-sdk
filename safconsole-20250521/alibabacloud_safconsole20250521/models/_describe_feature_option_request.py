@@ -9,6 +9,8 @@ class DescribeFeatureOptionRequest(DaraModel):
         self,
         feature_template: str = None,
     ):
+        # Feature template.
+        # 
         # This parameter is required.
         self.feature_template = feature_template
 

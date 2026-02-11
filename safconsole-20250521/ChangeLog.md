@@ -1,3 +1,17 @@
+2026-02-11 Version: 1.2.0
+- Support API ApplyBastionAccount.
+- Support API AssociatePocTask.
+- Support API CompleteModelingProject.
+- Support API CreateModelingProject.
+- Support API DeployModelFile.
+- Support API DescribeFileDownloadUrl.
+- Support API DescribeModelingProjectDetail.
+- Support API DescribeModelingProjectList.
+- Support API DescribePocTaskList.
+- Support API GetBastionHostCertification.
+- Support API RequestModelFileSync.
+
+
 2026-01-15 Version: 1.1.0
 - Support API DescribeCustomerModuleMetaInfo.
 - Support API DescribeCustomerModuleOutputInfo.

@@ -16,10 +16,18 @@ class DescribeCustomerModuleMetaInfoResponseBody(DaraModel):
         result_object: main_models.DescribeCustomerModuleMetaInfoResponseBodyResultObject = None,
         success: bool = None,
     ):
+        # Status code. A return value of 200 indicates success.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Request ID
         self.request_id = request_id
+        # Return result.
         self.result_object = result_object
+        # Indicates whether the call was successful.
+        # 
+        # - **true**: Call succeeded.
+        # - **false**: Call failed.
         self.success = success
 
     def validate(self):
@@ -74,7 +82,9 @@ class DescribeCustomerModuleMetaInfoResponseBodyResultObject(DaraModel):
         feature_list: List[main_models.DescribeCustomerModuleMetaInfoResponseBodyResultObjectFeatureList] = None,
         feature_template: str = None,
     ):
+        # Feature list.
         self.feature_list = feature_list
+        # Feature template.
         self.feature_template = feature_template
 
     def validate(self):
@@ -119,9 +129,13 @@ class DescribeCustomerModuleMetaInfoResponseBodyResultObjectFeatureList(DaraMode
         feature_type: str = None,
         name: str = None,
     ):
+        # Default value of the feature.
         self.default_value = default_value
+        # Feature mapping name.
         self.feature_name = feature_name
+        # Feature type.
         self.feature_type = feature_type
+        # Feature name.
         self.name = name
 
     def validate(self):

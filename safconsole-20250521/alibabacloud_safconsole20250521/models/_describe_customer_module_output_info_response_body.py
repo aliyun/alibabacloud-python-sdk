@@ -15,11 +15,19 @@ class DescribeCustomerModuleOutputInfoResponseBody(DaraModel):
         result_object: main_models.DescribeCustomerModuleOutputInfoResponseBodyResultObject = None,
         success: bool = None,
     ):
+        # Status code. A return value of 200 indicates success.
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Return message.
         self.message = message
+        # Request ID
         self.request_id = request_id
+        # Returned result.
         self.result_object = result_object
+        # Indicates whether the request was successful, with possible values as follows:
+        # - true, indicating the request was successful
+        # - false, indicating the request failed
         self.success = success
 
     def validate(self):
@@ -81,8 +89,11 @@ class DescribeCustomerModuleOutputInfoResponseBodyResultObject(DaraModel):
         process_expression: str = None,
         test_file: str = None,
     ):
+        # Number of decimal places for the output.
         self.final_score_format = final_score_format
+        # Score processing logic.
         self.process_expression = process_expression
+        # Test file.
         self.test_file = test_file
 
     def validate(self):

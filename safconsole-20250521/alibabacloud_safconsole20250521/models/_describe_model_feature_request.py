@@ -10,7 +10,9 @@ class DescribeModelFeatureRequest(DaraModel):
         customer_module_id: int = None,
         feature_template: str = None,
     ):
+        # Customer model ID
         self.customer_module_id = customer_module_id
+        # Feature template.
         self.feature_template = feature_template
 
     def validate(self):

@@ -9,6 +9,7 @@ class ParseExpressionParametersRequest(DaraModel):
         self,
         expression: str = None,
     ):
+        # Expression.
         self.expression = expression
 
     def validate(self):

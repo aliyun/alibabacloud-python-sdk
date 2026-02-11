@@ -16,10 +16,15 @@ class DescribeFeatureTemplateListResponseBody(DaraModel):
         result_object: List[main_models.DescribeFeatureTemplateListResponseBodyResultObject] = None,
         success: bool = None,
     ):
+        # Status code
         self.code = code
+        # HTTP status code.
         self.http_status_code = http_status_code
+        # Request ID.
         self.request_id = request_id
+        # Returned result.
         self.result_object = result_object
+        # Success flag
         self.success = success
 
     def validate(self):
@@ -80,7 +85,9 @@ class DescribeFeatureTemplateListResponseBodyResultObject(DaraModel):
         label: str = None,
         value: str = None,
     ):
+        # Parameter label.
         self.label = label
+        # Label value.
         self.value = value
 
     def validate(self):

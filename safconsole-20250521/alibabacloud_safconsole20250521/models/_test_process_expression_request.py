@@ -10,7 +10,9 @@ class TestProcessExpressionRequest(DaraModel):
         expression: str = None,
         params: str = None,
     ):
+        # Expression.
         self.expression = expression
+        # Parameter list.
         self.params = params
 
     def validate(self):
