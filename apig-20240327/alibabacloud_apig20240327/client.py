@@ -1017,10 +1017,14 @@ class Client(OpenApiClient):
             body['authConfig'] = request.auth_config
         if not DaraCore.is_null(request.base_path):
             body['basePath'] = request.base_path
+        if not DaraCore.is_null(request.belong_gateway_id):
+            body['belongGatewayId'] = request.belong_gateway_id
         if not DaraCore.is_null(request.deploy_configs):
             body['deployConfigs'] = request.deploy_configs
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            body['dryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_auth):
             body['enableAuth'] = request.enable_auth
         if not DaraCore.is_null(request.first_byte_timeout):
@@ -1037,6 +1041,8 @@ class Client(OpenApiClient):
             body['removeBasePathOnForward'] = request.remove_base_path_on_forward
         if not DaraCore.is_null(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.strategy):
+            body['strategy'] = request.strategy
         if not DaraCore.is_null(request.type):
             body['type'] = request.type
         if not DaraCore.is_null(request.version_config):
@@ -1077,10 +1083,14 @@ class Client(OpenApiClient):
             body['authConfig'] = request.auth_config
         if not DaraCore.is_null(request.base_path):
             body['basePath'] = request.base_path
+        if not DaraCore.is_null(request.belong_gateway_id):
+            body['belongGatewayId'] = request.belong_gateway_id
         if not DaraCore.is_null(request.deploy_configs):
             body['deployConfigs'] = request.deploy_configs
         if not DaraCore.is_null(request.description):
             body['description'] = request.description
+        if not DaraCore.is_null(request.dry_run):
+            body['dryRun'] = request.dry_run
         if not DaraCore.is_null(request.enable_auth):
             body['enableAuth'] = request.enable_auth
         if not DaraCore.is_null(request.first_byte_timeout):
@@ -1097,6 +1107,8 @@ class Client(OpenApiClient):
             body['removeBasePathOnForward'] = request.remove_base_path_on_forward
         if not DaraCore.is_null(request.resource_group_id):
             body['resourceGroupId'] = request.resource_group_id
+        if not DaraCore.is_null(request.strategy):
+            body['strategy'] = request.strategy
         if not DaraCore.is_null(request.type):
             body['type'] = request.type
         if not DaraCore.is_null(request.version_config):

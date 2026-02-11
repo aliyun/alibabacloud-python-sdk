@@ -381,6 +381,7 @@ from ._http_api_deploy_config import HttpApiDeployConfigPolicyConfigsAiTokenRate
 from ._http_api_deploy_config import HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigRules
 from ._http_api_deploy_config import HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfig
 from ._http_api_deploy_config import HttpApiDeployConfigPolicyConfigs
+from ._http_api_deploy_config import HttpApiDeployConfigServiceConfigsObservabilityRouteConfig
 from ._http_api_deploy_config import HttpApiDeployConfigServiceConfigs
 from ._http_api_deploy_config import HttpApiDeployConfigSubDomains
 from ._http_api_policy_configs import HttpApiPolicyConfigsAiCacheConfigEmbeddingConfig
@@ -1035,6 +1036,7 @@ __all__ = [
     HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigRules,
     HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfig,
     HttpApiDeployConfigPolicyConfigs,
+    HttpApiDeployConfigServiceConfigsObservabilityRouteConfig,
     HttpApiDeployConfigServiceConfigs,
     HttpApiDeployConfigSubDomains,
     HttpApiPolicyConfigsAiCacheConfigEmbeddingConfig,

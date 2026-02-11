@@ -245,13 +245,22 @@ class HttpApiDeployConfigSubDomains(DaraModel):
 class HttpApiDeployConfigServiceConfigs(DaraModel):
     def __init__(
         self,
+        gateway_service_id: str = None,
         intent_code: str = None,
         match: main_models.HttpApiBackendMatchConditions = None,
         model_name: str = None,
         model_name_pattern: str = None,
+        multi_service_route_strategy: str = None,
+        name: str = None,
+        observability_route_config: main_models.HttpApiDeployConfigServiceConfigsObservabilityRouteConfig = None,
+        port: int = None,
+        protocol: str = None,
         service_id: str = None,
+        version: str = None,
         weight: int = None,
     ):
+        # Legacy gateway service ID for backward compatibility
+        self.gateway_service_id = gateway_service_id
         # Intent classification code
         self.intent_code = intent_code
         # Match conditions
@@ -260,20 +269,37 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
         self.model_name = model_name
         # The model name matching rule.
         self.model_name_pattern = model_name_pattern
+        # Multi-service routing strategy type
+        self.multi_service_route_strategy = multi_service_route_strategy
+        # Service display name
+        self.name = name
+        # Observability metrics-based routing config
+        self.observability_route_config = observability_route_config
+        # Service port number
+        self.port = port
+        # Service protocol
+        self.protocol = protocol
         # The service ID.
         self.service_id = service_id
+        # Service version tag for tag-based routing scenarios
+        self.version = version
         # The service weight.
         self.weight = weight
 
     def validate(self):
         if self.match:
             self.match.validate()
+        if self.observability_route_config:
+            self.observability_route_config.validate()
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.gateway_service_id is not None:
+            result['gatewayServiceId'] = self.gateway_service_id
+
         if self.intent_code is not None:
             result['intentCode'] = self.intent_code
 
@@ -286,8 +312,26 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
         if self.model_name_pattern is not None:
             result['modelNamePattern'] = self.model_name_pattern
 
+        if self.multi_service_route_strategy is not None:
+            result['multiServiceRouteStrategy'] = self.multi_service_route_strategy
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        if self.observability_route_config is not None:
+            result['observabilityRouteConfig'] = self.observability_route_config.to_map()
+
+        if self.port is not None:
+            result['port'] = self.port
+
+        if self.protocol is not None:
+            result['protocol'] = self.protocol
+
         if self.service_id is not None:
             result['serviceId'] = self.service_id
+
+        if self.version is not None:
+            result['version'] = self.version
 
         if self.weight is not None:
             result['weight'] = self.weight
@@ -296,6 +340,9 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('gatewayServiceId') is not None:
+            self.gateway_service_id = m.get('gatewayServiceId')
+
         if m.get('intentCode') is not None:
             self.intent_code = m.get('intentCode')
 
@@ -309,11 +356,76 @@ class HttpApiDeployConfigServiceConfigs(DaraModel):
         if m.get('modelNamePattern') is not None:
             self.model_name_pattern = m.get('modelNamePattern')
 
+        if m.get('multiServiceRouteStrategy') is not None:
+            self.multi_service_route_strategy = m.get('multiServiceRouteStrategy')
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        if m.get('observabilityRouteConfig') is not None:
+            temp_model = main_models.HttpApiDeployConfigServiceConfigsObservabilityRouteConfig()
+            self.observability_route_config = temp_model.from_map(m.get('observabilityRouteConfig'))
+
+        if m.get('port') is not None:
+            self.port = m.get('port')
+
+        if m.get('protocol') is not None:
+            self.protocol = m.get('protocol')
+
         if m.get('serviceId') is not None:
             self.service_id = m.get('serviceId')
 
+        if m.get('version') is not None:
+            self.version = m.get('version')
+
         if m.get('weight') is not None:
             self.weight = m.get('weight')
+
+        return self
+
+class HttpApiDeployConfigServiceConfigsObservabilityRouteConfig(DaraModel):
+    def __init__(
+        self,
+        mode: str = None,
+        queue_size: int = None,
+        rate_limit: float = None,
+    ):
+        # Routing mode
+        self.mode = mode
+        # Queue size
+        self.queue_size = queue_size
+        # Max traffic ratio per single service
+        self.rate_limit = rate_limit
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.mode is not None:
+            result['mode'] = self.mode
+
+        if self.queue_size is not None:
+            result['queueSize'] = self.queue_size
+
+        if self.rate_limit is not None:
+            result['rateLimit'] = self.rate_limit
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('mode') is not None:
+            self.mode = m.get('mode')
+
+        if m.get('queueSize') is not None:
+            self.queue_size = m.get('queueSize')
+
+        if m.get('rateLimit') is not None:
+            self.rate_limit = m.get('rateLimit')
 
         return self
 

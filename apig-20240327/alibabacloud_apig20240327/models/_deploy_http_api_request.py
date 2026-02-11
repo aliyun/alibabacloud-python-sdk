@@ -74,6 +74,7 @@ class DeployHttpApiRequestRestApiConfig(DaraModel):
         self.environment = environment
         # The gateway ID.
         self.gateway_id = gateway_id
+        # Operation-level deployment control list
         self.operation_deployments = operation_deployments
         # operationIds
         self.operation_ids = operation_ids
@@ -147,7 +148,9 @@ class DeployHttpApiRequestRestApiConfigOperationDeployments(DaraModel):
         action: str = None,
         operation_id: str = None,
     ):
+        # Operation type
         self.action = action
+        # Unique identifier of the operation
         self.operation_id = operation_id
 
     def validate(self):

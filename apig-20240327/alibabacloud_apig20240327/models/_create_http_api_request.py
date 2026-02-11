@@ -14,8 +14,10 @@ class CreateHttpApiRequest(DaraModel):
         ai_protocols: List[str] = None,
         auth_config: main_models.AuthConfig = None,
         base_path: str = None,
+        belong_gateway_id: str = None,
         deploy_configs: List[main_models.HttpApiDeployConfig] = None,
         description: str = None,
+        dry_run: bool = None,
         enable_auth: bool = None,
         first_byte_timeout: int = None,
         ingress_config: main_models.CreateHttpApiRequestIngressConfig = None,
@@ -24,6 +26,7 @@ class CreateHttpApiRequest(DaraModel):
         protocols: List[str] = None,
         remove_base_path_on_forward: bool = None,
         resource_group_id: str = None,
+        strategy: str = None,
         type: str = None,
         version_config: main_models.HttpApiVersionConfig = None,
     ):
@@ -35,10 +38,12 @@ class CreateHttpApiRequest(DaraModel):
         self.auth_config = auth_config
         # $.parameters[0].schema.properties.deployConfigs.items.example
         self.base_path = base_path
+        self.belong_gateway_id = belong_gateway_id
         # $.parameters[0].schema.example
         self.deploy_configs = deploy_configs
         # $.parameters[0].schema.properties.aiProtocols.items.description
         self.description = description
+        self.dry_run = dry_run
         # Create an API of HTTP type
         self.enable_auth = enable_auth
         # First byte timeout
@@ -57,6 +62,7 @@ class CreateHttpApiRequest(DaraModel):
         self.remove_base_path_on_forward = remove_base_path_on_forward
         # $.parameters[0].schema.properties.authConfig.example
         self.resource_group_id = resource_group_id
+        self.strategy = strategy
         # $.parameters[0].schema.properties.deployConfigs.description
         self.type = type
         # $.parameters[0].schema.properties.deployConfigs.items.enumValueTitles
@@ -91,6 +97,9 @@ class CreateHttpApiRequest(DaraModel):
         if self.base_path is not None:
             result['basePath'] = self.base_path
 
+        if self.belong_gateway_id is not None:
+            result['belongGatewayId'] = self.belong_gateway_id
+
         result['deployConfigs'] = []
         if self.deploy_configs is not None:
             for k1 in self.deploy_configs:
@@ -98,6 +107,9 @@ class CreateHttpApiRequest(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
+
+        if self.dry_run is not None:
+            result['dryRun'] = self.dry_run
 
         if self.enable_auth is not None:
             result['enableAuth'] = self.enable_auth
@@ -123,6 +135,9 @@ class CreateHttpApiRequest(DaraModel):
         if self.resource_group_id is not None:
             result['resourceGroupId'] = self.resource_group_id
 
+        if self.strategy is not None:
+            result['strategy'] = self.strategy
+
         if self.type is not None:
             result['type'] = self.type
 
@@ -146,6 +161,9 @@ class CreateHttpApiRequest(DaraModel):
         if m.get('basePath') is not None:
             self.base_path = m.get('basePath')
 
+        if m.get('belongGatewayId') is not None:
+            self.belong_gateway_id = m.get('belongGatewayId')
+
         self.deploy_configs = []
         if m.get('deployConfigs') is not None:
             for k1 in m.get('deployConfigs'):
@@ -154,6 +172,9 @@ class CreateHttpApiRequest(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('dryRun') is not None:
+            self.dry_run = m.get('dryRun')
 
         if m.get('enableAuth') is not None:
             self.enable_auth = m.get('enableAuth')
@@ -179,6 +200,9 @@ class CreateHttpApiRequest(DaraModel):
 
         if m.get('resourceGroupId') is not None:
             self.resource_group_id = m.get('resourceGroupId')
+
+        if m.get('strategy') is not None:
+            self.strategy = m.get('strategy')
 
         if m.get('type') is not None:
             self.type = m.get('type')
