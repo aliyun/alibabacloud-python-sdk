@@ -1,3 +1,7 @@
+2026-02-11 Version: 3.5.3
+- Update API CreateJob: add request parameters Tasks.$.TaskSpec.TaskExecutor.$.Container.ImageRegistryOptions.
+
+
 2026-01-30 Version: 3.5.2
 - Generated python 2023-07-01 for EhpcInstant.
 

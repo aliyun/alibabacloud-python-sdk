@@ -448,6 +448,7 @@ class CreateJobRequestTasksTaskSpecTaskExecutorContainer(DaraModel):
         command: List[str] = None,
         environment_vars: List[main_models.CreateJobRequestTasksTaskSpecTaskExecutorContainerEnvironmentVars] = None,
         image: str = None,
+        image_registry_options: str = None,
         working_dir: str = None,
     ):
         # The application ID.
@@ -468,6 +469,7 @@ class CreateJobRequestTasksTaskSpecTaskExecutorContainer(DaraModel):
         # 
         # This parameter is required.
         self.image = image
+        self.image_registry_options = image_registry_options
         # The working directory of the container.
         self.working_dir = working_dir
 
@@ -499,6 +501,9 @@ class CreateJobRequestTasksTaskSpecTaskExecutorContainer(DaraModel):
         if self.image is not None:
             result['Image'] = self.image
 
+        if self.image_registry_options is not None:
+            result['ImageRegistryOptions'] = self.image_registry_options
+
         if self.working_dir is not None:
             result['WorkingDir'] = self.working_dir
 
@@ -523,6 +528,9 @@ class CreateJobRequestTasksTaskSpecTaskExecutorContainer(DaraModel):
 
         if m.get('Image') is not None:
             self.image = m.get('Image')
+
+        if m.get('ImageRegistryOptions') is not None:
+            self.image_registry_options = m.get('ImageRegistryOptions')
 
         if m.get('WorkingDir') is not None:
             self.working_dir = m.get('WorkingDir')
