@@ -82,6 +82,7 @@ class GetCreditInfoResponseBodyData(DaraModel):
         consumed_undeducted_value: str = None,
         credit_line: str = None,
         outstanding_balance: str = None,
+        paygfreeze_status: str = None,
         zero_credit_shutdown_policy: str = None,
         new_buy_status: str = None,
     ):
@@ -100,6 +101,7 @@ class GetCreditInfoResponseBodyData(DaraModel):
         self.credit_line = credit_line
         # The Credit have been consumed by Sub Account, and haven\\"t be paid.
         self.outstanding_balance = outstanding_balance
+        self.paygfreeze_status = paygfreeze_status
         # The systematic controlling policy for resource management, specifically when the available Credit of Sub Account falls to 0 or less.</br>
         # 
         # - 1: delayStop. The account have Shutdown-delay Privilege,  After Shutdown-delay Credit is ran out, Alibaba Cloud will take over resources and keep the instance for 15 days. In addition, the instance will be released if Sub Account failed to pay the bill within these 15 days.</br>
@@ -137,6 +139,9 @@ class GetCreditInfoResponseBodyData(DaraModel):
         if self.outstanding_balance is not None:
             result['OutstandingBalance'] = self.outstanding_balance
 
+        if self.paygfreeze_status is not None:
+            result['PAYGFreezeStatus'] = self.paygfreeze_status
+
         if self.zero_credit_shutdown_policy is not None:
             result['ZeroCreditShutdownPolicy'] = self.zero_credit_shutdown_policy
 
@@ -164,6 +169,9 @@ class GetCreditInfoResponseBodyData(DaraModel):
 
         if m.get('OutstandingBalance') is not None:
             self.outstanding_balance = m.get('OutstandingBalance')
+
+        if m.get('PAYGFreezeStatus') is not None:
+            self.paygfreeze_status = m.get('PAYGFreezeStatus')
 
         if m.get('ZeroCreditShutdownPolicy') is not None:
             self.zero_credit_shutdown_policy = m.get('ZeroCreditShutdownPolicy')

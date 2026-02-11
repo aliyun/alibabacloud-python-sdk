@@ -21,7 +21,6 @@ class GetUnassociatedCustomerResponseBody(DaraModel):
         # * 200: OK
         # * 1109: System error
         self.code = code
-        # List of Invitation Information
         self.invite_info_list = invite_info_list
         # Message information
         self.message = message
@@ -177,19 +176,10 @@ class GetUnassociatedCustomerResponseBodyInviteInfoListInviteInfo(DaraModel):
         invite_id: int = None,
         status: int = None,
     ):
-        # The name of Customer who are to be invited.
         self.account_nickname = account_nickname
-        # The Email of Customer who are to be invited.
         self.email = email
-        # The time of email been sent out.
         self.gmt_create = gmt_create
-        # Invitation ID
         self.invite_id = invite_id
-        # Invitation Status:
-        # * 0 No visit on registration URL
-        # * 1 Successful Registration
-        # * 2 Unsuccessful Registration
-        # * 3 Registration URL have been visited, but no submitted sheet/ticket.
         self.status = status
 
     def validate(self):

@@ -16,10 +16,15 @@ class ListCouponUsageResponseBody(DaraModel):
         page_info: main_models.ListCouponUsageResponseBodyPageInfo = None,
         request_id: str = None,
     ):
+        # 接口状态码
         self.code = code
+        # 返回数据
         self.data = data
+        # 接口返回提示信息
         self.message = message
+        # 分页信息
         self.page_info = page_info
+        # 接口请求id返回问题提供查询使用
         self.request_id = request_id
 
     def validate(self):
@@ -84,8 +89,11 @@ class ListCouponUsageResponseBodyPageInfo(DaraModel):
         page_size: int = None,
         total: int = None,
     ):
+        # 分页，当前页
         self.page = page
+        # 分页，每页数量
         self.page_size = page_size
+        # 分页，总量
         self.total = total
 
     def validate(self):
@@ -134,15 +142,29 @@ class ListCouponUsageResponseBodyData(DaraModel):
         t_2partner_uid: str = None,
         uid: int = None,
     ):
+        # 阿里云账号
         self.account = account
+        # 优惠券面额
         self.amount = amount
+        # 余额
         self.balance = balance
+        # 优惠券id
         self.coupon_id = coupon_id
+        # 优惠券模版id
         self.coupon_template_id = coupon_template_id
+        # 优惠券有效期
         self.eff_date = eff_date
+        # 优惠券发放时间
         self.publish_date = publish_date
+        # 优惠券状态 </br>
+        # AVAILABLE 正常 </br>
+        # EXHAUSTED 已用完 </br>
+        # EXPIRED 已过期 </br>
+        # ABANDONED 已作废 </br>
         self.status = status
+        # 二级分销商Uid
         self.t_2partner_uid = t_2partner_uid
+        # 阿里云uid
         self.uid = uid
 
     def validate(self):

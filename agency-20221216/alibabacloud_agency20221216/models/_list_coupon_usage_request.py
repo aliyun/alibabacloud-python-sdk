@@ -15,12 +15,26 @@ class ListCouponUsageRequest(DaraModel):
         t_2partner_uid: int = None,
         uid: int = None,
     ):
+        # 阿里云客户账号
         self.account = account
+        # 优惠券模版id
         self.coupon_template_id = coupon_template_id
+        # 页码</br> 
+        #  默认值为1 最小值1
         self.page = page
+        # 分页行数 </br>
+        #   默认值20 最大值50 最小值1
         self.page_size = page_size
+        # 优惠券状态 </br>
+        # AVAILABLE 正常 </br>
+        # EXHAUSTED 已用完 </br>
+        # EXPIRED 已过期 </br>
+        # ABANDONED 已作废 </br>
         self.status = status
+        # T2伙伴uid
+        # 如：123456789
         self.t_2partner_uid = t_2partner_uid
+        # 阿里云账号uid
         self.uid = uid
 
     def validate(self):

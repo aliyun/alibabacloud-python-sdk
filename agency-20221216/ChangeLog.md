@@ -1,3 +1,7 @@
+2026-02-11 Version: 1.9.2
+- Update API GetCreditInfo: add response parameters Body.Data.PAYGFreezeStatus.
+
+
 2026-02-04 Version: 1.9.1
 - Update API ListCouponUsage: add response parameters Body.Data.$.T2PartnerUid.
 

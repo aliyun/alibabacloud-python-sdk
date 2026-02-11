@@ -17,7 +17,6 @@ class GetAccountInfoResponseBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
-        # List of Account Information
         self.account_info_list = account_info_list
         # Result Code - Error Code. Value Range:
         # - 200 OK
@@ -191,50 +190,21 @@ class GetAccountInfoResponseBodyAccountInfoListAccountInfo(DaraModel):
         sub_account_type: int = None,
         uid: int = None,
     ):
-        # The name of Sub Account.
-        # - Enterprise Customer: Name of Company
-        # - T2 Reseller: Name of Partner
         self.account_nickname = account_nickname
-        # Alibaba Cloud Login name of Distribution Customer.
         self.aliyun_id = aliyun_id
-        # The time that Distribution Customer successfully associated with Distributor.
         self.association_success_time = association_success_time
-        # Account CID of Distribution Customer.
         self.cid = cid
-        # Type of customer\\"s account, 0 Individual, 1 Enterprise
         self.customer_account_type = customer_account_type
-        # Customer\\"s Sales Manager
         self.customer_bd = customer_bd
-        # Whether the customer has completed Enterprise Real-name Authentication, 0 No, 1 Yes
         self.customer_enterprise_certified = customer_enterprise_certified
-        # When Shutdown Policy is delayStop, this number refer to Shutdown-delay Credit (overdraft limit).
         self.delay_amount = delay_amount
-        # There are a value for Shutdown Policy Management towards Sub Account.
-        # - 1 immediatelyStop,  immediately shutdown the instance once customer\\"s quota is ran out.
-        # - 2 delayStop, delay shutdown the instance until customer\\"s Shutdown-delay Credit is ran out. Please refer to DelayAmount.
-        # - 3 noStop, customer\\"s instance status is rely on manual control instead of auto setting.
         self.delay_status = delay_status
-        # The E-mail of Distribution Customer.
         self.email = email
-        # The contact number of Distribution Customer.
         self.mobile = mobile
-        # Purchase Control, Value Range:
-        # - Purchase Forbidden
-        # - Normal (Purchase is allowed)
         self.new_buy_status = new_buy_status
-        # The Country Code where the customer\\"s account is registered.
         self.register_country_code = register_country_code
-        # Description of Distribution Customer.
         self.remark = remark
-        # Account Type:
-        # - 1 Agency\\"s End User
-        # - 2 Reseller\\"s End User
-        # - 3 Enterprise
-        # - 4 T2 Agency Partner
-        # - 5 T2 Reseller Partner
-        # - 6 T2 Agency+Reseller Partner
         self.sub_account_type = sub_account_type
-        # Account UID of Distribution Customer.
         self.uid = uid
 
     def validate(self):

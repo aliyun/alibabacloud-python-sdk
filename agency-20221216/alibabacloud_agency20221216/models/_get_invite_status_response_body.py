@@ -20,7 +20,6 @@ class GetInviteStatusResponseBody(DaraModel):
         # 
         # - 3057 InviteId is empty
         self.code = code
-        # The returned data.
         self.data = data
         # The message returned.
         self.message = message
@@ -118,15 +117,9 @@ class GetInviteStatusResponseBodyDataInviteStatus(DaraModel):
         message: str = None,
         success: bool = None,
     ):
-        # Result Code. Value Range:
-        # *   200 OK
-        # *   1109 system error
         self.code = code
-        # List of Invitation Status result
         self.invite_status_list = invite_status_list
-        # The message returned.
         self.message = message
-        # Candidate Value: True/False, which indicates whether the current API call itself is successful. It does not guarantee the success of subsequent business operations.
         self.success = success
 
     def validate(self):
@@ -180,27 +173,12 @@ class GetInviteStatusResponseBodyDataInviteStatusInviteStatusList(DaraModel):
         sub_account_type: str = None,
         uid: int = None,
     ):
-        # The time that Distribution Customer successfully associated with Distributor.</br>
-        # This value will be empty if there is no existing association.
         self.association_success_time = association_success_time
-        # Distribution Customer\\"s CID
         self.cid = cid
-        # The time of email been sent out.
         self.gmt_create = gmt_create
-        # The parent organization ID.
         self.parent_id = parent_id
-        # Invitation Status:
-        # * 0 No visit on registration URL
-        # * 1 Successful Registration
-        # * 2 Unsuccessful Registration
-        # * 3 Registration URL have been visited, but no submitted sheet/ticket.
         self.status = status
-        # Account Type:
-        # - 1 Agency\\"s End User
-        # - 2 Reseller\\"s End User
-        # - 5 T2 Reseller Partner
         self.sub_account_type = sub_account_type
-        # Distribution Customer\\"s UID
         self.uid = uid
 
     def validate(self):

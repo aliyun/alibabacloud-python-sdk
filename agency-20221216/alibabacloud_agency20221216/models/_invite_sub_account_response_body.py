@@ -24,7 +24,6 @@ class InviteSubAccountResponseBody(DaraModel):
         self.message = message
         # Request ID, Alibaba Cloud will track errors with this ID.
         self.request_id = request_id
-        # List of invitation sending results
         self.results = results
         # Candidate Values: True/False, this value states if the current API calling action is successful. It does not guarantee the success of subsequent business operations.
         self.success = success
@@ -118,13 +117,9 @@ class InviteSubAccountResponseBodyResultsResult(DaraModel):
         result: main_models.InviteSubAccountResponseBodyResultsResultResult = None,
         success: bool = None,
     ):
-        # Error Code, 200 OK
         self.code = code
-        # Message, Notes of Code
         self.message = message
-        # Returning Message of Invitation Results
         self.result = result
-        # Always true.
         self.success = success
 
     def validate(self):
@@ -174,11 +169,8 @@ class InviteSubAccountResponseBodyResultsResultResult(DaraModel):
         invite_id: int = None,
         reg_url: str = None,
     ):
-        # Valid days of registration URL, count on daily basis.
         self.days = days
-        # Invitation ID, The invitation status tracking code.
         self.invite_id = invite_id
-        # URL for Partner Customer Registration.
         self.reg_url = reg_url
 
     def validate(self):
