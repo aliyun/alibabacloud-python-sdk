@@ -9,8 +9,10 @@ from darabonba.model import DaraModel
 class RestartWuyingServerRequest(DaraModel):
     def __init__(
         self,
+        product_type: str = None,
         wuying_server_id_list: List[str] = None,
     ):
+        self.product_type = product_type
         # The list of workstation IDs.
         self.wuying_server_id_list = wuying_server_id_list
 
@@ -22,6 +24,9 @@ class RestartWuyingServerRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+
         if self.wuying_server_id_list is not None:
             result['WuyingServerIdList'] = self.wuying_server_id_list
 
@@ -29,6 +34,9 @@ class RestartWuyingServerRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+
         if m.get('WuyingServerIdList') is not None:
             self.wuying_server_id_list = m.get('WuyingServerIdList')
 

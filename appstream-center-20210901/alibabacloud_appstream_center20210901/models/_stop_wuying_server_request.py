@@ -10,6 +10,7 @@ class StopWuyingServerRequest(DaraModel):
     def __init__(
         self,
         force: bool = None,
+        product_type: str = None,
         wuying_server_id_list: List[str] = None,
     ):
         # Force restart.
@@ -19,6 +20,7 @@ class StopWuyingServerRequest(DaraModel):
         # *   True.
         # *   False
         self.force = force
+        self.product_type = product_type
         # The list of workstation IDs.
         self.wuying_server_id_list = wuying_server_id_list
 
@@ -33,6 +35,9 @@ class StopWuyingServerRequest(DaraModel):
         if self.force is not None:
             result['Force'] = self.force
 
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+
         if self.wuying_server_id_list is not None:
             result['WuyingServerIdList'] = self.wuying_server_id_list
 
@@ -42,6 +47,9 @@ class StopWuyingServerRequest(DaraModel):
         m = m or dict()
         if m.get('Force') is not None:
             self.force = m.get('Force')
+
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
 
         if m.get('WuyingServerIdList') is not None:
             self.wuying_server_id_list = m.get('WuyingServerIdList')

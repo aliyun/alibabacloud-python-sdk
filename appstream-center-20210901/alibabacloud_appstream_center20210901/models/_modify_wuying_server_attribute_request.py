@@ -8,11 +8,13 @@ class ModifyWuyingServerAttributeRequest(DaraModel):
     def __init__(
         self,
         password: str = None,
+        product_type: str = None,
         wuying_server_id: str = None,
         wuying_server_name: str = None,
     ):
         # Workstation login password.
         self.password = password
+        self.product_type = product_type
         # The ID of the workstation.
         self.wuying_server_id = wuying_server_id
         # The name.
@@ -29,6 +31,9 @@ class ModifyWuyingServerAttributeRequest(DaraModel):
         if self.password is not None:
             result['Password'] = self.password
 
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+
         if self.wuying_server_id is not None:
             result['WuyingServerId'] = self.wuying_server_id
 
@@ -41,6 +46,9 @@ class ModifyWuyingServerAttributeRequest(DaraModel):
         m = m or dict()
         if m.get('Password') is not None:
             self.password = m.get('Password')
+
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
 
         if m.get('WuyingServerId') is not None:
             self.wuying_server_id = m.get('WuyingServerId')

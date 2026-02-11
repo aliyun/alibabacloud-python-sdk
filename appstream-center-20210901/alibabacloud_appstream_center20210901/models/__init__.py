@@ -215,6 +215,7 @@ from ._list_bind_info_response_body import ListBindInfoResponseBodyBindInfoModel
 from ._list_image_request import ListImageRequestTagList
 from ._list_image_response_body import ListImageResponseBodyDataAppList
 from ._list_image_response_body import ListImageResponseBodyDataImageRegionDistributeList
+from ._list_image_response_body import ListImageResponseBodyDataSnapshotList
 from ._list_image_response_body import ListImageResponseBodyDataTagList
 from ._list_image_response_body import ListImageResponseBodyData
 from ._list_node_instance_type_response_body import ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels
@@ -228,6 +229,7 @@ from ._list_tenant_config_response_body import ListTenantConfigResponseBodyTenan
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListDataDisk
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListInstanceInfoList
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo
+from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerListSessions
 from ._list_wuying_server_response_body import ListWuyingServerResponseBodyWuyingServerList
 from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequestNetworkDomainRules
 from ._modify_app_instance_group_attribute_request import ModifyAppInstanceGroupAttributeRequestNetwork
@@ -471,6 +473,7 @@ __all__ = [
     ListImageRequestTagList,
     ListImageResponseBodyDataAppList,
     ListImageResponseBodyDataImageRegionDistributeList,
+    ListImageResponseBodyDataSnapshotList,
     ListImageResponseBodyDataTagList,
     ListImageResponseBodyData,
     ListNodeInstanceTypeResponseBodyNodeInstanceTypeModels,
@@ -484,6 +487,7 @@ __all__ = [
     ListWuyingServerResponseBodyWuyingServerListDataDisk,
     ListWuyingServerResponseBodyWuyingServerListInstanceInfoList,
     ListWuyingServerResponseBodyWuyingServerListServerInstanceTypeInfo,
+    ListWuyingServerResponseBodyWuyingServerListSessions,
     ListWuyingServerResponseBodyWuyingServerList,
     ModifyAppInstanceGroupAttributeRequestNetworkDomainRules,
     ModifyAppInstanceGroupAttributeRequestNetwork,

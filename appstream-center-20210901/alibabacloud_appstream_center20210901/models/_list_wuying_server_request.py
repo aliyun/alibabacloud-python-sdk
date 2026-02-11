@@ -11,13 +11,16 @@ class ListWuyingServerRequest(DaraModel):
         self,
         add_virtual_node_pool_status_list: List[str] = None,
         biz_region_id: str = None,
+        biz_type: int = None,
         charge_type: str = None,
         image_id: str = None,
         office_site_id: str = None,
         page_number: int = None,
         page_size: int = None,
+        product_type: str = None,
         server_instance_type: str = None,
         status: str = None,
+        users: List[str] = None,
         virtual_node_pool_id: str = None,
         wuying_server_id_list: List[str] = None,
         wuying_server_name_or_id: str = None,
@@ -25,6 +28,7 @@ class ListWuyingServerRequest(DaraModel):
         self.add_virtual_node_pool_status_list = add_virtual_node_pool_status_list
         # The region ID.
         self.biz_region_id = biz_region_id
+        self.biz_type = biz_type
         # The billing method of the Internet access package.
         self.charge_type = charge_type
         # The image ID.
@@ -35,10 +39,12 @@ class ListWuyingServerRequest(DaraModel):
         self.page_number = page_number
         # The number of records per page.
         self.page_size = page_size
+        self.product_type = product_type
         # Workstation specifications.
         self.server_instance_type = server_instance_type
         # The status of the workstation.
         self.status = status
+        self.users = users
         self.virtual_node_pool_id = virtual_node_pool_id
         # The list of workstation IDs.
         self.wuying_server_id_list = wuying_server_id_list
@@ -59,6 +65,9 @@ class ListWuyingServerRequest(DaraModel):
         if self.biz_region_id is not None:
             result['BizRegionId'] = self.biz_region_id
 
+        if self.biz_type is not None:
+            result['BizType'] = self.biz_type
+
         if self.charge_type is not None:
             result['ChargeType'] = self.charge_type
 
@@ -74,11 +83,17 @@ class ListWuyingServerRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.product_type is not None:
+            result['ProductType'] = self.product_type
+
         if self.server_instance_type is not None:
             result['ServerInstanceType'] = self.server_instance_type
 
         if self.status is not None:
             result['Status'] = self.status
+
+        if self.users is not None:
+            result['Users'] = self.users
 
         if self.virtual_node_pool_id is not None:
             result['VirtualNodePoolId'] = self.virtual_node_pool_id
@@ -99,6 +114,9 @@ class ListWuyingServerRequest(DaraModel):
         if m.get('BizRegionId') is not None:
             self.biz_region_id = m.get('BizRegionId')
 
+        if m.get('BizType') is not None:
+            self.biz_type = m.get('BizType')
+
         if m.get('ChargeType') is not None:
             self.charge_type = m.get('ChargeType')
 
@@ -114,11 +132,17 @@ class ListWuyingServerRequest(DaraModel):
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
 
+        if m.get('ProductType') is not None:
+            self.product_type = m.get('ProductType')
+
         if m.get('ServerInstanceType') is not None:
             self.server_instance_type = m.get('ServerInstanceType')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('Users') is not None:
+            self.users = m.get('Users')
 
         if m.get('VirtualNodePoolId') is not None:
             self.virtual_node_pool_id = m.get('VirtualNodePoolId')

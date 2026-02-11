@@ -2867,6 +2867,8 @@ class Client(OpenApiClient):
             body_flat['AddVirtualNodePoolStatusList'] = request.add_virtual_node_pool_status_list
         if not DaraCore.is_null(request.biz_region_id):
             body['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.biz_type):
+            body['BizType'] = request.biz_type
         if not DaraCore.is_null(request.charge_type):
             body['ChargeType'] = request.charge_type
         if not DaraCore.is_null(request.image_id):
@@ -2877,10 +2879,14 @@ class Client(OpenApiClient):
             body['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
         if not DaraCore.is_null(request.server_instance_type):
             body['ServerInstanceType'] = request.server_instance_type
         if not DaraCore.is_null(request.status):
             body['Status'] = request.status
+        if not DaraCore.is_null(request.users):
+            body_flat['Users'] = request.users
         if not DaraCore.is_null(request.virtual_node_pool_id):
             body['VirtualNodePoolId'] = request.virtual_node_pool_id
         if not DaraCore.is_null(request.wuying_server_id_list):
@@ -2919,6 +2925,8 @@ class Client(OpenApiClient):
             body_flat['AddVirtualNodePoolStatusList'] = request.add_virtual_node_pool_status_list
         if not DaraCore.is_null(request.biz_region_id):
             body['BizRegionId'] = request.biz_region_id
+        if not DaraCore.is_null(request.biz_type):
+            body['BizType'] = request.biz_type
         if not DaraCore.is_null(request.charge_type):
             body['ChargeType'] = request.charge_type
         if not DaraCore.is_null(request.image_id):
@@ -2929,10 +2937,14 @@ class Client(OpenApiClient):
             body['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             body['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
         if not DaraCore.is_null(request.server_instance_type):
             body['ServerInstanceType'] = request.server_instance_type
         if not DaraCore.is_null(request.status):
             body['Status'] = request.status
+        if not DaraCore.is_null(request.users):
+            body_flat['Users'] = request.users
         if not DaraCore.is_null(request.virtual_node_pool_id):
             body['VirtualNodePoolId'] = request.virtual_node_pool_id
         if not DaraCore.is_null(request.wuying_server_id_list):
@@ -3640,6 +3652,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.password):
             body['Password'] = request.password
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
         if not DaraCore.is_null(request.wuying_server_id):
             body['WuyingServerId'] = request.wuying_server_id
         if not DaraCore.is_null(request.wuying_server_name):
@@ -3672,6 +3686,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.password):
             body['Password'] = request.password
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
         if not DaraCore.is_null(request.wuying_server_id):
             body['WuyingServerId'] = request.wuying_server_id
         if not DaraCore.is_null(request.wuying_server_name):
@@ -3994,6 +4010,8 @@ class Client(OpenApiClient):
     ) -> main_models.RestartWuyingServerResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
         body_flat = {}
         if not DaraCore.is_null(request.wuying_server_id_list):
             body_flat['WuyingServerIdList'] = request.wuying_server_id_list
@@ -4024,6 +4042,8 @@ class Client(OpenApiClient):
     ) -> main_models.RestartWuyingServerResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
         body_flat = {}
         if not DaraCore.is_null(request.wuying_server_id_list):
             body_flat['WuyingServerIdList'] = request.wuying_server_id_list
@@ -4158,6 +4178,8 @@ class Client(OpenApiClient):
     ) -> main_models.StartWuyingServerResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
         body_flat = {}
         if not DaraCore.is_null(request.wuying_server_id_list):
             body_flat['WuyingServerIdList'] = request.wuying_server_id_list
@@ -4188,6 +4210,8 @@ class Client(OpenApiClient):
     ) -> main_models.StartWuyingServerResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
         body_flat = {}
         if not DaraCore.is_null(request.wuying_server_id_list):
             body_flat['WuyingServerIdList'] = request.wuying_server_id_list
@@ -4234,6 +4258,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.force):
             body['Force'] = request.force
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
         body_flat = {}
         if not DaraCore.is_null(request.wuying_server_id_list):
             body_flat['WuyingServerIdList'] = request.wuying_server_id_list
@@ -4266,6 +4292,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.force):
             body['Force'] = request.force
+        if not DaraCore.is_null(request.product_type):
+            body['ProductType'] = request.product_type
         body_flat = {}
         if not DaraCore.is_null(request.wuying_server_id_list):
             body_flat['WuyingServerIdList'] = request.wuying_server_id_list

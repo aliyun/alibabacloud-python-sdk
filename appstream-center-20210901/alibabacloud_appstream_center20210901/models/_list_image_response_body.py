@@ -153,6 +153,7 @@ class ListImageResponseBodyData(DaraModel):
         resource_instance_category: str = None,
         scene: str = None,
         session_type: str = None,
+        snapshot_list: List[main_models.ListImageResponseBodyDataSnapshotList] = None,
         status: str = None,
         supported_language_list: List[str] = None,
         system_disk_size: int = None,
@@ -250,6 +251,7 @@ class ListImageResponseBodyData(DaraModel):
         # *   SINGLE_SESSION
         # *   MULTIPLE_SESSION
         self.session_type = session_type
+        self.snapshot_list = snapshot_list
         # The state of the image.
         self.status = status
         # The supported languages.
@@ -275,6 +277,10 @@ class ListImageResponseBodyData(DaraModel):
                     v1.validate()
         if self.image_region_distribute_list:
             for v1 in self.image_region_distribute_list:
+                 if v1:
+                    v1.validate()
+        if self.snapshot_list:
+            for v1 in self.snapshot_list:
                  if v1:
                     v1.validate()
         if self.tag_list:
@@ -407,6 +413,11 @@ class ListImageResponseBodyData(DaraModel):
 
         if self.session_type is not None:
             result['SessionType'] = self.session_type
+
+        result['SnapshotList'] = []
+        if self.snapshot_list is not None:
+            for k1 in self.snapshot_list:
+                result['SnapshotList'].append(k1.to_map() if k1 else None)
 
         if self.status is not None:
             result['Status'] = self.status
@@ -561,6 +572,12 @@ class ListImageResponseBodyData(DaraModel):
         if m.get('SessionType') is not None:
             self.session_type = m.get('SessionType')
 
+        self.snapshot_list = []
+        if m.get('SnapshotList') is not None:
+            for k1 in m.get('SnapshotList'):
+                temp_model = main_models.ListImageResponseBodyDataSnapshotList()
+                self.snapshot_list.append(temp_model.from_map(k1))
+
         if m.get('Status') is not None:
             self.status = m.get('Status')
 
@@ -622,6 +639,81 @@ class ListImageResponseBodyDataTagList(DaraModel):
 
         if m.get('Value') is not None:
             self.value = m.get('Value')
+
+        return self
+
+class ListImageResponseBodyDataSnapshotList(DaraModel):
+    def __init__(
+        self,
+        bind_type: str = None,
+        disk_category: str = None,
+        disk_sub_type: str = None,
+        disk_type: str = None,
+        size: int = None,
+        snapshot_id: str = None,
+        version_id: str = None,
+    ):
+        self.bind_type = bind_type
+        self.disk_category = disk_category
+        self.disk_sub_type = disk_sub_type
+        self.disk_type = disk_type
+        self.size = size
+        self.snapshot_id = snapshot_id
+        self.version_id = version_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.bind_type is not None:
+            result['BindType'] = self.bind_type
+
+        if self.disk_category is not None:
+            result['DiskCategory'] = self.disk_category
+
+        if self.disk_sub_type is not None:
+            result['DiskSubType'] = self.disk_sub_type
+
+        if self.disk_type is not None:
+            result['DiskType'] = self.disk_type
+
+        if self.size is not None:
+            result['Size'] = self.size
+
+        if self.snapshot_id is not None:
+            result['SnapshotId'] = self.snapshot_id
+
+        if self.version_id is not None:
+            result['VersionId'] = self.version_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BindType') is not None:
+            self.bind_type = m.get('BindType')
+
+        if m.get('DiskCategory') is not None:
+            self.disk_category = m.get('DiskCategory')
+
+        if m.get('DiskSubType') is not None:
+            self.disk_sub_type = m.get('DiskSubType')
+
+        if m.get('DiskType') is not None:
+            self.disk_type = m.get('DiskType')
+
+        if m.get('Size') is not None:
+            self.size = m.get('Size')
+
+        if m.get('SnapshotId') is not None:
+            self.snapshot_id = m.get('SnapshotId')
+
+        if m.get('VersionId') is not None:
+            self.version_id = m.get('VersionId')
 
         return self
 

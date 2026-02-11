@@ -1,3 +1,26 @@
+2026-02-11 Version: 4.7.10
+- Update API ListImage: add response parameters Body.Data.$.SnapshotList.
+- Update API ListWuyingServer: add request parameters BizType.
+- Update API ListWuyingServer: add request parameters ProductType.
+- Update API ListWuyingServer: add request parameters Users.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.AliUid.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.Bandwidth.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.FotaVersion.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.PolicyGroupIdList.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.ResourceSessionStatus.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.Sessions.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.SystemDiskId.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.TimerGroupId.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.Users.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.DataDisk.$.DataDiskId.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.DataDisk.$.DataDiskNo.
+- Update API ListWuyingServer: add response parameters Body.WuyingServerList.$.ServerInstanceTypeInfo.GpuSpec.
+- Update API ModifyWuyingServerAttribute: add request parameters ProductType.
+- Update API RestartWuyingServer: add request parameters ProductType.
+- Update API StartWuyingServer: add request parameters ProductType.
+- Update API StopWuyingServer: add request parameters ProductType.
+
+
 2026-02-06 Version: 4.7.9
 - Update API CreateImageByInstance: add request parameters TagList.
 
