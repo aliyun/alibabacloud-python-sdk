@@ -8,6 +8,8 @@ class ProtocolSettings(DaraModel):
     def __init__(
         self,
         a_2aagent_card: str = None,
+        a_2a_agent_card: str = None,
+        a_2a_agent_card_url: str = None,
         headers: str = None,
         input_body_json_schema: str = None,
         method: str = None,
@@ -20,6 +22,8 @@ class ProtocolSettings(DaraModel):
     ):
         # A2A Agent Card
         self.a_2aagent_card = a_2aagent_card
+        self.a_2a_agent_card = a_2a_agent_card
+        self.a_2a_agent_card_url = a_2a_agent_card_url
         # 请求头
         self.headers = headers
         # 请求体JSON模式
@@ -49,6 +53,12 @@ class ProtocolSettings(DaraModel):
             result = _map
         if self.a_2aagent_card is not None:
             result['A2AAgentCard'] = self.a_2aagent_card
+
+        if self.a_2a_agent_card is not None:
+            result['a2aAgentCard'] = self.a_2a_agent_card
+
+        if self.a_2a_agent_card_url is not None:
+            result['a2aAgentCardUrl'] = self.a_2a_agent_card_url
 
         if self.headers is not None:
             result['headers'] = self.headers
@@ -83,6 +93,12 @@ class ProtocolSettings(DaraModel):
         m = m or dict()
         if m.get('A2AAgentCard') is not None:
             self.a_2aagent_card = m.get('A2AAgentCard')
+
+        if m.get('a2aAgentCard') is not None:
+            self.a_2a_agent_card = m.get('a2aAgentCard')
+
+        if m.get('a2aAgentCardUrl') is not None:
+            self.a_2a_agent_card_url = m.get('a2aAgentCardUrl')
 
         if m.get('headers') is not None:
             self.headers = m.get('headers')

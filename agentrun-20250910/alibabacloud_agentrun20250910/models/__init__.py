@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._agent_endpoint_config import AgentEndpointConfig
 from ._agent_runtime import AgentRuntime
 from ._agent_runtime_endpoint import AgentRuntimeEndpoint
 from ._agent_runtime_endpoint_result import AgentRuntimeEndpointResult
@@ -60,6 +61,7 @@ from ._create_template_input import CreateTemplateInput
 from ._create_tool_data import CreateToolData
 from ._create_tool_input import CreateToolInput
 from ._create_tool_output import CreateToolOutput
+from ._create_workspace_input import CreateWorkspaceInput
 from ._credential import Credential
 from ._credential_configuration import CredentialConfiguration
 from ._credential_list_item import CredentialListItem
@@ -78,6 +80,7 @@ from ._delete_model_service_result import DeleteModelServiceResult
 from ._delete_sandbox_result import DeleteSandboxResult
 from ._delete_template_result import DeleteTemplateResult
 from ._deregister_service_input import DeregisterServiceInput
+from ._discovery_endpoint import DiscoveryEndpoint
 from ._domain_info import DomainInfo
 from ._embedder_config import EmbedderConfig
 from ._error_result import ErrorResult
@@ -87,6 +90,8 @@ from ._gateway_network_configuration import GatewayNetworkConfiguration
 from ._get_browser_session_result import GetBrowserSessionResult
 from ._get_code_interpreter_session_result import GetCodeInterpreterSessionResult
 from ._get_credential_output import GetCredentialOutput
+from ._get_discovery_endpoints_output import GetDiscoveryEndpointsOutput
+from ._get_discovery_endpoints_result import GetDiscoveryEndpointsResult
 from ._get_tool_output import GetToolOutput
 from ._gray_traffic_weight import GrayTrafficWeight
 from ._health_check_config import HealthCheckConfig
@@ -132,6 +137,8 @@ from ._list_sandboxes_result import ListSandboxesResult
 from ._list_templates_output import ListTemplatesOutput
 from ._list_templates_result import ListTemplatesResult
 from ._list_tools_output import ListToolsOutput
+from ._list_workspaces_output import ListWorkspacesOutput
+from ._list_workspaces_result import ListWorkspacesResult
 from ._log_configuration import LogConfiguration
 from ._mcpapi import MCPAPI
 from ._mcpapiconfiguration import MCPAPIConfiguration
@@ -200,6 +207,7 @@ from ._update_apig_llmmodel_input import UpdateApigLLMModelInput
 from ._update_credential_input import UpdateCredentialInput
 from ._update_credential_output import UpdateCredentialOutput
 from ._update_custom_domain_input import UpdateCustomDomainInput
+from ._update_discovery_endpoints_input import UpdateDiscoveryEndpointsInput
 from ._update_domain_input import UpdateDomainInput
 from ._update_knowledge_base_input import UpdateKnowledgeBaseInput
 from ._update_memory_collection_input import UpdateMemoryCollectionInput
@@ -211,9 +219,12 @@ from ._update_template_input import UpdateTemplateInput
 from ._update_tool_data import UpdateToolData
 from ._update_tool_input import UpdateToolInput
 from ._update_tool_output import UpdateToolOutput
+from ._update_workspace_input import UpdateWorkspaceInput
 from ._vector_store_config import VectorStoreConfig
 from ._version_weight import VersionWeight
 from ._view_port_configuration import ViewPortConfiguration
+from ._workspace import Workspace
+from ._workspace_result import WorkspaceResult
 from ._activate_template_mcprequest import ActivateTemplateMCPRequest
 from ._activate_template_mcpresponse import ActivateTemplateMCPResponse
 from ._create_agent_runtime_request import CreateAgentRuntimeRequest
@@ -337,6 +348,7 @@ from ._list_model_providers_response_body import ListModelProvidersResponseBodyD
 from ._list_model_providers_response_body import ListModelProvidersResponseBodyData
 
 __all__ = [
+    AgentEndpointConfig,
     AgentRuntime,
     AgentRuntimeEndpoint,
     AgentRuntimeEndpointResult,
@@ -395,6 +407,7 @@ __all__ = [
     CreateToolData,
     CreateToolInput,
     CreateToolOutput,
+    CreateWorkspaceInput,
     Credential,
     CredentialConfiguration,
     CredentialListItem,
@@ -413,6 +426,7 @@ __all__ = [
     DeleteSandboxResult,
     DeleteTemplateResult,
     DeregisterServiceInput,
+    DiscoveryEndpoint,
     DomainInfo,
     EmbedderConfig,
     ErrorResult,
@@ -422,6 +436,8 @@ __all__ = [
     GetBrowserSessionResult,
     GetCodeInterpreterSessionResult,
     GetCredentialOutput,
+    GetDiscoveryEndpointsOutput,
+    GetDiscoveryEndpointsResult,
     GetToolOutput,
     GrayTrafficWeight,
     HealthCheckConfig,
@@ -467,6 +483,8 @@ __all__ = [
     ListTemplatesOutput,
     ListTemplatesResult,
     ListToolsOutput,
+    ListWorkspacesOutput,
+    ListWorkspacesResult,
     LogConfiguration,
     MCPAPI,
     MCPAPIConfiguration,
@@ -535,6 +553,7 @@ __all__ = [
     UpdateCredentialInput,
     UpdateCredentialOutput,
     UpdateCustomDomainInput,
+    UpdateDiscoveryEndpointsInput,
     UpdateDomainInput,
     UpdateKnowledgeBaseInput,
     UpdateMemoryCollectionInput,
@@ -546,9 +565,12 @@ __all__ = [
     UpdateToolData,
     UpdateToolInput,
     UpdateToolOutput,
+    UpdateWorkspaceInput,
     VectorStoreConfig,
     VersionWeight,
     ViewPortConfiguration,
+    Workspace,
+    WorkspaceResult,
     ActivateTemplateMCPRequest,
     ActivateTemplateMCPResponse,
     CreateAgentRuntimeRequest,

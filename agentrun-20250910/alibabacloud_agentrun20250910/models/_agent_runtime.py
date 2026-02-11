@@ -38,6 +38,7 @@ class AgentRuntime(DaraModel):
         session_idle_timeout_seconds: int = None,
         status: str = None,
         status_reason: str = None,
+        workspace_id: str = None,
     ):
         # 智能体运行时的全局唯一资源名称
         self.agent_runtime_arn = agent_runtime_arn
@@ -94,6 +95,8 @@ class AgentRuntime(DaraModel):
         self.status = status
         # 当前状态的原因说明（如适用）
         self.status_reason = status_reason
+        # 智能体运行时所属的工作空间标识符，用于资源隔离和权限管理
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.code_configuration:
@@ -202,6 +205,9 @@ class AgentRuntime(DaraModel):
         if self.status_reason is not None:
             result['statusReason'] = self.status_reason
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -297,6 +303,9 @@ class AgentRuntime(DaraModel):
 
         if m.get('statusReason') is not None:
             self.status_reason = m.get('statusReason')
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
 
         return self
 

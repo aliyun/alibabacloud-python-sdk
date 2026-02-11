@@ -30,6 +30,7 @@ class UpdateAgentRuntimeInput(DaraModel):
         protocol_configuration: main_models.ProtocolConfiguration = None,
         session_concurrency_limit_per_instance: int = None,
         session_idle_timeout_seconds: int = None,
+        workspace_id: str = None,
     ):
         self.agent_runtime_name = agent_runtime_name
         self.artifact_type = artifact_type
@@ -66,6 +67,7 @@ class UpdateAgentRuntimeInput(DaraModel):
         self.session_concurrency_limit_per_instance = session_concurrency_limit_per_instance
         # 会话的空闲超时时间，单位为秒。实例没有会话请求后处于空闲状态，空闲态为闲置计费模式，超过此超时时间后会话自动过期，不可继续使用
         self.session_idle_timeout_seconds = session_idle_timeout_seconds
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.code_configuration:
@@ -150,6 +152,9 @@ class UpdateAgentRuntimeInput(DaraModel):
         if self.session_idle_timeout_seconds is not None:
             result['sessionIdleTimeoutSeconds'] = self.session_idle_timeout_seconds
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -221,6 +226,9 @@ class UpdateAgentRuntimeInput(DaraModel):
 
         if m.get('sessionIdleTimeoutSeconds') is not None:
             self.session_idle_timeout_seconds = m.get('sessionIdleTimeoutSeconds')
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
 
         return self
 
