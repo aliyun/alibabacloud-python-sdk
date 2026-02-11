@@ -1,3 +1,21 @@
+2026-02-11 Version: 6.0.0
+- Delete API DescribeAutomateResponseConfigPlayBooks.
+- Update API DescribeAlerts: add request parameters AlertStatus.
+- Update API DescribeAlerts: add response parameters Body.Data.ResponseData.$.AlertStatus.
+- Update API DescribeEventCountByThreatLevel: add response parameters Body.Data.EventDailyNum.
+- Update API GetCapacity: add response parameters Body.Data.AgentManagedAssetQuota.
+- Update API GetCapacity: add response parameters Body.Data.AgentManagedAssetUsed.
+- Update API ListDisposeStrategy: add request parameters Status.
+- Update API ListEntities: add request parameters EntityUuids.
+- Update API ListEntities: add response parameters Body.Data.ResponseData.$.AgentConfidence.
+- Update API ListEntities: add response parameters Body.Data.ResponseData.$.AgentDisposalMethod.
+- Update API ListEntities: add response parameters Body.Data.ResponseData.$.AgentDisposalPlaybookUuid.
+- Update API ListEntities: add response parameters Body.Data.ResponseData.$.AgentDisposalSuggestion.
+- Update API PostEventDisposeAndWhiteruleList: add request parameters DisposeStrategyIds.
+- Update API PostEventDisposeAndWhiteruleList: add request parameters Owner.
+- Update API PostEventDisposeAndWhiteruleList: add request parameters ResponseSource.
+
+
 2025-09-09 Version: 5.0.4
 - Update API DescribeAlerts: add response parameters Body.Data.ResponseData.$.DetectionRuleId.
 - Update API DescribeAlerts: add response parameters Body.Data.ResponseData.$.ProductId.
