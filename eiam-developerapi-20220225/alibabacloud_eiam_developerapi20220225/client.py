@@ -2797,6 +2797,96 @@ class Client(OpenApiClient):
         headers = main_models.ObtainCloudAccountRoleAccessCredentialHeaders()
         return await self.obtain_cloud_account_role_access_credential_with_options_async(instance_id, request, headers, runtime)
 
+    def obtain_credential_with_options(
+        self,
+        instance_id: str,
+        request: main_models.ObtainCredentialRequest,
+        headers: main_models.ObtainCredentialHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ObtainCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credential_identifier):
+            query['credentialIdentifier'] = request.credential_identifier
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ObtainCredential',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/credentials/_/actions/obtain',
+            method = 'GET',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ObtainCredentialResponse(),
+            self.do_roarequest(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    async def obtain_credential_with_options_async(
+        self,
+        instance_id: str,
+        request: main_models.ObtainCredentialRequest,
+        headers: main_models.ObtainCredentialHeaders,
+        runtime: RuntimeOptions,
+    ) -> main_models.ObtainCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credential_identifier):
+            query['credentialIdentifier'] = request.credential_identifier
+        real_headers = {}
+        if not DaraCore.is_null(headers.common_headers):
+            real_headers = headers.common_headers
+        if not DaraCore.is_null(headers.authorization):
+            real_headers['Authorization'] = str(headers.authorization)
+        req = open_api_util_models.OpenApiRequest(
+            headers = real_headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ObtainCredential',
+            version = '2022-02-25',
+            protocol = 'HTTPS',
+            pathname = f'/v2/{DaraURL.percent_encode(instance_id)}/credentials/_/actions/obtain',
+            method = 'GET',
+            auth_type = 'Anonymous',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ObtainCredentialResponse(),
+            await self.do_roarequest_async(params.action, params.version, params.protocol, params.method, params.auth_type, params.pathname, params.body_type, req, runtime)
+        )
+
+    def obtain_credential(
+        self,
+        instance_id: str,
+        request: main_models.ObtainCredentialRequest,
+    ) -> main_models.ObtainCredentialResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ObtainCredentialHeaders()
+        return self.obtain_credential_with_options(instance_id, request, headers, runtime)
+
+    async def obtain_credential_async(
+        self,
+        instance_id: str,
+        request: main_models.ObtainCredentialRequest,
+    ) -> main_models.ObtainCredentialResponse:
+        runtime = RuntimeOptions()
+        headers = main_models.ObtainCredentialHeaders()
+        return await self.obtain_credential_with_options_async(instance_id, request, headers, runtime)
+
     def patch_group_with_options(
         self,
         instance_id: str,

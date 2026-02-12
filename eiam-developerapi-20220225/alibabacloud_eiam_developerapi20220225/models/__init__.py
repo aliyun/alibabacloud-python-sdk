@@ -97,6 +97,10 @@ from ._obtain_cloud_account_role_access_credential_headers import ObtainCloudAcc
 from ._obtain_cloud_account_role_access_credential_request import ObtainCloudAccountRoleAccessCredentialRequest
 from ._obtain_cloud_account_role_access_credential_response_body import ObtainCloudAccountRoleAccessCredentialResponseBody
 from ._obtain_cloud_account_role_access_credential_response import ObtainCloudAccountRoleAccessCredentialResponse
+from ._obtain_credential_headers import ObtainCredentialHeaders
+from ._obtain_credential_request import ObtainCredentialRequest
+from ._obtain_credential_response_body import ObtainCredentialResponseBody
+from ._obtain_credential_response import ObtainCredentialResponse
 from ._patch_group_headers import PatchGroupHeaders
 from ._patch_group_request import PatchGroupRequest
 from ._patch_group_response import PatchGroupResponse
@@ -132,6 +136,9 @@ from ._list_users_response_body import ListUsersResponseBodyData
 from ._list_users_for_group_response_body import ListUsersForGroupResponseBodyData
 from ._obtain_cloud_account_role_access_credential_response_body import ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAlibabaCloudStsToken
 from ._obtain_cloud_account_role_access_credential_response_body import ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredential
+from ._obtain_credential_response_body import ObtainCredentialResponseBodyCredentialContentApiKeyContent
+from ._obtain_credential_response_body import ObtainCredentialResponseBodyCredentialContentOauthClientContent
+from ._obtain_credential_response_body import ObtainCredentialResponseBodyCredentialContent
 from ._patch_user_request import PatchUserRequestCustomFields
 
 __all__ = [
@@ -230,6 +237,10 @@ __all__ = [
     ObtainCloudAccountRoleAccessCredentialRequest,
     ObtainCloudAccountRoleAccessCredentialResponseBody,
     ObtainCloudAccountRoleAccessCredentialResponse,
+    ObtainCredentialHeaders,
+    ObtainCredentialRequest,
+    ObtainCredentialResponseBody,
+    ObtainCredentialResponse,
     PatchGroupHeaders,
     PatchGroupRequest,
     PatchGroupResponse,
@@ -265,5 +276,8 @@ __all__ = [
     ListUsersForGroupResponseBodyData,
     ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredentialAlibabaCloudStsToken,
     ObtainCloudAccountRoleAccessCredentialResponseBodyCloudAccountRoleAccessCredential,
+    ObtainCredentialResponseBodyCredentialContentApiKeyContent,
+    ObtainCredentialResponseBodyCredentialContentOauthClientContent,
+    ObtainCredentialResponseBodyCredentialContent,
     PatchUserRequestCustomFields
 ]
