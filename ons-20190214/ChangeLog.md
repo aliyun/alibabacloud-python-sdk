@@ -1,3 +1,9 @@
+2026-02-12 Version: 3.0.0
+- Update API OnsConsumerStatus: add response parameters Body.Data.ConnectionSet.$.Diff.
+- Update API OnsInstanceBaseInfo: add response parameters Body.InstanceBaseInfo.SupportClassic.
+- Update API OnsTopicList: delete request parameters UserId.
+
+
 2025-03-21 Version: 2.0.1
 - Update API OnsConsumerGetConnection: update response param.
 - Update API OnsTopicSubDetail: update response param.
