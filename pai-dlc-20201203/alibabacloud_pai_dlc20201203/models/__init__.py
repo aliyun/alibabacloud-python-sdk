@@ -36,6 +36,7 @@ from ._job_item import JobItem
 from ._job_replica_status import JobReplicaStatus
 from ._job_settings import JobSettings
 from ._job_spec import JobSpec
+from ._job_template_version_detail import JobTemplateVersionDetail
 from ._lifecycle import Lifecycle
 from ._local_mount_spec import LocalMountSpec
 from ._log_info import LogInfo
@@ -197,6 +198,7 @@ __all__ = [
     JobReplicaStatus,
     JobSettings,
     JobSpec,
+    JobTemplateVersionDetail,
     Lifecycle,
     LocalMountSpec,
     LogInfo,

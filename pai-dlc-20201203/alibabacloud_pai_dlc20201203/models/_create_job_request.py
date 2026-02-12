@@ -27,6 +27,8 @@ class CreateJobRequest(DaraModel):
         resource_id: str = None,
         settings: main_models.JobSettings = None,
         success_policy: str = None,
+        template_id: str = None,
+        template_version: int = None,
         thirdparty_lib_dir: str = None,
         thirdparty_libs: List[str] = None,
         user_command: str = None,
@@ -109,6 +111,10 @@ class CreateJobRequest(DaraModel):
         # *   ChiefWorker: If you use this policy, the job is considered successful when the pod on the chief node completes operations.
         # *   AllWorkers (default): If you use this policy, the job is considered successful when all worker nodes complete operations.
         self.success_policy = success_policy
+        # 任务模板的 ID。指定后将基于模板创建作业，作业参数需符合模板约束规则。
+        self.template_id = template_id
+        # 指定使用的模板版本号，不传则使用模板默认版本。
+        self.template_version = template_version
         # The folder in which the third-party Python library file requirements.txt is stored. Before the startup command specified by the UserCommand parameter is run on each node, DLC fetches the requirements.txt file from the folder and runs `pip install -r` to install the required package and library.
         self.thirdparty_lib_dir = thirdparty_lib_dir
         # The third-party Python libraries to be installed.
@@ -208,6 +214,12 @@ class CreateJobRequest(DaraModel):
         if self.success_policy is not None:
             result['SuccessPolicy'] = self.success_policy
 
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+
+        if self.template_version is not None:
+            result['TemplateVersion'] = self.template_version
+
         if self.thirdparty_lib_dir is not None:
             result['ThirdpartyLibDir'] = self.thirdparty_lib_dir
 
@@ -290,6 +302,12 @@ class CreateJobRequest(DaraModel):
 
         if m.get('SuccessPolicy') is not None:
             self.success_policy = m.get('SuccessPolicy')
+
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+
+        if m.get('TemplateVersion') is not None:
+            self.template_version = m.get('TemplateVersion')
 
         if m.get('ThirdpartyLibDir') is not None:
             self.thirdparty_lib_dir = m.get('ThirdpartyLibDir')

@@ -38,6 +38,7 @@ class ListJobsRequest(DaraModel):
         start_time: str = None,
         status: str = None,
         tags: Dict[str, str] = None,
+        template_id: str = None,
         time_range_field: str = None,
         user_command_search: str = None,
         user_id_for_filter: str = None,
@@ -135,6 +136,7 @@ class ListJobsRequest(DaraModel):
         self.status = status
         # The tags.
         self.tags = tags
+        self.template_id = template_id
         self.time_range_field = time_range_field
         self.user_command_search = user_command_search
         # The user ID used to filter jobs.
@@ -238,6 +240,9 @@ class ListJobsRequest(DaraModel):
 
         if self.tags is not None:
             result['Tags'] = self.tags
+
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
 
         if self.time_range_field is not None:
             result['TimeRangeField'] = self.time_range_field
@@ -344,6 +349,9 @@ class ListJobsRequest(DaraModel):
 
         if m.get('Tags') is not None:
             self.tags = m.get('Tags')
+
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
 
         if m.get('TimeRangeField') is not None:
             self.time_range_field = m.get('TimeRangeField')

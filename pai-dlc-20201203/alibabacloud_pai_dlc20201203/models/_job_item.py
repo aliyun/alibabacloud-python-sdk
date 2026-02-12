@@ -55,6 +55,8 @@ class JobItem(DaraModel):
         status_history: List[main_models.StatusTransitionItem] = None,
         sub_status: str = None,
         system_envs: Dict[str, str] = None,
+        template_id: str = None,
+        template_name: str = None,
         tenant_id: str = None,
         thirdparty_lib_dir: str = None,
         thirdparty_libs: List[str] = None,
@@ -173,6 +175,8 @@ class JobItem(DaraModel):
         self.sub_status = sub_status
         # The system environment variables configured.
         self.system_envs = system_envs
+        self.template_id = template_id
+        self.template_name = template_name
         # The tenant ID.
         self.tenant_id = tenant_id
         # The name of the folder in which the requirements.txt file resides.
@@ -380,6 +384,12 @@ class JobItem(DaraModel):
         if self.system_envs is not None:
             result['SystemEnvs'] = self.system_envs
 
+        if self.template_id is not None:
+            result['TemplateId'] = self.template_id
+
+        if self.template_name is not None:
+            result['TemplateName'] = self.template_name
+
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
 
@@ -573,6 +583,12 @@ class JobItem(DaraModel):
 
         if m.get('SystemEnvs') is not None:
             self.system_envs = m.get('SystemEnvs')
+
+        if m.get('TemplateId') is not None:
+            self.template_id = m.get('TemplateId')
+
+        if m.get('TemplateName') is not None:
+            self.template_name = m.get('TemplateName')
 
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')

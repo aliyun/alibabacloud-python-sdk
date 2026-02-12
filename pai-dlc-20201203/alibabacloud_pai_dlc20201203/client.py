@@ -128,6 +128,10 @@ class Client(OpenApiClient):
             body['Settings'] = request.settings
         if not DaraCore.is_null(request.success_policy):
             body['SuccessPolicy'] = request.success_policy
+        if not DaraCore.is_null(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not DaraCore.is_null(request.template_version):
+            body['TemplateVersion'] = request.template_version
         if not DaraCore.is_null(request.thirdparty_lib_dir):
             body['ThirdpartyLibDir'] = request.thirdparty_lib_dir
         if not DaraCore.is_null(request.thirdparty_libs):
@@ -200,6 +204,10 @@ class Client(OpenApiClient):
             body['Settings'] = request.settings
         if not DaraCore.is_null(request.success_policy):
             body['SuccessPolicy'] = request.success_policy
+        if not DaraCore.is_null(request.template_id):
+            body['TemplateId'] = request.template_id
+        if not DaraCore.is_null(request.template_version):
+            body['TemplateVersion'] = request.template_version
         if not DaraCore.is_null(request.thirdparty_lib_dir):
             body['ThirdpartyLibDir'] = request.thirdparty_lib_dir
         if not DaraCore.is_null(request.thirdparty_libs):
@@ -1850,6 +1858,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not DaraCore.is_null(request.tags_shrink):
             query['Tags'] = request.tags_shrink
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
         if not DaraCore.is_null(request.time_range_field):
             query['TimeRangeField'] = request.time_range_field
         if not DaraCore.is_null(request.user_command_search):
@@ -1950,6 +1960,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not DaraCore.is_null(request.tags_shrink):
             query['Tags'] = request.tags_shrink
+        if not DaraCore.is_null(request.template_id):
+            query['TemplateId'] = request.template_id
         if not DaraCore.is_null(request.time_range_field):
             query['TimeRangeField'] = request.time_range_field
         if not DaraCore.is_null(request.user_command_search):

@@ -1,3 +1,9 @@
+2026-02-12 Version: 1.6.10
+- Update API CreateJob: add request parameters body.TemplateId.
+- Update API CreateJob: add request parameters body.TemplateVersion.
+- Update API ListJobs: add request parameters TemplateId.
+
+
 2026-02-09 Version: 1.6.9
 - Generated python 2020-12-03 for pai-dlc.
 
