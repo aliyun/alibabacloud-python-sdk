@@ -10,6 +10,8 @@ class UpdateMemoryCollectionInput(DaraModel):
         self,
         description: str = None,
         embedder_config: main_models.EmbedderConfig = None,
+        enable_conversation_history: bool = None,
+        enable_conversation_state: bool = None,
         execution_role_arn: str = None,
         llm_config: main_models.LLMConfig = None,
         network_configuration: main_models.NetworkConfiguration = None,
@@ -17,6 +19,8 @@ class UpdateMemoryCollectionInput(DaraModel):
     ):
         self.description = description
         self.embedder_config = embedder_config
+        self.enable_conversation_history = enable_conversation_history
+        self.enable_conversation_state = enable_conversation_state
         self.execution_role_arn = execution_role_arn
         self.llm_config = llm_config
         self.network_configuration = network_configuration
@@ -43,6 +47,12 @@ class UpdateMemoryCollectionInput(DaraModel):
         if self.embedder_config is not None:
             result['embedderConfig'] = self.embedder_config.to_map()
 
+        if self.enable_conversation_history is not None:
+            result['enableConversationHistory'] = self.enable_conversation_history
+
+        if self.enable_conversation_state is not None:
+            result['enableConversationState'] = self.enable_conversation_state
+
         if self.execution_role_arn is not None:
             result['executionRoleArn'] = self.execution_role_arn
 
@@ -65,6 +75,12 @@ class UpdateMemoryCollectionInput(DaraModel):
         if m.get('embedderConfig') is not None:
             temp_model = main_models.EmbedderConfig()
             self.embedder_config = temp_model.from_map(m.get('embedderConfig'))
+
+        if m.get('enableConversationHistory') is not None:
+            self.enable_conversation_history = m.get('enableConversationHistory')
+
+        if m.get('enableConversationState') is not None:
+            self.enable_conversation_state = m.get('enableConversationState')
 
         if m.get('executionRoleArn') is not None:
             self.execution_role_arn = m.get('executionRoleArn')
