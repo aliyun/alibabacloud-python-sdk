@@ -3272,6 +3272,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_custom_agent_with_options_async(request, runtime)
 
+    def list_data_agent_session_with_options(
+        self,
+        request: main_models.ListDataAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.create_end_time):
+            query['CreateEndTime'] = request.create_end_time
+        if not DaraCore.is_null(request.create_start_time):
+            query['CreateStartTime'] = request.create_start_time
+        if not DaraCore.is_null(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.is_saved):
+            query['IsSaved'] = request.is_saved
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_type):
+            query['QueryType'] = request.query_type
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentSession',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentSessionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_agent_session_with_options_async(
+        self,
+        request: main_models.ListDataAgentSessionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataAgentSessionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.create_end_time):
+            query['CreateEndTime'] = request.create_end_time
+        if not DaraCore.is_null(request.create_start_time):
+            query['CreateStartTime'] = request.create_start_time
+        if not DaraCore.is_null(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.is_saved):
+            query['IsSaved'] = request.is_saved
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.query_type):
+            query['QueryType'] = request.query_type
+        if not DaraCore.is_null(request.title):
+            query['Title'] = request.title
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataAgentSession',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataAgentSessionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_agent_session(
+        self,
+        request: main_models.ListDataAgentSessionRequest,
+    ) -> main_models.ListDataAgentSessionResponse:
+        runtime = RuntimeOptions()
+        return self.list_data_agent_session_with_options(request, runtime)
+
+    async def list_data_agent_session_async(
+        self,
+        request: main_models.ListDataAgentSessionRequest,
+    ) -> main_models.ListDataAgentSessionResponse:
+        runtime = RuntimeOptions()
+        return await self.list_data_agent_session_with_options_async(request, runtime)
+
     def list_data_agent_workspace_with_options(
         self,
         request: main_models.ListDataAgentWorkspaceRequest,

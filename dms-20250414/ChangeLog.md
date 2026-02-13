@@ -1,3 +1,7 @@
+2026-02-13 Version: 1.9.0
+- Support API ListDataAgentSession.
+
+
 2026-02-10 Version: 1.8.7
 - Update API CreateDataAgentSession: add request parameters SessionConfig.EncryptKey.
 - Update API CreateDataAgentSession: add request parameters SessionConfig.EncryptType.
