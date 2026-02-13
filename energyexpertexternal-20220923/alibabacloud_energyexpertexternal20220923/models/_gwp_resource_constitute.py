@@ -13,10 +13,15 @@ class GwpResourceConstitute(DaraModel):
         resource_type: int = None,
         unit: str = None,
     ):
+        # The carbon emissions. To ensure accuracy, retain 24 decimal places. We recommend that you intercept the carbon emissions.
         self.carbon_emission = carbon_emission
+        # Name signifies a concept with distinct layers of meaning, where the outermost layer represents the overall carbon emissions.
         self.name = name
+        # Percentage of emissions. 98.76 indicates the proportion of 98.76%.
         self.percent = percent
+        # The type of the inventory. It is meaningful at the inventory layer and can be empty at other layers.
         self.resource_type = resource_type
+        # unit of emissions.
         self.unit = unit
 
     def validate(self):

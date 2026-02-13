@@ -14,8 +14,11 @@ class ChatFolderItem(DaraModel):
         folder_name: str = None,
         sub_folders: List[main_models.ChatItem] = None,
     ):
+        # Folder ID.
         self.folder_id = folder_id
+        # Folder name.
         self.folder_name = folder_name
+        # Subfolder list.
         self.sub_folders = sub_folders
 
     def validate(self):

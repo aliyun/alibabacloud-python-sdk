@@ -22,16 +22,27 @@ class ConstituteItem(DaraModel):
         raw_data: float = None,
         sub_constitute_items: List[main_models.ConstituteItem] = None,
     ):
+        # Carbon emission
         self.carbon_emission_data = carbon_emission_data
+        # Data Unit
         self.data_unit = data_unit
+        # Emission source
         self.emission_source = emission_source
+        # Unique identification of emission source.
         self.emission_source_key = emission_source_key
+        # The name of enterprise.
         self.enterprise_name = enterprise_name
+        # Gas Emissions Detail List.
         self.env_gas_emissions = env_gas_emissions
+        # The name.
         self.name = name
+        # The unique identifier of name.
         self.name_key = name_key
+        # Ratio.example value: 0.5 (i. e. 50%).
         self.ratio = ratio
+        # Raw data
         self.raw_data = raw_data
+        # The child detail list.
         self.sub_constitute_items = sub_constitute_items
 
     def validate(self):
@@ -141,9 +152,13 @@ class ConstituteItemEnvGasEmissions(DaraModel):
         name: str = None,
         type: str = None,
     ):
+        # Carbon emissions.
         self.carbon_emission_data = carbon_emission_data
+        # Gas emissions.
         self.gas_emission_data = gas_emission_data
+        # Name of gas.
         self.name = name
+        # A unique key that identifies the gas type.
         self.type = type
 
     def validate(self):

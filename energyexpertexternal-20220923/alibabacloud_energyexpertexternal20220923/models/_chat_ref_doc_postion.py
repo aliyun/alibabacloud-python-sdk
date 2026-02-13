@@ -10,7 +10,9 @@ class ChatRefDocPostion(DaraModel):
         x: int = None,
         y: int = None,
     ):
+        # The x-coordinate of the layout.
         self.x = x
+        # The y-coordinate of the layout.
         self.y = y
 
     def validate(self):

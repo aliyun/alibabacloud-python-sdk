@@ -18,12 +18,19 @@ class GwpInventoryConstitute(DaraModel):
         resource_type: int = None,
         unit: str = None,
     ):
+        # Grouped by inventory resource type, this data reveals emissions details for each category. It serves the "By type" analysis in the composition breakdown. A nested structure is employed: total carbon emissions are organized first by inventory type, forming a two-level hierarchy, with the innermost level \\"byResource\\" currently empty.
         self.by_resource_type = by_resource_type
+        # Emission quantity
         self.carbon_emission = carbon_emission
+        # Organized hierarchically, it cascades from high to low: flow-> process-> inventory level. Employed for "By inventory" analysis in compositional breakdowns, the innermost layer of this nested structure is empty.
         self.items = items
+        # Name
         self.name = name
+        # Percentage of emissions, for example 100.00 means 100.00%.
         self.percent = percent
+        # Resouce type of inventory.
         self.resource_type = resource_type
+        # Unit
         self.unit = unit
 
     def validate(self):

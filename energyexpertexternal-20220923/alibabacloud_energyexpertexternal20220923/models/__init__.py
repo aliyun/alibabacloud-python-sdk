@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._aisearch_message_item import AISearchMessageItem
+from ._aisearch_stream_item import AISearchStreamItem
 from ._carbon_emission_elec_summary_item import CarbonEmissionElecSummaryItem
 from ._chat_document_page_num import ChatDocumentPageNum
 from ._chat_folder_item import ChatFolderItem
@@ -20,6 +22,22 @@ from ._folder_item import FolderItem
 from ._gwp_inventory_constitute import GwpInventoryConstitute
 from ._gwp_resource_constitute import GwpResourceConstitute
 from ._org_emission import OrgEmission
+from ._aisearch_resource_add_request import AISearchResourceAddRequest
+from ._aisearch_resource_add_response_body import AISearchResourceAddResponseBody
+from ._aisearch_resource_add_response import AISearchResourceAddResponse
+from ._aisearch_resource_delete_request import AISearchResourceDeleteRequest
+from ._aisearch_resource_delete_response_body import AISearchResourceDeleteResponseBody
+from ._aisearch_resource_delete_response import AISearchResourceDeleteResponse
+from ._aisearch_resource_get_list_request import AISearchResourceGetListRequest
+from ._aisearch_resource_get_list_shrink_request import AISearchResourceGetListShrinkRequest
+from ._aisearch_resource_get_list_response_body import AISearchResourceGetListResponseBody
+from ._aisearch_resource_get_list_response import AISearchResourceGetListResponse
+from ._aisearch_resource_update_request import AISearchResourceUpdateRequest
+from ._aisearch_resource_update_response_body import AISearchResourceUpdateResponseBody
+from ._aisearch_resource_update_response import AISearchResourceUpdateResponse
+from ._aisearch_stream_request import AISearchStreamRequest
+from ._aisearch_stream_response_body import AISearchStreamResponseBody
+from ._aisearch_stream_response import AISearchStreamResponse
 from ._add_folder_request import AddFolderRequest
 from ._add_folder_response_body import AddFolderResponseBody
 from ._add_folder_response import AddFolderResponse
@@ -189,6 +207,10 @@ from ._constitute_item import ConstituteItemEnvGasEmissions
 from ._content_item import ContentItemExtInfoPos
 from ._content_item import ContentItemExtInfo
 from ._org_emission import OrgEmissionModuleEmissionList
+from ._aisearch_resource_add_response_body import AISearchResourceAddResponseBodyData
+from ._aisearch_resource_delete_response_body import AISearchResourceDeleteResponseBodyData
+from ._aisearch_resource_get_list_response_body import AISearchResourceGetListResponseBodyData
+from ._aisearch_resource_update_response_body import AISearchResourceUpdateResponseBodyData
 from ._analyze_vl_realtime_response_body import AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence
 from ._analyze_vl_realtime_response_body import AnalyzeVlRealtimeResponseBodyDataKvListInfoContext
 from ._analyze_vl_realtime_response_body import AnalyzeVlRealtimeResponseBodyDataKvListInfo
@@ -275,6 +297,8 @@ from ._submit_document_analyze_job_response_body import SubmitDocumentAnalyzeJob
 from ._submit_vlextraction_task_response_body import SubmitVLExtractionTaskResponseBodyData
 
 __all__ = [
+    AISearchMessageItem,
+    AISearchStreamItem,
     CarbonEmissionElecSummaryItem,
     ChatDocumentPageNum,
     ChatFolderItem,
@@ -293,6 +317,22 @@ __all__ = [
     GwpInventoryConstitute,
     GwpResourceConstitute,
     OrgEmission,
+    AISearchResourceAddRequest,
+    AISearchResourceAddResponseBody,
+    AISearchResourceAddResponse,
+    AISearchResourceDeleteRequest,
+    AISearchResourceDeleteResponseBody,
+    AISearchResourceDeleteResponse,
+    AISearchResourceGetListRequest,
+    AISearchResourceGetListShrinkRequest,
+    AISearchResourceGetListResponseBody,
+    AISearchResourceGetListResponse,
+    AISearchResourceUpdateRequest,
+    AISearchResourceUpdateResponseBody,
+    AISearchResourceUpdateResponse,
+    AISearchStreamRequest,
+    AISearchStreamResponseBody,
+    AISearchStreamResponse,
     AddFolderRequest,
     AddFolderResponseBody,
     AddFolderResponse,
@@ -462,6 +502,10 @@ __all__ = [
     ContentItemExtInfoPos,
     ContentItemExtInfo,
     OrgEmissionModuleEmissionList,
+    AISearchResourceAddResponseBodyData,
+    AISearchResourceDeleteResponseBodyData,
+    AISearchResourceGetListResponseBodyData,
+    AISearchResourceUpdateResponseBodyData,
     AnalyzeVlRealtimeResponseBodyDataKvListInfoContextConfidence,
     AnalyzeVlRealtimeResponseBodyDataKvListInfoContext,
     AnalyzeVlRealtimeResponseBodyDataKvListInfo,

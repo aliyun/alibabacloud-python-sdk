@@ -15,9 +15,13 @@ class ContentItem(DaraModel):
         text: str = None,
         type: str = None,
     ):
+        # The coordinates of the text are in list format.
         self.ext_info = ext_info
+        # Recall confidence
         self.score = score
+        # Recall text.
         self.text = text
+        # Text sources: img, table, para.
         self.type = type
 
     def validate(self):
@@ -79,14 +83,23 @@ class ContentItemExtInfo(DaraModel):
         type: str = None,
         unique_id: str = None,
     ):
+        # Enumeration values for page alignment options: center, left, and right.
         self.alignment = alignment
+        # The index of the layout in the text.
         self.index = index
+        # Hierarchy of the layout.
         self.level = level
+        # Page numbers of the layout, which may include multiple page numbers.
         self.page_num = page_num
+        # Position information of the layout, in list format.
         self.pos = pos
+        # Enumeration values for the layout subtypes: picture, para, none
         self.sub_type = sub_type
+        # text
         self.text = text
+        # Enumeration values for the layout types: table, figure, text, and none.
         self.type = type
+        # Unique layout ID.
         self.unique_id = unique_id
 
     def validate(self):
@@ -171,7 +184,9 @@ class ContentItemExtInfoPos(DaraModel):
         x: int = None,
         y: int = None,
     ):
+        # X coordinate of the layout.
         self.x = x
+        # Y coordinate of the layout.
         self.y = y
 
     def validate(self):

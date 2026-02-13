@@ -16,13 +16,22 @@ class ChatRefDocPageInfo(DaraModel):
         pdf_parse_result: str = None,
         word_parse_result: str = None,
     ):
+        # The rotation angle of the image after the page is converted to an image.
         self.angle = angle
+        # Reserved, can be unused for now.
         self.excel_parse_result = excel_parse_result
+        # The height of the page turns to image.
         self.image_height = image_height
+        # - The image URL after the page is converted to an image. 
+        # - Note: The image URL will be inaccessible after 24 hours, so you need to save it promptly.
         self.image_url = image_url
+        # The width of the page turns to image
         self.image_width = image_width
+        # The page index in the current document, starting from 0.
         self.page_id_cur_doc = page_id_cur_doc
+        # Reserved, can be unused for now.
         self.pdf_parse_result = pdf_parse_result
+        # Reserved, can be unused for now.
         self.word_parse_result = word_parse_result
 
     def validate(self):

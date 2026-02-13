@@ -17,11 +17,18 @@ class ChatItem(DaraModel):
         question: str = None,
         ref_doc_list: List[main_models.ChatRefDocItem] = None,
     ):
+        # The content of the answer to the question.
         self.answer = answer
+        # Q&A time, in milliseconds timestamp.
         self.create_time = create_time
+        # Folder selected for the Q&A.
         self.folder_id = folder_id
+        # Name of the folder selected for the Q&A.
         self.folder_name = folder_name
+        # Question content.
         self.question = question
+        # - List of files related to the Q&A.
+        # - If streaming question answering is used, only the first shard contains data.
         self.ref_doc_list = ref_doc_list
 
     def validate(self):

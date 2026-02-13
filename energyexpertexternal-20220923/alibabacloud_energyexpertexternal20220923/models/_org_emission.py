@@ -20,14 +20,23 @@ class OrgEmission(DaraModel):
         weighting_proportion: float = None,
         weighting_ratio: float = None,
     ):
+        # Carbon Equivalent
         self.carbon_emission_data = carbon_emission_data
+        # Sub-module carbon emission data
         self.module_emission_list = module_emission_list
+        # The name of the organization.
         self.name = name
+        # Enterprise type
         self.name_key = name_key
+        # Proportion of carbon emissions
         self.ratio = ratio
+        # Sub-level data, that is, site data under the organization
         self.sub_emission_items = sub_emission_items
+        # Calculate carbon emissions by share ratio
         self.weighting_carbon_emission_data = weighting_carbon_emission_data
+        # Weight ratio
         self.weighting_proportion = weighting_proportion
+        # Share ratio Carbon emissions YoY
         self.weighting_ratio = weighting_ratio
 
     def validate(self):
@@ -123,9 +132,13 @@ class OrgEmissionModuleEmissionList(DaraModel):
         name_key: str = None,
         ratio: float = None,
     ):
+        # Carbon emissions
         self.carbon_emission_data = carbon_emission_data
+        # module name
         self.name = name
+        # Module key
         self.name_key = name_key
+        # Proportion of carbon emissions
         self.ratio = ratio
 
     def validate(self):

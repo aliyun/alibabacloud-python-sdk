@@ -1,3 +1,11 @@
+2026-02-13 Version: 4.5.0
+- Support API AISearchResourceAdd.
+- Support API AISearchResourceDelete.
+- Support API AISearchResourceGetList.
+- Support API AISearchResourceUpdate.
+- Support API AISearchStream.
+
+
 2026-01-15 Version: 4.4.3
 - Generated python 2022-09-23 for energyExpertExternal.
 

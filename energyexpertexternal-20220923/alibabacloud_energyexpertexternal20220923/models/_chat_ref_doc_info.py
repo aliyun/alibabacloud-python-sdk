@@ -13,7 +13,9 @@ class ChatRefDocInfo(DaraModel):
         page_list_info: List[main_models.ChatRefDocPageInfo] = None,
         pages: int = None,
     ):
+        # Detailed information for each page of the document.
         self.page_list_info = page_list_info
+        # Total number of pages in the current document.
         self.pages = pages
 
     def validate(self):

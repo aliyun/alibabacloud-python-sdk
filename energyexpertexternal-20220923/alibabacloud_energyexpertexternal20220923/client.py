@@ -203,6 +203,524 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def a_isearch_resource_add_with_options(
+        self,
+        request: main_models.AISearchResourceAddRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AISearchResourceAddResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.data):
+            body['data'] = request.data
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AISearchResourceAdd',
+            version = '2022-09-23',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiSearch/resource/add',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AISearchResourceAddResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def a_isearch_resource_add_with_options_async(
+        self,
+        request: main_models.AISearchResourceAddRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AISearchResourceAddResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.data):
+            body['data'] = request.data
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AISearchResourceAdd',
+            version = '2022-09-23',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiSearch/resource/add',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AISearchResourceAddResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def a_isearch_resource_add(
+        self,
+        request: main_models.AISearchResourceAddRequest,
+    ) -> main_models.AISearchResourceAddResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.a_isearch_resource_add_with_options(request, headers, runtime)
+
+    async def a_isearch_resource_add_async(
+        self,
+        request: main_models.AISearchResourceAddRequest,
+    ) -> main_models.AISearchResourceAddResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.a_isearch_resource_add_with_options_async(request, headers, runtime)
+
+    def a_isearch_resource_delete_with_options(
+        self,
+        request: main_models.AISearchResourceDeleteRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AISearchResourceDeleteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AISearchResourceDelete',
+            version = '2022-09-23',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiSearch/resource/delete',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AISearchResourceDeleteResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def a_isearch_resource_delete_with_options_async(
+        self,
+        request: main_models.AISearchResourceDeleteRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AISearchResourceDeleteResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AISearchResourceDelete',
+            version = '2022-09-23',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiSearch/resource/delete',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AISearchResourceDeleteResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def a_isearch_resource_delete(
+        self,
+        request: main_models.AISearchResourceDeleteRequest,
+    ) -> main_models.AISearchResourceDeleteResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.a_isearch_resource_delete_with_options(request, headers, runtime)
+
+    async def a_isearch_resource_delete_async(
+        self,
+        request: main_models.AISearchResourceDeleteRequest,
+    ) -> main_models.AISearchResourceDeleteResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.a_isearch_resource_delete_with_options_async(request, headers, runtime)
+
+    def a_isearch_resource_get_list_with_options(
+        self,
+        tmp_req: main_models.AISearchResourceGetListRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AISearchResourceGetListResponse:
+        tmp_req.validate()
+        request = main_models.AISearchResourceGetListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource_ids):
+            request.resource_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_ids, 'resourceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['currentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_ids_shrink):
+            query['resourceIds'] = request.resource_ids_shrink
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AISearchResourceGetList',
+            version = '2022-09-23',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiSearch/resource/list',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AISearchResourceGetListResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def a_isearch_resource_get_list_with_options_async(
+        self,
+        tmp_req: main_models.AISearchResourceGetListRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AISearchResourceGetListResponse:
+        tmp_req.validate()
+        request = main_models.AISearchResourceGetListShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.resource_ids):
+            request.resource_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.resource_ids, 'resourceIds', 'json')
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['currentPage'] = request.current_page
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.resource_ids_shrink):
+            query['resourceIds'] = request.resource_ids_shrink
+        if not DaraCore.is_null(request.type):
+            query['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AISearchResourceGetList',
+            version = '2022-09-23',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiSearch/resource/list',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AISearchResourceGetListResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def a_isearch_resource_get_list(
+        self,
+        request: main_models.AISearchResourceGetListRequest,
+    ) -> main_models.AISearchResourceGetListResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.a_isearch_resource_get_list_with_options(request, headers, runtime)
+
+    async def a_isearch_resource_get_list_async(
+        self,
+        request: main_models.AISearchResourceGetListRequest,
+    ) -> main_models.AISearchResourceGetListResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.a_isearch_resource_get_list_with_options_async(request, headers, runtime)
+
+    def a_isearch_resource_update_with_options(
+        self,
+        request: main_models.AISearchResourceUpdateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AISearchResourceUpdateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.data):
+            body['data'] = request.data
+        if not DaraCore.is_null(request.resource_id):
+            body['resourceId'] = request.resource_id
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AISearchResourceUpdate',
+            version = '2022-09-23',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiSearch/resource/update',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AISearchResourceUpdateResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def a_isearch_resource_update_with_options_async(
+        self,
+        request: main_models.AISearchResourceUpdateRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AISearchResourceUpdateResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.data):
+            body['data'] = request.data
+        if not DaraCore.is_null(request.resource_id):
+            body['resourceId'] = request.resource_id
+        if not DaraCore.is_null(request.type):
+            body['type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AISearchResourceUpdate',
+            version = '2022-09-23',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiSearch/resource/update',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AISearchResourceUpdateResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def a_isearch_resource_update(
+        self,
+        request: main_models.AISearchResourceUpdateRequest,
+    ) -> main_models.AISearchResourceUpdateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.a_isearch_resource_update_with_options(request, headers, runtime)
+
+    async def a_isearch_resource_update_async(
+        self,
+        request: main_models.AISearchResourceUpdateRequest,
+    ) -> main_models.AISearchResourceUpdateResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.a_isearch_resource_update_with_options_async(request, headers, runtime)
+
+    def a_isearch_stream_with_sse(
+        self,
+        request: main_models.AISearchStreamRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.AISearchStreamResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.folder_id):
+            body['folderId'] = request.folder_id
+        if not DaraCore.is_null(request.message):
+            body['message'] = request.message
+        if not DaraCore.is_null(request.question):
+            body['question'] = request.question
+        if not DaraCore.is_null(request.resource_type_needed):
+            body['resourceTypeNeeded'] = request.resource_type_needed
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AISearchStream',
+            version = '2022-09-23',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiSearch/searchStream',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.AISearchStreamResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def a_isearch_stream_with_sse_async(
+        self,
+        request: main_models.AISearchStreamRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.AISearchStreamResponse, None, None]:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.folder_id):
+            body['folderId'] = request.folder_id
+        if not DaraCore.is_null(request.message):
+            body['message'] = request.message
+        if not DaraCore.is_null(request.question):
+            body['question'] = request.question
+        if not DaraCore.is_null(request.resource_type_needed):
+            body['resourceTypeNeeded'] = request.resource_type_needed
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AISearchStream',
+            version = '2022-09-23',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiSearch/searchStream',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.AISearchStreamResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def a_isearch_stream_with_options(
+        self,
+        request: main_models.AISearchStreamRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AISearchStreamResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.folder_id):
+            body['folderId'] = request.folder_id
+        if not DaraCore.is_null(request.message):
+            body['message'] = request.message
+        if not DaraCore.is_null(request.question):
+            body['question'] = request.question
+        if not DaraCore.is_null(request.resource_type_needed):
+            body['resourceTypeNeeded'] = request.resource_type_needed
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AISearchStream',
+            version = '2022-09-23',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiSearch/searchStream',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AISearchStreamResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def a_isearch_stream_with_options_async(
+        self,
+        request: main_models.AISearchStreamRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AISearchStreamResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.folder_id):
+            body['folderId'] = request.folder_id
+        if not DaraCore.is_null(request.message):
+            body['message'] = request.message
+        if not DaraCore.is_null(request.question):
+            body['question'] = request.question
+        if not DaraCore.is_null(request.resource_type_needed):
+            body['resourceTypeNeeded'] = request.resource_type_needed
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AISearchStream',
+            version = '2022-09-23',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/aiSearch/searchStream',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AISearchStreamResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def a_isearch_stream(
+        self,
+        request: main_models.AISearchStreamRequest,
+    ) -> main_models.AISearchStreamResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.a_isearch_stream_with_options(request, headers, runtime)
+
+    async def a_isearch_stream_async(
+        self,
+        request: main_models.AISearchStreamRequest,
+    ) -> main_models.AISearchStreamResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.a_isearch_stream_with_options_async(request, headers, runtime)
+
     def add_folder_with_options(
         self,
         request: main_models.AddFolderRequest,
@@ -862,17 +1380,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.ChatStreamResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ChatStreamResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def chat_stream_with_sse_async(
         self,
@@ -905,17 +1423,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.ChatStreamResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ChatStreamResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def chat_stream_with_options(
         self,

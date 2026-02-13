@@ -7,14 +7,14 @@ from typing import Dict
 from alibabacloud_energyexpertexternal20220923 import models as main_models
 from darabonba.model import DaraModel
 
-class ChatStreamResponse(DaraModel):
+class AISearchStreamResponse(DaraModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
         id: str = None,
         event: str = None,
-        body: main_models.ChatStreamResponseBody = None,
+        body: main_models.AISearchStreamResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
@@ -63,7 +63,7 @@ class ChatStreamResponse(DaraModel):
             self.event = m.get('event')
 
         if m.get('body') is not None:
-            temp_model = main_models.ChatStreamResponseBody()
+            temp_model = main_models.AISearchStreamResponseBody()
             self.body = temp_model.from_map(m.get('body'))
 
         return self

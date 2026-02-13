@@ -13,7 +13,9 @@ class ChatRefDocPageNum(DaraModel):
         num: int = None,
         pos: List[List[main_models.ChatRefDocPostion]] = None,
     ):
+        # Page numbers of content related to Q&A.
         self.num = num
+        # List of location information for related documents.
         self.pos = pos
 
     def validate(self):

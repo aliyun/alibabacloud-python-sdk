@@ -13,10 +13,15 @@ class CarbonEmissionElecSummaryItem(DaraModel):
         ratio: float = None,
         raw_data: float = None,
     ):
+        # Carbon Equivalent.
         self.carbon_emission_data = carbon_emission_data
+        # The price unit.
         self.data_unit = data_unit
+        # The enterprise name.
         self.name = name
+        # The percentage of electricity consumption. Valid values: 0 to 1.
         self.ratio = ratio
+        # Electricity consumption in Kwh.
         self.raw_data = raw_data
 
     def validate(self):

@@ -18,12 +18,19 @@ class ChatRefDocItem(DaraModel):
         page_num: List[main_models.ChatDocumentPageNum] = None,
         source_type: str = None,
     ):
+        # Related document information.
         self.doc_info = doc_info
+        # Document name. If the original file is of types like doc, it will be converted to PDF for easier document location. This file should be used for document location information.
         self.doc_name = doc_name
+        # Document link.
         self.doc_url = doc_url
+        # Original document name.
         self.origin_doc_name = origin_doc_name
+        # Original document link.
         self.origin_doc_url = origin_doc_url
+        # Page number information.
         self.page_num = page_num
+        # Return file type: \\"doc\\" for document files, \\"web\\" for internet information.
         self.source_type = source_type
 
     def validate(self):
