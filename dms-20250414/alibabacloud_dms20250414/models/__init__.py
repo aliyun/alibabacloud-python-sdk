@@ -46,6 +46,10 @@ from ._create_airflow_response import CreateAirflowResponse
 from ._create_airflow_login_token_request import CreateAirflowLoginTokenRequest
 from ._create_airflow_login_token_response_body import CreateAirflowLoginTokenResponseBody
 from ._create_airflow_login_token_response import CreateAirflowLoginTokenResponse
+from ._create_custom_agent_request import CreateCustomAgentRequest
+from ._create_custom_agent_shrink_request import CreateCustomAgentShrinkRequest
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBody
+from ._create_custom_agent_response import CreateCustomAgentResponse
 from ._create_data_agent_session_request import CreateDataAgentSessionRequest
 from ._create_data_agent_session_shrink_request import CreateDataAgentSessionShrinkRequest
 from ._create_data_agent_session_response_body import CreateDataAgentSessionResponseBody
@@ -72,6 +76,9 @@ from ._create_data_lake_table_response import CreateDataLakeTableResponse
 from ._delete_airflow_request import DeleteAirflowRequest
 from ._delete_airflow_response_body import DeleteAirflowResponseBody
 from ._delete_airflow_response import DeleteAirflowResponse
+from ._delete_custom_agent_request import DeleteCustomAgentRequest
+from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBody
+from ._delete_custom_agent_response import DeleteCustomAgentResponse
 from ._delete_data_agent_workspace_request import DeleteDataAgentWorkspaceRequest
 from ._delete_data_agent_workspace_response_body import DeleteDataAgentWorkspaceResponseBody
 from ._delete_data_agent_workspace_response import DeleteDataAgentWorkspaceResponse
@@ -152,6 +159,12 @@ from ._list_data_agent_workspace_response import ListDataAgentWorkspaceResponse
 from ._list_data_agent_workspace_member_request import ListDataAgentWorkspaceMemberRequest
 from ._list_data_agent_workspace_member_response_body import ListDataAgentWorkspaceMemberResponseBody
 from ._list_data_agent_workspace_member_response import ListDataAgentWorkspaceMemberResponse
+from ._list_data_center_database_request import ListDataCenterDatabaseRequest
+from ._list_data_center_database_response_body import ListDataCenterDatabaseResponseBody
+from ._list_data_center_database_response import ListDataCenterDatabaseResponse
+from ._list_data_center_table_request import ListDataCenterTableRequest
+from ._list_data_center_table_response_body import ListDataCenterTableResponseBody
+from ._list_data_center_table_response import ListDataCenterTableResponse
 from ._list_data_lake_catalog_request import ListDataLakeCatalogRequest
 from ._list_data_lake_catalog_response_body import ListDataLakeCatalogResponseBody
 from ._list_data_lake_catalog_response import ListDataLakeCatalogResponse
@@ -186,6 +199,13 @@ from ._list_data_lake_tablebase_info_response import ListDataLakeTablebaseInfoRe
 from ._list_file_upload_request import ListFileUploadRequest
 from ._list_file_upload_response_body import ListFileUploadResponseBody
 from ._list_file_upload_response import ListFileUploadResponse
+from ._modify_custom_agent_request import ModifyCustomAgentRequest
+from ._modify_custom_agent_shrink_request import ModifyCustomAgentShrinkRequest
+from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBody
+from ._modify_custom_agent_response import ModifyCustomAgentResponse
+from ._operate_custom_agent_request import OperateCustomAgentRequest
+from ._operate_custom_agent_response_body import OperateCustomAgentResponseBody
+from ._operate_custom_agent_response import OperateCustomAgentResponse
 from ._remove_user_to_data_agent_workspace_request import RemoveUserToDataAgentWorkspaceRequest
 from ._remove_user_to_data_agent_workspace_response_body import RemoveUserToDataAgentWorkspaceResponseBody
 from ._remove_user_to_data_agent_workspace_response import RemoveUserToDataAgentWorkspaceResponse
@@ -221,12 +241,20 @@ from ._update_data_lake_table_response import UpdateDataLakeTableResponse
 from ._add_user_to_data_agent_workspace_response_body import AddUserToDataAgentWorkspaceResponseBodyData
 from ._create_airflow_response_body import CreateAirflowResponseBodyRoot
 from ._create_airflow_login_token_response_body import CreateAirflowLoginTokenResponseBodyData
+from ._create_custom_agent_request import CreateCustomAgentRequestExecutionConfig
+from ._create_custom_agent_request import CreateCustomAgentRequestKnowledgeConfigList
+from ._create_custom_agent_request import CreateCustomAgentRequestScheduleTaskConfig
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataExecutionConfig
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataKnowledgeConfigList
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyDataScheduleTaskConfig
+from ._create_custom_agent_response_body import CreateCustomAgentResponseBodyData
 from ._create_data_agent_session_request import CreateDataAgentSessionRequestSessionConfig
 from ._create_data_agent_session_response_body import CreateDataAgentSessionResponseBodyDataSessionConfig
 from ._create_data_agent_session_response_body import CreateDataAgentSessionResponseBodyData
 from ._create_data_agent_workspace_response_body import CreateDataAgentWorkspaceResponseBodyData
 from ._delete_airflow_response_body import DeleteAirflowResponseBodyRootResponses
 from ._delete_airflow_response_body import DeleteAirflowResponseBodyRoot
+from ._delete_custom_agent_response_body import DeleteCustomAgentResponseBodyData
 from ._delete_file_upload_response_body import DeleteFileUploadResponseBodyData
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataExecutionConfig
 from ._describe_custom_agent_response_body import DescribeCustomAgentResponseBodyDataKnowledgeConfigList
@@ -254,7 +282,18 @@ from ._list_data_agent_workspace_response_body import ListDataAgentWorkspaceResp
 from ._list_data_agent_workspace_response_body import ListDataAgentWorkspaceResponseBodyData
 from ._list_data_agent_workspace_member_response_body import ListDataAgentWorkspaceMemberResponseBodyDataContent
 from ._list_data_agent_workspace_member_response_body import ListDataAgentWorkspaceMemberResponseBodyData
+from ._list_data_center_database_response_body import ListDataCenterDatabaseResponseBodyData
+from ._list_data_center_table_response_body import ListDataCenterTableResponseBodyDataContent
+from ._list_data_center_table_response_body import ListDataCenterTableResponseBodyData
 from ._list_file_upload_response_body import ListFileUploadResponseBodyData
+from ._modify_custom_agent_request import ModifyCustomAgentRequestExecutionConfig
+from ._modify_custom_agent_request import ModifyCustomAgentRequestKnowledgeConfigList
+from ._modify_custom_agent_request import ModifyCustomAgentRequestScheduleTaskConfig
+from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDataExecutionConfig
+from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDataKnowledgeConfigList
+from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyDataScheduleTaskConfig
+from ._modify_custom_agent_response_body import ModifyCustomAgentResponseBodyData
+from ._operate_custom_agent_response_body import OperateCustomAgentResponseBodyData
 from ._send_chat_message_request import SendChatMessageRequestDataSource
 from ._send_chat_message_request import SendChatMessageRequestSessionConfig
 from ._send_chat_message_response_body import SendChatMessageResponseBodyData
@@ -307,6 +346,10 @@ __all__ = [
     CreateAirflowLoginTokenRequest,
     CreateAirflowLoginTokenResponseBody,
     CreateAirflowLoginTokenResponse,
+    CreateCustomAgentRequest,
+    CreateCustomAgentShrinkRequest,
+    CreateCustomAgentResponseBody,
+    CreateCustomAgentResponse,
     CreateDataAgentSessionRequest,
     CreateDataAgentSessionShrinkRequest,
     CreateDataAgentSessionResponseBody,
@@ -333,6 +376,9 @@ __all__ = [
     DeleteAirflowRequest,
     DeleteAirflowResponseBody,
     DeleteAirflowResponse,
+    DeleteCustomAgentRequest,
+    DeleteCustomAgentResponseBody,
+    DeleteCustomAgentResponse,
     DeleteDataAgentWorkspaceRequest,
     DeleteDataAgentWorkspaceResponseBody,
     DeleteDataAgentWorkspaceResponse,
@@ -413,6 +459,12 @@ __all__ = [
     ListDataAgentWorkspaceMemberRequest,
     ListDataAgentWorkspaceMemberResponseBody,
     ListDataAgentWorkspaceMemberResponse,
+    ListDataCenterDatabaseRequest,
+    ListDataCenterDatabaseResponseBody,
+    ListDataCenterDatabaseResponse,
+    ListDataCenterTableRequest,
+    ListDataCenterTableResponseBody,
+    ListDataCenterTableResponse,
     ListDataLakeCatalogRequest,
     ListDataLakeCatalogResponseBody,
     ListDataLakeCatalogResponse,
@@ -447,6 +499,13 @@ __all__ = [
     ListFileUploadRequest,
     ListFileUploadResponseBody,
     ListFileUploadResponse,
+    ModifyCustomAgentRequest,
+    ModifyCustomAgentShrinkRequest,
+    ModifyCustomAgentResponseBody,
+    ModifyCustomAgentResponse,
+    OperateCustomAgentRequest,
+    OperateCustomAgentResponseBody,
+    OperateCustomAgentResponse,
     RemoveUserToDataAgentWorkspaceRequest,
     RemoveUserToDataAgentWorkspaceResponseBody,
     RemoveUserToDataAgentWorkspaceResponse,
@@ -482,12 +541,20 @@ __all__ = [
     AddUserToDataAgentWorkspaceResponseBodyData,
     CreateAirflowResponseBodyRoot,
     CreateAirflowLoginTokenResponseBodyData,
+    CreateCustomAgentRequestExecutionConfig,
+    CreateCustomAgentRequestKnowledgeConfigList,
+    CreateCustomAgentRequestScheduleTaskConfig,
+    CreateCustomAgentResponseBodyDataExecutionConfig,
+    CreateCustomAgentResponseBodyDataKnowledgeConfigList,
+    CreateCustomAgentResponseBodyDataScheduleTaskConfig,
+    CreateCustomAgentResponseBodyData,
     CreateDataAgentSessionRequestSessionConfig,
     CreateDataAgentSessionResponseBodyDataSessionConfig,
     CreateDataAgentSessionResponseBodyData,
     CreateDataAgentWorkspaceResponseBodyData,
     DeleteAirflowResponseBodyRootResponses,
     DeleteAirflowResponseBodyRoot,
+    DeleteCustomAgentResponseBodyData,
     DeleteFileUploadResponseBodyData,
     DescribeCustomAgentResponseBodyDataExecutionConfig,
     DescribeCustomAgentResponseBodyDataKnowledgeConfigList,
@@ -515,7 +582,18 @@ __all__ = [
     ListDataAgentWorkspaceResponseBodyData,
     ListDataAgentWorkspaceMemberResponseBodyDataContent,
     ListDataAgentWorkspaceMemberResponseBodyData,
+    ListDataCenterDatabaseResponseBodyData,
+    ListDataCenterTableResponseBodyDataContent,
+    ListDataCenterTableResponseBodyData,
     ListFileUploadResponseBodyData,
+    ModifyCustomAgentRequestExecutionConfig,
+    ModifyCustomAgentRequestKnowledgeConfigList,
+    ModifyCustomAgentRequestScheduleTaskConfig,
+    ModifyCustomAgentResponseBodyDataExecutionConfig,
+    ModifyCustomAgentResponseBodyDataKnowledgeConfigList,
+    ModifyCustomAgentResponseBodyDataScheduleTaskConfig,
+    ModifyCustomAgentResponseBodyData,
+    OperateCustomAgentResponseBodyData,
     SendChatMessageRequestDataSource,
     SendChatMessageRequestSessionConfig,
     SendChatMessageResponseBodyData,

@@ -1,3 +1,12 @@
+2026-02-14 Version: 1.10.0
+- Support API CreateCustomAgent.
+- Support API DeleteCustomAgent.
+- Support API ListDataCenterDatabase.
+- Support API ListDataCenterTable.
+- Support API ModifyCustomAgent.
+- Support API OperateCustomAgent.
+
+
 2026-02-13 Version: 1.9.0
 - Support API ListDataAgentSession.
 

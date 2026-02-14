@@ -630,6 +630,136 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_airflow_login_token_with_options_async(request, runtime)
 
+    def create_custom_agent_with_options(
+        self,
+        tmp_req: main_models.CreateCustomAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomAgentResponse:
+        tmp_req.validate()
+        request = main_models.CreateCustomAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.execution_config):
+            request.execution_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.execution_config, 'ExecutionConfig', 'json')
+        if not DaraCore.is_null(tmp_req.knowledge_config_list):
+            request.knowledge_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_config_list, 'KnowledgeConfigList', 'json')
+        if not DaraCore.is_null(tmp_req.schedule_task_config):
+            request.schedule_task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_task_config, 'ScheduleTaskConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.data_json):
+            query['DataJson'] = request.data_json
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.execution_config_shrink):
+            query['ExecutionConfig'] = request.execution_config_shrink
+        if not DaraCore.is_null(request.instruction):
+            query['Instruction'] = request.instruction
+        if not DaraCore.is_null(request.knowledge):
+            query['Knowledge'] = request.knowledge
+        if not DaraCore.is_null(request.knowledge_config_list_shrink):
+            query['KnowledgeConfigList'] = request.knowledge_config_list_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.schedule_task_config_shrink):
+            query['ScheduleTaskConfig'] = request.schedule_task_config_shrink
+        if not DaraCore.is_null(request.text_report_config):
+            query['TextReportConfig'] = request.text_report_config
+        if not DaraCore.is_null(request.web_report_config):
+            query['WebReportConfig'] = request.web_report_config
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomAgent',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_custom_agent_with_options_async(
+        self,
+        tmp_req: main_models.CreateCustomAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCustomAgentResponse:
+        tmp_req.validate()
+        request = main_models.CreateCustomAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.execution_config):
+            request.execution_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.execution_config, 'ExecutionConfig', 'json')
+        if not DaraCore.is_null(tmp_req.knowledge_config_list):
+            request.knowledge_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_config_list, 'KnowledgeConfigList', 'json')
+        if not DaraCore.is_null(tmp_req.schedule_task_config):
+            request.schedule_task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_task_config, 'ScheduleTaskConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.data_json):
+            query['DataJson'] = request.data_json
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.execution_config_shrink):
+            query['ExecutionConfig'] = request.execution_config_shrink
+        if not DaraCore.is_null(request.instruction):
+            query['Instruction'] = request.instruction
+        if not DaraCore.is_null(request.knowledge):
+            query['Knowledge'] = request.knowledge
+        if not DaraCore.is_null(request.knowledge_config_list_shrink):
+            query['KnowledgeConfigList'] = request.knowledge_config_list_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.schedule_task_config_shrink):
+            query['ScheduleTaskConfig'] = request.schedule_task_config_shrink
+        if not DaraCore.is_null(request.text_report_config):
+            query['TextReportConfig'] = request.text_report_config
+        if not DaraCore.is_null(request.web_report_config):
+            query['WebReportConfig'] = request.web_report_config
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCustomAgent',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCustomAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_custom_agent(
+        self,
+        request: main_models.CreateCustomAgentRequest,
+    ) -> main_models.CreateCustomAgentResponse:
+        runtime = RuntimeOptions()
+        return self.create_custom_agent_with_options(request, runtime)
+
+    async def create_custom_agent_async(
+        self,
+        request: main_models.CreateCustomAgentRequest,
+    ) -> main_models.CreateCustomAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.create_custom_agent_with_options_async(request, runtime)
+
     def create_data_agent_session_with_options(
         self,
         tmp_req: main_models.CreateDataAgentSessionRequest,
@@ -1287,6 +1417,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteAirflowResponse:
         runtime = RuntimeOptions()
         return await self.delete_airflow_with_options_async(request, runtime)
+
+    def delete_custom_agent_with_options(
+        self,
+        request: main_models.DeleteCustomAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomAgent',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCustomAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_custom_agent_with_options_async(
+        self,
+        request: main_models.DeleteCustomAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCustomAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCustomAgent',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCustomAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_custom_agent(
+        self,
+        request: main_models.DeleteCustomAgentRequest,
+    ) -> main_models.DeleteCustomAgentResponse:
+        runtime = RuntimeOptions()
+        return self.delete_custom_agent_with_options(request, runtime)
+
+    async def delete_custom_agent_async(
+        self,
+        request: main_models.DeleteCustomAgentRequest,
+    ) -> main_models.DeleteCustomAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_custom_agent_with_options_async(request, runtime)
 
     def delete_data_agent_workspace_with_options(
         self,
@@ -3586,6 +3790,194 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_data_agent_workspace_member_with_options_async(request, runtime)
 
+    def list_data_center_database_with_options(
+        self,
+        request: main_models.ListDataCenterDatabaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataCenterDatabaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_from):
+            query['CallFrom'] = request.call_from
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.import_type):
+            query['ImportType'] = request.import_type
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataCenterDatabase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataCenterDatabaseResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_center_database_with_options_async(
+        self,
+        request: main_models.ListDataCenterDatabaseRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataCenterDatabaseResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_from):
+            query['CallFrom'] = request.call_from
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.import_type):
+            query['ImportType'] = request.import_type
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataCenterDatabase',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataCenterDatabaseResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_center_database(
+        self,
+        request: main_models.ListDataCenterDatabaseRequest,
+    ) -> main_models.ListDataCenterDatabaseResponse:
+        runtime = RuntimeOptions()
+        return self.list_data_center_database_with_options(request, runtime)
+
+    async def list_data_center_database_async(
+        self,
+        request: main_models.ListDataCenterDatabaseRequest,
+    ) -> main_models.ListDataCenterDatabaseResponse:
+        runtime = RuntimeOptions()
+        return await self.list_data_center_database_with_options_async(request, runtime)
+
+    def list_data_center_table_with_options(
+        self,
+        request: main_models.ListDataCenterTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataCenterTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_from):
+            query['CallFrom'] = request.call_from
+        if not DaraCore.is_null(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.import_type):
+            query['ImportType'] = request.import_type
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataCenterTable',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataCenterTableResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_data_center_table_with_options_async(
+        self,
+        request: main_models.ListDataCenterTableRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDataCenterTableResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.call_from):
+            query['CallFrom'] = request.call_from
+        if not DaraCore.is_null(request.database_name):
+            query['DatabaseName'] = request.database_name
+        if not DaraCore.is_null(request.dms_unit):
+            query['DmsUnit'] = request.dms_unit
+        if not DaraCore.is_null(request.import_type):
+            query['ImportType'] = request.import_type
+        if not DaraCore.is_null(request.instance_name):
+            query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.search_key):
+            query['SearchKey'] = request.search_key
+        if not DaraCore.is_null(request.table_name):
+            query['TableName'] = request.table_name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDataCenterTable',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDataCenterTableResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_data_center_table(
+        self,
+        request: main_models.ListDataCenterTableRequest,
+    ) -> main_models.ListDataCenterTableResponse:
+        runtime = RuntimeOptions()
+        return self.list_data_center_table_with_options(request, runtime)
+
+    async def list_data_center_table_async(
+        self,
+        request: main_models.ListDataCenterTableRequest,
+    ) -> main_models.ListDataCenterTableResponse:
+        runtime = RuntimeOptions()
+        return await self.list_data_center_table_with_options_async(request, runtime)
+
     def list_data_lake_catalog_with_options(
         self,
         request: main_models.ListDataLakeCatalogRequest,
@@ -4635,6 +5027,218 @@ class Client(OpenApiClient):
     ) -> main_models.ListFileUploadResponse:
         runtime = RuntimeOptions()
         return await self.list_file_upload_with_options_async(request, runtime)
+
+    def modify_custom_agent_with_options(
+        self,
+        tmp_req: main_models.ModifyCustomAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyCustomAgentResponse:
+        tmp_req.validate()
+        request = main_models.ModifyCustomAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.execution_config):
+            request.execution_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.execution_config, 'ExecutionConfig', 'json')
+        if not DaraCore.is_null(tmp_req.knowledge_config_list):
+            request.knowledge_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_config_list, 'KnowledgeConfigList', 'json')
+        if not DaraCore.is_null(tmp_req.schedule_task_config):
+            request.schedule_task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_task_config, 'ScheduleTaskConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.data_json):
+            query['DataJson'] = request.data_json
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.execution_config_shrink):
+            query['ExecutionConfig'] = request.execution_config_shrink
+        if not DaraCore.is_null(request.instruction):
+            query['Instruction'] = request.instruction
+        if not DaraCore.is_null(request.knowledge):
+            query['Knowledge'] = request.knowledge
+        if not DaraCore.is_null(request.knowledge_config_list_shrink):
+            query['KnowledgeConfigList'] = request.knowledge_config_list_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.schedule_task_config_shrink):
+            query['ScheduleTaskConfig'] = request.schedule_task_config_shrink
+        if not DaraCore.is_null(request.text_report_config):
+            query['TextReportConfig'] = request.text_report_config
+        if not DaraCore.is_null(request.web_report_config):
+            query['WebReportConfig'] = request.web_report_config
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyCustomAgent',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyCustomAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_custom_agent_with_options_async(
+        self,
+        tmp_req: main_models.ModifyCustomAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyCustomAgentResponse:
+        tmp_req.validate()
+        request = main_models.ModifyCustomAgentShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.execution_config):
+            request.execution_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.execution_config, 'ExecutionConfig', 'json')
+        if not DaraCore.is_null(tmp_req.knowledge_config_list):
+            request.knowledge_config_list_shrink = Utils.array_to_string_with_specified_style(tmp_req.knowledge_config_list, 'KnowledgeConfigList', 'json')
+        if not DaraCore.is_null(tmp_req.schedule_task_config):
+            request.schedule_task_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.schedule_task_config, 'ScheduleTaskConfig', 'json')
+        query = {}
+        if not DaraCore.is_null(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        if not DaraCore.is_null(request.dmsunit):
+            query['DMSUnit'] = request.dmsunit
+        if not DaraCore.is_null(request.data_json):
+            query['DataJson'] = request.data_json
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.execution_config_shrink):
+            query['ExecutionConfig'] = request.execution_config_shrink
+        if not DaraCore.is_null(request.instruction):
+            query['Instruction'] = request.instruction
+        if not DaraCore.is_null(request.knowledge):
+            query['Knowledge'] = request.knowledge
+        if not DaraCore.is_null(request.knowledge_config_list_shrink):
+            query['KnowledgeConfigList'] = request.knowledge_config_list_shrink
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.schedule_task_config_shrink):
+            query['ScheduleTaskConfig'] = request.schedule_task_config_shrink
+        if not DaraCore.is_null(request.text_report_config):
+            query['TextReportConfig'] = request.text_report_config
+        if not DaraCore.is_null(request.web_report_config):
+            query['WebReportConfig'] = request.web_report_config
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyCustomAgent',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyCustomAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_custom_agent(
+        self,
+        request: main_models.ModifyCustomAgentRequest,
+    ) -> main_models.ModifyCustomAgentResponse:
+        runtime = RuntimeOptions()
+        return self.modify_custom_agent_with_options(request, runtime)
+
+    async def modify_custom_agent_async(
+        self,
+        request: main_models.ModifyCustomAgentRequest,
+    ) -> main_models.ModifyCustomAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_custom_agent_with_options_async(request, runtime)
+
+    def operate_custom_agent_with_options(
+        self,
+        request: main_models.OperateCustomAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateCustomAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        if not DaraCore.is_null(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateCustomAgent',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateCustomAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_custom_agent_with_options_async(
+        self,
+        request: main_models.OperateCustomAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateCustomAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.custom_agent_id):
+            query['CustomAgentId'] = request.custom_agent_id
+        if not DaraCore.is_null(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateCustomAgent',
+            version = '2025-04-14',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateCustomAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_custom_agent(
+        self,
+        request: main_models.OperateCustomAgentRequest,
+    ) -> main_models.OperateCustomAgentResponse:
+        runtime = RuntimeOptions()
+        return self.operate_custom_agent_with_options(request, runtime)
+
+    async def operate_custom_agent_async(
+        self,
+        request: main_models.OperateCustomAgentRequest,
+    ) -> main_models.OperateCustomAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_custom_agent_with_options_async(request, runtime)
 
     def remove_user_to_data_agent_workspace_with_options(
         self,
