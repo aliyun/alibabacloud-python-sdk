@@ -494,6 +494,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_embodied_aiplatform_resource_usage_info_with_options_async(request, runtime)
 
+    def lock_embodied_aiplatform_with_options(
+        self,
+        request: main_models.LockEmbodiedAIPlatformRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LockEmbodiedAIPlatformResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.platform_name):
+            query['PlatformName'] = request.platform_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'LockEmbodiedAIPlatform',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LockEmbodiedAIPlatformResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def lock_embodied_aiplatform_with_options_async(
+        self,
+        request: main_models.LockEmbodiedAIPlatformRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LockEmbodiedAIPlatformResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.platform_name):
+            query['PlatformName'] = request.platform_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'LockEmbodiedAIPlatform',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.LockEmbodiedAIPlatformResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def lock_embodied_aiplatform(
+        self,
+        request: main_models.LockEmbodiedAIPlatformRequest,
+    ) -> main_models.LockEmbodiedAIPlatformResponse:
+        runtime = RuntimeOptions()
+        return self.lock_embodied_aiplatform_with_options(request, runtime)
+
+    async def lock_embodied_aiplatform_async(
+        self,
+        request: main_models.LockEmbodiedAIPlatformRequest,
+    ) -> main_models.LockEmbodiedAIPlatformResponse:
+        runtime = RuntimeOptions()
+        return await self.lock_embodied_aiplatform_with_options_async(request, runtime)
+
     def reset_embodied_aiplatform_password_with_options(
         self,
         request: main_models.ResetEmbodiedAIPlatformPasswordRequest,
@@ -575,3 +653,81 @@ class Client(OpenApiClient):
     ) -> main_models.ResetEmbodiedAIPlatformPasswordResponse:
         runtime = RuntimeOptions()
         return await self.reset_embodied_aiplatform_password_with_options_async(request, runtime)
+
+    def unlock_embodied_aiplatform_with_options(
+        self,
+        request: main_models.UnlockEmbodiedAIPlatformRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnlockEmbodiedAIPlatformResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.platform_name):
+            query['PlatformName'] = request.platform_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnlockEmbodiedAIPlatform',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnlockEmbodiedAIPlatformResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def unlock_embodied_aiplatform_with_options_async(
+        self,
+        request: main_models.UnlockEmbodiedAIPlatformRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UnlockEmbodiedAIPlatformResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.platform_name):
+            query['PlatformName'] = request.platform_name
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UnlockEmbodiedAIPlatform',
+            version = '2025-08-12',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UnlockEmbodiedAIPlatformResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def unlock_embodied_aiplatform(
+        self,
+        request: main_models.UnlockEmbodiedAIPlatformRequest,
+    ) -> main_models.UnlockEmbodiedAIPlatformResponse:
+        runtime = RuntimeOptions()
+        return self.unlock_embodied_aiplatform_with_options(request, runtime)
+
+    async def unlock_embodied_aiplatform_async(
+        self,
+        request: main_models.UnlockEmbodiedAIPlatformRequest,
+    ) -> main_models.UnlockEmbodiedAIPlatformResponse:
+        runtime = RuntimeOptions()
+        return await self.unlock_embodied_aiplatform_with_options_async(request, runtime)

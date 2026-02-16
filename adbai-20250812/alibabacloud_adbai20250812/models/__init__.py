@@ -19,9 +19,15 @@ from ._describe_embodied_aiplatforms_response import DescribeEmbodiedAIPlatforms
 from ._get_embodied_aiplatform_resource_usage_info_request import GetEmbodiedAIPlatformResourceUsageInfoRequest
 from ._get_embodied_aiplatform_resource_usage_info_response_body import GetEmbodiedAIPlatformResourceUsageInfoResponseBody
 from ._get_embodied_aiplatform_resource_usage_info_response import GetEmbodiedAIPlatformResourceUsageInfoResponse
+from ._lock_embodied_aiplatform_request import LockEmbodiedAIPlatformRequest
+from ._lock_embodied_aiplatform_response_body import LockEmbodiedAIPlatformResponseBody
+from ._lock_embodied_aiplatform_response import LockEmbodiedAIPlatformResponse
 from ._reset_embodied_aiplatform_password_request import ResetEmbodiedAIPlatformPasswordRequest
 from ._reset_embodied_aiplatform_password_response_body import ResetEmbodiedAIPlatformPasswordResponseBody
 from ._reset_embodied_aiplatform_password_response import ResetEmbodiedAIPlatformPasswordResponse
+from ._unlock_embodied_aiplatform_request import UnlockEmbodiedAIPlatformRequest
+from ._unlock_embodied_aiplatform_response_body import UnlockEmbodiedAIPlatformResponseBody
+from ._unlock_embodied_aiplatform_response import UnlockEmbodiedAIPlatformResponse
 from ._create_agent_platform_request import CreateAgentPlatformRequestAiPlatformConfig
 from ._create_embodied_aiplatform_request import CreateEmbodiedAIPlatformRequestRayConfigWorkerGroups
 from ._create_embodied_aiplatform_request import CreateEmbodiedAIPlatformRequestRayConfig
@@ -53,9 +59,15 @@ __all__ = [
     GetEmbodiedAIPlatformResourceUsageInfoRequest,
     GetEmbodiedAIPlatformResourceUsageInfoResponseBody,
     GetEmbodiedAIPlatformResourceUsageInfoResponse,
+    LockEmbodiedAIPlatformRequest,
+    LockEmbodiedAIPlatformResponseBody,
+    LockEmbodiedAIPlatformResponse,
     ResetEmbodiedAIPlatformPasswordRequest,
     ResetEmbodiedAIPlatformPasswordResponseBody,
     ResetEmbodiedAIPlatformPasswordResponse,
+    UnlockEmbodiedAIPlatformRequest,
+    UnlockEmbodiedAIPlatformResponseBody,
+    UnlockEmbodiedAIPlatformResponse,
     CreateAgentPlatformRequestAiPlatformConfig,
     CreateEmbodiedAIPlatformRequestRayConfigWorkerGroups,
     CreateEmbodiedAIPlatformRequestRayConfig,

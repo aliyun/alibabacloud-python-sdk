@@ -1,3 +1,8 @@
+2026-02-16 Version: 1.4.0
+- Support API LockEmbodiedAIPlatform.
+- Support API UnlockEmbodiedAIPlatform.
+
+
 2026-02-06 Version: 1.3.0
 - Support API DeleteEmbodiedAIPlatform.
 
