@@ -55,6 +55,8 @@ class Client(OpenApiClient):
             query['DatasetId'] = request.dataset_id
         if not DaraCore.is_null(request.oss_url):
             query['OssUrl'] = request.oss_url
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -87,6 +89,8 @@ class Client(OpenApiClient):
             query['DatasetId'] = request.dataset_id
         if not DaraCore.is_null(request.oss_url):
             query['OssUrl'] = request.oss_url
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -135,6 +139,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -169,6 +175,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -217,6 +225,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -251,6 +261,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -301,6 +313,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -337,6 +351,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -391,6 +407,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -431,6 +449,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -481,6 +501,8 @@ class Client(OpenApiClient):
             query['InputField'] = request.input_field
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -517,6 +539,8 @@ class Client(OpenApiClient):
             query['InputField'] = request.input_field
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -573,6 +597,8 @@ class Client(OpenApiClient):
             query['IsFunctional'] = request.is_functional
         if not DaraCore.is_null(request.query_function):
             query['QueryFunction'] = request.query_function
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.sql_condition):
             query['SqlCondition'] = request.sql_condition
         if not DaraCore.is_null(request.sql_function):
@@ -621,6 +647,8 @@ class Client(OpenApiClient):
             query['IsFunctional'] = request.is_functional
         if not DaraCore.is_null(request.query_function):
             query['QueryFunction'] = request.query_function
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.sql_condition):
             query['SqlCondition'] = request.sql_condition
         if not DaraCore.is_null(request.sql_function):
@@ -673,6 +701,8 @@ class Client(OpenApiClient):
             query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_type):
             query['TableType'] = request.table_type
         req = open_api_util_models.OpenApiRequest(
@@ -707,6 +737,8 @@ class Client(OpenApiClient):
             query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_type):
             query['TableType'] = request.table_type
         req = open_api_util_models.OpenApiRequest(
@@ -757,6 +789,8 @@ class Client(OpenApiClient):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -791,6 +825,8 @@ class Client(OpenApiClient):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -843,6 +879,8 @@ class Client(OpenApiClient):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         if not DaraCore.is_null(request.table_type):
@@ -885,6 +923,8 @@ class Client(OpenApiClient):
             query['FileName'] = request.file_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         if not DaraCore.is_null(request.table_type):
@@ -937,6 +977,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name_suffix):
             query['TableNameSuffix'] = request.table_name_suffix
         req = open_api_util_models.OpenApiRequest(
@@ -973,6 +1015,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name_suffix):
             query['TableNameSuffix'] = request.table_name_suffix
         req = open_api_util_models.OpenApiRequest(
@@ -1023,6 +1067,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         req = open_api_util_models.OpenApiRequest(
@@ -1059,6 +1105,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         req = open_api_util_models.OpenApiRequest(
@@ -1111,6 +1159,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         req = open_api_util_models.OpenApiRequest(
@@ -1149,6 +1199,8 @@ class Client(OpenApiClient):
             query['Id'] = request.id
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         req = open_api_util_models.OpenApiRequest(
@@ -1201,6 +1253,8 @@ class Client(OpenApiClient):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.pattern_table_name):
             query['PatternTableName'] = request.pattern_table_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name_suffix):
             query['TableNameSuffix'] = request.table_name_suffix
         req = open_api_util_models.OpenApiRequest(
@@ -1239,6 +1293,8 @@ class Client(OpenApiClient):
             query['InstanceName'] = request.instance_name
         if not DaraCore.is_null(request.pattern_table_name):
             query['PatternTableName'] = request.pattern_table_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name_suffix):
             query['TableNameSuffix'] = request.table_name_suffix
         req = open_api_util_models.OpenApiRequest(
@@ -1289,6 +1345,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         req = open_api_util_models.OpenApiRequest(
@@ -1325,6 +1383,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         req = open_api_util_models.OpenApiRequest(
@@ -1381,6 +1441,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1421,6 +1483,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1475,6 +1539,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         req = open_api_util_models.OpenApiRequest(
@@ -1517,6 +1583,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         req = open_api_util_models.OpenApiRequest(
@@ -1573,6 +1641,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1613,6 +1683,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -1671,6 +1743,8 @@ class Client(OpenApiClient):
             query['PatternQuestion'] = request.pattern_question
         if not DaraCore.is_null(request.pattern_sql):
             query['PatternSql'] = request.pattern_sql
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         req = open_api_util_models.OpenApiRequest(
@@ -1717,6 +1791,8 @@ class Client(OpenApiClient):
             query['PatternQuestion'] = request.pattern_question
         if not DaraCore.is_null(request.pattern_sql):
             query['PatternSql'] = request.pattern_sql
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         req = open_api_util_models.OpenApiRequest(
@@ -1785,6 +1861,8 @@ class Client(OpenApiClient):
             query['SchemaIndexTableName'] = request.schema_index_table_name
         if not DaraCore.is_null(request.select_data):
             query['SelectData'] = request.select_data
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.thinking_mode):
             query['ThinkingMode'] = request.thinking_mode
         req = open_api_util_models.OpenApiRequest(
@@ -1848,6 +1926,8 @@ class Client(OpenApiClient):
             query['SchemaIndexTableName'] = request.schema_index_table_name
         if not DaraCore.is_null(request.select_data):
             query['SelectData'] = request.select_data
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.thinking_mode):
             query['ThinkingMode'] = request.thinking_mode
         req = open_api_util_models.OpenApiRequest(
@@ -1911,6 +1991,8 @@ class Client(OpenApiClient):
             query['SchemaIndexTableName'] = request.schema_index_table_name
         if not DaraCore.is_null(request.select_data):
             query['SelectData'] = request.select_data
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.thinking_mode):
             query['ThinkingMode'] = request.thinking_mode
         req = open_api_util_models.OpenApiRequest(
@@ -1965,6 +2047,8 @@ class Client(OpenApiClient):
             query['SchemaIndexTableName'] = request.schema_index_table_name
         if not DaraCore.is_null(request.select_data):
             query['SelectData'] = request.select_data
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.thinking_mode):
             query['ThinkingMode'] = request.thinking_mode
         req = open_api_util_models.OpenApiRequest(
@@ -2017,6 +2101,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name_suffix):
             query['TableNameSuffix'] = request.table_name_suffix
         if not DaraCore.is_null(request.tables_included):
@@ -2059,6 +2145,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name_suffix):
             query['TableNameSuffix'] = request.table_name_suffix
         if not DaraCore.is_null(request.tables_included):
@@ -2113,6 +2201,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         req = open_api_util_models.OpenApiRequest(
@@ -2149,6 +2239,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         req = open_api_util_models.OpenApiRequest(
@@ -2205,6 +2297,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2245,6 +2339,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2293,6 +2389,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         if not DaraCore.is_null(request.table_type):
@@ -2331,6 +2429,8 @@ class Client(OpenApiClient):
             query['DbName'] = request.db_name
         if not DaraCore.is_null(request.instance_name):
             query['InstanceName'] = request.instance_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.table_name):
             query['TableName'] = request.table_name
         if not DaraCore.is_null(request.table_type):
@@ -2381,6 +2481,8 @@ class Client(OpenApiClient):
             query['DatasetDescription'] = request.dataset_description
         if not DaraCore.is_null(request.dataset_name):
             query['DatasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2413,6 +2515,8 @@ class Client(OpenApiClient):
             query['DatasetDescription'] = request.dataset_description
         if not DaraCore.is_null(request.dataset_name):
             query['DatasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2461,6 +2565,8 @@ class Client(OpenApiClient):
             query['Model'] = request.model
         if not DaraCore.is_null(request.model_mode):
             query['ModelMode'] = request.model_mode
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2495,6 +2601,8 @@ class Client(OpenApiClient):
             query['Model'] = request.model
         if not DaraCore.is_null(request.model_mode):
             query['ModelMode'] = request.model_mode
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2541,6 +2649,8 @@ class Client(OpenApiClient):
             query['DatasetDescription'] = request.dataset_description
         if not DaraCore.is_null(request.dataset_name):
             query['DatasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2573,6 +2683,8 @@ class Client(OpenApiClient):
             query['DatasetDescription'] = request.dataset_description
         if not DaraCore.is_null(request.dataset_name):
             query['DatasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2623,6 +2735,8 @@ class Client(OpenApiClient):
             query['DatasetIds'] = request.dataset_ids_shrink
         if not DaraCore.is_null(request.password):
             query['Password'] = request.password
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.username):
             query['Username'] = request.username
         req = open_api_util_models.OpenApiRequest(
@@ -2661,6 +2775,8 @@ class Client(OpenApiClient):
             query['DatasetIds'] = request.dataset_ids_shrink
         if not DaraCore.is_null(request.password):
             query['Password'] = request.password
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.username):
             query['Username'] = request.username
         req = open_api_util_models.OpenApiRequest(
@@ -2719,6 +2835,8 @@ class Client(OpenApiClient):
             query['Query'] = request.query
         if not DaraCore.is_null(request.search_model):
             query['SearchModel'] = request.search_model
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.top_k):
             query['TopK'] = request.top_k
         req = open_api_util_models.OpenApiRequest(
@@ -2763,6 +2881,8 @@ class Client(OpenApiClient):
             query['Query'] = request.query
         if not DaraCore.is_null(request.search_model):
             query['SearchModel'] = request.search_model
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.top_k):
             query['TopK'] = request.top_k
         req = open_api_util_models.OpenApiRequest(
@@ -2819,6 +2939,8 @@ class Client(OpenApiClient):
             query['ResultIndex'] = request.result_index_shrink
         if not DaraCore.is_null(request.result_mode):
             query['ResultMode'] = request.result_mode
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
         if not DaraCore.is_null(request.top_n):
@@ -2863,6 +2985,8 @@ class Client(OpenApiClient):
             query['ResultIndex'] = request.result_index_shrink
         if not DaraCore.is_null(request.result_mode):
             query['ResultMode'] = request.result_mode
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
         if not DaraCore.is_null(request.top_n):
@@ -2911,6 +3035,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.dataset_id):
             query['DatasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2941,6 +3067,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.dataset_id):
             query['DatasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -2985,6 +3113,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.embedding):
             query['Embedding'] = request.embedding
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3015,6 +3145,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.embedding):
             query['Embedding'] = request.embedding
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3059,6 +3191,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.dataset_id):
             query['DatasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3089,6 +3223,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.dataset_id):
             query['DatasetId'] = request.dataset_id
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3131,6 +3267,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3159,6 +3297,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3205,6 +3345,8 @@ class Client(OpenApiClient):
             query['DatasetId'] = request.dataset_id
         if not DaraCore.is_null(request.oss_url):
             query['OssUrl'] = request.oss_url
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3237,6 +3379,8 @@ class Client(OpenApiClient):
             query['DatasetId'] = request.dataset_id
         if not DaraCore.is_null(request.oss_url):
             query['OssUrl'] = request.oss_url
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3279,6 +3423,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_util_models.OpenApiRequest(
@@ -3309,6 +3455,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_util_models.OpenApiRequest(
@@ -3355,6 +3503,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.password):
             query['Password'] = request.password
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.username):
             query['Username'] = request.username
         req = open_api_util_models.OpenApiRequest(
@@ -3387,6 +3537,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.password):
             query['Password'] = request.password
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.username):
             query['Username'] = request.username
         req = open_api_util_models.OpenApiRequest(
@@ -3437,6 +3589,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3471,6 +3625,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3517,6 +3673,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3549,6 +3707,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3591,6 +3751,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3619,6 +3781,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3667,6 +3831,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3701,6 +3867,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3743,6 +3911,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3771,6 +3941,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3817,6 +3989,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3849,6 +4023,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3905,6 +4081,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3947,6 +4125,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -3993,6 +4173,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_util_models.OpenApiRequest(
@@ -4027,6 +4209,8 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.task_id):
             query['TaskId'] = request.task_id
         req = open_api_util_models.OpenApiRequest(
@@ -4077,6 +4261,8 @@ class Client(OpenApiClient):
             query['DatasetId'] = request.dataset_id
         if not DaraCore.is_null(request.dataset_name):
             query['DatasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4111,6 +4297,8 @@ class Client(OpenApiClient):
             query['DatasetId'] = request.dataset_id
         if not DaraCore.is_null(request.dataset_name):
             query['DatasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4159,6 +4347,8 @@ class Client(OpenApiClient):
             query['DatasetId'] = request.dataset_id
         if not DaraCore.is_null(request.dataset_name):
             query['DatasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4193,6 +4383,8 @@ class Client(OpenApiClient):
             query['DatasetId'] = request.dataset_id
         if not DaraCore.is_null(request.dataset_name):
             query['DatasetName'] = request.dataset_name
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4239,6 +4431,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.white_list_shrink):
             query['WhiteList'] = request.white_list_shrink
         req = open_api_util_models.OpenApiRequest(
@@ -4273,6 +4467,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         if not DaraCore.is_null(request.white_list_shrink):
             query['WhiteList'] = request.white_list_shrink
         req = open_api_util_models.OpenApiRequest(
@@ -4321,6 +4517,8 @@ class Client(OpenApiClient):
             query['DatasetId'] = request.dataset_id
         if not DaraCore.is_null(request.oss_url):
             query['OssUrl'] = request.oss_url
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4353,6 +4551,8 @@ class Client(OpenApiClient):
             query['DatasetId'] = request.dataset_id
         if not DaraCore.is_null(request.oss_url):
             query['OssUrl'] = request.oss_url
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4401,6 +4601,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.dbname):
             query['DBName'] = request.dbname
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4435,6 +4637,8 @@ class Client(OpenApiClient):
             query['DBClusterId'] = request.dbcluster_id
         if not DaraCore.is_null(request.dbname):
             query['DBName'] = request.dbname
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4481,6 +4685,8 @@ class Client(OpenApiClient):
             query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -4513,6 +4719,8 @@ class Client(OpenApiClient):
             query['AuthType'] = request.auth_type
         if not DaraCore.is_null(request.dbcluster_id):
             query['DBClusterId'] = request.dbcluster_id
+        if not DaraCore.is_null(request.source_region_id):
+            query['SourceRegionId'] = request.source_region_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

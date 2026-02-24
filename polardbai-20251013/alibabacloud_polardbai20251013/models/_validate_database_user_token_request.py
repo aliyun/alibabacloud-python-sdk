@@ -11,6 +11,7 @@ class ValidateDatabaseUserTokenRequest(DaraModel):
         auth_type: str = None,
         dbcluster_id: str = None,
         dbname: str = None,
+        source_region_id: str = None,
     ):
         # This parameter is required.
         self.auth_message = auth_message
@@ -20,6 +21,7 @@ class ValidateDatabaseUserTokenRequest(DaraModel):
         self.dbcluster_id = dbcluster_id
         # This parameter is required.
         self.dbname = dbname
+        self.source_region_id = source_region_id
 
     def validate(self):
         pass
@@ -41,6 +43,9 @@ class ValidateDatabaseUserTokenRequest(DaraModel):
         if self.dbname is not None:
             result['DBName'] = self.dbname
 
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -56,6 +61,9 @@ class ValidateDatabaseUserTokenRequest(DaraModel):
 
         if m.get('DBName') is not None:
             self.dbname = m.get('DBName')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         return self
 

@@ -9,12 +9,14 @@ class GetUserTokenRequest(DaraModel):
         self,
         dbcluster_id: str = None,
         password: str = None,
+        source_region_id: str = None,
         username: str = None,
     ):
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # This parameter is required.
         self.password = password
+        self.source_region_id = source_region_id
         # This parameter is required.
         self.username = username
 
@@ -32,6 +34,9 @@ class GetUserTokenRequest(DaraModel):
         if self.password is not None:
             result['Password'] = self.password
 
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+
         if self.username is not None:
             result['Username'] = self.username
 
@@ -44,6 +49,9 @@ class GetUserTokenRequest(DaraModel):
 
         if m.get('Password') is not None:
             self.password = m.get('Password')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         if m.get('Username') is not None:
             self.username = m.get('Username')

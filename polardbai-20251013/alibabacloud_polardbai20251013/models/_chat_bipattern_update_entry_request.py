@@ -16,6 +16,7 @@ class ChatBIPatternUpdateEntryRequest(DaraModel):
         pattern_params: str = None,
         pattern_question: str = None,
         pattern_sql: str = None,
+        source_region_id: str = None,
         table_name: str = None,
     ):
         self.auth_message = auth_message
@@ -33,6 +34,7 @@ class ChatBIPatternUpdateEntryRequest(DaraModel):
         self.pattern_question = pattern_question
         # This parameter is required.
         self.pattern_sql = pattern_sql
+        self.source_region_id = source_region_id
         # This parameter is required.
         self.table_name = table_name
 
@@ -71,6 +73,9 @@ class ChatBIPatternUpdateEntryRequest(DaraModel):
         if self.pattern_sql is not None:
             result['PatternSql'] = self.pattern_sql
 
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+
         if self.table_name is not None:
             result['TableName'] = self.table_name
 
@@ -104,6 +109,9 @@ class ChatBIPatternUpdateEntryRequest(DaraModel):
 
         if m.get('PatternSql') is not None:
             self.pattern_sql = m.get('PatternSql')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')

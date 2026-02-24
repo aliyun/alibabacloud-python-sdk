@@ -11,6 +11,7 @@ class CreateMultimodalDatasetEmbeddingRequest(DaraModel):
         dataset_id: str = None,
         model: str = None,
         model_mode: str = None,
+        source_region_id: str = None,
     ):
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
@@ -18,6 +19,7 @@ class CreateMultimodalDatasetEmbeddingRequest(DaraModel):
         self.dataset_id = dataset_id
         self.model = model
         self.model_mode = model_mode
+        self.source_region_id = source_region_id
 
     def validate(self):
         pass
@@ -39,6 +41,9 @@ class CreateMultimodalDatasetEmbeddingRequest(DaraModel):
         if self.model_mode is not None:
             result['ModelMode'] = self.model_mode
 
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -54,6 +59,9 @@ class CreateMultimodalDatasetEmbeddingRequest(DaraModel):
 
         if m.get('ModelMode') is not None:
             self.model_mode = m.get('ModelMode')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         return self
 

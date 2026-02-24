@@ -18,6 +18,7 @@ class ChatBIPredictSseShrinkRequest(DaraModel):
         question: str = None,
         schema_index_table_name: str = None,
         select_data: bool = None,
+        source_region_id: str = None,
         thinking_mode: bool = None,
     ):
         self.auth_message = auth_message
@@ -34,6 +35,7 @@ class ChatBIPredictSseShrinkRequest(DaraModel):
         self.question = question
         self.schema_index_table_name = schema_index_table_name
         self.select_data = select_data
+        self.source_region_id = source_region_id
         self.thinking_mode = thinking_mode
 
     def validate(self):
@@ -77,6 +79,9 @@ class ChatBIPredictSseShrinkRequest(DaraModel):
         if self.select_data is not None:
             result['SelectData'] = self.select_data
 
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+
         if self.thinking_mode is not None:
             result['ThinkingMode'] = self.thinking_mode
 
@@ -116,6 +121,9 @@ class ChatBIPredictSseShrinkRequest(DaraModel):
 
         if m.get('SelectData') is not None:
             self.select_data = m.get('SelectData')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         if m.get('ThinkingMode') is not None:
             self.thinking_mode = m.get('ThinkingMode')

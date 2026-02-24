@@ -14,6 +14,7 @@ class ChatBISchemaIndexQueryTablesRequest(DaraModel):
         instance_name: str = None,
         page_number: str = None,
         page_size: str = None,
+        source_region_id: str = None,
     ):
         self.auth_message = auth_message
         self.auth_type = auth_type
@@ -24,6 +25,7 @@ class ChatBISchemaIndexQueryTablesRequest(DaraModel):
         self.instance_name = instance_name
         self.page_number = page_number
         self.page_size = page_size
+        self.source_region_id = source_region_id
 
     def validate(self):
         pass
@@ -54,6 +56,9 @@ class ChatBISchemaIndexQueryTablesRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -78,6 +83,9 @@ class ChatBISchemaIndexQueryTablesRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         return self
 

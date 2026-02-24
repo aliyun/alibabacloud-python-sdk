@@ -12,6 +12,7 @@ class ChatBIPatternIndexCreateRequest(DaraModel):
         db_name: str = None,
         instance_name: str = None,
         pattern_table_name: str = None,
+        source_region_id: str = None,
         table_name_suffix: str = None,
     ):
         self.auth_message = auth_message
@@ -21,6 +22,7 @@ class ChatBIPatternIndexCreateRequest(DaraModel):
         # This parameter is required.
         self.instance_name = instance_name
         self.pattern_table_name = pattern_table_name
+        self.source_region_id = source_region_id
         self.table_name_suffix = table_name_suffix
 
     def validate(self):
@@ -46,6 +48,9 @@ class ChatBIPatternIndexCreateRequest(DaraModel):
         if self.pattern_table_name is not None:
             result['PatternTableName'] = self.pattern_table_name
 
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+
         if self.table_name_suffix is not None:
             result['TableNameSuffix'] = self.table_name_suffix
 
@@ -67,6 +72,9 @@ class ChatBIPatternIndexCreateRequest(DaraModel):
 
         if m.get('PatternTableName') is not None:
             self.pattern_table_name = m.get('PatternTableName')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         if m.get('TableNameSuffix') is not None:
             self.table_name_suffix = m.get('TableNameSuffix')

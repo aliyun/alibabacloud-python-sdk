@@ -15,6 +15,7 @@ class ChatBIConfigUpdateEntryRequest(DaraModel):
         instance_name: str = None,
         is_functional: int = None,
         query_function: str = None,
+        source_region_id: str = None,
         sql_condition: str = None,
         sql_function: str = None,
         text_condition: str = None,
@@ -31,6 +32,7 @@ class ChatBIConfigUpdateEntryRequest(DaraModel):
         self.is_functional = is_functional
         # This parameter is required.
         self.query_function = query_function
+        self.source_region_id = source_region_id
         # This parameter is required.
         self.sql_condition = sql_condition
         # This parameter is required.
@@ -70,6 +72,9 @@ class ChatBIConfigUpdateEntryRequest(DaraModel):
         if self.query_function is not None:
             result['QueryFunction'] = self.query_function
 
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+
         if self.sql_condition is not None:
             result['SqlCondition'] = self.sql_condition
 
@@ -106,6 +111,9 @@ class ChatBIConfigUpdateEntryRequest(DaraModel):
 
         if m.get('QueryFunction') is not None:
             self.query_function = m.get('QueryFunction')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         if m.get('SqlCondition') is not None:
             self.sql_condition = m.get('SqlCondition')

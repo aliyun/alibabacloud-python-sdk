@@ -9,11 +9,13 @@ class DeleteMultimodalEmbeddingRequest(DaraModel):
         self,
         dbcluster_id: str = None,
         embedding: str = None,
+        source_region_id: str = None,
     ):
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         # This parameter is required.
         self.embedding = embedding
+        self.source_region_id = source_region_id
 
     def validate(self):
         pass
@@ -29,6 +31,9 @@ class DeleteMultimodalEmbeddingRequest(DaraModel):
         if self.embedding is not None:
             result['Embedding'] = self.embedding
 
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -38,6 +43,9 @@ class DeleteMultimodalEmbeddingRequest(DaraModel):
 
         if m.get('Embedding') is not None:
             self.embedding = m.get('Embedding')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         return self
 

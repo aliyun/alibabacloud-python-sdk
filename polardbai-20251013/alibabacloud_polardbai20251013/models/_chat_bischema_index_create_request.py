@@ -12,6 +12,7 @@ class ChatBISchemaIndexCreateRequest(DaraModel):
         columns_excluded: str = None,
         db_name: str = None,
         instance_name: str = None,
+        source_region_id: str = None,
         table_name_suffix: str = None,
         tables_included: str = None,
         to_sample: int = None,
@@ -23,6 +24,7 @@ class ChatBISchemaIndexCreateRequest(DaraModel):
         self.db_name = db_name
         # This parameter is required.
         self.instance_name = instance_name
+        self.source_region_id = source_region_id
         self.table_name_suffix = table_name_suffix
         self.tables_included = tables_included
         self.to_sample = to_sample
@@ -49,6 +51,9 @@ class ChatBISchemaIndexCreateRequest(DaraModel):
 
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
+
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
 
         if self.table_name_suffix is not None:
             result['TableNameSuffix'] = self.table_name_suffix
@@ -77,6 +82,9 @@ class ChatBISchemaIndexCreateRequest(DaraModel):
 
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         if m.get('TableNameSuffix') is not None:
             self.table_name_suffix = m.get('TableNameSuffix')

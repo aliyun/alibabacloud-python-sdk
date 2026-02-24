@@ -12,6 +12,7 @@ class CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest(DaraModel):
         dataset_name: str = None,
         result_index_shrink: str = None,
         result_mode: str = None,
+        source_region_id: str = None,
         task_id: str = None,
         top_n: int = None,
     ):
@@ -21,6 +22,7 @@ class CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest(DaraModel):
         self.dataset_name = dataset_name
         self.result_index_shrink = result_index_shrink
         self.result_mode = result_mode
+        self.source_region_id = source_region_id
         # This parameter is required.
         self.task_id = task_id
         self.top_n = top_n
@@ -48,6 +50,9 @@ class CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest(DaraModel):
         if self.result_mode is not None:
             result['ResultMode'] = self.result_mode
 
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+
         if self.task_id is not None:
             result['TaskId'] = self.task_id
 
@@ -72,6 +77,9 @@ class CreateMultimodalSearchTaskResultFineTuneDatasetShrinkRequest(DaraModel):
 
         if m.get('ResultMode') is not None:
             self.result_mode = m.get('ResultMode')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         if m.get('TaskId') is not None:
             self.task_id = m.get('TaskId')

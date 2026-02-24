@@ -10,11 +10,13 @@ class DeleteOSSMultimodalFineTuneDatasetRequest(DaraModel):
         dbcluster_id: str = None,
         dataset_id: str = None,
         oss_url: str = None,
+        source_region_id: str = None,
     ):
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.dataset_id = dataset_id
         self.oss_url = oss_url
+        self.source_region_id = source_region_id
 
     def validate(self):
         pass
@@ -33,6 +35,9 @@ class DeleteOSSMultimodalFineTuneDatasetRequest(DaraModel):
         if self.oss_url is not None:
             result['OssUrl'] = self.oss_url
 
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -45,6 +50,9 @@ class DeleteOSSMultimodalFineTuneDatasetRequest(DaraModel):
 
         if m.get('OssUrl') is not None:
             self.oss_url = m.get('OssUrl')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         return self
 

@@ -13,6 +13,7 @@ class CreateMultimodalSearchTaskShrinkRequest(DaraModel):
         model_mode: str = None,
         query: str = None,
         search_model: str = None,
+        source_region_id: str = None,
         top_k: int = None,
     ):
         # This parameter is required.
@@ -22,6 +23,7 @@ class CreateMultimodalSearchTaskShrinkRequest(DaraModel):
         self.model_mode = model_mode
         self.query = query
         self.search_model = search_model
+        self.source_region_id = source_region_id
         self.top_k = top_k
 
     def validate(self):
@@ -50,6 +52,9 @@ class CreateMultimodalSearchTaskShrinkRequest(DaraModel):
         if self.search_model is not None:
             result['SearchModel'] = self.search_model
 
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+
         if self.top_k is not None:
             result['TopK'] = self.top_k
 
@@ -74,6 +79,9 @@ class CreateMultimodalSearchTaskShrinkRequest(DaraModel):
 
         if m.get('SearchModel') is not None:
             self.search_model = m.get('SearchModel')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         if m.get('TopK') is not None:
             self.top_k = m.get('TopK')

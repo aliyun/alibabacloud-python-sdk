@@ -11,6 +11,7 @@ class ChatBIUpdateTableValidationColumnsRequest(DaraModel):
         auth_type: str = None,
         db_name: str = None,
         instance_name: str = None,
+        source_region_id: str = None,
         table_name: str = None,
         table_type: str = None,
     ):
@@ -20,6 +21,7 @@ class ChatBIUpdateTableValidationColumnsRequest(DaraModel):
         self.db_name = db_name
         # This parameter is required.
         self.instance_name = instance_name
+        self.source_region_id = source_region_id
         # This parameter is required.
         self.table_name = table_name
         # This parameter is required.
@@ -45,6 +47,9 @@ class ChatBIUpdateTableValidationColumnsRequest(DaraModel):
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+
         if self.table_name is not None:
             result['TableName'] = self.table_name
 
@@ -66,6 +71,9 @@ class ChatBIUpdateTableValidationColumnsRequest(DaraModel):
 
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')

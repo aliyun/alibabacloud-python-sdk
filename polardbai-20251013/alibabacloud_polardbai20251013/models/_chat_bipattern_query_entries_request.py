@@ -14,6 +14,7 @@ class ChatBIPatternQueryEntriesRequest(DaraModel):
         instance_name: str = None,
         page_number: int = None,
         page_size: int = None,
+        source_region_id: str = None,
         table_name: str = None,
     ):
         self.auth_message = auth_message
@@ -25,6 +26,7 @@ class ChatBIPatternQueryEntriesRequest(DaraModel):
         self.instance_name = instance_name
         self.page_number = page_number
         self.page_size = page_size
+        self.source_region_id = source_region_id
         # This parameter is required.
         self.table_name = table_name
 
@@ -57,6 +59,9 @@ class ChatBIPatternQueryEntriesRequest(DaraModel):
         if self.page_size is not None:
             result['PageSize'] = self.page_size
 
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+
         if self.table_name is not None:
             result['TableName'] = self.table_name
 
@@ -84,6 +89,9 @@ class ChatBIPatternQueryEntriesRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         if m.get('TableName') is not None:
             self.table_name = m.get('TableName')

@@ -11,12 +11,14 @@ class UpdateMultimodalDatasetRequest(DaraModel):
         dataset_description: str = None,
         dataset_id: str = None,
         dataset_name: str = None,
+        source_region_id: str = None,
     ):
         # This parameter is required.
         self.dbcluster_id = dbcluster_id
         self.dataset_description = dataset_description
         self.dataset_id = dataset_id
         self.dataset_name = dataset_name
+        self.source_region_id = source_region_id
 
     def validate(self):
         pass
@@ -38,6 +40,9 @@ class UpdateMultimodalDatasetRequest(DaraModel):
         if self.dataset_name is not None:
             result['DatasetName'] = self.dataset_name
 
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -53,6 +58,9 @@ class UpdateMultimodalDatasetRequest(DaraModel):
 
         if m.get('DatasetName') is not None:
             self.dataset_name = m.get('DatasetName')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         return self
 

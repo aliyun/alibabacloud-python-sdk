@@ -11,6 +11,7 @@ class ChatBIConfigCreateRequest(DaraModel):
         auth_type: str = None,
         db_name: str = None,
         instance_name: str = None,
+        source_region_id: str = None,
     ):
         self.auth_message = auth_message
         self.auth_type = auth_type
@@ -18,6 +19,7 @@ class ChatBIConfigCreateRequest(DaraModel):
         self.db_name = db_name
         # This parameter is required.
         self.instance_name = instance_name
+        self.source_region_id = source_region_id
 
     def validate(self):
         pass
@@ -39,6 +41,9 @@ class ChatBIConfigCreateRequest(DaraModel):
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -54,6 +59,9 @@ class ChatBIConfigCreateRequest(DaraModel):
 
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         return self
 

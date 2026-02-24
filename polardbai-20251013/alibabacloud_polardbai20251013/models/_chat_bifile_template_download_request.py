@@ -10,12 +10,14 @@ class ChatBIFileTemplateDownloadRequest(DaraModel):
         auth_message: str = None,
         auth_type: str = None,
         instance_name: str = None,
+        source_region_id: str = None,
         table_type: str = None,
     ):
         self.auth_message = auth_message
         self.auth_type = auth_type
         # This parameter is required.
         self.instance_name = instance_name
+        self.source_region_id = source_region_id
         # This parameter is required.
         self.table_type = table_type
 
@@ -36,6 +38,9 @@ class ChatBIFileTemplateDownloadRequest(DaraModel):
         if self.instance_name is not None:
             result['InstanceName'] = self.instance_name
 
+        if self.source_region_id is not None:
+            result['SourceRegionId'] = self.source_region_id
+
         if self.table_type is not None:
             result['TableType'] = self.table_type
 
@@ -51,6 +56,9 @@ class ChatBIFileTemplateDownloadRequest(DaraModel):
 
         if m.get('InstanceName') is not None:
             self.instance_name = m.get('InstanceName')
+
+        if m.get('SourceRegionId') is not None:
+            self.source_region_id = m.get('SourceRegionId')
 
         if m.get('TableType') is not None:
             self.table_type = m.get('TableType')

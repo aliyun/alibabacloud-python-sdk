@@ -1,3 +1,57 @@
+2026-02-24 Version: 1.3.1
+- Update API AddOSSMultimodalFineTuneDataset: add request parameters SourceRegionId.
+- Update API ChatBIConfigCreate: add request parameters SourceRegionId.
+- Update API ChatBIConfigDelete: add request parameters SourceRegionId.
+- Update API ChatBIConfigDeleteEntry: add request parameters SourceRegionId.
+- Update API ChatBIConfigQueryEntries: add request parameters SourceRegionId.
+- Update API ChatBIConfigQueryTables: add request parameters SourceRegionId.
+- Update API ChatBIConfigUpdateEntry: add request parameters SourceRegionId.
+- Update API ChatBIFileTemplateDownload: add request parameters SourceRegionId.
+- Update API ChatBIFileUpload: add request parameters SourceRegionId.
+- Update API ChatBIFileUploadCallback: add request parameters SourceRegionId.
+- Update API ChatBIPatternCreate: add request parameters SourceRegionId.
+- Update API ChatBIPatternDelete: add request parameters SourceRegionId.
+- Update API ChatBIPatternDeleteEntry: add request parameters SourceRegionId.
+- Update API ChatBIPatternIndexCreate: add request parameters SourceRegionId.
+- Update API ChatBIPatternIndexDelete: add request parameters SourceRegionId.
+- Update API ChatBIPatternIndexQueryTables: add request parameters SourceRegionId.
+- Update API ChatBIPatternQueryEntries: add request parameters SourceRegionId.
+- Update API ChatBIPatternQueryTables: add request parameters SourceRegionId.
+- Update API ChatBIPatternUpdateEntry: add request parameters SourceRegionId.
+- Update API ChatBIPredictSse: add request parameters SourceRegionId.
+- Update API ChatBISchemaIndexCreate: add request parameters SourceRegionId.
+- Update API ChatBISchemaIndexDelete: add request parameters SourceRegionId.
+- Update API ChatBISchemaIndexQueryTables: add request parameters SourceRegionId.
+- Update API ChatBIUpdateTableValidationColumns: add request parameters SourceRegionId.
+- Update API CreateMultimodalDataset: add request parameters SourceRegionId.
+- Update API CreateMultimodalDatasetEmbedding: add request parameters SourceRegionId.
+- Update API CreateMultimodalFineTuneDataset: add request parameters SourceRegionId.
+- Update API CreateMultimodalLabelStudioService: add request parameters SourceRegionId.
+- Update API CreateMultimodalSearchTask: add request parameters SourceRegionId.
+- Update API CreateMultimodalSearchTaskResultFineTuneDataset: add request parameters SourceRegionId.
+- Update API DeleteMultimodalDataset: add request parameters SourceRegionId.
+- Update API DeleteMultimodalEmbedding: add request parameters SourceRegionId.
+- Update API DeleteMultimodalFineTuneDataset: add request parameters SourceRegionId.
+- Update API DeleteMultimodalLabelStudioService: add request parameters SourceRegionId.
+- Update API DeleteOSSMultimodalFineTuneDataset: add request parameters SourceRegionId.
+- Update API DownloadMultimodalSearchTaskResultMetadata: add request parameters SourceRegionId.
+- Update API GetUserToken: add request parameters SourceRegionId.
+- Update API ListMultimodalDataset: add request parameters SourceRegionId.
+- Update API ListMultimodalEmbeddingModel: add request parameters SourceRegionId.
+- Update API ListMultimodalEmbeddingModelMode: add request parameters SourceRegionId.
+- Update API ListMultimodalFineTuneDataset: add request parameters SourceRegionId.
+- Update API ListMultimodalLabelStudioService: add request parameters SourceRegionId.
+- Update API ListMultimodalSearchModel: add request parameters SourceRegionId.
+- Update API ListMultimodalSearchTask: add request parameters SourceRegionId.
+- Update API ListMultimodalSearchTaskResult: add request parameters SourceRegionId.
+- Update API UpdateMultimodalDataset: add request parameters SourceRegionId.
+- Update API UpdateMultimodalFineTuneDataset: add request parameters SourceRegionId.
+- Update API UpdateMultimodalLabelStudioServiceWhiteList: add request parameters SourceRegionId.
+- Update API UploadOSSMultimodalDataset: add request parameters SourceRegionId.
+- Update API ValidateDatabaseUserToken: add request parameters SourceRegionId.
+- Update API ValidateUserToken: add request parameters SourceRegionId.
+
+
 2026-02-10 Version: 1.3.0
 - Support API AddOSSMultimodalFineTuneDataset.
 - Support API CreateMultimodalFineTuneDataset.
