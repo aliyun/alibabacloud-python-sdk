@@ -13,8 +13,9 @@ class ListRecommendManagedRulesResponseBody(DaraModel):
         recommended_managed_rules: main_models.ListRecommendManagedRulesResponseBodyRecommendedManagedRules = None,
         request_id: str = None,
     ):
+        # The list of rules.
         self.recommended_managed_rules = recommended_managed_rules
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,9 +54,15 @@ class ListRecommendManagedRulesResponseBodyRecommendedManagedRules(DaraModel):
         recommended_managed_rule_list: List[main_models.ListRecommendManagedRulesResponseBodyRecommendedManagedRulesRecommendedManagedRuleList] = None,
         total_count: int = None,
     ):
+        # The maximum number of entries returned for the request.
         self.max_results = max_results
+        # The token that is used to initiate the next query.
+        # 
+        # > If this parameter is left empty, no more results are returned.
         self.next_token = next_token
+        # The list of managed rules.
         self.recommended_managed_rule_list = recommended_managed_rule_list
+        # The total number of rules.
         self.total_count = total_count
 
     def validate(self):
@@ -112,9 +119,13 @@ class ListRecommendManagedRulesResponseBodyRecommendedManagedRulesRecommendedMan
         identifier: str = None,
         resource_type_scope: str = None,
     ):
+        # The rule name.
         self.config_rule_name = config_rule_name
+        # The description of the managed rule.
         self.description = description
+        # The rule identifier.
         self.identifier = identifier
+        # The resource type.
         self.resource_type_scope = resource_type_scope
 
     def validate(self):

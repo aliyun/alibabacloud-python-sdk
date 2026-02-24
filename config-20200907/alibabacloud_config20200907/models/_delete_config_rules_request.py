@@ -9,10 +9,6 @@ class DeleteConfigRulesRequest(DaraModel):
         self,
         config_rule_ids: str = None,
     ):
-        # The rule IDs. Separate multiple rule IDs with commas (,).
-        # 
-        # For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/609222.html).
-        # 
         # This parameter is required.
         self.config_rule_ids = config_rule_ids
 

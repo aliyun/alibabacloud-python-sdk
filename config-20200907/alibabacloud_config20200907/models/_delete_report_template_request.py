@@ -9,6 +9,8 @@ class DeleteReportTemplateRequest(DaraModel):
         self,
         report_template_id: str = None,
     ):
+        # The ID of the report template.
+        # 
         # This parameter is required.
         self.report_template_id = report_template_id
 

@@ -29,48 +29,57 @@ class ListAggregateConfigRulesRequest(DaraModel):
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # The compliance package ID.
+        # The ID of the compliance package.
         self.compliance_pack_id = compliance_pack_id
         # The compliance evaluation result. Valid values:
         # 
-        # *   COMPLIANT: The resources are evaluated as compliant.
-        # *   NON_COMPLIANT: The resources are evaluated as non-compliant.
-        # *   NOT_APPLICABLE: The rule does not apply to the resources.
-        # *   INSUFFICIENT_DATA: No data is available.
+        # - COMPLIANT: The resource is compliant.
+        # 
+        # - NON_COMPLIANT: The resource is non-compliant.
+        # 
+        # - NOT_APPLICABLE: The rule does not apply to the resource.
+        # 
+        # - INSUFFICIENT_DATA: No data is available.
         self.compliance_type = compliance_type
         # The name of the rule.
         self.config_rule_name = config_rule_name
-        # The status of the rule. Valid values:
+        # The state of the rule. Valid values:
         # 
-        # *   ACTIVE: The rule is being used to monitor resource configurations.
-        # *   DELETING: The rule is being deleted.
-        # *   EVALUATING: The rule is triggered and is being used to monitor resource configurations.
-        # *   INACTIVE: The rule is disabled.
+        # - ACTIVE: The rule is enabled.
+        # 
+        # - DELETING: The rule is being deleted.
+        # 
+        # - EVALUATING: The rule is being evaluated.
+        # 
+        # - INACTIVE: The rule is disabled.
         self.config_rule_state = config_rule_state
-        # The keyword that is used for queries.
+        # The keyword for a fuzzy query.
         # 
-        # You can perform a fuzzy search by rule ID, rule name, rule description, or managed rule ID.
+        # The keyword can be a rule ID, rule name, rule description, or rule template identifier.
         self.keyword = keyword
         # The page number.
         # 
-        # Pages start from page 1. Default value: 1
+        # Pages start from page 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page.
         # 
-        # Valid values: 1 to 100. Minimum value: 1. Default value: 10
+        # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # Resource type for the rule to evaluate.
+        # The resource type to be evaluated by the rule.
         self.resource_types = resource_types
-        # The risk level of the resources that do not comply with the rule. Valid values:
+        # The risk level of the rule. Valid values:
         # 
-        # *   1: high
-        # *   2: medium
-        # *   3: low
+        # - 1: high
+        # 
+        # - 2: medium
+        # 
+        # - 3: low
         self.risk_level = risk_level
+        # The method that is used to sort the rules. By default, this parameter is not specified. Set the value to `CreateDate-Desc` to sort the rules in descending order of their creation time.
         self.sort_by = sort_by
         # The tags of the resource.
         # 
-        # You can add up to 20 tags to a resource.
+        # You can add a maximum of 20 tags.
         self.tag = tag
 
     def validate(self):
@@ -173,15 +182,13 @@ class ListAggregateConfigRulesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # The key of a resource tag.
         # 
-        # The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
-        # 
-        # You can specify at most 20 tag keys.
+        # You can add a maximum of 20 tag keys.
         self.key = key
-        # The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
+        # The value of a resource tag.
         # 
-        # The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. The tag value cannot contain `http://` or `https://`.
+        # You can add a maximum of 20 tag values.
         self.value = value
 
     def validate(self):

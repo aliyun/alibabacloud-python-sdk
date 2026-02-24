@@ -10,11 +10,8 @@ class GetAggregateResourceComplianceGroupByRegionRequest(DaraModel):
         aggregator_id: str = None,
         config_rule_ids: str = None,
     ):
-        # The ID of the account group.
-        # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # The rule IDs. Separate multiple rule IDs with commas (,).
         self.config_rule_ids = config_rule_ids
 
     def validate(self):

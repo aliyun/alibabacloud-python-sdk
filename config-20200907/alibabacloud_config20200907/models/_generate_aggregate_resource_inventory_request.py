@@ -13,20 +13,11 @@ class GenerateAggregateResourceInventoryRequest(DaraModel):
         resource_deleted: int = None,
         resource_types: str = None,
     ):
-        # The IDs of member accounts in the account group. Separate multiple member account IDs with commas (,).
         self.account_ids = account_ids
-        # The ID of the account group.
-        # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # The IDs of the regions to which the resources belong. Separate multiple region IDs with commas (,).
         self.regions = regions
-        # Indicates whether the resource is deleted. Valid values:
-        # 
-        # *   1 (default): The resource is retained.
-        # *   0: The resource is deleted.
         self.resource_deleted = resource_deleted
-        # The resource types. Separate multiple resource types with commas (,).
         self.resource_types = resource_types
 
     def validate(self):

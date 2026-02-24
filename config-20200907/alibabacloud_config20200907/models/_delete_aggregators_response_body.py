@@ -13,9 +13,7 @@ class DeleteAggregatorsResponseBody(DaraModel):
         operate_aggregators_result: main_models.DeleteAggregatorsResponseBodyOperateAggregatorsResult = None,
         request_id: str = None,
     ):
-        # The returned result.
         self.operate_aggregators_result = operate_aggregators_result
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,7 +49,6 @@ class DeleteAggregatorsResponseBodyOperateAggregatorsResult(DaraModel):
         self,
         operate_aggregators: List[main_models.DeleteAggregatorsResponseBodyOperateAggregatorsResultOperateAggregators] = None,
     ):
-        # The details of the account group.
         self.operate_aggregators = operate_aggregators
 
     def validate(self):
@@ -89,16 +86,8 @@ class DeleteAggregatorsResponseBodyOperateAggregatorsResultOperateAggregators(Da
         error_code: str = None,
         success: bool = None,
     ):
-        # The ID of the account group.
         self.aggregator_id = aggregator_id
-        # The error code returned.
-        # 
-        # > No error code is returned for the account group if the account group is deleted.
         self.error_code = error_code
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
         self.success = success
 
     def validate(self):

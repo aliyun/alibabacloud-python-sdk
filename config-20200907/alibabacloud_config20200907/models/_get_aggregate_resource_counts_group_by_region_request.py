@@ -13,22 +13,11 @@ class GetAggregateResourceCountsGroupByRegionRequest(DaraModel):
         resource_owner_id: int = None,
         resource_type: str = None,
     ):
-        # The ID of the account group.
-        # 
-        # For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
-        # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # The ID of the folder in the resource directory. For more information about how to obtain the ID of a folder, see [View the basic information of a folder](https://help.aliyun.com/document_detail/111223.html).
         self.folder_id = folder_id
-        # The ID of the Alibaba Cloud account to which the resources in the account group belong.
-        # 
-        # > You can use either the ResourceAccountId or ResourceOwnerId parameter. We recommend that you use the ResourceAccountId parameter.
         self.resource_account_id = resource_account_id
         self.resource_owner_id = resource_owner_id
-        # The resource type.
-        # 
-        # For more information about how to obtain the type of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
         self.resource_type = resource_type
 
     def validate(self):

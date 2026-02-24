@@ -12,28 +12,10 @@ class UpdateIntegratedServiceStatusRequest(DaraModel):
         service_code: str = None,
         status: bool = None,
     ):
-        # The type of the event that is integrated across accounts. Valid values:
-        # 
-        # *   NonCompliantNotification: non-compliance event
         self.aggregator_delivery_data_type = aggregator_delivery_data_type
-        # The types of the integrated events. Separate multiple event types with commas (,). Valid values:
-        # 
-        # *   ConfigurationItemChangeNotification: resource change event
-        # *   NonCompliantNotification: non-compliance event
         self.integrated_types = integrated_types
-        # The identity of the cloud service that is integrated with Cloud Config. Valid values:
-        # 
-        # *   eventbridge: EventBridge
-        # *   cms: CloudMonitor
-        # *   bpstudio: Cloud Architect Design Tools
-        # 
         # This parameter is required.
         self.service_code = service_code
-        # Specifies whether you want the product to be integrated. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
         # This parameter is required.
         self.status = status
 

@@ -13,9 +13,9 @@ class ListCompliancePacksResponseBody(DaraModel):
         compliance_packs_result: main_models.ListCompliancePacksResponseBodyCompliancePacksResult = None,
         request_id: str = None,
     ):
-        # The compliance packages returned.
+        # The query results for the compliance packs.
         self.compliance_packs_result = compliance_packs_result
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListCompliancePacksResponseBodyCompliancePacksResult(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The compliance packages.
+        # A list of compliance packs.
         self.compliance_packs = compliance_packs
-        # The page number of the returned page.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries per page.
         self.page_size = page_size
-        # The total number of compliance packages returned.
+        # The total number of compliance packs.
         self.total_count = total_count
 
     def validate(self):
@@ -122,30 +122,33 @@ class ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacks(DaraMo
         status: str = None,
         tags: List[main_models.ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags] = None,
     ):
-        # The ID of the Alibaba Cloud account to which the compliance package belongs.
+        # The ID of the Alibaba Cloud account to which the compliance pack belongs.
         self.account_id = account_id
-        # The compliance package ID.
+        # The ID of the compliance pack.
         self.compliance_pack_id = compliance_pack_id
-        # The name of the compliance package.
+        # The name of the compliance pack.
         self.compliance_pack_name = compliance_pack_name
-        # The ID of the compliance package template.
+        # The ID of the compliance pack template.
         self.compliance_pack_template_id = compliance_pack_template_id
-        # The timestamp when the compliance package was created. Unit: milliseconds.
+        # The timestamp when the compliance pack was created. Unit: milliseconds.
         self.create_timestamp = create_timestamp
-        # The description of the compliance package.
+        # The description of the compliance pack.
         self.description = description
-        # The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
+        # The risk level of the compliance pack. Valid values:
         # 
-        # *   1: high
-        # *   2: medium
-        # *   3: low
+        # - 1: high risk.
+        # 
+        # - 2: medium risk.
+        # 
+        # - 3: low risk.
         self.risk_level = risk_level
-        # The status of the compliance package. Valid values:
+        # The status of the compliance pack. Valid values:
         # 
-        # *   ACTIVE: The compliance package is normal.
-        # *   CREATING: The compliance package is being created.
+        # - ACTIVE: The compliance pack is active.
+        # 
+        # - CREATING: The compliance pack is being created.
         self.status = status
-        # The tags.
+        # The tags of the resource.
         self.tags = tags
 
     def validate(self):
@@ -230,9 +233,9 @@ class ListCompliancePacksResponseBodyCompliancePacksResultCompliancePacksTags(Da
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # tag key
+        # The tag key.
         self.tag_key = tag_key
-        # tag value
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

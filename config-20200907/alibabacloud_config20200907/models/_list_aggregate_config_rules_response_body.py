@@ -13,9 +13,9 @@ class ListAggregateConfigRulesResponseBody(DaraModel):
         config_rules: main_models.ListAggregateConfigRulesResponseBodyConfigRules = None,
         request_id: str = None,
     ):
-        # The queried rules.
+        # The rules.
         self.config_rules = config_rules
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -54,11 +54,11 @@ class ListAggregateConfigRulesResponseBodyConfigRules(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The details of the rule.
+        # The details of the rules.
         self.config_rule_list = config_rule_list
-        # The number of the page returned.
+        # The page number.
         self.page_number = page_number
-        # The number of entries returned per page.
+        # The number of entries returned on each page.
         self.page_size = page_size
         # The total number of rules.
         self.total_count = total_count
@@ -128,47 +128,55 @@ class ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleList(DaraModel):
         source_owner: str = None,
         tags: List[main_models.ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListTags] = None,
     ):
-        # The ID of the management account to which the rules belong.
+        # The ID of the management account to which the rule belongs.
         self.account_id = account_id
-        # The type of the remediation template. Only OOS is returned, which indicates CloudOps Orchestration Service.
+        # The remediation type. The value is fixed to OOS, which indicates Operation Orchestration Service.
         self.automation_type = automation_type
         # The compliance evaluation result.
         self.compliance = compliance
         # The ARN of the rule.
         self.config_rule_arn = config_rule_arn
-        # The rule ID.
+        # The ID of the rule.
         self.config_rule_id = config_rule_id
         # The name of the rule.
         self.config_rule_name = config_rule_name
-        # The status of the rule. Valid values:
+        # The state of the rule. Valid values:
         # 
-        # *   ACTIVE: The rule is being used to monitor resource configurations.
-        # *   DELETING: The rule is being deleted.
-        # *   EVALUATING: The rule is triggered and is being used to monitor resource configurations.
-        # *   INACTIVE: The rule is disabled.
+        # - ACTIVE: The rule is enabled.
+        # 
+        # - DELETING: The rule is being deleted.
+        # 
+        # - EVALUATING: The rule is being evaluated.
+        # 
+        # - INACTIVE: The rule is disabled.
         self.config_rule_state = config_rule_state
-        # The information about the creation of the rule.
+        # The information about the creator of the rule.
         self.create_by = create_by
+        # The time when the rule was created. The time is displayed in UTC+8.
         self.create_date = create_date
         # The description of the rule.
         self.description = description
-        # The types of resources evaluated by the rule. Multiple resource types are separated with commas (,).
+        # The types of the resources that are evaluated by the rule. Multiple resource types are separated by commas (,).
         self.resource_types_scope = resource_types_scope
-        # The risk level of the resources that do not comply with the rule. Valid values:
+        # The risk level of the rule. Valid values:
         # 
-        # *   1: high
-        # *   2: medium
-        # *   3: low
+        # - 1: high
+        # 
+        # - 2: medium
+        # 
+        # - 3: low
         self.risk_level = risk_level
         # The identifier of the rule.
         # 
-        # *   If the rule is a managed rule, the value of this parameter is the name of the managed rule.
-        # *   If the rule is a custom rule, the value of this parameter is the Alibaba Cloud Resource Name (ARN) of a function.
-        self.source_identifier = source_identifier
-        # The type of the rule. Valid values:
+        # - If the rule is a managed rule, the value of this parameter is the identifier of the rule template.
         # 
-        # *   CUSTOM_FC: a custom rule.
-        # *   ALIYUN: a managed rule.
+        # - If the rule is a custom rule, the value of this parameter is the ARN of the function.
+        self.source_identifier = source_identifier
+        # The owner of the rule. Valid values:
+        # 
+        # - CUSTOM_FC: a custom rule.
+        # 
+        # - ALIYUN: a managed rule.
         self.source_owner = source_owner
         # The tags of the rule.
         self.tags = tags
@@ -297,9 +305,9 @@ class ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListTags(DaraMode
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the rule.
+        # The key of the tag.
         self.key = key
-        # The tag value of the rule.
+        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -339,19 +347,19 @@ class ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCreateBy(Dara
         creator_name: str = None,
         creator_type: str = None,
     ):
-        # The account group ID.
+        # The ID of the account group.
         self.aggregator_id = aggregator_id
         # The name of the account group.
         self.aggregator_name = aggregator_name
-        # The compliance package ID.
+        # The ID of the compliance package.
         self.compliance_pack_id = compliance_pack_id
         # The name of the compliance package.
         self.compliance_pack_name = compliance_pack_name
         # The ID of the management account that created the rule.
         self.creator_id = creator_id
-        # The name of the management account that create the rule.
+        # The name of the management account that created the rule.
         self.creator_name = creator_name
-        # The type of the creator of the rule. The value is fixed to AGGREGATOR, which indicates an account group.
+        # The type of the creator. The value is fixed to AGGREGATOR.
         self.creator_type = creator_type
 
     def validate(self):
@@ -416,14 +424,17 @@ class ListAggregateConfigRulesResponseBodyConfigRulesConfigRuleListCompliance(Da
         compliance_type: str = None,
         count: int = None,
     ):
-        # The compliance evaluation result. Valid values:
+        # The summary of the compliance evaluation result. Valid values:
         # 
-        # *   COMPLIANT: The resources are evaluated as compliant.
-        # *   NON_COMPLIANT: The resources are evaluated as non-compliant.
-        # *   NOT_APPLICABLE: The rule does not apply to the resources.
-        # *   INSUFFICIENT_DATA: No data is available.
+        # - COMPLIANT: The resource is compliant.
+        # 
+        # - NON_COMPLIANT: The resource is non-compliant.
+        # 
+        # - NOT_APPLICABLE: The rule does not apply to the resource.
+        # 
+        # - INSUFFICIENT_DATA: No data is available.
         self.compliance_type = compliance_type
-        # The number of evaluation resources that correspond to the summary result of the rule compliance evaluation.
+        # The number of resources that are evaluated based on the summary of the compliance evaluation.
         self.count = count
 
     def validate(self):

@@ -13,9 +13,9 @@ class ListAggregateResourceEvaluationResultsResponseBody(DaraModel):
         evaluation_results: main_models.ListAggregateResourceEvaluationResultsResponseBodyEvaluationResults = None,
         request_id: str = None,
     ):
-        # The information about the compliance evaluation results returned.
+        # The evaluation results of the resources.
         self.evaluation_results = evaluation_results
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,11 +53,11 @@ class ListAggregateResourceEvaluationResultsResponseBodyEvaluationResults(DaraMo
         max_results: int = None,
         next_token: str = None,
     ):
-        # The details of the compliance evaluation result.
+        # A list of resource evaluation results.
         self.evaluation_result_list = evaluation_result_list
-        # The maximum number of entries returned on each page.
+        # The maximum number of entries returned per page.
         self.max_results = max_results
-        # The token that was used to initiate the next request.
+        # The token that is used to retrieve the next page of results.
         self.next_token = next_token
 
     def validate(self):
@@ -114,39 +114,49 @@ class ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluat
         result_recorded_timestamp: int = None,
         risk_level: int = None,
     ):
-        # The annotation to the resource that is evaluated as incompliant.
+        # The supplementary information about the non-compliant resource.
         self.annotation = annotation
-        # The compliance evaluation result of the resources. Valid values:
+        # The compliance evaluation result. Valid values:
         # 
-        # *   COMPLIANT: The resources are evaluated as compliant.
-        # *   NON_COMPLIANT: The resources are evaluated as incompliant.
-        # *   NOT_APPLICABLE: The rule does not apply to your resources.
-        # *   INSUFFICIENT_DATA: No resource data is available.
-        # *   IGNORED: The resource is ignored during compliance evaluation.
+        # - COMPLIANT: The resource is compliant.
+        # 
+        # - NON_COMPLIANT: The resource is non-compliant.
+        # 
+        # - NOT_APPLICABLE: The rule does not apply to the resource.
+        # 
+        # - INSUFFICIENT_DATA: No data is available for the resource.
+        # 
+        # - IGNORED: The evaluation result is ignored.
         self.compliance_type = compliance_type
-        # The timestamp when the rule was triggered. Unit: milliseconds.
+        # The timestamp when the rule was invoked to evaluate the resource. Unit: milliseconds.
         self.config_rule_invoked_timestamp = config_rule_invoked_timestamp
+        # The unique ID of the evaluation result.
         self.evaluation_id = evaluation_id
-        # The identifying information about the compliance evaluation result.
+        # The identifier of the resource evaluation result.
         self.evaluation_result_identifier = evaluation_result_identifier
-        # The trigger type of the managed rule. Valid values:
+        # The trigger type of the rule. Valid values:
         # 
-        # *   ConfigurationItemChangeNotification: The managed rule is triggered by configuration changes.
-        # *   ScheduledNotification: The managed rule is periodically triggered.
+        # - ConfigurationItemChangeNotification: The rule is triggered by a configuration change.
+        # 
+        # - ScheduledNotification: The rule is triggered periodically.
         self.invoking_event_message_type = invoking_event_message_type
+        # The timestamp when the resource last became non-compliant.
         self.last_non_compliant_record_timestamp = last_non_compliant_record_timestamp
-        # Indicates whether the remediation template is enabled. Valid values:
+        # Indicates whether remediation is enabled. Valid values:
         # 
-        # - true: The remediation template is enabled.
-        # - false: The remediation template is disabled.
+        # - true: Remediation is enabled.
+        # 
+        # - false: Remediation is not enabled.
         self.remediation_enabled = remediation_enabled
-        # The timestamp when the compliance evaluation result was recorded. Unit: milliseconds.
+        # The timestamp when the evaluation result was recorded. Unit: milliseconds.
         self.result_recorded_timestamp = result_recorded_timestamp
-        # The risk level of the resources that are not compliant with the rule. Valid values:
+        # The risk level of the rule. Valid values:
         # 
-        # *   1: high risk level
-        # *   2: medium risk level
-        # *   3: low risk level
+        # - 1: high
+        # 
+        # - 2: medium
+        # 
+        # - 3: low
         self.risk_level = risk_level
 
     def validate(self):
@@ -231,9 +241,9 @@ class ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluat
         evaluation_result_qualifier: main_models.ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluationResultListEvaluationResultIdentifierEvaluationResultQualifier = None,
         ordering_timestamp: int = None,
     ):
-        # The information about the evaluated resource in the compliance evaluation result.
+        # The resource information in the evaluation result.
         self.evaluation_result_qualifier = evaluation_result_qualifier
-        # The timestamp when the compliance evaluation was performed. Unit: milliseconds.
+        # The timestamp displayed on the timeline. Unit: milliseconds.
         self.ordering_timestamp = ordering_timestamp
 
     def validate(self):
@@ -277,24 +287,25 @@ class ListAggregateResourceEvaluationResultsResponseBodyEvaluationResultsEvaluat
         resource_owner_id: int = None,
         resource_type: str = None,
     ):
-        # The Alibaba Cloud Resource Name (ARN) of the rule.
+        # The ARN of the rule.
         self.config_rule_arn = config_rule_arn
-        # The ID of the rule.
+        # The rule ID.
         self.config_rule_id = config_rule_id
-        # The name of the monitoring rule.
+        # The rule name.
         self.config_rule_name = config_rule_name
-        # The date from which the system automatically re-evaluates the ignored incompliant resources.
+        # The date on which the ignored evaluation result is automatically resumed.
         # 
-        # >  If the value of this parameter is left empty, the system does not automatically re-evaluate the ignored incompliant resources. You must manually re-evaluate the ignored incompliant resources.
+        # > If this parameter is empty, the result is not automatically resumed. You must manually resume the result.
         self.ignore_date = ignore_date
         # The ID of the region where the resource resides.
         self.region_id = region_id
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
-        # The name of the resource.
+        # The resource name.
         self.resource_name = resource_name
+        # The ID of the Alibaba Cloud account to which the resource belongs.
         self.resource_owner_id = resource_owner_id
-        # The type of the resource.
+        # The resource type.
         self.resource_type = resource_type
 
     def validate(self):

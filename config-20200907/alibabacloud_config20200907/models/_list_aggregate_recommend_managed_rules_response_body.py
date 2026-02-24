@@ -13,8 +13,9 @@ class ListAggregateRecommendManagedRulesResponseBody(DaraModel):
         recommended_managed_rules: main_models.ListAggregateRecommendManagedRulesResponseBodyRecommendedManagedRules = None,
         request_id: str = None,
     ):
+        # The list of rules.
         self.recommended_managed_rules = recommended_managed_rules
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,9 +54,13 @@ class ListAggregateRecommendManagedRulesResponseBodyRecommendedManagedRules(Dara
         recommended_managed_rule_list: List[main_models.ListAggregateRecommendManagedRulesResponseBodyRecommendedManagedRulesRecommendedManagedRuleList] = None,
         total_count: int = None,
     ):
+        # The maximum number of entries returned per page.
         self.max_results = max_results
+        # If the return results are truncated, you can use NextToken to initiate another request to retrieve the remaining results.
         self.next_token = next_token
+        # The list of managed rules.
         self.recommended_managed_rule_list = recommended_managed_rule_list
+        # The total number of rule templates.
         self.total_count = total_count
 
     def validate(self):
@@ -112,9 +117,13 @@ class ListAggregateRecommendManagedRulesResponseBodyRecommendedManagedRulesRecom
         identifier: str = None,
         resource_type_scope: str = None,
     ):
+        # The name of the rule.
         self.config_rule_name = config_rule_name
+        # The description of the rule.
         self.description = description
+        # The identifier of the rule.
         self.identifier = identifier
+        # The resource type.
         self.resource_type_scope = resource_type_scope
 
     def validate(self):

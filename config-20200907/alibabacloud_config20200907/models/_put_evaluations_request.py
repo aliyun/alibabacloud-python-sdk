@@ -11,17 +11,8 @@ class PutEvaluationsRequest(DaraModel):
         evaluations: str = None,
         result_token: str = None,
     ):
-        # Specifies whether to enable the delete mode. Valid values:
-        # 
-        # *   true: enables the delete mode
-        # *   false (default): disables the delete mode
-        # 
-        # > This parameter is valid only when you manually trigger or periodically trigger custom rules to evaluate resources. If you enable the delete mode, the evaluation results that are not updated during the current evaluation are automatically deleted.
         self.delete_mode = delete_mode
-        # The evaluation results.
         self.evaluations = evaluations
-        # The callback token. When Cloud Config triggers a custom rule to evaluate resources, the token information is sent to Function Compute as an input parameter. The token must be specified when you submit the evaluation results.
-        # 
         # This parameter is required.
         self.result_token = result_token
 

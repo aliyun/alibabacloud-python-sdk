@@ -17,39 +17,45 @@ class UpdateAggregateRemediationRequest(DaraModel):
     ):
         # The ID of the account group.
         # 
-        # You can the [ListAggregators](https://help.aliyun.com/document_detail/255797.html) operation to obtain the ID of the account group.
+        # For more information, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
         # The execution mode of the remediation. Valid values:
         # 
-        # *   NON_EXECUTION: The remediation is not executed.
-        # *   AUTO_EXECUTION: The remediation is automatically executed.
-        # *   MANUAL_EXECUTION: The remediation is manually executed.
-        # *   NOT_CONFIG: The execution mode is not specified.
+        # - NON_EXECUTION: The remediation is not executed.
+        # 
+        # - AUTO_EXECUTION: The remediation is automatically executed.
+        # 
+        # - MANUAL_EXECUTION: The remediation is manually executed.
+        # 
+        # - NOT_CONFIG: The execution mode is not specified.
         self.invoke_type = invoke_type
-        # The desired parameter values of the remediation setting.
+        # The parameters of the remediation setting.
         self.params = params
         # The ID of the remediation setting.
         # 
-        # You can call the [ListAggregateRemediations](https://help.aliyun.com/document_detail/270036.html) operation to obtain the ID of the remediation setting.
+        # For more information, see [ListAggregateRemediations](https://help.aliyun.com/document_detail/270036.html).
         # 
         # This parameter is required.
         self.remediation_id = remediation_id
         # The ID of the remediation template.
         # 
-        # You can call the [ListRemediationTemplates](https://help.aliyun.com/document_detail/270066.html) operation to obtain the ID of the remediation template.
+        # For more information, see [ListRemediationTemplates](https://help.aliyun.com/document_detail/270066.html).
         self.remediation_template_id = remediation_template_id
-        # The type of the remediation template. Valid values:
+        # The type of the remediation. Valid values:
         # 
-        # *   OOS: Operation Orchestration Service (OOS)
-        # *   FC: Function Compute. You can use Function Compute to configure custom remediation settings.
+        # - OOS: Operation Orchestration Service (OOS) (template-based remediation).
+        # 
+        # - FC: Function Compute (FC) (custom remediation).
         self.remediation_type = remediation_type
-        # The type of the rule for which the remediation template is configured. Valid values:
+        # The source of the rule for which the remediation is performed. Valid values:
         # 
-        # *   ALIYUN: managed rule.
-        # *   CUSTOM: custom rule.
-        # *   NONE: The rule is not specified.
+        # - ALIYUN: rule template.
+        # 
+        # - CUSTOM: custom remediation.
+        # 
+        # - NONE: none.
         self.source_type = source_type
 
     def validate(self):

@@ -959,6 +959,8 @@ class Client(OpenApiClient):
             body['AggregatorId'] = request.aggregator_id
         if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.conditions):
+            body['Conditions'] = request.conditions
         if not DaraCore.is_null(request.config_rule_name):
             body['ConfigRuleName'] = request.config_rule_name
         if not DaraCore.is_null(request.config_rule_trigger_types):
@@ -1055,6 +1057,8 @@ class Client(OpenApiClient):
             body['AggregatorId'] = request.aggregator_id
         if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.conditions):
+            body['Conditions'] = request.conditions
         if not DaraCore.is_null(request.config_rule_name):
             body['ConfigRuleName'] = request.config_rule_name
         if not DaraCore.is_null(request.config_rule_trigger_types):
@@ -1643,6 +1647,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.conditions):
+            body['Conditions'] = request.conditions
         if not DaraCore.is_null(request.config_rule_name):
             body['ConfigRuleName'] = request.config_rule_name
         if not DaraCore.is_null(request.config_rule_trigger_types):
@@ -1729,6 +1735,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.conditions):
+            body['Conditions'] = request.conditions
         if not DaraCore.is_null(request.config_rule_name):
             body['ConfigRuleName'] = request.config_rule_name
         if not DaraCore.is_null(request.config_rule_trigger_types):
@@ -11837,6 +11845,8 @@ class Client(OpenApiClient):
             body['AggregatorId'] = request.aggregator_id
         if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.conditions):
+            body['Conditions'] = request.conditions
         if not DaraCore.is_null(request.config_rule_id):
             body['ConfigRuleId'] = request.config_rule_id
         if not DaraCore.is_null(request.config_rule_name):
@@ -11929,6 +11939,8 @@ class Client(OpenApiClient):
             body['AggregatorId'] = request.aggregator_id
         if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.conditions):
+            body['Conditions'] = request.conditions
         if not DaraCore.is_null(request.config_rule_id):
             body['ConfigRuleId'] = request.config_rule_id
         if not DaraCore.is_null(request.config_rule_name):
@@ -12507,6 +12519,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.conditions):
+            body['Conditions'] = request.conditions
         if not DaraCore.is_null(request.config_rule_id):
             body['ConfigRuleId'] = request.config_rule_id
         if not DaraCore.is_null(request.config_rule_name):
@@ -12591,6 +12605,8 @@ class Client(OpenApiClient):
         body = {}
         if not DaraCore.is_null(request.client_token):
             body['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.conditions):
+            body['Conditions'] = request.conditions
         if not DaraCore.is_null(request.config_rule_id):
             body['ConfigRuleId'] = request.config_rule_id
         if not DaraCore.is_null(request.config_rule_name):

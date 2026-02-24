@@ -11,11 +11,8 @@ class GenerateAggregateConfigRulesReportResponseBody(DaraModel):
         report_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the account group.
         self.aggregator_id = aggregator_id
-        # The ID of the compliance evaluation report.
         self.report_id = report_id
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

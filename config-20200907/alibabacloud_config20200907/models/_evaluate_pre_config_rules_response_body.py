@@ -15,7 +15,7 @@ class EvaluatePreConfigRulesResponseBody(DaraModel):
     ):
         # The ID of the request.
         self.request_id = request_id
-        # The details of the compliance evaluation result.
+        # The array that contains the compliance evaluation results.
         self.resource_evaluations = resource_evaluations
 
     def validate(self):
@@ -61,7 +61,7 @@ class EvaluatePreConfigRulesResponseBodyResourceEvaluations(DaraModel):
     ):
         # The logical ID of the resource.
         # 
-        # >  If the ResourceLogicalId request parameter is left empty, the value of the ResourceLogicalId response parameter is generated based on the value of the `ResourceProperties` parameter.
+        # > If the request parameter is empty, it is automatically generated based on the Base64 value of `ResourceProperties`.
         self.resource_logical_id = resource_logical_id
         # The type of the resource.
         self.resource_type = resource_type
@@ -120,13 +120,15 @@ class EvaluatePreConfigRulesResponseBodyResourceEvaluationsRules(DaraModel):
         self.annotation = annotation
         # The compliance type of the resource that was evaluated by using the evaluation rule. Valid values:
         # 
-        # *   COMPLIANT: The resource was evaluated as compliant.
-        # *   NON_COMPLIANT: The resource was evaluated as incompliant.
-        # *   NOT_APPLICABLE: The evaluation rule does not apply to the resource.
+        # - COMPLIANT: The resource is evaluated as compliant.
+        # 
+        # - NON_COMPLIANT: The resource is evaluated as non-compliant.
+        # 
+        # - NOT_APPLICABLE: The rule does not apply to the resource.
         self.compliance_type = compliance_type
-        # The URL of the topic that describes how the managed rule remediates the incompliant configurations.
+        # The URL of the topic that describes how the managed rule remediates the non-compliant configurations.
         self.help_url = help_url
-        # The identifier of the evaluation rule.
+        # The identifier of the rule.
         self.identifier = identifier
 
     def validate(self):

@@ -13,9 +13,7 @@ class DeleteCompliancePacksResponseBody(DaraModel):
         operate_compliance_packs_result: main_models.DeleteCompliancePacksResponseBodyOperateCompliancePacksResult = None,
         request_id: str = None,
     ):
-        # The returned result.
         self.operate_compliance_packs_result = operate_compliance_packs_result
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,7 +49,6 @@ class DeleteCompliancePacksResponseBodyOperateCompliancePacksResult(DaraModel):
         self,
         operate_compliance_packs: List[main_models.DeleteCompliancePacksResponseBodyOperateCompliancePacksResultOperateCompliancePacks] = None,
     ):
-        # An array that contains compliance packages that are deleted.
         self.operate_compliance_packs = operate_compliance_packs
 
     def validate(self):
@@ -89,17 +86,8 @@ class DeleteCompliancePacksResponseBodyOperateCompliancePacksResultOperateCompli
         error_code: str = None,
         success: bool = None,
     ):
-        # The ID of the compliance package.
         self.compliance_pack_id = compliance_pack_id
-        # The error code returned.
-        # 
-        # *   If the compliance package is deleted, no error code is returned.
-        # *   If the compliance package fails to be deleted, an error code is returned. For more information about error codes, see [Error codes](https://error-center.alibabacloud.com/status/product/Config).
         self.error_code = error_code
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
         self.success = success
 
     def validate(self):

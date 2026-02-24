@@ -15,37 +15,43 @@ class UpdateRemediationRequest(DaraModel):
         remediation_type: str = None,
         source_type: str = None,
     ):
-        # The client token that is used to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client token that is used to ensure the idempotence of the request. Generate a token that is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
         # The execution mode of the remediation. Valid values:
         # 
-        # *   NON_EXECUTION: The remediation is not executed.
-        # *   AUTO_EXECUTION: The remediation is automatically executed.
-        # *   MANUAL_EXECUTION: The remediation is manually executed.
-        # *   NOT_CONFIG: The execution mode is not specified.
+        # - NON_EXECUTION: The remediation is not executed.
+        # 
+        # - AUTO_EXECUTION: The remediation is automatically executed.
+        # 
+        # - MANUAL_EXECUTION: The remediation is manually executed.
+        # 
+        # - NOT_CONFIG: The execution mode is not specified.
         self.invoke_type = invoke_type
-        # The desired parameter values of the remediation setting.
+        # The parameters of the remediation setting.
         self.params = params
         # The ID of the remediation setting.
         # 
-        # You can call the [ListRemediations](https://help.aliyun.com/document_detail/270772.html) operation to obtain the ID of the remediation setting.
+        # For more information about how to obtain the ID of a remediation setting, see [ListRemediations](https://help.aliyun.com/document_detail/270772.html).
         # 
         # This parameter is required.
         self.remediation_id = remediation_id
         # The ID of the remediation template.
         # 
-        # You can call the [ListRemediationTemplates](https://help.aliyun.com/document_detail/270066.html) operation to obtain the ID of the remediation template.
+        # For more information about how to obtain the ID of a remediation template, see [ListRemediationTemplates](https://help.aliyun.com/document_detail/270066.html).
         self.remediation_template_id = remediation_template_id
-        # The type of the remediation template. Valid values:
+        # The type of the remediation. Valid values:
         # 
-        # *   OOS: Operation Orchestration Service (OOS)
-        # *   FC: Function Compute. You can use Function Compute to configure custom remediation settings.
+        # - OOS: Operation Orchestration Service (template-based remediation).
+        # 
+        # - FC: Function Compute (custom remediation).
         self.remediation_type = remediation_type
-        # The source of the remediation setting. Valid values:
+        # The source of the remediation. Valid values:
         # 
-        # *   ALIYUN: the default remediation setting of Alibaba Cloud.
-        # *   CUSTOM: a custom remediation setting.
-        # *   NONE: The source is not specified.
+        # - ALIYUN: official remediation.
+        # 
+        # - CUSTOM: custom remediation.
+        # 
+        # - NONE: none.
         self.source_type = source_type
 
     def validate(self):

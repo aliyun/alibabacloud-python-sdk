@@ -13,7 +13,7 @@ class ListAggregateDiscoveredResourcesResponseBody(DaraModel):
         discovered_resource_profiles: main_models.ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles = None,
         request_id: str = None,
     ):
-        # The information about the resources.
+        # The list of resources.
         self.discovered_resource_profiles = discovered_resource_profiles
         # The request ID.
         self.request_id = request_id
@@ -56,9 +56,9 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfiles(Dar
     ):
         # The details of the resources.
         self.discovered_resource_profile_list = discovered_resource_profile_list
-        # The maximum number of entries returned on each page.
+        # The maximum number of entries returned per page.
         self.max_results = max_results
-        # The token that was used to initiate the next request.
+        # The token used to start the next query.
         self.next_token = next_token
         # The total number of resources.
         self.total_count = total_count
@@ -128,40 +128,46 @@ class ListAggregateDiscoveredResourcesResponseBodyDiscoveredResourceProfilesDisc
         version: int = None,
         vpc_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account to which the resource belongs. We recommend that you use the ResourceOwnerId parameter.
+        # The ID of the Alibaba Cloud account that owns the resource. We recommend that you use the ResourceOwnerId parameter.
         self.account_id = account_id
-        # The ID of the zone in which the resource resides.
+        # The zone where the resource resides.
         self.availability_zone = availability_zone
         # The region ID.
         self.region = region
-        # The time when the resource was created. Unit: milliseconds.
+        # The timestamp when the resource was created. Unit: milliseconds.
         self.resource_creation_time = resource_creation_time
         # The status of the resource. Valid values:
         # 
-        # *   0: The resource is deleted.
-        # *   1: The resource is retained.
+        # - 0: The resource is deleted.
+        # 
+        # - 1: The resource is in use.
         self.resource_deleted = resource_deleted
         # The resource ID.
         self.resource_id = resource_id
         # The resource name.
         self.resource_name = resource_name
-        # The ID of the Alibaba Cloud account to which the resource belongs.
+        # The ID of the Alibaba Cloud account that owns the resource.
         self.resource_owner_id = resource_owner_id
-        # The status of the resource. The value of this parameter varies with the resource type and may be empty. Examples:
+        # The status of the resource. The status of a resource is defined by the corresponding Alibaba Cloud service. This parameter can be empty. For example:
         # 
-        # *   If the value of the ResourceType parameter is ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that is in a specific state. In this case, the valid values of this parameter are Running and Stopped.
-        # *   If the value of the ResourceType parameter is ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that is not in a specific state. In this case, this parameter is empty.
+        # - If the resource type is ACS::ECS::Instance, the resource is stateful. The value of this parameter can be Running or Stopped.
+        # 
+        # - If the resource type is ACS::OSS::Bucket, the resource is stateless. The value of this parameter is empty.
         self.resource_status = resource_status
         # The resource type.
         self.resource_type = resource_type
-        # The tags of the resource.
+        # The resource tags.
         self.tags = tags
-        # The time when the resource was last updated. The value must be a timestamp in milliseconds.
+        # The timestamp of the last update to the resource. This is a timestamp in milliseconds.
         self.update_time = update_time
+        # The ID of the vSwitch to which the resource belongs. The format is vsw-t4n7pokxxxxxxxxxxxxxx. If the resource belongs to multiple vSwitches, the vSwitch IDs are separated by commas (,). An empty string is returned if the resource does not belong to a vSwitch.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
-        # The build version of the resource.
+        # The resource build version.
         self.version = version
+        # The ID of the VPC to which the resource belongs. The format is vpc-t4nhheyvay74fp7n0hxxx. An empty string is returned if the resource does not belong to a VPC.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 

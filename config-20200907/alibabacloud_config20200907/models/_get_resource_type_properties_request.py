@@ -9,6 +9,10 @@ class GetResourceTypePropertiesRequest(DaraModel):
         self,
         resource_type: str = None,
     ):
+        # The resource type.
+        # 
+        # For more information about how to obtain the type, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
+        # 
         # This parameter is required.
         self.resource_type = resource_type
 

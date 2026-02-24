@@ -13,7 +13,7 @@ class ListIntegratedServiceResponseBody(DaraModel):
         data: List[main_models.ListIntegratedServiceResponseBodyData] = None,
         request_id: str = None,
     ):
-        # The information about the cloud service that can be integrated.
+        # The information about the integrated services.
         self.data = data
         # The request ID.
         self.request_id = request_id
@@ -61,27 +61,31 @@ class ListIntegratedServiceResponseBodyData(DaraModel):
         service_name: str = None,
         status: bool = None,
     ):
-        # The type of the event that is integrated across accounts. Valid values:
+        # The event type for cross-account integration. Supported event types:
         # 
-        # *   NonCompliantNotification: non-compliance event
+        # - NonCompliantNotification: non-compliance events.
         self.aggregator_delivery_data_type = aggregator_delivery_data_type
-        # The types of the integrated events. Separate multiple event types with commas (,). Valid values:
+        # The event types for the integration. Separate multiple types with commas (,). Supported event types:
         # 
-        # *   ConfigurationItemChangeNotification: resource change event
-        # *   NonCompliantNotification: non-compliance event
+        # - ConfigurationItemChangeNotification: resource change events.
+        # 
+        # - NonCompliantNotification: non-compliance events.
         self.integrated_types = integrated_types
-        # The identifier of the cloud service. Valid values:
+        # The identifier of the integrable Alibaba Cloud service. Valid values:
         # 
-        # *   eventbridge: EventBridge
-        # *   cms: CloudMonitor
-        # *   bpstudio: Cloud Architect Design Tools
+        # - eventbridge: EventBridge.
+        # 
+        # - cms: Cloud Monitor.
+        # 
+        # - bpstudio: Cloud Architect Design Tools.
         self.service_code = service_code
-        # The name of the cloud service.
+        # The name of the integrated service.
         self.service_name = service_name
-        # The integration status of the cloud service. Valid values:
+        # The integration status of the Alibaba Cloud service. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The service is integrated.
+        # 
+        # - false: The service is not integrated.
         self.status = status
 
     def validate(self):

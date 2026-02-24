@@ -14,19 +14,25 @@ class ListCompliancePackTemplatesRequest(DaraModel):
         resource_types: str = None,
         rule_risk_level: int = None,
     ):
-        # The ID of the compliance package template.
+        # The ID of the compliance pack template.
         self.compliance_pack_template_id = compliance_pack_template_id
+        # The field used to filter the query results.
         self.filter_type = filter_type
         # The page number.
         # 
-        # Pages start from page 1. Default value: 1
+        # Minimum value: 1. Default value: 1.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries to return on each page.
         # 
-        # Valid values: 1 to 100. Minimum value: 1. Default value: 10.
+        # Valid values: 1 to 100. Default value: 10.
         self.page_size = page_size
-        # The types of the resources evaluated based on the rule. If you configure this parameter, only the rules that include the resource types in the compliance package template are returned.
+        # The resource type that is evaluated by the rules. If you specify this parameter, only the compliance pack templates that contain rules for the specified resource type are returned.
         self.resource_types = resource_types
+        # The risk level of the rules in the compliance pack. Valid values:
+        # 
+        # - 1: high
+        # - 2: medium
+        # - 3: low
         self.rule_risk_level = rule_risk_level
 
     def validate(self):

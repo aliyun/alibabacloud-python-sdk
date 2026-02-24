@@ -10,9 +10,7 @@ class DescribeRemediationRequest(DaraModel):
         config_rule_id: str = None,
         remediation_id: str = None,
     ):
-        # The rule ID.
         self.config_rule_id = config_rule_id
-        # The ID of the remediation configuration.
         self.remediation_id = remediation_id
 
     def validate(self):

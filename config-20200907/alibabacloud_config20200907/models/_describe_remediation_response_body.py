@@ -11,9 +11,7 @@ class DescribeRemediationResponseBody(DaraModel):
         remediation: main_models.DescribeRemediationResponseBodyRemediation = None,
         request_id: str = None,
     ):
-        # The details of the remediation configuration.
         self.remediation = remediation
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,46 +57,17 @@ class DescribeRemediationResponseBodyRemediation(DaraModel):
         remediation_template_id: str = None,
         remediation_type: str = None,
     ):
-        # The ID of the Alibaba Cloud account.
         self.account_id = account_id
-        # The rule ID.
         self.config_rule_id = config_rule_id
-        # The execution mode of the remediation template. Valid values:
-        # 
-        # *   NON_EXECUTION: The remediation template was not executed.
-        # *   AUTO_EXECUTION: The remediation template was automatically executed.
-        # *   MANUAL_EXECUTION: The remediation template was manually executed.
-        # *   NOT_CONFIG: The execution mode was not specified.
         self.invoke_type = invoke_type
-        # The record ID of the last successful execution of the remediation template.
         self.last_successful_invocation_id = last_successful_invocation_id
-        # The timestamp of the last successful execution of the remediation template. Unit: milliseconds.
         self.last_successful_invocation_time = last_successful_invocation_time
-        # The mode of the last successful execution of the remediation template. Valid values:
-        # 
-        # *   NON_EXECUTION: The remediation template was not executed.
-        # *   AUTO_EXECUTION: The remediation template was automatically executed.
-        # *   MANUAL_EXECUTION: The remediation template was manually executed.
-        # *   NOT_CONFIG: The execution mode was not specified.
         self.last_successful_invocation_type = last_successful_invocation_type
-        # The ID of the remediation configuration.
         self.remediation_id = remediation_id
-        # The converted configuration of the remediation template. This parameter is returned only for an OOS remediation template.
-        # 
         # This parameter is required.
         self.remediation_origin_params = remediation_origin_params
-        # The source of the remediation template. Valid values:
-        # 
-        # *   ALIYUN: official template
-        # *   CUSTOM: custom template
-        # *   NONE: none
         self.remediation_source_type = remediation_source_type
-        # The ID of the remediation template.
         self.remediation_template_id = remediation_template_id
-        # The type of the remediation template. Valid values:
-        # 
-        # *   OOS: Operation Orchestration Service (official remediation)
-        # *   FC: Function Compute (custom remediation)
         self.remediation_type = remediation_type
 
     def validate(self):

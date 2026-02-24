@@ -9,6 +9,10 @@ class StartConfigRuleEvaluationByResourceRequest(DaraModel):
         self,
         resource_id: str = None,
     ):
+        # The ID of the resource.
+        # 
+        # For more information about how to obtain the resource ID, see [ListDiscoveredResources](https://help.aliyun.com/document_detail/169620.html).
+        # 
         # This parameter is required.
         self.resource_id = resource_id
 

@@ -10,12 +10,13 @@ class StartConfigRuleEvaluationResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # Indicates whether the operation is successful. Valid values:
+        # The result of the request. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The request is successful.
+        # 
+        # - false: The request failed.
         self.result = result
 
     def validate(self):

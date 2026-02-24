@@ -15,48 +15,55 @@ class CreateRemediationRequest(DaraModel):
         remediation_type: str = None,
         source_type: str = None,
     ):
-        # The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The `token` can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client token to ensure the idempotence of the request. The token must be unique for each request. The `ClientToken` parameter contains only ASCII characters and must not exceed 64 characters in length.
         self.client_token = client_token
         # The rule ID.
         # 
-        # For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
+        # For more information, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
         # 
         # This parameter is required.
         self.config_rule_id = config_rule_id
-        # The execution mode of the remediation template. Valid values:
+        # The execution mode of the remediation. Valid values:
         # 
-        # *   NON_EXECUTION: The remediation template is not executed.
-        # *   AUTO_EXECUTION: The remediation template is automatically executed.
-        # *   MANUAL_EXECUTION: The remediation template is manually executed.
-        # *   NOT_CONFIG: The execution mode is not specified.
+        # - NON_EXECUTION: The remediation is not executed.
+        # 
+        # - AUTO_EXECUTION: The remediation is automatically executed.
+        # 
+        # - MANUAL_EXECUTION: The remediation is manually executed.
+        # 
+        # - NOT_CONFIG: The execution mode is not set.
         # 
         # This parameter is required.
         self.invoke_type = invoke_type
-        # The configuration of the remediation template.
+        # The remediation parameters.
         # 
-        # For more information about how to obtain the remediation template configuration, see the `TemplateDefinition` response parameter provided in [ListRemediationTemplates](https://help.aliyun.com/document_detail/416781.html).
+        # For more information, see the `TemplateDefinition` parameter in [ListRemediationTemplates](https://help.aliyun.com/document_detail/416781.html).
         # 
         # This parameter is required.
         self.params = params
         # The ID of the remediation template.
         # 
-        # *   If you set the `RemediationType` parameter to `OOS`, set this parameter to the identifier of the relevant official remediation template, such as `ACS-OSS-PutBucketAcl`. For more information about how to obtain the remediation template identifier, see [ListRemediationTemplates](https://help.aliyun.com/document_detail/416781.html).
-        # *   If you set the `RemediationType` parameter to `FC`, set this parameter to the Alibaba Cloud Resource Name (ARN) of the relevant Function Compute resource, such as `acs:fc:cn-hangzhou:100931896542****:services/ConfigService.LATEST/functions/test-php`.
+        # - If `RemediationType` is set to `OOS`, set this parameter to `ACS-OSS-PutBucketAcl`. For more information, see [ListRemediationTemplates](https://help.aliyun.com/document_detail/416781.html).
+        # 
+        # - If `RemediationType` is set to `FC`, set this parameter to the Alibaba Cloud Resource Name (ARN) of the function in Function Compute. Example: `acs:fc:cn-hangzhou:100931896542****:services/ConfigService.LATEST/functions/test-php`.
         # 
         # This parameter is required.
         self.remediation_template_id = remediation_template_id
-        # The type of the remediation template. Valid values:
+        # The type of the remediation. Valid values:
         # 
-        # *   OOS: Operation Orchestration Service (official remediation)
-        # *   FC: Function Compute (custom remediation)
+        # - OOS: template-based remediation using OOS.
+        # 
+        # - FC: custom remediation using FC.
         # 
         # This parameter is required.
         self.remediation_type = remediation_type
-        # The source of remediation. Valid values:
+        # The source of the remediation template. Valid values:
         # 
-        # *   ALIYUN (default): official template.
-        # *   CUSTOM: custom template.
-        # *   NONE: none.
+        # - ALIYUN (default): an official template.
+        # 
+        # - CUSTOM: a custom template. This value is required for custom FC remediations.
+        # 
+        # - NONE: no source.
         self.source_type = source_type
 
     def validate(self):

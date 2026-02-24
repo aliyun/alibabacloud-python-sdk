@@ -85,105 +85,115 @@ class GetConfigRuleResponseBodyConfigRule(DaraModel):
     ):
         # The ID of the Alibaba Cloud account to which the rule belongs.
         self.account_id = account_id
-        # The details of compliance evaluation results.
+        # The compliance statistics of the rule.
         self.compliance = compliance
-        # The ARN of the managed rule.
+        # The Alibaba Cloud Resource Name (ARN) of the rule.
         self.config_rule_arn = config_rule_arn
-        # The information about compliance evaluations performed by the rule.
+        # The execution status of the rule.
         self.config_rule_evaluation_status = config_rule_evaluation_status
         # The rule ID.
         self.config_rule_id = config_rule_id
-        # The name of the rule.
+        # The rule name.
         self.config_rule_name = config_rule_name
         # The status of the rule. Valid values:
         # 
-        # *   ACTIVE: The rule is enabled.
-        # *   DELETING: The rule is being deleted.
-        # *   EVALUATING: The rule is being used to evaluate resource configurations.
-        # *   INACTIVE: The rule is disabled.
+        # - ACTIVE: The rule is enabled.
+        # 
+        # - DELETING: The rule is being deleted.
+        # 
+        # - EVALUATING: The rule is being used to evaluate resource configurations.
+        # 
+        # - INACTIVE: The rule is disabled.
         self.config_rule_state = config_rule_state
         # The trigger type of the rule. Valid values:
         # 
-        # *   ConfigurationItemChangeNotification: The rule was triggered by configuration changes.
-        # *   ScheduledNotification: The rule was periodically triggered.
+        # - ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+        # 
+        # - ScheduledNotification: The rule is triggered periodically.
         self.config_rule_trigger_types = config_rule_trigger_types
-        # The information about the creation of the rule.
+        # The information about the creator of the rule.
         self.create_by = create_by
-        # The timestamp generated when the rule was created. Unit: millisecond.
+        # The timestamp when the rule was created. Unit: milliseconds.
         self.create_timestamp = create_timestamp
-        # The description of the managed rule.
+        # The description of the rule.
         self.description = description
-        # ExcludeRegionIdsScope
+        # The IDs of the regions where the rule does not apply. The rule does not evaluate resources in these regions. Separate multiple region IDs with a comma (,).
         self.exclude_region_ids_scope = exclude_region_ids_scope
-        # ExcludeResourceGroupIdsScope
+        # The IDs of the resource groups where the rule does not apply. The rule does not evaluate resources in these resource groups. Separate multiple resource group IDs with a comma (,).
         self.exclude_resource_group_ids_scope = exclude_resource_group_ids_scope
-        # The ID of the resource excluded from the compliance evaluations performed by the rule.
+        # The IDs of the resources that are not evaluated by the rule. Separate multiple resource IDs with a comma (,).
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
-        # ExcludeTagsScope
+        # The tags of the resources that are not evaluated by the rule.
         self.exclude_tags_scope = exclude_tags_scope
-        # Optional field, only used in conjunction with the 24-hour cycle execution to set the trigger time.
+        # The extended content. This parameter is used only to specify the trigger time for a rule that is triggered on a 24-hour cycle.
         self.extend_content = extend_content
         # The input parameters of the rule.
         self.input_parameters = input_parameters
         # The details of the managed rule.
         self.managed_rule = managed_rule
-        # The interval at which the rule is triggered. Valid values:
+        # The execution frequency of the rule. Valid values:
         # 
-        # *   One_Hour
-        # *   Three_Hours
-        # *   Six_Hours
-        # *   Twelve_Hours
-        # *   TwentyFour_Hours
+        # - One_Hour: 1 hour.
         # 
-        # >  This parameter is returned if the rule is periodically triggered.
+        # - Three_Hours: 3 hours.
+        # 
+        # - Six_Hours: 6 hours.
+        # 
+        # - Twelve_Hours: 12 hours.
+        # 
+        # - TwentyFour_Hours: 24 hours.
+        # 
+        # > This parameter is returned only when the rule is triggered periodically.
         self.maximum_execution_frequency = maximum_execution_frequency
-        # The timestamp generated when the rule was last updated. Unit: millisecond.
+        # The timestamp when the rule was last updated. Unit: milliseconds.
         self.modified_timestamp = modified_timestamp
-        # The ID of the region to which the rule applies.
+        # The IDs of the regions where the rule applies. The rule evaluates only resources in these regions.
         self.region_ids_scope = region_ids_scope
-        # The ID of the resource group to which the rule applies.
+        # The IDs of the resource groups where the rule applies. The rule evaluates only resources in these resource groups.
         self.resource_group_ids_scope = resource_group_ids_scope
-        # ResourceIdsScope
+        # The IDs of the resources that are evaluated by the rule. Separate multiple resource IDs with a comma (,).
         self.resource_ids_scope = resource_ids_scope
-        # The names of the resource to which the rule applies.
+        # The rule evaluates only resources that have the specified names.
         self.resource_name_scope = resource_name_scope
-        # The type of the resource to be evaluated by the rule.
+        # The types of the resources that are evaluated by the rule.
         self.resource_types_scope = resource_types_scope
-        # The risk level of the resources that do not comply with the rule. Valid values:
+        # The risk level of the rule. Valid values:
         # 
-        # *   1: high.
-        # *   2: medium.
-        # *   3: low.
+        # - 1: high
+        # 
+        # - 2: medium
+        # 
+        # - 3: low
         self.risk_level = risk_level
         # The effective scope of the rule.
         self.scope = scope
-        # The information about how the rule was created.
+        # The source of the rule.
         self.source = source
-        # When retrieving details of rules created using the parameter `TagsScope`, this field will not be returned.
+        # This parameter is not returned for rules that are created using the `TagsScope` parameter.
         # 
-        # To retrieve rules created using the deprecated field `TagKeyScope` (not recommended): for example, when the parameter `TagKeyScope` has a value of ECS,OSS, if this parameter is set to `AND`, it means that the rule only applies to resources bound with both labels ECS and OSS.
+        # This parameter is returned for rules that are created using the deprecated TagKeyScope parameter. We do not recommend that you use the `TagKeyScope` parameter. For example, if `TagKeyScope` is set to `ECS,OSS` and this parameter is set to `AND`, the rule applies only to resources that have both the `ECS` and `OSS` tags.
         # 
-        # Values:
+        # Valid values:
         # 
-        #  - AND: And.
+        # - AND
         # 
-        #  - OR: Or.
+        # - OR
         self.tag_key_logic_scope = tag_key_logic_scope
-        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # This parameter is deprecated. Use the `TagsScope` parameter instead.
         # 
-        # The tag key used to filter resources. The rule applies only to the resources with the specified tag key.
+        # The rule applies only to resources with the specified tag.
         # 
-        # >  The TagKeyScope and `TagValueScope` parameters are returned at the same time.``
+        # > The `TagKeyScope` and `TagValueScope` parameters are returned at the same time.
         self.tag_key_scope = tag_key_scope
-        # This parameter is deprecated. We recommend that you use the `TagsScope` parameter.
+        # This parameter is deprecated. Use the `TagsScope` parameter instead.
         # 
-        # The tag value used to filter resources. The rule applies only to the resources that use the specified tag value.
+        # The rule applies only to resources with the specified tag.
         # 
-        # >  The TagKeyScope and `TagValueScope` parameters are returned at the same time.``
+        # > The `TagKeyScope` and `TagValueScope` parameters are returned at the same time.
         self.tag_value_scope = tag_value_scope
-        # The tag list.
+        # The tags of the resource.
         self.tags = tags
-        # TagsScope
+        # The tag-based scope.
         self.tags_scope = tags_scope
 
     def validate(self):
@@ -448,9 +458,9 @@ class GetConfigRuleResponseBodyConfigRuleTagsScope(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # TagKey
+        # The tag key.
         self.tag_key = tag_key
-        # TagValue
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -485,7 +495,7 @@ class GetConfigRuleResponseBodyConfigRuleTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key. The tag key can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+        # The tag key.
         self.tag_key = tag_key
         # The tag value.
         self.tag_value = tag_value
@@ -525,15 +535,17 @@ class GetConfigRuleResponseBodyConfigRuleSource(DaraModel):
     ):
         # The identifier of the rule.
         # 
-        # *   If the rule is a managed rule, the value of this parameter is the identifier of the managed rule.
-        # *   If the rule is a custom rule, the value of this parameter is the Alibaba Cloud Resource Name (ARN) of a function.
-        self.identifier = identifier
-        # The type of the rule. Valid values:
+        # - If the rule is a managed rule, the value of this parameter is the identifier of the managed rule.
         # 
-        # *   CUSTOM_FC: a custom rule.
-        # *   ALIYUN: a managed rule.
+        # - If the rule is a custom rule, the value of this parameter is the ARN of the function.
+        self.identifier = identifier
+        # The owner of the rule. Valid values:
+        # 
+        # - CUSTOM_FC: a custom rule.
+        # 
+        # - ALIYUN: a managed rule.
         self.owner = owner
-        # The details of the source of the rule.
+        # The source details.
         self.source_details = source_details
 
     def validate(self):
@@ -585,22 +597,27 @@ class GetConfigRuleResponseBodyConfigRuleSourceSourceDetails(DaraModel):
     ):
         # The event source.
         # 
-        # >  Only aliyun.config is returned, which indicates that only events related to Cloud Config are supported.
+        # > Only Cloud Config events are supported. The value is aliyun.config.
         self.event_source = event_source
-        # The interval at which the rule is triggered. Valid values:
+        # The execution frequency of the rule. Valid values:
         # 
-        # *   One_Hour
-        # *   Three_Hours
-        # *   Six_Hours
-        # *   Twelve_Hours
-        # *   TwentyFour_Hours
+        # - One_Hour: 1 hour.
         # 
-        # >  This parameter is returned if the rule is periodically triggered.
+        # - Three_Hours: 3 hours.
+        # 
+        # - Six_Hours: 6 hours.
+        # 
+        # - Twelve_Hours: 12 hours.
+        # 
+        # - TwentyFour_Hours: 24 hours.
+        # 
+        # > This parameter is returned only when the rule is triggered periodically.
         self.maximum_execution_frequency = maximum_execution_frequency
         # The trigger type of the rule. Valid values:
         # 
-        # *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
-        # *   ScheduledNotification: The rule is periodically triggered.
+        # - ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+        # 
+        # - ScheduledNotification: The rule is triggered periodically.
         self.message_type = message_type
 
     def validate(self):
@@ -640,7 +657,7 @@ class GetConfigRuleResponseBodyConfigRuleScope(DaraModel):
         self,
         compliance_resource_types: List[str] = None,
     ):
-        # The types of the resources to be evaluated against the rule. You can also view the resource types by using the ResourceTypesScope parameter.
+        # The list of resource types that are evaluated by the rule. You can also view this information in the ResourceTypesScope field.
         self.compliance_resource_types = compliance_resource_types
 
     def validate(self):
@@ -674,19 +691,19 @@ class GetConfigRuleResponseBodyConfigRuleManagedRule(DaraModel):
         optional_input_parameter_details: Dict[str, Any] = None,
         source_details: List[main_models.GetConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails] = None,
     ):
-        # The settings of the required input parameters for the managed rule.
+        # The details of the required input parameters of the managed rule.
         self.compulsory_input_parameter_details = compulsory_input_parameter_details
         # The description of the managed rule.
         self.description = description
         # The identifier of the managed rule.
         self.identifier = identifier
-        # The rule tags.
+        # The list of rule labels.
         self.labels = labels
         # The name of the managed rule.
         self.managed_rule_name = managed_rule_name
-        # The settings of the optional input parameters for the managed rule.
+        # The details of the optional input parameters of the managed rule.
         self.optional_input_parameter_details = optional_input_parameter_details
-        # The details of the source of the managed rule.
+        # The source details of the managed rule.
         self.source_details = source_details
 
     def validate(self):
@@ -762,22 +779,27 @@ class GetConfigRuleResponseBodyConfigRuleManagedRuleSourceDetails(DaraModel):
     ):
         # The event source.
         # 
-        # >  Only aliyun.config is returned, which indicates that only events related to Cloud Config are supported.
+        # > Only Cloud Config events are supported. The value is aliyun.config.
         self.event_source = event_source
-        # The interval at which the rule is triggered. Valid values:
+        # The execution frequency of the rule. Valid values:
         # 
-        # *   One_Hour
-        # *   Three_Hours
-        # *   Six_Hours
-        # *   Twelve_Hours
-        # *   TwentyFour_Hours
+        # - One_Hour: 1 hour.
         # 
-        # >  This parameter is returned if the rule is periodically triggered.
+        # - Three_Hours: 3 hours.
+        # 
+        # - Six_Hours: 6 hours.
+        # 
+        # - Twelve_Hours: 12 hours.
+        # 
+        # - TwentyFour_Hours: 24 hours.
+        # 
+        # > This parameter is returned only when the rule is triggered periodically.
         self.maximum_execution_frequency = maximum_execution_frequency
         # The trigger type of the rule. Valid values:
         # 
-        # *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
-        # *   ScheduledNotification: The rule is periodically triggered.
+        # - ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+        # 
+        # - ScheduledNotification: The rule is triggered periodically.
         self.message_type = message_type
 
     def validate(self):
@@ -857,13 +879,13 @@ class GetConfigRuleResponseBodyConfigRuleCreateBy(DaraModel):
         creator_id: str = None,
         creator_name: str = None,
     ):
-        # The compliance package ID.
+        # The ID of the compliance package.
         self.compliance_pack_id = compliance_pack_id
         # The name of the compliance package.
         self.compliance_pack_name = compliance_pack_name
-        # The ID of the account that was used to create the rule.
+        # The ID of the Alibaba Cloud account that was used to create the rule.
         self.creator_id = creator_id
-        # The name of the account that was used to create the rule.
+        # The name of the creator.
         self.creator_name = creator_name
 
     def validate(self):
@@ -916,24 +938,25 @@ class GetConfigRuleResponseBodyConfigRuleConfigRuleEvaluationStatus(DaraModel):
         last_successful_evaluation_timestamp: int = None,
         last_successful_invocation_timestamp: int = None,
     ):
-        # The timestamp generated when the rule was first triggered. Unit: millisecond.
+        # The timestamp when the rule was first activated. Unit: milliseconds.
         self.first_activated_timestamp = first_activated_timestamp
-        # Indicates whether resource configurations were evaluated based on the rule. Valid values:
+        # Indicates whether the rule has been evaluated. Valid values:
         # 
-        # *   true: Resource configurations were evaluated based on the rule.
-        # *   false: Resource configurations were not evaluated based on the rule.
+        # - true: The rule has been evaluated.
+        # 
+        # - false: The rule has not been evaluated.
         self.first_evaluation_started = first_evaluation_started
-        # The error code returned for the previous failed compliance evaluation.
+        # The error code returned for the last failed execution of the rule.
         self.last_error_code = last_error_code
-        # The error message returned for the previous failed compliance evaluation.
+        # The error message returned for the last failed execution of the rule.
         self.last_error_message = last_error_message
-        # The timestamp generated when the previous failed compliance evaluation of the rule ended. Unit: millisecond.
+        # The timestamp when the last failed evaluation of the rule ended. Unit: milliseconds.
         self.last_failed_evaluation_timestamp = last_failed_evaluation_timestamp
-        # The timestamp generated when the previous failed compliance evaluation of the rule started. Unit: millisecond.
+        # The timestamp when the last failed invocation of the rule started. Unit: milliseconds.
         self.last_failed_invocation_timestamp = last_failed_invocation_timestamp
-        # The timestamp generated when the previous successful compliance evaluation of the rule ended. Unit: millisecond.
+        # The timestamp when the last successful evaluation of the rule ended. Unit: milliseconds.
         self.last_successful_evaluation_timestamp = last_successful_evaluation_timestamp
-        # The timestamp generated when the previous successful compliance evaluation of the rule started. Unit: millisecond.
+        # The timestamp when the last successful invocation of the rule started. Unit: milliseconds.
         self.last_successful_invocation_timestamp = last_successful_invocation_timestamp
 
     def validate(self):
@@ -1004,14 +1027,17 @@ class GetConfigRuleResponseBodyConfigRuleCompliance(DaraModel):
         compliance_type: str = None,
         count: int = None,
     ):
-        # The statistics on the compliance evaluation results by compliance type. Valid values:
+        # The compliance evaluation result. Valid values:
         # 
-        # *   COMPLIANT: The resource was evaluated as compliant.
-        # *   NON_COMPLIANT: The resource was evaluated as incompliant.
-        # *   NOT_APPLICABLE: The rule did not apply to your resource.
-        # *   INSUFFICIENT_DATA: No resource data was available.
+        # - COMPLIANT: The resource is compliant.
+        # 
+        # - NON_COMPLIANT: The resource is non-compliant.
+        # 
+        # - NOT_APPLICABLE: The rule does not apply to the resource.
+        # 
+        # - INSUFFICIENT_DATA: No data is available.
         self.compliance_type = compliance_type
-        # The number of evaluated resources.
+        # The number of resources that are evaluated based on the compliance result.
         self.count = count
 
     def validate(self):

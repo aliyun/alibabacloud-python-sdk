@@ -12,7 +12,7 @@ class CreateAggregateConfigDeliveryChannelResponseBody(DaraModel):
     ):
         # The ID of the delivery channel.
         self.delivery_channel_id = delivery_channel_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

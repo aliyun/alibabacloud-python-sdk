@@ -11,16 +11,8 @@ class CopyConfigRulesRequest(DaraModel):
         src_aggregator_id: str = None,
         src_config_rule_ids: str = None,
     ):
-        # The IDs of the destination account groups into which the rules are replicated. Separate multiple account group IDs with commas (,).
-        # 
-        # > If you leave this parameter empty, the compliance packages are replicated into the same account group.
         self.des_aggregator_ids = des_aggregator_ids
-        # The ID of the account group to which the rules belong.
-        # 
-        # For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
         self.src_aggregator_id = src_aggregator_id
-        # The rule IDs. Separate multiple rule IDs with commas (,).
-        # 
         # This parameter is required.
         self.src_config_rule_ids = src_config_rule_ids
 

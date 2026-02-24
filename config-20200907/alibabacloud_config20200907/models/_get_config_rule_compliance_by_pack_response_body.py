@@ -13,9 +13,9 @@ class GetConfigRuleComplianceByPackResponseBody(DaraModel):
         config_rule_compliance_result: main_models.GetConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResult = None,
         request_id: str = None,
     ):
-        # The information about the compliance evaluation results returned.
+        # The compliance results for the rules in the compliance package.
         self.config_rule_compliance_result = config_rule_compliance_result
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,15 +60,19 @@ class GetConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResult(DaraMo
     ):
         # The ID of the compliance package.
         self.compliance_pack_id = compliance_pack_id
+        # The number of compliant rules.
         self.compliant_count = compliant_count
-        # The rule enabled in the compliance package and the compliance evaluation result returned by the rule.
+        # The list of rules in the compliance package and their compliance results.
         self.config_rule_compliances = config_rule_compliances
+        # The number of ignored rules.
         self.ignored_count = ignored_count
+        # The total number of rules within the compliance package whose evaluation results are "No Data" when assessing resources.
         self.insufficient_data_count = insufficient_data_count
-        # The number of rules against which specific resources are evaluated as non-compliant.
+        # The number of non-compliant rules.
         self.non_compliant_count = non_compliant_count
+        # The number of rules that are not applicable.
         self.not_applicable_count = not_applicable_count
-        # The total number of rules enabled in the compliance package.
+        # The total number of rules in the compliance package.
         self.total_count = total_count
 
     def validate(self):
@@ -148,16 +152,19 @@ class GetConfigRuleComplianceByPackResponseBodyConfigRuleComplianceResultConfigR
         config_rule_id: str = None,
         config_rule_name: str = None,
     ):
-        # The compliance evaluation result. Valid values:
+        # The compliance evaluation result of the rule. Valid values:
         # 
-        # *   COMPLIANT: The relevant resources are evaluated as compliant.
-        # *   NON_COMPLIANT: The relevant resources are evaluated as non-compliant.
-        # *   NOT_APPLICABLE: The rule does not apply to your resources.
-        # *   INSUFFICIENT_DATA: No resource data is available.
+        # - COMPLIANT: The rule is compliant.
+        # 
+        # - NON_COMPLIANT: The rule is non-compliant.
+        # 
+        # - NOT_APPLICABLE: The rule is not applicable.
+        # 
+        # - INSUFFICIENT_DATA: No data is available.
         self.compliance_type = compliance_type
-        # The ID of the rule enabled in the compliance package.
+        # The ID of the rule in the compliance package.
         self.config_rule_id = config_rule_id
-        # The name of the rule enabled in the compliance package.
+        # The name of the rule in the compliance package.
         self.config_rule_name = config_rule_name
 
     def validate(self):

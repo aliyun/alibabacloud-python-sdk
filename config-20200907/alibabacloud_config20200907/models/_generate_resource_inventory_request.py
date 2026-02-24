@@ -11,12 +11,13 @@ class GenerateResourceInventoryRequest(DaraModel):
         resource_deleted: int = None,
         resource_types: str = None,
     ):
-        # The region IDs of the resources. Separate multiple region IDs with commas (,).
+        # The regions where the resources are located. Separate multiple regions with commas (,).
         self.regions = regions
-        # Indicates whether the resource is deleted. Valid values:
+        # The resource status. Valid values:
         # 
-        # *   1 (default): The resource is retained.
-        # *   0: The resource is deleted.
+        # - 1 (default): The resource is retained.
+        # 
+        # - 0: The resource is deleted.
         self.resource_deleted = resource_deleted
         # The resource types. Separate multiple resource types with commas (,).
         self.resource_types = resource_types

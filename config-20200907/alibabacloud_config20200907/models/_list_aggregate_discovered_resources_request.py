@@ -23,44 +23,50 @@ class ListAggregateDiscoveredResourcesRequest(DaraModel):
     ):
         # The ID of the account group.
         # 
-        # For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+        # For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # The end time of the time range for querying resources. The value is a timestamp in the UTC format. When you specify this parameter, take note of the following limits:
+        # The end of the time range to query. This is a standard UTC timestamp. The following limits apply:
         # 
-        # *   The value must be a timestamp in milliseconds.
-        # *   The value cannot be less than the value of the StartUpdateTimestamp parameter. The interval between the value and the value of the StartUpdateTimestamp parameter must be less than or equal to 30 days.
-        # *   The StartUpdateTimestamp and EndUpdateTimestamp parameters must be specified at the same time or left empty at the same time.
+        # - The value must be a timestamp in milliseconds.
+        # 
+        # - The value cannot be earlier than StartUpdateTimestamp. The interval between StartUpdateTimestamp and EndUpdateTimestamp cannot exceed 30 days.
+        # 
+        # - You must specify both StartUpdateTimestamp and EndUpdateTimestamp, or leave both empty.
         self.end_update_timestamp = end_update_timestamp
-        # The types of resources that are excluded. Separate multiple values with commas (,). If this parameter conflicts with the ResourceTypes parameter, this parameter prevails.
+        # The resource types to exclude. Separate multiple resource types with commas (,). This parameter has a higher priority than the ResourceTypes parameter.
         self.exclude_resource_types = exclude_resource_types
         # The maximum number of entries to return for a single request. Valid values: 1 to 100.
         # 
         # This parameter is required.
         self.max_results = max_results
-        # The `token` that you want to use to initiate the current request. If the response of the previous request is truncated, you can use this token to initiate another request and obtain the remaining entries.
+        # If the response is truncated, use the `NextToken` to retrieve the next page of results.
         self.next_token = next_token
-        # The ID of the region in which the resource resides. Separate multiple region IDs with commas (,).
+        # The ID of the region where the resource resides. Separate multiple region IDs with commas (,).
         self.regions = regions
-        # The ID of the Alibaba Cloud account to which the specified resource belongs in the account group.
+        # The ID of the Alibaba Cloud account to which the resources to be queried belong. The account is a member of the account group.
         self.resource_account_id = resource_account_id
         # The status of the resource. Valid values:
         # 
-        # *   0: The resource is deleted. If a resource is deleted from the desired cloud service, **Deleted** is displayed in the resource list in the Cloud Config console.
-        # *   1 (default): The resource is retained. If a resource is managed as expected, **Active** is displayed in the resource list in the Cloud Config console.
+        # - 0: The resource is deleted. A resource is displayed as Deleted in Cloud Config after it is deleted from the source Alibaba Cloud service.
+        # 
+        # - 1 (Default): The resource is active. A resource is displayed as Active in Cloud Config if it is properly managed.
         self.resource_deleted = resource_deleted
         # The resource ID.
         self.resource_id = resource_id
+        # The resource name.
         self.resource_name = resource_name
         self.resource_owner_id = resource_owner_id
-        # The type of the resource. Separate multiple resource types with commas (,).
+        # The resource type. Separate multiple resource types with commas (,).
         self.resource_types = resource_types
-        # The start time of the time range for querying resources. The value is a timestamp in the Coordinated Universal Time (UTC) format. When you specify this parameter, take note of the following limits:
+        # The start of the time range to query. This is a standard UTC timestamp. The following limits apply:
         # 
-        # *   The value must be a timestamp in milliseconds.
-        # *   The value cannot be greater than the value of the EndUpdateTimestamp parameter. The interval between the value and the value of the EndUpdateTimestamp parameter must be less than or equal to 30 days.
-        # *   The StartUpdateTimestamp and EndUpdateTimestamp parameters must be specified at the same time or left empty at the same time.
+        # - The value must be a timestamp in milliseconds.
+        # 
+        # - The value cannot be later than EndUpdateTimestamp. The interval between StartUpdateTimestamp and EndUpdateTimestamp cannot exceed 30 days.
+        # 
+        # - You must specify both StartUpdateTimestamp and EndUpdateTimestamp, or leave both empty.
         self.start_update_timestamp = start_update_timestamp
 
     def validate(self):

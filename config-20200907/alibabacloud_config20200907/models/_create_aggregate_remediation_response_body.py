@@ -10,7 +10,7 @@ class CreateAggregateRemediationResponseBody(DaraModel):
         remediation_id: str = None,
         request_id: str = None,
     ):
-        # The ID of the remediation template.
+        # The remediation ID.
         self.remediation_id = remediation_id
         # The request ID.
         self.request_id = request_id

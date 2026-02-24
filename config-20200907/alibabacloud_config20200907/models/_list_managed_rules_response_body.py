@@ -13,9 +13,9 @@ class ListManagedRulesResponseBody(DaraModel):
         managed_rules: main_models.ListManagedRulesResponseBodyManagedRules = None,
         request_id: str = None,
     ):
-        # The managed rules.
+        # The rule templates.
         self.managed_rules = managed_rules
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -54,15 +54,15 @@ class ListManagedRulesResponseBodyManagedRules(DaraModel):
         page_size: int = None,
         total_count: int = None,
     ):
-        # The details of the managed rule.
+        # The details of the rule templates.
         self.managed_rule_list = managed_rule_list
-        # The page number.
+        # The page number of the returned page.
         # 
-        # Page start from page 1.
+        # The value must be greater than or equal to 1.
         self.page_number = page_number
         # The number of entries returned per page. Valid values: 1 to 500.
         self.page_size = page_size
-        # The total number of entries returned.
+        # The total number of rule templates.
         self.total_count = total_count
 
     def validate(self):
@@ -125,32 +125,35 @@ class ListManagedRulesResponseBodyManagedRulesManagedRuleList(DaraModel):
         scope: main_models.ListManagedRulesResponseBodyManagedRulesManagedRuleListScope = None,
         support_preview_managed_rule: bool = None,
     ):
-        # The name of the managed rule.
+        # The name of the rule template.
         self.config_rule_name = config_rule_name
-        # The description of the managed rule.
+        # The description of the rule template.
         self.description = description
-        # The URL of the topic that describes how the managed rule remediates the incompliant configurations.
+        # The URL of the document that provides remediation guidance.
         self.help_urls = help_urls
-        # The unique identifier of the managed rule.
+        # The unique identifier of the rule template.
         self.identifier = identifier
-        # The classification description of the managed rule.
+        # The list of labels of the rule template.
         self.labels = labels
-        # The ID of the remediation template.
+        # The identifier of the supported remediation template.
         self.remediation_template_identifier = remediation_template_identifier
-        # The name of the remediation template.
+        # The name of the supported remediation template.
         self.remediation_template_name = remediation_template_name
-        # The risk level of the resources that do not comply with the rule. Valid values:
+        # The risk level of the rule. Valid values:
         # 
-        # *   1: high
-        # *   2: medium
-        # *   3: low
+        # - 1: high
+        # 
+        # - 2: medium
+        # 
+        # - 3: low
         self.risk_level = risk_level
-        # The effective scope of the managed rule.
+        # The effective scope of the rule template.
         self.scope = scope
-        # Indicates whether precheck is supported. Valid values:
+        # Indicates whether the rule supports dry runs. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The rule supports dry runs.
+        # 
+        # - false: The rule does not support dry runs.
         self.support_preview_managed_rule = support_preview_managed_rule
 
     def validate(self):
@@ -234,7 +237,7 @@ class ListManagedRulesResponseBodyManagedRulesManagedRuleListScope(DaraModel):
         self,
         compliance_resource_types: List[str] = None,
     ):
-        # The types of resources to which the managed rule applies.
+        # The types of resources that are evaluated based on the rule template.
         self.compliance_resource_types = compliance_resource_types
 
     def validate(self):

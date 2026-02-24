@@ -14,7 +14,7 @@ class ListAggregateResourcesByAdvancedSearchRequest(DaraModel):
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # The SQL query statement.
+        # The SQL search statement.
         # 
         # This parameter is required.
         self.sql = sql

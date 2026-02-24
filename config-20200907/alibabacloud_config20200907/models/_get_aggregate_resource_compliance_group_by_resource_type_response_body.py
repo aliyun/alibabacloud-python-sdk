@@ -13,9 +13,7 @@ class GetAggregateResourceComplianceGroupByResourceTypeResponseBody(DaraModel):
         compliance_result: main_models.GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResult = None,
         request_id: str = None,
     ):
-        # The queried evaluation results.
         self.compliance_result = compliance_result
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,7 +49,6 @@ class GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceRes
         self,
         compliance_result_list: List[main_models.GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultList] = None,
     ):
-        # The evaluation results grouped by resource type.
         self.compliance_result_list = compliance_result_list
 
     def validate(self):
@@ -88,9 +85,7 @@ class GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceRes
         compliances: List[main_models.GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceResultComplianceResultListCompliances] = None,
         resource_type: str = None,
     ):
-        # The queried evaluation results.
         self.compliances = compliances
-        # The type of the evaluated resource.
         self.resource_type = resource_type
 
     def validate(self):
@@ -133,14 +128,7 @@ class GetAggregateResourceComplianceGroupByResourceTypeResponseBodyComplianceRes
         compliance_type: str = None,
         count: int = None,
     ):
-        # The evaluation result. Valid values:
-        # 
-        # *   COMPLIANT: The resource is evaluated as compliant.
-        # *   NON_COMPLIANT: The resource is evaluated as non-compliant.
-        # *   NOT_APPLICABLE: The rule does not apply to the resource.
-        # *   INSUFFICIENT_DATA: No data is available.
         self.compliance_type = compliance_type
-        # The number of statistical results.
         self.count = count
 
     def validate(self):

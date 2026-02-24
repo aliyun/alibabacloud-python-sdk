@@ -14,27 +14,31 @@ class TagResourcesShrinkRequest(DaraModel):
         resource_type: str = None,
         tag_shrink: str = None,
     ):
-        # The region ID of the tags.
+        # The ID of the region.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource IDs. You can add tags to up to 50 resources.
+        # The resource ID.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The resource type. Valid values:
+        # The type of the resource in CloudConfig. Valid values:
         # 
-        # *   `ACS::Config::Rule`
-        # *   `ACS::Config::AggregateConfigRule`
-        # *   `ACS::Config::Aggregator`
-        # *   `ACS::Config::CompliancePack`
-        # *   `ACS::Config::AggregateCompliancePack`
+        # - `ACS::Config::Rule`: a rule for a single account.
+        # 
+        # - `ACS::Config::AggregateConfigRule`: a rule for multiple accounts.
+        # 
+        # - `ACS::Config::Aggregator`: an account group.
+        # 
+        # - `ACS::Config::CompliancePack`: a compliance package for a single account.
+        # 
+        # - `ACS::Config::AggregateCompliancePack`: a compliance package for multiple accounts.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag value of the resource.
+        # The tags of the resource.
         # 
-        # You can specify up to 20 tag values.
+        # You can attach a maximum of 20 tags.
         # 
         # This parameter is required.
         self.tag_shrink = tag_shrink

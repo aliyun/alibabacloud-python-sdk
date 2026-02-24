@@ -13,7 +13,7 @@ class GetCompliancePackResponseBody(DaraModel):
         compliance_pack: main_models.GetCompliancePackResponseBodyCompliancePack = None,
         request_id: str = None,
     ):
-        # The details of the compliance package.
+        # The information about the compliance package.
         self.compliance_pack = compliance_pack
         # The request ID.
         self.request_id = request_id
@@ -64,34 +64,37 @@ class GetCompliancePackResponseBodyCompliancePack(DaraModel):
     ):
         # The ID of the Alibaba Cloud account to which the compliance package belongs.
         self.account_id = account_id
-        # The ID of the compliance package.
+        # The compliance package ID.
         self.compliance_pack_id = compliance_pack_id
         # The name of the compliance package.
         self.compliance_pack_name = compliance_pack_name
         # The ID of the compliance package template.
         self.compliance_pack_template_id = compliance_pack_template_id
-        # The rules in the compliance package.
+        # The list of rules in the compliance package.
         self.config_rules = config_rules
         # The timestamp when the compliance package was created. Unit: milliseconds.
         self.create_timestamp = create_timestamp
         # The description of the compliance package.
         self.description = description
-        # The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
+        # The risk level of the compliance package. Valid values:
         # 
-        # *   1: high
-        # *   2: medium
-        # *   3: low
+        # - 1: high risk.
+        # 
+        # - 2: medium risk.
+        # 
+        # - 3: low risk.
         self.risk_level = risk_level
-        # The resource group for which the compliance package took effect.
+        # The evaluation scope.
         self.scope = scope
         # The status of the compliance package. Valid values:
         # 
-        # *   ACTIVE: The compliance package is normal.
-        # *   CREATING: The compliance package is being created.
+        # - ACTIVE: The compliance package is active.
+        # 
+        # - CREATING: The compliance package is being created.
         self.status = status
-        # The list of tags.
+        # The resource tags.
         self.tags = tags
-        # The information about the current compliance package template. The rules in the template do not contain custom function rules. You can quickly create the same compliance package for other accounts or account groups based on the template information.
+        # The template information for the compliance package. The rule list in the template does not include user-defined function rules. You can use this template to quickly create the same compliance package for other accounts or account groups.
         self.template_content = template_content
 
     def validate(self):
@@ -206,9 +209,9 @@ class GetCompliancePackResponseBodyCompliancePackTags(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag keys of the resource.
+        # The tag key.
         self.tag_key = tag_key
-        # The tag values of the resource.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -251,25 +254,25 @@ class GetCompliancePackResponseBodyCompliancePackScope(DaraModel):
         tag_value_scope: str = None,
         tags_scope: List[main_models.GetCompliancePackResponseBodyCompliancePackScopeTagsScope] = None,
     ):
-        # The IDs of regions that are excluded. Separate multiple region IDs with commas (,).
+        # The IDs of the regions from which resources are excluded. Separate multiple region IDs with commas (,).
         self.exclude_region_ids_scope = exclude_region_ids_scope
-        # The IDs of the resource groups whose resources you do not want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
+        # The compliance package is not effective for the resources in the resource groups with the specified IDs. Separate multiple resource group IDs with commas (,).
         self.exclude_resource_group_ids_scope = exclude_resource_group_ids_scope
-        # The ID of the resource that you do not want to evaluate by using the compliance package.
+        # The compliance package is not effective for the resources with the specified IDs. The resources are not evaluated.
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
-        # The scope of the tag that is excluded.
+        # The excluded tag scope.
         # 
         # This parameter is required.
         self.exclude_tags_scope = exclude_tags_scope
-        # The ID of the region whose resources you want to evaluate by using the compliance package.
+        # The compliance package is effective only for resources in the specified regions.
         self.region_ids_scope = region_ids_scope
-        # The ID of the resource group whose resources you want to evaluate by using the compliance package.
+        # The compliance package is effective only for the resources in the resource groups with the specified IDs.
         self.resource_group_ids_scope = resource_group_ids_scope
-        # The IDs of the resources to which the rule applies. Separate multiple resource IDs with commas (,).
+        # The compliance package is effective only for resources with the specified IDs. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
-        # The tag key of the resource that you want to evaluate by using the compliance package.
+        # The compliance package is effective only for the resources that have the specified tag key.
         self.tag_key_scope = tag_key_scope
-        # The tag value of the resource that you want to evaluate by using the compliance package.
+        # The compliance package is effective only for the resources that have the specified tag key-value pair.
         self.tag_value_scope = tag_value_scope
         # The tag scope.
         # 
@@ -373,9 +376,9 @@ class GetCompliancePackResponseBodyCompliancePackScopeTagsScope(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.tag_key = tag_key
-        # The value of the tag.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -410,9 +413,9 @@ class GetCompliancePackResponseBodyCompliancePackScopeExcludeTagsScope(DaraModel
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The key of the tag.
+        # The tag key.
         self.tag_key = tag_key
-        # The value of the tag.
+        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):
@@ -454,21 +457,23 @@ class GetCompliancePackResponseBodyCompliancePackConfigRules(DaraModel):
     ):
         # The rule ID.
         self.config_rule_id = config_rule_id
-        # The rule name.
+        # The name of the rule.
         self.config_rule_name = config_rule_name
-        # The input parameters of the rule.
+        # The information about the rule parameters.
         self.config_rule_parameters = config_rule_parameters
-        # The rule description.
+        # The description of the rule.
         self.description = description
-        # The identifier of the managed rule.
+        # The identifier of the rule template.
         self.managed_rule_identifier = managed_rule_identifier
-        # The type of the resource evaluated based on the rule. Separate multiple resource types with commas (,).
+        # The types of resources that are evaluated by the rule. Separate multiple resource types with commas (,).
         self.resource_types_scope = resource_types_scope
-        # The risk level of the resources that do not comply with the rule. Valid values:
+        # The risk level of the rule. Valid values:
         # 
-        # *   1: high
-        # *   2: medium
-        # *   3: low
+        # - 1: high risk.
+        # 
+        # - 2: medium risk.
+        # 
+        # - 3: low risk.
         self.risk_level = risk_level
 
     def validate(self):
@@ -542,14 +547,15 @@ class GetCompliancePackResponseBodyCompliancePackConfigRulesConfigRuleParameters
         parameter_value: str = None,
         required: bool = None,
     ):
-        # The name of the input parameter.
+        # The name of the rule parameter.
         self.parameter_name = parameter_name
-        # The value of the input parameter.
+        # The value of the rule parameter.
         self.parameter_value = parameter_value
-        # Indicates whether the input parameters are required. Valid values:
+        # Indicates whether the parameter is required for the rule. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The parameter is required.
+        # 
+        # - false: The parameter is not required.
         self.required = required
 
     def validate(self):

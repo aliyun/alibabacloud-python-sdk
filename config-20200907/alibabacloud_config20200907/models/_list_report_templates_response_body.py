@@ -16,10 +16,15 @@ class ListReportTemplatesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
+        # The maximum number of entries to return per page. Valid values: 1 to 50. Default value: 20.
         self.max_results = max_results
+        # If the response is truncated, use NextToken to send another request and get results after the truncation point.
         self.next_token = next_token
+        # The list of report templates.
         self.report_template_list = report_template_list
+        # The ID of the request.
         self.request_id = request_id
+        # The total number of templates.
         self.total_count = total_count
 
     def validate(self):
@@ -86,13 +91,55 @@ class ListReportTemplatesResponseBodyReportTemplateList(DaraModel):
         report_template_name: str = None,
         subscription_frequency: str = None,
     ):
+        # The format of the report. Only Excel is supported.
         self.report_file_formats = report_file_formats
+        # The aggregation granularity of the report.
+        # 
+        # From the management account perspective, the following options are supported:
+        # 
+        # - AllInOne: Aggregate all accounts in the template scope into one report.
+        # 
+        # - GroupByAggregator: Generate reports by aggregator group. Output as one compressed file.
+        # 
+        # - GroupByAccount: Generate separate reports for each account (default). Output as one compressed file.
+        # 
+        # Member accounts support only GroupByAccount.
         self.report_granularity = report_granularity
+        # The language of the report. Valid values: zh-CN and en-US. Default value: en-US.
         self.report_language = report_language
+        # An array that defines which rules appear in the audit report. Each ReportScope object uses OR logic (additive logic).
+        # 
+        # > For example, if the array has two items — the first specifies RuleId cr-1 and the second specifies RuleId cr-2 — then the report covers both cr-1 and cr-2.
         self.report_scope = report_scope
+        # The description of the report template.
         self.report_template_description = report_template_description
+        # The ID of the report template.
         self.report_template_id = report_template_id
+        # The name of the report template.
         self.report_template_name = report_template_name
+        # The subscription frequency of the report. If this parameter is specified, it must be a Quartz-formatted cron expression.
+        # 
+        # The format is: second minute hour day month weekday. Common examples:
+        # 
+        # - Run daily at 00:00: 0 0 0 \\* \\* ?
+        # 
+        # - Run every Monday at 15:30: 0 30 15 ? \\* MON
+        # 
+        # - Run on the first day of each month at 02:00: 0 0 2 1 \\* ?
+        # 
+        # Where:
+        # 
+        # - "\\*" means any value.
+        # 
+        # - "?" means no specific value for day or weekday.
+        # 
+        # - "MON" means Monday.
+        # 
+        # > Times are in UTC+8. Adjust your cron expression based on your local time zone.
+        # 
+        # > The system tries to run reports at the scheduled time, but delays may occur due to report generation. Each template can trigger at most one notification per day.
+        # 
+        # > In Quartz, weekdays are numbered starting from Sunday: 1 = Sunday, 2 = Monday, 3 = Tuesday, 4 = Wednesday, 5 = Thursday, 6 = Friday, 7 = Saturday.
         self.subscription_frequency = subscription_frequency
 
     def validate(self):
@@ -172,8 +219,17 @@ class ListReportTemplatesResponseBodyReportTemplateListReportScope(DaraModel):
         match_type: str = None,
         value: str = None,
     ):
+        # The key for the report scope. Supported values:
+        # 
+        # - AggregatorId
+        # 
+        # - CompliancePackId
+        # 
+        # - RuleId
         self.key = key
+        # The matching logic. Only In is supported.
         self.match_type = match_type
+        # The value for the report scope. For multiple values of the same type — such as multiple rule IDs — separate them with commas (,).
         self.value = value
 
     def validate(self):

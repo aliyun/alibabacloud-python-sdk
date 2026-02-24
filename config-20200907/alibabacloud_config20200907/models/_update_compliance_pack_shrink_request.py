@@ -28,55 +28,57 @@ class UpdateCompliancePackShrinkRequest(DaraModel):
         tag_value_scope: str = None,
         tags_scope: List[main_models.UpdateCompliancePackShrinkRequestTagsScope] = None,
     ):
-        # The client token that you want to use to ensure the idempotency of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length.``
+        # A client token to ensure the idempotence of the request. Generate a unique token for each request. The `ClientToken` value can contain only ASCII characters and must be no more than 64 characters long.
         self.client_token = client_token
-        # The ID of the compliance package.
+        # The ID of the compliance pack.
         # 
-        # For more information about how to obtain the ID of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
+        # For more information, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
         # 
         # This parameter is required.
         self.compliance_pack_id = compliance_pack_id
-        # The name of the compliance package.
+        # The name of the compliance pack.
         # 
-        # For more information about how to obtain the name of a compliance package, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
+        # For more information, see [ListCompliancePacks](https://help.aliyun.com/document_detail/263332.html).
         self.compliance_pack_name = compliance_pack_name
-        # The rules in the compliance package.
+        # The rules in the compliance pack.
         # 
-        # If you leave this parameter empty, the rules in the compliance package remain unchanged. If you configure this parameter, Cloud Config replaces the existing rules in the compliance package with the specified rules.
+        # If you leave this parameter empty when you modify the compliance pack, the original rules are retained. If you specify new rules, they replace the original rules.
         self.config_rules_shrink = config_rules_shrink
-        # The description of the compliance package.
+        # The description of the compliance pack.
         self.description = description
-        # The IDs of the regions to which the rule not applies. Separate multiple region IDs with commas (,).
+        # The compliance pack does not evaluate resources in the specified regions. Separate multiple region IDs with commas (,).
         self.exclude_region_ids_scope = exclude_region_ids_scope
-        # ExcludeResourceGroupIdsScope. Separate multiple resource group IDs with commas (,).
+        # The compliance pack does not evaluate resources in the specified resource groups. Separate multiple resource group IDs with commas (,).
         self.exclude_resource_group_ids_scope = exclude_resource_group_ids_scope
-        # The ID of the resource that you do not want to evaluate by using the compliance package. Separate multiple resource IDs with commas (,).
+        # The compliance pack does not evaluate the specified resources. Separate multiple resource IDs with commas (,).
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
-        # ExcludeTagsScope
+        # The excluded tag scope.
         self.exclude_tags_scope = exclude_tags_scope
-        # The ID of the region whose resources you want to evaluate by using the compliance package. Separate multiple region IDs with commas (,).
+        # The compliance pack evaluates only resources in the specified regions. Separate multiple region IDs with commas (,).
         self.region_ids_scope = region_ids_scope
-        # The ID of the resource group whose resources you want to evaluate by using the compliance package. Separate multiple resource group IDs with commas (,).
+        # The compliance pack evaluates only resources in the specified resource groups. Separate multiple resource group IDs with commas (,).
         self.resource_group_ids_scope = resource_group_ids_scope
-        # The IDs of the resources included from the compliance evaluations performed by the rule. Separate multiple resource IDs with commas (,).
+        # The compliance pack evaluates only the specified resources. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
-        # The risk level of the resources that are not compliant with the rules in the compliance package. Valid values:
+        # The risk level of the compliance pack. Valid values:
         # 
-        # *   1: high risk level
-        # *   2: medium risk level
-        # *   3: low risk level
+        # - 1: High risk.
+        # 
+        # - 2: Medium risk.
+        # 
+        # - 3: Low risk.
         self.risk_level = risk_level
-        # The tags of the resource.
+        # The tags of the resource. This parameter is deprecated. Ignore this parameter because it is no longer valid.
         # 
-        # You can add up to 20 tags to a resource.
+        # You can add up to 20 tags.
         self.tag_shrink = tag_shrink
-        # The tag key of the resource that you want to evaluate by using the compliance package.
+        # The compliance pack evaluates only resources that have the specified tag key.
         self.tag_key_scope = tag_key_scope
-        # The tag value of the resource that you want to evaluate by using the compliance package.
+        # The compliance pack evaluates only resources that have the specified tag key and value.
         # 
-        # >  You must configure the TagValueScope parameter together with the TagValueScope parameter.
+        # > You must use TagValueScope with TagKeyScope.
         self.tag_value_scope = tag_value_scope
-        # TagsScope
+        # The tag scope.
         self.tags_scope = tags_scope
 
     def validate(self):

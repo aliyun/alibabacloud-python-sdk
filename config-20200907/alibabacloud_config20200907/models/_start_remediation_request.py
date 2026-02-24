@@ -9,10 +9,6 @@ class StartRemediationRequest(DaraModel):
         self,
         config_rule_id: str = None,
     ):
-        # The rule ID.
-        # 
-        # For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
-        # 
         # This parameter is required.
         self.config_rule_id = config_rule_id
 

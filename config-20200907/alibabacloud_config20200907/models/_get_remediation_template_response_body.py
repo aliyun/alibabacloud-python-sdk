@@ -62,19 +62,19 @@ class GetRemediationTemplateResponseBodyRemediationTemplates(DaraModel):
         template_identifier: str = None,
         template_name: str = None,
     ):
-        # The ID of the supported rule template.
+        # The identifier of the supported rule template.
         # 
         # This parameter is required.
         self.managed_rule_identifier = managed_rule_identifier
-        # The type of the automatic remediation template. The value is set to OOS.
+        # The type of the automatic remediation template. Valid value: OOS (Operation Orchestration).
         self.remediation_type = remediation_type
-        # The parameters of the automatic remediation template.
+        # The definition of the template parameters.
         self.template_definition = template_definition
         # The description of the automatic remediation template.
         # 
         # This parameter is required.
         self.template_description = template_description
-        # The ID of the automatic remediation template.
+        # The identifier of the automatic remediation template.
         self.template_identifier = template_identifier
         # The name of the automatic remediation template.
         self.template_name = template_name

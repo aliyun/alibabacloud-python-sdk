@@ -13,28 +13,11 @@ class GetAggregateResourceComplianceByConfigRuleRequest(DaraModel):
         resource_account_id: int = None,
         resource_owner_id: int = None,
     ):
-        # The ID of the account group.
-        # 
-        # For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
-        # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # The compliance evaluation result of the resources. Valid values:
-        # 
-        # *   COMPLIANT: The resource is evaluated as compliant.
-        # *   NON_COMPLIANT: The resource is evaluated as incompliant.
-        # *   NOT_APPLICABLE: The rule does not apply to your resources.
-        # *   INSUFFICIENT_DATA: No resource data is available.
         self.compliance_type = compliance_type
-        # The ID of the rule.
-        # 
-        # For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
-        # 
         # This parameter is required.
         self.config_rule_id = config_rule_id
-        # The ID of the Alibaba Cloud account to which the resources in the account group belong.
-        # 
-        # > You can use either the ResourceAccountId or ResourceOwnerId parameter. We recommend that you use the ResourceAccountId parameter.
         self.resource_account_id = resource_account_id
         self.resource_owner_id = resource_owner_id
 

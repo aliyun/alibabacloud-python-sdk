@@ -13,9 +13,7 @@ class ActiveConfigRulesResponseBody(DaraModel):
         operate_rule_result: main_models.ActiveConfigRulesResponseBodyOperateRuleResult = None,
         request_id: str = None,
     ):
-        # The returned results.
         self.operate_rule_result = operate_rule_result
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -51,7 +49,6 @@ class ActiveConfigRulesResponseBodyOperateRuleResult(DaraModel):
         self,
         operate_rule_item_list: List[main_models.ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList] = None,
     ):
-        # The returned results.
         self.operate_rule_item_list = operate_rule_item_list
 
     def validate(self):
@@ -89,17 +86,8 @@ class ActiveConfigRulesResponseBodyOperateRuleResultOperateRuleItemList(DaraMode
         error_code: str = None,
         success: bool = None,
     ):
-        # The rule ID.
         self.config_rule_id = config_rule_id
-        # The error code.
-        # 
-        # *   If the rule is enabled, no error code is returned.
-        # *   If the rule fails to be enabled, an error code is returned. For more information about error codes, see [Error codes](https://next.api.aliyun.com/document/Config/2020-09-07/errorCode).
         self.error_code = error_code
-        # Indicates whether the rule is enabled. Valid values:
-        # 
-        # *   true
-        # *   false
         self.success = success
 
     def validate(self):

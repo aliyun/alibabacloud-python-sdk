@@ -13,7 +13,7 @@ class DeleteRemediationsResponseBody(DaraModel):
         remediation_delete_results: List[main_models.DeleteRemediationsResponseBodyRemediationDeleteResults] = None,
         request_id: str = None,
     ):
-        # The returned result.
+        # The result of the delete operation.
         self.remediation_delete_results = remediation_delete_results
         # The request ID.
         self.request_id = request_id
@@ -59,17 +59,19 @@ class DeleteRemediationsResponseBodyRemediationDeleteResults(DaraModel):
         remediation_id: str = None,
         success: bool = None,
     ):
-        # The error code returned.
+        # The error code.
         # 
-        # *   If the remediation template is deleted, no error code is returned.
-        # *   If the remediation template fails to be deleted, an error code is returned. For more information about error codes, see [Error codes](https://error-center.alibabacloud.com/status/product/Config).
+        # - This parameter is empty if the remediation setting is successfully deleted.
+        # 
+        # - This parameter returns an error code if the operation fails. For more information about error codes, see <props="intl">[Error Center](https://error-center.alibabacloud.com/status/product/Config).
         self.error_message = error_message
-        # The ID of the remediation template.
+        # The remediation setting ID.
         self.remediation_id = remediation_id
-        # Indicates whether the request was successful. Valid values:
+        # Indicates whether the operation was successful. Valid values:
         # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
+        # - true: The operation was successful.
+        # 
+        # - false: The operation failed.
         self.success = success
 
     def validate(self):

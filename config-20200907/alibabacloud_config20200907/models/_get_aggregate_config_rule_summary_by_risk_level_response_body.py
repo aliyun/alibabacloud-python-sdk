@@ -13,9 +13,7 @@ class GetAggregateConfigRuleSummaryByRiskLevelResponseBody(DaraModel):
         config_rule_summaries: List[main_models.GetAggregateConfigRuleSummaryByRiskLevelResponseBodyConfigRuleSummaries] = None,
         request_id: str = None,
     ):
-        # The summary of compliance evaluation results by rule risk level.
         self.config_rule_summaries = config_rule_summaries
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -59,15 +57,8 @@ class GetAggregateConfigRuleSummaryByRiskLevelResponseBodyConfigRuleSummaries(Da
         non_compliant_count: int = None,
         risk_level: int = None,
     ):
-        # The number of rules against which specific resources are evaluated as compliant.
         self.compliant_count = compliant_count
-        # The number of rules against which specific resources are evaluated as non-compliant.
         self.non_compliant_count = non_compliant_count
-        # The risk level of the resources that do not comply with the rule. Valid values:
-        # 
-        # *   1: high
-        # *   2: medium
-        # *   3: low
         self.risk_level = risk_level
 
     def validate(self):

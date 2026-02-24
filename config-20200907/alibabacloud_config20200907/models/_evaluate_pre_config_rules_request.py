@@ -14,18 +14,17 @@ class EvaluatePreConfigRulesRequest(DaraModel):
         resource_evaluate_items: List[main_models.EvaluatePreConfigRulesRequestResourceEvaluateItems] = None,
         resource_type_format: str = None,
     ):
-        # Specifies whether to enable the managed rule. Valid values:
+        # Specifies whether to enable rule templates. Valid values:
         # 
-        # *   true: enables the managed rule.
-        # *   false: does not enable the managed rule. This is the default value.
+        # - true: enables rule templates.
         # 
-        # >  After you create an evaluation rule, a managed rule that has the same settings as the evaluation rule is created. After you create a resource, the managed rule can be used to continuously check the compliance of the resource.
+        # - false (default): does not enable rule templates.
         self.enable_managed_rules = enable_managed_rules
-        # The resources that you want to evaluate.
+        # An array that contains the resources that you want to evaluate.
         # 
         # This parameter is required.
         self.resource_evaluate_items = resource_evaluate_items
-        # 下一个查询开始Token
+        # The query start token
         self.resource_type_format = resource_type_format
 
     def validate(self):
@@ -77,12 +76,20 @@ class EvaluatePreConfigRulesRequestResourceEvaluateItems(DaraModel):
         rules: List[main_models.EvaluatePreConfigRulesRequestResourceEvaluateItemsRules] = None,
     ):
         # The logical ID of the resource.
+        # 
+        # > If this parameter is empty, it is generated based on the Base64 value of `ResourceProperties`.
         self.resource_logical_id = resource_logical_id
-        # The properties of the resource.
+        # The resource configuration items (properties of the resource to be created), such as the specifications, region, name, status, and port or network interface switch status of the resource.
+        # 
+        # > The `ResourceType`, `Identifier`, and `ResourceProperties` parameters must be specified at the same time.
         self.resource_properties = resource_properties
         # The type of the resource.
+        # 
+        # For information about how to obtain the identifier of an evaluation rule, see [ListPreManagedRules](https://help.aliyun.com/document_detail/467810.html).
+        # 
+        # > The `ResourceType`, `Identifier`, and `ResourceProperties` parameters must be specified at the same time.
         self.resource_type = resource_type
-        # The evaluation rules.
+        # An array that contains the evaluation rules.
         self.rules = rules
 
     def validate(self):
@@ -137,11 +144,13 @@ class EvaluatePreConfigRulesRequestResourceEvaluateItemsRules(DaraModel):
         identifier: str = None,
         input_parameters: str = None,
     ):
-        # The identifier of the evaluation rule.
+        # The identifier of the rule.
         # 
-        # For more information about how to obtain the identifier of an evaluation rule, see [ListManagedRules](https://help.aliyun.com/document_detail/467810.html).
+        # For information about how to obtain the identifier of a rule, see [ListPreManagedRules](https://help.aliyun.com/document_detail/467810.html).
+        # 
+        # > The `ResourceType`, `Identifier`, and `ResourceProperties` parameters must be specified at the same time.
         self.identifier = identifier
-        # The input parameters of the evaluation rule.
+        # The input parameters of the rule.
         self.input_parameters = input_parameters
 
     def validate(self):

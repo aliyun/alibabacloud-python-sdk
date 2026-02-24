@@ -11,8 +11,13 @@ class DescribeIntegratedServiceStatusResponseBody(DaraModel):
         data: bool = None,
         request_id: str = None,
     ):
+        # The event type for cross-account integration. The supported event type is:
+        # 
+        # - NonCompliantNotification: non-compliance events.
         self.aggregator_delivery_data_type = aggregator_delivery_data_type
+        # The enabling status of the integrated service.
         self.data = data
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

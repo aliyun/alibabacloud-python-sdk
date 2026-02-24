@@ -62,43 +62,44 @@ class GetDiscoveredResourceResponseBodyDiscoveredResourceDetail(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The ID of the Alibaba Cloud account to which the resource belongs.
+        # The ID of the Alibaba Cloud account that owns the resource.
         self.account_id = account_id
-        # The ID of the zone in which the resource resides.
+        # The zone where the resource resides.
         self.availability_zone = availability_zone
-        # The compliance evaluation result of the resource. Valid values:
-        # 
-        # *   COMPLIANT: The resource is evaluated as compliant.
-        # *   NON_COMPLIANT: The resource is evaluated as non-compliant.
-        # *   NOT_APPLICABLE: The rule does not apply to the resources.
-        # *   INSUFFICIENT_DATA: No data is available.
+        # The compliance type.
         self.compliance_type = compliance_type
-        # The configuration of the resource.
+        # The complete configuration information of the resource.
         self.configuration = configuration
         # The region ID.
         self.region = region
         # The timestamp when the resource was created.
         self.resource_creation_time = resource_creation_time
-        # Indicates whether the resource was deleted. Valid values:
+        # The deletion status of the resource. Valid values:
         # 
-        # *   1: The resource was not deleted.
-        # *   0: The resource was deleted.
+        # - 1: The resource is not deleted.
+        # 
+        # - 0: The resource is deleted.
         self.resource_deleted = resource_deleted
         # The resource ID.
         self.resource_id = resource_id
-        # The name of the resource.
+        # The resource name.
         self.resource_name = resource_name
-        # The status of the resource. The value of this parameter varies based on the resource type and may be empty.
+        # The status of the resource. The status of a resource is defined by the corresponding Alibaba Cloud service. This parameter can be empty. Examples:
         # 
-        # *   If the ResourceType parameter is set to ACS::ECS::Instance, the resource is an ECS instance that has a specific state. In this case, the valid values of this parameter are Running and Stopped.
-        # *   If the ResourceType parameter is ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that is not in a specific state. In this case, this parameter is left empty.
+        # - If the resource type is ACS::ECS::Instance, the resource is stateful. In this case, the value of this parameter is Running or Stopped.
+        # 
+        # - If the resource type is ACS::OSS::Bucket, the resource is stateless. In this case, this parameter is empty.
         self.resource_status = resource_status
-        # The type of the resource.
+        # The resource type.
         self.resource_type = resource_type
         # The tags of the resource.
         self.tags = tags
+        # The ID of the vSwitch to which the resource belongs. The ID is in the vsw-t4n7pokxxxxxxxxxxxxxx format. If multiple vSwitch IDs are returned, they are separated by commas (,). Example: vsw-t4n7pokxxxxxxxxxxxxxx,vsw-t4n7pokxxxxxxxxxxxxxx. If the resource does not belong to a vSwitch, an empty string "" is returned.
+        # 
         # This parameter is required.
         self.v_switch_id = v_switch_id
+        # The ID of the VPC to which the resource belongs. The ID is in the vpc-t4nhheyvay74fp7n0hxxx format. If the resource does not belong to a VPC, an empty string "" is returned.
+        # 
         # This parameter is required.
         self.vpc_id = vpc_id
 

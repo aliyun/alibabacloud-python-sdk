@@ -9,8 +9,6 @@ class CreateAdvancedSearchFileRequest(DaraModel):
         self,
         sql: str = None,
     ):
-        # The SQL statement used to query resources.
-        # 
         # This parameter is required.
         self.sql = sql
 

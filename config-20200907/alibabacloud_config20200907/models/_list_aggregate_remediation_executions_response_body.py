@@ -13,9 +13,7 @@ class ListAggregateRemediationExecutionsResponseBody(DaraModel):
         remediation_execution_data: main_models.ListAggregateRemediationExecutionsResponseBodyRemediationExecutionData = None,
         request_id: str = None,
     ):
-        # The queried remediation records.
         self.remediation_execution_data = remediation_execution_data
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -53,11 +51,8 @@ class ListAggregateRemediationExecutionsResponseBodyRemediationExecutionData(Dar
         next_token: str = None,
         remediation_executions: List[main_models.ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataRemediationExecutions] = None,
     ):
-        # The maximum number of entries returned for a single request.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
         self.next_token = next_token
-        # The queried remediation records.
         self.remediation_executions = remediation_executions
 
     def validate(self):
@@ -110,20 +105,11 @@ class ListAggregateRemediationExecutionsResponseBodyRemediationExecutionDataReme
         execution_status: str = None,
         execution_status_message: str = None,
     ):
-        # The time when the remediation record was created.
         self.execution_create_date = execution_create_date
-        # The invocation ID of the remediation record.
         self.execution_invocation_id = execution_invocation_id
-        # The IDs of the remediated resources. Multiple resource IDs are separated with commas (,).
         self.execution_resource_ids = execution_resource_ids
-        # The resource type.
         self.execution_resource_type = execution_resource_type
-        # The status of the remediation. Valid values:
-        # 
-        # *   Success
-        # *   Failed
         self.execution_status = execution_status
-        # The error message returned when the remediation fails.
         self.execution_status_message = execution_status_message
 
     def validate(self):

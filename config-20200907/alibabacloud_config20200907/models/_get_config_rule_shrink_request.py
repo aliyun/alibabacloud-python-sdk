@@ -12,13 +12,13 @@ class GetConfigRuleShrinkRequest(DaraModel):
     ):
         # The rule ID.
         # 
-        # For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
+        # For more information, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
         # 
         # This parameter is required.
         self.config_rule_id = config_rule_id
-        # The tags of the resource.
+        # The tags of the resource. This parameter is deprecated and has no effect.
         # 
-        # You can add up to 20 tags to a resource.
+        # You can add a maximum of 20 tags to a resource.
         self.tag_shrink = tag_shrink
 
     def validate(self):

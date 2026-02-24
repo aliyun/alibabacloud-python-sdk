@@ -10,15 +10,7 @@ class GetResourceComplianceByConfigRuleRequest(DaraModel):
         compliance_type: str = None,
         config_rule_id: str = None,
     ):
-        # The compliance evaluation result. Valid values:
-        # 
-        # *   COMPLIANT: The resources are evaluated as compliant.
-        # *   NON_COMPLIANT: The resources are evaluated as non-compliant.
-        # *   NOT_APPLICABLE: The rule does not apply to the resources.
-        # *   INSUFFICIENT_DATA: No data is available.
         self.compliance_type = compliance_type
-        # The rule ID.
-        # 
         # This parameter is required.
         self.config_rule_id = config_rule_id
 

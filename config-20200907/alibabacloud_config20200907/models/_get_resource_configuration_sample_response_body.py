@@ -11,8 +11,9 @@ class GetResourceConfigurationSampleResponseBody(DaraModel):
         request_id: str = None,
         sample: main_models.GetResourceConfigurationSampleResponseBodySample = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
+        # The sample.
         self.sample = sample
 
     def validate(self):
@@ -59,17 +60,33 @@ class GetResourceConfigurationSampleResponseBodySample(DaraModel):
         tags: str = None,
         version: str = None,
     ):
+        # The user ID.
         self.account_id = account_id
+        # The zone.
         self.availability_zone = availability_zone
+        # The complete configuration information of the resource.
         self.configuration = configuration
+        # The region ID.
         self.region = region
+        # The time when the resource was created.
         self.resource_creation_time = resource_creation_time
+        # The deletion status of the resource. Valid values:
+        # 
+        # - 1: The resource is retained.
+        # 
+        # - 0: The resource is deleted.
         self.resource_deleted = resource_deleted
+        # The resource ID.
         self.resource_id = resource_id
+        # The resource name.
         self.resource_name = resource_name
+        # The resource status.
         self.resource_status = resource_status
+        # The resource type.
         self.resource_type = resource_type
+        # The tag.
         self.tags = tags
+        # The version information.
         self.version = version
 
     def validate(self):

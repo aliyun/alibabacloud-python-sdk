@@ -9,8 +9,6 @@ class UpdateConfigurationRecorderRequest(DaraModel):
         self,
         resource_types: str = None,
     ):
-        # The resource types. Separate multiple resource types with commas (,).
-        # 
         # This parameter is required.
         self.resource_types = resource_types
 

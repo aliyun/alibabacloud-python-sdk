@@ -10,9 +10,7 @@ class CreateCompliancePackResponseBody(DaraModel):
         compliance_pack_id: str = None,
         request_id: str = None,
     ):
-        # The compliance package ID.
         self.compliance_pack_id = compliance_pack_id
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):

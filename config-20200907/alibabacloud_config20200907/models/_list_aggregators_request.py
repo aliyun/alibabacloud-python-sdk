@@ -14,15 +14,9 @@ class ListAggregatorsRequest(DaraModel):
         next_token: str = None,
         tag: List[main_models.ListAggregatorsRequestTag] = None,
     ):
-        # The maximum number of entries to return in a request. Valid values: 1 to 100.
-        # 
         # This parameter is required.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of `NextToken`.
         self.next_token = next_token
-        # The tags of the resource.
-        # 
-        # You can add up to 20 tags to a resource.
         self.tag = tag
 
     def validate(self):
@@ -71,15 +65,7 @@ class ListAggregatorsRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource. You can specify up to 20 tag keys.
-        # 
-        # The tag key cannot be an empty string. The tag key must be 1 to 64 characters in length and cannot start with `aliyun` or `acs`:. The tag key cannot contain `http://` or `https://`.
         self.key = key
-        # The tag values.
-        # 
-        # The tag values can be an empty string or up to 128 characters in length. The tag values cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
-        # 
-        # Each key-value must be unique. You can specify at most 20 tag values in each call.
         self.value = value
 
     def validate(self):

@@ -10,7 +10,9 @@ class DryRunConfigRuleRequest(DaraModel):
         configuration_item: str = None,
         resource_type: str = None,
     ):
+        # The complete configuration information of the resource.
         self.configuration_item = configuration_item
+        # The resource type that is evaluated by the rule.
         self.resource_type = resource_type
 
     def validate(self):

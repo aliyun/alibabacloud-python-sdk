@@ -15,7 +15,7 @@ class GetAggregateResourceComplianceTimelineResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the compliance timeline.
+        # The compliance timeline of the resource.
         self.resource_compliance_timeline = resource_compliance_timeline
 
     def validate(self):
@@ -53,14 +53,11 @@ class GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimeli
         max_results: int = None,
         next_token: str = None,
     ):
-        # The status of the resource. The parameter value varies based on the resource type and may be left empty. Examples:
-        # 
-        # *   If the value of the ResourceType parameter is ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that has a specific state. In this case, the valid values of this parameter are Running and Stopped.
-        # *   If the value of the ResourceType parameter is ACS::OSS::Bucket, the resource is an Object Storage Service (OSS) bucket that is not in a specific state. In this case, this parameter is empty.
+        # A list of compliance timeline entries.
         self.compliance_list = compliance_list
-        # The maximum number of entries returned for a single request.
+        # The maximum number of entries returned per page.
         self.max_results = max_results
-        # A pagination token. It can be used in the next request to retrieve a new page of results.
+        # The token used to query the next page.
         self.next_token = next_token
 
     def validate(self):
@@ -121,28 +118,29 @@ class GetAggregateResourceComplianceTimelineResponseBodyResourceComplianceTimeli
     ):
         # The ID of the Alibaba Cloud account to which the resource belongs.
         self.account_id = account_id
-        # The ID of the zone in which the resource resides.
+        # The zone where the resource resides.
         self.availability_zone = availability_zone
         # The timestamp when the compliance evaluation was recorded. Unit: milliseconds.
         self.capture_time = capture_time
-        # The information about the rules that evaluated the resource and the compliance evaluation result.
+        # A list of rules associated with the resource and their compliance details.
         self.configuration = configuration
-        # The details of the resource change that triggered the compliance evaluation.
+        # The details of the resource change that triggered this evaluation.
         self.configuration_diff = configuration_diff
-        # The ID of the region in which the resource resides.
+        # The ID of the region where the resource resides.
         self.region = region
         # The timestamp when the resource was created. Unit: milliseconds.
         self.resource_create_time = resource_create_time
-        # The ID of the resource.
+        # The resource ID.
         self.resource_id = resource_id
-        # The name of the resource.
+        # The resource name.
         self.resource_name = resource_name
-        # The status of the resource. The parameter value varies based on the resource type and may be left empty. Examples:
+        # The status of the resource. The status of a resource is defined by the corresponding Alibaba Cloud service. This parameter can be empty. For example:
         # 
-        # *   If the ResourceType parameter is set to ACS::ECS::Instance, the resource is an Elastic Compute Service (ECS) instance that has a specific state. In this case, the valid values of this parameter are Running and Stopped.
-        # *   If the ResourceType parameter is set to ACS::OSS::Bucket, the resource is an OSS bucket that does not have a specific state. In this case, this parameter is left empty.
+        # - If the resource type is ACS::ECS::Instance, this parameter can be Running or Stopped because an ECS instance is stateful.
+        # 
+        # - If the resource type is ACS::OSS::Bucket, this parameter is empty because an OSS bucket is stateless.
         self.resource_status = resource_status
-        # The type of the resource.
+        # The resource type.
         self.resource_type = resource_type
         # The tags of the resource.
         self.tags = tags

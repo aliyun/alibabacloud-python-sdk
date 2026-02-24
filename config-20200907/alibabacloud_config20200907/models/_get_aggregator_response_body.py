@@ -13,7 +13,7 @@ class GetAggregatorResponseBody(DaraModel):
         aggregator: main_models.GetAggregatorResponseBodyAggregator = None,
         request_id: str = None,
     ):
-        # The details of the account group.
+        # The information about the account group.
         self.aggregator = aggregator
         # The request ID.
         self.request_id = request_id
@@ -68,7 +68,7 @@ class GetAggregatorResponseBodyAggregator(DaraModel):
         self.aggregator_account_count = aggregator_account_count
         # The information about the members in the account group.
         self.aggregator_accounts = aggregator_accounts
-        # The timestamp generated when the account group was created.
+        # The timestamp when the account group was created.
         # 
         # Unit: milliseconds.
         self.aggregator_create_timestamp = aggregator_create_timestamp
@@ -78,21 +78,25 @@ class GetAggregatorResponseBodyAggregator(DaraModel):
         self.aggregator_name = aggregator_name
         # The status of the account group. Valid values:
         # 
-        # *   0: The account group is being created.
-        # *   1: The account group was created.
+        # - 0: The account group is being created.
+        # 
+        # - 1: The account group is created.
         self.aggregator_status = aggregator_status
         # The type of the account group. Valid values:
         # 
-        # *   RD: a global account group.
-        # *   FOLDER: an account group for a folder.
-        # *   CUSTOM: a custom account group.
+        # - RD: global account group.
+        # 
+        # - FOLDER: folder account group.
+        # 
+        # - CUSTOM: custom account group.
         self.aggregator_type = aggregator_type
         # The description of the account group.
         self.description = description
-        # The ID of the attached folder of the account group.
+        # The ID of the folder to which the folder account group is attached.
         self.folder_id = folder_id
+        # The name of the folder to which the folder account group is attached. Multiple names are separated by commas (,).
         self.folder_name = folder_name
-        # tags
+        # The resource tags.
         self.tags = tags
 
     def validate(self):
@@ -243,18 +247,21 @@ class GetAggregatorResponseBodyAggregatorAggregatorAccounts(DaraModel):
         account_type: str = None,
         recorder_status: str = None,
     ):
-        # The ID of the member.
+        # The member ID.
         self.account_id = account_id
-        # The display name of the member.
+        # The member name.
         self.account_name = account_name
-        # The resource directory to which the member belongs. Valid value: ResourceDirectory. ResourceDirectory indicates that the member belongs to a resource directory.
+        # The type of the account. Only ResourceDirectory is supported.
         self.account_type = account_type
-        # The status of the configuration recorder for the member. Valid values:
+        # The status of Resource Monitoring for the member. Valid values:
         # 
-        # *   REGISTRABLE: The configuration recorder is not registered.
-        # *   BUILDING: The configuration recorder is being deployed.
-        # *   REGISTERED: The configuration recorder is registered.
-        # *   REBUILDING: The configuration recorder is being redeployed.
+        # - REGISTRABLE: Not registered.
+        # 
+        # - BUILDING: Building.
+        # 
+        # - REGISTERED: Registered.
+        # 
+        # - REBUILDING: Rebuilding.
         self.recorder_status = recorder_status
 
     def validate(self):

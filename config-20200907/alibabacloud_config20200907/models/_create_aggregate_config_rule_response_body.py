@@ -10,9 +10,9 @@ class CreateAggregateConfigRuleResponseBody(DaraModel):
         config_rule_id: str = None,
         request_id: str = None,
     ):
-        # The rule ID.
+        # The ID of the rule.
         self.config_rule_id = config_rule_id
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):

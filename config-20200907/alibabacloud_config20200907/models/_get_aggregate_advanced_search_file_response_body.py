@@ -11,9 +11,7 @@ class GetAggregateAdvancedSearchFileResponseBody(DaraModel):
         request_id: str = None,
         resource_search: main_models.GetAggregateAdvancedSearchFileResponseBodyResourceSearch = None,
     ):
-        # The request ID.
         self.request_id = request_id
-        # The information about the resource file.
         self.resource_search = resource_search
 
     def validate(self):
@@ -51,16 +49,8 @@ class GetAggregateAdvancedSearchFileResponseBodyResourceSearch(DaraModel):
         resource_inventory_generate_time: int = None,
         status: str = None,
     ):
-        # The download URL of the resource file.
         self.download_url = download_url
-        # The time when the resource file was generated. The value is a timestamp.
-        # 
-        # Unit: milliseconds.
         self.resource_inventory_generate_time = resource_inventory_generate_time
-        # The generation status of the resource file. Valid values:
-        # 
-        # *   CREATING: The resource file is being generated.
-        # *   COMPLETE: The resource file is generated.
         self.status = status
 
     def validate(self):

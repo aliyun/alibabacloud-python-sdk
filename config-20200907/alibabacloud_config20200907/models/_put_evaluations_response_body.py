@@ -10,12 +10,7 @@ class PutEvaluationsResponseBody(DaraModel):
         request_id: str = None,
         result: bool = None,
     ):
-        # The request ID.
         self.request_id = request_id
-        # Indicates whether the evaluation results of the custom rule are submitted. Valid values:
-        # 
-        # *   true: The evaluation results are submitted.
-        # *   false: The evaluation results fail to be submitted.
         self.result = result
 
     def validate(self):

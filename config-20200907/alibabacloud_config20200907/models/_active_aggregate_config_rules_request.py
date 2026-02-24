@@ -11,19 +11,9 @@ class ActiveAggregateConfigRulesRequest(DaraModel):
         compliance_pack_id: str = None,
         config_rule_ids: str = None,
     ):
-        # Indicates whether the request was successful. Valid values:
-        # 
-        # *   true: The request was successful.
-        # *   false: The request failed.
-        # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # The rule ID.
         self.compliance_pack_id = compliance_pack_id
-        # The error code returned.
-        # 
-        # *   If the rule is enabled, no error code is returned.
-        # *   If the rule fails to be enabled, an error code is returned. For more information about error codes, see [Error codes](https://error-center.alibabacloud.com/status/product/Config).
         self.config_rule_ids = config_rule_ids
 
     def validate(self):

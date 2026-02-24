@@ -9,7 +9,6 @@ class GetDiscoveredResourceCountsGroupByResourceTypeRequest(DaraModel):
         self,
         region: str = None,
     ):
-        # The region ID.
         self.region = region
 
     def validate(self):

@@ -13,9 +13,7 @@ class UpdateConfigurationRecorderResponseBody(DaraModel):
         configuration_recorder: main_models.UpdateConfigurationRecorderResponseBodyConfigurationRecorder = None,
         request_id: str = None,
     ):
-        # The details of the configuration recorder.
         self.configuration_recorder = configuration_recorder
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,14 +50,7 @@ class UpdateConfigurationRecorderResponseBodyConfigurationRecorder(DaraModel):
         configuration_recorder_status: str = None,
         resource_types: List[str] = None,
     ):
-        # The status of the configuration recorder. Valid values:
-        # 
-        # *   REGISTRABLE: The configuration recorder has not been registered.
-        # *   BUILDING: The configuration recorder is being deployed.
-        # *   REGISTERED: The configuration recorder has been registered.
-        # *   REBUILDING: The configuration recorder is being redeployed.
         self.configuration_recorder_status = configuration_recorder_status
-        # The types of the resources that are monitored by Cloud Config.
         self.resource_types = resource_types
 
     def validate(self):

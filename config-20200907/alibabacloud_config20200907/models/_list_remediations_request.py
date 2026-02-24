@@ -11,13 +11,8 @@ class ListRemediationsRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
     ):
-        # The rule IDs. Separate multiple rule IDs with commas (,).
-        # 
-        # For more information about how to obtain the ID of a rule, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
         self.config_rule_ids = config_rule_ids
-        # The page number. Pages start from page 1.
         self.page_number = page_number
-        # The number of entries per page. Valid values: 1 to 50.
         self.page_size = page_size
 
     def validate(self):

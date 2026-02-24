@@ -10,14 +10,8 @@ class DeleteAggregateConfigDeliveryChannelRequest(DaraModel):
         aggregator_id: str = None,
         delivery_channel_id: str = None,
     ):
-        # The ID of the account group.
-        # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # The ID of the delivery channel.
-        # 
-        # For more information about how to obtain the ID of a delivery channel, see [ListAggregateConfigDeliveryChannels](https://help.aliyun.com/document_detail/429842.html).
-        # 
         # This parameter is required.
         self.delivery_channel_id = delivery_channel_id
 

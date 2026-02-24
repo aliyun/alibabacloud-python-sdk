@@ -9,7 +9,7 @@ class DescribeDiscoveredResourceBatchResponseBody(DaraModel):
         self,
         request_id: str = None,
     ):
-        # Id of the request
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):

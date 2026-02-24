@@ -18,15 +18,31 @@ class ListAggregateRecommendManagedRulesRequest(DaraModel):
         resource_ids_scope: str = None,
         selected_managed_rule_identifiers: str = None,
     ):
+        # The ID of the account group.
+        # 
+        # For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
         self.aggregator_id = aggregator_id
+        # The compliance package is invalid for resources in the specified region. The resources in the specified region are not evaluated. Separate multiple region IDs with commas (,).
         self.exclude_region_ids_scope = exclude_region_ids_scope
+        # The rule is invalid for resources in the specified resource group. The resources in the specified resource group are not evaluated. Separate multiple resource group IDs with commas (,).
         self.exclude_resource_group_ids_scope = exclude_resource_group_ids_scope
+        # The rule is invalid for the specified resource. The specified resource is not evaluated. Separate multiple resource IDs with commas (,).
+        # 
+        # > This parameter applies only to rule templates.
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
+        # The maximum number of entries to return for a single request. Default value: 200.
         self.max_results = max_results
+        # The pagination token that is used in the next request to retrieve a new page of results. It indicates the position where the current query begins. If you leave this parameter empty, the query starts from the beginning.
         self.next_token = next_token
+        # The rule is effective only for resources in the specified region. Separate multiple region IDs with commas (,).
+        # 
+        # > This parameter applies only to rule templates.
         self.region_ids_scope = region_ids_scope
+        # The rule is effective only for resources in the specified resource group. Separate multiple resource group IDs with commas (,).
         self.resource_group_ids_scope = resource_group_ids_scope
+        # The rule is effective for the specified resource. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
+        # The selected managed rules.
         self.selected_managed_rule_identifiers = selected_managed_rule_identifiers
 
     def validate(self):

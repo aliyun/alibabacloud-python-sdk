@@ -14,9 +14,9 @@ class GetAggregatorShrinkRequest(DaraModel):
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # The tags of the resource.
+        # The tags of the resource. This parameter is deprecated and is not in use.
         # 
-        # You can add up to 20 tags to a resource.
+        # A maximum of 20 tags can be attached.
         self.tag_shrink = tag_shrink
 
     def validate(self):

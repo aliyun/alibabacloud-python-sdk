@@ -11,8 +11,13 @@ class ListReportTemplatesRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
+        # The keyword for your search.
+        # 
+        # You can perform a fuzzy query on template ID, template name, or template description.
         self.keyword = keyword
+        # The number of entries to return per page. Default value: 20.
         self.max_results = max_results
+        # If the response is truncated, use NextToken to send another request and get results after the truncation point.
         self.next_token = next_token
 
     def validate(self):

@@ -11,9 +11,9 @@ class GetAggregateResourceComplianceByPackResponseBody(DaraModel):
         request_id: str = None,
         resource_compliance_result: main_models.GetAggregateResourceComplianceByPackResponseBodyResourceComplianceResult = None,
     ):
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
-        # The compliance evaluation results returned.
+        # The compliance results of the resources in the compliance package.
         self.resource_compliance_result = resource_compliance_result
 
     def validate(self):
@@ -57,13 +57,17 @@ class GetAggregateResourceComplianceByPackResponseBodyResourceComplianceResult(D
     ):
         # The ID of the compliance package.
         self.compliance_pack_id = compliance_pack_id
+        # The total number of compliant resources.
         self.compliant_count = compliant_count
+        # The total number of ignored resources.
         self.ignored_count = ignored_count
+        # The total number of resources for which the evaluation data is insufficient.
         self.insufficient_data_count = insufficient_data_count
         # The number of non-compliant resources.
         self.non_compliant_count = non_compliant_count
+        # The total number of resources that are not applicable.
         self.not_applicable_count = not_applicable_count
-        # The total number of resources.
+        # The total number of resources evaluated by the compliance package.
         self.total_count = total_count
 
     def validate(self):

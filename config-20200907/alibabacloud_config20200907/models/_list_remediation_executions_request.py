@@ -12,18 +12,10 @@ class ListRemediationExecutionsRequest(DaraModel):
         max_results: int = None,
         next_token: str = None,
     ):
-        # The rule ID.
-        # 
         # This parameter is required.
         self.config_rule_id = config_rule_id
-        # The status of the remediation. Valid values:
-        # 
-        # *   Success
-        # *   Failed
         self.execution_status = execution_status
-        # The maximum number of entries to return for a single request. Valid values: 10 to 100.
         self.max_results = max_results
-        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request. You must specify the token that is obtained from the previous query as the value of NextToken.
         self.next_token = next_token
 
     def validate(self):

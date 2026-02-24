@@ -9,6 +9,8 @@ class TriggerReportSendRequest(DaraModel):
         self,
         report_template_id: str = None,
     ):
+        # The report template ID.
+        # 
         # This parameter is required.
         self.report_template_id = report_template_id
 

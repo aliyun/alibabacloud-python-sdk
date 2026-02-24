@@ -13,7 +13,7 @@ class ListAggregateResourcesByAdvancedSearchResponseBody(DaraModel):
         query_results: main_models.ListAggregateResourcesByAdvancedSearchResponseBodyQueryResults = None,
         request_id: str = None,
     ):
-        # The returned data.
+        # The query results.
         self.query_results = query_results
         # The request ID.
         self.request_id = request_id
@@ -51,7 +51,7 @@ class ListAggregateResourcesByAdvancedSearchResponseBodyQueryResults(DaraModel):
         self,
         query_result_list: main_models.ListAggregateResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultList = None,
     ):
-        # The queried resources. A maximum of 1,000 data records can be returned. To view more data, use the download URL of the resource file.
+        # The list of resources returned by the query. A maximum of 1,000 entries are returned. To view more data, download the search file.
         self.query_result_list = query_result_list
 
     def validate(self):
@@ -82,9 +82,9 @@ class ListAggregateResourcesByAdvancedSearchResponseBodyQueryResultsQueryResultL
         columns: List[str] = None,
         values: List[Any] = None,
     ):
-        # The field names.
+        # The list of field names returned by the search.
         self.columns = columns
-        # The resource data.
+        # The list of resource data returned by the search.
         self.values = values
 
     def validate(self):

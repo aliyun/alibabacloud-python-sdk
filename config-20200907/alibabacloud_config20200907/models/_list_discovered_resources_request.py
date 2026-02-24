@@ -18,37 +18,43 @@ class ListDiscoveredResourcesRequest(DaraModel):
         resource_types: str = None,
         start_update_timestamp: int = None,
     ):
-        # The end time of the time range for querying resources. The value is a timestamp in the UTC format. When you specify this parameter, take note of the following limits:
+        # The end of the time range to query resources, specified as a UNIX timestamp in milliseconds. Note:
         # 
-        # *   The value must be a timestamp in milliseconds.
-        # *   The value cannot be less than the value of the StartUpdateTimestamp parameter. The interval between the value and the value of the StartUpdateTimestamp parameter must be less than or equal to 30 days.
-        # *   The StartUpdateTimestamp and EndUpdateTimestamp parameters must be specified at the same time or left empty at the same time.
+        # - The value cannot be earlier than StartUpdateTimestamp.
+        # 
+        # - The time interval between StartUpdateTimestamp and EndUpdateTimestamp cannot exceed 30 days.
+        # 
+        # - Specify both StartUpdateTimestamp and EndUpdateTimestamp, or leave both blank.
         self.end_update_timestamp = end_update_timestamp
-        # The types of resources that are excluded. Separate multiple values with commas (,). If this parameter conflicts with the ResourceTypes parameter, this parameter prevails.
+        # The resource types to exclude. Separate multiple resource types with commas (,). This parameter takes precedence over the ResourceTypes parameter.
         self.exclude_resource_types = exclude_resource_types
-        # The maximum number of entries returned for a single request. Valid values: 1 to 100.
+        # The maximum number of entries to return on each page. Valid values: 1 to 100.
         # 
         # This parameter is required.
         self.max_results = max_results
-        # The `token` that you want to use to initiate the current request. If the response of the previous request is truncated, you can use this token to initiate another request and obtain the remaining entries.
+        # A pagination token. If the response is truncated, use this token in a subsequent request to retrieve the next page of results.
         self.next_token = next_token
         # The ID of the region where the resource resides. Separate multiple region IDs with commas (,).
         self.regions = regions
         # The status of the resource. Valid values:
         # 
-        # *   0: The resource is deleted. If a resource is deleted from the desired cloud service, **Deleted** is displayed in the resource list in the Cloud Config console.
-        # *   1 (default): The resource is retained. If a resource is managed as expected, **Active** is displayed in the resource list in the Cloud Config console.
+        # - 0: The resource is deleted. If you delete a resource in the corresponding Alibaba Cloud service, Cloud Config displays the resource as **Deleted**.
+        # 
+        # - 1 (Default): The resource is active. If a resource is managed, Cloud Config displays the resource as **Active**.
         self.resource_deleted = resource_deleted
         # The resource ID.
         self.resource_id = resource_id
+        # The resource name.
         self.resource_name = resource_name
-        # The type of the resource. Separate multiple resource types with commas (,).
+        # The resource type. Separate multiple resource types with commas (,).
         self.resource_types = resource_types
-        # The start time of the time range for querying resources. The value is a timestamp in the UTC format. When you specify this parameter, take note of the following limits:
+        # The start of the time range to query resources, specified as a UNIX timestamp in milliseconds. Note:
         # 
-        # *   The value must be a timestamp in milliseconds.
-        # *   The value cannot be greater than the value of the EndUpdateTimestamp parameter. The interval between the value and the value of the EndUpdateTimestamp parameter must be less than or equal to 30 days.
-        # *   The StartUpdateTimestamp and EndUpdateTimestamp parameters must be specified at the same time or left blank at the same time.
+        # - The value cannot be later than EndUpdateTimestamp.
+        # 
+        # - The time interval between StartUpdateTimestamp and EndUpdateTimestamp cannot exceed 30 days.
+        # 
+        # - Specify both StartUpdateTimestamp and EndUpdateTimestamp, or leave both blank.
         self.start_update_timestamp = start_update_timestamp
 
     def validate(self):

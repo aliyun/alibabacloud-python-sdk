@@ -13,9 +13,9 @@ class GetManagedRuleResponseBody(DaraModel):
         managed_rule: main_models.GetManagedRuleResponseBodyManagedRule = None,
         request_id: str = None,
     ):
-        # The details of the managed rule.
+        # The details of the rule template.
         self.managed_rule = managed_rule
-        # The ID of the request.
+        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -60,29 +60,31 @@ class GetManagedRuleResponseBodyManagedRule(DaraModel):
         scope: main_models.GetManagedRuleResponseBodyManagedRuleScope = None,
         source_details: List[main_models.GetManagedRuleResponseBodyManagedRuleSourceDetails] = None,
     ):
-        # The details of the required input parameters for the managed rule.
+        # The information about the required input parameters for the rule template.
         self.compulsory_input_parameter_details = compulsory_input_parameter_details
-        # The name of the managed rule.
+        # The name of the rule template.
         self.config_rule_name = config_rule_name
-        # The description of the managed rule.
+        # The description of the rule template.
         self.description = description
-        # The URL of the topic that provides guidance on remediation for the managed rule.
+        # The URL of the document that provides guidance on how to fix the issue.
         self.help_urls = help_urls
-        # The identifier of the managed rule.
+        # The identifier of the rule template.
         self.identifier = identifier
-        # The tags of the managed rule.
+        # The labels of the rule template.
         self.labels = labels
-        # The details of the optional input parameters for the managed rule.
+        # The information about the optional input parameters for the rule template.
         self.optional_input_parameter_details = optional_input_parameter_details
-        # The risk level of the managed rule. Valid values:
+        # The risk level of the rule template. Valid values:
         # 
-        # *   1: high
-        # *   2: medium
-        # *   3: low
+        # - 1: high risk.
+        # 
+        # - 2: medium risk.
+        # 
+        # - 3: low risk.
         self.risk_level = risk_level
-        # The effective scope of the managed rule.
+        # The effective scope of the rule template.
         self.scope = scope
-        # The information about the trigger type of the managed rule.
+        # The trigger methods for the rule.
         self.source_details = source_details
 
     def validate(self):
@@ -176,18 +178,23 @@ class GetManagedRuleResponseBodyManagedRuleSourceDetails(DaraModel):
         maximum_execution_frequency: str = None,
         message_type: str = None,
     ):
-        # The interval at which the rule is triggered. Valid values: Valid values:
+        # The execution period of the rule. Valid values:
         # 
-        # *   One_Hour
-        # *   Three_Hours
-        # *   Six_Hours
-        # *   Twelve_Hours
-        # *   TwentyFour_Hours
+        # - One_Hour: 1 hour.
+        # 
+        # - Three_Hours: 3 hours.
+        # 
+        # - Six_Hours: 6 hours.
+        # 
+        # - Twelve_Hours: 12 hours.
+        # 
+        # - TwentyFour_Hours: 24 hours.
         self.maximum_execution_frequency = maximum_execution_frequency
         # The trigger type of the rule. Valid values:
         # 
-        # *   ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
-        # *   ScheduledNotification: The rule is periodically triggered.
+        # - ConfigurationItemChangeNotification: The rule is triggered by a configuration change.
+        # 
+        # - ScheduledNotification: The rule is triggered periodically.
         self.message_type = message_type
 
     def validate(self):
@@ -221,7 +228,7 @@ class GetManagedRuleResponseBodyManagedRuleScope(DaraModel):
         self,
         compliance_resource_types: List[str] = None,
     ):
-        # The types of resources to which the managed rule applies.
+        # The resource types for which the rule template is effective.
         self.compliance_resource_types = compliance_resource_types
 
     def validate(self):

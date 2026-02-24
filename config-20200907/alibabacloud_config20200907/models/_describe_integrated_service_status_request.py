@@ -9,6 +9,8 @@ class DescribeIntegratedServiceStatusRequest(DaraModel):
         self,
         service_code: str = None,
     ):
+        # The code of the cloud service.
+        # 
         # This parameter is required.
         self.service_code = service_code
 

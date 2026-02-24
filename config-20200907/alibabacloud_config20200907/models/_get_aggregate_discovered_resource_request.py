@@ -15,35 +15,36 @@ class GetAggregateDiscoveredResourceRequest(DaraModel):
         resource_owner_id: int = None,
         resource_type: str = None,
     ):
-        # The ID of the account group.
+        # The account group ID.
         # 
-        # For more information about how to obtain the ID of the account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+        # For more information about how to obtain the account group ID, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
         # Specifies whether to query the compliance results of the resource. Valid values:
         # 
-        # *   0 (default): does not query the compliance results of the resource.
-        # *   1: queries the compliance results of the resource.
-        self.compliance_option = compliance_option
-        # The ID of the region in which the resource resides.
+        # - 0 (default): does not query the compliance results of the resource.
         # 
-        # For more information about how to query the ID of a region in which the resource resides, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/411691.html).
+        # - 1: queries the compliance results of the resource.
+        self.compliance_option = compliance_option
+        # The region ID of the resource.
+        # 
+        # For more information about how to obtain the region ID of the resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/411691.html).
         # 
         # This parameter is required.
         self.region = region
-        # Required. The ID of the Alibaba Cloud account to which the specified resource belongs in the account group.
+        # Required. The ID of the Alibaba Cloud account to which the resource to be queried belongs in the account group.
         self.resource_account_id = resource_account_id
         # The resource ID.
         # 
-        # For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/411691.html).
+        # For more information about how to obtain the resource ID, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/411691.html).
         # 
         # This parameter is required.
         self.resource_id = resource_id
         self.resource_owner_id = resource_owner_id
-        # The type of the resource.
+        # The resource type.
         # 
-        # For more information about how to obtain the type of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/411691.html).
+        # For more information about how to obtain the resource type, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/411691.html).
         # 
         # This parameter is required.
         self.resource_type = resource_type

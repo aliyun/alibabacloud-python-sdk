@@ -13,9 +13,7 @@ class ListAggregateConfigRuleEvaluationStatisticsResponseBody(DaraModel):
         evaluation_results: List[main_models.ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults] = None,
         request_id: str = None,
     ):
-        # The statistics of compliance evaluation results.
         self.evaluation_results = evaluation_results
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -62,17 +60,11 @@ class ListAggregateConfigRuleEvaluationStatisticsResponseBodyEvaluationResults(D
         total_resource_cnt: int = None,
         total_rule_cnt: int = None,
     ):
-        # The ID of the account group.
         self.aggregator_id = aggregator_id
-        # The number of resources that are evaluated as non-compliant.
         self.non_compliant_resource_cnt = non_compliant_resource_cnt
-        # The number of rules based on which resources are evaluated as non-compliant.
         self.non_compliant_rule_cnt = non_compliant_rule_cnt
-        # The date on which the statistics are obtained.
         self.statistic_date = statistic_date
-        # The total number of resources.
         self.total_resource_cnt = total_resource_cnt
-        # The total number of rules.
         self.total_rule_cnt = total_rule_cnt
 
     def validate(self):

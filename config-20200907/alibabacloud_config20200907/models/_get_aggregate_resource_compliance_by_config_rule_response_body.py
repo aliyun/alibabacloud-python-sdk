@@ -13,9 +13,7 @@ class GetAggregateResourceComplianceByConfigRuleResponseBody(DaraModel):
         compliance_result: main_models.GetAggregateResourceComplianceByConfigRuleResponseBodyComplianceResult = None,
         request_id: str = None,
     ):
-        # The compliance result.
         self.compliance_result = compliance_result
-        # The request ID.
         self.request_id = request_id
 
     def validate(self):
@@ -52,9 +50,7 @@ class GetAggregateResourceComplianceByConfigRuleResponseBodyComplianceResult(Dar
         compliances: List[main_models.GetAggregateResourceComplianceByConfigRuleResponseBodyComplianceResultCompliances] = None,
         total_count: int = None,
     ):
-        # The compliance list result.
         self.compliances = compliances
-        # The total number of evaluated resources.
         self.total_count = total_count
 
     def validate(self):
@@ -97,14 +93,7 @@ class GetAggregateResourceComplianceByConfigRuleResponseBodyComplianceResultComp
         compliance_type: str = None,
         count: int = None,
     ):
-        # The compliance evaluation results of the resources. Valid values:
-        # 
-        # *   COMPLIANT: The resource was evaluated as compliant.
-        # *   NON_COMPLIANT: The resource was evaluated as incompliant.
-        # *   NOT_APPLICABLE: The rule did not apply to your resources.
-        # *   INSUFFICIENT_DATA: No resource data was available.
         self.compliance_type = compliance_type
-        # The number of resources that have compliance evaluation results. For example, if the value of the `ComplianceType` parameter is `COMPLIANT`, this parameter value indicates the number of compliant resources.
         self.count = count
 
     def validate(self):

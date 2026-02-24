@@ -10,7 +10,7 @@ class UpdateAggregateCompliancePackResponseBody(DaraModel):
         compliance_pack_id: str = None,
         request_id: str = None,
     ):
-        # The compliance package ID.
+        # The ID of the compliance pack.
         self.compliance_pack_id = compliance_pack_id
         # The request ID.
         self.request_id = request_id

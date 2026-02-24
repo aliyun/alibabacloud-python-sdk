@@ -11,8 +11,11 @@ class DescribeDiscoveredResourceBatchRequest(DaraModel):
         resource_ids: str = None,
         resource_types: str = None,
     ):
+        # The regions where the resources reside. Separate multiple regions with commas (`,`).
         self.regions = regions
+        # The resource IDs. Separate multiple resource IDs with commas (`,`).
         self.resource_ids = resource_ids
+        # The resource types. Separate multiple resource types with commas (`,`).
         self.resource_types = resource_types
 
     def validate(self):

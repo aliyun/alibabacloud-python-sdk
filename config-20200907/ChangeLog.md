@@ -1,3 +1,10 @@
+2026-02-24 Version: 4.2.1
+- Update API CreateAggregateConfigRule: add request parameters Conditions.
+- Update API CreateConfigRule: add request parameters Conditions.
+- Update API UpdateAggregateConfigRule: add request parameters Conditions.
+- Update API UpdateConfigRule: add request parameters Conditions.
+
+
 2026-02-02 Version: 4.2.0
 - Support API CreateReportTemplate.
 - Support API GetReportTemplate.

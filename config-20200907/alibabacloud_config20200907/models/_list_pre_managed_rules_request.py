@@ -13,15 +13,15 @@ class ListPreManagedRulesRequest(DaraModel):
         page_size: int = None,
         resource_types: List[str] = None,
     ):
-        # The number of the page to return.
+        # The page number.
         # 
-        # Pages start from page 1. Default value: 1.
+        # The value starts from 1. The default value is 1.
         self.page_number = page_number
         # The number of entries to return on each page.
         # 
-        # Default value: 10.
+        # The default value is 10.
         self.page_size = page_size
-        # The type of the resource.
+        # A list of resource types.
         self.resource_types = resource_types
 
     def validate(self):

@@ -13,9 +13,9 @@ class ListCompliancePackTemplatesResponseBody(DaraModel):
         compliance_pack_templates_result: main_models.ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResult = None,
         request_id: str = None,
     ):
-        # The information about the compliance package templates returned.
+        # The details of the compliance pack templates.
         self.compliance_pack_templates_result = compliance_pack_templates_result
-        # The request ID.
+        # The ID of the request.
         self.request_id = request_id
 
     def validate(self):
@@ -54,13 +54,13 @@ class ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResult(DaraM
         page_size: int = None,
         total_count: int = None,
     ):
-        # The compliance package templates.
+        # A list of compliance pack templates.
         self.compliance_pack_templates = compliance_pack_templates
         # The page number.
         self.page_number = page_number
-        # The number of entries per page.
+        # The number of entries returned per page.
         self.page_size = page_size
-        # The total number of the compliance package templates returned.
+        # The total number of compliance pack templates.
         self.total_count = total_count
 
     def validate(self):
@@ -120,23 +120,23 @@ class ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompli
         last_update: int = None,
         risk_level: int = None,
     ):
-        # The ID of the compliance package template.
+        # The ID of the compliance pack template.
         self.compliance_pack_template_id = compliance_pack_template_id
-        # The name of the compliance package template.
+        # The name of the compliance pack template.
         self.compliance_pack_template_name = compliance_pack_template_name
-        # The default rules in the compliance package.
+        # A list of default rules in the compliance pack.
         self.config_rules = config_rules
-        # The description of the compliance package.
+        # The description of the compliance pack.
         self.description = description
-        # The tag of the compliance package.
+        # The classification labels of the compliance pack.
         self.labels = labels
-        # The time when the compliance package was last updated.
+        # The UNIX timestamp when the compliance pack was last updated.
         self.last_update = last_update
-        # The risk level of the managed rule in the compliance package. Valid values:
+        # The risk level of the rules in the compliance pack. Valid values:
         # 
-        # *   1: high
-        # *   2: medium
-        # *   3: low
+        # - 1: high
+        # - 2: medium
+        # - 3: low
         self.risk_level = risk_level
 
     def validate(self):
@@ -216,18 +216,18 @@ class ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompli
         resource_types_scope: str = None,
         risk_level: int = None,
     ):
-        # The input parameter of the managed rule.
+        # The parameters of the managed rule.
         self.config_rule_parameters = config_rule_parameters
-        # The description of the regulation. This parameter is available only for regulation compliance packages.
+        # The description of the control. This parameter is returned only for compliance packs that are created based on a regulation.
         self.control_description = control_description
-        # The regulation ID.
+        # The ID of the control.
         # 
-        # >  This parameter is available only for regulation compliance packages.
+        # > This parameter appears only for regulatory compliance packages.
         self.control_id = control_id
-        # Indicates whether the rules are enabled together with the compliance package. Valid values:
+        # Indicates whether the rule can be quickly enabled. Valid values:
         # 
-        # *   true
-        # *   false
+        # - true: The rule can be quickly enabled.
+        # - false: The rule cannot be quickly enabled.
         self.default_enable = default_enable
         # The description of the rule.
         self.description = description
@@ -235,13 +235,13 @@ class ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompli
         self.managed_rule_identifier = managed_rule_identifier
         # The name of the managed rule.
         self.managed_rule_name = managed_rule_name
-        # The types of the resources evaluated based on the rule.
+        # The resource types that are evaluated by the rule.
         self.resource_types_scope = resource_types_scope
         # The risk level of the managed rule. Valid values:
         # 
-        # *   1: high
-        # *   2: medium
-        # *   3: low
+        # - 1: high
+        # - 2: medium
+        # - 3: low
         self.risk_level = risk_level
 
     def validate(self):
@@ -327,14 +327,14 @@ class ListCompliancePackTemplatesResponseBodyCompliancePackTemplatesResultCompli
         parameter_value: str = None,
         required: bool = None,
     ):
-        # The name of the input parameter of the managed rule.
+        # The name of the parameter for the managed rule.
         self.parameter_name = parameter_name
-        # The value of the input parameter of the managed rule.
+        # The value of the parameter for the managed rule.
         self.parameter_value = parameter_value
-        # Indicates whether the parameter is required in the managed rule. Valid values:
+        # Indicates whether the parameter is required for the managed rule. Valid values:
         # 
-        # *   true: required
-        # *   false: optional
+        # - true: The parameter is required.
+        # - false: The parameter is not required.
         self.required = required
 
     def validate(self):

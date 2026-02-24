@@ -13,7 +13,7 @@ class GetResourceInventoryResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The information about the resource inventory.
+        # The information about the global resource inventory.
         self.resource_inventory = resource_inventory
 
     def validate(self):
@@ -51,14 +51,15 @@ class GetResourceInventoryResponseBodyResourceInventory(DaraModel):
         resource_inventory_generate_time: int = None,
         status: str = None,
     ):
-        # The download URL of the resource inventory.
+        # The download URL of the global resource inventory.
         self.download_url = download_url
-        # The time when the resource inventory was generated. The value is a timestamp.
+        # The UNIX timestamp when the inventory started to be generated.
         self.resource_inventory_generate_time = resource_inventory_generate_time
-        # The generation status of the resource inventory. Valid values:
+        # The generation status of the inventory. Valid values:
         # 
-        # *   CREATING: The resource inventory is being generated.
-        # *   COMPLETE: The resource inventory is generated.
+        # - CREATING: The inventory is being generated.
+        # 
+        # - COMPLETE: The inventory is generated.
         self.status = status
 
     def validate(self):

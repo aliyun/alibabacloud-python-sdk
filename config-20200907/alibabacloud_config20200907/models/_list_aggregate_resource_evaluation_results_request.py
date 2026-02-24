@@ -23,31 +23,43 @@ class ListAggregateResourceEvaluationResultsRequest(DaraModel):
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # The compliance evaluation result of the resource. Valid values:
+        # The compliance evaluation result. Valid values:
         # 
-        # *   COMPLIANT: The resource is evaluated as compliant.
-        # *   NON_COMPLIANT: The resource is evaluated as non-compliant.
-        # *   NOT_APPLICABLE: The rule does not apply to the resource.
-        # *   INSUFFICIENT_DATA: No data is available.
-        # *   IGNORED: The resource is ignored during compliance evaluation.
+        # - COMPLIANT: The resource is compliant.
+        # 
+        # - NON_COMPLIANT: The resource is non-compliant.
+        # 
+        # - NOT_APPLICABLE: The rule does not apply to the resource.
+        # 
+        # - INSUFFICIENT_DATA: No data is available for the resource.
+        # 
+        # - IGNORED: The evaluation result is ignored.
         self.compliance_type = compliance_type
-        # The maximum number of entries to return for a single request. Valid values: 1 to 100.
+        # The maximum number of entries to return on each page. Valid values: 1 to 100.
         self.max_results = max_results
-        # The token that you want to use to initiate the current request. If the response of the previous request is truncated, you can use this token to initiate another request and obtain the remaining entries.``
+        # The pagination token that is used in the next request to retrieve a new page of results. If the response is truncated, you can use this token to initiate another request to retrieve the remaining records.
         self.next_token = next_token
-        # The ID of the region where one or more resources that you want to query reside. For example, the value `global` indicates global regions and the value `cn-hangzhou` indicates the China (Hangzhou) region.
+        # The ID of the region where the resource resides. For example, `global` indicates Global and `cn-hangzhou` indicates China (Hangzhou).
         # 
-        # For more information about how to obtain the ID of a region, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
+        # For more information about how to obtain the region ID of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
         self.region = region
-        # The ID of the resource.
+        # The resource ID.
         # 
-        # For more information about how to obtain the ID of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
+        # For more information about how to obtain the resource ID, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
         self.resource_id = resource_id
-        # The type of the resource.
+        # The resource type.
         # 
-        # For more information about how to query the type of a resource, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
+        # For more information about how to obtain the resource type, see [ListAggregateDiscoveredResources](https://help.aliyun.com/document_detail/265983.html).
         self.resource_type = resource_type
+        # The risk level of the compliance package. Valid values:
+        # 
+        # - 1: high
+        # 
+        # - 2: medium
+        # 
+        # - 3: low
         self.risk_level = risk_level
+        # The sorting method. By default, this parameter is not specified. The supported value is `LastNonCompliantRecordTimestamp-Asc`. This value sorts resources based on the time when they first became non-compliant, in ascending order. You must set the `ComplianceType` parameter to `NON_COMPLIANT`.
         self.sort_by = sort_by
 
     def validate(self):

@@ -15,27 +15,31 @@ class TagResourcesRequest(DaraModel):
         resource_type: str = None,
         tag: List[main_models.TagResourcesRequestTag] = None,
     ):
-        # The region ID of the tags.
+        # The ID of the region.
         # 
         # This parameter is required.
         self.region_id = region_id
-        # The resource IDs. You can add tags to up to 50 resources.
+        # The resource ID.
         # 
         # This parameter is required.
         self.resource_id = resource_id
-        # The resource type. Valid values:
+        # The type of the resource in CloudConfig. Valid values:
         # 
-        # *   `ACS::Config::Rule`
-        # *   `ACS::Config::AggregateConfigRule`
-        # *   `ACS::Config::Aggregator`
-        # *   `ACS::Config::CompliancePack`
-        # *   `ACS::Config::AggregateCompliancePack`
+        # - `ACS::Config::Rule`: a rule for a single account.
+        # 
+        # - `ACS::Config::AggregateConfigRule`: a rule for multiple accounts.
+        # 
+        # - `ACS::Config::Aggregator`: an account group.
+        # 
+        # - `ACS::Config::CompliancePack`: a compliance package for a single account.
+        # 
+        # - `ACS::Config::AggregateCompliancePack`: a compliance package for multiple accounts.
         # 
         # This parameter is required.
         self.resource_type = resource_type
-        # The tag value of the resource.
+        # The tags of the resource.
         # 
-        # You can specify up to 20 tag values.
+        # You can attach a maximum of 20 tags.
         # 
         # This parameter is required.
         self.tag = tag
@@ -92,13 +96,13 @@ class TagResourcesRequestTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that is added to the resource.
+        # The tag key of the resource.
         # 
-        # You can add up to 20 tag keys to a resource.
+        # You can attach a maximum of 20 tag keys.
         self.key = key
-        # The value of the tag that is added to the resource.
+        # The tag value of the resource.
         # 
-        # You can add up to 20 tag values to a resource.
+        # You can attach a maximum of 20 tag values.
         self.value = value
 
     def validate(self):

@@ -11,22 +11,10 @@ class DetachAggregateConfigRuleToCompliancePackRequest(DaraModel):
         compliance_pack_id: str = None,
         config_rule_ids: str = None,
     ):
-        # The ID of the account group.
-        # 
-        # For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
-        # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # The ID of the compliance package.
-        # 
-        # For more information about how to obtain the ID of a compliance package, see [ListAggregateCompliancePacks](https://help.aliyun.com/document_detail/262059.html).
-        # 
         # This parameter is required.
         self.compliance_pack_id = compliance_pack_id
-        # The rule IDs. Separate multiple rule IDs with commas (,).
-        # 
-        # For more information about how to obtain the ID of a rule, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
-        # 
         # This parameter is required.
         self.config_rule_ids = config_rule_ids
 
