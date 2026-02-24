@@ -11,7 +11,6 @@ from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
 from darabonba.core import DaraCore as DaraCore
-from darabonba.core import DaraCore
 from darabonba.runtime import RuntimeOptions
 from darabonba.url import Url as DaraURL
 
@@ -619,17 +618,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.CreateChatResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.CreateChatResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def create_chat_with_sse_async(
         self,
@@ -666,17 +665,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.CreateChatResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.CreateChatResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def create_chat_with_options(
         self,
@@ -931,6 +930,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_digital_employee_with_options_async(request, headers, runtime)
+
+    def create_digital_employee_skill_with_options(
+        self,
+        name: str,
+        request: main_models.CreateDigitalEmployeeSkillRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDigitalEmployeeSkillResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.enable):
+            body['enable'] = request.enable
+        if not DaraCore.is_null(request.files):
+            body['files'] = request.files
+        if not DaraCore.is_null(request.remark):
+            body['remark'] = request.remark
+        if not DaraCore.is_null(request.skill_name):
+            body['skillName'] = request.skill_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDigitalEmployeeSkill',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/skill',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDigitalEmployeeSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_digital_employee_skill_with_options_async(
+        self,
+        name: str,
+        request: main_models.CreateDigitalEmployeeSkillRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDigitalEmployeeSkillResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.enable):
+            body['enable'] = request.enable
+        if not DaraCore.is_null(request.files):
+            body['files'] = request.files
+        if not DaraCore.is_null(request.remark):
+            body['remark'] = request.remark
+        if not DaraCore.is_null(request.skill_name):
+            body['skillName'] = request.skill_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDigitalEmployeeSkill',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/skill',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDigitalEmployeeSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_digital_employee_skill(
+        self,
+        name: str,
+        request: main_models.CreateDigitalEmployeeSkillRequest,
+    ) -> main_models.CreateDigitalEmployeeSkillResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_digital_employee_skill_with_options(name, request, headers, runtime)
+
+    async def create_digital_employee_skill_async(
+        self,
+        name: str,
+        request: main_models.CreateDigitalEmployeeSkillRequest,
+    ) -> main_models.CreateDigitalEmployeeSkillResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_digital_employee_skill_with_options_async(name, request, headers, runtime)
 
     def create_entity_store_with_options(
         self,
@@ -2259,6 +2358,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.delete_digital_employee_with_options_async(name, headers, runtime)
+
+    def delete_digital_employee_skill_with_options(
+        self,
+        name: str,
+        skill_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDigitalEmployeeSkillResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDigitalEmployeeSkill',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/skill/{DaraURL.percent_encode(skill_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDigitalEmployeeSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_digital_employee_skill_with_options_async(
+        self,
+        name: str,
+        skill_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDigitalEmployeeSkillResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDigitalEmployeeSkill',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/skill/{DaraURL.percent_encode(skill_name)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDigitalEmployeeSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_digital_employee_skill(
+        self,
+        name: str,
+        skill_name: str,
+    ) -> main_models.DeleteDigitalEmployeeSkillResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_digital_employee_skill_with_options(name, skill_name, headers, runtime)
+
+    async def delete_digital_employee_skill_async(
+        self,
+        name: str,
+        skill_name: str,
+    ) -> main_models.DeleteDigitalEmployeeSkillResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_digital_employee_skill_with_options_async(name, skill_name, headers, runtime)
 
     def delete_entity_store_with_options(
         self,
@@ -3807,6 +3976,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_digital_employee_with_options_async(name, headers, runtime)
+
+    def get_digital_employee_skill_with_options(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.GetDigitalEmployeeSkillRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDigitalEmployeeSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.version):
+            query['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDigitalEmployeeSkill',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/skill/{DaraURL.percent_encode(skill_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDigitalEmployeeSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_digital_employee_skill_with_options_async(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.GetDigitalEmployeeSkillRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetDigitalEmployeeSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.version):
+            query['version'] = request.version
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetDigitalEmployeeSkill',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/skill/{DaraURL.percent_encode(skill_name)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetDigitalEmployeeSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_digital_employee_skill(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.GetDigitalEmployeeSkillRequest,
+    ) -> main_models.GetDigitalEmployeeSkillResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_digital_employee_skill_with_options(name, skill_name, request, headers, runtime)
+
+    async def get_digital_employee_skill_async(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.GetDigitalEmployeeSkillRequest,
+    ) -> main_models.GetDigitalEmployeeSkillResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_digital_employee_skill_with_options_async(name, skill_name, request, headers, runtime)
 
     def get_entity_store_with_options(
         self,
@@ -5513,6 +5766,164 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_biz_traces_with_options_async(request, headers, runtime)
+
+    def list_digital_employee_skill_versions_with_options(
+        self,
+        name: str,
+        skill_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDigitalEmployeeSkillVersionsResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDigitalEmployeeSkillVersions',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/skill/{DaraURL.percent_encode(skill_name)}/versions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDigitalEmployeeSkillVersionsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_digital_employee_skill_versions_with_options_async(
+        self,
+        name: str,
+        skill_name: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDigitalEmployeeSkillVersionsResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDigitalEmployeeSkillVersions',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/skill/{DaraURL.percent_encode(skill_name)}/versions',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDigitalEmployeeSkillVersionsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_digital_employee_skill_versions(
+        self,
+        name: str,
+        skill_name: str,
+    ) -> main_models.ListDigitalEmployeeSkillVersionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_digital_employee_skill_versions_with_options(name, skill_name, headers, runtime)
+
+    async def list_digital_employee_skill_versions_async(
+        self,
+        name: str,
+        skill_name: str,
+    ) -> main_models.ListDigitalEmployeeSkillVersionsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_digital_employee_skill_versions_with_options_async(name, skill_name, headers, runtime)
+
+    def list_digital_employee_skills_with_options(
+        self,
+        name: str,
+        request: main_models.ListDigitalEmployeeSkillsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDigitalEmployeeSkillsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.skill_name):
+            query['skillName'] = request.skill_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDigitalEmployeeSkills',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/skills',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDigitalEmployeeSkillsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_digital_employee_skills_with_options_async(
+        self,
+        name: str,
+        request: main_models.ListDigitalEmployeeSkillsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDigitalEmployeeSkillsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
+        if not DaraCore.is_null(request.skill_name):
+            query['skillName'] = request.skill_name
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListDigitalEmployeeSkills',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/skills',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListDigitalEmployeeSkillsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_digital_employee_skills(
+        self,
+        name: str,
+        request: main_models.ListDigitalEmployeeSkillsRequest,
+    ) -> main_models.ListDigitalEmployeeSkillsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_digital_employee_skills_with_options(name, request, headers, runtime)
+
+    async def list_digital_employee_skills_async(
+        self,
+        name: str,
+        request: main_models.ListDigitalEmployeeSkillsRequest,
+    ) -> main_models.ListDigitalEmployeeSkillsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_digital_employee_skills_with_options_async(name, request, headers, runtime)
 
     def list_digital_employees_with_options(
         self,
@@ -8051,6 +8462,106 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.update_digital_employee_with_options_async(name, request, headers, runtime)
+
+    def update_digital_employee_skill_with_options(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.UpdateDigitalEmployeeSkillRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDigitalEmployeeSkillResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.enable):
+            body['enable'] = request.enable
+        if not DaraCore.is_null(request.files):
+            body['files'] = request.files
+        if not DaraCore.is_null(request.remark):
+            body['remark'] = request.remark
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDigitalEmployeeSkill',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/skill/{DaraURL.percent_encode(skill_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDigitalEmployeeSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_digital_employee_skill_with_options_async(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.UpdateDigitalEmployeeSkillRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDigitalEmployeeSkillResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.display_name):
+            body['displayName'] = request.display_name
+        if not DaraCore.is_null(request.enable):
+            body['enable'] = request.enable
+        if not DaraCore.is_null(request.files):
+            body['files'] = request.files
+        if not DaraCore.is_null(request.remark):
+            body['remark'] = request.remark
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDigitalEmployeeSkill',
+            version = '2024-03-30',
+            protocol = 'HTTPS',
+            pathname = f'/digitalEmployee/{DaraURL.percent_encode(name)}/skill/{DaraURL.percent_encode(skill_name)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDigitalEmployeeSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_digital_employee_skill(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.UpdateDigitalEmployeeSkillRequest,
+    ) -> main_models.UpdateDigitalEmployeeSkillResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_digital_employee_skill_with_options(name, skill_name, request, headers, runtime)
+
+    async def update_digital_employee_skill_async(
+        self,
+        name: str,
+        skill_name: str,
+        request: main_models.UpdateDigitalEmployeeSkillRequest,
+    ) -> main_models.UpdateDigitalEmployeeSkillResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_digital_employee_skill_with_options_async(name, skill_name, request, headers, runtime)
 
     def update_integration_policy_with_options(
         self,

@@ -19,13 +19,21 @@ class AlertRuleAlertMetricFilterDef(DaraModel):
         opt: str = None,
         supported_opts: List[main_models.AlertRuleAlertMetricFilterDefSupportedOpts] = None,
     ):
+        # Dimension in APM metrics.
         self.dim = dim
+        # When true, the filter item will not appear in the GROUP BY clause of the PromQL.
         self.dim_disabled = dim_disabled
+        # Display Name (Chinese).
         self.display_name_cn = display_name_cn
+        # Display Name (English).
         self.display_name_en = display_name_en
+        # Whether to hide. If hidden, it will not be displayed in the frontend UI, but its value can still be included when rendering the PromQL. A typical example is the "pid" filter condition in APM scenarios, which is generally not exposed through configurable UI elements but instead presented as a separate application search list in the frontend.
         self.hidden = hidden
+        # When true, the filter item will not appear in the label filter of the PromQL.
         self.label_disabled = label_disabled
+        # Filter Condition Operator.
         self.opt = opt
+        # List of supported options.
         self.supported_opts = supported_opts
 
     def validate(self):
@@ -105,8 +113,11 @@ class AlertRuleAlertMetricFilterDefSupportedOpts(DaraModel):
         display_name_en: str = None,
         value: str = None,
     ):
+        # Display Name (Chinese).
         self.display_name_cn = display_name_cn
+        # Display Name (English).
         self.display_name_en = display_name_en
+        # Matching value.
         self.value = value
 
     def validate(self):

@@ -1,3 +1,12 @@
+2026-02-24 Version: 6.1.0
+- Support API CreateDigitalEmployeeSkill.
+- Support API DeleteDigitalEmployeeSkill.
+- Support API GetDigitalEmployeeSkill.
+- Support API ListDigitalEmployeeSkillVersions.
+- Support API ListDigitalEmployeeSkills.
+- Support API UpdateDigitalEmployeeSkill.
+
+
 2026-02-02 Version: 6.0.1
 - Update API CreateDigitalEmployee: add request parameters body.resourceGroupId.
 - Update API CreateDigitalEmployee: add request parameters body.tags.

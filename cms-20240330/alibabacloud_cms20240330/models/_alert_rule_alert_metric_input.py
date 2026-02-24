@@ -15,9 +15,13 @@ class AlertRuleAlertMetricInput(DaraModel):
         metric_id: str = None,
         param_values: List[main_models.AlertRuleAlertMetricInputParamValue] = None,
     ):
+        # List of user-provided filter conditions. The supported parameters and filter conditions for the metric can be queried via ListAlertMetrics.
         self.filter_values = filter_values
+        # Key of the metric group selected by the user.
         self.group_id = group_id
+        # Key of the predefined metric selected by the user.
         self.metric_id = metric_id
+        # List of input parameters. The metric\\"s supported parameters and filter conditions can be queried via ListAlertMetrics.
         self.param_values = param_values
 
     def validate(self):

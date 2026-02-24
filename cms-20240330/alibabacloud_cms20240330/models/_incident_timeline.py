@@ -17,14 +17,23 @@ class IncidentTimeline(DaraModel):
         type: str = None,
         user_id: str = None,
     ):
+        # Subtype.
         self.child_type = child_type
+        # Content.
         self.content = content
+        # Incident ID.
         self.incident_id = incident_id
+        # Timeline node unique ID.
         self.incident_timeline_id = incident_timeline_id
+        # Time.
         self.time = time
+        # Parent timeline ID.
         self.timeline_id = timeline_id
+        # Title.
         self.title = title
+        # Type.
         self.type = type
+        # User ID.
         self.user_id = user_id
 
     def validate(self):

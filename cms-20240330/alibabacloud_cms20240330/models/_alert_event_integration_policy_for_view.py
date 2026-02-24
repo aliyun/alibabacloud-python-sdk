@@ -24,6 +24,7 @@ class AlertEventIntegrationPolicyForView(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
+        # UUID
         self.alert_event_integration_policy_id = alert_event_integration_policy_id
         # This parameter is required.
         self.alert_event_integration_policy_name = alert_event_integration_policy_name
@@ -37,6 +38,7 @@ class AlertEventIntegrationPolicyForView(DaraModel):
         self.type = type
         self.update_time = update_time
         self.user_id = user_id
+        # workspace
         self.workspace = workspace
 
     def validate(self):

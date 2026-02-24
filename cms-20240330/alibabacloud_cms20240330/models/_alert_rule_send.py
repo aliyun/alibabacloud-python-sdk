@@ -13,11 +13,16 @@ class AlertRuleSend(DaraModel):
         action: main_models.AlertRuleAction = None,
         notification: main_models.AlertRuleNotification = None,
         notify_strategies: List[str] = None,
+        rca_config: main_models.AlertRuleRcaConfig = None,
         send_to_arms: bool = None,
     ):
+        # Alert Action Integration Configuration.
         self.action = action
+        # Alert Notification Configuration.
         self.notification = notification
         self.notify_strategies = notify_strategies
+        self.rca_config = rca_config
+        # Whether to deliver alert events to ARMS Alert Management.
         self.send_to_arms = send_to_arms
 
     def validate(self):
@@ -25,6 +30,8 @@ class AlertRuleSend(DaraModel):
             self.action.validate()
         if self.notification:
             self.notification.validate()
+        if self.rca_config:
+            self.rca_config.validate()
 
     def to_map(self):
         result = dict()
@@ -39,6 +46,9 @@ class AlertRuleSend(DaraModel):
 
         if self.notify_strategies is not None:
             result['notifyStrategies'] = self.notify_strategies
+
+        if self.rca_config is not None:
+            result['rcaConfig'] = self.rca_config.to_map()
 
         if self.send_to_arms is not None:
             result['sendToArms'] = self.send_to_arms
@@ -57,6 +67,10 @@ class AlertRuleSend(DaraModel):
 
         if m.get('notifyStrategies') is not None:
             self.notify_strategies = m.get('notifyStrategies')
+
+        if m.get('rcaConfig') is not None:
+            temp_model = main_models.AlertRuleRcaConfig()
+            self.rca_config = temp_model.from_map(m.get('rcaConfig'))
 
         if m.get('sendToArms') is not None:
             self.send_to_arms = m.get('sendToArms')

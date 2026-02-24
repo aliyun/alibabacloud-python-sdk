@@ -20,14 +20,23 @@ class IncidentMemberStruct(DaraModel):
         time: int = None,
         user_id: int = None,
     ):
+        # Acknowledgement Information Structure.
         self.acknowledge = acknowledge
+        # Contact ID.
         self.contact_id = contact_id
+        # Contact list.
         self.contacts = contacts
+        # Escalation phase information.
         self.escalation = escalation
+        # Incident ID.
         self.incident_id = incident_id
+        # Event Member ID.
         self.incident_member_id = incident_member_id
+        # Schedule group.
         self.schedule_group = schedule_group
+        # Time.
         self.time = time
+        # User ID.
         self.user_id = user_id
 
     def validate(self):
@@ -121,7 +130,9 @@ class IncidentMemberStructScheduleGroup(DaraModel):
         contact_id: str = None,
         name: str = None,
     ):
+        # Contact ID.
         self.contact_id = contact_id
+        # Name.
         self.name = name
 
     def validate(self):
@@ -159,10 +170,15 @@ class IncidentMemberStructEscalation(DaraModel):
         stage_index: str = None,
         title: str = None,
     ):
+        # Description.
         self.description = description
+        # Event Escalation ID.
         self.incident_escalation_id = incident_escalation_id
+        # Name.
         self.name = name
+        # Escalation phase index.
         self.stage_index = stage_index
+        # Title.
         self.title = title
 
     def validate(self):
@@ -215,7 +231,9 @@ class IncidentMemberStructContacts(DaraModel):
         channel: str = None,
         contact_mask: str = None,
     ):
+        # Channel.
         self.channel = channel
+        # Contact ID (masked).
         self.contact_mask = contact_mask
 
     def validate(self):
@@ -250,7 +268,9 @@ class IncidentMemberStructAcknowledge(DaraModel):
         break_level: str = None,
         verify_time: int = None,
     ):
+        # Acknowledgement level.
         self.break_level = break_level
+        # Verification time.
         self.verify_time = verify_time
 
     def validate(self):

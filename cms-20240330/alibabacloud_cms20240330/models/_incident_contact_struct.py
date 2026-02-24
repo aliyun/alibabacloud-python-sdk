@@ -13,8 +13,11 @@ class IncidentContactStruct(DaraModel):
         contact_id: str = None,
         contact_type: str = None,
     ):
+        # Channel list.
         self.channel = channel
+        # Contact ID.
         self.contact_id = contact_id
+        # Contact type.
         self.contact_type = contact_type
 
     def validate(self):

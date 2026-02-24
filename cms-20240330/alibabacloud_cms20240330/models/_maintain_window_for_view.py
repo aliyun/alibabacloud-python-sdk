@@ -24,19 +24,33 @@ class MaintainWindowForView(DaraModel):
         user_id: str = None,
         workspace: str = None,
     ):
+        # Creation time.
         self.create_time = create_time
+        # Description.
         self.description = description
+        # Effective time range.
         self.effect_time_range = effect_time_range
+        # Crontab expression.
         self.effective = effective
+        # Whether enabled.
         self.enable = enable
+        # Effective end time.
         self.end_time = end_time
+        # Filtering conditions.
         self.filter_setting = filter_setting
+        # UUID
         self.maintain_window_id = maintain_window_id
+        # Name.
+        # 
         # This parameter is required.
         self.maintain_window_name = maintain_window_name
+        # Effective start time.
         self.start_time = start_time
+        # Update time.
         self.update_time = update_time
+        # User ID.
         self.user_id = user_id
+        # workspace
         self.workspace = workspace
 
     def validate(self):
@@ -144,9 +158,13 @@ class MaintainWindowForViewEffectTimeRange(DaraModel):
         start_time_in_minute: int = None,
         time_zone: str = None,
     ):
+        # Effective days (Monday to Sunday).
         self.day_in_week = day_in_week
+        # End time (in minutes).
         self.end_time_in_minute = end_time_in_minute
+        # Start time (in minutes).
         self.start_time_in_minute = start_time_in_minute
+        # Time Zone.
         self.time_zone = time_zone
 
     def validate(self):

@@ -17,6 +17,7 @@ from ._alert_rule_label_filter import AlertRuleLabelFilter
 from ._alert_rule_notification import AlertRuleNotification
 from ._alert_rule_notification_filter import AlertRuleNotificationFilter
 from ._alert_rule_query import AlertRuleQuery
+from ._alert_rule_rca_config import AlertRuleRcaConfig
 from ._alert_rule_send import AlertRuleSend
 from ._alert_rule_sls_query_join import AlertRuleSlsQueryJoin
 from ._alert_rule_time_span import AlertRuleTimeSpan
@@ -51,6 +52,8 @@ from ._incident_response_plan_for_view import IncidentResponsePlanForView
 from ._incident_struct import IncidentStruct
 from ._incident_timeline import IncidentTimeline
 from ._incident_timeline_for_view import IncidentTimelineForView
+from ._index_json_key import IndexJsonKey
+from ._index_key import IndexKey
 from ._maintain_window_for_modify import MaintainWindowForModify
 from ._maintain_window_for_view import MaintainWindowForView
 from ._merge_contact import MergeContact
@@ -94,6 +97,9 @@ from ._create_cloud_resource_response import CreateCloudResourceResponse
 from ._create_digital_employee_request import CreateDigitalEmployeeRequest
 from ._create_digital_employee_response_body import CreateDigitalEmployeeResponseBody
 from ._create_digital_employee_response import CreateDigitalEmployeeResponse
+from ._create_digital_employee_skill_request import CreateDigitalEmployeeSkillRequest
+from ._create_digital_employee_skill_response_body import CreateDigitalEmployeeSkillResponseBody
+from ._create_digital_employee_skill_response import CreateDigitalEmployeeSkillResponse
 from ._create_entity_store_response_body import CreateEntityStoreResponseBody
 from ._create_entity_store_response import CreateEntityStoreResponse
 from ._create_integration_policy_request import CreateIntegrationPolicyRequest
@@ -137,6 +143,8 @@ from ._delete_cloud_resource_response_body import DeleteCloudResourceResponseBod
 from ._delete_cloud_resource_response import DeleteCloudResourceResponse
 from ._delete_digital_employee_response_body import DeleteDigitalEmployeeResponseBody
 from ._delete_digital_employee_response import DeleteDigitalEmployeeResponse
+from ._delete_digital_employee_skill_response_body import DeleteDigitalEmployeeSkillResponseBody
+from ._delete_digital_employee_skill_response import DeleteDigitalEmployeeSkillResponse
 from ._delete_entity_store_response_body import DeleteEntityStoreResponseBody
 from ._delete_entity_store_response import DeleteEntityStoreResponse
 from ._delete_integration_policy_request import DeleteIntegrationPolicyRequest
@@ -188,6 +196,9 @@ from ._get_cms_service_response_body import GetCmsServiceResponseBody
 from ._get_cms_service_response import GetCmsServiceResponse
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBody
 from ._get_digital_employee_response import GetDigitalEmployeeResponse
+from ._get_digital_employee_skill_request import GetDigitalEmployeeSkillRequest
+from ._get_digital_employee_skill_response_body import GetDigitalEmployeeSkillResponseBody
+from ._get_digital_employee_skill_response import GetDigitalEmployeeSkillResponse
 from ._get_entity_store_response_body import GetEntityStoreResponseBody
 from ._get_entity_store_response import GetEntityStoreResponse
 from ._get_entity_store_data_headers import GetEntityStoreDataHeaders
@@ -247,6 +258,11 @@ from ._list_alert_webhooks_response import ListAlertWebhooksResponse
 from ._list_biz_traces_request import ListBizTracesRequest
 from ._list_biz_traces_response_body import ListBizTracesResponseBody
 from ._list_biz_traces_response import ListBizTracesResponse
+from ._list_digital_employee_skill_versions_response_body import ListDigitalEmployeeSkillVersionsResponseBody
+from ._list_digital_employee_skill_versions_response import ListDigitalEmployeeSkillVersionsResponse
+from ._list_digital_employee_skills_request import ListDigitalEmployeeSkillsRequest
+from ._list_digital_employee_skills_response_body import ListDigitalEmployeeSkillsResponseBody
+from ._list_digital_employee_skills_response import ListDigitalEmployeeSkillsResponse
 from ._list_digital_employees_request import ListDigitalEmployeesRequest
 from ._list_digital_employees_shrink_request import ListDigitalEmployeesShrinkRequest
 from ._list_digital_employees_response_body import ListDigitalEmployeesResponseBody
@@ -333,6 +349,9 @@ from ._update_biz_trace_response import UpdateBizTraceResponse
 from ._update_digital_employee_request import UpdateDigitalEmployeeRequest
 from ._update_digital_employee_response_body import UpdateDigitalEmployeeResponseBody
 from ._update_digital_employee_response import UpdateDigitalEmployeeResponse
+from ._update_digital_employee_skill_request import UpdateDigitalEmployeeSkillRequest
+from ._update_digital_employee_skill_response_body import UpdateDigitalEmployeeSkillResponseBody
+from ._update_digital_employee_skill_response import UpdateDigitalEmployeeSkillResponse
 from ._update_integration_policy_request import UpdateIntegrationPolicyRequest
 from ._update_integration_policy_response_body import UpdateIntegrationPolicyResponseBody
 from ._update_integration_policy_response import UpdateIntegrationPolicyResponse
@@ -432,6 +451,7 @@ from ._create_chat_request import CreateChatRequestMessages
 from ._create_chat_response_body import CreateChatResponseBodyMessages
 from ._create_digital_employee_request import CreateDigitalEmployeeRequestKnowledgesBailian
 from ._create_digital_employee_request import CreateDigitalEmployeeRequestKnowledges
+from ._create_digital_employee_skill_request import CreateDigitalEmployeeSkillRequestFiles
 from ._create_integration_policy_request import CreateIntegrationPolicyRequestEntityGroup
 from ._create_integration_policy_request import CreateIntegrationPolicyRequestTags
 from ._create_integration_policy_response_body import CreateIntegrationPolicyResponseBodyPolicy
@@ -462,6 +482,7 @@ from ._get_agg_task_group_response_body import GetAggTaskGroupResponseBodyAggTas
 from ._get_agg_task_group_response_body import GetAggTaskGroupResponseBodyAggTaskGroup
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyKnowledgesBailian
 from ._get_digital_employee_response_body import GetDigitalEmployeeResponseBodyKnowledges
+from ._get_digital_employee_skill_response_body import GetDigitalEmployeeSkillResponseBodyFiles
 from ._get_entity_store_data_response_body import GetEntityStoreDataResponseBodyResponseStatusStatusItem
 from ._get_entity_store_data_response_body import GetEntityStoreDataResponseBodyResponseStatus
 from ._get_integration_policy_response_body import GetIntegrationPolicyResponseBodyPolicyBindResource
@@ -512,6 +533,8 @@ from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlert
 from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlertActionsWebhookParam
 from ._list_alert_actions_response_body import ListAlertActionsResponseBodyAlertActions
 from ._list_alert_webhooks_response_body import ListAlertWebhooksResponseBodyWebhooks
+from ._list_digital_employee_skill_versions_response_body import ListDigitalEmployeeSkillVersionsResponseBodyData
+from ._list_digital_employee_skills_response_body import ListDigitalEmployeeSkillsResponseBodySkills
 from ._list_digital_employees_response_body import ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian
 from ._list_digital_employees_response_body import ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges
 from ._list_digital_employees_response_body import ListDigitalEmployeesResponseBodyDigitalEmployees
@@ -565,6 +588,7 @@ from ._list_workspaces_response_body import ListWorkspacesResponseBodyWorkspaces
 from ._update_agg_task_group_request import UpdateAggTaskGroupRequestTags
 from ._update_digital_employee_request import UpdateDigitalEmployeeRequestKnowledgesBailian
 from ._update_digital_employee_request import UpdateDigitalEmployeeRequestKnowledges
+from ._update_digital_employee_skill_request import UpdateDigitalEmployeeSkillRequestFiles
 from ._update_integration_policy_request import UpdateIntegrationPolicyRequestTags
 from ._update_prometheus_view_request import UpdatePrometheusViewRequestPrometheusInstances
 
@@ -584,6 +608,7 @@ __all__ = [
     AlertRuleNotification,
     AlertRuleNotificationFilter,
     AlertRuleQuery,
+    AlertRuleRcaConfig,
     AlertRuleSend,
     AlertRuleSlsQueryJoin,
     AlertRuleTimeSpan,
@@ -618,6 +643,8 @@ __all__ = [
     IncidentStruct,
     IncidentTimeline,
     IncidentTimelineForView,
+    IndexJsonKey,
+    IndexKey,
     MaintainWindowForModify,
     MaintainWindowForView,
     MergeContact,
@@ -661,6 +688,9 @@ __all__ = [
     CreateDigitalEmployeeRequest,
     CreateDigitalEmployeeResponseBody,
     CreateDigitalEmployeeResponse,
+    CreateDigitalEmployeeSkillRequest,
+    CreateDigitalEmployeeSkillResponseBody,
+    CreateDigitalEmployeeSkillResponse,
     CreateEntityStoreResponseBody,
     CreateEntityStoreResponse,
     CreateIntegrationPolicyRequest,
@@ -704,6 +734,8 @@ __all__ = [
     DeleteCloudResourceResponse,
     DeleteDigitalEmployeeResponseBody,
     DeleteDigitalEmployeeResponse,
+    DeleteDigitalEmployeeSkillResponseBody,
+    DeleteDigitalEmployeeSkillResponse,
     DeleteEntityStoreResponseBody,
     DeleteEntityStoreResponse,
     DeleteIntegrationPolicyRequest,
@@ -755,6 +787,9 @@ __all__ = [
     GetCmsServiceResponse,
     GetDigitalEmployeeResponseBody,
     GetDigitalEmployeeResponse,
+    GetDigitalEmployeeSkillRequest,
+    GetDigitalEmployeeSkillResponseBody,
+    GetDigitalEmployeeSkillResponse,
     GetEntityStoreResponseBody,
     GetEntityStoreResponse,
     GetEntityStoreDataHeaders,
@@ -814,6 +849,11 @@ __all__ = [
     ListBizTracesRequest,
     ListBizTracesResponseBody,
     ListBizTracesResponse,
+    ListDigitalEmployeeSkillVersionsResponseBody,
+    ListDigitalEmployeeSkillVersionsResponse,
+    ListDigitalEmployeeSkillsRequest,
+    ListDigitalEmployeeSkillsResponseBody,
+    ListDigitalEmployeeSkillsResponse,
     ListDigitalEmployeesRequest,
     ListDigitalEmployeesShrinkRequest,
     ListDigitalEmployeesResponseBody,
@@ -900,6 +940,9 @@ __all__ = [
     UpdateDigitalEmployeeRequest,
     UpdateDigitalEmployeeResponseBody,
     UpdateDigitalEmployeeResponse,
+    UpdateDigitalEmployeeSkillRequest,
+    UpdateDigitalEmployeeSkillResponseBody,
+    UpdateDigitalEmployeeSkillResponse,
     UpdateIntegrationPolicyRequest,
     UpdateIntegrationPolicyResponseBody,
     UpdateIntegrationPolicyResponse,
@@ -999,6 +1042,7 @@ __all__ = [
     CreateChatResponseBodyMessages,
     CreateDigitalEmployeeRequestKnowledgesBailian,
     CreateDigitalEmployeeRequestKnowledges,
+    CreateDigitalEmployeeSkillRequestFiles,
     CreateIntegrationPolicyRequestEntityGroup,
     CreateIntegrationPolicyRequestTags,
     CreateIntegrationPolicyResponseBodyPolicy,
@@ -1029,6 +1073,7 @@ __all__ = [
     GetAggTaskGroupResponseBodyAggTaskGroup,
     GetDigitalEmployeeResponseBodyKnowledgesBailian,
     GetDigitalEmployeeResponseBodyKnowledges,
+    GetDigitalEmployeeSkillResponseBodyFiles,
     GetEntityStoreDataResponseBodyResponseStatusStatusItem,
     GetEntityStoreDataResponseBodyResponseStatus,
     GetIntegrationPolicyResponseBodyPolicyBindResource,
@@ -1079,6 +1124,8 @@ __all__ = [
     ListAlertActionsResponseBodyAlertActionsWebhookParam,
     ListAlertActionsResponseBodyAlertActions,
     ListAlertWebhooksResponseBodyWebhooks,
+    ListDigitalEmployeeSkillVersionsResponseBodyData,
+    ListDigitalEmployeeSkillsResponseBodySkills,
     ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledgesBailian,
     ListDigitalEmployeesResponseBodyDigitalEmployeesKnowledges,
     ListDigitalEmployeesResponseBodyDigitalEmployees,
@@ -1132,6 +1179,7 @@ __all__ = [
     UpdateAggTaskGroupRequestTags,
     UpdateDigitalEmployeeRequestKnowledgesBailian,
     UpdateDigitalEmployeeRequestKnowledges,
+    UpdateDigitalEmployeeSkillRequestFiles,
     UpdateIntegrationPolicyRequestTags,
     UpdatePrometheusViewRequestPrometheusInstances
 ]

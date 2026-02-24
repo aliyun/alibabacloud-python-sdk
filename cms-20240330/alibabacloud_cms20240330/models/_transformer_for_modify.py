@@ -17,11 +17,18 @@ class TransformerForModify(DaraModel):
         sort_id: int = None,
         transformer_name: str = None,
     ):
+        # Transformation operation.
         self.actions = actions
+        # Description.
         self.description = description
+        # Filter Setting.
         self.filter_setting = filter_setting
+        # Exit after matching processing.
         self.quit_after_match = quit_after_match
+        # Sort order.
         self.sort_id = sort_id
+        # Name.
+        # 
         # This parameter is required.
         self.transformer_name = transformer_name
 
