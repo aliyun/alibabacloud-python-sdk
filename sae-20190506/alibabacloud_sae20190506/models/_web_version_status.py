@@ -10,7 +10,13 @@ class WebVersionStatus(DaraModel):
         error_message: str = None,
         status: str = None,
     ):
+        # The error message of the application execution. If the execution is successful, a null value is returned.
         self.error_message = error_message
+        # The state of the application execution. Valid values:
+        # 
+        # *   **Completed**: The execution is successful.
+        # *   **Updating**:The instance is being updated.
+        # *   **Updating**:The execution failed and a non-null error message is returned.
         self.status = status
 
     def validate(self):

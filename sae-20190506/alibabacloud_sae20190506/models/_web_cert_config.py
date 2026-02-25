@@ -11,8 +11,11 @@ class WebCertConfig(DaraModel):
         certificate: str = None,
         private_key: str = None,
     ):
+        # The certificate name.
         self.cert_name = cert_name
+        # The public key of the certificate.
         self.certificate = certificate
+        # The private key of the certificate.
         self.private_key = private_key
 
     def validate(self):

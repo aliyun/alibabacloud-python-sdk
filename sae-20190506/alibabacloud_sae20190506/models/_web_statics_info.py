@@ -12,9 +12,13 @@ class WebStaticsInfo(DaraModel):
         invocations: int = None,
         memory_usage: int = None,
     ):
+        # CPU usage
         self.cpu_usage = cpu_usage
+        # Indicates outbound traffic.
         self.internet_traffic_out = internet_traffic_out
+        # The number of times that the SQL statement is invoked.
         self.invocations = invocations
+        # The peak memory usage for the query.
         self.memory_usage = memory_usage
 
     def validate(self):

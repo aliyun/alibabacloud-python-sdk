@@ -150,6 +150,7 @@ class DescribeApplicationConfigResponseBodyData(DaraModel):
         jar_start_options: str = None,
         jdk: str = None,
         kafka_configs: str = None,
+        labels: Dict[str, str] = None,
         liveness: str = None,
         loki_configs: str = None,
         max_surge_instance_ratio: int = None,
@@ -376,6 +377,7 @@ class DescribeApplicationConfigResponseBodyData(DaraModel):
         # 
         # *   **region**: the region where the Message Queue for Apache Kafka instance resides.
         self.kafka_configs = kafka_configs
+        self.labels = labels
         # The details of the availability check that was performed on the container. If the container fails this health check multiple times, the system disables and restarts the container. You can use one of the following methods to perform the health check:
         # 
         # *   Sample code of the **exec** method: `{"exec":{"command":["sh","-c","cat/home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}`
@@ -794,6 +796,9 @@ class DescribeApplicationConfigResponseBodyData(DaraModel):
         if self.kafka_configs is not None:
             result['KafkaConfigs'] = self.kafka_configs
 
+        if self.labels is not None:
+            result['Labels'] = self.labels
+
         if self.liveness is not None:
             result['Liveness'] = self.liveness
 
@@ -1119,6 +1124,9 @@ class DescribeApplicationConfigResponseBodyData(DaraModel):
 
         if m.get('KafkaConfigs') is not None:
             self.kafka_configs = m.get('KafkaConfigs')
+
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
 
         if m.get('Liveness') is not None:
             self.liveness = m.get('Liveness')

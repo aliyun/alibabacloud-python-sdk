@@ -13,8 +13,14 @@ class WebNetworkConfig(DaraModel):
         security_group_id: str = None,
         v_switch_ids: List[str] = None,
     ):
+        # Specifies whether to enable Internet access for the application. Valid values:
+        # 
+        # *   **true**: enables Internet access.
+        # *   **false**: disables Internet access.
         self.internet_access = internet_access
+        # The ID of a security group.
         self.security_group_id = security_group_id
+        # The list of vSwitches.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):

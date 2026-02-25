@@ -10,7 +10,9 @@ class PathConfig(DaraModel):
         application_name: str = None,
         path: str = None,
     ):
+        # applicationName
         self.application_name = application_name
+        # path
         self.path = path
 
     def validate(self):

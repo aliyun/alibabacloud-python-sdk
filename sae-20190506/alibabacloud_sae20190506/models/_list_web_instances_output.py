@@ -14,8 +14,11 @@ class ListWebInstancesOutput(DaraModel):
         web_instances: List[main_models.WebInstanceInfo] = None,
         web_version_status: Dict[str, main_models.WebVersionStatus] = None,
     ):
+        # The error message of instance creation. If the instance creation was successful, this parameter is not returned.
         self.current_error = current_error
+        # The application instance.
         self.web_instances = web_instances
+        # The instance status.
         self.web_version_status = web_version_status
 
     def validate(self):

@@ -20,16 +20,27 @@ class WebCustomDomain(DaraModel):
         web_wafconfig: main_models.WebWAFConfig = None,
         account_id: str = None,
     ):
+        # The time when the custom domain name was created.
         self.created_time = created_time
+        # The name of the application that is forwarded by the domain name by default.
         self.default_forwarding_app_name = default_forwarding_app_name
+        # The domain name.
         self.domain_name = domain_name
+        # The time when the custom domain name was last updated.
         self.last_modified_time = last_modified_time
+        # The ID of the namespace to which the domain name belongs.
         self.namespace_id = namespace_id
+        # The protocol type that is supported by the custom domain name. HTTP: Only HTTP is supported. HTTPS: Only HTTPS is supported. HTTP, HTTPS: Both HTTP and HTTPS are supported.
         self.protocol = protocol
+        # The route configurations.
         self.route_config = route_config
+        # The information about the HTTPS certificate.
         self.web_cert_config = web_cert_config
+        # The Transport Layer Security (TLS) configurations.
         self.web_tlsconfig = web_tlsconfig
+        # The WAF configurations.
         self.web_wafconfig = web_wafconfig
+        # The ID of your Alibaba Cloud account
         self.account_id = account_id
 
     def validate(self):

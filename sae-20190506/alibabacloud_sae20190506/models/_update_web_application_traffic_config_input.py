@@ -15,9 +15,13 @@ class UpdateWebApplicationTrafficConfigInput(DaraModel):
         revisions_traffic_weight: Dict[str, float] = None,
         web_acl_config: main_models.WebAclConfig = None,
     ):
+        # The authentication type. Valid values: Anonymous (default): does not require authentication. Application: requires authentication.
         self.auth_type = auth_type
+        # Specifies whether to disable access to the default Internet domain. If you set this parameter to true, a 403 error is returned if you access the default public URL provided by the application. A value of false does not have affect the running of the function.
         self.disable_urlinternet = disable_urlinternet
+        # The traffic distribution for the application versions. The sum of traffic percentages for all versions must be equal to 1.
         self.revisions_traffic_weight = revisions_traffic_weight
+        # The configurations of the access control list (ACL) that consists of IP addresses.
         self.web_acl_config = web_acl_config
 
     def validate(self):

@@ -11,7 +11,9 @@ class WebApplicationWithStatus(DaraModel):
         status: main_models.WebApplicationStatus = None,
         web_application: main_models.WebApplication = None,
     ):
+        # The status of the application.
         self.status = status
+        # The details of the application.
         self.web_application = web_application
 
     def validate(self):

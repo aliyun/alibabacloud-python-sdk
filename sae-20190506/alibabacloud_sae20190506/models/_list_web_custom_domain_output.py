@@ -13,7 +13,9 @@ class ListWebCustomDomainOutput(DaraModel):
         next_token: str = None,
         web_custom_domains: List[main_models.WebCustomDomain] = None,
     ):
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
         self.next_token = next_token
+        # The custom domain names.
         self.web_custom_domains = web_custom_domains
 
     def validate(self):

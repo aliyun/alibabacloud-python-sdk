@@ -13,7 +13,9 @@ class DescribeWebAppStaticsOutput(DaraModel):
         length: int = None,
         web_app_statics: List[main_models.WebStaticsInfo] = None,
     ):
+        # The maximum number of entries returned.
         self.length = length
+        # The static resources in the web application.
         self.web_app_statics = web_app_statics
 
     def validate(self):

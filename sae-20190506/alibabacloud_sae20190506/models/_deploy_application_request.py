@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict
 
 from alibabacloud_sae20190506 import models as main_models
 from darabonba.model import DaraModel
@@ -46,6 +46,7 @@ class DeployApplicationRequest(DaraModel):
         jar_start_options: str = None,
         jdk: str = None,
         kafka_configs: str = None,
+        labels: Dict[str, str] = None,
         liveness: str = None,
         loki_configs: str = None,
         max_surge_instance_ratio: int = None,
@@ -262,6 +263,7 @@ class DeployApplicationRequest(DaraModel):
         # *   **kafkaInstanceId**: the ID of the Message Queue for Apache Kafka instance.
         # *   **kafkaConfigs**: One or more logging configurations of Message Queue for Apache Kafka. For information about sample values and parameters, see the request parameter **KafkaLogfileConfig** in this topic.
         self.kafka_configs = kafka_configs
+        self.labels = labels
         # The details of the availability check that was performed on the container. If the container fails this health check multiple times, the system disables and restarts the container. You can use one of the following methods to perform the health check:
         # 
         # *   Example of **exec**: `{"exec":{"command":["sh","-c","cat/home/admin/start.sh"]},"initialDelaySeconds":30,"periodSeconds":30,"timeoutSeconds":2}`
@@ -672,6 +674,9 @@ class DeployApplicationRequest(DaraModel):
         if self.kafka_configs is not None:
             result['KafkaConfigs'] = self.kafka_configs
 
+        if self.labels is not None:
+            result['Labels'] = self.labels
+
         if self.liveness is not None:
             result['Liveness'] = self.liveness
 
@@ -932,6 +937,9 @@ class DeployApplicationRequest(DaraModel):
 
         if m.get('KafkaConfigs') is not None:
             self.kafka_configs = m.get('KafkaConfigs')
+
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
 
         if m.get('Liveness') is not None:
             self.liveness = m.get('Liveness')

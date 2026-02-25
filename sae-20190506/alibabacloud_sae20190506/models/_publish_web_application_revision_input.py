@@ -15,10 +15,15 @@ class PublishWebApplicationRevisionInput(DaraModel):
         enable_arms_metrics: bool = None,
         take_effect: bool = None,
     ):
+        # The container configurations of the revision version.
+        # 
         # This parameter is required.
         self.containers = containers
+        # The version description.
         self.description = description
+        # Specifies whether to enable Application Real-Time Monitoring Service (ARMS) monitoring.
         self.enable_arms_metrics = enable_arms_metrics
+        # Specifies whether to switch all traffic to a new version after the new version is released. Default value: false.
         self.take_effect = take_effect
 
     def validate(self):

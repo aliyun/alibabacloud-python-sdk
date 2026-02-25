@@ -14,9 +14,18 @@ class RevisionConfig(DaraModel):
         enable_arms_metrics: bool = None,
         web_network_config: main_models.WebNetworkConfig = None,
     ):
+        # The container configurations. You can deploy only one container for each application. The maximum length of this array is 1.
+        # 
         # This parameter is required.
         self.containers = containers
+        # Specifies whether to enable Application Real-Time Monitoring Service (ARMS) monitoring. Valid values:
+        # 
+        # *   **`true`**: Enables the ARMS monitoring.
+        # *   **`false`**: Disables the ARMS monitoring.
         self.enable_arms_metrics = enable_arms_metrics
+        # The network configurations.
+        # 
+        # >  This parameter is used to configure network settings for a version of the application.
         self.web_network_config = web_network_config
 
     def validate(self):

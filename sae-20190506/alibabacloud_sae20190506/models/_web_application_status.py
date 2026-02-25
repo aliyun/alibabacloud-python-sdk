@@ -11,7 +11,9 @@ class WebApplicationStatus(DaraModel):
         instance_count: int = None,
         web_scaling_config: main_models.WebScalingConfig = None,
     ):
+        # The number of application instances.
         self.instance_count = instance_count
+        # The scaling configurations of the application.
         self.web_scaling_config = web_scaling_config
 
     def validate(self):

@@ -15,13 +15,23 @@ class CreateWebApplicationInput(DaraModel):
         web_scaling_config: main_models.WebScalingConfig = None,
         web_traffic_config: main_models.WebTrafficConfig = None,
     ):
+        # The name of the application.
+        # 
         # This parameter is required.
         self.application_name = application_name
+        # The description of the application.
         self.description = description
+        # The configuration on the application revision.
+        # 
         # This parameter is required.
         self.revision_config = revision_config
+        # The network configurations.
+        # 
+        # >  This field is used to configure network for the application.
         self.web_network_config = web_network_config
+        # The scaling configurations of the applications.
         self.web_scaling_config = web_scaling_config
+        # The traffic configurations of the applications.
         self.web_traffic_config = web_traffic_config
 
     def validate(self):

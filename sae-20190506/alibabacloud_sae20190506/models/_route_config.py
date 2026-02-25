@@ -12,6 +12,7 @@ class RouteConfig(DaraModel):
         self,
         routes: List[main_models.PathConfig] = None,
     ):
+        # pathConfig
         self.routes = routes
 
     def validate(self):

@@ -14,10 +14,15 @@ class Revision(DaraModel):
         revision_id: str = None,
         weight: float = None,
     ):
+        # The time when the revision version was created.
         self.created_time = created_time
+        # The description of the revision version.
         self.description = description
+        # The configurations of the revision version.
         self.revision_config = revision_config
+        # The ID of the revision version.
         self.revision_id = revision_id
+        # The traffic weight of the version.
         self.weight = weight
 
     def validate(self):

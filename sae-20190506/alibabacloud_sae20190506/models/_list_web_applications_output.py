@@ -13,7 +13,9 @@ class ListWebApplicationsOutput(DaraModel):
         next_token: str = None,
         web_application_with_instance_count: List[main_models.WebApplicationWithInstanceCount] = None,
     ):
+        # The pagination token that is used in the next request to retrieve a new page of results.
         self.next_token = next_token
+        # The applications.
         self.web_application_with_instance_count = web_application_with_instance_count
 
     def validate(self):

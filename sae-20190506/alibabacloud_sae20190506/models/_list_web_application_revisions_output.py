@@ -13,7 +13,9 @@ class ListWebApplicationRevisionsOutput(DaraModel):
         next_token: str = None,
         revisions: List[main_models.Revision] = None,
     ):
+        # The pagination token that is used in the next request to retrieve a new page of results. You do not need to specify this parameter for the first request.
         self.next_token = next_token
+        # The versions.
         self.revisions = revisions
 
     def validate(self):

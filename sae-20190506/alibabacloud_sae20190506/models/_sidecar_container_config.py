@@ -18,15 +18,25 @@ class SidecarContainerConfig(DaraModel):
         memory: int = None,
         name: str = None,
     ):
+        # The ID of the Container Registry Enterprise Edition instance. This parameter is required if the ImageUrl parameter is set to the URL of an image in a Container Registry Enterprise Edition instance.
         self.acr_instance_id = acr_instance_id
+        # The startup command of the image.
         self.command = command
+        # The parameters of the image startup command.
         self.command_args = command_args
+        # The description of the ConfigMap mounted to the application.
         self.config_map_mount_desc = config_map_mount_desc
+        # Cpu
         self.cpu = cpu
+        # The EmptyDir description.
         self.empty_dir_desc = empty_dir_desc
+        # The environment variables of the container.
         self.envs = envs
+        # The image address.
         self.image_url = image_url
+        # Memory
         self.memory = memory
+        # The container name.
         self.name = name
 
     def validate(self):

@@ -14,10 +14,26 @@ class WebCustomDomainBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The data returned for the operation.
         self.data = data
+        # The message returned for the operation. Valid values:
+        # 
+        # *   success is returned when the request succeeds.
+        # *   An error code is returned if the request failed.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful. Valid values:
+        # 
+        # *   **true**: The request is successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):

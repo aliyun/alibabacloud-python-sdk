@@ -12,6 +12,8 @@ class WebAclConfig(DaraModel):
         self,
         web_acl_entries: List[main_models.WebAclEntryConfig] = None,
     ):
+        # The IP addresses.
+        # 
         # This parameter is required.
         self.web_acl_entries = web_acl_entries
 

@@ -11,7 +11,9 @@ class ProbeHandler(DaraModel):
         http_get: main_models.HTTPGetAction = None,
         tcp_socket: main_models.TCPSocketAction = None,
     ):
+        # The action that specifies the HTTP request to execute.
         self.http_get = http_get
+        # The action that specifies the involved TCP port.
         self.tcp_socket = tcp_socket
 
     def validate(self):

@@ -12,6 +12,7 @@ class WebOSSConfig(DaraModel):
         self,
         mount_points: List[main_models.WebOSSMountPoint] = None,
     ):
+        # The mount point.
         self.mount_points = mount_points
 
     def validate(self):

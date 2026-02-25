@@ -13,8 +13,11 @@ class WebTLSConfig(DaraModel):
         max_version: str = None,
         min_version: str = None,
     ):
+        # The supported cipher suites.
         self.cipher_suites = cipher_suites
+        # The supported maximum TLS protocol version.
         self.max_version = max_version
+        # The supported minimum TLS protocol version.
         self.min_version = min_version
 
     def validate(self):

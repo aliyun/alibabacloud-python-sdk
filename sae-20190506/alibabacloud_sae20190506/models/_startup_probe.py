@@ -14,10 +14,15 @@ class StartupProbe(DaraModel):
         probe_handler: main_models.ProbeHandler = None,
         timeout_seconds: int = None,
     ):
+        # The minimum number of consecutive failures that is considered a failure after a successful probe. Default value: 3. Minimum value: 1.
         self.failure_threshold = failure_threshold
+        # The duration after the container is started before health checks are initiated. For more information, see [Probes](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes).
         self.initial_delay_seconds = initial_delay_seconds
+        # The health check interval. Default value: 10. Unit: seconds. Minimum value: 1.
         self.period_seconds = period_seconds
+        # The operation to determine the health of the container.
         self.probe_handler = probe_handler
+        # The timeout period of a health check. Default value: 1. Minimum value: 1. For more information, see [Container probes](https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes).
         self.timeout_seconds = timeout_seconds
 
     def validate(self):

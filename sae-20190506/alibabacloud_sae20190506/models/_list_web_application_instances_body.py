@@ -14,10 +14,26 @@ class ListWebApplicationInstancesBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. Valid values:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The response parameters.
         self.data = data
+        # The returned message. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.
+        # *   If the request failed, an error code is returned.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**: The request was successful.
+        # *   **false**: The request failed.
         self.success = success
 
     def validate(self):

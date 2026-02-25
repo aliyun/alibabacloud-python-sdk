@@ -87,6 +87,7 @@ from ._ossmount_point import OSSMountPoint
 from ._path_config import PathConfig
 from ._permission_assistant_api import PermissionAssistantApi
 from ._policy_item import PolicyItem
+from ._port_protocol import PortProtocol
 from ._price_estimate_feature import PriceEstimateFeature
 from ._price_estimate_output import PriceEstimateOutput
 from ._probe import Probe
@@ -970,6 +971,7 @@ __all__ = [
     PathConfig,
     PermissionAssistantApi,
     PolicyItem,
+    PortProtocol,
     PriceEstimateFeature,
     PriceEstimateOutput,
     Probe,

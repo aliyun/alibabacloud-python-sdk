@@ -13,7 +13,9 @@ class DescribeWebStaticsQueryOutput(DaraModel):
         length: int = None,
         web_statics: List[main_models.WebStaticsInfo] = None,
     ):
+        # The maximum number of entries returned.
         self.length = length
+        # The statistics.
         self.web_statics = web_statics
 
     def validate(self):

@@ -12,9 +12,13 @@ class WebInstanceInfo(DaraModel):
         status: str = None,
         version_id: str = None,
     ):
+        # The instance image.
         self.image_url = image_url
+        # The ID of the application instance.
         self.instance_id = instance_id
+        # The instance status.
         self.status = status
+        # The ID of the application version.
         self.version_id = version_id
 
     def validate(self):

@@ -12,9 +12,13 @@ class WebOSSMountPoint(DaraModel):
         mount_dir: str = None,
         read_only: bool = None,
     ):
+        # The name of the bucket.
         self.bucket_name = bucket_name
+        # The storage path in an OSS bucket.
         self.bucket_path = bucket_path
+        # The local mount directory.
         self.mount_dir = mount_dir
+        # Specifies whether it is read-only.
         self.read_only = read_only
 
     def validate(self):

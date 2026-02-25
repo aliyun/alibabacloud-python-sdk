@@ -14,10 +14,26 @@ class WebApplicationBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code. Value description:
+        # 
+        # *   **2xx**: The request was successful.
+        # *   **3xx**: The request was redirected.
+        # *   **4xx**: The request failed.
+        # *   **5xx**: A server error occurred.
         self.code = code
+        # The response parameters.
         self.data = data
+        # Additional information about the call result. Value description:
+        # 
+        # *   If the request is successful, a success message is returned.
+        # *   If the request fails, an error code is returned.
         self.message = message
+        # The request ID.
         self.request_id = request_id
+        # Indicates whether the request was successful. Valid values:
+        # 
+        # *   **true**
+        # *   **false**
         self.success = success
 
     def validate(self):

@@ -21,19 +21,33 @@ class WebApplication(DaraModel):
         web_scaling_config: main_models.WebScalingConfig = None,
         web_traffic_config: main_models.WebTrafficConfig = None,
     ):
+        # The application ID.
+        # 
         # This parameter is required.
         self.application_id = application_id
+        # The application name.
+        # 
         # This parameter is required.
         self.application_name = application_name
+        # The time when the application was created.
         self.created_time = created_time
+        # The application description.
         self.description = description
+        # The public URL for accessing the application.
         self.internet_url = internet_url
+        # The internal URL for accessing the application.
         self.intranet_url = intranet_url
+        # The time when the application was last modified.
         self.last_modified_time = last_modified_time
+        # The ID of the namespace to which the application belongs.
         self.namespace_id = namespace_id
+        # The configurations of the revision version.
         self.revision_config = revision_config
+        # The Virtual Private Cloud (VPC) ID of the application namespace.
         self.vpc_id = vpc_id
+        # The scaling configurations of the application.
         self.web_scaling_config = web_scaling_config
+        # The traffic configurations of the application.
         self.web_traffic_config = web_traffic_config
 
     def validate(self):

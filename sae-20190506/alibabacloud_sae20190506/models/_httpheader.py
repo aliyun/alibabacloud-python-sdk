@@ -10,7 +10,9 @@ class HTTPHeader(DaraModel):
         name: str = None,
         value: str = None,
     ):
+        # The header name.
         self.name = name
+        # The header value.
         self.value = value
 
     def validate(self):

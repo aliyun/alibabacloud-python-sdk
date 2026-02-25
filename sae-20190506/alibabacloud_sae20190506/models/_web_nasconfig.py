@@ -12,6 +12,7 @@ class WebNASConfig(DaraModel):
         self,
         mount_points: List[main_models.WebNASMountPoint] = None,
     ):
+        # The mount targets.
         self.mount_points = mount_points
 
     def validate(self):

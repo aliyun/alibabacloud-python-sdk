@@ -12,6 +12,7 @@ class SLSCollectConfigs(DaraModel):
         self,
         collect_configs: List[main_models.SLSCollectConfig] = None,
     ):
+        # The configurations of log collection.
         self.collect_configs = collect_configs
 
     def validate(self):

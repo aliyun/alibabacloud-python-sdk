@@ -11,8 +11,14 @@ class MetricsCollectConfig(DaraModel):
         logstore_name: str = None,
         project_name: str = None,
     ):
+        # Specifies whether to push metric data to Simple Log Service. Valid values:
+        # 
+        # *   true
+        # *   false
         self.enable_push_to_user_sls = enable_push_to_user_sls
+        # The name of the Logstore in Simple Log Service to which the metric data is pushed.
         self.logstore_name = logstore_name
+        # The name of the project in Simple Log Service to which the metric data is pushed.
         self.project_name = project_name
 
     def validate(self):

@@ -24,7 +24,6 @@ class DescribeRegionsResponseBody(DaraModel):
         self.code = code
         # The returned message.
         self.message = message
-        # The regions.
         self.regions = regions
         # The request ID.
         self.request_id = request_id
@@ -112,43 +111,9 @@ class DescribeRegionsResponseBodyRegionsRegion(DaraModel):
         region_endpoint: str = None,
         region_id: str = None,
     ):
-        # The region name. Valid values:
-        # 
-        # *   **China (Hangzhou)**
-        # *   **China (Shanghai)**
-        # *   **China (Beijing)**
-        # *   **China (Zhangjiakou)**
-        # *   **China (Shenzhen)**
-        # *   **China (Guangzhou)**
-        # *   **China (Hong Kong)**
-        # *   **Singapore**
-        # *   **US (Silicon Valley)**
         self.local_name = local_name
-        # The recommended zones.
         self.recommend_zones = recommend_zones
-        # The endpoint for the region. Valid values:
-        # 
-        # *   **sae.cn-hangzhou.aliyuncs.com**
-        # *   **sae.cn-shanghai.aliyuncs.com**
-        # *   **sae.cn-beijing.aliyuncs.com**
-        # *   **sae.cn-zhangjiakou.aliyuncs.com**
-        # *   **sae.cn-shenzhen.aliyuncs.com**
-        # *   **sae.cn-guangzhou.aliyuncs.com**
-        # *   **sae.cn-hongkong.aliyuncs.com**
-        # *   **sae.ap-southeast-1.aliyuncs.com**
-        # *   **sae.us-west-1.aliyuncs.com**
         self.region_endpoint = region_endpoint
-        # The region ID. Valid values:
-        # 
-        # *   **cn-hangzhou**: the ID of the China (Hangzhou) region
-        # *   **cn-shanghai**: the ID of the China (Shanghai) region
-        # *   **cn-beijing**: the ID of the China (Beijing) region
-        # *   **cn-zhangjiakou**: the ID of the China (Zhangjiakou) region
-        # *   **cn-shenzhen**: the ID of the China (Shenzhen) region
-        # *   **cn-guangzhou**: the ID of the China (Guangzhou) region
-        # *   **cn-hongkong**: the ID of the China (Hong Kong) region
-        # *   **ap-southeast-1**: the ID of the Singapore region
-        # *   **us-west-1**: the ID of the US (Silicon Valley) region
         self.region_id = region_id
 
     def validate(self):

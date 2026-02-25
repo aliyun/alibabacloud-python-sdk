@@ -10,8 +10,12 @@ class UpdateWebApplicationScalingConfigInput(DaraModel):
         maximum_instance_count: int = None,
         minimum_instance_count: int = None,
     ):
+        # The maximum number of instances.
+        # 
         # This parameter is required.
         self.maximum_instance_count = maximum_instance_count
+        # The minimum number of instances.
+        # 
         # This parameter is required.
         self.minimum_instance_count = minimum_instance_count
 

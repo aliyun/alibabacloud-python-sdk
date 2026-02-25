@@ -14,10 +14,15 @@ class WebApplicationRevisionBody(DaraModel):
         request_id: str = None,
         success: bool = None,
     ):
+        # The HTTP status code.
         self.code = code
+        # The data returned for the operation.
         self.data = data
+        # The message returned for the operation.
         self.message = message
+        # The ID of the request.
         self.request_id = request_id
+        # Indicates whether the call was successful.
         self.success = success
 
     def validate(self):

@@ -9,6 +9,10 @@ class WebLogEntry(DaraModel):
         self,
         message: str = None,
     ):
+        # The message returned. Valid values:
+        # 
+        # *   If the request was successful, a success message is returned.
+        # *   If the request failed, an error code is returned.
         self.message = message
 
     def validate(self):

@@ -10,7 +10,9 @@ class WebScalingConfig(DaraModel):
         maximum_instance_count: int = None,
         minimum_instance_count: int = None,
     ):
+        # The maximum number of instances.
         self.maximum_instance_count = maximum_instance_count
+        # The minimum number of instances.
         self.minimum_instance_count = minimum_instance_count
 
     def validate(self):

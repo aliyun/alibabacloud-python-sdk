@@ -9,6 +9,10 @@ class WebAclEntryConfig(DaraModel):
         self,
         entry: str = None,
     ):
+        # The IP address.
+        # 
+        # >  CIDR notation is not supported.
+        # 
         # This parameter is required.
         self.entry = entry
 

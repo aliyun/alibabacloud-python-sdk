@@ -11,8 +11,11 @@ class WebNASMountPoint(DaraModel):
         nas_addr: str = None,
         nas_path: str = None,
     ):
+        # The local mount directory.
         self.mount_dir = mount_dir
+        # The mount target.
         self.nas_addr = nas_addr
+        # The mount directory.
         self.nas_path = nas_path
 
     def validate(self):

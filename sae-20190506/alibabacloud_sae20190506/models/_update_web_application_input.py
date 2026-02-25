@@ -11,7 +11,9 @@ class UpdateWebApplicationInput(DaraModel):
         description: str = None,
         web_network_config: main_models.WebNetworkConfig = None,
     ):
+        # The application description.
         self.description = description
+        # The network configurations of the application.
         self.web_network_config = web_network_config
 
     def validate(self):

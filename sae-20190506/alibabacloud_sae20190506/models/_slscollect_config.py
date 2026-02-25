@@ -14,11 +14,25 @@ class SLSCollectConfig(DaraModel):
         machine_group: str = None,
         project_name: str = None,
     ):
+        # The log path.
         self.log_path = log_path
+        # The log type. The following types of logs are supported:
+        # 
+        # *   File collection logs
+        # *   Standard output logs
         self.log_type = log_type
+        # The name of the Logstore. The name must meet the following requirements:
+        # 
+        # *   The name must be unique in a project.
+        # *   The name can contain only lowercase letters, digits, hyphens (-), and underscores (_).
+        # *   The name must start and end with a lowercase letter or a digit.
+        # *   The name must be 3 to 63 characters in length.
         self.logstore_name = logstore_name
+        # The name for the Logtail configuration.
         self.logtail_name = logtail_name
+        # The name of the machine group of Simple Log Service.
         self.machine_group = machine_group
+        # The name of the SLS project.
         self.project_name = project_name
 
     def validate(self):

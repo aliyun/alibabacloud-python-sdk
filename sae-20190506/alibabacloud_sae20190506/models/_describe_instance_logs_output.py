@@ -12,6 +12,7 @@ class DescribeInstanceLogsOutput(DaraModel):
         self,
         web_log_entrys: List[main_models.WebLogEntry] = None,
     ):
+        # The log entries.
         self.web_log_entrys = web_log_entrys
 
     def validate(self):

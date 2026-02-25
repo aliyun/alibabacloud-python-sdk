@@ -25,21 +25,37 @@ class Container(DaraModel):
         web_nasconfig: main_models.WebNASConfig = None,
         web_ossconfig: main_models.WebOSSConfig = None,
     ):
+        # The startup parameters of the container.
         self.args = args
+        # The startup command of the container.
         self.command = command
+        # The container environment variables.
         self.environment_variables = environment_variables
+        # The container image.
+        # 
         # This parameter is required.
         self.image = image
+        # The configuration of the image repository.
         self.image_registry_config = image_registry_config
+        # The configuration for collecting monitoring records.
         self.metrics_collect_config = metrics_collect_config
+        # The port of the container.
         self.port = port
+        # The number of concurrent requests on a single instance.
         self.request_concurrency = request_concurrency
+        # The timeout period of the container request.
         self.request_timeout = request_timeout
+        # The configurations of the container resources.
+        # 
         # This parameter is required.
         self.resources = resources
+        # The configuration of container log collection.
         self.slscollect_configs = slscollect_configs
+        # The container startup check configuration.
         self.startup_probe = startup_probe
+        # The container NAS configuration.
         self.web_nasconfig = web_nasconfig
+        # The container OSS mount configuration.
         self.web_ossconfig = web_ossconfig
 
     def validate(self):

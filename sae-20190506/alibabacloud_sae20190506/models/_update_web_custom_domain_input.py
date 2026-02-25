@@ -15,11 +15,21 @@ class UpdateWebCustomDomainInput(DaraModel):
         web_tlsconfig: main_models.WebTLSConfig = None,
         web_wafconfig: main_models.WebWAFConfig = None,
     ):
+        # The name of the application to which data is forwarded by the domain name by default.
         self.default_forwarding_app_name = default_forwarding_app_name
+        # The protocol type that is supported by the custom domain name. Valid values:
+        # 
+        # *   **HTTP**: Only HTTP is supported.
+        # *   **HTTPS**: Only HTTPS is supported.
+        # *   **HTTP,HTTPS**: Both HTTP and HTTPS are supported.
         self.protocol = protocol
+        # The route configuration.
         self.route_config = route_config
+        # The information about the HTTPS certificate.
         self.web_cert_config = web_cert_config
+        # The Transport Layer Security (TLS) configurations.
         self.web_tlsconfig = web_tlsconfig
+        # The Web Application Firewall (WAF) configurations.
         self.web_wafconfig = web_wafconfig
 
     def validate(self):

@@ -16,10 +16,15 @@ class HTTPGetAction(DaraModel):
         port: int = None,
         scheme: str = None,
     ):
+        # The hostname to which you want to connect. The default value is the IP address of the pod. You may need to specify Host in HttpHeaders.
         self.host = host
+        # The custom headers that you need to specify in the request. Duplicate headers are allowed in an HTTP request.
         self.http_headers = http_headers
+        # The path of a URL.
         self.path = path
+        # The port range. Valid values: 1 to 65535.
         self.port = port
+        # The scheme that you want to use to connect to the host. Default value: http.
         self.scheme = scheme
 
     def validate(self):

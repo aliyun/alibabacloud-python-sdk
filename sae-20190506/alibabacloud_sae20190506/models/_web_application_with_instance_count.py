@@ -11,7 +11,9 @@ class WebApplicationWithInstanceCount(DaraModel):
         instance_count: int = None,
         web_application: main_models.WebApplication = None,
     ):
+        # The number of application instances.
         self.instance_count = instance_count
+        # The application information.
         self.web_application = web_application
 
     def validate(self):

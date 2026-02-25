@@ -728,6 +728,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.init_containers_config):
             request.init_containers_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.init_containers_config, 'InitContainersConfig', 'json')
+        if not DaraCore.is_null(tmp_req.labels):
+            request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
         if not DaraCore.is_null(tmp_req.sidecar_containers_config):
             request.sidecar_containers_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sidecar_containers_config, 'SidecarContainersConfig', 'json')
         query = {}
@@ -795,6 +797,8 @@ class Client(OpenApiClient):
             query['Jdk'] = request.jdk
         if not DaraCore.is_null(request.kafka_configs):
             query['KafkaConfigs'] = request.kafka_configs
+        if not DaraCore.is_null(request.labels_shrink):
+            query['Labels'] = request.labels_shrink
         if not DaraCore.is_null(request.liveness):
             query['Liveness'] = request.liveness
         if not DaraCore.is_null(request.loki_configs):
@@ -936,6 +940,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.init_containers_config):
             request.init_containers_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.init_containers_config, 'InitContainersConfig', 'json')
+        if not DaraCore.is_null(tmp_req.labels):
+            request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
         if not DaraCore.is_null(tmp_req.sidecar_containers_config):
             request.sidecar_containers_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sidecar_containers_config, 'SidecarContainersConfig', 'json')
         query = {}
@@ -1003,6 +1009,8 @@ class Client(OpenApiClient):
             query['Jdk'] = request.jdk
         if not DaraCore.is_null(request.kafka_configs):
             query['KafkaConfigs'] = request.kafka_configs
+        if not DaraCore.is_null(request.labels_shrink):
+            query['Labels'] = request.labels_shrink
         if not DaraCore.is_null(request.liveness):
             query['Liveness'] = request.liveness
         if not DaraCore.is_null(request.loki_configs):
@@ -3600,6 +3608,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.init_containers_config):
             request.init_containers_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.init_containers_config, 'InitContainersConfig', 'json')
+        if not DaraCore.is_null(tmp_req.labels):
+            request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
         if not DaraCore.is_null(tmp_req.sidecar_containers_config):
             request.sidecar_containers_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sidecar_containers_config, 'SidecarContainersConfig', 'json')
         query = {}
@@ -3663,6 +3673,8 @@ class Client(OpenApiClient):
             query['Jdk'] = request.jdk
         if not DaraCore.is_null(request.kafka_configs):
             query['KafkaConfigs'] = request.kafka_configs
+        if not DaraCore.is_null(request.labels_shrink):
+            query['Labels'] = request.labels_shrink
         if not DaraCore.is_null(request.liveness):
             query['Liveness'] = request.liveness
         if not DaraCore.is_null(request.loki_configs):
@@ -3804,6 +3816,8 @@ class Client(OpenApiClient):
         Utils.convert(tmp_req, request)
         if not DaraCore.is_null(tmp_req.init_containers_config):
             request.init_containers_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.init_containers_config, 'InitContainersConfig', 'json')
+        if not DaraCore.is_null(tmp_req.labels):
+            request.labels_shrink = Utils.array_to_string_with_specified_style(tmp_req.labels, 'Labels', 'json')
         if not DaraCore.is_null(tmp_req.sidecar_containers_config):
             request.sidecar_containers_config_shrink = Utils.array_to_string_with_specified_style(tmp_req.sidecar_containers_config, 'SidecarContainersConfig', 'json')
         query = {}
@@ -3867,6 +3881,8 @@ class Client(OpenApiClient):
             query['Jdk'] = request.jdk
         if not DaraCore.is_null(request.kafka_configs):
             query['KafkaConfigs'] = request.kafka_configs
+        if not DaraCore.is_null(request.labels_shrink):
+            query['Labels'] = request.labels_shrink
         if not DaraCore.is_null(request.liveness):
             query['Liveness'] = request.liveness
         if not DaraCore.is_null(request.loki_configs):
