@@ -1,0 +1,110 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from alibabacloud_mts20140618 import models as main_models
+from darabonba.model import DaraModel
+
+class DeleteMediaWorkflowResponseBody(DaraModel):
+    def __init__(
+        self,
+        media_workflow: main_models.DeleteMediaWorkflowResponseBodyMediaWorkflow = None,
+        request_id: str = None,
+    ):
+        # The information about the media workflow.
+        self.media_workflow = media_workflow
+        # The ID of the request.
+        self.request_id = request_id
+
+    def validate(self):
+        if self.media_workflow:
+            self.media_workflow.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.media_workflow is not None:
+            result['MediaWorkflow'] = self.media_workflow.to_map()
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('MediaWorkflow') is not None:
+            temp_model = main_models.DeleteMediaWorkflowResponseBodyMediaWorkflow()
+            self.media_workflow = temp_model.from_map(m.get('MediaWorkflow'))
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        return self
+
+class DeleteMediaWorkflowResponseBodyMediaWorkflow(DaraModel):
+    def __init__(
+        self,
+        creation_time: str = None,
+        media_workflow_id: str = None,
+        name: str = None,
+        state: str = None,
+        topology: str = None,
+    ):
+        # The time when the media workflow was created.
+        self.creation_time = creation_time
+        # The ID of the media workflow that is deleted.
+        self.media_workflow_id = media_workflow_id
+        # The name of the media workflow that is deleted.
+        self.name = name
+        # The status of the media workflow. The value is **Deleted**.
+        self.state = state
+        # The topology of the media workflow.
+        self.topology = topology
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.creation_time is not None:
+            result['CreationTime'] = self.creation_time
+
+        if self.media_workflow_id is not None:
+            result['MediaWorkflowId'] = self.media_workflow_id
+
+        if self.name is not None:
+            result['Name'] = self.name
+
+        if self.state is not None:
+            result['State'] = self.state
+
+        if self.topology is not None:
+            result['Topology'] = self.topology
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CreationTime') is not None:
+            self.creation_time = m.get('CreationTime')
+
+        if m.get('MediaWorkflowId') is not None:
+            self.media_workflow_id = m.get('MediaWorkflowId')
+
+        if m.get('Name') is not None:
+            self.name = m.get('Name')
+
+        if m.get('State') is not None:
+            self.state = m.get('State')
+
+        if m.get('Topology') is not None:
+            self.topology = m.get('Topology')
+
+        return self
+
