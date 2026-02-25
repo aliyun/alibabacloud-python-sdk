@@ -1,3 +1,7 @@
+2026-02-25 Version: 4.4.1
+- Update API ListReplicaEdgeSupported: add response parameters Body.SupportedRegions.$.Zones.$.SupportRtc.
+
+
 2026-02-02 Version: 4.4.0
 - Support API DescribeApps.
 

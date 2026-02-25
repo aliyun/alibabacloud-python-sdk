@@ -112,8 +112,10 @@ class ListReplicaEdgeSupportedResponseBodySupportedRegions(DaraModel):
 class ListReplicaEdgeSupportedResponseBodySupportedRegionsZones(DaraModel):
     def __init__(
         self,
+        support_rtc: bool = None,
         zone_id: str = None,
     ):
+        self.support_rtc = support_rtc
         self.zone_id = zone_id
 
     def validate(self):
@@ -124,6 +126,9 @@ class ListReplicaEdgeSupportedResponseBodySupportedRegionsZones(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.support_rtc is not None:
+            result['SupportRtc'] = self.support_rtc
+
         if self.zone_id is not None:
             result['ZoneId'] = self.zone_id
 
@@ -131,6 +136,9 @@ class ListReplicaEdgeSupportedResponseBodySupportedRegionsZones(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('SupportRtc') is not None:
+            self.support_rtc = m.get('SupportRtc')
+
         if m.get('ZoneId') is not None:
             self.zone_id = m.get('ZoneId')
 
