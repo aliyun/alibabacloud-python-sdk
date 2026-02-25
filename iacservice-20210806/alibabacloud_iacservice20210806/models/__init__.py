@@ -10,6 +10,9 @@ from ._add_shared_accounts_response import AddSharedAccountsResponse
 from ._associate_group_request import AssociateGroupRequest
 from ._associate_group_response_body import AssociateGroupResponseBody
 from ._associate_group_response import AssociateGroupResponse
+from ._associate_parameter_set_request import AssociateParameterSetRequest
+from ._associate_parameter_set_response_body import AssociateParameterSetResponseBody
+from ._associate_parameter_set_response import AssociateParameterSetResponse
 from ._cancel_resource_export_task_request import CancelResourceExportTaskRequest
 from ._cancel_resource_export_task_response_body import CancelResourceExportTaskResponseBody
 from ._cancel_resource_export_task_response import CancelResourceExportTaskResponse
@@ -25,6 +28,9 @@ from ._create_module_response import CreateModuleResponse
 from ._create_module_version_request import CreateModuleVersionRequest
 from ._create_module_version_response_body import CreateModuleVersionResponseBody
 from ._create_module_version_response import CreateModuleVersionResponse
+from ._create_parameter_set_request import CreateParameterSetRequest
+from ._create_parameter_set_response_body import CreateParameterSetResponseBody
+from ._create_parameter_set_response import CreateParameterSetResponse
 from ._create_project_request import CreateProjectRequest
 from ._create_project_response_body import CreateProjectResponseBody
 from ._create_project_response import CreateProjectResponse
@@ -44,6 +50,8 @@ from ._delete_group_response_body import DeleteGroupResponseBody
 from ._delete_group_response import DeleteGroupResponse
 from ._delete_module_response_body import DeleteModuleResponseBody
 from ._delete_module_response import DeleteModuleResponse
+from ._delete_parameter_set_response_body import DeleteParameterSetResponseBody
+from ._delete_parameter_set_response import DeleteParameterSetResponse
 from ._delete_project_response_body import DeleteProjectResponseBody
 from ._delete_project_response import DeleteProjectResponse
 from ._delete_registry_module_response_body import DeleteRegistryModuleResponseBody
@@ -59,6 +67,9 @@ from ._delete_task_response import DeleteTaskResponse
 from ._dissociate_group_request import DissociateGroupRequest
 from ._dissociate_group_response_body import DissociateGroupResponseBody
 from ._dissociate_group_response import DissociateGroupResponse
+from ._dissociate_parameter_set_request import DissociateParameterSetRequest
+from ._dissociate_parameter_set_response_body import DissociateParameterSetResponseBody
+from ._dissociate_parameter_set_response import DissociateParameterSetResponse
 from ._execute_registry_module_request import ExecuteRegistryModuleRequest
 from ._execute_registry_module_response_body import ExecuteRegistryModuleResponseBody
 from ._execute_registry_module_response import ExecuteRegistryModuleResponse
@@ -88,6 +99,8 @@ from ._get_module_response_body import GetModuleResponseBody
 from ._get_module_response import GetModuleResponse
 from ._get_module_version_response_body import GetModuleVersionResponseBody
 from ._get_module_version_response import GetModuleVersionResponse
+from ._get_parameter_set_response_body import GetParameterSetResponseBody
+from ._get_parameter_set_response import GetParameterSetResponse
 from ._get_project_response_body import GetProjectResponseBody
 from ._get_project_response import GetProjectResponse
 from ._get_registry_module_response_body import GetRegistryModuleResponseBody
@@ -127,6 +140,12 @@ from ._list_modules_request import ListModulesRequest
 from ._list_modules_shrink_request import ListModulesShrinkRequest
 from ._list_modules_response_body import ListModulesResponseBody
 from ._list_modules_response import ListModulesResponse
+from ._list_parameter_set_relation_request import ListParameterSetRelationRequest
+from ._list_parameter_set_relation_response_body import ListParameterSetRelationResponseBody
+from ._list_parameter_set_relation_response import ListParameterSetRelationResponse
+from ._list_parameter_sets_request import ListParameterSetsRequest
+from ._list_parameter_sets_response_body import ListParameterSetsResponseBody
+from ._list_parameter_sets_response import ListParameterSetsResponse
 from ._list_products_request import ListProductsRequest
 from ._list_products_response_body import ListProductsResponseBody
 from ._list_products_response import ListProductsResponse
@@ -182,6 +201,9 @@ from ._update_group_response import UpdateGroupResponse
 from ._update_module_attribute_request import UpdateModuleAttributeRequest
 from ._update_module_attribute_response_body import UpdateModuleAttributeResponseBody
 from ._update_module_attribute_response import UpdateModuleAttributeResponse
+from ._update_parameter_set_attribute_request import UpdateParameterSetAttributeRequest
+from ._update_parameter_set_attribute_response_body import UpdateParameterSetAttributeResponseBody
+from ._update_parameter_set_attribute_response import UpdateParameterSetAttributeResponse
 from ._update_project_request import UpdateProjectRequest
 from ._update_project_response_body import UpdateProjectResponseBody
 from ._update_project_response import UpdateProjectResponse
@@ -204,6 +226,7 @@ from ._create_group_request import CreateGroupRequestNotifyConfig
 from ._create_group_request import CreateGroupRequestTriggerConfig
 from ._create_module_request import CreateModuleRequestGroupInfo
 from ._create_module_request import CreateModuleRequestTags
+from ._create_parameter_set_request import CreateParameterSetRequestParameters
 from ._create_resource_export_task_request import CreateResourceExportTaskRequestExportToModule
 from ._create_resource_export_task_request import CreateResourceExportTaskRequestIncludeRules
 from ._create_resource_export_task_request import CreateResourceExportTaskRequestVariables
@@ -220,6 +243,9 @@ from ._get_module_response_body import GetModuleResponseBodyModuleGroupInfo
 from ._get_module_response_body import GetModuleResponseBodyModuleTags
 from ._get_module_response_body import GetModuleResponseBodyModule
 from ._get_module_version_response_body import GetModuleVersionResponseBodyVersion
+from ._get_parameter_set_response_body import GetParameterSetResponseBodyParameterSetParameters
+from ._get_parameter_set_response_body import GetParameterSetResponseBodyParameterSetRelationList
+from ._get_parameter_set_response_body import GetParameterSetResponseBodyParameterSet
 from ._get_project_response_body import GetProjectResponseBodyProject
 from ._get_registry_module_response_body import GetRegistryModuleResponseBodyRegistryModule
 from ._get_registry_module_version_response_body import GetRegistryModuleVersionResponseBodyModuleVersion
@@ -248,6 +274,10 @@ from ._list_modules_request import ListModulesRequestTag
 from ._list_modules_response_body import ListModulesResponseBodyModulesGroupInfo
 from ._list_modules_response_body import ListModulesResponseBodyModulesTags
 from ._list_modules_response_body import ListModulesResponseBodyModules
+from ._list_parameter_set_relation_response_body import ListParameterSetRelationResponseBodyParameterSets
+from ._list_parameter_sets_response_body import ListParameterSetsResponseBodyParameterSetsParameters
+from ._list_parameter_sets_response_body import ListParameterSetsResponseBodyParameterSetsRelationList
+from ._list_parameter_sets_response_body import ListParameterSetsResponseBodyParameterSets
 from ._list_products_response_body import ListProductsResponseBodyProducts
 from ._list_project_request import ListProjectRequestTag
 from ._list_project_response_body import ListProjectResponseBodyProjectsTags
@@ -275,6 +305,7 @@ from ._update_group_request import UpdateGroupRequestNotifyConfig
 from ._update_group_request import UpdateGroupRequestTriggerConfig
 from ._update_module_attribute_request import UpdateModuleAttributeRequestGroupInfo
 from ._update_module_attribute_request import UpdateModuleAttributeRequestTags
+from ._update_parameter_set_attribute_request import UpdateParameterSetAttributeRequestParameters
 from ._update_resource_export_task_attribute_request import UpdateResourceExportTaskAttributeRequestExportToModule
 from ._update_resource_export_task_attribute_request import UpdateResourceExportTaskAttributeRequestIncludeRules
 from ._update_resource_export_task_attribute_request import UpdateResourceExportTaskAttributeRequestVariables
@@ -290,6 +321,9 @@ __all__ = [
     AssociateGroupRequest,
     AssociateGroupResponseBody,
     AssociateGroupResponse,
+    AssociateParameterSetRequest,
+    AssociateParameterSetResponseBody,
+    AssociateParameterSetResponse,
     CancelResourceExportTaskRequest,
     CancelResourceExportTaskResponseBody,
     CancelResourceExportTaskResponse,
@@ -305,6 +339,9 @@ __all__ = [
     CreateModuleVersionRequest,
     CreateModuleVersionResponseBody,
     CreateModuleVersionResponse,
+    CreateParameterSetRequest,
+    CreateParameterSetResponseBody,
+    CreateParameterSetResponse,
     CreateProjectRequest,
     CreateProjectResponseBody,
     CreateProjectResponse,
@@ -324,6 +361,8 @@ __all__ = [
     DeleteGroupResponse,
     DeleteModuleResponseBody,
     DeleteModuleResponse,
+    DeleteParameterSetResponseBody,
+    DeleteParameterSetResponse,
     DeleteProjectResponseBody,
     DeleteProjectResponse,
     DeleteRegistryModuleResponseBody,
@@ -339,6 +378,9 @@ __all__ = [
     DissociateGroupRequest,
     DissociateGroupResponseBody,
     DissociateGroupResponse,
+    DissociateParameterSetRequest,
+    DissociateParameterSetResponseBody,
+    DissociateParameterSetResponse,
     ExecuteRegistryModuleRequest,
     ExecuteRegistryModuleResponseBody,
     ExecuteRegistryModuleResponse,
@@ -368,6 +410,8 @@ __all__ = [
     GetModuleResponse,
     GetModuleVersionResponseBody,
     GetModuleVersionResponse,
+    GetParameterSetResponseBody,
+    GetParameterSetResponse,
     GetProjectResponseBody,
     GetProjectResponse,
     GetRegistryModuleResponseBody,
@@ -407,6 +451,12 @@ __all__ = [
     ListModulesShrinkRequest,
     ListModulesResponseBody,
     ListModulesResponse,
+    ListParameterSetRelationRequest,
+    ListParameterSetRelationResponseBody,
+    ListParameterSetRelationResponse,
+    ListParameterSetsRequest,
+    ListParameterSetsResponseBody,
+    ListParameterSetsResponse,
     ListProductsRequest,
     ListProductsResponseBody,
     ListProductsResponse,
@@ -462,6 +512,9 @@ __all__ = [
     UpdateModuleAttributeRequest,
     UpdateModuleAttributeResponseBody,
     UpdateModuleAttributeResponse,
+    UpdateParameterSetAttributeRequest,
+    UpdateParameterSetAttributeResponseBody,
+    UpdateParameterSetAttributeResponse,
     UpdateProjectRequest,
     UpdateProjectResponseBody,
     UpdateProjectResponse,
@@ -484,6 +537,7 @@ __all__ = [
     CreateGroupRequestTriggerConfig,
     CreateModuleRequestGroupInfo,
     CreateModuleRequestTags,
+    CreateParameterSetRequestParameters,
     CreateResourceExportTaskRequestExportToModule,
     CreateResourceExportTaskRequestIncludeRules,
     CreateResourceExportTaskRequestVariables,
@@ -500,6 +554,9 @@ __all__ = [
     GetModuleResponseBodyModuleTags,
     GetModuleResponseBodyModule,
     GetModuleVersionResponseBodyVersion,
+    GetParameterSetResponseBodyParameterSetParameters,
+    GetParameterSetResponseBodyParameterSetRelationList,
+    GetParameterSetResponseBodyParameterSet,
     GetProjectResponseBodyProject,
     GetRegistryModuleResponseBodyRegistryModule,
     GetRegistryModuleVersionResponseBodyModuleVersion,
@@ -528,6 +585,10 @@ __all__ = [
     ListModulesResponseBodyModulesGroupInfo,
     ListModulesResponseBodyModulesTags,
     ListModulesResponseBodyModules,
+    ListParameterSetRelationResponseBodyParameterSets,
+    ListParameterSetsResponseBodyParameterSetsParameters,
+    ListParameterSetsResponseBodyParameterSetsRelationList,
+    ListParameterSetsResponseBodyParameterSets,
     ListProductsResponseBodyProducts,
     ListProjectRequestTag,
     ListProjectResponseBodyProjectsTags,
@@ -555,6 +616,7 @@ __all__ = [
     UpdateGroupRequestTriggerConfig,
     UpdateModuleAttributeRequestGroupInfo,
     UpdateModuleAttributeRequestTags,
+    UpdateParameterSetAttributeRequestParameters,
     UpdateResourceExportTaskAttributeRequestExportToModule,
     UpdateResourceExportTaskAttributeRequestIncludeRules,
     UpdateResourceExportTaskAttributeRequestVariables,

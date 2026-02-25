@@ -11,7 +11,6 @@ from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
 from darabonba.core import DaraCore as DaraCore
-from darabonba.core import DaraCore
 from darabonba.runtime import RuntimeOptions
 from darabonba.url import Url as DaraURL
 
@@ -219,6 +218,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.associate_group_with_options_async(group_id, request, headers, runtime)
+
+    def associate_parameter_set_with_options(
+        self,
+        request: main_models.AssociateParameterSetRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AssociateParameterSetResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.parameter_set_ids):
+            body['parameterSetIds'] = request.parameter_set_ids
+        if not DaraCore.is_null(request.resource_id):
+            body['resourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AssociateParameterSet',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/parameterSets/operations/associate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AssociateParameterSetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def associate_parameter_set_with_options_async(
+        self,
+        request: main_models.AssociateParameterSetRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.AssociateParameterSetResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.parameter_set_ids):
+            body['parameterSetIds'] = request.parameter_set_ids
+        if not DaraCore.is_null(request.resource_id):
+            body['resourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'AssociateParameterSet',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/parameterSets/operations/associate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AssociateParameterSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def associate_parameter_set(
+        self,
+        request: main_models.AssociateParameterSetRequest,
+    ) -> main_models.AssociateParameterSetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.associate_parameter_set_with_options(request, headers, runtime)
+
+    async def associate_parameter_set_async(
+        self,
+        request: main_models.AssociateParameterSetRequest,
+    ) -> main_models.AssociateParameterSetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.associate_parameter_set_with_options_async(request, headers, runtime)
 
     def cancel_resource_export_task_with_options(
         self,
@@ -719,6 +802,94 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.create_module_version_with_options_async(module_id, request, headers, runtime)
+
+    def create_parameter_set_with_options(
+        self,
+        request: main_models.CreateParameterSetRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateParameterSetResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.parameters):
+            body['parameters'] = request.parameters
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateParameterSet',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/parameterSets',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateParameterSetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_parameter_set_with_options_async(
+        self,
+        request: main_models.CreateParameterSetRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateParameterSetResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.client_token):
+            body['clientToken'] = request.client_token
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.parameters):
+            body['parameters'] = request.parameters
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateParameterSet',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/parameterSets',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateParameterSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_parameter_set(
+        self,
+        request: main_models.CreateParameterSetRequest,
+    ) -> main_models.CreateParameterSetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.create_parameter_set_with_options(request, headers, runtime)
+
+    async def create_parameter_set_async(
+        self,
+        request: main_models.CreateParameterSetRequest,
+    ) -> main_models.CreateParameterSetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.create_parameter_set_with_options_async(request, headers, runtime)
 
     def create_project_with_options(
         self,
@@ -1376,6 +1547,72 @@ class Client(OpenApiClient):
         headers = {}
         return await self.delete_module_with_options_async(module_id, headers, runtime)
 
+    def delete_parameter_set_with_options(
+        self,
+        parameter_set_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteParameterSetResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteParameterSet',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/parameterSets/{DaraURL.percent_encode(parameter_set_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteParameterSetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_parameter_set_with_options_async(
+        self,
+        parameter_set_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteParameterSetResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteParameterSet',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/parameterSets/{DaraURL.percent_encode(parameter_set_id)}',
+            method = 'DELETE',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteParameterSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_parameter_set(
+        self,
+        parameter_set_id: str,
+    ) -> main_models.DeleteParameterSetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.delete_parameter_set_with_options(parameter_set_id, headers, runtime)
+
+    async def delete_parameter_set_async(
+        self,
+        parameter_set_id: str,
+    ) -> main_models.DeleteParameterSetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.delete_parameter_set_with_options_async(parameter_set_id, headers, runtime)
+
     def delete_project_with_options(
         self,
         project_id: str,
@@ -1875,6 +2112,90 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.dissociate_group_with_options_async(project_id, group_id, request, headers, runtime)
+
+    def dissociate_parameter_set_with_options(
+        self,
+        request: main_models.DissociateParameterSetRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DissociateParameterSetResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.parameter_set_ids):
+            body['parameterSetIds'] = request.parameter_set_ids
+        if not DaraCore.is_null(request.resource_id):
+            body['resourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DissociateParameterSet',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/parameterSets/operations/dissociate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DissociateParameterSetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def dissociate_parameter_set_with_options_async(
+        self,
+        request: main_models.DissociateParameterSetRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.DissociateParameterSetResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.parameter_set_ids):
+            body['parameterSetIds'] = request.parameter_set_ids
+        if not DaraCore.is_null(request.resource_id):
+            body['resourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            body['resourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'DissociateParameterSet',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/parameterSets/operations/dissociate',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DissociateParameterSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def dissociate_parameter_set(
+        self,
+        request: main_models.DissociateParameterSetRequest,
+    ) -> main_models.DissociateParameterSetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.dissociate_parameter_set_with_options(request, headers, runtime)
+
+    async def dissociate_parameter_set_async(
+        self,
+        request: main_models.DissociateParameterSetRequest,
+    ) -> main_models.DissociateParameterSetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.dissociate_parameter_set_with_options_async(request, headers, runtime)
 
     def execute_registry_module_with_options(
         self,
@@ -2743,6 +3064,72 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.get_module_version_with_options_async(module_id, module_version, headers, runtime)
+
+    def get_parameter_set_with_options(
+        self,
+        parameter_set_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetParameterSetResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetParameterSet',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/parameterSets/{DaraURL.percent_encode(parameter_set_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetParameterSetResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_parameter_set_with_options_async(
+        self,
+        parameter_set_id: str,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.GetParameterSetResponse:
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers
+        )
+        params = open_api_util_models.Params(
+            action = 'GetParameterSet',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/parameterSets/{DaraURL.percent_encode(parameter_set_id)}',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetParameterSetResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_parameter_set(
+        self,
+        parameter_set_id: str,
+    ) -> main_models.GetParameterSetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.get_parameter_set_with_options(parameter_set_id, headers, runtime)
+
+    async def get_parameter_set_async(
+        self,
+        parameter_set_id: str,
+    ) -> main_models.GetParameterSetResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.get_parameter_set_with_options_async(parameter_set_id, headers, runtime)
 
     def get_project_with_options(
         self,
@@ -3933,6 +4320,170 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         headers = {}
         return await self.list_modules_with_options_async(request, headers, runtime)
+
+    def list_parameter_set_relation_with_options(
+        self,
+        request: main_models.ListParameterSetRelationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListParameterSetRelationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['resourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListParameterSetRelation',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/parameterSets/operations/relation',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListParameterSetRelationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_parameter_set_relation_with_options_async(
+        self,
+        request: main_models.ListParameterSetRelationRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListParameterSetRelationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.resource_id):
+            query['resourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_type):
+            query['resourceType'] = request.resource_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListParameterSetRelation',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/parameterSets/operations/relation',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListParameterSetRelationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_parameter_set_relation(
+        self,
+        request: main_models.ListParameterSetRelationRequest,
+    ) -> main_models.ListParameterSetRelationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_parameter_set_relation_with_options(request, headers, runtime)
+
+    async def list_parameter_set_relation_async(
+        self,
+        request: main_models.ListParameterSetRelationRequest,
+    ) -> main_models.ListParameterSetRelationResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_parameter_set_relation_with_options_async(request, headers, runtime)
+
+    def list_parameter_sets_with_options(
+        self,
+        request: main_models.ListParameterSetsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListParameterSetsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListParameterSets',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/parameterSets',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListParameterSetsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_parameter_sets_with_options_async(
+        self,
+        request: main_models.ListParameterSetsRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListParameterSetsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.keyword):
+            query['keyword'] = request.keyword
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListParameterSets',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/parameterSets',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListParameterSetsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_parameter_sets(
+        self,
+        request: main_models.ListParameterSetsRequest,
+    ) -> main_models.ListParameterSetsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_parameter_sets_with_options(request, headers, runtime)
+
+    async def list_parameter_sets_async(
+        self,
+        request: main_models.ListParameterSetsRequest,
+    ) -> main_models.ListParameterSetsResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_parameter_sets_with_options_async(request, headers, runtime)
 
     def list_products_with_options(
         self,
@@ -5610,6 +6161,94 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_module_attribute_with_options_async(module_id, request, headers, runtime)
 
+    def update_parameter_set_attribute_with_options(
+        self,
+        parameter_set_id: str,
+        request: main_models.UpdateParameterSetAttributeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateParameterSetAttributeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.parameters):
+            body['parameters'] = request.parameters
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateParameterSetAttribute',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/parameterSets/{DaraURL.percent_encode(parameter_set_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateParameterSetAttributeResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_parameter_set_attribute_with_options_async(
+        self,
+        parameter_set_id: str,
+        request: main_models.UpdateParameterSetAttributeRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateParameterSetAttributeResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.description):
+            body['description'] = request.description
+        if not DaraCore.is_null(request.name):
+            body['name'] = request.name
+        if not DaraCore.is_null(request.parameters):
+            body['parameters'] = request.parameters
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateParameterSetAttribute',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/parameterSets/{DaraURL.percent_encode(parameter_set_id)}',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateParameterSetAttributeResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_parameter_set_attribute(
+        self,
+        parameter_set_id: str,
+        request: main_models.UpdateParameterSetAttributeRequest,
+    ) -> main_models.UpdateParameterSetAttributeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_parameter_set_attribute_with_options(parameter_set_id, request, headers, runtime)
+
+    async def update_parameter_set_attribute_async(
+        self,
+        parameter_set_id: str,
+        request: main_models.UpdateParameterSetAttributeRequest,
+    ) -> main_models.UpdateParameterSetAttributeResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_parameter_set_attribute_with_options_async(parameter_set_id, request, headers, runtime)
+
     def update_project_with_options(
         self,
         project_id: str,
@@ -6161,17 +6800,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.ValidateModuleResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ValidateModuleResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def validate_module_with_sse_async(
         self,
@@ -6208,17 +6847,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.ValidateModuleResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ValidateModuleResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def validate_module_with_options(
         self,

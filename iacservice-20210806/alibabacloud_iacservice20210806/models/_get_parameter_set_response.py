@@ -7,19 +7,15 @@ from typing import Dict
 from alibabacloud_iacservice20210806 import models as main_models
 from darabonba.model import DaraModel
 
-class ValidateModuleResponse(DaraModel):
+class GetParameterSetResponse(DaraModel):
     def __init__(
         self,
         headers: Dict[str, str] = None,
         status_code: int = None,
-        id: str = None,
-        event: str = None,
-        body: main_models.ValidateModuleResponseBody = None,
+        body: main_models.GetParameterSetResponseBody = None,
     ):
         self.headers = headers
         self.status_code = status_code
-        self.id = id
-        self.event = event
         self.body = body
 
     def validate(self):
@@ -37,12 +33,6 @@ class ValidateModuleResponse(DaraModel):
         if self.status_code is not None:
             result['statusCode'] = self.status_code
 
-        if self.id is not None:
-            result['id'] = self.id
-
-        if self.event is not None:
-            result['event'] = self.event
-
         if self.body is not None:
             result['body'] = self.body.to_map()
 
@@ -56,14 +46,8 @@ class ValidateModuleResponse(DaraModel):
         if m.get('statusCode') is not None:
             self.status_code = m.get('statusCode')
 
-        if m.get('id') is not None:
-            self.id = m.get('id')
-
-        if m.get('event') is not None:
-            self.event = m.get('event')
-
         if m.get('body') is not None:
-            temp_model = main_models.ValidateModuleResponseBody()
+            temp_model = main_models.GetParameterSetResponseBody()
             self.body = temp_model.from_map(m.get('body'))
 
         return self

@@ -1,3 +1,14 @@
+2026-02-25 Version: 2.3.0
+- Support API AssociateParameterSet.
+- Support API CreateParameterSet.
+- Support API DeleteParameterSet.
+- Support API DissociateParameterSet.
+- Support API GetParameterSet.
+- Support API ListParameterSetRelation.
+- Support API ListParameterSets.
+- Support API UpdateParameterSetAttribute.
+
+
 2026-01-21 Version: 2.2.0
 - Support API ManageTerraformState.
 
