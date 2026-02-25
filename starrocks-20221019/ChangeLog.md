@@ -1,3 +1,21 @@
+2026-02-25 Version: 1.3.0
+- Support API AddGateway.
+- Support API DeleteGateway.
+- Support API DisableSSLConnection.
+- Support API EnableSSLConnection.
+- Support API GetInstanceFeatureGate.
+- Support API IsolateLeader.
+- Support API ListGateway.
+- Support API ModifyChargeType.
+- Support API ModifyDiskType.
+- Support API RestartNodeGroup.
+- Support API RestartNodes.
+- Support API RestoreInstance.
+- Support API ResumeInstance.
+- Support API TogglePublicSlb.
+- Support API UpdateGateway.
+
+
 2025-12-05 Version: 1.2.2
 - Update API CreateInstanceV1: add request parameters body.DlfCatalogName.
 - Update API CreateInstanceV1: add request parameters body.DlfCatalogType.
