@@ -1,3 +1,6 @@
+2026-02-25 Version: 2.4.1
+- Generated python 2022-01-12 for PaiStudio.
+
 2026-02-25 Version: 2.4.0
 - Support API ListQuotaActiveUserUsages.
 
