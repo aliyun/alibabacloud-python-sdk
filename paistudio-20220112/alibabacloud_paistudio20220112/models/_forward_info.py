@@ -10,7 +10,9 @@ class ForwardInfo(DaraModel):
         eip_allocation_id: str = None,
         nat_gateway_id: str = None,
     ):
+        # EIP Allocation ID
         self.eip_allocation_id = eip_allocation_id
+        # NAT Gateway ID
         self.nat_gateway_id = nat_gateway_id
 
     def validate(self):

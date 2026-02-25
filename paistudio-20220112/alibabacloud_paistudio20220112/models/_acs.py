@@ -12,6 +12,7 @@ class ACS(DaraModel):
         acsquota_id: str = None,
         associated_products: List[str] = None,
     ):
+        # ACS Identifier
         self.acsquota_id = acsquota_id
         self.associated_products = associated_products
 

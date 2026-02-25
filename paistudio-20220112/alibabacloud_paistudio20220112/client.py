@@ -2920,6 +2920,114 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_nodes_with_options_async(request, headers, runtime)
 
+    def list_quota_active_user_usages_with_options(
+        self,
+        quota_id: str,
+        request: main_models.ListQuotaActiveUserUsagesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListQuotaActiveUserUsagesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.self_only):
+            query['SelfOnly'] = request.self_only
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListQuotaActiveUserUsages',
+            version = '2022-01-12',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/quotas/{DaraURL.percent_encode(quota_id)}/activeuserusages',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListQuotaActiveUserUsagesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_quota_active_user_usages_with_options_async(
+        self,
+        quota_id: str,
+        request: main_models.ListQuotaActiveUserUsagesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListQuotaActiveUserUsagesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.order):
+            query['Order'] = request.order
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.self_only):
+            query['SelfOnly'] = request.self_only
+        if not DaraCore.is_null(request.sort_by):
+            query['SortBy'] = request.sort_by
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.username):
+            query['Username'] = request.username
+        if not DaraCore.is_null(request.workspace_id):
+            query['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListQuotaActiveUserUsages',
+            version = '2022-01-12',
+            protocol = 'HTTPS',
+            pathname = f'/api/v1/quotas/{DaraURL.percent_encode(quota_id)}/activeuserusages',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListQuotaActiveUserUsagesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_quota_active_user_usages(
+        self,
+        quota_id: str,
+        request: main_models.ListQuotaActiveUserUsagesRequest,
+    ) -> main_models.ListQuotaActiveUserUsagesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_quota_active_user_usages_with_options(quota_id, request, headers, runtime)
+
+    async def list_quota_active_user_usages_async(
+        self,
+        quota_id: str,
+        request: main_models.ListQuotaActiveUserUsagesRequest,
+    ) -> main_models.ListQuotaActiveUserUsagesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_quota_active_user_usages_with_options_async(quota_id, request, headers, runtime)
+
     def list_quota_workloads_with_options(
         self,
         quota_id: str,

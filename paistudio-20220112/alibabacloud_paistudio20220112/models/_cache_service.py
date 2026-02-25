@@ -14,8 +14,10 @@ class CacheService(DaraModel):
         cache_service_id: str = None,
         created_by: str = None,
         gmt_created: str = None,
+        network_type: str = None,
         quota_id: str = None,
         status: str = None,
+        support_rdma: str = None,
         supported_client_quota_ids: List[str] = None,
         tenant_id: str = None,
         user_id: str = None,
@@ -25,8 +27,10 @@ class CacheService(DaraModel):
         self.cache_service_id = cache_service_id
         self.created_by = created_by
         self.gmt_created = gmt_created
+        self.network_type = network_type
         self.quota_id = quota_id
         self.status = status
+        self.support_rdma = support_rdma
         self.supported_client_quota_ids = supported_client_quota_ids
         self.tenant_id = tenant_id
         self.user_id = user_id
@@ -59,11 +63,17 @@ class CacheService(DaraModel):
         if self.gmt_created is not None:
             result['GmtCreated'] = self.gmt_created
 
+        if self.network_type is not None:
+            result['NetworkType'] = self.network_type
+
         if self.quota_id is not None:
             result['QuotaId'] = self.quota_id
 
         if self.status is not None:
             result['Status'] = self.status
+
+        if self.support_rdma is not None:
+            result['SupportRDMA'] = self.support_rdma
 
         if self.supported_client_quota_ids is not None:
             result['SupportedClientQuotaIds'] = self.supported_client_quota_ids
@@ -96,11 +106,17 @@ class CacheService(DaraModel):
         if m.get('GmtCreated') is not None:
             self.gmt_created = m.get('GmtCreated')
 
+        if m.get('NetworkType') is not None:
+            self.network_type = m.get('NetworkType')
+
         if m.get('QuotaId') is not None:
             self.quota_id = m.get('QuotaId')
 
         if m.get('Status') is not None:
             self.status = m.get('Status')
+
+        if m.get('SupportRDMA') is not None:
+            self.support_rdma = m.get('SupportRDMA')
 
         if m.get('SupportedClientQuotaIds') is not None:
             self.supported_client_quota_ids = m.get('SupportedClientQuotaIds')

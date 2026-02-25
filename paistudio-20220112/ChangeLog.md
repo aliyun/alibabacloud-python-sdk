@@ -1,3 +1,7 @@
+2026-02-25 Version: 2.4.0
+- Support API ListQuotaActiveUserUsages.
+
+
 2026-01-27 Version: 2.3.0
 - Support API OperateNode.
 

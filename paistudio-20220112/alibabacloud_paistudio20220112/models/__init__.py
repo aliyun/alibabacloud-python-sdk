@@ -183,6 +183,9 @@ from ._list_nodes_request import ListNodesRequest
 from ._list_nodes_shrink_request import ListNodesShrinkRequest
 from ._list_nodes_response_body import ListNodesResponseBody
 from ._list_nodes_response import ListNodesResponse
+from ._list_quota_active_user_usages_request import ListQuotaActiveUserUsagesRequest
+from ._list_quota_active_user_usages_response_body import ListQuotaActiveUserUsagesResponseBody
+from ._list_quota_active_user_usages_response import ListQuotaActiveUserUsagesResponse
 from ._list_quota_workloads_request import ListQuotaWorkloadsRequest
 from ._list_quota_workloads_response_body import ListQuotaWorkloadsResponseBody
 from ._list_quota_workloads_response import ListQuotaWorkloadsResponse
@@ -503,6 +506,9 @@ __all__ = [
     ListNodesShrinkRequest,
     ListNodesResponseBody,
     ListNodesResponse,
+    ListQuotaActiveUserUsagesRequest,
+    ListQuotaActiveUserUsagesResponseBody,
+    ListQuotaActiveUserUsagesResponse,
     ListQuotaWorkloadsRequest,
     ListQuotaWorkloadsResponseBody,
     ListQuotaWorkloadsResponse,

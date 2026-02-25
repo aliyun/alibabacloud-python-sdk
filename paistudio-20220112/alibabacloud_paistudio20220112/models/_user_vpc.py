@@ -19,11 +19,17 @@ class UserVpc(DaraModel):
         vpc_id: str = None,
     ):
         self.default_forward_info = default_forward_info
+        # DefaultRoute
         self.default_route = default_route
+        # ExtendedCIDRs
         self.extended_cidrs = extended_cidrs
+        # RoleArn
         self.role_arn = role_arn
+        # SecurityGroupID
         self.security_group_id = security_group_id
+        # VSW ID
         self.switch_id = switch_id
+        # VPC ID
         self.vpc_id = vpc_id
 
     def validate(self):

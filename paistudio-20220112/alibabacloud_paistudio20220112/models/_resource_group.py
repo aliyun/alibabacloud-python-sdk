@@ -18,14 +18,22 @@ class ResourceGroup(DaraModel):
         version: str = None,
         workspace_id: str = None,
     ):
+        # CreatorID
         self.creator_id = creator_id
+        # pai resource created time
         self.gmt_created_time = gmt_created_time
+        # GmtModified
         self.gmt_modified_time = gmt_modified_time
+        # pai resource group name
         self.name = name
+        # NodeCount
         self.node_count = node_count
+        # pai resource group id
         self.resource_group_id = resource_group_id
+        # UserVpc
         self.user_vpc = user_vpc
         self.version = version
+        # pworkspace id
         self.workspace_id = workspace_id
 
     def validate(self):

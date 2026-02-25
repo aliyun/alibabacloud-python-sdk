@@ -60,6 +60,7 @@ class MachineGroup(DaraModel):
         self.memory = memory
         self.order_instance_id = order_instance_id
         self.payment_duration = payment_duration
+        # region ID
         self.payment_duration_unit = payment_duration_unit
         self.payment_type = payment_type
         self.reason_code = reason_code
