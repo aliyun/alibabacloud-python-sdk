@@ -1,3 +1,6 @@
+2026-02-25 Version: 2.3.4
+- Generated python 2022-01-01 for pai-dsw.
+
 2026-01-12 Version: 2.3.3
 - Update API ListInstances: add request parameters CreateTimeAfter.
 - Update API ListInstances: add request parameters CreateTimeBefore.
