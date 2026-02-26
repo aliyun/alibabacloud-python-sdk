@@ -10704,6 +10704,8 @@ class Client(OpenApiClient):
             query['ColdDataBackupRetention'] = request.cold_data_backup_retention
         if not DaraCore.is_null(request.cross_region_data_backup_retention):
             query['CrossRegionDataBackupRetention'] = request.cross_region_data_backup_retention
+        if not DaraCore.is_null(request.cross_region_filter_value):
+            query['CrossRegionFilterValue'] = request.cross_region_filter_value
         if not DaraCore.is_null(request.cross_region_log_backup_retention):
             query['CrossRegionLogBackupRetention'] = request.cross_region_log_backup_retention
         if not DaraCore.is_null(request.dbinstance_name):
@@ -10770,6 +10772,8 @@ class Client(OpenApiClient):
             query['ColdDataBackupRetention'] = request.cold_data_backup_retention
         if not DaraCore.is_null(request.cross_region_data_backup_retention):
             query['CrossRegionDataBackupRetention'] = request.cross_region_data_backup_retention
+        if not DaraCore.is_null(request.cross_region_filter_value):
+            query['CrossRegionFilterValue'] = request.cross_region_filter_value
         if not DaraCore.is_null(request.cross_region_log_backup_retention):
             query['CrossRegionLogBackupRetention'] = request.cross_region_log_backup_retention
         if not DaraCore.is_null(request.dbinstance_name):

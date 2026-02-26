@@ -69,6 +69,7 @@ class UpdateBackupPolicyResponseBodyData(DaraModel):
         cold_data_backup_interval: int = None,
         cold_data_backup_retention: int = None,
         cross_region_data_backup_retention: int = None,
+        cross_region_filter_value: str = None,
         cross_region_log_backup_retention: int = None,
         dbinstance_name: str = None,
         dest_cross_region: str = None,
@@ -89,6 +90,7 @@ class UpdateBackupPolicyResponseBodyData(DaraModel):
         self.cold_data_backup_interval = cold_data_backup_interval
         self.cold_data_backup_retention = cold_data_backup_retention
         self.cross_region_data_backup_retention = cross_region_data_backup_retention
+        self.cross_region_filter_value = cross_region_filter_value
         self.cross_region_log_backup_retention = cross_region_log_backup_retention
         self.dbinstance_name = dbinstance_name
         self.dest_cross_region = dest_cross_region
@@ -132,6 +134,9 @@ class UpdateBackupPolicyResponseBodyData(DaraModel):
 
         if self.cross_region_data_backup_retention is not None:
             result['CrossRegionDataBackupRetention'] = self.cross_region_data_backup_retention
+
+        if self.cross_region_filter_value is not None:
+            result['CrossRegionFilterValue'] = self.cross_region_filter_value
 
         if self.cross_region_log_backup_retention is not None:
             result['CrossRegionLogBackupRetention'] = self.cross_region_log_backup_retention
@@ -193,6 +198,9 @@ class UpdateBackupPolicyResponseBodyData(DaraModel):
 
         if m.get('CrossRegionDataBackupRetention') is not None:
             self.cross_region_data_backup_retention = m.get('CrossRegionDataBackupRetention')
+
+        if m.get('CrossRegionFilterValue') is not None:
+            self.cross_region_filter_value = m.get('CrossRegionFilterValue')
 
         if m.get('CrossRegionLogBackupRetention') is not None:
             self.cross_region_log_backup_retention = m.get('CrossRegionLogBackupRetention')

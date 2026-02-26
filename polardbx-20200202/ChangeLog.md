@@ -1,3 +1,9 @@
+2026-02-26 Version: 3.1.4
+- Update API DescribeBackupPolicy: add response parameters Body.Data.CrossRegionFilterValue.
+- Update API UpdateBackupPolicy: add request parameters CrossRegionFilterValue.
+- Update API UpdateBackupPolicy: add response parameters Body.Data.CrossRegionFilterValue.
+
+
 2026-01-22 Version: 3.1.3
 - Update API DescribeDBInstances: add request parameters Description.
 
