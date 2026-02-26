@@ -43,30 +43,31 @@ class UpdateAggregateConfigRuleShrinkRequest(DaraModel):
         # 
         # > This parameter applies only to rule templates.
         self.account_ids_scope = account_ids_scope
-        # The ID of the account group.
+        # The account group ID.
         # 
-        # For more information, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+        # For more information, see [ListAggregators]().
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
         # A client token used to ensure the idempotence of the request. Make sure that the client token is unique for each request. The `ClientToken` can contain only ASCII characters and cannot exceed 64 characters in length.
         self.client_token = client_token
+        # The conditions for the custom rule, specified in JSON format.
         self.conditions = conditions
         # The rule ID.
         # 
-        # For more information, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
+        # For more information, see [ListAggregateConfigRules]().
         # 
         # This parameter is required.
         self.config_rule_id = config_rule_id
-        # The name of the rule.
+        # The rule name.
         # 
-        # For more information, see [ListAggregateConfigRules](https://help.aliyun.com/document_detail/264148.html).
+        # For more information, see [ListAggregateConfigRules]().
         self.config_rule_name = config_rule_name
-        # The trigger type of the rule. Valid values:
+        # The trigger mechanism of the rule. Valid values:
         # 
-        # - ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+        # - ConfigurationItemChangeNotification: Configuration changes.
         # 
-        # - ScheduledNotification: The rule is triggered on a regular basis.
+        # - ScheduledNotification: Scheduled execution.
         # 
         # > You can modify this parameter only for custom rules.
         self.config_rule_trigger_types = config_rule_trigger_types
@@ -92,15 +93,15 @@ class UpdateAggregateConfigRuleShrinkRequest(DaraModel):
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
         # The excluded tag scope.
         self.exclude_tags_scope = exclude_tags_scope
-        # The rule applies only to resources of member accounts in the specified folders.
+        # The rule applies only to resources of member accounts in the specified resource directory IDs.
         # 
         # > - This parameter applies only to rules in a global account group.
         # >
         # > - This parameter applies only to rule templates.
         self.folder_ids_scope = folder_ids_scope
-        # The input parameters of the rule.
+        # The rule parameters.
         self.input_parameters_shrink = input_parameters_shrink
-        # The frequency at which the rule is run. Valid values:
+        # The frequency at which the rule runs. Valid values:
         # 
         # - One_Hour: 1 hour.
         # 
@@ -114,17 +115,17 @@ class UpdateAggregateConfigRuleShrinkRequest(DaraModel):
         # 
         # > This parameter is required if you set `ConfigRuleTriggerTypes` to `ScheduledNotification`.
         self.maximum_execution_frequency = maximum_execution_frequency
-        # The rule applies only to resources in the specified regions. Separate multiple region IDs with a comma (,).
+        # The rule applies only to resources in the specified region IDs. Separate multiple region IDs with a comma (,).
         # 
         # > This parameter applies only to rule templates.
         self.region_ids_scope = region_ids_scope
-        # The rule applies only to resources in the specified resource groups. Separate multiple resource group IDs with a comma (,).
+        # The rule applies only to resources in the specified resource group IDs. Separate multiple resource group IDs with a comma (,).
         # 
         # > This parameter applies only to rule templates.
         self.resource_group_ids_scope = resource_group_ids_scope
-        # The rule applies only to the specified resources. Separate multiple resource IDs with a comma (,).
+        # The rule applies only to the specified resource IDs. Separate multiple resource IDs with a comma (,).
         self.resource_ids_scope = resource_ids_scope
-        # The rule applies only to resources with the specified name.
+        # The rule applies only to resources with the specified resource name.
         self.resource_name_scope = resource_name_scope
         # The resource types that the rule evaluates. Separate multiple resource types with a comma (,).
         self.resource_types_scope_shrink = resource_types_scope_shrink
@@ -136,29 +137,27 @@ class UpdateAggregateConfigRuleShrinkRequest(DaraModel):
         # 
         # - 3: low risk.
         self.risk_level = risk_level
-        # The tags of the resource. This input parameter is deprecated and is ignored if specified.
-        # 
-        # A maximum of 20 tags can be attached.
+        # The rule applies only to resources with the specified resource name.
         self.tag_shrink = tag_shrink
         # The logical relationship for multiple tags in the `TagsScope` parameter. For example, if you set the `TagsScope` parameter to `"TagsScope.1.TagKey":"a","TagsScope.1.TagValue":"a","TagsScope.2.TagKey":"b","TagsScope.2.TagValue":"b"` and set this parameter to `AND`, the rule applies only to resources that have both the `a:a` and `b:b` tags. If you do not set this parameter, the default value is `OR`.
         # 
-        # This parameter also works with the deprecated `TagKeyScope` parameter. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and set this parameter to `AND`, the rule applies only to resources that have both the `ECS` and `OSS` tags.
+        # This parameter also works with the deprecated `TagKeyScope` parameter (not recommended). For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and set this parameter to `AND`, the rule applies only to resources that have both the `ECS` and `OSS` tags.
         # 
         # Valid values:
         # 
-        # - AND
+        # - AND: Logical AND.
         # 
-        # - OR
+        # - OR: Logical OR.
         self.tag_key_logic_scope = tag_key_logic_scope
         # This parameter is deprecated. Use the `TagsScope` parameter instead.
         # 
-        # The rule applies only to resources that have the specified tag.
+        # The rule applies only to resources with the specified tag.
         # 
         # > This parameter applies only to rule templates. You must specify both `TagKeyScope` and `TagValueScope`.
         self.tag_key_scope = tag_key_scope
         # This parameter is deprecated. Use the `TagsScope` parameter instead.
         # 
-        # The rule applies only to resources that have the specified tag.
+        # The rule applies only to resources with the specified tag.
         # 
         # > This parameter applies only to rule templates. You must specify both `TagKeyScope` and `TagValueScope`.
         self.tag_value_scope = tag_value_scope

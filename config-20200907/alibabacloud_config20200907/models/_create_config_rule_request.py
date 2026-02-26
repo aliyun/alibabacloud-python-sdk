@@ -36,8 +36,9 @@ class CreateConfigRuleRequest(DaraModel):
         tag_value_scope: str = None,
         tags_scope: List[main_models.CreateConfigRuleRequestTagsScope] = None,
     ):
-        # A client token. It is used to ensure the idempotence of the request. You can use the client to generate a token, but you must make sure that the token is unique among different requests. The `ClientToken` parameter can contain only ASCII characters and cannot exceed 64 characters in length.
+        # A client token used to ensure request idempotence. Generate a unique token on your client. The `ClientToken` parameter can contain only ASCII characters and cannot exceed 64 characters.
         self.client_token = client_token
+        # The conditions for a custom condition rule, in JSON format.
         self.conditions = conditions
         # The name of the rule.
         # 
@@ -45,9 +46,9 @@ class CreateConfigRuleRequest(DaraModel):
         self.config_rule_name = config_rule_name
         # The trigger that invokes the rule. Valid values:
         # 
-        # - ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+        # - ConfigurationItemChangeNotification: The rule runs when a resource configuration changes.
         # 
-        # - ScheduledNotification: The rule is triggered on a regular basis.
+        # - ScheduledNotification: The rule runs on a regular schedule.
         # 
         # > If a rule has multiple triggers, separate them with commas (,).
         # 
@@ -65,25 +66,25 @@ class CreateConfigRuleRequest(DaraModel):
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
         # The scope of the tags to exclude.
         self.exclude_tags_scope = exclude_tags_scope
-        # Extended content. This parameter is used only to specify the trigger time for a 24-hour evaluation cycle.
+        # Extended content. This parameter specifies the trigger time for a 24-hour evaluation cycle.
         self.extend_content = extend_content
-        # The input parameters of the rule.
+        # The input parameters for the rule.
         # 
-        # You can obtain the input parameters of a rule by calling the [GetManagedRule](https://help.aliyun.com/document_detail/606993.html) operation. View the `CompulsoryInputParameterDetails` and `OptionalInputParameterDetails` parameters to learn about the required and optional parameters.
+        # You can get the input parameters of a rule by calling the [GetManagedRule](https://help.aliyun.com/document_detail/606993.html) operation. View the `CompulsoryInputParameterDetails` and `OptionalInputParameterDetails` parameters to learn about the required and optional parameters.
         # 
         # The format of the input parameters is `{"Parameter 1 Name":"Parameter 1 Value","Parameter 2 Name":"Parameter 2 Value"}`.
         self.input_parameters = input_parameters
-        # The frequency at which the rule is executed. Valid values:
+        # The frequency at which the rule runs. Valid values:
         # 
-        # - One_Hour: 1 hour.
+        # - One_Hour: every hour.
         # 
-        # - Three_Hours: 3 hours.
+        # - Three_Hours: every three hours.
         # 
-        # - Six_Hours: 6 hours.
+        # - Six_Hours: every six hours.
         # 
-        # - Twelve_Hours: 12 hours.
+        # - Twelve_Hours: every twelve hours.
         # 
-        # - TwentyFour_Hours (default): 24 hours.
+        # - TwentyFour_Hours (default): every twenty-four hours.
         # 
         # > This parameter is required if you set ConfigRuleTriggerTypes to ScheduledNotification.
         self.maximum_execution_frequency = maximum_execution_frequency
@@ -99,7 +100,7 @@ class CreateConfigRuleRequest(DaraModel):
         self.resource_ids_scope = resource_ids_scope
         # The rule applies only to resources that have the specified names.
         self.resource_name_scope = resource_name_scope
-        # The resource types to be evaluated by the rule. Separate multiple resource types with commas (,).
+        # The resource types to evaluate. Separate multiple resource types with commas (,).
         # 
         # This parameter is required.
         self.resource_types_scope = resource_types_scope
@@ -119,33 +120,37 @@ class CreateConfigRuleRequest(DaraModel):
         # 
         #   > To query the identifier of a rule template, see [List of rule templates](https://help.aliyun.com/document_detail/127404.html).
         # 
+        # - If you set `SourceOwner` to `CUSTOM_CONFIGURATION`, set this parameter to `acs-config-configuration`.
+        # 
         # - If you set `SourceOwner` to `CUSTOM_FC`, specify the Alibaba Cloud Resource Name (ARN) of the function.
         # 
-        #   The ARN must be in the format of `acs:fc:{Region}:{AccountID}:services/{ServiceName}.LATEST/functions/{FunctionName}`. Example: `acs:fc:cn-hangzhou:120886317861****:services/service-test.LATEST/functions/config-test`.
+        #   The ARN must be in the format `acs:fc:{Region}:{AccountID}:services/{ServiceName}.LATEST/functions/{FunctionName}`. Example: `acs:fc:cn-hangzhou:120886317861****:services/service-test.LATEST/functions/config-test`.
         # 
         #   > To obtain the ARN of a function, see [ListFunctions](https://help.aliyun.com/document_detail/415752.html).
         # 
         # This parameter is required.
         self.source_identifier = source_identifier
-        # The type of the rule to create. Valid values:
+        # The type of rule to create. Valid values:
         # 
         # - ALIYUN: rule template.
         # 
-        # - CUSTOM_FC: custom rule.
+        # - CUSTOM_FC: custom Function Compute rule.
+        # 
+        # - CUSTOM_CONFIGURATION: custom condition rule.
         # 
         # This parameter is required.
         self.source_owner = source_owner
-        # The tags of the rule to be created.
+        # The tags of the rule to create.
         self.tag = tag
-        # The logical operator that applies if you specify multiple tags for the `TagsScope` parameter. For example, if you set `TagsScope` to `"TagsScope.1.TagKey":"a","TagsScope.1.TagValue":"a","TagsScope.2.TagKey":"b","TagsScope.2.TagValue":"b"` and set this parameter to `AND`, the rule applies only to resources that have both the `a:a` and `b:b` tags. If you do not specify this parameter, the default value `OR` is used.
+        # The logical operator used when you specify multiple tags for the `TagsScope` parameter. For example, if you set `TagsScope` to `"TagsScope.1.TagKey":"a","TagsScope.1.TagValue":"a","TagsScope.2.TagKey":"b","TagsScope.2.TagValue":"b"` and set this parameter to `AND`, the rule applies only to resources that have both the `a:a` and `b:b` tags. If you do not specify this parameter, the default value `OR` is used.
         # 
         # This parameter also works with the deprecated `TagKeyScope` parameter. For example, if you set `TagKeyScope` to `ECS,OSS` and set this parameter to `AND`, the rule applies only to resources that have both the `ECS` and `OSS` tags.
         # 
         # Valid values:
         # 
-        # - AND: The AND logic applies.
+        # - AND: Use AND logic.
         # 
-        # - OR: The OR logic applies.
+        # - OR: Use OR logic.
         self.tag_key_logic_scope = tag_key_logic_scope
         # This parameter is deprecated. Use the `TagsScope` parameter instead.
         # 

@@ -8,9 +8,19 @@ class StartRemediationRequest(DaraModel):
     def __init__(
         self,
         config_rule_id: str = None,
+        resource_id: str = None,
+        resource_region_id: str = None,
+        resource_type: str = None,
     ):
+        # The rule ID.
+        # 
+        # For information about how to obtain the rule ID, see [ListConfigRules](https://help.aliyun.com/document_detail/169607.html).
+        # 
         # This parameter is required.
         self.config_rule_id = config_rule_id
+        self.resource_id = resource_id
+        self.resource_region_id = resource_region_id
+        self.resource_type = resource_type
 
     def validate(self):
         pass
@@ -23,12 +33,30 @@ class StartRemediationRequest(DaraModel):
         if self.config_rule_id is not None:
             result['ConfigRuleId'] = self.config_rule_id
 
+        if self.resource_id is not None:
+            result['ResourceId'] = self.resource_id
+
+        if self.resource_region_id is not None:
+            result['ResourceRegionId'] = self.resource_region_id
+
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('ConfigRuleId') is not None:
             self.config_rule_id = m.get('ConfigRuleId')
+
+        if m.get('ResourceId') is not None:
+            self.resource_id = m.get('ResourceId')
+
+        if m.get('ResourceRegionId') is not None:
+            self.resource_region_id = m.get('ResourceRegionId')
+
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
 
         return self
 

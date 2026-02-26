@@ -1,3 +1,12 @@
+2026-02-26 Version: 4.2.2
+- Update API StartAggregateRemediation: add request parameters ResourceId.
+- Update API StartAggregateRemediation: add request parameters ResourceRegionId.
+- Update API StartAggregateRemediation: add request parameters ResourceType.
+- Update API StartRemediation: add request parameters ResourceId.
+- Update API StartRemediation: add request parameters ResourceRegionId.
+- Update API StartRemediation: add request parameters ResourceType.
+
+
 2026-02-24 Version: 4.2.1
 - Update API CreateAggregateConfigRule: add request parameters Conditions.
 - Update API CreateConfigRule: add request parameters Conditions.

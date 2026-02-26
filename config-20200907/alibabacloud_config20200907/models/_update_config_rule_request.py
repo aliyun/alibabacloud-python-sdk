@@ -35,8 +35,9 @@ class UpdateConfigRuleRequest(DaraModel):
         tag_value_scope: str = None,
         tags_scope: List[main_models.UpdateConfigRuleRequestTagsScope] = None,
     ):
-        # A client token used to ensure the idempotence of the request. You can use a client to generate the token, but you must make sure that the token is unique for different requests. The `ClientToken` parameter can contain only ASCII characters and cannot be more than 64 characters in length.
+        # A client token used to ensure the idempotence of the request. Generate a unique token on your client for each request. The `ClientToken` parameter supports only ASCII characters and must not exceed 64 characters in length.
         self.client_token = client_token
+        # The condition for a custom conditional rule, in JSON format.
         self.conditions = conditions
         # The rule ID.
         # 
@@ -50,29 +51,29 @@ class UpdateConfigRuleRequest(DaraModel):
         self.config_rule_name = config_rule_name
         # The trigger type of the rule. Valid values:
         # 
-        # - ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+        # - ConfigurationItemChangeNotification: The rule triggers on configuration changes.
         # 
-        # - ScheduledNotification: The rule is triggered on a regular basis.
+        # - ScheduledNotification: The rule triggers on a schedule.
         # 
-        # > This parameter can be modified only for custom rules.
+        # > You can modify this parameter only for custom rules.
         self.config_rule_trigger_types = config_rule_trigger_types
-        # The description of the rule. The description can be up to 500 characters in length.
+        # The rule description. The description can be up to 500 characters long.
         self.description = description
-        # The regions where the rule is not effective. The system does not evaluate resources in these regions. To specify multiple region IDs, separate them with a comma (,).
+        # The regions where the rule does not apply. To specify multiple region IDs, separate them with a comma (,).
         self.exclude_region_ids_scope = exclude_region_ids_scope
-        # The resource groups where the rule is not effective. The system does not evaluate resources in these resource groups. To specify multiple resource group IDs, separate them with a comma (,).
+        # The resource groups where the rule does not apply. To specify multiple resource group IDs, separate them with a comma (,).
         self.exclude_resource_group_ids_scope = exclude_resource_group_ids_scope
-        # The resources that are not evaluated by the rule. The system does not evaluate these resources. To specify multiple resource IDs, separate them with a comma (,).
+        # The resources that the rule does not evaluate. To specify multiple resource IDs, separate them with a comma (,).
         # 
         # > This parameter applies only to managed rules.
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
-        # The tags that are used to exclude resources.
+        # The tags used to exclude resources.
         self.exclude_tags_scope = exclude_tags_scope
-        # The extended content. This parameter is optional. You can use this parameter with a 24-hour trigger period to set the trigger time.
+        # Optional. Extended content used with a 24-hour trigger period to set the trigger time.
         self.extend_content = extend_content
-        # The input parameters of the rule.
+        # The rule parameters.
         self.input_parameters = input_parameters
-        # The frequency at which the rule is run. Valid values:
+        # The frequency at which the rule runs. Valid values:
         # 
         # - One_Hour: 1 hour.
         # 
@@ -84,19 +85,21 @@ class UpdateConfigRuleRequest(DaraModel):
         # 
         # - TwentyFour_Hours (default): 24 hours.
         # 
-        # > This parameter is required when `ConfigRuleTriggerTypes` is set to `ScheduledNotification`.
+        # > Set this parameter when `ConfigRuleTriggerTypes` is set to `ScheduledNotification`.
         self.maximum_execution_frequency = maximum_execution_frequency
-        # The regions where the rule is effective. The rule evaluates only resources in these regions. To specify multiple region IDs, separate them with a comma (,).
+        # The regions where the rule applies. To specify multiple region IDs, separate them with a comma (,).
         # 
         # > This parameter applies only to managed rules.
         self.region_ids_scope = region_ids_scope
-        # The resource groups where the rule is effective. The rule evaluates only resources in these resource groups. To specify multiple resource group IDs, separate them with a comma (,).
+        # The resource groups where the rule applies. To specify multiple resource group IDs, separate them with a comma (,).
         # 
         # > This parameter applies only to managed rules.
         self.resource_group_ids_scope = resource_group_ids_scope
         # The resources that the rule evaluates. To specify multiple resource IDs, separate them with a comma (,).
         self.resource_ids_scope = resource_ids_scope
-        # The names of the resources that the rule evaluates.
+        # The tags of the resource. This parameter is deprecated. Ignore it. Values passed for this parameter have no effect.
+        # 
+        # You can add up to 20 tags.
         self.resource_name_scope = resource_name_scope
         # The resource types that the rule evaluates. To specify multiple resource types, separate them with a comma (,).
         self.resource_types_scope = resource_types_scope
@@ -108,13 +111,13 @@ class UpdateConfigRuleRequest(DaraModel):
         # 
         # - 3: low risk.
         self.risk_level = risk_level
-        # The tags of the resource. This parameter is deprecated. The value that you specify for this parameter does not take effect.
+        # The tags of the resource. This parameter is deprecated. Ignore it. Values passed for this parameter have no effect.
         # 
         # You can add up to 20 tags.
         self.tag = tag
-        # The logical relationship for the tags that you specify for the `TagsScope` parameter. For example, if you set the `TagsScope` parameter to `"TagsScope.1.TagKey":"a","TagsScope.1.TagValue":"a","TagsScope.2.TagKey":"b","TagsScope.2.TagValue":"b"` and set this parameter to `AND`, the rule applies only to resources that have both the `a:a` and `b:b` tags. If you do not specify this parameter, the `OR` logic is used by default.
+        # The logical relationship between tags in the `TagsScope` parameter. For example, if you set `TagsScope` to `"TagsScope.1.TagKey":"a","TagsScope.1.TagValue":"a","TagsScope.2.TagKey":"b","TagsScope.2.TagValue":"b"` and set this parameter to `AND`, the rule applies only to resources that have both the `a:a` and `b:b` tags. If you omit this parameter, the default logic is `OR`.
         # 
-        # This parameter also applies to the deprecated `TagKeyScope` parameter, but this is not recommended. For example, if you set the `TagKeyScope` parameter to `ECS,OSS` and set this parameter to `AND`, the rule applies only to resources that have both the `ECS` and `OSS` tags.
+        # This parameter also works with the deprecated `TagKeyScope` parameter, but this is not recommended. For example, if you set `TagKeyScope` to `ECS,OSS` and set this parameter to `AND`, the rule applies only to resources that have both the `ECS` and `OSS` tags.
         # 
         # Valid values:
         # 
@@ -124,17 +127,17 @@ class UpdateConfigRuleRequest(DaraModel):
         self.tag_key_logic_scope = tag_key_logic_scope
         # This parameter is deprecated. Use the `TagsScope` parameter instead.
         # 
-        # The rule is effective only for resources that have the specified tag.
+        # The rule applies only to resources that have the specified tag.
         # 
-        # > This parameter applies only to managed rules. The `TagKeyScope` and `TagValueScope` parameters must be specified at the same time.
+        # > This parameter applies only to managed rules. You must specify both `TagKeyScope` and `TagValueScope`.
         self.tag_key_scope = tag_key_scope
         # This parameter is deprecated. Use the `TagsScope` parameter instead.
         # 
-        # The rule is effective only for resources that have the specified tag.
+        # The rule applies only to resources that have the specified tag.
         # 
-        # > This parameter applies only to managed rules. The `TagKeyScope` and `TagValueScope` parameters must be specified at the same time.
+        # > This parameter applies only to managed rules. You must specify both `TagKeyScope` and `TagValueScope`.
         self.tag_value_scope = tag_value_scope
-        # The tags that are used to filter resources.
+        # Scope of the tag
         self.tags_scope = tags_scope
 
     def validate(self):

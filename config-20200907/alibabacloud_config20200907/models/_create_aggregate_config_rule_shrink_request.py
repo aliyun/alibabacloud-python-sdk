@@ -41,62 +41,63 @@ class CreateAggregateConfigRuleShrinkRequest(DaraModel):
         tag_value_scope: str = None,
         tags_scope: List[main_models.CreateAggregateConfigRuleShrinkRequestTagsScope] = None,
     ):
-        # The rule is effective only for resources of the specified member accounts. Separate multiple member account IDs with commas (,).
+        # The rule applies only to resources of the specified member accounts. Separate multiple member account IDs with commas (,).
         # 
         # > This parameter applies only to rule templates.
         self.account_ids_scope = account_ids_scope
         # The ID of the account group.
         # 
-        # For more information about how to obtain the ID of an account group, see [ListAggregators](https://help.aliyun.com/document_detail/255797.html).
+        # For more information about how to obtain the ID of an account group, see [the referenced document](https://help.aliyun.com/document_detail/255797.html).
         # 
         # This parameter is required.
         self.aggregator_id = aggregator_id
-        # A client token to ensure that the request is idempotent. Generate a unique value from your client for each request. The `ClientToken` parameter must contain only ASCII characters and be no more than 64 characters long.
+        # A client token that ensures the request is idempotent. Generate a unique value from your client for each request. The `ClientToken` parameter must contain only ASCII characters and be no more than 64 characters long.
         self.client_token = client_token
+        # The conditions for a custom condition rule, in JSON format.
         self.conditions = conditions
         # The name of the rule.
         # 
         # This parameter is required.
         self.config_rule_name = config_rule_name
-        # The trigger type of the rule. Valid values:
+        # The trigger type for the rule. Valid values:
         # 
-        # - ConfigurationItemChangeNotification: The rule is triggered by configuration changes.
+        # - ConfigurationItemChangeNotification: The rule triggers when a resource configuration changes.
         # 
-        # - ScheduledNotification: The rule is triggered on a regular basis.
+        # - ScheduledNotification: The rule triggers on a schedule.
         # 
         # This parameter is required.
         self.config_rule_trigger_types = config_rule_trigger_types
-        # The description of the rule.
+        # A description of the rule.
         self.description = description
-        # The rule is not effective for resources of the specified member accounts. The resources of the specified member accounts are not evaluated. Separate multiple member account IDs with commas (,).
+        # The rule does not apply to resources of the specified member accounts. Resources in these accounts are not evaluated. Separate multiple member account IDs with commas (,).
         # 
         # > This parameter applies only to rule templates.
         self.exclude_account_ids_scope = exclude_account_ids_scope
-        # The rule is not effective for resources of the member accounts in the specified folders. The resources of the member accounts in the specified folders are not evaluated. Separate multiple folder IDs with commas (,).
+        # The rule does not apply to resources of member accounts in the specified folders. Resources in these folders are not evaluated. Separate multiple folder IDs with commas (,).
         # 
-        # > - This parameter applies only to rules of a global account group.
+        # > - This parameter applies only to global account group rules.
         # >
         # > - This parameter applies only to rule templates.
         self.exclude_folder_ids_scope = exclude_folder_ids_scope
-        # The rule is not effective for resources in the specified regions. The resources in the specified regions are not evaluated. Separate multiple region IDs with commas (,).
+        # The rule does not apply to resources in the specified regions. Resources in these regions are not evaluated. Separate multiple region IDs with commas (,).
         self.exclude_region_ids_scope = exclude_region_ids_scope
-        # The rule is not effective for resources in the specified resource groups. The resources in the specified resource groups are not evaluated. Separate multiple resource group IDs with commas (,).
+        # The rule does not apply to resources in the specified resource groups. Resources in these groups are not evaluated. Separate multiple resource group IDs with commas (,).
         self.exclude_resource_group_ids_scope = exclude_resource_group_ids_scope
-        # The rule is not effective for the specified resources. The specified resources are not evaluated. Separate multiple resource IDs with commas (,).
+        # The rule does not apply to the specified resources. These resources are not evaluated. Separate multiple resource IDs with commas (,).
         self.exclude_resource_ids_scope = exclude_resource_ids_scope
-        # The scope of the tags to be excluded.
+        # The scope of tags to exclude.
         self.exclude_tags_scope = exclude_tags_scope
-        # The extended content. This parameter specifies the trigger time for a rule that runs on a 24-hour cycle.
+        # Extended content. This parameter currently supports only setting the trigger time for rules that run on a 24-hour cycle.
         self.extend_content = extend_content
-        # The rule is effective only for resources of the member accounts in the specified folders. Separate multiple folder IDs with commas (,).
+        # The rule applies only to resources of member accounts in the specified folders. Separate multiple folder IDs with commas (,).
         # 
-        # > - This parameter applies only to rules of a global account group.
+        # > - This parameter applies only to global account group rules.
         # >
         # > - This parameter applies only to rule templates.
         self.folder_ids_scope = folder_ids_scope
-        # The input parameters of the rule.
+        # The input parameters for the rule.
         self.input_parameters_shrink = input_parameters_shrink
-        # The frequency at which the rule is run. Valid values:
+        # The frequency at which the rule runs. Valid values:
         # 
         # - One_Hour: 1 hour.
         # 
@@ -108,17 +109,17 @@ class CreateAggregateConfigRuleShrinkRequest(DaraModel):
         # 
         # - TwentyFour_Hours (default): 24 hours.
         # 
-        # > This parameter is required if you set `ConfigRuleTriggerTypes` to `ScheduledNotification`.
+        # > Set this parameter if you set `ConfigRuleTriggerTypes` to `ScheduledNotification`.
         self.maximum_execution_frequency = maximum_execution_frequency
-        # The rule is effective only for resources in the specified regions. Separate multiple region IDs with commas (,).
+        # The rule applies only to resources in the specified regions. Separate multiple region IDs with commas (,).
         self.region_ids_scope = region_ids_scope
-        # The rule is effective only for resources in the specified resource groups. Separate multiple resource group IDs with commas (,).
+        # The rule applies only to resources in the specified resource groups. Separate multiple resource group IDs with commas (,).
         self.resource_group_ids_scope = resource_group_ids_scope
-        # The rule is effective only for the specified resources. Separate multiple resource IDs with commas (,).
+        # The rule applies only to the specified resources. Separate multiple resource IDs with commas (,).
         self.resource_ids_scope = resource_ids_scope
-        # The rule is effective only for resources that have the specified names.
+        # The rule applies only to resources with the specified names.
         self.resource_name_scope = resource_name_scope
-        # The resource types to be evaluated by the rule. Separate multiple resource types with commas (,).
+        # The resource types to evaluate. Separate multiple types with commas (,).
         # 
         # This parameter is required.
         self.resource_types_scope_shrink = resource_types_scope_shrink
@@ -134,31 +135,35 @@ class CreateAggregateConfigRuleShrinkRequest(DaraModel):
         self.risk_level = risk_level
         # The identifier of the rule.
         # 
-        # - If you set `SourceOwner` to `ALIYUN`, enter the identifier of the rule template, such as `required-tags`.
+        # - If `SourceOwner` is `ALIYUN`, enter the identifier of the rule template, such as `required-tags`.
         # 
-        #   > For more information about how to query the identifier of a rule template, see [List of rule templates](https://help.aliyun.com/document_detail/127404.html).
+        #   > For more information about how to query rule template identifiers, see [the referenced document](https://help.aliyun.com/document_detail/127404.html).
         # 
-        # - If you set `SourceOwner` to `CUSTOM_FC`, enter the Alibaba Cloud Resource Name (ARN) of the function in Function Compute.
+        # - If `SourceOwner` is `CUSTOM_CONFIGURATION`, enter `acs-config-configuration`.
         # 
-        #   The ARN is in the format of `acs:fc:{region}:{accountId}:services/{serviceName}.LATEST/functions/{functionName}`. For example, `acs:fc:cn-hangzhou:120886317861****:services/service-test.LATEST/functions/config-test`.
+        # - If `SourceOwner` is `CUSTOM_FC`, enter the Alibaba Cloud Resource Name (ARN) of the Function Compute function.
         # 
-        #   > For more information about how to obtain the ARN of a function, see [ListFunctions](https://help.aliyun.com/document_detail/415752.html).
+        #   The ARN format is `acs:fc:{region}:{accountId}:services/{serviceName}.LATEST/functions/{functionName}`. For example, `acs:fc:cn-hangzhou:120886317861****:services/service-test.LATEST/functions/config-test`.
+        # 
+        #   > For more information about how to obtain a function ARN, see [the referenced document](https://help.aliyun.com/document_detail/415752.html).
         # 
         # This parameter is required.
         self.source_identifier = source_identifier
-        # The type of the rule. Valid values:
+        # The type of rule. Valid values:
         # 
         # - ALIYUN: rule template
         # 
-        # - CUSTOM_FC: custom rule
+        # - CUSTOM_FC: custom Function Compute rule
+        # 
+        # - CUSTOM_CONFIGURATION: custom condition rule
         # 
         # This parameter is required.
         self.source_owner = source_owner
-        # The tags to add to the rule. You can add up to 20 tags.
+        # The tag of the rule.
         self.tag_shrink = tag_shrink
-        # The logical relationship for multiple tags in the `TagsScope` parameter. For example, if you set the `TagsScope` parameter to `"TagsScope.1.TagKey":"a","TagsScope.1.TagValue":"a","TagsScope.2.TagKey":"b","TagsScope.2.TagValue":"b"` and set this parameter to `AND`, the rule applies only to resources that have both the `a:a` and `b:b` tags. The default value is `OR`.
+        # The logical relationship between multiple tags in the `TagsScope` parameter. For example, if you set `TagsScope` to `"TagsScope.1.TagKey":"a","TagsScope.1.TagValue":"a","TagsScope.2.TagKey":"b","TagsScope.2.TagValue":"b"` and set this parameter to `AND`, the rule applies only to resources that have both the `a:a` and `b:b` tags. The default value is `OR`.
         # 
-        # This parameter can also be used for the deprecated `TagKeyScope` parameter, but this is not recommended. For example, if you set `TagKeyScope` to `ECS,OSS` and set this parameter to `AND`, the rule applies only to resources that have both the `ECS` and `OSS` tags.
+        # You can also use this parameter with the deprecated `TagKeyScope` parameter, but this is not recommended. For example, if you set `TagKeyScope` to `ECS,OSS` and set this parameter to `AND`, the rule applies only to resources that have both the `ECS` and `OSS` tags.
         # 
         # Valid values:
         # 
@@ -166,19 +171,19 @@ class CreateAggregateConfigRuleShrinkRequest(DaraModel):
         # 
         # - OR
         self.tag_key_logic_scope = tag_key_logic_scope
-        # This parameter is deprecated. Use the `TagsScope` parameter.
+        # This parameter is deprecated. Use the `TagsScope` parameter instead.
         # 
-        # The rule is effective only for resources that have the specified tag keys. Separate multiple tag keys with commas (,).
+        # The rule applies only to resources that have the specified tag keys. Separate multiple tag keys with commas (,).
         # 
-        # > This parameter applies only to rule templates. The `TagKeyScope` and `TagValueScope` parameters must be used together.
+        # > This parameter applies only to rule templates. Set both `TagKeyScope` and `TagValueScope` together.
         self.tag_key_scope = tag_key_scope
-        # This parameter is deprecated. Use the `TagsScope` parameter.
+        # This parameter is deprecated. Use the `TagsScope` parameter instead.
         # 
-        # The rule is effective only for resources that have the specified tag values.
+        # The rule applies only to resources that have the specified tag values.
         # 
-        # > This parameter applies only to rule templates. The `TagKeyScope` and `TagValueScope` parameters must be used together.
+        # > This parameter applies only to rule templates. Set both `TagKeyScope` and `TagValueScope` together.
         self.tag_value_scope = tag_value_scope
-        # The scope of the tags.
+        # The scope of tags to include.
         self.tags_scope = tags_scope
 
     def validate(self):
@@ -435,9 +440,9 @@ class CreateAggregateConfigRuleShrinkRequestExcludeTagsScope(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the resource to be excluded.
+        # The tag key of the resource to exclude.
         self.tag_key = tag_key
-        # The tag value of the resource to be excluded.
+        # The tag value of the resource to exclude.
         self.tag_value = tag_value
 
     def validate(self):

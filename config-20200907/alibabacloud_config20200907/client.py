@@ -10912,6 +10912,12 @@ class Client(OpenApiClient):
             query['ConfigRuleId'] = request.config_rule_id
         if not DaraCore.is_null(request.resource_account_id):
             query['ResourceAccountId'] = request.resource_account_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -10944,6 +10950,12 @@ class Client(OpenApiClient):
             query['ConfigRuleId'] = request.config_rule_id
         if not DaraCore.is_null(request.resource_account_id):
             query['ResourceAccountId'] = request.resource_account_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -11184,6 +11196,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.config_rule_id):
             query['ConfigRuleId'] = request.config_rule_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -11212,6 +11230,12 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.config_rule_id):
             query['ConfigRuleId'] = request.config_rule_id
+        if not DaraCore.is_null(request.resource_id):
+            query['ResourceId'] = request.resource_id
+        if not DaraCore.is_null(request.resource_region_id):
+            query['ResourceRegionId'] = request.resource_region_id
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
