@@ -1,3 +1,7 @@
+2026-02-26 Version: 1.6.0
+- Support API BatchGetResourceConfigurations.
+
+
 2025-12-23 Version: 1.5.2
 - Update API GetResourceCounts: add request parameters IncludeDeletedResources.
 - Update API GetResourceCounts: add request parameters SearchExpression.
