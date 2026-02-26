@@ -1,3 +1,7 @@
+2026-02-26 Version: 1.6.0
+- Support API GetPromptTestResult.
+
+
 2026-02-09 Version: 1.5.7
 - Update API GetCipStats: add request parameters Query.
 

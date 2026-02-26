@@ -4160,6 +4160,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_oss_check_task_info_with_options_async(request, runtime)
 
+    def get_prompt_test_result_with_options(
+        self,
+        request: main_models.GetPromptTestResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPromptTestResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not DaraCore.is_null(request.text):
+            query['Text'] = request.text
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPromptTestResult',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPromptTestResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_prompt_test_result_with_options_async(
+        self,
+        request: main_models.GetPromptTestResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPromptTestResultResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.config):
+            query['Config'] = request.config
+        if not DaraCore.is_null(request.resource_type):
+            query['ResourceType'] = request.resource_type
+        if not DaraCore.is_null(request.service_code):
+            query['ServiceCode'] = request.service_code
+        if not DaraCore.is_null(request.text):
+            query['Text'] = request.text
+        if not DaraCore.is_null(request.type):
+            query['Type'] = request.type
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetPromptTestResult',
+            version = '2022-09-26',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetPromptTestResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_prompt_test_result(
+        self,
+        request: main_models.GetPromptTestResultRequest,
+    ) -> main_models.GetPromptTestResultResponse:
+        runtime = RuntimeOptions()
+        return self.get_prompt_test_result_with_options(request, runtime)
+
+    async def get_prompt_test_result_async(
+        self,
+        request: main_models.GetPromptTestResultRequest,
+    ) -> main_models.GetPromptTestResultResponse:
+        runtime = RuntimeOptions()
+        return await self.get_prompt_test_result_with_options_async(request, runtime)
+
     def get_scan_num_with_options(
         self,
         request: main_models.GetScanNumRequest,

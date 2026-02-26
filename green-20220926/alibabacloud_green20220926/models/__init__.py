@@ -149,6 +149,9 @@ from ._get_oss_check_status_response import GetOssCheckStatusResponse
 from ._get_oss_check_task_info_request import GetOssCheckTaskInfoRequest
 from ._get_oss_check_task_info_response_body import GetOssCheckTaskInfoResponseBody
 from ._get_oss_check_task_info_response import GetOssCheckTaskInfoResponse
+from ._get_prompt_test_result_request import GetPromptTestResultRequest
+from ._get_prompt_test_result_response_body import GetPromptTestResultResponseBody
+from ._get_prompt_test_result_response import GetPromptTestResultResponse
 from ._get_scan_num_request import GetScanNumRequest
 from ._get_scan_num_response_body import GetScanNumResponseBody
 from ._get_scan_num_response import GetScanNumResponse
@@ -309,6 +312,8 @@ from ._get_oss_check_stat_response_body import GetOssCheckStatResponseBodyBarCha
 from ._get_oss_check_task_info_response_body import GetOssCheckTaskInfoResponseBodyConfigScanServiceInfos
 from ._get_oss_check_task_info_response_body import GetOssCheckTaskInfoResponseBodyConfigUserFreezeConfig
 from ._get_oss_check_task_info_response_body import GetOssCheckTaskInfoResponseBodyConfig
+from ._get_prompt_test_result_response_body import GetPromptTestResultResponseBodyResultLabelDetails
+from ._get_prompt_test_result_response_body import GetPromptTestResultResponseBodyResult
 from ._get_scan_result_response_body import GetScanResultResponseBodyDataItemsResult
 from ._get_scan_result_response_body import GetScanResultResponseBodyDataItems
 from ._get_scan_result_response_body import GetScanResultResponseBodyData
@@ -493,6 +498,9 @@ __all__ = [
     GetOssCheckTaskInfoRequest,
     GetOssCheckTaskInfoResponseBody,
     GetOssCheckTaskInfoResponse,
+    GetPromptTestResultRequest,
+    GetPromptTestResultResponseBody,
+    GetPromptTestResultResponse,
     GetScanNumRequest,
     GetScanNumResponseBody,
     GetScanNumResponse,
@@ -653,6 +661,8 @@ __all__ = [
     GetOssCheckTaskInfoResponseBodyConfigScanServiceInfos,
     GetOssCheckTaskInfoResponseBodyConfigUserFreezeConfig,
     GetOssCheckTaskInfoResponseBodyConfig,
+    GetPromptTestResultResponseBodyResultLabelDetails,
+    GetPromptTestResultResponseBodyResult,
     GetScanResultResponseBodyDataItemsResult,
     GetScanResultResponseBodyDataItems,
     GetScanResultResponseBodyData,
