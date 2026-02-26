@@ -3092,6 +3092,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_material_task_list_with_options_async(request, runtime)
 
+    def query_supabase_instance_info_for_admin_with_options(
+        self,
+        request: main_models.QuerySupabaseInstanceInfoForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QuerySupabaseInstanceInfoForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.env):
+            query['Env'] = request.env
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QuerySupabaseInstanceInfoForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QuerySupabaseInstanceInfoForAdminResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_supabase_instance_info_for_admin_with_options_async(
+        self,
+        request: main_models.QuerySupabaseInstanceInfoForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QuerySupabaseInstanceInfoForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.env):
+            query['Env'] = request.env
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'QuerySupabaseInstanceInfoForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QuerySupabaseInstanceInfoForAdminResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_supabase_instance_info_for_admin(
+        self,
+        request: main_models.QuerySupabaseInstanceInfoForAdminRequest,
+    ) -> main_models.QuerySupabaseInstanceInfoForAdminResponse:
+        runtime = RuntimeOptions()
+        return self.query_supabase_instance_info_for_admin_with_options(request, runtime)
+
+    async def query_supabase_instance_info_for_admin_async(
+        self,
+        request: main_models.QuerySupabaseInstanceInfoForAdminRequest,
+    ) -> main_models.QuerySupabaseInstanceInfoForAdminResponse:
+        runtime = RuntimeOptions()
+        return await self.query_supabase_instance_info_for_admin_with_options_async(request, runtime)
+
     def refresh_app_instance_ticket_with_options(
         self,
         request: main_models.RefreshAppInstanceTicketRequest,
