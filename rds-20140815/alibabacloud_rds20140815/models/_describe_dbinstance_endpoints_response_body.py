@@ -53,7 +53,6 @@ class DescribeDBInstanceEndpointsResponseBodyData(DaraModel):
         dbinstance_name: str = None,
         ip_version: str = None,
     ):
-        # The information of the endpoints of the instance.
         self.dbinstance_endpoints = dbinstance_endpoints
         # The name of the instance.
         self.dbinstance_name = dbinstance_name
@@ -141,18 +140,10 @@ class DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpointsDBInstanceEn
         endpoint_type: str = None,
         node_items: main_models.DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpointsDBInstanceEndpointNodeItems = None,
     ):
-        # The information about the endpoint.
         self.address_items = address_items
-        # The user-defined description of the endpoint.
         self.endpoint_description = endpoint_description
-        # The endpoint ID of the instance.
         self.endpoint_id = endpoint_id
-        # The type of the endpoint. Valid values:
-        # 
-        # *   **Primary**: the read/write endpoint of the instance
-        # *   **Readonly**: the read-only endpoint of the instance
         self.endpoint_type = endpoint_type
-        # The information about the node that is configured for the endpoint.
         self.node_items = node_items
 
     def validate(self):
@@ -246,13 +237,8 @@ class DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpointsDBInstanceEn
         node_id: str = None,
         weight: int = None,
     ):
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The node ID.
         self.node_id = node_id
-        # The weight of the node. Read requests are distributed based on the weight.
-        # 
-        # Valid values: 0 to 100.
         self.weight = weight
 
     def validate(self):
@@ -332,20 +318,11 @@ class DescribeDBInstanceEndpointsResponseBodyDataDBInstanceEndpointsDBInstanceEn
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The endpoints of the instance.
         self.connection_string = connection_string
-        # The IP address.
         self.ip_address = ip_address
-        # The type of the IP address. Valid values:
-        # 
-        # *   **Public**: Internet
-        # *   **Private**: internal network
         self.ip_type = ip_type
-        # The port number of the endpoint.
         self.port = port
-        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The VPC ID.
         self.vpc_id = vpc_id
 
     def validate(self):

@@ -19,7 +19,6 @@ class DescribeDTCSecurityIpHostsForSQLServerResponseBody(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The number of distributed transaction whitelists.
         self.ip_host_pair_num = ip_host_pair_num
-        # Details of distributed transaction whitelists.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -105,9 +104,7 @@ class DescribeDTCSecurityIpHostsForSQLServerResponseBodyItemsWhiteListGroups(Dar
         security_ip_hosts: str = None,
         whitelist_group_name: str = None,
     ):
-        # The IP address of the ECS instance and the hostname of the Windows computer. Format: `IP address,Hostname`. Multiple values are separated with semicolons (;).
         self.security_ip_hosts = security_ip_hosts
-        # The name of the distributed transaction whitelist.
         self.whitelist_group_name = whitelist_group_name
 
     def validate(self):

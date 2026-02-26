@@ -20,7 +20,6 @@ class DescribeMetaListResponseBody(DaraModel):
     ):
         # The instance name.
         self.dbinstance_name = dbinstance_name
-        # The information about the databases and tables whose data is included in the backup set.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
@@ -133,11 +132,8 @@ class DescribeMetaListResponseBodyItemsMeta(DaraModel):
         size: str = None,
         tables: str = None,
     ):
-        # The database name.
         self.database = database
-        # The table size. Unit: KB.
         self.size = size
-        # The table name.
         self.tables = tables
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeDBInstancesByExpireTimeResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The details of the instances.
         self.items = items
         # The page number of the returned page. Valid values: any **non-zero** positive integer.
         # 
@@ -120,29 +119,11 @@ class DescribeDBInstancesByExpireTimeResponseBodyItemsDBInstanceExpireTime(DaraM
         lock_mode: str = None,
         pay_type: str = None,
     ):
-        # The description of the instance.
         self.dbinstance_description = dbinstance_description
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The status of the instance. For more information, see [Instance state table](https://help.aliyun.com/document_detail/26315.html).
         self.dbinstance_status = dbinstance_status
-        # The expiration time of the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-        # 
-        # > : Pay-as-you-go instances never expire.
         self.expire_time = expire_time
-        # The lock mode of the instance. Valid values:
-        # 
-        # *   **Unlock**: The instance is not locked.
-        # *   **ManualLock**: The instance is manually locked.
-        # *   **LockByExpiration**: The instance is automatically locked after it expires.
-        # *   **LockByRestoration**: The instance is automatically locked before it is rolled back.
-        # *   **LockByDiskQuota**: The instance is automatically locked after its storage capacity is exhausted.
-        # *   **LockReadInstanceByDiskQuota**: The instance is a read-only instance and is automatically locked after its storage capacity is exhausted.
         self.lock_mode = lock_mode
-        # The billing method of the instance. Valid values:
-        # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription.
         self.pay_type = pay_type
 
     def validate(self):

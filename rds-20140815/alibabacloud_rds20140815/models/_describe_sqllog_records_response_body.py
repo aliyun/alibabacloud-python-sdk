@@ -16,7 +16,6 @@ class DescribeSQLLogRecordsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The details about each SQL audit log entry.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
@@ -120,21 +119,13 @@ class DescribeSQLLogRecordsResponseBodyItemsSQLRecord(DaraModel):
         thread_id: str = None,
         total_execution_times: int = None,
     ):
-        # The username of the account that is recorded in the SQL audit log entry.
         self.account_name = account_name
-        # The database name.
         self.dbname = dbname
-        # The time at which the SQL statement was executed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.execute_time = execute_time
-        # The IP address of the client that is connected to the instance.
         self.host_address = host_address
-        # The number of SQL audit log entries that are returned.
         self.return_row_counts = return_row_counts
-        # The SQL statement.
         self.sqltext = sqltext
-        # The thread ID.
         self.thread_id = thread_id
-        # The execution duration of the SQL statement. Unit: microseconds.
         self.total_execution_times = total_execution_times
 
     def validate(self):

@@ -13,7 +13,6 @@ class DescribeDatabasesResponseBody(DaraModel):
         databases: main_models.DescribeDatabasesResponseBodyDatabases = None,
         request_id: str = None,
     ):
-        # The information about the databases.
         self.databases = databases
         # The ID of the request.
         self.request_id = request_id
@@ -103,61 +102,23 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(DaraModel):
         tablespace: str = None,
         total_count: int = None,
     ):
-        # The information about the account. Each account has specific permissions on the database.
         self.accounts = accounts
-        # The advanced information about the database.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.advanced_info = advanced_info
-        # The basic information about the database.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.basic_info = basic_info
-        # The name of the character set.
         self.character_set_name = character_set_name
-        # The collation of the character set. The example value C indicates localization.
-        # 
-        # >  This parameter is returned only for instances that run PostgreSQL.
         self.collate = collate
-        # The limit on the number of concurrent requests. The value -1 indicates that the number of concurrent requests is unlimited.
-        # 
-        # >  This parameter is returned only for instances that run PostgreSQL.
         self.conn_limit = conn_limit
-        # The type of the character set.
-        # 
-        # >  This parameter is returned only for instances that run PostgreSQL.
         self.ctype = ctype
-        # The description of the database.
         self.dbdescription = dbdescription
-        # The ID of the instance to which the database belongs.
         self.dbinstance_id = dbinstance_id
-        # The database name.
         self.dbname = dbname
-        # The database status. Valid values:
-        # 
-        # *   **Creating**
-        # *   **Running**
-        # *   **Deleting**
-        # *   **Cold**
         self.dbstatus = dbstatus
         self.duck_dbenabled = duck_dbenabled
-        # The database engine of the instance.
         self.engine = engine
-        # The page number of the page to return.
         self.page_number = page_number
-        # The number of entries per page.
         self.page_size = page_size
-        # The runtime information about the database.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.runtime_info = runtime_info
-        # The database tablespace.
-        # 
-        # >  This parameter is returned only for instances that run PostgreSQL.
         self.tablespace = tablespace
-        # The total number of entries returned.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.total_count = total_count
 
     def validate(self):
@@ -416,16 +377,8 @@ class DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccountPrivilegeInfo
         account_privilege: str = None,
         account_privilege_detail: str = None,
     ):
-        # The account username.
         self.account = account
-        # The permissions that the account has on the database. Valid values:
-        # 
-        # *   **ReadWrite**: read and write permissions
-        # *   **ReadOnly**: read-only permissions
-        # *   **DMLOnly**: DML-only permissions
-        # *   **DDLOnly**: DDL-only permissions
         self.account_privilege = account_privilege
-        # The permission that the account has on the database.
         self.account_privilege_detail = account_privilege_detail
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescibeImportsFromDatabaseResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The migration tasks.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -117,29 +116,10 @@ class DescibeImportsFromDatabaseResponseBodyItemsImportResultFromDB(DaraModel):
         import_id: int = None,
         incremental_importing_time: str = None,
     ):
-        # The status of the migration task. Valid values:
-        # 
-        # *   **NotStart**: The migration task has not started.
-        # *   **FullExporting**: The migration task is exporting full data.
-        # *   **FullImporting**: The migration task is importing full data.
-        # *   **Success**: The migration task is successful.
-        # *   **Failed**: The migration task failed.
-        # *   **Canceled**: The migration task is canceled.
-        # *   **Canceling**: The migration task is being canceled.
-        # *   **IncrementalWaiting**: The migration task is waiting to synchronize incremental data.
-        # *   **IncrementalImporting**: The migration task is synchronizing incremental data.
-        # *   **StopSyncing**: The migration task stops synchronizing data.
         self.import_data_status = import_data_status
-        # The description of the migration task.
         self.import_data_status_description = import_data_status_description
-        # The type of the migration task. Valid values:
-        # 
-        # *   **Full**: full migration
-        # *   **Incremental:**: incremental migration
         self.import_data_type = import_data_type
-        # The ID of the migration task.
         self.import_id = import_id
-        # The time when the migration task synchronized incremental data. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.incremental_importing_time = incremental_importing_time
 
     def validate(self):

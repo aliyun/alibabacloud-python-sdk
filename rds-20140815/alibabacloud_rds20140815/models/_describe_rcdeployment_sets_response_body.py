@@ -17,7 +17,6 @@ class DescribeRCDeploymentSetsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the deployment set.
         self.deployment_sets = deployment_sets
         # The page number.
         self.page_number = page_number
@@ -134,31 +133,17 @@ class DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSet(DaraModel)
         strategy: str = None,
         tags: main_models.DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetTags = None,
     ):
-        # The details of the capacities of the deployment set. This parameter is valid only when the deployment set contains existing RDS Custom instances. The value contains the details of the capacities of the deployment set in different zones.
         self.capacities = capacities
-        # The time when the deployment set was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
-        # The deployment set description.
         self.deployment_set_description = deployment_set_description
-        # The deployment set ID.
         self.deployment_set_id = deployment_set_id
-        # The deployment set name.
         self.deployment_set_name = deployment_set_name
-        # The deployment strategy. The return value of this parameter is the value of the `Strategy` request parameter.
         self.deployment_strategy = deployment_strategy
-        # The deployment domain.
         self.domain = domain
-        # The deployment granularity.
         self.granularity = granularity
-        # The number of groups in the deployment set.
-        # 
-        # >  This parameter is valid only when the Strategy request parameter is set to AvailabilityGroup.
         self.group_count = group_count
-        # The number of RDS Custom instances in the deployment set.
         self.instance_amount = instance_amount
-        # The ID of the RDS Custom instance in the deployment set.
         self.instance_ids = instance_ids
-        # The deployment strategy.
         self.strategy = strategy
         self.tags = tags
 
@@ -417,11 +402,8 @@ class DescribeRCDeploymentSetsResponseBodyDeploymentSetsDeploymentSetCapacitiesC
         used_amount: int = None,
         zone_id: str = None,
     ):
-        # The number of RDS Custom instances that reside in the zone and can be added to the deployment set.
         self.available_amount = available_amount
-        # The number of RDS Custom instances that reside in the zone in the deployment set.
         self.used_amount = used_amount
-        # The zone ID. Only the IDs of the zones to which the existing RDS Custom instances in the deployment set belong are returned.
         self.zone_id = zone_id
 
     def validate(self):

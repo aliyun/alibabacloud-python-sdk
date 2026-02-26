@@ -58,7 +58,6 @@ class DescribeDBProxyEndpointResponseBody(DaraModel):
         # 
         # >  If the instance runs PostgreSQL, you can change only the value of the **ReadWriteSpliting** field. The **TransactionReadSqlRouteOptimizeStatus** and **PinPreparedStmt** fields are set to their default values 1.
         self.dbproxy_features = dbproxy_features
-        # The proxy nodes that are associated with the proxy terminal.
         self.dbproxy_nodes = dbproxy_nodes
         # The description of the proxy terminal.
         self.db_proxy_endpoint_aliases = db_proxy_endpoint_aliases
@@ -73,7 +72,6 @@ class DescribeDBProxyEndpointResponseBody(DaraModel):
         self.db_proxy_endpoint_vswitch_id = db_proxy_endpoint_vswitch_id
         # The zone ID of the proxy terminal.
         self.db_proxy_endpoint_zone_id = db_proxy_endpoint_zone_id
-        # An array that consists of the information about the proxy endpoint.
         self.endpoint_connect_items = endpoint_connect_items
         # The method that is used to assign read weights. For more information, see [Modify the latency threshold and read weights of ApsaraDB RDS for MySQL instances](https://help.aliyun.com/document_detail/96076.html). Valid values:
         # 
@@ -268,15 +266,8 @@ class DescribeDBProxyEndpointResponseBodyEndpointConnectItemsEndpointConnectItem
         db_proxy_endpoint_net_type: str = None,
         db_proxy_endpoint_port: str = None,
     ):
-        # The proxy endpoint queried.
         self.db_proxy_endpoint_connect_string = db_proxy_endpoint_connect_string
-        # The network type of the instance. Valid values:
-        # 
-        # *   **0**: Internet
-        # *   **1**: classic network
-        # *   **2**: virtual private cloud (VPC)
         self.db_proxy_endpoint_net_type = db_proxy_endpoint_net_type
-        # The port number that is associated with the proxy endpoint. Default value: **3306**.
         self.db_proxy_endpoint_port = db_proxy_endpoint_port
 
     def validate(self):
@@ -353,11 +344,8 @@ class DescribeDBProxyEndpointResponseBodyDBProxyNodesDBProxyNodes(DaraModel):
         node_id: str = None,
         zone_id: str = None,
     ):
-        # The number of CPU cores of the node.
         self.cpu_cores = cpu_cores
-        # The ID of the node in the zone.
         self.node_id = node_id
-        # The zone ID of the node.
         self.zone_id = zone_id
 
     def validate(self):

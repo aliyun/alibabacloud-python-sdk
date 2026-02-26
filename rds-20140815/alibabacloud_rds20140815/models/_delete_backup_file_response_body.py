@@ -13,7 +13,6 @@ class DeleteBackupFileResponseBody(DaraModel):
         deleted_bakset_ids: main_models.DeleteBackupFileResponseBodyDeletedBaksetIds = None,
         request_id: str = None,
     ):
-        # An array that consists of the IDs of deleted backup sets.
         self.deleted_bakset_ids = deleted_bakset_ids
         # The request ID.
         self.request_id = request_id

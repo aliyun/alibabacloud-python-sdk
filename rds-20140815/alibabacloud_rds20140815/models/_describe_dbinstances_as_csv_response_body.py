@@ -13,7 +13,6 @@ class DescribeDBInstancesAsCsvResponseBody(DaraModel):
         items: main_models.DescribeDBInstancesAsCsvResponseBodyItems = None,
         request_id: str = None,
     ):
-        # An array that consists of the fields in **DBInstanceAttribute**.
         self.items = items
         # The ID of the request.
         self.request_id = request_id
@@ -129,103 +128,49 @@ class DescribeDBInstancesAsCsvResponseBodyItemsDBInstanceAttribute(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The maximum number of accounts.
         self.account_max_quantity = account_max_quantity
-        # The type of the account.
         self.account_type = account_type
-        # The service availability of the instance in percentage.
         self.availability_value = availability_value
-        # The category of the instance.
         self.category = category
-        # The connection mode of the instance. Valid values:
-        # 
-        # *   **Performance**: standard mode.
-        # *   **Safety**: enhanced mode
         self.connection_mode = connection_mode
-        # The internal endpoint.
         self.connection_string = connection_string
-        # The creation time.
         self.creation_time = creation_time
-        # The number of CPU cores.
         self.dbinstance_cpu = dbinstance_cpu
-        # The instance type of the instance.
         self.dbinstance_class = dbinstance_class
-        # The instance family.
         self.dbinstance_class_type = dbinstance_class_type
-        # The instance description.
         self.dbinstance_description = dbinstance_description
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The memory capacity of the instance. Unit: MB.
         self.dbinstance_memory = dbinstance_memory
-        # The network type of the instance. Valid values:
-        # 
-        # *   **Internet**
-        # *   **Intranet**
         self.dbinstance_net_type = dbinstance_net_type
-        # The instance status.
         self.dbinstance_status = dbinstance_status
-        # The storage capacity of the instance. Unit: GB.
         self.dbinstance_storage = dbinstance_storage
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The instance type. Valid values:
-        # 
-        # *   **Primary**: primary instance
-        # *   **ReadOnly**: read-only instance
-        # *   **Guard**: disaster recovery instance
-        # *   **Temp**: temporary instance
         self.dbinstance_type = dbinstance_type
-        # The maximum number of databases that can be created on the instance.
         self.dbmax_quantity = dbmax_quantity
-        # The database engine of the instance.
         self.engine = engine
-        # The engine version.
         self.engine_version = engine_version
-        # The expiration time.
         self.expire_time = expire_time
-        # A deprecated parameter. You do not need to specify this parameter.
         self.export_key = export_key
-        # The ID of the disaster recovery instance that is attached to the primary instance.
         self.guard_dbinstance_id = guard_dbinstance_id
-        # The ID of the instance from which incremental data comes. The incremental data of a disaster recovery instance comes from its primary instance. The incremental data of a read-only instance comes from its primary instance. If this parameter is not returned, the instance is a primary instance.
         self.increment_source_dbinstance_id = increment_source_dbinstance_id
-        # The network type.
         self.instance_network_type = instance_network_type
-        # The lock mode of the instance.
         self.lock_mode = lock_mode
-        # The reason why the instance was locked.
         self.lock_reason = lock_reason
-        # The maintenance window of the instance. The time follows the ISO 8601 standard and is displayed in UTC. In the ApsaraDB RDS console, the maintenance window is displayed in UTC+8.
         self.maintain_time = maintain_time
-        # The primary instance ID.
         self.master_instance_id = master_instance_id
-        # The maximum number of concurrent connections.
         self.max_connections = max_connections
-        # The maximum number of I/O requests per second.
         self.max_iops = max_iops
-        # The billing method of the instance.
         self.pay_type = pay_type
-        # The port that is used to connect to the instance over an internal network.
         self.port = port
-        # The latency of data replication from the primary instance to the read-only instance. This parameter is valid for read-only instances.
         self.read_delay_time = read_delay_time
-        # The region ID.
         self.region_id = region_id
-        # The IP addresses in the whitelist.
         self.security_iplist = security_iplist
-        # A deprecated parameter. You do not need to specify this parameter.
         self.slave_zones = slave_zones
-        # N/A.
         self.support_upgrade_account_type = support_upgrade_account_type
-        # The tags.
         self.tags = tags
-        # The ID of the temporary instance that is attached to the primary instance.
         self.temp_dbinstance_id = temp_dbinstance_id
-        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):

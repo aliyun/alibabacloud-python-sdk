@@ -16,7 +16,6 @@ class DescribeEventsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The events.
         self.event_items = event_items
         # The page number.
         self.page_number = page_number
@@ -124,29 +123,17 @@ class DescribeEventsResponseBodyEventItemsEventItems(DaraModel):
         resource_name: str = None,
         resource_type: str = None,
     ):
-        # The ID of the user who executed the event.
         self.caller_uid = caller_uid
-        # The event ID.
         self.event_id = event_id
-        # The event name.
         self.event_name = event_name
-        # The request or context parameters of the event.
         self.event_payload = event_payload
-        # The source of the event.
         self.event_reason = event_reason
-        # The time when the event was recorded. The time is slightly later than the time the event occurred.
         self.event_record_time = event_record_time
-        # The time when the event occurred.
         self.event_time = event_time
-        # The event type.
         self.event_type = event_type
-        # The type of the user who executed the event.
         self.event_user_type = event_user_type
-        # The region ID.
         self.region_id = region_id
-        # The name of the resource associated with the event. Only instance IDs are supported for this parameter.
         self.resource_name = resource_name
-        # The type of the resource associated with the event. Only instances are supported for this parameter.
         self.resource_type = resource_type
 
     def validate(self):

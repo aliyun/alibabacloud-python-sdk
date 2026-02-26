@@ -16,7 +16,6 @@ class DescribeTasksResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The details of the task execution.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -127,45 +126,20 @@ class DescribeTasksResponseBodyItemsTaskProgressInfo(DaraModel):
         task_error_message: str = None,
         task_id: str = None,
     ):
-        # The start time of the task. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
         self.begin_time = begin_time
-        # The name of the subtask.
         self.current_step_name = current_step_name
-        # The name of the database. If the task involves a database, the database name is returned.
         self.dbname = dbname
-        # The estimated end time of the task.
-        # 
-        # >  In most cases, this parameter is empty.
         self.expected_finish_time = expected_finish_time
-        # The end time of the task. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
         self.finish_time = finish_time
-        # The task progress in percentage.
         self.progress = progress
-        # The description of the task progress.
-        # 
-        # >  If no progress description is provided for the task, this parameter is empty.
         self.progress_info = progress_info
-        # The estimated remaining time of the task. Unit: seconds.
-        # 
-        # >  If the task is not running, this parameter is not returned or the returned value is **0**.
         self.remain = remain
-        # The status of the task.
         self.status = status
-        # The progress of the subtask. For example, a value of `1/4` indicates that the task consists of four subtasks and the first subtask is in progress.
         self.step_progress_info = step_progress_info
-        # The details of the subtasks.
         self.steps_info = steps_info
-        # The operation that is used by the task, such as **CreateDBInstance**.
         self.task_action = task_action
-        # The error code that is returned when an error occurs.
-        # 
-        # >  This parameter is returned only when an error occurs.
         self.task_error_code = task_error_code
-        # The error message that is returned when an error occurs.
-        # 
-        # >  This parameter is returned only when an error occurs.
         self.task_error_message = task_error_message
-        # The task ID. You can use one of the following methods to obtain the task ID:
         self.task_id = task_id
 
     def validate(self):

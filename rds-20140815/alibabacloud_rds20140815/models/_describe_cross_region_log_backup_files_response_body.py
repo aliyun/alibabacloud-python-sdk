@@ -24,7 +24,6 @@ class DescribeCrossRegionLogBackupFilesResponseBody(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The end of the time range to query. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.end_time = end_time
-        # The cross-region log backup files.
         self.items = items
         # The page number. Pages start from page 1.
         # 
@@ -160,25 +159,15 @@ class DescribeCrossRegionLogBackupFilesResponseBodyItemsItem(DaraModel):
         log_end_time: str = None,
         log_file_name: str = None,
     ):
-        # The ID of the destination region within which the cross-region backup file is stored.
         self.cross_backup_region = cross_backup_region
-        # The external URL from which you can download the cross-region log backup file.
         self.cross_download_link = cross_download_link
-        # The internal URL from which you can download the cross-region log backup file.
         self.cross_intranet_download_link = cross_intranet_download_link
-        # The ID of the cross-region log backup file.
         self.cross_log_backup_id = cross_log_backup_id
-        # The size of the cross-region log backup file. Unit: bytes.
         self.cross_log_backup_size = cross_log_backup_size
-        # The instance ID.
         self.instance_id = instance_id
-        # The time when the URL expires. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.link_expired_time = link_expired_time
-        # The start time of the cross-region log backup file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.log_begin_time = log_begin_time
-        # The end time of the cross-region log backup file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.log_end_time = log_end_time
-        # The name of the cross-region log backup file.
         self.log_file_name = log_file_name
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeErrorLogsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # Details about the log entries returned.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -117,10 +116,8 @@ class DescribeErrorLogsResponseBodyItemsErrorLog(DaraModel):
         user: str = None,
         user_ip: str = None,
     ):
-        # The time when the error log entry was generated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
         self.database = database
-        # The error log information.
         self.error_info = error_info
         self.user = user
         self.user_ip = user_ip

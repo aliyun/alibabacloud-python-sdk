@@ -17,7 +17,6 @@ class DescribeBinlogFilesResponseBody(DaraModel):
         total_file_size: int = None,
         total_record_count: int = None,
     ):
-        # The details of the log file.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -131,40 +130,15 @@ class DescribeBinlogFilesResponseBodyItemsBinLogFile(DaraModel):
         log_file_name: str = None,
         remote_status: str = None,
     ):
-        # The checksum. The value of this parameter is calculated by using the CRC64 algorithm.
         self.checksum = checksum
-        # The HTTP-based download URL of the log file. If the return value of this parameter is NULL, ApsaraDB RDS does not provide a download URL for the log file.
         self.download_link = download_link
-        # The size of the log file.
-        # 
-        # Unit: bytes.
         self.file_size = file_size
-        # The ID of the instance to which the log file belongs. This parameter helps determine whether the log file is generated on the primary instance or the secondary instance.
-        # 
-        # >  You can log on to the ApsaraDB RDS console and go to the instance details page. In the left-side navigation pane, click **Service Availability** to view the values of **Primary Instance No.** and **Secondary Instance No.**.
         self.host_instance_id = host_instance_id
-        # The URL that is used to download files over an internal network.
         self.intranet_download_link = intranet_download_link
-        # The expiration time of the URL.
-        # 
-        # The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.link_expired_time = link_expired_time
-        # The beginning of the time range to query.
-        # 
-        # The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.log_begin_time = log_begin_time
-        # The end of the time range to query.
-        # 
-        # The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.log_end_time = log_end_time
-        # The log file name.
         self.log_file_name = log_file_name
-        # The status of the log file that is stored in the Object Storage Service (OSS) bucket.
-        # 
-        # Valid values:
-        # 
-        # *   **Uploading**
-        # *   **Completed**
         self.remote_status = remote_status
 
     def validate(self):

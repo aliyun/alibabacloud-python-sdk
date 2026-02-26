@@ -17,7 +17,6 @@ class DescribeOssDownloadsResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # Details of the backup file.
         self.items = items
         # The ID of the migration task.
         self.migrate_task_id = migrate_task_id
@@ -111,38 +110,13 @@ class DescribeOssDownloadsResponseBodyItemsOssDownload(DaraModel):
         is_available: str = None,
         status: str = None,
     ):
-        # The backup type. Valid values:
-        # 
-        # *   **Database**: full backup file
-        # *   **Differential_Database**: incremental backup file
-        # *   **Transaction_Log**: log backup file
         self.backup_mode = backup_mode
-        # The time when the backup file was created in the download list. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
-        # The description of the backup file.
         self.description = description
-        # The end of the time range during which data was queried. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.end_time = end_time
-        # The name of the backup file stored in the Object Storage Service (OSS) bucket.
         self.file_name = file_name
-        # The size of the backup file. Unit: MB
         self.file_size = file_size
-        # Indicates whether the backup file is available. Valid values: **True and False**.
         self.is_available = is_available
-        # The state of the backup file. Valid values:
-        # 
-        # *   **NoStart**
-        # *   **Downloading**
-        # *   **Finished**
-        # *   **DownloadFailed**
-        # *   **VerifyFailed**
-        # *   **Deleted**
-        # *   **DeleteFailed**
-        # *   **CheckSuccess**
-        # *   **CheckFailed**
-        # *   **Restoring**
-        # *   **Restored**
-        # *   **RestoreFailed**
         self.status = status
 
     def validate(self):

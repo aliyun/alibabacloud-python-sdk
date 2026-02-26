@@ -13,7 +13,6 @@ class DescribeRdsResourceSettingsResponseBody(DaraModel):
         rds_instance_resource_settings: main_models.DescribeRdsResourceSettingsResponseBodyRdsInstanceResourceSettings = None,
         request_id: str = None,
     ):
-        # The details about notification settings for an instance.
         self.rds_instance_resource_settings = rds_instance_resource_settings
         # The request ID.
         self.request_id = request_id
@@ -94,30 +93,14 @@ class DescribeRdsResourceSettingsResponseBodyRdsInstanceResourceSettingsRdsInsta
         resource_niche: str = None,
         start_date: str = None,
     ):
-        # The end date.
         self.end_date = end_date
-        # Specifies whether to pin the notification at the top.
-        # 
-        # *   true
-        # *   false
         self.is_top = is_top
-        # The notification text.
         self.notice_bar_content = notice_bar_content
-        # The text of the popup button.
         self.popped_up_button_text = popped_up_button_text
-        # The type of the popup button.
-        # 
-        # *   BUY
-        # *   RENEW
-        # *   UPGRADE
         self.popped_up_button_type = popped_up_button_type
-        # The link of the popup button.
         self.popped_up_button_url = popped_up_button_url
-        # The text of the popup.
         self.popped_up_content = popped_up_content
-        # The location of the notification.
         self.resource_niche = resource_niche
-        # The effective date.
         self.start_date = start_date
 
     def validate(self):

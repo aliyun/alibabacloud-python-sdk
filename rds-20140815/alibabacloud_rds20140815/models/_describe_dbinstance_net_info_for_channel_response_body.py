@@ -14,7 +14,6 @@ class DescribeDBInstanceNetInfoForChannelResponseBody(DaraModel):
         instance_network_type: str = None,
         request_id: str = None,
     ):
-        # The information about the instance connection.
         self.dbinstance_net_infos = dbinstance_net_infos
         # The network type of the instance. Valid values:
         # 
@@ -111,48 +110,19 @@ class DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfosDBInstanc
         v_switch_id: str = None,
         expired_time: str = None,
     ):
-        # The availability of the instance. Valid values:
-        # 
-        # *   **Unavailable**
-        # *   **Available**
         self.availability = availability
-        # The endpoint of the instance.
         self.connection_string = connection_string
-        # The type of the endpoint. Valid values:
-        # 
-        # *   **Normal**: a regular endpoint
-        # *   **ReadWriteSplitting**: a read/write splitting endpoint that is assigned after the shared proxy feature is enabled.
         self.connection_string_type = connection_string_type
-        # The information about read weights to implement read/write splitting after the shared proxy feature is enabled.
         self.dbinstance_weights = dbinstance_weights
-        # The policy that is used to assign read weights. This parameter is returned only for a read/write splitting endpoint that is assigned after the shared proxy feature is enabled. Valid values:
-        # 
-        # *   **Standard**: The system automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
-        # *   **Custom**: You must manually allocate read weights to the instance and its read-only instances.
         self.distribution_type = distribution_type
-        # The IP address of the instance.
         self.ipaddress = ipaddress
-        # The network type of the IP address. Valid values:
-        # 
-        # *   **Public**: the Internet
-        # *   **Inner**: the classic network
-        # *   **Private**: a virtual private cloud (VPC)
         self.iptype = iptype
-        # The latency threshold that is allowed for read/write splitting of the shared proxy feature. Unit: seconds.
-        # 
-        # >  This parameter is returned only when **ConnectionStringType** is set to **ReadWriteSplitting**.
         self.max_delay_time = max_delay_time
-        # The port number of the instance.
         self.port = port
-        # The details of the IP address whitelist.
         self.security_ipgroups = security_ipgroups
-        # An internal parameter. You do not need to specify this parameter.
         self.upgradeable = upgradeable
-        # The VPC ID of the instance.
         self.vpcid = vpcid
-        # The vSwitch ID of the instance.
         self.v_switch_id = v_switch_id
-        # The expiration time of the endpoint of the classic network type. Unit: seconds.
         self.expired_time = expired_time
 
     def validate(self):
@@ -299,9 +269,7 @@ class DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfosDBInstanc
         security_ipgroup_name: str = None,
         security_ips: str = None,
     ):
-        # The name of the IP address whitelist.
         self.security_ipgroup_name = security_ipgroup_name
-        # The IP addresses that is contained in the IP address whitelist.
         self.security_ips = security_ips
 
     def validate(self):
@@ -373,19 +341,9 @@ class DescribeDBInstanceNetInfoForChannelResponseBodyDBInstanceNetInfosDBInstanc
         dbinstance_type: str = None,
         weight: str = None,
     ):
-        # The availability of the instance. Valid values:
-        # 
-        # *   **Unavailable**
-        # *   **Available**
         self.availability = availability
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The instance type. Valid values:
-        # 
-        # *   **Master**: primary instance
-        # *   **Readonly**: read-only instance
         self.dbinstance_type = dbinstance_type
-        # The weight of the instance.
         self.weight = weight
 
     def validate(self):

@@ -4,17 +4,12 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class CheckInstanceExistResponseBody(DaraModel):
+class UpdateDBInstanceReplicationResponseBody(DaraModel):
     def __init__(
         self,
-        is_exist_instance: bool = None,
         request_id: str = None,
     ):
-        # Indicates whether the instance exists. Valid values:
-        # - **true**: The instance exists.
-        # - **false**: The instance does not exist.
-        self.is_exist_instance = is_exist_instance
-        # The ID of the request.
+        # Id of the request
         self.request_id = request_id
 
     def validate(self):
@@ -25,9 +20,6 @@ class CheckInstanceExistResponseBody(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
-        if self.is_exist_instance is not None:
-            result['IsExistInstance'] = self.is_exist_instance
-
         if self.request_id is not None:
             result['RequestId'] = self.request_id
 
@@ -35,9 +27,6 @@ class CheckInstanceExistResponseBody(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        if m.get('IsExistInstance') is not None:
-            self.is_exist_instance = m.get('IsExistInstance')
-
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
 

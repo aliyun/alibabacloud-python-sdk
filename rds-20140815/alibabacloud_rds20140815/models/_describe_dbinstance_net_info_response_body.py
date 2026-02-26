@@ -15,7 +15,6 @@ class DescribeDBInstanceNetInfoResponseBody(DaraModel):
         request_id: str = None,
         security_ipmode: str = None,
     ):
-        # The information about the endpoints of the instance.
         self.dbinstance_net_infos = dbinstance_net_infos
         # The network type of the instance. Valid values:
         # 
@@ -124,64 +123,20 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfo(D
         vpcid: str = None,
         v_switch_id: str = None,
     ):
-        # The Tabular Data Stream (TDS) port of the instance for which Babelfish is enabled.
-        # 
-        # >  This parameter applies only to ApsaraDB RDS for PostgreSQL instances. For more information about Babelfish for ApsaraDB RDS for PostgreSQL, see [Introduction to Babelfish](https://help.aliyun.com/document_detail/428613.html).
         self.babelfish_port = babelfish_port
-        # The endpoint of the instance.
         self.connection_string = connection_string
-        # The type of the endpoint. Valid values:
-        # 
-        # *   **Normal**: a regular endpoint
-        # *   **ReadWriteSplitting**: a read/write splitting endpoint
         self.connection_string_type = connection_string_type
-        # The information about the instance weight.
-        # 
-        # >  This parameter is returned only when the read/write splitting feature is enabled for the instance.
         self.dbinstance_weights = dbinstance_weights
-        # The policy that is used to assign read weights. This parameter is returned only for a read/write splitting endpoint. Valid values:
-        # 
-        # *   **Standard**: The system automatically allocates read weights to the instance and its read-only instances based on the specifications of the instances.
-        # *   **Custom**: You must manually allocate read weights to the instance and its read-only instances.
         self.distribution_type = distribution_type
-        # The remaining validity period of the instance in the classic network in hybrid access mode. Unit: seconds.
         self.expired_time = expired_time
-        # The IP address.
         self.ipaddress = ipaddress
-        # The network type.
-        # 
-        # *   Valid values when the instance resides in the classic network:
-        # 
-        #     *   **Inner**
-        #     *   **Public**
-        # 
-        # *   Valid values when the instance resides in a virtual private cloud (VPC):
-        # 
-        #     *   **Private**
-        #     *   **Public**
         self.iptype = iptype
-        # The latency threshold. This parameter is returned only for a read/write splitting endpoint. Unit: seconds.
-        # 
-        # >  If the latency on a read-only instance exceeds the specified threshold, ApsaraDB RDS no longer forwards read requests to the read-only instance.
         self.max_delay_time = max_delay_time
-        # The PgBouncer port.
-        # 
-        # >  This parameter is returned only when PgBouncer is enabled for the instance that runs PostgreSQL.
         self.pgbouncer_port = pgbouncer_port
-        # The port that is used to connect to the instance.
         self.port = port
-        # The IP addresses in the whitelist for the instance.
         self.security_ipgroups = security_ipgroups
-        # Indicates whether the IP version can be updated. Valid values:
-        # 
-        # *   **Enable**
-        # *   **Disabled**
-        # 
-        # >  The IP version can be updated from IPv4 to IPv6.
         self.upgradeable = upgradeable
-        # The VPC ID of the instance.
         self.vpcid = vpcid
-        # The vSwitch ID.
         self.v_switch_id = v_switch_id
 
     def validate(self):
@@ -334,9 +289,7 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoSe
         security_ipgroup_name: str = None,
         security_ips: str = None,
     ):
-        # The name of the IP address whitelist.
         self.security_ipgroup_name = security_ipgroup_name
-        # The IP address in the whitelist.
         self.security_ips = security_ips
 
     def validate(self):
@@ -409,21 +362,10 @@ class DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosDBInstanceNetInfoDB
         role: str = None,
         weight: str = None,
     ):
-        # The availability of the instance. Valid values:
-        # 
-        # *   **Unavailable**
-        # *   **Available**
         self.availability = availability
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The type of the instance. Valid values:
-        # 
-        # *   **Master**: primary instance
-        # *   **Readonly**: read-only instance
         self.dbinstance_type = dbinstance_type
-        # A deprecated parameter.
         self.role = role
-        # The weight of the instance.
         self.weight = weight
 
     def validate(self):

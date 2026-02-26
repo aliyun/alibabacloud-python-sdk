@@ -14,7 +14,6 @@ class PreCheckCreateOrderForDeleteDBNodesResponseBody(DaraModel):
         pre_check_result: bool = None,
         request_id: str = None,
     ):
-        # The information about the failed order.
         self.failures = failures
         # The precheck result.
         self.pre_check_result = pre_check_result
@@ -96,15 +95,7 @@ class PreCheckCreateOrderForDeleteDBNodesResponseBodyFailuresFailures(DaraModel)
         code: str = None,
         message: str = None,
     ):
-        # The response code. Valid values:
-        # 
-        # *   **200**: success
-        # *   **400**: client error
-        # *   **401**: identity authentication failed
-        # *   **404**: requested page not found
-        # *   **500**: server error
         self.code = code
-        # The returned message.
         self.message = message
 
     def validate(self):

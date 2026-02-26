@@ -18,7 +18,6 @@ class DescribeAccountsResponseBody(DaraModel):
         system_admin_account_status: str = None,
         total_record_count: int = None,
     ):
-        # The information about the account.
         self.accounts = accounts
         # The page number.
         self.page_number = page_number
@@ -151,73 +150,19 @@ class DescribeAccountsResponseBodyAccountsDBInstanceAccount(DaraModel):
         replication: str = None,
         valid_until: str = None,
     ):
-        # The description of the account.
         self.account_description = account_description
-        # The name of the database account.
         self.account_name = account_name
-        # The status of the account. Valid values:
-        # 
-        # *   **Unavailable**
-        # *   **Available**
         self.account_status = account_status
-        # The type of the account. Valid values:
-        # 
-        # *   **Normal**: standard account
-        # *   **Super**: privileged account
-        # *   **Sysadmin**: system admin account, which is supported only for instances running SQL Server
         self.account_type = account_type
-        # Indicates whether the account has the row-level security (RLS) permissions. Valid values:
-        # 
-        # *   **t**: The account has the RLS permissions.
-        # *   **f**: The account does not have the RLS permissions.
-        # 
-        # >  This parameter is returned only for instances that run PostgreSQL.
         self.bypass_rls = bypass_rls
-        # Indicates whether the password policy is applied.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.check_policy = check_policy
-        # Indicates whether the account has the permissions to create databases. Valid values:
-        # 
-        # *   **t**: The account has the permissions to create databases.
-        # *   **f**: The account does not have the permissions to create databases.
-        # 
-        # >  This parameter is returned only for instances that run PostgreSQL.
         self.create_db = create_db
-        # Indicates whether the account has the permissions to create roles. Valid values:
-        # 
-        # *   **t**: The account has the permissions to create roles.
-        # *   **f**: The account does not have the permissions to create roles.
-        # 
-        # >  This parameter is returned only for instances that run PostgreSQL.
         self.create_role = create_role
-        # The ID of the instance to which the account belongs.
         self.dbinstance_id = dbinstance_id
-        # The details about the permissions that are granted to the account.
         self.database_privileges = database_privileges
-        # The expiration time of the password.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.password_expire_time = password_expire_time
-        # Indicates whether the number of databases that are managed by the account exceeds the upper limit. Valid values:
-        # 
-        # *   **1**: The number of databases that are managed by the account exceeds the upper limit.
-        # *   **0**: The number of databases that are managed by the account does not exceed the upper limit.
         self.priv_exceeded = priv_exceeded
-        # Indicates whether the account has the replication permissions. Valid values:
-        # 
-        # *   **t**: The account has the replication permissions.
-        # *   **f**: The account does not have the replication permissions.
-        # 
-        # >  This parameter is returned only for instances that run PostgreSQL.
         self.replication = replication
-        # The expiration time of the password. Valid values:
-        # 
-        # *   **infinity**: The password never expires.
-        # *   **Empty**: The expiration time is not specified.
-        # *   **Actual expiration time**: in the format of *yyyy-MM-dd*T*HH:mm:ss*Z in UTC. Example: 2022-10-01T00:00:00Z.
-        # 
-        # >  This parameter is returned only for instances that run PostgreSQL.
         self.valid_until = valid_until
 
     def validate(self):
@@ -362,17 +307,8 @@ class DescribeAccountsResponseBodyAccountsDBInstanceAccountDatabasePrivilegesDat
         account_privilege_detail: str = None,
         dbname: str = None,
     ):
-        # The type of the permissions. Valid values:
-        # 
-        # *   **ReadWrite**: read and write permissions.
-        # *   **ReadOnly**: read-only permissions.
-        # *   **DDLOnly**: DDL-only permissions.
-        # *   **DMLOnly**: DML-only permissions.
-        # *   **Custom**: custom permissions. You can modify the permissions of the account by using SQL commands.
         self.account_privilege = account_privilege
-        # The permissions that are granted to the account. For more information, see [Account permissions](https://help.aliyun.com/document_detail/146395.html).
         self.account_privilege_detail = account_privilege_detail
-        # The name of the database.
         self.dbname = dbname
 
     def validate(self):

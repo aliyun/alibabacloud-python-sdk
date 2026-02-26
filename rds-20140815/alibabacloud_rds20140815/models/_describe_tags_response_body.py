@@ -13,7 +13,6 @@ class DescribeTagsResponseBody(DaraModel):
         items: main_models.DescribeTagsResponseBodyItems = None,
         request_id: str = None,
     ):
-        # The tags that are added to the instance.
         self.items = items
         # The ID of the request.
         self.request_id = request_id
@@ -88,11 +87,8 @@ class DescribeTagsResponseBodyItemsTagInfos(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The IDs of the instances to which the tag is added.
         self.dbinstance_ids = dbinstance_ids
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

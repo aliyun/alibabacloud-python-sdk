@@ -13,7 +13,6 @@ class CalculateDBInstanceWeightResponseBody(DaraModel):
         items: main_models.CalculateDBInstanceWeightResponseBodyItems = None,
         request_id: str = None,
     ):
-        # An array that consists of information about the system-assigned read weight.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -89,16 +88,9 @@ class CalculateDBInstanceWeightResponseBodyItemsDBInstanceWeight(DaraModel):
         readonly_instance_sqldelayed_time: str = None,
         weight: str = None,
     ):
-        # The instance ID
         self.dbinstance_id = dbinstance_id
-        # The type of the instance. Valid values:
-        # 
-        # *   **Master**: primary instance
-        # *   **Readonly**: read-only instance
         self.dbinstance_type = dbinstance_type
-        # The latency at which the read-only instances replicate data. The read-only instances replicate data from the primary instance at the latency that is specified by the **ReadonlyInstanceSQLDelayedTime** parameter. Unit: seconds.
         self.readonly_instance_sqldelayed_time = readonly_instance_sqldelayed_time
-        # The read weight that the system calculates in real time for the instance.
         self.weight = weight
 
     def validate(self):

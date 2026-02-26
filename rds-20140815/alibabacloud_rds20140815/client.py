@@ -3499,6 +3499,104 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_dbinstance_for_rebuild_with_options_async(request, runtime)
 
+    def create_dbinstance_replication_with_options(
+        self,
+        request: main_models.CreateDBInstanceReplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDBInstanceReplicationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.channel_name):
+            query['ChannelName'] = request.channel_name
+        if not DaraCore.is_null(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not DaraCore.is_null(request.master_host):
+            query['MasterHost'] = request.master_host
+        if not DaraCore.is_null(request.master_password):
+            query['MasterPassword'] = request.master_password
+        if not DaraCore.is_null(request.master_port):
+            query['MasterPort'] = request.master_port
+        if not DaraCore.is_null(request.master_user):
+            query['MasterUser'] = request.master_user
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDBInstanceReplication',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDBInstanceReplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_dbinstance_replication_with_options_async(
+        self,
+        request: main_models.CreateDBInstanceReplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateDBInstanceReplicationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.channel_name):
+            query['ChannelName'] = request.channel_name
+        if not DaraCore.is_null(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not DaraCore.is_null(request.master_host):
+            query['MasterHost'] = request.master_host
+        if not DaraCore.is_null(request.master_password):
+            query['MasterPassword'] = request.master_password
+        if not DaraCore.is_null(request.master_port):
+            query['MasterPort'] = request.master_port
+        if not DaraCore.is_null(request.master_user):
+            query['MasterUser'] = request.master_user
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateDBInstanceReplication',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateDBInstanceReplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_dbinstance_replication(
+        self,
+        request: main_models.CreateDBInstanceReplicationRequest,
+    ) -> main_models.CreateDBInstanceReplicationResponse:
+        runtime = RuntimeOptions()
+        return self.create_dbinstance_replication_with_options(request, runtime)
+
+    async def create_dbinstance_replication_async(
+        self,
+        request: main_models.CreateDBInstanceReplicationRequest,
+    ) -> main_models.CreateDBInstanceReplicationResponse:
+        runtime = RuntimeOptions()
+        return await self.create_dbinstance_replication_with_options_async(request, runtime)
+
     def create_dbinstance_security_group_rule_with_options(
         self,
         request: main_models.CreateDBInstanceSecurityGroupRuleRequest,
@@ -7094,6 +7192,88 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteDBInstanceEndpointAddressResponse:
         runtime = RuntimeOptions()
         return await self.delete_dbinstance_endpoint_address_with_options_async(request, runtime)
+
+    def delete_dbinstance_replication_with_options(
+        self,
+        request: main_models.DeleteDBInstanceReplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDBInstanceReplicationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.channel_name):
+            query['ChannelName'] = request.channel_name
+        if not DaraCore.is_null(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDBInstanceReplication',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDBInstanceReplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_dbinstance_replication_with_options_async(
+        self,
+        request: main_models.DeleteDBInstanceReplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteDBInstanceReplicationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.channel_name):
+            query['ChannelName'] = request.channel_name
+        if not DaraCore.is_null(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteDBInstanceReplication',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteDBInstanceReplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_dbinstance_replication(
+        self,
+        request: main_models.DeleteDBInstanceReplicationRequest,
+    ) -> main_models.DeleteDBInstanceReplicationResponse:
+        runtime = RuntimeOptions()
+        return self.delete_dbinstance_replication_with_options(request, runtime)
+
+    async def delete_dbinstance_replication_async(
+        self,
+        request: main_models.DeleteDBInstanceReplicationRequest,
+    ) -> main_models.DeleteDBInstanceReplicationResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_dbinstance_replication_with_options_async(request, runtime)
 
     def delete_dbinstance_security_group_rule_with_options(
         self,
@@ -13451,7 +13631,13 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.DescribeDBInstanceReplicationResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13460,7 +13646,7 @@ class Client(OpenApiClient):
             version = '2014-08-15',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -13477,7 +13663,13 @@ class Client(OpenApiClient):
         runtime: RuntimeOptions,
     ) -> main_models.DescribeDBInstanceReplicationResponse:
         request.validate()
-        query = Utils.query(request.to_map())
+        query = {}
+        if not DaraCore.is_null(request.dbinstance_id):
+            query['DBInstanceId'] = request.dbinstance_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -13486,7 +13678,7 @@ class Client(OpenApiClient):
             version = '2014-08-15',
             protocol = 'HTTPS',
             pathname = '/',
-            method = 'GET',
+            method = 'POST',
             auth_type = 'AK',
             style = 'RPC',
             req_body_type = 'formData',
@@ -38866,6 +39058,108 @@ class Client(OpenApiClient):
     ) -> main_models.UntagResourcesResponse:
         runtime = RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
+
+    def update_dbinstance_replication_with_options(
+        self,
+        request: main_models.UpdateDBInstanceReplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDBInstanceReplicationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.channel_name):
+            query['ChannelName'] = request.channel_name
+        if not DaraCore.is_null(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not DaraCore.is_null(request.master_host):
+            query['MasterHost'] = request.master_host
+        if not DaraCore.is_null(request.master_password):
+            query['MasterPassword'] = request.master_password
+        if not DaraCore.is_null(request.master_port):
+            query['MasterPort'] = request.master_port
+        if not DaraCore.is_null(request.master_user):
+            query['MasterUser'] = request.master_user
+        if not DaraCore.is_null(request.operation):
+            query['Operation'] = request.operation
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDBInstanceReplication',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDBInstanceReplicationResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_dbinstance_replication_with_options_async(
+        self,
+        request: main_models.UpdateDBInstanceReplicationRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateDBInstanceReplicationResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.channel_name):
+            query['ChannelName'] = request.channel_name
+        if not DaraCore.is_null(request.db_instance_id):
+            query['DbInstanceId'] = request.db_instance_id
+        if not DaraCore.is_null(request.master_host):
+            query['MasterHost'] = request.master_host
+        if not DaraCore.is_null(request.master_password):
+            query['MasterPassword'] = request.master_password
+        if not DaraCore.is_null(request.master_port):
+            query['MasterPort'] = request.master_port
+        if not DaraCore.is_null(request.master_user):
+            query['MasterUser'] = request.master_user
+        if not DaraCore.is_null(request.operation):
+            query['Operation'] = request.operation
+        if not DaraCore.is_null(request.owner_id):
+            query['OwnerId'] = request.owner_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateDBInstanceReplication',
+            version = '2014-08-15',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateDBInstanceReplicationResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_dbinstance_replication(
+        self,
+        request: main_models.UpdateDBInstanceReplicationRequest,
+    ) -> main_models.UpdateDBInstanceReplicationResponse:
+        runtime = RuntimeOptions()
+        return self.update_dbinstance_replication_with_options(request, runtime)
+
+    async def update_dbinstance_replication_async(
+        self,
+        request: main_models.UpdateDBInstanceReplicationRequest,
+    ) -> main_models.UpdateDBInstanceReplicationResponse:
+        runtime = RuntimeOptions()
+        return await self.update_dbinstance_replication_with_options_async(request, runtime)
 
     def update_postgres_extensions_with_options(
         self,

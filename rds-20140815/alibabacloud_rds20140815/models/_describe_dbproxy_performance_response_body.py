@@ -23,7 +23,6 @@ class DescribeDBProxyPerformanceResponseBody(DaraModel):
         self.dbproxy_engine_type = dbproxy_engine_type
         # The end time of the query.
         self.end_time = end_time
-        # The performance list.
         self.performance_keys = performance_keys
         # The request ID.
         self.request_id = request_id
@@ -127,15 +126,11 @@ class DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKey(DaraMo
         value_format: str = None,
         values: main_models.DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValues = None,
     ):
-        # The performance parameter.
         self.key = key
         self.node = node
         self.server = server
-        # The service dimension.
         self.service = service
-        # The format in which the value of the performance metric is returned.
         self.value_format = value_format
-        # The performance metrics.
         self.values = values
 
     def validate(self):
@@ -231,9 +226,7 @@ class DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceKeyValuesP
         date: str = None,
         value: str = None,
     ):
-        # The date and time when the value of the performance metric was recorded. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.date = date
-        # The value of the performance metric.
         self.value = value
 
     def validate(self):

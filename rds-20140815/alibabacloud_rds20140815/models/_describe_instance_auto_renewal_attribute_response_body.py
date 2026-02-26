@@ -16,7 +16,6 @@ class DescribeInstanceAutoRenewalAttributeResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The renewal information about the instance.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -117,15 +116,10 @@ class DescribeInstanceAutoRenewalAttributeResponseBodyItemsItem(DaraModel):
         region_id: str = None,
         status: str = None,
     ):
-        # Indicates whether to enable auto-renewal for the instance.
         self.auto_renew = auto_renew
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The renewal period.
         self.duration = duration
-        # The region ID.
         self.region_id = region_id
-        # The instance status.
         self.status = status
 
     def validate(self):

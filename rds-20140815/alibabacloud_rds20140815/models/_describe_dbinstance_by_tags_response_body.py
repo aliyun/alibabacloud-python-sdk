@@ -16,7 +16,6 @@ class DescribeDBInstanceByTagsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The details about the instance.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -114,9 +113,7 @@ class DescribeDBInstanceByTagsResponseBodyItemsDBInstanceTag(DaraModel):
         dbinstance_id: str = None,
         tags: main_models.DescribeDBInstanceByTagsResponseBodyItemsDBInstanceTagTags = None,
     ):
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The details about the tag.
         self.tags = tags
 
     def validate(self):
@@ -188,9 +185,7 @@ class DescribeDBInstanceByTagsResponseBodyItemsDBInstanceTagTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

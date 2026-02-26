@@ -18,7 +18,6 @@ class DescribeRenewalPriceResponseBody(DaraModel):
         self.price_info = price_info
         # The ID of the request.
         self.request_id = request_id
-        # An array that consists of the details of the promotion rule.
         self.rules = rules
 
     def validate(self):
@@ -100,11 +99,8 @@ class DescribeRenewalPriceResponseBodyRulesRule(DaraModel):
         name: str = None,
         rule_id: int = None,
     ):
-        # The description of the activity.
         self.description = description
-        # The name of the rule.
         self.name = name
-        # The ID of the promotion rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -152,7 +148,6 @@ class DescribeRenewalPriceResponseBodyPriceInfo(DaraModel):
     ):
         # The information about the promotion.
         self.activity_info = activity_info
-        # An array that consists of information about the coupon.
         self.coupons = coupons
         # The currency unit.
         self.currency = currency
@@ -160,7 +155,6 @@ class DescribeRenewalPriceResponseBodyPriceInfo(DaraModel):
         self.discount_price = discount_price
         # The original price.
         self.original_price = original_price
-        # An array that consists of the ID of the promotion rule.
         self.rule_ids = rule_ids
         # The transaction price, which is equal to the original price minus the discount.
         self.trade_price = trade_price
@@ -299,13 +293,9 @@ class DescribeRenewalPriceResponseBodyPriceInfoCouponsCoupon(DaraModel):
         is_selected: str = None,
         name: str = None,
     ):
-        # The coupon ID.
         self.coupon_no = coupon_no
-        # The description of the coupon.
         self.description = description
-        # Indicates whether the coupon is selected.
         self.is_selected = is_selected
-        # The name of the coupon.
         self.name = name
 
     def validate(self):

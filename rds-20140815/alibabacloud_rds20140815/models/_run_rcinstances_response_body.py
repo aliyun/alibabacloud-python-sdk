@@ -14,7 +14,6 @@ class RunRCInstancesResponseBody(DaraModel):
         order_id: str = None,
         request_id: str = None,
     ):
-        # The instance IDs (InstanceIdSet).
         self.instance_id_sets = instance_id_sets
         # The order ID.
         self.order_id = order_id

@@ -16,7 +16,6 @@ class ModifySecurityGroupConfigurationResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_name = dbinstance_name
-        # An array that consists of information about the ECS security group.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -97,14 +96,8 @@ class ModifySecurityGroupConfigurationResponseBodyItemsEcsSecurityGroupRelation(
         region_id: str = None,
         security_group_id: str = None,
     ):
-        # The network type of the ECS security group. Valid values:
-        # 
-        # *   **Classic**
-        # *   **VPC**
         self.network_type = network_type
-        # The region ID.
         self.region_id = region_id
-        # The ID of the ECS security group.
         self.security_group_id = security_group_id
 
     def validate(self):

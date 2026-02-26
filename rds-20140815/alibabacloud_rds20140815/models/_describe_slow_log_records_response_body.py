@@ -22,7 +22,6 @@ class DescribeSlowLogRecordsResponseBody(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The type of the database engine.
         self.engine = engine
-        # An array that consists of the information about each slow log.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -150,62 +149,25 @@ class DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord(DaraModel):
         user_name: str = None,
         write_iocount: int = None,
     ):
-        # The name of the application that is connected to the instance.
-        # 
-        # > This parameter is returned only for instances that run SQL Server.
         self.application_name = application_name
-        # The hostname of the client.
-        # 
-        # > This parameter is returned only for instances that run SQL Server.
         self.client_host_name = client_host_name
-        # The duration during which the SQL statement is processed by the CPU. Unit: milliseconds.
-        # 
-        # > This parameter is returned only for instances that run SQL Server.
         self.cpu_time = cpu_time
-        # The name of the database.
         self.dbname = dbname
-        # The time when the execution of the SQL statement started. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.execution_start_time = execution_start_time
-        # The name and IP address of the client that is connected to the database.
         self.host_address = host_address
-        # The number of rows that are affected by the last SQL statement.
-        # 
-        # > This parameter is returned only for instances that run SQL Server.
         self.last_rows_affected_count = last_rows_affected_count
         self.lock_time_ms = lock_time_ms
-        # The lock duration of the query. Unit: seconds.
         self.lock_times = lock_times
-        # The number of logical reads.
-        # 
-        # > This parameter is returned only for instances that run SQL Server.
         self.logical_ioread = logical_ioread
-        # The number of parsed rows.
         self.parse_row_counts = parse_row_counts
-        # The number of physical reads.
-        # 
-        # > This parameter is returned only for instances that run SQL Server.
         self.physical_ioread = physical_ioread
-        # The execution duration of the query. Unit: milliseconds.
         self.query_time_ms = query_time_ms
-        # The execution duration of the query. Unit: seconds.
         self.query_times = query_times
-        # The number of rows returned.
         self.return_row_counts = return_row_counts
-        # The number of affected rows.
-        # 
-        # > This parameter is returned only for instances that run SQL Server.
         self.rows_affected_count = rows_affected_count
-        # The unique ID of the SQL statement.
         self.sqlhash = sqlhash
-        # The details of the SQL statement.
         self.sqltext = sqltext
-        # The name of the user.
-        # 
-        # > This parameter is returned only for instances that run SQL Server.
         self.user_name = user_name
-        # The number of I/O writes.
-        # 
-        # > This parameter is returned only for instances that run SQL Server.
         self.write_iocount = write_iocount
 
     def validate(self):

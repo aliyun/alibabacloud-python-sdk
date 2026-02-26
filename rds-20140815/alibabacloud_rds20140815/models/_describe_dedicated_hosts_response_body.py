@@ -16,7 +16,6 @@ class DescribeDedicatedHostsResponseBody(DaraModel):
     ):
         # The host group ID.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # The host information.
         self.dedicated_hosts = dedicated_hosts
         # The request ID.
         self.request_id = request_id
@@ -122,83 +121,33 @@ class DescribeDedicatedHostsResponseBodyDedicatedHostsDedicatedHosts(DaraModel):
         v_switch_id: str = None,
         zone_id: str = None,
     ):
-        # The host account. You can call the [CreateDedicatedHostAccount](https://help.aliyun.com/document_detail/196877.html) operation to create a host account.
         self.account_name = account_name
-        # Specifies whether instances can be deployed on the host. Valid values:
-        # 
-        # *   **0**: Instances cannot be deployed on the host.
-        # *   **1**: Instances can be deployed on the host.
         self.allocation_status = allocation_status
-        # The bastion host ID.
         self.bastion_instance_id = bastion_instance_id
-        # The core overcommitment ratio of the dedicated cluster. Unit: percentage. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](https://help.aliyun.com/document_detail/182328.html).
         self.cpuallocation_ratio = cpuallocation_ratio
-        # The number of used CPU cores on the host. Unit: cores.
         self.cpu_used = cpu_used
-        # The time when the host was created.
         self.created_time = created_time
-        # The dedicated cluster ID.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # The host ID.
         self.dedicated_host_id = dedicated_host_id
-        # The disk overcommitment ratio of the dedicated cluster. Unit: percentage. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](https://help.aliyun.com/document_detail/182328.html).
         self.disk_allocation_ratio = disk_allocation_ratio
-        # The time when the host expires.
         self.end_time = end_time
-        # The database engine of instances that are created on the host.
         self.engine = engine
-        # The total number of CPU cores that are configured for the host. Unit: cores.
         self.host_cpu = host_cpu
-        # The instance type of the host.
         self.host_class = host_class
-        # The total memory space of the host. Unit: MB.
         self.host_mem = host_mem
-        # The host name.
         self.host_name = host_name
-        # The status of the host. Valid values:
-        # 
-        # *   **0**: creating
-        # *   **1**: running
-        # *   **2**: faulty
-        # *   **3**: being replaced
-        # *   **4**: deprecated
-        # *   **5**: deleting
-        # *   **6**: restarting
         self.host_status = host_status
-        # The storage capacity of the host. Unit: MB.
         self.host_storage = host_storage
-        # The storage type of the host. Valid values:
-        # 
-        # *   **dhg_cloud_ssd**: ESSD
-        # *   **dhg_local_ssd**: local SSD
         self.host_type = host_type
-        # The internal IP address of the host.
         self.ipaddress = ipaddress
-        # The host image. This parameter is returned only when the **Engine** parameter is set to **mssql**. Valid values:
-        # 
-        # *   **WindowsWithMssqlStdLicense**: a Windows image that contains the licenses of SQL Server Standard Edition
-        # *   **WindowsWithMssqlEntLisence**: a Windows image that contains the licenses of SQL Server Enterprise Edition
-        # *   **WindowsWithMssqlWebLisence**: a Windows image that contains the licenses of SQL Server Web Edition
         self.image_category = image_category
-        # The total number of instances that are created on the host.
         self.instance_number = instance_number
-        # The maximum memory usage per host in the dedicated cluster.
         self.mem_allocation_ratio = mem_allocation_ratio
-        # The size of the used memory. Unit: MB.
         self.memory_used = memory_used
-        # Indicates whether the feature that allows you to have the OS permissions on the host is enabled. Valid values:
-        # 
-        # *   **0** or **null**: The permissions cannot be granted.
-        # *   **1**: The permissions can be granted.
-        # *   **3**: The permissions have been granted.
         self.open_permission = open_permission
-        # The amount of used storage space on the host.
         self.storage_used = storage_used
-        # The ID of the virtual private cloud (VPC) to which the host belongs.
         self.vpcid = vpcid
-        # The ID of the vSwitch associated with the specified VPC.
         self.v_switch_id = v_switch_id
-        # The zone ID of the host.
         self.zone_id = zone_id
 
     def validate(self):

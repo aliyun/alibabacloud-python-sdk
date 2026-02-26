@@ -16,9 +16,6 @@ class DescribeDBInstanceTDEResponseBody(DaraModel):
         tdemode: str = None,
         tdestatus: str = None,
     ):
-        # The TDE status at the database level.
-        # 
-        # >  If your instance runs SQL Server 2019 SE or SQL Server EE, you can specify whether to enable TDE at the database level when you enable TDE at the instance level.
         self.databases = databases
         # The ID of the custom key.
         self.encryption_key = encryption_key
@@ -123,12 +120,7 @@ class DescribeDBInstanceTDEResponseBodyDatabasesDatabase(DaraModel):
         dbname: str = None,
         tdestatus: str = None,
     ):
-        # The name of the database.
         self.dbname = dbname
-        # The TDE status at the database level. Valid values:
-        # 
-        # *   **Enabled**
-        # *   **Disabled**
         self.tdestatus = tdestatus
 
     def validate(self):

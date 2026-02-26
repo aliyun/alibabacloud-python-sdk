@@ -14,11 +14,7 @@ class DescribeParameterGroupResponseBody(DaraModel):
         related_custins_info: main_models.DescribeParameterGroupResponseBodyRelatedCustinsInfo = None,
         request_id: str = None,
     ):
-        # The information about the parameter template.
         self.param_group = param_group
-        # The information about the instance to which the parameter template is applied.
-        # 
-        # >  This parameter is available only for ApsaraDB RDS for PostgreSQL instances.
         self.related_custins_info = related_custins_info
         # The request ID.
         self.request_id = request_id
@@ -101,9 +97,7 @@ class DescribeParameterGroupResponseBodyRelatedCustinsInfoRelatedCustinsInfo(Dar
         applied_time: str = None,
         dbinstance_name: str = None,
     ):
-        # The time when the parameter template was applied.
         self.applied_time = applied_time
-        # The instance ID.
         self.dbinstance_name = dbinstance_name
 
     def validate(self):
@@ -182,34 +176,16 @@ class DescribeParameterGroupResponseBodyParamGroupParameterGroup(DaraModel):
         parameter_group_type: int = None,
         update_time: str = None,
     ):
-        # The time when the parameter template was created.
         self.create_time = create_time
-        # The database engine of the instance.
         self.engine = engine
-        # The database engine version of the instance.
         self.engine_version = engine_version
-        # Indicates whether the restart of an instance is required for the parameter template to take effect. Valid values:
-        # 
-        # *   **0**: A restart is not required.
-        # *   **1**: A restart is required.
         self.force_restart = force_restart
-        # The number of parameters in the parameter template.
         self.param_counts = param_counts
-        # The details of the parameters.
         self.param_detail = param_detail
-        # The description of the parameter template.
         self.parameter_group_desc = parameter_group_desc
-        # The ID of the parameter template.
         self.parameter_group_id = parameter_group_id
-        # The name of the parameter template.
         self.parameter_group_name = parameter_group_name
-        # The type of the parameter template. Valid values:
-        # 
-        # *   **0**: the default parameter template.
-        # *   **1**: a custom parameter template.
-        # *   **2**: an automatic backup parameter template. After you apply this type of template, the system automatically backs up the original parameter settings and saves the backup as a template.
         self.parameter_group_type = parameter_group_type
-        # The time when the parameter template was last updated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):
@@ -335,9 +311,7 @@ class DescribeParameterGroupResponseBodyParamGroupParameterGroupParamDetailParam
         param_name: str = None,
         param_value: str = None,
     ):
-        # The name of the parameter.
         self.param_name = param_name
-        # The value of the parameter.
         self.param_value = param_value
 
     def validate(self):

@@ -13,7 +13,6 @@ class DescribeDBInstanceIPArrayListResponseBody(DaraModel):
         items: main_models.DescribeDBInstanceIPArrayListResponseBodyItems = None,
         request_id: str = None,
     ):
-        # An array that consists of the details about the IP address whitelists.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -89,15 +88,9 @@ class DescribeDBInstanceIPArrayListResponseBodyItemsDBInstanceIPArray(DaraModel)
         security_iplist: str = None,
         security_iptype: str = None,
     ):
-        # The attribute of the IP address whitelist. By default, this parameter is empty.
-        # 
-        # >  A whitelist with the hidden attribute does not appear in the console. Such IP address whitelists are used to access Alibaba Cloud services, such as Data Transmission Service (DTS).
         self.dbinstance_iparray_attribute = dbinstance_iparray_attribute
-        # The name of the IP address whitelist.
         self.dbinstance_iparray_name = dbinstance_iparray_name
-        # The IP addresses in the IP address whitelist.
         self.security_iplist = security_iplist
-        # The type of the IP address.
         self.security_iptype = security_iptype
 
     def validate(self):

@@ -14,7 +14,6 @@ class DescribeCharacterSetNameResponseBody(DaraModel):
         engine: str = None,
         request_id: str = None,
     ):
-        # The character sets that are supported.
         self.character_set_name_items = character_set_name_items
         # The type of the database engine.
         self.engine = engine

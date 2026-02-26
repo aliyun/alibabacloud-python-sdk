@@ -25,7 +25,6 @@ class DescribeModifyParameterLogResponseBody(DaraModel):
         self.engine = engine
         # The database engine version of the instance.
         self.engine_version = engine_version
-        # The log entries.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -144,18 +143,10 @@ class DescribeModifyParameterLogResponseBodyItemsParameterChangeLog(DaraModel):
         parameter_name: str = None,
         status: str = None,
     ):
-        # The time when the parameter was modified. This value is a UNIX timestamp. Unit: milliseconds.
         self.modify_time = modify_time
-        # The new value of the parameter.
         self.new_parameter_value = new_parameter_value
-        # The original value of the parameter.
         self.old_parameter_value = old_parameter_value
-        # The name of the parameter.
         self.parameter_name = parameter_name
-        # The status. Valid values:
-        # 
-        # *   **Applied:** The new value has taken effect.
-        # *   **Syncing:** The new value is being applied and has not taken effect.
         self.status = status
 
     def validate(self):

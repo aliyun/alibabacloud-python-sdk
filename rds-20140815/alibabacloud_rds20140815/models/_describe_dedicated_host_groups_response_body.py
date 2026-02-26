@@ -13,7 +13,6 @@ class DescribeDedicatedHostGroupsResponseBody(DaraModel):
         dedicated_host_groups: main_models.DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroups = None,
         request_id: str = None,
     ):
-        # The information about dedicated clusters returned.
         self.dedicated_host_groups = dedicated_host_groups
         # The request ID.
         self.request_id = request_id
@@ -112,72 +111,32 @@ class DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGro
         vpcid: str = None,
         zone_idlist: main_models.DescribeDedicatedHostGroupsResponseBodyDedicatedHostGroupsDedicatedHostGroupsZoneIDList = None,
     ):
-        # The policy based on which the system allocates resources in the dedicated cluster. Valid values:
-        # 
-        # *   **Evenly**: The system evenly allocates the resources to all the hosts in the dedicated cluster.
-        # *   **Intensively**: The system preferentially allocates the resources to the heavily loaded hosts in the dedicated cluster.
         self.allocation_policy = allocation_policy
-        # The ID of the bastion host.
         self.bastion_instance_id = bastion_instance_id
-        # The percentage of allocated cores in the dedicated cluster. Unit: %.
         self.cpu_allocate_ration = cpu_allocate_ration
-        # The number of allocated cores in the dedicated cluster.
         self.cpu_allocated_amount = cpu_allocated_amount
-        # The core overcommitment ratio of the dedicated cluster. Unit: %. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](https://help.aliyun.com/document_detail/182328.html).
         self.cpu_allocation_ratio = cpu_allocation_ratio
-        # The timestamp when the dedicated cluster was created.
         self.create_time = create_time
-        # The type of storage media that is used for the hosts in the dedicated cluster. Valid values:
-        # 
-        # *   **dhg_cloud_ssd**: cloud disks
-        # *   **dhg_local_ssd**: local disks
         self.dedicated_host_count_group_by_host_type = dedicated_host_count_group_by_host_type
-        # The name of the dedicated cluster.
         self.dedicated_host_group_desc = dedicated_host_group_desc
-        # The ID of the dedicated cluster.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # The percentage of allocated disk space in the dedicated cluster. Unit: %.
         self.disk_allocate_ration = disk_allocate_ration
-        # The amount of allocated disk space in the dedicated cluster. Unit: GB.
         self.disk_allocated_amount = disk_allocated_amount
-        # The disk overcommitment ratio of the dedicated cluster. Unit: %. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](https://help.aliyun.com/document_detail/182328.html).
         self.disk_allocation_ratio = disk_allocation_ratio
-        # The amount of used disk space in the dedicated cluster. Unit: GB.
         self.disk_used_amount = disk_used_amount
-        # The disk usage of the dedicated cluster. Unit: %.
         self.disk_utility = disk_utility
-        # The database engine of the instances in the dedicated cluster.
         self.engine = engine
-        # The total number of hosts in the dedicated cluster.
         self.host_number = host_number
-        # The policy that is used to handle host failures. Valid values:
-        # 
-        # *   **Auto**: The system automatically replaces faulty hosts.
-        # *   **Manual**: You must manually replace faulty hosts.
         self.host_replace_policy = host_replace_policy
-        # The total number of instances in the dedicated cluster.
         self.instance_number = instance_number
-        # The percentage of allocated memory space in the dedicated cluster. Unit: %.
         self.mem_allocate_ration = mem_allocate_ration
-        # The amount of allocated memory space in the dedicated cluster.
         self.mem_allocated_amount = mem_allocated_amount
-        # The memory overcommitment ratio of the dedicated cluster. Unit: %. For more information about the core overcommitment ratio, see [Manage a dedicated cluster](https://help.aliyun.com/document_detail/182328.html).
         self.mem_allocation_ratio = mem_allocation_ratio
-        # The amount of used memory space in the dedicated cluster. Unit: MB.
         self.mem_used_amount = mem_used_amount
-        # The memory usage of the dedicated cluster. Unit: %.
         self.mem_utility = mem_utility
-        # Indicates whether the feature that allows you to have the OS permissions on the host is enabled. Valid values:
-        # 
-        # *   **0** or **null**: The permissions cannot be granted.
-        # *   **1**: The permissions can be granted.
-        # *   **3**: The permissions have been granted.
         self.open_permission = open_permission
-        # The name and ID of the dedicated cluster. The value consists of **DedicatedHostGroupDesc** and **DedicatedHostGroupId**. Format: DedicatedHostGroupDesc/DedicatedHostGroupId.
         self.text = text
-        # The ID of the virtual private cloud (VPC) to which the dedicated cluster belongs.
         self.vpcid = vpcid
-        # The zones to which the hosts of the dedicated cluster belong.
         self.zone_idlist = zone_idlist
 
     def validate(self):

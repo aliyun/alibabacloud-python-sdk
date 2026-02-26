@@ -21,7 +21,6 @@ class DescribeCrossRegionBackupsResponseBody(DaraModel):
     ):
         # The end of the time range to query.
         self.end_time = end_time
-        # The cross-region data backup files.
         self.items = items
         # The page number. Pages start from page 1.
         # 
@@ -160,63 +159,24 @@ class DescribeCrossRegionBackupsResponseBodyItemsItem(DaraModel):
         instance_id: int = None,
         restore_regions: main_models.DescribeCrossRegionBackupsResponseBodyItemsItemRestoreRegions = None,
     ):
-        # The time when the cross-region data backup file was generated.
         self.backup_end_time = backup_end_time
-        # The method that is used to generate the cross-region data backup file. Valid values:
-        # 
-        # *   **L**: logical backup
-        # *   **P**: physical backup
         self.backup_method = backup_method
-        # The level at which the cross-region data backup file is generated.
-        # 
-        # *   **0**: instance-level backup
-        # *   **1**: database-level backup
         self.backup_set_scale = backup_set_scale
-        # The status of the cross-region data backup. Valid values:
-        # 
-        # *   **0**: The cross-region data backup is successful.
-        # *   **1**: The cross-region data backup failed.
         self.backup_set_status = backup_set_status
-        # The time when the cross-region data backup started.
         self.backup_start_time = backup_start_time
-        # The type of the cross-region data backup. Valid values:
-        # 
-        # *   **F**: full data backup
-        # *   **I**: incremental data backup
         self.backup_type = backup_type
-        # The RDS edition of the instance. Valid values:
-        # 
-        # *   **Basic**: RDS Basic Edition.
-        # *   **HighAvailability**: RDS High-availability Edition.
-        # *   **Finance**: RDS Enterprise Edition. This edition is available only for the China site (aliyun.com).
         self.category = category
-        # The point in time that is indicated by the data in the cross-region data backup file.
         self.consistent_time = consistent_time
-        # The external URL from which you can download the cross-region data backup file.
         self.cross_backup_download_link = cross_backup_download_link
-        # The ID of the cross-region data backup file.
         self.cross_backup_id = cross_backup_id
-        # The ID of the region in which the cross-region backup files of the instance are stored.
         self.cross_backup_region = cross_backup_region
-        # The name of the compressed package that contains the cross-region data backup file.
         self.cross_backup_set_file = cross_backup_set_file
-        # The location where the cross-region data backup file is stored.
         self.cross_backup_set_location = cross_backup_set_location
-        # The size of the cross-region data backup file. Unit: bytes.
         self.cross_backup_set_size = cross_backup_set_size
-        # The storage type. Valid values:
-        # 
-        # *   **local_ssd**: local SSDs. This is the recommended storage type.
-        # *   **cloud_ssd**: standard SSD.
-        # *   **cloud_essd**: enhanced SSD (ESSD).
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The database engine of the instance.
         self.engine = engine
-        # The database engine version.
         self.engine_version = engine_version
-        # The instance ID. This parameter is used to determine whether the instance that generates the cross-region data backup file is a primary or secondary instance.
         self.instance_id = instance_id
-        # The regions to which the cross-region data backup file can be restored.
         self.restore_regions = restore_regions
 
     def validate(self):

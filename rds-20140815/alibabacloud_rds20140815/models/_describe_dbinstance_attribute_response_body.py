@@ -13,7 +13,6 @@ class DescribeDBInstanceAttributeResponseBody(DaraModel):
         items: main_models.DescribeDBInstanceAttributeResponseBodyItems = None,
         request_id: str = None,
     ):
-        # The details of instances.
         self.items = items
         # The ID of the request.
         self.request_id = request_id
@@ -176,292 +175,96 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttribute(DaraModel)
         zone_id: str = None,
         kind_code: str = None,
     ):
-        # The maximum number of accounts that can be created on the instance.
         self.account_max_quantity = account_max_quantity
-        # The advanced features that are enabled for the instance. If multiple advanced features are enabled, the advanced features are separated by commas (,). This parameter is available only to instances that run **SQL Server**. Valid values:
-        # 
-        # *   **LinkedServer**
-        # *   **DistributeTransaction**
         self.advanced_features = advanced_features
-        # The method that is used to update the minor engine version of the instance. Valid values:
-        # 
-        # *   **Auto**: automatic update.
-        # *   **Manual**: manual update. The minor engine version of the instance is forcefully updated only when the in-use minor engine version is phased out.
         self.auto_upgrade_minor_version = auto_upgrade_minor_version
-        # The availability status of the instance in percentage.
         self.availability_value = availability_value
-        # The configuration of the Babelfish feature for the ApsaraDB RDS for PostgreSQL instance.
-        # 
-        # >  This parameter applies only to ApsaraDB RDS for PostgreSQL instances for which Babelfish is enabled. For more information, see [Introduction to Babelfish](https://help.aliyun.com/document_detail/428613.html).
         self.babelfish_config = babelfish_config
-        # This is a reserved parameter and is not in use.
         self.blue_green_deployment_name = blue_green_deployment_name
-        # This is a reserved parameter and is not in use.
         self.blue_instance_name = blue_instance_name
-        # A deprecated parameter. You do not need to specify this parameter.
         self.bpe_enabled = bpe_enabled
-        # Indicates whether the I/O burst feature is enabled for Premium ESSDs. Valid values:
-        # 
-        # *   true
-        # *   false
-        # 
-        # >  For more information about the I/O burst feature, see [What are Premium ESSDs?](https://help.aliyun.com/document_detail/2340501.html)
         self.bursting_enabled = bursting_enabled
-        # Indicates whether the conditions for a temporary upgrade are met.
-        # 
-        # >  Pay-as-you-go instances do not support temporary upgrades.
         self.can_temp_upgrade = can_temp_upgrade
-        # The RDS edition. Valid values:
-        # 
-        # *   **Basic**: RDS Basic Edition
-        # *   **HighAvailability**: RDS High-availability Edition
-        # *   **cluster**: RDS Cluster Edition for ApsaraDB RDS for MySQL
-        # *   **AlwaysOn**: RDS Cluster Edition for ApsaraDB RDS for SQL Server
-        # *   **Finance**: RDS Enterprise Edition
-        # *   **Serverless_basic**: RDS Basic Edition for serverless instances
         self.category = category
-        # Indicates whether the data archiving feature is enabled for Premium ESSDs. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
-        # 
-        # For more information about the data archiving feature, see [Use the data archiving feature](https://help.aliyun.com/document_detail/2701832.html).
         self.cold_data_enabled = cold_data_enabled
-        # The character set collation of the instance.
         self.collation = collation
-        # The storage compression mode of the instance.
         self.compression_mode = compression_mode
-        # The storage compression ratio.
         self.compression_ratio = compression_ratio
-        # This is a reserved parameter and is not in use.
         self.compute_burst_enabled = compute_burst_enabled
-        # The connection mode of the instance. Valid values:
-        # 
-        # *   **Standard**: standard mode
-        # *   **Safe**: database proxy mode
         self.connection_mode = connection_mode
-        # The internal endpoint.
         self.connection_string = connection_string
-        # The type of the proxy that is used by the instance. Valid values:
-        # 
-        # *   **1**: shared database proxy
-        # *   **2**: dedicated database proxy
-        # 
-        # >  We recommend that you use the **ProxyType** parameter instead of this parameter.
         self.console_version = console_version
-        # The creation time. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The minor engine version.
         self.current_kernel_version = current_kernel_version
-        # The information about the node in the cluster.
         self.dbcluster_nodes = dbcluster_nodes
-        # The number of CPU cores.
         self.dbinstance_cpu = dbinstance_cpu
-        # The instance type of the instance. For more information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         self.dbinstance_class = dbinstance_class
-        # The instance family. Valid values:
-        # 
-        # *   **s**: shared instance family
-        # *   **x**: general-purpose instance family
-        # *   **d**: dedicated instance family
-        # *   **h**: dedicated host instance family
         self.dbinstance_class_type = dbinstance_class_type
-        # The instance description.
         self.dbinstance_description = dbinstance_description
-        # The disk usage of the instance. Unit: byte.
         self.dbinstance_disk_used = dbinstance_disk_used
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The memory capacity of the instance. Unit: MB.
         self.dbinstance_memory = dbinstance_memory
-        # The type of the network over which the instance is connected. Valid values:
-        # 
-        # *   **Internet**
-        # *   **Intranet**
         self.dbinstance_net_type = dbinstance_net_type
-        # The instance status. For more information, see [Instance statuses](https://help.aliyun.com/document_detail/26315.html).
         self.dbinstance_status = dbinstance_status
-        # The storage capacity of the instance. Unit: GB.
         self.dbinstance_storage = dbinstance_storage
-        # The storage type of the instance. Valid values:
-        # 
-        # *   **local_ssd** and **ephemeral_ssd**: Premium Local SSD
-        # *   **cloud_ssd**: standard SSD
-        # *   **cloud_essd**: ESSD
-        # *   **cloud_essd**: Premium ESSD
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The type of the instance. Valid values:
-        # 
-        # *   **Primary**: primary instance
-        # *   **Readonly**: read-only instance
-        # *   **Guard**: disaster recovery instance
-        # *   **Temp**: temporary instance
         self.dbinstance_type = dbinstance_type
-        # The maximum number of databases that can be created on the instance.
         self.dbmax_quantity = dbmax_quantity
-        # The ID of the dedicated cluster to which the instance belongs.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # Indicates whether the release protection feature is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.deletion_protection = deletion_protection
-        # Disaster Recovery Instance Information
         self.disaster_recovery_info = disaster_recovery_info
-        # All disaster recovery instances of the current instance.
         self.disaster_recovery_instances = disaster_recovery_instances
-        # The database engine of the instance. Valid values:
-        # 
-        # *   **MySQL**
-        # *   **PostgreSQL**
-        # *   **SQLServer**
-        # *   **MariaDB**
         self.engine = engine
-        # The database engine version.
         self.engine_version = engine_version
-        # The expiration time of the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-        # 
-        # >  Pay-as-you-go instances never expire.
         self.expire_time = expire_time
-        # The extended information about the instance.
         self.extra = extra
-        # The name of the dedicated cluster to which the instance belongs. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
         self.general_group_name = general_group_name
-        # This is a reserved parameter and is not in use.
         self.green_instance_name = green_instance_name
-        # The ID of the disaster recovery instance that is attached to the primary instance.
         self.guard_dbinstance_id = guard_dbinstance_id
-        # The IP address type. Only **IPv4 addresses** are supported.
         self.iptype = iptype
-        # The ID of the instance from which incremental data comes. The incremental data of a disaster recovery instance comes from its primary instance. The incremental data of a read-only instance comes from its primary instance. If this parameter is not returned, the instance is a primary instance.
         self.increment_source_dbinstance_id = increment_source_dbinstance_id
-        # The network type of the instance. Valid values:
-        # 
-        # *   **Classic**
-        # *   **VPC**
         self.instance_network_type = instance_network_type
-        # The architecture type of the instance. Valid values:
-        # 
-        # *   **x86**
-        # *   **arm**
         self.instruction_set_arch = instruction_set_arch
-        # Indicates whether Buffer Pool Extension (BPE) is enabled for Premium ESSDs.
-        # 
-        # *   **1**: enabled
-        # *   **0**: disabled
-        # 
-        # >  For more information, see [Buffer Pool Extension(BPE)](https://help.aliyun.com/document_detail/2527067.html).
         self.io_acceleration_enabled = io_acceleration_enabled
         self.is_analytic_ins = is_analytic_ins
         self.is_analytic_read_only_ins = is_analytic_read_only_ins
-        # The latest minor engine version that is supported by the instance.
         self.latest_kernel_version = latest_kernel_version
-        # The lock mode of the instance. Valid values:
-        # 
-        # *   **Unlock**: The instance is not locked.
-        # *   **ManualLock**: The instance is manually locked.
-        # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
-        # *   **LockByRestoration**: The instance is automatically locked due to instance restoration.
-        # *   **LockByDiskQuota**: The instance is automatically locked due to exhausted storage space.
-        # *   **LockReadInstanceByDiskQuota**: The instance is a read-only instance and is automatically locked due to exhausted storage.
         self.lock_mode = lock_mode
-        # The reason why the instance was locked.
         self.lock_reason = lock_reason
-        # The maintenance window of the instance. The time is displayed in UTC. The maintenance window displayed in the ApsaraDB RDS console is equal to the value of this parameter plus 8 hours.
         self.maintain_time = maintain_time
-        # The primary instance ID.
-        # 
-        # >  If this parameter is not returned, the instance is the primary instance.
         self.master_instance_id = master_instance_id
-        # The zone ID of the primary instance.
         self.master_zone = master_zone
-        # The maximum number of concurrent connections.
         self.max_connections = max_connections
-        # The maximum I/O throughput. Unit: MB/s.
         self.max_iombps = max_iombps
-        # The maximum number of I/O requests per second.
         self.max_iops = max_iops
-        # Indicates whether auto scaling is being performed on the instance. If the value **true** is returned, auto scaling is being performed on the instance. If no value is returned, auto scaling is not being performed on the instance.
         self.multiple_temp_upgrade = multiple_temp_upgrade
-        # The OptimizedWritesInfo parameter contains the following fields:
-        # *   **optimized_writes**: indicates whether the 16K atomic write feature is enabled for the current instance.
-        # *   **init_optimized_writes**: indicates whether the 16K atomic write feature can be enabled for the current instance. If init_optimized_writes is set to false, the 16K atomic write switch is not displayed for the instance in the console.
         self.optimized_writes_info = optimized_writes_info
-        # Indicates whether PgBouncer is enabled.
-        # 
-        # >  This parameter is returned only for RDS instances that run PostgreSQL. If PgBouncer is enabled, the return value is **true**.
         self.pgbouncer_enabled = pgbouncer_enabled
-        # The billing method of the instance. Valid values:
-        # 
-        # *   **Postpaid**: pay-as-you-go
-        # *   **Prepaid**: subscription
-        # *   **SERVERLESS**
         self.pay_type = pay_type
-        # The port that is used to connect to the instance over an internal network.
         self.port = port
-        # The type of the proxy that is supported by the instance. Valid values:
-        # 
-        # *   **0**: The instance does not support database proxies.
-        # *   **1**: The instance supports shared proxies, with which the instance runs in multi-tenant mode.
-        # *   **2**: The instance supports dedicated proxies, with which the instance runs in single-tenant mode.
         self.proxy_type = proxy_type
-        # The IDs of the read-only instances that are attached to the primary instance.
         self.read_only_dbinstance_ids = read_only_dbinstance_ids
-        # This is a reserved parameter and is not in use.
         self.read_only_status = read_only_status
-        # The latency at which the system replicates data to read-only instances. The system replicates data from the primary instance to the read-only instances at the latency that is specified by the **ReadonlyInstanceSQLDelayedTime** parameter. Unit: seconds.
         self.readonly_instance_sqldelayed_time = readonly_instance_sqldelayed_time
-        # The region ID.
         self.region_id = region_id
-        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The IP addresses in the IP address whitelist.
         self.security_iplist = security_iplist
-        # The whitelist mode. Valid values:
-        # 
-        # *   **normal**: standard whitelist mode
-        # *   **safety**: enhanced whitelist mode
         self.security_ipmode = security_ipmode
-        # The settings of the serverless instance.
         self.serverless_config = serverless_config
-        # The zone IDs of the secondary instances.
         self.slave_zones = slave_zones
-        # Indicates whether the instance supports superuser accounts, such as the system administrator (SA) account, Active Directory (AD) account, and host account. Valid values:
-        # 
-        # *   **Enable**
-        # *   **Disabled**
         self.super_permission_mode = super_permission_mode
-        # Indicates whether storage compression can be enabled for the instance.
         self.support_compression = support_compression
-        # The ID of the temporary instance that is attached to the primary instance.
         self.temp_dbinstance_id = temp_dbinstance_id
-        # The end time of the temporary upgrade of the instance.
-        # 
-        # >  This parameter is unavailable for pay-as-you-go instances.
         self.temp_upgrade_time_end = temp_upgrade_time_end
-        # The start time of the temporary upgrade of the instance.
-        # 
-        # >  This parameter is unavailable for pay-as-you-go instances.
         self.temp_upgrade_time_start = temp_upgrade_time_start
-        # The time zone.
         self.time_zone = time_zone
-        # The information about the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
         self.tips = tips
-        # The severity of the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition. Valid values:
-        # 
-        # *   **1**: The instance is normal.
-        # *   **2**: The specifications of the read-only instances do not match the specifications of the primary instance. You must adjust the specifications of these instances based on your business requirements.
         self.tips_level = tips_level
-        # The vSwitch ID.
         self.v_switch_id = v_switch_id
         self.vector_support_status = vector_support_status
-        # The ID of the VPC. This parameter is returned only when the instance resides in a VPC.
         self.vpc_cloud_instance_id = vpc_cloud_instance_id
-        # The VPC ID.
         self.vpc_id = vpc_id
-        # The zone ID.
         self.zone_id = zone_id
-        # An internal parameter. You do not need to specify this parameter.
         self.kind_code = kind_code
 
     def validate(self):
@@ -1081,7 +884,6 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeSlaveZonesS
         self,
         zone_id: str = None,
     ):
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -1112,23 +914,9 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeServerlessC
         scale_min: float = None,
         switch_force: bool = None,
     ):
-        # Indicates whether the automatic start and stop feature is enabled for the serverless instance. Valid values:
-        # 
-        # *   **true**
-        # *   **false** (default)
-        # 
-        # >  After the automatic start and stop feature is enabled, if no connections to the instance are established within 10 minutes, the instance is suspended. After a connection to the instance is established, the instance is automatically resumed.
         self.auto_pause = auto_pause
-        # The maximum number of RCUs.
         self.scale_max = scale_max
-        # The minimum number of RDS Capacity Units (RCUs).
         self.scale_min = scale_min
-        # Indicates whether the forced scaling feature is enabled for the serverless instance. Valid values:
-        # 
-        # *   **true**
-        # *   **false** (default)
-        # 
-        # >  In most cases, ApsaraDB RDS automatically scales in or out the RCUs of a serverless instance based on business requirements in real time. In rare cases, the scaling does not take effect in real time. You can enable the forced scaling feature to forcefully scales in or out the RCUs of the instance.
         self.switch_force = switch_force
 
     def validate(self):
@@ -1209,7 +997,6 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeReadOnlyDBI
         self,
         dbinstance_id: str = None,
     ):
-        # The read-only instance ID.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):
@@ -1239,14 +1026,8 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtra(DaraM
         dbinstance_ids: main_models.DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeExtraDBInstanceIds = None,
         recovery_model: str = None,
     ):
-        # The group policy of the instance account.
-        # 
-        # *   MaximumPasswordAge: maximum use time
-        # *   MinimumPasswordAge: minimum use time
         self.account_security_policy = account_security_policy
-        # The instance IDs.
         self.dbinstance_ids = dbinstance_ids
-        # The recovery model. Valid values: Simple and Full.
         self.recovery_model = recovery_model
 
     def validate(self):
@@ -1359,36 +1140,15 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeDBClusterNo
         node_zone_id: str = None,
         status: str = None,
     ):
-        # The node specification.
         self.class_code = class_code
-        # The node type. Default value: true. Valid values:
-        # 
-        # *   d: dedicated node type
-        # *   x: general-purpose node type
         self.class_type = class_type
-        # The number of CPU cores of the node.
         self.cpu = cpu
         self.disaster_recovery_node = disaster_recovery_node
-        # The memory capacity of the node. Unit: MB.
         self.memory = memory
-        # The node ID.
         self.node_id = node_id
-        # The region ID.
         self.node_region_id = node_region_id
-        # The role of the node. Valid values:
-        # 
-        # *   **primary**
-        # *   **secondary**
         self.node_role = node_role
-        # The zone ID.
         self.node_zone_id = node_zone_id
-        # The node status. Valid values:
-        # 
-        # *   active
-        # *   creating
-        # *   deleting
-        # *   classchanging
-        # *   restarting
         self.status = status
 
     def validate(self):
@@ -1471,16 +1231,7 @@ class DescribeDBInstanceAttributeResponseBodyItemsDBInstanceAttributeBabelfishCo
         babelfish_enabled: str = None,
         migration_mode: str = None,
     ):
-        # Indicates whether Babelfish is enabled.
-        # 
-        # >  If Babelfish is enabled when you purchase an ApsaraDB RDS for PostgreSQL instance, this parameter is fixed as **true**.
         self.babelfish_enabled = babelfish_enabled
-        # The migration mode for Babelfish. Valid values:
-        # 
-        # *   **single-db**
-        # *   **multi-db**
-        # 
-        # >  For more information about migration modes for Babelfish, see [Migration modes](https://help.aliyun.com/document_detail/428613.html).
         self.migration_mode = migration_mode
 
     def validate(self):

@@ -17,7 +17,6 @@ class DescribeDBInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The information about the instances.
         self.items = items
         # The token that is used to display the next page. If the returned entries are displayed on multiple pages, the next page can be displayed when you call this operation again with **NextToken** specified.
         self.next_token = next_token
@@ -187,170 +186,61 @@ class DescribeDBInstancesResponseBodyItemsDBInstance(DaraModel):
         self.auto_renewal = auto_renewal
         self.blue_green_deployment_name = blue_green_deployment_name
         self.blue_instance_name = blue_instance_name
-        # A deprecated parameter.
         self.bpe_enabled = bpe_enabled
-        # Indicates whether the I/O burst feature is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.bursting_enabled = bursting_enabled
-        # The RDS edition of the instance. Valid values:
-        # 
-        # *   **Basic**: RDS Basic Edition
-        # *   **HighAvailability**: RDS High-availability Edition
-        # *   **Finance**: RDS Enterprise Edition
-        # 
-        # >  This parameter is returned only when the **InstanceLevel** parameter is set to **1**.
         self.category = category
-        # A reserved parameter.
         self.cold_data_enabled = cold_data_enabled
-        # The connection mode of the instance. Valid values:
-        # 
-        # *   **Standard**: standard mode
-        # *   **Safe**: database proxy mode
         self.connection_mode = connection_mode
-        # The endpoint of the instance.
         self.connection_string = connection_string
-        # The creation time of the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
-        # The number of CPU instances.
-        # 
-        # Returns only when the InstanceLevel parameter is 1.
         self.dbinstance_cpu = dbinstance_cpu
-        # The instance type of the instance. For information, see [Primary ApsaraDB RDS instance types](https://help.aliyun.com/document_detail/26312.html).
         self.dbinstance_class = dbinstance_class
-        # The instance description.
         self.dbinstance_description = dbinstance_description
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The memory size of the node. Unit: MB.
-        # 
-        # Returns only when the InstanceLevel parameter is 1.
         self.dbinstance_memory = dbinstance_memory
-        # The type of the network connection to the instance. Valid values:
-        # 
-        # *   **Internet**
-        # *   **Intranet**
         self.dbinstance_net_type = dbinstance_net_type
-        # The instance status. For more information, see [Instance statuses](https://help.aliyun.com/document_detail/26315.html).
         self.dbinstance_status = dbinstance_status
-        # The storage type of the instance.
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The type of the instance. Valid values:
-        # 
-        # *   **Primary**: primary instance
-        # *   **Readonly**: read-only instance
-        # *   **Guard**: disaster recovery instance
-        # *   **Temp**: temporary instance
         self.dbinstance_type = dbinstance_type
-        # The ID of the dedicated cluster.
         self.dedicated_host_group_id = dedicated_host_group_id
-        # The name of the dedicated cluster.
         self.dedicated_host_group_name = dedicated_host_group_name
-        # The ID of the host on which the logger instance resides.
         self.dedicated_host_id_for_log = dedicated_host_id_for_log
-        # The ID of the host on which the primary instance resides.
         self.dedicated_host_id_for_master = dedicated_host_id_for_master
-        # The ID of the host on which the secondary instance resides.
         self.dedicated_host_id_for_slave = dedicated_host_id_for_slave
-        # The name of the host on which the logger instance resides.
         self.dedicated_host_name_for_log = dedicated_host_name_for_log
-        # The name of the host on which the primary instance resides.
         self.dedicated_host_name_for_master = dedicated_host_name_for_master
-        # The name of the host on which the secondary instance resides.
         self.dedicated_host_name_for_slave = dedicated_host_name_for_slave
-        # The zone ID of the host on which the logger instance resides.
         self.dedicated_host_zone_id_for_log = dedicated_host_zone_id_for_log
-        # The zone ID of the host on which the primary instance resides.
         self.dedicated_host_zone_id_for_master = dedicated_host_zone_id_for_master
-        # The zone ID of the host on which the secondary instance resides.
         self.dedicated_host_zone_id_for_slave = dedicated_host_zone_id_for_slave
-        # Indicates whether the release protection feature is enabled for the instance. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.deletion_protection = deletion_protection
-        # The time when the instance was destroyed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.destroy_time = destroy_time
-        # The database engine of the instance.
         self.engine = engine
-        # The database engine version.
         self.engine_version = engine_version
-        # The expiration time of the instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
-        # 
-        # >  Pay-as-you-go instances never expire.
         self.expire_time = expire_time
-        # The name of the dedicated cluster to which the instance belongs. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
         self.general_group_name = general_group_name
         self.green_instance_name = green_instance_name
-        # The ID of the disaster recovery instance. This parameter is returned only when the instance is a primary instance and has a disaster recovery instance attached.
         self.guard_dbinstance_id = guard_dbinstance_id
-        # The network type of the instance. Valid values:
-        # 
-        # *   **Classic**
-        # *   **VPC**
         self.instance_network_type = instance_network_type
-        # Indicates whether the I/O acceleration feature is enabled. Valid values:
-        # 
-        # *   1: enabled
-        # *   0: disabled
         self.io_acceleration_enabled = io_acceleration_enabled
         self.is_analytic_ins = is_analytic_ins
         self.is_analytic_read_only_ins = is_analytic_read_only_ins
-        # The lock mode of the instance. Valid values:
-        # 
-        # *   **Unlock**: The instance is not locked.
-        # *   **ManualLock**: The instance is manually locked.
-        # *   **LockByExpiration**: The instance is automatically locked due to instance expiration.
-        # *   **LockByRestoration**: The instance is automatically locked before the instance is rolled back.
-        # *   **LockByDiskQuota**: The instance is automatically locked due to exhausted storage capacity.
-        # *   **Released**: The instance is released. After an instance is released, the instance cannot be unlocked. You can only restore the backup data of the instance to a new instance. This process requires a long period of time.
         self.lock_mode = lock_mode
-        # The reason why the instance was locked.
         self.lock_reason = lock_reason
-        # The ID of the primary instance. If this parameter is null, the instance is a primary instance.
         self.master_instance_id = master_instance_id
-        # Indicates whether the multi-zone deployment method is used for the instance. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
-        # 
-        # >  If the multi-zone deployment method is used for the instance, the zone ID of the instance contains MAZ. Example: `cn-hangzhou-MAZ10(h,i)`.
         self.mutri_orsignle = mutri_orsignle
-        # The billing method of the instance. Valid values:
-        # 
-        # *   **Postpaid**: pay-as-you-go
-        # *   **Prepaid**: subscription
         self.pay_type = pay_type
-        # The IDs of the read-only instances. This parameter is returned only when the instance is a primary instance and has the read-only instances attached.
         self.read_only_dbinstance_ids = read_only_dbinstance_ids
-        # The region ID.
         self.region_id = region_id
-        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Indicates whether the instance supports weight-based switchovers for high availability. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition. Valid values:
-        # 
-        # *   **100**: The instance supports weight-based switchovers for high availability.
-        # *   **0**: The instance does not support weight-based switchovers for high availability.
         self.switch_weight = switch_weight
-        # The ID of the temporary instance. This parameter is returned only when the instance is a primary instance and has a temporary instance attached.
         self.temp_dbinstance_id = temp_dbinstance_id
-        # The information about the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition.
         self.tips = tips
-        # The severity of the exception that is detected on the instance. This parameter is returned only when the instance is created in an ApsaraDB MyBase cluster that runs MySQL on Standard Edition. Valid values:
-        # 
-        # *   **1**: The instance is normal.
-        # *   **2**: The specifications of the read-only instances do not match the specifications of the primary instance, and instance performance may be affected. You must adjust the specifications of these instances based on your business requirements.
         self.tips_level = tips_level
-        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The ID of the instance. This parameter is returned only when the instance resides in a VPC.
         self.vpc_cloud_instance_id = vpc_cloud_instance_id
-        # The virtual private cloud (VPC) ID.
         self.vpc_id = vpc_id
-        # The VPC name.
         self.vpc_name = vpc_name
-        # The zone ID.
         self.zone_id = zone_id
 
     def validate(self):
@@ -763,7 +653,6 @@ class DescribeDBInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceIdsReadOnl
         self,
         dbinstance_id: str = None,
     ):
-        # The read-only instance ID.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):

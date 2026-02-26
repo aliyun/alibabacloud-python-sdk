@@ -16,7 +16,6 @@ class DescribeDetachedBackupsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
-        # The queried backup sets.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -129,67 +128,22 @@ class DescribeDetachedBackupsResponseBodyItemsBackup(DaraModel):
         meta_status: str = None,
         store_status: str = None,
     ):
-        # The URL that is used to download the diagnostic report over the Internet. If the diagnostic report cannot be downloaded, an empty string is returned.
         self.backup_download_url = backup_download_url
-        # The end time of the backup task.
-        # 
-        # The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
         self.backup_end_time = backup_end_time
-        # The ID of the backup set.
         self.backup_id = backup_id
-        # The URL that is used to download the log file over an internal network. If the log file cannot be downloaded, an empty string is returned.
         self.backup_intranet_download_url = backup_intranet_download_url
-        # The method that is used to generate the data backup file. Valid values:
-        # 
-        # *   **Logical**: logical backup
-        # *   **Physical**: physical backup
         self.backup_method = backup_method
-        # The backup method. Valid values:
-        # 
-        # *   **Automated**
-        # *   **Manual**
         self.backup_mode = backup_mode
-        # The backup size. Unit: bytes.
         self.backup_size = backup_size
-        # The start time of the backup task.
-        # 
-        # The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
         self.backup_start_time = backup_start_time
-        # The status of the backup set. Valid values:
-        # 
-        # *   **Success**
-        # *   **Failed**
         self.backup_status = backup_status
-        # The backup type of the backup file. Valid values:
-        # 
-        # *   **FullBackup**
-        # *   **IncrementalBackup**
         self.backup_type = backup_type
-        # The point in time at which the data in the backup set is consistent. The return value of this parameter is a timestamp.
-        # 
-        # >  If the instance runs MySQL 5.6, a timestamp is returned. Otherwise, the value 0 is returned.
         self.consistent_time = consistent_time
-        # The description of the instance.
         self.dbinstance_comment = dbinstance_comment
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The ID of the instance that generates the backup set. This parameter is used to indicate whether the instance that generates the backup set is a primary instance or a secondary instance.
         self.host_instance_id = host_instance_id
-        # Indicates whether the backup set is available. Valid values:
-        # 
-        # *   **0**: The backup set is unavailable.
-        # *   **1**: The backup set is available.
         self.is_avail = is_avail
-        # The status of the backup set that is used to restore individual databases or tables. Valid values:
-        # 
-        # *   **OK**: The backup set is normal.
-        # *   **LARGE**: The backup set contains an abnormally large number of tables. It cannot be used to restore individual databases or tables.
-        # *   **EMPTY**: The backup set is generated from a failed backup task.
         self.meta_status = meta_status
-        # Indicates whether the data backup file can be deleted. Valid values:
-        # 
-        # *   **Enabled**
-        # *   **Disabled**
         self.store_status = store_status
 
     def validate(self):

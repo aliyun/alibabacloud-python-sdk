@@ -14,7 +14,6 @@ class DescribeParameterGroupsResponseBody(DaraModel):
         request_id: str = None,
         signal_for_optimize_params: bool = None,
     ):
-        # The details of the parameter templates.
         self.parameter_groups = parameter_groups
         # The request ID.
         self.request_id = request_id
@@ -107,36 +106,15 @@ class DescribeParameterGroupsResponseBodyParameterGroupsParameterGroup(DaraModel
         parameter_group_type: int = None,
         update_time: str = None,
     ):
-        # The time when the parameter template was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.create_time = create_time
-        # The database engine of the instance.
         self.engine = engine
-        # The database engine version.
         self.engine_version = engine_version
-        # Indicates whether the restart of an instance is required for the parameter template to take effect. Valid values:
-        # 
-        # *   0: A restart is not required.
-        # *   1: A restart is required.
         self.force_restart = force_restart
-        # The number of parameters in the parameter template.
         self.param_counts = param_counts
-        # The type of the parameter template. Valid values:
-        # 
-        # *   0: the default parameter template.
-        # *   1: a custom parameter template.
-        # *   2: an automatic backup parameter template. After you apply this type of template, the system automatically backs up the original parameter settings and saves the backup as a template.
         self.parameter_group_desc = parameter_group_desc
-        # The ID of the parameter template.
         self.parameter_group_id = parameter_group_id
-        # The name of the parameter template.
         self.parameter_group_name = parameter_group_name
-        # The type of the parameter template. Valid values:
-        # 
-        # *   0: the default parameter template.
-        # *   1: a custom parameter template.
-        # *   2: an automatic backup parameter template. After you apply this type of template, the system automatically backs up the original parameter settings and saves the backup as a template.
         self.parameter_group_type = parameter_group_type
-        # The time when the parameter template was last updated. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.update_time = update_time
 
     def validate(self):

@@ -17,7 +17,6 @@ class DescribeBackupsResponseBody(DaraModel):
         total_ecs_snapshot_size: int = None,
         total_record_count: str = None,
     ):
-        # The returned backup sets.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
@@ -146,98 +145,30 @@ class DescribeBackupsResponseBodyItemsBackup(DaraModel):
         storage_class: str = None,
         store_status: str = None,
     ):
-        # An array consisting of URLs from which you can download backup sets of individual databases.
         self.backup_download_link_by_db = backup_download_link_by_db
-        # The URL that is used to download the backup set over the Internet. If the backup set cannot be downloaded, null is returned.
-        # 
-        # >  For example, if BackupMethod of an ApsaraDB RDS for SQL Server instance is set to **Snapshot**, a null string is returned.
         self.backup_download_url = backup_download_url
-        # The end time of the backup task. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
         self.backup_end_time = backup_end_time
-        # The ID of the backup set.
         self.backup_id = backup_id
-        # The initiator of the backup task. Valid values:
-        # 
-        # *   **System**
-        # *   **User**
         self.backup_initiator = backup_initiator
-        # The URL that is used to download the backup set over an internal network. If the backup set cannot be downloaded, null is returned.
-        # 
-        # >  For example, if BackupMethod of an ApsaraDB RDS for SQL Server instance is set to **Snapshot**, a null string is returned.
         self.backup_intranet_download_url = backup_intranet_download_url
-        # The method that is used to generate the backup set. Valid values:
-        # 
-        # *   **Logical**: logical backup
-        # *   **Physical**: physical backup
-        # *   **Snapshot**: snapshot backup
         self.backup_method = backup_method
-        # The backup mode of the backup set. Valid values:
-        # 
-        # *   **Automated**
-        # *   **Manual**
         self.backup_mode = backup_mode
-        # The size of the data backup file. Unit: bytes.
         self.backup_size = backup_size
-        # The start time of the backup. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
         self.backup_start_time = backup_start_time
-        # The state of the backup set.
         self.backup_status = backup_status
-        # The backup type of the backup set. Valid values:
-        # 
-        # *   **FullBackup**
-        # *   **IncrementalBackup**
         self.backup_type = backup_type
-        # The checksum. The value of this parameter is calculated by using the CRC64 algorithm.
         self.checksum = checksum
-        # The point in time at which the data in the backup set is consistent. The return value of this parameter is a timestamp.
-        # 
-        # >  If the instance runs MySQL 5.6, a timestamp is returned. Otherwise, the value 0 is returned.
         self.consistent_time = consistent_time
-        # The backup mode of the backup set. Valid values:
-        # 
-        # *   0: the standard mode. This mode supports full backups and incremental backups.
-        # *   1: the copy-only mode. This mode supports only full backups.
-        # 
-        # >  This parameter is returned only when the instance runs SQL Server.
         self.copy_only_backup = copy_only_backup
-        # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The encryption information about the backup set.
         self.encryption = encryption
-        # The type of the database engine. Valid values:
-        # 
-        # *   MySQL
-        # *   SQLServer
-        # *   PostgreSQL
-        # *   MariaDB
         self.engine = engine
-        # The version of the database engine.
         self.engine_version = engine_version
         self.expect_expire_time = expect_expire_time
-        # The ID of the instance that generates the backup set. This parameter is used to indicate whether the instance that generates the backup set is a primary instance or a secondary instance.
         self.host_instance_id = host_instance_id
-        # Indicates whether the backup set is available. Valid values:
-        # 
-        # *   **0**: The backup set is unavailable.
-        # *   **1**: The backup set is available.
         self.is_avail = is_avail
-        # The status of the backup set that is used to restore individual databases or tables. Valid values:
-        # 
-        # *   **OK**: The data backup file is normal.
-        # *   **LARGE**: The data backup file contains an abnormally large number of tables. It cannot be used to restore individual databases or tables.
-        # *   **EMPTY**: The data backup file is generated from a failed backup task.
-        # 
-        # >  If an empty string is returned, the data backup file cannot be used to restore individual databases or tables.
         self.meta_status = meta_status
-        # The storage class of the backup set. Valid values:
-        # 
-        # *   **0**: regular storage
-        # *   **1**: archive storage
         self.storage_class = storage_class
-        # Indicates whether the backup set can be deleted. Valid values:
-        # 
-        # *   **Enabled**: The backup set can be deleted.
-        # *   **Disabled**: The backup set cannot be deleted.
         self.store_status = store_status
 
     def validate(self):
@@ -448,11 +379,8 @@ class DescribeBackupsResponseBodyItemsBackupBackupDownloadLinkByDBBackupDownload
         download_link: str = None,
         intranet_download_link: str = None,
     ):
-        # The name of the database.
         self.data_base = data_base
-        # The public URL from which you can download the backup set.
         self.download_link = download_link
-        # The internal URL from which you can download the backup set.
         self.intranet_download_link = intranet_download_link
 
     def validate(self):

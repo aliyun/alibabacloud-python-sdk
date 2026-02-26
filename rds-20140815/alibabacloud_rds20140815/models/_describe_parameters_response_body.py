@@ -17,9 +17,6 @@ class DescribeParametersResponseBody(DaraModel):
         request_id: str = None,
         running_parameters: main_models.DescribeParametersResponseBodyRunningParameters = None,
     ):
-        # The list of parameters that are being synchronized.
-        # 
-        # > After you modify and submit the parameters, you must wait for the parameters to be synchronized to the instance. After the synchronization, you can delete the parameters from the list.
         self.config_parameters = config_parameters
         # The type of the database engine.
         self.engine = engine
@@ -29,7 +26,6 @@ class DescribeParametersResponseBody(DaraModel):
         self.param_group_info = param_group_info
         # The ID of the request.
         self.request_id = request_id
-        # The parameters that are in use.
         self.running_parameters = running_parameters
 
     def validate(self):
@@ -134,15 +130,10 @@ class DescribeParametersResponseBodyRunningParametersDBInstanceParameter(DaraMod
         parameter_value: str = None,
         parameter_value_range: str = None,
     ):
-        # The default value of the parameter.
         self.parameter_default_value = parameter_default_value
-        # The description of the parameter.
         self.parameter_description = parameter_description
-        # The name of the parameter.
         self.parameter_name = parameter_name
-        # The value of the parameter.
         self.parameter_value = parameter_value
-        # The valid values of the parameter.
         self.parameter_value_range = parameter_value_range
 
     def validate(self):
@@ -286,11 +277,8 @@ class DescribeParametersResponseBodyConfigParametersDBInstanceParameter(DaraMode
         parameter_name: str = None,
         parameter_value: str = None,
     ):
-        # The description of the parameter.
         self.parameter_description = parameter_description
-        # The name of the parameter.
         self.parameter_name = parameter_name
-        # The value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):

@@ -74,7 +74,6 @@ class DescribeRCInstanceAttributeResponseBody(DaraModel):
         self.creation_time = creation_time
         # The performance mode of the burstable instance.
         self.credit_specification = credit_specification
-        # The details of the data disk.
         self.data_disks = data_disks
         self.db_type = db_type
         # The attributes of the dedicated hosts.
@@ -108,7 +107,6 @@ class DescribeRCInstanceAttributeResponseBody(DaraModel):
         self.host_type = host_type
         # The image ID of the instance.
         self.image_id = image_id
-        # The private IP addresses of the instance in the classic network.
         self.inner_ip_address = inner_ip_address
         self.instance_charge_type = instance_charge_type
         # The instance ID.
@@ -143,16 +141,13 @@ class DescribeRCInstanceAttributeResponseBody(DaraModel):
         # The memory capacity of the instance. Unit: MiB.
         self.memory = memory
         self.node_type = node_type
-        # The reasons why the instance is locked.
         self.operation_locks = operation_locks
-        # The public IP address of the instance.
         self.public_ip_address = public_ip_address
         # The region ID.
         self.region_id = region_id
         # The request ID.
         self.request_id = request_id
         self.resource_group_id = resource_group_id
-        # The security groups.
         self.security_group_ids = security_group_ids
         # The serial number of the instance.
         self.serial_number = serial_number
@@ -542,7 +537,6 @@ class DescribeRCInstanceAttributeResponseBodyVpcAttributes(DaraModel):
     ):
         # The network address translation (NAT) IP address of the instance. The NAT IP address is used by instances in different VPCs for communication.
         self.nat_ip_address = nat_ip_address
-        # The private IP addresses of the instance.
         self.private_ip_address = private_ip_address
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -855,13 +849,6 @@ class DescribeRCInstanceAttributeResponseBodyOperationLocksLockReason(DaraModel)
         self,
         lock_reason: str = None,
     ):
-        # The reason why the instance is locked. Valid values:
-        # 
-        # *   **financial**: The instance is locked due to overdue payments.
-        # *   **security**: The instance is locked for security purposes.
-        # *   **recycling**: The instance is locked because the instance is a preemptible instance and pending to be released.
-        # *   **dedicatedhostfinancial**: The instance is locked due to overdue payments for the dedicated host.
-        # *   **refunded**: The instance is locked because a refund was made for the instance.
         self.lock_reason = lock_reason
 
     def validate(self):
@@ -1054,22 +1041,11 @@ class DescribeRCInstanceAttributeResponseBodyDataDisksDataDisk(DaraModel):
         size: int = None,
         snapshot_id: str = None,
     ):
-        # The category of the data disk.
         self.category = category
-        # Indicates whether the data disk is released when the instance is released. Valid values:
-        # 
-        # *   **true**: The data disk is released when the instance is released.
-        # *   **false**: The data disk is reserved when the instance is released.
         self.delete_with_instance = delete_with_instance
         self.device = device
-        # Indicates whether the data disk is encrypted. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.encrypted = encrypted
-        # The performance level of data disk. This parameter is available when the data disk is an Enterprise SSD (ESSD).
         self.performance_level = performance_level
-        # The size of the data disk. Unit: GiB.
         self.size = size
         self.snapshot_id = snapshot_id
 

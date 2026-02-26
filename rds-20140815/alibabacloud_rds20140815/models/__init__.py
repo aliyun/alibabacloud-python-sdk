@@ -104,6 +104,9 @@ from ._create_dbinstance_endpoint_address_response import CreateDBInstanceEndpoi
 from ._create_dbinstance_for_rebuild_request import CreateDBInstanceForRebuildRequest
 from ._create_dbinstance_for_rebuild_response_body import CreateDBInstanceForRebuildResponseBody
 from ._create_dbinstance_for_rebuild_response import CreateDBInstanceForRebuildResponse
+from ._create_dbinstance_replication_request import CreateDBInstanceReplicationRequest
+from ._create_dbinstance_replication_response_body import CreateDBInstanceReplicationResponseBody
+from ._create_dbinstance_replication_response import CreateDBInstanceReplicationResponse
 from ._create_dbinstance_security_group_rule_request import CreateDBInstanceSecurityGroupRuleRequest
 from ._create_dbinstance_security_group_rule_response_body import CreateDBInstanceSecurityGroupRuleResponseBody
 from ._create_dbinstance_security_group_rule_response import CreateDBInstanceSecurityGroupRuleResponse
@@ -204,6 +207,9 @@ from ._delete_dbinstance_endpoint_response import DeleteDBInstanceEndpointRespon
 from ._delete_dbinstance_endpoint_address_request import DeleteDBInstanceEndpointAddressRequest
 from ._delete_dbinstance_endpoint_address_response_body import DeleteDBInstanceEndpointAddressResponseBody
 from ._delete_dbinstance_endpoint_address_response import DeleteDBInstanceEndpointAddressResponse
+from ._delete_dbinstance_replication_request import DeleteDBInstanceReplicationRequest
+from ._delete_dbinstance_replication_response_body import DeleteDBInstanceReplicationResponseBody
+from ._delete_dbinstance_replication_response import DeleteDBInstanceReplicationResponse
 from ._delete_dbinstance_security_group_rule_request import DeleteDBInstanceSecurityGroupRuleRequest
 from ._delete_dbinstance_security_group_rule_response_body import DeleteDBInstanceSecurityGroupRuleResponseBody
 from ._delete_dbinstance_security_group_rule_response import DeleteDBInstanceSecurityGroupRuleResponse
@@ -1207,6 +1213,9 @@ from ._unlock_account_response import UnlockAccountResponse
 from ._untag_resources_request import UntagResourcesRequest
 from ._untag_resources_response_body import UntagResourcesResponseBody
 from ._untag_resources_response import UntagResourcesResponse
+from ._update_dbinstance_replication_request import UpdateDBInstanceReplicationRequest
+from ._update_dbinstance_replication_response_body import UpdateDBInstanceReplicationResponseBody
+from ._update_dbinstance_replication_response import UpdateDBInstanceReplicationResponse
 from ._update_postgres_extensions_request import UpdatePostgresExtensionsRequest
 from ._update_postgres_extensions_response_body import UpdatePostgresExtensionsResponseBody
 from ._update_postgres_extensions_response import UpdatePostgresExtensionsResponse
@@ -1351,6 +1360,7 @@ from ._describe_dbinstance_performance_response_body import DescribeDBInstancePe
 from ._describe_dbinstance_performance_response_body import DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValues
 from ._describe_dbinstance_performance_response_body import DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey
 from ._describe_dbinstance_performance_response_body import DescribeDBInstancePerformanceResponseBodyPerformanceKeys
+from ._describe_dbinstance_replication_response_body import DescribeDBInstanceReplicationResponseBodySlaveStatusList
 from ._describe_dbinstance_tderesponse_body import DescribeDBInstanceTDEResponseBodyDatabasesDatabase
 from ._describe_dbinstance_tderesponse_body import DescribeDBInstanceTDEResponseBodyDatabases
 from ._describe_dbinstances_response_body import DescribeDBInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceIdsReadOnlyDBInstanceId
@@ -1744,6 +1754,9 @@ __all__ = [
     CreateDBInstanceForRebuildRequest,
     CreateDBInstanceForRebuildResponseBody,
     CreateDBInstanceForRebuildResponse,
+    CreateDBInstanceReplicationRequest,
+    CreateDBInstanceReplicationResponseBody,
+    CreateDBInstanceReplicationResponse,
     CreateDBInstanceSecurityGroupRuleRequest,
     CreateDBInstanceSecurityGroupRuleResponseBody,
     CreateDBInstanceSecurityGroupRuleResponse,
@@ -1844,6 +1857,9 @@ __all__ = [
     DeleteDBInstanceEndpointAddressRequest,
     DeleteDBInstanceEndpointAddressResponseBody,
     DeleteDBInstanceEndpointAddressResponse,
+    DeleteDBInstanceReplicationRequest,
+    DeleteDBInstanceReplicationResponseBody,
+    DeleteDBInstanceReplicationResponse,
     DeleteDBInstanceSecurityGroupRuleRequest,
     DeleteDBInstanceSecurityGroupRuleResponseBody,
     DeleteDBInstanceSecurityGroupRuleResponse,
@@ -2847,6 +2863,9 @@ __all__ = [
     UntagResourcesRequest,
     UntagResourcesResponseBody,
     UntagResourcesResponse,
+    UpdateDBInstanceReplicationRequest,
+    UpdateDBInstanceReplicationResponseBody,
+    UpdateDBInstanceReplicationResponse,
     UpdatePostgresExtensionsRequest,
     UpdatePostgresExtensionsResponseBody,
     UpdatePostgresExtensionsResponse,
@@ -2991,6 +3010,7 @@ __all__ = [
     DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValues,
     DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey,
     DescribeDBInstancePerformanceResponseBodyPerformanceKeys,
+    DescribeDBInstanceReplicationResponseBodySlaveStatusList,
     DescribeDBInstanceTDEResponseBodyDatabasesDatabase,
     DescribeDBInstanceTDEResponseBodyDatabases,
     DescribeDBInstancesResponseBodyItemsDBInstanceReadOnlyDBInstanceIdsReadOnlyDBInstanceId,

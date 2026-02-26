@@ -16,7 +16,6 @@ class DescribeDBInstancesForCloneResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # An array that consists of the details about the instances.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
@@ -143,109 +142,36 @@ class DescribeDBInstancesForCloneResponseBodyItemsDBInstance(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The RDS edition of the instance. Valid values:
-        # 
-        # *   **Basic**: RDS Basic Edition
-        # *   **HighAvailability**: RDS High-availability Edition
-        # *   **Finance**: RDS Enterprise Edition
         self.category = category
-        # The connection mode of the instance. Valid values:
-        # 
-        # *   **Standard**: standard mode
-        # *   **Safe**: database proxy mode
         self.connection_mode = connection_mode
-        # The time when the instance was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
-        # The instance type of the instance. For more information, see [Instance types](https://help.aliyun.com/document_detail/26312.html).
         self.dbinstance_class = dbinstance_class
-        # The name of the instance. It must be 2 to 256 characters in length. The value can contain letters, digits, underscores (_), and hyphens (-). The value must start with a letter.
-        # 
-        # > The value cannot start with http:// or https://.
         self.dbinstance_description = dbinstance_description
-        # The ID of the instance.
         self.dbinstance_id = dbinstance_id
-        # The network connection type of the instance. Valid values:
-        # 
-        # *   **Internet**
-        # *   **Intranet**
         self.dbinstance_net_type = dbinstance_net_type
-        # The status of the instance. For more information, see [Instance state table](https://help.aliyun.com/document_detail/26315.html).
         self.dbinstance_status = dbinstance_status
-        # The storage type of the instance. Valid values:
-        # 
-        # *   **local_ssd/ephemeral_ssd**: local SSD
-        # *   **cloud_ssd**: standard SSD.
-        # *   **cloud_essd**: enhanced SSD (ESSD)
         self.dbinstance_storage_type = dbinstance_storage_type
-        # The role of the instance. Valid values:
-        # 
-        # *   **Primary**: primary instance
-        # *   **Readonly**: read-only instance
-        # *   **Guard**: disaster recovery instance
-        # *   **Temp**: temporary instance
         self.dbinstance_type = dbinstance_type
-        # The time when the instance was destroyed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.destroy_time = destroy_time
-        # The database engine of the instance. Valid values:
-        # 
-        # *   MySQL
-        # *   SQLServer
-        # *   PostgreSQL
-        # *   PPAS
-        # *   MariaDB
         self.engine = engine
-        # The version of the database engine.
         self.engine_version = engine_version
-        # The time when the instance expired. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.expire_time = expire_time
-        # The ID of the disaster recovery instance. This parameter is returned only when the instance is a primary instance and has a disaster recovery instance.
         self.guard_dbinstance_id = guard_dbinstance_id
-        # The ID of the instance role.
         self.ins_id = ins_id
-        # The network type of the instance. Valid values:
-        # 
-        # *   **Classic**
-        # *   **VPC**
         self.instance_network_type = instance_network_type
-        # The lock method of the instance. Valid values:
-        # 
-        # *   **Unlock**: The instance is not locked.
-        # *   **ManualLock**: The instance is manually locked.
-        # *   **LockByExpiration**: The instance is automatically locked after it expires.
-        # *   **LockByRestoration**: The instance is automatically locked before a rollback.
-        # *   **LockByDiskQuota**: The instance is automatically locked because its storage capacity is exhausted and the instance is inaccessible.
         self.lock_mode = lock_mode
-        # The reason why the instance was locked.
         self.lock_reason = lock_reason
-        # The ID of the primary instance. If the value of this parameter is null, the instance is a primary instance.
         self.master_instance_id = master_instance_id
-        # Indicates whether multi-region deployment is used. Valid values:
-        # 
-        # *   **true**: Multi-region deployment is used.
-        # *   **false**: Multi-region deployment is not used.
         self.mutri_orsignle = mutri_orsignle
-        # The billing method of the instance. Valid values:
-        # 
-        # *   **Postpaid**: pay-as-you-go
-        # *   **Prepaid**: subscription
         self.pay_type = pay_type
-        # An array consisting of the IDs of the read-only instances that are attached to the primary instance.
         self.read_only_dbinstance_ids = read_only_dbinstance_ids
-        # The region ID of the instance.
         self.region_id = region_id
-        # None.
         self.replicate_id = replicate_id
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The ID of the temporary instance.
         self.temp_dbinstance_id = temp_dbinstance_id
-        # The ID of the vSwitch.
         self.v_switch_id = v_switch_id
-        # The ID of the instance in the VPC.
         self.vpc_cloud_instance_id = vpc_cloud_instance_id
-        # The ID of the virtual private cloud (VPC).
         self.vpc_id = vpc_id
-        # The zone ID of the instance.
         self.zone_id = zone_id
 
     def validate(self):
@@ -490,7 +416,6 @@ class DescribeDBInstancesForCloneResponseBodyItemsDBInstanceReadOnlyDBInstanceId
         self,
         dbinstance_id: str = None,
     ):
-        # The ID of the read-only instance.
         self.dbinstance_id = dbinstance_id
 
     def validate(self):

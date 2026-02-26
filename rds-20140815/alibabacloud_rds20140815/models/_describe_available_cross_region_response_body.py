@@ -13,7 +13,6 @@ class DescribeAvailableCrossRegionResponseBody(DaraModel):
         regions: main_models.DescribeAvailableCrossRegionResponseBodyRegions = None,
         request_id: str = None,
     ):
-        # An array that consists of destination regions for cross-region backups.
         self.regions = regions
         # The ID of the request.
         self.request_id = request_id

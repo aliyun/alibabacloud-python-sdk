@@ -17,7 +17,6 @@ class DescribeModifyPGHbaConfigLogResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # An array that consists of the modifications to the pg_hba.conf file.
         self.hba_log_items = hba_log_items
         # The number of modification records.
         self.log_item_count = log_item_count
@@ -108,19 +107,10 @@ class DescribeModifyPGHbaConfigLogResponseBodyHbaLogItemsHbaLogItem(DaraModel):
         modify_time: str = None,
         status_reason: str = None,
     ):
-        # The configurations of the pg_hba.conf file after modification.
         self.after_hba_items = after_hba_items
-        # The configurations of the pg_hba.conf file before modification.
         self.before_hba_items = before_hba_items
-        # The status of the modification.
-        # 
-        # *   **success**: The modification is successful.
-        # *   **failed**: The modification failed.
-        # *   **setting**: The modification is being applied.
         self.modify_status = modify_status
-        # The time when the pg_hba.conf file was modified. The time is displayed in UTC.
         self.modify_time = modify_time
-        # The reason why the modification failed.
         self.status_reason = status_reason
 
     def validate(self):
@@ -219,21 +209,13 @@ class DescribeModifyPGHbaConfigLogResponseBodyHbaLogItemsHbaLogItemBeforeHbaItem
         type: str = None,
         user: str = None,
     ):
-        # The IP address.
         self.address = address
-        # The name of the database.
         self.database = database
-        # The mask of the IP address.
         self.mask = mask
-        # The authentication method.
         self.method = method
-        # The value of this parameter varies based on the value of the Method parameter.
         self.option = option
-        # The priority.
         self.priority_id = priority_id
-        # The connection type.
         self.type = type
-        # The username of the account.
         self.user = user
 
     def validate(self):
@@ -345,21 +327,13 @@ class DescribeModifyPGHbaConfigLogResponseBodyHbaLogItemsHbaLogItemAfterHbaItems
         type: str = None,
         user: str = None,
     ):
-        # The IP address.
         self.address = address
-        # The name of the database.
         self.database = database
-        # The mask of the IP address.
         self.mask = mask
-        # The authentication method.
         self.method = method
-        # The value of this parameter was set based on the value of the Method parameter.
         self.option = option
-        # The priority.
         self.priority_id = priority_id
-        # The connection type.
         self.type = type
-        # The username of the account.
         self.user = user
 
     def validate(self):

@@ -20,7 +20,6 @@ class DescribeCrossBackupMetaListResponseBody(DaraModel):
     ):
         # The instance to which the cross-region backup file belongs.
         self.dbinstance_name = dbinstance_name
-        # An array that consists of the information about the databases and tables whose data is included in the cross-region backup file.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
@@ -133,11 +132,8 @@ class DescribeCrossBackupMetaListResponseBodyItemsMeta(DaraModel):
         size: str = None,
         tables: str = None,
     ):
-        # The name of the database.
         self.database = database
-        # The size of the table. Unit: KB. If the database contains more than one table, the names of these tables are separated by commas (,).
         self.size = size
-        # An array that consists of the names of the tables that the database contains. If the database contains more than one table, the names of these tables are separated by commas (,).
         self.tables = tables
 
     def validate(self):

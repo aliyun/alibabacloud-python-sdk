@@ -13,7 +13,6 @@ class DescribeCollationTimeZonesResponseBody(DaraModel):
         collation_time_zones: main_models.DescribeCollationTimeZonesResponseBodyCollationTimeZones = None,
         request_id: str = None,
     ):
-        # The list of the character set collations and time zones that are available.
         self.collation_time_zones = collation_time_zones
         # The request ID.
         self.request_id = request_id
@@ -88,11 +87,8 @@ class DescribeCollationTimeZonesResponseBodyCollationTimeZonesCollationTimeZone(
         standard_time_offset: str = None,
         time_zone: str = None,
     ):
-        # The description.
         self.description = description
-        # The offset of the UTC time. The offset is in the following format: (UTC+*HH:mm*).
         self.standard_time_offset = standard_time_offset
-        # The time zone.
         self.time_zone = time_zone
 
     def validate(self):

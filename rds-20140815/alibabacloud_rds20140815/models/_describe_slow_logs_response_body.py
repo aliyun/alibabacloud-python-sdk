@@ -26,7 +26,6 @@ class DescribeSlowLogsResponseBody(DaraModel):
         self.end_time = end_time
         # The database engine of the instance.
         self.engine = engine
-        # An array that consists of the information about each slow query log.
         self.items = items
         # The number of the page returned.
         self.page_number = page_number
@@ -195,147 +194,52 @@ class DescribeSlowLogsResponseBodyItemsSQLSlowLog(DaraModel):
         total_physical_read_counts: int = None,
         total_rows_affected_counts: int = None,
     ):
-        # The average execution duration per SQL statement in the query. Unit: seconds.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.avg_execution_time = avg_execution_time
-        # The average number of I/O writes per SQL statement in the query.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.avg_iowrite_counts = avg_iowrite_counts
-        # The average number of rows that were affected by the last SQL statement in the query.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.avg_last_rows_affected_counts = avg_last_rows_affected_counts
-        # The average number of logical reads per SQL statement in the query.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.avg_logical_read_counts = avg_logical_read_counts
-        # The average number of physical reads per SQL statement in the query.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.avg_physical_read_counts = avg_physical_read_counts
-        # The average number of rows that were affected per SQL statement in the query.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.avg_rows_affected_counts = avg_rows_affected_counts
-        # The date when the data was generated.
         self.create_time = create_time
-        # The name of the database.
         self.dbname = dbname
-        # The longest execution duration of a specific SQL statement in the query. Unit: seconds.
         self.max_execution_time = max_execution_time
-        # The longest execution duration of a specific SQL statement in the query. Unit: milliseconds.
         self.max_execution_time_ms = max_execution_time_ms
-        # The largest number of I/O writes that were performed by a specific SQL statement in the query.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.max_iowrite_counts = max_iowrite_counts
-        # The largest number of rows that were affected by the last SQL statement in the query.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.max_last_rows_affected_counts = max_last_rows_affected_counts
-        # The longest lock duration that was caused by a specific SQL statement in the query. Unit: seconds.
         self.max_lock_time = max_lock_time
-        # The longest lock duration that was caused by a specific SQL statement in the query. Unit: milliseconds.
         self.max_lock_time_ms = max_lock_time_ms
-        # The largest number of logical reads that were performed by a specific SQL statement in the query.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.max_logical_read_counts = max_logical_read_counts
-        # The largest number of physical reads that were performed by a specific SQL statement in the query.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.max_physical_read_counts = max_physical_read_counts
-        # The largest number of rows that were affected by a specific SQL statement in the query.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.max_rows_affected_counts = max_rows_affected_counts
-        # The smallest number of I/O writes that were performed by a specific SQL statement in the query.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.min_iowrite_counts = min_iowrite_counts
-        # The smallest number of rows that were affected by the last SQL statement in the query.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.min_last_rows_affected_counts = min_last_rows_affected_counts
-        # The smallest number of logical reads that were performed by a specific SQL statement in the query.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.min_logical_read_counts = min_logical_read_counts
-        # The smallest number of physical reads that were performed by a specific SQL statement in the query.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.min_physical_read_counts = min_physical_read_counts
-        # The smallest number of rows that were affected by a specific SQL statement in the query.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.min_rows_affected_counts = min_rows_affected_counts
-        # The total number of SQL statements that were executed in the query. This parameter is returned only for instances that run MySQL.
         self.my_sqltotal_execution_counts = my_sqltotal_execution_counts
-        # The total execution duration of all SQL statements in the query. Unit: seconds. This parameter is returned only for instances that run MySQL.
         self.my_sqltotal_execution_times = my_sqltotal_execution_times
-        # The largest number of rows that were parsed by a specific SQL statement in the query.
         self.parse_max_row_count = parse_max_row_count
-        # The total number of rows that were parsed by all SQL statements in the query.
         self.parse_total_row_counts = parse_total_row_counts
-        # The date on which the data report was generated.
         self.report_time = report_time
-        # The largest number of rows that were returned by a specific SQL statement in the query.
         self.return_max_row_count = return_max_row_count
-        # The total number of rows that were returned by all SQL statements in the query.
         self.return_total_row_counts = return_total_row_counts
-        # The unique ID of the SQL statement. The ID is used to obtain the slow query logs of the SQL statement.
         self.sqlhash = sqlhash
-        # The ID of the SQL statement in the statistical template of slow query logs. This parameter is replaced by the **SQLHASH** parameter.
         self.sqlid_str = sqlid_str
-        # The average amount of CPU time per SQL statement in the query. Unit: seconds.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.sqlserver_avg_cpu_time = sqlserver_avg_cpu_time
-        # The average execution duration per SQL statement in the query. Unit: seconds.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.sqlserver_avg_execution_time = sqlserver_avg_execution_time
-        # The largest amount of CPU time that was used by a specific SQL statement in the query. Unit: seconds.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.sqlserver_max_cpu_time = sqlserver_max_cpu_time
-        # The smallest amount of CPU time that was used by a specific SQL statement in the query. Unit: seconds.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.sqlserver_min_cpu_time = sqlserver_min_cpu_time
-        # The smallest execution duration of a specific SQL statement in the query. Unit: seconds.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.sqlserver_min_execution_time = sqlserver_min_execution_time
-        # The total amount of CPU time that was used by all SQL statements in the query. Unit: seconds.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.sqlserver_total_cpu_time = sqlserver_total_cpu_time
-        # The total number of SQL statements that were executed in the query. This parameter is returned only for instances that run SQL Server.
         self.sqlserver_total_execution_counts = sqlserver_total_execution_counts
-        # The total execution duration of all SQL statements in the query. This parameter is returned only for instances that run SQL Server. Unit: milliseconds.
         self.sqlserver_total_execution_times = sqlserver_total_execution_times
-        # The SQL statement that was executed in the query.
         self.sqltext = sqltext
-        # The ID of the slow query log summary.
         self.slow_log_id = slow_log_id
-        # The total number of I/O writes that were performed by all SQL statements in the query.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.total_iowrite_counts = total_iowrite_counts
-        # The total number of rows that were affected by the last SQL statement in the query.
-        # 
-        # >  This parameter is returned only for instances that run SQL Server.
         self.total_last_rows_affected_counts = total_last_rows_affected_counts
-        # The total lock duration that was caused by all SQL statements in the query. Unit: seconds.
         self.total_lock_times = total_lock_times
-        # The total number of logical reads that were performed by all SQL statements in the query.
         self.total_logical_read_counts = total_logical_read_counts
-        # The total number of physical reads that were performed by all SQL statements in the query.
         self.total_physical_read_counts = total_physical_read_counts
-        # The total number of rows that were affected by all SQL statements in the query.
         self.total_rows_affected_counts = total_rows_affected_counts
 
     def validate(self):

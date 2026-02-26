@@ -18,7 +18,6 @@ class DescribeInstanceKeywordsResponseBody(DaraModel):
         self.key = key
         # The ID of the request.
         self.request_id = request_id
-        # The reserved keywords.
         self.words = words
 
     def validate(self):

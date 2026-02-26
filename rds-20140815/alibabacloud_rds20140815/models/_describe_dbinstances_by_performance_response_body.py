@@ -16,7 +16,6 @@ class DescribeDBInstancesByPerformanceResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The details about the instance.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
@@ -118,17 +117,11 @@ class DescribeDBInstancesByPerformanceResponseBodyItemsDBInstancePerformance(Dar
         iopsusage: str = None,
         session_usage: str = None,
     ):
-        # The CPU utilization of the instance in percentage.
         self.cpuusage = cpuusage
-        # The name of the instance.
         self.dbinstance_description = dbinstance_description
-        # The ID of the instance.
         self.dbinstance_id = dbinstance_id
-        # The disk usage of the instance in percentage.
         self.disk_usage = disk_usage
-        # The IOPS usage of the instance in percentage.
         self.iopsusage = iopsusage
-        # The number of sessions.
         self.session_usage = session_usage
 
     def validate(self):

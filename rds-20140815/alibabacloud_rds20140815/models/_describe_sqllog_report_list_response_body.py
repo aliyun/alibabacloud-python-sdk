@@ -16,7 +16,6 @@ class DescribeSQLLogReportListResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # An array that consists of SQL log reports.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -115,11 +114,8 @@ class DescribeSQLLogReportListResponseBodyItemsItem(DaraModel):
         qpstop_nitems: main_models.DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItems = None,
         report_time: str = None,
     ):
-        # An array that consists of SQL statements executed with the highest latency.
         self.latency_top_nitems = latency_top_nitems
-        # An array that consists of SQL statements executed the most frequently.
         self.qpstop_nitems = qpstop_nitems
-        # The time when the report was generated. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.report_time = report_time
 
     def validate(self):
@@ -200,11 +196,7 @@ class DescribeSQLLogReportListResponseBodyItemsItemQPSTopNItemsQPSTopNItem(DaraM
         sqlexecute_times: int = None,
         sqltext: str = None,
     ):
-        # The number of times that the SQL statement is executed.
         self.sqlexecute_times = sqlexecute_times
-        # The SQL statement.
-        # 
-        # >  Only the first 128 characters of the SQL statement are returned. In addition, only the SQL statements that take more than 5 ms to execute are returned.
         self.sqltext = sqltext
 
     def validate(self):
@@ -275,13 +267,8 @@ class DescribeSQLLogReportListResponseBodyItemsItemLatencyTopNItemsLatencyTopNIt
         sqlexecute_times: int = None,
         sqltext: str = None,
     ):
-        # The average time that is required to execute the SQL statement. Unit: milliseconds.
         self.avg_latency = avg_latency
-        # The number of times that the SQL statement is executed.
         self.sqlexecute_times = sqlexecute_times
-        # The SQL statement.
-        # 
-        # >  Only the first 128 characters of the SQL statement are returned. In addition, only the SQL statements that take more than 100 ms to execute are returned.
         self.sqltext = sqltext
 
     def validate(self):

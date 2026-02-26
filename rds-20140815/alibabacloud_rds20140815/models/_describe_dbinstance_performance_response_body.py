@@ -23,7 +23,6 @@ class DescribeDBInstancePerformanceResponseBody(DaraModel):
         self.end_time = end_time
         # The database engine of the instance.
         self.engine = engine
-        # Details of the performance metrics.
         self.performance_keys = performance_keys
         # The request ID.
         self.request_id = request_id
@@ -125,15 +124,9 @@ class DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKey(Dar
         value_format: str = None,
         values: main_models.DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValues = None,
     ):
-        # The name of the performance metric.
         self.key = key
-        # The unit of the performance metrics.
         self.unit = unit
-        # The format in which the value of the performance metric is returned.
-        # 
-        # >  If a performance metric value consists of multiple fields, the values are separated with ampersands (&). Example: com_delete\\&com_insert\\&com_insert_select\\&com_replace.
         self.value_format = value_format
-        # The performance metric values.
         self.values = values
 
     def validate(self):
@@ -217,9 +210,7 @@ class DescribeDBInstancePerformanceResponseBodyPerformanceKeysPerformanceKeyValu
         date: str = None,
         value: str = None,
     ):
-        # The date and time when the value of the performance metric was recorded. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.date = date
-        # The value of the performance metric.
         self.value = value
 
     def validate(self):

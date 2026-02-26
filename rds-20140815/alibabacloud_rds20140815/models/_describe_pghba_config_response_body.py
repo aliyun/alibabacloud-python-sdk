@@ -20,7 +20,6 @@ class DescribePGHbaConfigResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The default configuration items of the pg_hba.conf file.
         self.default_hba_items = default_hba_items
         # The time when the previous modification was made to the pg_hba.conf file.
         self.hba_modify_time = hba_modify_time
@@ -34,7 +33,6 @@ class DescribePGHbaConfigResponseBody(DaraModel):
         self.modify_status_reason = modify_status_reason
         # The request ID.
         self.request_id = request_id
-        # The current configuration items of the pg_hba.conf file.
         self.running_hba_items = running_hba_items
 
     def validate(self):
@@ -145,25 +143,13 @@ class DescribePGHbaConfigResponseBodyRunningHbaItemsHbaItem(DaraModel):
         type: str = None,
         user: str = None,
     ):
-        # The IP address of the client.
         self.address = address
-        # The name of the database.
         self.database = database
-        # The mask of the IP address.
         self.mask = mask
-        # The authentication method.
         self.method = method
-        # The value of this parameter varies based on the value of the Method parameter. The value is fixed as null.
         self.option = option
-        # The priority.
         self.priority_id = priority_id
-        # The connection type. Valor:
-        # 
-        # *   **host**: The record matches TCP/IP connections, including SSL connections and non-SSL connections.
-        # *   **hostssl**: The record matches only TCP/IP connections that are established over SSL.
-        # *   **hostnossl**: The record matches only TCP/IP connections that are not established over SSL connections.
         self.type = type
-        # The username of the account.
         self.user = user
 
     def validate(self):
@@ -275,21 +261,13 @@ class DescribePGHbaConfigResponseBodyDefaultHbaItemsHbaItem(DaraModel):
         type: str = None,
         user: str = None,
     ):
-        # The IP addresses from which the specified users can access the specified databases. The value is fixed as 0.0.0.0/0.
         self.address = address
-        # The names of the databases that the specified users are allowed to access. The value is fixed as all or replication.
         self.database = database
-        # The mask of the instance. The value is fixed as null.
         self.mask = mask
-        # The authentication method. The value is fixed as md5.
         self.method = method
-        # The value of this parameter is based on the value of the Method parameter. The value is fixed as null.
         self.option = option
-        # The priority of the configuration items in the pg_hba.conf file. This value is automatically generated.
         self.priority_id = priority_id
-        # The type of connection to the instance. The value is fixed as host.
         self.type = type
-        # The user that is allowed to access the instance. The value is fixed as all.
         self.user = user
 
     def validate(self):

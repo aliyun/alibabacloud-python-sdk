@@ -29,9 +29,7 @@ class DescribeDBProxyResponseBody(DaraModel):
         request_id: str = None,
         resource_group_id: str = None,
     ):
-        # The list of zones that are available for the database proxy.
         self.dbproxy_avzones = dbproxy_avzones
-        # An array consisting of the information about the database proxy endpoint that is created for the instance.
         self.dbproxy_connect_string_items = dbproxy_connect_string_items
         # An internal parameter. You can ignore this parameter.
         self.dbproxy_engine_type = dbproxy_engine_type
@@ -67,7 +65,6 @@ class DescribeDBProxyResponseBody(DaraModel):
         self.dbproxy_instance_type = dbproxy_instance_type
         # An internal parameter. You do not need to specify this parameter.
         self.dbproxy_kind_code = dbproxy_kind_code
-        # The proxy nodes.
         self.dbproxy_nodes = dbproxy_nodes
         # The status of persistence connections. Valid values:
         # 
@@ -80,7 +77,6 @@ class DescribeDBProxyResponseBody(DaraModel):
         # *   Shutdown: disabled
         # *   Startup: enabled
         self.dbproxy_service_status = dbproxy_service_status
-        # The proxy terminals of the instance.
         self.db_proxy_endpoint_items = db_proxy_endpoint_items
         # The ID of the request.
         self.request_id = request_id
@@ -266,19 +262,9 @@ class DescribeDBProxyResponseBodyDbProxyEndpointItemsDbProxyEndpointItems(DaraMo
         db_proxy_endpoint_type: str = None,
         db_proxy_read_write_mode: str = None,
     ):
-        # The description of the database proxy endpoint.
         self.db_proxy_endpoint_aliases = db_proxy_endpoint_aliases
-        # The ID of the database proxy endpoint.
         self.db_proxy_endpoint_name = db_proxy_endpoint_name
-        # The type of the database proxy endpoint. Valid values:
-        # 
-        # *   Custom: custom database proxy endpoint
-        # *   RWSplit: default database proxy endpoint
         self.db_proxy_endpoint_type = db_proxy_endpoint_type
-        # The read and write attributes of the database proxy endpoint.
-        # 
-        # *   ReadOnly
-        # *   ReadWrite
         self.db_proxy_read_write_mode = db_proxy_read_write_mode
 
     def validate(self):
@@ -361,11 +347,8 @@ class DescribeDBProxyResponseBodyDBProxyNodesDBProxyNodes(DaraModel):
         node_id: str = None,
         zone_id: str = None,
     ):
-        # The number of CPU cores of the node.
         self.cpu_cores = cpu_cores
-        # The ID of the proxy node.
         self.node_id = node_id
-        # The ID of the zone in which the node is deployed.
         self.zone_id = zone_id
 
     def validate(self):
@@ -475,30 +458,14 @@ class DescribeDBProxyResponseBodyDBProxyConnectStringItemsDBProxyConnectStringIt
         dbproxy_vpc_instance_id: str = None,
         dbproxy_vswitch_id: str = None,
     ):
-        # The database proxy endpoint.
         self.dbproxy_connect_string = dbproxy_connect_string
-        # The network type of the database proxy endpoint. A database proxy endpoint is formerly referred to as a proxy terminal. Valid values:
-        # 
-        # *   OuterString: Internet
-        # *   InnerString: internal network
         self.dbproxy_connect_string_net_type = dbproxy_connect_string_net_type
-        # The network type of the database proxy. Valid values:
-        # 
-        # *   0: Internet
-        # *   1: classic network
-        # *   2: virtual private cloud (VPC)
         self.dbproxy_connect_string_net_work_type = dbproxy_connect_string_net_work_type
-        # The port that is associated with the database proxy endpoint.
         self.dbproxy_connect_string_port = dbproxy_connect_string_port
-        # The ID of the backend database proxy endpoint.
         self.dbproxy_endpoint_id = dbproxy_endpoint_id
-        # The name of the database proxy endpoint. The name can be replaced by the ID of the database proxy endpoint.
         self.dbproxy_endpoint_name = dbproxy_endpoint_name
-        # The VPC of the database proxy.
         self.dbproxy_vpc_id = dbproxy_vpc_id
-        # The ID of the database proxy instance.
         self.dbproxy_vpc_instance_id = dbproxy_vpc_instance_id
-        # The vSwitch of the database proxy.
         self.dbproxy_vswitch_id = dbproxy_vswitch_id
 
     def validate(self):

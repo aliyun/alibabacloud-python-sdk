@@ -20,7 +20,6 @@ class DescribeReadDBInstanceDelayResponseBody(DaraModel):
         self.dbinstance_id = dbinstance_id
         # The latency of data replication. Unit: seconds.
         self.delay_time = delay_time
-        # The latency information.
         self.items = items
         # The read-only instance ID.
         self.read_dbinstance_id = read_dbinstance_id
@@ -116,15 +115,9 @@ class DescribeReadDBInstanceDelayResponseBodyItemsItems(DaraModel):
         read_delay_times: main_models.DescribeReadDBInstanceDelayResponseBodyItemsItemsReadDelayTimes = None,
         readonly_instance_delay: main_models.DescribeReadDBInstanceDelayResponseBodyItemsItemsReadonlyInstanceDelay = None,
     ):
-        # The primary instance ID.
         self.dbinstance_id = dbinstance_id
-        # An array that consists of information about the read-only instance.
         self.read_dbinstance_names = read_dbinstance_names
-        # The latency of data replication.
         self.read_delay_times = read_delay_times
-        # The information about the write-ahead log (WAL) latency.
-        # 
-        # >  This parameter is returned only when the primary instance runs PostgreSQL.
         self.readonly_instance_delay = readonly_instance_delay
 
     def validate(self):
@@ -220,21 +213,13 @@ class DescribeReadDBInstanceDelayResponseBodyItemsItemsReadonlyInstanceDelayRead
         write_lag: str = None,
         write_latency: str = None,
     ):
-        # The duration that is allowed for the latency in the persistence of WAL data. Unit: seconds.
         self.flush_lag = flush_lag
-        # The data size that is allowed for the latency in the persistence of WAL data. Unit: MB.
         self.flush_latency = flush_latency
-        # The read-only instance ID.
         self.read_dbinstance_name = read_dbinstance_name
-        # The duration that is allowed for the latency in the playback of WAL data. Unit: seconds.
         self.replay_lag = replay_lag
-        # The data size that is allowed for the latency in the playback of WAL data. Unit: MB.
         self.replay_latency = replay_latency
-        # The data size that is allowed for the latency in the sending of WAL data. Unit: MB.
         self.send_latency = send_latency
-        # The duration that is allowed for the latency in the write-back of WAL data. Unit: seconds.
         self.write_lag = write_lag
-        # The data size that is allowed for the latency in the write-back of WAL data. Unit: MB.
         self.write_latency = write_latency
 
     def validate(self):

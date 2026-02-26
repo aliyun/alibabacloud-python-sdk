@@ -13,7 +13,6 @@ class DescribeRegionInfosResponseBody(DaraModel):
         regions: main_models.DescribeRegionInfosResponseBodyRegions = None,
         request_id: str = None,
     ):
-        # A list of regions.
         self.regions = regions
         # The request ID.
         self.request_id = request_id
@@ -86,7 +85,6 @@ class DescribeRegionInfosResponseBodyRegionsRDSRegion(DaraModel):
         self,
         region_id: str = None,
     ):
-        # The region ID.
         self.region_id = region_id
 
     def validate(self):

@@ -1,3 +1,10 @@
+2026-02-26 Version: 15.5.0
+- Support API CreateDBInstanceReplication.
+- Support API DeleteDBInstanceReplication.
+- Support API UpdateDBInstanceReplication.
+- Update API DescribeDBInstanceReplication: add response parameters Body.SlaveStatusList.
+
+
 2026-02-06 Version: 15.4.0
 - Support API DeleteParameterTimedScheduleTask.
 - Support API DescribeParameterTimedScheduleTask.

@@ -27,7 +27,6 @@ class DescribePriceResponseBody(DaraModel):
         self.price_info = price_info
         # The ID of the request.
         self.request_id = request_id
-        # The details of the promotion rule.
         self.rules = rules
         # The pricing information about a serverless RDS instance.
         self.serverless_price = serverless_price
@@ -259,11 +258,8 @@ class DescribePriceResponseBodyRulesRule(DaraModel):
         name: str = None,
         rule_id: int = None,
     ):
-        # The description of the promotion rule.
         self.description = description
-        # The name of the promotion rule.
         self.name = name
-        # The ID of the promotion rule.
         self.rule_id = rule_id
 
     def validate(self):
@@ -314,7 +310,6 @@ class DescribePriceResponseBodyPriceInfo(DaraModel):
     ):
         # The information about the promotion.
         self.activity_info = activity_info
-        # The information about the coupon.
         self.coupons = coupons
         # The currency unit.
         self.currency = currency
@@ -324,7 +319,6 @@ class DescribePriceResponseBodyPriceInfo(DaraModel):
         self.order_lines = order_lines
         # The original price.
         self.original_price = original_price
-        # An array that consists of the ID of the promotion rule.
         self.rule_ids = rule_ids
         # The estimated hourly cost that is calculated based on the maximum number of RCUs you specify.
         self.trade_max_rcuamount = trade_max_rcuamount
@@ -485,13 +479,9 @@ class DescribePriceResponseBodyPriceInfoCouponsCoupon(DaraModel):
         is_selected: str = None,
         name: str = None,
     ):
-        # The coupon ID.
         self.coupon_no = coupon_no
-        # The description of the coupon.
         self.description = description
-        # Indicates whether the coupon is selected.
         self.is_selected = is_selected
-        # The coupon name.
         self.name = name
 
     def validate(self):

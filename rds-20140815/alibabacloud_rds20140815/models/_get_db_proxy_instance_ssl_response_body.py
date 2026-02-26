@@ -13,7 +13,6 @@ class GetDbProxyInstanceSslResponseBody(DaraModel):
         db_proxy_cert_list_items: main_models.GetDbProxyInstanceSslResponseBodyDbProxyCertListItems = None,
         request_id: str = None,
     ):
-        # An array that consists of SSL encryption settings.
         self.db_proxy_cert_list_items = db_proxy_cert_list_items
         # The request ID.
         self.request_id = request_id
@@ -90,15 +89,10 @@ class GetDbProxyInstanceSslResponseBodyDbProxyCertListItemsDbProxyCertListItems(
         endpoint_type: str = None,
         ssl_expired_time: str = None,
     ):
-        # The dedicated proxy endpoint for which SSL encryption is enabled.
         self.cert_common_name = cert_common_name
-        # The instance ID.
         self.db_instance_name = db_instance_name
-        # The ID of the dedicated proxy endpoint.
         self.endpoint_name = endpoint_name
-        # The default identifier of the dedicated proxy endpoint. The value is fixed as **RWSplit**.
         self.endpoint_type = endpoint_type
-        # The time at which the certificate expires.
         self.ssl_expired_time = ssl_expired_time
 
     def validate(self):

@@ -19,7 +19,6 @@ class DescribeMigrateTasksResponseBody(DaraModel):
     ):
         # The instance ID.
         self.dbinstance_id = dbinstance_id
-        # The details of the migration task.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
@@ -129,30 +128,13 @@ class DescribeMigrateTasksResponseBodyItemsMigrateTask(DaraModel):
         migrate_task_id: str = None,
         status: str = None,
     ):
-        # The migration task type. Valid values:
-        # 
-        # *   **FULL**: The migration task migrates full backup files that can be used to restore the full data of the instance.
-        # *   **UPDF**: The migration task migrates incremental or log backup files that can be used to restore the incremental data of the instance.
         self.backup_mode = backup_mode
-        # The time when the migration task was created. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.create_time = create_time
-        # The database name.
         self.dbname = dbname
-        # The description of the migration task.
         self.description = description
-        # The time when the migration task was completed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.end_time = end_time
-        # Indicates whether the imported data overwrites the existing data.
         self.is_dbreplaced = is_dbreplaced
-        # The migration task ID.
         self.migrate_task_id = migrate_task_id
-        # The status of the migration task. Valid values:
-        # 
-        # *   **NoStart**: The task is not started.
-        # *   **Running**:The task is in progress.
-        # *   **Success**: The task is successful.
-        # *   **Failed**: The task failed.
-        # *   **Waiting**: The task is waiting for an incremental backup file to be imported.
         self.status = status
 
     def validate(self):

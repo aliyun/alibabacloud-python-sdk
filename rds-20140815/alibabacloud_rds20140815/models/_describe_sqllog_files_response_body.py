@@ -16,7 +16,6 @@ class DescribeSQLLogFilesResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # An array that consists of the returned audit log files.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
@@ -118,21 +117,11 @@ class DescribeSQLLogFilesResponseBodyItemsLogFile(DaraModel):
         log_start_time: str = None,
         log_status: str = None,
     ):
-        # The file name.
         self.file_id = file_id
-        # The download URL of the file. If the audit log file cannot be downloaded, this parameter is null.
         self.log_download_url = log_download_url
-        # The time at which the last SQL statement recorded in the audit log file was executed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.log_end_time = log_end_time
-        # The size of the audit log file. Unit: bytes.
         self.log_size = log_size
-        # The time at which the first SQL statement recorded in the audit log file was executed. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.log_start_time = log_start_time
-        # The status of the audit log file. Valid values:
-        # 
-        # *   **Success**
-        # *   **Failed**
-        # *   **Generating**
         self.log_status = log_status
 
     def validate(self):

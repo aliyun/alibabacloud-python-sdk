@@ -25,7 +25,6 @@ class DescribeDBInstanceHAConfigResponseBody(DaraModel):
         # 
         # > This parameter is returned only for instances that run MySQL.
         self.hamode = hamode
-        # An array that consists of the information of the primary and secondary instances.
         self.host_instance_infos = host_instance_infos
         # The request ID.
         self.request_id = request_id
@@ -130,27 +129,12 @@ class DescribeDBInstanceHAConfigResponseBodyHostInstanceInfosNodeInfo(DaraModel)
         sync_status: str = None,
         zone_id: str = None,
     ):
-        # The time when the secondary instance completed the synchronization of data from the primary instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.data_sync_time = data_sync_time
-        # The time when the secondary instance received logs from the primary instance. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.log_sync_time = log_sync_time
-        # The ID of the instance.
         self.node_id = node_id
-        # The type of the node. Valid values:
-        # 
-        # *   **Master**: the primary node
-        # *   **Slave**: the secondary node
         self.node_type = node_type
-        # The region ID of the instance.
         self.region_id = region_id
-        # The synchronization status. Valid values:
-        # 
-        # *   **NotAvailable**: The synchronization fails. This means that faults occur.
-        # *   **Syncing**: The synchronization is in process. In this case, a primary/secondary switchover may cause data losses.
-        # *   **Synchronized**: The synchronization is completed.
-        # *   **NotSupport**: The database engine or database engine version does not involve the synchronization between the primary and secondary instances.
         self.sync_status = sync_status
-        # The ID of the zone.
         self.zone_id = zone_id
 
     def validate(self):

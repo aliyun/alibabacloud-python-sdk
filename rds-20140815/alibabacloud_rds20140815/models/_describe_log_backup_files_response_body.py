@@ -17,7 +17,6 @@ class DescribeLogBackupFilesResponseBody(DaraModel):
         total_file_size: int = None,
         total_record_count: int = None,
     ):
-        # The details of log files.
         self.items = items
         # The page number of the page returned.
         self.page_number = page_number
@@ -127,17 +126,11 @@ class DescribeLogBackupFilesResponseBodyItemsBinLogFile(DaraModel):
         log_begin_time: str = None,
         log_end_time: str = None,
     ):
-        # The HTTP-based download URL of the log file. If the log file cannot be downloaded, an empty string is returned.
         self.download_link = download_link
-        # The size of the log file. Unit: bytes.
         self.file_size = file_size
-        # The URL that is used to download the log file over an internal network. If the log file cannot be downloaded, an empty string is returned. This URL is valid for one hour.
         self.intranet_download_link = intranet_download_link
-        # The expiration time of the URL. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm:ss*Z format. The time is displayed in UTC.
         self.link_expired_time = link_expired_time
-        # The start time of the log file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
         self.log_begin_time = log_begin_time
-        # The end time of the log file. The time follows the ISO 8601 standard in the *yyyy-MM-dd*T*HH:mm*Z format. The time is displayed in UTC.
         self.log_end_time = log_end_time
 
     def validate(self):
