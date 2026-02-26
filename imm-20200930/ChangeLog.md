@@ -1,3 +1,8 @@
+2026-02-26 Version: 4.7.3
+- Update API CreateDataset: add request parameters DatasetConfig.
+- Update API UpdateDataset: add request parameters DatasetConfig.
+
+
 2025-12-12 Version: 4.7.2
 - Generated python 2020-09-30 for imm.
 

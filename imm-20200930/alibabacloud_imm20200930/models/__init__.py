@@ -1,0 +1,1101 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._address import Address
+from ._address_for_story import AddressForStory
+from ._algorithm_definition import AlgorithmDefinition
+from ._answer import Answer
+from ._app import App
+from ._assume_role_chain import AssumeRoleChain
+from ._assume_role_chain_node import AssumeRoleChainNode
+from ._audio_stream import AudioStream
+from ._binding import Binding
+from ._body import Body
+from ._boundary import Boundary
+from ._car import Car
+from ._clip import Clip
+from ._cluster_for_req import ClusterForReq
+from ._codes import Codes
+from ._contextual_file import ContextualFile
+from ._contextual_message import ContextualMessage
+from ._credential_config import CredentialConfig
+from ._cropping_suggestion import CroppingSuggestion
+from ._custom_params import CustomParams
+from ._custom_prompt import CustomPrompt
+from ._data_ingestion import DataIngestion
+from ._dataset import Dataset
+from ._dataset_config import DatasetConfig
+from ._dataset_task_status import DatasetTaskStatus
+from ._document_parse_keyword_option import DocumentParseKeywordOption
+from ._document_parse_narrator_option import DocumentParseNarratorOption
+from ._document_parse_option import DocumentParseOption
+from ._document_parse_question_option import DocumentParseQuestionOption
+from ._document_parse_summary_option import DocumentParseSummaryOption
+from ._element import Element
+from ._element_content import ElementContent
+from ._element_relation import ElementRelation
+from ._fast_fail_policy import FastFailPolicy
+from ._figure import Figure
+from ._figure_cluster import FigureCluster
+from ._figure_cluster_for_req import FigureClusterForReq
+from ._file import File
+from ._file_smart_cluster import FileSmartCluster
+from ._function_call import FunctionCall
+from ._head_pose import HeadPose
+from ._hyperparameters import Hyperparameters
+from ._image import Image
+from ._image_insight import ImageInsight
+from ._image_score import ImageScore
+from ._image_url import ImageURL
+from ._input import Input
+from ._input_file import InputFile
+from ._input_oss import InputOSS
+from ._insights import Insights
+from ._insights_config import InsightsConfig
+from ._kdtree_option import KdtreeOption
+from ._key_value_pair import KeyValuePair
+from ._label import Label
+from ._license_plate import LicensePlate
+from ._location_date_cluster import LocationDateCluster
+from ._mns import MNS
+from ._message import Message
+from ._meta_data import MetaData
+from ._model_specification import ModelSpecification
+from ._notification import Notification
+from ._ocrcontents import OCRContents
+from ._octree_option import OctreeOption
+from ._optimization import Optimization
+from ._point_int_64 import PointInt64
+from ._project import Project
+from ._property import Property
+from ._reference_file import ReferenceFile
+from ._region_type import RegionType
+from ._resource import Resource
+from ._rocket_mq import RocketMQ
+from ._row import Row
+from ._runtime import Runtime
+from ._scene_element import SceneElement
+from ._schedule import Schedule
+from ._similar_image import SimilarImage
+from ._similar_image_cluster import SimilarImageCluster
+from ._simple_query import SimpleQuery
+from ._smart_cluster import SmartCluster
+from ._smart_cluster_rule import SmartClusterRule
+from ._spec import Spec
+from ._story import Story
+from ._stream_options import StreamOptions
+from ._subtitle_stream import SubtitleStream
+from ._target_audio import TargetAudio
+from ._target_image import TargetImage
+from ._target_subtitle import TargetSubtitle
+from ._target_video import TargetVideo
+from ._task_info import TaskInfo
+from ._time_range import TimeRange
+from ._tool_call import ToolCall
+from ._training_specification import TrainingSpecification
+from ._trim_policy import TrimPolicy
+from ._video_insight import VideoInsight
+from ._video_stream import VideoStream
+from ._weboffice_permission import WebofficePermission
+from ._weboffice_user import WebofficeUser
+from ._weboffice_watermark import WebofficeWatermark
+from ._workflow_parameter import WorkflowParameter
+from ._add_image_mosaic_request import AddImageMosaicRequest
+from ._add_image_mosaic_shrink_request import AddImageMosaicShrinkRequest
+from ._add_image_mosaic_response_body import AddImageMosaicResponseBody
+from ._add_image_mosaic_response import AddImageMosaicResponse
+from ._add_story_files_request import AddStoryFilesRequest
+from ._add_story_files_shrink_request import AddStoryFilesShrinkRequest
+from ._add_story_files_response_body import AddStoryFilesResponseBody
+from ._add_story_files_response import AddStoryFilesResponse
+from ._attach_ossbucket_request import AttachOSSBucketRequest
+from ._attach_ossbucket_response_body import AttachOSSBucketResponseBody
+from ._attach_ossbucket_response import AttachOSSBucketResponse
+from ._batch_delete_file_meta_request import BatchDeleteFileMetaRequest
+from ._batch_delete_file_meta_shrink_request import BatchDeleteFileMetaShrinkRequest
+from ._batch_delete_file_meta_response_body import BatchDeleteFileMetaResponseBody
+from ._batch_delete_file_meta_response import BatchDeleteFileMetaResponse
+from ._batch_get_figure_cluster_request import BatchGetFigureClusterRequest
+from ._batch_get_figure_cluster_shrink_request import BatchGetFigureClusterShrinkRequest
+from ._batch_get_figure_cluster_response_body import BatchGetFigureClusterResponseBody
+from ._batch_get_figure_cluster_response import BatchGetFigureClusterResponse
+from ._batch_get_file_meta_request import BatchGetFileMetaRequest
+from ._batch_get_file_meta_shrink_request import BatchGetFileMetaShrinkRequest
+from ._batch_get_file_meta_response_body import BatchGetFileMetaResponseBody
+from ._batch_get_file_meta_response import BatchGetFileMetaResponse
+from ._batch_index_file_meta_request import BatchIndexFileMetaRequest
+from ._batch_index_file_meta_shrink_request import BatchIndexFileMetaShrinkRequest
+from ._batch_index_file_meta_response_body import BatchIndexFileMetaResponseBody
+from ._batch_index_file_meta_response import BatchIndexFileMetaResponse
+from ._batch_update_file_meta_request import BatchUpdateFileMetaRequest
+from ._batch_update_file_meta_shrink_request import BatchUpdateFileMetaShrinkRequest
+from ._batch_update_file_meta_response_body import BatchUpdateFileMetaResponseBody
+from ._batch_update_file_meta_response import BatchUpdateFileMetaResponse
+from ._compare_image_faces_request import CompareImageFacesRequest
+from ._compare_image_faces_shrink_request import CompareImageFacesShrinkRequest
+from ._compare_image_faces_response_body import CompareImageFacesResponseBody
+from ._compare_image_faces_response import CompareImageFacesResponse
+from ._contextual_answer_request import ContextualAnswerRequest
+from ._contextual_answer_shrink_request import ContextualAnswerShrinkRequest
+from ._contextual_answer_response_body import ContextualAnswerResponseBody
+from ._contextual_answer_response import ContextualAnswerResponse
+from ._contextual_retrieval_request import ContextualRetrievalRequest
+from ._contextual_retrieval_shrink_request import ContextualRetrievalShrinkRequest
+from ._contextual_retrieval_response_body import ContextualRetrievalResponseBody
+from ._contextual_retrieval_response import ContextualRetrievalResponse
+from ._create_archive_file_inspection_task_request import CreateArchiveFileInspectionTaskRequest
+from ._create_archive_file_inspection_task_shrink_request import CreateArchiveFileInspectionTaskShrinkRequest
+from ._create_archive_file_inspection_task_response_body import CreateArchiveFileInspectionTaskResponseBody
+from ._create_archive_file_inspection_task_response import CreateArchiveFileInspectionTaskResponse
+from ._create_batch_request import CreateBatchRequest
+from ._create_batch_shrink_request import CreateBatchShrinkRequest
+from ._create_batch_response_body import CreateBatchResponseBody
+from ._create_batch_response import CreateBatchResponse
+from ._create_binding_request import CreateBindingRequest
+from ._create_binding_response_body import CreateBindingResponseBody
+from ._create_binding_response import CreateBindingResponse
+from ._create_compress_point_cloud_task_request import CreateCompressPointCloudTaskRequest
+from ._create_compress_point_cloud_task_shrink_request import CreateCompressPointCloudTaskShrinkRequest
+from ._create_compress_point_cloud_task_response_body import CreateCompressPointCloudTaskResponseBody
+from ._create_compress_point_cloud_task_response import CreateCompressPointCloudTaskResponse
+from ._create_customized_story_request import CreateCustomizedStoryRequest
+from ._create_customized_story_shrink_request import CreateCustomizedStoryShrinkRequest
+from ._create_customized_story_response_body import CreateCustomizedStoryResponseBody
+from ._create_customized_story_response import CreateCustomizedStoryResponse
+from ._create_dataset_request import CreateDatasetRequest
+from ._create_dataset_shrink_request import CreateDatasetShrinkRequest
+from ._create_dataset_response_body import CreateDatasetResponseBody
+from ._create_dataset_response import CreateDatasetResponse
+from ._create_decode_blind_watermark_task_request import CreateDecodeBlindWatermarkTaskRequest
+from ._create_decode_blind_watermark_task_shrink_request import CreateDecodeBlindWatermarkTaskShrinkRequest
+from ._create_decode_blind_watermark_task_response_body import CreateDecodeBlindWatermarkTaskResponseBody
+from ._create_decode_blind_watermark_task_response import CreateDecodeBlindWatermarkTaskResponse
+from ._create_faces_searching_task_request import CreateFacesSearchingTaskRequest
+from ._create_faces_searching_task_shrink_request import CreateFacesSearchingTaskShrinkRequest
+from ._create_faces_searching_task_response_body import CreateFacesSearchingTaskResponseBody
+from ._create_faces_searching_task_response import CreateFacesSearchingTaskResponse
+from ._create_figure_clustering_task_request import CreateFigureClusteringTaskRequest
+from ._create_figure_clustering_task_shrink_request import CreateFigureClusteringTaskShrinkRequest
+from ._create_figure_clustering_task_response_body import CreateFigureClusteringTaskResponseBody
+from ._create_figure_clustering_task_response import CreateFigureClusteringTaskResponse
+from ._create_figure_clusters_merging_task_request import CreateFigureClustersMergingTaskRequest
+from ._create_figure_clusters_merging_task_shrink_request import CreateFigureClustersMergingTaskShrinkRequest
+from ._create_figure_clusters_merging_task_response_body import CreateFigureClustersMergingTaskResponseBody
+from ._create_figure_clusters_merging_task_response import CreateFigureClustersMergingTaskResponse
+from ._create_file_compression_task_request import CreateFileCompressionTaskRequest
+from ._create_file_compression_task_shrink_request import CreateFileCompressionTaskShrinkRequest
+from ._create_file_compression_task_response_body import CreateFileCompressionTaskResponseBody
+from ._create_file_compression_task_response import CreateFileCompressionTaskResponse
+from ._create_file_uncompression_task_request import CreateFileUncompressionTaskRequest
+from ._create_file_uncompression_task_shrink_request import CreateFileUncompressionTaskShrinkRequest
+from ._create_file_uncompression_task_response_body import CreateFileUncompressionTaskResponseBody
+from ._create_file_uncompression_task_response import CreateFileUncompressionTaskResponse
+from ._create_image_moderation_task_request import CreateImageModerationTaskRequest
+from ._create_image_moderation_task_shrink_request import CreateImageModerationTaskShrinkRequest
+from ._create_image_moderation_task_response_body import CreateImageModerationTaskResponseBody
+from ._create_image_moderation_task_response import CreateImageModerationTaskResponse
+from ._create_image_splicing_task_request import CreateImageSplicingTaskRequest
+from ._create_image_splicing_task_shrink_request import CreateImageSplicingTaskShrinkRequest
+from ._create_image_splicing_task_response_body import CreateImageSplicingTaskResponseBody
+from ._create_image_splicing_task_response import CreateImageSplicingTaskResponse
+from ._create_image_to_pdftask_request import CreateImageToPDFTaskRequest
+from ._create_image_to_pdftask_shrink_request import CreateImageToPDFTaskShrinkRequest
+from ._create_image_to_pdftask_response_body import CreateImageToPDFTaskResponseBody
+from ._create_image_to_pdftask_response import CreateImageToPDFTaskResponse
+from ._create_location_date_clustering_task_request import CreateLocationDateClusteringTaskRequest
+from ._create_location_date_clustering_task_shrink_request import CreateLocationDateClusteringTaskShrinkRequest
+from ._create_location_date_clustering_task_response_body import CreateLocationDateClusteringTaskResponseBody
+from ._create_location_date_clustering_task_response import CreateLocationDateClusteringTaskResponse
+from ._create_media_convert_task_request import CreateMediaConvertTaskRequest
+from ._create_media_convert_task_shrink_request import CreateMediaConvertTaskShrinkRequest
+from ._create_media_convert_task_response_body import CreateMediaConvertTaskResponseBody
+from ._create_media_convert_task_response import CreateMediaConvertTaskResponse
+from ._create_office_conversion_task_request import CreateOfficeConversionTaskRequest
+from ._create_office_conversion_task_shrink_request import CreateOfficeConversionTaskShrinkRequest
+from ._create_office_conversion_task_response_body import CreateOfficeConversionTaskResponseBody
+from ._create_office_conversion_task_response import CreateOfficeConversionTaskResponse
+from ._create_project_request import CreateProjectRequest
+from ._create_project_shrink_request import CreateProjectShrinkRequest
+from ._create_project_response_body import CreateProjectResponseBody
+from ._create_project_response import CreateProjectResponse
+from ._create_similar_image_clustering_task_request import CreateSimilarImageClusteringTaskRequest
+from ._create_similar_image_clustering_task_shrink_request import CreateSimilarImageClusteringTaskShrinkRequest
+from ._create_similar_image_clustering_task_response_body import CreateSimilarImageClusteringTaskResponseBody
+from ._create_similar_image_clustering_task_response import CreateSimilarImageClusteringTaskResponse
+from ._create_story_request import CreateStoryRequest
+from ._create_story_shrink_request import CreateStoryShrinkRequest
+from ._create_story_response_body import CreateStoryResponseBody
+from ._create_story_response import CreateStoryResponse
+from ._create_trigger_request import CreateTriggerRequest
+from ._create_trigger_shrink_request import CreateTriggerShrinkRequest
+from ._create_trigger_response_body import CreateTriggerResponseBody
+from ._create_trigger_response import CreateTriggerResponse
+from ._create_video_label_classification_task_request import CreateVideoLabelClassificationTaskRequest
+from ._create_video_label_classification_task_shrink_request import CreateVideoLabelClassificationTaskShrinkRequest
+from ._create_video_label_classification_task_response_body import CreateVideoLabelClassificationTaskResponseBody
+from ._create_video_label_classification_task_response import CreateVideoLabelClassificationTaskResponse
+from ._create_video_moderation_task_request import CreateVideoModerationTaskRequest
+from ._create_video_moderation_task_shrink_request import CreateVideoModerationTaskShrinkRequest
+from ._create_video_moderation_task_response_body import CreateVideoModerationTaskResponseBody
+from ._create_video_moderation_task_response import CreateVideoModerationTaskResponse
+from ._delete_batch_request import DeleteBatchRequest
+from ._delete_batch_response_body import DeleteBatchResponseBody
+from ._delete_batch_response import DeleteBatchResponse
+from ._delete_binding_request import DeleteBindingRequest
+from ._delete_binding_response_body import DeleteBindingResponseBody
+from ._delete_binding_response import DeleteBindingResponse
+from ._delete_dataset_request import DeleteDatasetRequest
+from ._delete_dataset_response_body import DeleteDatasetResponseBody
+from ._delete_dataset_response import DeleteDatasetResponse
+from ._delete_file_meta_request import DeleteFileMetaRequest
+from ._delete_file_meta_response_body import DeleteFileMetaResponseBody
+from ._delete_file_meta_response import DeleteFileMetaResponse
+from ._delete_location_date_cluster_request import DeleteLocationDateClusterRequest
+from ._delete_location_date_cluster_response_body import DeleteLocationDateClusterResponseBody
+from ._delete_location_date_cluster_response import DeleteLocationDateClusterResponse
+from ._delete_project_request import DeleteProjectRequest
+from ._delete_project_response_body import DeleteProjectResponseBody
+from ._delete_project_response import DeleteProjectResponse
+from ._delete_story_request import DeleteStoryRequest
+from ._delete_story_response_body import DeleteStoryResponseBody
+from ._delete_story_response import DeleteStoryResponse
+from ._delete_trigger_request import DeleteTriggerRequest
+from ._delete_trigger_response_body import DeleteTriggerResponseBody
+from ._delete_trigger_response import DeleteTriggerResponse
+from ._detach_ossbucket_request import DetachOSSBucketRequest
+from ._detach_ossbucket_response_body import DetachOSSBucketResponseBody
+from ._detach_ossbucket_response import DetachOSSBucketResponse
+from ._detect_image_bodies_request import DetectImageBodiesRequest
+from ._detect_image_bodies_shrink_request import DetectImageBodiesShrinkRequest
+from ._detect_image_bodies_response_body import DetectImageBodiesResponseBody
+from ._detect_image_bodies_response import DetectImageBodiesResponse
+from ._detect_image_cars_request import DetectImageCarsRequest
+from ._detect_image_cars_shrink_request import DetectImageCarsShrinkRequest
+from ._detect_image_cars_response_body import DetectImageCarsResponseBody
+from ._detect_image_cars_response import DetectImageCarsResponse
+from ._detect_image_codes_request import DetectImageCodesRequest
+from ._detect_image_codes_shrink_request import DetectImageCodesShrinkRequest
+from ._detect_image_codes_response_body import DetectImageCodesResponseBody
+from ._detect_image_codes_response import DetectImageCodesResponse
+from ._detect_image_cropping_request import DetectImageCroppingRequest
+from ._detect_image_cropping_shrink_request import DetectImageCroppingShrinkRequest
+from ._detect_image_cropping_response_body import DetectImageCroppingResponseBody
+from ._detect_image_cropping_response import DetectImageCroppingResponse
+from ._detect_image_faces_request import DetectImageFacesRequest
+from ._detect_image_faces_shrink_request import DetectImageFacesShrinkRequest
+from ._detect_image_faces_response_body import DetectImageFacesResponseBody
+from ._detect_image_faces_response import DetectImageFacesResponse
+from ._detect_image_labels_request import DetectImageLabelsRequest
+from ._detect_image_labels_shrink_request import DetectImageLabelsShrinkRequest
+from ._detect_image_labels_response_body import DetectImageLabelsResponseBody
+from ._detect_image_labels_response import DetectImageLabelsResponse
+from ._detect_image_score_request import DetectImageScoreRequest
+from ._detect_image_score_shrink_request import DetectImageScoreShrinkRequest
+from ._detect_image_score_response_body import DetectImageScoreResponseBody
+from ._detect_image_score_response import DetectImageScoreResponse
+from ._detect_image_texts_request import DetectImageTextsRequest
+from ._detect_image_texts_shrink_request import DetectImageTextsShrinkRequest
+from ._detect_image_texts_response_body import DetectImageTextsResponseBody
+from ._detect_image_texts_response import DetectImageTextsResponse
+from ._detect_media_meta_request import DetectMediaMetaRequest
+from ._detect_media_meta_shrink_request import DetectMediaMetaShrinkRequest
+from ._detect_media_meta_response_body import DetectMediaMetaResponseBody
+from ._detect_media_meta_response import DetectMediaMetaResponse
+from ._detect_text_anomaly_request import DetectTextAnomalyRequest
+from ._detect_text_anomaly_response_body import DetectTextAnomalyResponseBody
+from ._detect_text_anomaly_response import DetectTextAnomalyResponse
+from ._encode_blind_watermark_request import EncodeBlindWatermarkRequest
+from ._encode_blind_watermark_response_body import EncodeBlindWatermarkResponseBody
+from ._encode_blind_watermark_response import EncodeBlindWatermarkResponse
+from ._extract_document_text_request import ExtractDocumentTextRequest
+from ._extract_document_text_shrink_request import ExtractDocumentTextShrinkRequest
+from ._extract_document_text_response_body import ExtractDocumentTextResponseBody
+from ._extract_document_text_response import ExtractDocumentTextResponse
+from ._fuzzy_query_request import FuzzyQueryRequest
+from ._fuzzy_query_shrink_request import FuzzyQueryShrinkRequest
+from ._fuzzy_query_response_body import FuzzyQueryResponseBody
+from ._fuzzy_query_response import FuzzyQueryResponse
+from ._generate_video_playlist_request import GenerateVideoPlaylistRequest
+from ._generate_video_playlist_shrink_request import GenerateVideoPlaylistShrinkRequest
+from ._generate_video_playlist_response_body import GenerateVideoPlaylistResponseBody
+from ._generate_video_playlist_response import GenerateVideoPlaylistResponse
+from ._generate_weboffice_token_request import GenerateWebofficeTokenRequest
+from ._generate_weboffice_token_shrink_request import GenerateWebofficeTokenShrinkRequest
+from ._generate_weboffice_token_response_body import GenerateWebofficeTokenResponseBody
+from ._generate_weboffice_token_response import GenerateWebofficeTokenResponse
+from ._get_batch_request import GetBatchRequest
+from ._get_batch_response_body import GetBatchResponseBody
+from ._get_batch_response import GetBatchResponse
+from ._get_binding_request import GetBindingRequest
+from ._get_binding_response_body import GetBindingResponseBody
+from ._get_binding_response import GetBindingResponse
+from ._get_drmlicense_request import GetDRMLicenseRequest
+from ._get_drmlicense_response_body import GetDRMLicenseResponseBody
+from ._get_drmlicense_response import GetDRMLicenseResponse
+from ._get_dataset_request import GetDatasetRequest
+from ._get_dataset_response_body import GetDatasetResponseBody
+from ._get_dataset_response import GetDatasetResponse
+from ._get_decode_blind_watermark_result_request import GetDecodeBlindWatermarkResultRequest
+from ._get_decode_blind_watermark_result_response_body import GetDecodeBlindWatermarkResultResponseBody
+from ._get_decode_blind_watermark_result_response import GetDecodeBlindWatermarkResultResponse
+from ._get_figure_cluster_request import GetFigureClusterRequest
+from ._get_figure_cluster_response_body import GetFigureClusterResponseBody
+from ._get_figure_cluster_response import GetFigureClusterResponse
+from ._get_file_meta_request import GetFileMetaRequest
+from ._get_file_meta_shrink_request import GetFileMetaShrinkRequest
+from ._get_file_meta_response_body import GetFileMetaResponseBody
+from ._get_file_meta_response import GetFileMetaResponse
+from ._get_image_moderation_result_request import GetImageModerationResultRequest
+from ._get_image_moderation_result_response_body import GetImageModerationResultResponseBody
+from ._get_image_moderation_result_response import GetImageModerationResultResponse
+from ._get_ossbucket_attachment_request import GetOSSBucketAttachmentRequest
+from ._get_ossbucket_attachment_response_body import GetOSSBucketAttachmentResponseBody
+from ._get_ossbucket_attachment_response import GetOSSBucketAttachmentResponse
+from ._get_project_request import GetProjectRequest
+from ._get_project_response_body import GetProjectResponseBody
+from ._get_project_response import GetProjectResponse
+from ._get_story_request import GetStoryRequest
+from ._get_story_response_body import GetStoryResponseBody
+from ._get_story_response import GetStoryResponse
+from ._get_task_request import GetTaskRequest
+from ._get_task_response_body import GetTaskResponseBody
+from ._get_task_response import GetTaskResponse
+from ._get_trigger_request import GetTriggerRequest
+from ._get_trigger_response_body import GetTriggerResponseBody
+from ._get_trigger_response import GetTriggerResponse
+from ._get_video_label_classification_result_request import GetVideoLabelClassificationResultRequest
+from ._get_video_label_classification_result_response_body import GetVideoLabelClassificationResultResponseBody
+from ._get_video_label_classification_result_response import GetVideoLabelClassificationResultResponse
+from ._get_video_moderation_result_request import GetVideoModerationResultRequest
+from ._get_video_moderation_result_response_body import GetVideoModerationResultResponseBody
+from ._get_video_moderation_result_response import GetVideoModerationResultResponse
+from ._index_file_meta_request import IndexFileMetaRequest
+from ._index_file_meta_shrink_request import IndexFileMetaShrinkRequest
+from ._index_file_meta_response_body import IndexFileMetaResponseBody
+from ._index_file_meta_response import IndexFileMetaResponse
+from ._list_attached_ossbuckets_request import ListAttachedOSSBucketsRequest
+from ._list_attached_ossbuckets_response_body import ListAttachedOSSBucketsResponseBody
+from ._list_attached_ossbuckets_response import ListAttachedOSSBucketsResponse
+from ._list_batches_request import ListBatchesRequest
+from ._list_batches_response_body import ListBatchesResponseBody
+from ._list_batches_response import ListBatchesResponse
+from ._list_bindings_request import ListBindingsRequest
+from ._list_bindings_response_body import ListBindingsResponseBody
+from ._list_bindings_response import ListBindingsResponse
+from ._list_datasets_request import ListDatasetsRequest
+from ._list_datasets_response_body import ListDatasetsResponseBody
+from ._list_datasets_response import ListDatasetsResponse
+from ._list_projects_request import ListProjectsRequest
+from ._list_projects_shrink_request import ListProjectsShrinkRequest
+from ._list_projects_response_body import ListProjectsResponseBody
+from ._list_projects_response import ListProjectsResponse
+from ._list_regions_request import ListRegionsRequest
+from ._list_regions_response_body import ListRegionsResponseBody
+from ._list_regions_response import ListRegionsResponse
+from ._list_tasks_request import ListTasksRequest
+from ._list_tasks_shrink_request import ListTasksShrinkRequest
+from ._list_tasks_response_body import ListTasksResponseBody
+from ._list_tasks_response import ListTasksResponse
+from ._list_triggers_request import ListTriggersRequest
+from ._list_triggers_response_body import ListTriggersResponseBody
+from ._list_triggers_response import ListTriggersResponse
+from ._query_figure_clusters_request import QueryFigureClustersRequest
+from ._query_figure_clusters_shrink_request import QueryFigureClustersShrinkRequest
+from ._query_figure_clusters_response_body import QueryFigureClustersResponseBody
+from ._query_figure_clusters_response import QueryFigureClustersResponse
+from ._query_location_date_clusters_request import QueryLocationDateClustersRequest
+from ._query_location_date_clusters_shrink_request import QueryLocationDateClustersShrinkRequest
+from ._query_location_date_clusters_response_body import QueryLocationDateClustersResponseBody
+from ._query_location_date_clusters_response import QueryLocationDateClustersResponse
+from ._query_similar_image_clusters_request import QuerySimilarImageClustersRequest
+from ._query_similar_image_clusters_response_body import QuerySimilarImageClustersResponseBody
+from ._query_similar_image_clusters_response import QuerySimilarImageClustersResponse
+from ._query_stories_request import QueryStoriesRequest
+from ._query_stories_shrink_request import QueryStoriesShrinkRequest
+from ._query_stories_response_body import QueryStoriesResponseBody
+from ._query_stories_response import QueryStoriesResponse
+from ._refresh_weboffice_token_request import RefreshWebofficeTokenRequest
+from ._refresh_weboffice_token_shrink_request import RefreshWebofficeTokenShrinkRequest
+from ._refresh_weboffice_token_response_body import RefreshWebofficeTokenResponseBody
+from ._refresh_weboffice_token_response import RefreshWebofficeTokenResponse
+from ._remove_story_files_request import RemoveStoryFilesRequest
+from ._remove_story_files_shrink_request import RemoveStoryFilesShrinkRequest
+from ._remove_story_files_response_body import RemoveStoryFilesResponseBody
+from ._remove_story_files_response import RemoveStoryFilesResponse
+from ._resume_batch_request import ResumeBatchRequest
+from ._resume_batch_response_body import ResumeBatchResponseBody
+from ._resume_batch_response import ResumeBatchResponse
+from ._resume_trigger_request import ResumeTriggerRequest
+from ._resume_trigger_response_body import ResumeTriggerResponseBody
+from ._resume_trigger_response import ResumeTriggerResponse
+from ._search_image_figure_cluster_request import SearchImageFigureClusterRequest
+from ._search_image_figure_cluster_shrink_request import SearchImageFigureClusterShrinkRequest
+from ._search_image_figure_cluster_response_body import SearchImageFigureClusterResponseBody
+from ._search_image_figure_cluster_response import SearchImageFigureClusterResponse
+from ._semantic_query_request import SemanticQueryRequest
+from ._semantic_query_shrink_request import SemanticQueryShrinkRequest
+from ._semantic_query_response_body import SemanticQueryResponseBody
+from ._semantic_query_response import SemanticQueryResponse
+from ._simple_query_request import SimpleQueryRequest
+from ._simple_query_shrink_request import SimpleQueryShrinkRequest
+from ._simple_query_response_body import SimpleQueryResponseBody
+from ._simple_query_response import SimpleQueryResponse
+from ._suspend_batch_request import SuspendBatchRequest
+from ._suspend_batch_response_body import SuspendBatchResponseBody
+from ._suspend_batch_response import SuspendBatchResponse
+from ._suspend_trigger_request import SuspendTriggerRequest
+from ._suspend_trigger_response_body import SuspendTriggerResponseBody
+from ._suspend_trigger_response import SuspendTriggerResponse
+from ._update_batch_request import UpdateBatchRequest
+from ._update_batch_shrink_request import UpdateBatchShrinkRequest
+from ._update_batch_response_body import UpdateBatchResponseBody
+from ._update_batch_response import UpdateBatchResponse
+from ._update_dataset_request import UpdateDatasetRequest
+from ._update_dataset_shrink_request import UpdateDatasetShrinkRequest
+from ._update_dataset_response_body import UpdateDatasetResponseBody
+from ._update_dataset_response import UpdateDatasetResponse
+from ._update_figure_cluster_request import UpdateFigureClusterRequest
+from ._update_figure_cluster_shrink_request import UpdateFigureClusterShrinkRequest
+from ._update_figure_cluster_response_body import UpdateFigureClusterResponseBody
+from ._update_figure_cluster_response import UpdateFigureClusterResponse
+from ._update_file_meta_request import UpdateFileMetaRequest
+from ._update_file_meta_shrink_request import UpdateFileMetaShrinkRequest
+from ._update_file_meta_response_body import UpdateFileMetaResponseBody
+from ._update_file_meta_response import UpdateFileMetaResponse
+from ._update_location_date_cluster_request import UpdateLocationDateClusterRequest
+from ._update_location_date_cluster_shrink_request import UpdateLocationDateClusterShrinkRequest
+from ._update_location_date_cluster_response_body import UpdateLocationDateClusterResponseBody
+from ._update_location_date_cluster_response import UpdateLocationDateClusterResponse
+from ._update_project_request import UpdateProjectRequest
+from ._update_project_shrink_request import UpdateProjectShrinkRequest
+from ._update_project_response_body import UpdateProjectResponseBody
+from ._update_project_response import UpdateProjectResponse
+from ._update_story_request import UpdateStoryRequest
+from ._update_story_shrink_request import UpdateStoryShrinkRequest
+from ._update_story_response_body import UpdateStoryResponseBody
+from ._update_story_response import UpdateStoryResponse
+from ._update_trigger_request import UpdateTriggerRequest
+from ._update_trigger_shrink_request import UpdateTriggerShrinkRequest
+from ._update_trigger_response_body import UpdateTriggerResponseBody
+from ._update_trigger_response import UpdateTriggerResponse
+from ._cluster_for_req import ClusterForReqCoverFigures
+from ._cluster_for_req import ClusterForReqCover
+from ._credential_config import CredentialConfigChain
+from ._data_ingestion import DataIngestionActions
+from ._data_ingestion import DataIngestionNotification
+from ._data_ingestion import DataIngestionStatistic
+from ._figure_cluster_for_req import FigureClusterForReqCoverFigures
+from ._figure_cluster_for_req import FigureClusterForReqCover
+from ._input_file import InputFileFigures
+from ._project import ProjectTags
+from ._target_audio import TargetAudioFilterAudio
+from ._target_audio import TargetAudioTranscodeAudio
+from ._target_image import TargetImageAnimations
+from ._target_image import TargetImageSnapshots
+from ._target_image import TargetImageSprites
+from ._target_subtitle import TargetSubtitleExtractSubtitle
+from ._target_video import TargetVideoFilterVideoDelogos
+from ._target_video import TargetVideoFilterVideoDesensitizationFace
+from ._target_video import TargetVideoFilterVideoDesensitizationLicensePlate
+from ._target_video import TargetVideoFilterVideoDesensitization
+from ._target_video import TargetVideoFilterVideoWatermarks
+from ._target_video import TargetVideoFilterVideo
+from ._target_video import TargetVideoTranscodeVideo
+from ._add_image_mosaic_request import AddImageMosaicRequestTargetsBoundary
+from ._add_image_mosaic_request import AddImageMosaicRequestTargets
+from ._add_story_files_request import AddStoryFilesRequestFiles
+from ._add_story_files_response_body import AddStoryFilesResponseBodyFiles
+from ._batch_update_file_meta_response_body import BatchUpdateFileMetaResponseBodyFiles
+from ._compare_image_faces_request import CompareImageFacesRequestSource
+from ._create_batch_request import CreateBatchRequestActions
+from ._create_batch_request import CreateBatchRequestNotification
+from ._create_customized_story_request import CreateCustomizedStoryRequestCover
+from ._create_customized_story_request import CreateCustomizedStoryRequestFiles
+from ._create_faces_searching_task_request import CreateFacesSearchingTaskRequestSources
+from ._create_file_compression_task_request import CreateFileCompressionTaskRequestSources
+from ._create_image_splicing_task_request import CreateImageSplicingTaskRequestSources
+from ._create_image_to_pdftask_request import CreateImageToPDFTaskRequestSources
+from ._create_location_date_clustering_task_request import CreateLocationDateClusteringTaskRequestDateOptions
+from ._create_location_date_clustering_task_request import CreateLocationDateClusteringTaskRequestLocationOptions
+from ._create_media_convert_task_request import CreateMediaConvertTaskRequestSourcesSubtitles
+from ._create_media_convert_task_request import CreateMediaConvertTaskRequestSources
+from ._create_media_convert_task_request import CreateMediaConvertTaskRequestTargetsSegment
+from ._create_media_convert_task_request import CreateMediaConvertTaskRequestTargets
+from ._create_office_conversion_task_request import CreateOfficeConversionTaskRequestSources
+from ._create_project_request import CreateProjectRequestTag
+from ._create_trigger_request import CreateTriggerRequestActions
+from ._create_trigger_request import CreateTriggerRequestNotification
+from ._detect_image_score_response_body import DetectImageScoreResponseBodyImageScore
+from ._generate_video_playlist_request import GenerateVideoPlaylistRequestSourceSubtitles
+from ._generate_video_playlist_request import GenerateVideoPlaylistRequestTargets
+from ._generate_video_playlist_response_body import GenerateVideoPlaylistResponseBodyAudioPlaylist
+from ._generate_video_playlist_response_body import GenerateVideoPlaylistResponseBodySubtitlePlaylist
+from ._generate_video_playlist_response_body import GenerateVideoPlaylistResponseBodyVideoPlaylist
+from ._get_image_moderation_result_response_body import GetImageModerationResultResponseBodyModerationResultFramesBlockFrames
+from ._get_image_moderation_result_response_body import GetImageModerationResultResponseBodyModerationResultFrames
+from ._get_image_moderation_result_response_body import GetImageModerationResultResponseBodyModerationResult
+from ._get_video_moderation_result_response_body import GetVideoModerationResultResponseBodyModerationResultFramesBlockFrames
+from ._get_video_moderation_result_response_body import GetVideoModerationResultResponseBodyModerationResultFrames
+from ._get_video_moderation_result_response_body import GetVideoModerationResultResponseBodyModerationResult
+from ._list_attached_ossbuckets_response_body import ListAttachedOSSBucketsResponseBodyAttachedOSSBuckets
+from ._list_projects_request import ListProjectsRequestTag
+from ._remove_story_files_request import RemoveStoryFilesRequestFiles
+from ._search_image_figure_cluster_response_body import SearchImageFigureClusterResponseBodyClusters
+from ._simple_query_request import SimpleQueryRequestAggregations
+from ._simple_query_response_body import SimpleQueryResponseBodyAggregationsGroups
+from ._simple_query_response_body import SimpleQueryResponseBodyAggregations
+from ._update_batch_request import UpdateBatchRequestActions
+from ._update_project_request import UpdateProjectRequestTag
+from ._update_story_request import UpdateStoryRequestCover
+from ._update_trigger_request import UpdateTriggerRequestActions
+
+__all__ = [
+    Address,
+    AddressForStory,
+    AlgorithmDefinition,
+    Answer,
+    App,
+    AssumeRoleChain,
+    AssumeRoleChainNode,
+    AudioStream,
+    Binding,
+    Body,
+    Boundary,
+    Car,
+    Clip,
+    ClusterForReq,
+    Codes,
+    ContextualFile,
+    ContextualMessage,
+    CredentialConfig,
+    CroppingSuggestion,
+    CustomParams,
+    CustomPrompt,
+    DataIngestion,
+    Dataset,
+    DatasetConfig,
+    DatasetTaskStatus,
+    DocumentParseKeywordOption,
+    DocumentParseNarratorOption,
+    DocumentParseOption,
+    DocumentParseQuestionOption,
+    DocumentParseSummaryOption,
+    Element,
+    ElementContent,
+    ElementRelation,
+    FastFailPolicy,
+    Figure,
+    FigureCluster,
+    FigureClusterForReq,
+    File,
+    FileSmartCluster,
+    FunctionCall,
+    HeadPose,
+    Hyperparameters,
+    Image,
+    ImageInsight,
+    ImageScore,
+    ImageURL,
+    Input,
+    InputFile,
+    InputOSS,
+    Insights,
+    InsightsConfig,
+    KdtreeOption,
+    KeyValuePair,
+    Label,
+    LicensePlate,
+    LocationDateCluster,
+    MNS,
+    Message,
+    MetaData,
+    ModelSpecification,
+    Notification,
+    OCRContents,
+    OctreeOption,
+    Optimization,
+    PointInt64,
+    Project,
+    Property,
+    ReferenceFile,
+    RegionType,
+    Resource,
+    RocketMQ,
+    Row,
+    Runtime,
+    SceneElement,
+    Schedule,
+    SimilarImage,
+    SimilarImageCluster,
+    SimpleQuery,
+    SmartCluster,
+    SmartClusterRule,
+    Spec,
+    Story,
+    StreamOptions,
+    SubtitleStream,
+    TargetAudio,
+    TargetImage,
+    TargetSubtitle,
+    TargetVideo,
+    TaskInfo,
+    TimeRange,
+    ToolCall,
+    TrainingSpecification,
+    TrimPolicy,
+    VideoInsight,
+    VideoStream,
+    WebofficePermission,
+    WebofficeUser,
+    WebofficeWatermark,
+    WorkflowParameter,
+    AddImageMosaicRequest,
+    AddImageMosaicShrinkRequest,
+    AddImageMosaicResponseBody,
+    AddImageMosaicResponse,
+    AddStoryFilesRequest,
+    AddStoryFilesShrinkRequest,
+    AddStoryFilesResponseBody,
+    AddStoryFilesResponse,
+    AttachOSSBucketRequest,
+    AttachOSSBucketResponseBody,
+    AttachOSSBucketResponse,
+    BatchDeleteFileMetaRequest,
+    BatchDeleteFileMetaShrinkRequest,
+    BatchDeleteFileMetaResponseBody,
+    BatchDeleteFileMetaResponse,
+    BatchGetFigureClusterRequest,
+    BatchGetFigureClusterShrinkRequest,
+    BatchGetFigureClusterResponseBody,
+    BatchGetFigureClusterResponse,
+    BatchGetFileMetaRequest,
+    BatchGetFileMetaShrinkRequest,
+    BatchGetFileMetaResponseBody,
+    BatchGetFileMetaResponse,
+    BatchIndexFileMetaRequest,
+    BatchIndexFileMetaShrinkRequest,
+    BatchIndexFileMetaResponseBody,
+    BatchIndexFileMetaResponse,
+    BatchUpdateFileMetaRequest,
+    BatchUpdateFileMetaShrinkRequest,
+    BatchUpdateFileMetaResponseBody,
+    BatchUpdateFileMetaResponse,
+    CompareImageFacesRequest,
+    CompareImageFacesShrinkRequest,
+    CompareImageFacesResponseBody,
+    CompareImageFacesResponse,
+    ContextualAnswerRequest,
+    ContextualAnswerShrinkRequest,
+    ContextualAnswerResponseBody,
+    ContextualAnswerResponse,
+    ContextualRetrievalRequest,
+    ContextualRetrievalShrinkRequest,
+    ContextualRetrievalResponseBody,
+    ContextualRetrievalResponse,
+    CreateArchiveFileInspectionTaskRequest,
+    CreateArchiveFileInspectionTaskShrinkRequest,
+    CreateArchiveFileInspectionTaskResponseBody,
+    CreateArchiveFileInspectionTaskResponse,
+    CreateBatchRequest,
+    CreateBatchShrinkRequest,
+    CreateBatchResponseBody,
+    CreateBatchResponse,
+    CreateBindingRequest,
+    CreateBindingResponseBody,
+    CreateBindingResponse,
+    CreateCompressPointCloudTaskRequest,
+    CreateCompressPointCloudTaskShrinkRequest,
+    CreateCompressPointCloudTaskResponseBody,
+    CreateCompressPointCloudTaskResponse,
+    CreateCustomizedStoryRequest,
+    CreateCustomizedStoryShrinkRequest,
+    CreateCustomizedStoryResponseBody,
+    CreateCustomizedStoryResponse,
+    CreateDatasetRequest,
+    CreateDatasetShrinkRequest,
+    CreateDatasetResponseBody,
+    CreateDatasetResponse,
+    CreateDecodeBlindWatermarkTaskRequest,
+    CreateDecodeBlindWatermarkTaskShrinkRequest,
+    CreateDecodeBlindWatermarkTaskResponseBody,
+    CreateDecodeBlindWatermarkTaskResponse,
+    CreateFacesSearchingTaskRequest,
+    CreateFacesSearchingTaskShrinkRequest,
+    CreateFacesSearchingTaskResponseBody,
+    CreateFacesSearchingTaskResponse,
+    CreateFigureClusteringTaskRequest,
+    CreateFigureClusteringTaskShrinkRequest,
+    CreateFigureClusteringTaskResponseBody,
+    CreateFigureClusteringTaskResponse,
+    CreateFigureClustersMergingTaskRequest,
+    CreateFigureClustersMergingTaskShrinkRequest,
+    CreateFigureClustersMergingTaskResponseBody,
+    CreateFigureClustersMergingTaskResponse,
+    CreateFileCompressionTaskRequest,
+    CreateFileCompressionTaskShrinkRequest,
+    CreateFileCompressionTaskResponseBody,
+    CreateFileCompressionTaskResponse,
+    CreateFileUncompressionTaskRequest,
+    CreateFileUncompressionTaskShrinkRequest,
+    CreateFileUncompressionTaskResponseBody,
+    CreateFileUncompressionTaskResponse,
+    CreateImageModerationTaskRequest,
+    CreateImageModerationTaskShrinkRequest,
+    CreateImageModerationTaskResponseBody,
+    CreateImageModerationTaskResponse,
+    CreateImageSplicingTaskRequest,
+    CreateImageSplicingTaskShrinkRequest,
+    CreateImageSplicingTaskResponseBody,
+    CreateImageSplicingTaskResponse,
+    CreateImageToPDFTaskRequest,
+    CreateImageToPDFTaskShrinkRequest,
+    CreateImageToPDFTaskResponseBody,
+    CreateImageToPDFTaskResponse,
+    CreateLocationDateClusteringTaskRequest,
+    CreateLocationDateClusteringTaskShrinkRequest,
+    CreateLocationDateClusteringTaskResponseBody,
+    CreateLocationDateClusteringTaskResponse,
+    CreateMediaConvertTaskRequest,
+    CreateMediaConvertTaskShrinkRequest,
+    CreateMediaConvertTaskResponseBody,
+    CreateMediaConvertTaskResponse,
+    CreateOfficeConversionTaskRequest,
+    CreateOfficeConversionTaskShrinkRequest,
+    CreateOfficeConversionTaskResponseBody,
+    CreateOfficeConversionTaskResponse,
+    CreateProjectRequest,
+    CreateProjectShrinkRequest,
+    CreateProjectResponseBody,
+    CreateProjectResponse,
+    CreateSimilarImageClusteringTaskRequest,
+    CreateSimilarImageClusteringTaskShrinkRequest,
+    CreateSimilarImageClusteringTaskResponseBody,
+    CreateSimilarImageClusteringTaskResponse,
+    CreateStoryRequest,
+    CreateStoryShrinkRequest,
+    CreateStoryResponseBody,
+    CreateStoryResponse,
+    CreateTriggerRequest,
+    CreateTriggerShrinkRequest,
+    CreateTriggerResponseBody,
+    CreateTriggerResponse,
+    CreateVideoLabelClassificationTaskRequest,
+    CreateVideoLabelClassificationTaskShrinkRequest,
+    CreateVideoLabelClassificationTaskResponseBody,
+    CreateVideoLabelClassificationTaskResponse,
+    CreateVideoModerationTaskRequest,
+    CreateVideoModerationTaskShrinkRequest,
+    CreateVideoModerationTaskResponseBody,
+    CreateVideoModerationTaskResponse,
+    DeleteBatchRequest,
+    DeleteBatchResponseBody,
+    DeleteBatchResponse,
+    DeleteBindingRequest,
+    DeleteBindingResponseBody,
+    DeleteBindingResponse,
+    DeleteDatasetRequest,
+    DeleteDatasetResponseBody,
+    DeleteDatasetResponse,
+    DeleteFileMetaRequest,
+    DeleteFileMetaResponseBody,
+    DeleteFileMetaResponse,
+    DeleteLocationDateClusterRequest,
+    DeleteLocationDateClusterResponseBody,
+    DeleteLocationDateClusterResponse,
+    DeleteProjectRequest,
+    DeleteProjectResponseBody,
+    DeleteProjectResponse,
+    DeleteStoryRequest,
+    DeleteStoryResponseBody,
+    DeleteStoryResponse,
+    DeleteTriggerRequest,
+    DeleteTriggerResponseBody,
+    DeleteTriggerResponse,
+    DetachOSSBucketRequest,
+    DetachOSSBucketResponseBody,
+    DetachOSSBucketResponse,
+    DetectImageBodiesRequest,
+    DetectImageBodiesShrinkRequest,
+    DetectImageBodiesResponseBody,
+    DetectImageBodiesResponse,
+    DetectImageCarsRequest,
+    DetectImageCarsShrinkRequest,
+    DetectImageCarsResponseBody,
+    DetectImageCarsResponse,
+    DetectImageCodesRequest,
+    DetectImageCodesShrinkRequest,
+    DetectImageCodesResponseBody,
+    DetectImageCodesResponse,
+    DetectImageCroppingRequest,
+    DetectImageCroppingShrinkRequest,
+    DetectImageCroppingResponseBody,
+    DetectImageCroppingResponse,
+    DetectImageFacesRequest,
+    DetectImageFacesShrinkRequest,
+    DetectImageFacesResponseBody,
+    DetectImageFacesResponse,
+    DetectImageLabelsRequest,
+    DetectImageLabelsShrinkRequest,
+    DetectImageLabelsResponseBody,
+    DetectImageLabelsResponse,
+    DetectImageScoreRequest,
+    DetectImageScoreShrinkRequest,
+    DetectImageScoreResponseBody,
+    DetectImageScoreResponse,
+    DetectImageTextsRequest,
+    DetectImageTextsShrinkRequest,
+    DetectImageTextsResponseBody,
+    DetectImageTextsResponse,
+    DetectMediaMetaRequest,
+    DetectMediaMetaShrinkRequest,
+    DetectMediaMetaResponseBody,
+    DetectMediaMetaResponse,
+    DetectTextAnomalyRequest,
+    DetectTextAnomalyResponseBody,
+    DetectTextAnomalyResponse,
+    EncodeBlindWatermarkRequest,
+    EncodeBlindWatermarkResponseBody,
+    EncodeBlindWatermarkResponse,
+    ExtractDocumentTextRequest,
+    ExtractDocumentTextShrinkRequest,
+    ExtractDocumentTextResponseBody,
+    ExtractDocumentTextResponse,
+    FuzzyQueryRequest,
+    FuzzyQueryShrinkRequest,
+    FuzzyQueryResponseBody,
+    FuzzyQueryResponse,
+    GenerateVideoPlaylistRequest,
+    GenerateVideoPlaylistShrinkRequest,
+    GenerateVideoPlaylistResponseBody,
+    GenerateVideoPlaylistResponse,
+    GenerateWebofficeTokenRequest,
+    GenerateWebofficeTokenShrinkRequest,
+    GenerateWebofficeTokenResponseBody,
+    GenerateWebofficeTokenResponse,
+    GetBatchRequest,
+    GetBatchResponseBody,
+    GetBatchResponse,
+    GetBindingRequest,
+    GetBindingResponseBody,
+    GetBindingResponse,
+    GetDRMLicenseRequest,
+    GetDRMLicenseResponseBody,
+    GetDRMLicenseResponse,
+    GetDatasetRequest,
+    GetDatasetResponseBody,
+    GetDatasetResponse,
+    GetDecodeBlindWatermarkResultRequest,
+    GetDecodeBlindWatermarkResultResponseBody,
+    GetDecodeBlindWatermarkResultResponse,
+    GetFigureClusterRequest,
+    GetFigureClusterResponseBody,
+    GetFigureClusterResponse,
+    GetFileMetaRequest,
+    GetFileMetaShrinkRequest,
+    GetFileMetaResponseBody,
+    GetFileMetaResponse,
+    GetImageModerationResultRequest,
+    GetImageModerationResultResponseBody,
+    GetImageModerationResultResponse,
+    GetOSSBucketAttachmentRequest,
+    GetOSSBucketAttachmentResponseBody,
+    GetOSSBucketAttachmentResponse,
+    GetProjectRequest,
+    GetProjectResponseBody,
+    GetProjectResponse,
+    GetStoryRequest,
+    GetStoryResponseBody,
+    GetStoryResponse,
+    GetTaskRequest,
+    GetTaskResponseBody,
+    GetTaskResponse,
+    GetTriggerRequest,
+    GetTriggerResponseBody,
+    GetTriggerResponse,
+    GetVideoLabelClassificationResultRequest,
+    GetVideoLabelClassificationResultResponseBody,
+    GetVideoLabelClassificationResultResponse,
+    GetVideoModerationResultRequest,
+    GetVideoModerationResultResponseBody,
+    GetVideoModerationResultResponse,
+    IndexFileMetaRequest,
+    IndexFileMetaShrinkRequest,
+    IndexFileMetaResponseBody,
+    IndexFileMetaResponse,
+    ListAttachedOSSBucketsRequest,
+    ListAttachedOSSBucketsResponseBody,
+    ListAttachedOSSBucketsResponse,
+    ListBatchesRequest,
+    ListBatchesResponseBody,
+    ListBatchesResponse,
+    ListBindingsRequest,
+    ListBindingsResponseBody,
+    ListBindingsResponse,
+    ListDatasetsRequest,
+    ListDatasetsResponseBody,
+    ListDatasetsResponse,
+    ListProjectsRequest,
+    ListProjectsShrinkRequest,
+    ListProjectsResponseBody,
+    ListProjectsResponse,
+    ListRegionsRequest,
+    ListRegionsResponseBody,
+    ListRegionsResponse,
+    ListTasksRequest,
+    ListTasksShrinkRequest,
+    ListTasksResponseBody,
+    ListTasksResponse,
+    ListTriggersRequest,
+    ListTriggersResponseBody,
+    ListTriggersResponse,
+    QueryFigureClustersRequest,
+    QueryFigureClustersShrinkRequest,
+    QueryFigureClustersResponseBody,
+    QueryFigureClustersResponse,
+    QueryLocationDateClustersRequest,
+    QueryLocationDateClustersShrinkRequest,
+    QueryLocationDateClustersResponseBody,
+    QueryLocationDateClustersResponse,
+    QuerySimilarImageClustersRequest,
+    QuerySimilarImageClustersResponseBody,
+    QuerySimilarImageClustersResponse,
+    QueryStoriesRequest,
+    QueryStoriesShrinkRequest,
+    QueryStoriesResponseBody,
+    QueryStoriesResponse,
+    RefreshWebofficeTokenRequest,
+    RefreshWebofficeTokenShrinkRequest,
+    RefreshWebofficeTokenResponseBody,
+    RefreshWebofficeTokenResponse,
+    RemoveStoryFilesRequest,
+    RemoveStoryFilesShrinkRequest,
+    RemoveStoryFilesResponseBody,
+    RemoveStoryFilesResponse,
+    ResumeBatchRequest,
+    ResumeBatchResponseBody,
+    ResumeBatchResponse,
+    ResumeTriggerRequest,
+    ResumeTriggerResponseBody,
+    ResumeTriggerResponse,
+    SearchImageFigureClusterRequest,
+    SearchImageFigureClusterShrinkRequest,
+    SearchImageFigureClusterResponseBody,
+    SearchImageFigureClusterResponse,
+    SemanticQueryRequest,
+    SemanticQueryShrinkRequest,
+    SemanticQueryResponseBody,
+    SemanticQueryResponse,
+    SimpleQueryRequest,
+    SimpleQueryShrinkRequest,
+    SimpleQueryResponseBody,
+    SimpleQueryResponse,
+    SuspendBatchRequest,
+    SuspendBatchResponseBody,
+    SuspendBatchResponse,
+    SuspendTriggerRequest,
+    SuspendTriggerResponseBody,
+    SuspendTriggerResponse,
+    UpdateBatchRequest,
+    UpdateBatchShrinkRequest,
+    UpdateBatchResponseBody,
+    UpdateBatchResponse,
+    UpdateDatasetRequest,
+    UpdateDatasetShrinkRequest,
+    UpdateDatasetResponseBody,
+    UpdateDatasetResponse,
+    UpdateFigureClusterRequest,
+    UpdateFigureClusterShrinkRequest,
+    UpdateFigureClusterResponseBody,
+    UpdateFigureClusterResponse,
+    UpdateFileMetaRequest,
+    UpdateFileMetaShrinkRequest,
+    UpdateFileMetaResponseBody,
+    UpdateFileMetaResponse,
+    UpdateLocationDateClusterRequest,
+    UpdateLocationDateClusterShrinkRequest,
+    UpdateLocationDateClusterResponseBody,
+    UpdateLocationDateClusterResponse,
+    UpdateProjectRequest,
+    UpdateProjectShrinkRequest,
+    UpdateProjectResponseBody,
+    UpdateProjectResponse,
+    UpdateStoryRequest,
+    UpdateStoryShrinkRequest,
+    UpdateStoryResponseBody,
+    UpdateStoryResponse,
+    UpdateTriggerRequest,
+    UpdateTriggerShrinkRequest,
+    UpdateTriggerResponseBody,
+    UpdateTriggerResponse,
+    ClusterForReqCoverFigures,
+    ClusterForReqCover,
+    CredentialConfigChain,
+    DataIngestionActions,
+    DataIngestionNotification,
+    DataIngestionStatistic,
+    FigureClusterForReqCoverFigures,
+    FigureClusterForReqCover,
+    InputFileFigures,
+    ProjectTags,
+    TargetAudioFilterAudio,
+    TargetAudioTranscodeAudio,
+    TargetImageAnimations,
+    TargetImageSnapshots,
+    TargetImageSprites,
+    TargetSubtitleExtractSubtitle,
+    TargetVideoFilterVideoDelogos,
+    TargetVideoFilterVideoDesensitizationFace,
+    TargetVideoFilterVideoDesensitizationLicensePlate,
+    TargetVideoFilterVideoDesensitization,
+    TargetVideoFilterVideoWatermarks,
+    TargetVideoFilterVideo,
+    TargetVideoTranscodeVideo,
+    AddImageMosaicRequestTargetsBoundary,
+    AddImageMosaicRequestTargets,
+    AddStoryFilesRequestFiles,
+    AddStoryFilesResponseBodyFiles,
+    BatchUpdateFileMetaResponseBodyFiles,
+    CompareImageFacesRequestSource,
+    CreateBatchRequestActions,
+    CreateBatchRequestNotification,
+    CreateCustomizedStoryRequestCover,
+    CreateCustomizedStoryRequestFiles,
+    CreateFacesSearchingTaskRequestSources,
+    CreateFileCompressionTaskRequestSources,
+    CreateImageSplicingTaskRequestSources,
+    CreateImageToPDFTaskRequestSources,
+    CreateLocationDateClusteringTaskRequestDateOptions,
+    CreateLocationDateClusteringTaskRequestLocationOptions,
+    CreateMediaConvertTaskRequestSourcesSubtitles,
+    CreateMediaConvertTaskRequestSources,
+    CreateMediaConvertTaskRequestTargetsSegment,
+    CreateMediaConvertTaskRequestTargets,
+    CreateOfficeConversionTaskRequestSources,
+    CreateProjectRequestTag,
+    CreateTriggerRequestActions,
+    CreateTriggerRequestNotification,
+    DetectImageScoreResponseBodyImageScore,
+    GenerateVideoPlaylistRequestSourceSubtitles,
+    GenerateVideoPlaylistRequestTargets,
+    GenerateVideoPlaylistResponseBodyAudioPlaylist,
+    GenerateVideoPlaylistResponseBodySubtitlePlaylist,
+    GenerateVideoPlaylistResponseBodyVideoPlaylist,
+    GetImageModerationResultResponseBodyModerationResultFramesBlockFrames,
+    GetImageModerationResultResponseBodyModerationResultFrames,
+    GetImageModerationResultResponseBodyModerationResult,
+    GetVideoModerationResultResponseBodyModerationResultFramesBlockFrames,
+    GetVideoModerationResultResponseBodyModerationResultFrames,
+    GetVideoModerationResultResponseBodyModerationResult,
+    ListAttachedOSSBucketsResponseBodyAttachedOSSBuckets,
+    ListProjectsRequestTag,
+    RemoveStoryFilesRequestFiles,
+    SearchImageFigureClusterResponseBodyClusters,
+    SimpleQueryRequestAggregations,
+    SimpleQueryResponseBodyAggregationsGroups,
+    SimpleQueryResponseBodyAggregations,
+    UpdateBatchRequestActions,
+    UpdateProjectRequestTag,
+    UpdateStoryRequestCover,
+    UpdateTriggerRequestActions
+]
