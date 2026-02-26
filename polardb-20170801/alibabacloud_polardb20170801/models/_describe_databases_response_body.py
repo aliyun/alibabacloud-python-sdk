@@ -15,7 +15,6 @@ class DescribeDatabasesResponseBody(DaraModel):
         page_record_count: int = None,
         request_id: str = None,
     ):
-        # Details about databases.
         self.databases = databases
         # The page number.
         self.page_number = page_number
@@ -110,29 +109,12 @@ class DescribeDatabasesResponseBodyDatabasesDatabase(DaraModel):
         engine: str = None,
         master_id: str = None,
     ):
-        # Details about the accounts.
-        # 
-        # > A PolarDB for MySQL cluster does not support privileged accounts.
         self.accounts = accounts
-        # The character set that the database uses. For more information, see [Character set tables](https://help.aliyun.com/document_detail/99716.html).
         self.character_set_name = character_set_name
-        # The description of the database.
         self.dbdescription = dbdescription
-        # The name of the database.
         self.dbname = dbname
-        # The state of the database. Valid values:
-        # 
-        # *   **Creating**
-        # *   **Running**
-        # *   **Deleting**
         self.dbstatus = dbstatus
-        # The type of the database engine. Valid values:
-        # 
-        # *   **MySQL**
-        # *   **Oracle**
-        # *   **PostgreSQL**
         self.engine = engine
-        # The ID of the primary node in the cluster of Multi-master Cluster (Database/Table) Edition.
         self.master_id = master_id
 
     def validate(self):
@@ -236,29 +218,9 @@ class DescribeDatabasesResponseBodyDatabasesDatabaseAccountsAccount(DaraModel):
         account_status: str = None,
         privilege_status: str = None,
     ):
-        # The username of the account.
-        # 
-        # > A PolarDB for MySQL cluster does not support privileged accounts.
         self.account_name = account_name
-        # The permissions that are granted to the account. Valid values:
-        # 
-        # *   **ReadWrite**: read and write permissions
-        # *   **ReadOnly**: read-only permissions
-        # *   **DMLOnly**: The account is granted the permissions to execute only DML statements on the database.
-        # *   **DDLOnly**: The account is granted the permissions to execute only DDL statements on the database.
-        # *   **ReadIndex**: The account has the read and index permissions on the database.
         self.account_privilege = account_privilege
-        # The state of the account. Valid values:
-        # 
-        # *   **Creating**
-        # *   **Available**
-        # *   **Deleting**
         self.account_status = account_status
-        # The authorization state of the account. Valid values:
-        # 
-        # *   **Empowering**: The system is granting permissions to the account.
-        # *   **Empowered**: Permissions are granted to the account.
-        # *   **Removing**: The system is revoking permissions from the account.
         self.privilege_status = privilege_status
 
     def validate(self):

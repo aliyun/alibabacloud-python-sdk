@@ -26,7 +26,6 @@ class DescribeDBProxyPerformanceResponseBody(DaraModel):
         self.dbversion = dbversion
         # The end time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.end_time = end_time
-        # Details about the performance metrics.
         self.performance_keys = performance_keys
         # The ID of the request.
         self.request_id = request_id
@@ -134,13 +133,9 @@ class DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItem(DaraM
         metric_name: str = None,
         points: main_models.DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItemPoints = None,
     ):
-        # The ID of the node.
         self.dbnode_id = dbnode_id
-        # The performance metric.
         self.measurement = measurement
-        # The name of the performance metric.
         self.metric_name = metric_name
-        # The list of the performance metrics.
         self.points = points
 
     def validate(self):
@@ -224,9 +219,7 @@ class DescribeDBProxyPerformanceResponseBodyPerformanceKeysPerformanceItemPoints
         timestamp: int = None,
         value: str = None,
     ):
-        # The time when the metric value was collected. This value is a timestamp in milliseconds.
         self.timestamp = timestamp
-        # The value of the metric.
         self.value = value
 
     def validate(self):

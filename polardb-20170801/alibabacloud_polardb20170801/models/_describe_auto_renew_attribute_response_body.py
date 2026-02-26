@@ -16,7 +16,6 @@ class DescribeAutoRenewAttributeResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The renewal information about the clusters.
         self.items = items
         # The page number of the page returned.
         self.page_number = page_number
@@ -118,27 +117,11 @@ class DescribeAutoRenewAttributeResponseBodyItemsAutoRenewAttribute(DaraModel):
         region_id: str = None,
         renewal_status: str = None,
     ):
-        # Indicates whether the auto-renewal feature is enabled. Valid values:
-        # 
-        # *   true: enabled
-        # *   false: disabled
         self.auto_renew_enabled = auto_renew_enabled
-        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
-        # The renewal duration.
         self.duration = duration
-        # The unit of the duration. Valid values:
-        # 
-        # *   Year
-        # *   Month
         self.period_unit = period_unit
-        # The ID of the region.
         self.region_id = region_id
-        # The renewal status. Valid values:
-        # 
-        # *   AutoRenewal: The cluster is automatically renewed.
-        # *   Normal: The cluster is manually renewed. The system sends a text message to remind you before the cluster expires.
-        # *   NotRenewal: The cluster is not renewed. The system does not send a reminder for expiration but only sends a text message three days before the cluster expires to remind you that the cluster is not renewed.
         self.renewal_status = renewal_status
 
     def validate(self):

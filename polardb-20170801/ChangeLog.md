@@ -1,3 +1,8 @@
+2026-02-26 Version: 6.7.0
+- Support API DisableDBClusterDynamoDB.
+- Support API EnableDBClusterDynamoDB.
+
+
 2026-02-05 Version: 6.6.6
 - Update API DescribeDBClusterEndpoints: add response parameters Body.Items.$.ServiceName.
 

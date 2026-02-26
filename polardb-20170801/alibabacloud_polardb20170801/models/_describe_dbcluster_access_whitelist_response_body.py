@@ -14,9 +14,7 @@ class DescribeDBClusterAccessWhitelistResponseBody(DaraModel):
         items: main_models.DescribeDBClusterAccessWhitelistResponseBodyItems = None,
         request_id: str = None,
     ):
-        # The Elastic Compute Service (ECS) security groups that are associated with the cluster.
         self.dbcluster_security_groups = dbcluster_security_groups
-        # The details about the cluster.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -100,26 +98,8 @@ class DescribeDBClusterAccessWhitelistResponseBodyItemsDBClusterIPArray(DaraMode
         dbcluster_iparray_name: str = None,
         security_ips: str = None,
     ):
-        # The attributes of the IP whitelist group. Set this parameter to **hidden** to hide the IP whitelist group in the console.
-        # 
-        # > *   The IP whitelist group that has appeared in the console cannot be hidden.
-        # > *   This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
         self.dbcluster_iparray_attribute = dbcluster_iparray_attribute
-        # The name of the IP whitelist group. The group name must be 2 to 120 characters in length and consists of lowercase letters and digits. It must start with a letter, and end with a letter or a digit.
-        # 
-        # *   If the specified whitelist group name does not exist, the whitelist group is created.
-        # *   If the specified whitelist group name exists, the whitelist group is modified.
-        # *   If you do not specify this parameter, the default group is modified.
-        # 
-        # > *   You can create a maximum of 50 IP whitelist groups for a cluster.
-        # >*   This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
         self.dbcluster_iparray_name = dbcluster_iparray_name
-        # The IP addresses or Classless Inter-Domain Routing (CIDR) blocks in the IP whitelist group. You can add 1,000 IP addresses or CIDR blocks to all the IP whitelist groups. Separate multiple IP addresses with commas (,). The following two formats are supported:
-        # 
-        # *   IP addresses. Example: 10.23.12.24.
-        # *   CIDR blocks. Example: 10.23.12.24/24. 24 indicates the length of the prefix of the CIDR block. The length is the range of 1 to 32.
-        # 
-        # >  This parameter can be specified only when the **WhiteListType** parameter is set to **IP**.
         self.security_ips = security_ips
 
     def validate(self):
@@ -195,9 +175,7 @@ class DescribeDBClusterAccessWhitelistResponseBodyDBClusterSecurityGroupsDBClust
         security_group_id: str = None,
         security_group_name: str = None,
     ):
-        # The ID of the ECS security group.
         self.security_group_id = security_group_id
-        # The name of the ECS security group.
         self.security_group_name = security_group_name
 
     def validate(self):

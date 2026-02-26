@@ -26,7 +26,6 @@ class DescribeSlowLogsResponseBody(DaraModel):
         self.end_time = end_time
         # The type of the database engine.
         self.engine = engine
-        # Details about slow query logs.
         self.items = items
         # The number of the returned page.
         self.page_number = page_number
@@ -163,34 +162,20 @@ class DescribeSlowLogsResponseBodyItemsSQLSlowLog(DaraModel):
         total_execution_times: int = None,
         total_lock_times: int = None,
     ):
-        # The date when the data was generated.
         self.create_time = create_time
-        # The name of the database.
         self.dbname = dbname
-        # The ID of the node.
         self.dbnode_id = dbnode_id
-        # The longest execution duration of a specific SQL statement in the query. Unit: seconds.
         self.max_execution_time = max_execution_time
         self.max_execution_time_ms = max_execution_time_ms
-        # The longest lock duration that was caused by a specific SQL statement in the query. Unit: seconds.
         self.max_lock_time = max_lock_time
-        # The largest number of rows that were parsed by a specific SQL statement in the query.
         self.parse_max_row_count = parse_max_row_count
-        # The total number of rows that were parsed by all SQL statements in the query.
         self.parse_total_row_counts = parse_total_row_counts
-        # The largest number of rows that were returned by a specific SQL statement in the query.
         self.return_max_row_count = return_max_row_count
-        # The total number of rows that were returned by all SQL statements in the query.
         self.return_total_row_counts = return_total_row_counts
-        # The unique ID of the SQL statement. The ID is used to obtain the slow query logs of the SQL statement.
         self.sqlhash = sqlhash
-        # The SQL statement that is executed in the query.
         self.sqltext = sqltext
-        # The total number of executions of the SQL statements.
         self.total_execution_counts = total_execution_counts
-        # The total duration that was caused by all SQL statements in the query. Unit: seconds.
         self.total_execution_times = total_execution_times
-        # The total lock duration that was caused by all SQL statements in the query. Unit: seconds.
         self.total_lock_times = total_lock_times
 
     def validate(self):

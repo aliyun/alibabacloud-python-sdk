@@ -558,12 +558,18 @@ from ._describe_vpcs_response import DescribeVpcsResponse
 from ._describe_zones_request import DescribeZonesRequest
 from ._describe_zones_response_body import DescribeZonesResponseBody
 from ._describe_zones_response import DescribeZonesResponse
+from ._disable_dbcluster_dynamo_dbrequest import DisableDBClusterDynamoDBRequest
+from ._disable_dbcluster_dynamo_dbresponse_body import DisableDBClusterDynamoDBResponseBody
+from ._disable_dbcluster_dynamo_dbresponse import DisableDBClusterDynamoDBResponse
 from ._disable_dbcluster_orca_request import DisableDBClusterOrcaRequest
 from ._disable_dbcluster_orca_response_body import DisableDBClusterOrcaResponseBody
 from ._disable_dbcluster_orca_response import DisableDBClusterOrcaResponse
 from ._disable_dbcluster_serverless_request import DisableDBClusterServerlessRequest
 from ._disable_dbcluster_serverless_response_body import DisableDBClusterServerlessResponseBody
 from ._disable_dbcluster_serverless_response import DisableDBClusterServerlessResponse
+from ._enable_dbcluster_dynamo_dbrequest import EnableDBClusterDynamoDBRequest
+from ._enable_dbcluster_dynamo_dbresponse_body import EnableDBClusterDynamoDBResponseBody
+from ._enable_dbcluster_dynamo_dbresponse import EnableDBClusterDynamoDBResponse
 from ._enable_dbcluster_orca_request import EnableDBClusterOrcaRequest
 from ._enable_dbcluster_orca_response_body import EnableDBClusterOrcaResponseBody
 from ._enable_dbcluster_orca_response import EnableDBClusterOrcaResponse
@@ -1678,12 +1684,18 @@ __all__ = [
     DescribeZonesRequest,
     DescribeZonesResponseBody,
     DescribeZonesResponse,
+    DisableDBClusterDynamoDBRequest,
+    DisableDBClusterDynamoDBResponseBody,
+    DisableDBClusterDynamoDBResponse,
     DisableDBClusterOrcaRequest,
     DisableDBClusterOrcaResponseBody,
     DisableDBClusterOrcaResponse,
     DisableDBClusterServerlessRequest,
     DisableDBClusterServerlessResponseBody,
     DisableDBClusterServerlessResponse,
+    EnableDBClusterDynamoDBRequest,
+    EnableDBClusterDynamoDBResponseBody,
+    EnableDBClusterDynamoDBResponse,
     EnableDBClusterOrcaRequest,
     EnableDBClusterOrcaResponseBody,
     EnableDBClusterOrcaResponse,

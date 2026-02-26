@@ -13,7 +13,6 @@ class DescribeBackupTasksResponseBody(DaraModel):
         items: main_models.DescribeBackupTasksResponseBodyItems = None,
         request_id: str = None,
     ):
-        # The details of the backup task.
         self.items = items
         # The request ID.
         self.request_id = request_id
@@ -91,30 +90,11 @@ class DescribeBackupTasksResponseBodyItemsBackupJob(DaraModel):
         start_time: str = None,
         task_action: str = None,
     ):
-        # The ID of the backup task.
         self.backup_job_id = backup_job_id
-        # The state of the backup task. Valid values:
-        # 
-        # *   **NoStart**
-        # *   **Preparing**
-        # *   **Waiting**
-        # *   **Uploading**
-        # *   **Checking**
-        # *   **Finished**
         self.backup_progress_status = backup_progress_status
-        # The backup mode. Valid values:
-        # 
-        # *   **Automated**
-        # *   **Manual**
         self.job_mode = job_mode
-        # The progress of the backup task in percentage.
         self.process = process
-        # The time when the backup task started. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
         self.start_time = start_time
-        # The type of the backup task. Valid values:
-        # 
-        # *   **TempBackupTask**: The backup task is an adhoc backup task.
-        # *   **NormalBackupTask**: The backup task is a common backup task.
         self.task_action = task_action
 
     def validate(self):

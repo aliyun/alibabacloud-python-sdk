@@ -22,7 +22,6 @@ class DescribeSlowLogRecordsResponseBody(DaraModel):
         self.dbcluster_id = dbcluster_id
         # Database engine.
         self.engine = engine
-        # List of slow log details.
         self.items = items
         # Page number.
         self.page_number = page_number
@@ -142,28 +141,17 @@ class DescribeSlowLogRecordsResponseBodyItemsSQLSlowRecord(DaraModel):
         sqlhash: str = None,
         sqltext: str = None,
     ):
-        # Database name.
         self.dbname = dbname
-        # Node ID.
         self.dbnode_id = dbnode_id
-        # Time when the SQL starts execution. The format is `YYYY-MM-DDThh:mmZ` (UTC time).
         self.execution_start_time = execution_start_time
-        # Client address connecting to the database.
         self.host_address = host_address
         self.lock_time_ms = lock_time_ms
-        # SQL lock duration in seconds.
         self.lock_times = lock_times
-        # Number of rows parsed.
         self.parse_row_counts = parse_row_counts
-        # Query time. Unit: milliseconds.
         self.query_time_ms = query_time_ms
-        # SQL execution duration, in seconds.
         self.query_times = query_times
-        # Number of rows returned.
         self.return_row_counts = return_row_counts
-        # Unique identifier for the SQL statement in slow log statistics.
         self.sqlhash = sqlhash
-        # Query statement.
         self.sqltext = sqltext
 
     def validate(self):

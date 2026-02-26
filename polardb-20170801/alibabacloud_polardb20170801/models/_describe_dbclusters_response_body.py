@@ -16,7 +16,6 @@ class DescribeDBClustersResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The information about the clusters.
         self.items = items
         # The number of the page to return.
         self.page_number = page_number
@@ -148,121 +147,41 @@ class DescribeDBClustersResponseBodyItemsDBCluster(DaraModel):
         vswitch_id: str = None,
         zone_id: str = None,
     ):
-        # The type of the AI node. Valid values:
-        # 
-        # *   SearchNode: search node
-        # *   DLNode: AI node
-        # 
-        # Enumeration values:
-        # 
-        # *   SearchNode | DLNode: both
-        # *   DLNode: AI node
-        # *   SearchNode: search node
         self.ai_type = ai_type
-        # The edition of the cluster. Valid values:
-        # 
-        # *   **Normal**: Cluster Edition
-        # *   **Basic**: Single Node Edition
-        # *   **Archive**: X-Engine Edition
-        # *   **NormalMultimaster**: Multi-master Cluster (Database/Table) Edition
         self.category = category
-        # The number of CPU cores.
         self.cpu_cores = cpu_cores
-        # The time when the cluster was created.
         self.create_time = create_time
-        # The description of the cluster.
         self.dbcluster_description = dbcluster_description
-        # The cluster ID.
         self.dbcluster_id = dbcluster_id
-        # The network type of the cluster.
         self.dbcluster_network_type = dbcluster_network_type
-        # The state of the cluster.
         self.dbcluster_status = dbcluster_status
-        # The specifications of the node.
         self.dbnode_class = dbnode_class
-        # The number of nodes.
         self.dbnode_number = dbnode_number
-        # The information about the nodes.
         self.dbnodes = dbnodes
-        # The type of the database engine.
         self.dbtype = dbtype
-        # The version of the database engine.
         self.dbversion = dbversion
-        # Indicates whether the cluster is protected from deletion. Valid values:
-        # 
-        # *   **0**: The cluster is not protected from deletion.
-        # *   **1**: The cluster is protected from deletion.
-        # 
-        # >  You cannot delete clusters that are protected from deletion.
         self.deletion_lock = deletion_lock
-        # The database engine of the cluster.
         self.engine = engine
-        # The expiration time of the cluster.
-        # 
-        # >  A specific value is returned only for subscription (**Prepaid**) clusters. For pay-as-you-go (**Postpaid**) clusters, no value is returned.
         self.expire_time = expire_time
-        # Indicates whether the cluster has expired. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
-        # 
-        # >  A specific value is returned only for subscription (**Prepaid**) clusters.
         self.expired = expired
-        # Indicates whether the hot standby storage cluster feature is enabled. Valid values:
-        # 
-        # *   ON
-        # *   OFF
         self.hot_standby_cluster = hot_standby_cluster
-        # The lock state of the cluster. Valid values:
-        # 
-        # *   **Unlock**: The cluster is unlocked.
-        # *   **ManualLock**: The cluster is manually locked.
-        # *   **LockByExpiration**: The cluster is locked due to cluster expiration.
         self.lock_mode = lock_mode
-        # The memory size for local operations. Unit: MB.
         self.memory_size = memory_size
-        # The billing method of the cluster. Valid values:
-        # 
-        # *   **Postpaid**: pay-as-you-go
-        # *   **Prepaid**: subscription
         self.pay_type = pay_type
-        # The region ID of the cluster.
         self.region_id = region_id
-        # The memory size for distributed operations. Unit: MB.
         self.remote_memory_size = remote_memory_size
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
         self.search_storage_used = search_storage_used
-        # Indicates whether the cluster is a serverless cluster. **AgileServerless** indicates the cluster is a serverless cluster. No value is returned for a common cluster.
         self.serverless_type = serverless_type
-        # The storage billing method of the cluster. Valid values:
-        # 
-        # *   **Postpaid**: pay-as-you-go
-        # *   **Prepaid**: subscription
         self.storage_pay_type = storage_pay_type
-        # The storage that is billed based on the subscription billing method. Unit: bytes.
         self.storage_space = storage_space
-        # The storage type.
         self.storage_type = storage_type
-        # The used storage. Unit: bytes.
         self.storage_used = storage_used
-        # Indicates whether multi-zone data consistency is enabled for the cluster. Valid values:
-        # 
-        # *   **ON**: Multi-zone data consistency is enabled. For Standard Edition clusters of Multi-zone Edition, this value is returned.
-        # *   **OFF**: Multi-zone data consistency is disabled.
         self.strict_consistency = strict_consistency
-        # The specification type of the compute node. Valid values:
-        # 
-        # *   **Exclusive**: dedicated.
-        # *   **General**: general-purpose.
         self.sub_category = sub_category
-        # The information about the tags.
         self.tags = tags
-        # The virtual private cloud (VPC) ID of the cluster.
         self.vpc_id = vpc_id
-        # The vSwitch ID of the cluster.
         self.vswitch_id = vswitch_id
-        # The zone ID of the cluster.
         self.zone_id = zone_id
 
     def validate(self):
@@ -541,9 +460,7 @@ class DescribeDBClustersResponseBodyItemsDBClusterTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
         self.key = key
-        # The value of the tag.
         self.value = value
 
     def validate(self):
@@ -619,35 +536,13 @@ class DescribeDBClustersResponseBodyItemsDBClusterDBNodesDBNode(DaraModel):
         serverless: str = None,
         zone_id: str = None,
     ):
-        # The specifications of the node.
         self.dbnode_class = dbnode_class
-        # The ID of the node.
         self.dbnode_id = dbnode_id
-        # The role of the node. Valid values:
-        # 
-        # *   **Writer**: primary node
-        # *   **Reader**: read-only node
-        # *   **ColumnReader**: column store read-only node
-        # *   **AI**: AI node
         self.dbnode_role = dbnode_role
-        # Indicates whether the hot standby feature is enabled. Valid values:
-        # 
-        # *   **ON**
-        # *   **OFF**
         self.hot_replica_mode = hot_replica_mode
-        # Indicates whether the In-Memory Column Index (IMCI) feature is enabled. Valid values:
-        # 
-        # *   **ON**
-        # *   **OFF**
         self.imci_switch = imci_switch
-        # The region ID of the cluster.
         self.region_id = region_id
-        # Indicates whether the serverless feature is enabled for the node.
-        # 
-        # *   **ON** indicates that the serverless feature is enabled.
-        # *   No value is returned if the serverless feature is disabled.
         self.serverless = serverless
-        # The zone ID of the cluster.
         self.zone_id = zone_id
 
     def validate(self):

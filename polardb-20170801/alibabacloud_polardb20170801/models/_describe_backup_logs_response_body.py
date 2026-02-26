@@ -16,7 +16,6 @@ class DescribeBackupLogsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
-        # The details of the backup logs.
         self.items = items
         # The page number of the returned page.
         self.page_number = page_number
@@ -120,21 +119,13 @@ class DescribeBackupLogsResponseBodyItemsBackupLog(DaraModel):
         intranet_download_link: str = None,
         link_expired_time: str = None,
     ):
-        # The time when the backup task ended. The time follows the ISO 8601 standard in the `YYYY-MM-DD\\"T\\"HH:mm:ssZ` format. The time is displayed in UTC.
         self.backup_log_end_time = backup_log_end_time
-        # The ID of the backup log.
         self.backup_log_id = backup_log_id
-        # The name of the backup log.
         self.backup_log_name = backup_log_name
-        # The size of the backup log. Unit: bytes.
         self.backup_log_size = backup_log_size
-        # The time when the backup task started. The time follows the ISO 8601 standard in the `YYYY-MM-DD\\"T\\"HH:mm:ssZ` format. The time is displayed in UTC.
         self.backup_log_start_time = backup_log_start_time
-        # The public URL used to download the backup log.
         self.download_link = download_link
-        # The internal URL used to download the backup log.
         self.intranet_download_link = intranet_download_link
-        # The time when the download URL expires.
         self.link_expired_time = link_expired_time
 
     def validate(self):

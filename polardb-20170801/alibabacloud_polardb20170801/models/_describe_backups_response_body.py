@@ -17,7 +17,6 @@ class DescribeBackupsResponseBody(DaraModel):
         total_level_2backup_size: str = None,
         total_record_count: str = None,
     ):
-        # The queried backup sets.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -134,73 +133,19 @@ class DescribeBackupsResponseBodyItemsBackup(DaraModel):
         expect_expire_type: str = None,
         is_avail: str = None,
     ):
-        # The end time of the backup task. The time is displayed in UTC.
         self.backup_end_time = backup_end_time
-        # The ID of the backup set.
         self.backup_id = backup_id
-        # The backup method. Only **Snapshot** may be returned.
         self.backup_method = backup_method
-        # The backup mode. Valid values:
-        # 
-        # *   **Automated**
-        # *   **Manual**
         self.backup_mode = backup_mode
-        # The size of the backup set. Unit: bytes.
-        # 
-        # > After you delete the target snapshot backups, the storage space that is consumed by the backups is released. The released storage space is smaller than the size of the backup file, because the snapshots share specific data blocks. For more information, see [FAQ about backup](https://help.aliyun.com/document_detail/164881.html).
         self.backup_set_size = backup_set_size
-        # The start time of the backup task. The time is displayed in UTC. Unit: seconds.
         self.backup_start_time = backup_start_time
-        # The status of the backup set. Valid values:
-        # 
-        # *   **Success**
-        # *   **Failed**
         self.backup_status = backup_status
-        # The type of the backup. Only **FullBackup** may be returned.
         self.backup_type = backup_type
-        # The level of the backup set. Valid values:
-        # 
-        # *   **Level-1**
-        # *   **Level-2**
         self.backups_level = backups_level
-        # The snapshot checkpoint time. The value follows the Unix time format. Unit: seconds.
         self.consistent_time = consistent_time
-        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
-        # The expected expiration time of the backup set (This parameter is supported only for clusters for which sparse backup is enabled).
         self.expect_expire_time = expect_expire_time
-        # The expected expiration type of the backup set (This parameter is supported only for instances that are enabled with sparse backup).
-        # 
-        # Valid values:
-        # 
-        # *   NEVER
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   EXPIRED
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        # *   DELAY
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
-        # 
-        #     <!-- -->
         self.expect_expire_type = expect_expire_type
-        # Indicates whether the backup set is available. Valid values:
-        # 
-        # *   **0**: The backup set is unavailable.
-        # *   **1**: The backup set is available.
         self.is_avail = is_avail
 
     def validate(self):

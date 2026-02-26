@@ -11,7 +11,6 @@ from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
 from darabonba.core import DaraCore as DaraCore
-from darabonba.core import DaraCore
 from darabonba.runtime import RuntimeOptions
 
 """
@@ -18186,6 +18185,76 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.describe_zones_with_options_async(request, runtime)
 
+    def disable_dbcluster_dynamo_dbwith_options(
+        self,
+        request: main_models.DisableDBClusterDynamoDBRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableDBClusterDynamoDBResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableDBClusterDynamoDB',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableDBClusterDynamoDBResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_dbcluster_dynamo_dbwith_options_async(
+        self,
+        request: main_models.DisableDBClusterDynamoDBRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableDBClusterDynamoDBResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableDBClusterDynamoDB',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableDBClusterDynamoDBResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_dbcluster_dynamo_db(
+        self,
+        request: main_models.DisableDBClusterDynamoDBRequest,
+    ) -> main_models.DisableDBClusterDynamoDBResponse:
+        runtime = RuntimeOptions()
+        return self.disable_dbcluster_dynamo_dbwith_options(request, runtime)
+
+    async def disable_dbcluster_dynamo_db_async(
+        self,
+        request: main_models.DisableDBClusterDynamoDBRequest,
+    ) -> main_models.DisableDBClusterDynamoDBResponse:
+        runtime = RuntimeOptions()
+        return await self.disable_dbcluster_dynamo_dbwith_options_async(request, runtime)
+
     def disable_dbcluster_orca_with_options(
         self,
         request: main_models.DisableDBClusterOrcaRequest,
@@ -18361,6 +18430,76 @@ class Client(OpenApiClient):
     ) -> main_models.DisableDBClusterServerlessResponse:
         runtime = RuntimeOptions()
         return await self.disable_dbcluster_serverless_with_options_async(request, runtime)
+
+    def enable_dbcluster_dynamo_dbwith_options(
+        self,
+        request: main_models.EnableDBClusterDynamoDBRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableDBClusterDynamoDBResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableDBClusterDynamoDB',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableDBClusterDynamoDBResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_dbcluster_dynamo_dbwith_options_async(
+        self,
+        request: main_models.EnableDBClusterDynamoDBRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableDBClusterDynamoDBResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.dbcluster_id):
+            query['DBClusterId'] = request.dbcluster_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableDBClusterDynamoDB',
+            version = '2017-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableDBClusterDynamoDBResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_dbcluster_dynamo_db(
+        self,
+        request: main_models.EnableDBClusterDynamoDBRequest,
+    ) -> main_models.EnableDBClusterDynamoDBResponse:
+        runtime = RuntimeOptions()
+        return self.enable_dbcluster_dynamo_dbwith_options(request, runtime)
+
+    async def enable_dbcluster_dynamo_db_async(
+        self,
+        request: main_models.EnableDBClusterDynamoDBRequest,
+    ) -> main_models.EnableDBClusterDynamoDBResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_dbcluster_dynamo_dbwith_options_async(request, runtime)
 
     def enable_dbcluster_orca_with_options(
         self,
@@ -19287,17 +19426,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.GetPolarAgentResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.GetPolarAgentResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def get_polar_agent_with_sse_async(
         self,
@@ -19330,17 +19469,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.GetPolarAgentResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.GetPolarAgentResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def get_polar_agent_with_options(
         self,

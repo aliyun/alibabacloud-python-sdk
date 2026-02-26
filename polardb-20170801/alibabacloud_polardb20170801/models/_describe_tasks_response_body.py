@@ -31,7 +31,6 @@ class DescribeTasksResponseBody(DaraModel):
         self.request_id = request_id
         # The start time of the query.
         self.start_time = start_time
-        # The details of the task.
         self.tasks = tasks
         # The total number of entries returned.
         self.total_record_count = total_record_count
@@ -153,39 +152,19 @@ class DescribeTasksResponseBodyTasksTask(DaraModel):
         task_error_message: str = None,
         task_id: str = None,
     ):
-        # The time when the task was started. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
         self.begin_time = begin_time
-        # The name of the current step.
         self.current_step_name = current_step_name
-        # The database name.
-        # 
-        # >  This parameter is returned for only the tasks that involve database operations.
         self.dbname = dbname
-        # The estimated end time of the task. In most cases, this parameter is empty.
         self.expected_finish_time = expected_finish_time
-        # The time when the task was completed. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
         self.finish_time = finish_time
-        # The progress of the task in percentage.
         self.progress = progress
-        # The description of the task progress. If no progress description is provided for the task, this parameter is empty.
         self.progress_info = progress_info
-        # The estimated remaining duration of the task. Unit: seconds.
         self.remain = remain
-        # The progress of the subtasks. For example, the value `1/4` indicates that the task consists of four subtasks and the first subtask is in progress.
         self.step_progress_info = step_progress_info
-        # The details of the subtasks.
         self.steps_info = steps_info
-        # The API operation that is used by the task. Example: `CreateDBInstance`.
         self.task_action = task_action
-        # The error code that is returned when an error occurs.
-        # 
-        # >  This parameter is returned only when the task is in the **Stop** state.
         self.task_error_code = task_error_code
-        # The error message that is returned when an error occurs.
-        # 
-        # >  This parameter is returned only when the task is in the **Stop** state.
         self.task_error_message = task_error_message
-        # The ID of the task.
         self.task_id = task_id
 
     def validate(self):

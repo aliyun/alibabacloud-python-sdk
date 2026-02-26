@@ -42,11 +42,9 @@ class DescribeDBClusterParametersResponseBody(DaraModel):
         self.engine = engine
         # The number of parameters.
         self.parameter_numbers = parameter_numbers
-        # A comparison of parameters between the source RDS instance and the destination PolarDB cluster.
         self.parameters = parameters
         # The ID of the request.
         self.request_id = request_id
-        # The parameters of the PolarDB cluster.
         self.running_parameters = running_parameters
 
     def validate(self):
@@ -167,45 +165,17 @@ class DescribeDBClusterParametersResponseBodyRunningParametersParameter(DaraMode
         parameter_status: str = None,
         parameter_value: str = None,
     ):
-        # The valid values of the parameter.
         self.checking_code = checking_code
-        # The data type of the parameter value. Valid values:
-        # 
-        # *   **INT**
-        # *   **STRING**
-        # *   **B**
         self.data_type = data_type
-        # The default value of the parameter.
         self.default_parameter_value = default_parameter_value
-        # A divisor of the parameter. For a parameter of the integer or byte type, the valid values must be a multiple of Factor unless you set Factor to 0.
         self.factor = factor
-        # Indicates whether a cluster restart is required for the parameter modification to take effect. Valid values:
-        # 
-        # *   **false**
-        # *   **true**
         self.force_restart = force_restart
-        # Indicates whether the parameter can be modified. Valid values:
-        # 
-        # *   **false**
-        # *   **true**
         self.is_modifiable = is_modifiable
-        # Indicates whether the parameter is a global parameter. Valid values:
-        # 
-        # *   **0**: The parameter is a global parameter. The modified parameter value is synchronized to other nodes.
-        # *   **1**: The parameter is not a global parameter. You can specify the nodes to which the modified parameter value can be synchronized.
         self.is_node_available = is_node_available
-        # The dependencies of the parameter.
         self.param_rely_rule = param_rely_rule
-        # The description of the parameter.
         self.parameter_description = parameter_description
-        # The name of the parameter.
         self.parameter_name = parameter_name
-        # The status of the parameter. Valid values:
-        # 
-        # *   **Normal**
-        # *   **Modifying**
         self.parameter_status = parameter_status
-        # The value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):
@@ -346,43 +316,18 @@ class DescribeDBClusterParametersResponseBodyParametersParameters(DaraModel):
         rds_parameter_optional: str = None,
         rds_parameter_value: str = None,
     ):
-        # Indicates whether the source and current parameters have the same value.
         self.is_equal = is_equal
-        # Indicate whether the parameter is a primary parameter of the destination cluster. Valid values:
-        # 
-        # *   **1**: The parameter is a primary parameter of the destination cluster.
-        # *   **0**: The parameter is not a primary parameter of the destination cluster.
         self.is_instance_polar_dbkey = is_instance_polar_dbkey
-        # Indicate whether the parameter is a primary parameter of the source instance. Valid values:
-        # 
-        # *   **1**: The parameter is a primary parameter of the source instance.
-        # *   **0**: The parameter is not a primary parameter of the source instance.
         self.is_instance_rds_key = is_instance_rds_key
-        # Indicate whether the parameter is a primary parameter of the destination cluster. Valid values:
-        # 
-        # *   **1**: The parameter is a primary parameter of the destination cluster.
-        # *   **0**: The parameter is not a primary parameter of the destination cluster.
         self.is_polar_dbkey = is_polar_dbkey
-        # Indicate whether the parameter is a primary parameter of the source instance. Valid values:
-        # 
-        # *   **1**: The parameter is a primary parameter of the source instance.
-        # *   **0**: The parameter is not a primary parameter of the source instance.
         self.is_rds_key = is_rds_key
-        # The description of the parameter of the destination cluster.
         self.dist_parameter_description = dist_parameter_description
-        # The name of the parameter of the destination cluster.
         self.dist_parameter_name = dist_parameter_name
-        # The valid values of the parameter of the destination cluster.
         self.dist_parameter_optional = dist_parameter_optional
-        # The value of the parameter of the destination cluster.
         self.dist_parameter_value = dist_parameter_value
-        # The description of the parameter of the source instance.
         self.rds_parameter_description = rds_parameter_description
-        # The name of the parameter of the source instance.
         self.rds_parameter_name = rds_parameter_name
-        # The valid values of the parameter of the source instance.
         self.rds_parameter_optional = rds_parameter_optional
-        # The value of the parameter of the source instance.
         self.rds_parameter_value = rds_parameter_value
 
     def validate(self):

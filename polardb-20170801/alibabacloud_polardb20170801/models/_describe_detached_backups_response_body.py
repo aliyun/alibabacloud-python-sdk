@@ -16,7 +16,6 @@ class DescribeDetachedBackupsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: str = None,
     ):
-        # Details about the backup sets.
         self.items = items
         # The page number.
         self.page_number = page_number
@@ -125,48 +124,18 @@ class DescribeDetachedBackupsResponseBodyItemsBackup(DaraModel):
         is_avail: str = None,
         store_status: str = None,
     ):
-        # The end time of the backup task. The time is displayed in UTC.
         self.backup_end_time = backup_end_time
-        # The ID of the backup set.
         self.backup_id = backup_id
-        # The backup method. Only snapshot backups are supported. The value is set to **Snapshot**.
         self.backup_method = backup_method
-        # The backup mode. Valid values:
-        # 
-        # *   **Automated**
-        # *   **Manual**
         self.backup_mode = backup_mode
-        # The size of the backup set. Unit: bytes.
-        # 
-        # > After you delete the target snapshot backups, the storage space consumed by the backups is released. The released storage space is smaller than the size of the backup file, because the snapshots share certain data blocks.
         self.backup_set_size = backup_set_size
-        # The start time of the backup task. The time is displayed in UTC.
         self.backup_start_time = backup_start_time
-        # The status of the backup set. Valid values:
-        # 
-        # *   **Success**
-        # *   **Failed**
         self.backup_status = backup_status
-        # The type of the backup. Only full backups are supported. The value is set to **FullBackup**.
         self.backup_type = backup_type
-        # The level of the backup set. Valid values:
-        # 
-        # *   **Level-1**: level-1 backup set
-        # *   **Level-2**: level-2 backup set
         self.backups_level = backups_level
-        # The snapshot checkpoint time. The value is a Unix timestamp.
         self.consistent_time = consistent_time
-        # The ID of the cluster.
         self.dbcluster_id = dbcluster_id
-        # Indicates whether the backup set is available. Valid values:
-        # 
-        # *   **0**: The data backup set is unavailable.
-        # *   **1**: The data backup set is available.
         self.is_avail = is_avail
-        # Indicates whether the backup set can be deleted. Valid values:
-        # 
-        # *   **Enabled**: The backup set can be deleted.
-        # *   **Disabled**: The backup set cannot be deleted.
         self.store_status = store_status
 
     def validate(self):

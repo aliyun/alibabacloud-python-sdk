@@ -25,7 +25,6 @@ class DescribeParameterTemplatesResponseBody(DaraModel):
         self.engine = engine
         # The number of parameters.
         self.parameter_count = parameter_count
-        # The details of the parameters.
         self.parameters = parameters
         # The request ID.
         self.request_id = request_id
@@ -129,30 +128,13 @@ class DescribeParameterTemplatesResponseBodyParametersTemplateRecord(DaraModel):
         parameter_name: str = None,
         parameter_value: str = None,
     ):
-        # The valid values of the parameter.
         self.checking_code = checking_code
-        # Indicates whether the parameter setting can be modified. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.force_modify = force_modify
-        # Indicates whether a cluster restart is required to make the parameter modification take effect. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.force_restart = force_restart
-        # Indicates whether the parameter is a global parameter. Valid values:
-        # 
-        # *   **0**: yes. The modified parameter value is synchronized to other nodes by default.
-        # *   **1**: no. You can customize the nodes to which the modified parameter value can be synchronized.
         self.is_node_available = is_node_available
-        # The parameter dependencies.
         self.param_rely_rule = param_rely_rule
-        # The description of the parameter.
         self.parameter_description = parameter_description
-        # The name of the parameter.
         self.parameter_name = parameter_name
-        # The default value of the parameter.
         self.parameter_value = parameter_value
 
     def validate(self):

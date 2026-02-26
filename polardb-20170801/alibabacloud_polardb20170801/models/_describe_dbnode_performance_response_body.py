@@ -26,7 +26,6 @@ class DescribeDBNodePerformanceResponseBody(DaraModel):
         self.dbversion = dbversion
         # The end time of the query. The time follows the ISO 8601 standard in the `yyyy-MM-ddTHH:mm:ssZ` format. The time is displayed in UTC.
         self.end_time = end_time
-        # The cluster performance metrics.
         self.performance_keys = performance_keys
         # The request ID.
         self.request_id = request_id
@@ -133,11 +132,8 @@ class DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItem(DaraMo
         metric_name: str = None,
         points: main_models.DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPoints = None,
     ):
-        # The performance metrics that you want to query.
         self.measurement = measurement
-        # The name of the performance metric.
         self.metric_name = metric_name
-        # The performance metrics.
         self.points = points
 
     def validate(self):
@@ -215,9 +211,7 @@ class DescribeDBNodePerformanceResponseBodyPerformanceKeysPerformanceItemPointsP
         timestamp: int = None,
         value: str = None,
     ):
-        # The timestamp of the metric. This value is a UNIX timestamp. Unit: millisecond.
         self.timestamp = timestamp
-        # The value of the metric.
         self.value = value
 
     def validate(self):

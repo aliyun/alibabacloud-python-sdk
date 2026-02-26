@@ -16,7 +16,6 @@ class DescribeDBClustersWithBackupsResponseBody(DaraModel):
         request_id: str = None,
         total_record_count: int = None,
     ):
-        # The details about the cluster.
         self.items = items
         # The total number of returned pages.
         self.page_number = page_number
@@ -131,72 +130,24 @@ class DescribeDBClustersWithBackupsResponseBodyItemsDBCluster(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The time when the cluster was created.
         self.create_time = create_time
-        # The name of the cluster.
         self.dbcluster_description = dbcluster_description
-        # The ID of cluster.
         self.dbcluster_id = dbcluster_id
-        # The network type of the cluster.
         self.dbcluster_network_type = dbcluster_network_type
-        # The status of the cluster. Valid values:
-        # 
-        # *   Creating: The cluster is being created.
-        # *   Running: The cluster is running.
-        # *   Deleting: The cluster is being released.
-        # *   Rebooting: The cluster is restarting.
-        # *   DBNodeCreating: The node is being added.
-        # *   DBNodeDeleting: The node is being deleted.
-        # *   ClassChanging: The specifications of the node are being changed.
-        # *   NetAddressCreating: The network connection is being created.
-        # *   NetAddressDeleting: The network connection is being deleted.
-        # *   NetAddressModifying: The network connection is being modified.
-        # *   Deleted: The cluster has been released.
         self.dbcluster_status = dbcluster_status
-        # The specifications of the node.
         self.dbnode_class = dbnode_class
-        # The type of the database engine.
         self.dbtype = dbtype
-        # The version of the database engine.
         self.dbversion = dbversion
-        # The time when the cluster was deleted.
         self.deleted_time = deleted_time
-        # Indicates whether the cluster is locked and can be deleted. Valid values:
-        # 
-        # *   **0**: The cluster is not locked and can be deleted.
-        # *   **1**: The cluster is locked and cannot be deleted.
         self.deletion_lock = deletion_lock
-        # The type of the database engine.
         self.engine = engine
-        # The time when the cluster expires.
-        # 
-        # > A specific value will be returned only for subscription clusters. For pay-as-you-go clusters, an empty string will be returned.
         self.expire_time = expire_time
-        # Indicates whether the cluster has expired.
-        # 
-        # > A specific value will be returned only for subscription clusters.
         self.expired = expired
-        # Indicates whether the cluster was released. Valid values:
-        # 
-        # *   1: released
-        # *   0: not released
         self.is_deleted = is_deleted
-        # The state of the cluster lock. Valid values:
-        # 
-        # *   **Unlock**: The cluster is not locked.
-        # *   **ManualLock**: The cluster is manually locked.
-        # *   **LockByExpiration**: The cluster is automatically locked after the cluster expires.
         self.lock_mode = lock_mode
-        # The billing method. Valid values:
-        # 
-        # *   **Postpaid**: pay-as-you-go.
-        # *   **Prepaid**: subscription
         self.pay_type = pay_type
-        # The region ID of the cluster.
         self.region_id = region_id
-        # The VPC ID of the cluster.
         self.vpc_id = vpc_id
-        # The ID of the zone in which the instance is located.
         self.zone_id = zone_id
 
     def validate(self):
