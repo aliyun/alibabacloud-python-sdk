@@ -115,6 +115,7 @@ class GetInstanceFeatureGateResponseBodyData(DaraModel):
         support_modify_timezone: bool = None,
         support_multi_az: bool = None,
         use_compute_node: bool = None,
+        support_compaction_service: bool = None,
     ):
         self.console_control_restart = console_control_restart
         self.enable_manage_mv = enable_manage_mv
@@ -135,6 +136,7 @@ class GetInstanceFeatureGateResponseBodyData(DaraModel):
         self.support_modify_timezone = support_modify_timezone
         self.support_multi_az = support_multi_az
         self.use_compute_node = use_compute_node
+        self.support_compaction_service = support_compaction_service
 
     def validate(self):
         pass
@@ -201,6 +203,9 @@ class GetInstanceFeatureGateResponseBodyData(DaraModel):
         if self.use_compute_node is not None:
             result['UseComputeNode'] = self.use_compute_node
 
+        if self.support_compaction_service is not None:
+            result['supportCompactionService'] = self.support_compaction_service
+
         return result
 
     def from_map(self, m: dict = None):
@@ -261,6 +266,9 @@ class GetInstanceFeatureGateResponseBodyData(DaraModel):
 
         if m.get('UseComputeNode') is not None:
             self.use_compute_node = m.get('UseComputeNode')
+
+        if m.get('supportCompactionService') is not None:
+            self.support_compaction_service = m.get('supportCompactionService')
 
         return self
 

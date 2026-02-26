@@ -1,3 +1,7 @@
+2026-02-26 Version: 1.3.1
+- Update API GetInstanceFeatureGate: add response parameters Body.Data.supportCompactionService.
+
+
 2026-02-25 Version: 1.3.0
 - Support API AddGateway.
 - Support API DeleteGateway.
