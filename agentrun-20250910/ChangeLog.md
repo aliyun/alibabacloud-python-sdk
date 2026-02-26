@@ -1,3 +1,7 @@
+2026-02-26 Version: 5.3.9
+- Update API ListTemplates: add request parameters workspaceId.
+
+
 2026-02-12 Version: 5.3.8
 - Generated python 2025-09-10 for AgentRun.
 

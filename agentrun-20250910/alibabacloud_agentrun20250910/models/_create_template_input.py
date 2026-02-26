@@ -30,6 +30,7 @@ class CreateTemplateInput(DaraModel):
         template_configuration: Dict[str, Any] = None,
         template_name: str = None,
         template_type: str = None,
+        workspace_id: str = None,
     ):
         self.allow_anonymous_manage = allow_anonymous_manage
         self.arms_configuration = arms_configuration
@@ -66,6 +67,7 @@ class CreateTemplateInput(DaraModel):
         self.template_name = template_name
         # This parameter is required.
         self.template_type = template_type
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.arms_configuration:
@@ -152,6 +154,9 @@ class CreateTemplateInput(DaraModel):
         if self.template_type is not None:
             result['templateType'] = self.template_type
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -224,6 +229,9 @@ class CreateTemplateInput(DaraModel):
 
         if m.get('templateType') is not None:
             self.template_type = m.get('templateType')
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
 
         return self
 

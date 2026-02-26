@@ -3861,6 +3861,8 @@ class Client(OpenApiClient):
             query['templateName'] = request.template_name
         if not DaraCore.is_null(request.template_type):
             query['templateType'] = request.template_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -3899,6 +3901,8 @@ class Client(OpenApiClient):
             query['templateName'] = request.template_name
         if not DaraCore.is_null(request.template_type):
             query['templateType'] = request.template_type
+        if not DaraCore.is_null(request.workspace_id):
+            query['workspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)

@@ -27,6 +27,7 @@ class UpdateTemplateInput(DaraModel):
         sandbox_idle_timeout_in_seconds: int = None,
         sandbox_ttlin_seconds: int = None,
         template_configuration: Dict[str, Any] = None,
+        workspace_id: str = None,
     ):
         self.allow_anonymous_manage = allow_anonymous_manage
         self.arms_configuration = arms_configuration
@@ -51,6 +52,7 @@ class UpdateTemplateInput(DaraModel):
         self.sandbox_ttlin_seconds = sandbox_ttlin_seconds
         # 模板配置（灵活的对象结构，根据 templateType 不同而不同）
         self.template_configuration = template_configuration
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.arms_configuration:
@@ -128,6 +130,9 @@ class UpdateTemplateInput(DaraModel):
         if self.template_configuration is not None:
             result['templateConfiguration'] = self.template_configuration
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -191,6 +196,9 @@ class UpdateTemplateInput(DaraModel):
 
         if m.get('templateConfiguration') is not None:
             self.template_configuration = m.get('templateConfiguration')
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
 
         return self
 

@@ -10,8 +10,10 @@ from darabonba.model import DaraModel
 class GetDiscoveryEndpointsOutput(DaraModel):
     def __init__(
         self,
+        credential_name: str = None,
         discovery_endpoints: List[main_models.DiscoveryEndpoint] = None,
     ):
+        self.credential_name = credential_name
         self.discovery_endpoints = discovery_endpoints
 
     def validate(self):
@@ -25,6 +27,9 @@ class GetDiscoveryEndpointsOutput(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.credential_name is not None:
+            result['credentialName'] = self.credential_name
+
         result['discoveryEndpoints'] = []
         if self.discovery_endpoints is not None:
             for k1 in self.discovery_endpoints:
@@ -34,6 +39,9 @@ class GetDiscoveryEndpointsOutput(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('credentialName') is not None:
+            self.credential_name = m.get('credentialName')
+
         self.discovery_endpoints = []
         if m.get('discoveryEndpoints') is not None:
             for k1 in m.get('discoveryEndpoints'):

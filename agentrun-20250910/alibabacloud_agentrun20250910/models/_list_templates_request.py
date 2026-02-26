@@ -12,6 +12,7 @@ class ListTemplatesRequest(DaraModel):
         status: str = None,
         template_name: str = None,
         template_type: str = None,
+        workspace_id: str = None,
     ):
         # 当前页码，从1开始计数
         self.page_number = page_number
@@ -21,6 +22,7 @@ class ListTemplatesRequest(DaraModel):
         self.template_name = template_name
         # 按模板类型过滤
         self.template_type = template_type
+        self.workspace_id = workspace_id
 
     def validate(self):
         pass
@@ -45,6 +47,9 @@ class ListTemplatesRequest(DaraModel):
         if self.template_type is not None:
             result['templateType'] = self.template_type
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -63,6 +68,9 @@ class ListTemplatesRequest(DaraModel):
 
         if m.get('templateType') is not None:
             self.template_type = m.get('templateType')
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
 
         return self
 

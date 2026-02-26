@@ -39,6 +39,7 @@ class Template(DaraModel):
         template_name: str = None,
         template_type: str = None,
         template_version: str = None,
+        workspace_id: str = None,
     ):
         self.allow_anonymous_manage = allow_anonymous_manage
         self.container_configuration = container_configuration
@@ -73,6 +74,7 @@ class Template(DaraModel):
         self.template_name = template_name
         self.template_type = template_type
         self.template_version = template_version
+        self.workspace_id = workspace_id
 
     def validate(self):
         if self.container_configuration:
@@ -188,6 +190,9 @@ class Template(DaraModel):
         if self.template_version is not None:
             result['templateVersion'] = self.template_version
 
+        if self.workspace_id is not None:
+            result['workspaceId'] = self.workspace_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -288,6 +293,9 @@ class Template(DaraModel):
 
         if m.get('templateVersion') is not None:
             self.template_version = m.get('templateVersion')
+
+        if m.get('workspaceId') is not None:
+            self.workspace_id = m.get('workspaceId')
 
         return self
 

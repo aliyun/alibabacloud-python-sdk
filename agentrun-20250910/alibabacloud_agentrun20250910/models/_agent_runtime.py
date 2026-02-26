@@ -21,6 +21,7 @@ class AgentRuntime(DaraModel):
         created_at: str = None,
         credential_name: str = None,
         description: str = None,
+        disk_size: int = None,
         environment_variables: Dict[str, str] = None,
         execution_role_arn: str = None,
         external_agent_endpoint_url: str = None,
@@ -62,6 +63,7 @@ class AgentRuntime(DaraModel):
         self.credential_name = credential_name
         # 智能体运行时的描述信息，说明该运行时的用途和功能
         self.description = description
+        self.disk_size = disk_size
         # 智能体运行时的环境变量配置
         self.environment_variables = environment_variables
         # 为智能体运行时提供访问云服务权限的执行角色ARN
@@ -153,6 +155,9 @@ class AgentRuntime(DaraModel):
 
         if self.description is not None:
             result['description'] = self.description
+
+        if self.disk_size is not None:
+            result['diskSize'] = self.disk_size
 
         if self.environment_variables is not None:
             result['environmentVariables'] = self.environment_variables
@@ -246,6 +251,9 @@ class AgentRuntime(DaraModel):
 
         if m.get('description') is not None:
             self.description = m.get('description')
+
+        if m.get('diskSize') is not None:
+            self.disk_size = m.get('diskSize')
 
         if m.get('environmentVariables') is not None:
             self.environment_variables = m.get('environmentVariables')
