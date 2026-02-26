@@ -2690,6 +2690,112 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_conditional_access_policy_with_options_async(request, runtime)
 
+    def create_credential_with_options(
+        self,
+        request: main_models.CreateCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.credential_content):
+            query['CredentialContent'] = request.credential_content
+        if not DaraCore.is_null(request.credential_identifier):
+            query['CredentialIdentifier'] = request.credential_identifier
+        if not DaraCore.is_null(request.credential_name):
+            query['CredentialName'] = request.credential_name
+        if not DaraCore.is_null(request.credential_scenario_label):
+            query['CredentialScenarioLabel'] = request.credential_scenario_label
+        if not DaraCore.is_null(request.credential_subject_id):
+            query['CredentialSubjectId'] = request.credential_subject_id
+        if not DaraCore.is_null(request.credential_subject_type):
+            query['CredentialSubjectType'] = request.credential_subject_type
+        if not DaraCore.is_null(request.credential_type):
+            query['CredentialType'] = request.credential_type
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCredential',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_credential_with_options_async(
+        self,
+        request: main_models.CreateCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.credential_content):
+            query['CredentialContent'] = request.credential_content
+        if not DaraCore.is_null(request.credential_identifier):
+            query['CredentialIdentifier'] = request.credential_identifier
+        if not DaraCore.is_null(request.credential_name):
+            query['CredentialName'] = request.credential_name
+        if not DaraCore.is_null(request.credential_scenario_label):
+            query['CredentialScenarioLabel'] = request.credential_scenario_label
+        if not DaraCore.is_null(request.credential_subject_id):
+            query['CredentialSubjectId'] = request.credential_subject_id
+        if not DaraCore.is_null(request.credential_subject_type):
+            query['CredentialSubjectType'] = request.credential_subject_type
+        if not DaraCore.is_null(request.credential_type):
+            query['CredentialType'] = request.credential_type
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateCredential',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_credential(
+        self,
+        request: main_models.CreateCredentialRequest,
+    ) -> main_models.CreateCredentialResponse:
+        runtime = RuntimeOptions()
+        return self.create_credential_with_options(request, runtime)
+
+    async def create_credential_async(
+        self,
+        request: main_models.CreateCredentialRequest,
+    ) -> main_models.CreateCredentialResponse:
+        runtime = RuntimeOptions()
+        return await self.create_credential_with_options_async(request, runtime)
+
     def create_custom_field_with_options(
         self,
         request: main_models.CreateCustomFieldRequest,
@@ -4992,6 +5098,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.delete_conditional_access_policy_with_options_async(request, runtime)
 
+    def delete_credential_with_options(
+        self,
+        request: main_models.DeleteCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credential_id):
+            query['CredentialId'] = request.credential_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCredential',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_credential_with_options_async(
+        self,
+        request: main_models.DeleteCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credential_id):
+            query['CredentialId'] = request.credential_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteCredential',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_credential(
+        self,
+        request: main_models.DeleteCredentialRequest,
+    ) -> main_models.DeleteCredentialResponse:
+        runtime = RuntimeOptions()
+        return self.delete_credential_with_options(request, runtime)
+
+    async def delete_credential_async(
+        self,
+        request: main_models.DeleteCredentialRequest,
+    ) -> main_models.DeleteCredentialResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_credential_with_options_async(request, runtime)
+
     def delete_custom_field_with_options(
         self,
         request: main_models.DeleteCustomFieldRequest,
@@ -7256,6 +7436,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.disable_conditional_access_policy_with_options_async(request, runtime)
 
+    def disable_credential_with_options(
+        self,
+        request: main_models.DisableCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.credential_id):
+            query['CredentialId'] = request.credential_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableCredential',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def disable_credential_with_options_async(
+        self,
+        request: main_models.DisableCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.credential_id):
+            query['CredentialId'] = request.credential_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DisableCredential',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DisableCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def disable_credential(
+        self,
+        request: main_models.DisableCredentialRequest,
+    ) -> main_models.DisableCredentialResponse:
+        runtime = RuntimeOptions()
+        return self.disable_credential_with_options(request, runtime)
+
+    async def disable_credential_async(
+        self,
+        request: main_models.DisableCredentialRequest,
+    ) -> main_models.DisableCredentialResponse:
+        runtime = RuntimeOptions()
+        return await self.disable_credential_with_options_async(request, runtime)
+
     def disable_custom_field_with_options(
         self,
         request: main_models.DisableCustomFieldRequest,
@@ -9141,6 +9399,84 @@ class Client(OpenApiClient):
     ) -> main_models.EnableConditionalAccessPolicyResponse:
         runtime = RuntimeOptions()
         return await self.enable_conditional_access_policy_with_options_async(request, runtime)
+
+    def enable_credential_with_options(
+        self,
+        request: main_models.EnableCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.credential_id):
+            query['CredentialId'] = request.credential_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableCredential',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def enable_credential_with_options_async(
+        self,
+        request: main_models.EnableCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.credential_id):
+            query['CredentialId'] = request.credential_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'EnableCredential',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.EnableCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def enable_credential(
+        self,
+        request: main_models.EnableCredentialRequest,
+    ) -> main_models.EnableCredentialResponse:
+        runtime = RuntimeOptions()
+        return self.enable_credential_with_options(request, runtime)
+
+    async def enable_credential_async(
+        self,
+        request: main_models.EnableCredentialRequest,
+    ) -> main_models.EnableCredentialResponse:
+        runtime = RuntimeOptions()
+        return await self.enable_credential_with_options_async(request, runtime)
 
     def enable_custom_field_with_options(
         self,
@@ -11619,6 +11955,80 @@ class Client(OpenApiClient):
     ) -> main_models.GetConditionalAccessPolicyResponse:
         runtime = RuntimeOptions()
         return await self.get_conditional_access_policy_with_options_async(request, runtime)
+
+    def get_credential_with_options(
+        self,
+        request: main_models.GetCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credential_id):
+            query['CredentialId'] = request.credential_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCredential',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_credential_with_options_async(
+        self,
+        request: main_models.GetCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credential_id):
+            query['CredentialId'] = request.credential_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetCredential',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_credential(
+        self,
+        request: main_models.GetCredentialRequest,
+    ) -> main_models.GetCredentialResponse:
+        runtime = RuntimeOptions()
+        return self.get_credential_with_options(request, runtime)
+
+    async def get_credential_async(
+        self,
+        request: main_models.GetCredentialRequest,
+    ) -> main_models.GetCredentialResponse:
+        runtime = RuntimeOptions()
+        return await self.get_credential_with_options_async(request, runtime)
 
     def get_custom_field_with_options(
         self,
@@ -16358,6 +16768,96 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.list_conditional_access_policies_for_user_with_options_async(request, runtime)
 
+    def list_credentials_with_options(
+        self,
+        request: main_models.ListCredentialsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCredentialsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credential_ids):
+            query['CredentialIds'] = request.credential_ids
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.statuses):
+            query['Statuses'] = request.statuses
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCredentials',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCredentialsResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_credentials_with_options_async(
+        self,
+        request: main_models.ListCredentialsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListCredentialsResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credential_ids):
+            query['CredentialIds'] = request.credential_ids
+        if not DaraCore.is_null(request.filter):
+            query['Filter'] = request.filter
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        if not DaraCore.is_null(request.max_results):
+            query['MaxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['NextToken'] = request.next_token
+        if not DaraCore.is_null(request.statuses):
+            query['Statuses'] = request.statuses
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListCredentials',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListCredentialsResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_credentials(
+        self,
+        request: main_models.ListCredentialsRequest,
+    ) -> main_models.ListCredentialsResponse:
+        runtime = RuntimeOptions()
+        return self.list_credentials_with_options(request, runtime)
+
+    async def list_credentials_async(
+        self,
+        request: main_models.ListCredentialsRequest,
+    ) -> main_models.ListCredentialsResponse:
+        runtime = RuntimeOptions()
+        return await self.list_credentials_with_options_async(request, runtime)
+
     def list_custom_privacy_policies_with_options(
         self,
         request: main_models.ListCustomPrivacyPoliciesRequest,
@@ -19349,6 +19849,80 @@ class Client(OpenApiClient):
     ) -> main_models.ObtainApplicationTokenResponse:
         runtime = RuntimeOptions()
         return await self.obtain_application_token_with_options_async(request, runtime)
+
+    def obtain_credential_with_options(
+        self,
+        request: main_models.ObtainCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ObtainCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credential_id):
+            query['CredentialId'] = request.credential_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ObtainCredential',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ObtainCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def obtain_credential_with_options_async(
+        self,
+        request: main_models.ObtainCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ObtainCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.credential_id):
+            query['CredentialId'] = request.credential_id
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ObtainCredential',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ObtainCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def obtain_credential(
+        self,
+        request: main_models.ObtainCredentialRequest,
+    ) -> main_models.ObtainCredentialResponse:
+        runtime = RuntimeOptions()
+        return self.obtain_credential_with_options(request, runtime)
+
+    async def obtain_credential_async(
+        self,
+        request: main_models.ObtainCredentialRequest,
+    ) -> main_models.ObtainCredentialResponse:
+        runtime = RuntimeOptions()
+        return await self.obtain_credential_with_options_async(request, runtime)
 
     def obtain_domain_proxy_token_with_options(
         self,
@@ -24657,6 +25231,174 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateConditionalAccessPolicyDescriptionResponse:
         runtime = RuntimeOptions()
         return await self.update_conditional_access_policy_description_with_options_async(request, runtime)
+
+    def update_credential_with_options(
+        self,
+        request: main_models.UpdateCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.credential_content):
+            query['CredentialContent'] = request.credential_content
+        if not DaraCore.is_null(request.credential_id):
+            query['CredentialId'] = request.credential_id
+        if not DaraCore.is_null(request.credential_name):
+            query['CredentialName'] = request.credential_name
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCredential',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCredentialResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_credential_with_options_async(
+        self,
+        request: main_models.UpdateCredentialRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCredentialResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.credential_content):
+            query['CredentialContent'] = request.credential_content
+        if not DaraCore.is_null(request.credential_id):
+            query['CredentialId'] = request.credential_id
+        if not DaraCore.is_null(request.credential_name):
+            query['CredentialName'] = request.credential_name
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCredential',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCredentialResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_credential(
+        self,
+        request: main_models.UpdateCredentialRequest,
+    ) -> main_models.UpdateCredentialResponse:
+        runtime = RuntimeOptions()
+        return self.update_credential_with_options(request, runtime)
+
+    async def update_credential_async(
+        self,
+        request: main_models.UpdateCredentialRequest,
+    ) -> main_models.UpdateCredentialResponse:
+        runtime = RuntimeOptions()
+        return await self.update_credential_with_options_async(request, runtime)
+
+    def update_credential_description_with_options(
+        self,
+        request: main_models.UpdateCredentialDescriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCredentialDescriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.credential_id):
+            query['CredentialId'] = request.credential_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCredentialDescription',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCredentialDescriptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_credential_description_with_options_async(
+        self,
+        request: main_models.UpdateCredentialDescriptionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateCredentialDescriptionResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.client_token):
+            query['ClientToken'] = request.client_token
+        if not DaraCore.is_null(request.credential_id):
+            query['CredentialId'] = request.credential_id
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateCredentialDescription',
+            version = '2021-12-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateCredentialDescriptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_credential_description(
+        self,
+        request: main_models.UpdateCredentialDescriptionRequest,
+    ) -> main_models.UpdateCredentialDescriptionResponse:
+        runtime = RuntimeOptions()
+        return self.update_credential_description_with_options(request, runtime)
+
+    async def update_credential_description_async(
+        self,
+        request: main_models.UpdateCredentialDescriptionRequest,
+    ) -> main_models.UpdateCredentialDescriptionResponse:
+        runtime = RuntimeOptions()
+        return await self.update_credential_description_with_options_async(request, runtime)
 
     def update_custom_privacy_policy_with_options(
         self,

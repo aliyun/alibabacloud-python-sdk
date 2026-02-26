@@ -95,6 +95,9 @@ from ._create_cloud_account_role_response import CreateCloudAccountRoleResponse
 from ._create_conditional_access_policy_request import CreateConditionalAccessPolicyRequest
 from ._create_conditional_access_policy_response_body import CreateConditionalAccessPolicyResponseBody
 from ._create_conditional_access_policy_response import CreateConditionalAccessPolicyResponse
+from ._create_credential_request import CreateCredentialRequest
+from ._create_credential_response_body import CreateCredentialResponseBody
+from ._create_credential_response import CreateCredentialResponse
 from ._create_custom_field_request import CreateCustomFieldRequest
 from ._create_custom_field_response_body import CreateCustomFieldResponseBody
 from ._create_custom_field_response import CreateCustomFieldResponse
@@ -176,6 +179,9 @@ from ._delete_cloud_account_role_response import DeleteCloudAccountRoleResponse
 from ._delete_conditional_access_policy_request import DeleteConditionalAccessPolicyRequest
 from ._delete_conditional_access_policy_response_body import DeleteConditionalAccessPolicyResponseBody
 from ._delete_conditional_access_policy_response import DeleteConditionalAccessPolicyResponse
+from ._delete_credential_request import DeleteCredentialRequest
+from ._delete_credential_response_body import DeleteCredentialResponseBody
+from ._delete_credential_response import DeleteCredentialResponse
 from ._delete_custom_field_request import DeleteCustomFieldRequest
 from ._delete_custom_field_response_body import DeleteCustomFieldResponseBody
 from ._delete_custom_field_response import DeleteCustomFieldResponse
@@ -266,6 +272,9 @@ from ._disable_cloud_account_role_response import DisableCloudAccountRoleRespons
 from ._disable_conditional_access_policy_request import DisableConditionalAccessPolicyRequest
 from ._disable_conditional_access_policy_response_body import DisableConditionalAccessPolicyResponseBody
 from ._disable_conditional_access_policy_response import DisableConditionalAccessPolicyResponse
+from ._disable_credential_request import DisableCredentialRequest
+from ._disable_credential_response_body import DisableCredentialResponseBody
+from ._disable_credential_response import DisableCredentialResponse
 from ._disable_custom_field_request import DisableCustomFieldRequest
 from ._disable_custom_field_response_body import DisableCustomFieldResponseBody
 from ._disable_custom_field_response import DisableCustomFieldResponse
@@ -341,6 +350,9 @@ from ._enable_cloud_account_role_response import EnableCloudAccountRoleResponse
 from ._enable_conditional_access_policy_request import EnableConditionalAccessPolicyRequest
 from ._enable_conditional_access_policy_response_body import EnableConditionalAccessPolicyResponseBody
 from ._enable_conditional_access_policy_response import EnableConditionalAccessPolicyResponse
+from ._enable_credential_request import EnableCredentialRequest
+from ._enable_credential_response_body import EnableCredentialResponseBody
+from ._enable_credential_response import EnableCredentialResponse
 from ._enable_custom_field_request import EnableCustomFieldRequest
 from ._enable_custom_field_response_body import EnableCustomFieldResponseBody
 from ._enable_custom_field_response import EnableCustomFieldResponse
@@ -440,6 +452,9 @@ from ._get_cloud_account_role_response import GetCloudAccountRoleResponse
 from ._get_conditional_access_policy_request import GetConditionalAccessPolicyRequest
 from ._get_conditional_access_policy_response_body import GetConditionalAccessPolicyResponseBody
 from ._get_conditional_access_policy_response import GetConditionalAccessPolicyResponse
+from ._get_credential_request import GetCredentialRequest
+from ._get_credential_response_body import GetCredentialResponseBody
+from ._get_credential_response import GetCredentialResponse
 from ._get_custom_field_request import GetCustomFieldRequest
 from ._get_custom_field_response_body import GetCustomFieldResponseBody
 from ._get_custom_field_response import GetCustomFieldResponse
@@ -623,6 +638,9 @@ from ._list_conditional_access_policies_for_network_zone_response import ListCon
 from ._list_conditional_access_policies_for_user_request import ListConditionalAccessPoliciesForUserRequest
 from ._list_conditional_access_policies_for_user_response_body import ListConditionalAccessPoliciesForUserResponseBody
 from ._list_conditional_access_policies_for_user_response import ListConditionalAccessPoliciesForUserResponse
+from ._list_credentials_request import ListCredentialsRequest
+from ._list_credentials_response_body import ListCredentialsResponseBody
+from ._list_credentials_response import ListCredentialsResponse
 from ._list_custom_privacy_policies_request import ListCustomPrivacyPoliciesRequest
 from ._list_custom_privacy_policies_response_body import ListCustomPrivacyPoliciesResponseBody
 from ._list_custom_privacy_policies_response import ListCustomPrivacyPoliciesResponse
@@ -728,6 +746,9 @@ from ._obtain_application_client_secret_response import ObtainApplicationClientS
 from ._obtain_application_token_request import ObtainApplicationTokenRequest
 from ._obtain_application_token_response_body import ObtainApplicationTokenResponseBody
 from ._obtain_application_token_response import ObtainApplicationTokenResponse
+from ._obtain_credential_request import ObtainCredentialRequest
+from ._obtain_credential_response_body import ObtainCredentialResponseBody
+from ._obtain_credential_response import ObtainCredentialResponse
 from ._obtain_domain_proxy_token_request import ObtainDomainProxyTokenRequest
 from ._obtain_domain_proxy_token_response_body import ObtainDomainProxyTokenResponseBody
 from ._obtain_domain_proxy_token_response import ObtainDomainProxyTokenResponse
@@ -920,6 +941,12 @@ from ._update_conditional_access_policy_response import UpdateConditionalAccessP
 from ._update_conditional_access_policy_description_request import UpdateConditionalAccessPolicyDescriptionRequest
 from ._update_conditional_access_policy_description_response_body import UpdateConditionalAccessPolicyDescriptionResponseBody
 from ._update_conditional_access_policy_description_response import UpdateConditionalAccessPolicyDescriptionResponse
+from ._update_credential_request import UpdateCredentialRequest
+from ._update_credential_response_body import UpdateCredentialResponseBody
+from ._update_credential_response import UpdateCredentialResponse
+from ._update_credential_description_request import UpdateCredentialDescriptionRequest
+from ._update_credential_description_response_body import UpdateCredentialDescriptionResponseBody
+from ._update_credential_description_response import UpdateCredentialDescriptionResponse
 from ._update_custom_privacy_policy_request import UpdateCustomPrivacyPolicyRequest
 from ._update_custom_privacy_policy_response_body import UpdateCustomPrivacyPolicyResponseBody
 from ._update_custom_privacy_policy_response import UpdateCustomPrivacyPolicyResponse
@@ -992,6 +1019,9 @@ from ._create_conditional_access_policy_request import CreateConditionalAccessPo
 from ._create_conditional_access_policy_request import CreateConditionalAccessPolicyRequestConditionsConfigUsers
 from ._create_conditional_access_policy_request import CreateConditionalAccessPolicyRequestConditionsConfig
 from ._create_conditional_access_policy_request import CreateConditionalAccessPolicyRequestDecisionConfig
+from ._create_credential_request import CreateCredentialRequestCredentialContentApiKeyContent
+from ._create_credential_request import CreateCredentialRequestCredentialContentOAuthClientContent
+from ._create_credential_request import CreateCredentialRequestCredentialContent
 from ._create_custom_field_request import CreateCustomFieldRequestFieldDataConfigItems
 from ._create_custom_field_request import CreateCustomFieldRequestFieldDataConfig
 from ._create_custom_privacy_policy_request import CreateCustomPrivacyPolicyRequestCustomPrivacyPolicyContentsCustomPrivacyPolicyItems
@@ -1064,6 +1094,9 @@ from ._get_conditional_access_policy_response_body import GetConditionalAccessPo
 from ._get_conditional_access_policy_response_body import GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfig
 from ._get_conditional_access_policy_response_body import GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig
 from ._get_conditional_access_policy_response_body import GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy
+from ._get_credential_response_body import GetCredentialResponseBodyCredentialCredentialContentOAuthClientContent
+from ._get_credential_response_body import GetCredentialResponseBodyCredentialCredentialContent
+from ._get_credential_response_body import GetCredentialResponseBodyCredential
 from ._get_custom_field_response_body import GetCustomFieldResponseBodyCustomFieldFieldDataConfigItems
 from ._get_custom_field_response_body import GetCustomFieldResponseBodyCustomFieldFieldDataConfig
 from ._get_custom_field_response_body import GetCustomFieldResponseBodyCustomField
@@ -1235,6 +1268,10 @@ from ._list_conditional_access_policies_for_user_response_body import ListCondit
 from ._list_conditional_access_policies_for_user_response_body import ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesConditionsConfig
 from ._list_conditional_access_policies_for_user_response_body import ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesDecisionConfig
 from ._list_conditional_access_policies_for_user_response_body import ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPolicies
+from ._list_credentials_request import ListCredentialsRequestFilter
+from ._list_credentials_response_body import ListCredentialsResponseBodyCredentialsCredentialContentOAuthClientContent
+from ._list_credentials_response_body import ListCredentialsResponseBodyCredentialsCredentialContent
+from ._list_credentials_response_body import ListCredentialsResponseBodyCredentials
 from ._list_custom_privacy_policies_response_body import ListCustomPrivacyPoliciesResponseBodyCustomPrivacyPolicies
 from ._list_custom_privacy_policies_for_brand_response_body import ListCustomPrivacyPoliciesForBrandResponseBodyBrandCustomPrivacyPolicies
 from ._list_domain_proxy_tokens_response_body import ListDomainProxyTokensResponseBodyDomainProxyTokens
@@ -1326,6 +1363,10 @@ from ._list_users_for_resource_server_response_body import ListUsersForResourceS
 from ._list_users_for_resource_server_response_body import ListUsersForResourceServerResponseBodyUsers
 from ._obtain_application_client_secret_response_body import ObtainApplicationClientSecretResponseBodyApplicationClientSecret
 from ._obtain_application_token_response_body import ObtainApplicationTokenResponseBodyApplicationToken
+from ._obtain_credential_response_body import ObtainCredentialResponseBodyCredentialCredentialContentApiKeyContent
+from ._obtain_credential_response_body import ObtainCredentialResponseBodyCredentialCredentialContentOAuthClientContent
+from ._obtain_credential_response_body import ObtainCredentialResponseBodyCredentialCredentialContent
+from ._obtain_credential_response_body import ObtainCredentialResponseBodyCredential
 from ._obtain_domain_proxy_token_response_body import ObtainDomainProxyTokenResponseBodyDomainProxyToken
 from ._run_synchronization_job_request import RunSynchronizationJobRequestSynchronizationScopeConfig
 from ._set_application_provisioning_config_request import SetApplicationProvisioningConfigRequestCallbackProvisioningConfig
@@ -1364,6 +1405,9 @@ from ._update_conditional_access_policy_request import UpdateConditionalAccessPo
 from ._update_conditional_access_policy_request import UpdateConditionalAccessPolicyRequestConditionsConfigUsers
 from ._update_conditional_access_policy_request import UpdateConditionalAccessPolicyRequestConditionsConfig
 from ._update_conditional_access_policy_request import UpdateConditionalAccessPolicyRequestDecisionConfig
+from ._update_credential_request import UpdateCredentialRequestCredentialContentApiKeyContent
+from ._update_credential_request import UpdateCredentialRequestCredentialContentOAuthClientContent
+from ._update_credential_request import UpdateCredentialRequestCredentialContent
 from ._update_custom_privacy_policy_request import UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContentsCustomPrivacyPolicyItems
 from ._update_custom_privacy_policy_request import UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContents
 from ._update_federated_credential_provider_request import UpdateFederatedCredentialProviderRequestOidcProviderConfig
@@ -1474,6 +1518,9 @@ __all__ = [
     CreateConditionalAccessPolicyRequest,
     CreateConditionalAccessPolicyResponseBody,
     CreateConditionalAccessPolicyResponse,
+    CreateCredentialRequest,
+    CreateCredentialResponseBody,
+    CreateCredentialResponse,
     CreateCustomFieldRequest,
     CreateCustomFieldResponseBody,
     CreateCustomFieldResponse,
@@ -1555,6 +1602,9 @@ __all__ = [
     DeleteConditionalAccessPolicyRequest,
     DeleteConditionalAccessPolicyResponseBody,
     DeleteConditionalAccessPolicyResponse,
+    DeleteCredentialRequest,
+    DeleteCredentialResponseBody,
+    DeleteCredentialResponse,
     DeleteCustomFieldRequest,
     DeleteCustomFieldResponseBody,
     DeleteCustomFieldResponse,
@@ -1645,6 +1695,9 @@ __all__ = [
     DisableConditionalAccessPolicyRequest,
     DisableConditionalAccessPolicyResponseBody,
     DisableConditionalAccessPolicyResponse,
+    DisableCredentialRequest,
+    DisableCredentialResponseBody,
+    DisableCredentialResponse,
     DisableCustomFieldRequest,
     DisableCustomFieldResponseBody,
     DisableCustomFieldResponse,
@@ -1720,6 +1773,9 @@ __all__ = [
     EnableConditionalAccessPolicyRequest,
     EnableConditionalAccessPolicyResponseBody,
     EnableConditionalAccessPolicyResponse,
+    EnableCredentialRequest,
+    EnableCredentialResponseBody,
+    EnableCredentialResponse,
     EnableCustomFieldRequest,
     EnableCustomFieldResponseBody,
     EnableCustomFieldResponse,
@@ -1819,6 +1875,9 @@ __all__ = [
     GetConditionalAccessPolicyRequest,
     GetConditionalAccessPolicyResponseBody,
     GetConditionalAccessPolicyResponse,
+    GetCredentialRequest,
+    GetCredentialResponseBody,
+    GetCredentialResponse,
     GetCustomFieldRequest,
     GetCustomFieldResponseBody,
     GetCustomFieldResponse,
@@ -2002,6 +2061,9 @@ __all__ = [
     ListConditionalAccessPoliciesForUserRequest,
     ListConditionalAccessPoliciesForUserResponseBody,
     ListConditionalAccessPoliciesForUserResponse,
+    ListCredentialsRequest,
+    ListCredentialsResponseBody,
+    ListCredentialsResponse,
     ListCustomPrivacyPoliciesRequest,
     ListCustomPrivacyPoliciesResponseBody,
     ListCustomPrivacyPoliciesResponse,
@@ -2107,6 +2169,9 @@ __all__ = [
     ObtainApplicationTokenRequest,
     ObtainApplicationTokenResponseBody,
     ObtainApplicationTokenResponse,
+    ObtainCredentialRequest,
+    ObtainCredentialResponseBody,
+    ObtainCredentialResponse,
     ObtainDomainProxyTokenRequest,
     ObtainDomainProxyTokenResponseBody,
     ObtainDomainProxyTokenResponse,
@@ -2299,6 +2364,12 @@ __all__ = [
     UpdateConditionalAccessPolicyDescriptionRequest,
     UpdateConditionalAccessPolicyDescriptionResponseBody,
     UpdateConditionalAccessPolicyDescriptionResponse,
+    UpdateCredentialRequest,
+    UpdateCredentialResponseBody,
+    UpdateCredentialResponse,
+    UpdateCredentialDescriptionRequest,
+    UpdateCredentialDescriptionResponseBody,
+    UpdateCredentialDescriptionResponse,
     UpdateCustomPrivacyPolicyRequest,
     UpdateCustomPrivacyPolicyResponseBody,
     UpdateCustomPrivacyPolicyResponse,
@@ -2371,6 +2442,9 @@ __all__ = [
     CreateConditionalAccessPolicyRequestConditionsConfigUsers,
     CreateConditionalAccessPolicyRequestConditionsConfig,
     CreateConditionalAccessPolicyRequestDecisionConfig,
+    CreateCredentialRequestCredentialContentApiKeyContent,
+    CreateCredentialRequestCredentialContentOAuthClientContent,
+    CreateCredentialRequestCredentialContent,
     CreateCustomFieldRequestFieldDataConfigItems,
     CreateCustomFieldRequestFieldDataConfig,
     CreateCustomPrivacyPolicyRequestCustomPrivacyPolicyContentsCustomPrivacyPolicyItems,
@@ -2443,6 +2517,9 @@ __all__ = [
     GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyConditionsConfig,
     GetConditionalAccessPolicyResponseBodyConditionalAccessPolicyDecisionConfig,
     GetConditionalAccessPolicyResponseBodyConditionalAccessPolicy,
+    GetCredentialResponseBodyCredentialCredentialContentOAuthClientContent,
+    GetCredentialResponseBodyCredentialCredentialContent,
+    GetCredentialResponseBodyCredential,
     GetCustomFieldResponseBodyCustomFieldFieldDataConfigItems,
     GetCustomFieldResponseBodyCustomFieldFieldDataConfig,
     GetCustomFieldResponseBodyCustomField,
@@ -2614,6 +2691,10 @@ __all__ = [
     ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesConditionsConfig,
     ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPoliciesDecisionConfig,
     ListConditionalAccessPoliciesForUserResponseBodyConditionalAccessPolicies,
+    ListCredentialsRequestFilter,
+    ListCredentialsResponseBodyCredentialsCredentialContentOAuthClientContent,
+    ListCredentialsResponseBodyCredentialsCredentialContent,
+    ListCredentialsResponseBodyCredentials,
     ListCustomPrivacyPoliciesResponseBodyCustomPrivacyPolicies,
     ListCustomPrivacyPoliciesForBrandResponseBodyBrandCustomPrivacyPolicies,
     ListDomainProxyTokensResponseBodyDomainProxyTokens,
@@ -2705,6 +2786,10 @@ __all__ = [
     ListUsersForResourceServerResponseBodyUsers,
     ObtainApplicationClientSecretResponseBodyApplicationClientSecret,
     ObtainApplicationTokenResponseBodyApplicationToken,
+    ObtainCredentialResponseBodyCredentialCredentialContentApiKeyContent,
+    ObtainCredentialResponseBodyCredentialCredentialContentOAuthClientContent,
+    ObtainCredentialResponseBodyCredentialCredentialContent,
+    ObtainCredentialResponseBodyCredential,
     ObtainDomainProxyTokenResponseBodyDomainProxyToken,
     RunSynchronizationJobRequestSynchronizationScopeConfig,
     SetApplicationProvisioningConfigRequestCallbackProvisioningConfig,
@@ -2743,6 +2828,9 @@ __all__ = [
     UpdateConditionalAccessPolicyRequestConditionsConfigUsers,
     UpdateConditionalAccessPolicyRequestConditionsConfig,
     UpdateConditionalAccessPolicyRequestDecisionConfig,
+    UpdateCredentialRequestCredentialContentApiKeyContent,
+    UpdateCredentialRequestCredentialContentOAuthClientContent,
+    UpdateCredentialRequestCredentialContent,
     UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContentsCustomPrivacyPolicyItems,
     UpdateCustomPrivacyPolicyRequestCustomPrivacyPolicyContents,
     UpdateFederatedCredentialProviderRequestOidcProviderConfig,

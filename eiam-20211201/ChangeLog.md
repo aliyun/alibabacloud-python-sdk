@@ -1,3 +1,15 @@
+2026-02-26 Version: 2.13.0
+- Support API CreateCredential.
+- Support API DeleteCredential.
+- Support API DisableCredential.
+- Support API EnableCredential.
+- Support API GetCredential.
+- Support API ListCredentials.
+- Support API ObtainCredential.
+- Support API UpdateCredential.
+- Support API UpdateCredentialDescription.
+
+
 2026-02-10 Version: 2.12.2
 - Update API CreateApplication: add request parameters ApplicationIdentityType.
 - Update API GetApplication: add response parameters Body.Application.ApplicationIdentityType.
