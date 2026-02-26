@@ -11,7 +11,6 @@ from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
 from darabonba.core import DaraCore as DaraCore
-from darabonba.core import DaraCore
 from darabonba.runtime import RuntimeOptions
 
 """
@@ -5343,17 +5342,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.CreateRunResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.CreateRunResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def create_run_with_sse_async(
         self,
@@ -5401,17 +5400,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.CreateRunResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.CreateRunResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def create_run_with_options(
         self,
@@ -19568,6 +19567,8 @@ class Client(OpenApiClient):
             real_headers = headers.common_headers
         if not DaraCore.is_null(headers.account_id):
             real_headers['accountId'] = str(headers.account_id)
+        if not DaraCore.is_null(headers.aliding_sso_ticket):
+            real_headers['alidingSsoTicket'] = str(headers.aliding_sso_ticket)
         req = open_api_util_models.OpenApiRequest(
             headers = real_headers,
             body = Utils.parse_to_map(body)
@@ -19585,17 +19586,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.InvokeAssistantResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.InvokeAssistantResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def invoke_assistant_with_sse_async(
         self,
@@ -19628,6 +19629,8 @@ class Client(OpenApiClient):
             real_headers = headers.common_headers
         if not DaraCore.is_null(headers.account_id):
             real_headers['accountId'] = str(headers.account_id)
+        if not DaraCore.is_null(headers.aliding_sso_ticket):
+            real_headers['alidingSsoTicket'] = str(headers.aliding_sso_ticket)
         req = open_api_util_models.OpenApiRequest(
             headers = real_headers,
             body = Utils.parse_to_map(body)
@@ -19645,17 +19648,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.InvokeAssistantResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.InvokeAssistantResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def invoke_assistant_with_options(
         self,
@@ -19688,6 +19691,8 @@ class Client(OpenApiClient):
             real_headers = headers.common_headers
         if not DaraCore.is_null(headers.account_id):
             real_headers['accountId'] = str(headers.account_id)
+        if not DaraCore.is_null(headers.aliding_sso_ticket):
+            real_headers['alidingSsoTicket'] = str(headers.aliding_sso_ticket)
         req = open_api_util_models.OpenApiRequest(
             headers = real_headers,
             body = Utils.parse_to_map(body)
@@ -19739,6 +19744,8 @@ class Client(OpenApiClient):
             real_headers = headers.common_headers
         if not DaraCore.is_null(headers.account_id):
             real_headers['accountId'] = str(headers.account_id)
+        if not DaraCore.is_null(headers.aliding_sso_ticket):
+            real_headers['alidingSsoTicket'] = str(headers.aliding_sso_ticket)
         req = open_api_util_models.OpenApiRequest(
             headers = real_headers,
             body = Utils.parse_to_map(body)
@@ -19821,17 +19828,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.InvokeSkillResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.InvokeSkillResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def invoke_skill_with_sse_async(
         self,
@@ -19879,17 +19886,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.InvokeSkillResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.InvokeSkillResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def invoke_skill_with_options(
         self,

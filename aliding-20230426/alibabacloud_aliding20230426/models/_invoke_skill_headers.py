@@ -48,10 +48,12 @@ class InvokeSkillHeadersAccountContext(DaraModel):
     def __init__(
         self,
         account_id: str = None,
+        aliding_sso_ticket: str = None,
         sso_ticket: str = None,
     ):
         # This parameter is required.
         self.account_id = account_id
+        self.aliding_sso_ticket = aliding_sso_ticket
         self.sso_ticket = sso_ticket
 
     def validate(self):
@@ -65,6 +67,9 @@ class InvokeSkillHeadersAccountContext(DaraModel):
         if self.account_id is not None:
             result['accountId'] = self.account_id
 
+        if self.aliding_sso_ticket is not None:
+            result['alidingSsoTicket'] = self.aliding_sso_ticket
+
         if self.sso_ticket is not None:
             result['ssoTicket'] = self.sso_ticket
 
@@ -74,6 +79,9 @@ class InvokeSkillHeadersAccountContext(DaraModel):
         m = m or dict()
         if m.get('accountId') is not None:
             self.account_id = m.get('accountId')
+
+        if m.get('alidingSsoTicket') is not None:
+            self.aliding_sso_ticket = m.get('alidingSsoTicket')
 
         if m.get('ssoTicket') is not None:
             self.sso_ticket = m.get('ssoTicket')

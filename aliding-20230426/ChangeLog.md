@@ -1,3 +1,8 @@
+2026-02-26 Version: 2.48.1
+- Update API InvokeAssistant: add request parameters alidingSsoTicket.
+- Update API InvokeSkill: add request parameters AccountContext.alidingSsoTicket.
+
+
 2026-02-06 Version: 2.48.0
 - Support API GetSkillDetail.
 - Support API GetSkills.
