@@ -1,3 +1,18 @@
+2026-02-26 Version: 7.5.1
+- Update API CreateDomain: add request parameters Listen.HstsIncludeSubDomain.
+- Update API CreateDomain: add request parameters Listen.HstsMaxAge.
+- Update API CreateDomain: add request parameters Listen.HstsPreload.
+- Update API CreateDomain: add request parameters Redirect.ProxyProtocol.
+- Update API DescribeDomainDetail: add response parameters Body.Listen.HstsIncludeSubDomain.
+- Update API DescribeDomainDetail: add response parameters Body.Listen.HstsMaxAge.
+- Update API DescribeDomainDetail: add response parameters Body.Listen.HstsPreload.
+- Update API DescribeDomainDetail: add response parameters Body.Redirect.ProxyProtocol.
+- Update API ModifyDomain: add request parameters Listen.HstsIncludeSubDomain.
+- Update API ModifyDomain: add request parameters Listen.HstsMaxAge.
+- Update API ModifyDomain: add request parameters Listen.HstsPreload.
+- Update API ModifyDomain: add request parameters Redirect.ProxyProtocol.
+
+
 2026-02-06 Version: 7.5.0
 - Support API CreateCloudResourceExtensionCert.
 - Support API DeleteCloudResourceExtensionCert.

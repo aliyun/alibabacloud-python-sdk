@@ -222,6 +222,7 @@ class DescribeDomainDetailResponseBodyRedirect(DaraModel):
         keepalive_timeout: int = None,
         loadbalance: str = None,
         max_body_size: int = None,
+        proxy_protocol: bool = None,
         read_timeout: int = None,
         request_headers: List[main_models.DescribeDomainDetailResponseBodyRedirectRequestHeaders] = None,
         retry: bool = None,
@@ -270,6 +271,7 @@ class DescribeDomainDetailResponseBodyRedirect(DaraModel):
         # *   **leastTime:** the least response time algorithm.
         self.loadbalance = loadbalance
         self.max_body_size = max_body_size
+        self.proxy_protocol = proxy_protocol
         # The read timeout period. Unit: seconds. Valid values: 5 to 1800.
         self.read_timeout = read_timeout
         # An array of key-value pairs that are used to mark the requests that pass through the WAF instance.
@@ -369,6 +371,9 @@ class DescribeDomainDetailResponseBodyRedirect(DaraModel):
         if self.max_body_size is not None:
             result['MaxBodySize'] = self.max_body_size
 
+        if self.proxy_protocol is not None:
+            result['ProxyProtocol'] = self.proxy_protocol
+
         if self.read_timeout is not None:
             result['ReadTimeout'] = self.read_timeout
 
@@ -458,6 +463,9 @@ class DescribeDomainDetailResponseBodyRedirect(DaraModel):
 
         if m.get('MaxBodySize') is not None:
             self.max_body_size = m.get('MaxBodySize')
+
+        if m.get('ProxyProtocol') is not None:
+            self.proxy_protocol = m.get('ProxyProtocol')
 
         if m.get('ReadTimeout') is not None:
             self.read_timeout = m.get('ReadTimeout')
@@ -642,6 +650,9 @@ class DescribeDomainDetailResponseBodyListen(DaraModel):
         enable_tlsv_3: bool = None,
         exclusive_ip: bool = None,
         focus_https: bool = None,
+        hsts_include_sub_domain: bool = None,
+        hsts_max_age: int = None,
+        hsts_preload: bool = None,
         http_2enabled: bool = None,
         http_ports: List[int] = None,
         https_ports: List[int] = None,
@@ -679,6 +690,9 @@ class DescribeDomainDetailResponseBodyListen(DaraModel):
         # *   **true:** HTTP to HTTPS redirection is enabled.
         # *   **false:** HTTP to HTTPS redirection is disabled.
         self.focus_https = focus_https
+        self.hsts_include_sub_domain = hsts_include_sub_domain
+        self.hsts_max_age = hsts_max_age
+        self.hsts_preload = hsts_preload
         # Indicates whether HTTP/2 is enabled. Valid values:
         # 
         # *   **true:** HTTP/2 is enabled.
@@ -751,6 +765,15 @@ class DescribeDomainDetailResponseBodyListen(DaraModel):
         if self.focus_https is not None:
             result['FocusHttps'] = self.focus_https
 
+        if self.hsts_include_sub_domain is not None:
+            result['HstsIncludeSubDomain'] = self.hsts_include_sub_domain
+
+        if self.hsts_max_age is not None:
+            result['HstsMaxAge'] = self.hsts_max_age
+
+        if self.hsts_preload is not None:
+            result['HstsPreload'] = self.hsts_preload
+
         if self.http_2enabled is not None:
             result['Http2Enabled'] = self.http_2enabled
 
@@ -805,6 +828,15 @@ class DescribeDomainDetailResponseBodyListen(DaraModel):
 
         if m.get('FocusHttps') is not None:
             self.focus_https = m.get('FocusHttps')
+
+        if m.get('HstsIncludeSubDomain') is not None:
+            self.hsts_include_sub_domain = m.get('HstsIncludeSubDomain')
+
+        if m.get('HstsMaxAge') is not None:
+            self.hsts_max_age = m.get('HstsMaxAge')
+
+        if m.get('HstsPreload') is not None:
+            self.hsts_preload = m.get('HstsPreload')
 
         if m.get('Http2Enabled') is not None:
             self.http_2enabled = m.get('Http2Enabled')
