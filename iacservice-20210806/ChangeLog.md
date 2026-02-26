@@ -1,3 +1,7 @@
+2026-02-26 Version: 2.4.0
+- Support API ListResources.
+
+
 2026-02-25 Version: 2.3.0
 - Support API AssociateParameterSet.
 - Support API CreateParameterSet.

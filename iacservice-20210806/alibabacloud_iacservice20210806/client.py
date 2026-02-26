@@ -5261,6 +5261,98 @@ class Client(OpenApiClient):
         headers = {}
         return await self.list_resource_types_with_options_async(request, headers, runtime)
 
+    def list_resources_with_options(
+        self,
+        request: main_models.ListResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_type):
+            query['sourceType'] = request.source_type
+        if not DaraCore.is_null(request.source_value):
+            query['sourceValue'] = request.source_value
+        if not DaraCore.is_null(request.spec_type):
+            query['specType'] = request.spec_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListResources',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/resources/stateparser',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListResourcesResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_resources_with_options_async(
+        self,
+        request: main_models.ListResourcesRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResourcesResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.page_number):
+            query['pageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['pageSize'] = request.page_size
+        if not DaraCore.is_null(request.source_type):
+            query['sourceType'] = request.source_type
+        if not DaraCore.is_null(request.source_value):
+            query['sourceValue'] = request.source_value
+        if not DaraCore.is_null(request.spec_type):
+            query['specType'] = request.spec_type
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListResources',
+            version = '2021-08-06',
+            protocol = 'HTTPS',
+            pathname = f'/resources/stateparser',
+            method = 'GET',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListResourcesResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_resources(
+        self,
+        request: main_models.ListResourcesRequest,
+    ) -> main_models.ListResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.list_resources_with_options(request, headers, runtime)
+
+    async def list_resources_async(
+        self,
+        request: main_models.ListResourcesRequest,
+    ) -> main_models.ListResourcesResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.list_resources_with_options_async(request, headers, runtime)
+
     def list_tasks_with_options(
         self,
         tmp_req: main_models.ListTasksRequest,

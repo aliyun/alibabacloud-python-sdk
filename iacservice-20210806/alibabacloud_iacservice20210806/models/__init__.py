@@ -172,6 +172,9 @@ from ._list_resource_types_request import ListResourceTypesRequest
 from ._list_resource_types_shrink_request import ListResourceTypesShrinkRequest
 from ._list_resource_types_response_body import ListResourceTypesResponseBody
 from ._list_resource_types_response import ListResourceTypesResponse
+from ._list_resources_request import ListResourcesRequest
+from ._list_resources_response_body import ListResourcesResponseBody
+from ._list_resources_response import ListResourcesResponse
 from ._list_tasks_request import ListTasksRequest
 from ._list_tasks_shrink_request import ListTasksShrinkRequest
 from ._list_tasks_response_body import ListTasksResponseBody
@@ -296,6 +299,8 @@ from ._list_resource_export_tasks_response_body import ListResourceExportTasksRe
 from ._list_resource_export_tasks_response_body import ListResourceExportTasksResponseBodyExportTasksVariables
 from ._list_resource_export_tasks_response_body import ListResourceExportTasksResponseBodyExportTasks
 from ._list_resource_types_response_body import ListResourceTypesResponseBodyResourceTypes
+from ._list_resources_response_body import ListResourcesResponseBodyResourcesTags
+from ._list_resources_response_body import ListResourcesResponseBodyResources
 from ._list_tasks_request import ListTasksRequestTag
 from ._list_tasks_response_body import ListTasksResponseBodyTasksGroupInfo
 from ._list_tasks_response_body import ListTasksResponseBodyTasksTags
@@ -483,6 +488,9 @@ __all__ = [
     ListResourceTypesShrinkRequest,
     ListResourceTypesResponseBody,
     ListResourceTypesResponse,
+    ListResourcesRequest,
+    ListResourcesResponseBody,
+    ListResourcesResponse,
     ListTasksRequest,
     ListTasksShrinkRequest,
     ListTasksResponseBody,
@@ -607,6 +615,8 @@ __all__ = [
     ListResourceExportTasksResponseBodyExportTasksVariables,
     ListResourceExportTasksResponseBodyExportTasks,
     ListResourceTypesResponseBodyResourceTypes,
+    ListResourcesResponseBodyResourcesTags,
+    ListResourcesResponseBodyResources,
     ListTasksRequestTag,
     ListTasksResponseBodyTasksGroupInfo,
     ListTasksResponseBodyTasksTags,
