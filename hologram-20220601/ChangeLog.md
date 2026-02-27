@@ -1,3 +1,6 @@
+2026-02-27 Version: 1.7.2
+- Generated python 2022-06-01 for Hologram.
+
 2025-11-26 Version: 1.7.1
 - Update API GetInstance: add response parameters Body.Instance.EnableSSL.
 - Update API ListInstances: add response parameters Body.InstanceList.$.EnableSSL.
