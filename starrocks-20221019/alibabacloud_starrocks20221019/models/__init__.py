@@ -118,6 +118,7 @@ from ._describe_instances_request import DescribeInstancesRequestTag
 from ._describe_instances_response_body import DescribeInstancesResponseBodyDataTags
 from ._describe_instances_response_body import DescribeInstancesResponseBodyDataVSwitches
 from ._describe_instances_response_body import DescribeInstancesResponseBodyData
+from ._describe_node_groups_request import DescribeNodeGroupsRequestTags
 from ._describe_node_groups_response_body import DescribeNodeGroupsResponseBodyDataNodeInfo
 from ._describe_node_groups_response_body import DescribeNodeGroupsResponseBodyDataTags
 from ._describe_node_groups_response_body import DescribeNodeGroupsResponseBodyData
@@ -248,6 +249,7 @@ __all__ = [
     DescribeInstancesResponseBodyDataTags,
     DescribeInstancesResponseBodyDataVSwitches,
     DescribeInstancesResponseBodyData,
+    DescribeNodeGroupsRequestTags,
     DescribeNodeGroupsResponseBodyDataNodeInfo,
     DescribeNodeGroupsResponseBodyDataTags,
     DescribeNodeGroupsResponseBodyData,

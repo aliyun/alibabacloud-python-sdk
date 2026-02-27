@@ -683,6 +683,8 @@ class Client(OpenApiClient):
             body['nodeGroupName'] = request.node_group_name
         if not DaraCore.is_null(request.status):
             body['status'] = request.status
+        if not DaraCore.is_null(request.tags):
+            body['tags'] = request.tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),
@@ -729,6 +731,8 @@ class Client(OpenApiClient):
             body['nodeGroupName'] = request.node_group_name
         if not DaraCore.is_null(request.status):
             body['status'] = request.status
+        if not DaraCore.is_null(request.tags):
+            body['tags'] = request.tags
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query),

@@ -1,3 +1,7 @@
+2026-02-27 Version: 1.3.2
+- Update API DescribeNodeGroups: add request parameters body.tags.
+
+
 2026-02-26 Version: 1.3.1
 - Update API GetInstanceFeatureGate: add response parameters Body.Data.supportCompactionService.
 
