@@ -1,3 +1,11 @@
+2026-02-27 Version: 2.3.0
+- Support API CreateSkill.
+- Support API DeleteSkill.
+- Support API GetSkill.
+- Support API ListSkill.
+- Support API UpdateSkill.
+
+
 2026-02-05 Version: 2.2.0
 - Support API CreateInspectionTask.
 - Support API CreateScheduledTask.

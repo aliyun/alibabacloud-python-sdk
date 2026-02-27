@@ -23,6 +23,10 @@ from ._create_inspection_task_response import CreateInspectionTaskResponse
 from ._create_scheduled_task_request import CreateScheduledTaskRequest
 from ._create_scheduled_task_response_body import CreateScheduledTaskResponseBody
 from ._create_scheduled_task_response import CreateScheduledTaskResponse
+from ._create_skill_request import CreateSkillRequest
+from ._create_skill_shrink_request import CreateSkillShrinkRequest
+from ._create_skill_response_body import CreateSkillResponseBody
+from ._create_skill_response import CreateSkillResponse
 from ._delete_app_instance_request import DeleteAppInstanceRequest
 from ._delete_app_instance_response_body import DeleteAppInstanceResponseBody
 from ._delete_app_instance_response import DeleteAppInstanceResponse
@@ -32,6 +36,9 @@ from ._delete_custom_agent_response import DeleteCustomAgentResponse
 from ._delete_scheduled_task_request import DeleteScheduledTaskRequest
 from ._delete_scheduled_task_response_body import DeleteScheduledTaskResponseBody
 from ._delete_scheduled_task_response import DeleteScheduledTaskResponse
+from ._delete_skill_request import DeleteSkillRequest
+from ._delete_skill_response_body import DeleteSkillResponseBody
+from ._delete_skill_response import DeleteSkillResponse
 from ._describe_app_instance_attribute_request import DescribeAppInstanceAttributeRequest
 from ._describe_app_instance_attribute_response_body import DescribeAppInstanceAttributeResponseBody
 from ._describe_app_instance_attribute_response import DescribeAppInstanceAttributeResponse
@@ -77,6 +84,9 @@ from ._get_scheduled_instances_response import GetScheduledInstancesResponse
 from ._get_scheduled_reports_request import GetScheduledReportsRequest
 from ._get_scheduled_reports_response_body import GetScheduledReportsResponseBody
 from ._get_scheduled_reports_response import GetScheduledReportsResponse
+from ._get_skill_request import GetSkillRequest
+from ._get_skill_response_body import GetSkillResponseBody
+from ._get_skill_response import GetSkillResponse
 from ._get_stand_alone_reports_request import GetStandAloneReportsRequest
 from ._get_stand_alone_reports_response_body import GetStandAloneReportsResponseBody
 from ._get_stand_alone_reports_response import GetStandAloneReportsResponse
@@ -88,6 +98,9 @@ from ._list_custom_agent_tools_response import ListCustomAgentToolsResponse
 from ._list_scheduled_tasks_request import ListScheduledTasksRequest
 from ._list_scheduled_tasks_response_body import ListScheduledTasksResponseBody
 from ._list_scheduled_tasks_response import ListScheduledTasksResponse
+from ._list_skill_request import ListSkillRequest
+from ._list_skill_response_body import ListSkillResponseBody
+from ._list_skill_response import ListSkillResponse
 from ._modify_instance_auth_config_request import ModifyInstanceAuthConfigRequest
 from ._modify_instance_auth_config_shrink_request import ModifyInstanceAuthConfigShrinkRequest
 from ._modify_instance_auth_config_response_body import ModifyInstanceAuthConfigResponseBody
@@ -135,6 +148,10 @@ from ._update_custom_agent_request import UpdateCustomAgentRequest
 from ._update_custom_agent_shrink_request import UpdateCustomAgentShrinkRequest
 from ._update_custom_agent_response_body import UpdateCustomAgentResponseBody
 from ._update_custom_agent_response import UpdateCustomAgentResponse
+from ._update_skill_request import UpdateSkillRequest
+from ._update_skill_shrink_request import UpdateSkillShrinkRequest
+from ._update_skill_response_body import UpdateSkillResponseBody
+from ._update_skill_response import UpdateSkillResponse
 from ._chat_messages_request import ChatMessagesRequestInputs
 from ._create_app_instance_request import CreateAppInstanceRequestDBInstanceConfig
 from ._create_custom_agent_response_body import CreateCustomAgentResponseBodySkills
@@ -164,6 +181,7 @@ from ._list_custom_agent_response_body import ListCustomAgentResponseBodyData
 from ._list_custom_agent_response_body import ListCustomAgentResponseBodySkills
 from ._list_custom_agent_tools_response_body import ListCustomAgentToolsResponseBodyData
 from ._list_scheduled_tasks_response_body import ListScheduledTasksResponseBodySchedules
+from ._list_skill_response_body import ListSkillResponseBodyData
 from ._modify_instance_auth_config_request import ModifyInstanceAuthConfigRequestConfigList
 from ._modify_instance_ragconfig_request import ModifyInstanceRAGConfigRequestConfigList
 from ._modify_instance_storage_config_request import ModifyInstanceStorageConfigRequestConfigList
@@ -191,6 +209,10 @@ __all__ = [
     CreateScheduledTaskRequest,
     CreateScheduledTaskResponseBody,
     CreateScheduledTaskResponse,
+    CreateSkillRequest,
+    CreateSkillShrinkRequest,
+    CreateSkillResponseBody,
+    CreateSkillResponse,
     DeleteAppInstanceRequest,
     DeleteAppInstanceResponseBody,
     DeleteAppInstanceResponse,
@@ -200,6 +222,9 @@ __all__ = [
     DeleteScheduledTaskRequest,
     DeleteScheduledTaskResponseBody,
     DeleteScheduledTaskResponse,
+    DeleteSkillRequest,
+    DeleteSkillResponseBody,
+    DeleteSkillResponse,
     DescribeAppInstanceAttributeRequest,
     DescribeAppInstanceAttributeResponseBody,
     DescribeAppInstanceAttributeResponse,
@@ -245,6 +270,9 @@ __all__ = [
     GetScheduledReportsRequest,
     GetScheduledReportsResponseBody,
     GetScheduledReportsResponse,
+    GetSkillRequest,
+    GetSkillResponseBody,
+    GetSkillResponse,
     GetStandAloneReportsRequest,
     GetStandAloneReportsResponseBody,
     GetStandAloneReportsResponse,
@@ -256,6 +284,9 @@ __all__ = [
     ListScheduledTasksRequest,
     ListScheduledTasksResponseBody,
     ListScheduledTasksResponse,
+    ListSkillRequest,
+    ListSkillResponseBody,
+    ListSkillResponse,
     ModifyInstanceAuthConfigRequest,
     ModifyInstanceAuthConfigShrinkRequest,
     ModifyInstanceAuthConfigResponseBody,
@@ -303,6 +334,10 @@ __all__ = [
     UpdateCustomAgentShrinkRequest,
     UpdateCustomAgentResponseBody,
     UpdateCustomAgentResponse,
+    UpdateSkillRequest,
+    UpdateSkillShrinkRequest,
+    UpdateSkillResponseBody,
+    UpdateSkillResponse,
     ChatMessagesRequestInputs,
     CreateAppInstanceRequestDBInstanceConfig,
     CreateCustomAgentResponseBodySkills,
@@ -332,6 +367,7 @@ __all__ = [
     ListCustomAgentResponseBodySkills,
     ListCustomAgentToolsResponseBodyData,
     ListScheduledTasksResponseBodySchedules,
+    ListSkillResponseBodyData,
     ModifyInstanceAuthConfigRequestConfigList,
     ModifyInstanceRAGConfigRequestConfigList,
     ModifyInstanceStorageConfigRequestConfigList,

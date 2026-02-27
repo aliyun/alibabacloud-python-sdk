@@ -11,7 +11,6 @@ from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
 from darabonba.core import DaraCore as DaraCore
-from darabonba.core import DaraCore
 from darabonba.runtime import RuntimeOptions
 
 """
@@ -80,17 +79,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.ChatMessagesResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ChatMessagesResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def chat_messages_with_sse_async(
         self,
@@ -129,17 +128,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.ChatMessagesResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.ChatMessagesResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def chat_messages_with_options(
         self,
@@ -709,6 +708,100 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_scheduled_task_with_options_async(request, runtime)
 
+    def create_skill_with_options(
+        self,
+        tmp_req: main_models.CreateSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSkillResponse:
+        tmp_req.validate()
+        request = main_models.CreateSkillShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.content):
+            request.content_shrink = Utils.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        if not DaraCore.is_null(tmp_req.dbtypes):
+            request.dbtypes_shrink = Utils.array_to_string_with_specified_style(tmp_req.dbtypes, 'Dbtypes', 'json')
+        query = {}
+        if not DaraCore.is_null(request.content_shrink):
+            query['Content'] = request.content_shrink
+        if not DaraCore.is_null(request.dbtypes_shrink):
+            query['Dbtypes'] = request.dbtypes_shrink
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSkill',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_skill_with_options_async(
+        self,
+        tmp_req: main_models.CreateSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateSkillResponse:
+        tmp_req.validate()
+        request = main_models.CreateSkillShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.content):
+            request.content_shrink = Utils.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        if not DaraCore.is_null(tmp_req.dbtypes):
+            request.dbtypes_shrink = Utils.array_to_string_with_specified_style(tmp_req.dbtypes, 'Dbtypes', 'json')
+        query = {}
+        if not DaraCore.is_null(request.content_shrink):
+            query['Content'] = request.content_shrink
+        if not DaraCore.is_null(request.dbtypes_shrink):
+            query['Dbtypes'] = request.dbtypes_shrink
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateSkill',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_skill(
+        self,
+        request: main_models.CreateSkillRequest,
+    ) -> main_models.CreateSkillResponse:
+        runtime = RuntimeOptions()
+        return self.create_skill_with_options(request, runtime)
+
+    async def create_skill_async(
+        self,
+        request: main_models.CreateSkillRequest,
+    ) -> main_models.CreateSkillResponse:
+        runtime = RuntimeOptions()
+        return await self.create_skill_with_options_async(request, runtime)
+
     def delete_app_instance_with_options(
         self,
         request: main_models.DeleteAppInstanceRequest,
@@ -926,6 +1019,76 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteScheduledTaskResponse:
         runtime = RuntimeOptions()
         return await self.delete_scheduled_task_with_options_async(request, runtime)
+
+    def delete_skill_with_options(
+        self,
+        request: main_models.DeleteSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.skill_id):
+            query['SkillId'] = request.skill_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSkill',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_skill_with_options_async(
+        self,
+        request: main_models.DeleteSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.skill_id):
+            query['SkillId'] = request.skill_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteSkill',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_skill(
+        self,
+        request: main_models.DeleteSkillRequest,
+    ) -> main_models.DeleteSkillResponse:
+        runtime = RuntimeOptions()
+        return self.delete_skill_with_options(request, runtime)
+
+    async def delete_skill_async(
+        self,
+        request: main_models.DeleteSkillRequest,
+    ) -> main_models.DeleteSkillResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_skill_with_options_async(request, runtime)
 
     def describe_app_instance_attribute_with_options(
         self,
@@ -2097,6 +2260,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_scheduled_reports_with_options_async(request, runtime)
 
+    def get_skill_with_options(
+        self,
+        request: main_models.GetSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.skill_id):
+            query['SkillId'] = request.skill_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSkill',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_skill_with_options_async(
+        self,
+        request: main_models.GetSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.skill_id):
+            query['SkillId'] = request.skill_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetSkill',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_skill(
+        self,
+        request: main_models.GetSkillRequest,
+    ) -> main_models.GetSkillResponse:
+        runtime = RuntimeOptions()
+        return self.get_skill_with_options(request, runtime)
+
+    async def get_skill_async(
+        self,
+        request: main_models.GetSkillRequest,
+    ) -> main_models.GetSkillResponse:
+        runtime = RuntimeOptions()
+        return await self.get_skill_with_options_async(request, runtime)
+
     def get_stand_alone_reports_with_options(
         self,
         request: main_models.GetStandAloneReportsRequest,
@@ -2380,6 +2617,84 @@ class Client(OpenApiClient):
     ) -> main_models.ListScheduledTasksResponse:
         runtime = RuntimeOptions()
         return await self.list_scheduled_tasks_with_options_async(request, runtime)
+
+    def list_skill_with_options(
+        self,
+        request: main_models.ListSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSkill',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_skill_with_options_async(
+        self,
+        request: main_models.ListSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListSkillResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.language):
+            query['Language'] = request.language
+        if not DaraCore.is_null(request.page_number):
+            query['PageNumber'] = request.page_number
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListSkill',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_skill(
+        self,
+        request: main_models.ListSkillRequest,
+    ) -> main_models.ListSkillResponse:
+        runtime = RuntimeOptions()
+        return self.list_skill_with_options(request, runtime)
+
+    async def list_skill_async(
+        self,
+        request: main_models.ListSkillRequest,
+    ) -> main_models.ListSkillResponse:
+        runtime = RuntimeOptions()
+        return await self.list_skill_with_options_async(request, runtime)
 
     def modify_instance_auth_config_with_options(
         self,
@@ -3592,3 +3907,101 @@ class Client(OpenApiClient):
     ) -> main_models.UpdateCustomAgentResponse:
         runtime = RuntimeOptions()
         return await self.update_custom_agent_with_options_async(request, runtime)
+
+    def update_skill_with_options(
+        self,
+        tmp_req: main_models.UpdateSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSkillResponse:
+        tmp_req.validate()
+        request = main_models.UpdateSkillShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.content):
+            request.content_shrink = Utils.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        if not DaraCore.is_null(tmp_req.dbtypes):
+            request.dbtypes_shrink = Utils.array_to_string_with_specified_style(tmp_req.dbtypes, 'Dbtypes', 'json')
+        query = {}
+        if not DaraCore.is_null(request.content_shrink):
+            query['Content'] = request.content_shrink
+        if not DaraCore.is_null(request.dbtypes_shrink):
+            query['Dbtypes'] = request.dbtypes_shrink
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.skill_id):
+            query['SkillId'] = request.skill_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSkill',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSkillResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_skill_with_options_async(
+        self,
+        tmp_req: main_models.UpdateSkillRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateSkillResponse:
+        tmp_req.validate()
+        request = main_models.UpdateSkillShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.content):
+            request.content_shrink = Utils.array_to_string_with_specified_style(tmp_req.content, 'Content', 'json')
+        if not DaraCore.is_null(tmp_req.dbtypes):
+            request.dbtypes_shrink = Utils.array_to_string_with_specified_style(tmp_req.dbtypes, 'Dbtypes', 'json')
+        query = {}
+        if not DaraCore.is_null(request.content_shrink):
+            query['Content'] = request.content_shrink
+        if not DaraCore.is_null(request.dbtypes_shrink):
+            query['Dbtypes'] = request.dbtypes_shrink
+        if not DaraCore.is_null(request.description):
+            query['Description'] = request.description
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.skill_id):
+            query['SkillId'] = request.skill_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateSkill',
+            version = '2025-05-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateSkillResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_skill(
+        self,
+        request: main_models.UpdateSkillRequest,
+    ) -> main_models.UpdateSkillResponse:
+        runtime = RuntimeOptions()
+        return self.update_skill_with_options(request, runtime)
+
+    async def update_skill_async(
+        self,
+        request: main_models.UpdateSkillRequest,
+    ) -> main_models.UpdateSkillResponse:
+        runtime = RuntimeOptions()
+        return await self.update_skill_with_options_async(request, runtime)
