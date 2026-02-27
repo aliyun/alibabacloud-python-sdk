@@ -1,3 +1,66 @@
+2026-02-27 Version: 2.0.0
+- Delete API ActivateDevice.
+- Delete API AddDeviceFromSN.
+- Delete API AddDeviceSeatsAndLabels.
+- Delete API AddDevicesFromCSV.
+- Delete API AddLabels.
+- Delete API AddOrUpdateDeviceSeats.
+- Delete API AttachEndUsers.
+- Delete API AttachLabel.
+- Delete API AttachLabels.
+- Delete API CheckUuidValid.
+- Delete API CreateAppOtaTask.
+- Delete API CreateAppOtaVersion.
+- Delete API DeleteAppOtaVersions.
+- Delete API DeleteDevices.
+- Delete API DeleteLabel.
+- Delete API DescribeAppOtaVersion.
+- Delete API DescribeDeviceVersionDetail.
+- Delete API DescribeSnLabelCounts.
+- Delete API DescribeWorkZones.
+- Delete API DetachEndUsers.
+- Delete API DetachLabel.
+- Delete API DetachLabels.
+- Delete API GenerateOssUrl.
+- Delete API GetAppOtaLatestVersion.
+- Delete API GetDeviceConfigs.
+- Delete API GetDeviceOtaAutoStatus.
+- Delete API GetDeviceOtaInfo.
+- Delete API GetDeviceOtaInfoTest.
+- Delete API GetDeviceOtaTaskVersionInfo.
+- Delete API GetDeviceUpgradeStatus.
+- Delete API GetExportDeviceInfoOssUrl.
+- Delete API GetFbOssConfig.
+- Delete API GetOssConfig.
+- Delete API GetVersionDownloadUrl.
+- Delete API ListBoundDevices.
+- Delete API ListDeviceOtaTaskByTenant.
+- Delete API ListDeviceSeats.
+- Delete API ListDevices.
+- Delete API ListFbIssueLabels.
+- Delete API ListFbIssueLabelsByLC.
+- Delete API ListLabels.
+- Delete API ListTenantDeviceOtaInfo.
+- Delete API ListTerminals.
+- Delete API ListTrustDevices.
+- Delete API ListUnbindDevices.
+- Delete API ListUserFbAcIssues.
+- Delete API ListUserFbIssues.
+- Delete API ModifyDevicesSecureNetworkType.
+- Delete API ModifySecureNetworkType.
+- Delete API RegisterDevice.
+- Delete API ReportAppOtaInfo.
+- Delete API ReportDeviceOtaInfo.
+- Delete API ReportUserFbAcIssue.
+- Delete API ReportUserFbIssue.
+- Delete API SetDeviceOtaAutoStatus.
+- Delete API SetDeviceOtaTaskStatus.
+- Delete API UpdateAlias.
+- Delete API UpdateDeviceBindedEndUser.
+- Delete API UpdateLabel.
+- Delete API UpdateTerminalPolicy.
+
+
 2025-07-21 Version: 1.4.1
 - Update API CheckUuidValid: add request parameters HostOsInfo.
 - Update API GetFbOssConfig: add request parameters AreaSite.
