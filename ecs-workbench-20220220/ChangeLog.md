@@ -1,3 +1,7 @@
+2026-02-27 Version: 1.2.2
+- Update API SetInstanceRecordConfig: add request parameters ResourceRegionId.
+
+
 2025-09-19 Version: 1.2.1
 - Update API LoginInstance: add request parameters InstanceLoginInfo.EncryptionOptions.
 
