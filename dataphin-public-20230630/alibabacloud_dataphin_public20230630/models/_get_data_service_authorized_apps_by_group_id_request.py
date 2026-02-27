@@ -11,7 +11,6 @@ class GetDataServiceAuthorizedAppsByGroupIdRequest(DaraModel):
         op_tenant_id: int = None,
         project_id: int = None,
     ):
-        # This parameter is required.
         self.group_id = group_id
         # This parameter is required.
         self.op_tenant_id = op_tenant_id

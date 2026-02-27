@@ -12,7 +12,6 @@ class GetDataServiceAppGroupsRequest(DaraModel):
     ):
         # This parameter is required.
         self.op_tenant_id = op_tenant_id
-        # This parameter is required.
         self.project_id = project_id
 
     def validate(self):

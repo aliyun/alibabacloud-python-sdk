@@ -58,10 +58,13 @@ class CreateDataServiceApiRequestCreateCommand(DaraModel):
         call_mode: int = None,
         custom_update_rate: str = None,
         description: str = None,
+        dml_config: main_models.CreateDataServiceApiRequestCreateCommandDmlConfig = None,
         execution_timeout: int = None,
         mode: int = None,
         project_id: int = None,
         request_type: int = None,
+        return_sql_switch: bool = None,
+        row_permission_ids: List[int] = None,
         script_details: main_models.CreateDataServiceApiRequestCreateCommandScriptDetails = None,
         timeout: int = None,
         update_rate: int = None,
@@ -77,11 +80,11 @@ class CreateDataServiceApiRequestCreateCommand(DaraModel):
         self.api_type = api_type
         # This parameter is required.
         self.biz_protocol = biz_protocol
-        # This parameter is required.
         self.cache_timeout = cache_timeout
         self.call_mode = call_mode
         self.custom_update_rate = custom_update_rate
         self.description = description
+        self.dml_config = dml_config
         self.execution_timeout = execution_timeout
         # This parameter is required.
         self.mode = mode
@@ -89,6 +92,8 @@ class CreateDataServiceApiRequestCreateCommand(DaraModel):
         self.project_id = project_id
         # This parameter is required.
         self.request_type = request_type
+        self.return_sql_switch = return_sql_switch
+        self.row_permission_ids = row_permission_ids
         # This parameter is required.
         self.script_details = script_details
         # This parameter is required.
@@ -98,6 +103,8 @@ class CreateDataServiceApiRequestCreateCommand(DaraModel):
         self.version = version
 
     def validate(self):
+        if self.dml_config:
+            self.dml_config.validate()
         if self.script_details:
             self.script_details.validate()
 
@@ -133,6 +140,9 @@ class CreateDataServiceApiRequestCreateCommand(DaraModel):
         if self.description is not None:
             result['Description'] = self.description
 
+        if self.dml_config is not None:
+            result['DmlConfig'] = self.dml_config.to_map()
+
         if self.execution_timeout is not None:
             result['ExecutionTimeout'] = self.execution_timeout
 
@@ -144,6 +154,12 @@ class CreateDataServiceApiRequestCreateCommand(DaraModel):
 
         if self.request_type is not None:
             result['RequestType'] = self.request_type
+
+        if self.return_sql_switch is not None:
+            result['ReturnSqlSwitch'] = self.return_sql_switch
+
+        if self.row_permission_ids is not None:
+            result['RowPermissionIds'] = self.row_permission_ids
 
         if self.script_details is not None:
             result['ScriptDetails'] = self.script_details.to_map()
@@ -188,6 +204,10 @@ class CreateDataServiceApiRequestCreateCommand(DaraModel):
         if m.get('Description') is not None:
             self.description = m.get('Description')
 
+        if m.get('DmlConfig') is not None:
+            temp_model = main_models.CreateDataServiceApiRequestCreateCommandDmlConfig()
+            self.dml_config = temp_model.from_map(m.get('DmlConfig'))
+
         if m.get('ExecutionTimeout') is not None:
             self.execution_timeout = m.get('ExecutionTimeout')
 
@@ -199,6 +219,12 @@ class CreateDataServiceApiRequestCreateCommand(DaraModel):
 
         if m.get('RequestType') is not None:
             self.request_type = m.get('RequestType')
+
+        if m.get('ReturnSqlSwitch') is not None:
+            self.return_sql_switch = m.get('ReturnSqlSwitch')
+
+        if m.get('RowPermissionIds') is not None:
+            self.row_permission_ids = m.get('RowPermissionIds')
 
         if m.get('ScriptDetails') is not None:
             temp_model = main_models.CreateDataServiceApiRequestCreateCommandScriptDetails()
@@ -233,9 +259,7 @@ class CreateDataServiceApiRequestCreateCommandScriptDetails(DaraModel):
         self.is_paginated = is_paginated
         # This parameter is required.
         self.script = script
-        # This parameter is required.
         self.script_request_parameters = script_request_parameters
-        # This parameter is required.
         self.script_response_parameters = script_response_parameters
         self.sort_priority = sort_priority
         # This parameter is required.
@@ -326,12 +350,14 @@ class CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParamet
         example_value: str = None,
         parameter_data_type: str = None,
         parameter_description: str = None,
+        parameter_location: str = None,
         parameter_name: str = None,
     ):
         self.example_value = example_value
         # This parameter is required.
         self.parameter_data_type = parameter_data_type
         self.parameter_description = parameter_description
+        self.parameter_location = parameter_location
         # This parameter is required.
         self.parameter_name = parameter_name
 
@@ -352,6 +378,9 @@ class CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParamet
         if self.parameter_description is not None:
             result['ParameterDescription'] = self.parameter_description
 
+        if self.parameter_location is not None:
+            result['ParameterLocation'] = self.parameter_location
+
         if self.parameter_name is not None:
             result['ParameterName'] = self.parameter_name
 
@@ -368,6 +397,9 @@ class CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParamet
         if m.get('ParameterDescription') is not None:
             self.parameter_description = m.get('ParameterDescription')
 
+        if m.get('ParameterLocation') is not None:
+            self.parameter_location = m.get('ParameterLocation')
+
         if m.get('ParameterName') is not None:
             self.parameter_name = m.get('ParameterName')
 
@@ -376,6 +408,7 @@ class CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParamet
 class CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters(DaraModel):
     def __init__(
         self,
+        default_value: str = None,
         example_value: str = None,
         is_required_parameter: bool = None,
         parameter_data_type: str = None,
@@ -383,6 +416,7 @@ class CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParamete
         parameter_name: str = None,
         parameter_value_type: str = None,
     ):
+        self.default_value = default_value
         self.example_value = example_value
         # This parameter is required.
         self.is_required_parameter = is_required_parameter
@@ -402,6 +436,9 @@ class CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParamete
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.default_value is not None:
+            result['DefaultValue'] = self.default_value
+
         if self.example_value is not None:
             result['ExampleValue'] = self.example_value
 
@@ -424,6 +461,9 @@ class CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParamete
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DefaultValue') is not None:
+            self.default_value = m.get('DefaultValue')
+
         if m.get('ExampleValue') is not None:
             self.example_value = m.get('ExampleValue')
 
@@ -441,6 +481,73 @@ class CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParamete
 
         if m.get('ParameterValueType') is not None:
             self.parameter_value_type = m.get('ParameterValueType')
+
+        return self
+
+class CreateDataServiceApiRequestCreateCommandDmlConfig(DaraModel):
+    def __init__(
+        self,
+        batch_input_data_size: int = None,
+        data_volume_type: int = None,
+        error_handling_type: int = None,
+        max_input_data_size: int = None,
+        parallel_num: int = None,
+        transaction_type: int = None,
+    ):
+        self.batch_input_data_size = batch_input_data_size
+        self.data_volume_type = data_volume_type
+        self.error_handling_type = error_handling_type
+        self.max_input_data_size = max_input_data_size
+        self.parallel_num = parallel_num
+        self.transaction_type = transaction_type
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.batch_input_data_size is not None:
+            result['BatchInputDataSize'] = self.batch_input_data_size
+
+        if self.data_volume_type is not None:
+            result['DataVolumeType'] = self.data_volume_type
+
+        if self.error_handling_type is not None:
+            result['ErrorHandlingType'] = self.error_handling_type
+
+        if self.max_input_data_size is not None:
+            result['MaxInputDataSize'] = self.max_input_data_size
+
+        if self.parallel_num is not None:
+            result['ParallelNum'] = self.parallel_num
+
+        if self.transaction_type is not None:
+            result['TransactionType'] = self.transaction_type
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('BatchInputDataSize') is not None:
+            self.batch_input_data_size = m.get('BatchInputDataSize')
+
+        if m.get('DataVolumeType') is not None:
+            self.data_volume_type = m.get('DataVolumeType')
+
+        if m.get('ErrorHandlingType') is not None:
+            self.error_handling_type = m.get('ErrorHandlingType')
+
+        if m.get('MaxInputDataSize') is not None:
+            self.max_input_data_size = m.get('MaxInputDataSize')
+
+        if m.get('ParallelNum') is not None:
+            self.parallel_num = m.get('ParallelNum')
+
+        if m.get('TransactionType') is not None:
+            self.transaction_type = m.get('TransactionType')
 
         return self
 

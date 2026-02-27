@@ -48,13 +48,13 @@ class ListAuthorizedDataServiceApiDetailsRequestListQuery(DaraModel):
     def __init__(
         self,
         app_key: int = None,
+        app_key_str: str = None,
         page: int = None,
         page_size: int = None,
     ):
         # AppKey
-        # 
-        # This parameter is required.
         self.app_key = app_key
+        self.app_key_str = app_key_str
         # This parameter is required.
         self.page = page
         # This parameter is required.
@@ -71,6 +71,9 @@ class ListAuthorizedDataServiceApiDetailsRequestListQuery(DaraModel):
         if self.app_key is not None:
             result['AppKey'] = self.app_key
 
+        if self.app_key_str is not None:
+            result['AppKeyStr'] = self.app_key_str
+
         if self.page is not None:
             result['Page'] = self.page
 
@@ -83,6 +86,9 @@ class ListAuthorizedDataServiceApiDetailsRequestListQuery(DaraModel):
         m = m or dict()
         if m.get('AppKey') is not None:
             self.app_key = m.get('AppKey')
+
+        if m.get('AppKeyStr') is not None:
+            self.app_key_str = m.get('AppKeyStr')
 
         if m.get('Page') is not None:
             self.page = m.get('Page')

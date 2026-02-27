@@ -126,6 +126,7 @@ class ListApiByAppResponseBodyListResultData(DaraModel):
         api_no: int = None,
         api_timeout: int = None,
         app_name: str = None,
+        auth_types: List[str] = None,
         biz_module_en_name: str = None,
         cache_switch: str = None,
         cache_time: str = None,
@@ -169,6 +170,7 @@ class ListApiByAppResponseBodyListResultData(DaraModel):
         self.api_no = api_no
         self.api_timeout = api_timeout
         self.app_name = app_name
+        self.auth_types = auth_types
         self.biz_module_en_name = biz_module_en_name
         self.cache_switch = cache_switch
         self.cache_time = cache_time
@@ -241,6 +243,9 @@ class ListApiByAppResponseBodyListResultData(DaraModel):
 
         if self.app_name is not None:
             result['AppName'] = self.app_name
+
+        if self.auth_types is not None:
+            result['AuthTypes'] = self.auth_types
 
         if self.biz_module_en_name is not None:
             result['BizModuleEnName'] = self.biz_module_en_name
@@ -377,6 +382,9 @@ class ListApiByAppResponseBodyListResultData(DaraModel):
 
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')
+
+        if m.get('AuthTypes') is not None:
+            self.auth_types = m.get('AuthTypes')
 
         if m.get('BizModuleEnName') is not None:
             self.biz_module_en_name = m.get('BizModuleEnName')

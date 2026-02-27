@@ -1,3 +1,45 @@
+2026-02-27 Version: 2.6.0
+- Support API AddDataServiceAppMember.
+- Support API CreateDataServiceApp.
+- Support API CreateDataServiceAppGroup.
+- Support API DeleteDataServiceApp.
+- Support API DeleteDataServiceAppGroup.
+- Support API GetDataServiceApp.
+- Support API GetDataServiceAppMembers.
+- Support API GetRowPermissionByTableGuids.
+- Support API ListDataServiceApps.
+- Support API RemoveDataServiceAppMember.
+- Support API ResetDataServiceAppSecret.
+- Support API UpdateDataServiceApp.
+- Support API UpdateDataServiceAppGroup.
+- Support API UpdateDataServiceAppMember.
+- Update API ApplyDataServiceApi: add request parameters ApplyCommand.ApplyDev.
+- Update API ApplyDataServiceApi: add request parameters ApplyCommand.ApplyProd.
+- Update API ApplyDataServiceApi: add request parameters ApplyCommand.ApplyType.
+- Update API ApplyDataServiceApi: add request parameters ApplyCommand.AuthTypes.
+- Update API CreateDataServiceApi: add request parameters CreateCommand.DmlConfig.
+- Update API CreateDataServiceApi: add request parameters CreateCommand.ReturnSqlSwitch.
+- Update API CreateDataServiceApi: add request parameters CreateCommand.RowPermissionIds.
+- Update API CreateDataServiceApi: add request parameters CreateCommand.ScriptDetails.ScriptRequestParameters.$.DefaultValue.
+- Update API CreateDataServiceApi: add request parameters CreateCommand.ScriptDetails.ScriptResponseParameters.$.ParameterLocation.
+- Update API GetDataServiceAuthorizedAppsByGroupId: add response parameters Body.AppInfoList.$.AppKeyStr.
+- Update API GrantDataServiceApi: add request parameters GrantCommand.AuthTypes.
+- Update API GrantDataServiceApi: add request parameters GrantCommand.GranteeType.
+- Update API GrantDataServiceApi: add request parameters GrantCommand.UserId.
+- Update API ListApiByApp: add request parameters PageQuery.AppKeyStr.
+- Update API ListApiByApp: add response parameters Body.ListResult.Data.$.AuthTypes.
+- Update API ListAuthorizedDataServiceApiDetails: add request parameters ListQuery.AppKeyStr.
+- Update API ListDataServiceApiCalls: add request parameters ListQuery.AppKeyStr.
+- Update API ListDataServiceApiCalls: add response parameters Body.PageResult.CallLogList.$.AppKeyStr.
+- Update API ListDataServicePublishedApis: add response parameters Body.PageResult.ApiList.$.AppInfoList.$.AppKeyStr.
+- Update API ListRowPermission: add response parameters Body.PageResult.Data.$.Rules.$.Id.
+- Update API ListRowPermissionByUserId: add response parameters Body.PageResult.Data.$.Rules.$.Id.
+- Update API RevokeDataServiceApi: add request parameters RevokeCommand.AuthType.
+- Update API RevokeDataServiceApi: add request parameters RevokeCommand.Env.
+- Update API RevokeDataServiceApi: add request parameters RevokeCommand.GranteeType.
+- Update API RevokeDataServiceApi: add request parameters RevokeCommand.UserId.
+
+
 2026-01-23 Version: 2.5.0
 - Support API AssignQualityRuleOfAllRuleScopeSchedules.
 - Support API CreateSecurityClassify.

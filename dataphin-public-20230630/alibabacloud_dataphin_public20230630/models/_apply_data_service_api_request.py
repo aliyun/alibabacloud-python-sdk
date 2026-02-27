@@ -60,6 +60,10 @@ class ApplyDataServiceApiRequestApplyCommand(DaraModel):
         self,
         api_id: int = None,
         app_id: int = None,
+        apply_dev: bool = None,
+        apply_prod: bool = None,
+        apply_type: str = None,
+        auth_types: List[str] = None,
         dev_field_list: List[main_models.ApplyDataServiceApiRequestApplyCommandDevFieldList] = None,
         expire_date: str = None,
         prod_field_list: List[main_models.ApplyDataServiceApiRequestApplyCommandProdFieldList] = None,
@@ -68,9 +72,11 @@ class ApplyDataServiceApiRequestApplyCommand(DaraModel):
         # This parameter is required.
         self.api_id = api_id
         # AppId
-        # 
-        # This parameter is required.
         self.app_id = app_id
+        self.apply_dev = apply_dev
+        self.apply_prod = apply_prod
+        self.apply_type = apply_type
+        self.auth_types = auth_types
         self.dev_field_list = dev_field_list
         # This parameter is required.
         self.expire_date = expire_date
@@ -99,6 +105,18 @@ class ApplyDataServiceApiRequestApplyCommand(DaraModel):
         if self.app_id is not None:
             result['AppId'] = self.app_id
 
+        if self.apply_dev is not None:
+            result['ApplyDev'] = self.apply_dev
+
+        if self.apply_prod is not None:
+            result['ApplyProd'] = self.apply_prod
+
+        if self.apply_type is not None:
+            result['ApplyType'] = self.apply_type
+
+        if self.auth_types is not None:
+            result['AuthTypes'] = self.auth_types
+
         result['DevFieldList'] = []
         if self.dev_field_list is not None:
             for k1 in self.dev_field_list:
@@ -125,6 +143,18 @@ class ApplyDataServiceApiRequestApplyCommand(DaraModel):
         if m.get('AppId') is not None:
             self.app_id = m.get('AppId')
 
+        if m.get('ApplyDev') is not None:
+            self.apply_dev = m.get('ApplyDev')
+
+        if m.get('ApplyProd') is not None:
+            self.apply_prod = m.get('ApplyProd')
+
+        if m.get('ApplyType') is not None:
+            self.apply_type = m.get('ApplyType')
+
+        if m.get('AuthTypes') is not None:
+            self.auth_types = m.get('AuthTypes')
+
         self.dev_field_list = []
         if m.get('DevFieldList') is not None:
             for k1 in m.get('DevFieldList'):
@@ -150,7 +180,6 @@ class ApplyDataServiceApiRequestApplyCommandProdFieldList(DaraModel):
         self,
         id: int = None,
     ):
-        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -178,7 +207,6 @@ class ApplyDataServiceApiRequestApplyCommandDevFieldList(DaraModel):
         self,
         id: int = None,
     ):
-        # This parameter is required.
         self.id = id
 
     def validate(self):

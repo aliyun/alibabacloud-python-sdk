@@ -258,6 +258,7 @@ class ListRowPermissionByUserIdResponseBodyPageResultDataRules(DaraModel):
     def __init__(
         self,
         expressions: List[main_models.ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions] = None,
+        id: int = None,
         is_delete: bool = None,
         rule_name: str = None,
         scope_type: str = None,
@@ -265,6 +266,7 @@ class ListRowPermissionByUserIdResponseBodyPageResultDataRules(DaraModel):
         user_mapping_list: List[main_models.ListRowPermissionByUserIdResponseBodyPageResultDataRulesUserMappingList] = None,
     ):
         self.expressions = expressions
+        self.id = id
         self.is_delete = is_delete
         self.rule_name = rule_name
         self.scope_type = scope_type
@@ -290,6 +292,9 @@ class ListRowPermissionByUserIdResponseBodyPageResultDataRules(DaraModel):
         if self.expressions is not None:
             for k1 in self.expressions:
                 result['Expressions'].append(k1.to_map() if k1 else None)
+
+        if self.id is not None:
+            result['Id'] = self.id
 
         if self.is_delete is not None:
             result['IsDelete'] = self.is_delete
@@ -317,6 +322,9 @@ class ListRowPermissionByUserIdResponseBodyPageResultDataRules(DaraModel):
             for k1 in m.get('Expressions'):
                 temp_model = main_models.ListRowPermissionByUserIdResponseBodyPageResultDataRulesExpressions()
                 self.expressions.append(temp_model.from_map(k1))
+
+        if m.get('Id') is not None:
+            self.id = m.get('Id')
 
         if m.get('IsDelete') is not None:
             self.is_delete = m.get('IsDelete')

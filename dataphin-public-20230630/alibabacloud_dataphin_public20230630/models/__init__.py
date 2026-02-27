@@ -3,6 +3,10 @@
 from __future__ import annotations
 
 from ._privilege_transfer_result_entrie import PrivilegeTransferResultEntrie
+from ._add_data_service_app_member_request import AddDataServiceAppMemberRequest
+from ._add_data_service_app_member_shrink_request import AddDataServiceAppMemberShrinkRequest
+from ._add_data_service_app_member_response_body import AddDataServiceAppMemberResponseBody
+from ._add_data_service_app_member_response import AddDataServiceAppMemberResponse
 from ._add_data_service_project_member_request import AddDataServiceProjectMemberRequest
 from ._add_data_service_project_member_shrink_request import AddDataServiceProjectMemberShrinkRequest
 from ._add_data_service_project_member_response_body import AddDataServiceProjectMemberResponseBody
@@ -92,6 +96,13 @@ from ._create_data_service_api_request import CreateDataServiceApiRequest
 from ._create_data_service_api_shrink_request import CreateDataServiceApiShrinkRequest
 from ._create_data_service_api_response_body import CreateDataServiceApiResponseBody
 from ._create_data_service_api_response import CreateDataServiceApiResponse
+from ._create_data_service_app_request import CreateDataServiceAppRequest
+from ._create_data_service_app_shrink_request import CreateDataServiceAppShrinkRequest
+from ._create_data_service_app_response_body import CreateDataServiceAppResponseBody
+from ._create_data_service_app_response import CreateDataServiceAppResponse
+from ._create_data_service_app_group_request import CreateDataServiceAppGroupRequest
+from ._create_data_service_app_group_response_body import CreateDataServiceAppGroupResponseBody
+from ._create_data_service_app_group_response import CreateDataServiceAppGroupResponse
 from ._create_data_source_request import CreateDataSourceRequest
 from ._create_data_source_shrink_request import CreateDataSourceShrinkRequest
 from ._create_data_source_response_body import CreateDataSourceResponseBody
@@ -203,6 +214,12 @@ from ._delete_compute_source_response import DeleteComputeSourceResponse
 from ._delete_data_domain_request import DeleteDataDomainRequest
 from ._delete_data_domain_response_body import DeleteDataDomainResponseBody
 from ._delete_data_domain_response import DeleteDataDomainResponse
+from ._delete_data_service_app_request import DeleteDataServiceAppRequest
+from ._delete_data_service_app_response_body import DeleteDataServiceAppResponseBody
+from ._delete_data_service_app_response import DeleteDataServiceAppResponse
+from ._delete_data_service_app_group_request import DeleteDataServiceAppGroupRequest
+from ._delete_data_service_app_group_response_body import DeleteDataServiceAppGroupResponseBody
+from ._delete_data_service_app_group_response import DeleteDataServiceAppGroupResponse
 from ._delete_data_source_request import DeleteDataSourceRequest
 from ._delete_data_source_shrink_request import DeleteDataSourceShrinkRequest
 from ._delete_data_source_response_body import DeleteDataSourceResponseBody
@@ -375,12 +392,18 @@ from ._get_data_service_api_error_impact_response import GetDataServiceApiErrorI
 from ._get_data_service_api_groups_request import GetDataServiceApiGroupsRequest
 from ._get_data_service_api_groups_response_body import GetDataServiceApiGroupsResponseBody
 from ._get_data_service_api_groups_response import GetDataServiceApiGroupsResponse
+from ._get_data_service_app_request import GetDataServiceAppRequest
+from ._get_data_service_app_response_body import GetDataServiceAppResponseBody
+from ._get_data_service_app_response import GetDataServiceAppResponse
 from ._get_data_service_app_authorized_users_request import GetDataServiceAppAuthorizedUsersRequest
 from ._get_data_service_app_authorized_users_response_body import GetDataServiceAppAuthorizedUsersResponseBody
 from ._get_data_service_app_authorized_users_response import GetDataServiceAppAuthorizedUsersResponse
 from ._get_data_service_app_groups_request import GetDataServiceAppGroupsRequest
 from ._get_data_service_app_groups_response_body import GetDataServiceAppGroupsResponseBody
 from ._get_data_service_app_groups_response import GetDataServiceAppGroupsResponse
+from ._get_data_service_app_members_request import GetDataServiceAppMembersRequest
+from ._get_data_service_app_members_response_body import GetDataServiceAppMembersResponseBody
+from ._get_data_service_app_members_response import GetDataServiceAppMembersResponse
 from ._get_data_service_apps_by_group_id_request import GetDataServiceAppsByGroupIdRequest
 from ._get_data_service_apps_by_group_id_response_body import GetDataServiceAppsByGroupIdResponseBody
 from ._get_data_service_apps_by_group_id_response import GetDataServiceAppsByGroupIdResponse
@@ -514,6 +537,10 @@ from ._get_resource_response import GetResourceResponse
 from ._get_resource_by_version_request import GetResourceByVersionRequest
 from ._get_resource_by_version_response_body import GetResourceByVersionResponseBody
 from ._get_resource_by_version_response import GetResourceByVersionResponse
+from ._get_row_permission_by_table_guids_request import GetRowPermissionByTableGuidsRequest
+from ._get_row_permission_by_table_guids_shrink_request import GetRowPermissionByTableGuidsShrinkRequest
+from ._get_row_permission_by_table_guids_response_body import GetRowPermissionByTableGuidsResponseBody
+from ._get_row_permission_by_table_guids_response import GetRowPermissionByTableGuidsResponse
 from ._get_security_classify_request import GetSecurityClassifyRequest
 from ._get_security_classify_response_body import GetSecurityClassifyResponseBody
 from ._get_security_classify_response import GetSecurityClassifyResponse
@@ -655,6 +682,10 @@ from ._list_data_service_api_impacts_request import ListDataServiceApiImpactsReq
 from ._list_data_service_api_impacts_shrink_request import ListDataServiceApiImpactsShrinkRequest
 from ._list_data_service_api_impacts_response_body import ListDataServiceApiImpactsResponseBody
 from ._list_data_service_api_impacts_response import ListDataServiceApiImpactsResponse
+from ._list_data_service_apps_request import ListDataServiceAppsRequest
+from ._list_data_service_apps_shrink_request import ListDataServiceAppsShrinkRequest
+from ._list_data_service_apps_response_body import ListDataServiceAppsResponseBody
+from ._list_data_service_apps_response import ListDataServiceAppsResponse
 from ._list_data_service_authorized_apps_request import ListDataServiceAuthorizedAppsRequest
 from ._list_data_service_authorized_apps_shrink_request import ListDataServiceAuthorizedAppsShrinkRequest
 from ._list_data_service_authorized_apps_response_body import ListDataServiceAuthorizedAppsResponseBody
@@ -817,6 +848,10 @@ from ._publish_standard_request import PublishStandardRequest
 from ._publish_standard_shrink_request import PublishStandardShrinkRequest
 from ._publish_standard_response_body import PublishStandardResponseBody
 from ._publish_standard_response import PublishStandardResponse
+from ._remove_data_service_app_member_request import RemoveDataServiceAppMemberRequest
+from ._remove_data_service_app_member_shrink_request import RemoveDataServiceAppMemberShrinkRequest
+from ._remove_data_service_app_member_response_body import RemoveDataServiceAppMemberResponseBody
+from ._remove_data_service_app_member_response import RemoveDataServiceAppMemberResponse
 from ._remove_project_member_request import RemoveProjectMemberRequest
 from ._remove_project_member_shrink_request import RemoveProjectMemberShrinkRequest
 from ._remove_project_member_response_body import RemoveProjectMemberResponseBody
@@ -837,6 +872,10 @@ from ._replace_project_white_lists_request import ReplaceProjectWhiteListsReques
 from ._replace_project_white_lists_shrink_request import ReplaceProjectWhiteListsShrinkRequest
 from ._replace_project_white_lists_response_body import ReplaceProjectWhiteListsResponseBody
 from ._replace_project_white_lists_response import ReplaceProjectWhiteListsResponse
+from ._reset_data_service_app_secret_request import ResetDataServiceAppSecretRequest
+from ._reset_data_service_app_secret_shrink_request import ResetDataServiceAppSecretShrinkRequest
+from ._reset_data_service_app_secret_response_body import ResetDataServiceAppSecretResponseBody
+from ._reset_data_service_app_secret_response import ResetDataServiceAppSecretResponse
 from ._resume_physical_node_request import ResumePhysicalNodeRequest
 from ._resume_physical_node_shrink_request import ResumePhysicalNodeShrinkRequest
 from ._resume_physical_node_response_body import ResumePhysicalNodeResponseBody
@@ -912,6 +951,18 @@ from ._update_data_domain_request import UpdateDataDomainRequest
 from ._update_data_domain_shrink_request import UpdateDataDomainShrinkRequest
 from ._update_data_domain_response_body import UpdateDataDomainResponseBody
 from ._update_data_domain_response import UpdateDataDomainResponse
+from ._update_data_service_app_request import UpdateDataServiceAppRequest
+from ._update_data_service_app_shrink_request import UpdateDataServiceAppShrinkRequest
+from ._update_data_service_app_response_body import UpdateDataServiceAppResponseBody
+from ._update_data_service_app_response import UpdateDataServiceAppResponse
+from ._update_data_service_app_group_request import UpdateDataServiceAppGroupRequest
+from ._update_data_service_app_group_shrink_request import UpdateDataServiceAppGroupShrinkRequest
+from ._update_data_service_app_group_response_body import UpdateDataServiceAppGroupResponseBody
+from ._update_data_service_app_group_response import UpdateDataServiceAppGroupResponse
+from ._update_data_service_app_member_request import UpdateDataServiceAppMemberRequest
+from ._update_data_service_app_member_shrink_request import UpdateDataServiceAppMemberShrinkRequest
+from ._update_data_service_app_member_response_body import UpdateDataServiceAppMemberResponseBody
+from ._update_data_service_app_member_response import UpdateDataServiceAppMemberResponse
 from ._update_data_source_basic_info_request import UpdateDataSourceBasicInfoRequest
 from ._update_data_source_basic_info_shrink_request import UpdateDataSourceBasicInfoShrinkRequest
 from ._update_data_source_basic_info_response_body import UpdateDataSourceBasicInfoResponseBody
@@ -1033,6 +1084,8 @@ from ._upsert_quality_watch_alert_request import UpsertQualityWatchAlertRequest
 from ._upsert_quality_watch_alert_shrink_request import UpsertQualityWatchAlertShrinkRequest
 from ._upsert_quality_watch_alert_response_body import UpsertQualityWatchAlertResponseBody
 from ._upsert_quality_watch_alert_response import UpsertQualityWatchAlertResponse
+from ._add_data_service_app_member_request import AddDataServiceAppMemberRequestAddCommandMemberList
+from ._add_data_service_app_member_request import AddDataServiceAppMemberRequestAddCommand
 from ._add_data_service_project_member_request import AddDataServiceProjectMemberRequestAddCommandProjectMemberList
 from ._add_data_service_project_member_request import AddDataServiceProjectMemberRequestAddCommand
 from ._add_project_member_request import AddProjectMemberRequestAddCommandUserList
@@ -1080,10 +1133,12 @@ from ._create_compute_source_request import CreateComputeSourceRequestCreateComm
 from ._create_compute_source_response_body import CreateComputeSourceResponseBodyCreateResult
 from ._create_data_domain_request import CreateDataDomainRequestCreateCommand
 from ._create_data_domain_response_body import CreateDataDomainResponseBodyCreateResult
+from ._create_data_service_api_request import CreateDataServiceApiRequestCreateCommandDmlConfig
 from ._create_data_service_api_request import CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters
 from ._create_data_service_api_request import CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters
 from ._create_data_service_api_request import CreateDataServiceApiRequestCreateCommandScriptDetails
 from ._create_data_service_api_request import CreateDataServiceApiRequestCreateCommand
+from ._create_data_service_app_request import CreateDataServiceAppRequestCreateCommand
 from ._create_data_source_request import CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreateConfigItemList
 from ._create_data_source_request import CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreate
 from ._create_data_source_request import CreateDataSourceRequestCreateCommandDevDataSourceCreate
@@ -1282,8 +1337,12 @@ from ._get_data_service_api_error_impact_response_body import GetDataServiceApiE
 from ._get_data_service_api_error_impact_response_body import GetDataServiceApiErrorImpactResponseBodyDataErrorAppList
 from ._get_data_service_api_error_impact_response_body import GetDataServiceApiErrorImpactResponseBodyData
 from ._get_data_service_api_groups_response_body import GetDataServiceApiGroupsResponseBodyApiGroupList
+from ._get_data_service_app_response_body import GetDataServiceAppResponseBodyDataOwnerList
+from ._get_data_service_app_response_body import GetDataServiceAppResponseBodyData
 from ._get_data_service_app_authorized_users_response_body import GetDataServiceAppAuthorizedUsersResponseBodyUserList
 from ._get_data_service_app_groups_response_body import GetDataServiceAppGroupsResponseBodyAppGroupList
+from ._get_data_service_app_members_response_body import GetDataServiceAppMembersResponseBodyDataMemberList
+from ._get_data_service_app_members_response_body import GetDataServiceAppMembersResponseBodyData
 from ._get_data_service_apps_by_group_id_response_body import GetDataServiceAppsByGroupIdResponseBodyAppInfoList
 from ._get_data_service_authorized_apps_by_group_id_response_body import GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList
 from ._get_data_service_authorized_projects_response_body import GetDataServiceAuthorizedProjectsResponseBodyProjectList
@@ -1385,6 +1444,8 @@ from ._get_quality_watch_task_response_body import GetQualityWatchTaskResponseBo
 from ._get_quality_watch_task_response_body import GetQualityWatchTaskResponseBodyWatchTaskInfo
 from ._get_resource_response_body import GetResourceResponseBodyResourceInfo
 from ._get_resource_by_version_response_body import GetResourceByVersionResponseBodyResourceInfo
+from ._get_row_permission_by_table_guids_request import GetRowPermissionByTableGuidsRequestGetRowPermissionByTableGuidsQuery
+from ._get_row_permission_by_table_guids_response_body import GetRowPermissionByTableGuidsResponseBodyData
 from ._get_security_classify_response_body import GetSecurityClassifyResponseBodySecurityClassifyInfo
 from ._get_security_identify_result_response_body import GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo
 from ._get_security_level_response_body import GetSecurityLevelResponseBodySecurityLevelInfo
@@ -1547,6 +1608,10 @@ from ._list_data_service_api_calls_response_body import ListDataServiceApiCallsR
 from ._list_data_service_api_impacts_request import ListDataServiceApiImpactsRequestListQuery
 from ._list_data_service_api_impacts_response_body import ListDataServiceApiImpactsResponseBodyPageResultImpactList
 from ._list_data_service_api_impacts_response_body import ListDataServiceApiImpactsResponseBodyPageResult
+from ._list_data_service_apps_request import ListDataServiceAppsRequestListQuery
+from ._list_data_service_apps_response_body import ListDataServiceAppsResponseBodyDataAppListOwnerList
+from ._list_data_service_apps_response_body import ListDataServiceAppsResponseBodyDataAppList
+from ._list_data_service_apps_response_body import ListDataServiceAppsResponseBodyData
 from ._list_data_service_authorized_apps_request import ListDataServiceAuthorizedAppsRequestListQuery
 from ._list_data_service_authorized_apps_response_body import ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppListRemarkForDebugList
 from ._list_data_service_authorized_apps_response_body import ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList
@@ -1734,12 +1799,15 @@ from ._pause_physical_node_response_body import PausePhysicalNodeResponseBodyNod
 from ._publish_object_list_request import PublishObjectListRequestPublishCommand
 from ._publish_object_list_response_body import PublishObjectListResponseBodyPublishResult
 from ._publish_standard_request import PublishStandardRequestPublishCommand
+from ._remove_data_service_app_member_request import RemoveDataServiceAppMemberRequestRemoveCommand
 from ._remove_project_member_request import RemoveProjectMemberRequestRemoveCommand
 from ._remove_quality_rule_schedules_request import RemoveQualityRuleSchedulesRequestRemoveCommand
 from ._remove_tenant_member_request import RemoveTenantMemberRequestRemoveCommand
 from ._remove_user_group_member_request import RemoveUserGroupMemberRequestRemoveCommand
 from ._replace_project_white_lists_request import ReplaceProjectWhiteListsRequestReplaceCommandWhiteLists
 from ._replace_project_white_lists_request import ReplaceProjectWhiteListsRequestReplaceCommand
+from ._reset_data_service_app_secret_request import ResetDataServiceAppSecretRequestUpdateCommand
+from ._reset_data_service_app_secret_response_body import ResetDataServiceAppSecretResponseBodyData
 from ._resume_physical_node_request import ResumePhysicalNodeRequestResumeCommand
 from ._resume_physical_node_response_body import ResumePhysicalNodeResponseBodyNodeOperateResultList
 from ._retry_transfer_ownership_request import RetryTransferOwnershipRequestPrivilegeTransferRecord
@@ -1788,6 +1856,10 @@ from ._update_biz_unit_request import UpdateBizUnitRequestUpdateCommand
 from ._update_compute_source_request import UpdateComputeSourceRequestUpdateCommandConfigList
 from ._update_compute_source_request import UpdateComputeSourceRequestUpdateCommand
 from ._update_data_domain_request import UpdateDataDomainRequestUpdateCommand
+from ._update_data_service_app_request import UpdateDataServiceAppRequestUpdateCommand
+from ._update_data_service_app_group_request import UpdateDataServiceAppGroupRequestUpdateCommand
+from ._update_data_service_app_member_request import UpdateDataServiceAppMemberRequestUpdateCommandMemberList
+from ._update_data_service_app_member_request import UpdateDataServiceAppMemberRequestUpdateCommand
 from ._update_data_source_basic_info_request import UpdateDataSourceBasicInfoRequestUpdateCommand
 from ._update_data_source_config_request import UpdateDataSourceConfigRequestUpdateCommandConfigItemList
 from ._update_data_source_config_request import UpdateDataSourceConfigRequestUpdateCommand
@@ -1885,6 +1957,10 @@ from ._upsert_quality_watch_alert_request import UpsertQualityWatchAlertRequestU
 
 __all__ = [
     PrivilegeTransferResultEntrie,
+    AddDataServiceAppMemberRequest,
+    AddDataServiceAppMemberShrinkRequest,
+    AddDataServiceAppMemberResponseBody,
+    AddDataServiceAppMemberResponse,
     AddDataServiceProjectMemberRequest,
     AddDataServiceProjectMemberShrinkRequest,
     AddDataServiceProjectMemberResponseBody,
@@ -1974,6 +2050,13 @@ __all__ = [
     CreateDataServiceApiShrinkRequest,
     CreateDataServiceApiResponseBody,
     CreateDataServiceApiResponse,
+    CreateDataServiceAppRequest,
+    CreateDataServiceAppShrinkRequest,
+    CreateDataServiceAppResponseBody,
+    CreateDataServiceAppResponse,
+    CreateDataServiceAppGroupRequest,
+    CreateDataServiceAppGroupResponseBody,
+    CreateDataServiceAppGroupResponse,
     CreateDataSourceRequest,
     CreateDataSourceShrinkRequest,
     CreateDataSourceResponseBody,
@@ -2085,6 +2168,12 @@ __all__ = [
     DeleteDataDomainRequest,
     DeleteDataDomainResponseBody,
     DeleteDataDomainResponse,
+    DeleteDataServiceAppRequest,
+    DeleteDataServiceAppResponseBody,
+    DeleteDataServiceAppResponse,
+    DeleteDataServiceAppGroupRequest,
+    DeleteDataServiceAppGroupResponseBody,
+    DeleteDataServiceAppGroupResponse,
     DeleteDataSourceRequest,
     DeleteDataSourceShrinkRequest,
     DeleteDataSourceResponseBody,
@@ -2257,12 +2346,18 @@ __all__ = [
     GetDataServiceApiGroupsRequest,
     GetDataServiceApiGroupsResponseBody,
     GetDataServiceApiGroupsResponse,
+    GetDataServiceAppRequest,
+    GetDataServiceAppResponseBody,
+    GetDataServiceAppResponse,
     GetDataServiceAppAuthorizedUsersRequest,
     GetDataServiceAppAuthorizedUsersResponseBody,
     GetDataServiceAppAuthorizedUsersResponse,
     GetDataServiceAppGroupsRequest,
     GetDataServiceAppGroupsResponseBody,
     GetDataServiceAppGroupsResponse,
+    GetDataServiceAppMembersRequest,
+    GetDataServiceAppMembersResponseBody,
+    GetDataServiceAppMembersResponse,
     GetDataServiceAppsByGroupIdRequest,
     GetDataServiceAppsByGroupIdResponseBody,
     GetDataServiceAppsByGroupIdResponse,
@@ -2396,6 +2491,10 @@ __all__ = [
     GetResourceByVersionRequest,
     GetResourceByVersionResponseBody,
     GetResourceByVersionResponse,
+    GetRowPermissionByTableGuidsRequest,
+    GetRowPermissionByTableGuidsShrinkRequest,
+    GetRowPermissionByTableGuidsResponseBody,
+    GetRowPermissionByTableGuidsResponse,
     GetSecurityClassifyRequest,
     GetSecurityClassifyResponseBody,
     GetSecurityClassifyResponse,
@@ -2537,6 +2636,10 @@ __all__ = [
     ListDataServiceApiImpactsShrinkRequest,
     ListDataServiceApiImpactsResponseBody,
     ListDataServiceApiImpactsResponse,
+    ListDataServiceAppsRequest,
+    ListDataServiceAppsShrinkRequest,
+    ListDataServiceAppsResponseBody,
+    ListDataServiceAppsResponse,
     ListDataServiceAuthorizedAppsRequest,
     ListDataServiceAuthorizedAppsShrinkRequest,
     ListDataServiceAuthorizedAppsResponseBody,
@@ -2699,6 +2802,10 @@ __all__ = [
     PublishStandardShrinkRequest,
     PublishStandardResponseBody,
     PublishStandardResponse,
+    RemoveDataServiceAppMemberRequest,
+    RemoveDataServiceAppMemberShrinkRequest,
+    RemoveDataServiceAppMemberResponseBody,
+    RemoveDataServiceAppMemberResponse,
     RemoveProjectMemberRequest,
     RemoveProjectMemberShrinkRequest,
     RemoveProjectMemberResponseBody,
@@ -2719,6 +2826,10 @@ __all__ = [
     ReplaceProjectWhiteListsShrinkRequest,
     ReplaceProjectWhiteListsResponseBody,
     ReplaceProjectWhiteListsResponse,
+    ResetDataServiceAppSecretRequest,
+    ResetDataServiceAppSecretShrinkRequest,
+    ResetDataServiceAppSecretResponseBody,
+    ResetDataServiceAppSecretResponse,
     ResumePhysicalNodeRequest,
     ResumePhysicalNodeShrinkRequest,
     ResumePhysicalNodeResponseBody,
@@ -2794,6 +2905,18 @@ __all__ = [
     UpdateDataDomainShrinkRequest,
     UpdateDataDomainResponseBody,
     UpdateDataDomainResponse,
+    UpdateDataServiceAppRequest,
+    UpdateDataServiceAppShrinkRequest,
+    UpdateDataServiceAppResponseBody,
+    UpdateDataServiceAppResponse,
+    UpdateDataServiceAppGroupRequest,
+    UpdateDataServiceAppGroupShrinkRequest,
+    UpdateDataServiceAppGroupResponseBody,
+    UpdateDataServiceAppGroupResponse,
+    UpdateDataServiceAppMemberRequest,
+    UpdateDataServiceAppMemberShrinkRequest,
+    UpdateDataServiceAppMemberResponseBody,
+    UpdateDataServiceAppMemberResponse,
     UpdateDataSourceBasicInfoRequest,
     UpdateDataSourceBasicInfoShrinkRequest,
     UpdateDataSourceBasicInfoResponseBody,
@@ -2915,6 +3038,8 @@ __all__ = [
     UpsertQualityWatchAlertShrinkRequest,
     UpsertQualityWatchAlertResponseBody,
     UpsertQualityWatchAlertResponse,
+    AddDataServiceAppMemberRequestAddCommandMemberList,
+    AddDataServiceAppMemberRequestAddCommand,
     AddDataServiceProjectMemberRequestAddCommandProjectMemberList,
     AddDataServiceProjectMemberRequestAddCommand,
     AddProjectMemberRequestAddCommandUserList,
@@ -2962,10 +3087,12 @@ __all__ = [
     CreateComputeSourceResponseBodyCreateResult,
     CreateDataDomainRequestCreateCommand,
     CreateDataDomainResponseBodyCreateResult,
+    CreateDataServiceApiRequestCreateCommandDmlConfig,
     CreateDataServiceApiRequestCreateCommandScriptDetailsScriptRequestParameters,
     CreateDataServiceApiRequestCreateCommandScriptDetailsScriptResponseParameters,
     CreateDataServiceApiRequestCreateCommandScriptDetails,
     CreateDataServiceApiRequestCreateCommand,
+    CreateDataServiceAppRequestCreateCommand,
     CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreateConfigItemList,
     CreateDataSourceRequestCreateCommandDevDataSourceCreateDataSourceCreate,
     CreateDataSourceRequestCreateCommandDevDataSourceCreate,
@@ -3164,8 +3291,12 @@ __all__ = [
     GetDataServiceApiErrorImpactResponseBodyDataErrorAppList,
     GetDataServiceApiErrorImpactResponseBodyData,
     GetDataServiceApiGroupsResponseBodyApiGroupList,
+    GetDataServiceAppResponseBodyDataOwnerList,
+    GetDataServiceAppResponseBodyData,
     GetDataServiceAppAuthorizedUsersResponseBodyUserList,
     GetDataServiceAppGroupsResponseBodyAppGroupList,
+    GetDataServiceAppMembersResponseBodyDataMemberList,
+    GetDataServiceAppMembersResponseBodyData,
     GetDataServiceAppsByGroupIdResponseBodyAppInfoList,
     GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList,
     GetDataServiceAuthorizedProjectsResponseBodyProjectList,
@@ -3267,6 +3398,8 @@ __all__ = [
     GetQualityWatchTaskResponseBodyWatchTaskInfo,
     GetResourceResponseBodyResourceInfo,
     GetResourceByVersionResponseBodyResourceInfo,
+    GetRowPermissionByTableGuidsRequestGetRowPermissionByTableGuidsQuery,
+    GetRowPermissionByTableGuidsResponseBodyData,
     GetSecurityClassifyResponseBodySecurityClassifyInfo,
     GetSecurityIdentifyResultResponseBodySecurityIdentifyResultInfo,
     GetSecurityLevelResponseBodySecurityLevelInfo,
@@ -3429,6 +3562,10 @@ __all__ = [
     ListDataServiceApiImpactsRequestListQuery,
     ListDataServiceApiImpactsResponseBodyPageResultImpactList,
     ListDataServiceApiImpactsResponseBodyPageResult,
+    ListDataServiceAppsRequestListQuery,
+    ListDataServiceAppsResponseBodyDataAppListOwnerList,
+    ListDataServiceAppsResponseBodyDataAppList,
+    ListDataServiceAppsResponseBodyData,
     ListDataServiceAuthorizedAppsRequestListQuery,
     ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppListRemarkForDebugList,
     ListDataServiceAuthorizedAppsResponseBodyPageResultAuthorizedAppList,
@@ -3616,12 +3753,15 @@ __all__ = [
     PublishObjectListRequestPublishCommand,
     PublishObjectListResponseBodyPublishResult,
     PublishStandardRequestPublishCommand,
+    RemoveDataServiceAppMemberRequestRemoveCommand,
     RemoveProjectMemberRequestRemoveCommand,
     RemoveQualityRuleSchedulesRequestRemoveCommand,
     RemoveTenantMemberRequestRemoveCommand,
     RemoveUserGroupMemberRequestRemoveCommand,
     ReplaceProjectWhiteListsRequestReplaceCommandWhiteLists,
     ReplaceProjectWhiteListsRequestReplaceCommand,
+    ResetDataServiceAppSecretRequestUpdateCommand,
+    ResetDataServiceAppSecretResponseBodyData,
     ResumePhysicalNodeRequestResumeCommand,
     ResumePhysicalNodeResponseBodyNodeOperateResultList,
     RetryTransferOwnershipRequestPrivilegeTransferRecord,
@@ -3670,6 +3810,10 @@ __all__ = [
     UpdateComputeSourceRequestUpdateCommandConfigList,
     UpdateComputeSourceRequestUpdateCommand,
     UpdateDataDomainRequestUpdateCommand,
+    UpdateDataServiceAppRequestUpdateCommand,
+    UpdateDataServiceAppGroupRequestUpdateCommand,
+    UpdateDataServiceAppMemberRequestUpdateCommandMemberList,
+    UpdateDataServiceAppMemberRequestUpdateCommand,
     UpdateDataSourceBasicInfoRequestUpdateCommand,
     UpdateDataSourceConfigRequestUpdateCommandConfigItemList,
     UpdateDataSourceConfigRequestUpdateCommand,

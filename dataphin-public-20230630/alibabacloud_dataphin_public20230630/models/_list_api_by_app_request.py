@@ -48,18 +48,16 @@ class ListApiByAppRequestPageQuery(DaraModel):
     def __init__(
         self,
         app_key: int = None,
+        app_key_str: str = None,
         keyword: str = None,
         page_num: int = None,
         page_size: int = None,
     ):
         # appKey
-        # 
-        # This parameter is required.
         self.app_key = app_key
+        self.app_key_str = app_key_str
         self.keyword = keyword
-        # This parameter is required.
         self.page_num = page_num
-        # This parameter is required.
         self.page_size = page_size
 
     def validate(self):
@@ -72,6 +70,9 @@ class ListApiByAppRequestPageQuery(DaraModel):
             result = _map
         if self.app_key is not None:
             result['AppKey'] = self.app_key
+
+        if self.app_key_str is not None:
+            result['AppKeyStr'] = self.app_key_str
 
         if self.keyword is not None:
             result['Keyword'] = self.keyword
@@ -88,6 +89,9 @@ class ListApiByAppRequestPageQuery(DaraModel):
         m = m or dict()
         if m.get('AppKey') is not None:
             self.app_key = m.get('AppKey')
+
+        if m.get('AppKeyStr') is not None:
+            self.app_key_str = m.get('AppKeyStr')
 
         if m.get('Keyword') is not None:
             self.keyword = m.get('Keyword')

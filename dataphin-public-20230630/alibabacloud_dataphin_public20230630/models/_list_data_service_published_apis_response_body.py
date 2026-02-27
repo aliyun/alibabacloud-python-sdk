@@ -328,11 +328,13 @@ class ListDataServicePublishedApisResponseBodyPageResultApiListAppInfoList(DaraM
         self,
         app_id: int = None,
         app_key: int = None,
+        app_key_str: str = None,
         app_name: str = None,
     ):
         self.app_id = app_id
         # appKey
         self.app_key = app_key
+        self.app_key_str = app_key_str
         self.app_name = app_name
 
     def validate(self):
@@ -349,6 +351,9 @@ class ListDataServicePublishedApisResponseBodyPageResultApiListAppInfoList(DaraM
         if self.app_key is not None:
             result['AppKey'] = self.app_key
 
+        if self.app_key_str is not None:
+            result['AppKeyStr'] = self.app_key_str
+
         if self.app_name is not None:
             result['AppName'] = self.app_name
 
@@ -361,6 +366,9 @@ class ListDataServicePublishedApisResponseBodyPageResultApiListAppInfoList(DaraM
 
         if m.get('AppKey') is not None:
             self.app_key = m.get('AppKey')
+
+        if m.get('AppKeyStr') is not None:
+            self.app_key_str = m.get('AppKeyStr')
 
         if m.get('AppName') is not None:
             self.app_name = m.get('AppName')

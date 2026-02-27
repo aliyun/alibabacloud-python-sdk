@@ -62,25 +62,29 @@ class GrantDataServiceApiRequestGrantCommand(DaraModel):
         app_id: int = None,
         apply_dev: bool = None,
         apply_prod: bool = None,
+        auth_types: List[str] = None,
         dev_field_list: List[main_models.GrantDataServiceApiRequestGrantCommandDevFieldList] = None,
         expire_date: str = None,
+        grantee_type: str = None,
         prod_field_list: List[main_models.GrantDataServiceApiRequestGrantCommandProdFieldList] = None,
         reason: str = None,
+        user_id: str = None,
     ):
         # This parameter is required.
         self.api_id = api_id
         # AppID
-        # 
-        # This parameter is required.
         self.app_id = app_id
         self.apply_dev = apply_dev
         self.apply_prod = apply_prod
+        self.auth_types = auth_types
         self.dev_field_list = dev_field_list
         # This parameter is required.
         self.expire_date = expire_date
+        self.grantee_type = grantee_type
         self.prod_field_list = prod_field_list
         # This parameter is required.
         self.reason = reason
+        self.user_id = user_id
 
     def validate(self):
         if self.dev_field_list:
@@ -109,6 +113,9 @@ class GrantDataServiceApiRequestGrantCommand(DaraModel):
         if self.apply_prod is not None:
             result['ApplyProd'] = self.apply_prod
 
+        if self.auth_types is not None:
+            result['AuthTypes'] = self.auth_types
+
         result['DevFieldList'] = []
         if self.dev_field_list is not None:
             for k1 in self.dev_field_list:
@@ -117,6 +124,9 @@ class GrantDataServiceApiRequestGrantCommand(DaraModel):
         if self.expire_date is not None:
             result['ExpireDate'] = self.expire_date
 
+        if self.grantee_type is not None:
+            result['GranteeType'] = self.grantee_type
+
         result['ProdFieldList'] = []
         if self.prod_field_list is not None:
             for k1 in self.prod_field_list:
@@ -124,6 +134,9 @@ class GrantDataServiceApiRequestGrantCommand(DaraModel):
 
         if self.reason is not None:
             result['Reason'] = self.reason
+
+        if self.user_id is not None:
+            result['UserId'] = self.user_id
 
         return result
 
@@ -141,6 +154,9 @@ class GrantDataServiceApiRequestGrantCommand(DaraModel):
         if m.get('ApplyProd') is not None:
             self.apply_prod = m.get('ApplyProd')
 
+        if m.get('AuthTypes') is not None:
+            self.auth_types = m.get('AuthTypes')
+
         self.dev_field_list = []
         if m.get('DevFieldList') is not None:
             for k1 in m.get('DevFieldList'):
@@ -149,6 +165,9 @@ class GrantDataServiceApiRequestGrantCommand(DaraModel):
 
         if m.get('ExpireDate') is not None:
             self.expire_date = m.get('ExpireDate')
+
+        if m.get('GranteeType') is not None:
+            self.grantee_type = m.get('GranteeType')
 
         self.prod_field_list = []
         if m.get('ProdFieldList') is not None:
@@ -159,6 +178,9 @@ class GrantDataServiceApiRequestGrantCommand(DaraModel):
         if m.get('Reason') is not None:
             self.reason = m.get('Reason')
 
+        if m.get('UserId') is not None:
+            self.user_id = m.get('UserId')
+
         return self
 
 class GrantDataServiceApiRequestGrantCommandProdFieldList(DaraModel):
@@ -166,7 +188,6 @@ class GrantDataServiceApiRequestGrantCommandProdFieldList(DaraModel):
         self,
         id: int = None,
     ):
-        # This parameter is required.
         self.id = id
 
     def validate(self):
@@ -194,7 +215,6 @@ class GrantDataServiceApiRequestGrantCommandDevFieldList(DaraModel):
         self,
         id: int = None,
     ):
-        # This parameter is required.
         self.id = id
 
     def validate(self):

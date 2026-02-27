@@ -59,6 +59,7 @@ class ListDataServiceApiCallsRequestListQuery(DaraModel):
         api_id: int = None,
         api_name: str = None,
         app_key: int = None,
+        app_key_str: str = None,
         client_ip: str = None,
         end_time: str = None,
         page_no: int = None,
@@ -70,6 +71,7 @@ class ListDataServiceApiCallsRequestListQuery(DaraModel):
         self.api_name = api_name
         # appKey
         self.app_key = app_key
+        self.app_key_str = app_key_str
         self.client_ip = client_ip
         # This parameter is required.
         self.end_time = end_time
@@ -95,6 +97,9 @@ class ListDataServiceApiCallsRequestListQuery(DaraModel):
 
         if self.app_key is not None:
             result['AppKey'] = self.app_key
+
+        if self.app_key_str is not None:
+            result['AppKeyStr'] = self.app_key_str
 
         if self.client_ip is not None:
             result['ClientIp'] = self.client_ip
@@ -126,6 +131,9 @@ class ListDataServiceApiCallsRequestListQuery(DaraModel):
 
         if m.get('AppKey') is not None:
             self.app_key = m.get('AppKey')
+
+        if m.get('AppKeyStr') is not None:
+            self.app_key_str = m.get('AppKeyStr')
 
         if m.get('ClientIp') is not None:
             self.client_ip = m.get('ClientIp')

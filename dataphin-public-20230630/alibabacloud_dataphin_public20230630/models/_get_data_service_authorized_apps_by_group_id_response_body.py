@@ -87,11 +87,13 @@ class GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList(DaraModel):
     def __init__(
         self,
         app_key: int = None,
+        app_key_str: str = None,
         id: int = None,
         name: str = None,
     ):
         # AppKey
         self.app_key = app_key
+        self.app_key_str = app_key_str
         # AppId
         self.id = id
         self.name = name
@@ -107,6 +109,9 @@ class GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList(DaraModel):
         if self.app_key is not None:
             result['AppKey'] = self.app_key
 
+        if self.app_key_str is not None:
+            result['AppKeyStr'] = self.app_key_str
+
         if self.id is not None:
             result['Id'] = self.id
 
@@ -119,6 +124,9 @@ class GetDataServiceAuthorizedAppsByGroupIdResponseBodyAppInfoList(DaraModel):
         m = m or dict()
         if m.get('AppKey') is not None:
             self.app_key = m.get('AppKey')
+
+        if m.get('AppKeyStr') is not None:
+            self.app_key_str = m.get('AppKeyStr')
 
         if m.get('Id') is not None:
             self.id = m.get('Id')
