@@ -1,24 +1,23 @@
 # -*- coding: utf-8 -*-
 # This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
 from typing import Dict
-from Tea.core import TeaCore
 
+from alibabacloud_resourcemanager20200331 import models as main_models
+from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
-from alibabacloud_tea_openapi import models as open_api_models
-from alibabacloud_tea_util.client import Client as UtilClient
-from alibabacloud_endpoint_util.client import Client as EndpointUtilClient
-from alibabacloud_resourcemanager20200331 import models as resource_manager_20200331_models
-from alibabacloud_tea_util import models as util_models
-from alibabacloud_openapi_util.client import Client as OpenApiUtilClient
+from alibabacloud_tea_openapi.utils import Utils
+from darabonba.core import DaraCore as DaraCore
+from darabonba.runtime import RuntimeOptions
 
-
+"""
+"""
 class Client(OpenApiClient):
-    """
-    *\
-    """
+
     def __init__(
-        self, 
-        config: open_api_models.Config,
+        self,
+        config: open_api_util_models.Config,
     ):
         super().__init__(config)
         self._endpoint_rule = 'central'
@@ -35,11872 +34,8444 @@ class Client(OpenApiClient):
         endpoint_map: Dict[str, str],
         endpoint: str,
     ) -> str:
-        if not UtilClient.empty(endpoint):
+        if not DaraCore.is_null(endpoint):
             return endpoint
-        if not UtilClient.is_unset(endpoint_map) and not UtilClient.empty(endpoint_map.get(region_id)):
+        if not DaraCore.is_null(endpoint_map) and not DaraCore.is_null(endpoint_map.get(region_id)):
             return endpoint_map.get(region_id)
-        return EndpointUtilClient.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
+        return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
     def accept_handshake_with_options(
         self,
-        request: resource_manager_20200331_models.AcceptHandshakeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.AcceptHandshakeResponse:
-        """
-        @summary Accepts an invitation.
-        
-        @description After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
-        This topic provides an example on how to call the API operation to accept the invitation `h-Ih8IuPfvV0t0***` that is initiated to invite the Alibaba Cloud account `177242285274****` to join the resource directory `rd-3G****`.
-        
-        @param request: AcceptHandshakeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AcceptHandshakeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AcceptHandshakeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AcceptHandshakeResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.handshake_id):
+        if not DaraCore.is_null(request.handshake_id):
             query['HandshakeId'] = request.handshake_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AcceptHandshake',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AcceptHandshake',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.AcceptHandshakeResponse(),
+        return DaraCore.from_map(
+            main_models.AcceptHandshakeResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def accept_handshake_with_options_async(
         self,
-        request: resource_manager_20200331_models.AcceptHandshakeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.AcceptHandshakeResponse:
-        """
-        @summary Accepts an invitation.
-        
-        @description After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
-        This topic provides an example on how to call the API operation to accept the invitation `h-Ih8IuPfvV0t0***` that is initiated to invite the Alibaba Cloud account `177242285274****` to join the resource directory `rd-3G****`.
-        
-        @param request: AcceptHandshakeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AcceptHandshakeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AcceptHandshakeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AcceptHandshakeResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.handshake_id):
+        if not DaraCore.is_null(request.handshake_id):
             query['HandshakeId'] = request.handshake_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AcceptHandshake',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AcceptHandshake',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.AcceptHandshakeResponse(),
+        return DaraCore.from_map(
+            main_models.AcceptHandshakeResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def accept_handshake(
         self,
-        request: resource_manager_20200331_models.AcceptHandshakeRequest,
-    ) -> resource_manager_20200331_models.AcceptHandshakeResponse:
-        """
-        @summary Accepts an invitation.
-        
-        @description After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
-        This topic provides an example on how to call the API operation to accept the invitation `h-Ih8IuPfvV0t0***` that is initiated to invite the Alibaba Cloud account `177242285274****` to join the resource directory `rd-3G****`.
-        
-        @param request: AcceptHandshakeRequest
-        @return: AcceptHandshakeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AcceptHandshakeRequest,
+    ) -> main_models.AcceptHandshakeResponse:
+        runtime = RuntimeOptions()
         return self.accept_handshake_with_options(request, runtime)
 
     async def accept_handshake_async(
         self,
-        request: resource_manager_20200331_models.AcceptHandshakeRequest,
-    ) -> resource_manager_20200331_models.AcceptHandshakeResponse:
-        """
-        @summary Accepts an invitation.
-        
-        @description After an invited Alibaba Cloud account joins a resource directory, it becomes a member of the resource directory. By default, the name of the invited Alibaba Cloud account is used as the display name of the account in the resource directory.
-        This topic provides an example on how to call the API operation to accept the invitation `h-Ih8IuPfvV0t0***` that is initiated to invite the Alibaba Cloud account `177242285274****` to join the resource directory `rd-3G****`.
-        
-        @param request: AcceptHandshakeRequest
-        @return: AcceptHandshakeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AcceptHandshakeRequest,
+    ) -> main_models.AcceptHandshakeResponse:
+        runtime = RuntimeOptions()
         return await self.accept_handshake_with_options_async(request, runtime)
 
     def attach_control_policy_with_options(
         self,
-        request: resource_manager_20200331_models.AttachControlPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.AttachControlPolicyResponse:
-        """
-        @description After you attach an access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
-        By default, the system access control policy FullAliyunAccess is attached to each folder and member.
-        The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
-        A maximum of 10 access control policies can be attached to a folder or member.
-        This topic provides an example on how to call the API operation to attach the custom access control policy `cp-jExXAqIYkwHN***` to the folder `fd-ZDNPiT****`.
-        
-        @param request: AttachControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachControlPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AttachControlPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachControlPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_id):
+        if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
-        if not UtilClient.is_unset(request.target_id):
+        if not DaraCore.is_null(request.target_id):
             query['TargetId'] = request.target_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AttachControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AttachControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.AttachControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.AttachControlPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def attach_control_policy_with_options_async(
         self,
-        request: resource_manager_20200331_models.AttachControlPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.AttachControlPolicyResponse:
-        """
-        @description After you attach an access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
-        By default, the system access control policy FullAliyunAccess is attached to each folder and member.
-        The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
-        A maximum of 10 access control policies can be attached to a folder or member.
-        This topic provides an example on how to call the API operation to attach the custom access control policy `cp-jExXAqIYkwHN***` to the folder `fd-ZDNPiT****`.
-        
-        @param request: AttachControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachControlPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AttachControlPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachControlPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_id):
+        if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
-        if not UtilClient.is_unset(request.target_id):
+        if not DaraCore.is_null(request.target_id):
             query['TargetId'] = request.target_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AttachControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AttachControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.AttachControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.AttachControlPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def attach_control_policy(
         self,
-        request: resource_manager_20200331_models.AttachControlPolicyRequest,
-    ) -> resource_manager_20200331_models.AttachControlPolicyResponse:
-        """
-        @description After you attach an access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
-        By default, the system access control policy FullAliyunAccess is attached to each folder and member.
-        The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
-        A maximum of 10 access control policies can be attached to a folder or member.
-        This topic provides an example on how to call the API operation to attach the custom access control policy `cp-jExXAqIYkwHN***` to the folder `fd-ZDNPiT****`.
-        
-        @param request: AttachControlPolicyRequest
-        @return: AttachControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AttachControlPolicyRequest,
+    ) -> main_models.AttachControlPolicyResponse:
+        runtime = RuntimeOptions()
         return self.attach_control_policy_with_options(request, runtime)
 
     async def attach_control_policy_async(
         self,
-        request: resource_manager_20200331_models.AttachControlPolicyRequest,
-    ) -> resource_manager_20200331_models.AttachControlPolicyResponse:
-        """
-        @description After you attach an access control policy, the operations performed on resources by using members are limited by the policy. Make sure that the attached policy meets your expectations. Otherwise, your business may be affected.
-        By default, the system access control policy FullAliyunAccess is attached to each folder and member.
-        The access control policy that is attached to a folder also applies to all its subfolders and all members in the subfolders.
-        A maximum of 10 access control policies can be attached to a folder or member.
-        This topic provides an example on how to call the API operation to attach the custom access control policy `cp-jExXAqIYkwHN***` to the folder `fd-ZDNPiT****`.
-        
-        @param request: AttachControlPolicyRequest
-        @return: AttachControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AttachControlPolicyRequest,
+    ) -> main_models.AttachControlPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.attach_control_policy_with_options_async(request, runtime)
 
     def attach_policy_with_options(
         self,
-        request: resource_manager_20200331_models.AttachPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.AttachPolicyResponse:
-        """
-        @summary Attaches a permission policy to an object, which can be a RAM user, RAM user group, or RAM role. After you attach a permission policy to an object, the object has the operation permissions on the resources in a specific resource group or within a specific Alibaba Cloud account.
-        
-        @description In this example, the policy `AdministratorAccess` is attached to the RAM user `alice@demo.onaliyun.com` and takes effect only for resources in the `rg-9gLOoK***` resource group.
-        
-        @param request: AttachPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AttachPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.policy_type):
+        if not DaraCore.is_null(request.policy_type):
             query['PolicyType'] = request.policy_type
-        if not UtilClient.is_unset(request.principal_name):
+        if not DaraCore.is_null(request.principal_name):
             query['PrincipalName'] = request.principal_name
-        if not UtilClient.is_unset(request.principal_type):
+        if not DaraCore.is_null(request.principal_type):
             query['PrincipalType'] = request.principal_type
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AttachPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AttachPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.AttachPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.AttachPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def attach_policy_with_options_async(
         self,
-        request: resource_manager_20200331_models.AttachPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.AttachPolicyResponse:
-        """
-        @summary Attaches a permission policy to an object, which can be a RAM user, RAM user group, or RAM role. After you attach a permission policy to an object, the object has the operation permissions on the resources in a specific resource group or within a specific Alibaba Cloud account.
-        
-        @description In this example, the policy `AdministratorAccess` is attached to the RAM user `alice@demo.onaliyun.com` and takes effect only for resources in the `rg-9gLOoK***` resource group.
-        
-        @param request: AttachPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: AttachPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.AttachPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AttachPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.policy_type):
+        if not DaraCore.is_null(request.policy_type):
             query['PolicyType'] = request.policy_type
-        if not UtilClient.is_unset(request.principal_name):
+        if not DaraCore.is_null(request.principal_name):
             query['PrincipalName'] = request.principal_name
-        if not UtilClient.is_unset(request.principal_type):
+        if not DaraCore.is_null(request.principal_type):
             query['PrincipalType'] = request.principal_type
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='AttachPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'AttachPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.AttachPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.AttachPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def attach_policy(
         self,
-        request: resource_manager_20200331_models.AttachPolicyRequest,
-    ) -> resource_manager_20200331_models.AttachPolicyResponse:
-        """
-        @summary Attaches a permission policy to an object, which can be a RAM user, RAM user group, or RAM role. After you attach a permission policy to an object, the object has the operation permissions on the resources in a specific resource group or within a specific Alibaba Cloud account.
-        
-        @description In this example, the policy `AdministratorAccess` is attached to the RAM user `alice@demo.onaliyun.com` and takes effect only for resources in the `rg-9gLOoK***` resource group.
-        
-        @param request: AttachPolicyRequest
-        @return: AttachPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AttachPolicyRequest,
+    ) -> main_models.AttachPolicyResponse:
+        runtime = RuntimeOptions()
         return self.attach_policy_with_options(request, runtime)
 
     async def attach_policy_async(
         self,
-        request: resource_manager_20200331_models.AttachPolicyRequest,
-    ) -> resource_manager_20200331_models.AttachPolicyResponse:
-        """
-        @summary Attaches a permission policy to an object, which can be a RAM user, RAM user group, or RAM role. After you attach a permission policy to an object, the object has the operation permissions on the resources in a specific resource group or within a specific Alibaba Cloud account.
-        
-        @description In this example, the policy `AdministratorAccess` is attached to the RAM user `alice@demo.onaliyun.com` and takes effect only for resources in the `rg-9gLOoK***` resource group.
-        
-        @param request: AttachPolicyRequest
-        @return: AttachPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.AttachPolicyRequest,
+    ) -> main_models.AttachPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.attach_policy_with_options_async(request, runtime)
 
     def bind_secure_mobile_phone_with_options(
         self,
-        request: resource_manager_20200331_models.BindSecureMobilePhoneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.BindSecureMobilePhoneResponse:
-        """
-        @summary 设置安全手机号
-        
-        @description You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
-        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
-        This topic provides an example on how to call the API operation to bind a mobile phone number to the member `138660628348***` for security purposes.
-        
-        @param request: BindSecureMobilePhoneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BindSecureMobilePhoneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BindSecureMobilePhoneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BindSecureMobilePhoneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.secure_mobile_phone):
+        if not DaraCore.is_null(request.secure_mobile_phone):
             query['SecureMobilePhone'] = request.secure_mobile_phone
-        if not UtilClient.is_unset(request.verification_code):
+        if not DaraCore.is_null(request.verification_code):
             query['VerificationCode'] = request.verification_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='BindSecureMobilePhone',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BindSecureMobilePhone',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.BindSecureMobilePhoneResponse(),
+        return DaraCore.from_map(
+            main_models.BindSecureMobilePhoneResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def bind_secure_mobile_phone_with_options_async(
         self,
-        request: resource_manager_20200331_models.BindSecureMobilePhoneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.BindSecureMobilePhoneResponse:
-        """
-        @summary 设置安全手机号
-        
-        @description You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
-        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
-        This topic provides an example on how to call the API operation to bind a mobile phone number to the member `138660628348***` for security purposes.
-        
-        @param request: BindSecureMobilePhoneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: BindSecureMobilePhoneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.BindSecureMobilePhoneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.BindSecureMobilePhoneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.secure_mobile_phone):
+        if not DaraCore.is_null(request.secure_mobile_phone):
             query['SecureMobilePhone'] = request.secure_mobile_phone
-        if not UtilClient.is_unset(request.verification_code):
+        if not DaraCore.is_null(request.verification_code):
             query['VerificationCode'] = request.verification_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='BindSecureMobilePhone',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'BindSecureMobilePhone',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.BindSecureMobilePhoneResponse(),
+        return DaraCore.from_map(
+            main_models.BindSecureMobilePhoneResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def bind_secure_mobile_phone(
         self,
-        request: resource_manager_20200331_models.BindSecureMobilePhoneRequest,
-    ) -> resource_manager_20200331_models.BindSecureMobilePhoneResponse:
-        """
-        @summary 设置安全手机号
-        
-        @description You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
-        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
-        This topic provides an example on how to call the API operation to bind a mobile phone number to the member `138660628348***` for security purposes.
-        
-        @param request: BindSecureMobilePhoneRequest
-        @return: BindSecureMobilePhoneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BindSecureMobilePhoneRequest,
+    ) -> main_models.BindSecureMobilePhoneResponse:
+        runtime = RuntimeOptions()
         return self.bind_secure_mobile_phone_with_options(request, runtime)
 
     async def bind_secure_mobile_phone_async(
         self,
-        request: resource_manager_20200331_models.BindSecureMobilePhoneRequest,
-    ) -> resource_manager_20200331_models.BindSecureMobilePhoneResponse:
-        """
-        @summary 设置安全手机号
-        
-        @description You can call this API operation only to bind a mobile phone number to a member of the resource account type. You cannot call this API operation to change the mobile phone number that is bound to a member of the resource account type.
-        To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this API operation.
-        This topic provides an example on how to call the API operation to bind a mobile phone number to the member `138660628348***` for security purposes.
-        
-        @param request: BindSecureMobilePhoneRequest
-        @return: BindSecureMobilePhoneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.BindSecureMobilePhoneRequest,
+    ) -> main_models.BindSecureMobilePhoneResponse:
+        runtime = RuntimeOptions()
         return await self.bind_secure_mobile_phone_with_options_async(request, runtime)
 
     def cancel_change_account_email_with_options(
         self,
-        request: resource_manager_20200331_models.CancelChangeAccountEmailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CancelChangeAccountEmailResponse:
-        """
-        @summary 取消修改邮箱
-        
-        @param request: CancelChangeAccountEmailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CancelChangeAccountEmailResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CancelChangeAccountEmailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelChangeAccountEmailResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CancelChangeAccountEmail',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CancelChangeAccountEmail',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CancelChangeAccountEmailResponse(),
+        return DaraCore.from_map(
+            main_models.CancelChangeAccountEmailResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def cancel_change_account_email_with_options_async(
         self,
-        request: resource_manager_20200331_models.CancelChangeAccountEmailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CancelChangeAccountEmailResponse:
-        """
-        @summary 取消修改邮箱
-        
-        @param request: CancelChangeAccountEmailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CancelChangeAccountEmailResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CancelChangeAccountEmailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelChangeAccountEmailResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CancelChangeAccountEmail',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CancelChangeAccountEmail',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CancelChangeAccountEmailResponse(),
+        return DaraCore.from_map(
+            main_models.CancelChangeAccountEmailResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def cancel_change_account_email(
         self,
-        request: resource_manager_20200331_models.CancelChangeAccountEmailRequest,
-    ) -> resource_manager_20200331_models.CancelChangeAccountEmailResponse:
-        """
-        @summary 取消修改邮箱
-        
-        @param request: CancelChangeAccountEmailRequest
-        @return: CancelChangeAccountEmailResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CancelChangeAccountEmailRequest,
+    ) -> main_models.CancelChangeAccountEmailResponse:
+        runtime = RuntimeOptions()
         return self.cancel_change_account_email_with_options(request, runtime)
 
     async def cancel_change_account_email_async(
         self,
-        request: resource_manager_20200331_models.CancelChangeAccountEmailRequest,
-    ) -> resource_manager_20200331_models.CancelChangeAccountEmailResponse:
-        """
-        @summary 取消修改邮箱
-        
-        @param request: CancelChangeAccountEmailRequest
-        @return: CancelChangeAccountEmailResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CancelChangeAccountEmailRequest,
+    ) -> main_models.CancelChangeAccountEmailResponse:
+        runtime = RuntimeOptions()
         return await self.cancel_change_account_email_with_options_async(request, runtime)
 
     def cancel_create_cloud_account_with_options(
         self,
-        request: resource_manager_20200331_models.CancelCreateCloudAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CancelCreateCloudAccountResponse:
-        """
-        @summary 取消创建云账号类型的成员
-        
-        @param request: CancelCreateCloudAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CancelCreateCloudAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CancelCreateCloudAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelCreateCloudAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CancelCreateCloudAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CancelCreateCloudAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CancelCreateCloudAccountResponse(),
+        return DaraCore.from_map(
+            main_models.CancelCreateCloudAccountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def cancel_create_cloud_account_with_options_async(
         self,
-        request: resource_manager_20200331_models.CancelCreateCloudAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CancelCreateCloudAccountResponse:
-        """
-        @summary 取消创建云账号类型的成员
-        
-        @param request: CancelCreateCloudAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CancelCreateCloudAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CancelCreateCloudAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelCreateCloudAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CancelCreateCloudAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CancelCreateCloudAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CancelCreateCloudAccountResponse(),
+        return DaraCore.from_map(
+            main_models.CancelCreateCloudAccountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def cancel_create_cloud_account(
         self,
-        request: resource_manager_20200331_models.CancelCreateCloudAccountRequest,
-    ) -> resource_manager_20200331_models.CancelCreateCloudAccountResponse:
-        """
-        @summary 取消创建云账号类型的成员
-        
-        @param request: CancelCreateCloudAccountRequest
-        @return: CancelCreateCloudAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CancelCreateCloudAccountRequest,
+    ) -> main_models.CancelCreateCloudAccountResponse:
+        runtime = RuntimeOptions()
         return self.cancel_create_cloud_account_with_options(request, runtime)
 
     async def cancel_create_cloud_account_async(
         self,
-        request: resource_manager_20200331_models.CancelCreateCloudAccountRequest,
-    ) -> resource_manager_20200331_models.CancelCreateCloudAccountResponse:
-        """
-        @summary 取消创建云账号类型的成员
-        
-        @param request: CancelCreateCloudAccountRequest
-        @return: CancelCreateCloudAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CancelCreateCloudAccountRequest,
+    ) -> main_models.CancelCreateCloudAccountResponse:
+        runtime = RuntimeOptions()
         return await self.cancel_create_cloud_account_with_options_async(request, runtime)
 
     def cancel_handshake_with_options(
         self,
-        request: resource_manager_20200331_models.CancelHandshakeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CancelHandshakeResponse:
-        """
-        @summary Cancels an invitation.
-        
-        @description This topic provides an example on how to call the API operation to cancel the invitation whose ID is `h-ycm4rp***`.
-        
-        @param request: CancelHandshakeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CancelHandshakeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CancelHandshakeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelHandshakeResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.handshake_id):
+        if not DaraCore.is_null(request.handshake_id):
             query['HandshakeId'] = request.handshake_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CancelHandshake',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CancelHandshake',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CancelHandshakeResponse(),
+        return DaraCore.from_map(
+            main_models.CancelHandshakeResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def cancel_handshake_with_options_async(
         self,
-        request: resource_manager_20200331_models.CancelHandshakeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CancelHandshakeResponse:
-        """
-        @summary Cancels an invitation.
-        
-        @description This topic provides an example on how to call the API operation to cancel the invitation whose ID is `h-ycm4rp***`.
-        
-        @param request: CancelHandshakeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CancelHandshakeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CancelHandshakeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelHandshakeResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.handshake_id):
+        if not DaraCore.is_null(request.handshake_id):
             query['HandshakeId'] = request.handshake_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CancelHandshake',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CancelHandshake',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CancelHandshakeResponse(),
+        return DaraCore.from_map(
+            main_models.CancelHandshakeResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def cancel_handshake(
         self,
-        request: resource_manager_20200331_models.CancelHandshakeRequest,
-    ) -> resource_manager_20200331_models.CancelHandshakeResponse:
-        """
-        @summary Cancels an invitation.
-        
-        @description This topic provides an example on how to call the API operation to cancel the invitation whose ID is `h-ycm4rp***`.
-        
-        @param request: CancelHandshakeRequest
-        @return: CancelHandshakeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CancelHandshakeRequest,
+    ) -> main_models.CancelHandshakeResponse:
+        runtime = RuntimeOptions()
         return self.cancel_handshake_with_options(request, runtime)
 
     async def cancel_handshake_async(
         self,
-        request: resource_manager_20200331_models.CancelHandshakeRequest,
-    ) -> resource_manager_20200331_models.CancelHandshakeResponse:
-        """
-        @summary Cancels an invitation.
-        
-        @description This topic provides an example on how to call the API operation to cancel the invitation whose ID is `h-ycm4rp***`.
-        
-        @param request: CancelHandshakeRequest
-        @return: CancelHandshakeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CancelHandshakeRequest,
+    ) -> main_models.CancelHandshakeResponse:
+        runtime = RuntimeOptions()
         return await self.cancel_handshake_with_options_async(request, runtime)
 
     def cancel_promote_resource_account_with_options(
         self,
-        request: resource_manager_20200331_models.CancelPromoteResourceAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CancelPromoteResourceAccountResponse:
-        """
-        @summary 取消升级资源账号
-        
-        @param request: CancelPromoteResourceAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CancelPromoteResourceAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CancelPromoteResourceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelPromoteResourceAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CancelPromoteResourceAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CancelPromoteResourceAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CancelPromoteResourceAccountResponse(),
+        return DaraCore.from_map(
+            main_models.CancelPromoteResourceAccountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def cancel_promote_resource_account_with_options_async(
         self,
-        request: resource_manager_20200331_models.CancelPromoteResourceAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CancelPromoteResourceAccountResponse:
-        """
-        @summary 取消升级资源账号
-        
-        @param request: CancelPromoteResourceAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CancelPromoteResourceAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CancelPromoteResourceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CancelPromoteResourceAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CancelPromoteResourceAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CancelPromoteResourceAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CancelPromoteResourceAccountResponse(),
+        return DaraCore.from_map(
+            main_models.CancelPromoteResourceAccountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def cancel_promote_resource_account(
         self,
-        request: resource_manager_20200331_models.CancelPromoteResourceAccountRequest,
-    ) -> resource_manager_20200331_models.CancelPromoteResourceAccountResponse:
-        """
-        @summary 取消升级资源账号
-        
-        @param request: CancelPromoteResourceAccountRequest
-        @return: CancelPromoteResourceAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CancelPromoteResourceAccountRequest,
+    ) -> main_models.CancelPromoteResourceAccountResponse:
+        runtime = RuntimeOptions()
         return self.cancel_promote_resource_account_with_options(request, runtime)
 
     async def cancel_promote_resource_account_async(
         self,
-        request: resource_manager_20200331_models.CancelPromoteResourceAccountRequest,
-    ) -> resource_manager_20200331_models.CancelPromoteResourceAccountResponse:
-        """
-        @summary 取消升级资源账号
-        
-        @param request: CancelPromoteResourceAccountRequest
-        @return: CancelPromoteResourceAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CancelPromoteResourceAccountRequest,
+    ) -> main_models.CancelPromoteResourceAccountResponse:
+        runtime = RuntimeOptions()
         return await self.cancel_promote_resource_account_with_options_async(request, runtime)
 
     def change_account_email_with_options(
         self,
-        request: resource_manager_20200331_models.ChangeAccountEmailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ChangeAccountEmailResponse:
-        """
-        @summary 成员账号设置安全邮箱
-        
-        @param request: ChangeAccountEmailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ChangeAccountEmailResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ChangeAccountEmailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ChangeAccountEmailResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.email):
+        if not DaraCore.is_null(request.email):
             query['Email'] = request.email
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ChangeAccountEmail',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ChangeAccountEmail',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ChangeAccountEmailResponse(),
+        return DaraCore.from_map(
+            main_models.ChangeAccountEmailResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def change_account_email_with_options_async(
         self,
-        request: resource_manager_20200331_models.ChangeAccountEmailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ChangeAccountEmailResponse:
-        """
-        @summary 成员账号设置安全邮箱
-        
-        @param request: ChangeAccountEmailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ChangeAccountEmailResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ChangeAccountEmailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ChangeAccountEmailResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.email):
+        if not DaraCore.is_null(request.email):
             query['Email'] = request.email
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ChangeAccountEmail',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ChangeAccountEmail',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ChangeAccountEmailResponse(),
+        return DaraCore.from_map(
+            main_models.ChangeAccountEmailResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def change_account_email(
         self,
-        request: resource_manager_20200331_models.ChangeAccountEmailRequest,
-    ) -> resource_manager_20200331_models.ChangeAccountEmailResponse:
-        """
-        @summary 成员账号设置安全邮箱
-        
-        @param request: ChangeAccountEmailRequest
-        @return: ChangeAccountEmailResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ChangeAccountEmailRequest,
+    ) -> main_models.ChangeAccountEmailResponse:
+        runtime = RuntimeOptions()
         return self.change_account_email_with_options(request, runtime)
 
     async def change_account_email_async(
         self,
-        request: resource_manager_20200331_models.ChangeAccountEmailRequest,
-    ) -> resource_manager_20200331_models.ChangeAccountEmailResponse:
-        """
-        @summary 成员账号设置安全邮箱
-        
-        @param request: ChangeAccountEmailRequest
-        @return: ChangeAccountEmailResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ChangeAccountEmailRequest,
+    ) -> main_models.ChangeAccountEmailResponse:
+        runtime = RuntimeOptions()
         return await self.change_account_email_with_options_async(request, runtime)
 
     def check_account_delete_with_options(
         self,
-        request: resource_manager_20200331_models.CheckAccountDeleteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CheckAccountDeleteResponse:
-        """
-        @summary Performs a member deletion check.
-        
-        @description Before you delete a member, you must call this API operation to check whether the member can be deleted.
-        This topic provides an example on how to call the API operation to perform a deletion check on the member whose ID is `179855839641***`.
-        
-        @param request: CheckAccountDeleteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckAccountDeleteResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CheckAccountDeleteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckAccountDeleteResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CheckAccountDelete',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CheckAccountDelete',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CheckAccountDeleteResponse(),
+        return DaraCore.from_map(
+            main_models.CheckAccountDeleteResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def check_account_delete_with_options_async(
         self,
-        request: resource_manager_20200331_models.CheckAccountDeleteRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CheckAccountDeleteResponse:
-        """
-        @summary Performs a member deletion check.
-        
-        @description Before you delete a member, you must call this API operation to check whether the member can be deleted.
-        This topic provides an example on how to call the API operation to perform a deletion check on the member whose ID is `179855839641***`.
-        
-        @param request: CheckAccountDeleteRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CheckAccountDeleteResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CheckAccountDeleteRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CheckAccountDeleteResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CheckAccountDelete',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CheckAccountDelete',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CheckAccountDeleteResponse(),
+        return DaraCore.from_map(
+            main_models.CheckAccountDeleteResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def check_account_delete(
         self,
-        request: resource_manager_20200331_models.CheckAccountDeleteRequest,
-    ) -> resource_manager_20200331_models.CheckAccountDeleteResponse:
-        """
-        @summary Performs a member deletion check.
-        
-        @description Before you delete a member, you must call this API operation to check whether the member can be deleted.
-        This topic provides an example on how to call the API operation to perform a deletion check on the member whose ID is `179855839641***`.
-        
-        @param request: CheckAccountDeleteRequest
-        @return: CheckAccountDeleteResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CheckAccountDeleteRequest,
+    ) -> main_models.CheckAccountDeleteResponse:
+        runtime = RuntimeOptions()
         return self.check_account_delete_with_options(request, runtime)
 
     async def check_account_delete_async(
         self,
-        request: resource_manager_20200331_models.CheckAccountDeleteRequest,
-    ) -> resource_manager_20200331_models.CheckAccountDeleteResponse:
-        """
-        @summary Performs a member deletion check.
-        
-        @description Before you delete a member, you must call this API operation to check whether the member can be deleted.
-        This topic provides an example on how to call the API operation to perform a deletion check on the member whose ID is `179855839641***`.
-        
-        @param request: CheckAccountDeleteRequest
-        @return: CheckAccountDeleteResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CheckAccountDeleteRequest,
+    ) -> main_models.CheckAccountDeleteResponse:
+        runtime = RuntimeOptions()
         return await self.check_account_delete_with_options_async(request, runtime)
 
     def create_auto_grouping_rule_with_options(
         self,
-        request: resource_manager_20200331_models.CreateAutoGroupingRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreateAutoGroupingRuleResponse:
-        """
-        @summary Creates a transfer rule. Custom transfer rules and transfer rules for associated resources are supported.
-        
-        @description You can create up to 10 custom transfer rules. Each custom transfer rule can contain up to 10 content records.
-        
-        @param request: CreateAutoGroupingRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAutoGroupingRuleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateAutoGroupingRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAutoGroupingRuleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+        if not DaraCore.is_null(request.exclude_region_ids_scope):
             query['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
-        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+        if not DaraCore.is_null(request.exclude_resource_group_ids_scope):
             query['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
-        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+        if not DaraCore.is_null(request.exclude_resource_ids_scope):
             query['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
-        if not UtilClient.is_unset(request.exclude_resource_types_scope):
+        if not DaraCore.is_null(request.exclude_resource_types_scope):
             query['ExcludeResourceTypesScope'] = request.exclude_resource_types_scope
-        if not UtilClient.is_unset(request.region_ids_scope):
+        if not DaraCore.is_null(request.region_ids_scope):
             query['RegionIdsScope'] = request.region_ids_scope
-        if not UtilClient.is_unset(request.resource_group_ids_scope):
+        if not DaraCore.is_null(request.resource_group_ids_scope):
             query['ResourceGroupIdsScope'] = request.resource_group_ids_scope
-        if not UtilClient.is_unset(request.resource_ids_scope):
+        if not DaraCore.is_null(request.resource_ids_scope):
             query['ResourceIdsScope'] = request.resource_ids_scope
-        if not UtilClient.is_unset(request.resource_types_scope):
+        if not DaraCore.is_null(request.resource_types_scope):
             query['ResourceTypesScope'] = request.resource_types_scope
-        if not UtilClient.is_unset(request.rule_contents):
+        if not DaraCore.is_null(request.rule_contents):
             query['RuleContents'] = request.rule_contents
-        if not UtilClient.is_unset(request.rule_desc):
+        if not DaraCore.is_null(request.rule_desc):
             query['RuleDesc'] = request.rule_desc
-        if not UtilClient.is_unset(request.rule_name):
+        if not DaraCore.is_null(request.rule_name):
             query['RuleName'] = request.rule_name
-        if not UtilClient.is_unset(request.rule_type):
+        if not DaraCore.is_null(request.rule_type):
             query['RuleType'] = request.rule_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateAutoGroupingRule',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateAutoGroupingRule',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreateAutoGroupingRuleResponse(),
+        return DaraCore.from_map(
+            main_models.CreateAutoGroupingRuleResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_auto_grouping_rule_with_options_async(
         self,
-        request: resource_manager_20200331_models.CreateAutoGroupingRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreateAutoGroupingRuleResponse:
-        """
-        @summary Creates a transfer rule. Custom transfer rules and transfer rules for associated resources are supported.
-        
-        @description You can create up to 10 custom transfer rules. Each custom transfer rule can contain up to 10 content records.
-        
-        @param request: CreateAutoGroupingRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateAutoGroupingRuleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateAutoGroupingRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateAutoGroupingRuleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+        if not DaraCore.is_null(request.exclude_region_ids_scope):
             query['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
-        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+        if not DaraCore.is_null(request.exclude_resource_group_ids_scope):
             query['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
-        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+        if not DaraCore.is_null(request.exclude_resource_ids_scope):
             query['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
-        if not UtilClient.is_unset(request.exclude_resource_types_scope):
+        if not DaraCore.is_null(request.exclude_resource_types_scope):
             query['ExcludeResourceTypesScope'] = request.exclude_resource_types_scope
-        if not UtilClient.is_unset(request.region_ids_scope):
+        if not DaraCore.is_null(request.region_ids_scope):
             query['RegionIdsScope'] = request.region_ids_scope
-        if not UtilClient.is_unset(request.resource_group_ids_scope):
+        if not DaraCore.is_null(request.resource_group_ids_scope):
             query['ResourceGroupIdsScope'] = request.resource_group_ids_scope
-        if not UtilClient.is_unset(request.resource_ids_scope):
+        if not DaraCore.is_null(request.resource_ids_scope):
             query['ResourceIdsScope'] = request.resource_ids_scope
-        if not UtilClient.is_unset(request.resource_types_scope):
+        if not DaraCore.is_null(request.resource_types_scope):
             query['ResourceTypesScope'] = request.resource_types_scope
-        if not UtilClient.is_unset(request.rule_contents):
+        if not DaraCore.is_null(request.rule_contents):
             query['RuleContents'] = request.rule_contents
-        if not UtilClient.is_unset(request.rule_desc):
+        if not DaraCore.is_null(request.rule_desc):
             query['RuleDesc'] = request.rule_desc
-        if not UtilClient.is_unset(request.rule_name):
+        if not DaraCore.is_null(request.rule_name):
             query['RuleName'] = request.rule_name
-        if not UtilClient.is_unset(request.rule_type):
+        if not DaraCore.is_null(request.rule_type):
             query['RuleType'] = request.rule_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateAutoGroupingRule',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateAutoGroupingRule',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreateAutoGroupingRuleResponse(),
+        return DaraCore.from_map(
+            main_models.CreateAutoGroupingRuleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_auto_grouping_rule(
         self,
-        request: resource_manager_20200331_models.CreateAutoGroupingRuleRequest,
-    ) -> resource_manager_20200331_models.CreateAutoGroupingRuleResponse:
-        """
-        @summary Creates a transfer rule. Custom transfer rules and transfer rules for associated resources are supported.
-        
-        @description You can create up to 10 custom transfer rules. Each custom transfer rule can contain up to 10 content records.
-        
-        @param request: CreateAutoGroupingRuleRequest
-        @return: CreateAutoGroupingRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateAutoGroupingRuleRequest,
+    ) -> main_models.CreateAutoGroupingRuleResponse:
+        runtime = RuntimeOptions()
         return self.create_auto_grouping_rule_with_options(request, runtime)
 
     async def create_auto_grouping_rule_async(
         self,
-        request: resource_manager_20200331_models.CreateAutoGroupingRuleRequest,
-    ) -> resource_manager_20200331_models.CreateAutoGroupingRuleResponse:
-        """
-        @summary Creates a transfer rule. Custom transfer rules and transfer rules for associated resources are supported.
-        
-        @description You can create up to 10 custom transfer rules. Each custom transfer rule can contain up to 10 content records.
-        
-        @param request: CreateAutoGroupingRuleRequest
-        @return: CreateAutoGroupingRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateAutoGroupingRuleRequest,
+    ) -> main_models.CreateAutoGroupingRuleResponse:
+        runtime = RuntimeOptions()
         return await self.create_auto_grouping_rule_with_options_async(request, runtime)
 
     def create_cloud_account_with_options(
         self,
-        request: resource_manager_20200331_models.CreateCloudAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreateCloudAccountResponse:
-        """
-        @summary 创建云账号
-        
-        @description A resource directory supports two types of member accounts: resource accounts and cloud accounts.
-        Resource account (recommended): A resource account is only used as a resource container and fully depends on a resource directory. Such member accounts are secure and easy-to-create. For more information about how to create a resource account, see [CreateResourceAccount](https://help.aliyun.com/document_detail/159392.html).
-        >  A resource account can be upgraded to a cloud account. For more information, see [PromoteResourceAccount](https://help.aliyun.com/document_detail/159395.html) .
-        Cloud account: A cloud account has all the features of an Alibaba Cloud account, including root permissions.
-        
-        @param request: CreateCloudAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateCloudAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateCloudAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCloudAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.display_name):
+        if not DaraCore.is_null(request.display_name):
             query['DisplayName'] = request.display_name
-        if not UtilClient.is_unset(request.email):
+        if not DaraCore.is_null(request.email):
             query['Email'] = request.email
-        if not UtilClient.is_unset(request.parent_folder_id):
+        if not DaraCore.is_null(request.parent_folder_id):
             query['ParentFolderId'] = request.parent_folder_id
-        if not UtilClient.is_unset(request.payer_account_id):
+        if not DaraCore.is_null(request.payer_account_id):
             query['PayerAccountId'] = request.payer_account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateCloudAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateCloudAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreateCloudAccountResponse(),
+        return DaraCore.from_map(
+            main_models.CreateCloudAccountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_cloud_account_with_options_async(
         self,
-        request: resource_manager_20200331_models.CreateCloudAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreateCloudAccountResponse:
-        """
-        @summary 创建云账号
-        
-        @description A resource directory supports two types of member accounts: resource accounts and cloud accounts.
-        Resource account (recommended): A resource account is only used as a resource container and fully depends on a resource directory. Such member accounts are secure and easy-to-create. For more information about how to create a resource account, see [CreateResourceAccount](https://help.aliyun.com/document_detail/159392.html).
-        >  A resource account can be upgraded to a cloud account. For more information, see [PromoteResourceAccount](https://help.aliyun.com/document_detail/159395.html) .
-        Cloud account: A cloud account has all the features of an Alibaba Cloud account, including root permissions.
-        
-        @param request: CreateCloudAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateCloudAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateCloudAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateCloudAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.display_name):
+        if not DaraCore.is_null(request.display_name):
             query['DisplayName'] = request.display_name
-        if not UtilClient.is_unset(request.email):
+        if not DaraCore.is_null(request.email):
             query['Email'] = request.email
-        if not UtilClient.is_unset(request.parent_folder_id):
+        if not DaraCore.is_null(request.parent_folder_id):
             query['ParentFolderId'] = request.parent_folder_id
-        if not UtilClient.is_unset(request.payer_account_id):
+        if not DaraCore.is_null(request.payer_account_id):
             query['PayerAccountId'] = request.payer_account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateCloudAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateCloudAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreateCloudAccountResponse(),
+        return DaraCore.from_map(
+            main_models.CreateCloudAccountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_cloud_account(
         self,
-        request: resource_manager_20200331_models.CreateCloudAccountRequest,
-    ) -> resource_manager_20200331_models.CreateCloudAccountResponse:
-        """
-        @summary 创建云账号
-        
-        @description A resource directory supports two types of member accounts: resource accounts and cloud accounts.
-        Resource account (recommended): A resource account is only used as a resource container and fully depends on a resource directory. Such member accounts are secure and easy-to-create. For more information about how to create a resource account, see [CreateResourceAccount](https://help.aliyun.com/document_detail/159392.html).
-        >  A resource account can be upgraded to a cloud account. For more information, see [PromoteResourceAccount](https://help.aliyun.com/document_detail/159395.html) .
-        Cloud account: A cloud account has all the features of an Alibaba Cloud account, including root permissions.
-        
-        @param request: CreateCloudAccountRequest
-        @return: CreateCloudAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateCloudAccountRequest,
+    ) -> main_models.CreateCloudAccountResponse:
+        runtime = RuntimeOptions()
         return self.create_cloud_account_with_options(request, runtime)
 
     async def create_cloud_account_async(
         self,
-        request: resource_manager_20200331_models.CreateCloudAccountRequest,
-    ) -> resource_manager_20200331_models.CreateCloudAccountResponse:
-        """
-        @summary 创建云账号
-        
-        @description A resource directory supports two types of member accounts: resource accounts and cloud accounts.
-        Resource account (recommended): A resource account is only used as a resource container and fully depends on a resource directory. Such member accounts are secure and easy-to-create. For more information about how to create a resource account, see [CreateResourceAccount](https://help.aliyun.com/document_detail/159392.html).
-        >  A resource account can be upgraded to a cloud account. For more information, see [PromoteResourceAccount](https://help.aliyun.com/document_detail/159395.html) .
-        Cloud account: A cloud account has all the features of an Alibaba Cloud account, including root permissions.
-        
-        @param request: CreateCloudAccountRequest
-        @return: CreateCloudAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateCloudAccountRequest,
+    ) -> main_models.CreateCloudAccountResponse:
+        runtime = RuntimeOptions()
         return await self.create_cloud_account_with_options_async(request, runtime)
 
     def create_control_policy_with_options(
         self,
-        request: resource_manager_20200331_models.CreateControlPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreateControlPolicyResponse:
-        """
-        @description This topic provides an example on how to call the API operation to create a custom access control policy named `ExampleControlPolicy`. This access control policy is used to prohibit modifications to the ResourceDirectoryAccountAccessRole role and the permissions of the role.
-        
-        @param request: CreateControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateControlPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateControlPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateControlPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.effect_scope):
+        if not DaraCore.is_null(request.effect_scope):
             query['EffectScope'] = request.effect_scope
-        if not UtilClient.is_unset(request.policy_document):
+        if not DaraCore.is_null(request.policy_document):
             query['PolicyDocument'] = request.policy_document
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreateControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.CreateControlPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_control_policy_with_options_async(
         self,
-        request: resource_manager_20200331_models.CreateControlPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreateControlPolicyResponse:
-        """
-        @description This topic provides an example on how to call the API operation to create a custom access control policy named `ExampleControlPolicy`. This access control policy is used to prohibit modifications to the ResourceDirectoryAccountAccessRole role and the permissions of the role.
-        
-        @param request: CreateControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateControlPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateControlPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateControlPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.effect_scope):
+        if not DaraCore.is_null(request.effect_scope):
             query['EffectScope'] = request.effect_scope
-        if not UtilClient.is_unset(request.policy_document):
+        if not DaraCore.is_null(request.policy_document):
             query['PolicyDocument'] = request.policy_document
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreateControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.CreateControlPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_control_policy(
         self,
-        request: resource_manager_20200331_models.CreateControlPolicyRequest,
-    ) -> resource_manager_20200331_models.CreateControlPolicyResponse:
-        """
-        @description This topic provides an example on how to call the API operation to create a custom access control policy named `ExampleControlPolicy`. This access control policy is used to prohibit modifications to the ResourceDirectoryAccountAccessRole role and the permissions of the role.
-        
-        @param request: CreateControlPolicyRequest
-        @return: CreateControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateControlPolicyRequest,
+    ) -> main_models.CreateControlPolicyResponse:
+        runtime = RuntimeOptions()
         return self.create_control_policy_with_options(request, runtime)
 
     async def create_control_policy_async(
         self,
-        request: resource_manager_20200331_models.CreateControlPolicyRequest,
-    ) -> resource_manager_20200331_models.CreateControlPolicyResponse:
-        """
-        @description This topic provides an example on how to call the API operation to create a custom access control policy named `ExampleControlPolicy`. This access control policy is used to prohibit modifications to the ResourceDirectoryAccountAccessRole role and the permissions of the role.
-        
-        @param request: CreateControlPolicyRequest
-        @return: CreateControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateControlPolicyRequest,
+    ) -> main_models.CreateControlPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.create_control_policy_with_options_async(request, runtime)
 
     def create_folder_with_options(
         self,
-        request: resource_manager_20200331_models.CreateFolderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreateFolderResponse:
-        """
-        @description >  A maximum of five levels of folders can be created under the root folder.
-        In this example, a folder named `rdFolder` is created under the root folder.
-        
-        @param request: CreateFolderRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateFolderResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateFolderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateFolderResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.folder_name):
+        if not DaraCore.is_null(request.folder_name):
             query['FolderName'] = request.folder_name
-        if not UtilClient.is_unset(request.parent_folder_id):
+        if not DaraCore.is_null(request.parent_folder_id):
             query['ParentFolderId'] = request.parent_folder_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateFolder',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateFolder',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreateFolderResponse(),
+        return DaraCore.from_map(
+            main_models.CreateFolderResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_folder_with_options_async(
         self,
-        request: resource_manager_20200331_models.CreateFolderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreateFolderResponse:
-        """
-        @description >  A maximum of five levels of folders can be created under the root folder.
-        In this example, a folder named `rdFolder` is created under the root folder.
-        
-        @param request: CreateFolderRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateFolderResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateFolderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateFolderResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.folder_name):
+        if not DaraCore.is_null(request.folder_name):
             query['FolderName'] = request.folder_name
-        if not UtilClient.is_unset(request.parent_folder_id):
+        if not DaraCore.is_null(request.parent_folder_id):
             query['ParentFolderId'] = request.parent_folder_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateFolder',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateFolder',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreateFolderResponse(),
+        return DaraCore.from_map(
+            main_models.CreateFolderResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_folder(
         self,
-        request: resource_manager_20200331_models.CreateFolderRequest,
-    ) -> resource_manager_20200331_models.CreateFolderResponse:
-        """
-        @description >  A maximum of five levels of folders can be created under the root folder.
-        In this example, a folder named `rdFolder` is created under the root folder.
-        
-        @param request: CreateFolderRequest
-        @return: CreateFolderResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateFolderRequest,
+    ) -> main_models.CreateFolderResponse:
+        runtime = RuntimeOptions()
         return self.create_folder_with_options(request, runtime)
 
     async def create_folder_async(
         self,
-        request: resource_manager_20200331_models.CreateFolderRequest,
-    ) -> resource_manager_20200331_models.CreateFolderResponse:
-        """
-        @description >  A maximum of five levels of folders can be created under the root folder.
-        In this example, a folder named `rdFolder` is created under the root folder.
-        
-        @param request: CreateFolderRequest
-        @return: CreateFolderResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateFolderRequest,
+    ) -> main_models.CreateFolderResponse:
+        runtime = RuntimeOptions()
         return await self.create_folder_with_options_async(request, runtime)
 
     def create_policy_with_options(
         self,
-        request: resource_manager_20200331_models.CreatePolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreatePolicyResponse:
-        """
-        @summary Creates a permission policy.
-        
-        @param request: CreatePolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreatePolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreatePolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.policy_document):
+        if not DaraCore.is_null(request.policy_document):
             query['PolicyDocument'] = request.policy_document
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreatePolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreatePolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreatePolicyResponse(),
+        return DaraCore.from_map(
+            main_models.CreatePolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_policy_with_options_async(
         self,
-        request: resource_manager_20200331_models.CreatePolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreatePolicyResponse:
-        """
-        @summary Creates a permission policy.
-        
-        @param request: CreatePolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreatePolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreatePolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.policy_document):
+        if not DaraCore.is_null(request.policy_document):
             query['PolicyDocument'] = request.policy_document
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreatePolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreatePolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreatePolicyResponse(),
+        return DaraCore.from_map(
+            main_models.CreatePolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_policy(
         self,
-        request: resource_manager_20200331_models.CreatePolicyRequest,
-    ) -> resource_manager_20200331_models.CreatePolicyResponse:
-        """
-        @summary Creates a permission policy.
-        
-        @param request: CreatePolicyRequest
-        @return: CreatePolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreatePolicyRequest,
+    ) -> main_models.CreatePolicyResponse:
+        runtime = RuntimeOptions()
         return self.create_policy_with_options(request, runtime)
 
     async def create_policy_async(
         self,
-        request: resource_manager_20200331_models.CreatePolicyRequest,
-    ) -> resource_manager_20200331_models.CreatePolicyResponse:
-        """
-        @summary Creates a permission policy.
-        
-        @param request: CreatePolicyRequest
-        @return: CreatePolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreatePolicyRequest,
+    ) -> main_models.CreatePolicyResponse:
+        runtime = RuntimeOptions()
         return await self.create_policy_with_options_async(request, runtime)
 
     def create_policy_version_with_options(
         self,
-        request: resource_manager_20200331_models.CreatePolicyVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreatePolicyVersionResponse:
-        """
-        @summary Creates a version for a permission policy.
-        
-        @param request: CreatePolicyVersionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreatePolicyVersionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreatePolicyVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolicyVersionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_document):
+        if not DaraCore.is_null(request.policy_document):
             query['PolicyDocument'] = request.policy_document
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.set_as_default):
+        if not DaraCore.is_null(request.set_as_default):
             query['SetAsDefault'] = request.set_as_default
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreatePolicyVersion',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreatePolicyVersion',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreatePolicyVersionResponse(),
+        return DaraCore.from_map(
+            main_models.CreatePolicyVersionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_policy_version_with_options_async(
         self,
-        request: resource_manager_20200331_models.CreatePolicyVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreatePolicyVersionResponse:
-        """
-        @summary Creates a version for a permission policy.
-        
-        @param request: CreatePolicyVersionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreatePolicyVersionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreatePolicyVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreatePolicyVersionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_document):
+        if not DaraCore.is_null(request.policy_document):
             query['PolicyDocument'] = request.policy_document
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.set_as_default):
+        if not DaraCore.is_null(request.set_as_default):
             query['SetAsDefault'] = request.set_as_default
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreatePolicyVersion',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreatePolicyVersion',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreatePolicyVersionResponse(),
+        return DaraCore.from_map(
+            main_models.CreatePolicyVersionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_policy_version(
         self,
-        request: resource_manager_20200331_models.CreatePolicyVersionRequest,
-    ) -> resource_manager_20200331_models.CreatePolicyVersionResponse:
-        """
-        @summary Creates a version for a permission policy.
-        
-        @param request: CreatePolicyVersionRequest
-        @return: CreatePolicyVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreatePolicyVersionRequest,
+    ) -> main_models.CreatePolicyVersionResponse:
+        runtime = RuntimeOptions()
         return self.create_policy_version_with_options(request, runtime)
 
     async def create_policy_version_async(
         self,
-        request: resource_manager_20200331_models.CreatePolicyVersionRequest,
-    ) -> resource_manager_20200331_models.CreatePolicyVersionResponse:
-        """
-        @summary Creates a version for a permission policy.
-        
-        @param request: CreatePolicyVersionRequest
-        @return: CreatePolicyVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreatePolicyVersionRequest,
+    ) -> main_models.CreatePolicyVersionResponse:
+        runtime = RuntimeOptions()
         return await self.create_policy_version_with_options_async(request, runtime)
 
     def create_resource_account_with_options(
         self,
-        request: resource_manager_20200331_models.CreateResourceAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreateResourceAccountResponse:
-        """
-        @summary Creates a member of the resource account type.
-        
-        @description A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
-        
-        @param request: CreateResourceAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateResourceAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateResourceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateResourceAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_name_prefix):
+        if not DaraCore.is_null(request.account_name_prefix):
             query['AccountNamePrefix'] = request.account_name_prefix
-        if not UtilClient.is_unset(request.display_name):
+        if not DaraCore.is_null(request.display_name):
             query['DisplayName'] = request.display_name
-        if not UtilClient.is_unset(request.parent_folder_id):
+        if not DaraCore.is_null(request.parent_folder_id):
             query['ParentFolderId'] = request.parent_folder_id
-        if not UtilClient.is_unset(request.payer_account_id):
+        if not DaraCore.is_null(request.payer_account_id):
             query['PayerAccountId'] = request.payer_account_id
-        if not UtilClient.is_unset(request.resell_account_type):
+        if not DaraCore.is_null(request.resell_account_type):
             query['ResellAccountType'] = request.resell_account_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateResourceAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateResourceAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreateResourceAccountResponse(),
+        return DaraCore.from_map(
+            main_models.CreateResourceAccountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_resource_account_with_options_async(
         self,
-        request: resource_manager_20200331_models.CreateResourceAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreateResourceAccountResponse:
-        """
-        @summary Creates a member of the resource account type.
-        
-        @description A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
-        
-        @param request: CreateResourceAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateResourceAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateResourceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateResourceAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_name_prefix):
+        if not DaraCore.is_null(request.account_name_prefix):
             query['AccountNamePrefix'] = request.account_name_prefix
-        if not UtilClient.is_unset(request.display_name):
+        if not DaraCore.is_null(request.display_name):
             query['DisplayName'] = request.display_name
-        if not UtilClient.is_unset(request.parent_folder_id):
+        if not DaraCore.is_null(request.parent_folder_id):
             query['ParentFolderId'] = request.parent_folder_id
-        if not UtilClient.is_unset(request.payer_account_id):
+        if not DaraCore.is_null(request.payer_account_id):
             query['PayerAccountId'] = request.payer_account_id
-        if not UtilClient.is_unset(request.resell_account_type):
+        if not DaraCore.is_null(request.resell_account_type):
             query['ResellAccountType'] = request.resell_account_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateResourceAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateResourceAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreateResourceAccountResponse(),
+        return DaraCore.from_map(
+            main_models.CreateResourceAccountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_resource_account(
         self,
-        request: resource_manager_20200331_models.CreateResourceAccountRequest,
-    ) -> resource_manager_20200331_models.CreateResourceAccountResponse:
-        """
-        @summary Creates a member of the resource account type.
-        
-        @description A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
-        
-        @param request: CreateResourceAccountRequest
-        @return: CreateResourceAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateResourceAccountRequest,
+    ) -> main_models.CreateResourceAccountResponse:
+        runtime = RuntimeOptions()
         return self.create_resource_account_with_options(request, runtime)
 
     async def create_resource_account_async(
         self,
-        request: resource_manager_20200331_models.CreateResourceAccountRequest,
-    ) -> resource_manager_20200331_models.CreateResourceAccountResponse:
-        """
-        @summary Creates a member of the resource account type.
-        
-        @description A member serves as a container for resources and is also an organizational unit in a resource directory. A member indicates a project or application. The resources of different members are isolated.
-        
-        @param request: CreateResourceAccountRequest
-        @return: CreateResourceAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateResourceAccountRequest,
+    ) -> main_models.CreateResourceAccountResponse:
+        runtime = RuntimeOptions()
         return await self.create_resource_account_with_options_async(request, runtime)
 
     def create_resource_group_with_options(
         self,
-        request: resource_manager_20200331_models.CreateResourceGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreateResourceGroupResponse:
-        """
-        @summary Creates a resource group.
-        
-        @description > A maximum of 30 resource groups can be created within an Alibaba Cloud account.
-        
-        @param request: CreateResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateResourceGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.display_name):
+        if not DaraCore.is_null(request.display_name):
             query['DisplayName'] = request.display_name
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateResourceGroup',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateResourceGroup',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreateResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.CreateResourceGroupResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_resource_group_with_options_async(
         self,
-        request: resource_manager_20200331_models.CreateResourceGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreateResourceGroupResponse:
-        """
-        @summary Creates a resource group.
-        
-        @description > A maximum of 30 resource groups can be created within an Alibaba Cloud account.
-        
-        @param request: CreateResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateResourceGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.display_name):
+        if not DaraCore.is_null(request.display_name):
             query['DisplayName'] = request.display_name
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateResourceGroup',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateResourceGroup',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreateResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.CreateResourceGroupResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_resource_group(
         self,
-        request: resource_manager_20200331_models.CreateResourceGroupRequest,
-    ) -> resource_manager_20200331_models.CreateResourceGroupResponse:
-        """
-        @summary Creates a resource group.
-        
-        @description > A maximum of 30 resource groups can be created within an Alibaba Cloud account.
-        
-        @param request: CreateResourceGroupRequest
-        @return: CreateResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateResourceGroupRequest,
+    ) -> main_models.CreateResourceGroupResponse:
+        runtime = RuntimeOptions()
         return self.create_resource_group_with_options(request, runtime)
 
     async def create_resource_group_async(
         self,
-        request: resource_manager_20200331_models.CreateResourceGroupRequest,
-    ) -> resource_manager_20200331_models.CreateResourceGroupResponse:
-        """
-        @summary Creates a resource group.
-        
-        @description > A maximum of 30 resource groups can be created within an Alibaba Cloud account.
-        
-        @param request: CreateResourceGroupRequest
-        @return: CreateResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateResourceGroupRequest,
+    ) -> main_models.CreateResourceGroupResponse:
+        runtime = RuntimeOptions()
         return await self.create_resource_group_with_options_async(request, runtime)
 
     def create_role_with_options(
         self,
-        request: resource_manager_20200331_models.CreateRoleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreateRoleResponse:
-        """
-        @summary Creates a RAM role.
-        
-        @param request: CreateRoleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateRoleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRoleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.assume_role_policy_document):
+        if not DaraCore.is_null(request.assume_role_policy_document):
             query['AssumeRolePolicyDocument'] = request.assume_role_policy_document
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.max_session_duration):
+        if not DaraCore.is_null(request.max_session_duration):
             query['MaxSessionDuration'] = request.max_session_duration
-        if not UtilClient.is_unset(request.role_name):
+        if not DaraCore.is_null(request.role_name):
             query['RoleName'] = request.role_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateRole',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateRole',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreateRoleResponse(),
+        return DaraCore.from_map(
+            main_models.CreateRoleResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_role_with_options_async(
         self,
-        request: resource_manager_20200331_models.CreateRoleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreateRoleResponse:
-        """
-        @summary Creates a RAM role.
-        
-        @param request: CreateRoleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateRoleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateRoleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.assume_role_policy_document):
+        if not DaraCore.is_null(request.assume_role_policy_document):
             query['AssumeRolePolicyDocument'] = request.assume_role_policy_document
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.max_session_duration):
+        if not DaraCore.is_null(request.max_session_duration):
             query['MaxSessionDuration'] = request.max_session_duration
-        if not UtilClient.is_unset(request.role_name):
+        if not DaraCore.is_null(request.role_name):
             query['RoleName'] = request.role_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateRole',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateRole',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreateRoleResponse(),
+        return DaraCore.from_map(
+            main_models.CreateRoleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_role(
         self,
-        request: resource_manager_20200331_models.CreateRoleRequest,
-    ) -> resource_manager_20200331_models.CreateRoleResponse:
-        """
-        @summary Creates a RAM role.
-        
-        @param request: CreateRoleRequest
-        @return: CreateRoleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateRoleRequest,
+    ) -> main_models.CreateRoleResponse:
+        runtime = RuntimeOptions()
         return self.create_role_with_options(request, runtime)
 
     async def create_role_async(
         self,
-        request: resource_manager_20200331_models.CreateRoleRequest,
-    ) -> resource_manager_20200331_models.CreateRoleResponse:
-        """
-        @summary Creates a RAM role.
-        
-        @param request: CreateRoleRequest
-        @return: CreateRoleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateRoleRequest,
+    ) -> main_models.CreateRoleResponse:
+        runtime = RuntimeOptions()
         return await self.create_role_with_options_async(request, runtime)
 
     def create_service_linked_role_with_options(
         self,
-        request: resource_manager_20200331_models.CreateServiceLinkedRoleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreateServiceLinkedRoleResponse:
-        """
-        @summary Creates a service-linked role.
-        
-        @param request: CreateServiceLinkedRoleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateServiceLinkedRoleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateServiceLinkedRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServiceLinkedRoleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.custom_suffix):
+        if not DaraCore.is_null(request.custom_suffix):
             query['CustomSuffix'] = request.custom_suffix
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.service_name):
+        if not DaraCore.is_null(request.service_name):
             query['ServiceName'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateServiceLinkedRole',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateServiceLinkedRole',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreateServiceLinkedRoleResponse(),
+        return DaraCore.from_map(
+            main_models.CreateServiceLinkedRoleResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def create_service_linked_role_with_options_async(
         self,
-        request: resource_manager_20200331_models.CreateServiceLinkedRoleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.CreateServiceLinkedRoleResponse:
-        """
-        @summary Creates a service-linked role.
-        
-        @param request: CreateServiceLinkedRoleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: CreateServiceLinkedRoleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.CreateServiceLinkedRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateServiceLinkedRoleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.custom_suffix):
+        if not DaraCore.is_null(request.custom_suffix):
             query['CustomSuffix'] = request.custom_suffix
-        if not UtilClient.is_unset(request.description):
+        if not DaraCore.is_null(request.description):
             query['Description'] = request.description
-        if not UtilClient.is_unset(request.service_name):
+        if not DaraCore.is_null(request.service_name):
             query['ServiceName'] = request.service_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='CreateServiceLinkedRole',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'CreateServiceLinkedRole',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.CreateServiceLinkedRoleResponse(),
+        return DaraCore.from_map(
+            main_models.CreateServiceLinkedRoleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def create_service_linked_role(
         self,
-        request: resource_manager_20200331_models.CreateServiceLinkedRoleRequest,
-    ) -> resource_manager_20200331_models.CreateServiceLinkedRoleResponse:
-        """
-        @summary Creates a service-linked role.
-        
-        @param request: CreateServiceLinkedRoleRequest
-        @return: CreateServiceLinkedRoleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateServiceLinkedRoleRequest,
+    ) -> main_models.CreateServiceLinkedRoleResponse:
+        runtime = RuntimeOptions()
         return self.create_service_linked_role_with_options(request, runtime)
 
     async def create_service_linked_role_async(
         self,
-        request: resource_manager_20200331_models.CreateServiceLinkedRoleRequest,
-    ) -> resource_manager_20200331_models.CreateServiceLinkedRoleResponse:
-        """
-        @summary Creates a service-linked role.
-        
-        @param request: CreateServiceLinkedRoleRequest
-        @return: CreateServiceLinkedRoleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.CreateServiceLinkedRoleRequest,
+    ) -> main_models.CreateServiceLinkedRoleResponse:
+        runtime = RuntimeOptions()
         return await self.create_service_linked_role_with_options_async(request, runtime)
 
     def decline_handshake_with_options(
         self,
-        request: resource_manager_20200331_models.DeclineHandshakeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeclineHandshakeResponse:
-        """
-        @summary Rejects an invitation.
-        
-        @param request: DeclineHandshakeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeclineHandshakeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeclineHandshakeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeclineHandshakeResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.handshake_id):
+        if not DaraCore.is_null(request.handshake_id):
             query['HandshakeId'] = request.handshake_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeclineHandshake',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeclineHandshake',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeclineHandshakeResponse(),
+        return DaraCore.from_map(
+            main_models.DeclineHandshakeResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def decline_handshake_with_options_async(
         self,
-        request: resource_manager_20200331_models.DeclineHandshakeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeclineHandshakeResponse:
-        """
-        @summary Rejects an invitation.
-        
-        @param request: DeclineHandshakeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeclineHandshakeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeclineHandshakeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeclineHandshakeResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.handshake_id):
+        if not DaraCore.is_null(request.handshake_id):
             query['HandshakeId'] = request.handshake_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeclineHandshake',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeclineHandshake',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeclineHandshakeResponse(),
+        return DaraCore.from_map(
+            main_models.DeclineHandshakeResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def decline_handshake(
         self,
-        request: resource_manager_20200331_models.DeclineHandshakeRequest,
-    ) -> resource_manager_20200331_models.DeclineHandshakeResponse:
-        """
-        @summary Rejects an invitation.
-        
-        @param request: DeclineHandshakeRequest
-        @return: DeclineHandshakeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeclineHandshakeRequest,
+    ) -> main_models.DeclineHandshakeResponse:
+        runtime = RuntimeOptions()
         return self.decline_handshake_with_options(request, runtime)
 
     async def decline_handshake_async(
         self,
-        request: resource_manager_20200331_models.DeclineHandshakeRequest,
-    ) -> resource_manager_20200331_models.DeclineHandshakeResponse:
-        """
-        @summary Rejects an invitation.
-        
-        @param request: DeclineHandshakeRequest
-        @return: DeclineHandshakeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeclineHandshakeRequest,
+    ) -> main_models.DeclineHandshakeResponse:
+        runtime = RuntimeOptions()
         return await self.decline_handshake_with_options_async(request, runtime)
 
     def delete_account_with_options(
         self,
-        tmp_req: resource_manager_20200331_models.DeleteAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeleteAccountResponse:
-        """
-        @summary 账号一键删除
-        
-        @description The ID of the member that you want to delete.
-        
-        @param tmp_req: DeleteAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAccountResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = resource_manager_20200331_models.DeleteAccountShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.abandonable_check_id):
-            request.abandonable_check_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.abandonable_check_id, 'AbandonableCheckId', 'json')
+        tmp_req: main_models.DeleteAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAccountResponse:
+        tmp_req.validate()
+        request = main_models.DeleteAccountShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.abandonable_check_id):
+            request.abandonable_check_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.abandonable_check_id, 'AbandonableCheckId', 'json')
         query = {}
-        if not UtilClient.is_unset(request.abandonable_check_id_shrink):
+        if not DaraCore.is_null(request.abandonable_check_id_shrink):
             query['AbandonableCheckId'] = request.abandonable_check_id_shrink
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeleteAccountResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteAccountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_account_with_options_async(
         self,
-        tmp_req: resource_manager_20200331_models.DeleteAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeleteAccountResponse:
-        """
-        @summary 账号一键删除
-        
-        @description The ID of the member that you want to delete.
-        
-        @param tmp_req: DeleteAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAccountResponse
-        """
-        UtilClient.validate_model(tmp_req)
-        request = resource_manager_20200331_models.DeleteAccountShrinkRequest()
-        OpenApiUtilClient.convert(tmp_req, request)
-        if not UtilClient.is_unset(tmp_req.abandonable_check_id):
-            request.abandonable_check_id_shrink = OpenApiUtilClient.array_to_string_with_specified_style(tmp_req.abandonable_check_id, 'AbandonableCheckId', 'json')
+        tmp_req: main_models.DeleteAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAccountResponse:
+        tmp_req.validate()
+        request = main_models.DeleteAccountShrinkRequest()
+        Utils.convert(tmp_req, request)
+        if not DaraCore.is_null(tmp_req.abandonable_check_id):
+            request.abandonable_check_id_shrink = Utils.array_to_string_with_specified_style(tmp_req.abandonable_check_id, 'AbandonableCheckId', 'json')
         query = {}
-        if not UtilClient.is_unset(request.abandonable_check_id_shrink):
+        if not DaraCore.is_null(request.abandonable_check_id_shrink):
             query['AbandonableCheckId'] = request.abandonable_check_id_shrink
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeleteAccountResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteAccountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_account(
         self,
-        request: resource_manager_20200331_models.DeleteAccountRequest,
-    ) -> resource_manager_20200331_models.DeleteAccountResponse:
-        """
-        @summary 账号一键删除
-        
-        @description The ID of the member that you want to delete.
-        
-        @param request: DeleteAccountRequest
-        @return: DeleteAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteAccountRequest,
+    ) -> main_models.DeleteAccountResponse:
+        runtime = RuntimeOptions()
         return self.delete_account_with_options(request, runtime)
 
     async def delete_account_async(
         self,
-        request: resource_manager_20200331_models.DeleteAccountRequest,
-    ) -> resource_manager_20200331_models.DeleteAccountResponse:
-        """
-        @summary 账号一键删除
-        
-        @description The ID of the member that you want to delete.
-        
-        @param request: DeleteAccountRequest
-        @return: DeleteAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteAccountRequest,
+    ) -> main_models.DeleteAccountResponse:
+        runtime = RuntimeOptions()
         return await self.delete_account_with_options_async(request, runtime)
 
     def delete_auto_grouping_rule_with_options(
         self,
-        request: resource_manager_20200331_models.DeleteAutoGroupingRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeleteAutoGroupingRuleResponse:
-        """
-        @summary Deletes a transfer rule.
-        
-        @param request: DeleteAutoGroupingRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAutoGroupingRuleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteAutoGroupingRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAutoGroupingRuleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteAutoGroupingRule',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteAutoGroupingRule',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeleteAutoGroupingRuleResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteAutoGroupingRuleResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_auto_grouping_rule_with_options_async(
         self,
-        request: resource_manager_20200331_models.DeleteAutoGroupingRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeleteAutoGroupingRuleResponse:
-        """
-        @summary Deletes a transfer rule.
-        
-        @param request: DeleteAutoGroupingRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteAutoGroupingRuleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteAutoGroupingRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteAutoGroupingRuleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteAutoGroupingRule',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteAutoGroupingRule',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeleteAutoGroupingRuleResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteAutoGroupingRuleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_auto_grouping_rule(
         self,
-        request: resource_manager_20200331_models.DeleteAutoGroupingRuleRequest,
-    ) -> resource_manager_20200331_models.DeleteAutoGroupingRuleResponse:
-        """
-        @summary Deletes a transfer rule.
-        
-        @param request: DeleteAutoGroupingRuleRequest
-        @return: DeleteAutoGroupingRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteAutoGroupingRuleRequest,
+    ) -> main_models.DeleteAutoGroupingRuleResponse:
+        runtime = RuntimeOptions()
         return self.delete_auto_grouping_rule_with_options(request, runtime)
 
     async def delete_auto_grouping_rule_async(
         self,
-        request: resource_manager_20200331_models.DeleteAutoGroupingRuleRequest,
-    ) -> resource_manager_20200331_models.DeleteAutoGroupingRuleResponse:
-        """
-        @summary Deletes a transfer rule.
-        
-        @param request: DeleteAutoGroupingRuleRequest
-        @return: DeleteAutoGroupingRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteAutoGroupingRuleRequest,
+    ) -> main_models.DeleteAutoGroupingRuleResponse:
+        runtime = RuntimeOptions()
         return await self.delete_auto_grouping_rule_with_options_async(request, runtime)
 
     def delete_control_policy_with_options(
         self,
-        request: resource_manager_20200331_models.DeleteControlPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeleteControlPolicyResponse:
-        """
-        @summary 删除管控策略
-        
-        @description If you want to delete a custom control policy that is attached to folders or member accounts, you must call the [DetachControlPolicy](https://help.aliyun.com/document_detail/208331.html) operation to detach the policy before you delete it.
-        In this example, the custom control policy `cp-SImPt8GCEwiq***` is deleted.
-        
-        @param request: DeleteControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteControlPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteControlPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteControlPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_id):
+        if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeleteControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteControlPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_control_policy_with_options_async(
         self,
-        request: resource_manager_20200331_models.DeleteControlPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeleteControlPolicyResponse:
-        """
-        @summary 删除管控策略
-        
-        @description If you want to delete a custom control policy that is attached to folders or member accounts, you must call the [DetachControlPolicy](https://help.aliyun.com/document_detail/208331.html) operation to detach the policy before you delete it.
-        In this example, the custom control policy `cp-SImPt8GCEwiq***` is deleted.
-        
-        @param request: DeleteControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteControlPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteControlPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteControlPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_id):
+        if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeleteControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteControlPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_control_policy(
         self,
-        request: resource_manager_20200331_models.DeleteControlPolicyRequest,
-    ) -> resource_manager_20200331_models.DeleteControlPolicyResponse:
-        """
-        @summary 删除管控策略
-        
-        @description If you want to delete a custom control policy that is attached to folders or member accounts, you must call the [DetachControlPolicy](https://help.aliyun.com/document_detail/208331.html) operation to detach the policy before you delete it.
-        In this example, the custom control policy `cp-SImPt8GCEwiq***` is deleted.
-        
-        @param request: DeleteControlPolicyRequest
-        @return: DeleteControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteControlPolicyRequest,
+    ) -> main_models.DeleteControlPolicyResponse:
+        runtime = RuntimeOptions()
         return self.delete_control_policy_with_options(request, runtime)
 
     async def delete_control_policy_async(
         self,
-        request: resource_manager_20200331_models.DeleteControlPolicyRequest,
-    ) -> resource_manager_20200331_models.DeleteControlPolicyResponse:
-        """
-        @summary 删除管控策略
-        
-        @description If you want to delete a custom control policy that is attached to folders or member accounts, you must call the [DetachControlPolicy](https://help.aliyun.com/document_detail/208331.html) operation to detach the policy before you delete it.
-        In this example, the custom control policy `cp-SImPt8GCEwiq***` is deleted.
-        
-        @param request: DeleteControlPolicyRequest
-        @return: DeleteControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteControlPolicyRequest,
+    ) -> main_models.DeleteControlPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.delete_control_policy_with_options_async(request, runtime)
 
     def delete_folder_with_options(
         self,
-        request: resource_manager_20200331_models.DeleteFolderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeleteFolderResponse:
-        """
-        @description >  Before you delete a folder, make sure that the folder does not contain any member accounts or child folders.
-        
-        @param request: DeleteFolderRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteFolderResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteFolderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFolderResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.folder_id):
+        if not DaraCore.is_null(request.folder_id):
             query['FolderId'] = request.folder_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteFolder',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteFolder',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeleteFolderResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteFolderResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_folder_with_options_async(
         self,
-        request: resource_manager_20200331_models.DeleteFolderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeleteFolderResponse:
-        """
-        @description >  Before you delete a folder, make sure that the folder does not contain any member accounts or child folders.
-        
-        @param request: DeleteFolderRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteFolderResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteFolderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteFolderResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.folder_id):
+        if not DaraCore.is_null(request.folder_id):
             query['FolderId'] = request.folder_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteFolder',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteFolder',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeleteFolderResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteFolderResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_folder(
         self,
-        request: resource_manager_20200331_models.DeleteFolderRequest,
-    ) -> resource_manager_20200331_models.DeleteFolderResponse:
-        """
-        @description >  Before you delete a folder, make sure that the folder does not contain any member accounts or child folders.
-        
-        @param request: DeleteFolderRequest
-        @return: DeleteFolderResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteFolderRequest,
+    ) -> main_models.DeleteFolderResponse:
+        runtime = RuntimeOptions()
         return self.delete_folder_with_options(request, runtime)
 
     async def delete_folder_async(
         self,
-        request: resource_manager_20200331_models.DeleteFolderRequest,
-    ) -> resource_manager_20200331_models.DeleteFolderResponse:
-        """
-        @description >  Before you delete a folder, make sure that the folder does not contain any member accounts or child folders.
-        
-        @param request: DeleteFolderRequest
-        @return: DeleteFolderResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteFolderRequest,
+    ) -> main_models.DeleteFolderResponse:
+        runtime = RuntimeOptions()
         return await self.delete_folder_with_options_async(request, runtime)
 
     def delete_policy_with_options(
         self,
-        request: resource_manager_20200331_models.DeletePolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeletePolicyResponse:
-        """
-        @summary Deletes a permission policy.
-        
-        @description >
-        Before you delete a permission policy, you must delete its all non-default versions. For information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
-        Before you delete a permission policy, you must make sure that the policy is not attached to a RAM user, a RAM user group, or a RAM role. For information about how to detach a policy, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
-        
-        @param request: DeletePolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeletePolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeletePolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeletePolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeletePolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeletePolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DeletePolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_policy_with_options_async(
         self,
-        request: resource_manager_20200331_models.DeletePolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeletePolicyResponse:
-        """
-        @summary Deletes a permission policy.
-        
-        @description >
-        Before you delete a permission policy, you must delete its all non-default versions. For information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
-        Before you delete a permission policy, you must make sure that the policy is not attached to a RAM user, a RAM user group, or a RAM role. For information about how to detach a policy, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
-        
-        @param request: DeletePolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeletePolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeletePolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeletePolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeletePolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeletePolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DeletePolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_policy(
         self,
-        request: resource_manager_20200331_models.DeletePolicyRequest,
-    ) -> resource_manager_20200331_models.DeletePolicyResponse:
-        """
-        @summary Deletes a permission policy.
-        
-        @description >
-        Before you delete a permission policy, you must delete its all non-default versions. For information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
-        Before you delete a permission policy, you must make sure that the policy is not attached to a RAM user, a RAM user group, or a RAM role. For information about how to detach a policy, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
-        
-        @param request: DeletePolicyRequest
-        @return: DeletePolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeletePolicyRequest,
+    ) -> main_models.DeletePolicyResponse:
+        runtime = RuntimeOptions()
         return self.delete_policy_with_options(request, runtime)
 
     async def delete_policy_async(
         self,
-        request: resource_manager_20200331_models.DeletePolicyRequest,
-    ) -> resource_manager_20200331_models.DeletePolicyResponse:
-        """
-        @summary Deletes a permission policy.
-        
-        @description >
-        Before you delete a permission policy, you must delete its all non-default versions. For information about how to delete a policy version, see [DeletePolicyVersion](https://help.aliyun.com/document_detail/159041.html).
-        Before you delete a permission policy, you must make sure that the policy is not attached to a RAM user, a RAM user group, or a RAM role. For information about how to detach a policy, see [DetachPolicy](https://help.aliyun.com/document_detail/159168.html).
-        
-        @param request: DeletePolicyRequest
-        @return: DeletePolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeletePolicyRequest,
+    ) -> main_models.DeletePolicyResponse:
+        runtime = RuntimeOptions()
         return await self.delete_policy_with_options_async(request, runtime)
 
     def delete_policy_version_with_options(
         self,
-        request: resource_manager_20200331_models.DeletePolicyVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeletePolicyVersionResponse:
-        """
-        @summary Deletes a version of a permission policy.
-        
-        @description >  The default version of a policy cannot be deleted.
-        
-        @param request: DeletePolicyVersionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeletePolicyVersionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeletePolicyVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolicyVersionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.version_id):
+        if not DaraCore.is_null(request.version_id):
             query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeletePolicyVersion',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeletePolicyVersion',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeletePolicyVersionResponse(),
+        return DaraCore.from_map(
+            main_models.DeletePolicyVersionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_policy_version_with_options_async(
         self,
-        request: resource_manager_20200331_models.DeletePolicyVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeletePolicyVersionResponse:
-        """
-        @summary Deletes a version of a permission policy.
-        
-        @description >  The default version of a policy cannot be deleted.
-        
-        @param request: DeletePolicyVersionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeletePolicyVersionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeletePolicyVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeletePolicyVersionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.version_id):
+        if not DaraCore.is_null(request.version_id):
             query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeletePolicyVersion',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeletePolicyVersion',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeletePolicyVersionResponse(),
+        return DaraCore.from_map(
+            main_models.DeletePolicyVersionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_policy_version(
         self,
-        request: resource_manager_20200331_models.DeletePolicyVersionRequest,
-    ) -> resource_manager_20200331_models.DeletePolicyVersionResponse:
-        """
-        @summary Deletes a version of a permission policy.
-        
-        @description >  The default version of a policy cannot be deleted.
-        
-        @param request: DeletePolicyVersionRequest
-        @return: DeletePolicyVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeletePolicyVersionRequest,
+    ) -> main_models.DeletePolicyVersionResponse:
+        runtime = RuntimeOptions()
         return self.delete_policy_version_with_options(request, runtime)
 
     async def delete_policy_version_async(
         self,
-        request: resource_manager_20200331_models.DeletePolicyVersionRequest,
-    ) -> resource_manager_20200331_models.DeletePolicyVersionResponse:
-        """
-        @summary Deletes a version of a permission policy.
-        
-        @description >  The default version of a policy cannot be deleted.
-        
-        @param request: DeletePolicyVersionRequest
-        @return: DeletePolicyVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeletePolicyVersionRequest,
+    ) -> main_models.DeletePolicyVersionResponse:
+        runtime = RuntimeOptions()
         return await self.delete_policy_version_with_options_async(request, runtime)
 
     def delete_resource_group_with_options(
         self,
-        request: resource_manager_20200331_models.DeleteResourceGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeleteResourceGroupResponse:
-        """
-        @summary Deletes a resource group.
-        
-        @description >  Before you delete a resource group, you must delete all the resources in it.
-        In this example, the resource group whose ID is `rg-9gLOoK***` is deleted.
-        
-        @param request: DeleteResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteResourceGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteResourceGroup',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteResourceGroup',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeleteResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteResourceGroupResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_resource_group_with_options_async(
         self,
-        request: resource_manager_20200331_models.DeleteResourceGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeleteResourceGroupResponse:
-        """
-        @summary Deletes a resource group.
-        
-        @description >  Before you delete a resource group, you must delete all the resources in it.
-        In this example, the resource group whose ID is `rg-9gLOoK***` is deleted.
-        
-        @param request: DeleteResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteResourceGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteResourceGroup',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteResourceGroup',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeleteResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteResourceGroupResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_resource_group(
         self,
-        request: resource_manager_20200331_models.DeleteResourceGroupRequest,
-    ) -> resource_manager_20200331_models.DeleteResourceGroupResponse:
-        """
-        @summary Deletes a resource group.
-        
-        @description >  Before you delete a resource group, you must delete all the resources in it.
-        In this example, the resource group whose ID is `rg-9gLOoK***` is deleted.
-        
-        @param request: DeleteResourceGroupRequest
-        @return: DeleteResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteResourceGroupRequest,
+    ) -> main_models.DeleteResourceGroupResponse:
+        runtime = RuntimeOptions()
         return self.delete_resource_group_with_options(request, runtime)
 
     async def delete_resource_group_async(
         self,
-        request: resource_manager_20200331_models.DeleteResourceGroupRequest,
-    ) -> resource_manager_20200331_models.DeleteResourceGroupResponse:
-        """
-        @summary Deletes a resource group.
-        
-        @description >  Before you delete a resource group, you must delete all the resources in it.
-        In this example, the resource group whose ID is `rg-9gLOoK***` is deleted.
-        
-        @param request: DeleteResourceGroupRequest
-        @return: DeleteResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteResourceGroupRequest,
+    ) -> main_models.DeleteResourceGroupResponse:
+        runtime = RuntimeOptions()
         return await self.delete_resource_group_with_options_async(request, runtime)
 
     def delete_role_with_options(
         self,
-        request: resource_manager_20200331_models.DeleteRoleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeleteRoleResponse:
-        """
-        @summary Deletes a RAM role.
-        
-        @param request: DeleteRoleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteRoleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRoleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.role_name):
+        if not DaraCore.is_null(request.role_name):
             query['RoleName'] = request.role_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteRole',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteRole',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeleteRoleResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteRoleResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_role_with_options_async(
         self,
-        request: resource_manager_20200331_models.DeleteRoleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeleteRoleResponse:
-        """
-        @summary Deletes a RAM role.
-        
-        @param request: DeleteRoleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteRoleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteRoleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.role_name):
+        if not DaraCore.is_null(request.role_name):
             query['RoleName'] = request.role_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteRole',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteRole',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeleteRoleResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteRoleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_role(
         self,
-        request: resource_manager_20200331_models.DeleteRoleRequest,
-    ) -> resource_manager_20200331_models.DeleteRoleResponse:
-        """
-        @summary Deletes a RAM role.
-        
-        @param request: DeleteRoleRequest
-        @return: DeleteRoleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteRoleRequest,
+    ) -> main_models.DeleteRoleResponse:
+        runtime = RuntimeOptions()
         return self.delete_role_with_options(request, runtime)
 
     async def delete_role_async(
         self,
-        request: resource_manager_20200331_models.DeleteRoleRequest,
-    ) -> resource_manager_20200331_models.DeleteRoleResponse:
-        """
-        @summary Deletes a RAM role.
-        
-        @param request: DeleteRoleRequest
-        @return: DeleteRoleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteRoleRequest,
+    ) -> main_models.DeleteRoleResponse:
+        runtime = RuntimeOptions()
         return await self.delete_role_with_options_async(request, runtime)
 
     def delete_service_linked_role_with_options(
         self,
-        request: resource_manager_20200331_models.DeleteServiceLinkedRoleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeleteServiceLinkedRoleResponse:
-        """
-        @summary Deletes a service-linked role.
-        
-        @param request: DeleteServiceLinkedRoleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteServiceLinkedRoleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteServiceLinkedRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteServiceLinkedRoleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.role_name):
+        if not DaraCore.is_null(request.role_name):
             query['RoleName'] = request.role_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteServiceLinkedRole',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteServiceLinkedRole',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeleteServiceLinkedRoleResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteServiceLinkedRoleResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def delete_service_linked_role_with_options_async(
         self,
-        request: resource_manager_20200331_models.DeleteServiceLinkedRoleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeleteServiceLinkedRoleResponse:
-        """
-        @summary Deletes a service-linked role.
-        
-        @param request: DeleteServiceLinkedRoleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeleteServiceLinkedRoleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeleteServiceLinkedRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteServiceLinkedRoleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.role_name):
+        if not DaraCore.is_null(request.role_name):
             query['RoleName'] = request.role_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeleteServiceLinkedRole',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeleteServiceLinkedRole',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeleteServiceLinkedRoleResponse(),
+        return DaraCore.from_map(
+            main_models.DeleteServiceLinkedRoleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def delete_service_linked_role(
         self,
-        request: resource_manager_20200331_models.DeleteServiceLinkedRoleRequest,
-    ) -> resource_manager_20200331_models.DeleteServiceLinkedRoleResponse:
-        """
-        @summary Deletes a service-linked role.
-        
-        @param request: DeleteServiceLinkedRoleRequest
-        @return: DeleteServiceLinkedRoleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteServiceLinkedRoleRequest,
+    ) -> main_models.DeleteServiceLinkedRoleResponse:
+        runtime = RuntimeOptions()
         return self.delete_service_linked_role_with_options(request, runtime)
 
     async def delete_service_linked_role_async(
         self,
-        request: resource_manager_20200331_models.DeleteServiceLinkedRoleRequest,
-    ) -> resource_manager_20200331_models.DeleteServiceLinkedRoleResponse:
-        """
-        @summary Deletes a service-linked role.
-        
-        @param request: DeleteServiceLinkedRoleRequest
-        @return: DeleteServiceLinkedRoleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeleteServiceLinkedRoleRequest,
+    ) -> main_models.DeleteServiceLinkedRoleResponse:
+        runtime = RuntimeOptions()
         return await self.delete_service_linked_role_with_options_async(request, runtime)
 
     def deregister_delegated_administrator_with_options(
         self,
-        request: resource_manager_20200331_models.DeregisterDelegatedAdministratorRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeregisterDelegatedAdministratorResponse:
-        """
-        @summary 注销代理管理员
-        
-        @description >  If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
-        This topic provides an example on how to call the API operation to remove the delegated administrator account `181761095690***` for Cloud Firewall.
-        
-        @param request: DeregisterDelegatedAdministratorRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeregisterDelegatedAdministratorResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeregisterDelegatedAdministratorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeregisterDelegatedAdministratorResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.service_principal):
+        if not DaraCore.is_null(request.service_principal):
             query['ServicePrincipal'] = request.service_principal
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeregisterDelegatedAdministrator',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeregisterDelegatedAdministrator',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeregisterDelegatedAdministratorResponse(),
+        return DaraCore.from_map(
+            main_models.DeregisterDelegatedAdministratorResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def deregister_delegated_administrator_with_options_async(
         self,
-        request: resource_manager_20200331_models.DeregisterDelegatedAdministratorRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DeregisterDelegatedAdministratorResponse:
-        """
-        @summary 注销代理管理员
-        
-        @description >  If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
-        This topic provides an example on how to call the API operation to remove the delegated administrator account `181761095690***` for Cloud Firewall.
-        
-        @param request: DeregisterDelegatedAdministratorRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DeregisterDelegatedAdministratorResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DeregisterDelegatedAdministratorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeregisterDelegatedAdministratorResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.service_principal):
+        if not DaraCore.is_null(request.service_principal):
             query['ServicePrincipal'] = request.service_principal
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DeregisterDelegatedAdministrator',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DeregisterDelegatedAdministrator',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DeregisterDelegatedAdministratorResponse(),
+        return DaraCore.from_map(
+            main_models.DeregisterDelegatedAdministratorResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def deregister_delegated_administrator(
         self,
-        request: resource_manager_20200331_models.DeregisterDelegatedAdministratorRequest,
-    ) -> resource_manager_20200331_models.DeregisterDelegatedAdministratorResponse:
-        """
-        @summary 注销代理管理员
-        
-        @description >  If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
-        This topic provides an example on how to call the API operation to remove the delegated administrator account `181761095690***` for Cloud Firewall.
-        
-        @param request: DeregisterDelegatedAdministratorRequest
-        @return: DeregisterDelegatedAdministratorResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeregisterDelegatedAdministratorRequest,
+    ) -> main_models.DeregisterDelegatedAdministratorResponse:
+        runtime = RuntimeOptions()
         return self.deregister_delegated_administrator_with_options(request, runtime)
 
     async def deregister_delegated_administrator_async(
         self,
-        request: resource_manager_20200331_models.DeregisterDelegatedAdministratorRequest,
-    ) -> resource_manager_20200331_models.DeregisterDelegatedAdministratorResponse:
-        """
-        @summary 注销代理管理员
-        
-        @description >  If the delegated administrator account that you want to remove has historical management tasks in the related trusted service, the trusted service may be affected after the delegated administrator account is removed. Therefore, proceed with caution.
-        This topic provides an example on how to call the API operation to remove the delegated administrator account `181761095690***` for Cloud Firewall.
-        
-        @param request: DeregisterDelegatedAdministratorRequest
-        @return: DeregisterDelegatedAdministratorResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DeregisterDelegatedAdministratorRequest,
+    ) -> main_models.DeregisterDelegatedAdministratorResponse:
+        runtime = RuntimeOptions()
         return await self.deregister_delegated_administrator_with_options_async(request, runtime)
 
     def destroy_resource_directory_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DestroyResourceDirectoryResponse:
-        """
-        @description Before you disable a resource directory, make sure that the following requirements are met:
-        All member accounts must be removed from the resource directory. For more information about how to remove a member account, see [RemoveCloudAccount](https://help.aliyun.com/document_detail/159431.html).
-        All folders except the root folder must be deleted from the resource directory. For more information about how to delete a folder, see [DeleteFolder](https://help.aliyun.com/document_detail/159432.html).
-        
-        @param request: DestroyResourceDirectoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DestroyResourceDirectoryResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DestroyResourceDirectory',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DestroyResourceDirectoryResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DestroyResourceDirectory',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DestroyResourceDirectoryResponse(),
+        return DaraCore.from_map(
+            main_models.DestroyResourceDirectoryResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def destroy_resource_directory_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DestroyResourceDirectoryResponse:
-        """
-        @description Before you disable a resource directory, make sure that the following requirements are met:
-        All member accounts must be removed from the resource directory. For more information about how to remove a member account, see [RemoveCloudAccount](https://help.aliyun.com/document_detail/159431.html).
-        All folders except the root folder must be deleted from the resource directory. For more information about how to delete a folder, see [DeleteFolder](https://help.aliyun.com/document_detail/159432.html).
-        
-        @param request: DestroyResourceDirectoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DestroyResourceDirectoryResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DestroyResourceDirectory',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DestroyResourceDirectoryResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DestroyResourceDirectory',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DestroyResourceDirectoryResponse(),
+        return DaraCore.from_map(
+            main_models.DestroyResourceDirectoryResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def destroy_resource_directory(self) -> resource_manager_20200331_models.DestroyResourceDirectoryResponse:
-        """
-        @description Before you disable a resource directory, make sure that the following requirements are met:
-        All member accounts must be removed from the resource directory. For more information about how to remove a member account, see [RemoveCloudAccount](https://help.aliyun.com/document_detail/159431.html).
-        All folders except the root folder must be deleted from the resource directory. For more information about how to delete a folder, see [DeleteFolder](https://help.aliyun.com/document_detail/159432.html).
-        
-        @return: DestroyResourceDirectoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def destroy_resource_directory(self) -> main_models.DestroyResourceDirectoryResponse:
+        runtime = RuntimeOptions()
         return self.destroy_resource_directory_with_options(runtime)
 
-    async def destroy_resource_directory_async(self) -> resource_manager_20200331_models.DestroyResourceDirectoryResponse:
-        """
-        @description Before you disable a resource directory, make sure that the following requirements are met:
-        All member accounts must be removed from the resource directory. For more information about how to remove a member account, see [RemoveCloudAccount](https://help.aliyun.com/document_detail/159431.html).
-        All folders except the root folder must be deleted from the resource directory. For more information about how to delete a folder, see [DeleteFolder](https://help.aliyun.com/document_detail/159432.html).
-        
-        @return: DestroyResourceDirectoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def destroy_resource_directory_async(self) -> main_models.DestroyResourceDirectoryResponse:
+        runtime = RuntimeOptions()
         return await self.destroy_resource_directory_with_options_async(runtime)
 
     def detach_control_policy_with_options(
         self,
-        request: resource_manager_20200331_models.DetachControlPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DetachControlPolicyResponse:
-        """
-        @summary 解绑管控策略
-        
-        @description After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
-        Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
-        This topic provides an example on how to call the API operation to detach the custom control policy `cp-jExXAqIYkwHN***` from the folder `fd-ZDNPiT****`.
-        
-        @param request: DetachControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetachControlPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DetachControlPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachControlPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_id):
+        if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
-        if not UtilClient.is_unset(request.target_id):
+        if not DaraCore.is_null(request.target_id):
             query['TargetId'] = request.target_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DetachControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DetachControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DetachControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DetachControlPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def detach_control_policy_with_options_async(
         self,
-        request: resource_manager_20200331_models.DetachControlPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DetachControlPolicyResponse:
-        """
-        @summary 解绑管控策略
-        
-        @description After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
-        Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
-        This topic provides an example on how to call the API operation to detach the custom control policy `cp-jExXAqIYkwHN***` from the folder `fd-ZDNPiT****`.
-        
-        @param request: DetachControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetachControlPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DetachControlPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachControlPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_id):
+        if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
-        if not UtilClient.is_unset(request.target_id):
+        if not DaraCore.is_null(request.target_id):
             query['TargetId'] = request.target_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DetachControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DetachControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DetachControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DetachControlPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def detach_control_policy(
         self,
-        request: resource_manager_20200331_models.DetachControlPolicyRequest,
-    ) -> resource_manager_20200331_models.DetachControlPolicyResponse:
-        """
-        @summary 解绑管控策略
-        
-        @description After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
-        Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
-        This topic provides an example on how to call the API operation to detach the custom control policy `cp-jExXAqIYkwHN***` from the folder `fd-ZDNPiT****`.
-        
-        @param request: DetachControlPolicyRequest
-        @return: DetachControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DetachControlPolicyRequest,
+    ) -> main_models.DetachControlPolicyResponse:
+        runtime = RuntimeOptions()
         return self.detach_control_policy_with_options(request, runtime)
 
     async def detach_control_policy_async(
         self,
-        request: resource_manager_20200331_models.DetachControlPolicyRequest,
-    ) -> resource_manager_20200331_models.DetachControlPolicyResponse:
-        """
-        @summary 解绑管控策略
-        
-        @description After you detach an access control policy, the operations performed on resources by using members are not limited by the policy. Make sure that the detached policy meets your expectations. Otherwise, your business may be affected.
-        Both the system and custom access control policies can be detached. If an object has only one access control policy attached, the policy cannot be detached.
-        This topic provides an example on how to call the API operation to detach the custom control policy `cp-jExXAqIYkwHN***` from the folder `fd-ZDNPiT****`.
-        
-        @param request: DetachControlPolicyRequest
-        @return: DetachControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DetachControlPolicyRequest,
+    ) -> main_models.DetachControlPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.detach_control_policy_with_options_async(request, runtime)
 
     def detach_policy_with_options(
         self,
-        request: resource_manager_20200331_models.DetachPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DetachPolicyResponse:
-        """
-        @summary Detaches a permission policy from an object. After you detach a policy from an object, the object does not have the operation permissions on the current resource group or the resources within the current account.
-        
-        @param request: DetachPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetachPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DetachPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.policy_type):
+        if not DaraCore.is_null(request.policy_type):
             query['PolicyType'] = request.policy_type
-        if not UtilClient.is_unset(request.principal_name):
+        if not DaraCore.is_null(request.principal_name):
             query['PrincipalName'] = request.principal_name
-        if not UtilClient.is_unset(request.principal_type):
+        if not DaraCore.is_null(request.principal_type):
             query['PrincipalType'] = request.principal_type
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DetachPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DetachPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DetachPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DetachPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def detach_policy_with_options_async(
         self,
-        request: resource_manager_20200331_models.DetachPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DetachPolicyResponse:
-        """
-        @summary Detaches a permission policy from an object. After you detach a policy from an object, the object does not have the operation permissions on the current resource group or the resources within the current account.
-        
-        @param request: DetachPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DetachPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.DetachPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DetachPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.policy_type):
+        if not DaraCore.is_null(request.policy_type):
             query['PolicyType'] = request.policy_type
-        if not UtilClient.is_unset(request.principal_name):
+        if not DaraCore.is_null(request.principal_name):
             query['PrincipalName'] = request.principal_name
-        if not UtilClient.is_unset(request.principal_type):
+        if not DaraCore.is_null(request.principal_type):
             query['PrincipalType'] = request.principal_type
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='DetachPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'DetachPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DetachPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DetachPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def detach_policy(
         self,
-        request: resource_manager_20200331_models.DetachPolicyRequest,
-    ) -> resource_manager_20200331_models.DetachPolicyResponse:
-        """
-        @summary Detaches a permission policy from an object. After you detach a policy from an object, the object does not have the operation permissions on the current resource group or the resources within the current account.
-        
-        @param request: DetachPolicyRequest
-        @return: DetachPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DetachPolicyRequest,
+    ) -> main_models.DetachPolicyResponse:
+        runtime = RuntimeOptions()
         return self.detach_policy_with_options(request, runtime)
 
     async def detach_policy_async(
         self,
-        request: resource_manager_20200331_models.DetachPolicyRequest,
-    ) -> resource_manager_20200331_models.DetachPolicyResponse:
-        """
-        @summary Detaches a permission policy from an object. After you detach a policy from an object, the object does not have the operation permissions on the current resource group or the resources within the current account.
-        
-        @param request: DetachPolicyRequest
-        @return: DetachPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.DetachPolicyRequest,
+    ) -> main_models.DetachPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.detach_policy_with_options_async(request, runtime)
 
     def disable_associated_transfer_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DisableAssociatedTransferResponse:
-        """
-        @summary Disables the Transfer Associated Resources feature.
-        
-        @param request: DisableAssociatedTransferRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DisableAssociatedTransferResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DisableAssociatedTransfer',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableAssociatedTransferResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DisableAssociatedTransfer',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DisableAssociatedTransferResponse(),
+        return DaraCore.from_map(
+            main_models.DisableAssociatedTransferResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def disable_associated_transfer_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DisableAssociatedTransferResponse:
-        """
-        @summary Disables the Transfer Associated Resources feature.
-        
-        @param request: DisableAssociatedTransferRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DisableAssociatedTransferResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DisableAssociatedTransfer',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableAssociatedTransferResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DisableAssociatedTransfer',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DisableAssociatedTransferResponse(),
+        return DaraCore.from_map(
+            main_models.DisableAssociatedTransferResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def disable_associated_transfer(self) -> resource_manager_20200331_models.DisableAssociatedTransferResponse:
-        """
-        @summary Disables the Transfer Associated Resources feature.
-        
-        @return: DisableAssociatedTransferResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def disable_associated_transfer(self) -> main_models.DisableAssociatedTransferResponse:
+        runtime = RuntimeOptions()
         return self.disable_associated_transfer_with_options(runtime)
 
-    async def disable_associated_transfer_async(self) -> resource_manager_20200331_models.DisableAssociatedTransferResponse:
-        """
-        @summary Disables the Transfer Associated Resources feature.
-        
-        @return: DisableAssociatedTransferResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def disable_associated_transfer_async(self) -> main_models.DisableAssociatedTransferResponse:
+        runtime = RuntimeOptions()
         return await self.disable_associated_transfer_with_options_async(runtime)
 
     def disable_auto_grouping_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DisableAutoGroupingResponse:
-        """
-        @summary Disables the Automatic Resource Transfer feature. After the feature is disabled, existing custom transfer rules and existing transfer rules for associated resources are deleted. However, existing relationships between resources and resource groups are not affected. If you still want to use this feature, you can enable it again 1 minute later.
-        
-        @param request: DisableAutoGroupingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DisableAutoGroupingResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DisableAutoGrouping',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableAutoGroupingResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DisableAutoGrouping',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DisableAutoGroupingResponse(),
+        return DaraCore.from_map(
+            main_models.DisableAutoGroupingResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def disable_auto_grouping_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DisableAutoGroupingResponse:
-        """
-        @summary Disables the Automatic Resource Transfer feature. After the feature is disabled, existing custom transfer rules and existing transfer rules for associated resources are deleted. However, existing relationships between resources and resource groups are not affected. If you still want to use this feature, you can enable it again 1 minute later.
-        
-        @param request: DisableAutoGroupingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DisableAutoGroupingResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DisableAutoGrouping',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableAutoGroupingResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DisableAutoGrouping',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DisableAutoGroupingResponse(),
+        return DaraCore.from_map(
+            main_models.DisableAutoGroupingResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def disable_auto_grouping(self) -> resource_manager_20200331_models.DisableAutoGroupingResponse:
-        """
-        @summary Disables the Automatic Resource Transfer feature. After the feature is disabled, existing custom transfer rules and existing transfer rules for associated resources are deleted. However, existing relationships between resources and resource groups are not affected. If you still want to use this feature, you can enable it again 1 minute later.
-        
-        @return: DisableAutoGroupingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def disable_auto_grouping(self) -> main_models.DisableAutoGroupingResponse:
+        runtime = RuntimeOptions()
         return self.disable_auto_grouping_with_options(runtime)
 
-    async def disable_auto_grouping_async(self) -> resource_manager_20200331_models.DisableAutoGroupingResponse:
-        """
-        @summary Disables the Automatic Resource Transfer feature. After the feature is disabled, existing custom transfer rules and existing transfer rules for associated resources are deleted. However, existing relationships between resources and resource groups are not affected. If you still want to use this feature, you can enable it again 1 minute later.
-        
-        @return: DisableAutoGroupingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def disable_auto_grouping_async(self) -> main_models.DisableAutoGroupingResponse:
+        runtime = RuntimeOptions()
         return await self.disable_auto_grouping_with_options_async(runtime)
 
     def disable_control_policy_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DisableControlPolicyResponse:
-        """
-        @summary 禁用管控策略
-        
-        @description After you disable the Control Policy feature, the system automatically detaches all control policies that are attached to folders and member accounts. The system does not delete these control policies, but you cannot attach them to folders or member accounts again.
-        >  If you disable the Control Policy feature, the permissions of all folders and member accounts in a resource directory are affected. You must proceed with caution.
-        
-        @param request: DisableControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DisableControlPolicyResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DisableControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableControlPolicyResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DisableControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DisableControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DisableControlPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def disable_control_policy_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DisableControlPolicyResponse:
-        """
-        @summary 禁用管控策略
-        
-        @description After you disable the Control Policy feature, the system automatically detaches all control policies that are attached to folders and member accounts. The system does not delete these control policies, but you cannot attach them to folders or member accounts again.
-        >  If you disable the Control Policy feature, the permissions of all folders and member accounts in a resource directory are affected. You must proceed with caution.
-        
-        @param request: DisableControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DisableControlPolicyResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DisableControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableControlPolicyResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DisableControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DisableControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.DisableControlPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def disable_control_policy(self) -> resource_manager_20200331_models.DisableControlPolicyResponse:
-        """
-        @summary 禁用管控策略
-        
-        @description After you disable the Control Policy feature, the system automatically detaches all control policies that are attached to folders and member accounts. The system does not delete these control policies, but you cannot attach them to folders or member accounts again.
-        >  If you disable the Control Policy feature, the permissions of all folders and member accounts in a resource directory are affected. You must proceed with caution.
-        
-        @return: DisableControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def disable_control_policy(self) -> main_models.DisableControlPolicyResponse:
+        runtime = RuntimeOptions()
         return self.disable_control_policy_with_options(runtime)
 
-    async def disable_control_policy_async(self) -> resource_manager_20200331_models.DisableControlPolicyResponse:
-        """
-        @summary 禁用管控策略
-        
-        @description After you disable the Control Policy feature, the system automatically detaches all control policies that are attached to folders and member accounts. The system does not delete these control policies, but you cannot attach them to folders or member accounts again.
-        >  If you disable the Control Policy feature, the permissions of all folders and member accounts in a resource directory are affected. You must proceed with caution.
-        
-        @return: DisableControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def disable_control_policy_async(self) -> main_models.DisableControlPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.disable_control_policy_with_options_async(runtime)
 
     def disable_resource_group_notification_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DisableResourceGroupNotificationResponse:
-        """
-        @summary Disables group event notification.
-        
-        @param request: DisableResourceGroupNotificationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DisableResourceGroupNotificationResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DisableResourceGroupNotification',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableResourceGroupNotificationResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DisableResourceGroupNotification',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DisableResourceGroupNotificationResponse(),
+        return DaraCore.from_map(
+            main_models.DisableResourceGroupNotificationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def disable_resource_group_notification_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.DisableResourceGroupNotificationResponse:
-        """
-        @summary Disables group event notification.
-        
-        @param request: DisableResourceGroupNotificationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: DisableResourceGroupNotificationResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='DisableResourceGroupNotification',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.DisableResourceGroupNotificationResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'DisableResourceGroupNotification',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.DisableResourceGroupNotificationResponse(),
+        return DaraCore.from_map(
+            main_models.DisableResourceGroupNotificationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def disable_resource_group_notification(self) -> resource_manager_20200331_models.DisableResourceGroupNotificationResponse:
-        """
-        @summary Disables group event notification.
-        
-        @return: DisableResourceGroupNotificationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def disable_resource_group_notification(self) -> main_models.DisableResourceGroupNotificationResponse:
+        runtime = RuntimeOptions()
         return self.disable_resource_group_notification_with_options(runtime)
 
-    async def disable_resource_group_notification_async(self) -> resource_manager_20200331_models.DisableResourceGroupNotificationResponse:
-        """
-        @summary Disables group event notification.
-        
-        @return: DisableResourceGroupNotificationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def disable_resource_group_notification_async(self) -> main_models.DisableResourceGroupNotificationResponse:
+        runtime = RuntimeOptions()
         return await self.disable_resource_group_notification_with_options_async(runtime)
 
     def enable_associated_transfer_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.EnableAssociatedTransferResponse:
-        """
-        @summary Enables the Transfer Associated Resources feature.
-        
-        @param request: EnableAssociatedTransferRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: EnableAssociatedTransferResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='EnableAssociatedTransfer',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableAssociatedTransferResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'EnableAssociatedTransfer',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.EnableAssociatedTransferResponse(),
+        return DaraCore.from_map(
+            main_models.EnableAssociatedTransferResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def enable_associated_transfer_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.EnableAssociatedTransferResponse:
-        """
-        @summary Enables the Transfer Associated Resources feature.
-        
-        @param request: EnableAssociatedTransferRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: EnableAssociatedTransferResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='EnableAssociatedTransfer',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableAssociatedTransferResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'EnableAssociatedTransfer',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.EnableAssociatedTransferResponse(),
+        return DaraCore.from_map(
+            main_models.EnableAssociatedTransferResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def enable_associated_transfer(self) -> resource_manager_20200331_models.EnableAssociatedTransferResponse:
-        """
-        @summary Enables the Transfer Associated Resources feature.
-        
-        @return: EnableAssociatedTransferResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def enable_associated_transfer(self) -> main_models.EnableAssociatedTransferResponse:
+        runtime = RuntimeOptions()
         return self.enable_associated_transfer_with_options(runtime)
 
-    async def enable_associated_transfer_async(self) -> resource_manager_20200331_models.EnableAssociatedTransferResponse:
-        """
-        @summary Enables the Transfer Associated Resources feature.
-        
-        @return: EnableAssociatedTransferResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def enable_associated_transfer_async(self) -> main_models.EnableAssociatedTransferResponse:
+        runtime = RuntimeOptions()
         return await self.enable_associated_transfer_with_options_async(runtime)
 
     def enable_auto_grouping_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.EnableAutoGroupingResponse:
-        """
-        @summary Enables the Automatic Resource Transfer feature. After the feature is enabled, you can create, update, delete, and query transfer rules.
-        
-        @param request: EnableAutoGroupingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: EnableAutoGroupingResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='EnableAutoGrouping',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableAutoGroupingResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'EnableAutoGrouping',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.EnableAutoGroupingResponse(),
+        return DaraCore.from_map(
+            main_models.EnableAutoGroupingResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def enable_auto_grouping_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.EnableAutoGroupingResponse:
-        """
-        @summary Enables the Automatic Resource Transfer feature. After the feature is enabled, you can create, update, delete, and query transfer rules.
-        
-        @param request: EnableAutoGroupingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: EnableAutoGroupingResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='EnableAutoGrouping',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableAutoGroupingResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'EnableAutoGrouping',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.EnableAutoGroupingResponse(),
+        return DaraCore.from_map(
+            main_models.EnableAutoGroupingResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def enable_auto_grouping(self) -> resource_manager_20200331_models.EnableAutoGroupingResponse:
-        """
-        @summary Enables the Automatic Resource Transfer feature. After the feature is enabled, you can create, update, delete, and query transfer rules.
-        
-        @return: EnableAutoGroupingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def enable_auto_grouping(self) -> main_models.EnableAutoGroupingResponse:
+        runtime = RuntimeOptions()
         return self.enable_auto_grouping_with_options(runtime)
 
-    async def enable_auto_grouping_async(self) -> resource_manager_20200331_models.EnableAutoGroupingResponse:
-        """
-        @summary Enables the Automatic Resource Transfer feature. After the feature is enabled, you can create, update, delete, and query transfer rules.
-        
-        @return: EnableAutoGroupingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def enable_auto_grouping_async(self) -> main_models.EnableAutoGroupingResponse:
+        runtime = RuntimeOptions()
         return await self.enable_auto_grouping_with_options_async(runtime)
 
     def enable_control_policy_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.EnableControlPolicyResponse:
-        """
-        @summary Enables the Control Policy feature.
-        
-        @description The Control Policy feature allows you to manage the permission boundaries of the folders or member accounts in a resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member account in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](https://help.aliyun.com/document_detail/178671.html).
-        
-        @param request: EnableControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: EnableControlPolicyResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='EnableControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableControlPolicyResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'EnableControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.EnableControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.EnableControlPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def enable_control_policy_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.EnableControlPolicyResponse:
-        """
-        @summary Enables the Control Policy feature.
-        
-        @description The Control Policy feature allows you to manage the permission boundaries of the folders or member accounts in a resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member account in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](https://help.aliyun.com/document_detail/178671.html).
-        
-        @param request: EnableControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: EnableControlPolicyResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='EnableControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableControlPolicyResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'EnableControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.EnableControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.EnableControlPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def enable_control_policy(self) -> resource_manager_20200331_models.EnableControlPolicyResponse:
-        """
-        @summary Enables the Control Policy feature.
-        
-        @description The Control Policy feature allows you to manage the permission boundaries of the folders or member accounts in a resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member account in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](https://help.aliyun.com/document_detail/178671.html).
-        
-        @return: EnableControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def enable_control_policy(self) -> main_models.EnableControlPolicyResponse:
+        runtime = RuntimeOptions()
         return self.enable_control_policy_with_options(runtime)
 
-    async def enable_control_policy_async(self) -> resource_manager_20200331_models.EnableControlPolicyResponse:
-        """
-        @summary Enables the Control Policy feature.
-        
-        @description The Control Policy feature allows you to manage the permission boundaries of the folders or member accounts in a resource directory in a centralized manner. This feature is implemented based on the resource directory. You can use this feature to develop common or dedicated rules for access control. The Control Policy feature does not grant permissions but only defines permission boundaries. A member account in a resource directory can be used to access resources only after it is granted the required permissions by using the Resource Access Management (RAM) service. For more information, see [Overview of the Control Policy feature](https://help.aliyun.com/document_detail/178671.html).
-        
-        @return: EnableControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def enable_control_policy_async(self) -> main_models.EnableControlPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.enable_control_policy_with_options_async(runtime)
 
     def enable_resource_directory_with_options(
         self,
-        request: resource_manager_20200331_models.EnableResourceDirectoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.EnableResourceDirectoryResponse:
-        """
-        @summary 开启RD
-        
-        @description You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](https://help.aliyun.com/document_detail/111215.html).
-        In this example, the current account is used to enable a resource directory.
-        
-        @param request: EnableResourceDirectoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: EnableResourceDirectoryResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.EnableResourceDirectoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableResourceDirectoryResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.enable_mode):
+        if not DaraCore.is_null(request.enable_mode):
             query['EnableMode'] = request.enable_mode
-        if not UtilClient.is_unset(request.maname):
+        if not DaraCore.is_null(request.maname):
             query['MAName'] = request.maname
-        if not UtilClient.is_unset(request.masecure_mobile_phone):
+        if not DaraCore.is_null(request.masecure_mobile_phone):
             query['MASecureMobilePhone'] = request.masecure_mobile_phone
-        if not UtilClient.is_unset(request.verification_code):
+        if not DaraCore.is_null(request.verification_code):
             query['VerificationCode'] = request.verification_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='EnableResourceDirectory',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'EnableResourceDirectory',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.EnableResourceDirectoryResponse(),
+        return DaraCore.from_map(
+            main_models.EnableResourceDirectoryResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def enable_resource_directory_with_options_async(
         self,
-        request: resource_manager_20200331_models.EnableResourceDirectoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.EnableResourceDirectoryResponse:
-        """
-        @summary 开启RD
-        
-        @description You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](https://help.aliyun.com/document_detail/111215.html).
-        In this example, the current account is used to enable a resource directory.
-        
-        @param request: EnableResourceDirectoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: EnableResourceDirectoryResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.EnableResourceDirectoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableResourceDirectoryResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.enable_mode):
+        if not DaraCore.is_null(request.enable_mode):
             query['EnableMode'] = request.enable_mode
-        if not UtilClient.is_unset(request.maname):
+        if not DaraCore.is_null(request.maname):
             query['MAName'] = request.maname
-        if not UtilClient.is_unset(request.masecure_mobile_phone):
+        if not DaraCore.is_null(request.masecure_mobile_phone):
             query['MASecureMobilePhone'] = request.masecure_mobile_phone
-        if not UtilClient.is_unset(request.verification_code):
+        if not DaraCore.is_null(request.verification_code):
             query['VerificationCode'] = request.verification_code
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='EnableResourceDirectory',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'EnableResourceDirectory',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.EnableResourceDirectoryResponse(),
+        return DaraCore.from_map(
+            main_models.EnableResourceDirectoryResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def enable_resource_directory(
         self,
-        request: resource_manager_20200331_models.EnableResourceDirectoryRequest,
-    ) -> resource_manager_20200331_models.EnableResourceDirectoryResponse:
-        """
-        @summary 开启RD
-        
-        @description You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](https://help.aliyun.com/document_detail/111215.html).
-        In this example, the current account is used to enable a resource directory.
-        
-        @param request: EnableResourceDirectoryRequest
-        @return: EnableResourceDirectoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.EnableResourceDirectoryRequest,
+    ) -> main_models.EnableResourceDirectoryResponse:
+        runtime = RuntimeOptions()
         return self.enable_resource_directory_with_options(request, runtime)
 
     async def enable_resource_directory_async(
         self,
-        request: resource_manager_20200331_models.EnableResourceDirectoryRequest,
-    ) -> resource_manager_20200331_models.EnableResourceDirectoryResponse:
-        """
-        @summary 开启RD
-        
-        @description You can use the current account or a newly created account to enable a resource directory. For more information, see [Enable a resource directory](https://help.aliyun.com/document_detail/111215.html).
-        In this example, the current account is used to enable a resource directory.
-        
-        @param request: EnableResourceDirectoryRequest
-        @return: EnableResourceDirectoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.EnableResourceDirectoryRequest,
+    ) -> main_models.EnableResourceDirectoryResponse:
+        runtime = RuntimeOptions()
         return await self.enable_resource_directory_with_options_async(request, runtime)
 
     def enable_resource_group_notification_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.EnableResourceGroupNotificationResponse:
-        """
-        @summary Enables group event notification.
-        
-        @param request: EnableResourceGroupNotificationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: EnableResourceGroupNotificationResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='EnableResourceGroupNotification',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableResourceGroupNotificationResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'EnableResourceGroupNotification',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.EnableResourceGroupNotificationResponse(),
+        return DaraCore.from_map(
+            main_models.EnableResourceGroupNotificationResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def enable_resource_group_notification_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.EnableResourceGroupNotificationResponse:
-        """
-        @summary Enables group event notification.
-        
-        @param request: EnableResourceGroupNotificationRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: EnableResourceGroupNotificationResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='EnableResourceGroupNotification',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.EnableResourceGroupNotificationResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'EnableResourceGroupNotification',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.EnableResourceGroupNotificationResponse(),
+        return DaraCore.from_map(
+            main_models.EnableResourceGroupNotificationResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def enable_resource_group_notification(self) -> resource_manager_20200331_models.EnableResourceGroupNotificationResponse:
-        """
-        @summary Enables group event notification.
-        
-        @return: EnableResourceGroupNotificationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def enable_resource_group_notification(self) -> main_models.EnableResourceGroupNotificationResponse:
+        runtime = RuntimeOptions()
         return self.enable_resource_group_notification_with_options(runtime)
 
-    async def enable_resource_group_notification_async(self) -> resource_manager_20200331_models.EnableResourceGroupNotificationResponse:
-        """
-        @summary Enables group event notification.
-        
-        @return: EnableResourceGroupNotificationResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def enable_resource_group_notification_async(self) -> main_models.EnableResourceGroupNotificationResponse:
+        runtime = RuntimeOptions()
         return await self.enable_resource_group_notification_with_options_async(runtime)
 
     def get_account_with_options(
         self,
-        request: resource_manager_20200331_models.GetAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetAccountResponse:
-        """
-        @description This topic provides an example on how to call the API operation to query the information of the member whose Alibaba Cloud account ID is `181761095690***`.
-        
-        @param request: GetAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.include_tags):
+        if not DaraCore.is_null(request.include_tags):
             query['IncludeTags'] = request.include_tags
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetAccountResponse(),
+        return DaraCore.from_map(
+            main_models.GetAccountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_account_with_options_async(
         self,
-        request: resource_manager_20200331_models.GetAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetAccountResponse:
-        """
-        @description This topic provides an example on how to call the API operation to query the information of the member whose Alibaba Cloud account ID is `181761095690***`.
-        
-        @param request: GetAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.include_tags):
+        if not DaraCore.is_null(request.include_tags):
             query['IncludeTags'] = request.include_tags
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetAccountResponse(),
+        return DaraCore.from_map(
+            main_models.GetAccountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_account(
         self,
-        request: resource_manager_20200331_models.GetAccountRequest,
-    ) -> resource_manager_20200331_models.GetAccountResponse:
-        """
-        @description This topic provides an example on how to call the API operation to query the information of the member whose Alibaba Cloud account ID is `181761095690***`.
-        
-        @param request: GetAccountRequest
-        @return: GetAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAccountRequest,
+    ) -> main_models.GetAccountResponse:
+        runtime = RuntimeOptions()
         return self.get_account_with_options(request, runtime)
 
     async def get_account_async(
         self,
-        request: resource_manager_20200331_models.GetAccountRequest,
-    ) -> resource_manager_20200331_models.GetAccountResponse:
-        """
-        @description This topic provides an example on how to call the API operation to query the information of the member whose Alibaba Cloud account ID is `181761095690***`.
-        
-        @param request: GetAccountRequest
-        @return: GetAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAccountRequest,
+    ) -> main_models.GetAccountResponse:
+        runtime = RuntimeOptions()
         return await self.get_account_with_options_async(request, runtime)
 
     def get_account_deletion_check_result_with_options(
         self,
-        request: resource_manager_20200331_models.GetAccountDeletionCheckResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetAccountDeletionCheckResultResponse:
-        """
-        @summary Queries the result of a member deletion check.
-        
-        @description After you call the [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) operation to perform a member deletion check, you can call the GetAccountDeletionCheckResult operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
-        This topic provides an example on how to call the API operation to query the result of the deletion check for the member whose ID is `179855839641***`. The response shows that the member does not meet deletion requirements.
-        
-        @param request: GetAccountDeletionCheckResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAccountDeletionCheckResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetAccountDeletionCheckResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAccountDeletionCheckResultResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAccountDeletionCheckResult',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAccountDeletionCheckResult',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetAccountDeletionCheckResultResponse(),
+        return DaraCore.from_map(
+            main_models.GetAccountDeletionCheckResultResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_account_deletion_check_result_with_options_async(
         self,
-        request: resource_manager_20200331_models.GetAccountDeletionCheckResultRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetAccountDeletionCheckResultResponse:
-        """
-        @summary Queries the result of a member deletion check.
-        
-        @description After you call the [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) operation to perform a member deletion check, you can call the GetAccountDeletionCheckResult operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
-        This topic provides an example on how to call the API operation to query the result of the deletion check for the member whose ID is `179855839641***`. The response shows that the member does not meet deletion requirements.
-        
-        @param request: GetAccountDeletionCheckResultRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAccountDeletionCheckResultResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetAccountDeletionCheckResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAccountDeletionCheckResultResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAccountDeletionCheckResult',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAccountDeletionCheckResult',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetAccountDeletionCheckResultResponse(),
+        return DaraCore.from_map(
+            main_models.GetAccountDeletionCheckResultResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_account_deletion_check_result(
         self,
-        request: resource_manager_20200331_models.GetAccountDeletionCheckResultRequest,
-    ) -> resource_manager_20200331_models.GetAccountDeletionCheckResultResponse:
-        """
-        @summary Queries the result of a member deletion check.
-        
-        @description After you call the [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) operation to perform a member deletion check, you can call the GetAccountDeletionCheckResult operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
-        This topic provides an example on how to call the API operation to query the result of the deletion check for the member whose ID is `179855839641***`. The response shows that the member does not meet deletion requirements.
-        
-        @param request: GetAccountDeletionCheckResultRequest
-        @return: GetAccountDeletionCheckResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAccountDeletionCheckResultRequest,
+    ) -> main_models.GetAccountDeletionCheckResultResponse:
+        runtime = RuntimeOptions()
         return self.get_account_deletion_check_result_with_options(request, runtime)
 
     async def get_account_deletion_check_result_async(
         self,
-        request: resource_manager_20200331_models.GetAccountDeletionCheckResultRequest,
-    ) -> resource_manager_20200331_models.GetAccountDeletionCheckResultResponse:
-        """
-        @summary Queries the result of a member deletion check.
-        
-        @description After you call the [CheckAccountDelete](https://help.aliyun.com/document_detail/448542.html) operation to perform a member deletion check, you can call the GetAccountDeletionCheckResult operation to query the check result. If the check result shows that the member meets deletion requirements, you can delete the member. Otherwise, you need to first modify the items that do not meet requirements.
-        This topic provides an example on how to call the API operation to query the result of the deletion check for the member whose ID is `179855839641***`. The response shows that the member does not meet deletion requirements.
-        
-        @param request: GetAccountDeletionCheckResultRequest
-        @return: GetAccountDeletionCheckResultResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAccountDeletionCheckResultRequest,
+    ) -> main_models.GetAccountDeletionCheckResultResponse:
+        runtime = RuntimeOptions()
         return await self.get_account_deletion_check_result_with_options_async(request, runtime)
 
     def get_account_deletion_status_with_options(
         self,
-        request: resource_manager_20200331_models.GetAccountDeletionStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetAccountDeletionStatusResponse:
-        """
-        @summary 获取账号删除状态
-        
-        @description This topic provides an example on how to call the API operation to query the deletion status of the member whose Alibaba Cloud account ID is `169946124551***`. The response shows that the member is deleted.
-        
-        @param request: GetAccountDeletionStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAccountDeletionStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetAccountDeletionStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAccountDeletionStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAccountDeletionStatus',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAccountDeletionStatus',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetAccountDeletionStatusResponse(),
+        return DaraCore.from_map(
+            main_models.GetAccountDeletionStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_account_deletion_status_with_options_async(
         self,
-        request: resource_manager_20200331_models.GetAccountDeletionStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetAccountDeletionStatusResponse:
-        """
-        @summary 获取账号删除状态
-        
-        @description This topic provides an example on how to call the API operation to query the deletion status of the member whose Alibaba Cloud account ID is `169946124551***`. The response shows that the member is deleted.
-        
-        @param request: GetAccountDeletionStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAccountDeletionStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetAccountDeletionStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAccountDeletionStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAccountDeletionStatus',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAccountDeletionStatus',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetAccountDeletionStatusResponse(),
+        return DaraCore.from_map(
+            main_models.GetAccountDeletionStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_account_deletion_status(
         self,
-        request: resource_manager_20200331_models.GetAccountDeletionStatusRequest,
-    ) -> resource_manager_20200331_models.GetAccountDeletionStatusResponse:
-        """
-        @summary 获取账号删除状态
-        
-        @description This topic provides an example on how to call the API operation to query the deletion status of the member whose Alibaba Cloud account ID is `169946124551***`. The response shows that the member is deleted.
-        
-        @param request: GetAccountDeletionStatusRequest
-        @return: GetAccountDeletionStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAccountDeletionStatusRequest,
+    ) -> main_models.GetAccountDeletionStatusResponse:
+        runtime = RuntimeOptions()
         return self.get_account_deletion_status_with_options(request, runtime)
 
     async def get_account_deletion_status_async(
         self,
-        request: resource_manager_20200331_models.GetAccountDeletionStatusRequest,
-    ) -> resource_manager_20200331_models.GetAccountDeletionStatusResponse:
-        """
-        @summary 获取账号删除状态
-        
-        @description This topic provides an example on how to call the API operation to query the deletion status of the member whose Alibaba Cloud account ID is `169946124551***`. The response shows that the member is deleted.
-        
-        @param request: GetAccountDeletionStatusRequest
-        @return: GetAccountDeletionStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAccountDeletionStatusRequest,
+    ) -> main_models.GetAccountDeletionStatusResponse:
+        runtime = RuntimeOptions()
         return await self.get_account_deletion_status_with_options_async(request, runtime)
 
     def get_auto_grouping_rule_with_options(
         self,
-        request: resource_manager_20200331_models.GetAutoGroupingRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetAutoGroupingRuleResponse:
-        """
-        @summary Queries the information about a transfer rule.
-        
-        @param request: GetAutoGroupingRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAutoGroupingRuleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetAutoGroupingRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAutoGroupingRuleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAutoGroupingRule',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAutoGroupingRule',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetAutoGroupingRuleResponse(),
+        return DaraCore.from_map(
+            main_models.GetAutoGroupingRuleResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_auto_grouping_rule_with_options_async(
         self,
-        request: resource_manager_20200331_models.GetAutoGroupingRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetAutoGroupingRuleResponse:
-        """
-        @summary Queries the information about a transfer rule.
-        
-        @param request: GetAutoGroupingRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAutoGroupingRuleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetAutoGroupingRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAutoGroupingRuleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetAutoGroupingRule',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetAutoGroupingRule',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetAutoGroupingRuleResponse(),
+        return DaraCore.from_map(
+            main_models.GetAutoGroupingRuleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_auto_grouping_rule(
         self,
-        request: resource_manager_20200331_models.GetAutoGroupingRuleRequest,
-    ) -> resource_manager_20200331_models.GetAutoGroupingRuleResponse:
-        """
-        @summary Queries the information about a transfer rule.
-        
-        @param request: GetAutoGroupingRuleRequest
-        @return: GetAutoGroupingRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAutoGroupingRuleRequest,
+    ) -> main_models.GetAutoGroupingRuleResponse:
+        runtime = RuntimeOptions()
         return self.get_auto_grouping_rule_with_options(request, runtime)
 
     async def get_auto_grouping_rule_async(
         self,
-        request: resource_manager_20200331_models.GetAutoGroupingRuleRequest,
-    ) -> resource_manager_20200331_models.GetAutoGroupingRuleResponse:
-        """
-        @summary Queries the information about a transfer rule.
-        
-        @param request: GetAutoGroupingRuleRequest
-        @return: GetAutoGroupingRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetAutoGroupingRuleRequest,
+    ) -> main_models.GetAutoGroupingRuleResponse:
+        runtime = RuntimeOptions()
         return await self.get_auto_grouping_rule_with_options_async(request, runtime)
 
     def get_auto_grouping_status_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetAutoGroupingStatusResponse:
-        """
-        @summary Queries the status of the Automatic Resource Transfer feature.
-        
-        @param request: GetAutoGroupingStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAutoGroupingStatusResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetAutoGroupingStatus',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAutoGroupingStatusResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetAutoGroupingStatus',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetAutoGroupingStatusResponse(),
+        return DaraCore.from_map(
+            main_models.GetAutoGroupingStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_auto_grouping_status_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetAutoGroupingStatusResponse:
-        """
-        @summary Queries the status of the Automatic Resource Transfer feature.
-        
-        @param request: GetAutoGroupingStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetAutoGroupingStatusResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetAutoGroupingStatus',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAutoGroupingStatusResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetAutoGroupingStatus',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetAutoGroupingStatusResponse(),
+        return DaraCore.from_map(
+            main_models.GetAutoGroupingStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_auto_grouping_status(self) -> resource_manager_20200331_models.GetAutoGroupingStatusResponse:
-        """
-        @summary Queries the status of the Automatic Resource Transfer feature.
-        
-        @return: GetAutoGroupingStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def get_auto_grouping_status(self) -> main_models.GetAutoGroupingStatusResponse:
+        runtime = RuntimeOptions()
         return self.get_auto_grouping_status_with_options(runtime)
 
-    async def get_auto_grouping_status_async(self) -> resource_manager_20200331_models.GetAutoGroupingStatusResponse:
-        """
-        @summary Queries the status of the Automatic Resource Transfer feature.
-        
-        @return: GetAutoGroupingStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def get_auto_grouping_status_async(self) -> main_models.GetAutoGroupingStatusResponse:
+        runtime = RuntimeOptions()
         return await self.get_auto_grouping_status_with_options_async(runtime)
 
     def get_control_policy_with_options(
         self,
-        request: resource_manager_20200331_models.GetControlPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetControlPolicyResponse:
-        """
-        @description This topic provides an example on how to call the API operation to query the details of the access control policy whose ID is `cp-SImPt8GCEwiq***`.
-        
-        @param request: GetControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetControlPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetControlPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetControlPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.language):
+        if not DaraCore.is_null(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.policy_id):
+        if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.GetControlPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_control_policy_with_options_async(
         self,
-        request: resource_manager_20200331_models.GetControlPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetControlPolicyResponse:
-        """
-        @description This topic provides an example on how to call the API operation to query the details of the access control policy whose ID is `cp-SImPt8GCEwiq***`.
-        
-        @param request: GetControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetControlPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetControlPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetControlPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.language):
+        if not DaraCore.is_null(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.policy_id):
+        if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.GetControlPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_control_policy(
         self,
-        request: resource_manager_20200331_models.GetControlPolicyRequest,
-    ) -> resource_manager_20200331_models.GetControlPolicyResponse:
-        """
-        @description This topic provides an example on how to call the API operation to query the details of the access control policy whose ID is `cp-SImPt8GCEwiq***`.
-        
-        @param request: GetControlPolicyRequest
-        @return: GetControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetControlPolicyRequest,
+    ) -> main_models.GetControlPolicyResponse:
+        runtime = RuntimeOptions()
         return self.get_control_policy_with_options(request, runtime)
 
     async def get_control_policy_async(
         self,
-        request: resource_manager_20200331_models.GetControlPolicyRequest,
-    ) -> resource_manager_20200331_models.GetControlPolicyResponse:
-        """
-        @description This topic provides an example on how to call the API operation to query the details of the access control policy whose ID is `cp-SImPt8GCEwiq***`.
-        
-        @param request: GetControlPolicyRequest
-        @return: GetControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetControlPolicyRequest,
+    ) -> main_models.GetControlPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.get_control_policy_with_options_async(request, runtime)
 
     def get_control_policy_enablement_status_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetControlPolicyEnablementStatusResponse:
-        """
-        @summary Queries the status of the Control Policy feature.
-        
-        @param request: GetControlPolicyEnablementStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetControlPolicyEnablementStatusResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetControlPolicyEnablementStatus',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.GetControlPolicyEnablementStatusResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetControlPolicyEnablementStatus',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetControlPolicyEnablementStatusResponse(),
+        return DaraCore.from_map(
+            main_models.GetControlPolicyEnablementStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_control_policy_enablement_status_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetControlPolicyEnablementStatusResponse:
-        """
-        @summary Queries the status of the Control Policy feature.
-        
-        @param request: GetControlPolicyEnablementStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetControlPolicyEnablementStatusResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetControlPolicyEnablementStatus',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.GetControlPolicyEnablementStatusResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetControlPolicyEnablementStatus',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetControlPolicyEnablementStatusResponse(),
+        return DaraCore.from_map(
+            main_models.GetControlPolicyEnablementStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_control_policy_enablement_status(self) -> resource_manager_20200331_models.GetControlPolicyEnablementStatusResponse:
-        """
-        @summary Queries the status of the Control Policy feature.
-        
-        @return: GetControlPolicyEnablementStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def get_control_policy_enablement_status(self) -> main_models.GetControlPolicyEnablementStatusResponse:
+        runtime = RuntimeOptions()
         return self.get_control_policy_enablement_status_with_options(runtime)
 
-    async def get_control_policy_enablement_status_async(self) -> resource_manager_20200331_models.GetControlPolicyEnablementStatusResponse:
-        """
-        @summary Queries the status of the Control Policy feature.
-        
-        @return: GetControlPolicyEnablementStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def get_control_policy_enablement_status_async(self) -> main_models.GetControlPolicyEnablementStatusResponse:
+        runtime = RuntimeOptions()
         return await self.get_control_policy_enablement_status_with_options_async(runtime)
 
     def get_folder_with_options(
         self,
-        request: resource_manager_20200331_models.GetFolderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetFolderResponse:
-        """
-        @description In this example, the information of the folder `fd-Jyl5U7***` is queried.
-        
-        @param request: GetFolderRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetFolderResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetFolderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFolderResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.folder_id):
+        if not DaraCore.is_null(request.folder_id):
             query['FolderId'] = request.folder_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetFolder',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetFolder',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetFolderResponse(),
+        return DaraCore.from_map(
+            main_models.GetFolderResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_folder_with_options_async(
         self,
-        request: resource_manager_20200331_models.GetFolderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetFolderResponse:
-        """
-        @description In this example, the information of the folder `fd-Jyl5U7***` is queried.
-        
-        @param request: GetFolderRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetFolderResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetFolderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetFolderResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.folder_id):
+        if not DaraCore.is_null(request.folder_id):
             query['FolderId'] = request.folder_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetFolder',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetFolder',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetFolderResponse(),
+        return DaraCore.from_map(
+            main_models.GetFolderResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_folder(
         self,
-        request: resource_manager_20200331_models.GetFolderRequest,
-    ) -> resource_manager_20200331_models.GetFolderResponse:
-        """
-        @description In this example, the information of the folder `fd-Jyl5U7***` is queried.
-        
-        @param request: GetFolderRequest
-        @return: GetFolderResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetFolderRequest,
+    ) -> main_models.GetFolderResponse:
+        runtime = RuntimeOptions()
         return self.get_folder_with_options(request, runtime)
 
     async def get_folder_async(
         self,
-        request: resource_manager_20200331_models.GetFolderRequest,
-    ) -> resource_manager_20200331_models.GetFolderResponse:
-        """
-        @description In this example, the information of the folder `fd-Jyl5U7***` is queried.
-        
-        @param request: GetFolderRequest
-        @return: GetFolderResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetFolderRequest,
+    ) -> main_models.GetFolderResponse:
+        runtime = RuntimeOptions()
         return await self.get_folder_with_options_async(request, runtime)
 
     def get_handshake_with_options(
         self,
-        request: resource_manager_20200331_models.GetHandshakeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetHandshakeResponse:
-        """
-        @summary Queries the information of an invitation.
-        
-        @description In this example, the information of the invitation whose ID is `h-ycm4rp***` is queried.
-        
-        @param request: GetHandshakeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHandshakeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetHandshakeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHandshakeResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.handshake_id):
+        if not DaraCore.is_null(request.handshake_id):
             query['HandshakeId'] = request.handshake_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetHandshake',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHandshake',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetHandshakeResponse(),
+        return DaraCore.from_map(
+            main_models.GetHandshakeResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_handshake_with_options_async(
         self,
-        request: resource_manager_20200331_models.GetHandshakeRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetHandshakeResponse:
-        """
-        @summary Queries the information of an invitation.
-        
-        @description In this example, the information of the invitation whose ID is `h-ycm4rp***` is queried.
-        
-        @param request: GetHandshakeRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetHandshakeResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetHandshakeRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetHandshakeResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.handshake_id):
+        if not DaraCore.is_null(request.handshake_id):
             query['HandshakeId'] = request.handshake_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetHandshake',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetHandshake',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetHandshakeResponse(),
+        return DaraCore.from_map(
+            main_models.GetHandshakeResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_handshake(
         self,
-        request: resource_manager_20200331_models.GetHandshakeRequest,
-    ) -> resource_manager_20200331_models.GetHandshakeResponse:
-        """
-        @summary Queries the information of an invitation.
-        
-        @description In this example, the information of the invitation whose ID is `h-ycm4rp***` is queried.
-        
-        @param request: GetHandshakeRequest
-        @return: GetHandshakeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHandshakeRequest,
+    ) -> main_models.GetHandshakeResponse:
+        runtime = RuntimeOptions()
         return self.get_handshake_with_options(request, runtime)
 
     async def get_handshake_async(
         self,
-        request: resource_manager_20200331_models.GetHandshakeRequest,
-    ) -> resource_manager_20200331_models.GetHandshakeResponse:
-        """
-        @summary Queries the information of an invitation.
-        
-        @description In this example, the information of the invitation whose ID is `h-ycm4rp***` is queried.
-        
-        @param request: GetHandshakeRequest
-        @return: GetHandshakeResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetHandshakeRequest,
+    ) -> main_models.GetHandshakeResponse:
+        runtime = RuntimeOptions()
         return await self.get_handshake_with_options_async(request, runtime)
 
     def get_payer_for_account_with_options(
         self,
-        request: resource_manager_20200331_models.GetPayerForAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetPayerForAccountResponse:
-        """
-        @param request: GetPayerForAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetPayerForAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetPayerForAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPayerForAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetPayerForAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetPayerForAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetPayerForAccountResponse(),
+        return DaraCore.from_map(
+            main_models.GetPayerForAccountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_payer_for_account_with_options_async(
         self,
-        request: resource_manager_20200331_models.GetPayerForAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetPayerForAccountResponse:
-        """
-        @param request: GetPayerForAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetPayerForAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetPayerForAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPayerForAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetPayerForAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetPayerForAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetPayerForAccountResponse(),
+        return DaraCore.from_map(
+            main_models.GetPayerForAccountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_payer_for_account(
         self,
-        request: resource_manager_20200331_models.GetPayerForAccountRequest,
-    ) -> resource_manager_20200331_models.GetPayerForAccountResponse:
-        """
-        @param request: GetPayerForAccountRequest
-        @return: GetPayerForAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetPayerForAccountRequest,
+    ) -> main_models.GetPayerForAccountResponse:
+        runtime = RuntimeOptions()
         return self.get_payer_for_account_with_options(request, runtime)
 
     async def get_payer_for_account_async(
         self,
-        request: resource_manager_20200331_models.GetPayerForAccountRequest,
-    ) -> resource_manager_20200331_models.GetPayerForAccountResponse:
-        """
-        @param request: GetPayerForAccountRequest
-        @return: GetPayerForAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetPayerForAccountRequest,
+    ) -> main_models.GetPayerForAccountResponse:
+        runtime = RuntimeOptions()
         return await self.get_payer_for_account_with_options_async(request, runtime)
 
     def get_policy_with_options(
         self,
-        request: resource_manager_20200331_models.GetPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetPolicyResponse:
-        """
-        @summary Queries the information about a permission policy.
-        
-        @param request: GetPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.language):
+        if not DaraCore.is_null(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.policy_type):
+        if not DaraCore.is_null(request.policy_type):
             query['PolicyType'] = request.policy_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.GetPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_policy_with_options_async(
         self,
-        request: resource_manager_20200331_models.GetPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetPolicyResponse:
-        """
-        @summary Queries the information about a permission policy.
-        
-        @param request: GetPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.language):
+        if not DaraCore.is_null(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.policy_type):
+        if not DaraCore.is_null(request.policy_type):
             query['PolicyType'] = request.policy_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.GetPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_policy(
         self,
-        request: resource_manager_20200331_models.GetPolicyRequest,
-    ) -> resource_manager_20200331_models.GetPolicyResponse:
-        """
-        @summary Queries the information about a permission policy.
-        
-        @param request: GetPolicyRequest
-        @return: GetPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetPolicyRequest,
+    ) -> main_models.GetPolicyResponse:
+        runtime = RuntimeOptions()
         return self.get_policy_with_options(request, runtime)
 
     async def get_policy_async(
         self,
-        request: resource_manager_20200331_models.GetPolicyRequest,
-    ) -> resource_manager_20200331_models.GetPolicyResponse:
-        """
-        @summary Queries the information about a permission policy.
-        
-        @param request: GetPolicyRequest
-        @return: GetPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetPolicyRequest,
+    ) -> main_models.GetPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.get_policy_with_options_async(request, runtime)
 
     def get_policy_version_with_options(
         self,
-        request: resource_manager_20200331_models.GetPolicyVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetPolicyVersionResponse:
-        """
-        @summary Queries the information about a version of a permission policy.
-        
-        @param request: GetPolicyVersionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetPolicyVersionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetPolicyVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPolicyVersionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.policy_type):
+        if not DaraCore.is_null(request.policy_type):
             query['PolicyType'] = request.policy_type
-        if not UtilClient.is_unset(request.version_id):
+        if not DaraCore.is_null(request.version_id):
             query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetPolicyVersion',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetPolicyVersion',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetPolicyVersionResponse(),
+        return DaraCore.from_map(
+            main_models.GetPolicyVersionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_policy_version_with_options_async(
         self,
-        request: resource_manager_20200331_models.GetPolicyVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetPolicyVersionResponse:
-        """
-        @summary Queries the information about a version of a permission policy.
-        
-        @param request: GetPolicyVersionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetPolicyVersionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetPolicyVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetPolicyVersionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.policy_type):
+        if not DaraCore.is_null(request.policy_type):
             query['PolicyType'] = request.policy_type
-        if not UtilClient.is_unset(request.version_id):
+        if not DaraCore.is_null(request.version_id):
             query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetPolicyVersion',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetPolicyVersion',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetPolicyVersionResponse(),
+        return DaraCore.from_map(
+            main_models.GetPolicyVersionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_policy_version(
         self,
-        request: resource_manager_20200331_models.GetPolicyVersionRequest,
-    ) -> resource_manager_20200331_models.GetPolicyVersionResponse:
-        """
-        @summary Queries the information about a version of a permission policy.
-        
-        @param request: GetPolicyVersionRequest
-        @return: GetPolicyVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetPolicyVersionRequest,
+    ) -> main_models.GetPolicyVersionResponse:
+        runtime = RuntimeOptions()
         return self.get_policy_version_with_options(request, runtime)
 
     async def get_policy_version_async(
         self,
-        request: resource_manager_20200331_models.GetPolicyVersionRequest,
-    ) -> resource_manager_20200331_models.GetPolicyVersionResponse:
-        """
-        @summary Queries the information about a version of a permission policy.
-        
-        @param request: GetPolicyVersionRequest
-        @return: GetPolicyVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetPolicyVersionRequest,
+    ) -> main_models.GetPolicyVersionResponse:
+        runtime = RuntimeOptions()
         return await self.get_policy_version_with_options_async(request, runtime)
 
     def get_resource_directory_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetResourceDirectoryResponse:
-        """
-        @summary Queries the information of a resource directory. If you use a management account to call this API operation, the system returns the information of the resource directory that is enabled by using the management account. If you use a member to call this operation, the system returns the information of
-        
-        @description This topic provides an example on how to use a management account to call the API operation to query the information of the resource directory that is enabled by using the management account.
-        
-        @param request: GetResourceDirectoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetResourceDirectoryResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetResourceDirectory',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourceDirectoryResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetResourceDirectory',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetResourceDirectoryResponse(),
+        return DaraCore.from_map(
+            main_models.GetResourceDirectoryResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_resource_directory_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetResourceDirectoryResponse:
-        """
-        @summary Queries the information of a resource directory. If you use a management account to call this API operation, the system returns the information of the resource directory that is enabled by using the management account. If you use a member to call this operation, the system returns the information of
-        
-        @description This topic provides an example on how to use a management account to call the API operation to query the information of the resource directory that is enabled by using the management account.
-        
-        @param request: GetResourceDirectoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetResourceDirectoryResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetResourceDirectory',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourceDirectoryResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetResourceDirectory',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetResourceDirectoryResponse(),
+        return DaraCore.from_map(
+            main_models.GetResourceDirectoryResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_resource_directory(self) -> resource_manager_20200331_models.GetResourceDirectoryResponse:
-        """
-        @summary Queries the information of a resource directory. If you use a management account to call this API operation, the system returns the information of the resource directory that is enabled by using the management account. If you use a member to call this operation, the system returns the information of
-        
-        @description This topic provides an example on how to use a management account to call the API operation to query the information of the resource directory that is enabled by using the management account.
-        
-        @return: GetResourceDirectoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def get_resource_directory(self) -> main_models.GetResourceDirectoryResponse:
+        runtime = RuntimeOptions()
         return self.get_resource_directory_with_options(runtime)
 
-    async def get_resource_directory_async(self) -> resource_manager_20200331_models.GetResourceDirectoryResponse:
-        """
-        @summary Queries the information of a resource directory. If you use a management account to call this API operation, the system returns the information of the resource directory that is enabled by using the management account. If you use a member to call this operation, the system returns the information of
-        
-        @description This topic provides an example on how to use a management account to call the API operation to query the information of the resource directory that is enabled by using the management account.
-        
-        @return: GetResourceDirectoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def get_resource_directory_async(self) -> main_models.GetResourceDirectoryResponse:
+        runtime = RuntimeOptions()
         return await self.get_resource_directory_with_options_async(runtime)
 
     def get_resource_group_with_options(
         self,
-        request: resource_manager_20200331_models.GetResourceGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetResourceGroupResponse:
-        """
-        @summary Queries the information of a resource group.
-        
-        @param request: GetResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourceGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.include_tags):
+        if not DaraCore.is_null(request.include_tags):
             query['IncludeTags'] = request.include_tags
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetResourceGroup',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetResourceGroup',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.GetResourceGroupResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_resource_group_with_options_async(
         self,
-        request: resource_manager_20200331_models.GetResourceGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetResourceGroupResponse:
-        """
-        @summary Queries the information of a resource group.
-        
-        @param request: GetResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourceGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.include_tags):
+        if not DaraCore.is_null(request.include_tags):
             query['IncludeTags'] = request.include_tags
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetResourceGroup',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetResourceGroup',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.GetResourceGroupResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_resource_group(
         self,
-        request: resource_manager_20200331_models.GetResourceGroupRequest,
-    ) -> resource_manager_20200331_models.GetResourceGroupResponse:
-        """
-        @summary Queries the information of a resource group.
-        
-        @param request: GetResourceGroupRequest
-        @return: GetResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetResourceGroupRequest,
+    ) -> main_models.GetResourceGroupResponse:
+        runtime = RuntimeOptions()
         return self.get_resource_group_with_options(request, runtime)
 
     async def get_resource_group_async(
         self,
-        request: resource_manager_20200331_models.GetResourceGroupRequest,
-    ) -> resource_manager_20200331_models.GetResourceGroupResponse:
-        """
-        @summary Queries the information of a resource group.
-        
-        @param request: GetResourceGroupRequest
-        @return: GetResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetResourceGroupRequest,
+    ) -> main_models.GetResourceGroupResponse:
+        runtime = RuntimeOptions()
         return await self.get_resource_group_with_options_async(request, runtime)
 
     def get_resource_group_admin_setting_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetResourceGroupAdminSettingResponse:
-        """
-        @summary Queries the configurations of a resource group administrator.
-        
-        @param request: GetResourceGroupAdminSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetResourceGroupAdminSettingResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetResourceGroupAdminSetting',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourceGroupAdminSettingResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetResourceGroupAdminSetting',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetResourceGroupAdminSettingResponse(),
+        return DaraCore.from_map(
+            main_models.GetResourceGroupAdminSettingResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_resource_group_admin_setting_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetResourceGroupAdminSettingResponse:
-        """
-        @summary Queries the configurations of a resource group administrator.
-        
-        @param request: GetResourceGroupAdminSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetResourceGroupAdminSettingResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetResourceGroupAdminSetting',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourceGroupAdminSettingResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetResourceGroupAdminSetting',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetResourceGroupAdminSettingResponse(),
+        return DaraCore.from_map(
+            main_models.GetResourceGroupAdminSettingResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_resource_group_admin_setting(self) -> resource_manager_20200331_models.GetResourceGroupAdminSettingResponse:
-        """
-        @summary Queries the configurations of a resource group administrator.
-        
-        @return: GetResourceGroupAdminSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def get_resource_group_admin_setting(self) -> main_models.GetResourceGroupAdminSettingResponse:
+        runtime = RuntimeOptions()
         return self.get_resource_group_admin_setting_with_options(runtime)
 
-    async def get_resource_group_admin_setting_async(self) -> resource_manager_20200331_models.GetResourceGroupAdminSettingResponse:
-        """
-        @summary Queries the configurations of a resource group administrator.
-        
-        @return: GetResourceGroupAdminSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def get_resource_group_admin_setting_async(self) -> main_models.GetResourceGroupAdminSettingResponse:
+        runtime = RuntimeOptions()
         return await self.get_resource_group_admin_setting_with_options_async(runtime)
 
     def get_resource_group_notification_setting_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetResourceGroupNotificationSettingResponse:
-        """
-        @summary Queries the notification settings of a resource group.
-        
-        @param request: GetResourceGroupNotificationSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetResourceGroupNotificationSettingResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetResourceGroupNotificationSetting',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourceGroupNotificationSettingResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetResourceGroupNotificationSetting',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetResourceGroupNotificationSettingResponse(),
+        return DaraCore.from_map(
+            main_models.GetResourceGroupNotificationSettingResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_resource_group_notification_setting_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetResourceGroupNotificationSettingResponse:
-        """
-        @summary Queries the notification settings of a resource group.
-        
-        @param request: GetResourceGroupNotificationSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetResourceGroupNotificationSettingResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='GetResourceGroupNotificationSetting',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourceGroupNotificationSettingResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetResourceGroupNotificationSetting',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetResourceGroupNotificationSettingResponse(),
+        return DaraCore.from_map(
+            main_models.GetResourceGroupNotificationSettingResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def get_resource_group_notification_setting(self) -> resource_manager_20200331_models.GetResourceGroupNotificationSettingResponse:
-        """
-        @summary Queries the notification settings of a resource group.
-        
-        @return: GetResourceGroupNotificationSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def get_resource_group_notification_setting(self) -> main_models.GetResourceGroupNotificationSettingResponse:
+        runtime = RuntimeOptions()
         return self.get_resource_group_notification_setting_with_options(runtime)
 
-    async def get_resource_group_notification_setting_async(self) -> resource_manager_20200331_models.GetResourceGroupNotificationSettingResponse:
-        """
-        @summary Queries the notification settings of a resource group.
-        
-        @return: GetResourceGroupNotificationSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def get_resource_group_notification_setting_async(self) -> main_models.GetResourceGroupNotificationSettingResponse:
+        runtime = RuntimeOptions()
         return await self.get_resource_group_notification_setting_with_options_async(runtime)
 
     def get_resource_group_resource_counts_with_options(
         self,
-        request: resource_manager_20200331_models.GetResourceGroupResourceCountsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetResourceGroupResourceCountsResponse:
-        """
-        @summary Queries the number of resources in a visible resource group.
-        
-        @param request: GetResourceGroupResourceCountsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetResourceGroupResourceCountsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetResourceGroupResourceCountsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourceGroupResourceCountsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_by_key):
+        if not DaraCore.is_null(request.group_by_key):
             query['GroupByKey'] = request.group_by_key
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_region_id):
+        if not DaraCore.is_null(request.resource_region_id):
             query['ResourceRegionId'] = request.resource_region_id
-        if not UtilClient.is_unset(request.resource_types):
+        if not DaraCore.is_null(request.resource_types):
             query['ResourceTypes'] = request.resource_types
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetResourceGroupResourceCounts',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetResourceGroupResourceCounts',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetResourceGroupResourceCountsResponse(),
+        return DaraCore.from_map(
+            main_models.GetResourceGroupResourceCountsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_resource_group_resource_counts_with_options_async(
         self,
-        request: resource_manager_20200331_models.GetResourceGroupResourceCountsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetResourceGroupResourceCountsResponse:
-        """
-        @summary Queries the number of resources in a visible resource group.
-        
-        @param request: GetResourceGroupResourceCountsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetResourceGroupResourceCountsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetResourceGroupResourceCountsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetResourceGroupResourceCountsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.group_by_key):
+        if not DaraCore.is_null(request.group_by_key):
             query['GroupByKey'] = request.group_by_key
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_region_id):
+        if not DaraCore.is_null(request.resource_region_id):
             query['ResourceRegionId'] = request.resource_region_id
-        if not UtilClient.is_unset(request.resource_types):
+        if not DaraCore.is_null(request.resource_types):
             query['ResourceTypes'] = request.resource_types
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetResourceGroupResourceCounts',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetResourceGroupResourceCounts',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetResourceGroupResourceCountsResponse(),
+        return DaraCore.from_map(
+            main_models.GetResourceGroupResourceCountsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_resource_group_resource_counts(
         self,
-        request: resource_manager_20200331_models.GetResourceGroupResourceCountsRequest,
-    ) -> resource_manager_20200331_models.GetResourceGroupResourceCountsResponse:
-        """
-        @summary Queries the number of resources in a visible resource group.
-        
-        @param request: GetResourceGroupResourceCountsRequest
-        @return: GetResourceGroupResourceCountsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetResourceGroupResourceCountsRequest,
+    ) -> main_models.GetResourceGroupResourceCountsResponse:
+        runtime = RuntimeOptions()
         return self.get_resource_group_resource_counts_with_options(request, runtime)
 
     async def get_resource_group_resource_counts_async(
         self,
-        request: resource_manager_20200331_models.GetResourceGroupResourceCountsRequest,
-    ) -> resource_manager_20200331_models.GetResourceGroupResourceCountsResponse:
-        """
-        @summary Queries the number of resources in a visible resource group.
-        
-        @param request: GetResourceGroupResourceCountsRequest
-        @return: GetResourceGroupResourceCountsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetResourceGroupResourceCountsRequest,
+    ) -> main_models.GetResourceGroupResourceCountsResponse:
+        runtime = RuntimeOptions()
         return await self.get_resource_group_resource_counts_with_options_async(request, runtime)
 
     def get_role_with_options(
         self,
-        request: resource_manager_20200331_models.GetRoleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetRoleResponse:
-        """
-        @summary Queries the information about a RAM role.
-        
-        @param request: GetRoleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetRoleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRoleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.language):
+        if not DaraCore.is_null(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.role_name):
+        if not DaraCore.is_null(request.role_name):
             query['RoleName'] = request.role_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetRole',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetRole',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetRoleResponse(),
+        return DaraCore.from_map(
+            main_models.GetRoleResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_role_with_options_async(
         self,
-        request: resource_manager_20200331_models.GetRoleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetRoleResponse:
-        """
-        @summary Queries the information about a RAM role.
-        
-        @param request: GetRoleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetRoleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRoleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.language):
+        if not DaraCore.is_null(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.role_name):
+        if not DaraCore.is_null(request.role_name):
             query['RoleName'] = request.role_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetRole',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetRole',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetRoleResponse(),
+        return DaraCore.from_map(
+            main_models.GetRoleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_role(
         self,
-        request: resource_manager_20200331_models.GetRoleRequest,
-    ) -> resource_manager_20200331_models.GetRoleResponse:
-        """
-        @summary Queries the information about a RAM role.
-        
-        @param request: GetRoleRequest
-        @return: GetRoleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetRoleRequest,
+    ) -> main_models.GetRoleResponse:
+        runtime = RuntimeOptions()
         return self.get_role_with_options(request, runtime)
 
     async def get_role_async(
         self,
-        request: resource_manager_20200331_models.GetRoleRequest,
-    ) -> resource_manager_20200331_models.GetRoleResponse:
-        """
-        @summary Queries the information about a RAM role.
-        
-        @param request: GetRoleRequest
-        @return: GetRoleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetRoleRequest,
+    ) -> main_models.GetRoleResponse:
+        runtime = RuntimeOptions()
         return await self.get_role_with_options_async(request, runtime)
 
     def get_service_linked_role_deletion_status_with_options(
         self,
-        request: resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusResponse:
-        """
-        @summary Queries the status of the task that is used to delete a service-linked role.
-        
-        @param request: GetServiceLinkedRoleDeletionStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetServiceLinkedRoleDeletionStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetServiceLinkedRoleDeletionStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetServiceLinkedRoleDeletionStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.deletion_task_id):
+        if not DaraCore.is_null(request.deletion_task_id):
             query['DeletionTaskId'] = request.deletion_task_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetServiceLinkedRoleDeletionStatus',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetServiceLinkedRoleDeletionStatus',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusResponse(),
+        return DaraCore.from_map(
+            main_models.GetServiceLinkedRoleDeletionStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def get_service_linked_role_deletion_status_with_options_async(
         self,
-        request: resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusResponse:
-        """
-        @summary Queries the status of the task that is used to delete a service-linked role.
-        
-        @param request: GetServiceLinkedRoleDeletionStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: GetServiceLinkedRoleDeletionStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.GetServiceLinkedRoleDeletionStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetServiceLinkedRoleDeletionStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.deletion_task_id):
+        if not DaraCore.is_null(request.deletion_task_id):
             query['DeletionTaskId'] = request.deletion_task_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='GetServiceLinkedRoleDeletionStatus',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'GetServiceLinkedRoleDeletionStatus',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusResponse(),
+        return DaraCore.from_map(
+            main_models.GetServiceLinkedRoleDeletionStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def get_service_linked_role_deletion_status(
         self,
-        request: resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusRequest,
-    ) -> resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusResponse:
-        """
-        @summary Queries the status of the task that is used to delete a service-linked role.
-        
-        @param request: GetServiceLinkedRoleDeletionStatusRequest
-        @return: GetServiceLinkedRoleDeletionStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetServiceLinkedRoleDeletionStatusRequest,
+    ) -> main_models.GetServiceLinkedRoleDeletionStatusResponse:
+        runtime = RuntimeOptions()
         return self.get_service_linked_role_deletion_status_with_options(request, runtime)
 
     async def get_service_linked_role_deletion_status_async(
         self,
-        request: resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusRequest,
-    ) -> resource_manager_20200331_models.GetServiceLinkedRoleDeletionStatusResponse:
-        """
-        @summary Queries the status of the task that is used to delete a service-linked role.
-        
-        @param request: GetServiceLinkedRoleDeletionStatusRequest
-        @return: GetServiceLinkedRoleDeletionStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.GetServiceLinkedRoleDeletionStatusRequest,
+    ) -> main_models.GetServiceLinkedRoleDeletionStatusResponse:
+        runtime = RuntimeOptions()
         return await self.get_service_linked_role_deletion_status_with_options_async(request, runtime)
 
     def init_resource_directory_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.InitResourceDirectoryResponse:
-        """
-        @summary Enables a resource directory. After you enable a resource directory, the system automatically creates a root folder and sets the current account as the enterprise management account of the resource directory. The enterprise management account has all administrative permissions on this resource direc
-        
-        @description >
-        An account can be used to enable a resource directory only after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
-        We recommend that you only use the enterprise management account as the administrator of the resource directory. Do not use the enterprise management account to purchase cloud resources.
-        
-        @param request: InitResourceDirectoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InitResourceDirectoryResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='InitResourceDirectory',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.InitResourceDirectoryResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'InitResourceDirectory',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.InitResourceDirectoryResponse(),
+        return DaraCore.from_map(
+            main_models.InitResourceDirectoryResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def init_resource_directory_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.InitResourceDirectoryResponse:
-        """
-        @summary Enables a resource directory. After you enable a resource directory, the system automatically creates a root folder and sets the current account as the enterprise management account of the resource directory. The enterprise management account has all administrative permissions on this resource direc
-        
-        @description >
-        An account can be used to enable a resource directory only after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
-        We recommend that you only use the enterprise management account as the administrator of the resource directory. Do not use the enterprise management account to purchase cloud resources.
-        
-        @param request: InitResourceDirectoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InitResourceDirectoryResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='InitResourceDirectory',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.InitResourceDirectoryResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'InitResourceDirectory',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.InitResourceDirectoryResponse(),
+        return DaraCore.from_map(
+            main_models.InitResourceDirectoryResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def init_resource_directory(self) -> resource_manager_20200331_models.InitResourceDirectoryResponse:
-        """
-        @summary Enables a resource directory. After you enable a resource directory, the system automatically creates a root folder and sets the current account as the enterprise management account of the resource directory. The enterprise management account has all administrative permissions on this resource direc
-        
-        @description >
-        An account can be used to enable a resource directory only after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
-        We recommend that you only use the enterprise management account as the administrator of the resource directory. Do not use the enterprise management account to purchase cloud resources.
-        
-        @return: InitResourceDirectoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def init_resource_directory(self) -> main_models.InitResourceDirectoryResponse:
+        runtime = RuntimeOptions()
         return self.init_resource_directory_with_options(runtime)
 
-    async def init_resource_directory_async(self) -> resource_manager_20200331_models.InitResourceDirectoryResponse:
-        """
-        @summary Enables a resource directory. After you enable a resource directory, the system automatically creates a root folder and sets the current account as the enterprise management account of the resource directory. The enterprise management account has all administrative permissions on this resource direc
-        
-        @description >
-        An account can be used to enable a resource directory only after it passes enterprise real-name verification. An account that only passed individual real-name verification cannot be used to enable a resource directory.
-        We recommend that you only use the enterprise management account as the administrator of the resource directory. Do not use the enterprise management account to purchase cloud resources.
-        
-        @return: InitResourceDirectoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def init_resource_directory_async(self) -> main_models.InitResourceDirectoryResponse:
+        runtime = RuntimeOptions()
         return await self.init_resource_directory_with_options_async(runtime)
 
     def invite_account_to_resource_directory_with_options(
         self,
-        request: resource_manager_20200331_models.InviteAccountToResourceDirectoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.InviteAccountToResourceDirectoryResponse:
-        """
-        @summary Invites an account to join a resource directory.
-        
-        @description This topic provides an example on how to call the API operation to invite the account `someone@example.com` to join a resource directory.
-        
-        @param request: InviteAccountToResourceDirectoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InviteAccountToResourceDirectoryResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.InviteAccountToResourceDirectoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InviteAccountToResourceDirectoryResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.note):
+        if not DaraCore.is_null(request.note):
             query['Note'] = request.note
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        if not UtilClient.is_unset(request.target_entity):
+        if not DaraCore.is_null(request.target_entity):
             query['TargetEntity'] = request.target_entity
-        if not UtilClient.is_unset(request.target_type):
+        if not DaraCore.is_null(request.target_type):
             query['TargetType'] = request.target_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='InviteAccountToResourceDirectory',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InviteAccountToResourceDirectory',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.InviteAccountToResourceDirectoryResponse(),
+        return DaraCore.from_map(
+            main_models.InviteAccountToResourceDirectoryResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def invite_account_to_resource_directory_with_options_async(
         self,
-        request: resource_manager_20200331_models.InviteAccountToResourceDirectoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.InviteAccountToResourceDirectoryResponse:
-        """
-        @summary Invites an account to join a resource directory.
-        
-        @description This topic provides an example on how to call the API operation to invite the account `someone@example.com` to join a resource directory.
-        
-        @param request: InviteAccountToResourceDirectoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: InviteAccountToResourceDirectoryResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.InviteAccountToResourceDirectoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.InviteAccountToResourceDirectoryResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.note):
+        if not DaraCore.is_null(request.note):
             query['Note'] = request.note
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        if not UtilClient.is_unset(request.target_entity):
+        if not DaraCore.is_null(request.target_entity):
             query['TargetEntity'] = request.target_entity
-        if not UtilClient.is_unset(request.target_type):
+        if not DaraCore.is_null(request.target_type):
             query['TargetType'] = request.target_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='InviteAccountToResourceDirectory',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'InviteAccountToResourceDirectory',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.InviteAccountToResourceDirectoryResponse(),
+        return DaraCore.from_map(
+            main_models.InviteAccountToResourceDirectoryResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def invite_account_to_resource_directory(
         self,
-        request: resource_manager_20200331_models.InviteAccountToResourceDirectoryRequest,
-    ) -> resource_manager_20200331_models.InviteAccountToResourceDirectoryResponse:
-        """
-        @summary Invites an account to join a resource directory.
-        
-        @description This topic provides an example on how to call the API operation to invite the account `someone@example.com` to join a resource directory.
-        
-        @param request: InviteAccountToResourceDirectoryRequest
-        @return: InviteAccountToResourceDirectoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InviteAccountToResourceDirectoryRequest,
+    ) -> main_models.InviteAccountToResourceDirectoryResponse:
+        runtime = RuntimeOptions()
         return self.invite_account_to_resource_directory_with_options(request, runtime)
 
     async def invite_account_to_resource_directory_async(
         self,
-        request: resource_manager_20200331_models.InviteAccountToResourceDirectoryRequest,
-    ) -> resource_manager_20200331_models.InviteAccountToResourceDirectoryResponse:
-        """
-        @summary Invites an account to join a resource directory.
-        
-        @description This topic provides an example on how to call the API operation to invite the account `someone@example.com` to join a resource directory.
-        
-        @param request: InviteAccountToResourceDirectoryRequest
-        @return: InviteAccountToResourceDirectoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.InviteAccountToResourceDirectoryRequest,
+    ) -> main_models.InviteAccountToResourceDirectoryResponse:
+        runtime = RuntimeOptions()
         return await self.invite_account_to_resource_directory_with_options_async(request, runtime)
 
     def list_accounts_with_options(
         self,
-        request: resource_manager_20200331_models.ListAccountsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListAccountsResponse:
-        """
-        @summary Queries all the members in a resource directory.
-        
-        @description You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
-        
-        @param request: ListAccountsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAccountsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListAccountsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAccountsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.include_tags):
+        if not DaraCore.is_null(request.include_tags):
             query['IncludeTags'] = request.include_tags
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAccounts',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAccounts',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListAccountsResponse(),
+        return DaraCore.from_map(
+            main_models.ListAccountsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_accounts_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListAccountsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListAccountsResponse:
-        """
-        @summary Queries all the members in a resource directory.
-        
-        @description You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
-        
-        @param request: ListAccountsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAccountsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListAccountsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAccountsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.include_tags):
+        if not DaraCore.is_null(request.include_tags):
             query['IncludeTags'] = request.include_tags
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAccounts',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAccounts',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListAccountsResponse(),
+        return DaraCore.from_map(
+            main_models.ListAccountsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_accounts(
         self,
-        request: resource_manager_20200331_models.ListAccountsRequest,
-    ) -> resource_manager_20200331_models.ListAccountsResponse:
-        """
-        @summary Queries all the members in a resource directory.
-        
-        @description You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
-        
-        @param request: ListAccountsRequest
-        @return: ListAccountsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAccountsRequest,
+    ) -> main_models.ListAccountsResponse:
+        runtime = RuntimeOptions()
         return self.list_accounts_with_options(request, runtime)
 
     async def list_accounts_async(
         self,
-        request: resource_manager_20200331_models.ListAccountsRequest,
-    ) -> resource_manager_20200331_models.ListAccountsResponse:
-        """
-        @summary Queries all the members in a resource directory.
-        
-        @description You can use only the management account of a resource directory or a delegated administrator account of a trusted service to call this operation.
-        
-        @param request: ListAccountsRequest
-        @return: ListAccountsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAccountsRequest,
+    ) -> main_models.ListAccountsResponse:
+        runtime = RuntimeOptions()
         return await self.list_accounts_with_options_async(request, runtime)
 
     def list_accounts_for_parent_with_options(
         self,
-        request: resource_manager_20200331_models.ListAccountsForParentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListAccountsForParentResponse:
-        """
-        @summary Queries the information of members in a folder.
-        
-        @param request: ListAccountsForParentRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAccountsForParentResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListAccountsForParentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAccountsForParentResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.include_tags):
+        if not DaraCore.is_null(request.include_tags):
             query['IncludeTags'] = request.include_tags
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.parent_folder_id):
+        if not DaraCore.is_null(request.parent_folder_id):
             query['ParentFolderId'] = request.parent_folder_id
-        if not UtilClient.is_unset(request.query_keyword):
+        if not DaraCore.is_null(request.query_keyword):
             query['QueryKeyword'] = request.query_keyword
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAccountsForParent',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAccountsForParent',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListAccountsForParentResponse(),
+        return DaraCore.from_map(
+            main_models.ListAccountsForParentResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_accounts_for_parent_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListAccountsForParentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListAccountsForParentResponse:
-        """
-        @summary Queries the information of members in a folder.
-        
-        @param request: ListAccountsForParentRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAccountsForParentResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListAccountsForParentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAccountsForParentResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.include_tags):
+        if not DaraCore.is_null(request.include_tags):
             query['IncludeTags'] = request.include_tags
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.parent_folder_id):
+        if not DaraCore.is_null(request.parent_folder_id):
             query['ParentFolderId'] = request.parent_folder_id
-        if not UtilClient.is_unset(request.query_keyword):
+        if not DaraCore.is_null(request.query_keyword):
             query['QueryKeyword'] = request.query_keyword
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAccountsForParent',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAccountsForParent',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListAccountsForParentResponse(),
+        return DaraCore.from_map(
+            main_models.ListAccountsForParentResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_accounts_for_parent(
         self,
-        request: resource_manager_20200331_models.ListAccountsForParentRequest,
-    ) -> resource_manager_20200331_models.ListAccountsForParentResponse:
-        """
-        @summary Queries the information of members in a folder.
-        
-        @param request: ListAccountsForParentRequest
-        @return: ListAccountsForParentResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAccountsForParentRequest,
+    ) -> main_models.ListAccountsForParentResponse:
+        runtime = RuntimeOptions()
         return self.list_accounts_for_parent_with_options(request, runtime)
 
     async def list_accounts_for_parent_async(
         self,
-        request: resource_manager_20200331_models.ListAccountsForParentRequest,
-    ) -> resource_manager_20200331_models.ListAccountsForParentResponse:
-        """
-        @summary Queries the information of members in a folder.
-        
-        @param request: ListAccountsForParentRequest
-        @return: ListAccountsForParentResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAccountsForParentRequest,
+    ) -> main_models.ListAccountsForParentResponse:
+        runtime = RuntimeOptions()
         return await self.list_accounts_for_parent_with_options_async(request, runtime)
 
     def list_ancestors_with_options(
         self,
-        request: resource_manager_20200331_models.ListAncestorsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListAncestorsResponse:
-        """
-        @param request: ListAncestorsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAncestorsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListAncestorsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAncestorsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.child_id):
+        if not DaraCore.is_null(request.child_id):
             query['ChildId'] = request.child_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAncestors',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAncestors',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListAncestorsResponse(),
+        return DaraCore.from_map(
+            main_models.ListAncestorsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_ancestors_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListAncestorsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListAncestorsResponse:
-        """
-        @param request: ListAncestorsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAncestorsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListAncestorsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAncestorsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.child_id):
+        if not DaraCore.is_null(request.child_id):
             query['ChildId'] = request.child_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAncestors',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAncestors',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListAncestorsResponse(),
+        return DaraCore.from_map(
+            main_models.ListAncestorsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_ancestors(
         self,
-        request: resource_manager_20200331_models.ListAncestorsRequest,
-    ) -> resource_manager_20200331_models.ListAncestorsResponse:
-        """
-        @param request: ListAncestorsRequest
-        @return: ListAncestorsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAncestorsRequest,
+    ) -> main_models.ListAncestorsResponse:
+        runtime = RuntimeOptions()
         return self.list_ancestors_with_options(request, runtime)
 
     async def list_ancestors_async(
         self,
-        request: resource_manager_20200331_models.ListAncestorsRequest,
-    ) -> resource_manager_20200331_models.ListAncestorsResponse:
-        """
-        @param request: ListAncestorsRequest
-        @return: ListAncestorsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAncestorsRequest,
+    ) -> main_models.ListAncestorsResponse:
+        runtime = RuntimeOptions()
         return await self.list_ancestors_with_options_async(request, runtime)
 
     def list_associated_transfer_setting_with_options(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListAssociatedTransferSettingResponse:
-        """
-        @summary Queries the settings of the Transfer Associated Resources feature.
-        
-        @param request: ListAssociatedTransferSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAssociatedTransferSettingResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='ListAssociatedTransferSetting',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAssociatedTransferSettingResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'ListAssociatedTransferSetting',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListAssociatedTransferSettingResponse(),
+        return DaraCore.from_map(
+            main_models.ListAssociatedTransferSettingResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_associated_transfer_setting_with_options_async(
         self,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListAssociatedTransferSettingResponse:
-        """
-        @summary Queries the settings of the Transfer Associated Resources feature.
-        
-        @param request: ListAssociatedTransferSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAssociatedTransferSettingResponse
-        """
-        req = open_api_models.OpenApiRequest()
-        params = open_api_models.Params(
-            action='ListAssociatedTransferSetting',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAssociatedTransferSettingResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'ListAssociatedTransferSetting',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListAssociatedTransferSettingResponse(),
+        return DaraCore.from_map(
+            main_models.ListAssociatedTransferSettingResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
-    def list_associated_transfer_setting(self) -> resource_manager_20200331_models.ListAssociatedTransferSettingResponse:
-        """
-        @summary Queries the settings of the Transfer Associated Resources feature.
-        
-        @return: ListAssociatedTransferSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    def list_associated_transfer_setting(self) -> main_models.ListAssociatedTransferSettingResponse:
+        runtime = RuntimeOptions()
         return self.list_associated_transfer_setting_with_options(runtime)
 
-    async def list_associated_transfer_setting_async(self) -> resource_manager_20200331_models.ListAssociatedTransferSettingResponse:
-        """
-        @summary Queries the settings of the Transfer Associated Resources feature.
-        
-        @return: ListAssociatedTransferSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+    async def list_associated_transfer_setting_async(self) -> main_models.ListAssociatedTransferSettingResponse:
+        runtime = RuntimeOptions()
         return await self.list_associated_transfer_setting_with_options_async(runtime)
 
     def list_auto_grouping_remediations_with_options(
         self,
-        request: resource_manager_20200331_models.ListAutoGroupingRemediationsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListAutoGroupingRemediationsResponse:
-        """
-        @summary Queries a list of automatic grouping remediation records.
-        
-        @param request: ListAutoGroupingRemediationsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAutoGroupingRemediationsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListAutoGroupingRemediationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAutoGroupingRemediationsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.earliest_remediation_time):
+        if not DaraCore.is_null(request.earliest_remediation_time):
             query['EarliestRemediationTime'] = request.earliest_remediation_time
-        if not UtilClient.is_unset(request.latest_remediation_time):
+        if not DaraCore.is_null(request.latest_remediation_time):
             query['LatestRemediationTime'] = request.latest_remediation_time
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             query['Service'] = request.service
-        if not UtilClient.is_unset(request.target_resource_group_id):
+        if not DaraCore.is_null(request.target_resource_group_id):
             query['TargetResourceGroupId'] = request.target_resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAutoGroupingRemediations',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAutoGroupingRemediations',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListAutoGroupingRemediationsResponse(),
+        return DaraCore.from_map(
+            main_models.ListAutoGroupingRemediationsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_auto_grouping_remediations_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListAutoGroupingRemediationsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListAutoGroupingRemediationsResponse:
-        """
-        @summary Queries a list of automatic grouping remediation records.
-        
-        @param request: ListAutoGroupingRemediationsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAutoGroupingRemediationsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListAutoGroupingRemediationsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAutoGroupingRemediationsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.earliest_remediation_time):
+        if not DaraCore.is_null(request.earliest_remediation_time):
             query['EarliestRemediationTime'] = request.earliest_remediation_time
-        if not UtilClient.is_unset(request.latest_remediation_time):
+        if not DaraCore.is_null(request.latest_remediation_time):
             query['LatestRemediationTime'] = request.latest_remediation_time
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             query['Service'] = request.service
-        if not UtilClient.is_unset(request.target_resource_group_id):
+        if not DaraCore.is_null(request.target_resource_group_id):
             query['TargetResourceGroupId'] = request.target_resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAutoGroupingRemediations',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAutoGroupingRemediations',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListAutoGroupingRemediationsResponse(),
+        return DaraCore.from_map(
+            main_models.ListAutoGroupingRemediationsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_auto_grouping_remediations(
         self,
-        request: resource_manager_20200331_models.ListAutoGroupingRemediationsRequest,
-    ) -> resource_manager_20200331_models.ListAutoGroupingRemediationsResponse:
-        """
-        @summary Queries a list of automatic grouping remediation records.
-        
-        @param request: ListAutoGroupingRemediationsRequest
-        @return: ListAutoGroupingRemediationsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAutoGroupingRemediationsRequest,
+    ) -> main_models.ListAutoGroupingRemediationsResponse:
+        runtime = RuntimeOptions()
         return self.list_auto_grouping_remediations_with_options(request, runtime)
 
     async def list_auto_grouping_remediations_async(
         self,
-        request: resource_manager_20200331_models.ListAutoGroupingRemediationsRequest,
-    ) -> resource_manager_20200331_models.ListAutoGroupingRemediationsResponse:
-        """
-        @summary Queries a list of automatic grouping remediation records.
-        
-        @param request: ListAutoGroupingRemediationsRequest
-        @return: ListAutoGroupingRemediationsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAutoGroupingRemediationsRequest,
+    ) -> main_models.ListAutoGroupingRemediationsResponse:
+        runtime = RuntimeOptions()
         return await self.list_auto_grouping_remediations_with_options_async(request, runtime)
 
     def list_auto_grouping_rules_with_options(
         self,
-        request: resource_manager_20200331_models.ListAutoGroupingRulesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListAutoGroupingRulesResponse:
-        """
-        @summary Queries a list of transfer rules.
-        
-        @param request: ListAutoGroupingRulesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAutoGroupingRulesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListAutoGroupingRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAutoGroupingRulesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        if not UtilClient.is_unset(request.rule_name):
+        if not DaraCore.is_null(request.rule_name):
             query['RuleName'] = request.rule_name
-        if not UtilClient.is_unset(request.rule_type):
+        if not DaraCore.is_null(request.rule_type):
             query['RuleType'] = request.rule_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAutoGroupingRules',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAutoGroupingRules',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListAutoGroupingRulesResponse(),
+        return DaraCore.from_map(
+            main_models.ListAutoGroupingRulesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_auto_grouping_rules_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListAutoGroupingRulesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListAutoGroupingRulesResponse:
-        """
-        @summary Queries a list of transfer rules.
-        
-        @param request: ListAutoGroupingRulesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListAutoGroupingRulesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListAutoGroupingRulesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAutoGroupingRulesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        if not UtilClient.is_unset(request.rule_name):
+        if not DaraCore.is_null(request.rule_name):
             query['RuleName'] = request.rule_name
-        if not UtilClient.is_unset(request.rule_type):
+        if not DaraCore.is_null(request.rule_type):
             query['RuleType'] = request.rule_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListAutoGroupingRules',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListAutoGroupingRules',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListAutoGroupingRulesResponse(),
+        return DaraCore.from_map(
+            main_models.ListAutoGroupingRulesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_auto_grouping_rules(
         self,
-        request: resource_manager_20200331_models.ListAutoGroupingRulesRequest,
-    ) -> resource_manager_20200331_models.ListAutoGroupingRulesResponse:
-        """
-        @summary Queries a list of transfer rules.
-        
-        @param request: ListAutoGroupingRulesRequest
-        @return: ListAutoGroupingRulesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAutoGroupingRulesRequest,
+    ) -> main_models.ListAutoGroupingRulesResponse:
+        runtime = RuntimeOptions()
         return self.list_auto_grouping_rules_with_options(request, runtime)
 
     async def list_auto_grouping_rules_async(
         self,
-        request: resource_manager_20200331_models.ListAutoGroupingRulesRequest,
-    ) -> resource_manager_20200331_models.ListAutoGroupingRulesResponse:
-        """
-        @summary Queries a list of transfer rules.
-        
-        @param request: ListAutoGroupingRulesRequest
-        @return: ListAutoGroupingRulesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListAutoGroupingRulesRequest,
+    ) -> main_models.ListAutoGroupingRulesResponse:
+        runtime = RuntimeOptions()
         return await self.list_auto_grouping_rules_with_options_async(request, runtime)
 
     def list_control_policies_with_options(
         self,
-        request: resource_manager_20200331_models.ListControlPoliciesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListControlPoliciesResponse:
-        """
-        @summary Queries access control policies.
-        
-        @description This topic provides an example on how to call the API operation to query the system access control policies within a resource directory. The response shows that the resource directory has only one system access control policy. The policy is named `FullAliyunAccess`.
-        
-        @param request: ListControlPoliciesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListControlPoliciesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListControlPoliciesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListControlPoliciesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.language):
+        if not DaraCore.is_null(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.policy_type):
+        if not DaraCore.is_null(request.policy_type):
             query['PolicyType'] = request.policy_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListControlPolicies',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListControlPolicies',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListControlPoliciesResponse(),
+        return DaraCore.from_map(
+            main_models.ListControlPoliciesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_control_policies_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListControlPoliciesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListControlPoliciesResponse:
-        """
-        @summary Queries access control policies.
-        
-        @description This topic provides an example on how to call the API operation to query the system access control policies within a resource directory. The response shows that the resource directory has only one system access control policy. The policy is named `FullAliyunAccess`.
-        
-        @param request: ListControlPoliciesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListControlPoliciesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListControlPoliciesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListControlPoliciesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.language):
+        if not DaraCore.is_null(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.policy_type):
+        if not DaraCore.is_null(request.policy_type):
             query['PolicyType'] = request.policy_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListControlPolicies',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListControlPolicies',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListControlPoliciesResponse(),
+        return DaraCore.from_map(
+            main_models.ListControlPoliciesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_control_policies(
         self,
-        request: resource_manager_20200331_models.ListControlPoliciesRequest,
-    ) -> resource_manager_20200331_models.ListControlPoliciesResponse:
-        """
-        @summary Queries access control policies.
-        
-        @description This topic provides an example on how to call the API operation to query the system access control policies within a resource directory. The response shows that the resource directory has only one system access control policy. The policy is named `FullAliyunAccess`.
-        
-        @param request: ListControlPoliciesRequest
-        @return: ListControlPoliciesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListControlPoliciesRequest,
+    ) -> main_models.ListControlPoliciesResponse:
+        runtime = RuntimeOptions()
         return self.list_control_policies_with_options(request, runtime)
 
     async def list_control_policies_async(
         self,
-        request: resource_manager_20200331_models.ListControlPoliciesRequest,
-    ) -> resource_manager_20200331_models.ListControlPoliciesResponse:
-        """
-        @summary Queries access control policies.
-        
-        @description This topic provides an example on how to call the API operation to query the system access control policies within a resource directory. The response shows that the resource directory has only one system access control policy. The policy is named `FullAliyunAccess`.
-        
-        @param request: ListControlPoliciesRequest
-        @return: ListControlPoliciesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListControlPoliciesRequest,
+    ) -> main_models.ListControlPoliciesResponse:
+        runtime = RuntimeOptions()
         return await self.list_control_policies_with_options_async(request, runtime)
 
     def list_control_policy_attachments_for_target_with_options(
         self,
-        request: resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetResponse:
-        """
-        @description This topic provides an example on how to call the API operation to query the access control policies that are attached to the folder `fd-ZDNPiT***`.
-        
-        @param request: ListControlPolicyAttachmentsForTargetRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListControlPolicyAttachmentsForTargetResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListControlPolicyAttachmentsForTargetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListControlPolicyAttachmentsForTargetResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.language):
+        if not DaraCore.is_null(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.target_id):
+        if not DaraCore.is_null(request.target_id):
             query['TargetId'] = request.target_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListControlPolicyAttachmentsForTarget',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListControlPolicyAttachmentsForTarget',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetResponse(),
+        return DaraCore.from_map(
+            main_models.ListControlPolicyAttachmentsForTargetResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_control_policy_attachments_for_target_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetResponse:
-        """
-        @description This topic provides an example on how to call the API operation to query the access control policies that are attached to the folder `fd-ZDNPiT***`.
-        
-        @param request: ListControlPolicyAttachmentsForTargetRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListControlPolicyAttachmentsForTargetResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListControlPolicyAttachmentsForTargetRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListControlPolicyAttachmentsForTargetResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.language):
+        if not DaraCore.is_null(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.target_id):
+        if not DaraCore.is_null(request.target_id):
             query['TargetId'] = request.target_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListControlPolicyAttachmentsForTarget',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListControlPolicyAttachmentsForTarget',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetResponse(),
+        return DaraCore.from_map(
+            main_models.ListControlPolicyAttachmentsForTargetResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_control_policy_attachments_for_target(
         self,
-        request: resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetRequest,
-    ) -> resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetResponse:
-        """
-        @description This topic provides an example on how to call the API operation to query the access control policies that are attached to the folder `fd-ZDNPiT***`.
-        
-        @param request: ListControlPolicyAttachmentsForTargetRequest
-        @return: ListControlPolicyAttachmentsForTargetResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListControlPolicyAttachmentsForTargetRequest,
+    ) -> main_models.ListControlPolicyAttachmentsForTargetResponse:
+        runtime = RuntimeOptions()
         return self.list_control_policy_attachments_for_target_with_options(request, runtime)
 
     async def list_control_policy_attachments_for_target_async(
         self,
-        request: resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetRequest,
-    ) -> resource_manager_20200331_models.ListControlPolicyAttachmentsForTargetResponse:
-        """
-        @description This topic provides an example on how to call the API operation to query the access control policies that are attached to the folder `fd-ZDNPiT***`.
-        
-        @param request: ListControlPolicyAttachmentsForTargetRequest
-        @return: ListControlPolicyAttachmentsForTargetResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListControlPolicyAttachmentsForTargetRequest,
+    ) -> main_models.ListControlPolicyAttachmentsForTargetResponse:
+        runtime = RuntimeOptions()
         return await self.list_control_policy_attachments_for_target_with_options_async(request, runtime)
 
     def list_delegated_administrators_with_options(
         self,
-        request: resource_manager_20200331_models.ListDelegatedAdministratorsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListDelegatedAdministratorsResponse:
-        """
-        @summary 列出所有的代理管理员
-        
-        @description This topic provides an example on how to call the API operation to query all delegated administrator accounts in a resource directory. The response shows that two delegated administrator accounts for Cloud Firewall exist in the resource directory.
-        
-        @param request: ListDelegatedAdministratorsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListDelegatedAdministratorsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListDelegatedAdministratorsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDelegatedAdministratorsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.service_principal):
+        if not DaraCore.is_null(request.service_principal):
             query['ServicePrincipal'] = request.service_principal
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDelegatedAdministrators',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListDelegatedAdministrators',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListDelegatedAdministratorsResponse(),
+        return DaraCore.from_map(
+            main_models.ListDelegatedAdministratorsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_delegated_administrators_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListDelegatedAdministratorsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListDelegatedAdministratorsResponse:
-        """
-        @summary 列出所有的代理管理员
-        
-        @description This topic provides an example on how to call the API operation to query all delegated administrator accounts in a resource directory. The response shows that two delegated administrator accounts for Cloud Firewall exist in the resource directory.
-        
-        @param request: ListDelegatedAdministratorsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListDelegatedAdministratorsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListDelegatedAdministratorsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDelegatedAdministratorsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.service_principal):
+        if not DaraCore.is_null(request.service_principal):
             query['ServicePrincipal'] = request.service_principal
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDelegatedAdministrators',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListDelegatedAdministrators',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListDelegatedAdministratorsResponse(),
+        return DaraCore.from_map(
+            main_models.ListDelegatedAdministratorsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_delegated_administrators(
         self,
-        request: resource_manager_20200331_models.ListDelegatedAdministratorsRequest,
-    ) -> resource_manager_20200331_models.ListDelegatedAdministratorsResponse:
-        """
-        @summary 列出所有的代理管理员
-        
-        @description This topic provides an example on how to call the API operation to query all delegated administrator accounts in a resource directory. The response shows that two delegated administrator accounts for Cloud Firewall exist in the resource directory.
-        
-        @param request: ListDelegatedAdministratorsRequest
-        @return: ListDelegatedAdministratorsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListDelegatedAdministratorsRequest,
+    ) -> main_models.ListDelegatedAdministratorsResponse:
+        runtime = RuntimeOptions()
         return self.list_delegated_administrators_with_options(request, runtime)
 
     async def list_delegated_administrators_async(
         self,
-        request: resource_manager_20200331_models.ListDelegatedAdministratorsRequest,
-    ) -> resource_manager_20200331_models.ListDelegatedAdministratorsResponse:
-        """
-        @summary 列出所有的代理管理员
-        
-        @description This topic provides an example on how to call the API operation to query all delegated administrator accounts in a resource directory. The response shows that two delegated administrator accounts for Cloud Firewall exist in the resource directory.
-        
-        @param request: ListDelegatedAdministratorsRequest
-        @return: ListDelegatedAdministratorsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListDelegatedAdministratorsRequest,
+    ) -> main_models.ListDelegatedAdministratorsResponse:
+        runtime = RuntimeOptions()
         return await self.list_delegated_administrators_with_options_async(request, runtime)
 
     def list_delegated_services_for_account_with_options(
         self,
-        request: resource_manager_20200331_models.ListDelegatedServicesForAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListDelegatedServicesForAccountResponse:
-        """
-        @summary 查看指定账号被设置为哪些可信服务的委派管理员
-        
-        @description This topic provides an example on how to call the API operation to query the trusted services for which the member `138660628348***` is specified as a delegated administrator account. The response shows that the member is specified as a delegated administrator account of Cloud Firewall.
-        
-        @param request: ListDelegatedServicesForAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListDelegatedServicesForAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListDelegatedServicesForAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDelegatedServicesForAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDelegatedServicesForAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListDelegatedServicesForAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListDelegatedServicesForAccountResponse(),
+        return DaraCore.from_map(
+            main_models.ListDelegatedServicesForAccountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_delegated_services_for_account_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListDelegatedServicesForAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListDelegatedServicesForAccountResponse:
-        """
-        @summary 查看指定账号被设置为哪些可信服务的委派管理员
-        
-        @description This topic provides an example on how to call the API operation to query the trusted services for which the member `138660628348***` is specified as a delegated administrator account. The response shows that the member is specified as a delegated administrator account of Cloud Firewall.
-        
-        @param request: ListDelegatedServicesForAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListDelegatedServicesForAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListDelegatedServicesForAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListDelegatedServicesForAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListDelegatedServicesForAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListDelegatedServicesForAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListDelegatedServicesForAccountResponse(),
+        return DaraCore.from_map(
+            main_models.ListDelegatedServicesForAccountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_delegated_services_for_account(
         self,
-        request: resource_manager_20200331_models.ListDelegatedServicesForAccountRequest,
-    ) -> resource_manager_20200331_models.ListDelegatedServicesForAccountResponse:
-        """
-        @summary 查看指定账号被设置为哪些可信服务的委派管理员
-        
-        @description This topic provides an example on how to call the API operation to query the trusted services for which the member `138660628348***` is specified as a delegated administrator account. The response shows that the member is specified as a delegated administrator account of Cloud Firewall.
-        
-        @param request: ListDelegatedServicesForAccountRequest
-        @return: ListDelegatedServicesForAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListDelegatedServicesForAccountRequest,
+    ) -> main_models.ListDelegatedServicesForAccountResponse:
+        runtime = RuntimeOptions()
         return self.list_delegated_services_for_account_with_options(request, runtime)
 
     async def list_delegated_services_for_account_async(
         self,
-        request: resource_manager_20200331_models.ListDelegatedServicesForAccountRequest,
-    ) -> resource_manager_20200331_models.ListDelegatedServicesForAccountResponse:
-        """
-        @summary 查看指定账号被设置为哪些可信服务的委派管理员
-        
-        @description This topic provides an example on how to call the API operation to query the trusted services for which the member `138660628348***` is specified as a delegated administrator account. The response shows that the member is specified as a delegated administrator account of Cloud Firewall.
-        
-        @param request: ListDelegatedServicesForAccountRequest
-        @return: ListDelegatedServicesForAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListDelegatedServicesForAccountRequest,
+    ) -> main_models.ListDelegatedServicesForAccountResponse:
+        runtime = RuntimeOptions()
         return await self.list_delegated_services_for_account_with_options_async(request, runtime)
 
     def list_folders_for_parent_with_options(
         self,
-        request: resource_manager_20200331_models.ListFoldersForParentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListFoldersForParentResponse:
-        """
-        @description >  You can view the information of only the first-level subfolders of a folder.
-        
-        @param request: ListFoldersForParentRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListFoldersForParentResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListFoldersForParentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFoldersForParentResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.parent_folder_id):
+        if not DaraCore.is_null(request.parent_folder_id):
             query['ParentFolderId'] = request.parent_folder_id
-        if not UtilClient.is_unset(request.query_keyword):
+        if not DaraCore.is_null(request.query_keyword):
             query['QueryKeyword'] = request.query_keyword
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListFoldersForParent',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListFoldersForParent',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListFoldersForParentResponse(),
+        return DaraCore.from_map(
+            main_models.ListFoldersForParentResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_folders_for_parent_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListFoldersForParentRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListFoldersForParentResponse:
-        """
-        @description >  You can view the information of only the first-level subfolders of a folder.
-        
-        @param request: ListFoldersForParentRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListFoldersForParentResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListFoldersForParentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListFoldersForParentResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.parent_folder_id):
+        if not DaraCore.is_null(request.parent_folder_id):
             query['ParentFolderId'] = request.parent_folder_id
-        if not UtilClient.is_unset(request.query_keyword):
+        if not DaraCore.is_null(request.query_keyword):
             query['QueryKeyword'] = request.query_keyword
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListFoldersForParent',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListFoldersForParent',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListFoldersForParentResponse(),
+        return DaraCore.from_map(
+            main_models.ListFoldersForParentResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_folders_for_parent(
         self,
-        request: resource_manager_20200331_models.ListFoldersForParentRequest,
-    ) -> resource_manager_20200331_models.ListFoldersForParentResponse:
-        """
-        @description >  You can view the information of only the first-level subfolders of a folder.
-        
-        @param request: ListFoldersForParentRequest
-        @return: ListFoldersForParentResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListFoldersForParentRequest,
+    ) -> main_models.ListFoldersForParentResponse:
+        runtime = RuntimeOptions()
         return self.list_folders_for_parent_with_options(request, runtime)
 
     async def list_folders_for_parent_async(
         self,
-        request: resource_manager_20200331_models.ListFoldersForParentRequest,
-    ) -> resource_manager_20200331_models.ListFoldersForParentResponse:
-        """
-        @description >  You can view the information of only the first-level subfolders of a folder.
-        
-        @param request: ListFoldersForParentRequest
-        @return: ListFoldersForParentResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListFoldersForParentRequest,
+    ) -> main_models.ListFoldersForParentResponse:
+        runtime = RuntimeOptions()
         return await self.list_folders_for_parent_with_options_async(request, runtime)
 
     def list_handshakes_for_account_with_options(
         self,
-        request: resource_manager_20200331_models.ListHandshakesForAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListHandshakesForAccountResponse:
-        """
-        @summary Queries the invitations that are associated with an account.
-        
-        @description This topic provides an example on how to call the API operation to query the invitations that are associated with the management account `172841235500***`. The response shows that two invitations are associated with the management account.
-        
-        @param request: ListHandshakesForAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListHandshakesForAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListHandshakesForAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListHandshakesForAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListHandshakesForAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListHandshakesForAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListHandshakesForAccountResponse(),
+        return DaraCore.from_map(
+            main_models.ListHandshakesForAccountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_handshakes_for_account_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListHandshakesForAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListHandshakesForAccountResponse:
-        """
-        @summary Queries the invitations that are associated with an account.
-        
-        @description This topic provides an example on how to call the API operation to query the invitations that are associated with the management account `172841235500***`. The response shows that two invitations are associated with the management account.
-        
-        @param request: ListHandshakesForAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListHandshakesForAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListHandshakesForAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListHandshakesForAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListHandshakesForAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListHandshakesForAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListHandshakesForAccountResponse(),
+        return DaraCore.from_map(
+            main_models.ListHandshakesForAccountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_handshakes_for_account(
         self,
-        request: resource_manager_20200331_models.ListHandshakesForAccountRequest,
-    ) -> resource_manager_20200331_models.ListHandshakesForAccountResponse:
-        """
-        @summary Queries the invitations that are associated with an account.
-        
-        @description This topic provides an example on how to call the API operation to query the invitations that are associated with the management account `172841235500***`. The response shows that two invitations are associated with the management account.
-        
-        @param request: ListHandshakesForAccountRequest
-        @return: ListHandshakesForAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListHandshakesForAccountRequest,
+    ) -> main_models.ListHandshakesForAccountResponse:
+        runtime = RuntimeOptions()
         return self.list_handshakes_for_account_with_options(request, runtime)
 
     async def list_handshakes_for_account_async(
         self,
-        request: resource_manager_20200331_models.ListHandshakesForAccountRequest,
-    ) -> resource_manager_20200331_models.ListHandshakesForAccountResponse:
-        """
-        @summary Queries the invitations that are associated with an account.
-        
-        @description This topic provides an example on how to call the API operation to query the invitations that are associated with the management account `172841235500***`. The response shows that two invitations are associated with the management account.
-        
-        @param request: ListHandshakesForAccountRequest
-        @return: ListHandshakesForAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListHandshakesForAccountRequest,
+    ) -> main_models.ListHandshakesForAccountResponse:
+        runtime = RuntimeOptions()
         return await self.list_handshakes_for_account_with_options_async(request, runtime)
 
     def list_handshakes_for_resource_directory_with_options(
         self,
-        request: resource_manager_20200331_models.ListHandshakesForResourceDirectoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListHandshakesForResourceDirectoryResponse:
-        """
-        @summary Queries invitations in a resource directory.
-        
-        @param request: ListHandshakesForResourceDirectoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListHandshakesForResourceDirectoryResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListHandshakesForResourceDirectoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListHandshakesForResourceDirectoryResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListHandshakesForResourceDirectory',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListHandshakesForResourceDirectory',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListHandshakesForResourceDirectoryResponse(),
+        return DaraCore.from_map(
+            main_models.ListHandshakesForResourceDirectoryResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_handshakes_for_resource_directory_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListHandshakesForResourceDirectoryRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListHandshakesForResourceDirectoryResponse:
-        """
-        @summary Queries invitations in a resource directory.
-        
-        @param request: ListHandshakesForResourceDirectoryRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListHandshakesForResourceDirectoryResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListHandshakesForResourceDirectoryRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListHandshakesForResourceDirectoryResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListHandshakesForResourceDirectory',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListHandshakesForResourceDirectory',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListHandshakesForResourceDirectoryResponse(),
+        return DaraCore.from_map(
+            main_models.ListHandshakesForResourceDirectoryResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_handshakes_for_resource_directory(
         self,
-        request: resource_manager_20200331_models.ListHandshakesForResourceDirectoryRequest,
-    ) -> resource_manager_20200331_models.ListHandshakesForResourceDirectoryResponse:
-        """
-        @summary Queries invitations in a resource directory.
-        
-        @param request: ListHandshakesForResourceDirectoryRequest
-        @return: ListHandshakesForResourceDirectoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListHandshakesForResourceDirectoryRequest,
+    ) -> main_models.ListHandshakesForResourceDirectoryResponse:
+        runtime = RuntimeOptions()
         return self.list_handshakes_for_resource_directory_with_options(request, runtime)
 
     async def list_handshakes_for_resource_directory_async(
         self,
-        request: resource_manager_20200331_models.ListHandshakesForResourceDirectoryRequest,
-    ) -> resource_manager_20200331_models.ListHandshakesForResourceDirectoryResponse:
-        """
-        @summary Queries invitations in a resource directory.
-        
-        @param request: ListHandshakesForResourceDirectoryRequest
-        @return: ListHandshakesForResourceDirectoryResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListHandshakesForResourceDirectoryRequest,
+    ) -> main_models.ListHandshakesForResourceDirectoryResponse:
+        runtime = RuntimeOptions()
         return await self.list_handshakes_for_resource_directory_with_options_async(request, runtime)
 
     def list_policies_with_options(
         self,
-        request: resource_manager_20200331_models.ListPoliciesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListPoliciesResponse:
-        """
-        @summary Queries a list of permission policies.
-        
-        @param request: ListPoliciesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListPoliciesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListPoliciesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPoliciesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.language):
+        if not DaraCore.is_null(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.policy_type):
+        if not DaraCore.is_null(request.policy_type):
             query['PolicyType'] = request.policy_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListPolicies',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListPolicies',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListPoliciesResponse(),
+        return DaraCore.from_map(
+            main_models.ListPoliciesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_policies_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListPoliciesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListPoliciesResponse:
-        """
-        @summary Queries a list of permission policies.
-        
-        @param request: ListPoliciesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListPoliciesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListPoliciesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPoliciesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.language):
+        if not DaraCore.is_null(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.policy_type):
+        if not DaraCore.is_null(request.policy_type):
             query['PolicyType'] = request.policy_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListPolicies',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListPolicies',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListPoliciesResponse(),
+        return DaraCore.from_map(
+            main_models.ListPoliciesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_policies(
         self,
-        request: resource_manager_20200331_models.ListPoliciesRequest,
-    ) -> resource_manager_20200331_models.ListPoliciesResponse:
-        """
-        @summary Queries a list of permission policies.
-        
-        @param request: ListPoliciesRequest
-        @return: ListPoliciesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListPoliciesRequest,
+    ) -> main_models.ListPoliciesResponse:
+        runtime = RuntimeOptions()
         return self.list_policies_with_options(request, runtime)
 
     async def list_policies_async(
         self,
-        request: resource_manager_20200331_models.ListPoliciesRequest,
-    ) -> resource_manager_20200331_models.ListPoliciesResponse:
-        """
-        @summary Queries a list of permission policies.
-        
-        @param request: ListPoliciesRequest
-        @return: ListPoliciesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListPoliciesRequest,
+    ) -> main_models.ListPoliciesResponse:
+        runtime = RuntimeOptions()
         return await self.list_policies_with_options_async(request, runtime)
 
     def list_policy_attachments_with_options(
         self,
-        request: resource_manager_20200331_models.ListPolicyAttachmentsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListPolicyAttachmentsResponse:
-        """
-        @summary Queries policy attachment records.
-        
-        @description You can view the following information:
-        Policy attachment records within an Alibaba Cloud account or a resource group
-        Permission policies attached to RAM users, RAM user groups, or RAM roles
-        RAM users, RAM user groups, or RAM roles to which permission policies are attached within an Alibaba Cloud account or a resource group
-        
-        @param request: ListPolicyAttachmentsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListPolicyAttachmentsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListPolicyAttachmentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPolicyAttachmentsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.language):
+        if not DaraCore.is_null(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.policy_type):
+        if not DaraCore.is_null(request.policy_type):
             query['PolicyType'] = request.policy_type
-        if not UtilClient.is_unset(request.principal_name):
+        if not DaraCore.is_null(request.principal_name):
             query['PrincipalName'] = request.principal_name
-        if not UtilClient.is_unset(request.principal_type):
+        if not DaraCore.is_null(request.principal_type):
             query['PrincipalType'] = request.principal_type
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListPolicyAttachments',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListPolicyAttachments',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListPolicyAttachmentsResponse(),
+        return DaraCore.from_map(
+            main_models.ListPolicyAttachmentsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_policy_attachments_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListPolicyAttachmentsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListPolicyAttachmentsResponse:
-        """
-        @summary Queries policy attachment records.
-        
-        @description You can view the following information:
-        Policy attachment records within an Alibaba Cloud account or a resource group
-        Permission policies attached to RAM users, RAM user groups, or RAM roles
-        RAM users, RAM user groups, or RAM roles to which permission policies are attached within an Alibaba Cloud account or a resource group
-        
-        @param request: ListPolicyAttachmentsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListPolicyAttachmentsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListPolicyAttachmentsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPolicyAttachmentsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.language):
+        if not DaraCore.is_null(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.policy_type):
+        if not DaraCore.is_null(request.policy_type):
             query['PolicyType'] = request.policy_type
-        if not UtilClient.is_unset(request.principal_name):
+        if not DaraCore.is_null(request.principal_name):
             query['PrincipalName'] = request.principal_name
-        if not UtilClient.is_unset(request.principal_type):
+        if not DaraCore.is_null(request.principal_type):
             query['PrincipalType'] = request.principal_type
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListPolicyAttachments',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListPolicyAttachments',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListPolicyAttachmentsResponse(),
+        return DaraCore.from_map(
+            main_models.ListPolicyAttachmentsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_policy_attachments(
         self,
-        request: resource_manager_20200331_models.ListPolicyAttachmentsRequest,
-    ) -> resource_manager_20200331_models.ListPolicyAttachmentsResponse:
-        """
-        @summary Queries policy attachment records.
-        
-        @description You can view the following information:
-        Policy attachment records within an Alibaba Cloud account or a resource group
-        Permission policies attached to RAM users, RAM user groups, or RAM roles
-        RAM users, RAM user groups, or RAM roles to which permission policies are attached within an Alibaba Cloud account or a resource group
-        
-        @param request: ListPolicyAttachmentsRequest
-        @return: ListPolicyAttachmentsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListPolicyAttachmentsRequest,
+    ) -> main_models.ListPolicyAttachmentsResponse:
+        runtime = RuntimeOptions()
         return self.list_policy_attachments_with_options(request, runtime)
 
     async def list_policy_attachments_async(
         self,
-        request: resource_manager_20200331_models.ListPolicyAttachmentsRequest,
-    ) -> resource_manager_20200331_models.ListPolicyAttachmentsResponse:
-        """
-        @summary Queries policy attachment records.
-        
-        @description You can view the following information:
-        Policy attachment records within an Alibaba Cloud account or a resource group
-        Permission policies attached to RAM users, RAM user groups, or RAM roles
-        RAM users, RAM user groups, or RAM roles to which permission policies are attached within an Alibaba Cloud account or a resource group
-        
-        @param request: ListPolicyAttachmentsRequest
-        @return: ListPolicyAttachmentsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListPolicyAttachmentsRequest,
+    ) -> main_models.ListPolicyAttachmentsResponse:
+        runtime = RuntimeOptions()
         return await self.list_policy_attachments_with_options_async(request, runtime)
 
     def list_policy_versions_with_options(
         self,
-        request: resource_manager_20200331_models.ListPolicyVersionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListPolicyVersionsResponse:
-        """
-        @summary Queries a list of versions of a policy.
-        
-        @param request: ListPolicyVersionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListPolicyVersionsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListPolicyVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPolicyVersionsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.policy_type):
+        if not DaraCore.is_null(request.policy_type):
             query['PolicyType'] = request.policy_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListPolicyVersions',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListPolicyVersions',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListPolicyVersionsResponse(),
+        return DaraCore.from_map(
+            main_models.ListPolicyVersionsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_policy_versions_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListPolicyVersionsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListPolicyVersionsResponse:
-        """
-        @summary Queries a list of versions of a policy.
-        
-        @param request: ListPolicyVersionsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListPolicyVersionsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListPolicyVersionsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListPolicyVersionsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.policy_type):
+        if not DaraCore.is_null(request.policy_type):
             query['PolicyType'] = request.policy_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListPolicyVersions',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListPolicyVersions',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListPolicyVersionsResponse(),
+        return DaraCore.from_map(
+            main_models.ListPolicyVersionsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_policy_versions(
         self,
-        request: resource_manager_20200331_models.ListPolicyVersionsRequest,
-    ) -> resource_manager_20200331_models.ListPolicyVersionsResponse:
-        """
-        @summary Queries a list of versions of a policy.
-        
-        @param request: ListPolicyVersionsRequest
-        @return: ListPolicyVersionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListPolicyVersionsRequest,
+    ) -> main_models.ListPolicyVersionsResponse:
+        runtime = RuntimeOptions()
         return self.list_policy_versions_with_options(request, runtime)
 
     async def list_policy_versions_async(
         self,
-        request: resource_manager_20200331_models.ListPolicyVersionsRequest,
-    ) -> resource_manager_20200331_models.ListPolicyVersionsResponse:
-        """
-        @summary Queries a list of versions of a policy.
-        
-        @param request: ListPolicyVersionsRequest
-        @return: ListPolicyVersionsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListPolicyVersionsRequest,
+    ) -> main_models.ListPolicyVersionsResponse:
+        runtime = RuntimeOptions()
         return await self.list_policy_versions_with_options_async(request, runtime)
 
     def list_resource_group_capability_with_options(
         self,
-        request: resource_manager_20200331_models.ListResourceGroupCapabilityRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListResourceGroupCapabilityResponse:
-        """
-        @summary 列出资源组能力项
-        
-        @param request: ListResourceGroupCapabilityRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListResourceGroupCapabilityResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListResourceGroupCapabilityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResourceGroupCapabilityResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             query['Service'] = request.service
-        if not UtilClient.is_unset(request.support_resource_group_event):
+        if not DaraCore.is_null(request.support_resource_group_event):
             query['SupportResourceGroupEvent'] = request.support_resource_group_event
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListResourceGroupCapability',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListResourceGroupCapability',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListResourceGroupCapabilityResponse(),
+        return DaraCore.from_map(
+            main_models.ListResourceGroupCapabilityResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_resource_group_capability_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListResourceGroupCapabilityRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListResourceGroupCapabilityResponse:
-        """
-        @summary 列出资源组能力项
-        
-        @param request: ListResourceGroupCapabilityRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListResourceGroupCapabilityResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListResourceGroupCapabilityRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResourceGroupCapabilityResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             query['Service'] = request.service
-        if not UtilClient.is_unset(request.support_resource_group_event):
+        if not DaraCore.is_null(request.support_resource_group_event):
             query['SupportResourceGroupEvent'] = request.support_resource_group_event
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListResourceGroupCapability',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListResourceGroupCapability',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListResourceGroupCapabilityResponse(),
+        return DaraCore.from_map(
+            main_models.ListResourceGroupCapabilityResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_resource_group_capability(
         self,
-        request: resource_manager_20200331_models.ListResourceGroupCapabilityRequest,
-    ) -> resource_manager_20200331_models.ListResourceGroupCapabilityResponse:
-        """
-        @summary 列出资源组能力项
-        
-        @param request: ListResourceGroupCapabilityRequest
-        @return: ListResourceGroupCapabilityResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListResourceGroupCapabilityRequest,
+    ) -> main_models.ListResourceGroupCapabilityResponse:
+        runtime = RuntimeOptions()
         return self.list_resource_group_capability_with_options(request, runtime)
 
     async def list_resource_group_capability_async(
         self,
-        request: resource_manager_20200331_models.ListResourceGroupCapabilityRequest,
-    ) -> resource_manager_20200331_models.ListResourceGroupCapabilityResponse:
-        """
-        @summary 列出资源组能力项
-        
-        @param request: ListResourceGroupCapabilityRequest
-        @return: ListResourceGroupCapabilityResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListResourceGroupCapabilityRequest,
+    ) -> main_models.ListResourceGroupCapabilityResponse:
+        runtime = RuntimeOptions()
         return await self.list_resource_group_capability_with_options_async(request, runtime)
 
     def list_resource_groups_with_options(
         self,
-        request: resource_manager_20200331_models.ListResourceGroupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListResourceGroupsResponse:
-        """
-        @description You can call this API operation to query all resource groups within the current account. You can also call this API operation to query a specific resource group based on the status, ID, identifier, or display name of the resource group.
-        This topic provides an example on how to call the API operation to query the basic information about the resource groups `rg-1hSBH2***` and `rg-9gLOoK****` within the current account.
-        
-        @param request: ListResourceGroupsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListResourceGroupsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListResourceGroupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResourceGroupsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.display_name):
+        if not DaraCore.is_null(request.display_name):
             query['DisplayName'] = request.display_name
-        if not UtilClient.is_unset(request.include_tags):
+        if not DaraCore.is_null(request.include_tags):
             query['IncludeTags'] = request.include_tags
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_group_ids):
+        if not DaraCore.is_null(request.resource_group_ids):
             query['ResourceGroupIds'] = request.resource_group_ids
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListResourceGroups',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListResourceGroups',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListResourceGroupsResponse(),
+        return DaraCore.from_map(
+            main_models.ListResourceGroupsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_resource_groups_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListResourceGroupsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListResourceGroupsResponse:
-        """
-        @description You can call this API operation to query all resource groups within the current account. You can also call this API operation to query a specific resource group based on the status, ID, identifier, or display name of the resource group.
-        This topic provides an example on how to call the API operation to query the basic information about the resource groups `rg-1hSBH2***` and `rg-9gLOoK****` within the current account.
-        
-        @param request: ListResourceGroupsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListResourceGroupsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListResourceGroupsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResourceGroupsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.display_name):
+        if not DaraCore.is_null(request.display_name):
             query['DisplayName'] = request.display_name
-        if not UtilClient.is_unset(request.include_tags):
+        if not DaraCore.is_null(request.include_tags):
             query['IncludeTags'] = request.include_tags
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_group_ids):
+        if not DaraCore.is_null(request.resource_group_ids):
             query['ResourceGroupIds'] = request.resource_group_ids
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListResourceGroups',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListResourceGroups',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListResourceGroupsResponse(),
+        return DaraCore.from_map(
+            main_models.ListResourceGroupsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_resource_groups(
         self,
-        request: resource_manager_20200331_models.ListResourceGroupsRequest,
-    ) -> resource_manager_20200331_models.ListResourceGroupsResponse:
-        """
-        @description You can call this API operation to query all resource groups within the current account. You can also call this API operation to query a specific resource group based on the status, ID, identifier, or display name of the resource group.
-        This topic provides an example on how to call the API operation to query the basic information about the resource groups `rg-1hSBH2***` and `rg-9gLOoK****` within the current account.
-        
-        @param request: ListResourceGroupsRequest
-        @return: ListResourceGroupsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListResourceGroupsRequest,
+    ) -> main_models.ListResourceGroupsResponse:
+        runtime = RuntimeOptions()
         return self.list_resource_groups_with_options(request, runtime)
 
     async def list_resource_groups_async(
         self,
-        request: resource_manager_20200331_models.ListResourceGroupsRequest,
-    ) -> resource_manager_20200331_models.ListResourceGroupsResponse:
-        """
-        @description You can call this API operation to query all resource groups within the current account. You can also call this API operation to query a specific resource group based on the status, ID, identifier, or display name of the resource group.
-        This topic provides an example on how to call the API operation to query the basic information about the resource groups `rg-1hSBH2***` and `rg-9gLOoK****` within the current account.
-        
-        @param request: ListResourceGroupsRequest
-        @return: ListResourceGroupsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListResourceGroupsRequest,
+    ) -> main_models.ListResourceGroupsResponse:
+        runtime = RuntimeOptions()
         return await self.list_resource_groups_with_options_async(request, runtime)
 
     def list_resource_groups_with_auth_details_with_options(
         self,
-        request: resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsResponse:
-        """
-        @summary 列出资源组与用户授权信息
-        
-        @param request: ListResourceGroupsWithAuthDetailsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListResourceGroupsWithAuthDetailsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListResourceGroupsWithAuthDetailsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResourceGroupsWithAuthDetailsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.display_name):
+        if not DaraCore.is_null(request.display_name):
             query['DisplayName'] = request.display_name
-        if not UtilClient.is_unset(request.include_tags):
+        if not DaraCore.is_null(request.include_tags):
             query['IncludeTags'] = request.include_tags
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_ids):
+        if not DaraCore.is_null(request.resource_group_ids):
             query['ResourceGroupIds'] = request.resource_group_ids
-        if not UtilClient.is_unset(request.resource_region_id):
+        if not DaraCore.is_null(request.resource_region_id):
             query['ResourceRegionId'] = request.resource_region_id
-        if not UtilClient.is_unset(request.resource_types):
+        if not DaraCore.is_null(request.resource_types):
             query['ResourceTypes'] = request.resource_types
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListResourceGroupsWithAuthDetails',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListResourceGroupsWithAuthDetails',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsResponse(),
+        return DaraCore.from_map(
+            main_models.ListResourceGroupsWithAuthDetailsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_resource_groups_with_auth_details_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsResponse:
-        """
-        @summary 列出资源组与用户授权信息
-        
-        @param request: ListResourceGroupsWithAuthDetailsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListResourceGroupsWithAuthDetailsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListResourceGroupsWithAuthDetailsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResourceGroupsWithAuthDetailsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.display_name):
+        if not DaraCore.is_null(request.display_name):
             query['DisplayName'] = request.display_name
-        if not UtilClient.is_unset(request.include_tags):
+        if not DaraCore.is_null(request.include_tags):
             query['IncludeTags'] = request.include_tags
-        if not UtilClient.is_unset(request.name):
+        if not DaraCore.is_null(request.name):
             query['Name'] = request.name
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.resource_group_ids):
+        if not DaraCore.is_null(request.resource_group_ids):
             query['ResourceGroupIds'] = request.resource_group_ids
-        if not UtilClient.is_unset(request.resource_region_id):
+        if not DaraCore.is_null(request.resource_region_id):
             query['ResourceRegionId'] = request.resource_region_id
-        if not UtilClient.is_unset(request.resource_types):
+        if not DaraCore.is_null(request.resource_types):
             query['ResourceTypes'] = request.resource_types
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListResourceGroupsWithAuthDetails',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListResourceGroupsWithAuthDetails',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsResponse(),
+        return DaraCore.from_map(
+            main_models.ListResourceGroupsWithAuthDetailsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_resource_groups_with_auth_details(
         self,
-        request: resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsRequest,
-    ) -> resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsResponse:
-        """
-        @summary 列出资源组与用户授权信息
-        
-        @param request: ListResourceGroupsWithAuthDetailsRequest
-        @return: ListResourceGroupsWithAuthDetailsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListResourceGroupsWithAuthDetailsRequest,
+    ) -> main_models.ListResourceGroupsWithAuthDetailsResponse:
+        runtime = RuntimeOptions()
         return self.list_resource_groups_with_auth_details_with_options(request, runtime)
 
     async def list_resource_groups_with_auth_details_async(
         self,
-        request: resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsRequest,
-    ) -> resource_manager_20200331_models.ListResourceGroupsWithAuthDetailsResponse:
-        """
-        @summary 列出资源组与用户授权信息
-        
-        @param request: ListResourceGroupsWithAuthDetailsRequest
-        @return: ListResourceGroupsWithAuthDetailsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListResourceGroupsWithAuthDetailsRequest,
+    ) -> main_models.ListResourceGroupsWithAuthDetailsResponse:
+        runtime = RuntimeOptions()
         return await self.list_resource_groups_with_auth_details_with_options_async(request, runtime)
 
     def list_resources_with_options(
         self,
-        request: resource_manager_20200331_models.ListResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListResourcesResponse:
-        """
-        @summary Queries resources that can be accessed by the current account in resource groups.
-        
-        @description >  You can use a RAM role that is not associated with a session policy to call this API operation.
-        This topic provides an example on how to call the API operation to query resources that can be accessed by the current account in resource groups. The response shows that the current account can access only the Elastic Compute Service (ECS) instance `i-23v38***` in the resource group `rg-uPJpP****`.
-        
-        @param request: ListResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['Region'] = request.region
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.resource_types):
+        if not DaraCore.is_null(request.resource_types):
             query['ResourceTypes'] = request.resource_types
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             query['Service'] = request.service
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListResources',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListResources',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.ListResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_resources_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListResourcesResponse:
-        """
-        @summary Queries resources that can be accessed by the current account in resource groups.
-        
-        @description >  You can use a RAM role that is not associated with a session policy to call this API operation.
-        This topic provides an example on how to call the API operation to query resources that can be accessed by the current account in resource groups. The response shows that the current account can access only the Elastic Compute Service (ECS) instance `i-23v38***` in the resource group `rg-uPJpP****`.
-        
-        @param request: ListResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.region):
+        if not DaraCore.is_null(request.region):
             query['Region'] = request.region
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.resource_types):
+        if not DaraCore.is_null(request.resource_types):
             query['ResourceTypes'] = request.resource_types
-        if not UtilClient.is_unset(request.service):
+        if not DaraCore.is_null(request.service):
             query['Service'] = request.service
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListResources',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListResources',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.ListResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_resources(
         self,
-        request: resource_manager_20200331_models.ListResourcesRequest,
-    ) -> resource_manager_20200331_models.ListResourcesResponse:
-        """
-        @summary Queries resources that can be accessed by the current account in resource groups.
-        
-        @description >  You can use a RAM role that is not associated with a session policy to call this API operation.
-        This topic provides an example on how to call the API operation to query resources that can be accessed by the current account in resource groups. The response shows that the current account can access only the Elastic Compute Service (ECS) instance `i-23v38***` in the resource group `rg-uPJpP****`.
-        
-        @param request: ListResourcesRequest
-        @return: ListResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListResourcesRequest,
+    ) -> main_models.ListResourcesResponse:
+        runtime = RuntimeOptions()
         return self.list_resources_with_options(request, runtime)
 
     async def list_resources_async(
         self,
-        request: resource_manager_20200331_models.ListResourcesRequest,
-    ) -> resource_manager_20200331_models.ListResourcesResponse:
-        """
-        @summary Queries resources that can be accessed by the current account in resource groups.
-        
-        @description >  You can use a RAM role that is not associated with a session policy to call this API operation.
-        This topic provides an example on how to call the API operation to query resources that can be accessed by the current account in resource groups. The response shows that the current account can access only the Elastic Compute Service (ECS) instance `i-23v38***` in the resource group `rg-uPJpP****`.
-        
-        @param request: ListResourcesRequest
-        @return: ListResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListResourcesRequest,
+    ) -> main_models.ListResourcesResponse:
+        runtime = RuntimeOptions()
         return await self.list_resources_with_options_async(request, runtime)
 
     def list_roles_with_options(
         self,
-        request: resource_manager_20200331_models.ListRolesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListRolesResponse:
-        """
-        @summary Queries a list of RAM roles.
-        
-        @param request: ListRolesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListRolesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListRolesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRolesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.language):
+        if not DaraCore.is_null(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListRoles',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListRoles',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListRolesResponse(),
+        return DaraCore.from_map(
+            main_models.ListRolesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_roles_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListRolesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListRolesResponse:
-        """
-        @summary Queries a list of RAM roles.
-        
-        @param request: ListRolesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListRolesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListRolesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListRolesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.language):
+        if not DaraCore.is_null(request.language):
             query['Language'] = request.language
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListRoles',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListRoles',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListRolesResponse(),
+        return DaraCore.from_map(
+            main_models.ListRolesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_roles(
         self,
-        request: resource_manager_20200331_models.ListRolesRequest,
-    ) -> resource_manager_20200331_models.ListRolesResponse:
-        """
-        @summary Queries a list of RAM roles.
-        
-        @param request: ListRolesRequest
-        @return: ListRolesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListRolesRequest,
+    ) -> main_models.ListRolesResponse:
+        runtime = RuntimeOptions()
         return self.list_roles_with_options(request, runtime)
 
     async def list_roles_async(
         self,
-        request: resource_manager_20200331_models.ListRolesRequest,
-    ) -> resource_manager_20200331_models.ListRolesResponse:
-        """
-        @summary Queries a list of RAM roles.
-        
-        @param request: ListRolesRequest
-        @return: ListRolesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListRolesRequest,
+    ) -> main_models.ListRolesResponse:
+        runtime = RuntimeOptions()
         return await self.list_roles_with_options_async(request, runtime)
 
     def list_tag_keys_with_options(
         self,
-        request: resource_manager_20200331_models.ListTagKeysRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListTagKeysResponse:
-        """
-        @summary 列出所有的Tag key
-        
-        @description This topic provides an example on how to call the API operation to query tag keys. The response shows that the custom tag key team exists.
-        
-        @param request: ListTagKeysRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagKeysResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListTagKeysRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagKeysResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.key_filter):
+        if not DaraCore.is_null(request.key_filter):
             query['KeyFilter'] = request.key_filter
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTagKeys',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTagKeys',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListTagKeysResponse(),
+        return DaraCore.from_map(
+            main_models.ListTagKeysResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_tag_keys_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListTagKeysRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListTagKeysResponse:
-        """
-        @summary 列出所有的Tag key
-        
-        @description This topic provides an example on how to call the API operation to query tag keys. The response shows that the custom tag key team exists.
-        
-        @param request: ListTagKeysRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagKeysResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListTagKeysRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagKeysResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.key_filter):
+        if not DaraCore.is_null(request.key_filter):
             query['KeyFilter'] = request.key_filter
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTagKeys',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTagKeys',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListTagKeysResponse(),
+        return DaraCore.from_map(
+            main_models.ListTagKeysResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_keys(
         self,
-        request: resource_manager_20200331_models.ListTagKeysRequest,
-    ) -> resource_manager_20200331_models.ListTagKeysResponse:
-        """
-        @summary 列出所有的Tag key
-        
-        @description This topic provides an example on how to call the API operation to query tag keys. The response shows that the custom tag key team exists.
-        
-        @param request: ListTagKeysRequest
-        @return: ListTagKeysResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTagKeysRequest,
+    ) -> main_models.ListTagKeysResponse:
+        runtime = RuntimeOptions()
         return self.list_tag_keys_with_options(request, runtime)
 
     async def list_tag_keys_async(
         self,
-        request: resource_manager_20200331_models.ListTagKeysRequest,
-    ) -> resource_manager_20200331_models.ListTagKeysResponse:
-        """
-        @summary 列出所有的Tag key
-        
-        @description This topic provides an example on how to call the API operation to query tag keys. The response shows that the custom tag key team exists.
-        
-        @param request: ListTagKeysRequest
-        @return: ListTagKeysResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTagKeysRequest,
+    ) -> main_models.ListTagKeysResponse:
+        runtime = RuntimeOptions()
         return await self.list_tag_keys_with_options_async(request, runtime)
 
     def list_tag_resources_with_options(
         self,
-        request: resource_manager_20200331_models.ListTagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListTagResourcesResponse:
-        """
-        @summary Queries the tags that are added to resource groups or the members in a resource directory.
-        
-        @description This topic provides an example on how to call the API operation to query the tags that are added to the resource group with an ID of `rg-aekz6bre2uq***`. The response shows that only the `k1:v1` tag is added to the resource group.
-        
-        @param request: ListTagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListTagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTagResources',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTagResources',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListTagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.ListTagResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_tag_resources_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListTagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListTagResourcesResponse:
-        """
-        @summary Queries the tags that are added to resource groups or the members in a resource directory.
-        
-        @description This topic provides an example on how to call the API operation to query the tags that are added to the resource group with an ID of `rg-aekz6bre2uq***`. The response shows that only the `k1:v1` tag is added to the resource group.
-        
-        @param request: ListTagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListTagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTagResources',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTagResources',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListTagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.ListTagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_resources(
         self,
-        request: resource_manager_20200331_models.ListTagResourcesRequest,
-    ) -> resource_manager_20200331_models.ListTagResourcesResponse:
-        """
-        @summary Queries the tags that are added to resource groups or the members in a resource directory.
-        
-        @description This topic provides an example on how to call the API operation to query the tags that are added to the resource group with an ID of `rg-aekz6bre2uq***`. The response shows that only the `k1:v1` tag is added to the resource group.
-        
-        @param request: ListTagResourcesRequest
-        @return: ListTagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTagResourcesRequest,
+    ) -> main_models.ListTagResourcesResponse:
+        runtime = RuntimeOptions()
         return self.list_tag_resources_with_options(request, runtime)
 
     async def list_tag_resources_async(
         self,
-        request: resource_manager_20200331_models.ListTagResourcesRequest,
-    ) -> resource_manager_20200331_models.ListTagResourcesResponse:
-        """
-        @summary Queries the tags that are added to resource groups or the members in a resource directory.
-        
-        @description This topic provides an example on how to call the API operation to query the tags that are added to the resource group with an ID of `rg-aekz6bre2uq***`. The response shows that only the `k1:v1` tag is added to the resource group.
-        
-        @param request: ListTagResourcesRequest
-        @return: ListTagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTagResourcesRequest,
+    ) -> main_models.ListTagResourcesResponse:
+        runtime = RuntimeOptions()
         return await self.list_tag_resources_with_options_async(request, runtime)
 
     def list_tag_values_with_options(
         self,
-        request: resource_manager_20200331_models.ListTagValuesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListTagValuesResponse:
-        """
-        @summary 列出所有的Tag values
-        
-        @description This topic provides an example on how to call the API operation to query the tag values of the tag key k1. The response shows that the tag value of the tag key k1 is v1.
-        
-        @param request: ListTagValuesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagValuesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListTagValuesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagValuesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag_key):
+        if not DaraCore.is_null(request.tag_key):
             query['TagKey'] = request.tag_key
-        if not UtilClient.is_unset(request.value_filter):
+        if not DaraCore.is_null(request.value_filter):
             query['ValueFilter'] = request.value_filter
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTagValues',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTagValues',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListTagValuesResponse(),
+        return DaraCore.from_map(
+            main_models.ListTagValuesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_tag_values_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListTagValuesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListTagValuesResponse:
-        """
-        @summary 列出所有的Tag values
-        
-        @description This topic provides an example on how to call the API operation to query the tag values of the tag key k1. The response shows that the tag value of the tag key k1 is v1.
-        
-        @param request: ListTagValuesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTagValuesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListTagValuesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTagValuesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag_key):
+        if not DaraCore.is_null(request.tag_key):
             query['TagKey'] = request.tag_key
-        if not UtilClient.is_unset(request.value_filter):
+        if not DaraCore.is_null(request.value_filter):
             query['ValueFilter'] = request.value_filter
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTagValues',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTagValues',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListTagValuesResponse(),
+        return DaraCore.from_map(
+            main_models.ListTagValuesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_tag_values(
         self,
-        request: resource_manager_20200331_models.ListTagValuesRequest,
-    ) -> resource_manager_20200331_models.ListTagValuesResponse:
-        """
-        @summary 列出所有的Tag values
-        
-        @description This topic provides an example on how to call the API operation to query the tag values of the tag key k1. The response shows that the tag value of the tag key k1 is v1.
-        
-        @param request: ListTagValuesRequest
-        @return: ListTagValuesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTagValuesRequest,
+    ) -> main_models.ListTagValuesResponse:
+        runtime = RuntimeOptions()
         return self.list_tag_values_with_options(request, runtime)
 
     async def list_tag_values_async(
         self,
-        request: resource_manager_20200331_models.ListTagValuesRequest,
-    ) -> resource_manager_20200331_models.ListTagValuesResponse:
-        """
-        @summary 列出所有的Tag values
-        
-        @description This topic provides an example on how to call the API operation to query the tag values of the tag key k1. The response shows that the tag value of the tag key k1 is v1.
-        
-        @param request: ListTagValuesRequest
-        @return: ListTagValuesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTagValuesRequest,
+    ) -> main_models.ListTagValuesResponse:
+        runtime = RuntimeOptions()
         return await self.list_tag_values_with_options_async(request, runtime)
 
     def list_target_attachments_for_control_policy_with_options(
         self,
-        request: resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyResponse:
-        """
-        @summary Queries the objects to which a specific control policy is attached.
-        
-        @description In this example, the folders or member accounts to which the control policy `cp-jExXAqIYkwHN***` is attached are queried. The returned result shows that the control policy is attached to the folder `fd-ZDNPiT****`.
-        
-        @param request: ListTargetAttachmentsForControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTargetAttachmentsForControlPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListTargetAttachmentsForControlPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTargetAttachmentsForControlPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.policy_id):
+        if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTargetAttachmentsForControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTargetAttachmentsForControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.ListTargetAttachmentsForControlPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_target_attachments_for_control_policy_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyResponse:
-        """
-        @summary Queries the objects to which a specific control policy is attached.
-        
-        @description In this example, the folders or member accounts to which the control policy `cp-jExXAqIYkwHN***` is attached are queried. The returned result shows that the control policy is attached to the folder `fd-ZDNPiT****`.
-        
-        @param request: ListTargetAttachmentsForControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTargetAttachmentsForControlPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListTargetAttachmentsForControlPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTargetAttachmentsForControlPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        if not UtilClient.is_unset(request.policy_id):
+        if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTargetAttachmentsForControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTargetAttachmentsForControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.ListTargetAttachmentsForControlPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_target_attachments_for_control_policy(
         self,
-        request: resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyRequest,
-    ) -> resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyResponse:
-        """
-        @summary Queries the objects to which a specific control policy is attached.
-        
-        @description In this example, the folders or member accounts to which the control policy `cp-jExXAqIYkwHN***` is attached are queried. The returned result shows that the control policy is attached to the folder `fd-ZDNPiT****`.
-        
-        @param request: ListTargetAttachmentsForControlPolicyRequest
-        @return: ListTargetAttachmentsForControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTargetAttachmentsForControlPolicyRequest,
+    ) -> main_models.ListTargetAttachmentsForControlPolicyResponse:
+        runtime = RuntimeOptions()
         return self.list_target_attachments_for_control_policy_with_options(request, runtime)
 
     async def list_target_attachments_for_control_policy_async(
         self,
-        request: resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyRequest,
-    ) -> resource_manager_20200331_models.ListTargetAttachmentsForControlPolicyResponse:
-        """
-        @summary Queries the objects to which a specific control policy is attached.
-        
-        @description In this example, the folders or member accounts to which the control policy `cp-jExXAqIYkwHN***` is attached are queried. The returned result shows that the control policy is attached to the folder `fd-ZDNPiT****`.
-        
-        @param request: ListTargetAttachmentsForControlPolicyRequest
-        @return: ListTargetAttachmentsForControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTargetAttachmentsForControlPolicyRequest,
+    ) -> main_models.ListTargetAttachmentsForControlPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.list_target_attachments_for_control_policy_with_options_async(request, runtime)
 
     def list_trusted_service_status_with_options(
         self,
-        request: resource_manager_20200331_models.ListTrustedServiceStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListTrustedServiceStatusResponse:
-        """
-        @description >  Only an enterprise management account or delegated administrator account can be used to call this operation.
-        In this example, the trusted services that are enabled within an enterprise management account are queried. The returned result shows that the trusted services Cloud Config and ActionTrail are enabled within the enterprise management account.
-        
-        @param request: ListTrustedServiceStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTrustedServiceStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListTrustedServiceStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTrustedServiceStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.admin_account_id):
+        if not DaraCore.is_null(request.admin_account_id):
             query['AdminAccountId'] = request.admin_account_id
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTrustedServiceStatus',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTrustedServiceStatus',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListTrustedServiceStatusResponse(),
+        return DaraCore.from_map(
+            main_models.ListTrustedServiceStatusResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def list_trusted_service_status_with_options_async(
         self,
-        request: resource_manager_20200331_models.ListTrustedServiceStatusRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ListTrustedServiceStatusResponse:
-        """
-        @description >  Only an enterprise management account or delegated administrator account can be used to call this operation.
-        In this example, the trusted services that are enabled within an enterprise management account are queried. The returned result shows that the trusted services Cloud Config and ActionTrail are enabled within the enterprise management account.
-        
-        @param request: ListTrustedServiceStatusRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ListTrustedServiceStatusResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ListTrustedServiceStatusRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListTrustedServiceStatusResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.admin_account_id):
+        if not DaraCore.is_null(request.admin_account_id):
             query['AdminAccountId'] = request.admin_account_id
-        if not UtilClient.is_unset(request.page_number):
+        if not DaraCore.is_null(request.page_number):
             query['PageNumber'] = request.page_number
-        if not UtilClient.is_unset(request.page_size):
+        if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ListTrustedServiceStatus',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ListTrustedServiceStatus',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ListTrustedServiceStatusResponse(),
+        return DaraCore.from_map(
+            main_models.ListTrustedServiceStatusResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def list_trusted_service_status(
         self,
-        request: resource_manager_20200331_models.ListTrustedServiceStatusRequest,
-    ) -> resource_manager_20200331_models.ListTrustedServiceStatusResponse:
-        """
-        @description >  Only an enterprise management account or delegated administrator account can be used to call this operation.
-        In this example, the trusted services that are enabled within an enterprise management account are queried. The returned result shows that the trusted services Cloud Config and ActionTrail are enabled within the enterprise management account.
-        
-        @param request: ListTrustedServiceStatusRequest
-        @return: ListTrustedServiceStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTrustedServiceStatusRequest,
+    ) -> main_models.ListTrustedServiceStatusResponse:
+        runtime = RuntimeOptions()
         return self.list_trusted_service_status_with_options(request, runtime)
 
     async def list_trusted_service_status_async(
         self,
-        request: resource_manager_20200331_models.ListTrustedServiceStatusRequest,
-    ) -> resource_manager_20200331_models.ListTrustedServiceStatusResponse:
-        """
-        @description >  Only an enterprise management account or delegated administrator account can be used to call this operation.
-        In this example, the trusted services that are enabled within an enterprise management account are queried. The returned result shows that the trusted services Cloud Config and ActionTrail are enabled within the enterprise management account.
-        
-        @param request: ListTrustedServiceStatusRequest
-        @return: ListTrustedServiceStatusResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ListTrustedServiceStatusRequest,
+    ) -> main_models.ListTrustedServiceStatusResponse:
+        runtime = RuntimeOptions()
         return await self.list_trusted_service_status_with_options_async(request, runtime)
 
     def lookup_resource_group_events_with_options(
         self,
-        request: resource_manager_20200331_models.LookupResourceGroupEventsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.LookupResourceGroupEventsResponse:
-        """
-        @summary 查询资源组事件
-        
-        @param request: LookupResourceGroupEventsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: LookupResourceGroupEventsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.LookupResourceGroupEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LookupResourceGroupEventsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.event_category):
+        if not DaraCore.is_null(request.event_category):
             query['EventCategory'] = request.event_category
-        if not UtilClient.is_unset(request.lookup_attributes):
+        if not DaraCore.is_null(request.lookup_attributes):
             query['LookupAttributes'] = request.lookup_attributes
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_group_display_name):
+        if not DaraCore.is_null(request.resource_group_display_name):
             query['ResourceGroupDisplayName'] = request.resource_group_display_name
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='LookupResourceGroupEvents',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'LookupResourceGroupEvents',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.LookupResourceGroupEventsResponse(),
+        return DaraCore.from_map(
+            main_models.LookupResourceGroupEventsResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def lookup_resource_group_events_with_options_async(
         self,
-        request: resource_manager_20200331_models.LookupResourceGroupEventsRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.LookupResourceGroupEventsResponse:
-        """
-        @summary 查询资源组事件
-        
-        @param request: LookupResourceGroupEventsRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: LookupResourceGroupEventsResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.LookupResourceGroupEventsRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.LookupResourceGroupEventsResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.end_time):
+        if not DaraCore.is_null(request.end_time):
             query['EndTime'] = request.end_time
-        if not UtilClient.is_unset(request.event_category):
+        if not DaraCore.is_null(request.event_category):
             query['EventCategory'] = request.event_category
-        if not UtilClient.is_unset(request.lookup_attributes):
+        if not DaraCore.is_null(request.lookup_attributes):
             query['LookupAttributes'] = request.lookup_attributes
-        if not UtilClient.is_unset(request.max_results):
+        if not DaraCore.is_null(request.max_results):
             query['MaxResults'] = request.max_results
-        if not UtilClient.is_unset(request.next_token):
+        if not DaraCore.is_null(request.next_token):
             query['NextToken'] = request.next_token
-        if not UtilClient.is_unset(request.resource_group_display_name):
+        if not DaraCore.is_null(request.resource_group_display_name):
             query['ResourceGroupDisplayName'] = request.resource_group_display_name
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.start_time):
+        if not DaraCore.is_null(request.start_time):
             query['StartTime'] = request.start_time
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='LookupResourceGroupEvents',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'LookupResourceGroupEvents',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.LookupResourceGroupEventsResponse(),
+        return DaraCore.from_map(
+            main_models.LookupResourceGroupEventsResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def lookup_resource_group_events(
         self,
-        request: resource_manager_20200331_models.LookupResourceGroupEventsRequest,
-    ) -> resource_manager_20200331_models.LookupResourceGroupEventsResponse:
-        """
-        @summary 查询资源组事件
-        
-        @param request: LookupResourceGroupEventsRequest
-        @return: LookupResourceGroupEventsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.LookupResourceGroupEventsRequest,
+    ) -> main_models.LookupResourceGroupEventsResponse:
+        runtime = RuntimeOptions()
         return self.lookup_resource_group_events_with_options(request, runtime)
 
     async def lookup_resource_group_events_async(
         self,
-        request: resource_manager_20200331_models.LookupResourceGroupEventsRequest,
-    ) -> resource_manager_20200331_models.LookupResourceGroupEventsResponse:
-        """
-        @summary 查询资源组事件
-        
-        @param request: LookupResourceGroupEventsRequest
-        @return: LookupResourceGroupEventsResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.LookupResourceGroupEventsRequest,
+    ) -> main_models.LookupResourceGroupEventsResponse:
+        runtime = RuntimeOptions()
         return await self.lookup_resource_group_events_with_options_async(request, runtime)
 
     def move_account_with_options(
         self,
-        request: resource_manager_20200331_models.MoveAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.MoveAccountResponse:
-        """
-        @summary 移动账号
-        
-        @param request: MoveAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MoveAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MoveAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.destination_folder_id):
+        if not DaraCore.is_null(request.destination_folder_id):
             query['DestinationFolderId'] = request.destination_folder_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='MoveAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MoveAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.MoveAccountResponse(),
+        return DaraCore.from_map(
+            main_models.MoveAccountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def move_account_with_options_async(
         self,
-        request: resource_manager_20200331_models.MoveAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.MoveAccountResponse:
-        """
-        @summary 移动账号
-        
-        @param request: MoveAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MoveAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MoveAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.destination_folder_id):
+        if not DaraCore.is_null(request.destination_folder_id):
             query['DestinationFolderId'] = request.destination_folder_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='MoveAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MoveAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.MoveAccountResponse(),
+        return DaraCore.from_map(
+            main_models.MoveAccountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def move_account(
         self,
-        request: resource_manager_20200331_models.MoveAccountRequest,
-    ) -> resource_manager_20200331_models.MoveAccountResponse:
-        """
-        @summary 移动账号
-        
-        @param request: MoveAccountRequest
-        @return: MoveAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MoveAccountRequest,
+    ) -> main_models.MoveAccountResponse:
+        runtime = RuntimeOptions()
         return self.move_account_with_options(request, runtime)
 
     async def move_account_async(
         self,
-        request: resource_manager_20200331_models.MoveAccountRequest,
-    ) -> resource_manager_20200331_models.MoveAccountResponse:
-        """
-        @summary 移动账号
-        
-        @param request: MoveAccountRequest
-        @return: MoveAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MoveAccountRequest,
+    ) -> main_models.MoveAccountResponse:
+        runtime = RuntimeOptions()
         return await self.move_account_with_options_async(request, runtime)
 
     def move_resources_with_options(
         self,
-        request: resource_manager_20200331_models.MoveResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.MoveResourcesResponse:
-        """
-        @summary Moves resources from one resource group to another. You can move multiple resources that reside in different regions, are used by different Alibaba Cloud services, or belong to different resource groups.
-        
-        @description For more information about Alibaba Cloud services whose resources can be moved between resource groups, see the *Supported by the API** column in [Alibaba Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
-        In this example, two virtual private clouds (VPCs) `vpc-bp1sig0mjktx5ewx1***` and `vpc-bp1visxm225pv49dz****` that reside in different regions and belong to different resource groups are moved to the resource group `rg-aekzmeobk5w****`.
-        
-        @param request: MoveResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MoveResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MoveResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resources):
+        if not DaraCore.is_null(request.resources):
             query['Resources'] = request.resources
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='MoveResources',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MoveResources',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.MoveResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.MoveResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def move_resources_with_options_async(
         self,
-        request: resource_manager_20200331_models.MoveResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.MoveResourcesResponse:
-        """
-        @summary Moves resources from one resource group to another. You can move multiple resources that reside in different regions, are used by different Alibaba Cloud services, or belong to different resource groups.
-        
-        @description For more information about Alibaba Cloud services whose resources can be moved between resource groups, see the *Supported by the API** column in [Alibaba Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
-        In this example, two virtual private clouds (VPCs) `vpc-bp1sig0mjktx5ewx1***` and `vpc-bp1visxm225pv49dz****` that reside in different regions and belong to different resource groups are moved to the resource group `rg-aekzmeobk5w****`.
-        
-        @param request: MoveResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: MoveResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.MoveResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.MoveResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        if not UtilClient.is_unset(request.resources):
+        if not DaraCore.is_null(request.resources):
             query['Resources'] = request.resources
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='MoveResources',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'MoveResources',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.MoveResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.MoveResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def move_resources(
         self,
-        request: resource_manager_20200331_models.MoveResourcesRequest,
-    ) -> resource_manager_20200331_models.MoveResourcesResponse:
-        """
-        @summary Moves resources from one resource group to another. You can move multiple resources that reside in different regions, are used by different Alibaba Cloud services, or belong to different resource groups.
-        
-        @description For more information about Alibaba Cloud services whose resources can be moved between resource groups, see the *Supported by the API** column in [Alibaba Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
-        In this example, two virtual private clouds (VPCs) `vpc-bp1sig0mjktx5ewx1***` and `vpc-bp1visxm225pv49dz****` that reside in different regions and belong to different resource groups are moved to the resource group `rg-aekzmeobk5w****`.
-        
-        @param request: MoveResourcesRequest
-        @return: MoveResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MoveResourcesRequest,
+    ) -> main_models.MoveResourcesResponse:
+        runtime = RuntimeOptions()
         return self.move_resources_with_options(request, runtime)
 
     async def move_resources_async(
         self,
-        request: resource_manager_20200331_models.MoveResourcesRequest,
-    ) -> resource_manager_20200331_models.MoveResourcesResponse:
-        """
-        @summary Moves resources from one resource group to another. You can move multiple resources that reside in different regions, are used by different Alibaba Cloud services, or belong to different resource groups.
-        
-        @description For more information about Alibaba Cloud services whose resources can be moved between resource groups, see the *Supported by the API** column in [Alibaba Cloud services that support resource groups](https://help.aliyun.com/document_detail/94479.html).
-        In this example, two virtual private clouds (VPCs) `vpc-bp1sig0mjktx5ewx1***` and `vpc-bp1visxm225pv49dz****` that reside in different regions and belong to different resource groups are moved to the resource group `rg-aekzmeobk5w****`.
-        
-        @param request: MoveResourcesRequest
-        @return: MoveResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.MoveResourcesRequest,
+    ) -> main_models.MoveResourcesResponse:
+        runtime = RuntimeOptions()
         return await self.move_resources_with_options_async(request, runtime)
 
     def promote_resource_account_with_options(
         self,
-        request: resource_manager_20200331_models.PromoteResourceAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.PromoteResourceAccountResponse:
-        """
-        @summary 升级资源账号
-        
-        @param request: PromoteResourceAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PromoteResourceAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.PromoteResourceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PromoteResourceAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.email):
+        if not DaraCore.is_null(request.email):
             query['Email'] = request.email
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='PromoteResourceAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'PromoteResourceAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.PromoteResourceAccountResponse(),
+        return DaraCore.from_map(
+            main_models.PromoteResourceAccountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def promote_resource_account_with_options_async(
         self,
-        request: resource_manager_20200331_models.PromoteResourceAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.PromoteResourceAccountResponse:
-        """
-        @summary 升级资源账号
-        
-        @param request: PromoteResourceAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: PromoteResourceAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.PromoteResourceAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.PromoteResourceAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.email):
+        if not DaraCore.is_null(request.email):
             query['Email'] = request.email
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='PromoteResourceAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'PromoteResourceAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.PromoteResourceAccountResponse(),
+        return DaraCore.from_map(
+            main_models.PromoteResourceAccountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def promote_resource_account(
         self,
-        request: resource_manager_20200331_models.PromoteResourceAccountRequest,
-    ) -> resource_manager_20200331_models.PromoteResourceAccountResponse:
-        """
-        @summary 升级资源账号
-        
-        @param request: PromoteResourceAccountRequest
-        @return: PromoteResourceAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.PromoteResourceAccountRequest,
+    ) -> main_models.PromoteResourceAccountResponse:
+        runtime = RuntimeOptions()
         return self.promote_resource_account_with_options(request, runtime)
 
     async def promote_resource_account_async(
         self,
-        request: resource_manager_20200331_models.PromoteResourceAccountRequest,
-    ) -> resource_manager_20200331_models.PromoteResourceAccountResponse:
-        """
-        @summary 升级资源账号
-        
-        @param request: PromoteResourceAccountRequest
-        @return: PromoteResourceAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.PromoteResourceAccountRequest,
+    ) -> main_models.PromoteResourceAccountResponse:
+        runtime = RuntimeOptions()
         return await self.promote_resource_account_with_options_async(request, runtime)
 
     def register_delegated_administrator_with_options(
         self,
-        request: resource_manager_20200331_models.RegisterDelegatedAdministratorRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.RegisterDelegatedAdministratorResponse:
-        """
-        @description The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory.
-        When you call this operation, you must take note of the following limits:
-        Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
-        Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
-        The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
-        This topic provides an example on how to call the API operation to specify the member `181761095690***` as a delegated administrator account of Cloud Firewall.
-        
-        @param request: RegisterDelegatedAdministratorRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RegisterDelegatedAdministratorResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RegisterDelegatedAdministratorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RegisterDelegatedAdministratorResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.service_principal):
+        if not DaraCore.is_null(request.service_principal):
             query['ServicePrincipal'] = request.service_principal
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RegisterDelegatedAdministrator',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RegisterDelegatedAdministrator',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.RegisterDelegatedAdministratorResponse(),
+        return DaraCore.from_map(
+            main_models.RegisterDelegatedAdministratorResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def register_delegated_administrator_with_options_async(
         self,
-        request: resource_manager_20200331_models.RegisterDelegatedAdministratorRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.RegisterDelegatedAdministratorResponse:
-        """
-        @description The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory.
-        When you call this operation, you must take note of the following limits:
-        Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
-        Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
-        The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
-        This topic provides an example on how to call the API operation to specify the member `181761095690***` as a delegated administrator account of Cloud Firewall.
-        
-        @param request: RegisterDelegatedAdministratorRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RegisterDelegatedAdministratorResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RegisterDelegatedAdministratorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RegisterDelegatedAdministratorResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.service_principal):
+        if not DaraCore.is_null(request.service_principal):
             query['ServicePrincipal'] = request.service_principal
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RegisterDelegatedAdministrator',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RegisterDelegatedAdministrator',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.RegisterDelegatedAdministratorResponse(),
+        return DaraCore.from_map(
+            main_models.RegisterDelegatedAdministratorResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def register_delegated_administrator(
         self,
-        request: resource_manager_20200331_models.RegisterDelegatedAdministratorRequest,
-    ) -> resource_manager_20200331_models.RegisterDelegatedAdministratorResponse:
-        """
-        @description The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory.
-        When you call this operation, you must take note of the following limits:
-        Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
-        Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
-        The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
-        This topic provides an example on how to call the API operation to specify the member `181761095690***` as a delegated administrator account of Cloud Firewall.
-        
-        @param request: RegisterDelegatedAdministratorRequest
-        @return: RegisterDelegatedAdministratorResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RegisterDelegatedAdministratorRequest,
+    ) -> main_models.RegisterDelegatedAdministratorResponse:
+        runtime = RuntimeOptions()
         return self.register_delegated_administrator_with_options(request, runtime)
 
     async def register_delegated_administrator_async(
         self,
-        request: resource_manager_20200331_models.RegisterDelegatedAdministratorRequest,
-    ) -> resource_manager_20200331_models.RegisterDelegatedAdministratorResponse:
-        """
-        @description The delegated administrator account can be used to access the information of the resource directory and view the structure and members of the resource directory. The delegated administrator account can also be used to perform service-related management operations in the trusted service on behalf of the management account of the resource directory.
-        When you call this operation, you must take note of the following limits:
-        Only some trusted services support delegated administrator accounts. For more information, see [Supported trusted services](https://help.aliyun.com/document_detail/208133.html).
-        Only the management account of a resource directory or an authorized RAM user or RAM role of the management account can be used to call this operation.
-        The number of delegated administrator accounts that are allowed for a trusted service is defined by the trusted service.
-        This topic provides an example on how to call the API operation to specify the member `181761095690***` as a delegated administrator account of Cloud Firewall.
-        
-        @param request: RegisterDelegatedAdministratorRequest
-        @return: RegisterDelegatedAdministratorResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RegisterDelegatedAdministratorRequest,
+    ) -> main_models.RegisterDelegatedAdministratorResponse:
+        runtime = RuntimeOptions()
         return await self.register_delegated_administrator_with_options_async(request, runtime)
 
     def remove_cloud_account_with_options(
         self,
-        request: resource_manager_20200331_models.RemoveCloudAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.RemoveCloudAccountResponse:
-        """
-        @description This topic provides an example on how to call the API operation to remove the member `177242285274***` from a resource directory.
-        
-        @param request: RemoveCloudAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RemoveCloudAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RemoveCloudAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveCloudAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RemoveCloudAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RemoveCloudAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.RemoveCloudAccountResponse(),
+        return DaraCore.from_map(
+            main_models.RemoveCloudAccountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def remove_cloud_account_with_options_async(
         self,
-        request: resource_manager_20200331_models.RemoveCloudAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.RemoveCloudAccountResponse:
-        """
-        @description This topic provides an example on how to call the API operation to remove the member `177242285274***` from a resource directory.
-        
-        @param request: RemoveCloudAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RemoveCloudAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RemoveCloudAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RemoveCloudAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RemoveCloudAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RemoveCloudAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.RemoveCloudAccountResponse(),
+        return DaraCore.from_map(
+            main_models.RemoveCloudAccountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def remove_cloud_account(
         self,
-        request: resource_manager_20200331_models.RemoveCloudAccountRequest,
-    ) -> resource_manager_20200331_models.RemoveCloudAccountResponse:
-        """
-        @description This topic provides an example on how to call the API operation to remove the member `177242285274***` from a resource directory.
-        
-        @param request: RemoveCloudAccountRequest
-        @return: RemoveCloudAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RemoveCloudAccountRequest,
+    ) -> main_models.RemoveCloudAccountResponse:
+        runtime = RuntimeOptions()
         return self.remove_cloud_account_with_options(request, runtime)
 
     async def remove_cloud_account_async(
         self,
-        request: resource_manager_20200331_models.RemoveCloudAccountRequest,
-    ) -> resource_manager_20200331_models.RemoveCloudAccountResponse:
-        """
-        @description This topic provides an example on how to call the API operation to remove the member `177242285274***` from a resource directory.
-        
-        @param request: RemoveCloudAccountRequest
-        @return: RemoveCloudAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RemoveCloudAccountRequest,
+    ) -> main_models.RemoveCloudAccountResponse:
+        runtime = RuntimeOptions()
         return await self.remove_cloud_account_with_options_async(request, runtime)
 
     def resend_create_cloud_account_email_with_options(
         self,
-        request: resource_manager_20200331_models.ResendCreateCloudAccountEmailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ResendCreateCloudAccountEmailResponse:
-        """
-        @summary 重新发送创建云账号的邮箱验证
-        
-        @param request: ResendCreateCloudAccountEmailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ResendCreateCloudAccountEmailResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ResendCreateCloudAccountEmailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResendCreateCloudAccountEmailResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ResendCreateCloudAccountEmail',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ResendCreateCloudAccountEmail',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ResendCreateCloudAccountEmailResponse(),
+        return DaraCore.from_map(
+            main_models.ResendCreateCloudAccountEmailResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def resend_create_cloud_account_email_with_options_async(
         self,
-        request: resource_manager_20200331_models.ResendCreateCloudAccountEmailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ResendCreateCloudAccountEmailResponse:
-        """
-        @summary 重新发送创建云账号的邮箱验证
-        
-        @param request: ResendCreateCloudAccountEmailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ResendCreateCloudAccountEmailResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ResendCreateCloudAccountEmailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResendCreateCloudAccountEmailResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ResendCreateCloudAccountEmail',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ResendCreateCloudAccountEmail',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ResendCreateCloudAccountEmailResponse(),
+        return DaraCore.from_map(
+            main_models.ResendCreateCloudAccountEmailResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def resend_create_cloud_account_email(
         self,
-        request: resource_manager_20200331_models.ResendCreateCloudAccountEmailRequest,
-    ) -> resource_manager_20200331_models.ResendCreateCloudAccountEmailResponse:
-        """
-        @summary 重新发送创建云账号的邮箱验证
-        
-        @param request: ResendCreateCloudAccountEmailRequest
-        @return: ResendCreateCloudAccountEmailResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ResendCreateCloudAccountEmailRequest,
+    ) -> main_models.ResendCreateCloudAccountEmailResponse:
+        runtime = RuntimeOptions()
         return self.resend_create_cloud_account_email_with_options(request, runtime)
 
     async def resend_create_cloud_account_email_async(
         self,
-        request: resource_manager_20200331_models.ResendCreateCloudAccountEmailRequest,
-    ) -> resource_manager_20200331_models.ResendCreateCloudAccountEmailResponse:
-        """
-        @summary 重新发送创建云账号的邮箱验证
-        
-        @param request: ResendCreateCloudAccountEmailRequest
-        @return: ResendCreateCloudAccountEmailResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ResendCreateCloudAccountEmailRequest,
+    ) -> main_models.ResendCreateCloudAccountEmailResponse:
+        runtime = RuntimeOptions()
         return await self.resend_create_cloud_account_email_with_options_async(request, runtime)
 
     def resend_promote_resource_account_email_with_options(
         self,
-        request: resource_manager_20200331_models.ResendPromoteResourceAccountEmailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ResendPromoteResourceAccountEmailResponse:
-        """
-        @summary 重新发送升级资源账号的邮箱验证
-        
-        @param request: ResendPromoteResourceAccountEmailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ResendPromoteResourceAccountEmailResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ResendPromoteResourceAccountEmailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResendPromoteResourceAccountEmailResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ResendPromoteResourceAccountEmail',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ResendPromoteResourceAccountEmail',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ResendPromoteResourceAccountEmailResponse(),
+        return DaraCore.from_map(
+            main_models.ResendPromoteResourceAccountEmailResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def resend_promote_resource_account_email_with_options_async(
         self,
-        request: resource_manager_20200331_models.ResendPromoteResourceAccountEmailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.ResendPromoteResourceAccountEmailResponse:
-        """
-        @summary 重新发送升级资源账号的邮箱验证
-        
-        @param request: ResendPromoteResourceAccountEmailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: ResendPromoteResourceAccountEmailResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.ResendPromoteResourceAccountEmailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ResendPromoteResourceAccountEmailResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.record_id):
+        if not DaraCore.is_null(request.record_id):
             query['RecordId'] = request.record_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='ResendPromoteResourceAccountEmail',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'ResendPromoteResourceAccountEmail',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.ResendPromoteResourceAccountEmailResponse(),
+        return DaraCore.from_map(
+            main_models.ResendPromoteResourceAccountEmailResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def resend_promote_resource_account_email(
         self,
-        request: resource_manager_20200331_models.ResendPromoteResourceAccountEmailRequest,
-    ) -> resource_manager_20200331_models.ResendPromoteResourceAccountEmailResponse:
-        """
-        @summary 重新发送升级资源账号的邮箱验证
-        
-        @param request: ResendPromoteResourceAccountEmailRequest
-        @return: ResendPromoteResourceAccountEmailResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ResendPromoteResourceAccountEmailRequest,
+    ) -> main_models.ResendPromoteResourceAccountEmailResponse:
+        runtime = RuntimeOptions()
         return self.resend_promote_resource_account_email_with_options(request, runtime)
 
     async def resend_promote_resource_account_email_async(
         self,
-        request: resource_manager_20200331_models.ResendPromoteResourceAccountEmailRequest,
-    ) -> resource_manager_20200331_models.ResendPromoteResourceAccountEmailResponse:
-        """
-        @summary 重新发送升级资源账号的邮箱验证
-        
-        @param request: ResendPromoteResourceAccountEmailRequest
-        @return: ResendPromoteResourceAccountEmailResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.ResendPromoteResourceAccountEmailRequest,
+    ) -> main_models.ResendPromoteResourceAccountEmailResponse:
+        runtime = RuntimeOptions()
         return await self.resend_promote_resource_account_email_with_options_async(request, runtime)
 
     def retry_change_account_email_with_options(
         self,
-        request: resource_manager_20200331_models.RetryChangeAccountEmailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.RetryChangeAccountEmailResponse:
-        """
-        @summary 重新发送确认邮件
-        
-        @param request: RetryChangeAccountEmailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RetryChangeAccountEmailResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RetryChangeAccountEmailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetryChangeAccountEmailResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RetryChangeAccountEmail',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RetryChangeAccountEmail',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.RetryChangeAccountEmailResponse(),
+        return DaraCore.from_map(
+            main_models.RetryChangeAccountEmailResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def retry_change_account_email_with_options_async(
         self,
-        request: resource_manager_20200331_models.RetryChangeAccountEmailRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.RetryChangeAccountEmailResponse:
-        """
-        @summary 重新发送确认邮件
-        
-        @param request: RetryChangeAccountEmailRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: RetryChangeAccountEmailResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.RetryChangeAccountEmailRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.RetryChangeAccountEmailResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='RetryChangeAccountEmail',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'RetryChangeAccountEmail',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.RetryChangeAccountEmailResponse(),
+        return DaraCore.from_map(
+            main_models.RetryChangeAccountEmailResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def retry_change_account_email(
         self,
-        request: resource_manager_20200331_models.RetryChangeAccountEmailRequest,
-    ) -> resource_manager_20200331_models.RetryChangeAccountEmailResponse:
-        """
-        @summary 重新发送确认邮件
-        
-        @param request: RetryChangeAccountEmailRequest
-        @return: RetryChangeAccountEmailResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RetryChangeAccountEmailRequest,
+    ) -> main_models.RetryChangeAccountEmailResponse:
+        runtime = RuntimeOptions()
         return self.retry_change_account_email_with_options(request, runtime)
 
     async def retry_change_account_email_async(
         self,
-        request: resource_manager_20200331_models.RetryChangeAccountEmailRequest,
-    ) -> resource_manager_20200331_models.RetryChangeAccountEmailResponse:
-        """
-        @summary 重新发送确认邮件
-        
-        @param request: RetryChangeAccountEmailRequest
-        @return: RetryChangeAccountEmailResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.RetryChangeAccountEmailRequest,
+    ) -> main_models.RetryChangeAccountEmailResponse:
+        runtime = RuntimeOptions()
         return await self.retry_change_account_email_with_options_async(request, runtime)
 
     def send_verification_code_for_bind_secure_mobile_phone_with_options(
         self,
-        request: resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneResponse:
-        """
-        @summary 发送绑定安全手机验证码
-        
-        @description To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
-        In this example, a verification code is sent to the mobile phone number that you want to bind to the resource account `138660628348***`.
-        
-        @param request: SendVerificationCodeForBindSecureMobilePhoneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SendVerificationCodeForBindSecureMobilePhoneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SendVerificationCodeForBindSecureMobilePhoneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SendVerificationCodeForBindSecureMobilePhoneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.secure_mobile_phone):
+        if not DaraCore.is_null(request.secure_mobile_phone):
             query['SecureMobilePhone'] = request.secure_mobile_phone
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SendVerificationCodeForBindSecureMobilePhone',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SendVerificationCodeForBindSecureMobilePhone',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneResponse(),
+        return DaraCore.from_map(
+            main_models.SendVerificationCodeForBindSecureMobilePhoneResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def send_verification_code_for_bind_secure_mobile_phone_with_options_async(
         self,
-        request: resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneResponse:
-        """
-        @summary 发送绑定安全手机验证码
-        
-        @description To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
-        In this example, a verification code is sent to the mobile phone number that you want to bind to the resource account `138660628348***`.
-        
-        @param request: SendVerificationCodeForBindSecureMobilePhoneRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SendVerificationCodeForBindSecureMobilePhoneResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SendVerificationCodeForBindSecureMobilePhoneRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SendVerificationCodeForBindSecureMobilePhoneResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.secure_mobile_phone):
+        if not DaraCore.is_null(request.secure_mobile_phone):
             query['SecureMobilePhone'] = request.secure_mobile_phone
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SendVerificationCodeForBindSecureMobilePhone',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SendVerificationCodeForBindSecureMobilePhone',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneResponse(),
+        return DaraCore.from_map(
+            main_models.SendVerificationCodeForBindSecureMobilePhoneResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def send_verification_code_for_bind_secure_mobile_phone(
         self,
-        request: resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneRequest,
-    ) -> resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneResponse:
-        """
-        @summary 发送绑定安全手机验证码
-        
-        @description To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
-        In this example, a verification code is sent to the mobile phone number that you want to bind to the resource account `138660628348***`.
-        
-        @param request: SendVerificationCodeForBindSecureMobilePhoneRequest
-        @return: SendVerificationCodeForBindSecureMobilePhoneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SendVerificationCodeForBindSecureMobilePhoneRequest,
+    ) -> main_models.SendVerificationCodeForBindSecureMobilePhoneResponse:
+        runtime = RuntimeOptions()
         return self.send_verification_code_for_bind_secure_mobile_phone_with_options(request, runtime)
 
     async def send_verification_code_for_bind_secure_mobile_phone_async(
         self,
-        request: resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneRequest,
-    ) -> resource_manager_20200331_models.SendVerificationCodeForBindSecureMobilePhoneResponse:
-        """
-        @summary 发送绑定安全手机验证码
-        
-        @description To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
-        In this example, a verification code is sent to the mobile phone number that you want to bind to the resource account `138660628348***`.
-        
-        @param request: SendVerificationCodeForBindSecureMobilePhoneRequest
-        @return: SendVerificationCodeForBindSecureMobilePhoneResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SendVerificationCodeForBindSecureMobilePhoneRequest,
+    ) -> main_models.SendVerificationCodeForBindSecureMobilePhoneResponse:
+        runtime = RuntimeOptions()
         return await self.send_verification_code_for_bind_secure_mobile_phone_with_options_async(request, runtime)
 
     def send_verification_code_for_enable_rdwith_options(
         self,
-        request: resource_manager_20200331_models.SendVerificationCodeForEnableRDRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.SendVerificationCodeForEnableRDResponse:
-        """
-        @summary 发送开启资源目录短信
-        
-        @description Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
-        
-        @param request: SendVerificationCodeForEnableRDRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SendVerificationCodeForEnableRDResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SendVerificationCodeForEnableRDRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SendVerificationCodeForEnableRDResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.secure_mobile_phone):
+        if not DaraCore.is_null(request.secure_mobile_phone):
             query['SecureMobilePhone'] = request.secure_mobile_phone
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SendVerificationCodeForEnableRD',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SendVerificationCodeForEnableRD',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.SendVerificationCodeForEnableRDResponse(),
+        return DaraCore.from_map(
+            main_models.SendVerificationCodeForEnableRDResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def send_verification_code_for_enable_rdwith_options_async(
         self,
-        request: resource_manager_20200331_models.SendVerificationCodeForEnableRDRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.SendVerificationCodeForEnableRDResponse:
-        """
-        @summary 发送开启资源目录短信
-        
-        @description Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
-        
-        @param request: SendVerificationCodeForEnableRDRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SendVerificationCodeForEnableRDResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SendVerificationCodeForEnableRDRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SendVerificationCodeForEnableRDResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.secure_mobile_phone):
+        if not DaraCore.is_null(request.secure_mobile_phone):
             query['SecureMobilePhone'] = request.secure_mobile_phone
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SendVerificationCodeForEnableRD',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SendVerificationCodeForEnableRD',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.SendVerificationCodeForEnableRDResponse(),
+        return DaraCore.from_map(
+            main_models.SendVerificationCodeForEnableRDResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def send_verification_code_for_enable_rd(
         self,
-        request: resource_manager_20200331_models.SendVerificationCodeForEnableRDRequest,
-    ) -> resource_manager_20200331_models.SendVerificationCodeForEnableRDResponse:
-        """
-        @summary 发送开启资源目录短信
-        
-        @description Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
-        
-        @param request: SendVerificationCodeForEnableRDRequest
-        @return: SendVerificationCodeForEnableRDResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SendVerificationCodeForEnableRDRequest,
+    ) -> main_models.SendVerificationCodeForEnableRDResponse:
+        runtime = RuntimeOptions()
         return self.send_verification_code_for_enable_rdwith_options(request, runtime)
 
     async def send_verification_code_for_enable_rd_async(
         self,
-        request: resource_manager_20200331_models.SendVerificationCodeForEnableRDRequest,
-    ) -> resource_manager_20200331_models.SendVerificationCodeForEnableRDResponse:
-        """
-        @summary 发送开启资源目录短信
-        
-        @description Each Alibaba Cloud account can be used to send a maximum of 100 verification codes per day.
-        
-        @param request: SendVerificationCodeForEnableRDRequest
-        @return: SendVerificationCodeForEnableRDResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SendVerificationCodeForEnableRDRequest,
+    ) -> main_models.SendVerificationCodeForEnableRDResponse:
+        runtime = RuntimeOptions()
         return await self.send_verification_code_for_enable_rdwith_options_async(request, runtime)
 
     def set_default_policy_version_with_options(
         self,
-        request: resource_manager_20200331_models.SetDefaultPolicyVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.SetDefaultPolicyVersionResponse:
-        """
-        @summary Sets a default version for a permission policy.
-        
-        @param request: SetDefaultPolicyVersionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetDefaultPolicyVersionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SetDefaultPolicyVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetDefaultPolicyVersionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.version_id):
+        if not DaraCore.is_null(request.version_id):
             query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SetDefaultPolicyVersion',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SetDefaultPolicyVersion',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.SetDefaultPolicyVersionResponse(),
+        return DaraCore.from_map(
+            main_models.SetDefaultPolicyVersionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def set_default_policy_version_with_options_async(
         self,
-        request: resource_manager_20200331_models.SetDefaultPolicyVersionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.SetDefaultPolicyVersionResponse:
-        """
-        @summary Sets a default version for a permission policy.
-        
-        @param request: SetDefaultPolicyVersionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetDefaultPolicyVersionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SetDefaultPolicyVersionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetDefaultPolicyVersionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.policy_name):
+        if not DaraCore.is_null(request.policy_name):
             query['PolicyName'] = request.policy_name
-        if not UtilClient.is_unset(request.version_id):
+        if not DaraCore.is_null(request.version_id):
             query['VersionId'] = request.version_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SetDefaultPolicyVersion',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SetDefaultPolicyVersion',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.SetDefaultPolicyVersionResponse(),
+        return DaraCore.from_map(
+            main_models.SetDefaultPolicyVersionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def set_default_policy_version(
         self,
-        request: resource_manager_20200331_models.SetDefaultPolicyVersionRequest,
-    ) -> resource_manager_20200331_models.SetDefaultPolicyVersionResponse:
-        """
-        @summary Sets a default version for a permission policy.
-        
-        @param request: SetDefaultPolicyVersionRequest
-        @return: SetDefaultPolicyVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SetDefaultPolicyVersionRequest,
+    ) -> main_models.SetDefaultPolicyVersionResponse:
+        runtime = RuntimeOptions()
         return self.set_default_policy_version_with_options(request, runtime)
 
     async def set_default_policy_version_async(
         self,
-        request: resource_manager_20200331_models.SetDefaultPolicyVersionRequest,
-    ) -> resource_manager_20200331_models.SetDefaultPolicyVersionResponse:
-        """
-        @summary Sets a default version for a permission policy.
-        
-        @param request: SetDefaultPolicyVersionRequest
-        @return: SetDefaultPolicyVersionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SetDefaultPolicyVersionRequest,
+    ) -> main_models.SetDefaultPolicyVersionResponse:
+        runtime = RuntimeOptions()
         return await self.set_default_policy_version_with_options_async(request, runtime)
 
     def set_member_deletion_permission_with_options(
         self,
-        request: resource_manager_20200331_models.SetMemberDeletionPermissionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.SetMemberDeletionPermissionResponse:
-        """
-        @summary 开启或关闭成员删除许可
-        
-        @description Members of the resource account type can be deleted only after the member deletion feature is enabled.
-        
-        @param request: SetMemberDeletionPermissionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetMemberDeletionPermissionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SetMemberDeletionPermissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetMemberDeletionPermissionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SetMemberDeletionPermission',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SetMemberDeletionPermission',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.SetMemberDeletionPermissionResponse(),
+        return DaraCore.from_map(
+            main_models.SetMemberDeletionPermissionResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def set_member_deletion_permission_with_options_async(
         self,
-        request: resource_manager_20200331_models.SetMemberDeletionPermissionRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.SetMemberDeletionPermissionResponse:
-        """
-        @summary 开启或关闭成员删除许可
-        
-        @description Members of the resource account type can be deleted only after the member deletion feature is enabled.
-        
-        @param request: SetMemberDeletionPermissionRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: SetMemberDeletionPermissionResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.SetMemberDeletionPermissionRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SetMemberDeletionPermissionResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.status):
+        if not DaraCore.is_null(request.status):
             query['Status'] = request.status
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='SetMemberDeletionPermission',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'SetMemberDeletionPermission',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.SetMemberDeletionPermissionResponse(),
+        return DaraCore.from_map(
+            main_models.SetMemberDeletionPermissionResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def set_member_deletion_permission(
         self,
-        request: resource_manager_20200331_models.SetMemberDeletionPermissionRequest,
-    ) -> resource_manager_20200331_models.SetMemberDeletionPermissionResponse:
-        """
-        @summary 开启或关闭成员删除许可
-        
-        @description Members of the resource account type can be deleted only after the member deletion feature is enabled.
-        
-        @param request: SetMemberDeletionPermissionRequest
-        @return: SetMemberDeletionPermissionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SetMemberDeletionPermissionRequest,
+    ) -> main_models.SetMemberDeletionPermissionResponse:
+        runtime = RuntimeOptions()
         return self.set_member_deletion_permission_with_options(request, runtime)
 
     async def set_member_deletion_permission_async(
         self,
-        request: resource_manager_20200331_models.SetMemberDeletionPermissionRequest,
-    ) -> resource_manager_20200331_models.SetMemberDeletionPermissionResponse:
-        """
-        @summary 开启或关闭成员删除许可
-        
-        @description Members of the resource account type can be deleted only after the member deletion feature is enabled.
-        
-        @param request: SetMemberDeletionPermissionRequest
-        @return: SetMemberDeletionPermissionResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.SetMemberDeletionPermissionRequest,
+    ) -> main_models.SetMemberDeletionPermissionResponse:
+        runtime = RuntimeOptions()
         return await self.set_member_deletion_permission_with_options_async(request, runtime)
 
     def tag_resources_with_options(
         self,
-        request: resource_manager_20200331_models.TagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.TagResourcesResponse:
-        """
-        @summary Adds tags to resource groups or the members in a resource directory.
-        
-        @description This topic provides an example on how to call the API operation to add the tag `k1:v1` to the resource group with an ID of `rg-aekz6bre2uq***`.
-        
-        @param request: TagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.TagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.TagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def tag_resources_with_options_async(
         self,
-        request: resource_manager_20200331_models.TagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.TagResourcesResponse:
-        """
-        @summary Adds tags to resource groups or the members in a resource directory.
-        
-        @description This topic provides an example on how to call the API operation to add the tag `k1:v1` to the resource group with an ID of `rg-aekz6bre2uq***`.
-        
-        @param request: TagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: TagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.TagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.TagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag):
+        if not DaraCore.is_null(request.tag):
             query['Tag'] = request.tag
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='TagResources',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'TagResources',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.TagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.TagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def tag_resources(
         self,
-        request: resource_manager_20200331_models.TagResourcesRequest,
-    ) -> resource_manager_20200331_models.TagResourcesResponse:
-        """
-        @summary Adds tags to resource groups or the members in a resource directory.
-        
-        @description This topic provides an example on how to call the API operation to add the tag `k1:v1` to the resource group with an ID of `rg-aekz6bre2uq***`.
-        
-        @param request: TagResourcesRequest
-        @return: TagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
         return self.tag_resources_with_options(request, runtime)
 
     async def tag_resources_async(
         self,
-        request: resource_manager_20200331_models.TagResourcesRequest,
-    ) -> resource_manager_20200331_models.TagResourcesResponse:
-        """
-        @summary Adds tags to resource groups or the members in a resource directory.
-        
-        @description This topic provides an example on how to call the API operation to add the tag `k1:v1` to the resource group with an ID of `rg-aekz6bre2uq***`.
-        
-        @param request: TagResourcesRequest
-        @return: TagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.TagResourcesRequest,
+    ) -> main_models.TagResourcesResponse:
+        runtime = RuntimeOptions()
         return await self.tag_resources_with_options_async(request, runtime)
 
     def untag_resources_with_options(
         self,
-        request: resource_manager_20200331_models.UntagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UntagResourcesResponse:
-        """
-        @summary Removes tags from resource groups or the members in a resource directory.
-        
-        @description This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the resource group whose ID is `rg-aek2dpwyrfr***`.
-        
-        @param request: UntagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UntagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UntagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.all):
+        if not DaraCore.is_null(request.all):
             query['All'] = request.all
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag_key):
+        if not DaraCore.is_null(request.tag_key):
             query['TagKey'] = request.tag_key
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UntagResources',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UntagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def untag_resources_with_options_async(
         self,
-        request: resource_manager_20200331_models.UntagResourcesRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UntagResourcesResponse:
-        """
-        @summary Removes tags from resource groups or the members in a resource directory.
-        
-        @description This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the resource group whose ID is `rg-aek2dpwyrfr***`.
-        
-        @param request: UntagResourcesRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UntagResourcesResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UntagResourcesRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UntagResourcesResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.all):
+        if not DaraCore.is_null(request.all):
             query['All'] = request.all
-        if not UtilClient.is_unset(request.resource_id):
+        if not DaraCore.is_null(request.resource_id):
             query['ResourceId'] = request.resource_id
-        if not UtilClient.is_unset(request.resource_type):
+        if not DaraCore.is_null(request.resource_type):
             query['ResourceType'] = request.resource_type
-        if not UtilClient.is_unset(request.tag_key):
+        if not DaraCore.is_null(request.tag_key):
             query['TagKey'] = request.tag_key
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UntagResources',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UntagResources',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UntagResourcesResponse(),
+        return DaraCore.from_map(
+            main_models.UntagResourcesResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def untag_resources(
         self,
-        request: resource_manager_20200331_models.UntagResourcesRequest,
-    ) -> resource_manager_20200331_models.UntagResourcesResponse:
-        """
-        @summary Removes tags from resource groups or the members in a resource directory.
-        
-        @description This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the resource group whose ID is `rg-aek2dpwyrfr***`.
-        
-        @param request: UntagResourcesRequest
-        @return: UntagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
         return self.untag_resources_with_options(request, runtime)
 
     async def untag_resources_async(
         self,
-        request: resource_manager_20200331_models.UntagResourcesRequest,
-    ) -> resource_manager_20200331_models.UntagResourcesResponse:
-        """
-        @summary Removes tags from resource groups or the members in a resource directory.
-        
-        @description This topic provides an example on how to call the API operation to remove the tag whose tag key is `k1` from the resource group whose ID is `rg-aek2dpwyrfr***`.
-        
-        @param request: UntagResourcesRequest
-        @return: UntagResourcesResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UntagResourcesRequest,
+    ) -> main_models.UntagResourcesResponse:
+        runtime = RuntimeOptions()
         return await self.untag_resources_with_options_async(request, runtime)
 
     def update_account_with_options(
         self,
-        request: resource_manager_20200331_models.UpdateAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateAccountResponse:
-        """
-        @description    To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
-        Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](https://help.aliyun.com/document_detail/111233.html).
-        Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](https://help.aliyun.com/document_detail/209980.html).
-        This example provides an example on how to call the API operation to change the display name of the member `12323344***` to `admin`.
-        
-        @param request: UpdateAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.new_account_type):
+        if not DaraCore.is_null(request.new_account_type):
             query['NewAccountType'] = request.new_account_type
-        if not UtilClient.is_unset(request.new_display_name):
+        if not DaraCore.is_null(request.new_display_name):
             query['NewDisplayName'] = request.new_display_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateAccountResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateAccountResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_account_with_options_async(
         self,
-        request: resource_manager_20200331_models.UpdateAccountRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateAccountResponse:
-        """
-        @description    To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
-        Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](https://help.aliyun.com/document_detail/111233.html).
-        Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](https://help.aliyun.com/document_detail/209980.html).
-        This example provides an example on how to call the API operation to change the display name of the member `12323344***` to `admin`.
-        
-        @param request: UpdateAccountRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAccountResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateAccountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAccountResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.account_id):
+        if not DaraCore.is_null(request.account_id):
             query['AccountId'] = request.account_id
-        if not UtilClient.is_unset(request.new_account_type):
+        if not DaraCore.is_null(request.new_account_type):
             query['NewAccountType'] = request.new_account_type
-        if not UtilClient.is_unset(request.new_display_name):
+        if not DaraCore.is_null(request.new_display_name):
             query['NewDisplayName'] = request.new_display_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAccount',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateAccount',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateAccountResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateAccountResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_account(
         self,
-        request: resource_manager_20200331_models.UpdateAccountRequest,
-    ) -> resource_manager_20200331_models.UpdateAccountResponse:
-        """
-        @description    To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
-        Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](https://help.aliyun.com/document_detail/111233.html).
-        Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](https://help.aliyun.com/document_detail/209980.html).
-        This example provides an example on how to call the API operation to change the display name of the member `12323344***` to `admin`.
-        
-        @param request: UpdateAccountRequest
-        @return: UpdateAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateAccountRequest,
+    ) -> main_models.UpdateAccountResponse:
+        runtime = RuntimeOptions()
         return self.update_account_with_options(request, runtime)
 
     async def update_account_async(
         self,
-        request: resource_manager_20200331_models.UpdateAccountRequest,
-    ) -> resource_manager_20200331_models.UpdateAccountResponse:
-        """
-        @description    To ensure that the system can record the operators of management operations, you must use a RAM user or RAM role to which the AliyunResourceDirectoryFullAccess policy is attached within the management account of your resource directory to call this operation.
-        Before you switch the type of a member from resource account to cloud account, make sure that specific conditions are met. For more information about the conditions, see [Switch a resource account to a cloud account](https://help.aliyun.com/document_detail/111233.html).
-        Before you switch the type of a member from cloud account to resource account, make sure that specific conditions are met. For more information about the conditions, see [Switch a cloud account to a resource account](https://help.aliyun.com/document_detail/209980.html).
-        This example provides an example on how to call the API operation to change the display name of the member `12323344***` to `admin`.
-        
-        @param request: UpdateAccountRequest
-        @return: UpdateAccountResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateAccountRequest,
+    ) -> main_models.UpdateAccountResponse:
+        runtime = RuntimeOptions()
         return await self.update_account_with_options_async(request, runtime)
 
     def update_associated_transfer_setting_with_options(
         self,
-        request: resource_manager_20200331_models.UpdateAssociatedTransferSettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse:
-        """
-        @summary Updates the settings of the Transfer Associated Resources feature.
-        
-        @description For information about the resources that support the Transfer Associated Resources feature, see [Use the Transfer Associated Resources feature](https://help.aliyun.com/document_detail/606232.html).
-        
-        @param request: UpdateAssociatedTransferSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAssociatedTransferSettingResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateAssociatedTransferSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAssociatedTransferSettingResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.enable_existing_resources_transfer):
+        if not DaraCore.is_null(request.enable_existing_resources_transfer):
             query['EnableExistingResourcesTransfer'] = request.enable_existing_resources_transfer
-        if not UtilClient.is_unset(request.rule_settings):
+        if not DaraCore.is_null(request.rule_settings):
             query['RuleSettings'] = request.rule_settings
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAssociatedTransferSetting',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateAssociatedTransferSetting',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateAssociatedTransferSettingResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_associated_transfer_setting_with_options_async(
         self,
-        request: resource_manager_20200331_models.UpdateAssociatedTransferSettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse:
-        """
-        @summary Updates the settings of the Transfer Associated Resources feature.
-        
-        @description For information about the resources that support the Transfer Associated Resources feature, see [Use the Transfer Associated Resources feature](https://help.aliyun.com/document_detail/606232.html).
-        
-        @param request: UpdateAssociatedTransferSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAssociatedTransferSettingResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateAssociatedTransferSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAssociatedTransferSettingResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.enable_existing_resources_transfer):
+        if not DaraCore.is_null(request.enable_existing_resources_transfer):
             query['EnableExistingResourcesTransfer'] = request.enable_existing_resources_transfer
-        if not UtilClient.is_unset(request.rule_settings):
+        if not DaraCore.is_null(request.rule_settings):
             query['RuleSettings'] = request.rule_settings
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAssociatedTransferSetting',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateAssociatedTransferSetting',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateAssociatedTransferSettingResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_associated_transfer_setting(
         self,
-        request: resource_manager_20200331_models.UpdateAssociatedTransferSettingRequest,
-    ) -> resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse:
-        """
-        @summary Updates the settings of the Transfer Associated Resources feature.
-        
-        @description For information about the resources that support the Transfer Associated Resources feature, see [Use the Transfer Associated Resources feature](https://help.aliyun.com/document_detail/606232.html).
-        
-        @param request: UpdateAssociatedTransferSettingRequest
-        @return: UpdateAssociatedTransferSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateAssociatedTransferSettingRequest,
+    ) -> main_models.UpdateAssociatedTransferSettingResponse:
+        runtime = RuntimeOptions()
         return self.update_associated_transfer_setting_with_options(request, runtime)
 
     async def update_associated_transfer_setting_async(
         self,
-        request: resource_manager_20200331_models.UpdateAssociatedTransferSettingRequest,
-    ) -> resource_manager_20200331_models.UpdateAssociatedTransferSettingResponse:
-        """
-        @summary Updates the settings of the Transfer Associated Resources feature.
-        
-        @description For information about the resources that support the Transfer Associated Resources feature, see [Use the Transfer Associated Resources feature](https://help.aliyun.com/document_detail/606232.html).
-        
-        @param request: UpdateAssociatedTransferSettingRequest
-        @return: UpdateAssociatedTransferSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateAssociatedTransferSettingRequest,
+    ) -> main_models.UpdateAssociatedTransferSettingResponse:
+        runtime = RuntimeOptions()
         return await self.update_associated_transfer_setting_with_options_async(request, runtime)
 
     def update_auto_grouping_config_with_options(
         self,
-        request: resource_manager_20200331_models.UpdateAutoGroupingConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateAutoGroupingConfigResponse:
-        """
-        @summary Updates the configuration of the Automatic Resource Transfer feature. You can update only the configuration of the Transfer Existing Associated Resources feature.
-        
-        @param request: UpdateAutoGroupingConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAutoGroupingConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateAutoGroupingConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAutoGroupingConfigResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.enable_existing_resources_transfer):
+        if not DaraCore.is_null(request.enable_existing_resources_transfer):
             query['EnableExistingResourcesTransfer'] = request.enable_existing_resources_transfer
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAutoGroupingConfig',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateAutoGroupingConfig',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateAutoGroupingConfigResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateAutoGroupingConfigResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_auto_grouping_config_with_options_async(
         self,
-        request: resource_manager_20200331_models.UpdateAutoGroupingConfigRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateAutoGroupingConfigResponse:
-        """
-        @summary Updates the configuration of the Automatic Resource Transfer feature. You can update only the configuration of the Transfer Existing Associated Resources feature.
-        
-        @param request: UpdateAutoGroupingConfigRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAutoGroupingConfigResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateAutoGroupingConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAutoGroupingConfigResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.enable_existing_resources_transfer):
+        if not DaraCore.is_null(request.enable_existing_resources_transfer):
             query['EnableExistingResourcesTransfer'] = request.enable_existing_resources_transfer
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAutoGroupingConfig',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateAutoGroupingConfig',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateAutoGroupingConfigResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateAutoGroupingConfigResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_auto_grouping_config(
         self,
-        request: resource_manager_20200331_models.UpdateAutoGroupingConfigRequest,
-    ) -> resource_manager_20200331_models.UpdateAutoGroupingConfigResponse:
-        """
-        @summary Updates the configuration of the Automatic Resource Transfer feature. You can update only the configuration of the Transfer Existing Associated Resources feature.
-        
-        @param request: UpdateAutoGroupingConfigRequest
-        @return: UpdateAutoGroupingConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateAutoGroupingConfigRequest,
+    ) -> main_models.UpdateAutoGroupingConfigResponse:
+        runtime = RuntimeOptions()
         return self.update_auto_grouping_config_with_options(request, runtime)
 
     async def update_auto_grouping_config_async(
         self,
-        request: resource_manager_20200331_models.UpdateAutoGroupingConfigRequest,
-    ) -> resource_manager_20200331_models.UpdateAutoGroupingConfigResponse:
-        """
-        @summary Updates the configuration of the Automatic Resource Transfer feature. You can update only the configuration of the Transfer Existing Associated Resources feature.
-        
-        @param request: UpdateAutoGroupingConfigRequest
-        @return: UpdateAutoGroupingConfigResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateAutoGroupingConfigRequest,
+    ) -> main_models.UpdateAutoGroupingConfigResponse:
+        runtime = RuntimeOptions()
         return await self.update_auto_grouping_config_with_options_async(request, runtime)
 
     def update_auto_grouping_rule_with_options(
         self,
-        request: resource_manager_20200331_models.UpdateAutoGroupingRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateAutoGroupingRuleResponse:
-        """
-        @summary Updates a transfer rule.
-        
-        @param request: UpdateAutoGroupingRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAutoGroupingRuleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateAutoGroupingRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAutoGroupingRuleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+        if not DaraCore.is_null(request.exclude_region_ids_scope):
             query['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
-        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+        if not DaraCore.is_null(request.exclude_resource_group_ids_scope):
             query['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
-        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+        if not DaraCore.is_null(request.exclude_resource_ids_scope):
             query['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
-        if not UtilClient.is_unset(request.exclude_resource_types_scope):
+        if not DaraCore.is_null(request.exclude_resource_types_scope):
             query['ExcludeResourceTypesScope'] = request.exclude_resource_types_scope
-        if not UtilClient.is_unset(request.region_ids_scope):
+        if not DaraCore.is_null(request.region_ids_scope):
             query['RegionIdsScope'] = request.region_ids_scope
-        if not UtilClient.is_unset(request.resource_group_ids_scope):
+        if not DaraCore.is_null(request.resource_group_ids_scope):
             query['ResourceGroupIdsScope'] = request.resource_group_ids_scope
-        if not UtilClient.is_unset(request.resource_ids_scope):
+        if not DaraCore.is_null(request.resource_ids_scope):
             query['ResourceIdsScope'] = request.resource_ids_scope
-        if not UtilClient.is_unset(request.resource_types_scope):
+        if not DaraCore.is_null(request.resource_types_scope):
             query['ResourceTypesScope'] = request.resource_types_scope
-        if not UtilClient.is_unset(request.rule_contents):
+        if not DaraCore.is_null(request.rule_contents):
             query['RuleContents'] = request.rule_contents
-        if not UtilClient.is_unset(request.rule_desc):
+        if not DaraCore.is_null(request.rule_desc):
             query['RuleDesc'] = request.rule_desc
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        if not UtilClient.is_unset(request.rule_name):
+        if not DaraCore.is_null(request.rule_name):
             query['RuleName'] = request.rule_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAutoGroupingRule',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateAutoGroupingRule',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateAutoGroupingRuleResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateAutoGroupingRuleResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_auto_grouping_rule_with_options_async(
         self,
-        request: resource_manager_20200331_models.UpdateAutoGroupingRuleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateAutoGroupingRuleResponse:
-        """
-        @summary Updates a transfer rule.
-        
-        @param request: UpdateAutoGroupingRuleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateAutoGroupingRuleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateAutoGroupingRuleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateAutoGroupingRuleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.exclude_region_ids_scope):
+        if not DaraCore.is_null(request.exclude_region_ids_scope):
             query['ExcludeRegionIdsScope'] = request.exclude_region_ids_scope
-        if not UtilClient.is_unset(request.exclude_resource_group_ids_scope):
+        if not DaraCore.is_null(request.exclude_resource_group_ids_scope):
             query['ExcludeResourceGroupIdsScope'] = request.exclude_resource_group_ids_scope
-        if not UtilClient.is_unset(request.exclude_resource_ids_scope):
+        if not DaraCore.is_null(request.exclude_resource_ids_scope):
             query['ExcludeResourceIdsScope'] = request.exclude_resource_ids_scope
-        if not UtilClient.is_unset(request.exclude_resource_types_scope):
+        if not DaraCore.is_null(request.exclude_resource_types_scope):
             query['ExcludeResourceTypesScope'] = request.exclude_resource_types_scope
-        if not UtilClient.is_unset(request.region_ids_scope):
+        if not DaraCore.is_null(request.region_ids_scope):
             query['RegionIdsScope'] = request.region_ids_scope
-        if not UtilClient.is_unset(request.resource_group_ids_scope):
+        if not DaraCore.is_null(request.resource_group_ids_scope):
             query['ResourceGroupIdsScope'] = request.resource_group_ids_scope
-        if not UtilClient.is_unset(request.resource_ids_scope):
+        if not DaraCore.is_null(request.resource_ids_scope):
             query['ResourceIdsScope'] = request.resource_ids_scope
-        if not UtilClient.is_unset(request.resource_types_scope):
+        if not DaraCore.is_null(request.resource_types_scope):
             query['ResourceTypesScope'] = request.resource_types_scope
-        if not UtilClient.is_unset(request.rule_contents):
+        if not DaraCore.is_null(request.rule_contents):
             query['RuleContents'] = request.rule_contents
-        if not UtilClient.is_unset(request.rule_desc):
+        if not DaraCore.is_null(request.rule_desc):
             query['RuleDesc'] = request.rule_desc
-        if not UtilClient.is_unset(request.rule_id):
+        if not DaraCore.is_null(request.rule_id):
             query['RuleId'] = request.rule_id
-        if not UtilClient.is_unset(request.rule_name):
+        if not DaraCore.is_null(request.rule_name):
             query['RuleName'] = request.rule_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateAutoGroupingRule',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateAutoGroupingRule',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateAutoGroupingRuleResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateAutoGroupingRuleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_auto_grouping_rule(
         self,
-        request: resource_manager_20200331_models.UpdateAutoGroupingRuleRequest,
-    ) -> resource_manager_20200331_models.UpdateAutoGroupingRuleResponse:
-        """
-        @summary Updates a transfer rule.
-        
-        @param request: UpdateAutoGroupingRuleRequest
-        @return: UpdateAutoGroupingRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateAutoGroupingRuleRequest,
+    ) -> main_models.UpdateAutoGroupingRuleResponse:
+        runtime = RuntimeOptions()
         return self.update_auto_grouping_rule_with_options(request, runtime)
 
     async def update_auto_grouping_rule_async(
         self,
-        request: resource_manager_20200331_models.UpdateAutoGroupingRuleRequest,
-    ) -> resource_manager_20200331_models.UpdateAutoGroupingRuleResponse:
-        """
-        @summary Updates a transfer rule.
-        
-        @param request: UpdateAutoGroupingRuleRequest
-        @return: UpdateAutoGroupingRuleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateAutoGroupingRuleRequest,
+    ) -> main_models.UpdateAutoGroupingRuleResponse:
+        runtime = RuntimeOptions()
         return await self.update_auto_grouping_rule_with_options_async(request, runtime)
 
     def update_control_policy_with_options(
         self,
-        request: resource_manager_20200331_models.UpdateControlPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateControlPolicyResponse:
-        """
-        @description In this example, the name of the access control policy whose ID is `cp-jExXAqIYkwHN***` is changed to `NewControlPolicy`.
-        
-        @param request: UpdateControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateControlPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateControlPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateControlPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.new_description):
+        if not DaraCore.is_null(request.new_description):
             query['NewDescription'] = request.new_description
-        if not UtilClient.is_unset(request.new_policy_document):
+        if not DaraCore.is_null(request.new_policy_document):
             query['NewPolicyDocument'] = request.new_policy_document
-        if not UtilClient.is_unset(request.new_policy_name):
+        if not DaraCore.is_null(request.new_policy_name):
             query['NewPolicyName'] = request.new_policy_name
-        if not UtilClient.is_unset(request.policy_id):
+        if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateControlPolicyResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_control_policy_with_options_async(
         self,
-        request: resource_manager_20200331_models.UpdateControlPolicyRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateControlPolicyResponse:
-        """
-        @description In this example, the name of the access control policy whose ID is `cp-jExXAqIYkwHN***` is changed to `NewControlPolicy`.
-        
-        @param request: UpdateControlPolicyRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateControlPolicyResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateControlPolicyRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateControlPolicyResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.new_description):
+        if not DaraCore.is_null(request.new_description):
             query['NewDescription'] = request.new_description
-        if not UtilClient.is_unset(request.new_policy_document):
+        if not DaraCore.is_null(request.new_policy_document):
             query['NewPolicyDocument'] = request.new_policy_document
-        if not UtilClient.is_unset(request.new_policy_name):
+        if not DaraCore.is_null(request.new_policy_name):
             query['NewPolicyName'] = request.new_policy_name
-        if not UtilClient.is_unset(request.policy_id):
+        if not DaraCore.is_null(request.policy_id):
             query['PolicyId'] = request.policy_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateControlPolicy',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateControlPolicy',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateControlPolicyResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateControlPolicyResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_control_policy(
         self,
-        request: resource_manager_20200331_models.UpdateControlPolicyRequest,
-    ) -> resource_manager_20200331_models.UpdateControlPolicyResponse:
-        """
-        @description In this example, the name of the access control policy whose ID is `cp-jExXAqIYkwHN***` is changed to `NewControlPolicy`.
-        
-        @param request: UpdateControlPolicyRequest
-        @return: UpdateControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateControlPolicyRequest,
+    ) -> main_models.UpdateControlPolicyResponse:
+        runtime = RuntimeOptions()
         return self.update_control_policy_with_options(request, runtime)
 
     async def update_control_policy_async(
         self,
-        request: resource_manager_20200331_models.UpdateControlPolicyRequest,
-    ) -> resource_manager_20200331_models.UpdateControlPolicyResponse:
-        """
-        @description In this example, the name of the access control policy whose ID is `cp-jExXAqIYkwHN***` is changed to `NewControlPolicy`.
-        
-        @param request: UpdateControlPolicyRequest
-        @return: UpdateControlPolicyResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateControlPolicyRequest,
+    ) -> main_models.UpdateControlPolicyResponse:
+        runtime = RuntimeOptions()
         return await self.update_control_policy_with_options_async(request, runtime)
 
     def update_folder_with_options(
         self,
-        request: resource_manager_20200331_models.UpdateFolderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateFolderResponse:
-        """
-        @param request: UpdateFolderRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateFolderResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateFolderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFolderResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.folder_id):
+        if not DaraCore.is_null(request.folder_id):
             query['FolderId'] = request.folder_id
-        if not UtilClient.is_unset(request.new_folder_name):
+        if not DaraCore.is_null(request.new_folder_name):
             query['NewFolderName'] = request.new_folder_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateFolder',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateFolder',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateFolderResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateFolderResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_folder_with_options_async(
         self,
-        request: resource_manager_20200331_models.UpdateFolderRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateFolderResponse:
-        """
-        @param request: UpdateFolderRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateFolderResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateFolderRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateFolderResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.folder_id):
+        if not DaraCore.is_null(request.folder_id):
             query['FolderId'] = request.folder_id
-        if not UtilClient.is_unset(request.new_folder_name):
+        if not DaraCore.is_null(request.new_folder_name):
             query['NewFolderName'] = request.new_folder_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateFolder',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateFolder',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateFolderResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateFolderResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_folder(
         self,
-        request: resource_manager_20200331_models.UpdateFolderRequest,
-    ) -> resource_manager_20200331_models.UpdateFolderResponse:
-        """
-        @param request: UpdateFolderRequest
-        @return: UpdateFolderResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateFolderRequest,
+    ) -> main_models.UpdateFolderResponse:
+        runtime = RuntimeOptions()
         return self.update_folder_with_options(request, runtime)
 
     async def update_folder_async(
         self,
-        request: resource_manager_20200331_models.UpdateFolderRequest,
-    ) -> resource_manager_20200331_models.UpdateFolderResponse:
-        """
-        @param request: UpdateFolderRequest
-        @return: UpdateFolderResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateFolderRequest,
+    ) -> main_models.UpdateFolderResponse:
+        runtime = RuntimeOptions()
         return await self.update_folder_with_options_async(request, runtime)
 
     def update_resource_group_with_options(
         self,
-        request: resource_manager_20200331_models.UpdateResourceGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateResourceGroupResponse:
-        """
-        @description In this example, the display name of the resource group `rg-9gLOoK***` is changed to `project`.
-        
-        @param request: UpdateResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateResourceGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.new_display_name):
+        if not DaraCore.is_null(request.new_display_name):
             query['NewDisplayName'] = request.new_display_name
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateResourceGroup',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateResourceGroup',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateResourceGroupResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_resource_group_with_options_async(
         self,
-        request: resource_manager_20200331_models.UpdateResourceGroupRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateResourceGroupResponse:
-        """
-        @description In this example, the display name of the resource group `rg-9gLOoK***` is changed to `project`.
-        
-        @param request: UpdateResourceGroupRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateResourceGroupResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateResourceGroupRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateResourceGroupResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.new_display_name):
+        if not DaraCore.is_null(request.new_display_name):
             query['NewDisplayName'] = request.new_display_name
-        if not UtilClient.is_unset(request.resource_group_id):
+        if not DaraCore.is_null(request.resource_group_id):
             query['ResourceGroupId'] = request.resource_group_id
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateResourceGroup',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateResourceGroup',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateResourceGroupResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateResourceGroupResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_resource_group(
         self,
-        request: resource_manager_20200331_models.UpdateResourceGroupRequest,
-    ) -> resource_manager_20200331_models.UpdateResourceGroupResponse:
-        """
-        @description In this example, the display name of the resource group `rg-9gLOoK***` is changed to `project`.
-        
-        @param request: UpdateResourceGroupRequest
-        @return: UpdateResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateResourceGroupRequest,
+    ) -> main_models.UpdateResourceGroupResponse:
+        runtime = RuntimeOptions()
         return self.update_resource_group_with_options(request, runtime)
 
     async def update_resource_group_async(
         self,
-        request: resource_manager_20200331_models.UpdateResourceGroupRequest,
-    ) -> resource_manager_20200331_models.UpdateResourceGroupResponse:
-        """
-        @description In this example, the display name of the resource group `rg-9gLOoK***` is changed to `project`.
-        
-        @param request: UpdateResourceGroupRequest
-        @return: UpdateResourceGroupResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateResourceGroupRequest,
+    ) -> main_models.UpdateResourceGroupResponse:
+        runtime = RuntimeOptions()
         return await self.update_resource_group_with_options_async(request, runtime)
 
     def update_resource_group_admin_setting_with_options(
         self,
-        request: resource_manager_20200331_models.UpdateResourceGroupAdminSettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateResourceGroupAdminSettingResponse:
-        """
-        @summary Updates the configurations of a resource group administrator.
-        
-        @param request: UpdateResourceGroupAdminSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateResourceGroupAdminSettingResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateResourceGroupAdminSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateResourceGroupAdminSettingResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.creator_as_admin):
+        if not DaraCore.is_null(request.creator_as_admin):
             query['CreatorAsAdmin'] = request.creator_as_admin
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateResourceGroupAdminSetting',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateResourceGroupAdminSetting',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateResourceGroupAdminSettingResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateResourceGroupAdminSettingResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_resource_group_admin_setting_with_options_async(
         self,
-        request: resource_manager_20200331_models.UpdateResourceGroupAdminSettingRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateResourceGroupAdminSettingResponse:
-        """
-        @summary Updates the configurations of a resource group administrator.
-        
-        @param request: UpdateResourceGroupAdminSettingRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateResourceGroupAdminSettingResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateResourceGroupAdminSettingRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateResourceGroupAdminSettingResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.creator_as_admin):
+        if not DaraCore.is_null(request.creator_as_admin):
             query['CreatorAsAdmin'] = request.creator_as_admin
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateResourceGroupAdminSetting',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateResourceGroupAdminSetting',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateResourceGroupAdminSettingResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateResourceGroupAdminSettingResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_resource_group_admin_setting(
         self,
-        request: resource_manager_20200331_models.UpdateResourceGroupAdminSettingRequest,
-    ) -> resource_manager_20200331_models.UpdateResourceGroupAdminSettingResponse:
-        """
-        @summary Updates the configurations of a resource group administrator.
-        
-        @param request: UpdateResourceGroupAdminSettingRequest
-        @return: UpdateResourceGroupAdminSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateResourceGroupAdminSettingRequest,
+    ) -> main_models.UpdateResourceGroupAdminSettingResponse:
+        runtime = RuntimeOptions()
         return self.update_resource_group_admin_setting_with_options(request, runtime)
 
     async def update_resource_group_admin_setting_async(
         self,
-        request: resource_manager_20200331_models.UpdateResourceGroupAdminSettingRequest,
-    ) -> resource_manager_20200331_models.UpdateResourceGroupAdminSettingResponse:
-        """
-        @summary Updates the configurations of a resource group administrator.
-        
-        @param request: UpdateResourceGroupAdminSettingRequest
-        @return: UpdateResourceGroupAdminSettingResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateResourceGroupAdminSettingRequest,
+    ) -> main_models.UpdateResourceGroupAdminSettingResponse:
+        runtime = RuntimeOptions()
         return await self.update_resource_group_admin_setting_with_options_async(request, runtime)
 
     def update_role_with_options(
         self,
-        request: resource_manager_20200331_models.UpdateRoleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateRoleResponse:
-        """
-        @summary Updates the information about a Resource Access Management (RAM) role.
-        
-        @description In this example, the description of the RAM role `ECSAdmin` is updated to `ECS administrator`.
-        
-        @param request: UpdateRoleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateRoleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRoleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.new_assume_role_policy_document):
+        if not DaraCore.is_null(request.new_assume_role_policy_document):
             query['NewAssumeRolePolicyDocument'] = request.new_assume_role_policy_document
-        if not UtilClient.is_unset(request.new_description):
+        if not DaraCore.is_null(request.new_description):
             query['NewDescription'] = request.new_description
-        if not UtilClient.is_unset(request.new_max_session_duration):
+        if not DaraCore.is_null(request.new_max_session_duration):
             query['NewMaxSessionDuration'] = request.new_max_session_duration
-        if not UtilClient.is_unset(request.role_name):
+        if not DaraCore.is_null(request.role_name):
             query['RoleName'] = request.role_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateRole',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateRole',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateRoleResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateRoleResponse(),
             self.call_api(params, req, runtime)
         )
 
     async def update_role_with_options_async(
         self,
-        request: resource_manager_20200331_models.UpdateRoleRequest,
-        runtime: util_models.RuntimeOptions,
-    ) -> resource_manager_20200331_models.UpdateRoleResponse:
-        """
-        @summary Updates the information about a Resource Access Management (RAM) role.
-        
-        @description In this example, the description of the RAM role `ECSAdmin` is updated to `ECS administrator`.
-        
-        @param request: UpdateRoleRequest
-        @param runtime: runtime options for this request RuntimeOptions
-        @return: UpdateRoleResponse
-        """
-        UtilClient.validate_model(request)
+        request: main_models.UpdateRoleRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateRoleResponse:
+        request.validate()
         query = {}
-        if not UtilClient.is_unset(request.new_assume_role_policy_document):
+        if not DaraCore.is_null(request.new_assume_role_policy_document):
             query['NewAssumeRolePolicyDocument'] = request.new_assume_role_policy_document
-        if not UtilClient.is_unset(request.new_description):
+        if not DaraCore.is_null(request.new_description):
             query['NewDescription'] = request.new_description
-        if not UtilClient.is_unset(request.new_max_session_duration):
+        if not DaraCore.is_null(request.new_max_session_duration):
             query['NewMaxSessionDuration'] = request.new_max_session_duration
-        if not UtilClient.is_unset(request.role_name):
+        if not DaraCore.is_null(request.role_name):
             query['RoleName'] = request.role_name
-        req = open_api_models.OpenApiRequest(
-            query=OpenApiUtilClient.query(query)
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
         )
-        params = open_api_models.Params(
-            action='UpdateRole',
-            version='2020-03-31',
-            protocol='HTTPS',
-            pathname='/',
-            method='POST',
-            auth_type='AK',
-            style='RPC',
-            req_body_type='formData',
-            body_type='json'
+        params = open_api_util_models.Params(
+            action = 'UpdateRole',
+            version = '2020-03-31',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
         )
-        return TeaCore.from_map(
-            resource_manager_20200331_models.UpdateRoleResponse(),
+        return DaraCore.from_map(
+            main_models.UpdateRoleResponse(),
             await self.call_api_async(params, req, runtime)
         )
 
     def update_role(
         self,
-        request: resource_manager_20200331_models.UpdateRoleRequest,
-    ) -> resource_manager_20200331_models.UpdateRoleResponse:
-        """
-        @summary Updates the information about a Resource Access Management (RAM) role.
-        
-        @description In this example, the description of the RAM role `ECSAdmin` is updated to `ECS administrator`.
-        
-        @param request: UpdateRoleRequest
-        @return: UpdateRoleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateRoleRequest,
+    ) -> main_models.UpdateRoleResponse:
+        runtime = RuntimeOptions()
         return self.update_role_with_options(request, runtime)
 
     async def update_role_async(
         self,
-        request: resource_manager_20200331_models.UpdateRoleRequest,
-    ) -> resource_manager_20200331_models.UpdateRoleResponse:
-        """
-        @summary Updates the information about a Resource Access Management (RAM) role.
-        
-        @description In this example, the description of the RAM role `ECSAdmin` is updated to `ECS administrator`.
-        
-        @param request: UpdateRoleRequest
-        @return: UpdateRoleResponse
-        """
-        runtime = util_models.RuntimeOptions()
+        request: main_models.UpdateRoleRequest,
+    ) -> main_models.UpdateRoleResponse:
+        runtime = RuntimeOptions()
         return await self.update_role_with_options_async(request, runtime)

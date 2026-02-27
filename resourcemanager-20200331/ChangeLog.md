@@ -1,3 +1,7 @@
+2026-02-27 Version: 2.6.1
+- Update API ListResourceGroupCapability: add response parameters Body.Capabilities.$.ResourceCenterResourceType.
+
+
 2025-12-15 Version: 2.6.0
 - Support API ListResourceGroupCapability.
 - Support API LookupResourceGroupEvents.
