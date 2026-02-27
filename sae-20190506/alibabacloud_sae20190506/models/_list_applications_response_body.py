@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List
+from typing import List, Dict
 
 from alibabacloud_sae20190506 import models as main_models
 from darabonba.model import DaraModel
@@ -199,6 +199,7 @@ class ListApplicationsResponseBodyDataApplications(DaraModel):
         image_url: str = None,
         instances: int = None,
         is_stateful: bool = None,
+        labels: Dict[str, str] = None,
         mem: int = None,
         mse_enabled: bool = None,
         mse_namespace_id: str = None,
@@ -249,6 +250,7 @@ class ListApplicationsResponseBodyDataApplications(DaraModel):
         # The number of application instances.
         self.instances = instances
         self.is_stateful = is_stateful
+        self.labels = labels
         # The memory size that is required by each instance. Unit: MB. This parameter cannot be set to 0. The values of this parameter correspond to the values of the Cpu parameter:
         # 
         # *   This parameter is set to **1024** if the Cpu parameter is set to 500 or 1000.
@@ -350,6 +352,9 @@ class ListApplicationsResponseBodyDataApplications(DaraModel):
         if self.is_stateful is not None:
             result['IsStateful'] = self.is_stateful
 
+        if self.labels is not None:
+            result['Labels'] = self.labels
+
         if self.mem is not None:
             result['Mem'] = self.mem
 
@@ -436,6 +441,9 @@ class ListApplicationsResponseBodyDataApplications(DaraModel):
 
         if m.get('IsStateful') is not None:
             self.is_stateful = m.get('IsStateful')
+
+        if m.get('Labels') is not None:
+            self.labels = m.get('Labels')
 
         if m.get('Mem') is not None:
             self.mem = m.get('Mem')

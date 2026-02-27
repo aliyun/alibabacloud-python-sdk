@@ -1,3 +1,7 @@
+2026-02-27 Version: 2.10.10
+- Update API ListApplications: add response parameters Body.Data.Applications.$.Labels.
+
+
 2026-02-25 Version: 2.10.9
 - Update API CreateApplication: add request parameters Labels.
 - Update API DeployApplication: add request parameters Labels.
