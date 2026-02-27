@@ -11900,6 +11900,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.query_audit_task_with_options_async(request, runtime)
 
+    def query_video_audit_result_with_options(
+        self,
+        request: main_models.QueryVideoAuditResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryVideoAuditResultResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryVideoAuditResult',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryVideoAuditResultResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def query_video_audit_result_with_options_async(
+        self,
+        request: main_models.QueryVideoAuditResultRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.QueryVideoAuditResultResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.task_id):
+            body['TaskId'] = request.task_id
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'QueryVideoAuditResult',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.QueryVideoAuditResultResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def query_video_audit_result(
+        self,
+        request: main_models.QueryVideoAuditResultRequest,
+    ) -> main_models.QueryVideoAuditResultResponse:
+        runtime = RuntimeOptions()
+        return self.query_video_audit_result_with_options(request, runtime)
+
+    async def query_video_audit_result_async(
+        self,
+        request: main_models.QueryVideoAuditResultRequest,
+    ) -> main_models.QueryVideoAuditResultResponse:
+        runtime = RuntimeOptions()
+        return await self.query_video_audit_result_with_options_async(request, runtime)
+
     def run_abbreviation_content_with_sse(
         self,
         request: main_models.RunAbbreviationContentRequest,
@@ -21253,6 +21327,92 @@ class Client(OpenApiClient):
     ) -> main_models.SubmitTopicSelectionPerspectiveAnalysisTaskResponse:
         runtime = RuntimeOptions()
         return await self.submit_topic_selection_perspective_analysis_task_with_options_async(request, runtime)
+
+    def submit_video_audit_with_options(
+        self,
+        request: main_models.SubmitVideoAuditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVideoAuditResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.ext):
+            body['Ext'] = request.ext
+        if not DaraCore.is_null(request.file_key):
+            body['FileKey'] = request.file_key
+        if not DaraCore.is_null(request.snapshot_interval):
+            body['SnapshotInterval'] = request.snapshot_interval
+        if not DaraCore.is_null(request.url):
+            body['Url'] = request.url
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVideoAudit',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVideoAuditResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def submit_video_audit_with_options_async(
+        self,
+        request: main_models.SubmitVideoAuditRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.SubmitVideoAuditResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.ext):
+            body['Ext'] = request.ext
+        if not DaraCore.is_null(request.file_key):
+            body['FileKey'] = request.file_key
+        if not DaraCore.is_null(request.snapshot_interval):
+            body['SnapshotInterval'] = request.snapshot_interval
+        if not DaraCore.is_null(request.url):
+            body['Url'] = request.url
+        if not DaraCore.is_null(request.workspace_id):
+            body['WorkspaceId'] = request.workspace_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'SubmitVideoAudit',
+            version = '2023-08-01',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.SubmitVideoAuditResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def submit_video_audit(
+        self,
+        request: main_models.SubmitVideoAuditRequest,
+    ) -> main_models.SubmitVideoAuditResponse:
+        runtime = RuntimeOptions()
+        return self.submit_video_audit_with_options(request, runtime)
+
+    async def submit_video_audit_async(
+        self,
+        request: main_models.SubmitVideoAuditRequest,
+    ) -> main_models.SubmitVideoAuditResponse:
+        runtime = RuntimeOptions()
+        return await self.submit_video_audit_with_options_async(request, runtime)
 
     def update_custom_text_with_options(
         self,

@@ -452,6 +452,9 @@ from ._query_async_task_response import QueryAsyncTaskResponse
 from ._query_audit_task_request import QueryAuditTaskRequest
 from ._query_audit_task_response_body import QueryAuditTaskResponseBody
 from ._query_audit_task_response import QueryAuditTaskResponse
+from ._query_video_audit_result_request import QueryVideoAuditResultRequest
+from ._query_video_audit_result_response_body import QueryVideoAuditResultResponseBody
+from ._query_video_audit_result_response import QueryVideoAuditResultResponse
 from ._run_abbreviation_content_request import RunAbbreviationContentRequest
 from ._run_abbreviation_content_response_body import RunAbbreviationContentResponseBody
 from ._run_abbreviation_content_response import RunAbbreviationContentResponse
@@ -656,6 +659,9 @@ from ._submit_topic_selection_perspective_analysis_task_request import SubmitTop
 from ._submit_topic_selection_perspective_analysis_task_shrink_request import SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest
 from ._submit_topic_selection_perspective_analysis_task_response_body import SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody
 from ._submit_topic_selection_perspective_analysis_task_response import SubmitTopicSelectionPerspectiveAnalysisTaskResponse
+from ._submit_video_audit_request import SubmitVideoAuditRequest
+from ._submit_video_audit_response_body import SubmitVideoAuditResponseBody
+from ._submit_video_audit_response import SubmitVideoAuditResponse
 from ._update_custom_text_request import UpdateCustomTextRequest
 from ._update_custom_text_response_body import UpdateCustomTextResponseBody
 from ._update_custom_text_response import UpdateCustomTextResponse
@@ -977,6 +983,10 @@ from ._query_audit_task_response_body import QueryAuditTaskResponseBodyDataRespo
 from ._query_audit_task_response_body import QueryAuditTaskResponseBodyDataResponsePayload
 from ._query_audit_task_response_body import QueryAuditTaskResponseBodyDataResponse
 from ._query_audit_task_response_body import QueryAuditTaskResponseBodyData
+from ._query_video_audit_result_response_body import QueryVideoAuditResultResponseBodyDataImageUrls
+from ._query_video_audit_result_response_body import QueryVideoAuditResultResponseBodyDataResultsResult
+from ._query_video_audit_result_response_body import QueryVideoAuditResultResponseBodyDataResults
+from ._query_video_audit_result_response_body import QueryVideoAuditResultResponseBodyData
 from ._run_abbreviation_content_response_body import RunAbbreviationContentResponseBodyHeader
 from ._run_abbreviation_content_response_body import RunAbbreviationContentResponseBodyPayloadOutput
 from ._run_abbreviation_content_response_body import RunAbbreviationContentResponseBodyPayloadUsage
@@ -1303,6 +1313,7 @@ from ._submit_smart_clip_task_response_body import SubmitSmartClipTaskResponseBo
 from ._submit_topic_selection_perspective_analysis_task_request import SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments
 from ._submit_topic_selection_perspective_analysis_task_request import SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments
 from ._submit_topic_selection_perspective_analysis_task_response_body import SubmitTopicSelectionPerspectiveAnalysisTaskResponseBodyData
+from ._submit_video_audit_response_body import SubmitVideoAuditResponseBodyData
 from ._update_dataset_request import UpdateDatasetRequestDatasetConfigSearchSourceConfig
 from ._update_dataset_request import UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders
 from ._update_dataset_request import UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams
@@ -1776,6 +1787,9 @@ __all__ = [
     QueryAuditTaskRequest,
     QueryAuditTaskResponseBody,
     QueryAuditTaskResponse,
+    QueryVideoAuditResultRequest,
+    QueryVideoAuditResultResponseBody,
+    QueryVideoAuditResultResponse,
     RunAbbreviationContentRequest,
     RunAbbreviationContentResponseBody,
     RunAbbreviationContentResponse,
@@ -1980,6 +1994,9 @@ __all__ = [
     SubmitTopicSelectionPerspectiveAnalysisTaskShrinkRequest,
     SubmitTopicSelectionPerspectiveAnalysisTaskResponseBody,
     SubmitTopicSelectionPerspectiveAnalysisTaskResponse,
+    SubmitVideoAuditRequest,
+    SubmitVideoAuditResponseBody,
+    SubmitVideoAuditResponse,
     UpdateCustomTextRequest,
     UpdateCustomTextResponseBody,
     UpdateCustomTextResponse,
@@ -2301,6 +2318,10 @@ __all__ = [
     QueryAuditTaskResponseBodyDataResponsePayload,
     QueryAuditTaskResponseBodyDataResponse,
     QueryAuditTaskResponseBodyData,
+    QueryVideoAuditResultResponseBodyDataImageUrls,
+    QueryVideoAuditResultResponseBodyDataResultsResult,
+    QueryVideoAuditResultResponseBodyDataResults,
+    QueryVideoAuditResultResponseBodyData,
     RunAbbreviationContentResponseBodyHeader,
     RunAbbreviationContentResponseBodyPayloadOutput,
     RunAbbreviationContentResponseBodyPayloadUsage,
@@ -2627,6 +2648,7 @@ __all__ = [
     SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocumentsComments,
     SubmitTopicSelectionPerspectiveAnalysisTaskRequestDocuments,
     SubmitTopicSelectionPerspectiveAnalysisTaskResponseBodyData,
+    SubmitVideoAuditResponseBodyData,
     UpdateDatasetRequestDatasetConfigSearchSourceConfig,
     UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigHeaders,
     UpdateDatasetRequestDatasetConfigSearchSourceConfigsSearchSourceRequestConfigParams,

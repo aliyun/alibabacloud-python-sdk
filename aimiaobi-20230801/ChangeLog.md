@@ -1,3 +1,8 @@
+2026-02-27 Version: 1.40.0
+- Support API QueryVideoAuditResult.
+- Support API SubmitVideoAudit.
+
+
 2026-02-10 Version: 1.39.0
 - Support API DeletePptArtifact.
 - Support API GetClipsBuildInResource.
