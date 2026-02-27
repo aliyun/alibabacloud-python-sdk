@@ -16,6 +16,7 @@ class IdpConfig(DaraModel):
         feishu_config: main_models.IdpFeishuSubConfig = None,
         idaas_config: main_models.IdpIdaas2SubConfig = None,
         idp_config_id: str = None,
+        idp_id: int = None,
         last_sync_time_unix: int = None,
         ldap_config: main_models.IdpLdapSubConfig = None,
         login_config: main_models.IdpLoginConfig = None,
@@ -35,6 +36,7 @@ class IdpConfig(DaraModel):
         self.feishu_config = feishu_config
         self.idaas_config = idaas_config
         self.idp_config_id = idp_config_id
+        self.idp_id = idp_id
         self.last_sync_time_unix = last_sync_time_unix
         self.ldap_config = ldap_config
         self.login_config = login_config
@@ -96,6 +98,9 @@ class IdpConfig(DaraModel):
 
         if self.idp_config_id is not None:
             result['IdpConfigId'] = self.idp_config_id
+
+        if self.idp_id is not None:
+            result['IdpId'] = self.idp_id
 
         if self.last_sync_time_unix is not None:
             result['LastSyncTimeUnix'] = self.last_sync_time_unix
@@ -159,6 +164,9 @@ class IdpConfig(DaraModel):
 
         if m.get('IdpConfigId') is not None:
             self.idp_config_id = m.get('IdpConfigId')
+
+        if m.get('IdpId') is not None:
+            self.idp_id = m.get('IdpId')
 
         if m.get('LastSyncTimeUnix') is not None:
             self.last_sync_time_unix = m.get('LastSyncTimeUnix')

@@ -7,11 +7,13 @@ from darabonba.model import DaraModel
 class ListUserApplicationsRequest(DaraModel):
     def __init__(
         self,
+        address: str = None,
         current_page: int = None,
         name: str = None,
         page_size: int = None,
         sase_user_id: str = None,
     ):
+        self.address = address
         # This parameter is required.
         self.current_page = current_page
         self.name = name
@@ -28,6 +30,9 @@ class ListUserApplicationsRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.address is not None:
+            result['Address'] = self.address
+
         if self.current_page is not None:
             result['CurrentPage'] = self.current_page
 
@@ -44,6 +49,9 @@ class ListUserApplicationsRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Address') is not None:
+            self.address = m.get('Address')
+
         if m.get('CurrentPage') is not None:
             self.current_page = m.get('CurrentPage')
 
