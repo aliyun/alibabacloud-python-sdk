@@ -1,3 +1,9 @@
+2026-02-27 Version: 15.5.1
+- Update API DescribeRCInstances: add response parameters Body.RCInstances.$.AutoRenew.
+- Update API RunRCInstances: add request parameters PrivateIpAddress.
+- Update API RunRCInstances: add request parameters SecurityGroupIds.
+
+
 2026-02-26 Version: 15.5.0
 - Support API CreateDBInstanceReplication.
 - Support API DeleteDBInstanceReplication.

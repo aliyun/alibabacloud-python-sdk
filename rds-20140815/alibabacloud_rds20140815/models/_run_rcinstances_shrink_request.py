@@ -37,12 +37,14 @@ class RunRCInstancesShrinkRequest(DaraModel):
         password_inherit: bool = None,
         period: int = None,
         period_unit: str = None,
+        private_ip_address: str = None,
         promotion_code: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         scheduled_rule: str = None,
         security_enhancement_strategy: str = None,
         security_group_id: str = None,
+        security_group_ids_shrink: str = None,
         spot_strategy: str = None,
         support_case: str = None,
         system_disk_shrink: str = None,
@@ -116,6 +118,7 @@ class RunRCInstancesShrinkRequest(DaraModel):
         # *   **Year**
         # *   **Month** (default)
         self.period_unit = period_unit
+        self.private_ip_address = private_ip_address
         self.promotion_code = promotion_code
         # The region ID. You can call the DescribeRegions operation to query the most recent region list.
         # 
@@ -129,6 +132,7 @@ class RunRCInstancesShrinkRequest(DaraModel):
         # 
         # >  The network type of the instance is determined by the security group specified by the SecurityGroupId parameter. For example, if the network type of the specified security group is VPC, the instance is a VPC-type instance. In this case, you must specify the VSwitchId parameter.
         self.security_group_id = security_group_id
+        self.security_group_ids_shrink = security_group_ids_shrink
         self.spot_strategy = spot_strategy
         self.support_case = support_case
         # The specification of the system disk.
@@ -239,6 +243,9 @@ class RunRCInstancesShrinkRequest(DaraModel):
         if self.period_unit is not None:
             result['PeriodUnit'] = self.period_unit
 
+        if self.private_ip_address is not None:
+            result['PrivateIpAddress'] = self.private_ip_address
+
         if self.promotion_code is not None:
             result['PromotionCode'] = self.promotion_code
 
@@ -256,6 +263,9 @@ class RunRCInstancesShrinkRequest(DaraModel):
 
         if self.security_group_id is not None:
             result['SecurityGroupId'] = self.security_group_id
+
+        if self.security_group_ids_shrink is not None:
+            result['SecurityGroupIds'] = self.security_group_ids_shrink
 
         if self.spot_strategy is not None:
             result['SpotStrategy'] = self.spot_strategy
@@ -368,6 +378,9 @@ class RunRCInstancesShrinkRequest(DaraModel):
         if m.get('PeriodUnit') is not None:
             self.period_unit = m.get('PeriodUnit')
 
+        if m.get('PrivateIpAddress') is not None:
+            self.private_ip_address = m.get('PrivateIpAddress')
+
         if m.get('PromotionCode') is not None:
             self.promotion_code = m.get('PromotionCode')
 
@@ -385,6 +398,9 @@ class RunRCInstancesShrinkRequest(DaraModel):
 
         if m.get('SecurityGroupId') is not None:
             self.security_group_id = m.get('SecurityGroupId')
+
+        if m.get('SecurityGroupIds') is not None:
+            self.security_group_ids_shrink = m.get('SecurityGroupIds')
 
         if m.get('SpotStrategy') is not None:
             self.spot_strategy = m.get('SpotStrategy')

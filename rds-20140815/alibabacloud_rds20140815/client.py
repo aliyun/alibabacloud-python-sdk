@@ -37079,6 +37079,8 @@ class Client(OpenApiClient):
             request.create_ack_edge_param_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_ack_edge_param, 'CreateAckEdgeParam', 'json')
         if not DaraCore.is_null(tmp_req.data_disk):
             request.data_disk_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_disk, 'DataDisk', 'json')
+        if not DaraCore.is_null(tmp_req.security_group_ids):
+            request.security_group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.security_group_ids, 'SecurityGroupIds', 'json')
         if not DaraCore.is_null(tmp_req.system_disk):
             request.system_disk_shrink = Utils.array_to_string_with_specified_style(tmp_req.system_disk, 'SystemDisk', 'json')
         query = {}
@@ -37136,6 +37138,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
             query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
         if not DaraCore.is_null(request.promotion_code):
             query['PromotionCode'] = request.promotion_code
         if not DaraCore.is_null(request.region_id):
@@ -37148,6 +37152,8 @@ class Client(OpenApiClient):
             query['SecurityEnhancementStrategy'] = request.security_enhancement_strategy
         if not DaraCore.is_null(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.security_group_ids_shrink):
+            query['SecurityGroupIds'] = request.security_group_ids_shrink
         if not DaraCore.is_null(request.spot_strategy):
             query['SpotStrategy'] = request.spot_strategy
         if not DaraCore.is_null(request.support_case):
@@ -37195,6 +37201,8 @@ class Client(OpenApiClient):
             request.create_ack_edge_param_shrink = Utils.array_to_string_with_specified_style(tmp_req.create_ack_edge_param, 'CreateAckEdgeParam', 'json')
         if not DaraCore.is_null(tmp_req.data_disk):
             request.data_disk_shrink = Utils.array_to_string_with_specified_style(tmp_req.data_disk, 'DataDisk', 'json')
+        if not DaraCore.is_null(tmp_req.security_group_ids):
+            request.security_group_ids_shrink = Utils.array_to_string_with_specified_style(tmp_req.security_group_ids, 'SecurityGroupIds', 'json')
         if not DaraCore.is_null(tmp_req.system_disk):
             request.system_disk_shrink = Utils.array_to_string_with_specified_style(tmp_req.system_disk, 'SystemDisk', 'json')
         query = {}
@@ -37252,6 +37260,8 @@ class Client(OpenApiClient):
             query['Period'] = request.period
         if not DaraCore.is_null(request.period_unit):
             query['PeriodUnit'] = request.period_unit
+        if not DaraCore.is_null(request.private_ip_address):
+            query['PrivateIpAddress'] = request.private_ip_address
         if not DaraCore.is_null(request.promotion_code):
             query['PromotionCode'] = request.promotion_code
         if not DaraCore.is_null(request.region_id):
@@ -37264,6 +37274,8 @@ class Client(OpenApiClient):
             query['SecurityEnhancementStrategy'] = request.security_enhancement_strategy
         if not DaraCore.is_null(request.security_group_id):
             query['SecurityGroupId'] = request.security_group_id
+        if not DaraCore.is_null(request.security_group_ids_shrink):
+            query['SecurityGroupIds'] = request.security_group_ids_shrink
         if not DaraCore.is_null(request.spot_strategy):
             query['SpotStrategy'] = request.spot_strategy
         if not DaraCore.is_null(request.support_case):

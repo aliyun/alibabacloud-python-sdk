@@ -82,6 +82,7 @@ class DescribeRCInstancesResponseBody(DaraModel):
 class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
     def __init__(
         self,
+        auto_renew: bool = None,
         cluster_name: str = None,
         cpu: int = None,
         create_mode: str = None,
@@ -116,6 +117,7 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
+        self.auto_renew = auto_renew
         # The cluster name.
         self.cluster_name = cluster_name
         self.cpu = cpu
@@ -185,6 +187,9 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.auto_renew is not None:
+            result['AutoRenew'] = self.auto_renew
+
         if self.cluster_name is not None:
             result['ClusterName'] = self.cluster_name
 
@@ -292,6 +297,9 @@ class DescribeRCInstancesResponseBodyRCInstances(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('AutoRenew') is not None:
+            self.auto_renew = m.get('AutoRenew')
+
         if m.get('ClusterName') is not None:
             self.cluster_name = m.get('ClusterName')
 
