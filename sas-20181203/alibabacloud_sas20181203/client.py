@@ -33038,6 +33038,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not DaraCore.is_null(request.dealed):
             query['Dealed'] = request.dealed
+        if not DaraCore.is_null(request.detect_source):
+            query['DetectSource'] = request.detect_source
         if not DaraCore.is_null(request.event_names):
             query['EventNames'] = request.event_names
         if not DaraCore.is_null(request.from_):
@@ -33142,6 +33144,8 @@ class Client(OpenApiClient):
             query['CurrentPage'] = request.current_page
         if not DaraCore.is_null(request.dealed):
             query['Dealed'] = request.dealed
+        if not DaraCore.is_null(request.detect_source):
+            query['DetectSource'] = request.detect_source
         if not DaraCore.is_null(request.event_names):
             query['EventNames'] = request.event_names
         if not DaraCore.is_null(request.from_):

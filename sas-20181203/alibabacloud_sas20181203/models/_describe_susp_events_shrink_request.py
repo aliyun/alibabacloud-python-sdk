@@ -16,6 +16,7 @@ class DescribeSuspEventsShrinkRequest(DaraModel):
         container_field_value: str = None,
         current_page: str = None,
         dealed: str = None,
+        detect_source: str = None,
         event_names: str = None,
         from_: str = None,
         group_id: int = None,
@@ -78,6 +79,7 @@ class DescribeSuspEventsShrinkRequest(DaraModel):
         # *   **N**: unhandled
         # *   **Y**: handled
         self.dealed = dealed
+        self.detect_source = detect_source
         # The subtype of the alert event. Separate multiple subtypes with commas (,).
         self.event_names = event_names
         # The data source of the alert event. Set the value to sas.
@@ -233,6 +235,9 @@ class DescribeSuspEventsShrinkRequest(DaraModel):
         if self.dealed is not None:
             result['Dealed'] = self.dealed
 
+        if self.detect_source is not None:
+            result['DetectSource'] = self.detect_source
+
         if self.event_names is not None:
             result['EventNames'] = self.event_names
 
@@ -344,6 +349,9 @@ class DescribeSuspEventsShrinkRequest(DaraModel):
 
         if m.get('Dealed') is not None:
             self.dealed = m.get('Dealed')
+
+        if m.get('DetectSource') is not None:
+            self.detect_source = m.get('DetectSource')
 
         if m.get('EventNames') is not None:
             self.event_names = m.get('EventNames')

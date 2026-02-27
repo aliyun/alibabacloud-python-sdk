@@ -108,6 +108,7 @@ class DescribeSuspEventsResponseBodySuspEvents(DaraModel):
         data_source: str = None,
         desc: str = None,
         details: List[main_models.DescribeSuspEventsResponseBodySuspEventsDetails] = None,
+        detect_source: str = None,
         display_sandbox_result: bool = None,
         event_notes: List[main_models.DescribeSuspEventsResponseBodySuspEventsEventNotes] = None,
         event_status: int = None,
@@ -191,6 +192,7 @@ class DescribeSuspEventsResponseBodySuspEvents(DaraModel):
         self.desc = desc
         # The details of the alert event.
         self.details = details
+        self.detect_source = detect_source
         # Indicates whether the alert event can be detected by cloud sandbox. Valid values:
         # 
         # *   **true**
@@ -373,6 +375,9 @@ class DescribeSuspEventsResponseBodySuspEvents(DaraModel):
             for k1 in self.details:
                 result['Details'].append(k1.to_map() if k1 else None)
 
+        if self.detect_source is not None:
+            result['DetectSource'] = self.detect_source
+
         if self.display_sandbox_result is not None:
             result['DisplaySandboxResult'] = self.display_sandbox_result
 
@@ -551,6 +556,9 @@ class DescribeSuspEventsResponseBodySuspEvents(DaraModel):
             for k1 in m.get('Details'):
                 temp_model = main_models.DescribeSuspEventsResponseBodySuspEventsDetails()
                 self.details.append(temp_model.from_map(k1))
+
+        if m.get('DetectSource') is not None:
+            self.detect_source = m.get('DetectSource')
 
         if m.get('DisplaySandboxResult') is not None:
             self.display_sandbox_result = m.get('DisplaySandboxResult')
