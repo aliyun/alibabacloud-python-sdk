@@ -19,6 +19,7 @@ class ForwardInfoResponse(DaraModel):
         forward_port: str = None,
         name: str = None,
         nat_gateway_id: str = None,
+        nlb_gateway_id: str = None,
         sshpublic_key: str = None,
     ):
         self.access_type = access_type
@@ -30,6 +31,7 @@ class ForwardInfoResponse(DaraModel):
         self.forward_port = forward_port
         self.name = name
         self.nat_gateway_id = nat_gateway_id
+        self.nlb_gateway_id = nlb_gateway_id
         self.sshpublic_key = sshpublic_key
 
     def validate(self):
@@ -68,6 +70,9 @@ class ForwardInfoResponse(DaraModel):
         if self.nat_gateway_id is not None:
             result['NatGatewayId'] = self.nat_gateway_id
 
+        if self.nlb_gateway_id is not None:
+            result['NlbGatewayId'] = self.nlb_gateway_id
+
         if self.sshpublic_key is not None:
             result['SSHPublicKey'] = self.sshpublic_key
 
@@ -102,6 +107,9 @@ class ForwardInfoResponse(DaraModel):
 
         if m.get('NatGatewayId') is not None:
             self.nat_gateway_id = m.get('NatGatewayId')
+
+        if m.get('NlbGatewayId') is not None:
+            self.nlb_gateway_id = m.get('NlbGatewayId')
 
         if m.get('SSHPublicKey') is not None:
             self.sshpublic_key = m.get('SSHPublicKey')
