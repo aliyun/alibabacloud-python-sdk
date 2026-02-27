@@ -12,18 +12,23 @@ class ListQuotaWorkloadsRequest(DaraModel):
         gmt_dequeued_time_range: main_models.TimeRangeFilter = None,
         gmt_enqueued_time_range: main_models.TimeRangeFilter = None,
         gmt_position_modified_time_range: main_models.TimeRangeFilter = None,
+        instance_id: str = None,
         node_name: str = None,
         order: str = None,
         page_number: int = None,
         page_size: int = None,
+        position: int = None,
+        priority: int = None,
         show_own: bool = None,
         sort_by: str = None,
         status: str = None,
         sub_quota_ids: str = None,
+        use_oversold_resource: bool = None,
         user_ids: str = None,
         with_historical_data: bool = None,
         workload_created_time_range: main_models.TimeRangeFilter = None,
         workload_ids: str = None,
+        workload_names: str = None,
         workload_statuses: str = None,
         workload_type: str = None,
         workspace_ids: str = None,
@@ -32,18 +37,23 @@ class ListQuotaWorkloadsRequest(DaraModel):
         self.gmt_dequeued_time_range = gmt_dequeued_time_range
         self.gmt_enqueued_time_range = gmt_enqueued_time_range
         self.gmt_position_modified_time_range = gmt_position_modified_time_range
+        self.instance_id = instance_id
         self.node_name = node_name
         self.order = order
         self.page_number = page_number
         self.page_size = page_size
+        self.position = position
+        self.priority = priority
         self.show_own = show_own
         self.sort_by = sort_by
         self.status = status
         self.sub_quota_ids = sub_quota_ids
+        self.use_oversold_resource = use_oversold_resource
         self.user_ids = user_ids
         self.with_historical_data = with_historical_data
         self.workload_created_time_range = workload_created_time_range
         self.workload_ids = workload_ids
+        self.workload_names = workload_names
         self.workload_statuses = workload_statuses
         self.workload_type = workload_type
         self.workspace_ids = workspace_ids
@@ -75,6 +85,9 @@ class ListQuotaWorkloadsRequest(DaraModel):
         if self.gmt_position_modified_time_range is not None:
             result['GmtPositionModifiedTimeRange'] = self.gmt_position_modified_time_range.to_map()
 
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
         if self.node_name is not None:
             result['NodeName'] = self.node_name
 
@@ -86,6 +99,12 @@ class ListQuotaWorkloadsRequest(DaraModel):
 
         if self.page_size is not None:
             result['PageSize'] = self.page_size
+
+        if self.position is not None:
+            result['Position'] = self.position
+
+        if self.priority is not None:
+            result['Priority'] = self.priority
 
         if self.show_own is not None:
             result['ShowOwn'] = self.show_own
@@ -99,6 +118,9 @@ class ListQuotaWorkloadsRequest(DaraModel):
         if self.sub_quota_ids is not None:
             result['SubQuotaIds'] = self.sub_quota_ids
 
+        if self.use_oversold_resource is not None:
+            result['UseOversoldResource'] = self.use_oversold_resource
+
         if self.user_ids is not None:
             result['UserIds'] = self.user_ids
 
@@ -110,6 +132,9 @@ class ListQuotaWorkloadsRequest(DaraModel):
 
         if self.workload_ids is not None:
             result['WorkloadIds'] = self.workload_ids
+
+        if self.workload_names is not None:
+            result['WorkloadNames'] = self.workload_names
 
         if self.workload_statuses is not None:
             result['WorkloadStatuses'] = self.workload_statuses
@@ -139,6 +164,9 @@ class ListQuotaWorkloadsRequest(DaraModel):
             temp_model = main_models.TimeRangeFilter()
             self.gmt_position_modified_time_range = temp_model.from_map(m.get('GmtPositionModifiedTimeRange'))
 
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
         if m.get('NodeName') is not None:
             self.node_name = m.get('NodeName')
 
@@ -150,6 +178,12 @@ class ListQuotaWorkloadsRequest(DaraModel):
 
         if m.get('PageSize') is not None:
             self.page_size = m.get('PageSize')
+
+        if m.get('Position') is not None:
+            self.position = m.get('Position')
+
+        if m.get('Priority') is not None:
+            self.priority = m.get('Priority')
 
         if m.get('ShowOwn') is not None:
             self.show_own = m.get('ShowOwn')
@@ -163,6 +197,9 @@ class ListQuotaWorkloadsRequest(DaraModel):
         if m.get('SubQuotaIds') is not None:
             self.sub_quota_ids = m.get('SubQuotaIds')
 
+        if m.get('UseOversoldResource') is not None:
+            self.use_oversold_resource = m.get('UseOversoldResource')
+
         if m.get('UserIds') is not None:
             self.user_ids = m.get('UserIds')
 
@@ -175,6 +212,9 @@ class ListQuotaWorkloadsRequest(DaraModel):
 
         if m.get('WorkloadIds') is not None:
             self.workload_ids = m.get('WorkloadIds')
+
+        if m.get('WorkloadNames') is not None:
+            self.workload_names = m.get('WorkloadNames')
 
         if m.get('WorkloadStatuses') is not None:
             self.workload_statuses = m.get('WorkloadStatuses')

@@ -10,6 +10,7 @@ class ListNodesShrinkRequest(DaraModel):
         accelerator_type: str = None,
         availability_zone: str = None,
         clique_id: str = None,
+        disk_pl: str = None,
         filter_by_quota_id: str = None,
         filter_by_resource_group_ids: str = None,
         gputype: str = None,
@@ -28,16 +29,20 @@ class ListNodesShrinkRequest(DaraModel):
         page_number: int = None,
         page_size: int = None,
         payment_type: str = None,
+        pod_num: int = None,
         quota_id: str = None,
         reason_codes: str = None,
         resource_group_ids: str = None,
+        resource_group_name: str = None,
         sort_by: str = None,
         verbose: bool = None,
+        workload_num: int = None,
         workspace_id: str = None,
     ):
         self.accelerator_type = accelerator_type
         self.availability_zone = availability_zone
         self.clique_id = clique_id
+        self.disk_pl = disk_pl
         self.filter_by_quota_id = filter_by_quota_id
         self.filter_by_resource_group_ids = filter_by_resource_group_ids
         self.gputype = gputype
@@ -56,11 +61,14 @@ class ListNodesShrinkRequest(DaraModel):
         self.page_number = page_number
         self.page_size = page_size
         self.payment_type = payment_type
+        self.pod_num = pod_num
         self.quota_id = quota_id
         self.reason_codes = reason_codes
         self.resource_group_ids = resource_group_ids
+        self.resource_group_name = resource_group_name
         self.sort_by = sort_by
         self.verbose = verbose
+        self.workload_num = workload_num
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -79,6 +87,9 @@ class ListNodesShrinkRequest(DaraModel):
 
         if self.clique_id is not None:
             result['CliqueID'] = self.clique_id
+
+        if self.disk_pl is not None:
+            result['DiskPL'] = self.disk_pl
 
         if self.filter_by_quota_id is not None:
             result['FilterByQuotaId'] = self.filter_by_quota_id
@@ -134,6 +145,9 @@ class ListNodesShrinkRequest(DaraModel):
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
 
+        if self.pod_num is not None:
+            result['PodNum'] = self.pod_num
+
         if self.quota_id is not None:
             result['QuotaId'] = self.quota_id
 
@@ -143,11 +157,17 @@ class ListNodesShrinkRequest(DaraModel):
         if self.resource_group_ids is not None:
             result['ResourceGroupIds'] = self.resource_group_ids
 
+        if self.resource_group_name is not None:
+            result['ResourceGroupName'] = self.resource_group_name
+
         if self.sort_by is not None:
             result['SortBy'] = self.sort_by
 
         if self.verbose is not None:
             result['Verbose'] = self.verbose
+
+        if self.workload_num is not None:
+            result['WorkloadNum'] = self.workload_num
 
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
@@ -164,6 +184,9 @@ class ListNodesShrinkRequest(DaraModel):
 
         if m.get('CliqueID') is not None:
             self.clique_id = m.get('CliqueID')
+
+        if m.get('DiskPL') is not None:
+            self.disk_pl = m.get('DiskPL')
 
         if m.get('FilterByQuotaId') is not None:
             self.filter_by_quota_id = m.get('FilterByQuotaId')
@@ -219,6 +242,9 @@ class ListNodesShrinkRequest(DaraModel):
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
 
+        if m.get('PodNum') is not None:
+            self.pod_num = m.get('PodNum')
+
         if m.get('QuotaId') is not None:
             self.quota_id = m.get('QuotaId')
 
@@ -228,11 +254,17 @@ class ListNodesShrinkRequest(DaraModel):
         if m.get('ResourceGroupIds') is not None:
             self.resource_group_ids = m.get('ResourceGroupIds')
 
+        if m.get('ResourceGroupName') is not None:
+            self.resource_group_name = m.get('ResourceGroupName')
+
         if m.get('SortBy') is not None:
             self.sort_by = m.get('SortBy')
 
         if m.get('Verbose') is not None:
             self.verbose = m.get('Verbose')
+
+        if m.get('WorkloadNum') is not None:
+            self.workload_num = m.get('WorkloadNum')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')

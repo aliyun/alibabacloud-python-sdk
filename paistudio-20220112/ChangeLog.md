@@ -1,3 +1,18 @@
+2026-02-27 Version: 2.4.2
+- Update API ListNodes: add request parameters DiskPL.
+- Update API ListNodes: add request parameters PodNum.
+- Update API ListNodes: add request parameters ResourceGroupName.
+- Update API ListNodes: add request parameters WorkloadNum.
+- Update API ListQuotaActiveUserUsages: add request parameters WorkloadCount.
+- Update API ListQuotaWorkloads: add request parameters InstanceId.
+- Update API ListQuotaWorkloads: add request parameters Position.
+- Update API ListQuotaWorkloads: add request parameters Priority.
+- Update API ListQuotaWorkloads: add request parameters UseOversoldResource.
+- Update API ListQuotaWorkloads: add request parameters WorkloadNames.
+- Update API ListQuotas: add request parameters GPUType.
+- Update API ListResourceGroupMachineGroups: add request parameters DiskPL.
+
+
 2026-02-25 Version: 2.4.1
 - Generated python 2022-01-12 for PaiStudio.
 

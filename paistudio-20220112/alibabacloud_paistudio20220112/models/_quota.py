@@ -13,6 +13,7 @@ class Quota(DaraModel):
         allocate_strategy: str = None,
         creator_id: str = None,
         description: str = None,
+        gputype: str = None,
         gmt_created_time: str = None,
         gmt_modified_time: str = None,
         hyper_zones: List[str] = None,
@@ -38,6 +39,7 @@ class Quota(DaraModel):
         self.allocate_strategy = allocate_strategy
         self.creator_id = creator_id
         self.description = description
+        self.gputype = gputype
         self.gmt_created_time = gmt_created_time
         self.gmt_modified_time = gmt_modified_time
         self.hyper_zones = hyper_zones
@@ -95,6 +97,9 @@ class Quota(DaraModel):
 
         if self.description is not None:
             result['Description'] = self.description
+
+        if self.gputype is not None:
+            result['GPUType'] = self.gputype
 
         if self.gmt_created_time is not None:
             result['GmtCreatedTime'] = self.gmt_created_time
@@ -177,6 +182,9 @@ class Quota(DaraModel):
 
         if m.get('Description') is not None:
             self.description = m.get('Description')
+
+        if m.get('GPUType') is not None:
+            self.gputype = m.get('GPUType')
 
         if m.get('GmtCreatedTime') is not None:
             self.gmt_created_time = m.get('GmtCreatedTime')

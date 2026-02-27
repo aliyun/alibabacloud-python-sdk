@@ -8,6 +8,7 @@ class ListQuotasRequest(DaraModel):
     def __init__(
         self,
         cluster_type: str = None,
+        gputype: str = None,
         has_resource: str = None,
         labels: str = None,
         layout_mode: str = None,
@@ -26,6 +27,7 @@ class ListQuotasRequest(DaraModel):
         workspace_name: str = None,
     ):
         self.cluster_type = cluster_type
+        self.gputype = gputype
         self.has_resource = has_resource
         self.labels = labels
         self.layout_mode = layout_mode
@@ -53,6 +55,9 @@ class ListQuotasRequest(DaraModel):
             result = _map
         if self.cluster_type is not None:
             result['ClusterType'] = self.cluster_type
+
+        if self.gputype is not None:
+            result['GPUType'] = self.gputype
 
         if self.has_resource is not None:
             result['HasResource'] = self.has_resource
@@ -108,6 +113,9 @@ class ListQuotasRequest(DaraModel):
         m = m or dict()
         if m.get('ClusterType') is not None:
             self.cluster_type = m.get('ClusterType')
+
+        if m.get('GPUType') is not None:
+            self.gputype = m.get('GPUType')
 
         if m.get('HasResource') is not None:
             self.has_resource = m.get('HasResource')

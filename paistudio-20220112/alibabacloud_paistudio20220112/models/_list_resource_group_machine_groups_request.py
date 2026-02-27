@@ -8,6 +8,7 @@ class ListResourceGroupMachineGroupsRequest(DaraModel):
     def __init__(
         self,
         creator_id: str = None,
+        disk_pl: str = None,
         ecs_spec: str = None,
         machine_group_ids: str = None,
         name: str = None,
@@ -22,6 +23,7 @@ class ListResourceGroupMachineGroupsRequest(DaraModel):
         status: str = None,
     ):
         self.creator_id = creator_id
+        self.disk_pl = disk_pl
         self.ecs_spec = ecs_spec
         self.machine_group_ids = machine_group_ids
         self.name = name
@@ -45,6 +47,9 @@ class ListResourceGroupMachineGroupsRequest(DaraModel):
             result = _map
         if self.creator_id is not None:
             result['CreatorID'] = self.creator_id
+
+        if self.disk_pl is not None:
+            result['DiskPL'] = self.disk_pl
 
         if self.ecs_spec is not None:
             result['EcsSpec'] = self.ecs_spec
@@ -88,6 +93,9 @@ class ListResourceGroupMachineGroupsRequest(DaraModel):
         m = m or dict()
         if m.get('CreatorID') is not None:
             self.creator_id = m.get('CreatorID')
+
+        if m.get('DiskPL') is not None:
+            self.disk_pl = m.get('DiskPL')
 
         if m.get('EcsSpec') is not None:
             self.ecs_spec = m.get('EcsSpec')

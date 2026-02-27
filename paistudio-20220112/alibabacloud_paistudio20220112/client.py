@@ -2748,6 +2748,8 @@ class Client(OpenApiClient):
             query['AvailabilityZone'] = request.availability_zone
         if not DaraCore.is_null(request.clique_id):
             query['CliqueID'] = request.clique_id
+        if not DaraCore.is_null(request.disk_pl):
+            query['DiskPL'] = request.disk_pl
         if not DaraCore.is_null(request.filter_by_quota_id):
             query['FilterByQuotaId'] = request.filter_by_quota_id
         if not DaraCore.is_null(request.filter_by_resource_group_ids):
@@ -2784,16 +2786,22 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.payment_type):
             query['PaymentType'] = request.payment_type
+        if not DaraCore.is_null(request.pod_num):
+            query['PodNum'] = request.pod_num
         if not DaraCore.is_null(request.quota_id):
             query['QuotaId'] = request.quota_id
         if not DaraCore.is_null(request.reason_codes):
             query['ReasonCodes'] = request.reason_codes
         if not DaraCore.is_null(request.resource_group_ids):
             query['ResourceGroupIds'] = request.resource_group_ids
+        if not DaraCore.is_null(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
         if not DaraCore.is_null(request.sort_by):
             query['SortBy'] = request.sort_by
         if not DaraCore.is_null(request.verbose):
             query['Verbose'] = request.verbose
+        if not DaraCore.is_null(request.workload_num):
+            query['WorkloadNum'] = request.workload_num
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -2836,6 +2844,8 @@ class Client(OpenApiClient):
             query['AvailabilityZone'] = request.availability_zone
         if not DaraCore.is_null(request.clique_id):
             query['CliqueID'] = request.clique_id
+        if not DaraCore.is_null(request.disk_pl):
+            query['DiskPL'] = request.disk_pl
         if not DaraCore.is_null(request.filter_by_quota_id):
             query['FilterByQuotaId'] = request.filter_by_quota_id
         if not DaraCore.is_null(request.filter_by_resource_group_ids):
@@ -2872,16 +2882,22 @@ class Client(OpenApiClient):
             query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.payment_type):
             query['PaymentType'] = request.payment_type
+        if not DaraCore.is_null(request.pod_num):
+            query['PodNum'] = request.pod_num
         if not DaraCore.is_null(request.quota_id):
             query['QuotaId'] = request.quota_id
         if not DaraCore.is_null(request.reason_codes):
             query['ReasonCodes'] = request.reason_codes
         if not DaraCore.is_null(request.resource_group_ids):
             query['ResourceGroupIds'] = request.resource_group_ids
+        if not DaraCore.is_null(request.resource_group_name):
+            query['ResourceGroupName'] = request.resource_group_name
         if not DaraCore.is_null(request.sort_by):
             query['SortBy'] = request.sort_by
         if not DaraCore.is_null(request.verbose):
             query['Verbose'] = request.verbose
+        if not DaraCore.is_null(request.workload_num):
+            query['WorkloadNum'] = request.workload_num
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -2943,6 +2959,8 @@ class Client(OpenApiClient):
             query['UserId'] = request.user_id
         if not DaraCore.is_null(request.username):
             query['Username'] = request.username
+        if not DaraCore.is_null(request.workload_count):
+            query['WorkloadCount'] = request.workload_count
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -2988,6 +3006,8 @@ class Client(OpenApiClient):
             query['UserId'] = request.user_id
         if not DaraCore.is_null(request.username):
             query['Username'] = request.username
+        if not DaraCore.is_null(request.workload_count):
+            query['WorkloadCount'] = request.workload_count
         if not DaraCore.is_null(request.workspace_id):
             query['WorkspaceId'] = request.workspace_id
         req = open_api_util_models.OpenApiRequest(
@@ -3045,6 +3065,8 @@ class Client(OpenApiClient):
             query['GmtEnqueuedTimeRange'] = request.gmt_enqueued_time_range
         if not DaraCore.is_null(request.gmt_position_modified_time_range):
             query['GmtPositionModifiedTimeRange'] = request.gmt_position_modified_time_range
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.node_name):
             query['NodeName'] = request.node_name
         if not DaraCore.is_null(request.order):
@@ -3053,6 +3075,10 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.position):
+            query['Position'] = request.position
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
         if not DaraCore.is_null(request.show_own):
             query['ShowOwn'] = request.show_own
         if not DaraCore.is_null(request.sort_by):
@@ -3061,6 +3087,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not DaraCore.is_null(request.sub_quota_ids):
             query['SubQuotaIds'] = request.sub_quota_ids
+        if not DaraCore.is_null(request.use_oversold_resource):
+            query['UseOversoldResource'] = request.use_oversold_resource
         if not DaraCore.is_null(request.user_ids):
             query['UserIds'] = request.user_ids
         if not DaraCore.is_null(request.with_historical_data):
@@ -3069,6 +3097,8 @@ class Client(OpenApiClient):
             query['WorkloadCreatedTimeRange'] = request.workload_created_time_range
         if not DaraCore.is_null(request.workload_ids):
             query['WorkloadIds'] = request.workload_ids
+        if not DaraCore.is_null(request.workload_names):
+            query['WorkloadNames'] = request.workload_names
         if not DaraCore.is_null(request.workload_statuses):
             query['WorkloadStatuses'] = request.workload_statuses
         if not DaraCore.is_null(request.workload_type):
@@ -3112,6 +3142,8 @@ class Client(OpenApiClient):
             query['GmtEnqueuedTimeRange'] = request.gmt_enqueued_time_range
         if not DaraCore.is_null(request.gmt_position_modified_time_range):
             query['GmtPositionModifiedTimeRange'] = request.gmt_position_modified_time_range
+        if not DaraCore.is_null(request.instance_id):
+            query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.node_name):
             query['NodeName'] = request.node_name
         if not DaraCore.is_null(request.order):
@@ -3120,6 +3152,10 @@ class Client(OpenApiClient):
             query['PageNumber'] = request.page_number
         if not DaraCore.is_null(request.page_size):
             query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.position):
+            query['Position'] = request.position
+        if not DaraCore.is_null(request.priority):
+            query['Priority'] = request.priority
         if not DaraCore.is_null(request.show_own):
             query['ShowOwn'] = request.show_own
         if not DaraCore.is_null(request.sort_by):
@@ -3128,6 +3164,8 @@ class Client(OpenApiClient):
             query['Status'] = request.status
         if not DaraCore.is_null(request.sub_quota_ids):
             query['SubQuotaIds'] = request.sub_quota_ids
+        if not DaraCore.is_null(request.use_oversold_resource):
+            query['UseOversoldResource'] = request.use_oversold_resource
         if not DaraCore.is_null(request.user_ids):
             query['UserIds'] = request.user_ids
         if not DaraCore.is_null(request.with_historical_data):
@@ -3136,6 +3174,8 @@ class Client(OpenApiClient):
             query['WorkloadCreatedTimeRange'] = request.workload_created_time_range
         if not DaraCore.is_null(request.workload_ids):
             query['WorkloadIds'] = request.workload_ids
+        if not DaraCore.is_null(request.workload_names):
+            query['WorkloadNames'] = request.workload_names
         if not DaraCore.is_null(request.workload_statuses):
             query['WorkloadStatuses'] = request.workload_statuses
         if not DaraCore.is_null(request.workload_type):
@@ -3190,6 +3230,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cluster_type):
             query['ClusterType'] = request.cluster_type
+        if not DaraCore.is_null(request.gputype):
+            query['GPUType'] = request.gputype
         if not DaraCore.is_null(request.has_resource):
             query['HasResource'] = request.has_resource
         if not DaraCore.is_null(request.labels):
@@ -3252,6 +3294,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.cluster_type):
             query['ClusterType'] = request.cluster_type
+        if not DaraCore.is_null(request.gputype):
+            query['GPUType'] = request.gputype
         if not DaraCore.is_null(request.has_resource):
             query['HasResource'] = request.has_resource
         if not DaraCore.is_null(request.labels):
@@ -3331,6 +3375,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.creator_id):
             query['CreatorID'] = request.creator_id
+        if not DaraCore.is_null(request.disk_pl):
+            query['DiskPL'] = request.disk_pl
         if not DaraCore.is_null(request.ecs_spec):
             query['EcsSpec'] = request.ecs_spec
         if not DaraCore.is_null(request.machine_group_ids):
@@ -3386,6 +3432,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.creator_id):
             query['CreatorID'] = request.creator_id
+        if not DaraCore.is_null(request.disk_pl):
+            query['DiskPL'] = request.disk_pl
         if not DaraCore.is_null(request.ecs_spec):
             query['EcsSpec'] = request.ecs_spec
         if not DaraCore.is_null(request.machine_group_ids):

@@ -14,6 +14,7 @@ class ListQuotaActiveUserUsagesRequest(DaraModel):
         sort_by: str = None,
         user_id: str = None,
         username: str = None,
+        workload_count: int = None,
         workspace_id: str = None,
     ):
         self.order = order
@@ -23,6 +24,7 @@ class ListQuotaActiveUserUsagesRequest(DaraModel):
         self.sort_by = sort_by
         self.user_id = user_id
         self.username = username
+        self.workload_count = workload_count
         self.workspace_id = workspace_id
 
     def validate(self):
@@ -54,6 +56,9 @@ class ListQuotaActiveUserUsagesRequest(DaraModel):
         if self.username is not None:
             result['Username'] = self.username
 
+        if self.workload_count is not None:
+            result['WorkloadCount'] = self.workload_count
+
         if self.workspace_id is not None:
             result['WorkspaceId'] = self.workspace_id
 
@@ -81,6 +86,9 @@ class ListQuotaActiveUserUsagesRequest(DaraModel):
 
         if m.get('Username') is not None:
             self.username = m.get('Username')
+
+        if m.get('WorkloadCount') is not None:
+            self.workload_count = m.get('WorkloadCount')
 
         if m.get('WorkspaceId') is not None:
             self.workspace_id = m.get('WorkspaceId')
