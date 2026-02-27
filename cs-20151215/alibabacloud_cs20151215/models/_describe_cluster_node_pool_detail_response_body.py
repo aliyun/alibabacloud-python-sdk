@@ -424,6 +424,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(DaraModel):
         data_disks: List[main_models.DataDisk] = None,
         deploymentset_id: str = None,
         desired_size: int = None,
+        disk_init: List[main_models.DiskInit] = None,
         image_id: str = None,
         image_type: str = None,
         instance_charge_type: str = None,
@@ -491,6 +492,7 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(DaraModel):
         self.deploymentset_id = deploymentset_id
         # The expected number of nodes in the node pool.
         self.desired_size = desired_size
+        self.disk_init = disk_init
         # The ID of the custom image. You can call the `DescribeKubernetesVersionMetadata` operation to query the images supported by ACK.
         self.image_id = image_id
         # Operating system image type.
@@ -656,6 +658,10 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(DaraModel):
             for v1 in self.data_disks:
                  if v1:
                     v1.validate()
+        if self.disk_init:
+            for v1 in self.disk_init:
+                 if v1:
+                    v1.validate()
         if self.instance_metadata_options:
             self.instance_metadata_options.validate()
         if self.instance_patterns:
@@ -702,6 +708,11 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(DaraModel):
 
         if self.desired_size is not None:
             result['desired_size'] = self.desired_size
+
+        result['disk_init'] = []
+        if self.disk_init is not None:
+            for k1 in self.disk_init:
+                result['disk_init'].append(k1.to_map() if k1 else None)
 
         if self.image_id is not None:
             result['image_id'] = self.image_id
@@ -868,6 +879,12 @@ class DescribeClusterNodePoolDetailResponseBodyScalingGroup(DaraModel):
 
         if m.get('desired_size') is not None:
             self.desired_size = m.get('desired_size')
+
+        self.disk_init = []
+        if m.get('disk_init') is not None:
+            for k1 in m.get('disk_init'):
+                temp_model = main_models.DiskInit()
+                self.disk_init.append(temp_model.from_map(k1))
 
         if m.get('image_id') is not None:
             self.image_id = m.get('image_id')

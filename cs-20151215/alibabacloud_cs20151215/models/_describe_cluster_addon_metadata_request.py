@@ -9,6 +9,7 @@ class DescribeClusterAddonMetadataRequest(DaraModel):
         self,
         version: str = None,
     ):
+        # The component version.
         self.version = version
 
     def validate(self):

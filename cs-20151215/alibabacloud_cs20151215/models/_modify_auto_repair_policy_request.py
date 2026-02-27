@@ -276,41 +276,20 @@ class ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel
 class ModifyAutoRepairPolicyRequestRulesIncidents(DaraModel):
     def __init__(
         self,
-        conditions: List[main_models.ModifyAutoRepairPolicyRequestRulesIncidentsConditions] = None,
-        events: List[main_models.ModifyAutoRepairPolicyRequestRulesIncidentsEvents] = None,
         name: str = None,
         type: str = None,
     ):
-        self.conditions = conditions
-        self.events = events
         self.name = name
         self.type = type
 
     def validate(self):
-        if self.conditions:
-            for v1 in self.conditions:
-                 if v1:
-                    v1.validate()
-        if self.events:
-            for v1 in self.events:
-                 if v1:
-                    v1.validate()
+        pass
 
     def to_map(self):
         result = dict()
         _map = super().to_map()
         if _map is not None:
             result = _map
-        result['conditions'] = []
-        if self.conditions is not None:
-            for k1 in self.conditions:
-                result['conditions'].append(k1.to_map() if k1 else None)
-
-        result['events'] = []
-        if self.events is not None:
-            for k1 in self.events:
-                result['events'].append(k1.to_map() if k1 else None)
-
         if self.name is not None:
             result['name'] = self.name
 
@@ -321,98 +300,8 @@ class ModifyAutoRepairPolicyRequestRulesIncidents(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
-        self.conditions = []
-        if m.get('conditions') is not None:
-            for k1 in m.get('conditions'):
-                temp_model = main_models.ModifyAutoRepairPolicyRequestRulesIncidentsConditions()
-                self.conditions.append(temp_model.from_map(k1))
-
-        self.events = []
-        if m.get('events') is not None:
-            for k1 in m.get('events'):
-                temp_model = main_models.ModifyAutoRepairPolicyRequestRulesIncidentsEvents()
-                self.events.append(temp_model.from_map(k1))
-
         if m.get('name') is not None:
             self.name = m.get('name')
-
-        if m.get('type') is not None:
-            self.type = m.get('type')
-
-        return self
-
-class ModifyAutoRepairPolicyRequestRulesIncidentsEvents(DaraModel):
-    def __init__(
-        self,
-        reason: str = None,
-        type: str = None,
-    ):
-        self.reason = reason
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.reason is not None:
-            result['reason'] = self.reason
-
-        if self.type is not None:
-            result['type'] = self.type
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('reason') is not None:
-            self.reason = m.get('reason')
-
-        if m.get('type') is not None:
-            self.type = m.get('type')
-
-        return self
-
-class ModifyAutoRepairPolicyRequestRulesIncidentsConditions(DaraModel):
-    def __init__(
-        self,
-        reason: str = None,
-        status: str = None,
-        type: str = None,
-    ):
-        self.reason = reason
-        self.status = status
-        self.type = type
-
-    def validate(self):
-        pass
-
-    def to_map(self):
-        result = dict()
-        _map = super().to_map()
-        if _map is not None:
-            result = _map
-        if self.reason is not None:
-            result['reason'] = self.reason
-
-        if self.status is not None:
-            result['status'] = self.status
-
-        if self.type is not None:
-            result['type'] = self.type
-
-        return result
-
-    def from_map(self, m: dict = None):
-        m = m or dict()
-        if m.get('reason') is not None:
-            self.reason = m.get('reason')
-
-        if m.get('status') is not None:
-            self.status = m.get('status')
 
         if m.get('type') is not None:
             self.type = m.get('type')

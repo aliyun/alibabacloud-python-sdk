@@ -43,37 +43,68 @@ class KubeletConfig(DaraModel):
         topology_manager_policy: str = None,
         tracing: main_models.KubeletConfigTracing = None,
     ):
+        # The whitelisted unsafe sysctls.
         self.allowed_unsafe_sysctls = allowed_unsafe_sysctls
+        # The list of IP addresses of the DNS servers.
         self.cluster_dns = cluster_dns
+        # The maximum number of log files that can be stored in each container.
         self.container_log_max_files = container_log_max_files
+        # The maximum size that a log file can reach before it is rotated.
         self.container_log_max_size = container_log_max_size
+        # The maximum number of concurrent programs that rotate logs
         self.container_log_max_workers = container_log_max_workers
+        # The duration at which the container logs are monitored for rotating logs.
         self.container_log_monitor_interval = container_log_monitor_interval
+        # Specifies whether to use Completely Fair Scheduler (CFS) quota to enforce pod CPU limits.
         self.cpu_cfsquota = cpu_cfsquota
+        # The duration for the CPU CFS quota.
         self.cpu_cfsquota_period = cpu_cfsquota_period
+        # The CPU management policy used by kubelet.
         self.cpu_manager_policy = cpu_manager_policy
+        # The maximum number of burst peaks for the event records.
         self.event_burst = event_burst
+        # Specifies the maximum number of events that can be generated per second.
         self.event_record_qps = event_record_qps
+        # A set of eviction thresholds that will trigger a pod eviction if met.
         self.eviction_hard = eviction_hard
+        # A set of eviction thresholds that will trigger a pod eviction if met over a corresponding grace period.
         self.eviction_soft = eviction_soft
+        # A set of grace periods for eviction thresholds.
         self.eviction_soft_grace_period = eviction_soft_grace_period
+        # A feature gate that is used to enable an experimental feature.
         self.feature_gates = feature_gates
+        # The percentage of disk usage after which image garbage collection always runs.
         self.image_gchigh_threshold_percent = image_gchigh_threshold_percent
+        # The percentage of disk usage before which image garbage collection never runs.
         self.image_gclow_threshold_percent = image_gclow_threshold_percent
+        # The maximum number of burst requests sent to the API server per second.
         self.kube_apiburst = kube_apiburst
+        # The QPS when kubelet communicates with the Kubernetes API server.
         self.kube_apiqps = kube_apiqps
+        # A set of configurations that specify resources reserved for the Kubernetes system.
         self.kube_reserved = kube_reserved
+        # The maximum number of running pods.
         self.max_pods = max_pods
+        # The name of the policy to be used by the memory manager.
         self.memory_manager_policy = memory_manager_policy
+        # The maximum number of processes per pod.
         self.pod_pids_limit = pod_pids_limit
+        # The read-only port.
         self.read_only_port = read_only_port
+        # The maximum number of images that can be pulled from bursty image pulls.
         self.registry_burst = registry_burst
+        # The maximum queries per second (QPS) of the image repository.
         self.registry_pull_qps = registry_pull_qps
+        # A list of configurations that specify memory reservations for non-uniform memory access (NUMA) nodes.
         self.reserved_memory = reserved_memory
+        # Specifies whether to pull one image at a time.
         self.serialize_image_pulls = serialize_image_pulls
         self.server_tlsbootstrap = server_tlsbootstrap
+        # A set of configurations that specify reserved resources for the system.
         self.system_reserved = system_reserved
+        # The name of the Topology Manager policy that you want to use.
         self.topology_manager_policy = topology_manager_policy
+        # The versioned configuration information for the Managed Service for OpenTelemetry client.
         self.tracing = tracing
 
     def validate(self):
@@ -299,7 +330,9 @@ class KubeletConfigTracing(DaraModel):
         endpoint: str = None,
         sampling_rate_per_million: int = None,
     ):
+        # The endpoint of the collector.
         self.endpoint = endpoint
+        # The number of samples to be collected per million spans.
         self.sampling_rate_per_million = sampling_rate_per_million
 
     def validate(self):
@@ -336,7 +369,9 @@ class KubeletConfigReservedMemory(DaraModel):
         limits: Dict[str, Any] = None,
         numa_node: int = None,
     ):
+        # The memory limit.
         self.limits = limits
+        # The NUMA node identifier.
         self.numa_node = numa_node
 
     def validate(self):

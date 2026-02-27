@@ -94,14 +94,8 @@ class DeleteAlertContactResponseBodyResult(DaraModel):
         msg: str = None,
         contact_id: str = None,
     ):
-        # The deletion status.
-        # 
-        # *   true: The alert contact was deleted.
-        # *   false: The alert contact failed to be deleted.
         self.status = status
-        # The error message returned if the call fails.
         self.msg = msg
-        # An alert contact ID.
         self.contact_id = contact_id
 
     def validate(self):

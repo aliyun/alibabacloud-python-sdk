@@ -18,11 +18,13 @@ class ContainerdConfig(DaraModel):
         registry_mirrors: List[str] = None,
     ):
         self.ignore_image_defined_volume = ignore_image_defined_volume
+        # Insecure image repositories that skipped the TLS certificate verification.
         self.insecure_registries = insecure_registries
         self.limit_core = limit_core
         self.limit_mem_lock = limit_mem_lock
         self.limit_no_file = limit_no_file
         self.max_concurrent_downloads = max_concurrent_downloads
+        # The image accelerator configuration.
         self.registry_mirrors = registry_mirrors
 
     def validate(self):

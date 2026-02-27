@@ -1,3 +1,7 @@
+2026-02-27 Version: 6.6.0
+- Support API UpdateKMSEncryption.
+
+
 2026-01-27 Version: 6.5.1
 - Update API ModifyNodePoolNodeConfig: add request parameters body.node_names.
 

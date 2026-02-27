@@ -11603,6 +11603,90 @@ class Client(OpenApiClient):
         headers = {}
         return await self.update_k8s_cluster_user_config_expire_with_options_async(cluster_id, request, headers, runtime)
 
+    def update_kmsencryption_with_options(
+        self,
+        cluster_id: str,
+        request: main_models.UpdateKMSEncryptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKMSEncryptionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.disable_encryption):
+            body['disable_encryption'] = request.disable_encryption
+        if not DaraCore.is_null(request.kms_key_id):
+            body['kms_key_id'] = request.kms_key_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKMSEncryption',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/kms',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKMSEncryptionResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def update_kmsencryption_with_options_async(
+        self,
+        cluster_id: str,
+        request: main_models.UpdateKMSEncryptionRequest,
+        headers: Dict[str, str],
+        runtime: RuntimeOptions,
+    ) -> main_models.UpdateKMSEncryptionResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.disable_encryption):
+            body['disable_encryption'] = request.disable_encryption
+        if not DaraCore.is_null(request.kms_key_id):
+            body['kms_key_id'] = request.kms_key_id
+        req = open_api_util_models.OpenApiRequest(
+            headers = headers,
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'UpdateKMSEncryption',
+            version = '2015-12-15',
+            protocol = 'HTTPS',
+            pathname = f'/clusters/{DaraURL.percent_encode(cluster_id)}/kms',
+            method = 'PUT',
+            auth_type = 'AK',
+            style = 'ROA',
+            req_body_type = 'json',
+            body_type = 'none'
+        )
+        return DaraCore.from_map(
+            main_models.UpdateKMSEncryptionResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def update_kmsencryption(
+        self,
+        cluster_id: str,
+        request: main_models.UpdateKMSEncryptionRequest,
+    ) -> main_models.UpdateKMSEncryptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return self.update_kmsencryption_with_options(cluster_id, request, headers, runtime)
+
+    async def update_kmsencryption_async(
+        self,
+        cluster_id: str,
+        request: main_models.UpdateKMSEncryptionRequest,
+    ) -> main_models.UpdateKMSEncryptionResponse:
+        runtime = RuntimeOptions()
+        headers = {}
+        return await self.update_kmsencryption_with_options_async(cluster_id, request, headers, runtime)
+
     def update_node_pool_component_with_options(
         self,
         cluster_id: str,

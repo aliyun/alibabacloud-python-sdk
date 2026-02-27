@@ -13,10 +13,30 @@ class MaintenanceWindow(DaraModel):
         recurrence: str = None,
         weekly_period: str = None,
     ):
+        # The duration of the cluster maintenance window. 
+        # 
+        # Valid values: 1 to 24. 
+        # 
+        # Unit: hours.
+        # 
+        # Default value: 3.
         self.duration = duration
+        # Specifies whether to enable the cluster maintenance window. Valid values:
+        # 
+        # *   `true`: enables the cluster maintenance window.
+        # *   `false`: disables the cluster maintenance window.
+        # 
+        # Default value: `false`.
         self.enable = enable
+        # The start time of the cluster maintenance window. The value follows a standard time format in Golang. Example: 15:04:05Z.
         self.maintenance_time = maintenance_time
+        # Defines a maintenance window recurrence rule by using the RFC5545 recurrence rule. Currently, only FREQ=WEEKLY is supported, and you cannot specify COUNT or UNTIL.
         self.recurrence = recurrence
+        # The day of the week when maintenance is performed. Separate multiple days with commas (,). 
+        # 
+        # Valid values: Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, and Sunday.
+        # 
+        # Default value: `Thursday`.
         self.weekly_period = weekly_period
 
     def validate(self):

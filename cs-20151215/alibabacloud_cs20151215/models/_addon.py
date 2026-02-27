@@ -12,9 +12,16 @@ class Addon(DaraModel):
         name: str = None,
         version: str = None,
     ):
+        # The configuration of the component.
         self.config = config
+        # Specifies whether to disable automatic installation. When you create a cluster, some additional log components are automatically installed in addition to the required components. You can disable the automatic installations of a component and install the component later by calling the component API or in the corresponding console. Valid values:
+        # 
+        # *   `true`: disables the automatic installation of a component.
+        # *   `false`: allows the automatic installation of a component.
         self.disabled = disabled
+        # The component name.
         self.name = name
+        # The version of the component.
         self.version = version
 
     def validate(self):

@@ -2,6 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._disk_init import DiskInit
 from ._hugepage import Hugepage
 from ._instance_metadata_options import InstanceMetadataOptions
 from ._addon import Addon
@@ -344,6 +345,8 @@ from ._update_control_plane_log_response_body import UpdateControlPlaneLogRespon
 from ._update_control_plane_log_response import UpdateControlPlaneLogResponse
 from ._update_k8s_cluster_user_config_expire_request import UpdateK8sClusterUserConfigExpireRequest
 from ._update_k8s_cluster_user_config_expire_response import UpdateK8sClusterUserConfigExpireResponse
+from ._update_kmsencryption_request import UpdateKMSEncryptionRequest
+from ._update_kmsencryption_response import UpdateKMSEncryptionResponse
 from ._update_node_pool_component_request import UpdateNodePoolComponentRequest
 from ._update_node_pool_component_response_body import UpdateNodePoolComponentResponseBody
 from ._update_node_pool_component_response import UpdateNodePoolComponentResponse
@@ -386,8 +389,6 @@ from ._nodepool import NodepoolTeeConfig
 from ._attach_instances_response_body import AttachInstancesResponseBodyList
 from ._check_service_role_request import CheckServiceRoleRequestRoles
 from ._check_service_role_response_body import CheckServiceRoleResponseBodyRoles
-from ._create_auto_repair_policy_request import CreateAutoRepairPolicyRequestRulesIncidentsConditions
-from ._create_auto_repair_policy_request import CreateAutoRepairPolicyRequestRulesIncidentsEvents
 from ._create_auto_repair_policy_request import CreateAutoRepairPolicyRequestRulesIncidents
 from ._create_auto_repair_policy_request import CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel
 from ._create_auto_repair_policy_request import CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel
@@ -430,8 +431,6 @@ from ._delete_cluster_request import DeleteClusterRequestDeleteOptions
 from ._describe_addon_response_body import DescribeAddonResponseBodyNewerVersions
 from ._describe_addons_response_body import DescribeAddonsResponseBodyComponentGroupsItems
 from ._describe_addons_response_body import DescribeAddonsResponseBodyComponentGroups
-from ._describe_auto_repair_policy_response_body import DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions
-from ._describe_auto_repair_policy_response_body import DescribeAutoRepairPolicyResponseBodyRulesIncidentsEvents
 from ._describe_auto_repair_policy_response_body import DescribeAutoRepairPolicyResponseBodyRulesIncidents
 from ._describe_auto_repair_policy_response_body import DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionApprovedLabel
 from ._describe_auto_repair_policy_response_body import DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionInquiringLabel
@@ -558,8 +557,6 @@ from ._install_node_pool_components_request import InstallNodePoolComponentsRequ
 from ._install_node_pool_components_request import InstallNodePoolComponentsRequestComponents
 from ._install_node_pool_components_request import InstallNodePoolComponentsRequestRollingPolicy
 from ._list_addons_response_body import ListAddonsResponseBodyAddons
-from ._list_auto_repair_policies_response_body import ListAutoRepairPoliciesResponseBodyItemsRulesIncidentsConditions
-from ._list_auto_repair_policies_response_body import ListAutoRepairPoliciesResponseBodyItemsRulesIncidentsEvents
 from ._list_auto_repair_policies_response_body import ListAutoRepairPoliciesResponseBodyItemsRulesIncidents
 from ._list_auto_repair_policies_response_body import ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionApprovedLabel
 from ._list_auto_repair_policies_response_body import ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionInquiringLabel
@@ -583,8 +580,6 @@ from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagRe
 from ._list_tag_resources_response_body import ListTagResourcesResponseBodyTagResources
 from ._list_user_kube_config_states_response_body import ListUserKubeConfigStatesResponseBodyPage
 from ._list_user_kube_config_states_response_body import ListUserKubeConfigStatesResponseBodyStates
-from ._modify_auto_repair_policy_request import ModifyAutoRepairPolicyRequestRulesIncidentsConditions
-from ._modify_auto_repair_policy_request import ModifyAutoRepairPolicyRequestRulesIncidentsEvents
 from ._modify_auto_repair_policy_request import ModifyAutoRepairPolicyRequestRulesIncidents
 from ._modify_auto_repair_policy_request import ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel
 from ._modify_auto_repair_policy_request import ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel
@@ -624,6 +619,7 @@ from ._upgrade_cluster_addons_request import UpgradeClusterAddonsRequestBody
 from ._upgrade_cluster_nodepool_request import UpgradeClusterNodepoolRequestRollingPolicy
 
 __all__ = [
+    DiskInit,
     Hugepage,
     InstanceMetadataOptions,
     Addon,
@@ -966,6 +962,8 @@ __all__ = [
     UpdateControlPlaneLogResponse,
     UpdateK8sClusterUserConfigExpireRequest,
     UpdateK8sClusterUserConfigExpireResponse,
+    UpdateKMSEncryptionRequest,
+    UpdateKMSEncryptionResponse,
     UpdateNodePoolComponentRequest,
     UpdateNodePoolComponentResponseBody,
     UpdateNodePoolComponentResponse,
@@ -1008,8 +1006,6 @@ __all__ = [
     AttachInstancesResponseBodyList,
     CheckServiceRoleRequestRoles,
     CheckServiceRoleResponseBodyRoles,
-    CreateAutoRepairPolicyRequestRulesIncidentsConditions,
-    CreateAutoRepairPolicyRequestRulesIncidentsEvents,
     CreateAutoRepairPolicyRequestRulesIncidents,
     CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel,
     CreateAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel,
@@ -1052,8 +1048,6 @@ __all__ = [
     DescribeAddonResponseBodyNewerVersions,
     DescribeAddonsResponseBodyComponentGroupsItems,
     DescribeAddonsResponseBodyComponentGroups,
-    DescribeAutoRepairPolicyResponseBodyRulesIncidentsConditions,
-    DescribeAutoRepairPolicyResponseBodyRulesIncidentsEvents,
     DescribeAutoRepairPolicyResponseBodyRulesIncidents,
     DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionApprovedLabel,
     DescribeAutoRepairPolicyResponseBodyRulesRepairProcedureInterventionInquiringLabel,
@@ -1180,8 +1174,6 @@ __all__ = [
     InstallNodePoolComponentsRequestComponents,
     InstallNodePoolComponentsRequestRollingPolicy,
     ListAddonsResponseBodyAddons,
-    ListAutoRepairPoliciesResponseBodyItemsRulesIncidentsConditions,
-    ListAutoRepairPoliciesResponseBodyItemsRulesIncidentsEvents,
     ListAutoRepairPoliciesResponseBodyItemsRulesIncidents,
     ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionApprovedLabel,
     ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionInquiringLabel,
@@ -1205,8 +1197,6 @@ __all__ = [
     ListTagResourcesResponseBodyTagResources,
     ListUserKubeConfigStatesResponseBodyPage,
     ListUserKubeConfigStatesResponseBodyStates,
-    ModifyAutoRepairPolicyRequestRulesIncidentsConditions,
-    ModifyAutoRepairPolicyRequestRulesIncidentsEvents,
     ModifyAutoRepairPolicyRequestRulesIncidents,
     ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionApprovedLabel,
     ModifyAutoRepairPolicyRequestRulesRepairProcedureInterventionInquiringLabel,
