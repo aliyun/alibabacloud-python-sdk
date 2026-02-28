@@ -1,3 +1,7 @@
+2026-02-28 Version: 2.12.0
+- Support API GetAppPluginConfig.
+
+
 2026-02-28 Version: 2.11.1
 - Generated python 2025-04-29 for WebsiteBuild.
 

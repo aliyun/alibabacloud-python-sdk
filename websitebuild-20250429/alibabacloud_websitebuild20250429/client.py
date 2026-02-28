@@ -1098,6 +1098,80 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_app_instance_with_options_async(request, runtime)
 
+    def get_app_plugin_config_with_options(
+        self,
+        request: main_models.GetAppPluginConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppPluginConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.biz_id):
+            body['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.plugin_id):
+            body['PluginId'] = request.plugin_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAppPluginConfig',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAppPluginConfigResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_app_plugin_config_with_options_async(
+        self,
+        request: main_models.GetAppPluginConfigRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAppPluginConfigResponse:
+        request.validate()
+        body = {}
+        if not DaraCore.is_null(request.biz_id):
+            body['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.plugin_id):
+            body['PluginId'] = request.plugin_id
+        req = open_api_util_models.OpenApiRequest(
+            body = Utils.parse_to_map(body)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetAppPluginConfig',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAppPluginConfigResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_app_plugin_config(
+        self,
+        request: main_models.GetAppPluginConfigRequest,
+    ) -> main_models.GetAppPluginConfigResponse:
+        runtime = RuntimeOptions()
+        return self.get_app_plugin_config_with_options(request, runtime)
+
+    async def get_app_plugin_config_async(
+        self,
+        request: main_models.GetAppPluginConfigRequest,
+    ) -> main_models.GetAppPluginConfigResponse:
+        runtime = RuntimeOptions()
+        return await self.get_app_plugin_config_with_options_async(request, runtime)
+
     def get_create_logo_task_with_options(
         self,
         request: main_models.GetCreateLogoTaskRequest,

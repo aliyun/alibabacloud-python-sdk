@@ -57,6 +57,9 @@ from ._export_material_file_response import ExportMaterialFileResponse
 from ._get_app_instance_request import GetAppInstanceRequest
 from ._get_app_instance_response_body import GetAppInstanceResponseBody
 from ._get_app_instance_response import GetAppInstanceResponse
+from ._get_app_plugin_config_request import GetAppPluginConfigRequest
+from ._get_app_plugin_config_response_body import GetAppPluginConfigResponseBody
+from ._get_app_plugin_config_response import GetAppPluginConfigResponse
 from ._get_create_logo_task_request import GetCreateLogoTaskRequest
 from ._get_create_logo_task_response_body import GetCreateLogoTaskResponseBody
 from ._get_create_logo_task_response import GetCreateLogoTaskResponse
@@ -177,6 +180,7 @@ from ._delete_app_domain_redirect_response_body import DeleteAppDomainRedirectRe
 from ._describe_app_domain_dns_record_response_body import DescribeAppDomainDnsRecordResponseBodyModule
 from ._dispatch_console_apifor_partner_response_body import DispatchConsoleAPIForPartnerResponseBodyModule
 from ._export_material_file_response_body import ExportMaterialFileResponseBodyModule
+from ._get_app_plugin_config_response_body import GetAppPluginConfigResponseBodyModule
 from ._get_create_logo_task_response_body import GetCreateLogoTaskResponseBodyTask
 from ._get_domain_info_for_partner_response_body import GetDomainInfoForPartnerResponseBodyDataOwnership
 from ._get_domain_info_for_partner_response_body import GetDomainInfoForPartnerResponseBodyData
@@ -278,6 +282,9 @@ __all__ = [
     GetAppInstanceRequest,
     GetAppInstanceResponseBody,
     GetAppInstanceResponse,
+    GetAppPluginConfigRequest,
+    GetAppPluginConfigResponseBody,
+    GetAppPluginConfigResponse,
     GetCreateLogoTaskRequest,
     GetCreateLogoTaskResponseBody,
     GetCreateLogoTaskResponse,
@@ -398,6 +405,7 @@ __all__ = [
     DescribeAppDomainDnsRecordResponseBodyModule,
     DispatchConsoleAPIForPartnerResponseBodyModule,
     ExportMaterialFileResponseBodyModule,
+    GetAppPluginConfigResponseBodyModule,
     GetCreateLogoTaskResponseBodyTask,
     GetDomainInfoForPartnerResponseBodyDataOwnership,
     GetDomainInfoForPartnerResponseBodyData,
