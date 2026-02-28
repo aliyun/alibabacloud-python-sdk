@@ -22,7 +22,6 @@ class DescribeRouteTableListResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The detailed information about the route tables.
         self.router_table_list = router_table_list
         # The total number of entries returned.
         self.total_count = total_count
@@ -128,55 +127,21 @@ class DescribeRouteTableListResponseBodyRouterTableListRouterTableListType(DaraM
         v_switch_ids: main_models.DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeVSwitchIds = None,
         vpc_id: str = None,
     ):
-        # The type of the cloud resource with which the route table is associated. Valid values:
-        # 
-        # *   **VSwitch**: vSwitch
-        # *   **Gateway**: IPv4 gateway
         self.associate_type = associate_type
-        # The time when the route table was created.
         self.creation_time = creation_time
-        # The information about the route table.
         self.description = description
-        # The detailed information about the IPv4 gateway.
         self.gateway_ids = gateway_ids
-        # The ID of the Alibaba Cloud account to which the route table belongs.
         self.owner_id = owner_id
-        # The ID of the resource group to which the route table belongs.
         self.resource_group_id = resource_group_id
-        # Whether to receive the propagation routes. Valid Values:
-        # 
-        # *   **true**: received.
-        # 
-        # *   **false**: not received.
         self.route_propagation_enable = route_propagation_enable
-        # The ID of the route table.
         self.route_table_id = route_table_id
-        # The name of the route table.
         self.route_table_name = route_table_name
-        # The type of the route table. Valid values:
-        # 
-        # *   **Custom**
-        # *   **System**
         self.route_table_type = route_table_type
-        # The ID of the vRouter to which the route table belongs.
         self.router_id = router_id
-        # The type of the vRouter to which the route table belongs. Valid values:
-        # 
-        # - **VRouter**: a vRouter.
-        # 
-        # - **VBR**: a VBR.
         self.router_type = router_type
-        # The status of the route table. Valid values:
-        # 
-        # *   **Pending**
-        # *   **Available**
-        # *   **Deleting**
         self.status = status
-        # The tags.
         self.tags = tags
-        # The vSwitch IDs.
         self.v_switch_ids = v_switch_ids
-        # The ID of the VPC to which the route table belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -365,9 +330,7 @@ class DescribeRouteTableListResponseBodyRouterTableListRouterTableListTypeTagsTa
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag that is added to the route table.
         self.key = key
-        # The value of the tag that is added to the route table.
         self.value = value
 
     def validate(self):

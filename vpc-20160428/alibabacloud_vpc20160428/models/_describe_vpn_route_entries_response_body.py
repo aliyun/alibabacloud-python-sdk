@@ -25,11 +25,7 @@ class DescribeVpnRouteEntriesResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # The information about route entries of the VPN gateway in dual-tunnel mode.
-        # 
-        # > This parameter is returned only if the VPN gateway supports IPsec-VPN connections in dual-tunnel mode.
         self.vpn_route_counts = vpn_route_counts
-        # The route entry list.
         self.vpn_route_entries = vpn_route_entries
 
     def validate(self):
@@ -137,42 +133,16 @@ class DescribeVpnRouteEntriesResponseBodyVpnRouteEntriesVpnRouteEntry(DaraModel)
         vpn_instance_id: str = None,
         weight: int = None,
     ):
-        # The AS path of the route entry.
         self.as_path = as_path
-        # The community attributes of the route entry.
         self.community = community
-        # The timestamp when the route entry was created.
         self.create_time = create_time
-        # The next hop of the route entry.
         self.next_hop = next_hop
-        # The ID of the tunnel associated with the next hop. 
-        # 
-        # 
-        # > This parameter is returned only if the VPN gateway supports the dual-tunnel mode.
         self.next_hop_tunnel_id = next_hop_tunnel_id
-        # The destination CIDR block of the route entry.
         self.route_dest = route_dest
-        # The type of the route entry. Valid values:
-        # 
-        # *   **Custom**: custom
-        # *   **System**: system
         self.route_entry_type = route_entry_type
-        # The source of the BGP route. Valid values:
-        # 
-        # *   **CLOUD**: advertised from a cloud service associated with the VPN gateway.
-        # *   **VPN_BGP**: indicates that the current route is learned by using BGP of the VPN gateway. For example, the BGP is used to learn the route of the on-premises data center.
         self.source = source
-        # The status of the route entry. Valid values:
-        # 
-        # *   **published**: advertised
-        # *   **normal**: not advertised
         self.state = state
-        # The ID of the VPN gateway.
         self.vpn_instance_id = vpn_instance_id
-        # The weight of the route entry. Valid values: **0** and **100**.
-        # 
-        # *   **0**: a low priority
-        # *   **100**: a high priority
         self.weight = weight
 
     def validate(self):
@@ -297,17 +267,8 @@ class DescribeVpnRouteEntriesResponseBodyVpnRouteCountsVpnRouteCount(DaraModel):
         route_entry_type: str = None,
         source: str = None,
     ):
-        # The number of route entries.
         self.route_count = route_count
-        # The route type. Valid values:
-        # 
-        # *   **custom** (default): destination-based route.
-        # *   **bgp** : BGP route entry.
         self.route_entry_type = route_entry_type
-        # The source of the BGP route. Valid values:
-        # 
-        # *   **CLOUD**: advertised from a cloud service associated with the VPN gateway.
-        # *   **VPN_BGP**: indicates that the current route is learned by using BGP of the VPN gateway. For example, the BGP is used to learn the route of the on-premises data center.
         self.source = source
 
     def validate(self):

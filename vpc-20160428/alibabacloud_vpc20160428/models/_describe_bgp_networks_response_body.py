@@ -16,7 +16,6 @@ class DescribeBgpNetworksResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # BGP networks.
         self.bgp_networks = bgp_networks
         # The page number.
         self.page_number = page_number
@@ -116,13 +115,9 @@ class DescribeBgpNetworksResponseBodyBgpNetworksBgpNetwork(DaraModel):
         status: str = None,
         vpc_id: str = None,
     ):
-        # The CIDR block of the advertised BGP network.
         self.dst_cidr_block = dst_cidr_block
-        # The ID of the VBR.
         self.router_id = router_id
-        # The status of the advertised BGP network.
         self.status = status
-        # The ID of the virtual private cloud (VPC) in which the master instance resides.
         self.vpc_id = vpc_id
 
     def validate(self):

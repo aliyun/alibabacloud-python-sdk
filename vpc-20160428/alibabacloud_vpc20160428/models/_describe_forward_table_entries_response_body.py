@@ -16,7 +16,6 @@ class DescribeForwardTableEntriesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of DNAT entries.
         self.forward_table_entries = forward_table_entries
         # The page number.
         self.page_number = page_number
@@ -122,39 +121,15 @@ class DescribeForwardTableEntriesResponseBodyForwardTableEntriesForwardTableEntr
         nat_gateway_id: str = None,
         status: str = None,
     ):
-        # *   The EIPs that can be accessed over the Internet when you query DNAT entries of Internet NAT gateways.
-        # *   The NAT IP addresses that can be accessed by external networks when you query DNAT entries of VPC NAT gateways.
         self.external_ip = external_ip
-        # *   The external port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways.
-        # *   The port that is used when the NAT IP address can be accessed by external networks when you query DNAT entries of VPC NAT gateways.
         self.external_port = external_port
-        # The ID of the DNAT entry.
         self.forward_entry_id = forward_entry_id
-        # The name of the DNAT entry.
         self.forward_entry_name = forward_entry_name
-        # The ID of the DNAT table to which the DNAT entry belongs.
         self.forward_table_id = forward_table_id
-        # The private IP address.
-        # 
-        # *   The private IP address of the ECS instance that uses DNAT entries to communicate with the Internet when you query DNAT entries of Internet NAT gateways.
-        # *   The private IP address that uses DNAT entries when you query DNAT entries of VPC NAT gateways.
         self.internal_ip = internal_ip
-        # *   The internal port or port range that is used for port forwarding when you query DNAT entries of Internet NAT gateways.
-        # *   The destination ECS instance port to be mapped when you query DNAT entries of VPC NAT gateways.
         self.internal_port = internal_port
-        # The protocol. Valid values:
-        # 
-        # *   **TCP**
-        # *   **UDP**
-        # *   **Any**
         self.ip_protocol = ip_protocol
-        # The ID of the NAT gateway to which the DNAT entry belongs.
         self.nat_gateway_id = nat_gateway_id
-        # The status of the DNAT entry. Valid values:
-        # 
-        # *   **Pending**
-        # *   **Available**
-        # *   **Deleting**
         self.status = status
 
     def validate(self):

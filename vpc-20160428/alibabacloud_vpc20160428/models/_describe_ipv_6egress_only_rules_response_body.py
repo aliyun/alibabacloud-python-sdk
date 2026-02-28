@@ -16,7 +16,6 @@ class DescribeIpv6EgressOnlyRulesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details about the egress-only rules.
         self.ipv_6egress_only_rules = ipv_6egress_only_rules
         # The number of the returned page. Default value: **1**.
         self.page_number = page_number
@@ -118,17 +117,11 @@ class DescribeIpv6EgressOnlyRulesResponseBodyIpv6EgressOnlyRulesIpv6EgressOnlyRu
         name: str = None,
         status: str = None,
     ):
-        # The description of the egress-only rule.
         self.description = description
-        # The ID of the instance to which the egress-only rule applies.
         self.instance_id = instance_id
-        # The type of the instance to which the egress-only rule applies.
         self.instance_type = instance_type
-        # The ID of the egress-only rule.
         self.ipv_6egress_only_rule_id = ipv_6egress_only_rule_id
-        # The name of the egress-only rule.
         self.name = name
-        # The status of the egress-only rule.
         self.status = status
 
     def validate(self):

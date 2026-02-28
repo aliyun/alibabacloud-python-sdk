@@ -16,7 +16,6 @@ class DescribeIPv6TranslatorEntriesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The IPv6 mapping entries that are queried.
         self.ipv_6translator_entries = ipv_6translator_entries
         # The page number of the returned page.
         self.page_number = page_number
@@ -127,38 +126,20 @@ class DescribeIPv6TranslatorEntriesResponseBodyIpv6TranslatorEntriesIpv6Translat
         region_id: str = None,
         trans_protocol: str = None,
     ):
-        # The ID of the associated ACL.
         self.acl_id = acl_id
-        # Indicates whether ACLs are enabled.
         self.acl_status = acl_status
-        # The ACL type.
-        # 
-        # *   **white**: a whitelist. IPv6 addresses in the ACL are allowed to access backend services.
-        # *   **black**: a blacklist. IPv6 addresses in the ACL are not allowed to access backend services.
         self.acl_type = acl_type
-        # The IPv6 address allocated to the IPv6 Translation Service instance.
         self.allocate_ipv_6addr = allocate_ipv_6addr
-        # The port used by the IPv6 address allocated to the IPv6 Translation Service instance.
         self.allocate_ipv_6port = allocate_ipv_6port
-        # The public IP address of the backend IPv4 server.
         self.backend_ipv_4addr = backend_ipv_4addr
-        # The public IPv4 port used by the IPv4 server that needs to provide IPv6 access.
         self.backend_ipv_4port = backend_ipv_4port
-        # The bandwidth specified in the IPv6 mapping entry.
         self.entry_bandwidth = entry_bandwidth
-        # The description of the IPv6 mapping entry.
         self.entry_description = entry_description
-        # The name of the IPv6 mapping entry.
         self.entry_name = entry_name
-        # The status of the IPv6 mapping entry.
         self.entry_status = entry_status
-        # The ID of the IPv6 mapping entry.
         self.ipv_6translator_entry_id = ipv_6translator_entry_id
-        # The ID of the IPv6 Translation Service instance to which the IPv6 mapping entry belongs.
         self.ipv_6translator_id = ipv_6translator_id
-        # The region of the IPv6 Translation Service instance.
         self.region_id = region_id
-        # The protocol.
         self.trans_protocol = trans_protocol
 
     def validate(self):

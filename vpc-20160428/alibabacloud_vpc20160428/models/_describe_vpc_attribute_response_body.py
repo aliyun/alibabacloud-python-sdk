@@ -39,11 +39,7 @@ class DescribeVpcAttributeResponseBody(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
-        # The list of Cloud Enterprise Network (CEN) instances to which the VPC is attached.
-        # 
-        # If the VPC is not attached to a CEN instance, the parameter is not returned.
         self.associated_cens = associated_cens
-        # The route source associated with the VPC.
         self.associated_propagation_sources = associated_propagation_sources
         # The IPv4 CIDR block of the VPC.
         self.cidr_block = cidr_block
@@ -52,7 +48,6 @@ class DescribeVpcAttributeResponseBody(DaraModel):
         # *   **true**
         # *   **false** (default)
         self.classic_link_enabled = classic_link_enabled
-        # The list of resources deployed in the VPC.
         self.cloud_resources = cloud_resources
         # The time when the VPC was created.
         self.creation_time = creation_time
@@ -77,7 +72,6 @@ class DescribeVpcAttributeResponseBody(DaraModel):
         self.ipv_4gateway_id = ipv_4gateway_id
         # The IPv6 CIDR block of the VPC.
         self.ipv_6cidr_block = ipv_6cidr_block
-        # The IPv6 CIDR block of the VPC.
         self.ipv_6cidr_blocks = ipv_6cidr_blocks
         # Indicates whether the VPC is the default VPC. Valid values:
         # 
@@ -92,7 +86,6 @@ class DescribeVpcAttributeResponseBody(DaraModel):
         self.request_id = request_id
         # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The secondary IPv4 CIDR block of the VPC.
         self.secondary_cidr_blocks = secondary_cidr_blocks
         # The status of the VPC. Valid values:
         # 
@@ -104,13 +97,10 @@ class DescribeVpcAttributeResponseBody(DaraModel):
         # *   **true**
         # *   **false**
         self.support_ipv_4gateway = support_ipv_4gateway
-        # The information about the tags.
         self.tags = tags
-        # The user CIDR block. Multiple CIDR blocks are separated by commas (,). At most three CIDR blocks are returned.
         self.user_cidrs = user_cidrs
         # The ID of the vRouter that belongs to the VPC.
         self.vrouter_id = vrouter_id
-        # The list of vSwitches deployed in the VPC.
         self.v_switch_ids = v_switch_ids
         # The ID of the VPC.
         self.vpc_id = vpc_id
@@ -417,9 +407,7 @@ class DescribeVpcAttributeResponseBodyTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N.
         self.key = key
-        # The value of tag N.
         self.value = value
 
     def validate(self):
@@ -516,16 +504,7 @@ class DescribeVpcAttributeResponseBodyIpv6CidrBlocksIpv6CidrBlock(DaraModel):
         ipv_6cidr_block: str = None,
         ipv_6isp: str = None,
     ):
-        # The IPv6 CIDR block of the VPC.
         self.ipv_6cidr_block = ipv_6cidr_block
-        # The IPv6 CIDR block type of the VPC. Valid values:
-        # 
-        # *   **BGP** (default)
-        # *   **ChinaMobile**
-        # *   **ChinaUnicom**
-        # *   **ChinaTelecom**
-        # 
-        # >  If you are allowed to use single-ISP bandwidth, valid values are **ChinaTelecom**, **ChinaUnicom**, and **ChinaMobile**
         self.ipv_6isp = ipv_6isp
 
     def validate(self):
@@ -595,13 +574,7 @@ class DescribeVpcAttributeResponseBodyCloudResourcesCloudResourceSetType(DaraMod
         resource_count: int = None,
         resource_type: str = None,
     ):
-        # The number of resources in the VPC.
         self.resource_count = resource_count
-        # The type of resource deployed in the VPC. Valid values: Valid values:
-        # 
-        # *   **VSwitch**
-        # *   **VRouter**
-        # *   **RouteTable**
         self.resource_type = resource_type
 
     def validate(self):
@@ -674,24 +647,10 @@ class DescribeVpcAttributeResponseBodyAssociatedPropagationSourcesAssociatedProp
         source_type: str = None,
         status: str = None,
     ):
-        # Indicates whether routes are advertised to the VPC.
         self.route_propagated = route_propagated
-        # The instance ID of the source.
         self.source_instance_id = source_instance_id
-        # The account ID of the source.
         self.source_owner_id = source_owner_id
-        # The source type.
-        # 
-        # *   **CEN**
-        # *   **VPN**
-        # *   **TR**
-        # *   **ECR**
         self.source_type = source_type
-        # The binding status.
-        # 
-        # *   **Attaching**
-        # *   **Attached**
-        # *   **Detaching**
         self.status = status
 
     def validate(self):
@@ -780,13 +739,8 @@ class DescribeVpcAttributeResponseBodyAssociatedCensAssociatedCen(DaraModel):
         cen_owner_id: int = None,
         cen_status: str = None,
     ):
-        # The ID of the CEN instance to which the VPC is attached.
         self.cen_id = cen_id
-        # The ID of the account to which the CEN instance belongs.
         self.cen_owner_id = cen_owner_id
-        # The status of the CEN instance.
-        # 
-        # **Attached** is returned only when the VPC is attached to a CEN instance.
         self.cen_status = cen_status
 
     def validate(self):

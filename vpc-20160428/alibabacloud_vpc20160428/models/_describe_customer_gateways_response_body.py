@@ -16,7 +16,6 @@ class DescribeCustomerGatewaysResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about customer gateways.
         self.customer_gateways = customer_gateways
         # The page number.
         self.page_number = page_number
@@ -121,27 +120,14 @@ class DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGateway(DaraMo
         resource_group_id: str = None,
         tags: main_models.DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTags = None,
     ):
-        # The autonomous system number (ASN) of the gateway device in the data center.
         self.asn = asn
-        # The authentication key that is used to connect to the gateway device in the data center by using Border Gateway Protocol (BGP).
         self.auth_key = auth_key
-        # The time when the customer gateway was created. Unit: millisecond.
-        # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # The customer gateway ID.
         self.customer_gateway_id = customer_gateway_id
-        # The description of the customer gateway.
         self.description = description
-        # The IP address of the gateway device in the data center.
         self.ip_address = ip_address
-        # The name of the customer gateway.
         self.name = name
-        # The ID of the resource group to which the customer gateway belongs.
-        # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
         self.resource_group_id = resource_group_id
-        # The tags that are added to the customer gateway.
         self.tags = tags
 
     def validate(self):
@@ -255,9 +241,7 @@ class DescribeCustomerGatewaysResponseBodyCustomerGatewaysCustomerGatewayTagsTag
         key: str = None,
         value: str = None,
     ):
-        # The key of the tag.
         self.key = key
-        # The value of the tag.
         self.value = value
 
     def validate(self):

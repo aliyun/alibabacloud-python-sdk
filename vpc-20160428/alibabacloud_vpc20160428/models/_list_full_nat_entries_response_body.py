@@ -119,6 +119,7 @@ class ListFullNatEntriesResponseBodyFullNatEntries(DaraModel):
         network_interface_id: str = None,
         network_interface_type: str = None,
     ):
+        # The backend domain name for FULLNAT address translation in a FULLNAT entry.
         self.access_domain = access_domain
         # The backend IP address that is used for FULLNAT address translation in FULLNAT entries.
         self.access_ip = access_ip
@@ -126,6 +127,7 @@ class ListFullNatEntriesResponseBodyFullNatEntries(DaraModel):
         self.access_port = access_port
         # The time when the FULLNAT entry was created.
         self.creation_time = creation_time
+        # The IP resolved from the backend domain name for address translation in the FULLNAT entry.
         self.domain_resolve = domain_resolve
         # The description of the FULLNAT entry.
         # 

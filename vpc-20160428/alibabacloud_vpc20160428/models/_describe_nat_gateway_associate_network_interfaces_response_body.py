@@ -18,7 +18,6 @@ class DescribeNatGatewayAssociateNetworkInterfacesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The ENIs associated with the VPC NAT gateway.
         self.associate_network_interfaces = associate_network_interfaces
         # Number of associated ENIs.
         self.count = count
@@ -140,19 +139,12 @@ class DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkIn
         resource_vpc_id: str = None,
         tunnel_index: str = None,
     ):
-        # The IPv4 addresses of the ENIs.
         self.ipv_4sets = ipv_4sets
-        # The ID of the ENI.
         self.network_interface_id = network_interface_id
-        # The ID of the service resource.
         self.resource_id = resource_id
-        # The UID of the account to which the service resource belongs.
         self.resource_owner_id = resource_owner_id
-        # The type of the service resource.
         self.resource_type = resource_type
-        # VPC ID of the service resource
         self.resource_vpc_id = resource_vpc_id
-        # The ID of the tunnel index.
         self.tunnel_index = tunnel_index
 
     def validate(self):
@@ -254,12 +246,7 @@ class DescribeNatGatewayAssociateNetworkInterfacesResponseBodyAssociateNetworkIn
         ipv_4address: str = None,
         primary: bool = None,
     ):
-        # The primary private IP address of the ENI.
         self.ipv_4address = ipv_4address
-        # Indicates whether the IP address is the primary private IP address. Valid values:
-        # 
-        # *   true: Primary private IP address
-        # *   false: Secondary private IP addresses
         self.primary = primary
 
     def validate(self):

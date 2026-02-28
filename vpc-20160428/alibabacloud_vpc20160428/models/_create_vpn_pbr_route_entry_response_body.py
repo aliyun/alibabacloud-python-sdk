@@ -19,35 +19,32 @@ class CreateVpnPbrRouteEntryResponseBody(DaraModel):
         vpn_instance_id: str = None,
         weight: int = None,
     ):
-        # The time when the policy-based route was created.
+        # The timestamp generated when the policy-based route was created. Unit: milliseconds.
         # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # The description of the policy-based route.
+        # The description of the route.
         self.description = description
-        # The next hop of the policy-based route.
-        self.next_hop = next_hop
         # The tunneling protocol. The value is **Ipsec**.
+        self.next_hop = next_hop
+        # The tunneling protocol. The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
         self.overlay_mode = overlay_mode
         # The priority of the policy-based route.
         self.priority = priority
-        # The request ID.
+        # The priority of the policy-based route.
         self.request_id = request_id
-        # The destination CIDR block of the policy-based route.
+        # The VPN gateway ID.
         self.route_dest = route_dest
         # The source CIDR block of the policy-based route.
         self.route_source = route_source
-        # The status of the policy-based route. Valid values:
+        # The status of the policy-based route.
         # 
         # *   **published**: advertised to the VPC route table.
         # *   **normal**: not advertised to the VPC route table.
         self.state = state
-        # The VPN gateway ID.
+        # The ID of the VPN gateway.
         self.vpn_instance_id = vpn_instance_id
-        # The weight of the policy-based route. Valid values:
-        # 
-        # *   **100**: The IPsec-VPN connection associated with the policy-based route serves as an active connection.
-        # *   **0**: The IPsec-VPN connection associated with the policy-based route serves as a standby connection.
+        # The source CIDR block of the policy-based route.
         self.weight = weight
 
     def validate(self):

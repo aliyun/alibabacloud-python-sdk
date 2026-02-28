@@ -71,9 +71,6 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfig(DaraModel):
         self.remote = remote
         # The CIDR block on the virtual private cloud (VPC) side.
         self.remote_subnet = remote_subnet
-        # The tunnel configurations of the peer gateway device.
-        # 
-        # The parameters in **TunnelsConfig** are returned only when the IPsec-VPN connection supports the dual-tunnel mode.
         self.tunnels_config = tunnels_config
 
     def validate(self):
@@ -193,15 +190,15 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTun
         remote: str = None,
         tunnel_id: str = None,
     ):
-        # The configurations of Phase 1 negotiations.
+        # 第一阶段协商的配置信息。
         self.ike_config = ike_config
-        # The configurations of Phase 2 negotiations.
+        # 第二阶段协商的配置信息。
         self.ipsec_config = ipsec_config
-        # The identifier of the tunnel on the data center side.
+        # 本地IDC侧隧道的标识。
         self.local = local
-        # The identifier of the tunnel on the Alibaba Cloud side.
+        # 阿里云侧隧道的标识。
         self.remote = remote
-        # The tunnel ID.
+        # 隧道ID。
         self.tunnel_id = tunnel_id
 
     def validate(self):
@@ -261,13 +258,13 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTun
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # The authentication algorithm in the IPsec phase.
+        # IPsec阶段认证算法。
         self.ipsec_auth_alg = ipsec_auth_alg
-        # The encryption algorithm in the IPsec phase.
+        # IPsec阶段加密算法。
         self.ipsec_enc_alg = ipsec_enc_alg
-        # The lifetime in the IPsec phase. Unit: seconds.
+        # IPsec阶段生存时间。单位：秒。
         self.ipsec_lifetime = ipsec_lifetime
-        # The DH group in the IPsec phase.
+        # IPsec阶段DH分组。
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -321,26 +318,26 @@ class DownloadVpnConnectionConfigResponseBodyVpnConnectionConfigTunnelsConfigTun
         psk: str = None,
         remote_id: str = None,
     ):
-        # The authentication algorithm in the IKE phase.
+        # IKE阶段认证算法。
         self.ike_auth_alg = ike_auth_alg
-        # The encryption algorithm in the IKE phase.
+        # IKE阶段加密算法。
         self.ike_enc_alg = ike_enc_alg
-        # The lifetime in the IKE phase. Unit: seconds.
+        # IKE阶段生存时间。单位：秒。
         self.ike_lifetime = ike_lifetime
-        # The IKE negotiation mode. Valid values:
+        # IKE协商模式。
         # 
-        # *   **main**: This mode offers higher security during negotiations.
-        # *   **aggressive**: This mode is faster and has a higher success rate.
+        # - **main**：主模式，协商过程安全性高。
+        # - **aggressive**：野蛮模式，协商快速且协商成功率高。
         self.ike_mode = ike_mode
-        # The DH group in the IKE phase.
+        # IKE阶段DH分组。
         self.ike_pfs = ike_pfs
-        # The IKE version.
+        # IKE协议的版本。
         self.ike_version = ike_version
-        # The identifier of the tunnel on the data center side.
+        # 本地IDC侧隧道的标识。
         self.local_id = local_id
-        # The pre-shared key.
+        # 预共享密钥。
         self.psk = psk
-        # The identifier of the tunnel on the Alibaba Cloud side.
+        # 阿里云侧隧道的标识。
         self.remote_id = remote_id
 
     def validate(self):

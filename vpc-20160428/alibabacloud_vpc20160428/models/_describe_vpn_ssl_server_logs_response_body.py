@@ -19,7 +19,6 @@ class DescribeVpnSslServerLogsResponseBody(DaraModel):
     ):
         # The number of log entries.
         self.count = count
-        # Log information list.
         self.data = data
         # Indicates whether the log is accurate. Valid values:
         # 

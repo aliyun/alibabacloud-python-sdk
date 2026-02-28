@@ -13,7 +13,6 @@ class DescribeServerRelatedGlobalAccelerationInstancesResponseBody(DaraModel):
         global_acceleration_instances: main_models.DescribeServerRelatedGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstances = None,
         request_id: str = None,
     ):
-        # The list of GA instances.
         self.global_acceleration_instances = global_acceleration_instances
         # The request ID.
         self.request_id = request_id
@@ -89,13 +88,9 @@ class DescribeServerRelatedGlobalAccelerationInstancesResponseBodyGlobalAccelera
         region_id: str = None,
         server_ip_address: str = None,
     ):
-        # The ID of the GA instance.
         self.global_acceleration_instance_id = global_acceleration_instance_id
-        # The public IP address of the GA instance.
         self.ip_address = ip_address
-        # The region ID of the GA instance.
         self.region_id = region_id
-        # The IP address of the backend service.
         self.server_ip_address = server_ip_address
 
     def validate(self):

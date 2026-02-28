@@ -17,7 +17,6 @@ class DescribeEipGatewayInfoResponseBody(DaraModel):
     ):
         # The status code of the operation.
         self.code = code
-        # The detailed information about the EIP.
         self.eip_infos = eip_infos
         # The result of the operation.
         self.message = message
@@ -106,11 +105,8 @@ class DescribeEipGatewayInfoResponseBodyEipInfosEipInfo(DaraModel):
         ip_gw: str = None,
         ip_mask: str = None,
     ):
-        # The IP address of the EIP.
         self.ip = ip
-        # The IP address of the gateway that is associated with the EIP.
         self.ip_gw = ip_gw
-        # The subnet mask of the EIP.
         self.ip_mask = ip_mask
 
     def validate(self):

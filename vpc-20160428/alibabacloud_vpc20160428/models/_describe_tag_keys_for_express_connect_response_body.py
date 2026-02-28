@@ -21,7 +21,6 @@ class DescribeTagKeysForExpressConnectResponseBody(DaraModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The tag keys.
         self.tag_keys = tag_keys
 
     def validate(self):
@@ -99,9 +98,7 @@ class DescribeTagKeysForExpressConnectResponseBodyTagKeysTagKey(DaraModel):
         tag_key: str = None,
         type: str = None,
     ):
-        # The key of the tag.
         self.tag_key = tag_key
-        # The type of the resource. The value is set to **PHYSICALCONNECTION**, which indicates an Express Connect circuit.
         self.type = type
 
     def validate(self):

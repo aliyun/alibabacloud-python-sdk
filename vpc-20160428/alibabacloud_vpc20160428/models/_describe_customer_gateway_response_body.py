@@ -43,7 +43,6 @@ class DescribeCustomerGatewayResponseBody(DaraModel):
         # 
         # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
         self.resource_group_id = resource_group_id
-        # The list of tags added to the customer gateway.
         self.tags = tags
 
     def validate(self):
@@ -163,9 +162,7 @@ class DescribeCustomerGatewayResponseBodyTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):

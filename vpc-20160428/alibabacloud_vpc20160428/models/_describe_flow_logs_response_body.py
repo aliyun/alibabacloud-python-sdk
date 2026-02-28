@@ -17,7 +17,6 @@ class DescribeFlowLogsResponseBody(DaraModel):
         success: str = None,
         total_count: str = None,
     ):
-        # List of flow logs.
         self.flow_logs = flow_logs
         # The page number.
         self.page_number = page_number
@@ -143,72 +142,25 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLog(DaraModel):
         traffic_path: main_models.DescribeFlowLogsResponseBodyFlowLogsFlowLogTrafficPath = None,
         traffic_type: str = None,
     ):
-        # The sampling interval of the flow log. Unit: minutes.
         self.aggregation_interval = aggregation_interval
-        # The business status. Values:
-        # 
-        # - **Normal**: Normal status.
-        # - **FinancialLocked**: Locked due to unpaid bills.
         self.business_status = business_status
-        # The creation time of the flow log.
         self.creation_time = creation_time
-        # The description of the flow log.
         self.description = description
-        # When log delivery fails, you can troubleshoot based on the error messages. Possible error messages include:
-        # - **UnavaliableTarget**: The Logstore of the Log Service SLS is unavailable and cannot receive logs. It is recommended to check if the corresponding Logstore actually exists and is accessible. 
-        # - **ProjectNotExist**: The Project of the Log Service SLS does not exist. It is suggested to delete the original flow log and create a new one pointing to an existing Project. 
-        # - **UnknownError**: An internal error has occurred. Please try again later.
         self.flow_log_deliver_error_message = flow_log_deliver_error_message
-        # The delivery status of the flow log, with values:
-        # - **SUCCESS**: Delivery succeeded. 
-        # - **FAILED**: Delivery failed.
         self.flow_log_deliver_status = flow_log_deliver_status
-        # The ID of the flow log.
         self.flow_log_id = flow_log_id
-        # The name of the flow log.
         self.flow_log_name = flow_log_name
-        # The type of IP address for collecting flow log traffic.
         self.ip_version = ip_version
-        # The Logstore where the captured traffic is stored.
         self.log_store_name = log_store_name
-        # The Project that manages the captured traffic.
         self.project_name = project_name
-        # The region ID to which the flow log belongs.
         self.region_id = region_id
-        # The ID of the resource group to which the flow log belongs.
         self.resource_group_id = resource_group_id
-        # The resource ID of the traffic captured by the flow log.
         self.resource_id = resource_id
-        # The resource type of the traffic captured by the flow log:
-        # 
-        # - **NetworkInterface**: Elastic network interface.
-        # - **VSwitch**: All elastic network interfaces within a VSwitch.
-        # - **VPC**: All elastic network interfaces within a VPC.
         self.resource_type = resource_type
-        # The hosting type of the cloud service.
-        # - It can be empty, indicating that the flow log was created by the user. 
-        # - When not empty, the only supported value is: **sls**, indicating that the flow log was created through the Log Service console.
-        # > Flow log instances created through the Log Service console can be displayed in the VPC list, but they cannot be modified, started, stopped, or deleted within the VPC. If you need to perform these operations on the flow log, you can log in to the [Log Service console](https://sls.console.aliyun.com) to modify, start, stop, or delete it.
         self.service_type = service_type
-        # The status of the flow log. Values:
-        # - **Active**: The flow log is in an active state.
-        # 
-        # - **Activating**: The flow log is being created.
-        # 
-        # - **Inactive**: The flow log is in an inactive state.
         self.status = status
-        # List of tags
         self.tags = tags
-        # The path of the captured traffic. Values:
-        # 
-        # - **all**: Indicates full collection.
-        # - **internetGateway**: Indicates public network traffic collection.
         self.traffic_path = traffic_path
-        # The type of traffic captured by the flow log. Values:
-        # 
-        # - **All**: All traffic.
-        # - **Allow**: Traffic allowed by access control.
-        # - **Drop**: Traffic denied by access control.
         self.traffic_type = traffic_type
 
     def validate(self):
@@ -418,9 +370,7 @@ class DescribeFlowLogsResponseBodyFlowLogsFlowLogTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # Tag key.
         self.key = key
-        # Tag value.
         self.value = value
 
     def validate(self):

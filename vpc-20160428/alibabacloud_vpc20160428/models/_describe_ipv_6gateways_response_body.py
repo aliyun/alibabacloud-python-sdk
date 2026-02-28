@@ -16,7 +16,6 @@ class DescribeIpv6GatewaysResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the IPv6 gateway.
         self.ipv_6gateways = ipv_6gateways
         # The page number.
         self.page_number = page_number
@@ -125,39 +124,18 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6Gateway(DaraModel):
         tags: main_models.DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTags = None,
         vpc_id: str = None,
     ):
-        # The status of the IPv6 gateway. Valid values:
-        # 
-        # *   **Normal**
-        # *   **FinancialLocked**
-        # *   **SecurityLocked**
         self.business_status = business_status
-        # The time when the IPv6 gateway was created.
         self.creation_time = creation_time
-        # The description of the IPv6 gateway.
         self.description = description
-        # The time when the IPv6 gateway expires.
         self.expired_time = expired_time
-        # The billing method of the IPv6 gateway.
-        # 
-        # Only **PostPaid** may be returned, which indicates that the IPv6 gateway uses the pay-as-you-go billing method.
         self.instance_charge_type = instance_charge_type
-        # The ID of the IPv6 gateway.
         self.ipv_6gateway_id = ipv_6gateway_id
-        # The name of the IPv6 gateway.
         self.name = name
         self.owner_id = owner_id
-        # The ID of the region in which the IPv6 gateway is deployed.
         self.region_id = region_id
-        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # The status of the IPv6 gateway. Valid values:
-        # 
-        # *   **Pending**
-        # *   **Available**
         self.status = status
-        # The information about the tags.
         self.tags = tags
-        # The ID of the VPC to which the IPv6 gateway belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -295,9 +273,7 @@ class DescribeIpv6GatewaysResponseBodyIpv6GatewaysIpv6GatewayTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):

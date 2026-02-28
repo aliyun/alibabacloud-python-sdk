@@ -35,7 +35,7 @@ class AddCommonBandwidthPackageIpsRequest(DaraModel):
         # 
         # This parameter is required.
         self.ip_instance_ids = ip_instance_ids
-        # The type of the IP address. Set the value to **EIP** to associate EIPs with the EIP bandwidth plan.
+        # The IP type. Set the value to **EIP**, which indicates that an EIP is added to the Shared Bandwidth.
         self.ip_type = ip_type
         self.owner_account = owner_account
         self.owner_id = owner_id

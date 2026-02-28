@@ -16,7 +16,6 @@ class DescribeBgpPeersResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the BGP peer.
         self.bgp_peers = bgp_peers
         # The page number.
         self.page_number = page_number
@@ -134,69 +133,28 @@ class DescribeBgpPeersResponseBodyBgpPeersBgpPeer(DaraModel):
         router_id: str = None,
         status: str = None,
     ):
-        # The number of advertised routes.
         self.advertised_route_count = advertised_route_count
-        # The authentication key of the BGP group.
         self.auth_key = auth_key
-        # The Bidirectional Forwarding Detection (BFD) hop count.
         self.bfd_multi_hop = bfd_multi_hop
-        # The ID of the BGP group.
         self.bgp_group_id = bgp_group_id
-        # The ID of the BGP peer.
         self.bgp_peer_id = bgp_peer_id
-        # The status of the BGP connection. Valid values:
-        # 
-        # *   **Idle**: The BGP connection is not used.
-        # *   **Connect**: The BGP connection is used.
-        # *   **Active**: The BGP connection is available.
-        # *   **Established**: The BGP connection is established.
-        # *   **Down**: The BGP connection is unavailable.
         self.bgp_status = bgp_status
-        # The description of the BGP group.
         self.description = description
-        # Indicates whether BFD is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.enable_bfd = enable_bfd
-        # The time when the BGP peer is modified.
-        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modified = gmt_modified
-        # The hold time.
         self.hold = hold
-        # The version of the IP address.
         self.ip_version = ip_version
-        # Indicates whether a fake autonomous system number (ASN) is used. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.is_fake = is_fake
-        # The Keepalive interval.
         self.keepalive = keepalive
-        # The ASN of the device on the Alibaba Cloud side.
         self.local_asn = local_asn
-        # The name of the BGP peer.
         self.name = name
-        # The autonomous system number (ASN)of the BGP peer.
         self.peer_asn = peer_asn
-        # The IP address of the BGP peer.
         self.peer_ip_address = peer_ip_address
-        # The number of received routes.
         self.received_route_count = received_route_count
-        # The ID of the region to which the BGP group belongs.
         self.region_id = region_id
-        # The maximum number of routes.
         self.route_limit = route_limit
-        # The Router ID.
         self.router_id = router_id
-        # The status of the BGP peer. Valid values:
-        # 
-        # *   **Pending**
-        # *   **Available**
-        # *   **Modifying**
-        # *   **Deleting**
-        # *   **Deleted**
         self.status = status
 
     def validate(self):

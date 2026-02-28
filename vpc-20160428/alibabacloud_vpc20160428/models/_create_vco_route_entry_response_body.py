@@ -17,32 +17,16 @@ class CreateVcoRouteEntryResponseBody(DaraModel):
         vpn_connection_id: str = None,
         weight: int = None,
     ):
-        # The timestamp when the destination-based route was created. Unit: milliseconds.
-        # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # The description of the destination-based route.
         self.description = description
-        # The next hop of the destination-based route.
         self.next_hop = next_hop
-        # The tunneling protocol.
-        # 
-        # The value is set to **Ipsec**, which indicates the IPsec tunneling protocol.
         self.overlay_mode = overlay_mode
-        # The request ID.
         self.request_id = request_id
-        # The destination CIDR block of the destination-based route.
+        # The description of the destination-based route.
         self.route_dest = route_dest
-        # The status of the destination-based route.
-        # 
-        # Only **published** is returned, which indicates that the current route is published to the transit router.
         self.state = state
-        # The ID of the IPsec-VPN connection.
+        # The request ID.
         self.vpn_connection_id = vpn_connection_id
-        # The weight of the destination-based route. Valid values:
-        # 
-        # *   **0**: a low priority.
-        # *   **100**: a high priority.
         self.weight = weight
 
     def validate(self):

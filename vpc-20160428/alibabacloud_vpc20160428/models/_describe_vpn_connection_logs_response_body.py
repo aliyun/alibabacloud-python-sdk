@@ -19,7 +19,6 @@ class DescribeVpnConnectionLogsResponseBody(DaraModel):
     ):
         # The number of entries on the current page.
         self.count = count
-        # The log list.
         self.data = data
         # Indicates whether the log is accurate. Valid values:
         # 

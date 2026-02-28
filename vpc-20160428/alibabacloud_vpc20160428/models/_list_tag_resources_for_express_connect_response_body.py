@@ -21,7 +21,6 @@ class ListTagResourcesForExpressConnectResponseBody(DaraModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The tags that are added to the resource.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -101,17 +100,9 @@ class ListTagResourcesForExpressConnectResponseBodyTagResourcesTagResource(DaraM
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The resource ID.
         self.resource_id = resource_id
-        # The type of the resource. Valid values:
-        # 
-        # *   **PHYSICALCONNECTION**: Express Connect circuit.
-        # *   **VIRTUALBORDERROUTER**: VBR.
-        # *   **ROUTERINTERFACE**: router interface.
         self.resource_type = resource_type
-        # The key of the tag that is added to the resource.
         self.tag_key = tag_key
-        # The value of the tag that is added to the resource.
         self.tag_value = tag_value
 
     def validate(self):

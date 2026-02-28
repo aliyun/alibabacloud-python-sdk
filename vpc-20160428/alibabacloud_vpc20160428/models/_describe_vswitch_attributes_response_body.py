@@ -71,7 +71,6 @@ class DescribeVSwitchAttributesResponseBody(DaraModel):
         # *   **Pending**
         # *   **Available**
         self.status = status
-        # The information about the tags.
         self.tags = tags
         # The vSwitch ID.
         self.v_switch_id = v_switch_id
@@ -256,9 +255,7 @@ class DescribeVSwitchAttributesResponseBodyTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N added to the resource.
         self.key = key
-        # The value of tag N added to the resource.
         self.value = value
 
     def validate(self):

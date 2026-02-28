@@ -16,7 +16,6 @@ class DescribeIPv6TranslatorsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of IPv6 Translation Service instances.
         self.ipv_6translators = ipv_6translators
         # The page number of the returned page.
         self.page_number = page_number
@@ -127,41 +126,20 @@ class DescribeIPv6TranslatorsResponseBodyIpv6TranslatorsIpv6Translator(DaraModel
         spec: str = None,
         status: str = None,
     ):
-        # The IPv4 address allocated to the IPv6 Translation Service instance.
         self.allocate_ipv_4addr = allocate_ipv_4addr
-        # The IPv6 address allocated to the IPv6 Translation Service instance.
         self.allocate_ipv_6addr = allocate_ipv_6addr
-        # The bandwidth of the IPv6 Translation Service instance.
         self.available_bandwidth = available_bandwidth
-        # The bandwidth of the IPv6 Translation Service instance. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The business status of the IPv6 Translation Service instance. Valid values:
-        # 
-        # *   **Normal**
-        # *   **FinancialLocked**
         self.business_status = business_status
-        # The timestamp when the IPv6 Translation Service instance was created.
         self.create_time = create_time
-        # The description of the IPv6 Translation Service instance.
         self.description = description
-        # The timestamp when IPv6 Translation Service instance expires.
         self.end_time = end_time
-        # The IDs of IPv6 mapping entries of the IPv6 Translation Service instance.
         self.ipv_6translator_entry_ids = ipv_6translator_entry_ids
-        # The ID of the IPv6 Translation Service instance.
         self.ipv_6translator_id = ipv_6translator_id
-        # The name of the IPv6 Translation Service instance.
         self.name = name
-        # The billing method of the IPv6 Translation Service instance.
-        # 
-        # *   **Prepay**: subscription
-        # *   **Postpay**: pay-as-you-go
         self.pay_type = pay_type
-        # The region of the IPv6 Translation Service instance.
         self.region_id = region_id
-        # The specification of the IPv6 Translation Service instance.
         self.spec = spec
-        # The status of the IPv6 Translation Service instance.
         self.status = status
 
     def validate(self):

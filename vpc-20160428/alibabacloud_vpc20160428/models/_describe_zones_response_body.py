@@ -15,7 +15,6 @@ class DescribeZonesResponseBody(DaraModel):
     ):
         # The request ID.
         self.request_id = request_id
-        # The zone list.
         self.zones = zones
 
     def validate(self):
@@ -88,11 +87,8 @@ class DescribeZonesResponseBodyZonesZone(DaraModel):
         zone_id: str = None,
         zone_type: str = None,
     ):
-        # The zone name.
         self.local_name = local_name
-        # The zone ID.
         self.zone_id = zone_id
-        # The zone type. Default value: **AvailabilityZone**.
         self.zone_type = zone_type
 
     def validate(self):

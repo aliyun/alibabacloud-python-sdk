@@ -22,7 +22,6 @@ class DescribeRouterInterfacesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The details of the router interface.
         self.router_interface_set = router_interface_set
         # The number of entries returned.
         self.total_count = total_count
@@ -153,111 +152,46 @@ class DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceType(
         tags: main_models.DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceTypeTags = None,
         vpc_instance_id: str = None,
     ):
-        # The ID of the access point.
         self.access_point_id = access_point_id
-        # The bandwidth of the router interface. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The service status of the router interface. Valid values:
-        # 
-        # *   **Normal**
-        # *   **FinancialLocked**
-        # *   **SecurityLocked**
         self.business_status = business_status
-        # The billing method.
         self.charge_type = charge_type
-        # The time when the connection was established.
-        # 
-        # The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
         self.connected_time = connected_time
-        # The time when the route table was created.
-        # 
-        # The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # Indicates whether the connection is a cross-border connection.
         self.cross_border = cross_border
-        # The description of the router interface.
         self.description = description
-        # The end of the time range during which data was queried.
-        # 
-        # The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
         self.end_time = end_time
-        # Indicates whether the VBR that is created in the Fast Link mode is uplinked to the router interface. The Fast Link mode helps automatically connect router interfaces that are created for the VBR and its peer VPC. Valid values:
-        # 
-        # *   **true**
-        # *   **false** (default)
         self.fast_link_mode = fast_link_mode
-        # Indicates whether renewal data is included.
         self.has_reservation_data = has_reservation_data
-        # The rate of heath checks.
         self.hc_rate = hc_rate
-        # The health check threshold.
         self.hc_threshold = hc_threshold
-        # The source IP address that is used for the health check.
         self.health_check_source_ip = health_check_source_ip
-        # The destination IP address that is used for the health check.
         self.health_check_target_ip = health_check_target_ip
-        # Indicates whether protection against malicious IPv6 traffic is enabled. Valid values:
-        # 
-        # *   **on**
-        # *   **off**
-        # *   **unsupport**
         self.ipv_6status = ipv_6status
-        # The custom name.
         self.name = name
-        # The ID of the peer access point.
         self.opposite_access_point_id = opposite_access_point_id
-        # The maximum bandwidth of the peer router interface. Unit: Mbit/s.
         self.opposite_bandwidth = opposite_bandwidth
-        # The service status of the peer router interface.
         self.opposite_interface_business_status = opposite_interface_business_status
-        # The ID of the peer router interface.
         self.opposite_interface_id = opposite_interface_id
-        # The ID of the Alibaba Cloud account to which the peer router interface belongs.
         self.opposite_interface_owner_id = opposite_interface_owner_id
-        # The specification of the peer router interface.
         self.opposite_interface_spec = opposite_interface_spec
-        # The status of the peer router interface.
         self.opposite_interface_status = opposite_interface_status
-        # The region ID of the peer router interface.
         self.opposite_region_id = opposite_region_id
-        # The ID of the router to which the peer router interface belongs.
         self.opposite_router_id = opposite_router_id
-        # The type of the router to which the peer router interface belongs.
         self.opposite_router_type = opposite_router_type
-        # The ID of the peer VPC.
         self.opposite_vpc_instance_id = opposite_vpc_instance_id
-        # The time when the renewal takes effect.
-        # 
-        # The time follows the ISO8601 standard in the `YYYY-MM-DDThh:mmZ` format. The time is displayed in UTC.
         self.reservation_active_time = reservation_active_time
-        # The maximum bandwidth after the renewal takes effect. Unit: Mbit/s.
         self.reservation_bandwidth = reservation_bandwidth
-        # The metering method that is used after the renewal takes effect. Valid values:
         self.reservation_internet_charge_type = reservation_internet_charge_type
-        # The type of the renewal order. Valid values:
         self.reservation_order_type = reservation_order_type
-        # Resource Group ID.
-        # 
-        # For more information about resource groups, please refer to [What is a Resource Group?](https://help.aliyun.com/document_detail/94475.html)
         self.resource_group_id = resource_group_id
-        # Indicates whether the router interface is the initiator or acceptor of the peering connection.
         self.role = role
-        # The ID of the router to which the route entry belongs.
         self.router_id = router_id
-        # The ID of the router interface.
         self.router_interface_id = router_interface_id
-        # The type of the router to which the route table belongs. Valid values:
-        # 
-        # *   **VRouter**
-        # *   **VBR**
         self.router_type = router_type
-        # The specification of the router interface.
         self.spec = spec
-        # The status of the router interface.
         self.status = status
-        # The tags of the resource.
         self.tags = tags
-        # The ID of the local virtual private cloud (VPC) in the peering connection.
         self.vpc_instance_id = vpc_instance_id
 
     def validate(self):
@@ -563,13 +497,7 @@ class DescribeRouterInterfacesResponseBodyRouterInterfaceSetRouterInterfaceTypeT
         key: str = None,
         value: str = None,
     ):
-        # The key of the resource tag. At least one tag key must be entered, and a maximum of 20 tag keys are supported. If this value needs to be passed in, it cannot be an empty string.
-        # 
-        # A tag key can support up to 128 characters, cannot start with \\"aliyun\\" or \\"acs:\\", and cannot contain \\"http://\\" or \\"https://\\".
         self.key = key
-        # The value of the resource tag. A maximum of 20 tag values can be entered. If this value needs to be passed in, an empty string can be entered.
-        # 
-        # A maximum of 128 characters are supported, it cannot start with \\"aliyun\\" or \\"acs:\\", and it cannot contain \\"http://\\" or \\"https://\\".
         self.value = value
 
     def validate(self):

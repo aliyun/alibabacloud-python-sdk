@@ -66,9 +66,7 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute(DaraModel):
         self.creation_time = creation_time
         # The description of the network ACL.
         self.description = description
-        # The information about the outbound rules of the network ACL.
         self.egress_acl_entries = egress_acl_entries
-        # The information about the inbound rules of the network ACL.
         self.ingress_acl_entries = ingress_acl_entries
         # The ID of the network ACL.
         self.network_acl_id = network_acl_id
@@ -78,14 +76,12 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttribute(DaraModel):
         self.owner_id = owner_id
         # The region ID of the network ACL.
         self.region_id = region_id
-        # The resources that are associated with the network ACL.
         self.resources = resources
         # The association status of the resource. Valid values:
         # 
         # *   **Available**
         # *   **Modifying**
         self.status = status
-        # The information about the tags.
         self.tags = tags
         # The ID of the VPC to which the network ACL belongs.
         self.vpc_id = vpc_id
@@ -228,9 +224,7 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeTagsTag(DaraMod
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N added to the resource.
         self.key = key
-        # The value of tag N added to the resource.
         self.value = value
 
     def validate(self):
@@ -301,15 +295,8 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeResourcesResour
         resource_type: str = None,
         status: str = None,
     ):
-        # The ID of the associated resource.
         self.resource_id = resource_id
-        # The type of resource with which you want to associate the network ACL. The value is set to **VSwitch**.
         self.resource_type = resource_type
-        # The association status of the resource. Valid values:
-        # 
-        # *   **BINDED**
-        # *   **BINDING**
-        # *   **UNBINDING**
         self.status = status
 
     def validate(self):
@@ -392,42 +379,14 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeIngressAclEntri
         protocol: str = None,
         source_cidr_ip: str = None,
     ):
-        # The description of the inbound rule.
         self.description = description
-        # The type of the inbound rule.
-        # 
-        # - **custom**
-        # 
-        # - **system**
         self.entry_type = entry_type
-        # The IP version. Valid values:
-        # 
-        # *   **IPv4**
-        # *   **IPv6**
         self.ip_version = ip_version
-        # The ID of the inbound rule.
         self.network_acl_entry_id = network_acl_entry_id
-        # The name of the inbound rule.
         self.network_acl_entry_name = network_acl_entry_name
-        # The action to be performed on network traffic that matches the rule. Valid values:
-        # 
-        # *   **accept**
-        # *   **drop**
         self.policy = policy
-        # The destination port range of the inbound traffic.
-        # 
-        # *   If the **protocol** of the inbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which specifies all ports.
-        # *   If the **protocol** of the inbound rule is set to **tcp** or **udp**, set the port range in the following format: **1/200** or **80/80**, which specifies port 1 to port 200 or port 80. Valid ports: **1** to **65535**.
         self.port = port
-        # The protocol type. Valid values:
-        # 
-        # *   **icmp**
-        # *   **gre**
-        # *   **tcp**
-        # *   **udp**
-        # *   **all**
         self.protocol = protocol
-        # The source CIDR block.
         self.source_cidr_ip = source_cidr_ip
 
     def validate(self):
@@ -546,42 +505,14 @@ class DescribeNetworkAclAttributesResponseBodyNetworkAclAttributeEgressAclEntrie
         port: str = None,
         protocol: str = None,
     ):
-        # The description of the outbound rule.
         self.description = description
-        # The destination CIDR block.
         self.destination_cidr_ip = destination_cidr_ip
-        # The type of the inbound rule.
-        # 
-        # - **custom**
-        # 
-        # - **system**
         self.entry_type = entry_type
-        # The IP version. Valid values:
-        # 
-        # *   **IPv4**
-        # *   **IPv6**
         self.ip_version = ip_version
-        # The ID of the outbound rule.
         self.network_acl_entry_id = network_acl_entry_id
-        # The name of the outbound rule.
         self.network_acl_entry_name = network_acl_entry_name
-        # The action to be performed on network traffic that matches the rule. Valid values:
-        # 
-        # *   **accept**
-        # *   **drop**
         self.policy = policy
-        # The destination port range of the outbound traffic.
-        # 
-        # *   If the **protocol** of the outbound rule is set to **all**, **icmp**, or **gre**, the port range is -1/-1, which specified all ports.
-        # *   If the **protocol** of the outbound rule is set to **tcp** or **udp**, set the port range in the following format: **1/200** or **80/80**, which specifies port 1 to port 200 or port 80. Valid values for a port: **1** to **65535**.
         self.port = port
-        # The protocol type. Valid values:
-        # 
-        # *   **icmp**
-        # *   **gre**
-        # *   **tcp**
-        # *   **udp**
-        # *   **all**
         self.protocol = protocol
 
     def validate(self):

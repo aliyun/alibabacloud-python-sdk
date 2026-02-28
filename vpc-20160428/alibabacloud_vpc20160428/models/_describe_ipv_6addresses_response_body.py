@@ -16,7 +16,6 @@ class DescribeIpv6AddressesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the IPv6 address.
         self.ipv_6addresses = ipv_6addresses
         # The page number of the returned page. Default value: **1**.
         self.page_number = page_number
@@ -131,60 +130,24 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6Address(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The type of IPv6 address. Valid values:
-        # 
-        # *   IPv6Address (default): indicates a single IPv6 IP.
-        # *   IPv6Prefix: indicates IPv6 CIDR.
         self.address_type = address_type
-        # The time when the IPv6 address was created.
         self.allocation_time = allocation_time
-        # The ID of the instance associated with the IPv6 address.
         self.associated_instance_id = associated_instance_id
-        # The type of instance associated with the IPv6 address.
         self.associated_instance_type = associated_instance_type
-        # The IPv6 address.
         self.ipv_6address = ipv_6address
-        # The description of the IPv6 address.
         self.ipv_6address_description = ipv_6address_description
-        # The ID of the IPv6 address.
         self.ipv_6address_id = ipv_6address_id
-        # The name of the IPv6 address.
         self.ipv_6address_name = ipv_6address_name
-        # The ID of the IPv6 gateway to which the IPv6 address belongs.
         self.ipv_6gateway_id = ipv_6gateway_id
-        # The Internet bandwidth of the IPv6 address.
         self.ipv_6internet_bandwidth = ipv_6internet_bandwidth
-        # The ISP of the IPv6 address. Valid values:
-        # 
-        # *   **BGP** (default)
-        # *   **ChinaMobile**
-        # *   **ChinaUnicom**
-        # *   **ChinaTelecom**
         self.ipv_6isp = ipv_6isp
-        # The type of connection supported by the IPv6 address. Valid values:
-        # 
-        # *   **Private**
-        # *   **Public**
         self.network_type = network_type
-        # The peak bandwidth of the IPv6 address.
         self.real_bandwidth = real_bandwidth
-        # The ID of the resource group to which the IPv6 gateway belongs.
         self.resource_group_id = resource_group_id
-        # Indicates whether the instance is managed. Valid values:
-        # 
-        # *   **1**: yes
-        # *   **0**: no
         self.service_managed = service_managed
-        # The status of the IPv6 address.
-        # 
-        # *   **Pending**
-        # *   **Available**
         self.status = status
-        # The tag list.
         self.tags = tags
-        # The ID of the vSwitch to which the IPv6 address belongs.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC to which the IPv6 address belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -361,15 +324,7 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressTagsTag(DaraModel
         key: str = None,
         value: str = None,
     ):
-        # The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
-        # 
-        # The tag key can be up to 128 characters in length. The tag key cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The tag value.
-        # 
-        # The tag value can be up to 128 characters in length. It can be an empty string. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
-        # 
-        # Each tag key corresponds to one tag value. You can specify at most 20 tag values at a time.
         self.value = value
 
     def validate(self):
@@ -412,40 +367,15 @@ class DescribeIpv6AddressesResponseBodyIpv6AddressesIpv6AddressIpv6InternetBandw
         reservation_internet_charge_type: str = None,
         reservation_order_type: str = None,
     ):
-        # The dedicated Internet bandwidth of the IPv6 address. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The status of the Internet bandwidth of the IPv6 address. Valid values:
-        # 
-        # *   **Normal**
-        # *   **FinancialLocked**
-        # *   **SecurityLocked**
         self.business_status = business_status
-        # Indicates whether renewal data is included. Valid values:
-        # 
-        # *   **false**
-        # *   **true** **true** is returned only when **IncludeReservationData** is set to **true** and some orders have not taken effect.
         self.has_reservation_data = has_reservation_data
-        # The billing method of the Internet bandwidth of the IPv6 address. Valid values:
-        # 
-        # Only **PostPaid** may be returned, which indicates the pay-as-you-go billing method.
         self.instance_charge_type = instance_charge_type
-        # The billing method of the Internet bandwidth of the IPv6 address. Valid values:
-        # 
-        # *   **PayByTraffic**
-        # *   **PayByBandwidth**
         self.internet_charge_type = internet_charge_type
-        # The Internet bandwidth ID of the IPv6 address.
         self.ipv_6internet_bandwidth_id = ipv_6internet_bandwidth_id
-        # The time when the renewal takes effect. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.reservation_active_time = reservation_active_time
-        # The maximum bandwidth after the renewal takes effect. Unit: Mbit/s.
         self.reservation_bandwidth = reservation_bandwidth
-        # The metering method that is used after the renewal takes effect.
-        # 
-        # *   **PayByTraffic**
-        # *   **PayByBandwidth**
         self.reservation_internet_charge_type = reservation_internet_charge_type
-        # The type of the renewal order. Only **RENEW** may be returned, which indicates that the order is placed for service renewal.
         self.reservation_order_type = reservation_order_type
 
     def validate(self):

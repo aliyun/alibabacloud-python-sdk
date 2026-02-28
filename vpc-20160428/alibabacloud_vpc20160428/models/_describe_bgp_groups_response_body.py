@@ -16,7 +16,6 @@ class DescribeBgpGroupsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The detailed information about the BGP group.
         self.bgp_groups = bgp_groups
         # The page number.
         self.page_number = page_number
@@ -126,41 +125,19 @@ class DescribeBgpGroupsResponseBodyBgpGroupsBgpGroup(DaraModel):
         router_id: str = None,
         status: str = None,
     ):
-        # The key used by the BGP group.
         self.auth_key = auth_key
-        # The ID of the BGP group.
         self.bgp_group_id = bgp_group_id
-        # The description of the BGP group.
         self.description = description
-        # The hold time to receive BGP messages. Unit: seconds.
-        # 
-        # >  If no message is received within the hold time, the BGP peer is considered disconnected.
         self.hold = hold
-        # The IP version of the BGP group. Valid values:
-        # 
-        # *   **ipv4**: IPv4
-        # *   **ipv6**: IPv6. IPv6 is supported only if the VBR of the BGP group has IPv6 enabled.
         self.ip_version = ip_version
-        # Indicates whether the ASN is fake. Valid values:
-        # 
-        # *   **false**
-        # *   **true**
         self.is_fake = is_fake
-        # The keepalive time. Unit: seconds.
         self.keepalive = keepalive
-        # The ASN of the device on the Alibaba Cloud side.
         self.local_asn = local_asn
-        # The name of the BGP group.
         self.name = name
-        # The autonomous system number (ASN) of the on-premises device in the data center.
         self.peer_asn = peer_asn
-        # The ID of the region to which the BGP group belongs.
         self.region_id = region_id
-        # The maximum number of route entries for BGP dynamic route learning.
         self.route_limit = route_limit
-        # The ID of the VBR.
         self.router_id = router_id
-        # The status of the BGP group.
         self.status = status
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeHaVipsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details about the HaVip.
         self.ha_vips = ha_vips
         # The page number.
         self.page_number = page_number
@@ -128,44 +127,21 @@ class DescribeHaVipsResponseBodyHaVipsHaVip(DaraModel):
         v_switch_id: str = None,
         vpc_id: str = None,
     ):
-        # The list of EIPs associated with the HaVip.
         self.associated_eip_addresses = associated_eip_addresses
-        # The type of the instance with which the HaVip is associated. Valid values:
-        # 
-        # *   **EcsInstance**: Elastic Compute Service (ECS) instance
-        # *   **NetworkInterface**: elastic network interface (ENI)
         self.associated_instance_type = associated_instance_type
-        # The information about the instance associated with the HaVip.
         self.associated_instances = associated_instances
-        # The parameter is invalid. No value is returned.
         self.charge_type = charge_type
-        # The time when the HaVip was created.
         self.create_time = create_time
-        # The description of the HaVip.
         self.description = description
-        # The ID of the HaVip.
         self.ha_vip_id = ha_vip_id
-        # The private IP address of the HaVip.
         self.ip_address = ip_address
-        # The ID of the active instance that is associated with the HaVip.
         self.master_instance_id = master_instance_id
-        # The name of the HaVip.
         self.name = name
-        # The ID of the region to which the HaVip belongs.
         self.region_id = region_id
-        # The ID of the resource group to which the HaVip belongs.
         self.resource_group_id = resource_group_id
-        # The status of the HaVip. Valid values:
-        # 
-        # *   **Creating**: The server group is being created.
-        # *   **Available**: The FULLNAT entry is available.
-        # *   **Deleting**
         self.status = status
-        # The tag list.
         self.tags = tags
-        # The ID of the vSwitch to which the HaVip belongs.
         self.v_switch_id = v_switch_id
-        # The ID of the VPC to which the HaVip belongs.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -327,9 +303,7 @@ class DescribeHaVipsResponseBodyHaVipsHaVipTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N added to the resource.
         self.key = key
-        # The value of tag N added to the resource.
         self.value = value
 
     def validate(self):

@@ -16,7 +16,6 @@ class DescribeGrantRulesToCenResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the authorization.
         self.cen_grant_rules = cen_grant_rules
         # The page number of the returned page.
         self.page_number = page_number
@@ -115,11 +114,8 @@ class DescribeGrantRulesToCenResponseBodyCenGrantRulesCbnGrantRule(DaraModel):
         cen_owner_id: int = None,
         creation_time: str = None,
     ):
-        # The ID of the authorized CEN instance.
         self.cen_instance_id = cen_instance_id
-        # The UID of the Alibaba Cloud account to which the authorized CEN instance belongs.
         self.cen_owner_id = cen_owner_id
-        # The time when the instance was created.
         self.creation_time = creation_time
 
     def validate(self):

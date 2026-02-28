@@ -16,15 +16,12 @@ class CreateNatGatewayResponseBody(DaraModel):
         request_id: str = None,
         snat_table_ids: main_models.CreateNatGatewayResponseBodySnatTableIds = None,
     ):
-        # A list of DNAT entries.
         self.forward_table_ids = forward_table_ids
-        # A list of FULLNAT entries.
         self.full_nat_table_ids = full_nat_table_ids
         # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
         # The request ID.
         self.request_id = request_id
-        # A list of SNAT entries.
         self.snat_table_ids = snat_table_ids
 
     def validate(self):

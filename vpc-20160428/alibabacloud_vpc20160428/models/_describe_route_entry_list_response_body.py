@@ -21,7 +21,6 @@ class DescribeRouteEntryListResponseBody(DaraModel):
         self.next_token = next_token
         # The request ID.
         self.request_id = request_id
-        # The information about the routes.
         self.route_entrys = route_entrys
 
     def validate(self):
@@ -109,50 +108,18 @@ class DescribeRouteEntryListResponseBodyRouteEntrysRouteEntry(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The description of the route.
         self.description = description
-        # The destination CIDR block of the route.
         self.destination_cidr_block = destination_cidr_block
-        # The time when the route was modified. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format. The time is displayed in UTC.
-        # 
         # Use the UTC time format: yyyy-MM-ddTHH:mmZ
         self.gmt_modified = gmt_modified
-        # The IP version. Valid values: Valid values:
-        # 
-        # *   **ipv4**
-        # *   **ipv6**
         self.ip_version = ip_version
-        # The information about the next hops.
         self.next_hops = next_hops
-        # The route origin. Valid values:
-        # * **RoutePropagation**: The route is created by a dynamic propagation source.
-        # * **SystemCreate**: The route is created by the system.
-        # * **CustomCreate**: The route is created by a user.
         self.origin = origin
-        # The ID of the route.
         self.route_entry_id = route_entry_id
-        # The name of the route.
         self.route_entry_name = route_entry_name
-        # The ID of the route table.
         self.route_table_id = route_table_id
-        # Indicates whether the route is hosted. If the parameter is empty, the route is not hosted.
-        # 
-        # If **TR** is returned, the route is hosted by a transit router.
         self.service_type = service_type
-        # The status of the route entry. Valid values:
-        # 
-        # *   **Pending**
-        # *   **Available**
-        # *   **Modifying**
-        # *   **Deleting**
         self.status = status
-        # The route type. Valid values:
-        # 
-        # *   **Custom**: custom routes.
-        # *   **System**: system routes.
-        # *   **BGP**: BGP routes.
-        # *   **CEN**: CEN routes.
-        # *   **ECR**: ECR routes.
         self.type = type
 
     def validate(self):
@@ -288,39 +255,11 @@ class DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHopsNextHop(Dar
         next_hop_type: str = None,
         weight: int = None,
     ):
-        # Indicates whether the route is available. Valid values:
-        # 
-        # *   **0**: unavailable
-        # *   **1**: available
-        # 
-        # >  This parameter is returned when the next hop type is set to **RouterInterface**.
         self.enabled = enabled
-        # The ID of the next hop.
         self.next_hop_id = next_hop_id
-        # The ID of the region where the next hop is deployed.
-        # 
-        # >  This parameter is returned when the next hop type is set to **RouterInterface**.
         self.next_hop_region_id = next_hop_region_id
-        # The information about the next hop.
         self.next_hop_related_info = next_hop_related_info
-        # The next hop type. Valid values:
-        # 
-        # *   **Instance**: an ECS instance.
-        # *   **HaVip**: an HaVip.
-        # *   **VpnGateway**: a VPN gateway.
-        # *   **NatGateway**: a NAT gateway.
-        # *   **NetworkInterface**: a secondary ENI.
-        # *   **RouterInterface**: a router interface.
-        # *   **IPv6Gateway**: an IPv6 gateway.
-        # *   **Attachment**: a transit router.
-        # *   **Ipv4Gateway**: an IPv4 gateway.
-        # *   **GatewayEndpoint**: a gateway endpoint.
-        # *   **CenBasic**: CEN does not support transit routers.
-        # *   **Ecr**: ECR.
         self.next_hop_type = next_hop_type
-        # The weight of the route.
-        # 
-        # >  This parameter is returned when the next hop type is set to **RouterInterface**.
         self.weight = weight
 
     def validate(self):
@@ -382,15 +321,8 @@ class DescribeRouteEntryListResponseBodyRouteEntrysRouteEntryNextHopsNextHopNext
         instance_type: str = None,
         region_id: str = None,
     ):
-        # The ID of the instance that is associated with the next hop.
         self.instance_id = instance_id
-        # The type of the instance associated with the next hop. Valid values:
-        # 
-        # *   **VPC**: a VPC
-        # *   **VBR**: a VBR
-        # *   **PCONN**: an Express Connect circuit
         self.instance_type = instance_type
-        # The region ID of the instance associated with the next hop. Valid values:
         self.region_id = region_id
 
     def validate(self):

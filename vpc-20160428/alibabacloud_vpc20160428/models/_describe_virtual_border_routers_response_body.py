@@ -24,7 +24,6 @@ class DescribeVirtualBorderRoutersResponseBody(DaraModel):
         self.request_id = request_id
         # The number of entries returned.
         self.total_count = total_count
-        # The information about the VBR.
         self.virtual_border_router_set = virtual_border_router_set
 
     def validate(self):
@@ -154,132 +153,47 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
         vlan_id: int = None,
         vlan_interface_id: str = None,
     ):
-        # The ID of the access point.
         self.access_point_id = access_point_id
-        # The time when the VBR was activated for the first time.
         self.activation_time = activation_time
-        # The information about the Cloud Enterprise Network (CEN) instance to which the VBR is attached.
         self.associated_cens = associated_cens
-        # The information about the Express Connect circuit that is associated with the VBR.
         self.associated_physical_connections = associated_physical_connections
-        # The bandwidth value of the VBR. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The circuit code of the Express Connect circuit, which is provided by the connectivity provider.
         self.circuit_code = circuit_code
-        # The ID of the cloud box.
         self.cloud_box_instance_id = cloud_box_instance_id
-        # The time when the VBR was created.
         self.creation_time = creation_time
-        # The description of the VBR.
         self.description = description
-        # The multiple of the detection time.
-        # 
-        # This value indicates the maximum number of dropped packets that is allowed by the receiver when the initiator transmits packets. This value can be used to check whether the connection works as expected.
-        # 
-        # Valid values: **3 to 10**.
         self.detect_multiplier = detect_multiplier
-        # The ID of the Express Cloud Connect (ECC) instance.
         self.ecc_id = ecc_id
-        # The status of the ECR. Valid values:
-        # 
-        # *   **Attached**
-        # *   **Attaching**
-        # *   **Detached**
-        # *   **Detaching**
-        # *   If no value is returned, the VBR is not attached to a CEN instance.
         self.ecr_attatch_status = ecr_attatch_status
-        # The ID of the Express Connect Router (ECR).
         self.ecr_id = ecr_id
-        # The ID of the Alibaba Cloud account (primary account)  to which the ECR belongs.
         self.ecr_owner_id = ecr_owner_id
-        # Indicates whether IPv6 is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.enable_ipv_6 = enable_ipv_6
-        # The IPv4 address of the VBR on the Alibaba Cloud side.
         self.local_gateway_ip = local_gateway_ip
-        # The IPv6 address of the VBR on the Alibaba Cloud side.
         self.local_ipv_6gateway_ip = local_ipv_6gateway_ip
-        # The time interval to receive BFD packets. Valid values: **200 to 1000**. Unit: milliseconds.
         self.min_rx_interval = min_rx_interval
-        # The time interval to send Bidirectional Forwarding Detection (BFD) packets. Valid values: **200 to 1000**. Unit: milliseconds.
         self.min_tx_interval = min_tx_interval
         self.mtu = mtu
-        # The VBR name.
         self.name = name
-        # The billing method of the VBR. Valid values:
-        # 
-        # *   **PrePaid:** subscription. If you choose this billing method, make sure that your account supports balance payments or credit payments.
-        # *   **PostPaid:** pay-as-you-go.
         self.pconn_vbr_charge_type = pconn_vbr_charge_type
-        # The time when the VBR expires.
         self.pconn_vbr_expire_time = pconn_vbr_expire_time
-        # The IPv4 address of the VBR on the user side.
         self.peer_gateway_ip = peer_gateway_ip
-        # The IPv6 address of the VBR on the user side.
         self.peer_ipv_6gateway_ip = peer_ipv_6gateway_ip
-        # The subnet mask for the IPv6 addresses on the user side and on the Alibaba Cloud side.
         self.peering_ipv_6subnet_mask = peering_ipv_6subnet_mask
-        # The subnet mask for the IPv4 addresses on the Alibaba Cloud side and on the user side.
         self.peering_subnet_mask = peering_subnet_mask
-        # The business status of the Express Connect circuit. Valid values:
-        # 
-        # *   **Normal:** The Express Connect circuit is running as normal.
-        # *   **FinancialLocked:** The Express Connect circuit is locked due to overdue payments.
         self.physical_connection_business_status = physical_connection_business_status
-        # The ID of the Express Connect circuit to which the VBR belongs.
         self.physical_connection_id = physical_connection_id
-        # The ID of the account to which the Express Connect circuit belongs.
         self.physical_connection_owner_uid = physical_connection_owner_uid
-        # The status of the Express Connect circuit. Valid values:
-        # 
-        # *   **Initial:** The application is under review.
-        # *   **Approved**: The application is approved.
-        # *   **Allocating**: The system is allocating resources.
-        # *   **Allocated**: The Express Connect circuit is under construction.
-        # *   **Confirmed**: The Express Connect circuit is to be confirmed.
-        # *   **Enabled**: The Express Connect circuit is enabled.
-        # *   **Rejected**: The application is rejected.
-        # *   **Canceled**: The application is canceled.
-        # *   **Allocation Failed:** The system failed to allocate resources.
-        # *   **Terminated:** The Express Connect circuit is disabled.
         self.physical_connection_status = physical_connection_status
-        # The last time when the status of the VBR changed from **terminated** to **active**.
         self.recovery_time = recovery_time
-        # The resource group ID.
-        # 
-        # For more information about resource groups, see [Resource groups](https://help.aliyun.com/document_detail/94475.html).
         self.resource_group_id = resource_group_id
-        # The ID of the route table of the VBR.
         self.route_table_id = route_table_id
-        # Indicates whether to allow service access between data centers. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
-        # 
-        # >  If no value is returned, service access between data centers is not allowed.
         self.sitelink_enable = sitelink_enable
-        # The status of the VBR. Valid values:
-        # 
-        # *   **unconfirmed**
-        # *   **active**
-        # *   **terminating**
-        # *   **terminated**
-        # *   **recovering**
-        # *   **deleting:**
         self.status = status
-        # The tag of the resource.
         self.tags = tags
-        # The last time when the VBR was terminated.
         self.termination_time = termination_time
-        # The VBR type.
         self.type = type
-        # The VBR ID.
         self.vbr_id = vbr_id
-        # The VLAN ID of the VBR.
         self.vlan_id = vlan_id
-        # The ID of the VBR interface.
         self.vlan_interface_id = vlan_interface_id
 
     def validate(self):
@@ -597,9 +511,7 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the resource.
         self.key = key
-        # The tag value of the resource.
         self.value = value
 
     def validate(self):
@@ -682,63 +594,20 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
         vlan_id: str = None,
         vlan_interface_id: str = None,
     ):
-        # The circuit code of the Express Connect circuit, which is provided by the connectivity provider.
         self.circuit_code = circuit_code
-        # Indicates whether IPv6 is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.enable_ipv_6 = enable_ipv_6
-        # The IPv4 address of the VBR on the Alibaba Cloud side.
         self.local_gateway_ip = local_gateway_ip
-        # The IPv6 address of the VBR on the Alibaba Cloud side.
         self.local_ipv_6gateway_ip = local_ipv_6gateway_ip
-        # The IPv4 address of the VBR on the user side.
         self.peer_gateway_ip = peer_gateway_ip
-        # The IPv6 address of the VBR on the user side.
         self.peer_ipv_6gateway_ip = peer_ipv_6gateway_ip
-        # The subnet mask for the IPv6 addresses on the user side and on the Alibaba Cloud side.
-        # 
-        # Both IPv6 addresses must belong to the same subnet.
         self.peering_ipv_6subnet_mask = peering_ipv_6subnet_mask
-        # The subnet mask for the IPv4 addresses of the VBR on the user side and on the Alibaba Cloud side.
-        # 
-        # Both IPv4 addresses must belong to the same subnet.
         self.peering_subnet_mask = peering_subnet_mask
-        # The business status of the Express Connect circuit. Valid values:
-        # 
-        # *   **Normal:** The Express Connect circuit is running as normal.
-        # *   **FinancialLocked:** The Express Connect circuit is locked due to overdue payments.
         self.physical_connection_business_status = physical_connection_business_status
-        # The ID of the Express Connect circuit.
         self.physical_connection_id = physical_connection_id
-        # The ID of the account to which the Express Connect circuit belongs.
         self.physical_connection_owner_uid = physical_connection_owner_uid
-        # The status of the Express Connect circuit. Valid values:
-        # 
-        # *   **Initial:** The application is under review.
-        # *   **Approved**: The application is approved.
-        # *   **Allocating**: The system is allocating resources.
-        # *   **Allocated**: The Express Connect circuit is under construction.
-        # *   **Confirmed**: The Express Connect circuit is to be confirmed.
-        # *   **Enabled**: The Express Connect circuit is enabled.
-        # *   **Rejected**: The application is rejected.
-        # *   **Canceled**: The application is canceled.
-        # *   **Allocation Failed:** The system failed to allocate resources.
-        # *   **Terminated:** The Express Connect circuit is disabled.
         self.physical_connection_status = physical_connection_status
-        # The status of the VBR. Valid values:
-        # 
-        # *   **unconfirmed**
-        # *   **active:**
-        # *   **terminating**
-        # *   **terminated**
-        # *   **recovering**
-        # *   **deleting:**
         self.status = status
-        # The VLAN ID of the VBR.
         self.vlan_id = vlan_id
-        # The ID of the VBR interface, which can be used as a next hop of a VBR route.
         self.vlan_interface_id = vlan_interface_id
 
     def validate(self):
@@ -887,17 +756,8 @@ class DescribeVirtualBorderRoutersResponseBodyVirtualBorderRouterSetVirtualBorde
         cen_owner_id: int = None,
         cen_status: str = None,
     ):
-        # The CEN instance ID.
         self.cen_id = cen_id
-        # The ID of the account to which the CEN instance belongs.
         self.cen_owner_id = cen_owner_id
-        # The status of the CEN instance. Valid values:
-        # 
-        # *   **Attached**
-        # *   **Attaching**
-        # *   **Detached**
-        # *   **Detaching**
-        # *   If no value is returned, the VBR is not attached to a CEN instance.
         self.cen_status = cen_status
 
     def validate(self):

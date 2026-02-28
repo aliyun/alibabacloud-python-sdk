@@ -24,7 +24,6 @@ class DescribeVpnPbrRouteEntriesResponseBody(DaraModel):
         self.request_id = request_id
         # The number of entries returned.
         self.total_count = total_count
-        # The list of policy-based routes.
         self.vpn_pbr_route_entries = vpn_pbr_route_entries
 
     def validate(self):
@@ -121,39 +120,14 @@ class DescribeVpnPbrRouteEntriesResponseBodyVpnPbrRouteEntriesVpnPbrRouteEntry(D
         vpn_instance_id: str = None,
         weight: int = None,
     ):
-        # The time when the policy-based route was created. Unit: millisecond.
-        # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # The next hop of the policy-based route.
         self.next_hop = next_hop
-        # The ID of the tunnel associated with the next hop of the policy-based route.
-        # 
-        # This parameter is returned only if the VPN gateway supports IPsec-VPN connections in dual-tunnel mode.
         self.next_hop_tunnel_id = next_hop_tunnel_id
-        # The priority of the policy-based route.
-        # 
-        # A smaller value indicates a higher priority.
         self.priority = priority
-        # The destination CIDR block of the policy-based route.
         self.route_dest = route_dest
-        # The source CIDR block of the policy-based route.
         self.route_source = route_source
-        # The status of the policy-based route. Valid values:
-        # 
-        # *   **published**: advertised to the VPC route table.
-        # *   **normal**: not advertised to the VPC route table.
         self.state = state
-        # The ID of the VPN gateway.
         self.vpn_instance_id = vpn_instance_id
-        # The weight of the policy-based route.
-        # 
-        # For a VPN gateway that supports IPsec-VPN connections in single-tunnel mode, the weight of a policy-based route indicates the priority of the route.
-        # 
-        # *   **100**: a high priority If multiple policy-based routes with the same source CIDR block and destination CIDR block exist, the IPsec-VPN connection associated with the policy-based route is the active connection.
-        # *   **0**: a low priority If multiple policy-based routes with the same source CIDR block and destination CIDR block exist, the IPsec-VPN connection associated with the policy-based route is the standby connection.
-        # 
-        # >  For a VPN gateway that does not support IPsec-VPN connections in single-tunnel mode, this parameter does not take effect.
         self.weight = weight
 
     def validate(self):

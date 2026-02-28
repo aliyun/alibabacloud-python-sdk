@@ -24,7 +24,6 @@ class DescribeVSwitchesResponseBody(DaraModel):
         self.request_id = request_id
         # The total number of entries returned.
         self.total_count = total_count
-        # The details about the vSwitch.
         self.v_switches = v_switches
 
     def validate(self):
@@ -130,54 +129,23 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitch(DaraModel):
         vpc_id: str = None,
         zone_id: str = None,
     ):
-        # The number of available IP addresses in the vSwitch.
         self.available_ip_address_count = available_ip_address_count
-        # The IPv4 CIDR block of the vSwitch.
         self.cidr_block = cidr_block
-        # The time when the vSwitch was created.
         self.creation_time = creation_time
-        # The description of the vSwitch.
         self.description = description
-        # Indicates whether IPv6 is enabled for the vSwitch. If you enable IPv6, you must configure an IPv6 CIDR block for the vSwitch. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.enabled_ipv_6 = enabled_ipv_6
-        # The IPv6 CIDR block of the vSwitch.
         self.ipv_6cidr_block = ipv_6cidr_block
-        # Indicates whether the vSwitch is the default vSwitch. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.is_default = is_default
-        # The ID of the network access control list (ACL).
         self.network_acl_id = network_acl_id
-        # The ID of the Alibaba Cloud account to which the resource belongs.
         self.owner_id = owner_id
-        # The ID of the resource group to which the vSwitch belongs.
         self.resource_group_id = resource_group_id
-        # The information about the route table.
         self.route_table = route_table
-        # Indicates whether the vSwitch is shared.
-        # 
-        # *   If no value is returned, the vSwitch is a regular vSwitch.
-        # *   If **Shared** is returned, the vSwitch is shared.
-        # *   If **Sharing** is returned, the vSwitch is being shared.
         self.share_type = share_type
-        # The status of the vSwitch. Valid values:
-        # 
-        # *   **Pending**
-        # *   **Available**
         self.status = status
-        # The tags of the vSwitch.
         self.tags = tags
-        # The vSwitch ID.
         self.v_switch_id = v_switch_id
-        # The vSwitch name.
         self.v_switch_name = v_switch_name
-        # The ID of the VPC to which the vSwitch belongs.
         self.vpc_id = vpc_id
-        # The ID of the zone to which the vSwitch belongs.
         self.zone_id = zone_id
 
     def validate(self):
@@ -348,9 +316,7 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitchTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
         self.key = key
-        # The tag value.
         self.value = value
 
     def validate(self):
@@ -385,12 +351,7 @@ class DescribeVSwitchesResponseBodyVSwitchesVSwitchRouteTable(DaraModel):
         route_table_id: str = None,
         route_table_type: str = None,
     ):
-        # The ID of the route table that is associated with the vSwitch.
         self.route_table_id = route_table_id
-        # The type of the route table. Valid values:
-        # 
-        # *   **System**
-        # *   **Custom**
         self.route_table_type = route_table_type
 
     def validate(self):

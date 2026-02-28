@@ -22,7 +22,6 @@ class DescribeSnatTableEntriesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # Details of SNAT entries.
         self.snat_table_entries = snat_table_entries
         # The number of returned entries.
         self.total_count = total_count
@@ -122,33 +121,15 @@ class DescribeSnatTableEntriesResponseBodySnatTableEntriesSnatTableEntry(DaraMod
         source_vswitch_id: str = None,
         status: str = None,
     ):
-        # Whether to enable IP affinity. Values:
-        # - **0**: Disable IP affinity. - **1**: Enable IP affinity.
-        # > After enabling the IP affinity switch, if an SNAT entry is bound to multiple EIPs or NAT IPs, the same client will use the same EIP or NAT IP for access. Otherwise, the client will randomly select from the bound EIPs or NAT IPs for access.
         self.eip_affinity = eip_affinity
-        # The ID of the NAT gateway to which the SNAT entry belongs.
         self.nat_gateway_id = nat_gateway_id
-        # Elastic Network Interface ID
         self.network_interface_id = network_interface_id
-        # The ID of the SNAT entry.
         self.snat_entry_id = snat_entry_id
-        # The name of the SNAT entry.
         self.snat_entry_name = snat_entry_name
-        # *   When you query SNAT entries of Internet NAT gateways, this parameter indicates the EIP in an SNAT entry.
-        # *   When you query SNAT entries of VPC NAT gateways, this parameter indicates the NAT IP address in an SNAT entry.
         self.snat_ip = snat_ip
-        # The ID of the SNAT table to which the SNAT entry belongs.
         self.snat_table_id = snat_table_id
-        # The source CIDR block specified in the SNAT entry.
         self.source_cidr = source_cidr
-        # *   When you query SNAT entries of Internet NAT gateways, this parameter indicates the ID of the vSwitch that uses SNAT to access the Internet.
-        # *   When you query SNAT entries of VPC NAT gateways, this parameter indicates the ID of the vSwitch that uses SNAT to access external networks.
         self.source_vswitch_id = source_vswitch_id
-        # The status of the SNAT entry. Valid values:
-        # 
-        # *   **Pending**
-        # *   **Available**
-        # *   **Deleting**
         self.status = status
 
     def validate(self):

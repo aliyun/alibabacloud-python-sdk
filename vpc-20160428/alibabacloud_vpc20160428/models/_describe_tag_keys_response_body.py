@@ -21,7 +21,6 @@ class DescribeTagKeysResponseBody(DaraModel):
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # The list of tag keys.
         self.tag_keys = tag_keys
 
     def validate(self):
@@ -99,12 +98,7 @@ class DescribeTagKeysResponseBodyTagKeysTagKey(DaraModel):
         tag_key: str = None,
         type: str = None,
     ):
-        # The tag key.
         self.tag_key = tag_key
-        # The type of the tag key. Valid values:
-        # 
-        # *   **Custom**: custom
-        # *   **System**: system
         self.type = type
 
     def validate(self):

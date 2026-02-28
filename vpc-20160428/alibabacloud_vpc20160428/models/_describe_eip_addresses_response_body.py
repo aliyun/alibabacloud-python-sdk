@@ -16,7 +16,6 @@ class DescribeEipAddressesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # Details of the EIPs.
         self.eip_addresses = eip_addresses
         # The page number.
         self.page_number = page_number
@@ -154,168 +153,47 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddress(DaraModel):
         vpc_id: str = None,
         zone: str = None,
     ):
-        # The ID of the EIP.
         self.allocation_id = allocation_id
-        # The time when the EIP was created. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.allocation_time = allocation_time
-        # The maximum bandwidth of the EIP. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The maximum bandwidth of the Internet Shared Bandwidth instance with which the EIP is associated. Unit: Mbit/s.
         self.bandwidth_package_bandwidth = bandwidth_package_bandwidth
-        # The ID of the Internet Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
-        # The type of the bandwidth. Only **CommonBandwidthPackage** may be returned, which indicates Internet Shared Bandwidth.
         self.bandwidth_package_type = bandwidth_package_type
-        # The service type. Valid values:
-        # 
-        # *   **CloudBox** Only cloud box users can select this type.
-        # *   **Default** (default)
         self.biz_type = biz_type
-        # The service status of the EIP. Valid values:
-        # 
-        # *   **Normal**
-        # *   **OperationLock**
-        # *   **Unactivated**
         self.business_status = business_status
-        # The billing method of the EIP. Valid values:
-        # 
-        # *   **PostPaid**: pay-as-you-go.
-        # *   **PrePaid**: subscription.
         self.charge_type = charge_type
-        # Indicates whether deletion protection is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.deletion_protection = deletion_protection
-        # The description of the EIP.
         self.description = description
-        # The maximum bandwidth of the EIP when it is not associated with an Internet Shared Bandwidth instance. Unit: Mbit/s.
         self.eip_bandwidth = eip_bandwidth
-        # The time when the EIP expires. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.expired_time = expired_time
-        # Indicates whether fine-grained monitoring is enabled for the EIP. Valid values:
-        # 
-        # *   **false**
-        # *   **true**
         self.hdmonitor_status = hdmonitor_status
-        # Indicates whether renewal data is included. Valid values:
-        # 
-        # *   **false**
-        # *   **true** A value of **true** is returned only when **IncludeReservationData** is set to **true** and some orders have not taken effect.
         self.has_reservation_data = has_reservation_data
-        # The line type. Valid values:
-        # 
-        # *   **BGP**: BGP (Multi-ISP). The BGP (Multi-ISP) line is supported in all regions.
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro lines. BGP (Multi-ISP) Pro line is supported only in the China (Hong Kong), Singapore, Japan (Tokyo), Malaysia (Kuala Lumpur), Philippines (Manila), Indonesia (Jakarta), and Thailand (Bangkok) regions.
-        # 
-        # For more information about BGP (Multi-ISP) and BGP (Multi-ISP) Pro, see the [Line types](https://help.aliyun.com/document_detail/32321.html) section of the "What is EIP?" topic.
-        # 
-        # If you are allowed to use single-ISP bandwidth, one of the following values may be returned:
-        # 
-        # *   **ChinaTelecom**
-        # *   **ChinaUnicom**
-        # *   **ChinaMobile**
-        # *   **ChinaTelecom_L2**
-        # *   **ChinaUnicom_L2**
-        # *   **ChinaMobile_L2**
-        # 
-        # If your services are deployed in China East 1 Finance, **BGP_FinanceCloud** is returned.
         self.isp = isp
-        # The ID of the associated instance.
         self.instance_id = instance_id
-        # The region ID of the associated instance.
         self.instance_region_id = instance_region_id
-        # The type of the associated instance. Valid values:
-        # 
-        # *   **EcsInstance**: an ECS instance in a VPC.
-        # *   **SlbInstance**: a CLB instance in a VPC.
-        # *   **Nat**: a NAT gateway.
-        # *   **HaVip**: an HAVIP.
-        # *   **NetworkInterface**: a secondary ENI.
-        # *   **IpAddress**: an IP address.
         self.instance_type = instance_type
-        # The metering method of the EIP. Valid values:
-        # 
-        # *   **PayByBandwidth**
-        # *   **PayByTraffic**
         self.internet_charge_type = internet_charge_type
-        # The EIP.
         self.ip_address = ip_address
-        # The association mode. Valid values:
-        # - **NAT**: NAT mode
-        # - **MULTI_BINDED**: multi-EIP-to-ENI mode
-        # - **BINDED**: cut-through mode
         self.mode = mode
-        # The name of the EIP.
         self.name = name
-        # The network type. Only **public** may be returned.
         self.netmode = netmode
-        # The details about the locked EIP.
         self.operation_locks = operation_locks
-        # The private IP address of the secondary ENI with which the EIP is associated.
         self.private_ip_address = private_ip_address
-        # The ID of the IP address pool to which the EIP belongs.
         self.public_ip_address_pool_id = public_ip_address_pool_id
-        # The region ID of the EIP.
         self.region_id = region_id
-        # The time when the renewal took effect. The time follows the ISO 8601 standard in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.reservation_active_time = reservation_active_time
-        # The maximum bandwidth after the renewal takes effect. Unit: Mbit/s.
         self.reservation_bandwidth = reservation_bandwidth
-        # The metering method that is used after the renewal takes effect. Valid values:
-        # 
-        # *   **PayByBandwidth**
-        # *   **PayByTraffic**
         self.reservation_internet_charge_type = reservation_internet_charge_type
-        # The type of the renewal order. Valid values:
-        # 
-        # *   **RENEWCHANGE**: renewal with an upgrade or a downgrade.
-        # *   **TEMP_UPGRADE**: temporary upgrade.
-        # *   **UPGRADE**: upgrade.
         self.reservation_order_type = reservation_order_type
-        # The resource group ID.
         self.resource_group_id = resource_group_id
-        # Indicates whether level-2 throttling is configured. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.second_limited = second_limited
-        # The edition of Anti-DDoS.
-        # 
-        # *   If an empty value is returned, it indicates that Anti-DDoS Origin Basic is used.
-        # *   If **AntiDDoS_Enhanced** is returned, it indicates that Anti-DDoS Pro/Premium is used.
         self.security_protection_types = security_protection_types
-        # The ID of the contiguous EIP group.
-        # 
-        # This value is returned only when you query contiguous EIPs.
         self.segment_instance_id = segment_instance_id
-        # The ID of the service provider to which the managed instance belongs.
-        # > This is only valid when the ServiceManaged parameter is set to True.
         self.service_id = service_id
-        # Indicates whether the instance is managed. Valid values:
-        # 
-        # *   **1**: yes
-        # *   **0**: no
         self.service_managed = service_managed
-        # The status of the EIP. Valid values:
-        # 
-        # *   **Associating**
-        # *   **Unassociating**
-        # *   **InUse**
-        # *   **Available**
-        # *   **Releasing**
         self.status = status
-        # The tags of the EIP.
         self.tags = tags
-        # The ID of the VPC in which an IPv4 gateway is created and that is deployed in the same region as the EIP.
-        # 
-        # When you associate an EIP with an IP address, the system can enable the IP address to access the Internet based on VPC route configurations.
-        # 
-        # >  This parameter is returned if the value of **InstanceType** is **IpAddress**. In this case, the EIP is associated with an IP address.
         self.vpc_id = vpc_id
-        # The zone of the EIP.
-        # 
-        # This parameter is returned only when the service type is CloudBox.
         self.zone = zone
 
     def validate(self):
@@ -633,9 +511,7 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddressTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key of the EIP.
         self.key = key
-        # The tag value of the EIP.
         self.value = value
 
     def validate(self):
@@ -731,11 +607,6 @@ class DescribeEipAddressesResponseBodyEipAddressesEipAddressOperationLocksLockRe
         self,
         lock_reason: str = None,
     ):
-        # The reason why the EIP is locked. Valid values:
-        # 
-        # *   **financial**: The EIP is locked due to overdue payments.
-        # *   **security**: The instance is locked for security purposes.
-        # *   **sharedPool**: The shared IP address pool is locked due to overdue payments.
         self.lock_reason = lock_reason
 
     def validate(self):

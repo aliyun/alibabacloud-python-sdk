@@ -16,7 +16,6 @@ class DescribeIPv6TranslatorAclListsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The list of network ACLs.
         self.ipv_6translator_acls = ipv_6translator_acls
         # The page number.
         self.page_number = page_number
@@ -114,9 +113,7 @@ class DescribeIPv6TranslatorAclListsResponseBodyIpv6TranslatorAclsIPv6Translator
         acl_id: str = None,
         acl_name: str = None,
     ):
-        # The ACL ID.
         self.acl_id = acl_id
-        # The ACL name.
         self.acl_name = acl_name
 
     def validate(self):

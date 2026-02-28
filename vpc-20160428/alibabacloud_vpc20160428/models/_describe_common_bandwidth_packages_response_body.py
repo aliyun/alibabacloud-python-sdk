@@ -16,7 +16,6 @@ class DescribeCommonBandwidthPackagesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the Internet Shared Bandwidth instance.
         self.common_bandwidth_packages = common_bandwidth_packages
         # The page number.
         self.page_number = page_number
@@ -138,105 +137,31 @@ class DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBa
         tags: main_models.DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBandwidthPackageTags = None,
         zone: str = None,
     ):
-        # The maximum bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The ID of the Internet Shared Bandwidth instance.
         self.bandwidth_package_id = bandwidth_package_id
-        # The service type of the Internet Shared Bandwidth instance. Valid values:
-        # 
-        # *   **CloudBox** The cloud box. Only cloud box users can select this type.
-        # *   **Default** (default): The general service type.
         self.biz_type = biz_type
-        # The service status of the Internet Shared Bandwidth instance. Valid values:
-        # 
-        # *   **Normal**: The Internet Shared Bandwidth instance runs as expected.
-        # *   **FinancialLocked**: An overdue payment occurs in the Internet Shared Bandwidth instance
-        # *   **Unactivated**: The Internet Shared Bandwidth instance is not activated.
         self.business_status = business_status
-        # The time when the Internet Shared Bandwidth instance was created. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.creation_time = creation_time
-        # Indicates whether deletion protection is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.deletion_protection = deletion_protection
-        # The description of the Internet Shared Bandwidth instance.
         self.description = description
-        # The time when the Internet Shared Bandwidth instance expired. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.expired_time = expired_time
-        # Indicates whether the information about pending orders is returned. Valid values:
-        # 
-        # *   **false**
-        # *   **true**
         self.has_reservation_data = has_reservation_data
-        # The line type. Valid values:
-        # 
-        # *   **BGP**: BGP (Multi-ISP) line The BGP (Multi-ISP) line is supported in all regions.
-        # *   **BGP_PRO**: BGP (Multi-ISP) Pro line The BGP (Multi-ISP) Pro line is supported in the China (Hong Kong), Singapore (Singapore), Japan (Tokyo), Philippines (Manila), Malaysia (Kuala Lumpur), Indonesia (Jakarta), and Thailand (Bangkok) regions.
-        # 
-        # If you are allowed to use single-ISP bandwidth, one of the following values is returned:
-        # 
-        # *   **ChinaTelecom**
-        # *   **ChinaUnicom**
-        # *   **ChinaMobile**
-        # *   **ChinaTelecom_L2**
-        # *   **ChinaUnicom_L2**
-        # *   **ChinaMobile_L2**
-        # 
-        # If your services are deployed in China East 1 Finance, **BGP_FinanceCloud** is returned.
         self.isp = isp
-        # The billing method of the Internet Shared Bandwidth instance. Valid value:
-        # 
-        # **PostPaid**: pay-as-you-go
         self.instance_charge_type = instance_charge_type
-        # The metering method of the Internet Shared Bandwidth instance. Valid value:
-        # 
-        # **PayByTraffic**
         self.internet_charge_type = internet_charge_type
-        # The name of the Internet Shared Bandwidth instance.
         self.name = name
-        # The elastic IP addresses (EIPs) that are associated with the Internet Shared Bandwidth instance.
         self.public_ip_addresses = public_ip_addresses
-        # The percentage of the minimum bandwidth commitment. Only **20** is returned.
-        # 
-        # >  This parameter is supported only on the Alibaba Cloud China site.
         self.ratio = ratio
-        # The ID of the region where the Internet Shared Bandwidth instance resides.
         self.region_id = region_id
-        # The time when the renewal took effect. The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format.
         self.reservation_active_time = reservation_active_time
-        # The new maximum bandwidth after the configurations are changed. Unit: Mbit/s.
         self.reservation_bandwidth = reservation_bandwidth
-        # The metering method after the configurations are changed. Valid value:
-        # 
-        # **PayByTraffic**
         self.reservation_internet_charge_type = reservation_internet_charge_type
-        # The renewal method. Valid values:
-        # 
-        # *   **RENEWCHANGE**: renewal with a specification change
-        # *   **TEMP_UPGRADE**: renewal with a temporary upgrade
-        # *   **UPGRADE**: renewal with an upgrade
         self.reservation_order_type = reservation_order_type
-        # The ID of the resource group.
         self.resource_group_id = resource_group_id
-        # The editions of Anti-DDoS.
-        # 
-        # *   If this parameter is empty, Anti-DDoS Origin Basic is enabled.
-        # *   If **AntiDDoS_Enhanced** is returned, Anti-DDoS Pro/Premium is enabled.
         self.security_protection_types = security_protection_types
-        # Indicates whether the resource is created by the service account. Valid values:
-        # 
-        # *   **0**: The resource is not created by the service account.
-        # *   **1**: The resource is created by the service account.
         self.service_managed = service_managed
-        # The status of the Internet Shared Bandwidth instance. Valid values:
-        # 
-        # *   **Available**: The Internet Shared Bandwidth instance is available.
-        # *   **Modifying**: The Internet Shared Bandwidth instance is being modified.
         self.status = status
-        # The tag that is added to the Internet Shared Bandwidth instance.
         self.tags = tags
-        # The zone of the Internet Shared Bandwidth instance. This parameter is returned only when BizType is set to CloudBox. If BizType is set to Default, an empty value is returned.
         self.zone = zone
 
     def validate(self):
@@ -458,9 +383,7 @@ class DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBa
         key: str = None,
         value: str = None,
     ):
-        # The tag key that is added to the Internet Shared Bandwidth instance.
         self.key = key
-        # The tag value that is added to the Internet Shared Bandwidth instance.
         self.value = value
 
     def validate(self):
@@ -558,14 +481,8 @@ class DescribeCommonBandwidthPackagesResponseBodyCommonBandwidthPackagesCommonBa
         bandwidth_package_ip_relation_status: str = None,
         ip_address: str = None,
     ):
-        # The ID of the EIP.
         self.allocation_id = allocation_id
-        # Indicates whether the EIP is associated with the Internet Shared Bandwidth instance. Valid values:
-        # 
-        # *   **BINDED**
-        # *   **BINDING**
         self.bandwidth_package_ip_relation_status = bandwidth_package_ip_relation_status
-        # The public IP address.
         self.ip_address = ip_address
 
     def validate(self):

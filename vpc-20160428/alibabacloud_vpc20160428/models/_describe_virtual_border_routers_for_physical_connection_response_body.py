@@ -24,7 +24,6 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionResponseBody(DaraModel):
         self.request_id = request_id
         # The number of entries returned.
         self.total_count = total_count
-        # The information about VBRs.
         self.virtual_border_router_for_physical_connection_set = virtual_border_router_for_physical_connection_set
 
     def validate(self):
@@ -136,79 +135,29 @@ class DescribeVirtualBorderRoutersForPhysicalConnectionResponseBodyVirtualBorder
         vbr_owner_uid: int = None,
         vlan_id: int = None,
     ):
-        # The time when the VBR was first activated.
         self.activation_time = activation_time
-        # The bandwidth of the VBR that is associated with the Express Connect circuit. Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The status of the bandwidth. Valid values:
-        # 
-        # *   **Active**
-        # *   **Inactive**
         self.bandwidth_status = bandwidth_status
-        # The circuit code of the Express Connect circuit. The circuit code is provided by the connectivity provider.
         self.circuit_code = circuit_code
-        # The time when the VBR was created.
         self.creation_time = creation_time
-        # The ID of the ECC instance.
         self.ecc_id = ecc_id
-        # Indicates whether IPv6 is enabled. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.enable_ipv_6 = enable_ipv_6
-        # The IPv4 address of the gateway device on the Alibaba Cloud side.
         self.local_gateway_ip = local_gateway_ip
-        # The IPv6 address of the gateway device on the Alibaba Cloud side.
         self.local_ipv_6gateway_ip = local_ipv_6gateway_ip
-        # The status of the VBR associated with the Express Connect circuit. Valid values:
-        # 
-        # *   **Normal**
-        # *   **FinancialLocked**
         self.pconn_vbr_bussiness_status = pconn_vbr_bussiness_status
-        # The billing method of the VBR. Valid values:
-        # 
-        # *   **PrePaid**: subscription. If you choose this billing method, make sure that your Apsara Stack account supports balance payments or credit payments.
-        # *   **PostPaid**: pay-as-you-go.
         self.pconn_vbr_charge_type = pconn_vbr_charge_type
-        # The time when the VBR associated with the Express Connect circuit expires.
         self.pconn_vbr_expire_time = pconn_vbr_expire_time
-        # The IPv4 address of the gateway device on the user side.
         self.peer_gateway_ip = peer_gateway_ip
-        # The IPv6 address of the gateway device on the user side.
-        # 
-        # This parameter is required when you create a VBR for the owner of the Express Connect circuit. You can ignore this parameter when you create a VBR for another Alibaba Cloud account.
         self.peer_ipv_6gateway_ip = peer_ipv_6gateway_ip
-        # The subnet mask for the IPv6 addresses of the gateway devices on the Alibaba Cloud side and on the user side.
-        # 
-        # The two IPv6 addresses must fall within the same subnet.
         self.peering_ipv_6subnet_mask = peering_ipv_6subnet_mask
-        # The subnet mask of the IPv4 addresses configured on the user side and Alibaba Cloud side.
-        # 
-        # The two IPv4 addresses must fall within the same subnet.
         self.peering_subnet_mask = peering_subnet_mask
-        # The last time when the status of the VBR changed from Terminated to Active.
         self.recovery_time = recovery_time
-        # The status of the VBR. Valid values:
-        # 
-        # *   **unconfirmed**
-        # *   **active**
-        # *   **terminating**
-        # *   **terminated**
-        # *   **recovering**
-        # *   **deleting**
         self.status = status
-        # The last time when the VBR was disabled.
         self.termination_time = termination_time
-        # The VBR type.
         self.type = type
-        # The VBR ID.
         self.vbr_id = vbr_id
         self.vbr_name = vbr_name
-        # The ID of the Alibaba Cloud account to which the VBR belongs.
-        # 
-        # If the owner of the VBR is the same as that of the Express Connect circuit, this parameter is empty.
         self.vbr_owner_uid = vbr_owner_uid
-        # The VLAN ID of the VBR.
         self.vlan_id = vlan_id
 
     def validate(self):

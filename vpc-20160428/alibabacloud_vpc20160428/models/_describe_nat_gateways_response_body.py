@@ -16,7 +16,6 @@ class DescribeNatGatewaysResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details about the NAT gateway.
         self.nat_gateways = nat_gateways
         # The page number of the returned page.
         self.page_number = page_number
@@ -144,116 +143,37 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGateway(DaraModel):
         tags: main_models.DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTags = None,
         vpc_id: str = None,
     ):
-        # Access mode for reverse access to VPC NAT gateway.
         self.access_mode = access_mode
-        # Indicates whether automatic payment is enabled. Valid values:
-        # 
-        # *   **false**: no
-        # *   **true**: yes
         self.auto_pay = auto_pay
-        # The status of the NAT gateway. Valid values:
-        # 
-        # *   **Normal**: normal
-        # *   **FinancialLocked**: locked due to overdue payments
         self.business_status = business_status
-        # The time when the NAT gateway was created.
         self.creation_time = creation_time
-        # Indicates whether the deletion protection feature is enabled. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
         self.deletion_protection = deletion_protection
-        # The description of the NAT gateway.
         self.description = description
-        # Indicates whether the traffic monitoring feature is enabled. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
         self.ecs_metric_enabled = ecs_metric_enabled
-        # The mode in which the NAT gateway is associated with an elastic IP address (EIP). Valid values:
-        # 
-        # *   **MULTI_BINDED**: multi-EIP-to-ENI mode
-        # *   **NAT**: NAT mode, which is compatible with IPv4 addresses.
-        # 
-        # >  Note: If you use the NAT mode, the EIP occupies one private IP address on the vSwitch of the NAT gateway. Make sure that the vSwitch has sufficient private IP addresses. Otherwise, the NAT gateway fails to be associated with the EIP. In NAT mode, you can associate a NAT gateway with up to 50 EIPs.
         self.eip_bind_mode = eip_bind_mode
-        # Whether to enable session logging, with values:
-        # - **true**: Session logging is enabled. 
-        # - **false**: Session logging is disabled.
         self.enable_session_log = enable_session_log
-        # The time when the NAT gateway expires.
         self.expired_time = expired_time
-        # The ID of the DNAT table.
         self.forward_table_ids = forward_table_ids
-        # The ID of the FULLNAT table.
         self.full_nat_table_ids = full_nat_table_ids
-        # Indicates whether the ICMP non-retrieval feature is enabled. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
         self.icmp_reply_enabled = icmp_reply_enabled
-        # The billing method of the NAT gateway. The value is set to **PostPaid**, which indicates the pay-as-you-go billing method.
         self.instance_charge_type = instance_charge_type
-        # The metering method of the NAT gateway. Valid values:
-        # 
-        # *   **PayBySpec**: pay-by-specification
-        # *   **PayByLcu**: pay-by-CU
         self.internet_charge_type = internet_charge_type
-        # The list of elastic IP addresses (EIPs) that are associated with the Internet NAT gateway.
         self.ip_lists = ip_lists
-        # List of NAT IP prefix address segments.
         self.ip_prefix_list = ip_prefix_list
-        # The name of the NAT gateway.
         self.name = name
-        # The ID of the NAT gateway.
         self.nat_gateway_id = nat_gateway_id
-        # The private network information about the enhanced Internet NAT gateway.
-        # 
-        # >  If **NatType** is set to **Normal**, all parameters returned in this list are empty.
         self.nat_gateway_private_info = nat_gateway_private_info
-        # The type of the NAT gateway. The value is set to **Enhanced** (enhanced NAT gateway).
         self.nat_type = nat_type
-        # The type of NAT gateway. Valid values:
-        # 
-        # *   **internet**: an Internet NAT gateway
-        # *   **intranet**: a VPC NAT gateway
         self.network_type = network_type
-        # Indicates whether the NAT gateway supports PrivateLink. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
         self.private_link_enabled = private_link_enabled
-        # The mode that is used by PrivateLink. Valid values:
-        # 
-        # *   **FullNat**: the FULLNAT mode
-        # *   **Geneve**: the GENEVE mode
         self.private_link_mode = private_link_mode
-        # The ID of the region where the NAT gateway is deployed.
         self.region_id = region_id
-        # The ID of the resource group to which the contiguous EIP group belongs.
         self.resource_group_id = resource_group_id
-        # Indicates whether the firewall feature is enabled. Valid values:
-        # 
-        # *   **false**: no
-        # *   **true**: yes
         self.security_protection_enabled = security_protection_enabled
-        # The ID of the SNAT table of the NAT gateway.
         self.snat_table_ids = snat_table_ids
-        # The size of the NAT gateway. An empty value is returned for the parameter.
-        # 
-        # If **InternetChargeType** is set to **PayByLcu**, an empty value is returned.
         self.spec = spec
-        # The status of the NAT gateway. Valid values:
-        # 
-        # *   **Creating**: After you send a request to create a NAT gateway, the system creates the NAT gateway in the background. The NAT gateway remains in the Creating state until the operation is completed.
-        # *   **Available**: The NAT gateway remains in a stable state after the NAT gateway is created.
-        # *   **Modifying**: After you send a request to modify a NAT gateway, the system modifies the NAT gateway in the background. The NAT gateway remains in the Modifying state until the operation is completed.
-        # *   **Deleting**: After you send a request to delete a NAT gateway, the system deletes the NAT gateway in the background. The NAT gateway remains in the Deleting state until the operation is completed.
-        # *   **Converting**: After you send a request to upgrade a standard NAT gateway to an enhanced NAT gateway, the system upgrades the NAT gateway in the background. The NAT gateway remains in the Converting state until the operation is completed.
         self.status = status
-        # The tags that are added to the resource group.
         self.tags = tags
-        # The ID of the VPC where the NAT gateway is deployed.
         self.vpc_id = vpc_id
 
     def validate(self):
@@ -526,9 +446,7 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayTagsTag(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key of the instance.
         self.tag_key = tag_key
-        # The tag value of the instance.
         self.tag_value = tag_value
 
     def validate(self):
@@ -596,24 +514,13 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayNatGatewayPrivateInfo(
         private_ip_address: str = None,
         vswitch_id: str = None,
     ):
-        # The ID of the elastic network interface (ENI).
         self.eni_instance_id = eni_instance_id
-        # The mode in which the ENI is associated with the NAT gateway.
-        # 
-        # *   **indirect**: non-cut-through mode
-        # *   If an empty value is returned, it indicates that the cut-through mode is used.
         self.eni_type = eni_type
-        # The zone to which the NAT gateway belongs.
         self.iz_no = iz_no
-        # The maximum bandwidth. Unit: Mbit/s.
         self.max_bandwidth = max_bandwidth
-        # The number of new connections to the NAT gateway. Unit: connections per second.
         self.max_session_establish_rate = max_session_establish_rate
-        # The number of concurrent connections to the NAT gateway. Unit: connections.
         self.max_session_quota = max_session_quota
-        # The private IP address.
         self.private_ip_address = private_ip_address
-        # The ID of the vSwitch to which the NAT gateway belongs.
         self.vswitch_id = vswitch_id
 
     def validate(self):
@@ -718,7 +625,6 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpPrefixListIpPrefixLi
         self,
         ip_prefix: str = None,
     ):
-        # NAT IP prefix address range
         self.ip_prefix = ip_prefix
 
     def validate(self):
@@ -785,23 +691,10 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayIpListsIpList(DaraMode
         snat_entry_enabled: bool = None,
         using_status: str = None,
     ):
-        # The ID of the EIP associated with the NAT gateway.
         self.allocation_id = allocation_id
-        # The IP address of the EIP associated with the NAT gateway.
         self.ip_address = ip_address
-        # The private IP address of the NAT gateway.
         self.private_ip_address = private_ip_address
-        # Indicates whether IP addresses that are used in DNAT entries can be specified in SNAT entries. Valid values:
-        # 
-        # *   **true**: yes
-        # *   **false**: no
         self.snat_entry_enabled = snat_entry_enabled
-        # The association between the EIP and the Internet NAT gateway. Valid values:
-        # 
-        # *   **UsedByForwardTable**: The EIP is specified in a DNAT entry.
-        # *   **UsedBySnatTable**: The EIP is specified in an SNAT entry.
-        # *   **UsedByForwardSnatTable**: The EIP is specified in both an SNAT entry and a DNAT entry.
-        # *   **Idle**: The EIP is not specified in a DNAT or SNAT entry.
         self.using_status = using_status
 
     def validate(self):
@@ -908,12 +801,7 @@ class DescribeNatGatewaysResponseBodyNatGatewaysNatGatewayAccessMode(DaraModel):
         mode_value: str = None,
         tunnel_type: str = None,
     ):
-        # Access mode, with values:
-        # - **route**: Route mode.
-        # - **tunnel**: Tunnel mode.
         self.mode_value = mode_value
-        # Tunnel mode type:
-        # - **geneve**: Geneve type.
         self.tunnel_type = tunnel_type
 
     def validate(self):

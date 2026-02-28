@@ -22,7 +22,6 @@ class DescribeSslVpnClientCertsResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The information about the SSL client certificates.
         self.ssl_vpn_client_cert_keys = ssl_vpn_client_cert_keys
         # The number of entries returned.
         self.total_count = total_count
@@ -120,31 +119,13 @@ class DescribeSslVpnClientCertsResponseBodySslVpnClientCertKeysSslVpnClientCertK
         ssl_vpn_server_id: str = None,
         status: str = None,
     ):
-        # The timestamp generated when the SSL client certificate was created. Unit: milliseconds.
-        # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.create_time = create_time
-        # The timestamp generated when the SSL client certificate expires. Unit: milliseconds.
-        # 
-        # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
-        # The name of the SSL client certificate.
         self.name = name
-        # The region ID of the SSL client certificate.
         self.region_id = region_id
-        # The ID of the resource group to which the SSL client certificate belongs.
-        # 
-        # You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
         self.resource_group_id = resource_group_id
-        # The ID of the SSL client certificate.
         self.ssl_vpn_client_cert_id = ssl_vpn_client_cert_id
-        # The ID of the SSL server.
         self.ssl_vpn_server_id = ssl_vpn_server_id
-        # The status of the SSL client certificate. Valid values:
-        # 
-        # *   **expiring-soon**: The certificate expires in one week.
-        # *   **normal**
-        # *   **expired**
         self.status = status
 
     def validate(self):

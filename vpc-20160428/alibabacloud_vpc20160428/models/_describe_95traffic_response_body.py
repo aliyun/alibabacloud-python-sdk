@@ -71,7 +71,6 @@ class Describe95TrafficResponseBodyTraffic95Summary(DaraModel):
         self.internet_charge_type = internet_charge_type
         # The guaranteed bandwidth of the Internet Shared Bandwidth instance. Unit: Mbit/s.
         self.minimum_consume_bandwidth = minimum_consume_bandwidth
-        # The average bandwidth every 5 minutes in the inbound and outbound directions.
         self.traffic_95detail_list = traffic_95detail_list
 
     def validate(self):
@@ -169,13 +168,9 @@ class Describe95TrafficResponseBodyTraffic95SummaryTraffic95DetailListTraffic95D
         out_bandwidth: str = None,
         time: str = None,
     ):
-        # The sampled bandwidth value, which is the larger bandwidth value in the inbound and outbound directions within a sampling interval. Unit: Mbit/s.
         self.bill_bandwidth = bill_bandwidth
-        # The inbound bandwidth. Unit: Mbit/s.
         self.in_bandwidth = in_bandwidth
-        # The outbound bandwidth. Unit: Mbit/s.
         self.out_bandwidth = out_bandwidth
-        # The statistical time. The value is a string.
         self.time = time
 
     def validate(self):

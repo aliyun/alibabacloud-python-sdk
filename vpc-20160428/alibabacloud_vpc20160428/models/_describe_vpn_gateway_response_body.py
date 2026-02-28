@@ -77,8 +77,10 @@ class DescribeVpnGatewayResponseBody(DaraModel):
         # 
         # This value is a UNIX timestamp representing the number of milliseconds that have elapsed since the epoch time January 1, 1970, 00:00:00 UTC.
         self.end_time = end_time
-        # The ENIs created by the system for the VPN gateway.
         self.eni_instance_ids = eni_instance_ids
+        # Type of VPN gateway:
+        # - **Traditional**: Traditional-type VPN gateway, supports both IPSec and SSL.
+        # - **Enhanced.SiteToSite**: Enhanced Site-to-Site VPN gateway, only supports IPSec.
         self.gateway_type = gateway_type
         # *   If the VPN gateway supports IPsec-VPN connections in single-tunnel mode, the address is the IP address of the VPN gateway and can be used to create an IPsec-VPN connection or an SSL-VPN connection.
         # 
@@ -160,7 +162,6 @@ class DescribeVpnGatewayResponseBody(DaraModel):
         #     *   **true**
         #     *   **false**
         self.tag = tag
-        # The tags that are added to the VPN gateway.
         self.tags = tags
         # The ID of the vSwitch to which the VPN gateway belongs.
         self.v_switch_id = v_switch_id
@@ -408,9 +409,9 @@ class DescribeVpnGatewayResponseBodyTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The tag key.
+        # 标签键。
         self.key = key
-        # The tag value.
+        # 标签值。
         self.value = value
 
     def validate(self):

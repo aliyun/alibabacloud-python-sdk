@@ -14,14 +14,7 @@ class CreateHighReliablePhysicalConnectionResponseBody(DaraModel):
         physical_connection_list: main_models.CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionList = None,
         request_id: str = None,
     ):
-        # If the request fails the dry run, the following error codes and error messages may be returned:
-        # 
-        # - pconn.high.reliable.dryrun.error.disable.outbound.data.transfer.billing. Billing for outbound data transfer is not enabled.
-        # - pconn.high.reliable.dryrun.error.incompatable.device.capacity. No device in the access point supports advanced features.
-        # - pconn.high.reliable.dryrun.error.quota.exceeded. The quota is insufficient.
-        # - pconn.high.reliable.dryrun.error.not.enough.resource. The access point resources are insufficient.
         self.error_info_list = error_info_list
-        # The Express Connect circuits.
         self.physical_connection_list = physical_connection_list
         # The request ID.
         self.request_id = request_id
@@ -104,9 +97,7 @@ class CreateHighReliablePhysicalConnectionResponseBodyPhysicalConnectionListPhys
         instance_id: str = None,
         region_no: str = None,
     ):
-        # The ID of the Express Connect circuit.
         self.instance_id = instance_id
-        # The region ID of the Express Connect circuit.
         self.region_no = region_no
 
     def validate(self):
@@ -177,11 +168,8 @@ class CreateHighReliablePhysicalConnectionResponseBodyErrorInfoListErrorInfoList
         error_message: str = None,
         instance_id: str = None,
     ):
-        # Error codes.
         self.error_code = error_code
-        # The returned error message.
         self.error_message = error_message
-        # The ID of the Express Connect circuit.
         self.instance_id = instance_id
 
     def validate(self):

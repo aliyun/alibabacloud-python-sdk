@@ -16,7 +16,6 @@ class DescribeAccessPointsResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The information about the access point.
         self.access_point_set = access_point_set
         # The page number. Default value: **1**.
         self.page_number = page_number
@@ -121,28 +120,14 @@ class DescribeAccessPointsResponseBodyAccessPointSetAccessPointType(DaraModel):
         status: str = None,
         type: str = None,
     ):
-        # The feature model of the access point.
         self.access_point_feature_models = access_point_feature_models
-        # The ID of the access point.
         self.access_point_id = access_point_id
-        # The region ID of the access point.
         self.attached_region_no = attached_region_no
-        # The description of the access point.
         self.description = description
-        # The Internet service provider (ISP) of the access point. Valid values:
         self.host_operator = host_operator
-        # The location of the access point.
         self.location = location
-        # The name of the access point.
         self.name = name
-        # The status of the access point. Valid values:
-        # 
-        # *   **recommended**: The access point is ready for use.
-        # *   **hot**: A large number of Express Connect circuits are connected to the access point.
-        # *   **full**: The number of Express Connect circuits connected to the access point has reached the upper limit.
-        # *   **disabled**: The access point is unavailable.
         self.status = status
-        # The network type of the Express Connect circuit. Default value: **VPC**.
         self.type = type
 
     def validate(self):
@@ -256,9 +241,7 @@ class DescribeAccessPointsResponseBodyAccessPointSetAccessPointTypeAccessPointFe
         feature_key: str = None,
         feature_value: str = None,
     ):
-        # The feature of the access point.
         self.feature_key = feature_key
-        # The feature value of the access point.
         self.feature_value = feature_value
 
     def validate(self):

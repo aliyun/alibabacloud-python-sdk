@@ -22,7 +22,6 @@ class DescribeRouteTablesResponseBody(DaraModel):
         self.page_size = page_size
         # The request ID.
         self.request_id = request_id
-        # The detailed information about the route tables.
         self.route_tables = route_tables
         # The total number of entries returned.
         self.total_count = total_count
@@ -120,29 +119,13 @@ class DescribeRouteTablesResponseBodyRouteTablesRouteTable(DaraModel):
         vrouter_id: str = None,
         v_switch_ids: main_models.DescribeRouteTablesResponseBodyRouteTablesRouteTableVSwitchIds = None,
     ):
-        # The time when the route table was created.
-        # 
-        # The time is displayed in the `YYYY-MM-DDThh:mm:ssZ` format in UTC.
         self.creation_time = creation_time
-        # The ID of the resource group to which the route table belongs.
         self.resource_group_id = resource_group_id
-        # The information about the route.
         self.route_entrys = route_entrys
-        # The ID of the route table.
         self.route_table_id = route_table_id
-        # The type of the route table. Valid values:
-        # 
-        # *   **Custom**
-        # *   **System**
         self.route_table_type = route_table_type
-        # The status of the route table. Valid values:
-        # 
-        # *   **Pending**
-        # *   **Available**
         self.status = status
-        # The vRouter ID.
         self.vrouter_id = vrouter_id
-        # The vSwitch ID.
         self.v_switch_ids = v_switch_ids
 
     def validate(self):
@@ -288,48 +271,15 @@ class DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntry(
         status: str = None,
         type: str = None,
     ):
-        # The description of the route. The description must be 2 to 256 characters in length. It must start with a letter but cannot start with `http://` or `https://`.
         self.description = description
-        # The destination CIDR block of the route. The destination CIDR block supports IPv4 and IPv6. Make sure that the destination CIDR block meets the following requirements:
-        # 
-        # *   The destination CIDR block is not 100.64.0.0/10 or a subset of 100.64.0.0/10.
-        # *   The destination CIDR block of each route in the route table is unique.
         self.destination_cidr_block = destination_cidr_block
-        # The ID of the instance associated with the next hop.
         self.instance_id = instance_id
-        # The type of the next hop. Valid values:
-        # 
-        # *   **Instance** (default): an Elastic Compute Service (ECS) instance
-        # *   **HaVip**: a high-availability virtual IP address (HaVip).
-        # *   **VpnGateway**: a VPN gateway
-        # *   **NatGateway**: a NAT gateway
-        # *   **NetworkInterface**: a secondary elastic network interface (ENI)
-        # *   **RouterInterface**: a router interface
-        # *   **IPv6Gateway**: an IPv6 gateway
-        # *   **Attachment**: a transit router
         self.next_hop_type = next_hop_type
-        # The information about the next hop.
         self.next_hops = next_hops
-        # The ID of the route.
         self.route_entry_id = route_entry_id
-        # The route name.
-        # 
-        # The name must be 2 to 128 characters in length, and can contain letters, digits, periods (.), underscores (_), and hyphens (-).
         self.route_entry_name = route_entry_name
-        # The route table ID.
         self.route_table_id = route_table_id
-        # The route status. Valid values:
-        # 
-        # *   **Pending**
-        # *   **Available**
-        # *   **Modifying**
         self.status = status
-        # The route type. Valid values:
-        # 
-        # *   **Custom**
-        # *   **System**
-        # *   **BGP**
-        # *   **CEN**
         self.type = type
 
     def validate(self):
@@ -451,25 +401,9 @@ class DescribeRouteTablesResponseBodyRouteTablesRouteTableRouteEntrysRouteEntryN
         next_hop_type: str = None,
         weight: int = None,
     ):
-        # Indicates whether the route is available. Valid values:
-        # 
-        # *   **0**: unavailable
-        # *   **1**: available
         self.enabled = enabled
-        # The ID of the next hop.
         self.next_hop_id = next_hop_id
-        # The type of the next hop. Valid values:
-        # 
-        # *   **Instance**: an ECS instance
-        # *   **HaVip**: an HaVip
-        # *   **VpnGateway**: a VPN gateway
-        # *   **NatGateway**: a NAT gateway
-        # *   **NetworkInterface**: a secondary ENI
-        # *   **RouterInterface**: a router interface
-        # *   **IPv6Gateway**: an IPv6 gateway
-        # *   **Attachment**: a transit router
         self.next_hop_type = next_hop_type
-        # The weight of the route.
         self.weight = weight
 
     def validate(self):

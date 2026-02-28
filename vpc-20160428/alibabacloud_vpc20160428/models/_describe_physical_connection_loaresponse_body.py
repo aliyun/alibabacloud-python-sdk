@@ -95,7 +95,6 @@ class DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOAType(DaraMod
         self.line_type = line_type
         # The download URL of the LOA file.
         self.loa_url = loa_url
-        # The information about the construction workers.
         self.pminfo = pminfo
         # The on-site construction company.
         self.si = si
@@ -254,22 +253,10 @@ class DescribePhysicalConnectionLOAResponseBodyPhysicalConnectionLOATypePMInfoPM
         pmgender: str = None,
         pmname: str = None,
     ):
-        # The identity document number of the construction worker.
         self.pmcertificate_no = pmcertificate_no
-        # The identity document type of the construction worker. Valid values:
-        # 
-        # *   **IDCard**
-        # *   **Passport**
-        # *   **Other**
         self.pmcertificate_type = pmcertificate_type
-        # The phone number of the construction worker.
         self.pmcontact_info = pmcontact_info
-        # The gender of the construction worker. Valid values:
-        # 
-        # *   **Male**
-        # *   **Female**
         self.pmgender = pmgender
-        # The name of the construction worker.
         self.pmname = pmname
 
     def validate(self):

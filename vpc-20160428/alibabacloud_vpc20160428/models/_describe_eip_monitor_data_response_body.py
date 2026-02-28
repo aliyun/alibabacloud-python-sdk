@@ -13,7 +13,6 @@ class DescribeEipMonitorDataResponseBody(DaraModel):
         eip_monitor_datas: main_models.DescribeEipMonitorDataResponseBodyEipMonitorDatas = None,
         request_id: str = None,
     ):
-        # The detailed information about the monitoring data of the EIP.
         self.eip_monitor_datas = eip_monitor_datas
         # The request ID.
         self.request_id = request_id
@@ -92,15 +91,10 @@ class DescribeEipMonitorDataResponseBodyEipMonitorDatasEipMonitorData(DaraModel)
         time_stamp: str = None,
     ):
         self.eip_bandwidth = eip_bandwidth
-        # The sum of inbound and outbound traffic.
         self.eip_flow = eip_flow
-        # The number of packets.
         self.eip_packets = eip_packets
-        # The inbound traffic. Unit: bytes.
         self.eip_rx = eip_rx
-        # The outbound traffic. Unit: bytes.
         self.eip_tx = eip_tx
-        # The timestamp of the monitoring data. Specify the time in the ISO8601 standard. Example: `2020-01-21T09:50:23Z`.
         self.time_stamp = time_stamp
 
     def validate(self):

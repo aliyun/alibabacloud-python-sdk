@@ -88,9 +88,9 @@ class AllocateEipAddressProRequest(DaraModel):
         # *   **PayByBandwidth** (default): pay-by-bandwidth.
         # *   **PayByTraffic**: pay-by-data-transfer.
         # 
-        # When **InstanceChargeType** is set to **PrePaid**, you must set **InternetChargeType** to **PayByBandwidth**.
+        # If **InstanceChargeType** is set to **PrePaid**, you must set **InternetChargeType** to **PayByBandwidth**.
         # 
-        # When **InstanceChargeType** is set to **PostPaid**, set **InternetChargeType** to **PayByBandwidth** or **PayByTraffic**.
+        # If **InstanceChargeType** is set to **PostPaid**, **InternetChargeType** can be set to **PayByBandwidth** or **PayByTraffic**.
         self.internet_charge_type = internet_charge_type
         # The IP address of the EIP.
         # 
@@ -120,7 +120,7 @@ class AllocateEipAddressProRequest(DaraModel):
         # 
         # The EIP is allocated from the IP address pool.
         # 
-        # By default, you cannot use the IP address pool. To use this feature, apply for the privilege in the Quota Center console. For more information, see the "Request a quota increase in the Quota Center console" section of [Manage EIP quotas](https://help.aliyun.com/document_detail/108213.html).
+        # By default, the IP address pool feature is unavailable. If you need to use this feature, contact your account manager.
         self.public_ip_address_pool_id = public_ip_address_pool_id
         # The ID of the region to which the EIP belongs.
         # 

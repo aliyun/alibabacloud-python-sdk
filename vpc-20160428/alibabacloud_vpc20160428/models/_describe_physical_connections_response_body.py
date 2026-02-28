@@ -20,7 +20,6 @@ class DescribePhysicalConnectionsResponseBody(DaraModel):
         self.page_number = page_number
         # The number of entries per page. Default value: **10**. Valid values: **1** to **50**.
         self.page_size = page_size
-        # The list of Express Connect circuits.
         self.physical_connection_set = physical_connection_set
         # The request ID.
         self.request_id = request_id
@@ -151,148 +150,44 @@ class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnec
         vlan_id: str = None,
         vpconn_status: str = None,
     ):
-        # The ID of the Express Connect circuit.
         self.access_point_id = access_point_id
-        # The type of the access point.
         self.access_point_type = access_point_type
-        # The information about the data center and rack.
         self.ad_detail_location = ad_detail_location
-        # The location of the access point.
         self.ad_location = ad_location
-        # The maximum bandwidth of the Express Connect circuit.
-        # 
-        # Unit: Mbit/s.
         self.bandwidth = bandwidth
-        # The status of the Express Connect circuit. Valid values:
-        # 
-        # *   **Normal**: enabled
-        # *   **FinancialLocked**: locked due to overdue payments
-        # *   **SecurityLocked**: locked for security reasons
         self.business_status = business_status
-        # The billing method of the Express Connect circuit.
-        # 
-        # If **Prepaid** is returned, it indicates that the Express Connect circuit is billed on a subscription basis.
         self.charge_type = charge_type
-        # The circuit code of the Express Connect circuit. The circuit code is provided by the connectivity provider.
         self.circuit_code = circuit_code
-        # The time when the Express Connect circuit was created.
         self.creation_time = creation_time
-        # The description of the Express Connect circuit.
         self.description = description
-        # The time when the Express Connect circuit was enabled.
         self.enabled_time = enabled_time
-        # The time when the Express Connect circuit expires.
         self.end_time = end_time
-        # The estimated maximum bandwidth of the shared Express Connect circuit. The estimated bandwidth takes effect after you complete the payment.
-        # 
-        # Unit: **M** (Mbit/s) and **G** (Gbit/s).
         self.expect_spec = expect_spec
-        # Indicates whether the data about pending orders is returned. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.has_reservation_data = has_reservation_data
-        # The connectivity provider of the Express Connect circuit. Valid values:
-        # 
-        # *   **CT**: China Telecom.
-        # *   **CU**: China Unicom.
-        # *   **CM**: China Mobile.
-        # *   **CO**: other connectivity providers in the Chinese mainland.
-        # *   **Equinix**: Equinix.
-        # *   **Other**: other connectivity providers outside the Chinese mainland.
         self.line_operator = line_operator
-        # The status of the letter of authorization (LOA). Valid values:
-        # 
-        # *   **Applying**: The LOA is pending for approval.
-        # *   **Accept**: The LOA is approved.
-        # *   **Available**: The LOA is available.
-        # *   **Rejected**: The LOA is rejected.
-        # *   **Completing**: The Express Connect circuit is under construction.
-        # *   **Complete**: The Express Connect circuit is installed.
-        # *   **Deleted**: The LOA is deleted.
         self.loa_status = loa_status
-        # The name of the Express Connect circuit.
         self.name = name
         self.optical_module_model = optical_module_model
-        # The payer for the hosted connection. Valid values:
-        # 
-        # *   **PayByPhysicalConnectionOwner**: The partner pays for the shared Express Connect circuit.
-        # *   **PayByVirtualPhysicalConnectionOwner**: The tenant pays for the shared Express Connect circuit.
         self.order_mode = order_mode
-        # The ID of the Alibaba Cloud account to which the parent Express Connect circuit belongs.
         self.parent_physical_connection_ali_uid = parent_physical_connection_ali_uid
-        # The ID of the parent Express Connect circuit.
         self.parent_physical_connection_id = parent_physical_connection_id
-        # The geographical location of the data center.
         self.peer_location = peer_location
-        # The ID of the Express Connect circuit.
         self.physical_connection_id = physical_connection_id
-        # The ID of the port on the access device.
         self.port_number = port_number
-        # The port type of the Express Connect circuit. Valid values:
-        # 
-        # *   **100Base-T**: 100 Mbit/s copper Ethernet port
-        # *   **1000Base-T**: 1,000 Mbit/s copper Ethernet port
-        # *   **1000Base-LX**: 1,000 Mbit/s single-mode optical port (10 km)
-        # *   **10GBase-T**: 10,000 Mbit/s copper Ethernet port
-        # *   **10GBase-LR**: 10,000 Mbit/s single-mode optical port (10 km)
-        # *   **40GBase-LR**: 40,000 Mbit/s single-mode optical port
-        # *   **100GBase-LR**: 100,000 Mbit/s single-mode optical port
-        # 
-        # > Whether 40GBase-LR and 100GBase-LR ports can be created depends on resource supplies. For more information, contact your account manager.
         self.port_type = port_type
-        # The type of the Express Connect circuit. Valid values:
-        # 
-        # *   **VirtualPhysicalConnection**: shared Express Connect circuit
-        # *   **PhysicalConnection**: dedicated Express Connect circuit
         self.product_type = product_type
-        # The ID of the QoS policy.
         self.qos_id = qos_id
-        # The ID of the standby Express Connect circuit.
         self.redundant_physical_connection_id = redundant_physical_connection_id
-        # The time when the pending order takes effect.
         self.reservation_active_time = reservation_active_time
-        # The billing method of the pending order.
-        # 
-        # If **PayByBandwidth** is returned, it indicates that the Express Connect circuit is billed on a pay-by-bandwidth basis.
         self.reservation_internet_charge_type = reservation_internet_charge_type
-        # The type of the pending order.
-        # 
-        # If the value is **RENEW**, it indicates that the order is placed for service renewal.
         self.reservation_order_type = reservation_order_type
-        # The resource group ID to which the instance belongs.
         self.resource_group_id = resource_group_id
-        # The specification of the Express Connect circuit.
-        # 
-        # Unit: **G** (Gbit/s).
         self.spec = spec
-        # The status of the Express Connect circuit. Valid values:
-        # 
-        # *   **Initial**
-        # *   **Approved**
-        # *   **Allocating**
-        # *   **Allocated**
-        # *   **Confirmed**
-        # *   **Enabled**
-        # *   **Rejected**
-        # *   **Canceled**
-        # *   **Allocation Failed**
-        # *   **Terminating**
-        # *   **Terminated**
         self.status = status
-        # The tags that are added to the cluster.
         self.tags = tags
-        # The type of resource to which the Express Connect circuit is connected. Only **VPC** may be returned.
         self.type = type
-        # The number of Express Connect circuits that are established.
         self.virtual_physical_connection_count = virtual_physical_connection_count
-        # The VLAN ID of the shared Express Connect circuit.
         self.vlan_id = vlan_id
-        # The status of the shared Express Connect circuit. Valid values:
-        # 
-        # *   **Confirmed**
-        # *   **UnConfirmed**
-        # *   **Deleted**
         self.vpconn_status = vpconn_status
 
     def validate(self):
@@ -586,13 +481,7 @@ class DescribePhysicalConnectionsResponseBodyPhysicalConnectionSetPhysicalConnec
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N added to the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
-        # 
-        # The tag key can be up to 64 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.key = key
-        # The value of tag N added to the resource. You can specify up to 20 tag values. The tag value can be an empty string.
-        # 
-        # The tag value can be up to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
         self.value = value
 
     def validate(self):

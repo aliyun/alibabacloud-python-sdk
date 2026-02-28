@@ -16,7 +16,6 @@ class DescribeGlobalAccelerationInstancesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the GA instances.
         self.global_acceleration_instances = global_acceleration_instances
         # The page number of the returned page.
         self.page_number = page_number
@@ -128,45 +127,21 @@ class DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstances
         service_location: str = None,
         status: str = None,
     ):
-        # The acceleration area of the GA instance.
         self.acceleration_location = acceleration_location
-        # The details about the backend servers of the GA instance.
         self.backend_servers = backend_servers
-        # The maximum bandwidth of the GA instance.
         self.bandwidth = bandwidth
-        # The bandwidth type of the GA instance.
-        # 
-        # *   **Sharing**
-        # *   **Exclusive** (default)
         self.bandwidth_type = bandwidth_type
-        # The billing method of the GA instance.
         self.charge_type = charge_type
-        # The time when the GA instance was created. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the GA instance.
         self.description = description
-        # The time when the instance expires.
         self.expired_time = expired_time
-        # The ID of the GA instance.
         self.global_acceleration_instance_id = global_acceleration_instance_id
-        # The billing method of the GA instance.
         self.internet_charge_type = internet_charge_type
-        # The public IP address of the dedicated GA instance.
         self.ip_address = ip_address
-        # The name of the GA instance.
         self.name = name
-        # The public IP address.
         self.public_ip_addresses = public_ip_addresses
-        # The region ID of the GA instance.
         self.region_id = region_id
-        # The service area of the GA instance.
         self.service_location = service_location
-        # The status of the GA instance.
-        # 
-        # *   **Available**
-        # *   **Inuse**
-        # *   **Associating**
-        # *   **Unassociating**
         self.status = status
 
     def validate(self):
@@ -325,9 +300,7 @@ class DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstances
         allocation_id: str = None,
         ip_address: str = None,
     ):
-        # The ID of the public IP address of the GA instance.
         self.allocation_id = allocation_id
-        # The public IP address of the GA instance.
         self.ip_address = ip_address
 
     def validate(self):
@@ -399,16 +372,9 @@ class DescribeGlobalAccelerationInstancesResponseBodyGlobalAccelerationInstances
         server_ip_address: str = None,
         server_type: str = None,
     ):
-        # The region where the backend servers are deployed.
         self.region_id = region_id
-        # The ID of the backend server.
         self.server_id = server_id
-        # The IP address of the backend server.
         self.server_ip_address = server_ip_address
-        # The type of the backend server.
-        # 
-        # *   **EcsInstance**: Elastic Compute Service (ECS) instance
-        # *   **SlbInstance**: Server Load Balancer (SLB) instance
         self.server_type = server_type
 
     def validate(self):

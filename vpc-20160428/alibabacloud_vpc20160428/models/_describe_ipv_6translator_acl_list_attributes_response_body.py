@@ -18,7 +18,6 @@ class DescribeIPv6TranslatorAclListAttributesResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The ACLs.
         self.acl_entries = acl_entries
         # The ACL ID.
         self.acl_id = acl_id
@@ -133,11 +132,8 @@ class DescribeIPv6TranslatorAclListAttributesResponseBodyAclEntriesAclEntry(Dara
         acl_entry_id: str = None,
         acl_entry_ip: str = None,
     ):
-        # The remarks of the ACL entry.
         self.acl_entry_comment = acl_entry_comment
-        # The ID of the ACL entry.
         self.acl_entry_id = acl_entry_id
-        # The IP address specified in the ACL entry.
         self.acl_entry_ip = acl_entry_ip
 
     def validate(self):

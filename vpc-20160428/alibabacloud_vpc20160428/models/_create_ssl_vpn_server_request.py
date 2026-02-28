@@ -92,6 +92,10 @@ class CreateSslVpnServerRequest(DaraModel):
         # *   **true**
         # *   **false** (default)
         self.compress = compress
+        # Specifies whether to perform only a dry run, without performing the actual request. Valid values: Valid Values:
+        # 
+        # *   **true**: performs only a dry run. The system checks the request for potential issues, including missing parameter values, incorrect request syntax, and instance status. If the request fails the dry run, an error message is returned. If the request passes the dry run, `DryRunOperation` is returned.
+        # *   **false** (default): performs a dry run and performs the actual request. If the request passes the dry run, the operation is performed.
         self.dry_run = dry_run
         # Specifies whether to enable two-factor authentication. To enable two-factor authentication, you need to specify `IDaaSInstanceId`, `IDaaSRegionId`, and `IDaaSApplicationId`. Valid values:
         # 

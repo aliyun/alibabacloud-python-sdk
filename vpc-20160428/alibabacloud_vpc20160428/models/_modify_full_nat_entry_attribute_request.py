@@ -26,6 +26,7 @@ class ModifyFullNatEntryAttributeRequest(DaraModel):
         resource_owner_account: str = None,
         resource_owner_id: int = None,
     ):
+        # The backend domain name of the FULLNAT address translation that needs to be modified.
         self.access_domain = access_domain
         # The backend IP address to be modified in FULLNAT address translation.
         self.access_ip = access_ip

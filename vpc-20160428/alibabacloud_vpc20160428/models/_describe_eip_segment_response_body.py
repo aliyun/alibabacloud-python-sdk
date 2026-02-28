@@ -16,7 +16,6 @@ class DescribeEipSegmentResponseBody(DaraModel):
         request_id: str = None,
         total_count: int = None,
     ):
-        # The details of the contiguous EIP group.
         self.eip_segments = eip_segments
         # The page number.
         self.page_number = page_number
@@ -121,27 +120,14 @@ class DescribeEipSegmentResponseBodyEipSegmentsEipSegment(DaraModel):
         status: str = None,
         zone: str = None,
     ):
-        # The time when the contiguous EIP group was created. The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
         self.creation_time = creation_time
-        # The description of the contiguous EIP group.
         self.descritpion = descritpion
-        # The ID of the contiguous EIP group.
         self.instance_id = instance_id
-        # The number of EIPs in the contiguous EIP group.
         self.ip_count = ip_count
-        # The name of the contiguous EIP group.
         self.name = name
-        # The ID of the region to which the contiguous EIP group belongs.
         self.region_id = region_id
-        # The CIDR block and mask of the contiguous EIP group.
         self.segment = segment
-        # The status of the contiguous EIP group. Valid values:
-        # 
-        # *   **Allocating**
-        # *   **Allocated**
-        # *   **Releasing**
         self.status = status
-        # The zone of the contiguous EIP group.
         self.zone = zone
 
     def validate(self):

@@ -24,7 +24,6 @@ class DescribeVRoutersResponseBody(DaraModel):
         self.request_id = request_id
         # The number of entries returned.
         self.total_count = total_count
-        # The details about the vRouters.
         self.vrouters = vrouters
 
     def validate(self):
@@ -119,19 +118,12 @@ class DescribeVRoutersResponseBodyVRoutersVRouter(DaraModel):
         vrouter_name: str = None,
         vpc_id: str = None,
     ):
-        # The time when the vRouter was created.
         self.creation_time = creation_time
-        # The description of the vRouter.
         self.description = description
-        # The region to which the vRouter belongs.
         self.region_id = region_id
-        # The IDs of the route tables.
         self.route_table_ids = route_table_ids
-        # The ID of the vRouter.
         self.vrouter_id = vrouter_id
-        # The name of the vRouter.
         self.vrouter_name = vrouter_name
-        # The ID of the virtual private cloud (VPC) to which the vRouter belongs.
         self.vpc_id = vpc_id
 
     def validate(self):

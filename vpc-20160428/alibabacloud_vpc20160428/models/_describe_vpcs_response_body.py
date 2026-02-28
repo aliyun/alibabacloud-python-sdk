@@ -24,7 +24,6 @@ class DescribeVpcsResponseBody(DaraModel):
         self.request_id = request_id
         # The number of entries returned.
         self.total_count = total_count
-        # The details of the VPC.
         self.vpcs = vpcs
 
     def validate(self):
@@ -136,72 +135,29 @@ class DescribeVpcsResponseBodyVpcsVpc(DaraModel):
         vpc_id: str = None,
         vpc_name: str = None,
     ):
-        # The status of the Cloud Enterprise Network (CEN) instance to which the VPC is attached. **Attached** is returned only if the VPC is attached to a CEN instance.
         self.cen_status = cen_status
-        # The IPv4 CIDR block of the VPC.
         self.cidr_block = cidr_block
-        # The time when the VPC was created.
         self.creation_time = creation_time
-        # The description of the VPC.
         self.description = description
-        # The ID of the DHCP options set.
         self.dhcp_options_set_id = dhcp_options_set_id
-        # The status of the DHCP options set. Valid values:
-        # 
-        # *   **Available**
-        # *   **InUse**
-        # *   **Deleted**
-        # *   **Pending**
         self.dhcp_options_set_status = dhcp_options_set_status
-        # Indicates whether the Domain Name System (DNS) feature is enabled.
         self.dns_hostname_status = dns_hostname_status
-        # Indicates whether the IPv6 is enabled.
-        # 
-        # Valid values:
-        # 
-        # - false: false
-        # 
-        # - true: true
         self.enabled_ipv_6 = enabled_ipv_6
-        # The IPv6 CIDR block of the VPC.
         self.ipv_6cidr_block = ipv_6cidr_block
-        # The IPv6 CIDR block of the VPC.
         self.ipv_6cidr_blocks = ipv_6cidr_blocks
-        # Indicates whether the VPC is the default VPC in the region. Valid values:
-        # 
-        # *   **true**
-        # *   **false**
         self.is_default = is_default
-        # The ID of the Internet NAT gateway.
         self.nat_gateway_ids = nat_gateway_ids
-        # The ID of the Alibaba Cloud account to which the VPC belongs.
         self.owner_id = owner_id
-        # The ID of the region to which the VPC belongs.
         self.region_id = region_id
-        # The ID of the resource group to which the VPC belongs.
         self.resource_group_id = resource_group_id
-        # The information about the route table.
         self.router_table_ids = router_table_ids
-        # The information about the secondary CIDR block.
         self.secondary_cidr_blocks = secondary_cidr_blocks
-        # The status of the VPC. Valid values:
-        # 
-        # *   **Pending**
-        # *   **Available**
         self.status = status
-        # The tag information about the VPC.
         self.tags = tags
-        # The list of user CIDR blocks.
         self.user_cidrs = user_cidrs
-        # The ID of the vRouter.
         self.vrouter_id = vrouter_id
-        # The vSwitches in the VPC.
-        # 
-        # You can query up to 300 vSwitches in the VPC. The information about the latest vSwitches is returned. If you want to query the information about all vSwitches in a VPC, call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation.
         self.v_switch_ids = v_switch_ids
-        # The VPC ID.
         self.vpc_id = vpc_id
-        # The name of the VPC.
         self.vpc_name = vpc_name
 
     def validate(self):
@@ -477,9 +433,7 @@ class DescribeVpcsResponseBodyVpcsVpcTagsTag(DaraModel):
         key: str = None,
         value: str = None,
     ):
-        # The key of tag N.
         self.key = key
-        # The value of tag N.
         self.value = value
 
     def validate(self):
@@ -630,16 +584,7 @@ class DescribeVpcsResponseBodyVpcsVpcIpv6CidrBlocksIpv6CidrBlock(DaraModel):
         ipv_6cidr_block: str = None,
         ipv_6isp: str = None,
     ):
-        # The IPv6 CIDR block of the VPC.
         self.ipv_6cidr_block = ipv_6cidr_block
-        # The type of IPv6 CIDR block. Valid values:
-        # 
-        # *   **BGP**
-        # *   **ChinaMobile**
-        # *   **ChinaUnicom**
-        # *   **ChinaTelecom**
-        # 
-        # >  If your Alibaba Cloud account is allowed to activate single-ISP bandwidth, you can set this parameter to **ChinaTelecom**, **ChinaUnicom**, or **ChinaMobile**.
         self.ipv_6isp = ipv_6isp
 
     def validate(self):

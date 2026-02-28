@@ -21,7 +21,6 @@ class DescribeTagsResponseBody(DaraModel):
         self.next_token = next_token
         # The ID of the request.
         self.request_id = request_id
-        # The list of tags that meet the filter conditions.
         self.tag_resources = tag_resources
 
     def validate(self):
@@ -99,9 +98,7 @@ class DescribeTagsResponseBodyTagResourcesTagResource(DaraModel):
         tag_key: str = None,
         tag_value: str = None,
     ):
-        # The tag key.
         self.tag_key = tag_key
-        # The tag value.
         self.tag_value = tag_value
 
     def validate(self):

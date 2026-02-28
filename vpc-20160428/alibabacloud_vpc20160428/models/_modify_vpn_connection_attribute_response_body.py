@@ -86,9 +86,6 @@ class ModifyVpnConnectionAttributeResponseBody(DaraModel):
         # 
         # The IPsec-VPN connection and the VPN gateway associated with the IPsec-VPN connection belong to the same resource group. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource groups.
         self.resource_group_id = resource_group_id
-        # The tunnel configuration of the IPsec-VPN connection.
-        # 
-        # **TunnelOptionsSpecification** parameters are returned only for dual-tunnel IPsec-VPN connections.
         self.tunnel_options_specification = tunnel_options_specification
         # The health check configuration.
         # 
@@ -451,44 +448,17 @@ class ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOp
         tunnel_ipsec_config: main_models.ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOptionsTunnelIpsecConfig = None,
         zone_no: str = None,
     ):
-        # The ID of the customer gateway associated with the tunnel.
         self.customer_gateway_id = customer_gateway_id
-        # Indicates whether the DPD feature is enabled for the tunnel. Valid values:
-        # 
-        # *   **false**
-        # *   **true**
         self.enable_dpd = enable_dpd
-        # Indicates whether NAT traversal is enabled for the tunnel. Valid values:
-        # 
-        # *   **false**
-        # *   **true**
         self.enable_nat_traversal = enable_nat_traversal
-        # The IP address on the Alibaba Cloud side.
         self.internet_ip = internet_ip
-        # The CA certificate of the tunnel peer.
-        # 
-        # This parameter is returned only if the VPN gateway is of the SM type.
         self.remote_ca_certificate = remote_ca_certificate
-        # The tunnel role. Valid values:
-        # 
-        # *   **master**: The tunnel is an active tunnel.
-        # *   **slave**: The tunnel is a standby tunnel.
         self.role = role
-        # The tunnel status. Valid values:
-        # 
-        # *   **active**
-        # *   **updating**
-        # *   **deleting**
         self.state = state
-        # The BGP configuration.
         self.tunnel_bgp_config = tunnel_bgp_config
-        # The tunnel ID.
         self.tunnel_id = tunnel_id
-        # The configuration of Phase 1 negotiations.
         self.tunnel_ike_config = tunnel_ike_config
-        # The configuration of Phase 2 negotiations.
         self.tunnel_ipsec_config = tunnel_ipsec_config
-        # The zone of the tunnel.
         self.zone_no = zone_no
 
     def validate(self):
@@ -593,13 +563,9 @@ class ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOp
         ipsec_lifetime: int = None,
         ipsec_pfs: str = None,
     ):
-        # The authentication algorithm in the IPsec phase.
         self.ipsec_auth_alg = ipsec_auth_alg
-        # The encryption algorithm in the IPsec phase.
         self.ipsec_enc_alg = ipsec_enc_alg
-        # The lifetime in the IPsec phase. Unit: seconds.
         self.ipsec_lifetime = ipsec_lifetime
-        # The DH group in the IPsec phase.
         self.ipsec_pfs = ipsec_pfs
 
     def validate(self):
@@ -653,26 +619,14 @@ class ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOp
         psk: str = None,
         remote_id: str = None,
     ):
-        # The authentication algorithm in the IKE phase.
         self.ike_auth_alg = ike_auth_alg
-        # The encryption algorithm in the IKE phase.
         self.ike_enc_alg = ike_enc_alg
-        # The lifetime in the IKE phase. Unit: seconds.
         self.ike_lifetime = ike_lifetime
-        # The IKE negotiation mode.
-        # 
-        # *   **main:** This mode offers higher security during negotiations.
-        # *   **aggressive**: This mode is faster and has a higher success rate.
         self.ike_mode = ike_mode
-        # The DH group in the IKE phase.
         self.ike_pfs = ike_pfs
-        # The version of the IKE protocol.
         self.ike_version = ike_version
-        # The identifier of the tunnel on the Alibaba Cloud side.
         self.local_id = local_id
-        # The pre-shared key.
         self.psk = psk
-        # The identifier of the tunnel peer.
         self.remote_id = remote_id
 
     def validate(self):
@@ -752,15 +706,10 @@ class ModifyVpnConnectionAttributeResponseBodyTunnelOptionsSpecificationTunnelOp
         peer_bgp_ip: str = None,
         tunnel_cidr: str = None,
     ):
-        # The ASN of the tunnel on the Alibaba Cloud side.
         self.local_asn = local_asn
-        # The BGP IP address of the tunnel on the Alibaba Cloud side.
         self.local_bgp_ip = local_bgp_ip
-        # The ASN of the tunnel peer.
         self.peer_asn = peer_asn
-        # The BGP IP address of the tunnel peer.
         self.peer_bgp_ip = peer_bgp_ip
-        # The BGP CIDR block of the tunnel.
         self.tunnel_cidr = tunnel_cidr
 
     def validate(self):

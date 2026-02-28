@@ -121,6 +121,9 @@ class DescribeVpnAttachmentsResponseBodyVpnAttachments(DaraModel):
         self.transit_router_id = transit_router_id
         # The name of the transit router.
         self.transit_router_name = transit_router_name
+        # Specifies the bandwidth specifications for a single tunnel in VPN attachment. Available options:
+        # - **Standard**: Standard, 1Gbps
+        # - **Large**:  Large-sized, 3Gbps
         self.tunnel_bandwidth = tunnel_bandwidth
 
     def validate(self):
