@@ -1,0 +1,723 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._assign_leni_private_ip_address_request import AssignLeniPrivateIpAddressRequest
+from ._assign_leni_private_ip_address_response_body import AssignLeniPrivateIpAddressResponseBody
+from ._assign_leni_private_ip_address_response import AssignLeniPrivateIpAddressResponse
+from ._assign_private_ip_address_request import AssignPrivateIpAddressRequest
+from ._assign_private_ip_address_response_body import AssignPrivateIpAddressResponseBody
+from ._assign_private_ip_address_response import AssignPrivateIpAddressResponse
+from ._associate_vpd_cidr_block_request import AssociateVpdCidrBlockRequest
+from ._associate_vpd_cidr_block_response_body import AssociateVpdCidrBlockResponseBody
+from ._associate_vpd_cidr_block_response import AssociateVpdCidrBlockResponse
+from ._attach_elastic_network_interface_request import AttachElasticNetworkInterfaceRequest
+from ._attach_elastic_network_interface_response_body import AttachElasticNetworkInterfaceResponseBody
+from ._attach_elastic_network_interface_response import AttachElasticNetworkInterfaceResponse
+from ._create_elastic_network_interface_request import CreateElasticNetworkInterfaceRequest
+from ._create_elastic_network_interface_response_body import CreateElasticNetworkInterfaceResponseBody
+from ._create_elastic_network_interface_response import CreateElasticNetworkInterfaceResponse
+from ._create_er_request import CreateErRequest
+from ._create_er_response_body import CreateErResponseBody
+from ._create_er_response import CreateErResponse
+from ._create_er_attachment_request import CreateErAttachmentRequest
+from ._create_er_attachment_response_body import CreateErAttachmentResponseBody
+from ._create_er_attachment_response import CreateErAttachmentResponse
+from ._create_er_route_map_request import CreateErRouteMapRequest
+from ._create_er_route_map_response_body import CreateErRouteMapResponseBody
+from ._create_er_route_map_response import CreateErRouteMapResponse
+from ._create_subnet_request import CreateSubnetRequest
+from ._create_subnet_response_body import CreateSubnetResponseBody
+from ._create_subnet_response import CreateSubnetResponse
+from ._create_vcc_request import CreateVccRequest
+from ._create_vcc_response_body import CreateVccResponseBody
+from ._create_vcc_response import CreateVccResponse
+from ._create_vcc_grant_rule_request import CreateVccGrantRuleRequest
+from ._create_vcc_grant_rule_response_body import CreateVccGrantRuleResponseBody
+from ._create_vcc_grant_rule_response import CreateVccGrantRuleResponse
+from ._create_vcc_route_entry_request import CreateVccRouteEntryRequest
+from ._create_vcc_route_entry_response_body import CreateVccRouteEntryResponseBody
+from ._create_vcc_route_entry_response import CreateVccRouteEntryResponse
+from ._create_vpd_request import CreateVpdRequest
+from ._create_vpd_response_body import CreateVpdResponseBody
+from ._create_vpd_response import CreateVpdResponse
+from ._create_vpd_grant_rule_request import CreateVpdGrantRuleRequest
+from ._create_vpd_grant_rule_response_body import CreateVpdGrantRuleResponseBody
+from ._create_vpd_grant_rule_response import CreateVpdGrantRuleResponse
+from ._delete_elastic_network_interface_request import DeleteElasticNetworkInterfaceRequest
+from ._delete_elastic_network_interface_response_body import DeleteElasticNetworkInterfaceResponseBody
+from ._delete_elastic_network_interface_response import DeleteElasticNetworkInterfaceResponse
+from ._delete_er_request import DeleteErRequest
+from ._delete_er_response_body import DeleteErResponseBody
+from ._delete_er_response import DeleteErResponse
+from ._delete_er_attachment_request import DeleteErAttachmentRequest
+from ._delete_er_attachment_response_body import DeleteErAttachmentResponseBody
+from ._delete_er_attachment_response import DeleteErAttachmentResponse
+from ._delete_er_route_map_request import DeleteErRouteMapRequest
+from ._delete_er_route_map_response_body import DeleteErRouteMapResponseBody
+from ._delete_er_route_map_response import DeleteErRouteMapResponse
+from ._delete_subnet_request import DeleteSubnetRequest
+from ._delete_subnet_response_body import DeleteSubnetResponseBody
+from ._delete_subnet_response import DeleteSubnetResponse
+from ._delete_vcc_grant_rule_request import DeleteVccGrantRuleRequest
+from ._delete_vcc_grant_rule_response_body import DeleteVccGrantRuleResponseBody
+from ._delete_vcc_grant_rule_response import DeleteVccGrantRuleResponse
+from ._delete_vcc_route_entry_request import DeleteVccRouteEntryRequest
+from ._delete_vcc_route_entry_response_body import DeleteVccRouteEntryResponseBody
+from ._delete_vcc_route_entry_response import DeleteVccRouteEntryResponse
+from ._delete_vpd_request import DeleteVpdRequest
+from ._delete_vpd_response_body import DeleteVpdResponseBody
+from ._delete_vpd_response import DeleteVpdResponse
+from ._delete_vpd_grant_rule_request import DeleteVpdGrantRuleRequest
+from ._delete_vpd_grant_rule_response_body import DeleteVpdGrantRuleResponseBody
+from ._delete_vpd_grant_rule_response import DeleteVpdGrantRuleResponse
+from ._describe_slr_request import DescribeSlrRequest
+from ._describe_slr_response_body import DescribeSlrResponseBody
+from ._describe_slr_response import DescribeSlrResponse
+from ._detach_elastic_network_interface_request import DetachElasticNetworkInterfaceRequest
+from ._detach_elastic_network_interface_response_body import DetachElasticNetworkInterfaceResponseBody
+from ._detach_elastic_network_interface_response import DetachElasticNetworkInterfaceResponse
+from ._get_destination_cidr_block_request import GetDestinationCidrBlockRequest
+from ._get_destination_cidr_block_response_body import GetDestinationCidrBlockResponseBody
+from ._get_destination_cidr_block_response import GetDestinationCidrBlockResponse
+from ._get_elastic_network_interface_request import GetElasticNetworkInterfaceRequest
+from ._get_elastic_network_interface_response_body import GetElasticNetworkInterfaceResponseBody
+from ._get_elastic_network_interface_response import GetElasticNetworkInterfaceResponse
+from ._get_er_request import GetErRequest
+from ._get_er_response_body import GetErResponseBody
+from ._get_er_response import GetErResponse
+from ._get_er_attachment_request import GetErAttachmentRequest
+from ._get_er_attachment_response_body import GetErAttachmentResponseBody
+from ._get_er_attachment_response import GetErAttachmentResponse
+from ._get_er_route_entry_request import GetErRouteEntryRequest
+from ._get_er_route_entry_response_body import GetErRouteEntryResponseBody
+from ._get_er_route_entry_response import GetErRouteEntryResponse
+from ._get_er_route_map_request import GetErRouteMapRequest
+from ._get_er_route_map_response_body import GetErRouteMapResponseBody
+from ._get_er_route_map_response import GetErRouteMapResponse
+from ._get_fabric_topology_request import GetFabricTopologyRequest
+from ._get_fabric_topology_response_body import GetFabricTopologyResponseBody
+from ._get_fabric_topology_response import GetFabricTopologyResponse
+from ._get_leni_private_ip_address_request import GetLeniPrivateIpAddressRequest
+from ._get_leni_private_ip_address_response_body import GetLeniPrivateIpAddressResponseBody
+from ._get_leni_private_ip_address_response import GetLeniPrivateIpAddressResponse
+from ._get_lni_private_ip_address_request import GetLniPrivateIpAddressRequest
+from ._get_lni_private_ip_address_response_body import GetLniPrivateIpAddressResponseBody
+from ._get_lni_private_ip_address_response import GetLniPrivateIpAddressResponse
+from ._get_network_interface_request import GetNetworkInterfaceRequest
+from ._get_network_interface_response_body import GetNetworkInterfaceResponseBody
+from ._get_network_interface_response import GetNetworkInterfaceResponse
+from ._get_node_info_for_pod_request import GetNodeInfoForPodRequest
+from ._get_node_info_for_pod_response_body import GetNodeInfoForPodResponseBody
+from ._get_node_info_for_pod_response import GetNodeInfoForPodResponse
+from ._get_subnet_request import GetSubnetRequest
+from ._get_subnet_response_body import GetSubnetResponseBody
+from ._get_subnet_response import GetSubnetResponse
+from ._get_vcc_request import GetVccRequest
+from ._get_vcc_response_body import GetVccResponseBody
+from ._get_vcc_response import GetVccResponse
+from ._get_vcc_grant_rule_request import GetVccGrantRuleRequest
+from ._get_vcc_grant_rule_response_body import GetVccGrantRuleResponseBody
+from ._get_vcc_grant_rule_response import GetVccGrantRuleResponse
+from ._get_vcc_route_entry_request import GetVccRouteEntryRequest
+from ._get_vcc_route_entry_response_body import GetVccRouteEntryResponseBody
+from ._get_vcc_route_entry_response import GetVccRouteEntryResponse
+from ._get_vpd_request import GetVpdRequest
+from ._get_vpd_response_body import GetVpdResponseBody
+from ._get_vpd_response import GetVpdResponse
+from ._get_vpd_grant_rule_request import GetVpdGrantRuleRequest
+from ._get_vpd_grant_rule_response_body import GetVpdGrantRuleResponseBody
+from ._get_vpd_grant_rule_response import GetVpdGrantRuleResponse
+from ._get_vpd_route_entry_request import GetVpdRouteEntryRequest
+from ._get_vpd_route_entry_response_body import GetVpdRouteEntryResponseBody
+from ._get_vpd_route_entry_response import GetVpdRouteEntryResponse
+from ._initialize_vcc_request import InitializeVccRequest
+from ._initialize_vcc_response_body import InitializeVccResponseBody
+from ._initialize_vcc_response import InitializeVccResponse
+from ._list_elastic_network_interfaces_request import ListElasticNetworkInterfacesRequest
+from ._list_elastic_network_interfaces_response_body import ListElasticNetworkInterfacesResponseBody
+from ._list_elastic_network_interfaces_response import ListElasticNetworkInterfacesResponse
+from ._list_er_attachments_request import ListErAttachmentsRequest
+from ._list_er_attachments_response_body import ListErAttachmentsResponseBody
+from ._list_er_attachments_response import ListErAttachmentsResponse
+from ._list_er_route_entries_request import ListErRouteEntriesRequest
+from ._list_er_route_entries_response_body import ListErRouteEntriesResponseBody
+from ._list_er_route_entries_response import ListErRouteEntriesResponse
+from ._list_er_route_maps_request import ListErRouteMapsRequest
+from ._list_er_route_maps_response_body import ListErRouteMapsResponseBody
+from ._list_er_route_maps_response import ListErRouteMapsResponse
+from ._list_ers_request import ListErsRequest
+from ._list_ers_response_body import ListErsResponseBody
+from ._list_ers_response import ListErsResponse
+from ._list_instances_by_ncd_request import ListInstancesByNcdRequest
+from ._list_instances_by_ncd_response_body import ListInstancesByNcdResponseBody
+from ._list_instances_by_ncd_response import ListInstancesByNcdResponse
+from ._list_leni_private_ip_addresses_request import ListLeniPrivateIpAddressesRequest
+from ._list_leni_private_ip_addresses_response_body import ListLeniPrivateIpAddressesResponseBody
+from ._list_leni_private_ip_addresses_response import ListLeniPrivateIpAddressesResponse
+from ._list_lni_private_ip_address_request import ListLniPrivateIpAddressRequest
+from ._list_lni_private_ip_address_response_body import ListLniPrivateIpAddressResponseBody
+from ._list_lni_private_ip_address_response import ListLniPrivateIpAddressResponse
+from ._list_network_interfaces_request import ListNetworkInterfacesRequest
+from ._list_network_interfaces_response_body import ListNetworkInterfacesResponseBody
+from ._list_network_interfaces_response import ListNetworkInterfacesResponse
+from ._list_node_infos_for_pod_request import ListNodeInfosForPodRequest
+from ._list_node_infos_for_pod_response_body import ListNodeInfosForPodResponseBody
+from ._list_node_infos_for_pod_response import ListNodeInfosForPodResponse
+from ._list_subnets_request import ListSubnetsRequest
+from ._list_subnets_response_body import ListSubnetsResponseBody
+from ._list_subnets_response import ListSubnetsResponse
+from ._list_vcc_flow_infos_request import ListVccFlowInfosRequest
+from ._list_vcc_flow_infos_response_body import ListVccFlowInfosResponseBody
+from ._list_vcc_flow_infos_response import ListVccFlowInfosResponse
+from ._list_vcc_grant_rules_request import ListVccGrantRulesRequest
+from ._list_vcc_grant_rules_response_body import ListVccGrantRulesResponseBody
+from ._list_vcc_grant_rules_response import ListVccGrantRulesResponse
+from ._list_vcc_route_entries_request import ListVccRouteEntriesRequest
+from ._list_vcc_route_entries_response_body import ListVccRouteEntriesResponseBody
+from ._list_vcc_route_entries_response import ListVccRouteEntriesResponse
+from ._list_vccs_request import ListVccsRequest
+from ._list_vccs_response_body import ListVccsResponseBody
+from ._list_vccs_response import ListVccsResponse
+from ._list_vpd_grant_rules_request import ListVpdGrantRulesRequest
+from ._list_vpd_grant_rules_response_body import ListVpdGrantRulesResponseBody
+from ._list_vpd_grant_rules_response import ListVpdGrantRulesResponse
+from ._list_vpd_route_entries_request import ListVpdRouteEntriesRequest
+from ._list_vpd_route_entries_response_body import ListVpdRouteEntriesResponseBody
+from ._list_vpd_route_entries_response import ListVpdRouteEntriesResponse
+from ._list_vpds_request import ListVpdsRequest
+from ._list_vpds_response_body import ListVpdsResponseBody
+from ._list_vpds_response import ListVpdsResponse
+from ._query_instance_ncd_request import QueryInstanceNcdRequest
+from ._query_instance_ncd_response_body import QueryInstanceNcdResponseBody
+from ._query_instance_ncd_response import QueryInstanceNcdResponse
+from ._refund_vcc_request import RefundVccRequest
+from ._refund_vcc_response_body import RefundVccResponseBody
+from ._refund_vcc_response import RefundVccResponse
+from ._retry_vcc_request import RetryVccRequest
+from ._retry_vcc_response_body import RetryVccResponseBody
+from ._retry_vcc_response import RetryVccResponse
+from ._switch_vcc_connection_request import SwitchVccConnectionRequest
+from ._switch_vcc_connection_response_body import SwitchVccConnectionResponseBody
+from ._switch_vcc_connection_response import SwitchVccConnectionResponse
+from ._un_assign_private_ip_address_request import UnAssignPrivateIpAddressRequest
+from ._un_assign_private_ip_address_response_body import UnAssignPrivateIpAddressResponseBody
+from ._un_assign_private_ip_address_response import UnAssignPrivateIpAddressResponse
+from ._un_associate_vpd_cidr_block_request import UnAssociateVpdCidrBlockRequest
+from ._un_associate_vpd_cidr_block_response_body import UnAssociateVpdCidrBlockResponseBody
+from ._un_associate_vpd_cidr_block_response import UnAssociateVpdCidrBlockResponse
+from ._unassign_leni_private_ip_address_request import UnassignLeniPrivateIpAddressRequest
+from ._unassign_leni_private_ip_address_response_body import UnassignLeniPrivateIpAddressResponseBody
+from ._unassign_leni_private_ip_address_response import UnassignLeniPrivateIpAddressResponse
+from ._update_elastic_network_interface_request import UpdateElasticNetworkInterfaceRequest
+from ._update_elastic_network_interface_response_body import UpdateElasticNetworkInterfaceResponseBody
+from ._update_elastic_network_interface_response import UpdateElasticNetworkInterfaceResponse
+from ._update_er_request import UpdateErRequest
+from ._update_er_response_body import UpdateErResponseBody
+from ._update_er_response import UpdateErResponse
+from ._update_er_attachment_request import UpdateErAttachmentRequest
+from ._update_er_attachment_response_body import UpdateErAttachmentResponseBody
+from ._update_er_attachment_response import UpdateErAttachmentResponse
+from ._update_er_route_map_request import UpdateErRouteMapRequest
+from ._update_er_route_map_response_body import UpdateErRouteMapResponseBody
+from ._update_er_route_map_response import UpdateErRouteMapResponse
+from ._update_leni_private_ip_address_request import UpdateLeniPrivateIpAddressRequest
+from ._update_leni_private_ip_address_response_body import UpdateLeniPrivateIpAddressResponseBody
+from ._update_leni_private_ip_address_response import UpdateLeniPrivateIpAddressResponse
+from ._update_subnet_request import UpdateSubnetRequest
+from ._update_subnet_response_body import UpdateSubnetResponseBody
+from ._update_subnet_response import UpdateSubnetResponse
+from ._update_vcc_request import UpdateVccRequest
+from ._update_vcc_response_body import UpdateVccResponseBody
+from ._update_vcc_response import UpdateVccResponse
+from ._update_vpd_request import UpdateVpdRequest
+from ._update_vpd_response_body import UpdateVpdResponseBody
+from ._update_vpd_response import UpdateVpdResponse
+from ._assign_leni_private_ip_address_response_body import AssignLeniPrivateIpAddressResponseBodyContent
+from ._assign_private_ip_address_response_body import AssignPrivateIpAddressResponseBodyContent
+from ._associate_vpd_cidr_block_response_body import AssociateVpdCidrBlockResponseBodyContent
+from ._create_elastic_network_interface_request import CreateElasticNetworkInterfaceRequestTag
+from ._create_elastic_network_interface_response_body import CreateElasticNetworkInterfaceResponseBodyContent
+from ._create_er_request import CreateErRequestTag
+from ._create_er_response_body import CreateErResponseBodyContent
+from ._create_er_attachment_response_body import CreateErAttachmentResponseBodyContent
+from ._create_er_route_map_response_body import CreateErRouteMapResponseBodyContent
+from ._create_subnet_request import CreateSubnetRequestTag
+from ._create_subnet_response_body import CreateSubnetResponseBodyContent
+from ._create_vcc_request import CreateVccRequestTag
+from ._create_vcc_response_body import CreateVccResponseBodyContent
+from ._create_vcc_grant_rule_response_body import CreateVccGrantRuleResponseBodyContent
+from ._create_vcc_route_entry_response_body import CreateVccRouteEntryResponseBodyContent
+from ._create_vpd_request import CreateVpdRequestSubnets
+from ._create_vpd_request import CreateVpdRequestTag
+from ._create_vpd_response_body import CreateVpdResponseBodyContent
+from ._create_vpd_grant_rule_response_body import CreateVpdGrantRuleResponseBodyContent
+from ._delete_elastic_network_interface_response_body import DeleteElasticNetworkInterfaceResponseBodyContent
+from ._describe_slr_response_body import DescribeSlrResponseBodyContent
+from ._get_destination_cidr_block_response_body import GetDestinationCidrBlockResponseBodyContent
+from ._get_elastic_network_interface_response_body import GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses
+from ._get_elastic_network_interface_response_body import GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses
+from ._get_elastic_network_interface_response_body import GetElasticNetworkInterfaceResponseBodyContentTags
+from ._get_elastic_network_interface_response_body import GetElasticNetworkInterfaceResponseBodyContent
+from ._get_er_response_body import GetErResponseBodyContentErAttachments
+from ._get_er_response_body import GetErResponseBodyContentErRouteEntrys
+from ._get_er_response_body import GetErResponseBodyContentErRouteMaps
+from ._get_er_response_body import GetErResponseBodyContentTags
+from ._get_er_response_body import GetErResponseBodyContent
+from ._get_er_attachment_response_body import GetErAttachmentResponseBodyContent
+from ._get_er_route_entry_response_body import GetErRouteEntryResponseBodyContent
+from ._get_er_route_map_response_body import GetErRouteMapResponseBodyContent
+from ._get_fabric_topology_response_body import GetFabricTopologyResponseBodyContentTopoInfo
+from ._get_fabric_topology_response_body import GetFabricTopologyResponseBodyContent
+from ._get_leni_private_ip_address_response_body import GetLeniPrivateIpAddressResponseBodyContent
+from ._get_lni_private_ip_address_response_body import GetLniPrivateIpAddressResponseBodyContent
+from ._get_network_interface_response_body import GetNetworkInterfaceResponseBodyContentPrivateIpAddressMacGroup
+from ._get_network_interface_response_body import GetNetworkInterfaceResponseBodyContentSubnetBaseInfo
+from ._get_network_interface_response_body import GetNetworkInterfaceResponseBodyContentTags
+from ._get_network_interface_response_body import GetNetworkInterfaceResponseBodyContentVpdBaseInfo
+from ._get_network_interface_response_body import GetNetworkInterfaceResponseBodyContent
+from ._get_node_info_for_pod_response_body import GetNodeInfoForPodResponseBodyContent
+from ._get_subnet_response_body import GetSubnetResponseBodyContentTags
+from ._get_subnet_response_body import GetSubnetResponseBodyContentVpdBaseInfo
+from ._get_subnet_response_body import GetSubnetResponseBodyContent
+from ._get_vcc_response_body import GetVccResponseBodyContentAliyunRouterInfo
+from ._get_vcc_response_body import GetVccResponseBodyContentCisRouterInfoCcInfos
+from ._get_vcc_response_body import GetVccResponseBodyContentCisRouterInfo
+from ._get_vcc_response_body import GetVccResponseBodyContentErInfos
+from ._get_vcc_response_body import GetVccResponseBodyContentTags
+from ._get_vcc_response_body import GetVccResponseBodyContentVbrInfosVbrBgpPeers
+from ._get_vcc_response_body import GetVccResponseBodyContentVbrInfos
+from ._get_vcc_response_body import GetVccResponseBodyContentVpdBaseInfo
+from ._get_vcc_response_body import GetVccResponseBodyContent
+from ._get_vcc_grant_rule_response_body import GetVccGrantRuleResponseBodyContent
+from ._get_vcc_route_entry_response_body import GetVccRouteEntryResponseBodyContent
+from ._get_vpd_response_body import GetVpdResponseBodyContentErInfos
+from ._get_vpd_response_body import GetVpdResponseBodyContentTags
+from ._get_vpd_response_body import GetVpdResponseBodyContent
+from ._get_vpd_grant_rule_response_body import GetVpdGrantRuleResponseBodyContent
+from ._get_vpd_route_entry_response_body import GetVpdRouteEntryResponseBodyContent
+from ._initialize_vcc_response_body import InitializeVccResponseBodyContent
+from ._list_elastic_network_interfaces_request import ListElasticNetworkInterfacesRequestTag
+from ._list_elastic_network_interfaces_response_body import ListElasticNetworkInterfacesResponseBodyContentDataTags
+from ._list_elastic_network_interfaces_response_body import ListElasticNetworkInterfacesResponseBodyContentData
+from ._list_elastic_network_interfaces_response_body import ListElasticNetworkInterfacesResponseBodyContent
+from ._list_er_attachments_response_body import ListErAttachmentsResponseBodyContentData
+from ._list_er_attachments_response_body import ListErAttachmentsResponseBodyContent
+from ._list_er_route_entries_response_body import ListErRouteEntriesResponseBodyContentData
+from ._list_er_route_entries_response_body import ListErRouteEntriesResponseBodyContent
+from ._list_er_route_maps_response_body import ListErRouteMapsResponseBodyContentData
+from ._list_er_route_maps_response_body import ListErRouteMapsResponseBodyContent
+from ._list_ers_request import ListErsRequestTag
+from ._list_ers_response_body import ListErsResponseBodyContentDataTags
+from ._list_ers_response_body import ListErsResponseBodyContentData
+from ._list_ers_response_body import ListErsResponseBodyContent
+from ._list_instances_by_ncd_response_body import ListInstancesByNcdResponseBodyContentInstanceInfos
+from ._list_instances_by_ncd_response_body import ListInstancesByNcdResponseBodyContent
+from ._list_leni_private_ip_addresses_response_body import ListLeniPrivateIpAddressesResponseBodyContentData
+from ._list_leni_private_ip_addresses_response_body import ListLeniPrivateIpAddressesResponseBodyContent
+from ._list_lni_private_ip_address_response_body import ListLniPrivateIpAddressResponseBodyContentData
+from ._list_lni_private_ip_address_response_body import ListLniPrivateIpAddressResponseBodyContent
+from ._list_network_interfaces_request import ListNetworkInterfacesRequestTag
+from ._list_network_interfaces_response_body import ListNetworkInterfacesResponseBodyContentDataPrivateIpAddressMacGroup
+from ._list_network_interfaces_response_body import ListNetworkInterfacesResponseBodyContentDataSubnetBaseInfo
+from ._list_network_interfaces_response_body import ListNetworkInterfacesResponseBodyContentDataTags
+from ._list_network_interfaces_response_body import ListNetworkInterfacesResponseBodyContentDataVpdBaseInfo
+from ._list_network_interfaces_response_body import ListNetworkInterfacesResponseBodyContentData
+from ._list_network_interfaces_response_body import ListNetworkInterfacesResponseBodyContent
+from ._list_node_infos_for_pod_response_body import ListNodeInfosForPodResponseBodyContent
+from ._list_subnets_request import ListSubnetsRequestTag
+from ._list_subnets_response_body import ListSubnetsResponseBodyContentDataTags
+from ._list_subnets_response_body import ListSubnetsResponseBodyContentDataVpdBaseInfo
+from ._list_subnets_response_body import ListSubnetsResponseBodyContentData
+from ._list_subnets_response_body import ListSubnetsResponseBodyContent
+from ._list_vcc_flow_infos_response_body import ListVccFlowInfosResponseBodyContentData
+from ._list_vcc_flow_infos_response_body import ListVccFlowInfosResponseBodyContent
+from ._list_vcc_grant_rules_response_body import ListVccGrantRulesResponseBodyContentData
+from ._list_vcc_grant_rules_response_body import ListVccGrantRulesResponseBodyContent
+from ._list_vcc_route_entries_response_body import ListVccRouteEntriesResponseBodyContentData
+from ._list_vcc_route_entries_response_body import ListVccRouteEntriesResponseBodyContent
+from ._list_vccs_request import ListVccsRequestTag
+from ._list_vccs_response_body import ListVccsResponseBodyContentDataErInfos
+from ._list_vccs_response_body import ListVccsResponseBodyContentDataTags
+from ._list_vccs_response_body import ListVccsResponseBodyContentDataVpdBaseInfo
+from ._list_vccs_response_body import ListVccsResponseBodyContentData
+from ._list_vccs_response_body import ListVccsResponseBodyContent
+from ._list_vpd_grant_rules_response_body import ListVpdGrantRulesResponseBodyContentData
+from ._list_vpd_grant_rules_response_body import ListVpdGrantRulesResponseBodyContent
+from ._list_vpd_route_entries_response_body import ListVpdRouteEntriesResponseBodyContentData
+from ._list_vpd_route_entries_response_body import ListVpdRouteEntriesResponseBodyContent
+from ._list_vpds_request import ListVpdsRequestTag
+from ._list_vpds_response_body import ListVpdsResponseBodyContentDataErInfos
+from ._list_vpds_response_body import ListVpdsResponseBodyContentDataTags
+from ._list_vpds_response_body import ListVpdsResponseBodyContentData
+from ._list_vpds_response_body import ListVpdsResponseBodyContent
+from ._query_instance_ncd_response_body import QueryInstanceNcdResponseBodyContent
+from ._un_assign_private_ip_address_response_body import UnAssignPrivateIpAddressResponseBodyContent
+from ._un_associate_vpd_cidr_block_response_body import UnAssociateVpdCidrBlockResponseBodyContent
+from ._unassign_leni_private_ip_address_response_body import UnassignLeniPrivateIpAddressResponseBodyContent
+from ._update_elastic_network_interface_response_body import UpdateElasticNetworkInterfaceResponseBodyContent
+from ._update_leni_private_ip_address_response_body import UpdateLeniPrivateIpAddressResponseBodyContent
+from ._update_subnet_response_body import UpdateSubnetResponseBodyContent
+from ._update_vcc_response_body import UpdateVccResponseBodyContent
+from ._update_vpd_response_body import UpdateVpdResponseBodyContent
+
+__all__ = [
+    AssignLeniPrivateIpAddressRequest,
+    AssignLeniPrivateIpAddressResponseBody,
+    AssignLeniPrivateIpAddressResponse,
+    AssignPrivateIpAddressRequest,
+    AssignPrivateIpAddressResponseBody,
+    AssignPrivateIpAddressResponse,
+    AssociateVpdCidrBlockRequest,
+    AssociateVpdCidrBlockResponseBody,
+    AssociateVpdCidrBlockResponse,
+    AttachElasticNetworkInterfaceRequest,
+    AttachElasticNetworkInterfaceResponseBody,
+    AttachElasticNetworkInterfaceResponse,
+    CreateElasticNetworkInterfaceRequest,
+    CreateElasticNetworkInterfaceResponseBody,
+    CreateElasticNetworkInterfaceResponse,
+    CreateErRequest,
+    CreateErResponseBody,
+    CreateErResponse,
+    CreateErAttachmentRequest,
+    CreateErAttachmentResponseBody,
+    CreateErAttachmentResponse,
+    CreateErRouteMapRequest,
+    CreateErRouteMapResponseBody,
+    CreateErRouteMapResponse,
+    CreateSubnetRequest,
+    CreateSubnetResponseBody,
+    CreateSubnetResponse,
+    CreateVccRequest,
+    CreateVccResponseBody,
+    CreateVccResponse,
+    CreateVccGrantRuleRequest,
+    CreateVccGrantRuleResponseBody,
+    CreateVccGrantRuleResponse,
+    CreateVccRouteEntryRequest,
+    CreateVccRouteEntryResponseBody,
+    CreateVccRouteEntryResponse,
+    CreateVpdRequest,
+    CreateVpdResponseBody,
+    CreateVpdResponse,
+    CreateVpdGrantRuleRequest,
+    CreateVpdGrantRuleResponseBody,
+    CreateVpdGrantRuleResponse,
+    DeleteElasticNetworkInterfaceRequest,
+    DeleteElasticNetworkInterfaceResponseBody,
+    DeleteElasticNetworkInterfaceResponse,
+    DeleteErRequest,
+    DeleteErResponseBody,
+    DeleteErResponse,
+    DeleteErAttachmentRequest,
+    DeleteErAttachmentResponseBody,
+    DeleteErAttachmentResponse,
+    DeleteErRouteMapRequest,
+    DeleteErRouteMapResponseBody,
+    DeleteErRouteMapResponse,
+    DeleteSubnetRequest,
+    DeleteSubnetResponseBody,
+    DeleteSubnetResponse,
+    DeleteVccGrantRuleRequest,
+    DeleteVccGrantRuleResponseBody,
+    DeleteVccGrantRuleResponse,
+    DeleteVccRouteEntryRequest,
+    DeleteVccRouteEntryResponseBody,
+    DeleteVccRouteEntryResponse,
+    DeleteVpdRequest,
+    DeleteVpdResponseBody,
+    DeleteVpdResponse,
+    DeleteVpdGrantRuleRequest,
+    DeleteVpdGrantRuleResponseBody,
+    DeleteVpdGrantRuleResponse,
+    DescribeSlrRequest,
+    DescribeSlrResponseBody,
+    DescribeSlrResponse,
+    DetachElasticNetworkInterfaceRequest,
+    DetachElasticNetworkInterfaceResponseBody,
+    DetachElasticNetworkInterfaceResponse,
+    GetDestinationCidrBlockRequest,
+    GetDestinationCidrBlockResponseBody,
+    GetDestinationCidrBlockResponse,
+    GetElasticNetworkInterfaceRequest,
+    GetElasticNetworkInterfaceResponseBody,
+    GetElasticNetworkInterfaceResponse,
+    GetErRequest,
+    GetErResponseBody,
+    GetErResponse,
+    GetErAttachmentRequest,
+    GetErAttachmentResponseBody,
+    GetErAttachmentResponse,
+    GetErRouteEntryRequest,
+    GetErRouteEntryResponseBody,
+    GetErRouteEntryResponse,
+    GetErRouteMapRequest,
+    GetErRouteMapResponseBody,
+    GetErRouteMapResponse,
+    GetFabricTopologyRequest,
+    GetFabricTopologyResponseBody,
+    GetFabricTopologyResponse,
+    GetLeniPrivateIpAddressRequest,
+    GetLeniPrivateIpAddressResponseBody,
+    GetLeniPrivateIpAddressResponse,
+    GetLniPrivateIpAddressRequest,
+    GetLniPrivateIpAddressResponseBody,
+    GetLniPrivateIpAddressResponse,
+    GetNetworkInterfaceRequest,
+    GetNetworkInterfaceResponseBody,
+    GetNetworkInterfaceResponse,
+    GetNodeInfoForPodRequest,
+    GetNodeInfoForPodResponseBody,
+    GetNodeInfoForPodResponse,
+    GetSubnetRequest,
+    GetSubnetResponseBody,
+    GetSubnetResponse,
+    GetVccRequest,
+    GetVccResponseBody,
+    GetVccResponse,
+    GetVccGrantRuleRequest,
+    GetVccGrantRuleResponseBody,
+    GetVccGrantRuleResponse,
+    GetVccRouteEntryRequest,
+    GetVccRouteEntryResponseBody,
+    GetVccRouteEntryResponse,
+    GetVpdRequest,
+    GetVpdResponseBody,
+    GetVpdResponse,
+    GetVpdGrantRuleRequest,
+    GetVpdGrantRuleResponseBody,
+    GetVpdGrantRuleResponse,
+    GetVpdRouteEntryRequest,
+    GetVpdRouteEntryResponseBody,
+    GetVpdRouteEntryResponse,
+    InitializeVccRequest,
+    InitializeVccResponseBody,
+    InitializeVccResponse,
+    ListElasticNetworkInterfacesRequest,
+    ListElasticNetworkInterfacesResponseBody,
+    ListElasticNetworkInterfacesResponse,
+    ListErAttachmentsRequest,
+    ListErAttachmentsResponseBody,
+    ListErAttachmentsResponse,
+    ListErRouteEntriesRequest,
+    ListErRouteEntriesResponseBody,
+    ListErRouteEntriesResponse,
+    ListErRouteMapsRequest,
+    ListErRouteMapsResponseBody,
+    ListErRouteMapsResponse,
+    ListErsRequest,
+    ListErsResponseBody,
+    ListErsResponse,
+    ListInstancesByNcdRequest,
+    ListInstancesByNcdResponseBody,
+    ListInstancesByNcdResponse,
+    ListLeniPrivateIpAddressesRequest,
+    ListLeniPrivateIpAddressesResponseBody,
+    ListLeniPrivateIpAddressesResponse,
+    ListLniPrivateIpAddressRequest,
+    ListLniPrivateIpAddressResponseBody,
+    ListLniPrivateIpAddressResponse,
+    ListNetworkInterfacesRequest,
+    ListNetworkInterfacesResponseBody,
+    ListNetworkInterfacesResponse,
+    ListNodeInfosForPodRequest,
+    ListNodeInfosForPodResponseBody,
+    ListNodeInfosForPodResponse,
+    ListSubnetsRequest,
+    ListSubnetsResponseBody,
+    ListSubnetsResponse,
+    ListVccFlowInfosRequest,
+    ListVccFlowInfosResponseBody,
+    ListVccFlowInfosResponse,
+    ListVccGrantRulesRequest,
+    ListVccGrantRulesResponseBody,
+    ListVccGrantRulesResponse,
+    ListVccRouteEntriesRequest,
+    ListVccRouteEntriesResponseBody,
+    ListVccRouteEntriesResponse,
+    ListVccsRequest,
+    ListVccsResponseBody,
+    ListVccsResponse,
+    ListVpdGrantRulesRequest,
+    ListVpdGrantRulesResponseBody,
+    ListVpdGrantRulesResponse,
+    ListVpdRouteEntriesRequest,
+    ListVpdRouteEntriesResponseBody,
+    ListVpdRouteEntriesResponse,
+    ListVpdsRequest,
+    ListVpdsResponseBody,
+    ListVpdsResponse,
+    QueryInstanceNcdRequest,
+    QueryInstanceNcdResponseBody,
+    QueryInstanceNcdResponse,
+    RefundVccRequest,
+    RefundVccResponseBody,
+    RefundVccResponse,
+    RetryVccRequest,
+    RetryVccResponseBody,
+    RetryVccResponse,
+    SwitchVccConnectionRequest,
+    SwitchVccConnectionResponseBody,
+    SwitchVccConnectionResponse,
+    UnAssignPrivateIpAddressRequest,
+    UnAssignPrivateIpAddressResponseBody,
+    UnAssignPrivateIpAddressResponse,
+    UnAssociateVpdCidrBlockRequest,
+    UnAssociateVpdCidrBlockResponseBody,
+    UnAssociateVpdCidrBlockResponse,
+    UnassignLeniPrivateIpAddressRequest,
+    UnassignLeniPrivateIpAddressResponseBody,
+    UnassignLeniPrivateIpAddressResponse,
+    UpdateElasticNetworkInterfaceRequest,
+    UpdateElasticNetworkInterfaceResponseBody,
+    UpdateElasticNetworkInterfaceResponse,
+    UpdateErRequest,
+    UpdateErResponseBody,
+    UpdateErResponse,
+    UpdateErAttachmentRequest,
+    UpdateErAttachmentResponseBody,
+    UpdateErAttachmentResponse,
+    UpdateErRouteMapRequest,
+    UpdateErRouteMapResponseBody,
+    UpdateErRouteMapResponse,
+    UpdateLeniPrivateIpAddressRequest,
+    UpdateLeniPrivateIpAddressResponseBody,
+    UpdateLeniPrivateIpAddressResponse,
+    UpdateSubnetRequest,
+    UpdateSubnetResponseBody,
+    UpdateSubnetResponse,
+    UpdateVccRequest,
+    UpdateVccResponseBody,
+    UpdateVccResponse,
+    UpdateVpdRequest,
+    UpdateVpdResponseBody,
+    UpdateVpdResponse,
+    AssignLeniPrivateIpAddressResponseBodyContent,
+    AssignPrivateIpAddressResponseBodyContent,
+    AssociateVpdCidrBlockResponseBodyContent,
+    CreateElasticNetworkInterfaceRequestTag,
+    CreateElasticNetworkInterfaceResponseBodyContent,
+    CreateErRequestTag,
+    CreateErResponseBodyContent,
+    CreateErAttachmentResponseBodyContent,
+    CreateErRouteMapResponseBodyContent,
+    CreateSubnetRequestTag,
+    CreateSubnetResponseBodyContent,
+    CreateVccRequestTag,
+    CreateVccResponseBodyContent,
+    CreateVccGrantRuleResponseBodyContent,
+    CreateVccRouteEntryResponseBodyContent,
+    CreateVpdRequestSubnets,
+    CreateVpdRequestTag,
+    CreateVpdResponseBodyContent,
+    CreateVpdGrantRuleResponseBodyContent,
+    DeleteElasticNetworkInterfaceResponseBodyContent,
+    DescribeSlrResponseBodyContent,
+    GetDestinationCidrBlockResponseBodyContent,
+    GetElasticNetworkInterfaceResponseBodyContentIpv6Addresses,
+    GetElasticNetworkInterfaceResponseBodyContentPrivateIpAddresses,
+    GetElasticNetworkInterfaceResponseBodyContentTags,
+    GetElasticNetworkInterfaceResponseBodyContent,
+    GetErResponseBodyContentErAttachments,
+    GetErResponseBodyContentErRouteEntrys,
+    GetErResponseBodyContentErRouteMaps,
+    GetErResponseBodyContentTags,
+    GetErResponseBodyContent,
+    GetErAttachmentResponseBodyContent,
+    GetErRouteEntryResponseBodyContent,
+    GetErRouteMapResponseBodyContent,
+    GetFabricTopologyResponseBodyContentTopoInfo,
+    GetFabricTopologyResponseBodyContent,
+    GetLeniPrivateIpAddressResponseBodyContent,
+    GetLniPrivateIpAddressResponseBodyContent,
+    GetNetworkInterfaceResponseBodyContentPrivateIpAddressMacGroup,
+    GetNetworkInterfaceResponseBodyContentSubnetBaseInfo,
+    GetNetworkInterfaceResponseBodyContentTags,
+    GetNetworkInterfaceResponseBodyContentVpdBaseInfo,
+    GetNetworkInterfaceResponseBodyContent,
+    GetNodeInfoForPodResponseBodyContent,
+    GetSubnetResponseBodyContentTags,
+    GetSubnetResponseBodyContentVpdBaseInfo,
+    GetSubnetResponseBodyContent,
+    GetVccResponseBodyContentAliyunRouterInfo,
+    GetVccResponseBodyContentCisRouterInfoCcInfos,
+    GetVccResponseBodyContentCisRouterInfo,
+    GetVccResponseBodyContentErInfos,
+    GetVccResponseBodyContentTags,
+    GetVccResponseBodyContentVbrInfosVbrBgpPeers,
+    GetVccResponseBodyContentVbrInfos,
+    GetVccResponseBodyContentVpdBaseInfo,
+    GetVccResponseBodyContent,
+    GetVccGrantRuleResponseBodyContent,
+    GetVccRouteEntryResponseBodyContent,
+    GetVpdResponseBodyContentErInfos,
+    GetVpdResponseBodyContentTags,
+    GetVpdResponseBodyContent,
+    GetVpdGrantRuleResponseBodyContent,
+    GetVpdRouteEntryResponseBodyContent,
+    InitializeVccResponseBodyContent,
+    ListElasticNetworkInterfacesRequestTag,
+    ListElasticNetworkInterfacesResponseBodyContentDataTags,
+    ListElasticNetworkInterfacesResponseBodyContentData,
+    ListElasticNetworkInterfacesResponseBodyContent,
+    ListErAttachmentsResponseBodyContentData,
+    ListErAttachmentsResponseBodyContent,
+    ListErRouteEntriesResponseBodyContentData,
+    ListErRouteEntriesResponseBodyContent,
+    ListErRouteMapsResponseBodyContentData,
+    ListErRouteMapsResponseBodyContent,
+    ListErsRequestTag,
+    ListErsResponseBodyContentDataTags,
+    ListErsResponseBodyContentData,
+    ListErsResponseBodyContent,
+    ListInstancesByNcdResponseBodyContentInstanceInfos,
+    ListInstancesByNcdResponseBodyContent,
+    ListLeniPrivateIpAddressesResponseBodyContentData,
+    ListLeniPrivateIpAddressesResponseBodyContent,
+    ListLniPrivateIpAddressResponseBodyContentData,
+    ListLniPrivateIpAddressResponseBodyContent,
+    ListNetworkInterfacesRequestTag,
+    ListNetworkInterfacesResponseBodyContentDataPrivateIpAddressMacGroup,
+    ListNetworkInterfacesResponseBodyContentDataSubnetBaseInfo,
+    ListNetworkInterfacesResponseBodyContentDataTags,
+    ListNetworkInterfacesResponseBodyContentDataVpdBaseInfo,
+    ListNetworkInterfacesResponseBodyContentData,
+    ListNetworkInterfacesResponseBodyContent,
+    ListNodeInfosForPodResponseBodyContent,
+    ListSubnetsRequestTag,
+    ListSubnetsResponseBodyContentDataTags,
+    ListSubnetsResponseBodyContentDataVpdBaseInfo,
+    ListSubnetsResponseBodyContentData,
+    ListSubnetsResponseBodyContent,
+    ListVccFlowInfosResponseBodyContentData,
+    ListVccFlowInfosResponseBodyContent,
+    ListVccGrantRulesResponseBodyContentData,
+    ListVccGrantRulesResponseBodyContent,
+    ListVccRouteEntriesResponseBodyContentData,
+    ListVccRouteEntriesResponseBodyContent,
+    ListVccsRequestTag,
+    ListVccsResponseBodyContentDataErInfos,
+    ListVccsResponseBodyContentDataTags,
+    ListVccsResponseBodyContentDataVpdBaseInfo,
+    ListVccsResponseBodyContentData,
+    ListVccsResponseBodyContent,
+    ListVpdGrantRulesResponseBodyContentData,
+    ListVpdGrantRulesResponseBodyContent,
+    ListVpdRouteEntriesResponseBodyContentData,
+    ListVpdRouteEntriesResponseBodyContent,
+    ListVpdsRequestTag,
+    ListVpdsResponseBodyContentDataErInfos,
+    ListVpdsResponseBodyContentDataTags,
+    ListVpdsResponseBodyContentData,
+    ListVpdsResponseBodyContent,
+    QueryInstanceNcdResponseBodyContent,
+    UnAssignPrivateIpAddressResponseBodyContent,
+    UnAssociateVpdCidrBlockResponseBodyContent,
+    UnassignLeniPrivateIpAddressResponseBodyContent,
+    UpdateElasticNetworkInterfaceResponseBodyContent,
+    UpdateLeniPrivateIpAddressResponseBodyContent,
+    UpdateSubnetResponseBodyContent,
+    UpdateVccResponseBodyContent,
+    UpdateVpdResponseBodyContent
+]
