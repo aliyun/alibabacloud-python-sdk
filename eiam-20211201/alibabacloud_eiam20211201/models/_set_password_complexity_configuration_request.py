@@ -10,10 +10,12 @@ from darabonba.model import DaraModel
 class SetPasswordComplexityConfigurationRequest(DaraModel):
     def __init__(
         self,
+        disabled_weak_password_login: bool = None,
         instance_id: str = None,
         password_complexity_rules: List[main_models.SetPasswordComplexityConfigurationRequestPasswordComplexityRules] = None,
         password_min_length: int = None,
     ):
+        self.disabled_weak_password_login = disabled_weak_password_login
         # The instance ID.
         # 
         # This parameter is required.
@@ -36,6 +38,9 @@ class SetPasswordComplexityConfigurationRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.disabled_weak_password_login is not None:
+            result['DisabledWeakPasswordLogin'] = self.disabled_weak_password_login
+
         if self.instance_id is not None:
             result['InstanceId'] = self.instance_id
 
@@ -51,6 +56,9 @@ class SetPasswordComplexityConfigurationRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DisabledWeakPasswordLogin') is not None:
+            self.disabled_weak_password_login = m.get('DisabledWeakPasswordLogin')
+
         if m.get('InstanceId') is not None:
             self.instance_id = m.get('InstanceId')
 

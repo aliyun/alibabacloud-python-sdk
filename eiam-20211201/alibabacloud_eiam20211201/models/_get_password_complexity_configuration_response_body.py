@@ -49,9 +49,13 @@ class GetPasswordComplexityConfigurationResponseBody(DaraModel):
 class GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfiguration(DaraModel):
     def __init__(
         self,
+        disabled_weak_password_login: bool = None,
+        disabled_weak_password_login_started_at: int = None,
         password_complexity_rules: List[main_models.GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigurationPasswordComplexityRules] = None,
         password_min_length: int = None,
     ):
+        self.disabled_weak_password_login = disabled_weak_password_login
+        self.disabled_weak_password_login_started_at = disabled_weak_password_login_started_at
         # The password complexity rules.
         self.password_complexity_rules = password_complexity_rules
         # The minimum number of characters in a password.
@@ -68,6 +72,12 @@ class GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigurat
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.disabled_weak_password_login is not None:
+            result['DisabledWeakPasswordLogin'] = self.disabled_weak_password_login
+
+        if self.disabled_weak_password_login_started_at is not None:
+            result['DisabledWeakPasswordLoginStartedAt'] = self.disabled_weak_password_login_started_at
+
         result['PasswordComplexityRules'] = []
         if self.password_complexity_rules is not None:
             for k1 in self.password_complexity_rules:
@@ -80,6 +90,12 @@ class GetPasswordComplexityConfigurationResponseBodyPasswordComplexityConfigurat
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('DisabledWeakPasswordLogin') is not None:
+            self.disabled_weak_password_login = m.get('DisabledWeakPasswordLogin')
+
+        if m.get('DisabledWeakPasswordLoginStartedAt') is not None:
+            self.disabled_weak_password_login_started_at = m.get('DisabledWeakPasswordLoginStartedAt')
+
         self.password_complexity_rules = []
         if m.get('PasswordComplexityRules') is not None:
             for k1 in m.get('PasswordComplexityRules'):

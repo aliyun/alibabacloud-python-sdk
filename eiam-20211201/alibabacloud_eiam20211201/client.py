@@ -22551,6 +22551,8 @@ class Client(OpenApiClient):
     ) -> main_models.SetPasswordComplexityConfigurationResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.disabled_weak_password_login):
+            query['DisabledWeakPasswordLogin'] = request.disabled_weak_password_login
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.password_complexity_rules):
@@ -22583,6 +22585,8 @@ class Client(OpenApiClient):
     ) -> main_models.SetPasswordComplexityConfigurationResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.disabled_weak_password_login):
+            query['DisabledWeakPasswordLogin'] = request.disabled_weak_password_login
         if not DaraCore.is_null(request.instance_id):
             query['InstanceId'] = request.instance_id
         if not DaraCore.is_null(request.password_complexity_rules):
