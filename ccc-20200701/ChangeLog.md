@@ -1,3 +1,12 @@
+2026-02-28 Version: 2.32.1
+- Update API CreateUser: add request parameters NeedEmailNotification.
+- Update API GetConversationDetail: add request parameters AgentId.
+- Update API ListMonoRecordings: add request parameters AgentChannelId.
+- Update API ListMonoRecordings: add request parameters AgentId.
+- Update API ListMultiChannelRecordings: add request parameters AgentChannelId.
+- Update API ListMultiChannelRecordings: add request parameters AgentId.
+
+
 2025-12-22 Version: 2.32.0
 - Support API ListFeedbacks.
 - Support API SendNotification.
