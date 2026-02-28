@@ -1,3 +1,8 @@
+2026-02-28 Version: 5.3.3
+- Update API StartAgent: add request parameters VoiceChatConfig.LLMConfig.ToolExecutionConfig.
+- Update API StartAgent: add request parameters VoiceChatConfig.LLMConfig.Tools.
+
+
 2025-11-25 Version: 5.3.2
 - Update API StartCloudNote: add request parameters RealtimeSubtitle.AsrCallback.
 
