@@ -1,3 +1,6 @@
+2026-02-28 Version: 6.0.5
+- Generated python 2024-03-27 for APIG.
+
 2026-02-11 Version: 6.0.4
 - Update API CreateHttpApi: add request parameters body.belongGatewayId.
 - Update API CreateHttpApi: add request parameters body.dryRun.

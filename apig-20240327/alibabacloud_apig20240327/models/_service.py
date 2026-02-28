@@ -31,6 +31,7 @@ class Service(DaraModel):
         source_type: str = None,
         unhealthy_endpoints: List[str] = None,
         update_timestamp: int = None,
+        versions: List[main_models.ServiceVersions] = None,
     ):
         # The address details, which can be IP addresses or domain names.
         self.addresses = addresses
@@ -79,6 +80,7 @@ class Service(DaraModel):
         self.unhealthy_endpoints = unhealthy_endpoints
         # The last modified time (unix timestamp).
         self.update_timestamp = update_timestamp
+        self.versions = versions
 
     def validate(self):
         if self.agent_service_config:
@@ -93,6 +95,10 @@ class Service(DaraModel):
                     v1.validate()
         if self.ports:
             for v1 in self.ports:
+                 if v1:
+                    v1.validate()
+        if self.versions:
+            for v1 in self.versions:
                  if v1:
                     v1.validate()
 
@@ -167,6 +173,11 @@ class Service(DaraModel):
 
         if self.update_timestamp is not None:
             result['updateTimestamp'] = self.update_timestamp
+
+        result['versions'] = []
+        if self.versions is not None:
+            for k1 in self.versions:
+                result['versions'].append(k1.to_map() if k1 else None)
 
         return result
 
@@ -243,6 +254,90 @@ class Service(DaraModel):
 
         if m.get('updateTimestamp') is not None:
             self.update_timestamp = m.get('updateTimestamp')
+
+        self.versions = []
+        if m.get('versions') is not None:
+            for k1 in m.get('versions'):
+                temp_model = main_models.ServiceVersions()
+                self.versions.append(temp_model.from_map(k1))
+
+        return self
+
+class ServiceVersions(DaraModel):
+    def __init__(
+        self,
+        labels: List[main_models.ServiceVersionsLabels] = None,
+        name: str = None,
+    ):
+        self.labels = labels
+        self.name = name
+
+    def validate(self):
+        if self.labels:
+            for v1 in self.labels:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        result['labels'] = []
+        if self.labels is not None:
+            for k1 in self.labels:
+                result['labels'].append(k1.to_map() if k1 else None)
+
+        if self.name is not None:
+            result['name'] = self.name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        self.labels = []
+        if m.get('labels') is not None:
+            for k1 in m.get('labels'):
+                temp_model = main_models.ServiceVersionsLabels()
+                self.labels.append(temp_model.from_map(k1))
+
+        if m.get('name') is not None:
+            self.name = m.get('name')
+
+        return self
+
+class ServiceVersionsLabels(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        value: str = None,
+    ):
+        self.key = key
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['key'] = self.key
+
+        if self.value is not None:
+            result['value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('key') is not None:
+            self.key = m.get('key')
+
+        if m.get('value') is not None:
+            self.value = m.get('value')
 
         return self
 

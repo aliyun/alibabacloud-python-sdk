@@ -377,6 +377,7 @@ from ._http_api_deploy_config import HttpApiDeployConfigPolicyConfigsAiSecurityG
 from ._http_api_deploy_config import HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfigConsumerRules
 from ._http_api_deploy_config import HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfig
 from ._http_api_deploy_config import HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfig
+from ._http_api_deploy_config import HttpApiDeployConfigPolicyConfigsAiStatisticsConfig
 from ._http_api_deploy_config import HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigGlobalRules
 from ._http_api_deploy_config import HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigRules
 from ._http_api_deploy_config import HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfig
@@ -447,6 +448,8 @@ from ._jwt_identity_config import JwtIdentityConfigJwtTokenConfig
 from ._risk_check_results import RiskCheckResultsMetadata
 from ._risk_check_results import RiskCheckResultsRiskDetails
 from ._service import ServicePorts
+from ._service import ServiceVersionsLabels
+from ._service import ServiceVersions
 from ._tls_cipher_suites_config import TlsCipherSuitesConfigTlsCipherSuite
 from ._create_and_attach_policy_response_body import CreateAndAttachPolicyResponseBodyData
 from ._create_consumer_response_body import CreateConsumerResponseBodyData
@@ -1032,6 +1035,7 @@ __all__ = [
     HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfigConsumerRules,
     HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfigRiskConfig,
     HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfig,
+    HttpApiDeployConfigPolicyConfigsAiStatisticsConfig,
     HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigGlobalRules,
     HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigRules,
     HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfig,
@@ -1102,6 +1106,8 @@ __all__ = [
     RiskCheckResultsMetadata,
     RiskCheckResultsRiskDetails,
     ServicePorts,
+    ServiceVersionsLabels,
+    ServiceVersions,
     TlsCipherSuitesConfigTlsCipherSuite,
     CreateAndAttachPolicyResponseBodyData,
     CreateConsumerResponseBodyData,

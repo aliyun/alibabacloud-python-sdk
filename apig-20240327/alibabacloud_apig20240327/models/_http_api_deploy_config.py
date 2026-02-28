@@ -434,6 +434,7 @@ class HttpApiDeployConfigPolicyConfigs(DaraModel):
         self,
         ai_fallback_config: main_models.HttpApiDeployConfigPolicyConfigsAiFallbackConfig = None,
         ai_security_guard_config: main_models.HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfig = None,
+        ai_statistics_config: main_models.HttpApiDeployConfigPolicyConfigsAiStatisticsConfig = None,
         ai_token_rate_limit_config: main_models.HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfig = None,
         enable: bool = None,
         type: str = None,
@@ -442,6 +443,7 @@ class HttpApiDeployConfigPolicyConfigs(DaraModel):
         self.ai_fallback_config = ai_fallback_config
         # AI Security Guard configuration
         self.ai_security_guard_config = ai_security_guard_config
+        self.ai_statistics_config = ai_statistics_config
         # AI Token Rate Limit configuration
         self.ai_token_rate_limit_config = ai_token_rate_limit_config
         # Specifies whether to enable the policy.
@@ -454,6 +456,8 @@ class HttpApiDeployConfigPolicyConfigs(DaraModel):
             self.ai_fallback_config.validate()
         if self.ai_security_guard_config:
             self.ai_security_guard_config.validate()
+        if self.ai_statistics_config:
+            self.ai_statistics_config.validate()
         if self.ai_token_rate_limit_config:
             self.ai_token_rate_limit_config.validate()
 
@@ -467,6 +471,9 @@ class HttpApiDeployConfigPolicyConfigs(DaraModel):
 
         if self.ai_security_guard_config is not None:
             result['aiSecurityGuardConfig'] = self.ai_security_guard_config.to_map()
+
+        if self.ai_statistics_config is not None:
+            result['aiStatisticsConfig'] = self.ai_statistics_config.to_map()
 
         if self.ai_token_rate_limit_config is not None:
             result['aiTokenRateLimitConfig'] = self.ai_token_rate_limit_config.to_map()
@@ -488,6 +495,10 @@ class HttpApiDeployConfigPolicyConfigs(DaraModel):
         if m.get('aiSecurityGuardConfig') is not None:
             temp_model = main_models.HttpApiDeployConfigPolicyConfigsAiSecurityGuardConfig()
             self.ai_security_guard_config = temp_model.from_map(m.get('aiSecurityGuardConfig'))
+
+        if m.get('aiStatisticsConfig') is not None:
+            temp_model = main_models.HttpApiDeployConfigPolicyConfigsAiStatisticsConfig()
+            self.ai_statistics_config = temp_model.from_map(m.get('aiStatisticsConfig'))
 
         if m.get('aiTokenRateLimitConfig') is not None:
             temp_model = main_models.HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfig()
@@ -707,6 +718,41 @@ class HttpApiDeployConfigPolicyConfigsAiTokenRateLimitConfigGlobalRules(DaraMode
 
         if m.get('matchValue') is not None:
             self.match_value = m.get('matchValue')
+
+        return self
+
+class HttpApiDeployConfigPolicyConfigsAiStatisticsConfig(DaraModel):
+    def __init__(
+        self,
+        log_request_content: bool = None,
+        log_response_content: bool = None,
+    ):
+        self.log_request_content = log_request_content
+        self.log_response_content = log_response_content
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.log_request_content is not None:
+            result['logRequestContent'] = self.log_request_content
+
+        if self.log_response_content is not None:
+            result['logResponseContent'] = self.log_response_content
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('logRequestContent') is not None:
+            self.log_request_content = m.get('logRequestContent')
+
+        if m.get('logResponseContent') is not None:
+            self.log_response_content = m.get('logResponseContent')
 
         return self
 
