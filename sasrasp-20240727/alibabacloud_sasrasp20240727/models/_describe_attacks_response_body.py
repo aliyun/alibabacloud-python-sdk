@@ -82,6 +82,7 @@ class DescribeAttacksResponseBodyAttacks(DaraModel):
         jdk: str = None,
         language: str = None,
         language_version: str = None,
+        llm_asset: bool = None,
         max_timestamp: int = None,
         message: str = None,
         method: str = None,
@@ -128,6 +129,7 @@ class DescribeAttacksResponseBodyAttacks(DaraModel):
         self.jdk = jdk
         self.language = language
         self.language_version = language_version
+        self.llm_asset = llm_asset
         self.max_timestamp = max_timestamp
         self.message = message
         self.method = method
@@ -229,6 +231,9 @@ class DescribeAttacksResponseBodyAttacks(DaraModel):
 
         if self.language_version is not None:
             result['LanguageVersion'] = self.language_version
+
+        if self.llm_asset is not None:
+            result['LlmAsset'] = self.llm_asset
 
         if self.max_timestamp is not None:
             result['MaxTimestamp'] = self.max_timestamp
@@ -371,6 +376,9 @@ class DescribeAttacksResponseBodyAttacks(DaraModel):
 
         if m.get('LanguageVersion') is not None:
             self.language_version = m.get('LanguageVersion')
+
+        if m.get('LlmAsset') is not None:
+            self.llm_asset = m.get('LlmAsset')
 
         if m.get('MaxTimestamp') is not None:
             self.max_timestamp = m.get('MaxTimestamp')

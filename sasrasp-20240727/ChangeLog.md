@@ -1,3 +1,7 @@
+2026-03-02 Version: 1.0.3
+- Update API DescribeAttacks: add response parameters Body.Attacks.$.LlmAsset.
+
+
 2026-01-08 Version: 1.0.2
 - Update API DescribeAttacks: add request parameters HandleStatus.
 
