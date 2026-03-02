@@ -72,6 +72,7 @@ class DescribeDefenseResourcesResponseBodyResources(DaraModel):
         detail: Dict[str, Any] = None,
         gmt_create: int = None,
         gmt_modified: int = None,
+        instance_id: str = None,
         owner_user_id: str = None,
         pattern: str = None,
         product: str = None,
@@ -107,6 +108,7 @@ class DescribeDefenseResourcesResponseBodyResources(DaraModel):
         self.gmt_create = gmt_create
         # The most recent modification time of the protected object. Unit: seconds.
         self.gmt_modified = gmt_modified
+        self.instance_id = instance_id
         # The Alibaba Cloud account to which the protected object belongs. You can specify this parameter to query protected objects that belong to a specific Alibaba Cloud account. Exact match is supported.
         self.owner_user_id = owner_user_id
         # The protection pattern.
@@ -160,6 +162,9 @@ class DescribeDefenseResourcesResponseBodyResources(DaraModel):
 
         if self.gmt_modified is not None:
             result['GmtModified'] = self.gmt_modified
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
 
         if self.owner_user_id is not None:
             result['OwnerUserId'] = self.owner_user_id
@@ -217,6 +222,9 @@ class DescribeDefenseResourcesResponseBodyResources(DaraModel):
 
         if m.get('GmtModified') is not None:
             self.gmt_modified = m.get('GmtModified')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
 
         if m.get('OwnerUserId') is not None:
             self.owner_user_id = m.get('OwnerUserId')
