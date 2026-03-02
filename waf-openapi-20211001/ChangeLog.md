@@ -3,6 +3,11 @@
 - Update API DescribeDefenseResources: add response parameters Body.Resources.$.InstanceId.
 
 
+2026-03-02 Version: 7.5.2
+- Update API DescribeDefenseResource: add response parameters Body.Resource.InstanceId.
+- Update API DescribeDefenseResources: add response parameters Body.Resources.$.InstanceId.
+
+
 2026-02-26 Version: 7.5.1
 - Update API CreateDomain: add request parameters Listen.HstsIncludeSubDomain.
 - Update API CreateDomain: add request parameters Listen.HstsMaxAge.
