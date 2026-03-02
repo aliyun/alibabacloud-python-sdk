@@ -1,3 +1,8 @@
+2026-03-02 Version: 1.10.1
+- Update API GetEvents: add request parameters deploymentName.
+- Update API GetFolder: add request parameters rootType.
+
+
 2025-12-05 Version: 1.10.0
 - Support API GetDeploymentsByIp.
 - Support API GetDeploymentsByLabel.
