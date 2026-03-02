@@ -10,6 +10,7 @@ from darabonba.model import DaraModel
 class ListImageCachesRequest(DaraModel):
     def __init__(
         self,
+        image: str = None,
         image_cache_name: str = None,
         max_results: int = None,
         next_token: str = None,
@@ -18,6 +19,7 @@ class ListImageCachesRequest(DaraModel):
         status: str = None,
         tags: List[main_models.ListImageCachesRequestTags] = None,
     ):
+        self.image = image
         self.image_cache_name = image_cache_name
         self.max_results = max_results
         self.next_token = next_token
@@ -38,6 +40,9 @@ class ListImageCachesRequest(DaraModel):
         _map = super().to_map()
         if _map is not None:
             result = _map
+        if self.image is not None:
+            result['Image'] = self.image
+
         if self.image_cache_name is not None:
             result['ImageCacheName'] = self.image_cache_name
 
@@ -65,6 +70,9 @@ class ListImageCachesRequest(DaraModel):
 
     def from_map(self, m: dict = None):
         m = m or dict()
+        if m.get('Image') is not None:
+            self.image = m.get('Image')
+
         if m.get('ImageCacheName') is not None:
             self.image_cache_name = m.get('ImageCacheName')
 

@@ -101,6 +101,8 @@ class Client(OpenApiClient):
             query['Images'] = request.images
         if not DaraCore.is_null(request.network_config_shrink):
             query['NetworkConfig'] = request.network_config_shrink
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.resource_group_id):
@@ -149,6 +151,8 @@ class Client(OpenApiClient):
             query['Images'] = request.images
         if not DaraCore.is_null(request.network_config_shrink):
             query['NetworkConfig'] = request.network_config_shrink
+        if not DaraCore.is_null(request.platform):
+            query['Platform'] = request.platform
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.resource_group_id):
@@ -347,6 +351,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListImageCachesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.image):
+            query['Image'] = request.image
         if not DaraCore.is_null(request.image_cache_name):
             query['ImageCacheName'] = request.image_cache_name
         if not DaraCore.is_null(request.max_results):
@@ -387,6 +393,8 @@ class Client(OpenApiClient):
     ) -> main_models.ListImageCachesResponse:
         request.validate()
         query = {}
+        if not DaraCore.is_null(request.image):
+            query['Image'] = request.image
         if not DaraCore.is_null(request.image_cache_name):
             query['ImageCacheName'] = request.image_cache_name
         if not DaraCore.is_null(request.max_results):

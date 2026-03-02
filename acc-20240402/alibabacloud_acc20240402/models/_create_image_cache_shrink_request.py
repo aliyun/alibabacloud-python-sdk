@@ -16,6 +16,7 @@ class CreateImageCacheShrinkRequest(DaraModel):
         image_registry_credentials: List[main_models.CreateImageCacheShrinkRequestImageRegistryCredentials] = None,
         images: List[str] = None,
         network_config_shrink: str = None,
+        platform: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         tags: List[main_models.CreateImageCacheShrinkRequestTags] = None,
@@ -29,6 +30,7 @@ class CreateImageCacheShrinkRequest(DaraModel):
         self.images = images
         # This parameter is required.
         self.network_config_shrink = network_config_shrink
+        self.platform = platform
         # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
@@ -75,6 +77,9 @@ class CreateImageCacheShrinkRequest(DaraModel):
         if self.network_config_shrink is not None:
             result['NetworkConfig'] = self.network_config_shrink
 
+        if self.platform is not None:
+            result['Platform'] = self.platform
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -113,6 +118,9 @@ class CreateImageCacheShrinkRequest(DaraModel):
 
         if m.get('NetworkConfig') is not None:
             self.network_config_shrink = m.get('NetworkConfig')
+
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')

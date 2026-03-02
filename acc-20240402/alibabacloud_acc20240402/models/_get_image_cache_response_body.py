@@ -17,6 +17,7 @@ class GetImageCacheResponseBody(DaraModel):
         images: List[str] = None,
         network_config: main_models.GetImageCacheResponseBodyNetworkConfig = None,
         payment_type: str = None,
+        platform: str = None,
         ready_time: str = None,
         region_id: str = None,
         request_id: str = None,
@@ -32,6 +33,7 @@ class GetImageCacheResponseBody(DaraModel):
         self.images = images
         self.network_config = network_config
         self.payment_type = payment_type
+        self.platform = platform
         self.ready_time = ready_time
         self.region_id = region_id
         self.request_id = request_id
@@ -79,6 +81,9 @@ class GetImageCacheResponseBody(DaraModel):
 
         if self.payment_type is not None:
             result['PaymentType'] = self.payment_type
+
+        if self.platform is not None:
+            result['Platform'] = self.platform
 
         if self.ready_time is not None:
             result['ReadyTime'] = self.ready_time
@@ -131,6 +136,9 @@ class GetImageCacheResponseBody(DaraModel):
 
         if m.get('PaymentType') is not None:
             self.payment_type = m.get('PaymentType')
+
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
 
         if m.get('ReadyTime') is not None:
             self.ready_time = m.get('ReadyTime')

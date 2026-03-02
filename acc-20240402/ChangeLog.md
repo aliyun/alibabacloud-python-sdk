@@ -1,3 +1,9 @@
+2026-03-02 Version: 2.0.2
+- Update API CreateImageCache: add request parameters Platform.
+- Update API GetImageCache: add response parameters Body.Platform.
+- Update API ListImageCaches: add request parameters Image.
+
+
 2026-01-19 Version: 2.0.1
 - Generated python 2024-04-02 for acc.
 

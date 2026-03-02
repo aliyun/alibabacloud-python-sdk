@@ -16,6 +16,7 @@ class CreateImageCacheRequest(DaraModel):
         image_registry_credentials: List[main_models.CreateImageCacheRequestImageRegistryCredentials] = None,
         images: List[str] = None,
         network_config: main_models.CreateImageCacheRequestNetworkConfig = None,
+        platform: str = None,
         region_id: str = None,
         resource_group_id: str = None,
         tags: List[main_models.CreateImageCacheRequestTags] = None,
@@ -29,6 +30,7 @@ class CreateImageCacheRequest(DaraModel):
         self.images = images
         # This parameter is required.
         self.network_config = network_config
+        self.platform = platform
         # This parameter is required.
         self.region_id = region_id
         self.resource_group_id = resource_group_id
@@ -77,6 +79,9 @@ class CreateImageCacheRequest(DaraModel):
         if self.network_config is not None:
             result['NetworkConfig'] = self.network_config.to_map()
 
+        if self.platform is not None:
+            result['Platform'] = self.platform
+
         if self.region_id is not None:
             result['RegionId'] = self.region_id
 
@@ -116,6 +121,9 @@ class CreateImageCacheRequest(DaraModel):
         if m.get('NetworkConfig') is not None:
             temp_model = main_models.CreateImageCacheRequestNetworkConfig()
             self.network_config = temp_model.from_map(m.get('NetworkConfig'))
+
+        if m.get('Platform') is not None:
+            self.platform = m.get('Platform')
 
         if m.get('RegionId') is not None:
             self.region_id = m.get('RegionId')
