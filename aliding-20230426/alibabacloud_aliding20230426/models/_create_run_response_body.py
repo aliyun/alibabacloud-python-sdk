@@ -13,10 +13,12 @@ class CreateRunResponseBody(DaraModel):
         messages: List[main_models.CreateRunResponseBodyMessages] = None,
         request_id: str = None,
         run: main_models.CreateRunResponseBodyRun = None,
+        thread: main_models.CreateRunResponseBodyThread = None,
     ):
         self.messages = messages
         self.request_id = request_id
         self.run = run
+        self.thread = thread
 
     def validate(self):
         if self.messages:
@@ -25,6 +27,8 @@ class CreateRunResponseBody(DaraModel):
                     v1.validate()
         if self.run:
             self.run.validate()
+        if self.thread:
+            self.thread.validate()
 
     def to_map(self):
         result = dict()
@@ -42,6 +46,9 @@ class CreateRunResponseBody(DaraModel):
         if self.run is not None:
             result['run'] = self.run.to_map()
 
+        if self.thread is not None:
+            result['thread'] = self.thread.to_map()
+
         return result
 
     def from_map(self, m: dict = None):
@@ -58,6 +65,53 @@ class CreateRunResponseBody(DaraModel):
         if m.get('run') is not None:
             temp_model = main_models.CreateRunResponseBodyRun()
             self.run = temp_model.from_map(m.get('run'))
+
+        if m.get('thread') is not None:
+            temp_model = main_models.CreateRunResponseBodyThread()
+            self.thread = temp_model.from_map(m.get('thread'))
+
+        return self
+
+class CreateRunResponseBodyThread(DaraModel):
+    def __init__(
+        self,
+        create_at: int = None,
+        id: str = None,
+        status: str = None,
+    ):
+        self.create_at = create_at
+        self.id = id
+        self.status = status
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.create_at is not None:
+            result['createAt'] = self.create_at
+
+        if self.id is not None:
+            result['id'] = self.id
+
+        if self.status is not None:
+            result['status'] = self.status
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('createAt') is not None:
+            self.create_at = m.get('createAt')
+
+        if m.get('id') is not None:
+            self.id = m.get('id')
+
+        if m.get('status') is not None:
+            self.status = m.get('status')
 
         return self
 

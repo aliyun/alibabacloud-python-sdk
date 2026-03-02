@@ -13,11 +13,13 @@ class InvokeAssistantResponseBody(DaraModel):
         messages: List[main_models.InvokeAssistantResponseBodyMessages] = None,
         request_id: str = None,
         session_id: str = None,
+        session_status: str = None,
         stream_end: bool = None,
     ):
         self.messages = messages
         self.request_id = request_id
         self.session_id = session_id
+        self.session_status = session_status
         self.stream_end = stream_end
 
     def validate(self):
@@ -42,6 +44,9 @@ class InvokeAssistantResponseBody(DaraModel):
         if self.session_id is not None:
             result['sessionId'] = self.session_id
 
+        if self.session_status is not None:
+            result['sessionStatus'] = self.session_status
+
         if self.stream_end is not None:
             result['streamEnd'] = self.stream_end
 
@@ -60,6 +65,9 @@ class InvokeAssistantResponseBody(DaraModel):
 
         if m.get('sessionId') is not None:
             self.session_id = m.get('sessionId')
+
+        if m.get('sessionStatus') is not None:
+            self.session_status = m.get('sessionStatus')
 
         if m.get('streamEnd') is not None:
             self.stream_end = m.get('streamEnd')

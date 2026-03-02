@@ -1,3 +1,8 @@
+2026-03-02 Version: 2.48.2
+- Update API CreateRun: add response parameters Body.thread.
+- Update API InvokeAssistant: add response parameters Body.sessionStatus.
+
+
 2026-02-26 Version: 2.48.1
 - Update API InvokeAssistant: add request parameters alidingSsoTicket.
 - Update API InvokeSkill: add request parameters AccountContext.alidingSsoTicket.
