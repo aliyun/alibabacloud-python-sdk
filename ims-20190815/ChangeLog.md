@@ -1,3 +1,9 @@
+2026-03-02 Version: 3.3.5
+- Update API GetPasswordPolicy: add response parameters Body.PasswordPolicy.InterceptRiskPasswordOnApi.
+- Update API SetPasswordPolicy: add request parameters InterceptRiskPasswordOnApi.
+- Update API SetPasswordPolicy: add response parameters Body.PasswordPolicy.InterceptRiskPasswordOnApi.
+
+
 2025-09-22 Version: 3.3.3
 - Update API CreateSAMLProvider: add request parameters AuthnSignAlgo.
 - Update API CreateSAMLProvider: add response parameters Body.SAMLProvider.AuthnSignAlgo.
