@@ -1,0 +1,583 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from ._bind_request import BindRequest
+from ._bind_response_body import BindResponseBody
+from ._bind_response import BindResponse
+from ._cancel_user_setting_request import CancelUserSettingRequest
+from ._cancel_user_setting_response_body import CancelUserSettingResponseBody
+from ._cancel_user_setting_response import CancelUserSettingResponse
+from ._configure_user_setting_request import ConfigureUserSettingRequest
+from ._configure_user_setting_response_body import ConfigureUserSettingResponseBody
+from ._configure_user_setting_response import ConfigureUserSettingResponse
+from ._console_clear_pretend_status_request import ConsoleClearPretendStatusRequest
+from ._console_clear_pretend_status_response_body import ConsoleClearPretendStatusResponseBody
+from ._console_clear_pretend_status_response import ConsoleClearPretendStatusResponse
+from ._console_save_pretend_status_request import ConsoleSavePretendStatusRequest
+from ._console_save_pretend_status_response_body import ConsoleSavePretendStatusResponseBody
+from ._console_save_pretend_status_response import ConsoleSavePretendStatusResponse
+from ._create_cloud_monitor_slrrequest import CreateCloudMonitorSLRRequest
+from ._create_cloud_monitor_slrresponse_body import CreateCloudMonitorSLRResponseBody
+from ._create_cloud_monitor_slrresponse import CreateCloudMonitorSLRResponse
+from ._create_exchange_request import CreateExchangeRequest
+from ._create_exchange_response_body import CreateExchangeResponseBody
+from ._create_exchange_response import CreateExchangeResponse
+from ._create_log_delivery_slrrequest import CreateLogDeliverySLRRequest
+from ._create_log_delivery_slrresponse_body import CreateLogDeliverySLRResponseBody
+from ._create_log_delivery_slrresponse import CreateLogDeliverySLRResponse
+from ._create_queue_request import CreateQueueRequest
+from ._create_queue_response_body import CreateQueueResponseBody
+from ._create_queue_response import CreateQueueResponse
+from ._create_vhost_request import CreateVhostRequest
+from ._create_vhost_response_body import CreateVhostResponseBody
+from ._create_vhost_response import CreateVhostResponse
+from ._dashboard_check_service_status_request import DashboardCheckServiceStatusRequest
+from ._dashboard_check_service_status_response_body import DashboardCheckServiceStatusResponseBody
+from ._dashboard_check_service_status_response import DashboardCheckServiceStatusResponse
+from ._dashboard_list_request import DashboardListRequest
+from ._dashboard_list_response_body import DashboardListResponseBody
+from ._dashboard_list_response import DashboardListResponse
+from ._delete_exchange_request import DeleteExchangeRequest
+from ._delete_exchange_shrink_request import DeleteExchangeShrinkRequest
+from ._delete_exchange_response_body import DeleteExchangeResponseBody
+from ._delete_exchange_response import DeleteExchangeResponse
+from ._delete_instance_request import DeleteInstanceRequest
+from ._delete_instance_response_body import DeleteInstanceResponseBody
+from ._delete_instance_response import DeleteInstanceResponse
+from ._delete_queue_request import DeleteQueueRequest
+from ._delete_queue_shrink_request import DeleteQueueShrinkRequest
+from ._delete_queue_response_body import DeleteQueueResponseBody
+from ._delete_queue_response import DeleteQueueResponse
+from ._delete_static_account_request import DeleteStaticAccountRequest
+from ._delete_static_account_response_body import DeleteStaticAccountResponseBody
+from ._delete_static_account_response import DeleteStaticAccountResponse
+from ._delete_vhost_request import DeleteVhostRequest
+from ._delete_vhost_shrink_request import DeleteVhostShrinkRequest
+from ._delete_vhost_response_body import DeleteVhostResponseBody
+from ._delete_vhost_response import DeleteVhostResponse
+from ._describe_regions_request import DescribeRegionsRequest
+from ._describe_regions_response_body import DescribeRegionsResponseBody
+from ._describe_regions_response import DescribeRegionsResponse
+from ._export_request import ExportRequest
+from ._export_response_body import ExportResponseBody
+from ._export_response import ExportResponse
+from ._fetch_static_account_request import FetchStaticAccountRequest
+from ._fetch_static_account_response_body import FetchStaticAccountResponseBody
+from ._fetch_static_account_response import FetchStaticAccountResponse
+from ._get_ack_info_by_interval_request import GetAckInfoByIntervalRequest
+from ._get_ack_info_by_interval_response_body import GetAckInfoByIntervalResponseBody
+from ._get_ack_info_by_interval_response import GetAckInfoByIntervalResponse
+from ._get_ack_info_of_message_request import GetAckInfoOfMessageRequest
+from ._get_ack_info_of_message_response_body import GetAckInfoOfMessageResponseBody
+from ._get_ack_info_of_message_response import GetAckInfoOfMessageResponse
+from ._get_binding_count_request import GetBindingCountRequest
+from ._get_binding_count_response_body import GetBindingCountResponseBody
+from ._get_binding_count_response import GetBindingCountResponse
+from ._get_binding_error_by_task_id_request import GetBindingErrorByTaskIdRequest
+from ._get_binding_error_by_task_id_response_body import GetBindingErrorByTaskIdResponseBody
+from ._get_binding_error_by_task_id_response import GetBindingErrorByTaskIdResponse
+from ._get_common_buy_url_request import GetCommonBuyUrlRequest
+from ._get_common_buy_url_response_body import GetCommonBuyUrlResponseBody
+from ._get_common_buy_url_response import GetCommonBuyUrlResponse
+from ._get_consume_trace_by_queue_and_rocket_mq_msg_id_request import GetConsumeTraceByQueueAndRocketMqMsgIdRequest
+from ._get_consume_trace_by_queue_and_rocket_mq_msg_id_response_body import GetConsumeTraceByQueueAndRocketMqMsgIdResponseBody
+from ._get_consume_trace_by_queue_and_rocket_mq_msg_id_response import GetConsumeTraceByQueueAndRocketMqMsgIdResponse
+from ._get_exchange_error_by_task_id_request import GetExchangeErrorByTaskIdRequest
+from ._get_exchange_error_by_task_id_response_body import GetExchangeErrorByTaskIdResponseBody
+from ._get_exchange_error_by_task_id_response import GetExchangeErrorByTaskIdResponse
+from ._get_exchange_rate_request import GetExchangeRateRequest
+from ._get_exchange_rate_shrink_request import GetExchangeRateShrinkRequest
+from ._get_exchange_rate_response_body import GetExchangeRateResponseBody
+from ._get_exchange_rate_response import GetExchangeRateResponse
+from ._get_msg_id_list_by_queue_request import GetMsgIdListByQueueRequest
+from ._get_msg_id_list_by_queue_response_body import GetMsgIdListByQueueResponseBody
+from ._get_msg_id_list_by_queue_response import GetMsgIdListByQueueResponse
+from ._get_queue_consumers_request import GetQueueConsumersRequest
+from ._get_queue_consumers_response_body import GetQueueConsumersResponseBody
+from ._get_queue_consumers_response import GetQueueConsumersResponse
+from ._get_queue_error_by_task_id_request import GetQueueErrorByTaskIdRequest
+from ._get_queue_error_by_task_id_response_body import GetQueueErrorByTaskIdResponseBody
+from ._get_queue_error_by_task_id_response import GetQueueErrorByTaskIdResponse
+from ._get_queue_rate_request import GetQueueRateRequest
+from ._get_queue_rate_shrink_request import GetQueueRateShrinkRequest
+from ._get_queue_rate_response_body import GetQueueRateResponseBody
+from ._get_queue_rate_response import GetQueueRateResponse
+from ._get_send_trace_by_connection_and_channel_and_delivery_tag_request import GetSendTraceByConnectionAndChannelAndDeliveryTagRequest
+from ._get_send_trace_by_connection_and_channel_and_delivery_tag_response_body import GetSendTraceByConnectionAndChannelAndDeliveryTagResponseBody
+from ._get_send_trace_by_connection_and_channel_and_delivery_tag_response import GetSendTraceByConnectionAndChannelAndDeliveryTagResponse
+from ._get_send_trace_by_msg_id_request import GetSendTraceByMsgIdRequest
+from ._get_send_trace_by_msg_id_response_body import GetSendTraceByMsgIdResponseBody
+from ._get_send_trace_by_msg_id_response import GetSendTraceByMsgIdResponse
+from ._get_send_trace_by_queue_request import GetSendTraceByQueueRequest
+from ._get_send_trace_by_queue_response_body import GetSendTraceByQueueResponseBody
+from ._get_send_trace_by_queue_response import GetSendTraceByQueueResponse
+from ._get_statistics_by_vhost_request import GetStatisticsByVhostRequest
+from ._get_statistics_by_vhost_response_body import GetStatisticsByVhostResponseBody
+from ._get_statistics_by_vhost_response import GetStatisticsByVhostResponse
+from ._get_task_by_uid_request import GetTaskByUidRequest
+from ._get_task_by_uid_response_body import GetTaskByUidResponseBody
+from ._get_task_by_uid_response import GetTaskByUidResponse
+from ._get_tps_by_time_request import GetTpsByTimeRequest
+from ._get_tps_by_time_response_body import GetTpsByTimeResponseBody
+from ._get_tps_by_time_response import GetTpsByTimeResponse
+from ._get_user_setting_request import GetUserSettingRequest
+from ._get_user_setting_response_body import GetUserSettingResponseBody
+from ._get_user_setting_response import GetUserSettingResponse
+from ._get_vhost_error_by_task_id_request import GetVhostErrorByTaskIdRequest
+from ._get_vhost_error_by_task_id_response_body import GetVhostErrorByTaskIdResponseBody
+from ._get_vhost_error_by_task_id_response import GetVhostErrorByTaskIdResponse
+from ._get_vhost_rate_request import GetVhostRateRequest
+from ._get_vhost_rate_shrink_request import GetVhostRateShrinkRequest
+from ._get_vhost_rate_response_body import GetVhostRateResponseBody
+from ._get_vhost_rate_response import GetVhostRateResponse
+from ._import_definition_asynchronous_request import ImportDefinitionAsynchronousRequest
+from ._import_definition_asynchronous_response_body import ImportDefinitionAsynchronousResponseBody
+from ._import_definition_asynchronous_response import ImportDefinitionAsynchronousResponse
+from ._instance_preivew_request import InstancePreivewRequest
+from ._instance_preivew_response_body import InstancePreivewResponseBody
+from ._instance_preivew_response import InstancePreivewResponse
+from ._list_exchange_request import ListExchangeRequest
+from ._list_exchange_response_body import ListExchangeResponseBody
+from ._list_exchange_response import ListExchangeResponse
+from ._list_exchange_downstream_bindings_request import ListExchangeDownstreamBindingsRequest
+from ._list_exchange_downstream_bindings_response_body import ListExchangeDownstreamBindingsResponseBody
+from ._list_exchange_downstream_bindings_response import ListExchangeDownstreamBindingsResponse
+from ._list_exchange_upstream_bindings_request import ListExchangeUpstreamBindingsRequest
+from ._list_exchange_upstream_bindings_response_body import ListExchangeUpstreamBindingsResponseBody
+from ._list_exchange_upstream_bindings_response import ListExchangeUpstreamBindingsResponse
+from ._list_instance_request import ListInstanceRequest
+from ._list_instance_response_body import ListInstanceResponseBody
+from ._list_instance_response import ListInstanceResponse
+from ._list_instance_alarm_request import ListInstanceAlarmRequest
+from ._list_instance_alarm_response_body import ListInstanceAlarmResponseBody
+from ._list_instance_alarm_response import ListInstanceAlarmResponse
+from ._list_logstore_request import ListLogstoreRequest
+from ._list_logstore_response_body import ListLogstoreResponseBody
+from ._list_logstore_response import ListLogstoreResponse
+from ._list_project_request import ListProjectRequest
+from ._list_project_response_body import ListProjectResponseBody
+from ._list_project_response import ListProjectResponse
+from ._list_queue_request import ListQueueRequest
+from ._list_queue_response_body import ListQueueResponseBody
+from ._list_queue_response import ListQueueResponse
+from ._list_queue_upstream_bindings_request import ListQueueUpstreamBindingsRequest
+from ._list_queue_upstream_bindings_response_body import ListQueueUpstreamBindingsResponseBody
+from ._list_queue_upstream_bindings_response import ListQueueUpstreamBindingsResponse
+from ._list_static_accounts_request import ListStaticAccountsRequest
+from ._list_static_accounts_response_body import ListStaticAccountsResponseBody
+from ._list_static_accounts_response import ListStaticAccountsResponse
+from ._list_vhost_request import ListVhostRequest
+from ._list_vhost_response_body import ListVhostResponseBody
+from ._list_vhost_response import ListVhostResponse
+from ._metadata_request import MetadataRequest
+from ._metadata_response_body import MetadataResponseBody
+from ._metadata_response import MetadataResponse
+from ._purge_queue_request import PurgeQueueRequest
+from ._purge_queue_shrink_request import PurgeQueueShrinkRequest
+from ._purge_queue_response_body import PurgeQueueResponseBody
+from ._purge_queue_response import PurgeQueueResponse
+from ._query_message_by_message_id_request import QueryMessageByMessageIdRequest
+from ._query_message_by_message_id_response_body import QueryMessageByMessageIdResponseBody
+from ._query_message_by_message_id_response import QueryMessageByMessageIdResponse
+from ._query_message_by_queue_name_request import QueryMessageByQueueNameRequest
+from ._query_message_by_queue_name_response_body import QueryMessageByQueueNameResponseBody
+from ._query_message_by_queue_name_response import QueryMessageByQueueNameResponse
+from ._release_instance_request import ReleaseInstanceRequest
+from ._release_instance_response_body import ReleaseInstanceResponseBody
+from ._release_instance_response import ReleaseInstanceResponse
+from ._send_message_request import SendMessageRequest
+from ._send_message_response_body import SendMessageResponseBody
+from ._send_message_response import SendMessageResponse
+from ._send_message_copy_request import SendMessageCopyRequest
+from ._send_message_copy_response_body import SendMessageCopyResponseBody
+from ._send_message_copy_response import SendMessageCopyResponse
+from ._unbind_request import UnbindRequest
+from ._unbind_response_body import UnbindResponseBody
+from ._unbind_response import UnbindResponse
+from ._update_instance_request import UpdateInstanceRequest
+from ._update_instance_response_body import UpdateInstanceResponseBody
+from ._update_instance_response import UpdateInstanceResponse
+from ._update_instance_retry_strategy_request import UpdateInstanceRetryStrategyRequest
+from ._update_instance_retry_strategy_response_body import UpdateInstanceRetryStrategyResponseBody
+from ._update_instance_retry_strategy_response import UpdateInstanceRetryStrategyResponse
+from ._update_serverless_switch_request import UpdateServerlessSwitchRequest
+from ._update_serverless_switch_response_body import UpdateServerlessSwitchResponseBody
+from ._update_serverless_switch_response import UpdateServerlessSwitchResponse
+from ._upgrade_limits_request import UpgradeLimitsRequest
+from ._upgrade_limits_response_body import UpgradeLimitsResponseBody
+from ._upgrade_limits_response import UpgradeLimitsResponse
+from ._describe_regions_response_body import DescribeRegionsResponseBodyDataRegions
+from ._describe_regions_response_body import DescribeRegionsResponseBodyData
+from ._fetch_static_account_response_body import FetchStaticAccountResponseBodyData
+from ._get_ack_info_by_interval_response_body import GetAckInfoByIntervalResponseBodyDataVoList
+from ._get_ack_info_by_interval_response_body import GetAckInfoByIntervalResponseBodyData
+from ._get_ack_info_of_message_response_body import GetAckInfoOfMessageResponseBodyData
+from ._get_binding_error_by_task_id_response_body import GetBindingErrorByTaskIdResponseBodyDataVoListBindingErrorDO
+from ._get_binding_error_by_task_id_response_body import GetBindingErrorByTaskIdResponseBodyDataVoList
+from ._get_binding_error_by_task_id_response_body import GetBindingErrorByTaskIdResponseBodyData
+from ._get_consume_trace_by_queue_and_rocket_mq_msg_id_response_body import GetConsumeTraceByQueueAndRocketMqMsgIdResponseBodyData
+from ._get_exchange_error_by_task_id_response_body import GetExchangeErrorByTaskIdResponseBodyDataVoListExchangeErrorDO
+from ._get_exchange_error_by_task_id_response_body import GetExchangeErrorByTaskIdResponseBodyDataVoList
+from ._get_exchange_error_by_task_id_response_body import GetExchangeErrorByTaskIdResponseBodyData
+from ._get_exchange_rate_response_body import GetExchangeRateResponseBodyDataExchangeQuotaVO
+from ._get_exchange_rate_response_body import GetExchangeRateResponseBodyData
+from ._get_msg_id_list_by_queue_response_body import GetMsgIdListByQueueResponseBodyData
+from ._get_queue_consumers_response_body import GetQueueConsumersResponseBodyDataVoList
+from ._get_queue_consumers_response_body import GetQueueConsumersResponseBodyData
+from ._get_queue_error_by_task_id_response_body import GetQueueErrorByTaskIdResponseBodyDataVoListQueueErrorDO
+from ._get_queue_error_by_task_id_response_body import GetQueueErrorByTaskIdResponseBodyDataVoList
+from ._get_queue_error_by_task_id_response_body import GetQueueErrorByTaskIdResponseBodyData
+from ._get_queue_rate_response_body import GetQueueRateResponseBodyData
+from ._get_send_trace_by_connection_and_channel_and_delivery_tag_response_body import GetSendTraceByConnectionAndChannelAndDeliveryTagResponseBodyData
+from ._get_send_trace_by_msg_id_response_body import GetSendTraceByMsgIdResponseBodyDataVoList
+from ._get_send_trace_by_msg_id_response_body import GetSendTraceByMsgIdResponseBodyData
+from ._get_send_trace_by_queue_response_body import GetSendTraceByQueueResponseBodyDataVoList
+from ._get_send_trace_by_queue_response_body import GetSendTraceByQueueResponseBodyData
+from ._get_statistics_by_vhost_response_body import GetStatisticsByVhostResponseBodyDataConnectionStatisticsChannelStatisticsListChannelStatistics
+from ._get_statistics_by_vhost_response_body import GetStatisticsByVhostResponseBodyDataConnectionStatisticsChannelStatisticsList
+from ._get_statistics_by_vhost_response_body import GetStatisticsByVhostResponseBodyDataConnectionStatistics
+from ._get_statistics_by_vhost_response_body import GetStatisticsByVhostResponseBodyData
+from ._get_task_by_uid_response_body import GetTaskByUidResponseBodyDataVoListImportDefinitionTaskDO
+from ._get_task_by_uid_response_body import GetTaskByUidResponseBodyDataVoList
+from ._get_task_by_uid_response_body import GetTaskByUidResponseBodyData
+from ._get_tps_by_time_response_body import GetTpsByTimeResponseBodyData
+from ._get_user_setting_response_body import GetUserSettingResponseBodyData
+from ._get_vhost_error_by_task_id_response_body import GetVhostErrorByTaskIdResponseBodyDataVoListVhostErrorDO
+from ._get_vhost_error_by_task_id_response_body import GetVhostErrorByTaskIdResponseBodyDataVoList
+from ._get_vhost_error_by_task_id_response_body import GetVhostErrorByTaskIdResponseBodyData
+from ._get_vhost_rate_response_body import GetVhostRateResponseBodyData
+from ._import_definition_asynchronous_response_body import ImportDefinitionAsynchronousResponseBodyData
+from ._instance_preivew_response_body import InstancePreivewResponseBodyDataInstancesInstancesVOPvlParamsPvlVO
+from ._instance_preivew_response_body import InstancePreivewResponseBodyDataInstancesInstancesVOPvlParams
+from ._instance_preivew_response_body import InstancePreivewResponseBodyDataInstancesInstancesVOTagsTagsVO
+from ._instance_preivew_response_body import InstancePreivewResponseBodyDataInstancesInstancesVOTags
+from ._instance_preivew_response_body import InstancePreivewResponseBodyDataInstancesInstancesVO
+from ._instance_preivew_response_body import InstancePreivewResponseBodyDataInstances
+from ._instance_preivew_response_body import InstancePreivewResponseBodyData
+from ._list_exchange_response_body import ListExchangeResponseBodyDataVoListExchangVO
+from ._list_exchange_response_body import ListExchangeResponseBodyDataVoList
+from ._list_exchange_response_body import ListExchangeResponseBodyData
+from ._list_exchange_downstream_bindings_response_body import ListExchangeDownstreamBindingsResponseBodyDataVoListBindingVO
+from ._list_exchange_downstream_bindings_response_body import ListExchangeDownstreamBindingsResponseBodyDataVoList
+from ._list_exchange_downstream_bindings_response_body import ListExchangeDownstreamBindingsResponseBodyData
+from ._list_exchange_upstream_bindings_response_body import ListExchangeUpstreamBindingsResponseBodyDataVoListBindingVO
+from ._list_exchange_upstream_bindings_response_body import ListExchangeUpstreamBindingsResponseBodyDataVoList
+from ._list_exchange_upstream_bindings_response_body import ListExchangeUpstreamBindingsResponseBodyData
+from ._list_instance_response_body import ListInstanceResponseBodyDataInstancesTagsTags
+from ._list_instance_response_body import ListInstanceResponseBodyDataInstancesTags
+from ._list_instance_response_body import ListInstanceResponseBodyDataInstances
+from ._list_instance_response_body import ListInstanceResponseBodyData
+from ._list_instance_alarm_response_body import ListInstanceAlarmResponseBodyDataVoListCommodityInstanceAlarmVOAlarmVOAlarmDetailsAlarmDetail
+from ._list_instance_alarm_response_body import ListInstanceAlarmResponseBodyDataVoListCommodityInstanceAlarmVOAlarmVOAlarmDetails
+from ._list_instance_alarm_response_body import ListInstanceAlarmResponseBodyDataVoListCommodityInstanceAlarmVOAlarmVO
+from ._list_instance_alarm_response_body import ListInstanceAlarmResponseBodyDataVoListCommodityInstanceAlarmVO
+from ._list_instance_alarm_response_body import ListInstanceAlarmResponseBodyDataVoList
+from ._list_instance_alarm_response_body import ListInstanceAlarmResponseBodyData
+from ._list_logstore_response_body import ListLogstoreResponseBodyData
+from ._list_project_response_body import ListProjectResponseBodyData
+from ._list_queue_response_body import ListQueueResponseBodyDataVoListQueueVO
+from ._list_queue_response_body import ListQueueResponseBodyDataVoList
+from ._list_queue_response_body import ListQueueResponseBodyData
+from ._list_queue_upstream_bindings_response_body import ListQueueUpstreamBindingsResponseBodyDataVoListBindingVO
+from ._list_queue_upstream_bindings_response_body import ListQueueUpstreamBindingsResponseBodyDataVoList
+from ._list_queue_upstream_bindings_response_body import ListQueueUpstreamBindingsResponseBodyData
+from ._list_vhost_response_body import ListVhostResponseBodyDataVhosts
+from ._list_vhost_response_body import ListVhostResponseBodyData
+from ._metadata_response_body import MetadataResponseBodyData
+from ._query_message_by_message_id_response_body import QueryMessageByMessageIdResponseBodyDataVoList
+from ._query_message_by_message_id_response_body import QueryMessageByMessageIdResponseBodyData
+from ._query_message_by_queue_name_response_body import QueryMessageByQueueNameResponseBodyDataVoListAmqpMessageVO
+from ._query_message_by_queue_name_response_body import QueryMessageByQueueNameResponseBodyDataVoList
+from ._query_message_by_queue_name_response_body import QueryMessageByQueueNameResponseBodyData
+
+__all__ = [
+    BindRequest,
+    BindResponseBody,
+    BindResponse,
+    CancelUserSettingRequest,
+    CancelUserSettingResponseBody,
+    CancelUserSettingResponse,
+    ConfigureUserSettingRequest,
+    ConfigureUserSettingResponseBody,
+    ConfigureUserSettingResponse,
+    ConsoleClearPretendStatusRequest,
+    ConsoleClearPretendStatusResponseBody,
+    ConsoleClearPretendStatusResponse,
+    ConsoleSavePretendStatusRequest,
+    ConsoleSavePretendStatusResponseBody,
+    ConsoleSavePretendStatusResponse,
+    CreateCloudMonitorSLRRequest,
+    CreateCloudMonitorSLRResponseBody,
+    CreateCloudMonitorSLRResponse,
+    CreateExchangeRequest,
+    CreateExchangeResponseBody,
+    CreateExchangeResponse,
+    CreateLogDeliverySLRRequest,
+    CreateLogDeliverySLRResponseBody,
+    CreateLogDeliverySLRResponse,
+    CreateQueueRequest,
+    CreateQueueResponseBody,
+    CreateQueueResponse,
+    CreateVhostRequest,
+    CreateVhostResponseBody,
+    CreateVhostResponse,
+    DashboardCheckServiceStatusRequest,
+    DashboardCheckServiceStatusResponseBody,
+    DashboardCheckServiceStatusResponse,
+    DashboardListRequest,
+    DashboardListResponseBody,
+    DashboardListResponse,
+    DeleteExchangeRequest,
+    DeleteExchangeShrinkRequest,
+    DeleteExchangeResponseBody,
+    DeleteExchangeResponse,
+    DeleteInstanceRequest,
+    DeleteInstanceResponseBody,
+    DeleteInstanceResponse,
+    DeleteQueueRequest,
+    DeleteQueueShrinkRequest,
+    DeleteQueueResponseBody,
+    DeleteQueueResponse,
+    DeleteStaticAccountRequest,
+    DeleteStaticAccountResponseBody,
+    DeleteStaticAccountResponse,
+    DeleteVhostRequest,
+    DeleteVhostShrinkRequest,
+    DeleteVhostResponseBody,
+    DeleteVhostResponse,
+    DescribeRegionsRequest,
+    DescribeRegionsResponseBody,
+    DescribeRegionsResponse,
+    ExportRequest,
+    ExportResponseBody,
+    ExportResponse,
+    FetchStaticAccountRequest,
+    FetchStaticAccountResponseBody,
+    FetchStaticAccountResponse,
+    GetAckInfoByIntervalRequest,
+    GetAckInfoByIntervalResponseBody,
+    GetAckInfoByIntervalResponse,
+    GetAckInfoOfMessageRequest,
+    GetAckInfoOfMessageResponseBody,
+    GetAckInfoOfMessageResponse,
+    GetBindingCountRequest,
+    GetBindingCountResponseBody,
+    GetBindingCountResponse,
+    GetBindingErrorByTaskIdRequest,
+    GetBindingErrorByTaskIdResponseBody,
+    GetBindingErrorByTaskIdResponse,
+    GetCommonBuyUrlRequest,
+    GetCommonBuyUrlResponseBody,
+    GetCommonBuyUrlResponse,
+    GetConsumeTraceByQueueAndRocketMqMsgIdRequest,
+    GetConsumeTraceByQueueAndRocketMqMsgIdResponseBody,
+    GetConsumeTraceByQueueAndRocketMqMsgIdResponse,
+    GetExchangeErrorByTaskIdRequest,
+    GetExchangeErrorByTaskIdResponseBody,
+    GetExchangeErrorByTaskIdResponse,
+    GetExchangeRateRequest,
+    GetExchangeRateShrinkRequest,
+    GetExchangeRateResponseBody,
+    GetExchangeRateResponse,
+    GetMsgIdListByQueueRequest,
+    GetMsgIdListByQueueResponseBody,
+    GetMsgIdListByQueueResponse,
+    GetQueueConsumersRequest,
+    GetQueueConsumersResponseBody,
+    GetQueueConsumersResponse,
+    GetQueueErrorByTaskIdRequest,
+    GetQueueErrorByTaskIdResponseBody,
+    GetQueueErrorByTaskIdResponse,
+    GetQueueRateRequest,
+    GetQueueRateShrinkRequest,
+    GetQueueRateResponseBody,
+    GetQueueRateResponse,
+    GetSendTraceByConnectionAndChannelAndDeliveryTagRequest,
+    GetSendTraceByConnectionAndChannelAndDeliveryTagResponseBody,
+    GetSendTraceByConnectionAndChannelAndDeliveryTagResponse,
+    GetSendTraceByMsgIdRequest,
+    GetSendTraceByMsgIdResponseBody,
+    GetSendTraceByMsgIdResponse,
+    GetSendTraceByQueueRequest,
+    GetSendTraceByQueueResponseBody,
+    GetSendTraceByQueueResponse,
+    GetStatisticsByVhostRequest,
+    GetStatisticsByVhostResponseBody,
+    GetStatisticsByVhostResponse,
+    GetTaskByUidRequest,
+    GetTaskByUidResponseBody,
+    GetTaskByUidResponse,
+    GetTpsByTimeRequest,
+    GetTpsByTimeResponseBody,
+    GetTpsByTimeResponse,
+    GetUserSettingRequest,
+    GetUserSettingResponseBody,
+    GetUserSettingResponse,
+    GetVhostErrorByTaskIdRequest,
+    GetVhostErrorByTaskIdResponseBody,
+    GetVhostErrorByTaskIdResponse,
+    GetVhostRateRequest,
+    GetVhostRateShrinkRequest,
+    GetVhostRateResponseBody,
+    GetVhostRateResponse,
+    ImportDefinitionAsynchronousRequest,
+    ImportDefinitionAsynchronousResponseBody,
+    ImportDefinitionAsynchronousResponse,
+    InstancePreivewRequest,
+    InstancePreivewResponseBody,
+    InstancePreivewResponse,
+    ListExchangeRequest,
+    ListExchangeResponseBody,
+    ListExchangeResponse,
+    ListExchangeDownstreamBindingsRequest,
+    ListExchangeDownstreamBindingsResponseBody,
+    ListExchangeDownstreamBindingsResponse,
+    ListExchangeUpstreamBindingsRequest,
+    ListExchangeUpstreamBindingsResponseBody,
+    ListExchangeUpstreamBindingsResponse,
+    ListInstanceRequest,
+    ListInstanceResponseBody,
+    ListInstanceResponse,
+    ListInstanceAlarmRequest,
+    ListInstanceAlarmResponseBody,
+    ListInstanceAlarmResponse,
+    ListLogstoreRequest,
+    ListLogstoreResponseBody,
+    ListLogstoreResponse,
+    ListProjectRequest,
+    ListProjectResponseBody,
+    ListProjectResponse,
+    ListQueueRequest,
+    ListQueueResponseBody,
+    ListQueueResponse,
+    ListQueueUpstreamBindingsRequest,
+    ListQueueUpstreamBindingsResponseBody,
+    ListQueueUpstreamBindingsResponse,
+    ListStaticAccountsRequest,
+    ListStaticAccountsResponseBody,
+    ListStaticAccountsResponse,
+    ListVhostRequest,
+    ListVhostResponseBody,
+    ListVhostResponse,
+    MetadataRequest,
+    MetadataResponseBody,
+    MetadataResponse,
+    PurgeQueueRequest,
+    PurgeQueueShrinkRequest,
+    PurgeQueueResponseBody,
+    PurgeQueueResponse,
+    QueryMessageByMessageIdRequest,
+    QueryMessageByMessageIdResponseBody,
+    QueryMessageByMessageIdResponse,
+    QueryMessageByQueueNameRequest,
+    QueryMessageByQueueNameResponseBody,
+    QueryMessageByQueueNameResponse,
+    ReleaseInstanceRequest,
+    ReleaseInstanceResponseBody,
+    ReleaseInstanceResponse,
+    SendMessageRequest,
+    SendMessageResponseBody,
+    SendMessageResponse,
+    SendMessageCopyRequest,
+    SendMessageCopyResponseBody,
+    SendMessageCopyResponse,
+    UnbindRequest,
+    UnbindResponseBody,
+    UnbindResponse,
+    UpdateInstanceRequest,
+    UpdateInstanceResponseBody,
+    UpdateInstanceResponse,
+    UpdateInstanceRetryStrategyRequest,
+    UpdateInstanceRetryStrategyResponseBody,
+    UpdateInstanceRetryStrategyResponse,
+    UpdateServerlessSwitchRequest,
+    UpdateServerlessSwitchResponseBody,
+    UpdateServerlessSwitchResponse,
+    UpgradeLimitsRequest,
+    UpgradeLimitsResponseBody,
+    UpgradeLimitsResponse,
+    DescribeRegionsResponseBodyDataRegions,
+    DescribeRegionsResponseBodyData,
+    FetchStaticAccountResponseBodyData,
+    GetAckInfoByIntervalResponseBodyDataVoList,
+    GetAckInfoByIntervalResponseBodyData,
+    GetAckInfoOfMessageResponseBodyData,
+    GetBindingErrorByTaskIdResponseBodyDataVoListBindingErrorDO,
+    GetBindingErrorByTaskIdResponseBodyDataVoList,
+    GetBindingErrorByTaskIdResponseBodyData,
+    GetConsumeTraceByQueueAndRocketMqMsgIdResponseBodyData,
+    GetExchangeErrorByTaskIdResponseBodyDataVoListExchangeErrorDO,
+    GetExchangeErrorByTaskIdResponseBodyDataVoList,
+    GetExchangeErrorByTaskIdResponseBodyData,
+    GetExchangeRateResponseBodyDataExchangeQuotaVO,
+    GetExchangeRateResponseBodyData,
+    GetMsgIdListByQueueResponseBodyData,
+    GetQueueConsumersResponseBodyDataVoList,
+    GetQueueConsumersResponseBodyData,
+    GetQueueErrorByTaskIdResponseBodyDataVoListQueueErrorDO,
+    GetQueueErrorByTaskIdResponseBodyDataVoList,
+    GetQueueErrorByTaskIdResponseBodyData,
+    GetQueueRateResponseBodyData,
+    GetSendTraceByConnectionAndChannelAndDeliveryTagResponseBodyData,
+    GetSendTraceByMsgIdResponseBodyDataVoList,
+    GetSendTraceByMsgIdResponseBodyData,
+    GetSendTraceByQueueResponseBodyDataVoList,
+    GetSendTraceByQueueResponseBodyData,
+    GetStatisticsByVhostResponseBodyDataConnectionStatisticsChannelStatisticsListChannelStatistics,
+    GetStatisticsByVhostResponseBodyDataConnectionStatisticsChannelStatisticsList,
+    GetStatisticsByVhostResponseBodyDataConnectionStatistics,
+    GetStatisticsByVhostResponseBodyData,
+    GetTaskByUidResponseBodyDataVoListImportDefinitionTaskDO,
+    GetTaskByUidResponseBodyDataVoList,
+    GetTaskByUidResponseBodyData,
+    GetTpsByTimeResponseBodyData,
+    GetUserSettingResponseBodyData,
+    GetVhostErrorByTaskIdResponseBodyDataVoListVhostErrorDO,
+    GetVhostErrorByTaskIdResponseBodyDataVoList,
+    GetVhostErrorByTaskIdResponseBodyData,
+    GetVhostRateResponseBodyData,
+    ImportDefinitionAsynchronousResponseBodyData,
+    InstancePreivewResponseBodyDataInstancesInstancesVOPvlParamsPvlVO,
+    InstancePreivewResponseBodyDataInstancesInstancesVOPvlParams,
+    InstancePreivewResponseBodyDataInstancesInstancesVOTagsTagsVO,
+    InstancePreivewResponseBodyDataInstancesInstancesVOTags,
+    InstancePreivewResponseBodyDataInstancesInstancesVO,
+    InstancePreivewResponseBodyDataInstances,
+    InstancePreivewResponseBodyData,
+    ListExchangeResponseBodyDataVoListExchangVO,
+    ListExchangeResponseBodyDataVoList,
+    ListExchangeResponseBodyData,
+    ListExchangeDownstreamBindingsResponseBodyDataVoListBindingVO,
+    ListExchangeDownstreamBindingsResponseBodyDataVoList,
+    ListExchangeDownstreamBindingsResponseBodyData,
+    ListExchangeUpstreamBindingsResponseBodyDataVoListBindingVO,
+    ListExchangeUpstreamBindingsResponseBodyDataVoList,
+    ListExchangeUpstreamBindingsResponseBodyData,
+    ListInstanceResponseBodyDataInstancesTagsTags,
+    ListInstanceResponseBodyDataInstancesTags,
+    ListInstanceResponseBodyDataInstances,
+    ListInstanceResponseBodyData,
+    ListInstanceAlarmResponseBodyDataVoListCommodityInstanceAlarmVOAlarmVOAlarmDetailsAlarmDetail,
+    ListInstanceAlarmResponseBodyDataVoListCommodityInstanceAlarmVOAlarmVOAlarmDetails,
+    ListInstanceAlarmResponseBodyDataVoListCommodityInstanceAlarmVOAlarmVO,
+    ListInstanceAlarmResponseBodyDataVoListCommodityInstanceAlarmVO,
+    ListInstanceAlarmResponseBodyDataVoList,
+    ListInstanceAlarmResponseBodyData,
+    ListLogstoreResponseBodyData,
+    ListProjectResponseBodyData,
+    ListQueueResponseBodyDataVoListQueueVO,
+    ListQueueResponseBodyDataVoList,
+    ListQueueResponseBodyData,
+    ListQueueUpstreamBindingsResponseBodyDataVoListBindingVO,
+    ListQueueUpstreamBindingsResponseBodyDataVoList,
+    ListQueueUpstreamBindingsResponseBodyData,
+    ListVhostResponseBodyDataVhosts,
+    ListVhostResponseBodyData,
+    MetadataResponseBodyData,
+    QueryMessageByMessageIdResponseBodyDataVoList,
+    QueryMessageByMessageIdResponseBodyData,
+    QueryMessageByQueueNameResponseBodyDataVoListAmqpMessageVO,
+    QueryMessageByQueueNameResponseBodyDataVoList,
+    QueryMessageByQueueNameResponseBodyData
+]

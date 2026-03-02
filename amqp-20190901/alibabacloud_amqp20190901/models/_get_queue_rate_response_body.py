@@ -1,0 +1,135 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from typing import List
+
+from alibabacloud_amqp20190901 import models as main_models
+from darabonba.model import DaraModel
+
+class GetQueueRateResponseBody(DaraModel):
+    def __init__(
+        self,
+        code: int = None,
+        data: List[main_models.GetQueueRateResponseBodyData] = None,
+        message: str = None,
+        request_id: str = None,
+        success: bool = None,
+    ):
+        self.code = code
+        self.data = data
+        self.message = message
+        self.request_id = request_id
+        self.success = success
+
+    def validate(self):
+        if self.data:
+            for v1 in self.data:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.code is not None:
+            result['Code'] = self.code
+
+        result['Data'] = []
+        if self.data is not None:
+            for k1 in self.data:
+                result['Data'].append(k1.to_map() if k1 else None)
+
+        if self.message is not None:
+            result['Message'] = self.message
+
+        if self.request_id is not None:
+            result['RequestId'] = self.request_id
+
+        if self.success is not None:
+            result['Success'] = self.success
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Code') is not None:
+            self.code = m.get('Code')
+
+        self.data = []
+        if m.get('Data') is not None:
+            for k1 in m.get('Data'):
+                temp_model = main_models.GetQueueRateResponseBodyData()
+                self.data.append(temp_model.from_map(k1))
+
+        if m.get('Message') is not None:
+            self.message = m.get('Message')
+
+        if m.get('RequestId') is not None:
+            self.request_id = m.get('RequestId')
+
+        if m.get('Success') is not None:
+            self.success = m.get('Success')
+
+        return self
+
+class GetQueueRateResponseBodyData(DaraModel):
+    def __init__(
+        self,
+        in_qps: int = None,
+        instance_id: str = None,
+        out_qps: int = None,
+        queue_name: str = None,
+        vhost_name: str = None,
+    ):
+        self.in_qps = in_qps
+        self.instance_id = instance_id
+        self.out_qps = out_qps
+        self.queue_name = queue_name
+        self.vhost_name = vhost_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.in_qps is not None:
+            result['InQps'] = self.in_qps
+
+        if self.instance_id is not None:
+            result['InstanceId'] = self.instance_id
+
+        if self.out_qps is not None:
+            result['OutQps'] = self.out_qps
+
+        if self.queue_name is not None:
+            result['QueueName'] = self.queue_name
+
+        if self.vhost_name is not None:
+            result['VhostName'] = self.vhost_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('InQps') is not None:
+            self.in_qps = m.get('InQps')
+
+        if m.get('InstanceId') is not None:
+            self.instance_id = m.get('InstanceId')
+
+        if m.get('OutQps') is not None:
+            self.out_qps = m.get('OutQps')
+
+        if m.get('QueueName') is not None:
+            self.queue_name = m.get('QueueName')
+
+        if m.get('VhostName') is not None:
+            self.vhost_name = m.get('VhostName')
+
+        return self
+
