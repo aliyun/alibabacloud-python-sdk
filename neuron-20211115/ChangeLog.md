@@ -1,0 +1,112 @@
+2026-03-02 Version: 1.0.0
+- Support API AddOrQuitPdpLaneForServiceGroup.
+- Support API AuthorizeProducts.
+- Support API CreateComponent.
+- Support API CreateComponentTemplate.
+- Support API CreateGreyPdpServiceGroup.
+- Support API CreatePdpLane.
+- Support API CreatePdpServiceGroup.
+- Support API CreateResource.
+- Support API DeleteComponent.
+- Support API DeleteComponentTemplate.
+- Support API DeletePdpLane.
+- Support API DeletePdpLaneInletService.
+- Support API DeletePdpLaneServiceGroup.
+- Support API DeletePdpServiceGroup.
+- Support API DeleteResource.
+- Support API GetComponent.
+- Support API GetComponentTemplate.
+- Support API GetLogUrl.
+- Support API GetPdpLane.
+- Support API GetPdpServiceGroup.
+- Support API GetResource.
+- Support API ListAuthorizeProducts.
+- Support API ListComponentTemplates.
+- Support API ListComponents.
+- Support API ListPdpLanes.
+- Support API ListPdpLanesForServiceGroup.
+- Support API ListPdpServiceGroups.
+- Support API ListPermissionResourceForFront.
+- Support API ListProductEnvInfos.
+- Support API ListProductEnvs.
+- Support API ListResources.
+- Support API ObtainMqConsoleLink.
+- Support API OpenServiceGroupForService.
+- Support API PreviewComponentCrdSchema.
+- Support API SyncComponentTemplateConfig.
+- Support API UpdateComponent.
+- Support API UpdateComponentTemplate.
+- Support API UpdatePdpLane.
+- Support API UpdatePdpServiceGroup.
+- Support API UpdateResource.
+- Delete API CheckBucUserRole.
+- Delete API CheckServiceReachable.
+- Delete API CreateBizUserToken.
+- Delete API CreateMobiToken.
+- Delete API GetRepoFork.
+- Delete API GetRepoMetric.
+- Delete API GetSlsLoginUrl.
+- Delete API ListBucPermissionResourcePop.
+- Delete API ListDeveloperRepoMetricSum.
+- Delete API ListRepoForks.
+- Update API CreateMqGroup: update request parameters body' ref has changed.
+- Update API DeleteProduct: add request parameters companyId.
+- Update API DeleteProduct: add request The number of query or body parameters has changed from zero to many.
+- Update API GetLastDeploymentConfig: add request parameters serviceGroupId.
+- Update API GetLastDeploymentConfig: delete request parameters env.
+- Update API GetLastDeploymentConfig: delete request parameters serviceId.
+- Update API GetMonitorAlertHistory: add request parameters serviceGroupId.
+- Update API GetMonitorAlertHistory: update request parameters pbcId' type has changed.
+- Update API GetMonitorAlertHistory: update request parameters pbcId' format has changed.
+- Update API GetMonitorAlertHistory: delete request parameters serviceId.
+- Update API GetStackDetail: add request parameters serviceGroupId.
+- Update API ListDeployments: add request parameters serviceGroupId.
+- Update API ListDeployments: delete request parameters env.
+- Update API ListDeployments: delete request parameters serviceId.
+- Update API ListEnvInfos: add request parameters pbcId.
+- Update API ListMicroService: update response parameters Body' ref has changed.
+- Update API ListMonitorTasks: add request parameters serviceGroupId.
+- Update API ListMonitorTasks: delete request parameters serviceId.
+- Update API ListPdpConfigs: add request parameters serviceGroupId.
+- Update API ListPdpConfigs: delete request parameters env.
+- Update API ListPdpConfigs: delete request parameters serviceId.
+- Update API ListPdpHistoryConfigs: add request parameters serviceGroupId.
+- Update API ListPdpHistoryConfigs: delete request parameters env.
+- Update API ListPdpHistoryConfigs: delete request parameters serviceId.
+- Update API ListPdpImage: add request parameters serviceGroupId.
+- Update API ListPdpImage: delete request parameters env.
+- Update API ListPdpImage: delete request parameters serviceId.
+- Update API ListPdpLogs: add request parameters pageNumber.
+- Update API ListPdpLogs: add request parameters pageSize.
+- Update API ListPdpLogs: add request parameters serviceGroupId.
+- Update API ListPdpLogs: add request parameters sourceType.
+- Update API ListPdpLogs: delete request parameters env.
+- Update API ListPdpLogs: delete request parameters page_number.
+- Update API ListPdpLogs: delete request parameters page_size.
+- Update API ListPdpLogs: delete request parameters service_id.
+- Update API ListPdpLogs: delete request parameters source_type.
+- Update API ListPdpServices: add request parameters enterpriseId.
+- Update API ListPdpServices: add request parameters productId.
+- Update API ListRuntimeTokens: add request parameters enterpriseId.
+- Update API ListRuntimeTokens: add request parameters orderBy.
+- Update API ListRuntimeTokens: add request parameters orderDirection.
+- Update API ListRuntimeTokens: add request parameters pageNumber.
+- Update API ListRuntimeTokens: add request parameters pageSize.
+- Update API ListRuntimeTokens: add request parameters pbcId.
+- Update API ListRuntimeTokens: add request parameters serviceGroupId.
+- Update API ListRuntimeTokens: delete request parameters enterprise_id.
+- Update API ListRuntimeTokens: delete request parameters env.
+- Update API ListRuntimeTokens: delete request parameters order_by.
+- Update API ListRuntimeTokens: delete request parameters order_direction.
+- Update API ListRuntimeTokens: delete request parameters page_number.
+- Update API ListRuntimeTokens: delete request parameters page_size.
+- Update API ListRuntimeTokens: delete request parameters pbc_id.
+- Update API ListRuntimeTokens: delete request parameters service_id.
+- Update API ListServerInstances: add request parameters serviceGroupId.
+- Update API ListServerInstances: delete request parameters serviceId.
+- Update API ListServiceMetrics: add request parameters serviceGroupId.
+- Update API ListServiceMetrics: delete request parameters serviceId.
+- Update API SearchTracesByPage: add request parameters serviceGroupId.
+- Update API SearchTracesByPage: delete request parameters serviceId.
+
+

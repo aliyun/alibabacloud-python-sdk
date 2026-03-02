@@ -1,0 +1,97 @@
+# -*- coding: utf-8 -*-
+# This file is auto-generated, don't edit it. Thanks.
+from __future__ import annotations
+
+from darabonba.model import DaraModel
+
+class ListPdpLanesRequest(DaraModel):
+    def __init__(
+        self,
+        company_id: int = None,
+        env: str = None,
+        inlet_service_id: int = None,
+        keyword: str = None,
+        order_by: str = None,
+        order_direction: str = None,
+        page_number: int = None,
+        page_size: int = None,
+        product_id: int = None,
+    ):
+        self.company_id = company_id
+        self.env = env
+        self.inlet_service_id = inlet_service_id
+        self.keyword = keyword
+        self.order_by = order_by
+        self.order_direction = order_direction
+        self.page_number = page_number
+        self.page_size = page_size
+        self.product_id = product_id
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.company_id is not None:
+            result['companyId'] = self.company_id
+
+        if self.env is not None:
+            result['env'] = self.env
+
+        if self.inlet_service_id is not None:
+            result['inletServiceId'] = self.inlet_service_id
+
+        if self.keyword is not None:
+            result['keyword'] = self.keyword
+
+        if self.order_by is not None:
+            result['orderBy'] = self.order_by
+
+        if self.order_direction is not None:
+            result['orderDirection'] = self.order_direction
+
+        if self.page_number is not None:
+            result['pageNumber'] = self.page_number
+
+        if self.page_size is not None:
+            result['pageSize'] = self.page_size
+
+        if self.product_id is not None:
+            result['productId'] = self.product_id
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('companyId') is not None:
+            self.company_id = m.get('companyId')
+
+        if m.get('env') is not None:
+            self.env = m.get('env')
+
+        if m.get('inletServiceId') is not None:
+            self.inlet_service_id = m.get('inletServiceId')
+
+        if m.get('keyword') is not None:
+            self.keyword = m.get('keyword')
+
+        if m.get('orderBy') is not None:
+            self.order_by = m.get('orderBy')
+
+        if m.get('orderDirection') is not None:
+            self.order_direction = m.get('orderDirection')
+
+        if m.get('pageNumber') is not None:
+            self.page_number = m.get('pageNumber')
+
+        if m.get('pageSize') is not None:
+            self.page_size = m.get('pageSize')
+
+        if m.get('productId') is not None:
+            self.product_id = m.get('productId')
+
+        return self
+
