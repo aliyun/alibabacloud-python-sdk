@@ -1,3 +1,6 @@
+2026-03-02 Version: 2.3.7
+- Generated python 2022-01-01 for pai-dsw.
+
 2026-03-02 Version: 2.3.6
 - Update API CreateInstance: add request parameters body.AccessRestrictionRules.
 - Update API CreateInstance: add request parameters body.DockerConfig.
