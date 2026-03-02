@@ -71,6 +71,8 @@ from ._describe_package_state_response import DescribePackageStateResponse
 from ._encrypt_request import EncryptRequest
 from ._encrypt_response_body import EncryptResponseBody
 from ._encrypt_response import EncryptResponse
+from ._get_asset_count_response_body import GetAssetCountResponseBody
+from ._get_asset_count_response import GetAssetCountResponse
 from ._get_cert_warehouse_quota_response_body import GetCertWarehouseQuotaResponseBody
 from ._get_cert_warehouse_quota_response import GetCertWarehouseQuotaResponse
 from ._get_certificate_detail_request import GetCertificateDetailRequest
@@ -85,12 +87,17 @@ from ._get_instance_detail_response import GetInstanceDetailResponse
 from ._get_instance_summary_request import GetInstanceSummaryRequest
 from ._get_instance_summary_response_body import GetInstanceSummaryResponseBody
 from ._get_instance_summary_response import GetInstanceSummaryResponse
+from ._get_risk_count_response_body import GetRiskCountResponseBody
+from ._get_risk_count_response import GetRiskCountResponse
 from ._get_task_attribute_request import GetTaskAttributeRequest
 from ._get_task_attribute_response_body import GetTaskAttributeResponseBody
 from ._get_task_attribute_response import GetTaskAttributeResponse
 from ._get_user_certificate_detail_request import GetUserCertificateDetailRequest
 from ._get_user_certificate_detail_response_body import GetUserCertificateDetailResponseBody
 from ._get_user_certificate_detail_response import GetUserCertificateDetailResponse
+from ._list_asset_count_request import ListAssetCountRequest
+from ._list_asset_count_response_body import ListAssetCountResponseBody
+from ._list_asset_count_response import ListAssetCountResponse
 from ._list_cert_request import ListCertRequest
 from ._list_cert_response_body import ListCertResponseBody
 from ._list_cert_response import ListCertResponse
@@ -183,6 +190,7 @@ from ._get_instance_detail_response_body import GetInstanceDetailResponseBodyDom
 from ._get_instance_detail_response_body import GetInstanceDetailResponseBodyTags
 from ._get_user_certificate_detail_response_body import GetUserCertificateDetailResponseBodyCertChain
 from ._get_user_certificate_detail_response_body import GetUserCertificateDetailResponseBodyTags
+from ._list_asset_count_response_body import ListAssetCountResponseBodyAssetCountList
 from ._list_cert_response_body import ListCertResponseBodyCertList
 from ._list_cert_warehouse_response_body import ListCertWarehouseResponseBodyCertWarehouseList
 from ._list_certificates_response_body import ListCertificatesResponseBodyCertificateList
@@ -270,6 +278,8 @@ __all__ = [
     EncryptRequest,
     EncryptResponseBody,
     EncryptResponse,
+    GetAssetCountResponseBody,
+    GetAssetCountResponse,
     GetCertWarehouseQuotaResponseBody,
     GetCertWarehouseQuotaResponse,
     GetCertificateDetailRequest,
@@ -284,12 +294,17 @@ __all__ = [
     GetInstanceSummaryRequest,
     GetInstanceSummaryResponseBody,
     GetInstanceSummaryResponse,
+    GetRiskCountResponseBody,
+    GetRiskCountResponse,
     GetTaskAttributeRequest,
     GetTaskAttributeResponseBody,
     GetTaskAttributeResponse,
     GetUserCertificateDetailRequest,
     GetUserCertificateDetailResponseBody,
     GetUserCertificateDetailResponse,
+    ListAssetCountRequest,
+    ListAssetCountResponseBody,
+    ListAssetCountResponse,
     ListCertRequest,
     ListCertResponseBody,
     ListCertResponse,
@@ -382,6 +397,7 @@ __all__ = [
     GetInstanceDetailResponseBodyTags,
     GetUserCertificateDetailResponseBodyCertChain,
     GetUserCertificateDetailResponseBodyTags,
+    ListAssetCountResponseBodyAssetCountList,
     ListCertResponseBodyCertList,
     ListCertWarehouseResponseBodyCertWarehouseList,
     ListCertificatesResponseBodyCertificateList,

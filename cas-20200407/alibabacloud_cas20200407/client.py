@@ -1883,6 +1883,56 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.encrypt_with_options_async(request, runtime)
 
+    def get_asset_count_with_options(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAssetCountResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetAssetCount',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAssetCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_asset_count_with_options_async(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetAssetCountResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetAssetCount',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetAssetCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_asset_count(self) -> main_models.GetAssetCountResponse:
+        runtime = RuntimeOptions()
+        return self.get_asset_count_with_options(runtime)
+
+    async def get_asset_count_async(self) -> main_models.GetAssetCountResponse:
+        runtime = RuntimeOptions()
+        return await self.get_asset_count_with_options_async(runtime)
+
     def get_cert_warehouse_quota_with_options(
         self,
         runtime: RuntimeOptions,
@@ -2213,6 +2263,56 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.get_instance_summary_with_options_async(request, runtime)
 
+    def get_risk_count_with_options(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRiskCountResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetRiskCount',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRiskCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_risk_count_with_options_async(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetRiskCountResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'GetRiskCount',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetRiskCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_risk_count(self) -> main_models.GetRiskCountResponse:
+        runtime = RuntimeOptions()
+        return self.get_risk_count_with_options(runtime)
+
+    async def get_risk_count_async(self) -> main_models.GetRiskCountResponse:
+        runtime = RuntimeOptions()
+        return await self.get_risk_count_with_options_async(runtime)
+
     def get_task_attribute_with_options(
         self,
         request: main_models.GetTaskAttributeRequest,
@@ -2360,6 +2460,88 @@ class Client(OpenApiClient):
     ) -> main_models.GetUserCertificateDetailResponse:
         runtime = RuntimeOptions()
         return await self.get_user_certificate_detail_with_options_async(request, runtime)
+
+    def list_asset_count_with_options(
+        self,
+        request: main_models.ListAssetCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAssetCountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.show_size):
+            query['ShowSize'] = request.show_size
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAssetCount',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAssetCountResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_asset_count_with_options_async(
+        self,
+        request: main_models.ListAssetCountRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAssetCountResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.current_page):
+            query['CurrentPage'] = request.current_page
+        if not DaraCore.is_null(request.end_date):
+            query['EndDate'] = request.end_date
+        if not DaraCore.is_null(request.show_size):
+            query['ShowSize'] = request.show_size
+        if not DaraCore.is_null(request.start_date):
+            query['StartDate'] = request.start_date
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ListAssetCount',
+            version = '2020-04-07',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAssetCountResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_asset_count(
+        self,
+        request: main_models.ListAssetCountRequest,
+    ) -> main_models.ListAssetCountResponse:
+        runtime = RuntimeOptions()
+        return self.list_asset_count_with_options(request, runtime)
+
+    async def list_asset_count_async(
+        self,
+        request: main_models.ListAssetCountRequest,
+    ) -> main_models.ListAssetCountResponse:
+        runtime = RuntimeOptions()
+        return await self.list_asset_count_with_options_async(request, runtime)
 
     def list_cert_with_options(
         self,
