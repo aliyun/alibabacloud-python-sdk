@@ -221,6 +221,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateInstanceResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.access_restriction_rules):
+            body['AccessRestrictionRules'] = request.access_restriction_rules
         if not DaraCore.is_null(request.accessibility):
             body['Accessibility'] = request.accessibility
         if not DaraCore.is_null(request.affinity):
@@ -233,6 +235,8 @@ class Client(OpenApiClient):
             body['CredentialConfig'] = request.credential_config
         if not DaraCore.is_null(request.datasets):
             body['Datasets'] = request.datasets
+        if not DaraCore.is_null(request.docker_config):
+            body['DockerConfig'] = request.docker_config
         if not DaraCore.is_null(request.driver):
             body['Driver'] = request.driver
         if not DaraCore.is_null(request.dynamic_mount):
@@ -303,6 +307,8 @@ class Client(OpenApiClient):
     ) -> main_models.CreateInstanceResponse:
         request.validate()
         body = {}
+        if not DaraCore.is_null(request.access_restriction_rules):
+            body['AccessRestrictionRules'] = request.access_restriction_rules
         if not DaraCore.is_null(request.accessibility):
             body['Accessibility'] = request.accessibility
         if not DaraCore.is_null(request.affinity):
@@ -315,6 +321,8 @@ class Client(OpenApiClient):
             body['CredentialConfig'] = request.credential_config
         if not DaraCore.is_null(request.datasets):
             body['Datasets'] = request.datasets
+        if not DaraCore.is_null(request.docker_config):
+            body['DockerConfig'] = request.docker_config
         if not DaraCore.is_null(request.driver):
             body['Driver'] = request.driver
         if not DaraCore.is_null(request.dynamic_mount):

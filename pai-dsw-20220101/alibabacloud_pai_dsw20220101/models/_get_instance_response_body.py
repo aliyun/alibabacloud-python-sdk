@@ -2,7 +2,7 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
-from typing import List, Dict, Any
+from typing import Dict, List, Any
 
 from alibabacloud_pai_dsw20220101 import models as main_models
 from darabonba.model import DaraModel
@@ -11,6 +11,7 @@ class GetInstanceResponseBody(DaraModel):
     def __init__(
         self,
         accelerator_type: str = None,
+        access_restriction_rules: Dict[str, str] = None,
         accessibility: str = None,
         accumulated_running_time_in_ms: int = None,
         affinity: main_models.GetInstanceResponseBodyAffinity = None,
@@ -18,6 +19,7 @@ class GetInstanceResponseBody(DaraModel):
         code: str = None,
         credential_config: main_models.CredentialConfig = None,
         datasets: List[main_models.GetInstanceResponseBodyDatasets] = None,
+        docker_config: main_models.GetInstanceResponseBodyDockerConfig = None,
         driver: str = None,
         dynamic_mount: main_models.DynamicMount = None,
         ecs_spec: str = None,
@@ -72,6 +74,7 @@ class GetInstanceResponseBody(DaraModel):
         # *   CPU
         # *   GPU
         self.accelerator_type = accelerator_type
+        self.access_restriction_rules = access_restriction_rules
         # The accessibility. Valid values:
         # 
         # *   PRIVATE: Accessible only to you and the administrator of the workspace.
@@ -92,6 +95,7 @@ class GetInstanceResponseBody(DaraModel):
         self.credential_config = credential_config
         # The datasets.
         self.datasets = datasets
+        self.docker_config = docker_config
         # The NVIDIA driver configuration.
         self.driver = driver
         # The dynamic mount configuration.
@@ -227,6 +231,8 @@ class GetInstanceResponseBody(DaraModel):
             for v1 in self.datasets:
                  if v1:
                     v1.validate()
+        if self.docker_config:
+            self.docker_config.validate()
         if self.dynamic_mount:
             self.dynamic_mount.validate()
         if self.idle_instance_culler:
@@ -268,6 +274,9 @@ class GetInstanceResponseBody(DaraModel):
         if self.accelerator_type is not None:
             result['AcceleratorType'] = self.accelerator_type
 
+        if self.access_restriction_rules is not None:
+            result['AccessRestrictionRules'] = self.access_restriction_rules
+
         if self.accessibility is not None:
             result['Accessibility'] = self.accessibility
 
@@ -292,6 +301,9 @@ class GetInstanceResponseBody(DaraModel):
         if self.datasets is not None:
             for k1 in self.datasets:
                 result['Datasets'].append(k1.to_map() if k1 else None)
+
+        if self.docker_config is not None:
+            result['DockerConfig'] = self.docker_config.to_map()
 
         if self.driver is not None:
             result['Driver'] = self.driver
@@ -446,6 +458,9 @@ class GetInstanceResponseBody(DaraModel):
         if m.get('AcceleratorType') is not None:
             self.accelerator_type = m.get('AcceleratorType')
 
+        if m.get('AccessRestrictionRules') is not None:
+            self.access_restriction_rules = m.get('AccessRestrictionRules')
+
         if m.get('Accessibility') is not None:
             self.accessibility = m.get('Accessibility')
 
@@ -474,6 +489,10 @@ class GetInstanceResponseBody(DaraModel):
             for k1 in m.get('Datasets'):
                 temp_model = main_models.GetInstanceResponseBodyDatasets()
                 self.datasets.append(temp_model.from_map(k1))
+
+        if m.get('DockerConfig') is not None:
+            temp_model = main_models.GetInstanceResponseBodyDockerConfig()
+            self.docker_config = temp_model.from_map(m.get('DockerConfig'))
 
         if m.get('Driver') is not None:
             self.driver = m.get('Driver')
@@ -1260,6 +1279,49 @@ class GetInstanceResponseBodyIdleInstanceCuller(DaraModel):
 
         if m.get('MaxIdleTimeInMinutes') is not None:
             self.max_idle_time_in_minutes = m.get('MaxIdleTimeInMinutes')
+
+        return self
+
+class GetInstanceResponseBodyDockerConfig(DaraModel):
+    def __init__(
+        self,
+        containers_limit: int = None,
+        enable: bool = None,
+        mount_access_config_path: str = None,
+    ):
+        self.containers_limit = containers_limit
+        self.enable = enable
+        self.mount_access_config_path = mount_access_config_path
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.containers_limit is not None:
+            result['ContainersLimit'] = self.containers_limit
+
+        if self.enable is not None:
+            result['Enable'] = self.enable
+
+        if self.mount_access_config_path is not None:
+            result['MountAccessConfigPath'] = self.mount_access_config_path
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ContainersLimit') is not None:
+            self.containers_limit = m.get('ContainersLimit')
+
+        if m.get('Enable') is not None:
+            self.enable = m.get('Enable')
+
+        if m.get('MountAccessConfigPath') is not None:
+            self.mount_access_config_path = m.get('MountAccessConfigPath')
 
         return self
 

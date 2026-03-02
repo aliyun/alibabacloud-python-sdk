@@ -1,3 +1,10 @@
+2026-03-02 Version: 2.3.6
+- Update API CreateInstance: add request parameters body.AccessRestrictionRules.
+- Update API CreateInstance: add request parameters body.DockerConfig.
+- Update API GetInstance: add response parameters Body.AccessRestrictionRules.
+- Update API GetInstance: add response parameters Body.DockerConfig.
+
+
 2026-02-27 Version: 2.3.5
 - Generated python 2022-01-01 for pai-dsw.
 

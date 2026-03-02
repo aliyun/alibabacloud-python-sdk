@@ -120,6 +120,7 @@ from ._create_instance_request import CreateInstanceRequestAssignNodeSpec
 from ._create_instance_request import CreateInstanceRequestCloudDisksStatus
 from ._create_instance_request import CreateInstanceRequestCloudDisks
 from ._create_instance_request import CreateInstanceRequestDatasets
+from ._create_instance_request import CreateInstanceRequestDockerConfig
 from ._create_instance_request import CreateInstanceRequestLabels
 from ._create_instance_request import CreateInstanceRequestRequestedResource
 from ._create_instance_request import CreateInstanceRequestSpotSpec
@@ -133,6 +134,7 @@ from ._get_instance_response_body import GetInstanceResponseBodyAffinity
 from ._get_instance_response_body import GetInstanceResponseBodyCloudDisksStatus
 from ._get_instance_response_body import GetInstanceResponseBodyCloudDisks
 from ._get_instance_response_body import GetInstanceResponseBodyDatasets
+from ._get_instance_response_body import GetInstanceResponseBodyDockerConfig
 from ._get_instance_response_body import GetInstanceResponseBodyIdleInstanceCuller
 from ._get_instance_response_body import GetInstanceResponseBodyInstanceShutdownTimer
 from ._get_instance_response_body import GetInstanceResponseBodyInstanceSnapshotList
@@ -299,6 +301,7 @@ __all__ = [
     CreateInstanceRequestCloudDisksStatus,
     CreateInstanceRequestCloudDisks,
     CreateInstanceRequestDatasets,
+    CreateInstanceRequestDockerConfig,
     CreateInstanceRequestLabels,
     CreateInstanceRequestRequestedResource,
     CreateInstanceRequestSpotSpec,
@@ -312,6 +315,7 @@ __all__ = [
     GetInstanceResponseBodyCloudDisksStatus,
     GetInstanceResponseBodyCloudDisks,
     GetInstanceResponseBodyDatasets,
+    GetInstanceResponseBodyDockerConfig,
     GetInstanceResponseBodyIdleInstanceCuller,
     GetInstanceResponseBodyInstanceShutdownTimer,
     GetInstanceResponseBodyInstanceSnapshotList,
