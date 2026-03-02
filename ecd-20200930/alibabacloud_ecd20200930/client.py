@@ -5775,6 +5775,92 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.create_network_package_with_options_async(request, runtime)
 
+    def create_office_site_accelerator_with_options(
+        self,
+        request: main_models.CreateOfficeSiteAcceleratorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOfficeSiteAcceleratorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accelerate_region):
+            query['AccelerateRegion'] = request.accelerate_region
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOfficeSiteAccelerator',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOfficeSiteAcceleratorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def create_office_site_accelerator_with_options_async(
+        self,
+        request: main_models.CreateOfficeSiteAcceleratorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.CreateOfficeSiteAcceleratorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accelerate_region):
+            query['AccelerateRegion'] = request.accelerate_region
+        if not DaraCore.is_null(request.name):
+            query['Name'] = request.name
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.resource_group_id):
+            query['ResourceGroupId'] = request.resource_group_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'CreateOfficeSiteAccelerator',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.CreateOfficeSiteAcceleratorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def create_office_site_accelerator(
+        self,
+        request: main_models.CreateOfficeSiteAcceleratorRequest,
+    ) -> main_models.CreateOfficeSiteAcceleratorResponse:
+        runtime = RuntimeOptions()
+        return self.create_office_site_accelerator_with_options(request, runtime)
+
+    async def create_office_site_accelerator_async(
+        self,
+        request: main_models.CreateOfficeSiteAcceleratorRequest,
+    ) -> main_models.CreateOfficeSiteAcceleratorResponse:
+        runtime = RuntimeOptions()
+        return await self.create_office_site_accelerator_with_options_async(request, runtime)
+
     def create_policy_group_with_options(
         self,
         request: main_models.CreatePolicyGroupRequest,
@@ -8386,6 +8472,80 @@ class Client(OpenApiClient):
     ) -> main_models.DeleteNetworkPackagesResponse:
         runtime = RuntimeOptions()
         return await self.delete_network_packages_with_options_async(request, runtime)
+
+    def delete_office_site_accelerator_with_options(
+        self,
+        request: main_models.DeleteOfficeSiteAcceleratorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOfficeSiteAcceleratorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOfficeSiteAccelerator',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOfficeSiteAcceleratorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def delete_office_site_accelerator_with_options_async(
+        self,
+        request: main_models.DeleteOfficeSiteAcceleratorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.DeleteOfficeSiteAcceleratorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'DeleteOfficeSiteAccelerator',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.DeleteOfficeSiteAcceleratorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def delete_office_site_accelerator(
+        self,
+        request: main_models.DeleteOfficeSiteAcceleratorRequest,
+    ) -> main_models.DeleteOfficeSiteAcceleratorResponse:
+        runtime = RuntimeOptions()
+        return self.delete_office_site_accelerator_with_options(request, runtime)
+
+    async def delete_office_site_accelerator_async(
+        self,
+        request: main_models.DeleteOfficeSiteAcceleratorRequest,
+    ) -> main_models.DeleteOfficeSiteAcceleratorResponse:
+        runtime = RuntimeOptions()
+        return await self.delete_office_site_accelerator_with_options_async(request, runtime)
 
     def delete_office_sites_with_options(
         self,
@@ -16604,6 +16764,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.vpc_access_zone):
+            query['VpcAccessZone'] = request.vpc_access_zone
         if not DaraCore.is_null(request.zone_type):
             query['ZoneType'] = request.zone_type
         req = open_api_util_models.OpenApiRequest(
@@ -16634,6 +16796,8 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.region_id):
             query['RegionId'] = request.region_id
+        if not DaraCore.is_null(request.vpc_access_zone):
+            query['VpcAccessZone'] = request.vpc_access_zone
         if not DaraCore.is_null(request.zone_type):
             query['ZoneType'] = request.zone_type
         req = open_api_util_models.OpenApiRequest(
@@ -22577,6 +22741,84 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.modify_network_package_enabled_with_options_async(request, runtime)
 
+    def modify_office_site_accelerator_with_options(
+        self,
+        request: main_models.ModifyOfficeSiteAcceleratorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyOfficeSiteAcceleratorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accelerate_region):
+            query['AccelerateRegion'] = request.accelerate_region
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyOfficeSiteAccelerator',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyOfficeSiteAcceleratorResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def modify_office_site_accelerator_with_options_async(
+        self,
+        request: main_models.ModifyOfficeSiteAcceleratorRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.ModifyOfficeSiteAcceleratorResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.accelerate_region):
+            query['AccelerateRegion'] = request.accelerate_region
+        if not DaraCore.is_null(request.office_site_id):
+            query['OfficeSiteId'] = request.office_site_id
+        if not DaraCore.is_null(request.region_id):
+            query['RegionId'] = request.region_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'ModifyOfficeSiteAccelerator',
+            version = '2020-09-30',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ModifyOfficeSiteAcceleratorResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def modify_office_site_accelerator(
+        self,
+        request: main_models.ModifyOfficeSiteAcceleratorRequest,
+    ) -> main_models.ModifyOfficeSiteAcceleratorResponse:
+        runtime = RuntimeOptions()
+        return self.modify_office_site_accelerator_with_options(request, runtime)
+
+    async def modify_office_site_accelerator_async(
+        self,
+        request: main_models.ModifyOfficeSiteAcceleratorRequest,
+    ) -> main_models.ModifyOfficeSiteAcceleratorResponse:
+        runtime = RuntimeOptions()
+        return await self.modify_office_site_accelerator_with_options_async(request, runtime)
+
     def modify_office_site_attribute_with_options(
         self,
         request: main_models.ModifyOfficeSiteAttributeRequest,
@@ -22608,6 +22850,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.tenant_id):
             query['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )
@@ -22658,6 +22902,8 @@ class Client(OpenApiClient):
             query['RegionId'] = request.region_id
         if not DaraCore.is_null(request.tenant_id):
             query['TenantId'] = request.tenant_id
+        if not DaraCore.is_null(request.v_switch_id):
+            query['VSwitchId'] = request.v_switch_id
         req = open_api_util_models.OpenApiRequest(
             query = Utils.query(query)
         )

@@ -1,3 +1,11 @@
+2026-03-02 Version: 4.23.0
+- Support API CreateOfficeSiteAccelerator.
+- Support API DeleteOfficeSiteAccelerator.
+- Support API ModifyOfficeSiteAccelerator.
+- Update API DescribeZones: add request parameters VpcAccessZone.
+- Update API ModifyOfficeSiteAttribute: add request parameters VSwitchId.
+
+
 2026-02-10 Version: 4.22.2
 - Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.AcademicProxy.
 - Update API DescribeCenterPolicyList: add response parameters Body.DescribePolicyGroups.$.ClientHibernate.

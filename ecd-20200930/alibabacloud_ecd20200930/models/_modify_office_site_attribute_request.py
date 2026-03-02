@@ -2,6 +2,8 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from typing import List
+
 from darabonba.model import DaraModel
 
 class ModifyOfficeSiteAttributeRequest(DaraModel):
@@ -19,6 +21,7 @@ class ModifyOfficeSiteAttributeRequest(DaraModel):
         office_site_name: str = None,
         region_id: str = None,
         tenant_id: str = None,
+        v_switch_id: List[str] = None,
     ):
         self.authority_host = authority_host
         self.client_id = client_id
@@ -57,6 +60,7 @@ class ModifyOfficeSiteAttributeRequest(DaraModel):
         # This parameter is required.
         self.region_id = region_id
         self.tenant_id = tenant_id
+        self.v_switch_id = v_switch_id
 
     def validate(self):
         pass
@@ -102,6 +106,9 @@ class ModifyOfficeSiteAttributeRequest(DaraModel):
         if self.tenant_id is not None:
             result['TenantId'] = self.tenant_id
 
+        if self.v_switch_id is not None:
+            result['VSwitchId'] = self.v_switch_id
+
         return result
 
     def from_map(self, m: dict = None):
@@ -141,6 +148,9 @@ class ModifyOfficeSiteAttributeRequest(DaraModel):
 
         if m.get('TenantId') is not None:
             self.tenant_id = m.get('TenantId')
+
+        if m.get('VSwitchId') is not None:
+            self.v_switch_id = m.get('VSwitchId')
 
         return self
 

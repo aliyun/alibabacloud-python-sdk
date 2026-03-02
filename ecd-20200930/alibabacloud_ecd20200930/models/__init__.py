@@ -166,6 +166,9 @@ from ._create_nat_gateway_response import CreateNatGatewayResponse
 from ._create_network_package_request import CreateNetworkPackageRequest
 from ._create_network_package_response_body import CreateNetworkPackageResponseBody
 from ._create_network_package_response import CreateNetworkPackageResponse
+from ._create_office_site_accelerator_request import CreateOfficeSiteAcceleratorRequest
+from ._create_office_site_accelerator_response_body import CreateOfficeSiteAcceleratorResponseBody
+from ._create_office_site_accelerator_response import CreateOfficeSiteAcceleratorResponse
 from ._create_policy_group_request import CreatePolicyGroupRequest
 from ._create_policy_group_response_body import CreatePolicyGroupResponseBody
 from ._create_policy_group_response import CreatePolicyGroupResponse
@@ -250,6 +253,9 @@ from ._delete_nat_gateway_response import DeleteNatGatewayResponse
 from ._delete_network_packages_request import DeleteNetworkPackagesRequest
 from ._delete_network_packages_response_body import DeleteNetworkPackagesResponseBody
 from ._delete_network_packages_response import DeleteNetworkPackagesResponse
+from ._delete_office_site_accelerator_request import DeleteOfficeSiteAcceleratorRequest
+from ._delete_office_site_accelerator_response_body import DeleteOfficeSiteAcceleratorResponseBody
+from ._delete_office_site_accelerator_response import DeleteOfficeSiteAcceleratorResponse
 from ._delete_office_sites_request import DeleteOfficeSitesRequest
 from ._delete_office_sites_response_body import DeleteOfficeSitesResponseBody
 from ._delete_office_sites_response import DeleteOfficeSitesResponse
@@ -692,6 +698,9 @@ from ._modify_network_package_bandwidth_response import ModifyNetworkPackageBand
 from ._modify_network_package_enabled_request import ModifyNetworkPackageEnabledRequest
 from ._modify_network_package_enabled_response_body import ModifyNetworkPackageEnabledResponseBody
 from ._modify_network_package_enabled_response import ModifyNetworkPackageEnabledResponse
+from ._modify_office_site_accelerator_request import ModifyOfficeSiteAcceleratorRequest
+from ._modify_office_site_accelerator_response_body import ModifyOfficeSiteAcceleratorResponseBody
+from ._modify_office_site_accelerator_response import ModifyOfficeSiteAcceleratorResponse
 from ._modify_office_site_attribute_request import ModifyOfficeSiteAttributeRequest
 from ._modify_office_site_attribute_response_body import ModifyOfficeSiteAttributeResponseBody
 from ._modify_office_site_attribute_response import ModifyOfficeSiteAttributeResponse
@@ -893,6 +902,7 @@ from ._create_desktops_shrink_request import CreateDesktopsShrinkRequestTag
 from ._create_desktops_shrink_request import CreateDesktopsShrinkRequestUserCommands
 from ._create_drive_response_body import CreateDriveResponseBodyDrive
 from ._create_ecd_report_task_request import CreateEcdReportTaskRequestFilterList
+from ._create_office_site_accelerator_request import CreateOfficeSiteAcceleratorRequestAccelerateRegion
 from ._create_policy_group_request import CreatePolicyGroupRequestAuthorizeAccessPolicyRule
 from ._create_policy_group_request import CreatePolicyGroupRequestAuthorizeSecurityPolicyRule
 from ._create_policy_group_request import CreatePolicyGroupRequestClientType
@@ -1096,6 +1106,7 @@ from ._modify_desktop_oversold_user_group_response_body import ModifyDesktopOver
 from ._modify_desktop_spec_request import ModifyDesktopSpecRequestResourceSpecs
 from ._modify_desktop_timer_request import ModifyDesktopTimerRequestDesktopTimers
 from ._modify_desktops_policy_group_response_body import ModifyDesktopsPolicyGroupResponseBodyModifyResults
+from ._modify_office_site_accelerator_request import ModifyOfficeSiteAcceleratorRequestAccelerateRegion
 from ._modify_policy_group_request import ModifyPolicyGroupRequestAuthorizeAccessPolicyRule
 from ._modify_policy_group_request import ModifyPolicyGroupRequestAuthorizeSecurityPolicyRule
 from ._modify_policy_group_request import ModifyPolicyGroupRequestClientType
@@ -1294,6 +1305,9 @@ __all__ = [
     CreateNetworkPackageRequest,
     CreateNetworkPackageResponseBody,
     CreateNetworkPackageResponse,
+    CreateOfficeSiteAcceleratorRequest,
+    CreateOfficeSiteAcceleratorResponseBody,
+    CreateOfficeSiteAcceleratorResponse,
     CreatePolicyGroupRequest,
     CreatePolicyGroupResponseBody,
     CreatePolicyGroupResponse,
@@ -1378,6 +1392,9 @@ __all__ = [
     DeleteNetworkPackagesRequest,
     DeleteNetworkPackagesResponseBody,
     DeleteNetworkPackagesResponse,
+    DeleteOfficeSiteAcceleratorRequest,
+    DeleteOfficeSiteAcceleratorResponseBody,
+    DeleteOfficeSiteAcceleratorResponse,
     DeleteOfficeSitesRequest,
     DeleteOfficeSitesResponseBody,
     DeleteOfficeSitesResponse,
@@ -1820,6 +1837,9 @@ __all__ = [
     ModifyNetworkPackageEnabledRequest,
     ModifyNetworkPackageEnabledResponseBody,
     ModifyNetworkPackageEnabledResponse,
+    ModifyOfficeSiteAcceleratorRequest,
+    ModifyOfficeSiteAcceleratorResponseBody,
+    ModifyOfficeSiteAcceleratorResponse,
     ModifyOfficeSiteAttributeRequest,
     ModifyOfficeSiteAttributeResponseBody,
     ModifyOfficeSiteAttributeResponse,
@@ -2021,6 +2041,7 @@ __all__ = [
     CreateDesktopsShrinkRequestUserCommands,
     CreateDriveResponseBodyDrive,
     CreateEcdReportTaskRequestFilterList,
+    CreateOfficeSiteAcceleratorRequestAccelerateRegion,
     CreatePolicyGroupRequestAuthorizeAccessPolicyRule,
     CreatePolicyGroupRequestAuthorizeSecurityPolicyRule,
     CreatePolicyGroupRequestClientType,
@@ -2224,6 +2245,7 @@ __all__ = [
     ModifyDesktopSpecRequestResourceSpecs,
     ModifyDesktopTimerRequestDesktopTimers,
     ModifyDesktopsPolicyGroupResponseBodyModifyResults,
+    ModifyOfficeSiteAcceleratorRequestAccelerateRegion,
     ModifyPolicyGroupRequestAuthorizeAccessPolicyRule,
     ModifyPolicyGroupRequestAuthorizeSecurityPolicyRule,
     ModifyPolicyGroupRequestClientType,
