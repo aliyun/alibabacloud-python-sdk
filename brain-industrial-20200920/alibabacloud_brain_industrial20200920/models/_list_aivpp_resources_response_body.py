@@ -103,6 +103,7 @@ class ListAivppResourcesResponseBodyData(DaraModel):
     def __init__(
         self,
         connect_num: int = None,
+        console_url: str = None,
         detail: str = None,
         expire_time: str = None,
         instance_id: str = None,
@@ -117,6 +118,7 @@ class ListAivppResourcesResponseBodyData(DaraModel):
         user_id: str = None,
     ):
         self.connect_num = connect_num
+        self.console_url = console_url
         self.detail = detail
         self.expire_time = expire_time
         self.instance_id = instance_id
@@ -140,6 +142,9 @@ class ListAivppResourcesResponseBodyData(DaraModel):
             result = _map
         if self.connect_num is not None:
             result['ConnectNum'] = self.connect_num
+
+        if self.console_url is not None:
+            result['ConsoleUrl'] = self.console_url
 
         if self.detail is not None:
             result['Detail'] = self.detail
@@ -183,6 +188,9 @@ class ListAivppResourcesResponseBodyData(DaraModel):
         m = m or dict()
         if m.get('ConnectNum') is not None:
             self.connect_num = m.get('ConnectNum')
+
+        if m.get('ConsoleUrl') is not None:
+            self.console_url = m.get('ConsoleUrl')
 
         if m.get('Detail') is not None:
             self.detail = m.get('Detail')

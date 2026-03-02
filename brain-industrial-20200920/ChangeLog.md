@@ -1,3 +1,7 @@
+2026-03-02 Version: 2.1.4
+- Update API ListAivppResources: add response parameters Body.Data.$.ConsoleUrl.
+
+
 2026-02-09 Version: 2.1.3
 - Update API ListAivppResources: add request parameters InstanceType.
 - Update API ListAivppResources: add response parameters Body.Data.$.ConnectNum.
