@@ -1,3 +1,12 @@
+2026-03-03 Version: 2.13.0
+- Support API AllocateSupabaseForAdmin.
+- Support API OperateSupabaseForAdmin.
+- Update API QuerySupabaseInstanceInfoForAdmin: add request parameters OrderColumn.
+- Update API QuerySupabaseInstanceInfoForAdmin: add request parameters OrderType.
+- Update API QuerySupabaseInstanceInfoForAdmin: add request parameters PageNum.
+- Update API QuerySupabaseInstanceInfoForAdmin: add request parameters PageSize.
+
+
 2026-02-28 Version: 2.12.0
 - Support API GetAppPluginConfig.
 

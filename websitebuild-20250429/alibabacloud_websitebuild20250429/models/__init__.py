@@ -15,6 +15,9 @@ from ._app_service import AppService
 from ._app_service_aggregate import AppServiceAggregate
 from ._app_service_group import AppServiceGroup
 from ._app_service_profile import AppServiceProfile
+from ._allocate_supabase_for_admin_request import AllocateSupabaseForAdminRequest
+from ._allocate_supabase_for_admin_response_body import AllocateSupabaseForAdminResponseBody
+from ._allocate_supabase_for_admin_response import AllocateSupabaseForAdminResponse
 from ._bind_app_domain_request import BindAppDomainRequest
 from ._bind_app_domain_response_body import BindAppDomainResponseBody
 from ._bind_app_domain_response import BindAppDomainResponse
@@ -114,6 +117,9 @@ from ._operate_app_instance_for_partner_response import OperateAppInstanceForPar
 from ._operate_app_service_for_partner_request import OperateAppServiceForPartnerRequest
 from ._operate_app_service_for_partner_response_body import OperateAppServiceForPartnerResponseBody
 from ._operate_app_service_for_partner_response import OperateAppServiceForPartnerResponse
+from ._operate_supabase_for_admin_request import OperateSupabaseForAdminRequest
+from ._operate_supabase_for_admin_response_body import OperateSupabaseForAdminResponseBody
+from ._operate_supabase_for_admin_response import OperateSupabaseForAdminResponse
 from ._query_material_directory_tree_request import QueryMaterialDirectoryTreeRequest
 from ._query_material_directory_tree_response_body import QueryMaterialDirectoryTreeResponseBody
 from ._query_material_directory_tree_response import QueryMaterialDirectoryTreeResponse
@@ -170,6 +176,7 @@ from ._upload_material_file_response import UploadMaterialFileResponse
 from ._app_instance_aggregate import AppInstanceAggregatePartnerDetailBindData
 from ._app_instance_aggregate import AppInstanceAggregatePartnerDetail
 from ._app_instance_aggregate import AppInstanceAggregateTags
+from ._allocate_supabase_for_admin_response_body import AllocateSupabaseForAdminResponseBodyModule
 from ._bind_app_domain_response_body import BindAppDomainResponseBodyModule
 from ._create_app_instance_request import CreateAppInstanceRequestTags
 from ._create_app_instance_response_body import CreateAppInstanceResponseBodyModule
@@ -240,6 +247,9 @@ __all__ = [
     AppServiceAggregate,
     AppServiceGroup,
     AppServiceProfile,
+    AllocateSupabaseForAdminRequest,
+    AllocateSupabaseForAdminResponseBody,
+    AllocateSupabaseForAdminResponse,
     BindAppDomainRequest,
     BindAppDomainResponseBody,
     BindAppDomainResponse,
@@ -339,6 +349,9 @@ __all__ = [
     OperateAppServiceForPartnerRequest,
     OperateAppServiceForPartnerResponseBody,
     OperateAppServiceForPartnerResponse,
+    OperateSupabaseForAdminRequest,
+    OperateSupabaseForAdminResponseBody,
+    OperateSupabaseForAdminResponse,
     QueryMaterialDirectoryTreeRequest,
     QueryMaterialDirectoryTreeResponseBody,
     QueryMaterialDirectoryTreeResponse,
@@ -395,6 +408,7 @@ __all__ = [
     AppInstanceAggregatePartnerDetailBindData,
     AppInstanceAggregatePartnerDetail,
     AppInstanceAggregateTags,
+    AllocateSupabaseForAdminResponseBodyModule,
     BindAppDomainResponseBodyModule,
     CreateAppInstanceRequestTags,
     CreateAppInstanceResponseBodyModule,

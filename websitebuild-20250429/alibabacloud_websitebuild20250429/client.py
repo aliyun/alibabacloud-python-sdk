@@ -40,6 +40,96 @@ class Client(OpenApiClient):
             return endpoint_map.get(region_id)
         return Utils.get_endpoint_rules(product_id, region_id, endpoint_rule, network, suffix)
 
+    def allocate_supabase_for_admin_with_options(
+        self,
+        request: main_models.AllocateSupabaseForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AllocateSupabaseForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AllocateSupabaseForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AllocateSupabaseForAdminResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def allocate_supabase_for_admin_with_options_async(
+        self,
+        request: main_models.AllocateSupabaseForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.AllocateSupabaseForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'AllocateSupabaseForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.AllocateSupabaseForAdminResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def allocate_supabase_for_admin(
+        self,
+        request: main_models.AllocateSupabaseForAdminRequest,
+    ) -> main_models.AllocateSupabaseForAdminResponse:
+        runtime = RuntimeOptions()
+        return self.allocate_supabase_for_admin_with_options(request, runtime)
+
+    async def allocate_supabase_for_admin_async(
+        self,
+        request: main_models.AllocateSupabaseForAdminRequest,
+    ) -> main_models.AllocateSupabaseForAdminResponse:
+        runtime = RuntimeOptions()
+        return await self.allocate_supabase_for_admin_with_options_async(request, runtime)
+
     def bind_app_domain_with_options(
         self,
         request: main_models.BindAppDomainRequest,
@@ -2582,6 +2672,116 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.operate_app_service_for_partner_with_options_async(request, runtime)
 
+    def operate_supabase_for_admin_with_options(
+        self,
+        request: main_models.OperateSupabaseForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateSupabaseForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.execute_sql):
+            query['ExecuteSql'] = request.execute_sql
+        if not DaraCore.is_null(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not DaraCore.is_null(request.order_by_clause):
+            query['OrderByClause'] = request.order_by_clause
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.table_name):
+            query['TableName'] = request.table_name
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.where_clause):
+            query['WhereClause'] = request.where_clause
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateSupabaseForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateSupabaseForAdminResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def operate_supabase_for_admin_with_options_async(
+        self,
+        request: main_models.OperateSupabaseForAdminRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.OperateSupabaseForAdminResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.biz_id):
+            query['BizId'] = request.biz_id
+        if not DaraCore.is_null(request.execute_sql):
+            query['ExecuteSql'] = request.execute_sql
+        if not DaraCore.is_null(request.operate_type):
+            query['OperateType'] = request.operate_type
+        if not DaraCore.is_null(request.order_by_clause):
+            query['OrderByClause'] = request.order_by_clause
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
+        if not DaraCore.is_null(request.table_name):
+            query['TableName'] = request.table_name
+        if not DaraCore.is_null(request.user_id):
+            query['UserId'] = request.user_id
+        if not DaraCore.is_null(request.where_clause):
+            query['WhereClause'] = request.where_clause
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'OperateSupabaseForAdmin',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.OperateSupabaseForAdminResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def operate_supabase_for_admin(
+        self,
+        request: main_models.OperateSupabaseForAdminRequest,
+    ) -> main_models.OperateSupabaseForAdminResponse:
+        runtime = RuntimeOptions()
+        return self.operate_supabase_for_admin_with_options(request, runtime)
+
+    async def operate_supabase_for_admin_async(
+        self,
+        request: main_models.OperateSupabaseForAdminRequest,
+    ) -> main_models.OperateSupabaseForAdminResponse:
+        runtime = RuntimeOptions()
+        return await self.operate_supabase_for_admin_with_options_async(request, runtime)
+
     def query_material_directory_tree_with_options(
         self,
         request: main_models.QueryMaterialDirectoryTreeRequest,
@@ -3177,6 +3377,14 @@ class Client(OpenApiClient):
             query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.env):
             query['Env'] = request.env
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(
@@ -3209,6 +3417,14 @@ class Client(OpenApiClient):
             query['BizId'] = request.biz_id
         if not DaraCore.is_null(request.env):
             query['Env'] = request.env
+        if not DaraCore.is_null(request.order_column):
+            query['OrderColumn'] = request.order_column
+        if not DaraCore.is_null(request.order_type):
+            query['OrderType'] = request.order_type
+        if not DaraCore.is_null(request.page_num):
+            query['PageNum'] = request.page_num
+        if not DaraCore.is_null(request.page_size):
+            query['PageSize'] = request.page_size
         if not DaraCore.is_null(request.user_id):
             query['UserId'] = request.user_id
         req = open_api_util_models.OpenApiRequest(

@@ -4,11 +4,10 @@ from __future__ import annotations
 
 from darabonba.model import DaraModel
 
-class QuerySupabaseInstanceInfoForAdminRequest(DaraModel):
+class AllocateSupabaseForAdminRequest(DaraModel):
     def __init__(
         self,
         biz_id: str = None,
-        env: str = None,
         order_column: str = None,
         order_type: str = None,
         page_num: int = None,
@@ -17,8 +16,6 @@ class QuerySupabaseInstanceInfoForAdminRequest(DaraModel):
     ):
         # This parameter is required.
         self.biz_id = biz_id
-        # This parameter is required.
-        self.env = env
         self.order_column = order_column
         self.order_type = order_type
         self.page_num = page_num
@@ -35,9 +32,6 @@ class QuerySupabaseInstanceInfoForAdminRequest(DaraModel):
             result = _map
         if self.biz_id is not None:
             result['BizId'] = self.biz_id
-
-        if self.env is not None:
-            result['Env'] = self.env
 
         if self.order_column is not None:
             result['OrderColumn'] = self.order_column
@@ -60,9 +54,6 @@ class QuerySupabaseInstanceInfoForAdminRequest(DaraModel):
         m = m or dict()
         if m.get('BizId') is not None:
             self.biz_id = m.get('BizId')
-
-        if m.get('Env') is not None:
-            self.env = m.get('Env')
 
         if m.get('OrderColumn') is not None:
             self.order_column = m.get('OrderColumn')
