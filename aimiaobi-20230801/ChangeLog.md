@@ -1,3 +1,6 @@
+2026-03-03 Version: 1.40.1
+- Generated python 2023-08-01 for AiMiaoBi.
+
 2026-02-27 Version: 1.40.0
 - Support API QueryVideoAuditResult.
 - Support API SubmitVideoAudit.
