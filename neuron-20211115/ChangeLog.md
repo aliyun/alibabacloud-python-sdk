@@ -1,3 +1,8 @@
+2026-03-03 Version: 1.0.2
+- Update API GetHistoryDeveloper: add request parameters maxResults.
+- Update API GetHistoryDeveloper: add request parameters nextToken.
+
+
 2026-03-03 Version: 1.0.1
 - Generated python 2021-11-15 for neuron.
 

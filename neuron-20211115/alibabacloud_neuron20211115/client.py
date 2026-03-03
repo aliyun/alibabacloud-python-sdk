@@ -6519,6 +6519,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.enterprise_id):
             query['enterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)
@@ -6550,6 +6554,10 @@ class Client(OpenApiClient):
         query = {}
         if not DaraCore.is_null(request.enterprise_id):
             query['enterpriseId'] = request.enterprise_id
+        if not DaraCore.is_null(request.max_results):
+            query['maxResults'] = request.max_results
+        if not DaraCore.is_null(request.next_token):
+            query['nextToken'] = request.next_token
         req = open_api_util_models.OpenApiRequest(
             headers = headers,
             query = Utils.query(query)

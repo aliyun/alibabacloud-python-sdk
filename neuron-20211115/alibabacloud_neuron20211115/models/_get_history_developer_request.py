@@ -8,8 +8,12 @@ class GetHistoryDeveloperRequest(DaraModel):
     def __init__(
         self,
         enterprise_id: int = None,
+        max_results: int = None,
+        next_token: str = None,
     ):
         self.enterprise_id = enterprise_id
+        self.max_results = max_results
+        self.next_token = next_token
 
     def validate(self):
         pass
@@ -22,12 +26,24 @@ class GetHistoryDeveloperRequest(DaraModel):
         if self.enterprise_id is not None:
             result['enterpriseId'] = self.enterprise_id
 
+        if self.max_results is not None:
+            result['maxResults'] = self.max_results
+
+        if self.next_token is not None:
+            result['nextToken'] = self.next_token
+
         return result
 
     def from_map(self, m: dict = None):
         m = m or dict()
         if m.get('enterpriseId') is not None:
             self.enterprise_id = m.get('enterpriseId')
+
+        if m.get('maxResults') is not None:
+            self.max_results = m.get('maxResults')
+
+        if m.get('nextToken') is not None:
+            self.next_token = m.get('nextToken')
 
         return self
 
