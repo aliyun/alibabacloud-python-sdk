@@ -90,13 +90,11 @@ class DescribeHotBigKeysResponseBodyData(DaraModel):
     ):
         # The reason why the large key failed to be queried.
         self.big_key_msg = big_key_msg
-        # The list of large keys.
         self.big_keys = big_keys
         self.high_traffic_key_msg = high_traffic_key_msg
         self.high_traffic_keys = high_traffic_keys
         # The reason why the hot key failed to be queried.
         self.hot_key_msg = hot_key_msg
-        # The list of hot keys.
         self.hot_keys = hot_keys
         self.large_key_msg = large_key_msg
         self.large_keys = large_keys
@@ -314,17 +312,11 @@ class DescribeHotBigKeysResponseBodyDataHotKeysHotKey(DaraModel):
         node_id: str = None,
         size: int = None,
     ):
-        # The database in which the key is stored.
         self.db = db
-        # The frequency at which the key is accessed, which indicates the queries per second (QPS) of the key.
         self.hot = hot
-        # The key.
         self.key = key
-        # The type of the key.
         self.key_type = key_type
-        # The statistical value that is calculated based on the least frequently used (LFU) caching algorithm.
         self.lfu = lfu
-        # The ID of the data shard on the ApsaraDB for Redis instance.
         self.node_id = node_id
         self.size = size
 
@@ -546,15 +538,10 @@ class DescribeHotBigKeysResponseBodyDataBigKeysBigKey(DaraModel):
         node_id: str = None,
         size: int = None,
     ):
-        # The database in which the key is stored.
         self.db = db
-        # The key.
         self.key = key
-        # The type of the key.
         self.key_type = key_type
-        # The ID of the data shard on the ApsaraDB for Redis instance.
         self.node_id = node_id
-        # The number of elements in the key.
         self.size = size
 
     def validate(self):

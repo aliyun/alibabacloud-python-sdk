@@ -84,7 +84,6 @@ class GetRunningSqlConcurrencyControlRulesResponseBodyData(DaraModel):
         list: main_models.GetRunningSqlConcurrencyControlRulesResponseBodyDataList = None,
         total: int = None,
     ):
-        # The returned data.
         self.list = list
         # The total number of entries returned.
         self.total = total
@@ -166,35 +165,15 @@ class GetRunningSqlConcurrencyControlRulesResponseBodyDataListRunningRules(DaraM
         status: str = None,
         user_id: str = None,
     ):
-        # The duration within which the SQL throttling rule takes effect. Unit: seconds.
-        # 
-        # > The throttling rule takes effect only within this duration.
         self.concurrency_control_time = concurrency_control_time
-        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the throttling rule that is applied to the instance.
         self.item_id = item_id
-        # The hash value of the SQL keywords. The hash value is calculated based on the SQL keywords that are contained in the SQL statements to which the throttling rule is applied.
         self.keywords_hash = keywords_hash
-        # The maximum number of concurrent SQL statements. The value is a positive integer.
-        # 
-        # > If the number of concurrent SQL statements that contain the specified keywords reaches this upper limit, the throttling rule is triggered.
         self.max_concurrency = max_concurrency
-        # The keywords contained in the SQL statements to which the throttling rule was applied.
-        # 
-        # > SQL keywords are separated by tildes (~). If the number of concurrent SQL statements that contain all the specified SQL keywords reaches the specified upper limit, the throttling rule is triggered.
         self.sql_keywords = sql_keywords
-        # The type of the SQL statements. Valid values:
-        # 
-        # * **SELECT**
-        # * **UPDATE**
-        # * **DELETE**
         self.sql_type = sql_type
-        # The time when the throttling rule started to take effect. The value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
-        # The status of the throttling rule. The value of **Open** indicates that the throttling rule is in effect.
         self.status = status
-        # The Alibaba Cloud account ID.
         self.user_id = user_id
 
     def validate(self):

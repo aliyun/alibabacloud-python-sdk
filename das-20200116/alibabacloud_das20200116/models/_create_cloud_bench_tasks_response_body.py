@@ -18,7 +18,6 @@ class CreateCloudBenchTasksResponseBody(DaraModel):
     ):
         # The HTTP status code returned.
         self.code = code
-        # The detailed information.
         self.data = data
         # The returned message.
         # 

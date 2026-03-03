@@ -18,7 +18,6 @@ class RunCloudBenchTaskResponseBody(DaraModel):
     ):
         # The HTTP status code returned.
         self.code = code
-        # The detailed information, including the error codes and the number of returned entries.
         self.data = data
         # The returned message.
         # 
@@ -123,30 +122,11 @@ class RunCloudBenchTaskResponseBodyDataPreCheckItem(DaraModel):
         order: int = None,
         status: str = None,
     ):
-        # The HTTP status code returned.
         self.code = code
-        # The detailed information of the check item.
         self.details = details
-        # The returned message.
-        # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
-        # The name of the check item. Valid values:
-        # 
-        # * **SqlArchiveStatusChecker**: checks whether SQL Explorer is available.
-        # * **BenchClientEnvChecker**: checks whether the runtime environment for programs on the stress testing client is available.
-        # * **SpecChecker**: checks whether the destination instance type and the instance type of the stress testing client support this API operation.
-        # * **SourceInstanceChecker**: checks whether the account of the source instance is available and whether the source instance is connected to the destination instance.
-        # * **BenchTargetChecker**: checks whether the account of the destination instance is available and whether the source instance is connected to the destination instance.
         self.name = name
-        # The sequence number of the check item. Valid values: **0** to **10**.
         self.order = order
-        # The status of the task. Valid values:
-        # 
-        # *   **SUCCESS**: The task is successful.
-        # *   **IGNORED**: The task is ignored.
-        # *   **RUNNING**: The task is running.
-        # *   **EXCEPTION**: An error occurred.
         self.status = status
 
     def validate(self):

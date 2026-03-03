@@ -18,9 +18,6 @@ class DescribeTopBigKeysResponseBody(DaraModel):
     ):
         # The HTTP status code returned.
         self.code = code
-        # The detailed information about the large keys.
-        # 
-        # > This parameter is left empty If no large keys exist within the specified time range.
         self.data = data
         # The returned message.
         self.message = message
@@ -122,15 +119,10 @@ class DescribeTopBigKeysResponseBodyDataBigKey(DaraModel):
         node_id: str = None,
         size: int = None,
     ):
-        # The database in which the key is stored.
         self.db = db
-        # The key.
         self.key = key
-        # The type of the key.
         self.key_type = key_type
-        # The ID of the data shard on the ApsaraDB for Redis instance.
         self.node_id = node_id
-        # The number of elements in the key.
         self.size = size
 
     def validate(self):

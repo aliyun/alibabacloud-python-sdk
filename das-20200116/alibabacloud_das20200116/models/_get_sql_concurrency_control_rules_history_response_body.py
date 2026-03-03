@@ -84,7 +84,6 @@ class GetSqlConcurrencyControlRulesHistoryResponseBodyData(DaraModel):
         list: main_models.GetSqlConcurrencyControlRulesHistoryResponseBodyDataList = None,
         total: int = None,
     ):
-        # The list of the queried throttling rules.
         self.list = list
         # The total number of entries returned.
         self.total = total
@@ -166,38 +165,15 @@ class GetSqlConcurrencyControlRulesHistoryResponseBodyDataListRules(DaraModel):
         status: str = None,
         user_id: str = None,
     ):
-        # The duration within which the SQL throttling rule takes effect. Unit: seconds.
-        # 
-        # >  The throttling rule takes effect only within this duration.
         self.concurrency_control_time = concurrency_control_time
-        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the throttling rule that is applied to the instance.
         self.item_id = item_id
-        # The hash value of the SQL keywords. The SQL keywords are contained in the SQL statements to which the throttling rule is applied.
         self.keywords_hash = keywords_hash
-        # The maximum number of concurrent SQL statements. Set this parameter to a positive integer.
-        # 
-        # >  When the number of concurrent SQL statements that contain the specified keywords reaches this upper limit, the throttling rule is triggered.
         self.max_concurrency = max_concurrency
-        # The keywords that are used to identify the SQL statements that need to be throttled.
-        # 
-        # > SQL keywords are separated with tildes (~). When the number of concurrent SQL statements that contain all the specified SQL keywords reaches the specified upper limit, the throttling rule is triggered.
         self.sql_keywords = sql_keywords
-        # The type of the SQL statements. Valid values:
-        # 
-        # * **SELECT**
-        # * **UPDATE**
-        # * **DELETE**
         self.sql_type = sql_type
-        # The beginning of the time range to query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.start_time = start_time
-        # The state of the throttling rule. Valid values:
-        # 
-        # * **Open**: The throttling rule is in effect.
-        # * **Closed**: The throttling rule was in effect.
         self.status = status
-        # The user ID.
         self.user_id = user_id
 
     def validate(self):

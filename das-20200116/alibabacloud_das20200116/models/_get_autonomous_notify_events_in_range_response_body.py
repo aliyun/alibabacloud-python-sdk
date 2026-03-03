@@ -89,7 +89,6 @@ class GetAutonomousNotifyEventsInRangeResponseBodyData(DaraModel):
     ):
         # The reserved parameter.
         self.extra = extra
-        # The detailed information, including the error codes and the number of entries that are returned.
         self.list = list
         # The page number.
         self.page_no = page_no

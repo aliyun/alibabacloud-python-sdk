@@ -18,7 +18,6 @@ class DescribeHotKeysResponseBody(DaraModel):
     ):
         # The HTTP status code returned.
         self.code = code
-        # The details of the hot keys.
         self.data = data
         # The returned message.
         # 
@@ -127,18 +126,13 @@ class DescribeHotKeysResponseBodyDataHotKey(DaraModel):
         size: int = None,
     ):
         self.category = category
-        # The database in which the key is stored.
         self.db = db
-        # The frequency at which the key is accessed, which indicates the queries per second (QPS) of the key.
         self.hot = hot
         self.in_bytes = in_bytes
-        # The name of the key.
         self.key = key
-        # The type of the key.
         self.key_type = key_type
         self.node_id = node_id
         self.out_bytes = out_bytes
-        # The number of elements in the key.
         self.size = size
 
     def validate(self):

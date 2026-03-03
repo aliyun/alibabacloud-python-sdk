@@ -11,7 +11,6 @@ from alibabacloud_tea_openapi import utils_models as open_api_util_models
 from alibabacloud_tea_openapi.client import Client as OpenApiClient
 from alibabacloud_tea_openapi.utils import Utils
 from darabonba.core import DaraCore as DaraCore
-from darabonba.core import DaraCore
 from darabonba.runtime import RuntimeOptions
 
 """
@@ -4949,17 +4948,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi(params, req, runtime)
         for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.GetDasAgentSSEResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.GetDasAgentSSEResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     async def get_das_agent_ssewith_sse_async(
         self,
@@ -4992,17 +4991,17 @@ class Client(OpenApiClient):
         )
         sse_resp = self.call_sseapi_async(params, req, runtime)
         async for resp in sse_resp:
-            data = json.loads(resp.event.data)
-            yield  DaraCore.from_map(
-                main_models.GetDasAgentSSEResponse(),
-                {
-                'statusCode': resp.status_code,
-                'headers': resp.headers,
-                'body': DaraCore.merge({
-                    'RequestId': resp.event.id,
-                    'Message': resp.event.event
-                }, data)
-            })
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.GetDasAgentSSEResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
 
     def get_das_agent_ssewith_options(
         self,
@@ -8911,6 +8910,174 @@ class Client(OpenApiClient):
     ) -> main_models.GetStorageAnalysisResultResponse:
         runtime = RuntimeOptions()
         return await self.get_storage_analysis_result_with_options_async(request, runtime)
+
+    def get_yao_chi_agent_with_sse(
+        self,
+        request: main_models.GetYaoChiAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> Generator[main_models.GetYaoChiAgentResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extra_info):
+            query['ExtraInfo'] = request.extra_info
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYaoChiAgent',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi(params, req, runtime)
+        for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.GetYaoChiAgentResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    async def get_yao_chi_agent_with_sse_async(
+        self,
+        request: main_models.GetYaoChiAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> AsyncGenerator[main_models.GetYaoChiAgentResponse, None, None]:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extra_info):
+            query['ExtraInfo'] = request.extra_info
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYaoChiAgent',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        sse_resp = self.call_sseapi_async(params, req, runtime)
+        async for resp in sse_resp:
+            if not DaraCore.is_null(resp.event) and not DaraCore.is_null(resp.event.data):
+                data = json.loads(resp.event.data)
+                yield  DaraCore.from_map(
+                    main_models.GetYaoChiAgentResponse(),
+                    {
+                    'statusCode': resp.status_code,
+                    'headers': resp.headers,
+                    'id': resp.event.id,
+                    'event': resp.event.event,
+                    'body': data
+                })
+
+    def get_yao_chi_agent_with_options(
+        self,
+        request: main_models.GetYaoChiAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYaoChiAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extra_info):
+            query['ExtraInfo'] = request.extra_info
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYaoChiAgent',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYaoChiAgentResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def get_yao_chi_agent_with_options_async(
+        self,
+        request: main_models.GetYaoChiAgentRequest,
+        runtime: RuntimeOptions,
+    ) -> main_models.GetYaoChiAgentResponse:
+        request.validate()
+        query = {}
+        if not DaraCore.is_null(request.extra_info):
+            query['ExtraInfo'] = request.extra_info
+        if not DaraCore.is_null(request.query):
+            query['Query'] = request.query
+        if not DaraCore.is_null(request.session_id):
+            query['SessionId'] = request.session_id
+        if not DaraCore.is_null(request.source):
+            query['Source'] = request.source
+        req = open_api_util_models.OpenApiRequest(
+            query = Utils.query(query)
+        )
+        params = open_api_util_models.Params(
+            action = 'GetYaoChiAgent',
+            version = '2020-01-16',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.GetYaoChiAgentResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def get_yao_chi_agent(
+        self,
+        request: main_models.GetYaoChiAgentRequest,
+    ) -> main_models.GetYaoChiAgentResponse:
+        runtime = RuntimeOptions()
+        return self.get_yao_chi_agent_with_options(request, runtime)
+
+    async def get_yao_chi_agent_async(
+        self,
+        request: main_models.GetYaoChiAgentRequest,
+    ) -> main_models.GetYaoChiAgentResponse:
+        runtime = RuntimeOptions()
+        return await self.get_yao_chi_agent_with_options_async(request, runtime)
 
     def kill_instance_all_session_with_options(
         self,

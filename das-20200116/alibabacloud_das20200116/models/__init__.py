@@ -312,6 +312,9 @@ from ._get_sql_optimize_advice_response import GetSqlOptimizeAdviceResponse
 from ._get_storage_analysis_result_request import GetStorageAnalysisResultRequest
 from ._get_storage_analysis_result_response_body import GetStorageAnalysisResultResponseBody
 from ._get_storage_analysis_result_response import GetStorageAnalysisResultResponse
+from ._get_yao_chi_agent_request import GetYaoChiAgentRequest
+from ._get_yao_chi_agent_response_body import GetYaoChiAgentResponseBody
+from ._get_yao_chi_agent_response import GetYaoChiAgentResponse
 from ._kill_instance_all_session_request import KillInstanceAllSessionRequest
 from ._kill_instance_all_session_response_body import KillInstanceAllSessionResponseBody
 from ._kill_instance_all_session_response import KillInstanceAllSessionResponse
@@ -545,6 +548,8 @@ from ._get_storage_analysis_result_response_body import GetStorageAnalysisResult
 from ._get_storage_analysis_result_response_body import GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats
 from ._get_storage_analysis_result_response_body import GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult
 from ._get_storage_analysis_result_response_body import GetStorageAnalysisResultResponseBodyData
+from ._get_yao_chi_agent_response_body import GetYaoChiAgentResponseBodyFunctionCall
+from ._get_yao_chi_agent_response_body import GetYaoChiAgentResponseBodyUiFunctionCall
 from ._modify_auto_scaling_config_request import ModifyAutoScalingConfigRequestBandwidth
 from ._modify_auto_scaling_config_request import ModifyAutoScalingConfigRequestResource
 from ._modify_auto_scaling_config_request import ModifyAutoScalingConfigRequestShard
@@ -880,6 +885,9 @@ __all__ = [
     GetStorageAnalysisResultRequest,
     GetStorageAnalysisResultResponseBody,
     GetStorageAnalysisResultResponse,
+    GetYaoChiAgentRequest,
+    GetYaoChiAgentResponseBody,
+    GetYaoChiAgentResponse,
     KillInstanceAllSessionRequest,
     KillInstanceAllSessionResponseBody,
     KillInstanceAllSessionResponse,
@@ -1113,6 +1121,8 @@ __all__ = [
     GetStorageAnalysisResultResponseBodyDataStorageAnalysisResultTableStats,
     GetStorageAnalysisResultResponseBodyDataStorageAnalysisResult,
     GetStorageAnalysisResultResponseBodyData,
+    GetYaoChiAgentResponseBodyFunctionCall,
+    GetYaoChiAgentResponseBodyUiFunctionCall,
     ModifyAutoScalingConfigRequestBandwidth,
     ModifyAutoScalingConfigRequestResource,
     ModifyAutoScalingConfigRequestShard,

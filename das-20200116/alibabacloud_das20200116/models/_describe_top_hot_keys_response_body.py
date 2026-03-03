@@ -18,7 +18,6 @@ class DescribeTopHotKeysResponseBody(DaraModel):
     ):
         # The HTTP status code returned.
         self.code = code
-        # The detailed information about the hot keys.
         self.data = data
         # The returned message.
         self.message = message
@@ -125,18 +124,12 @@ class DescribeTopHotKeysResponseBodyDataHotKey(DaraModel):
         out_bytes: int = None,
     ):
         self.category = category
-        # The database in which the key is stored.
         self.db = db
-        # The frequency at which the key is accessed, which indicates the QPS of the key.
         self.hot = hot
         self.in_bytes = in_bytes
-        # The key.
         self.key = key
-        # The type of the key.
         self.key_type = key_type
-        # The statistical value that is calculated based on the least frequently used (LFU) caching algorithm.
         self.lfu = lfu
-        # The ID of the data shard on the ApsaraDB for Redis instance.
         self.node_id = node_id
         self.out_bytes = out_bytes
 

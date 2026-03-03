@@ -1,3 +1,7 @@
+2026-03-03 Version: 2.12.0
+- Support API GetYaoChiAgent.
+
+
 2026-01-27 Version: 2.11.4
 - Update API DescribeSqlLogRecords: add response parameters Body.Data.Items.SQLLogRecord.$.AffectColumns.
 - Update API DescribeSqlLogRecords: add response parameters Body.Data.Items.SQLLogRecord.$.ClientIp.

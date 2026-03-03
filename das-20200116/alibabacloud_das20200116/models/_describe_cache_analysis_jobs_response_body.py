@@ -89,7 +89,6 @@ class DescribeCacheAnalysisJobsResponseBodyData(DaraModel):
     ):
         # The reserved parameter.
         self.extra = extra
-        # The ID of the data node on the instance.
         self.list = list
         # The page number. The value must be an integer that is greater than 0. Default value: 1.
         self.page_no = page_no
@@ -189,26 +188,11 @@ class DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJob(DaraModel):
         node_id: str = None,
         task_state: str = None,
     ):
-        # The details about the large keys.
-        # 
-        # > The sub-parameters of this parameter and the content of the sub-parameters are not returned. To query the detailed information about the cache analysis tasks, call the [DescribeCacheAnalysisJob](https://help.aliyun.com/document_detail/443012.html) operation.
         self.big_keys = big_keys
-        # The instance ID.
         self.instance_id = instance_id
-        # The ID of the cache analysis task.
         self.job_id = job_id
-        # The returned message.
-        # 
-        # >  If the request was successful, **Successful** is returned. If the request failed, an error message such as an error code is returned.
         self.message = message
-        # The ID of the data node on the instance.
         self.node_id = node_id
-        # The state of the cache analysis task. Valid values:
-        # 
-        # * **BACKUP**: The data is being backed up.
-        # * **ANALYZING**: The data is being analyzed.
-        # * **FINISHED**: The data is analyzed.
-        # * **FAILED**: An error occurred.
         self.task_state = task_state
 
     def validate(self):
@@ -310,21 +294,13 @@ class DescribeCacheAnalysisJobsResponseBodyDataListCacheAnalysisJobBigKeysKeyInf
         node_id: str = None,
         type: str = None,
     ):
-        # The number of bytes that are occupied by the key.
         self.bytes = bytes
-        # The number of elements in the key.
         self.count = count
-        # The name of the database.
         self.db = db
-        # The data type of the key.
         self.encoding = encoding
-        # The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
         self.expiration_time_millis = expiration_time_millis
-        # The name of the key.
         self.key = key
-        # The ID of the data node on the instance.
         self.node_id = node_id
-        # The data type of the instance.
         self.type = type
 
     def validate(self):

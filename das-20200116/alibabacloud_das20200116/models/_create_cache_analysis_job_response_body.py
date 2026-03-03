@@ -88,7 +88,6 @@ class CreateCacheAnalysisJobResponseBodyData(DaraModel):
         node_id: str = None,
         task_state: str = None,
     ):
-        # The number of elements in the key.
         self.big_keys = big_keys
         # The instance ID.
         self.instance_id = instance_id
@@ -209,21 +208,13 @@ class CreateCacheAnalysisJobResponseBodyDataBigKeysKeyInfo(DaraModel):
         node_id: str = None,
         type: str = None,
     ):
-        # The number of bytes that are occupied by the key.
         self.bytes = bytes
-        # The number of elements in the key.
         self.count = count
-        # The name of the database.
         self.db = db
-        # The data type of the key.
         self.encoding = encoding
-        # The expiration period of the key. Unit: milliseconds. A value of 0 indicates that the key does not expire.
         self.expiration_time_millis = expiration_time_millis
-        # The name of the key.
         self.key = key
-        # The ID of the data node on the instance.
         self.node_id = node_id
-        # The data type of the ApsaraDB for Redis instance.
         self.type = type
 
     def validate(self):

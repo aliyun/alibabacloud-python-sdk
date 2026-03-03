@@ -93,17 +93,13 @@ class DescribeCacheAnalysisJobResponseBodyData(DaraModel):
         unex_big_keys_of_bytes: main_models.DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytes = None,
         unex_big_keys_of_num: main_models.DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNum = None,
     ):
-        # The details of the large keys. The returned large keys are sorted in descending order based on the number of bytes occupied by the keys.
         self.big_keys = big_keys
-        # The details of the large keys. The returned large keys are sorted in descending order based on the number of keys.
         self.big_keys_of_num = big_keys_of_num
-        # The statistics of the keys that have expired.
         self.expiry_keys_level_count = expiry_keys_level_count
         # The instance ID.
         self.instance_id = instance_id
         # The ID of the cache analysis task.
         self.job_id = job_id
-        # The prefixes of the keys.
         self.key_prefixes = key_prefixes
         # The message that is returned for the request.
         # 
@@ -118,9 +114,7 @@ class DescribeCacheAnalysisJobResponseBodyData(DaraModel):
         # *   **FINISHED**: The data is analyzed.
         # *   **FAILED**: An error occurred.
         self.task_state = task_state
-        # The details of permanent keys. The returned keys are sorted in descending order based on the number of bytes occupied by the keys.
         self.unex_big_keys_of_bytes = unex_big_keys_of_bytes
-        # The details of permanent keys. The returned keys are sorted in descending order based on the number of keys.
         self.unex_big_keys_of_num = unex_big_keys_of_num
 
     def validate(self):
@@ -267,21 +261,13 @@ class DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfNumKeyInfo(DaraModel)
         node_id: str = None,
         type: str = None,
     ):
-        # The number of bytes that are occupied by the key.
         self.bytes = bytes
-        # The number of elements in the key.
         self.count = count
-        # The database name.
         self.db = db
-        # The data type of the key.
         self.encoding = encoding
-        # The time when the key expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A value of 0 indicates that the key never expires.
         self.expiration_time_millis = expiration_time_millis
-        # The key name.
         self.key = key
-        # The ID of the data node on the instance.
         self.node_id = node_id
-        # The data type of the instance.
         self.type = type
 
     def validate(self):
@@ -393,21 +379,13 @@ class DescribeCacheAnalysisJobResponseBodyDataUnexBigKeysOfBytesKeyInfo(DaraMode
         node_id: str = None,
         type: str = None,
     ):
-        # The number of bytes that are occupied by the key.
         self.bytes = bytes
-        # The number of elements in the key.
         self.count = count
-        # The database name.
         self.db = db
-        # The data type of the key.
         self.encoding = encoding
-        # The time when the key expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A value of 0 indicates that the key never expires.
         self.expiration_time_millis = expiration_time_millis
-        # The key name.
         self.key = key
-        # The ID of the data node on the instance.
         self.node_id = node_id
-        # The data type of the instance.
         self.type = type
 
     def validate(self):
@@ -516,15 +494,10 @@ class DescribeCacheAnalysisJobResponseBodyDataKeyPrefixesPrefix(DaraModel):
         prefix: str = None,
         type: str = None,
     ):
-        # The number of bytes that are occupied by the key.
         self.bytes = bytes
-        # The number of elements in the key.
         self.count = count
-        # The number of keys that contain the prefix.
         self.key_num = key_num
-        # The prefix of the key.
         self.prefix = prefix
-        # The data type of the instance.
         self.type = type
 
     def validate(self):
@@ -614,23 +587,9 @@ class DescribeCacheAnalysisJobResponseBodyDataExpiryKeysLevelCountExpiryLevel(Da
         total_bytes: int = None,
         total_keys: int = None,
     ):
-        # The time when the cache analysis task was complete. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
         self.analysis_ts = analysis_ts
-        # The expiration level. Valid values:
-        # 
-        # *   **0**: The key never expires.
-        # *   **1**: The key has expired.
-        # *   **2**: The key has expired for 0 to 1 hour.
-        # *   **3**: The key has expired for 1 to 3 hours.
-        # *   **4**: The key has expired for 3 to 12 hours.
-        # *   **5**: The key has expired for 12 to 24 hours.
-        # *   **6**: The key has expired for one to two days.
-        # *   **7**: The key has expired for three to seven days.
-        # *   **8**: The key has expired for more than seven days.
         self.level = level
-        # The number of bytes occupied by the keys that have expired.
         self.total_bytes = total_bytes
-        # The total number of the keys that have expired.
         self.total_keys = total_keys
 
     def validate(self):
@@ -718,21 +677,13 @@ class DescribeCacheAnalysisJobResponseBodyDataBigKeysOfNumKeyInfo(DaraModel):
         node_id: str = None,
         type: str = None,
     ):
-        # The number of bytes that are occupied by the key.
         self.bytes = bytes
-        # The number of elements in the key.
         self.count = count
-        # The database name.
         self.db = db
-        # The data type of the key.
         self.encoding = encoding
-        # The time when the key expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A value of 0 indicates that the key never expires.
         self.expiration_time_millis = expiration_time_millis
-        # The key name.
         self.key = key
-        # The ID of the data node on the instance.
         self.node_id = node_id
-        # The data type of the instance.
         self.type = type
 
     def validate(self):
@@ -844,21 +795,13 @@ class DescribeCacheAnalysisJobResponseBodyDataBigKeysKeyInfo(DaraModel):
         node_id: str = None,
         type: str = None,
     ):
-        # The number of bytes that are occupied by the key.
         self.bytes = bytes
-        # The number of elements in the key.
         self.count = count
-        # The database name.
         self.db = db
-        # The data type of the key.
         self.encoding = encoding
-        # The time when the key expires. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC. A value of 0 indicates that the key never expires.
         self.expiration_time_millis = expiration_time_millis
-        # The key name.
         self.key = key
-        # The ID of the data node on the instance.
         self.node_id = node_id
-        # The data type of the instance.
         self.type = type
 
     def validate(self):
