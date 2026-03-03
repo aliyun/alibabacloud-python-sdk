@@ -14,6 +14,8 @@ class ResourceGroup(DaraModel):
         name: str = None,
         node_count: int = None,
         resource_group_id: str = None,
+        resource_type: str = None,
+        status: str = None,
         user_vpc: main_models.UserVpc = None,
         version: str = None,
         workspace_id: str = None,
@@ -30,6 +32,8 @@ class ResourceGroup(DaraModel):
         self.node_count = node_count
         # pai resource group id
         self.resource_group_id = resource_group_id
+        self.resource_type = resource_type
+        self.status = status
         # UserVpc
         self.user_vpc = user_vpc
         self.version = version
@@ -63,6 +67,12 @@ class ResourceGroup(DaraModel):
         if self.resource_group_id is not None:
             result['ResourceGroupID'] = self.resource_group_id
 
+        if self.resource_type is not None:
+            result['ResourceType'] = self.resource_type
+
+        if self.status is not None:
+            result['Status'] = self.status
+
         if self.user_vpc is not None:
             result['UserVpc'] = self.user_vpc.to_map()
 
@@ -93,6 +103,12 @@ class ResourceGroup(DaraModel):
 
         if m.get('ResourceGroupID') is not None:
             self.resource_group_id = m.get('ResourceGroupID')
+
+        if m.get('ResourceType') is not None:
+            self.resource_type = m.get('ResourceType')
+
+        if m.get('Status') is not None:
+            self.status = m.get('Status')
 
         if m.get('UserVpc') is not None:
             temp_model = main_models.UserVpc()

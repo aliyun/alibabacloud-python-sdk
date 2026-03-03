@@ -11,10 +11,12 @@ class ListQuotaActiveUserUsagesResponseBody(DaraModel):
     def __init__(
         self,
         quota_user_usage: List[main_models.QuotaUser] = None,
+        quota_user_usages: List[main_models.QuotaUser] = None,
         request_id: str = None,
         total_count: int = None,
     ):
         self.quota_user_usage = quota_user_usage
+        self.quota_user_usages = quota_user_usages
         # Id of the request
         self.request_id = request_id
         self.total_count = total_count
@@ -22,6 +24,10 @@ class ListQuotaActiveUserUsagesResponseBody(DaraModel):
     def validate(self):
         if self.quota_user_usage:
             for v1 in self.quota_user_usage:
+                 if v1:
+                    v1.validate()
+        if self.quota_user_usages:
+            for v1 in self.quota_user_usages:
                  if v1:
                     v1.validate()
 
@@ -34,6 +40,11 @@ class ListQuotaActiveUserUsagesResponseBody(DaraModel):
         if self.quota_user_usage is not None:
             for k1 in self.quota_user_usage:
                 result['QuotaUserUsage'].append(k1.to_map() if k1 else None)
+
+        result['QuotaUserUsages'] = []
+        if self.quota_user_usages is not None:
+            for k1 in self.quota_user_usages:
+                result['QuotaUserUsages'].append(k1.to_map() if k1 else None)
 
         if self.request_id is not None:
             result['RequestId'] = self.request_id
@@ -50,6 +61,12 @@ class ListQuotaActiveUserUsagesResponseBody(DaraModel):
             for k1 in m.get('QuotaUserUsage'):
                 temp_model = main_models.QuotaUser()
                 self.quota_user_usage.append(temp_model.from_map(k1))
+
+        self.quota_user_usages = []
+        if m.get('QuotaUserUsages') is not None:
+            for k1 in m.get('QuotaUserUsages'):
+                temp_model = main_models.QuotaUser()
+                self.quota_user_usages.append(temp_model.from_map(k1))
 
         if m.get('RequestId') is not None:
             self.request_id = m.get('RequestId')
