@@ -1691,6 +1691,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(DaraModel):
         sink_dash_vector_parameters: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDashVectorParameters = None,
         sink_data_hub_parameters: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDataHubParameters = None,
         sink_doris_parameters: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParameters = None,
+        sink_event_house_parameters: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkEventHouseParameters = None,
         sink_fc_parameters: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters = None,
         sink_fnf_parameters: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFnfParameters = None,
         sink_https_parameters: main_models.SinkHttpsParameters = None,
@@ -1714,6 +1715,7 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(DaraModel):
         self.sink_dash_vector_parameters = sink_dash_vector_parameters
         self.sink_data_hub_parameters = sink_data_hub_parameters
         self.sink_doris_parameters = sink_doris_parameters
+        self.sink_event_house_parameters = sink_event_house_parameters
         # The parameters that are returned if Function Compute is specified as the event target.
         self.sink_fc_parameters = sink_fc_parameters
         # The parameters that are returned if CloudFlow is specified as the event target.
@@ -1753,6 +1755,8 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(DaraModel):
             self.sink_data_hub_parameters.validate()
         if self.sink_doris_parameters:
             self.sink_doris_parameters.validate()
+        if self.sink_event_house_parameters:
+            self.sink_event_house_parameters.validate()
         if self.sink_fc_parameters:
             self.sink_fc_parameters.validate()
         if self.sink_fnf_parameters:
@@ -1810,6 +1814,9 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(DaraModel):
 
         if self.sink_doris_parameters is not None:
             result['SinkDorisParameters'] = self.sink_doris_parameters.to_map()
+
+        if self.sink_event_house_parameters is not None:
+            result['SinkEventHouseParameters'] = self.sink_event_house_parameters.to_map()
 
         if self.sink_fc_parameters is not None:
             result['SinkFcParameters'] = self.sink_fc_parameters.to_map()
@@ -1888,6 +1895,10 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSink(DaraModel):
         if m.get('SinkDorisParameters') is not None:
             temp_model = main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParameters()
             self.sink_doris_parameters = temp_model.from_map(m.get('SinkDorisParameters'))
+
+        if m.get('SinkEventHouseParameters') is not None:
+            temp_model = main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkEventHouseParameters()
+            self.sink_event_house_parameters = temp_model.from_map(m.get('SinkEventHouseParameters'))
 
         if m.get('SinkFcParameters') is not None:
             temp_model = main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParameters()
@@ -5494,6 +5505,153 @@ class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersBody
         # The template based on which events are transformed.
         self.template = template
         # The value before transformation.
+        self.value = value
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.form is not None:
+            result['Form'] = self.form
+
+        if self.template is not None:
+            result['Template'] = self.template
+
+        if self.value is not None:
+            result['Value'] = self.value
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Form') is not None:
+            self.form = m.get('Form')
+
+        if m.get('Template') is not None:
+            self.template = m.get('Template')
+
+        if m.get('Value') is not None:
+            self.value = m.get('Value')
+
+        return self
+
+class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkEventHouseParameters(DaraModel):
+    def __init__(
+        self,
+        catalog_name: str = None,
+        event_table_name: str = None,
+        mapping_rules: List[main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkEventHouseParametersMappingRules] = None,
+        namespace_name: str = None,
+    ):
+        self.catalog_name = catalog_name
+        self.event_table_name = event_table_name
+        self.mapping_rules = mapping_rules
+        self.namespace_name = namespace_name
+
+    def validate(self):
+        if self.mapping_rules:
+            for v1 in self.mapping_rules:
+                 if v1:
+                    v1.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.catalog_name is not None:
+            result['CatalogName'] = self.catalog_name
+
+        if self.event_table_name is not None:
+            result['EventTableName'] = self.event_table_name
+
+        result['MappingRules'] = []
+        if self.mapping_rules is not None:
+            for k1 in self.mapping_rules:
+                result['MappingRules'].append(k1.to_map() if k1 else None)
+
+        if self.namespace_name is not None:
+            result['NamespaceName'] = self.namespace_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('CatalogName') is not None:
+            self.catalog_name = m.get('CatalogName')
+
+        if m.get('EventTableName') is not None:
+            self.event_table_name = m.get('EventTableName')
+
+        self.mapping_rules = []
+        if m.get('MappingRules') is not None:
+            for k1 in m.get('MappingRules'):
+                temp_model = main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkEventHouseParametersMappingRules()
+                self.mapping_rules.append(temp_model.from_map(k1))
+
+        if m.get('NamespaceName') is not None:
+            self.namespace_name = m.get('NamespaceName')
+
+        return self
+
+class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkEventHouseParametersMappingRules(DaraModel):
+    def __init__(
+        self,
+        column_name: str = None,
+        column_type: str = None,
+        column_value: main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkEventHouseParametersMappingRulesColumnValue = None,
+    ):
+        self.column_name = column_name
+        self.column_type = column_type
+        self.column_value = column_value
+
+    def validate(self):
+        if self.column_value:
+            self.column_value.validate()
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.column_name is not None:
+            result['ColumnName'] = self.column_name
+
+        if self.column_type is not None:
+            result['ColumnType'] = self.column_type
+
+        if self.column_value is not None:
+            result['ColumnValue'] = self.column_value.to_map()
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('ColumnName') is not None:
+            self.column_name = m.get('ColumnName')
+
+        if m.get('ColumnType') is not None:
+            self.column_type = m.get('ColumnType')
+
+        if m.get('ColumnValue') is not None:
+            temp_model = main_models.ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkEventHouseParametersMappingRulesColumnValue()
+            self.column_value = temp_model.from_map(m.get('ColumnValue'))
+
+        return self
+
+class ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkEventHouseParametersMappingRulesColumnValue(DaraModel):
+    def __init__(
+        self,
+        form: str = None,
+        template: str = None,
+        value: str = None,
+    ):
+        self.form = form
+        self.template = template
         self.value = value
 
     def validate(self):

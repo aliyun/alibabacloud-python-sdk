@@ -2,9 +2,18 @@
 # This file is auto-generated, don't edit it. Thanks.
 from __future__ import annotations
 
+from ._agent import Agent
+from ._agui_message import AguiMessage
 from ._bai_lian_agent_transform_parameters import BaiLianAgentTransformParameters
+from ._catalog import Catalog
+from ._column import Column
+from ._conversation import Conversation
 from ._dash_scope_transform_parameters import DashScopeTransformParameters
 from ._embedding_transform_parameters import EmbeddingTransformParameters
+from ._event_table_query_histogram import EventTableQueryHistogram
+from ._metadata import Metadata
+from ._namespace import Namespace
+from ._row import Row
 from ._sink_api_destination_parameters import SinkApiDestinationParameters
 from ._sink_bai_lian_parameters import SinkBaiLianParameters
 from ._sink_data_works_trigger_parameters import SinkDataWorksTriggerParameters
@@ -17,6 +26,7 @@ from ._source_my_sqlparameters import SourceMySQLParameters
 from ._source_postgre_sqlparameters import SourcePostgreSQLParameters
 from ._source_rabbit_mqmeta_parameters import SourceRabbitMQMetaParameters
 from ._source_rabbit_mqmsg_sync_parameters import SourceRabbitMQMsgSyncParameters
+from ._table import Table
 from ._check_service_linked_role_for_product_request import CheckServiceLinkedRoleForProductRequest
 from ._check_service_linked_role_for_product_response_body import CheckServiceLinkedRoleForProductResponseBody
 from ._check_service_linked_role_for_product_response import CheckServiceLinkedRoleForProductResponse
@@ -174,9 +184,14 @@ from ._update_event_streaming_business_option_response import UpdateEventStreami
 from ._update_rule_request import UpdateRuleRequest
 from ._update_rule_response_body import UpdateRuleResponseBody
 from ._update_rule_response import UpdateRuleResponse
+from ._agui_message import AguiMessageMetadataAttachments
+from ._agui_message import AguiMessageMetadata
+from ._agui_message import AguiMessageToolCallsFunction
+from ._agui_message import AguiMessageToolCalls
 from ._bai_lian_agent_transform_parameters import BaiLianAgentTransformParametersPrompt
 from ._dash_scope_transform_parameters import DashScopeTransformParametersMessages
 from ._embedding_transform_parameters import EmbeddingTransformParametersEmbeddingData
+from ._metadata import MetadataAttachments
 from ._sink_api_destination_parameters import SinkApiDestinationParametersBodyParameters
 from ._sink_api_destination_parameters import SinkApiDestinationParametersHeaderParameters
 from ._sink_api_destination_parameters import SinkApiDestinationParametersQueryStringParameters
@@ -196,6 +211,8 @@ from ._sink_rabbit_mqmsg_sync_parameters import SinkRabbitMQMsgSyncParametersExc
 from ._sink_rabbit_mqmsg_sync_parameters import SinkRabbitMQMsgSyncParametersMessageId
 from ._sink_rabbit_mqmsg_sync_parameters import SinkRabbitMQMsgSyncParametersProperties
 from ._sink_rabbit_mqmsg_sync_parameters import SinkRabbitMQMsgSyncParametersRoutingKey
+from ._table import TableColumns
+from ._table import TableRetentionPolicy
 from ._check_service_linked_role_for_product_response_body import CheckServiceLinkedRoleForProductResponseBodyData
 from ._create_api_destination_request import CreateApiDestinationRequestHttpApiParameters
 from ._create_api_destination_response_body import CreateApiDestinationResponseBodyDate
@@ -269,6 +286,9 @@ from ._create_event_streaming_request import CreateEventStreamingRequestSinkSink
 from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkDorisParametersVSwitchIds
 from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkDorisParametersVpcId
 from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkDorisParameters
+from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue
+from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules
+from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkEventHouseParameters
 from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkFcParametersBody
 from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkFcParametersConcurrency
 from ._create_event_streaming_request import CreateEventStreamingRequestSinkSinkFcParametersDataFormat
@@ -611,6 +631,9 @@ from ._list_event_streamings_response_body import ListEventStreamingsResponseBod
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersVSwitchIds
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersVpcId
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParameters
+from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkEventHouseParametersMappingRulesColumnValue
+from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkEventHouseParametersMappingRules
+from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkEventHouseParameters
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersBody
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersConcurrency
 from ._list_event_streamings_response_body import ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersDataFormat
@@ -800,6 +823,9 @@ from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSink
 from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkDorisParametersVSwitchIds
 from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkDorisParametersVpcId
 from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkDorisParameters
+from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue
+from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkEventHouseParametersMappingRules
+from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkEventHouseParameters
 from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkFcParametersBody
 from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkFcParametersConcurrency
 from ._update_event_streaming_request import UpdateEventStreamingRequestSinkSinkFcParametersDataFormat
@@ -901,9 +927,18 @@ from ._update_event_streaming_request import UpdateEventStreamingRequestSource
 from ._update_event_streaming_request import UpdateEventStreamingRequestTransforms
 
 __all__ = [
+    Agent,
+    AguiMessage,
     BaiLianAgentTransformParameters,
+    Catalog,
+    Column,
+    Conversation,
     DashScopeTransformParameters,
     EmbeddingTransformParameters,
+    EventTableQueryHistogram,
+    Metadata,
+    Namespace,
+    Row,
     SinkApiDestinationParameters,
     SinkBaiLianParameters,
     SinkDataWorksTriggerParameters,
@@ -916,6 +951,7 @@ __all__ = [
     SourcePostgreSQLParameters,
     SourceRabbitMQMetaParameters,
     SourceRabbitMQMsgSyncParameters,
+    Table,
     CheckServiceLinkedRoleForProductRequest,
     CheckServiceLinkedRoleForProductResponseBody,
     CheckServiceLinkedRoleForProductResponse,
@@ -1073,9 +1109,14 @@ __all__ = [
     UpdateRuleRequest,
     UpdateRuleResponseBody,
     UpdateRuleResponse,
+    AguiMessageMetadataAttachments,
+    AguiMessageMetadata,
+    AguiMessageToolCallsFunction,
+    AguiMessageToolCalls,
     BaiLianAgentTransformParametersPrompt,
     DashScopeTransformParametersMessages,
     EmbeddingTransformParametersEmbeddingData,
+    MetadataAttachments,
     SinkApiDestinationParametersBodyParameters,
     SinkApiDestinationParametersHeaderParameters,
     SinkApiDestinationParametersQueryStringParameters,
@@ -1095,6 +1136,8 @@ __all__ = [
     SinkRabbitMQMsgSyncParametersMessageId,
     SinkRabbitMQMsgSyncParametersProperties,
     SinkRabbitMQMsgSyncParametersRoutingKey,
+    TableColumns,
+    TableRetentionPolicy,
     CheckServiceLinkedRoleForProductResponseBodyData,
     CreateApiDestinationRequestHttpApiParameters,
     CreateApiDestinationResponseBodyDate,
@@ -1168,6 +1211,9 @@ __all__ = [
     CreateEventStreamingRequestSinkSinkDorisParametersVSwitchIds,
     CreateEventStreamingRequestSinkSinkDorisParametersVpcId,
     CreateEventStreamingRequestSinkSinkDorisParameters,
+    CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue,
+    CreateEventStreamingRequestSinkSinkEventHouseParametersMappingRules,
+    CreateEventStreamingRequestSinkSinkEventHouseParameters,
     CreateEventStreamingRequestSinkSinkFcParametersBody,
     CreateEventStreamingRequestSinkSinkFcParametersConcurrency,
     CreateEventStreamingRequestSinkSinkFcParametersDataFormat,
@@ -1510,6 +1556,9 @@ __all__ = [
     ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersVSwitchIds,
     ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParametersVpcId,
     ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkDorisParameters,
+    ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkEventHouseParametersMappingRulesColumnValue,
+    ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkEventHouseParametersMappingRules,
+    ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkEventHouseParameters,
     ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersBody,
     ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersConcurrency,
     ListEventStreamingsResponseBodyDataEventStreamingsSinkSinkFcParametersDataFormat,
@@ -1699,6 +1748,9 @@ __all__ = [
     UpdateEventStreamingRequestSinkSinkDorisParametersVSwitchIds,
     UpdateEventStreamingRequestSinkSinkDorisParametersVpcId,
     UpdateEventStreamingRequestSinkSinkDorisParameters,
+    UpdateEventStreamingRequestSinkSinkEventHouseParametersMappingRulesColumnValue,
+    UpdateEventStreamingRequestSinkSinkEventHouseParametersMappingRules,
+    UpdateEventStreamingRequestSinkSinkEventHouseParameters,
     UpdateEventStreamingRequestSinkSinkFcParametersBody,
     UpdateEventStreamingRequestSinkSinkFcParametersConcurrency,
     UpdateEventStreamingRequestSinkSinkFcParametersDataFormat,

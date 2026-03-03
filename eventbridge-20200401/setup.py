@@ -24,7 +24,7 @@ from setuptools import setup, find_packages
 """
 setup module for alibabacloud_eventbridge20200401.
 
-Created on 02/02/2026
+Created on 03/03/2026
 
 @author: Alibaba Cloud SDK
 """

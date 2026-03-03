@@ -1,3 +1,9 @@
+2026-03-03 Version: 8.0.5
+- Update API CreateEventStreaming: add request parameters Sink.SinkEventHouseParameters.
+- Update API ListEventStreamings: add response parameters Body.Data.EventStreamings.$.Sink.SinkEventHouseParameters.
+- Update API UpdateEventStreaming: add request parameters Sink.SinkEventHouseParameters.
+
+
 2026-02-02 Version: 8.0.4
 - Update API CreateEventStreaming: add request parameters Sink.SinkMQTTParameters.
 - Update API GetEventStreaming: add response parameters Body.Data.Sink.SinkMQTTParameters.

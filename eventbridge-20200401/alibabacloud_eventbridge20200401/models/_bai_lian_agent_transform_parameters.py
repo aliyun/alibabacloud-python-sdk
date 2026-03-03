@@ -66,8 +66,6 @@ class BaiLianAgentTransformParameters(DaraModel):
 
         return self
 
-
-
 class BaiLianAgentTransformParametersPrompt(DaraModel):
     def __init__(
         self,
