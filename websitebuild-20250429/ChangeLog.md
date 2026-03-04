@@ -1,3 +1,7 @@
+2026-03-04 Version: 2.14.0
+- Support API ListAppCommoditySpecificationsForPartner.
+
+
 2026-03-03 Version: 2.13.0
 - Support API AllocateSupabaseForAdmin.
 - Support API OperateSupabaseForAdmin.

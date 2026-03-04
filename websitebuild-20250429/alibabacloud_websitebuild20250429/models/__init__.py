@@ -15,6 +15,9 @@ from ._app_service import AppService
 from ._app_service_aggregate import AppServiceAggregate
 from ._app_service_group import AppServiceGroup
 from ._app_service_profile import AppServiceProfile
+from ._module_versions_value import ModuleVersionsValue
+from ._module_versions_value_components_value import ModuleVersionsValueComponentsValue
+from ._module_versions_value_components_value_properties_value import ModuleVersionsValueComponentsValuePropertiesValue
 from ._allocate_supabase_for_admin_request import AllocateSupabaseForAdminRequest
 from ._allocate_supabase_for_admin_response_body import AllocateSupabaseForAdminResponseBody
 from ._allocate_supabase_for_admin_response import AllocateSupabaseForAdminResponse
@@ -81,6 +84,8 @@ from ._get_user_tmp_identity_for_partner_response import GetUserTmpIdentityForPa
 from ._introspect_app_instance_ticket_for_preview_request import IntrospectAppInstanceTicketForPreviewRequest
 from ._introspect_app_instance_ticket_for_preview_response_body import IntrospectAppInstanceTicketForPreviewResponseBody
 from ._introspect_app_instance_ticket_for_preview_response import IntrospectAppInstanceTicketForPreviewResponse
+from ._list_app_commodity_specifications_for_partner_response_body import ListAppCommoditySpecificationsForPartnerResponseBody
+from ._list_app_commodity_specifications_for_partner_response import ListAppCommoditySpecificationsForPartnerResponse
 from ._list_app_domain_redirect_records_request import ListAppDomainRedirectRecordsRequest
 from ._list_app_domain_redirect_records_response_body import ListAppDomainRedirectRecordsResponseBody
 from ._list_app_domain_redirect_records_response import ListAppDomainRedirectRecordsResponse
@@ -176,6 +181,9 @@ from ._upload_material_file_response import UploadMaterialFileResponse
 from ._app_instance_aggregate import AppInstanceAggregatePartnerDetailBindData
 from ._app_instance_aggregate import AppInstanceAggregatePartnerDetail
 from ._app_instance_aggregate import AppInstanceAggregateTags
+from ._module_versions_value_components_value import ModuleVersionsValueComponentsValueInstancePropertyValues
+from ._module_versions_value_components_value import ModuleVersionsValueComponentsValueInstanceProperty
+from ._module_versions_value_components_value_properties_value import ModuleVersionsValueComponentsValuePropertiesValueValues
 from ._allocate_supabase_for_admin_response_body import AllocateSupabaseForAdminResponseBodyModule
 from ._bind_app_domain_response_body import BindAppDomainResponseBodyModule
 from ._create_app_instance_request import CreateAppInstanceRequestTags
@@ -196,6 +204,7 @@ from ._get_user_access_token_for_partner_response_body import GetUserAccessToken
 from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyDataCredentials
 from ._get_user_tmp_identity_for_partner_response_body import GetUserTmpIdentityForPartnerResponseBodyData
 from ._introspect_app_instance_ticket_for_preview_response_body import IntrospectAppInstanceTicketForPreviewResponseBodyModule
+from ._list_app_commodity_specifications_for_partner_response_body import ListAppCommoditySpecificationsForPartnerResponseBodyModule
 from ._list_app_domain_redirect_records_response_body import ListAppDomainRedirectRecordsResponseBodyModuleData
 from ._list_app_domain_redirect_records_response_body import ListAppDomainRedirectRecordsResponseBodyModuleNext
 from ._list_app_domain_redirect_records_response_body import ListAppDomainRedirectRecordsResponseBodyModule
@@ -247,6 +256,9 @@ __all__ = [
     AppServiceAggregate,
     AppServiceGroup,
     AppServiceProfile,
+    ModuleVersionsValue,
+    ModuleVersionsValueComponentsValue,
+    ModuleVersionsValueComponentsValuePropertiesValue,
     AllocateSupabaseForAdminRequest,
     AllocateSupabaseForAdminResponseBody,
     AllocateSupabaseForAdminResponse,
@@ -313,6 +325,8 @@ __all__ = [
     IntrospectAppInstanceTicketForPreviewRequest,
     IntrospectAppInstanceTicketForPreviewResponseBody,
     IntrospectAppInstanceTicketForPreviewResponse,
+    ListAppCommoditySpecificationsForPartnerResponseBody,
+    ListAppCommoditySpecificationsForPartnerResponse,
     ListAppDomainRedirectRecordsRequest,
     ListAppDomainRedirectRecordsResponseBody,
     ListAppDomainRedirectRecordsResponse,
@@ -408,6 +422,9 @@ __all__ = [
     AppInstanceAggregatePartnerDetailBindData,
     AppInstanceAggregatePartnerDetail,
     AppInstanceAggregateTags,
+    ModuleVersionsValueComponentsValueInstancePropertyValues,
+    ModuleVersionsValueComponentsValueInstanceProperty,
+    ModuleVersionsValueComponentsValuePropertiesValueValues,
     AllocateSupabaseForAdminResponseBodyModule,
     BindAppDomainResponseBodyModule,
     CreateAppInstanceRequestTags,
@@ -428,6 +445,7 @@ __all__ = [
     GetUserTmpIdentityForPartnerResponseBodyDataCredentials,
     GetUserTmpIdentityForPartnerResponseBodyData,
     IntrospectAppInstanceTicketForPreviewResponseBodyModule,
+    ListAppCommoditySpecificationsForPartnerResponseBodyModule,
     ListAppDomainRedirectRecordsResponseBodyModuleData,
     ListAppDomainRedirectRecordsResponseBodyModuleNext,
     ListAppDomainRedirectRecordsResponseBodyModule,

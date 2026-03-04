@@ -1718,6 +1718,56 @@ class Client(OpenApiClient):
         runtime = RuntimeOptions()
         return await self.introspect_app_instance_ticket_for_preview_with_options_async(request, runtime)
 
+    def list_app_commodity_specifications_for_partner_with_options(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppCommoditySpecificationsForPartnerResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'ListAppCommoditySpecificationsForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppCommoditySpecificationsForPartnerResponse(),
+            self.call_api(params, req, runtime)
+        )
+
+    async def list_app_commodity_specifications_for_partner_with_options_async(
+        self,
+        runtime: RuntimeOptions,
+    ) -> main_models.ListAppCommoditySpecificationsForPartnerResponse:
+        req = open_api_util_models.OpenApiRequest()
+        params = open_api_util_models.Params(
+            action = 'ListAppCommoditySpecificationsForPartner',
+            version = '2025-04-29',
+            protocol = 'HTTPS',
+            pathname = '/',
+            method = 'POST',
+            auth_type = 'AK',
+            style = 'RPC',
+            req_body_type = 'formData',
+            body_type = 'json'
+        )
+        return DaraCore.from_map(
+            main_models.ListAppCommoditySpecificationsForPartnerResponse(),
+            await self.call_api_async(params, req, runtime)
+        )
+
+    def list_app_commodity_specifications_for_partner(self) -> main_models.ListAppCommoditySpecificationsForPartnerResponse:
+        runtime = RuntimeOptions()
+        return self.list_app_commodity_specifications_for_partner_with_options(runtime)
+
+    async def list_app_commodity_specifications_for_partner_async(self) -> main_models.ListAppCommoditySpecificationsForPartnerResponse:
+        runtime = RuntimeOptions()
+        return await self.list_app_commodity_specifications_for_partner_with_options_async(runtime)
+
     def list_app_domain_redirect_records_with_options(
         self,
         request: main_models.ListAppDomainRedirectRecordsRequest,
