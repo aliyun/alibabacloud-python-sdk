@@ -14,6 +14,7 @@ class InitContainerConfig(DaraModel):
         envs: str = None,
         image_url: str = None,
         name: str = None,
+        secret_mount_desc: str = None,
     ):
         self.command = command
         self.command_args = command_args
@@ -22,6 +23,7 @@ class InitContainerConfig(DaraModel):
         self.envs = envs
         self.image_url = image_url
         self.name = name
+        self.secret_mount_desc = secret_mount_desc
 
     def validate(self):
         pass
@@ -52,6 +54,9 @@ class InitContainerConfig(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        if self.secret_mount_desc is not None:
+            result['SecretMountDesc'] = self.secret_mount_desc
+
         return result
 
     def from_map(self, m: dict = None):
@@ -76,6 +81,9 @@ class InitContainerConfig(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        if m.get('SecretMountDesc') is not None:
+            self.secret_mount_desc = m.get('SecretMountDesc')
 
         return self
 

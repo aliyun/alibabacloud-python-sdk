@@ -1759,6 +1759,7 @@ class DescribeApplicationConfigResponseBodyDataInitContainersConfig(DaraModel):
         envs: str = None,
         image_url: str = None,
         name: str = None,
+        secret_mount_desc: List[main_models.DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc] = None,
     ):
         # The command that is used to start the image. The command must be an existing executable object in the container. Sample statements:
         # 
@@ -1797,6 +1798,7 @@ class DescribeApplicationConfigResponseBodyDataInitContainersConfig(DaraModel):
         self.image_url = image_url
         # The name of the initialized container.
         self.name = name
+        self.secret_mount_desc = secret_mount_desc
 
     def validate(self):
         if self.config_map_mount_desc:
@@ -1805,6 +1807,10 @@ class DescribeApplicationConfigResponseBodyDataInitContainersConfig(DaraModel):
                     v1.validate()
         if self.empty_dir_desc:
             for v1 in self.empty_dir_desc:
+                 if v1:
+                    v1.validate()
+        if self.secret_mount_desc:
+            for v1 in self.secret_mount_desc:
                  if v1:
                     v1.validate()
 
@@ -1838,6 +1844,11 @@ class DescribeApplicationConfigResponseBodyDataInitContainersConfig(DaraModel):
         if self.name is not None:
             result['Name'] = self.name
 
+        result['SecretMountDesc'] = []
+        if self.secret_mount_desc is not None:
+            for k1 in self.secret_mount_desc:
+                result['SecretMountDesc'].append(k1.to_map() if k1 else None)
+
         return result
 
     def from_map(self, m: dict = None):
@@ -1868,6 +1879,63 @@ class DescribeApplicationConfigResponseBodyDataInitContainersConfig(DaraModel):
 
         if m.get('Name') is not None:
             self.name = m.get('Name')
+
+        self.secret_mount_desc = []
+        if m.get('SecretMountDesc') is not None:
+            for k1 in m.get('SecretMountDesc'):
+                temp_model = main_models.DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc()
+                self.secret_mount_desc.append(temp_model.from_map(k1))
+
+        return self
+
+class DescribeApplicationConfigResponseBodyDataInitContainersConfigSecretMountDesc(DaraModel):
+    def __init__(
+        self,
+        key: str = None,
+        mount_path: str = None,
+        secret_id: int = None,
+        secret_name: str = None,
+    ):
+        self.key = key
+        self.mount_path = mount_path
+        self.secret_id = secret_id
+        self.secret_name = secret_name
+
+    def validate(self):
+        pass
+
+    def to_map(self):
+        result = dict()
+        _map = super().to_map()
+        if _map is not None:
+            result = _map
+        if self.key is not None:
+            result['Key'] = self.key
+
+        if self.mount_path is not None:
+            result['MountPath'] = self.mount_path
+
+        if self.secret_id is not None:
+            result['SecretId'] = self.secret_id
+
+        if self.secret_name is not None:
+            result['SecretName'] = self.secret_name
+
+        return result
+
+    def from_map(self, m: dict = None):
+        m = m or dict()
+        if m.get('Key') is not None:
+            self.key = m.get('Key')
+
+        if m.get('MountPath') is not None:
+            self.mount_path = m.get('MountPath')
+
+        if m.get('SecretId') is not None:
+            self.secret_id = m.get('SecretId')
+
+        if m.get('SecretName') is not None:
+            self.secret_name = m.get('SecretName')
 
         return self
 
