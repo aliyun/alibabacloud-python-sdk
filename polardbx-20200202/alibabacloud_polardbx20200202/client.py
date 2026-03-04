@@ -1300,6 +1300,8 @@ class Client(OpenApiClient):
             query['IsReadDBInstance'] = request.is_read_dbinstance
         if not DaraCore.is_null(request.network_type):
             query['NetworkType'] = request.network_type
+        if not DaraCore.is_null(request.origin_minor_version):
+            query['OriginMinorVersion'] = request.origin_minor_version
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.period):
@@ -1316,6 +1318,8 @@ class Client(OpenApiClient):
             query['SecondaryZone'] = request.secondary_zone
         if not DaraCore.is_null(request.series):
             query['Series'] = request.series
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
         if not DaraCore.is_null(request.tertiary_zone):
             query['TertiaryZone'] = request.tertiary_zone
         if not DaraCore.is_null(request.topology_type):
@@ -1388,6 +1392,8 @@ class Client(OpenApiClient):
             query['IsReadDBInstance'] = request.is_read_dbinstance
         if not DaraCore.is_null(request.network_type):
             query['NetworkType'] = request.network_type
+        if not DaraCore.is_null(request.origin_minor_version):
+            query['OriginMinorVersion'] = request.origin_minor_version
         if not DaraCore.is_null(request.pay_type):
             query['PayType'] = request.pay_type
         if not DaraCore.is_null(request.period):
@@ -1404,6 +1410,8 @@ class Client(OpenApiClient):
             query['SecondaryZone'] = request.secondary_zone
         if not DaraCore.is_null(request.series):
             query['Series'] = request.series
+        if not DaraCore.is_null(request.storage_type):
+            query['StorageType'] = request.storage_type
         if not DaraCore.is_null(request.tertiary_zone):
             query['TertiaryZone'] = request.tertiary_zone
         if not DaraCore.is_null(request.topology_type):

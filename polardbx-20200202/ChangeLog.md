@@ -1,3 +1,8 @@
+2026-03-04 Version: 3.1.5
+- Update API CreateDBInstance: add request parameters OriginMinorVersion.
+- Update API CreateDBInstance: add request parameters StorageType.
+
+
 2026-02-26 Version: 3.1.4
 - Update API DescribeBackupPolicy: add response parameters Body.Data.CrossRegionFilterValue.
 - Update API UpdateBackupPolicy: add request parameters CrossRegionFilterValue.

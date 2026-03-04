@@ -22,6 +22,7 @@ class CreateDBInstanceShrinkRequest(DaraModel):
         is_columnar_read_dbinstance: bool = None,
         is_read_dbinstance: bool = None,
         network_type: str = None,
+        origin_minor_version: str = None,
         pay_type: str = None,
         period: str = None,
         primary_dbinstance_name: str = None,
@@ -30,6 +31,7 @@ class CreateDBInstanceShrinkRequest(DaraModel):
         resource_group_id: str = None,
         secondary_zone: str = None,
         series: str = None,
+        storage_type: str = None,
         tertiary_zone: str = None,
         topology_type: str = None,
         used_time: int = None,
@@ -53,6 +55,7 @@ class CreateDBInstanceShrinkRequest(DaraModel):
         self.is_columnar_read_dbinstance = is_columnar_read_dbinstance
         self.is_read_dbinstance = is_read_dbinstance
         self.network_type = network_type
+        self.origin_minor_version = origin_minor_version
         # This parameter is required.
         self.pay_type = pay_type
         self.period = period
@@ -63,6 +66,7 @@ class CreateDBInstanceShrinkRequest(DaraModel):
         self.resource_group_id = resource_group_id
         self.secondary_zone = secondary_zone
         self.series = series
+        self.storage_type = storage_type
         self.tertiary_zone = tertiary_zone
         # This parameter is required.
         self.topology_type = topology_type
@@ -125,6 +129,9 @@ class CreateDBInstanceShrinkRequest(DaraModel):
         if self.network_type is not None:
             result['NetworkType'] = self.network_type
 
+        if self.origin_minor_version is not None:
+            result['OriginMinorVersion'] = self.origin_minor_version
+
         if self.pay_type is not None:
             result['PayType'] = self.pay_type
 
@@ -148,6 +155,9 @@ class CreateDBInstanceShrinkRequest(DaraModel):
 
         if self.series is not None:
             result['Series'] = self.series
+
+        if self.storage_type is not None:
+            result['StorageType'] = self.storage_type
 
         if self.tertiary_zone is not None:
             result['TertiaryZone'] = self.tertiary_zone
@@ -216,6 +226,9 @@ class CreateDBInstanceShrinkRequest(DaraModel):
         if m.get('NetworkType') is not None:
             self.network_type = m.get('NetworkType')
 
+        if m.get('OriginMinorVersion') is not None:
+            self.origin_minor_version = m.get('OriginMinorVersion')
+
         if m.get('PayType') is not None:
             self.pay_type = m.get('PayType')
 
@@ -239,6 +252,9 @@ class CreateDBInstanceShrinkRequest(DaraModel):
 
         if m.get('Series') is not None:
             self.series = m.get('Series')
+
+        if m.get('StorageType') is not None:
+            self.storage_type = m.get('StorageType')
 
         if m.get('TertiaryZone') is not None:
             self.tertiary_zone = m.get('TertiaryZone')
